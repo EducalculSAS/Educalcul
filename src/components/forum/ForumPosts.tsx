@@ -7,7 +7,7 @@ import { MessageSquare, Plus, ArrowLeft, Clock, Pin, Lock, MessageCircle, Trash2
 import { formatDistanceToNow } from "date-fns";
 import { fr } from "date-fns/locale";
 import { ForumRole } from "./ForumApp";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -87,7 +87,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
     return role === "admin" ? `/admin/users/detail?id=${userId}` : `/u/${userId}?returnTo=${returnTo}`;
   };
 
-  if (loading) return <div className="p-12 flex justify-center"><AppAdminLoader /></div>;
+  if (loading) return <div className="p-12 flex justify-center"><AppLoader /></div>;
 
   return (
     <div className="space-y-6">

@@ -7,7 +7,7 @@ import { getMyProfile } from "@/lib/updateMyProfile";
 import ForumCategories from "./ForumCategories";
 import ForumPosts from "./ForumPosts";
 import ForumThread from "./ForumThread";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 
 export type ForumRole = "admin" | "parent" | "child";
 
@@ -70,7 +70,7 @@ export default function ForumApp({ role }: ForumAppProps) {
   }, [searchParams]);
 
   if (loading) {
-    return <div className="p-12 flex justify-center"><AppAdminLoader /></div>;
+    return <div className="p-12 flex justify-center"><AppLoader /></div>;
   }
 
   if (!userAuthId) {

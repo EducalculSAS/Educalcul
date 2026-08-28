@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { MessageSquare, Plus, Trash2 } from "lucide-react";
 import { ForumRole } from "./ForumApp";
 import { useConfirm } from "@/components/ConfirmDialog";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
@@ -59,7 +59,7 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
     fetchCategories();
   };
 
-  if (loading) return <div className="p-12 flex justify-center"><AppAdminLoader /></div>;
+  if (loading) return <div className="p-12 flex justify-center"><AppLoader /></div>;
 
   return (
     <div className="space-y-6">

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Calculator, PuzzleIcon, TrendingUp, Languages, type LucideIcon } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 import { useToast } from "@/components/Toast";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import MinigamesLeaderboard from "@/components/minigames/MinigamesLeaderboard";
@@ -141,7 +141,7 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
     return (
       <>
         <MinigameBackButton sessionId={sessionId} />
-        <AppAdminLoader />
+        <AppLoader />
       </>
     );
   }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader2, Trophy, Clock } from "lucide-react";
+import { Trophy, Clock } from "lucide-react";
+import PageLoader from "@/components/PageLoader";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import type { MinigameType } from "@/lib/minigames/gameTypes";
@@ -75,9 +76,7 @@ export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador
       </div>
 
       {loading ? (
-        <div className="flex justify-center py-8">
-          <Loader2 className="w-6 h-6 animate-spin" style={{ color: "var(--greek-gold)" }} />
-        </div>
+        <PageLoader className="h-32" />
       ) : !data || data.leaderboard.length === 0 ? (
         <p className="text-sm text-[var(--text-muted)] text-center py-6">Aucune partie jouée pour l'instant. Sois le premier !</p>
       ) : (

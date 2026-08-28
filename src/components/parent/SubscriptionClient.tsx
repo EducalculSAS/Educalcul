@@ -1,5 +1,7 @@
 "use client";
 
+import PageLoader from "@/components/PageLoader";
+import AppLoader from "@/components/AppLoader";
 import { useState, useEffect, Suspense } from "react";
 import {
   Crown,
@@ -336,7 +338,7 @@ function SubscriptionPageContent({
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin h-8 w-8 rounded-full border-b-2 border-[var(--greek-blue)]" />
+        <PageLoader className="h-32" />
       </div>
     );
   }
@@ -610,7 +612,7 @@ export default function SubscriptionClient(props: {
   initialBillingHistory: any[];
 }) {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><div className="animate-spin h-8 w-8 rounded-full border-b-2 border-[var(--greek-blue)]" /></div>}>
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><AppLoader /></div>}>
       <SubscriptionPageContent {...props} />
     </Suspense>
   );

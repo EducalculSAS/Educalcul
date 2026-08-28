@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Trash2, Sigma, Calculator, Clock, PuzzleIcon, TrendingUp, Languages } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
-import AdminLoaderDots from "@/components/AdminLoaderDots";
+import LoaderDots from "@/components/LoaderDots";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -171,7 +171,7 @@ export default function AdminMinigameSessionsPanel() {
           <div className="px-4 py-8 text-center text-sm text-gray-400">Aucune partie jouée pour l&apos;instant.</div>
         )}
         {loading && (
-          <div className="flex justify-center py-6"><AdminLoaderDots /></div>
+          <div className="flex justify-center py-6"><LoaderDots /></div>
         )}
       </div>
 

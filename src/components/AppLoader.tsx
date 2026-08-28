@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function AppAdminLoader() {
+export default function AppLoader() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] flex items-center justify-center">
       <div className="text-center">

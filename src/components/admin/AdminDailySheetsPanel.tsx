@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { RefreshCw, Save, Lock } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
-import AdminLoaderDots from "@/components/AdminLoaderDots";
+import LoaderDots from "@/components/LoaderDots";
 import GlassButton from "@/components/ui/GlassButton";
 import { RULES_BY_GAME_TYPE, GAME_TYPES, type MinigameType, type AnswerType } from "@/lib/minigames/gameTypes";
 
@@ -177,7 +177,7 @@ export default function AdminDailySheetsPanel({ gameType }: { gameType: Minigame
       </div>
 
       {loading ? (
-        <div className="flex justify-center py-12"><AdminLoaderDots /></div>
+        <div className="flex justify-center py-12"><LoaderDots /></div>
       ) : (
         <div className="grid md:grid-cols-2 gap-4">
           {rules.map((rule) => {

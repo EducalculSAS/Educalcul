@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { ArrowLeft, Play, Clock, BookOpen, AlertCircle, CheckCircle } from "lucide-react";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import CourseViewer from "@/components/viewers/CourseViewer";
@@ -144,7 +144,7 @@ export default function CourseDetailClient({
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <AppAdminLoader />
+        <AppLoader />
       </div>
     );
   }

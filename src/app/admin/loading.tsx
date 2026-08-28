@@ -1,5 +1,5 @@
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 
 export default function AdminLoading() {
-  return <AppAdminLoader />;
+  return <AppLoader />;
 }

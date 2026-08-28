@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { trackLogout } from "@/lib/trackLogout";
 
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 
 export default function LogoutPage() {
   const router = useRouter();
@@ -23,7 +23,7 @@ export default function LogoutPage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-[var(--greek-cream)]">
-      <AppAdminLoader />
+      <AppLoader />
     </div>
   );
 }

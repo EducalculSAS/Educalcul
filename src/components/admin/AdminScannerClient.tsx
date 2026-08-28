@@ -18,7 +18,7 @@ import {
   RotateCcw,
 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
-import AdminLoaderDots from "@/components/AdminLoaderDots";
+import LoaderDots from "@/components/LoaderDots";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
@@ -343,7 +343,7 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
                 >
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-sm font-medium text-[var(--greek-blue)] truncate flex items-center gap-1.5">
-                      {isActive && <AdminLoaderDots />}
+                      {isActive && <LoaderDots />}
                       {cat?.label || r.category}
                     </span>
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full shrink-0 ${STATUS_COLOR[r.status]}`}>
@@ -415,7 +415,7 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
 
               {findingsLoading ? (
                 <div className="flex items-center justify-center py-12">
-                  <AdminLoaderDots />
+                  <LoaderDots />
                 </div>
               ) : findings.length === 0 ? (
                 ACTIVE_STATUSES.has(selectedRun.status) ? (

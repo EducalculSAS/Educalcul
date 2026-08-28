@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 import AdminSidebar from "@/components/AdminSidebar";
 import AdminTotpSetupModal from "@/components/admin/AdminTotpSetupModal";
 import PresenceTracker from "@/components/child/PresenceTracker";
@@ -102,7 +102,7 @@ export default function AdminShell({
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[var(--greek-cream)]">
-        <AppAdminLoader />
+        <AppLoader />
       </div>
     );
   }

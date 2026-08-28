@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
 import { AlertTriangle, Clock, FileText, LogIn } from 'lucide-react';
-import AppAdminLoader from '@/components/AppAdminLoader';
+import AppLoader from '@/components/AppLoader';
 import GlassButton from '@/components/ui/GlassButton';
 
 export default function BannedPage() {
@@ -53,7 +53,7 @@ export default function BannedPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <AppAdminLoader />
+        <AppLoader />
       </div>
     );
   }
@@ -73,7 +73,7 @@ export default function BannedPage() {
   if (!banData) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <AppAdminLoader />
+        <AppLoader />
       </div>
     );
   }

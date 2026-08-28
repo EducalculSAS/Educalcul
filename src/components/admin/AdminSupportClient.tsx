@@ -1,5 +1,6 @@
 "use client";
 
+import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect, useRef } from "react";
 import PageLoader from "@/components/PageLoader";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
@@ -514,7 +515,7 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                         onClick={() => handleReply({ preventDefault: () => {} } as unknown as React.FormEvent)}
                       >
                         {replyLoading ? (
-                          <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                          <LoaderDots />
                         ) : (
                           <Send size={18} />
                         )}

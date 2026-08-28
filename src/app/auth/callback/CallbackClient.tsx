@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { resolveAuthDestination } from '@/lib/authRedirect';
+import AppLoader from '@/components/AppLoader';
 import { getSignupSession, patchSignupSession } from '@/lib/signupSession';
 
 export default function AuthCallback() {
   const router = useRouter();
-  const [status, setStatus] = useState('Traitement de la réponse...');
 
   useEffect(() => {
     // Erreur OAuth dans le hash
@@ -49,7 +49,6 @@ export default function AuthCallback() {
     };
 
     const handleSession = async (session: any) => {
-      setStatus('Authentification réussie. Redirection...');
 
       // Méthode unique : resolveAuthDestination gère ban + role + first_name
       const dest = await resolveAuthDestination(session?.access_token);
@@ -98,13 +97,5 @@ export default function AuthCallback() {
     handleAuth();
   }, [router]);
 
-  return (
-    <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-xl text-center">
-      <h2 className="text-2xl font-bold mb-4 text-[var(--greek-blue)]">Authentification</h2>
-      <p className="text-gray-600 mb-4">{status}</p>
-      <div className="flex justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[var(--greek-blue)]"></div>
-      </div>
-    </div>
-  );
+  return <AppLoader />;
 }

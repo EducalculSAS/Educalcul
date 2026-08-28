@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { ArrowLeft, Send, Trash2, Pin, Lock, ExternalLink, Flag, X, AlertTriangle } from "lucide-react";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { getBorderStyle, getNameColor } from "@/lib/badgeStyles";
@@ -113,7 +113,7 @@ export default function ForumThread({ role, postId, userDbId, onBack }: {
     return isAdmin ? `/admin/users/detail?id=${userId}` : `/u/${userId}?returnTo=${returnTo}`;
   };
 
-  if (loading || !post) return <div className="p-12 flex justify-center"><AppAdminLoader /></div>;
+  if (loading || !post) return <div className="p-12 flex justify-center"><AppLoader /></div>;
 
   const AuthorChip = ({ a }: { a: any }) => {
     const nameCol = getNameColor(a?.name_color || 'default');

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { RotateCcw, Send, Undo2, Sigma } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 import { useToast } from "@/components/Toast";
 import MinigamesLeaderboard from "@/components/minigames/MinigamesLeaderboard";
 import MinigameBackButton from "@/components/minigames/MinigameBackButton";
@@ -184,7 +184,7 @@ export default function MathadorGame() {
     return (
       <>
         <MinigameBackButton sessionId={sessionId} />
-        <AppAdminLoader />
+        <AppLoader />
       </>
     );
   }

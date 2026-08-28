@@ -12,7 +12,7 @@ import {
   Eye,
 } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
-import AppAdminLoader from "@/components/AppAdminLoader";
+import AppLoader from "@/components/AppLoader";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -193,7 +193,7 @@ export default function ExerciseDetailClient({
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <AppAdminLoader />
+        <AppLoader />
       </div>
     );
   }
