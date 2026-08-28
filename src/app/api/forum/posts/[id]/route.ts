@@ -27,13 +27,23 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
       .from("forum_posts")
       .select(`
         *,
-        author:users(first_name, last_name, child_username, role, avatar),
-        category:forum_categories(name)
+        author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges),
+        category:forum_categories(name),
+        comments:forum_comments(
+          id, content, created_at,
+          author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges)
+        )
       `)
       .eq("id", id)
       .single();
 
     if (error) throw error;
+    if (Array.isArray(data?.comments)) {
+      data.comments.sort(
+        (a: { created_at: string }, b: { created_at: string }) =>
+          new Date(a.created_at).getTime() - new Date(b.created_at).getTime(),
+      );
+    }
     return NextResponse.json(data);
   } catch (error: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
@@ -76,7 +86,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       .eq("id", id)
       .select(`
         *,
-        author:users(first_name, last_name, child_username, role, avatar),
+        author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges),
         category:forum_categories(name)
       `)
       .single();

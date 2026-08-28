@@ -136,7 +136,6 @@ export default function ForumApp({ role }: ForumAppProps) {
           categoryId={selectedCategoryId}
           categoryName={selectedCategoryName}
           onSelectPost={navigateToThread}
-          userAuthId={userAuthId}
           onBack={backToCategories}
         />
       )}
@@ -145,7 +144,6 @@ export default function ForumApp({ role }: ForumAppProps) {
         <ForumThread
           role={role}
           postId={selectedPostId}
-          userAuthId={userAuthId}
           userDbId={userDbId}
           onBack={backToPosts}
         />

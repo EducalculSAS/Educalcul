@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { MessageSquare, Plus, Trash2 } from "lucide-react";
 import { ForumRole } from "./ForumApp";
-import { supabase } from "@/lib/supabaseClient";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import GlassButton from "@/components/ui/GlassButton";
@@ -55,8 +54,8 @@ export default function ForumCategories({ role, onSelectCategory }: { role: Foru
 
   const handleDelete = async (id: number) => {
     if (!(await confirm("Supprimer cette catégorie et tous ses sujets ?"))) return;
-    await supabase.from("forum_posts").delete().eq("category_id", id);
-    await supabase.from("forum_categories").delete().eq("id", id);
+    // Les posts (et leurs commentaires) partent en cascade FK côté DB.
+    await fetch(`/api/forum/categories/${id}`, { method: "DELETE" });
     fetchCategories();
   };
 

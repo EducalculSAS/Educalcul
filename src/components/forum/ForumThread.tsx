@@ -11,7 +11,6 @@ import BadgeMinis from "@/components/BadgeMinis";
 import { formatDistanceToNow } from "date-fns";
 import { fr } from "date-fns/locale";
 import { ForumRole } from "./ForumApp";
-import { supabase } from "@/lib/supabaseClient";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { useConfirm } from "@/components/ConfirmDialog";
 import GlassButton from "@/components/ui/GlassButton";
@@ -26,8 +25,8 @@ const roleBadge = (r: string) => r === "admin" ? "bg-red-50 text-red-700" : r ==
 const roleAvatar = (r: string) => r === "admin" ? "bg-red-500" : r === "parent" ? "bg-blue-500" : "bg-green-500";
 const authorName = (a: any) => a?.child_username || `${a?.first_name || ""} ${a?.last_name || ""}`.trim() || "Utilisateur";
 
-export default function ForumThread({ role, postId, userAuthId, userDbId, onBack }: {
-  role: ForumRole; postId: number; userAuthId: string | null; userDbId: number | null; onBack: () => void;
+export default function ForumThread({ role, postId, userDbId, onBack }: {
+  role: ForumRole; postId: number; userDbId: number | null; onBack: () => void;
 }) {
   const confirm = useConfirm();
   const [post, setPost] = useState<Post | null>(null);
@@ -44,57 +43,64 @@ export default function ForumThread({ role, postId, userAuthId, userDbId, onBack
 
   const fetchThread = async () => {
     setLoading(true);
-    const { data } = await supabase
-      .from("forum_posts")
-      .select(`*, author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges), category:forum_categories(name), comments:forum_comments(id, content, created_at, author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges))`)
-      .eq("id", postId)
-      .single();
-    if (data?.comments) data.comments.sort((a: any, b: any) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime());
-    setPost(data);
-    setLoading(false);
+    try {
+      // Le post + ses commentaires (auteurs inclus, triés) en un seul appel.
+      const res = await fetch(`/api/forum/posts/${postId}`);
+      setPost(res.ok ? await res.json() : null);
+    } catch {
+      setPost(null);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const postComment = async () => {
-    if (!newComment.trim() || !userAuthId || post?.is_locked) return;
-    const { data: u } = await supabase.from("users").select("id").eq("auth_id", userAuthId).single();
-    if (!u) return;
-    await supabase.from("forum_comments").insert({ post_id: postId, author_id: u.id, content: newComment });
+    if (!newComment.trim() || post?.is_locked) return;
+    const res = await fetch("/api/forum/comments", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ postId, content: newComment }),
+    });
+    if (!res.ok) return;
     setNewComment("");
     fetchThread();
   };
 
   const deleteComment = async (id: number) => {
     if (!(await confirm("Supprimer ce commentaire ?"))) return;
-    await supabase.from("forum_comments").delete().eq("id", id);
+    await fetch(`/api/forum/comments/${id}`, { method: "DELETE" });
     fetchThread();
   };
 
   const deletePost = async () => {
     if (!(await confirm("Supprimer ce sujet et tous les commentaires ?"))) return;
-    await supabase.from("forum_posts").delete().eq("id", postId);
+    await fetch(`/api/forum/posts/${postId}`, { method: "DELETE" });
     onBack();
   };
 
-  const togglePin = async () => {
+  const patchPost = async (patch: Record<string, boolean>) => {
     if (!post) return;
-    await supabase.from("forum_posts").update({ is_pinned: !post.is_pinned }).eq("id", postId);
+    await fetch(`/api/forum/posts/${postId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(patch),
+    });
     fetchThread();
   };
 
-  const toggleLock = async () => {
-    if (!post) return;
-    await supabase.from("forum_posts").update({ is_locked: !post.is_locked }).eq("id", postId);
-    fetchThread();
-  };
+  const togglePin = () => post && patchPost({ is_pinned: !post.is_pinned });
+  const toggleLock = () => post && patchPost({ is_locked: !post.is_locked });
 
   const submitReport = async () => {
     if (!reportModal || !reportReason.trim()) return;
-    const { data: u } = await supabase.from("users").select("id").eq("auth_id", userAuthId!).single();
-    await supabase.from("forum_reports").insert({
-      reporter_id: u?.id,
-      reported_user_id: reportModal.targetUserId,
-      ...(reportModal.type === "post" ? { post_id: reportModal.targetId } : { comment_id: reportModal.targetId }),
-      reason: reportReason.trim(),
+    await fetch("/api/forum/reports", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        type: reportModal.type,
+        targetId: reportModal.targetId,
+        reason: reportReason.trim(),
+      }),
     });
     setReportModal(null);
     setReportReason("");

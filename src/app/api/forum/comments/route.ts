@@ -14,7 +14,7 @@ export async function GET(req: Request) {
 
     const { data, error } = await supabaseAdmin
       .from("forum_comments")
-      .select(`*, author:users(first_name, last_name, child_username, role, avatar)`)
+      .select(`*, author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges)`)
       .eq("post_id", postId)
       .order("created_at", { ascending: true });
 
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       supabaseAdmin
         .from("forum_comments")
         .insert({ post_id: postId, content: stripHtml(content), author_id: me.id }) // author = caller
-        .select(`*, author:users(first_name, last_name, child_username, role, avatar)`)
+        .select(`*, author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color, featured_badges)`)
         .single(),
       supabaseAdmin
         .from("forum_posts")

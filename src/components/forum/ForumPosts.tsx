@@ -7,7 +7,6 @@ import { MessageSquare, Plus, ArrowLeft, Clock, Pin, Lock, MessageCircle, Trash2
 import { formatDistanceToNow } from "date-fns";
 import { fr } from "date-fns/locale";
 import { ForumRole } from "./ForumApp";
-import { supabase } from "@/lib/supabaseClient";
 import AppAdminLoader from "@/components/AppAdminLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import { getNameColor } from "@/lib/badgeStyles";
@@ -33,9 +32,9 @@ const roleBadge = (r: string) => r === "admin" ? "bg-red-50 text-red-700" : r ==
 const roleAvatar = (r: string) => r === "admin" ? "bg-red-500" : r === "parent" ? "bg-blue-500" : "bg-green-500";
 const authorName = (a: any) => a?.child_username || `${a?.first_name || ""} ${a?.last_name || ""}`.trim() || "Utilisateur";
 
-export default function ForumPosts({ role, categoryId, categoryName, onBack, onSelectPost, userAuthId }: {
+export default function ForumPosts({ role, categoryId, categoryName, onBack, onSelectPost }: {
   role: ForumRole; categoryId: number; categoryName: string;
-  onBack: () => void; onSelectPost: (id: number) => void; userAuthId: string | null;
+  onBack: () => void; onSelectPost: (id: number) => void;
 }) {
   const confirm = useConfirm();
   const [posts, setPosts] = useState<Post[]>([]);
@@ -50,21 +49,25 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
 
   const fetchPosts = async () => {
     setLoading(true);
-    const { data } = await supabase
-      .from("forum_posts")
-      .select("*, author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color), comments:forum_comments(count)")
-      .eq("category_id", categoryId)
-      .order("is_pinned", { ascending: false })
-      .order("created_at", { ascending: false });
-    setPosts(data || []);
-    setLoading(false);
+    try {
+      const res = await fetch(`/api/forum/posts?categoryId=${categoryId}`);
+      const data = await res.json();
+      setPosts(Array.isArray(data) ? data : []);
+    } catch {
+      setPosts([]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleCreatePost = async () => {
-    if (!newPostTitle.trim() || !newPostContent.trim() || !userAuthId) return;
-    const { data: u } = await supabase.from("users").select("id").eq("auth_id", userAuthId).single();
-    if (!u) return;
-    await supabase.from("forum_posts").insert({ category_id: categoryId, author_id: u.id, title: newPostTitle, content: newPostContent });
+    if (!newPostTitle.trim() || !newPostContent.trim()) return;
+    const res = await fetch("/api/forum/posts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ categoryId, title: newPostTitle, content: newPostContent }),
+    });
+    if (!res.ok) return;
     setShowModal(false);
     setNewPostTitle("");
     setNewPostContent("");
@@ -73,7 +76,7 @@ export default function ForumPosts({ role, categoryId, categoryName, onBack, onS
 
   const handleDelete = async (id: number) => {
     if (!(await confirm("Supprimer ce sujet et ses commentaires ?"))) return;
-    await supabase.from("forum_posts").delete().eq("id", id);
+    await fetch(`/api/forum/posts/${id}`, { method: "DELETE" });
     fetchPosts();
   };
 

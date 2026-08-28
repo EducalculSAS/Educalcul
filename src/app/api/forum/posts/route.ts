@@ -15,7 +15,7 @@ export async function GET(req: Request) {
       .from("forum_posts")
       .select(`
         *,
-        author:users(first_name, last_name, child_username, role, avatar),
+        author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color),
         comments:forum_comments(count)
       `)
       .order("is_pinned", { ascending: false })
@@ -57,7 +57,7 @@ export async function POST(req: Request) {
       })
       .select(`
         *,
-        author:users(first_name, last_name, child_username, role, avatar)
+        author:user_public_profiles(id, first_name, last_name, child_username, avatar, role, equipped_border, name_color)
       `)
       .single();
 
