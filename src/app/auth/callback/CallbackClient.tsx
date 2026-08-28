@@ -52,7 +52,7 @@ export default function AuthCallback() {
       setStatus('Authentification réussie. Redirection...');
 
       // Méthode unique : resolveAuthDestination gère ban + role + first_name
-      const dest = await resolveAuthDestination(supabase, session.user.id);
+      const dest = await resolveAuthDestination(session?.access_token);
 
       if (dest === 'banned') {
         router.push('/auth/banned');

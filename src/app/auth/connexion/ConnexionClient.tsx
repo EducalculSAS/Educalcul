@@ -153,7 +153,7 @@ export default function ConnexionClient() {
         const passkeyOk = await verifyPasskeyIfAny(email, data.session.access_token);
         if (!passkeyOk) return;
 
-        const dest = await resolveAuthDestination(supabase, data.user.id);
+        const dest = await resolveAuthDestination(data.session.access_token);
         if (dest === "banned") { router.push("/auth/banned"); return; }
         if (dest === "no_account" || dest === "incomplete") { router.push("/auth/inscription"); return; }
         router.push(dest);
