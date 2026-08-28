@@ -50,10 +50,14 @@ export async function POST(req: Request) {
       reason,
       status: "pending",
     });
-    if (error) throw error;
+    if (error) {
+      console.error("[forum/reports] insert failed:", error);
+      throw error;
+    }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
+    console.error("[forum/reports] error:", error?.message || error);
     return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
 }

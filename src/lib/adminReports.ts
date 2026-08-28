@@ -116,10 +116,11 @@ export async function fetchAdminReports() {
   const registrationsChart = Object.entries(weekCounts).map(([date, count]) => ({ date, count }));
 
   // ── Recent activity (multi-source) ───────────────────────────────────────
-  const [{ data: recentRegistrations }, { data: recentPosts }, { data: recentAttempts }] = await Promise.all([
+  const [{ data: recentRegistrations }, { data: recentPosts }, { data: recentAttempts }, { data: recentReports }] = await Promise.all([
     supabaseAdmin.from("users").select("first_name, last_name, role, created_at").order("created_at", { ascending: false }).limit(4),
     supabaseAdmin.from("forum_posts").select("title, created_at, author:users(first_name, last_name)").order("created_at", { ascending: false }).limit(3),
     supabaseAdmin.from("user_exercise_attempts").select("created_at, users(first_name, last_name)").order("created_at", { ascending: false }).limit(3),
+    supabaseAdmin.from("forum_reports").select("post_id, comment_id, reason, created_at, reporter:users!reporter_id(first_name, last_name), reported:users!reported_user_id(first_name, last_name)").eq("status", "pending").order("created_at", { ascending: false }).limit(4),
   ]);
 
   const activity = [
@@ -141,6 +142,15 @@ export async function fetchAdminReports() {
       description: `${a.user?.first_name || "Un élève"} a fait un exercice`,
       timestamp: a.created_at,
     })),
+    ...(recentReports || []).map((r: any) => {
+      const target = r.post_id ? "un sujet" : r.comment_id ? "un commentaire" : `le profil de ${r.reported?.first_name || "?"}`;
+      return {
+        type: "signalement",
+        icon: "flag",
+        description: `${r.reporter?.first_name || "Quelqu'un"} a signalé ${target}`,
+        timestamp: r.created_at,
+      };
+    }),
   ]
     .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
     .slice(0, 8);

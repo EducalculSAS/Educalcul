@@ -193,6 +193,7 @@ export default function AITutor() {
           { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
         ];
         setMessages(finalMessages as any);
+        sub.refresh();
       } catch (error) {
         console.error("Error sending AI message:", error);
       } finally {
@@ -254,6 +255,9 @@ export default function AITutor() {
         { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
       ];
       setMessages(newMessages as any);
+      // Rafraîchit le compteur "questions IA / jour" (le message vient d'être
+      // comptabilisé côté serveur).
+      if (!isSupportMode) sub.refresh();
     } catch (error) {
       console.error("❌ Fetch error:", error);
       const newMessages = [

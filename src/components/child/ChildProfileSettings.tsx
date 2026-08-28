@@ -10,7 +10,8 @@ import {
 import { getNameColor } from "@/lib/badgeStyles";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
-import { getSimpleLevelLabel } from "@/lib/constants";
+import { getSimpleLevelLabel, AVATARS } from "@/lib/constants";
+import Image from "next/image";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import UserSessionsList from "@/components/UserSessionsList";
@@ -58,23 +59,7 @@ export default function ChildProfileSettings({
     notif_weekly_reports: user.notif_weekly_reports ?? false,
     notif_offers_news: user.notif_offers_news ?? false,
   });
-
-  const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files?.[0]) return;
-    setSaving(true);
-    try {
-      const fd = new FormData();
-      fd.append("file", e.target.files[0]);
-      fd.append("folder", "uploads/avatars");
-      const r = await fetch("/api/admin/upload", { method: "POST", body: fd });
-      const d = await r.json();
-      if (!r.ok) throw new Error(d.error);
-      setAvatar(d.url);
-      await updateMyProfile({ avatar: d.url });
-      setMessage({ type: "success", text: "Photo mise à jour." });
-    } catch { setMessage({ type: "error", text: "Erreur lors de l'upload." }); }
-    finally { setSaving(false); }
-  };
+  const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
 
   const handleLinkGoogle = async () => {
     try {
@@ -114,10 +99,15 @@ export default function ChildProfileSettings({
         <div className="relative -mt-12 flex flex-col items-center gap-3 px-6 pb-6 text-center">
           <div className="relative">
             <AvatarWithBorder avatar={avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" bgClass="transparent" circular />
-            <label htmlFor="avatar-upload" className="absolute bottom-1 right-1 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform hover:scale-110" style={{ background: "var(--greek-blue)" }}>
+            <button
+              type="button"
+              onClick={() => setAvatarPickerOpen(v => !v)}
+              className="absolute bottom-1 right-1 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform hover:scale-110"
+              style={{ background: "var(--greek-blue)" }}
+              aria-label="Choisir un avatar"
+            >
               <Camera className="w-4 h-4 text-white" />
-              <input id="avatar-upload" type="file" accept="image/*" className="hidden" onChange={handleAvatarUpload} disabled={saving} />
-            </label>
+            </button>
           </div>
           <div>
             <h2 className={`text-2xl font-bold ${getNameColor(user.name_color || "default").cls}`}>{user.first_name} {user.last_name}</h2>
@@ -125,6 +115,26 @@ export default function ChildProfileSettings({
               <Shield className="w-4 h-4" />{user.child_username}
             </p>
           </div>
+
+          {avatarPickerOpen && (
+            <div className="w-full mt-1 grid grid-cols-4 sm:grid-cols-6 gap-2.5">
+              {AVATARS.map((a) => (
+                <button
+                  key={a}
+                  type="button"
+                  onClick={async () => {
+                    setAvatar(a);
+                    setAvatarPickerOpen(false);
+                    const r = await updateMyProfile({ avatar: a });
+                    setMessage(r.ok ? { type: "success", text: "Avatar mis à jour." } : { type: "error", text: r.error || "Échec." });
+                  }}
+                  className={`rounded-full overflow-hidden border-2 transition-all ${(avatar === a || avatar === `/avatars/${a}`) ? "border-[var(--greek-gold)] scale-105" : "border-transparent hover:border-[var(--greek-blue)]/30"}`}
+                >
+                  <Image src={`/avatars/${a}`} alt="" width={56} height={56} className="w-full h-full" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

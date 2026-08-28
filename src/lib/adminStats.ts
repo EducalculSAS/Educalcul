@@ -22,7 +22,7 @@ export async function fetchAdminStats() {
     supabaseAdmin.from('exercises').select('*', { count: 'exact', head: true }),
     supabaseAdmin.from('quizzes').select('*', { count: 'exact', head: true }),
     supabaseAdmin.from('support_tickets').select('*', { count: 'exact', head: true }).eq('status', 'Ouvert').eq('is_archived', false),
-    supabaseAdmin.from('forum_reports').select('*', { count: 'exact', head: true }),
+    supabaseAdmin.from('forum_reports').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
     supabaseAdmin.from('users').select('*', { count: 'exact', head: true }).gte('created_at', sevenDaysAgo),
     supabaseAdmin.from('users')
       .select('id, first_name, last_name, role, avatar, created_at')

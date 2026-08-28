@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export interface PlanFeatures {
   ai_access: "none" | "limited" | "unlimited";
@@ -20,6 +20,9 @@ export interface SubscriptionInfo {
   features: PlanFeatures;
   ai_uses_today: number;
   loading: boolean;
+  /** Re-interroge /api/user/subscription-status (ex: après un message IA pour
+   * rafraîchir le compteur du jour). */
+  refresh: () => void;
 }
 
 const FREE_FEATURES: PlanFeatures = {
@@ -33,37 +36,39 @@ const FREE_FEATURES: PlanFeatures = {
   access_level_exercises: "basic",
 };
 
-export function useSubscription(): SubscriptionInfo {
-  const [info, setInfo] = useState<SubscriptionInfo>({
-    plan_id: null,
-    plan_name: "Découverte",
-    status: "active",
-    features: FREE_FEATURES,
-    ai_uses_today: 0,
-    loading: true,
-  });
+const DEFAULT_INFO = {
+  plan_id: null as number | null,
+  plan_name: "Découverte",
+  status: "active",
+  features: FREE_FEATURES,
+  ai_uses_today: 0,
+  loading: true,
+};
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await fetch("/api/user/subscription-status");
-        if (!res.ok) { setInfo(i => ({ ...i, loading: false })); return; }
-        const d = await res.json();
-        setInfo({
-          plan_id: d.plan_id ?? null,
-          plan_name: d.plan_name ?? "Découverte",
-          status: d.status ?? "none",
-          features: { ...FREE_FEATURES, ...(d.features || {}) },
-          ai_uses_today: d.ai_uses_today ?? 0,
-          loading: false,
-        });
-      } catch {
-        setInfo(i => ({ ...i, loading: false }));
-      }
-    })();
+export function useSubscription(): SubscriptionInfo {
+  const [info, setInfo] = useState(DEFAULT_INFO);
+
+  const load = useCallback(async () => {
+    try {
+      const res = await fetch("/api/user/subscription-status");
+      if (!res.ok) { setInfo(i => ({ ...i, loading: false })); return; }
+      const d = await res.json();
+      setInfo({
+        plan_id: d.plan_id ?? null,
+        plan_name: d.plan_name ?? "Découverte",
+        status: d.status ?? "none",
+        features: { ...FREE_FEATURES, ...(d.features || {}) },
+        ai_uses_today: d.ai_uses_today ?? 0,
+        loading: false,
+      });
+    } catch {
+      setInfo(i => ({ ...i, loading: false }));
+    }
   }, []);
 
-  return info;
+  useEffect(() => { load(); }, [load]);
+
+  return { ...info, refresh: load };
 }
 
 /** Returns true if user can use AI right now */

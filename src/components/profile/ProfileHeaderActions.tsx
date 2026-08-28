@@ -33,14 +33,22 @@ export default function ProfileHeaderActions({
   const submitReport = async () => {
     if (!reportReason.trim()) return;
 
-    const res = await fetch("/api/forum/reports", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ type: "profile", targetId: userId, reason: reportReason.trim() }),
-    });
+    let res: Response;
+    try {
+      res = await fetch("/api/forum/reports", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ type: "profile", targetId: userId, reason: reportReason.trim() }),
+      });
+    } catch (e) {
+      console.error("[report] network error", e);
+      setReportMessage({ type: "error", text: "Erreur réseau — réessaie." });
+      return;
+    }
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
-      setReportMessage({ type: "error", text: data.error || "Impossible d'envoyer le signalement." });
+      console.error("[report] failed", res.status, data);
+      setReportMessage({ type: "error", text: `${data.error || "Impossible d'envoyer le signalement."} (${res.status})` });
       return;
     }
 
