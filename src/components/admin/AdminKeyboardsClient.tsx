@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { Plus, Trash2, Save, Keyboard as KeyboardIcon, Loader2 } from "lucide-react";
-import { supabase } from "@/lib/supabaseClient";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -126,11 +125,12 @@ export default function AdminKeyboardsClient({ initialKeyboards }: { initialKeyb
     setSaving(true);
     setNotice(null);
     try {
-      const { error } = await supabase
-        .from("math_keyboards")
-        .update({ config: selected.config, updated_at: new Date().toISOString() })
-        .eq("id", selected.id);
-      if (error) throw error;
+      const res = await fetch("/api/admin/keyboards", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: selected.id, config: selected.config }),
+      });
+      if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || "Échec");
       setNotice("Clavier enregistré.");
     } catch (e: any) {
       setNotice(`Erreur : ${e.message || e}`);

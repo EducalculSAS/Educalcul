@@ -87,18 +87,7 @@ export default function ParentProfileSettings({
       if (!response.ok) throw new Error(data.error || "Upload failed");
 
       setFormData({ ...formData, avatar: data.url });
-
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-
-      if (user) {
-        await supabase
-          .from("users")
-          .update({ avatar: data.url })
-          .eq("auth_id", user.id);
-      }
-
+      await updateMyProfile({ avatar: data.url });
       setMessage({ type: "success", text: "Photo de profil mise à jour." });
     } catch (error: any) {
       console.error("Avatar upload error:", error);
@@ -145,22 +134,11 @@ export default function ParentProfileSettings({
       } = await supabase.auth.getUser();
       if (!user) throw new Error("Non connecté");
 
-      const { data: updatedUser, error: dbError } = await supabase
-        .from("users")
-        .update({
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-        })
-        .eq("auth_id", user.id)
-        .select();
-
-      if (dbError) throw dbError;
-
-      if (!updatedUser || updatedUser.length === 0) {
-        throw new Error(
-          "Aucune modification n'a été effectuée. Vérifiez vos droits d'accès."
-        );
-      }
+      const { ok, error: dbError } = await updateMyProfile({
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+      });
+      if (!ok) throw new Error(dbError || "Aucune modification n'a été effectuée.");
 
       if (formData.email !== user.email) {
         const { error: authError } = await supabase.auth.updateUser({

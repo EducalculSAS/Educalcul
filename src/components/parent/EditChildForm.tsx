@@ -80,21 +80,22 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
     }
 
     try {
-      const updateData = {
-        first_name: formData.firstName,
-        last_name: formData.lastName,
-        email: formData.email,
-        child_username: formData.username,
-        avatar: formData.avatar,
-      };
-
-      const { error: updateError } = await supabase
-        .from("users")
-        .update(updateData)
-        .eq("id", childId)
-        .eq("parent_id", initial.parentId);
-
-      if (updateError) throw updateError;
+      const res = await fetch("/api/parent/edit-child", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          childId,
+          first_name: formData.firstName,
+          last_name: formData.lastName,
+          email: formData.email,
+          child_username: formData.username,
+          avatar: formData.avatar,
+        }),
+      });
+      if (!res.ok) {
+        const d = await res.json().catch(() => ({}));
+        throw new Error(d.error || "Modification impossible");
+      }
 
       const emailChanged = formData.email !== initial.email;
       if ((formData.password && formData.password.length > 0) || emailChanged) {

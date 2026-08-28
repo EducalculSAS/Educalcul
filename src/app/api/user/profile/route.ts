@@ -32,7 +32,7 @@ export async function GET(req: Request) {
   }
 }
 
-const STRING_FIELDS = new Set(["avatar"]);
+const STRING_FIELDS = new Set(["avatar", "first_name", "last_name"]);
 const BOOL_FIELDS = new Set([
   "notif_weekly_reports",
   "notif_offers_news",
@@ -48,7 +48,7 @@ export async function PATCH(req: Request) {
     const patch: Record<string, unknown> = {};
 
     for (const [k, v] of Object.entries(body)) {
-      if (STRING_FIELDS.has(k) && typeof v === "string" && v.length <= 255) patch[k] = v;
+      if (STRING_FIELDS.has(k) && typeof v === "string" && v.trim().length <= 255) patch[k] = v.trim();
       else if (BOOL_FIELDS.has(k) && typeof v === "boolean") patch[k] = v;
     }
 
