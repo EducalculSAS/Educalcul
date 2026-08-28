@@ -59,11 +59,11 @@ function TwoFactorVerifyContent() {
     (async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) { router.push("/auth/connexion"); return; }
-      const res = await fetch("/api/auth/2fa/totp/status", {
+      const res = await fetch("/api/auth/security/status", {
         headers: { Authorization: `Bearer ${session.access_token}` },
       });
       const data = await res.json();
-      if (res.ok && data.role === "admin" && data.confirmed) {
+      if (res.ok && data.role === "admin" && data.totpConfirmed) {
         setMethod("totp");
         setSent(true); // pas d'envoi réel, mais l'écran reste identique au flux email
       } else {

@@ -67,17 +67,18 @@ export default function AdminShell({
         return;
       }
 
-      const totpRes = await fetch("/api/auth/2fa/totp/status", {
+      // État de sécurité complet en un seul appel (rôle + TOTP + session 2FA).
+      const res = await fetch("/api/auth/security/status", {
         headers: { Authorization: `Bearer ${session.access_token}` },
       });
 
-      if (!totpRes.ok) {
+      if (!res.ok) {
         if (mountedRef.current) setLoading(false);
         return;
       }
 
-      const totpData = await totpRes.json();
-      if (totpData.role === "admin" && !totpData.confirmed) {
+      const data = await res.json();
+      if (data.role === "admin" && !data.totpConfirmed) {
         if (mountedRef.current) {
           setNeedsTotpSetup(true);
           setLoading(false);
@@ -85,14 +86,7 @@ export default function AdminShell({
         return;
       }
 
-      const sessionCheck = await fetch("/api/auth/2fa/totp/verify-session", {
-        headers: { Authorization: `Bearer ${session.access_token}` },
-      });
-      const sessionData = await sessionCheck
-        .json()
-        .catch(() => ({ valid: false }));
-
-      if (!sessionCheck.ok || !sessionData.valid) {
+      if (!data.twoFactorSessionValid) {
         router.replace(
           `/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`,
         );

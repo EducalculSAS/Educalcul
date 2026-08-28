@@ -26,42 +26,29 @@ export async function getPublicUser(
 }
 
 /**
- * Interroge /api/auth/2fa/totp/status (passe par le service role côté
- * serveur : two_factor_totp est verrouillée par RLS sans policy, illisible
- * directement depuis le client anon/authenticated).
+ * État de sécurité (rôle + TOTP admin confirmé + session 2FA encore valide) en
+ * un seul appel. Passe par le service role côté serveur : two_factor_totp /
+ * two_factor_sessions sont verrouillées par RLS, et le jeton 2FA vit dans un
+ * cookie httpOnly illisible depuis ce JS (on demande donc au serveur s'il est
+ * encore valide, pas juste présent).
  */
-async function isAdminTotpConfirmedClient(supabase: SupabaseClient): Promise<boolean> {
+async function fetchSecurityStatus(
+  supabase: SupabaseClient,
+): Promise<{ totpConfirmed: boolean; twoFactorSessionValid: boolean }> {
   try {
     const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return false;
-    const res = await fetch("/api/auth/2fa/totp/status", {
+    if (!session) return { totpConfirmed: false, twoFactorSessionValid: false };
+    const res = await fetch("/api/auth/security/status", {
       headers: { Authorization: `Bearer ${session.access_token}` },
     });
-    if (!res.ok) return false;
+    if (!res.ok) return { totpConfirmed: false, twoFactorSessionValid: false };
     const data = await res.json();
-    return !!data.confirmed;
+    return {
+      totpConfirmed: !!data.totpConfirmed,
+      twoFactorSessionValid: !!data.twoFactorSessionValid,
+    };
   } catch {
-    return false;
-  }
-}
-
-/**
- * Le jeton de session 2FA vit dans un cookie httpOnly (voir
- * src/lib/twoFactorCookie.ts) : illisible depuis ce JS, donc on demande
- * directement au serveur s'il est encore valide (pas juste présent).
- */
-async function hasValidTwoFactorSession(supabase: SupabaseClient): Promise<boolean> {
-  try {
-    const { data: { session } } = await supabase.auth.getSession();
-    if (!session) return false;
-    const res = await fetch("/api/auth/2fa/totp/verify-session", {
-      headers: { Authorization: `Bearer ${session.access_token}` },
-    });
-    if (!res.ok) return false;
-    const data = await res.json();
-    return !!data.valid;
-  } catch {
-    return false;
+    return { totpConfirmed: false, twoFactorSessionValid: false };
   }
 }
 
@@ -104,11 +91,15 @@ export async function resolveAuthDestination(
   // Une session 2FA déjà valide sur cet appareil (cookie httpOnly) dispense
   // de repasser par la vérification.
   let requires2FA = !!user.two_factor_enabled;
+  let status: { totpConfirmed: boolean; twoFactorSessionValid: boolean } | null = null;
   if (user.role === "admin") {
-    requires2FA = await isAdminTotpConfirmedClient(supabase);
+    status = await fetchSecurityStatus(supabase);
+    requires2FA = status.totpConfirmed;
   }
   if (requires2FA) {
-    const valid = await hasValidTwoFactorSession(supabase);
+    const valid = status
+      ? status.twoFactorSessionValid
+      : (await fetchSecurityStatus(supabase)).twoFactorSessionValid;
     if (!valid) return `/auth/2fa-verify?redirect=${encodeURIComponent(dashboard)}`;
   }
 

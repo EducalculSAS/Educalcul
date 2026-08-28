@@ -18,12 +18,12 @@ export default function AdminTotpCard() {
     (async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) { setLoading(false); return; }
-      const res = await fetch("/api/auth/2fa/totp/status", {
+      const res = await fetch("/api/auth/security/status", {
         headers: { Authorization: `Bearer ${session.access_token}` },
       });
       const data = await res.json();
-      if (res.ok) setConfirmed(!!data.confirmed);
-      if (data.confirmed) {
+      if (res.ok) setConfirmed(!!data.totpConfirmed);
+      if (data.totpConfirmed) {
         const bcRes = await fetch("/api/auth/2fa/totp/backup-codes");
         if (bcRes.ok) setRemaining((await bcRes.json()).remaining);
       }

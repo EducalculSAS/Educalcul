@@ -30,11 +30,11 @@ export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () =>
       try {
         const { data: { session } } = await supabase.auth.getSession();
         if (!session) { setChecked(true); return; }
-        const res = await fetch("/api/auth/2fa/totp/status", {
+        const res = await fetch("/api/auth/security/status", {
           headers: { Authorization: `Bearer ${session.access_token}` },
         });
         const data = await res.json();
-        if (res.ok && data.role === "admin" && !data.confirmed) {
+        if (res.ok && data.role === "admin" && !data.totpConfirmed) {
           setNeedsSetup(true);
         }
       } catch {
