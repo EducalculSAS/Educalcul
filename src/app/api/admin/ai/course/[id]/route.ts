@@ -12,10 +12,11 @@ export async function GET(
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  await reconcileStaleGenerations("course_generations");
+  await reconcileStaleGenerations("content_generations", "course");
   const { data, error } = await supabaseAdmin
-    .from("course_generations")
-    .select("id, status, progress, course_id, error, params, created_at")
+    .from("content_generations")
+    .select("id, status, progress, course_id:target_id, error, params, created_at")
+    .eq("kind", "course")
     .eq("id", id)
     .eq("admin_id", admin.id)
     .maybeSingle();
@@ -38,8 +39,9 @@ export async function POST(
 
   const { id } = await params;
   const { data: existing } = await supabaseAdmin
-    .from("course_generations")
+    .from("content_generations")
     .select("status")
+    .eq("kind", "course")
     .eq("id", id)
     .eq("admin_id", admin.id)
     .maybeSingle();
@@ -50,8 +52,9 @@ export async function POST(
   }
 
   const { error } = await supabaseAdmin
-    .from("course_generations")
+    .from("content_generations")
     .update({ status: "cancel_requested", updated_at: new Date().toISOString() })
+    .eq("kind", "course")
     .eq("id", id);
 
   if (error) {
@@ -75,8 +78,9 @@ export async function DELETE(
 
   const { id } = await params;
   const { error } = await supabaseAdmin
-    .from("course_generations")
+    .from("content_generations")
     .delete()
+    .eq("kind", "course")
     .eq("id", id)
     .eq("admin_id", admin.id);
 

@@ -11,10 +11,10 @@ export async function GET(
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  await reconcileStaleGenerations("quiz_generations");
+  await reconcileStaleGenerations("content_generations", "quiz");
   const { data, error } = await supabaseAdmin
-    .from("quiz_generations")
-    .select("id, status, progress, quiz_id, error, params, created_at")
+    .from("content_generations")
+    .select("id, status, progress, quiz_id:target_id, error, params, created_at")
     .eq("id", id)
     .eq("admin_id", admin.id)
     .maybeSingle();
@@ -33,7 +33,7 @@ export async function POST(
 
   const { id } = await params;
   const { data: existing } = await supabaseAdmin
-    .from("quiz_generations")
+    .from("content_generations")
     .select("status")
     .eq("id", id)
     .eq("admin_id", admin.id)
@@ -45,7 +45,7 @@ export async function POST(
   }
 
   const { error } = await supabaseAdmin
-    .from("quiz_generations")
+    .from("content_generations")
     .update({ status: "cancel_requested", updated_at: new Date().toISOString() })
     .eq("id", id);
 
@@ -62,7 +62,7 @@ export async function DELETE(
 
   const { id } = await params;
   const { error } = await supabaseAdmin
-    .from("quiz_generations")
+    .from("content_generations")
     .delete()
     .eq("id", id)
     .eq("admin_id", admin.id);

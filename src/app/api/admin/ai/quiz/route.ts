@@ -41,8 +41,9 @@ export async function POST(request: Request) {
   };
 
   const { data: generation, error } = await supabaseAdmin
-    .from("quiz_generations")
+    .from("content_generations")
     .insert({
+      kind: "quiz",
       admin_id: admin.id,
       status: "pending",
       params,

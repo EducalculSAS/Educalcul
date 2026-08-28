@@ -124,8 +124,9 @@ async function handle(req: Request) {
   };
 
   const { data: generation } = await supabaseAdmin
-    .from("course_generations")
+    .from("content_generations")
     .insert({
+      kind: "course",
       admin_id: ADMIN_ID,
       status: "pending",
       params,
@@ -139,8 +140,8 @@ async function handle(req: Request) {
       if (generation) {
         await runCourseGeneration(generation.id, params, ADMIN_ID);
         const { data: gen2 } = await supabaseAdmin
-          .from("course_generations")
-          .select("status, error, course_id")
+          .from("content_generations")
+          .select("status, error, course_id:target_id")
           .eq("id", generation.id)
           .single();
         if (gen2?.status === "done") {
@@ -157,7 +158,7 @@ async function handle(req: Request) {
       } else {
         await supabaseAdmin
           .from("course_generation_queue")
-          .update({ status: "failed", last_error: "insertion course_generations échouée", updated_at: new Date().toISOString() })
+          .update({ status: "failed", last_error: "insertion content_generations échouée", updated_at: new Date().toISOString() })
           .eq("id", item.id);
       }
     } catch (err) {

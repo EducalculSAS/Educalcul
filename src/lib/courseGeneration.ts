@@ -496,7 +496,7 @@ export async function runCourseGeneration(
   params: CourseGenerationParams,
   adminId: number,
 ): Promise<void> {
-  const tracker = createGenerationTracker("course_generations", generationId);
+  const tracker = createGenerationTracker("content_generations", generationId);
   const telemetry = new CourseGenerationTelemetry();
   const {
     grade_level,
@@ -1168,7 +1168,7 @@ Ne rédige aucun contenu de cours, aucune formule, aucun Markdown et aucun HTML.
       total: totalLessonCount + 1,
       message: "Cours enregistré.",
     });
-    await tracker.setStatus("done", { course_id: courseRow.id });
+    await tracker.setStatus("done", { target_id: courseRow.id });
   } catch (error: unknown) {
     telemetry.total("échec");
     if (error instanceof GenerationCancelledError) {

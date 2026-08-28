@@ -45,8 +45,9 @@ export async function POST(req: Request) {
   const params: CourseGenerationParams = { grade_level, subject, additional_info, folder_id: folder_id ?? null };
 
   const { data: generation, error } = await supabaseAdmin
-    .from("course_generations")
+    .from("content_generations")
     .insert({
+      kind: "course",
       admin_id: ADMIN_ID,
       status: "pending",
       params,

@@ -242,7 +242,7 @@ export async function runExerciseGeneration(
   params: ExerciseGenerationParams,
   adminId: number,
 ): Promise<void> {
-  const tracker = createGenerationTracker("exercise_generations", generationId);
+  const tracker = createGenerationTracker("content_generations", generationId);
   const {
     exerciseType = "simple",
     blockType = "standard",
@@ -495,7 +495,7 @@ ${courseContext}`;
       },
     });
 
-    await tracker.setStatus("done", { exercise_id: exerciseRow.id });
+    await tracker.setStatus("done", { target_id: exerciseRow.id });
   } catch (error: unknown) {
     if (error instanceof GenerationCancelledError) {
       await tracker.setStatus("cancelled");

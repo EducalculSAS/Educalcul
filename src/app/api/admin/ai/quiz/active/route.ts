@@ -7,11 +7,12 @@ export async function GET(request: Request) {
   const admin = await requireRole(request, ["admin"]);
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
-  await reconcileStaleGenerations("quiz_generations");
+  await reconcileStaleGenerations("content_generations", "quiz");
 
   const { data, error } = await supabaseAdmin
-    .from("quiz_generations")
-    .select("id, status, progress, quiz_id, error, params, created_at")
+    .from("content_generations")
+    .select("id, status, progress, quiz_id:target_id, error, params, created_at")
+    .eq("kind", "quiz")
     .eq("admin_id", admin.id)
     .in("status", ["pending", "running", "cancel_requested", "done", "error", "cancelled"])
     .order("created_at", { ascending: false })

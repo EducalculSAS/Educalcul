@@ -437,9 +437,7 @@ export async function DELETE(request: Request) {
         { table: "data_export_requests", columns: ["user_id"] },
         { table: "grade_promotion_snapshots", columns: ["user_id"] },
         { table: "scan_runs", columns: ["admin_id"] },
-        { table: "course_generations", columns: ["admin_id"] },
-        { table: "exercise_generations", columns: ["admin_id"] },
-        { table: "quiz_generations", columns: ["admin_id"] },
+        { table: "content_generations", columns: ["admin_id"] },
       ];
 
       // Chaque (table, colonne) est une suppression indépendante des autres —

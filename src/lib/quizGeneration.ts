@@ -161,7 +161,7 @@ export async function runQuizGeneration(
   params: QuizGenerationParams,
   adminId: number,
 ): Promise<void> {
-  const tracker = createGenerationTracker("quiz_generations", generationId);
+  const tracker = createGenerationTracker("content_generations", generationId);
   const {
     linkedCourseId,
     subject,
@@ -395,7 +395,7 @@ ${courseContext}`;
       },
     });
 
-    await tracker.setStatus("done", { quiz_id: quizRow.id });
+    await tracker.setStatus("done", { target_id: quizRow.id });
   } catch (error: unknown) {
     if (error instanceof GenerationCancelledError) {
       await tracker.setStatus("cancelled");

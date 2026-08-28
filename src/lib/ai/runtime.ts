@@ -142,12 +142,10 @@ export function createLlmStartGate(
 export const DEFAULT_LLM_MIN_START_INTERVAL_MS = 1_700;
 export const REASONING_TOKEN_BUFFER = 10_000;
 
-export type GenerationsTable =
-  | "course_generations"
-  | "exercise_generations"
-  | "quiz_generations"
-  | "scan_runs"
-  | "minigame_generations";
+// content_generations = table unifiée (kind = course|exercise|quiz|minigame).
+// scan_runs partage le même pattern pending/running/stale mais reste séparée.
+export type GenerationsTable = "content_generations" | "scan_runs";
+export type GenerationKind = "course" | "exercise" | "quiz" | "minigame";
 
 /** Une génération "pending"/"running"/"cancel_requested" reste dans cet état
  * pour toujours si le processus serveur qui la faisait avancer meurt avant
@@ -162,13 +160,18 @@ export type GenerationsTable =
  * (le travail ne s'est jamais terminé). */
 const STALE_GENERATION_MS = 3 * 60 * 1000;
 
-export async function reconcileStaleGenerations(table: GenerationsTable): Promise<void> {
+export async function reconcileStaleGenerations(
+  table: GenerationsTable,
+  kind?: GenerationKind,
+): Promise<void> {
   const cutoff = new Date(Date.now() - STALE_GENERATION_MS).toISOString();
-  const { data: stale } = await supabaseAdmin
+  let q = supabaseAdmin
     .from(table)
     .select("id, status")
     .in("status", ["pending", "running", "cancel_requested"])
     .lt("updated_at", cutoff);
+  if (kind) q = q.eq("kind", kind);
+  const { data: stale } = await q;
 
   if (!stale || stale.length === 0) return;
 
