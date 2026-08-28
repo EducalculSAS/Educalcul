@@ -1244,10 +1244,10 @@ export default function AdminCoursesClient({
 
       {/* Create Course Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col overflow-hidden">
+        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-2 sm:p-4">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl max-h-[94vh] sm:max-h-[90vh] flex flex-col overflow-hidden">
             {/* Header */}
-            <div className="px-8 py-5 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
+            <div className="px-4 sm:px-8 py-4 sm:py-5 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
               <div className="flex items-center gap-3">
                 <BookOpen size={22} className="text-[var(--greek-gold)]" />
                 <h3 className="text-lg font-bold font-[family-name:var(--font-display)]">
@@ -1265,7 +1265,7 @@ export default function AdminCoursesClient({
             >
               <div className="flex-1 overflow-y-auto">
                 {/* Section 1: Informations */}
-                <div className="p-6 border-b border-[rgba(197,161,72,0.25)]">
+                <div className="p-4 sm:p-6 border-b border-[rgba(197,161,72,0.25)]">
                   <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">
                       1
@@ -1380,7 +1380,7 @@ export default function AdminCoursesClient({
                 </div>
 
                 {/* Section 2: Paramètres */}
-                <div className="p-6 border-b border-[rgba(197,161,72,0.25)] bg-gray-50/50">
+                <div className="p-4 sm:p-6 border-b border-[rgba(197,161,72,0.25)] bg-gray-50/50">
                   <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">
                       2
@@ -1451,7 +1451,7 @@ export default function AdminCoursesClient({
                 </div>
 
                 {/* Section 3: Contenu */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">
                       3

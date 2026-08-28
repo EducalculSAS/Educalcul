@@ -6,6 +6,8 @@
 export function openPreviewLoadingWindow(): Window | null {
   const win = window.open("", "_blank");
   if (win) {
+    // Réplique en HTML brut le loader du site (AppLoader) : logo qui pulse +
+    // trois points rebondissants aux couleurs du thème.
     win.document.write(`<!doctype html>
 <html lang="fr">
 <head>
@@ -19,20 +21,27 @@ export function openPreviewLoadingWindow(): Window | null {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
   }
   .wrap { text-align: center; color: #0f1e3a; }
-  .spinner {
-    width: 40px; height: 40px; margin: 0 auto 16px;
-    border: 3px solid rgba(15,30,58,0.15);
-    border-top-color: #c5a148;
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
+  .logo {
+    width: 64px; height: 64px; margin: 0 auto 16px; display: block;
+    animation: pulse 1.6s ease-in-out infinite;
   }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  p { margin: 0; font-size: 15px; opacity: 0.75; }
+  .dots { display: flex; gap: 6px; justify-content: center; }
+  .dots span {
+    width: 8px; height: 8px; border-radius: 50%;
+    animation: bounce 0.9s infinite ease-in-out;
+  }
+  .dots span:nth-child(1) { background: #0f1e3a; animation-delay: 0ms; }
+  .dots span:nth-child(2) { background: #c5a148; animation-delay: 150ms; }
+  .dots span:nth-child(3) { background: #0f1e3a; animation-delay: 300ms; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .45; } }
+  @keyframes bounce { 0%,80%,100% { transform: translateY(0); } 40% { transform: translateY(-8px); } }
+  p { margin: 14px 0 0; font-size: 14px; opacity: 0.6; }
 </style>
 </head>
 <body>
   <div class="wrap">
-    <div class="spinner"></div>
+    <img class="logo" src="/logo.png" alt="Educalcul" />
+    <div class="dots"><span></span><span></span><span></span></div>
     <p>Préparation de l'aperçu…</p>
   </div>
 </body>
