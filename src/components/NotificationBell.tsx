@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { Bell, Check, MessageSquare, Trophy, CreditCard, AlertCircle, Info } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
-import Link from "next/link";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
 interface Notification {
@@ -26,10 +26,20 @@ const TYPE_ICON: Record<string, React.ReactNode> = {
 };
 
 export default function NotificationBell() {
+  const router = useRouter();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
+
+  /** Clic sur une notif : marquée lue immédiatement (retire le point bleu +
+   * décrémente le compteur), puis redirection vers l'endroit concerné. */
+  const openNotification = (n: Notification) => {
+    setNotifications(prev => prev.map(x => x.id === n.id ? { ...x, is_read: true } : x));
+    markRead(n.id);
+    setOpen(false);
+    if (n.link) router.push(n.link);
+  };
 
   const unread = notifications.filter(n => !n.is_read).length;
 
@@ -109,7 +119,7 @@ export default function NotificationBell() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-80 bg-white rounded-2xl shadow-2xl border border-[rgba(197,161,72,0.2)] z-[9999] overflow-hidden">
+        <div className="absolute right-0 top-full mt-2 w-80 rounded-2xl shadow-2xl border border-[rgba(197,161,72,0.25)] z-[9999] overflow-hidden bg-white/85 backdrop-blur-[24px] backdrop-saturate-[1.4]">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-[rgba(197,161,72,0.15)]">
             <h3 className="font-bold text-[var(--greek-blue)] text-sm">Notifications</h3>
@@ -136,8 +146,11 @@ export default function NotificationBell() {
               notifications.map(n => (
                 <div
                   key={n.id}
-                  className={`flex gap-3 px-4 py-3 hover:bg-gray-50 transition-colors cursor-pointer ${!n.is_read ? "bg-blue-50/50" : ""}`}
-                  onClick={() => { markRead(n.id); if (n.link) setOpen(false); }}
+                  role="button"
+                  tabIndex={0}
+                  className={`flex gap-3 px-4 py-3 hover:bg-white/60 transition-colors cursor-pointer ${!n.is_read ? "bg-[var(--greek-blue)]/[0.06]" : ""}`}
+                  onClick={() => openNotification(n)}
+                  onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openNotification(n); } }}
                 >
                   <div className="shrink-0 mt-0.5">
                     {TYPE_ICON[n.type] || <Info className="w-4 h-4 text-gray-400" />}
@@ -145,11 +158,9 @@ export default function NotificationBell() {
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2">
                       <p className={`text-sm leading-snug ${!n.is_read ? "font-semibold text-gray-800" : "text-gray-600"}`}>
-                        {n.link ? (
-                          <Link href={n.link} className="hover:text-[var(--greek-blue)]">{n.title}</Link>
-                        ) : n.title}
+                        {n.title}
                       </p>
-                      {!n.is_read && <span className="w-2 h-2 bg-blue-500 rounded-full shrink-0 mt-1" />}
+                      {!n.is_read && <span className="w-2 h-2 bg-[var(--greek-gold)] rounded-full shrink-0 mt-1" />}
                     </div>
                     {n.body && <p className="text-xs text-gray-400 mt-0.5 line-clamp-2">{n.body}</p>}
                     <p className="text-xs text-gray-300 mt-1">{timeAgo(n.created_at)}</p>

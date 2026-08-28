@@ -194,17 +194,24 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
                 {isOpen && (
                   <div className="border-t border-gray-100">
                     <div className="px-6 py-4 space-y-4 max-h-96 overflow-y-auto">
-                      <div className="flex justify-start">
-                        <div className="max-w-[80%] bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-2xl rounded-tl-sm px-4 py-3">
-                          <p className="text-xs font-semibold text-[var(--greek-gold)] mb-1">Equipe Educalcul</p>
-                          <p className="text-sm leading-relaxed text-gray-700 whitespace-pre-wrap">
-                            {ticket.message.replace("[Message de l'équipe Educalcul]\n\n", "")}
-                          </p>
-                          <p className="text-xs text-gray-400 mt-1.5">
-                            {new Date(ticket.created_at).toLocaleString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
-                          </p>
-                        </div>
-                      </div>
+                      {(() => {
+                        // Le 1er message est celui de l'utilisateur — SAUF si le
+                        // ticket a été ouvert par l'équipe (préfixe dédié).
+                        const fromTeam = ticket.message.startsWith("[Message de l'équipe Educalcul]");
+                        return (
+                          <div className={`flex ${fromTeam ? "justify-start" : "justify-end"}`}>
+                            <div className={`max-w-[80%] rounded-2xl px-4 py-3 ${fromTeam ? "bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-tl-sm" : "bg-[var(--greek-blue)] text-white rounded-tr-sm"}`}>
+                              <p className={`text-xs font-semibold mb-1 ${fromTeam ? "text-[var(--greek-gold)]" : "text-white/70"}`}>{fromTeam ? "Equipe Educalcul" : "Vous"}</p>
+                              <p className={`text-sm leading-relaxed whitespace-pre-wrap ${fromTeam ? "text-gray-700" : "text-white"}`}>
+                                {ticket.message.replace("[Message de l'équipe Educalcul]\n\n", "")}
+                              </p>
+                              <p className={`text-xs mt-1.5 ${fromTeam ? "text-gray-400" : "text-white/50 text-right"}`}>
+                                {new Date(ticket.created_at).toLocaleString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })()}
 
                       {allReplies.map((reply) => (
                         <div key={reply.id} className={`flex ${reply.is_admin ? "justify-start" : "justify-end"}`}>
