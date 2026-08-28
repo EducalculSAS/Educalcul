@@ -2,7 +2,15 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
-import { supabase } from "@/lib/supabaseClient";
+import {
+  listFolders,
+  createFolder,
+  updateFolder,
+  deleteFolder,
+  isSelfOrDescendant as folderIsSelfOrDescendant,
+  buildBreadcrumbs,
+  type ContentFolder,
+} from "@/lib/contentFoldersClient";
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { QUIZ_JSON_TEMPLATE } from "@/lib/jsonTemplates";
@@ -184,6 +192,7 @@ export default function AdminQuizzesClient({
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const isFirstContentsFetch = useRef(true);
+  const allFoldersRef = useRef<ContentFolder[]>([]);
   const [statusFilter, setStatusFilter] = useState("all");
   const [courseFilter, setCourseFilter] = useState("all");
   const [difficultyFilter, setDifficultyFilter] = useState("all");
@@ -348,21 +357,15 @@ export default function AdminQuizzesClient({
       }
     }
     try {
-      // 1. Fetch Folders
-      let folderQuery = supabase.from("quiz_folders").select("*").order("display_order").order("name");
-
-      if (currentFolderId === null) {
-        folderQuery = folderQuery.is("parent_id", null);
-      } else {
-        folderQuery = folderQuery.eq("parent_id", currentFolderId);
-      }
-
+      // 1. Fetch Folders — liste plate via l'API, filtrée localement.
+      const allFolders = await listFolders("quiz");
+      allFoldersRef.current = allFolders;
+      let foldersData = allFolders.filter((f) =>
+        currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId,
+      );
       if (statusFilter !== "all") {
-        folderQuery = folderQuery.eq("status", statusFilter);
+        foldersData = foldersData.filter((f) => f.status === statusFilter);
       }
-
-      const { data: foldersData, error: foldersError } = await folderQuery;
-      if (foldersError) console.warn("Folders error:", foldersError.message);
 
       // 2. Fetch Quizzes
       let url = "/api/admin/quizzes?";
@@ -394,58 +397,30 @@ export default function AdminQuizzesClient({
         );
       }
 
-      setFolders(foldersData || []);
+      setFolders((foldersData as unknown as QuizFolder[]) || []);
       setQuizzes(filteredData);
       setAllQuizzes(data as Quiz[]);
 
-      const { data: allFoldersData } = await supabase
-        .from("quiz_folders")
-        .select("id, parent_id");
-      setAllFolderCounts(allFoldersData || []);
+      const allFoldersData = allFolders.map((f) => ({ id: f.id, parent_id: f.parent_id }));
+      setAllFolderCounts(allFoldersData);
 
       setAdminCache(cacheKey, {
-        folders: foldersData || [],
+        folders: (foldersData as unknown as QuizFolder[]) || [],
         quizzes: filteredData,
         allQuizzes: data as Quiz[],
         allFolderCounts: allFoldersData || [],
       });
 
-      // Update breadcrumbs
-      if (currentFolderId !== null) {
-        updateBreadcrumbs(currentFolderId);
-      } else {
-        setBreadcrumbs([]);
-      }
+      // Update breadcrumbs — à partir de la liste plate déjà chargée.
+      setBreadcrumbs(
+        currentFolderId !== null
+          ? (buildBreadcrumbs(allFolders, currentFolderId) as unknown as QuizFolder[])
+          : [],
+      );
     } catch (error: any) {
       console.error("Error fetching contents:", error?.message || error);
     } finally {
       if (!silent) setLoading(false);
-    }
-  };
-
-  const updateBreadcrumbs = async (folderId: number) => {
-    try {
-      const path: QuizFolder[] = [];
-      let currentId: number | null = folderId;
-
-      while (currentId !== null) {
-        const { data } = await supabase
-          .from("quiz_folders")
-          .select("id, name, parent_id, color, status, grade_level, is_system")
-          .eq("id", currentId)
-          .single();
-
-        if (data) {
-          const folder = data as QuizFolder;
-          path.unshift(folder);
-          currentId = folder.parent_id;
-        } else {
-          break;
-        }
-      }
-      setBreadcrumbs(path);
-    } catch (e) {
-      console.error("Error building breadcrumbs", e);
     }
   };
 
@@ -469,25 +444,6 @@ export default function AdminQuizzesClient({
 
   // Checks if `candidateId` is the folder itself or one of its descendants,
   // by walking up the parent chain of the candidate target.
-  const isSelfOrDescendant = async (
-    folderId: number,
-    candidateId: number | null
-  ): Promise<boolean> => {
-    let currentId: number | null = candidateId;
-    let guard = 0;
-    while (currentId !== null && guard < 50) {
-      if (currentId === folderId) return true;
-      const { data } = await supabase
-        .from("quiz_folders")
-        .select("parent_id")
-        .eq("id", currentId)
-        .single();
-      currentId = (data?.parent_id as number | null) ?? null;
-      guard++;
-    }
-    return false;
-  };
-
   // Moves a quiz or a folder (depending on dataTransfer payload)
   // into the target folder (null = root).
   const moveDroppedItem = async (
@@ -515,16 +471,12 @@ export default function AdminQuizzesClient({
         if (targetFolderId !== null && Number(folderId) === targetFolderId)
           return;
         // Prevent cycles: target must not be the folder itself or a descendant
-        if (await isSelfOrDescendant(Number(folderId), targetFolderId)) {
+        if (folderIsSelfOrDescendant(allFoldersRef.current, Number(folderId), targetFolderId)) {
           alert("Impossible de déplacer un dossier dans lui-même ou un de ses sous-dossiers");
           return;
         }
-        const { error } = await supabase
-          .from("quiz_folders")
-          .update({ parent_id: targetFolderId })
-          .eq("id", Number(folderId));
-
-        if (error) throw error;
+        const { ok } = await updateFolder("quiz", Number(folderId), { parent_id: targetFolderId });
+        if (!ok) throw new Error("Failed to move folder");
         invalidateAdminCache("quizzes:");
         fetchContents();
       }
@@ -569,31 +521,17 @@ export default function AdminQuizzesClient({
     }
 
     try {
-      if (editingFolder) {
-        const { error } = await supabase
-          .from("quiz_folders")
-          .update({
-            name: folderFormData.name,
-            status: folderFormData.status,
-            color: folderFormData.color,
-            grade_level: null,
-            icon: folderFormData.icon || null,
-          })
-          .eq("id", editingFolder.id);
-
-        if (error) throw error;
-      } else {
-        const { error } = await supabase.from("quiz_folders").insert({
-          name: folderFormData.name,
-          parent_id: currentFolderId,
-          status: folderFormData.status,
-          color: folderFormData.color,
-          grade_level: null,
-          icon: folderFormData.icon || null,
-        });
-
-        if (error) throw error;
-      }
+      const payload = {
+        name: folderFormData.name,
+        status: folderFormData.status,
+        color: folderFormData.color,
+        grade_level: null,
+        icon: folderFormData.icon || null,
+      };
+      const { ok, error } = editingFolder
+        ? await updateFolder("quiz", editingFolder.id, payload)
+        : await createFolder("quiz", { ...payload, parent_id: currentFolderId });
+      if (!ok) throw new Error(error || "Échec");
 
       setFolderFormData({
         name: "",
@@ -623,19 +561,13 @@ export default function AdminQuizzesClient({
     )
       return;
 
-    try {
-      const { error } = await supabase
-        .from("quiz_folders")
-        .delete()
-        .eq("id", folder.id);
-
-      if (error) throw error;
-      invalidateAdminCache("quizzes:");
-      fetchContents();
-    } catch (error) {
-      console.error("Error deleting folder:", error);
+    const { ok } = await deleteFolder("quiz", folder.id);
+    if (!ok) {
       alert("Erreur lors de la suppression du dossier");
+      return;
     }
+    invalidateAdminCache("quizzes:");
+    fetchContents();
   };
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
