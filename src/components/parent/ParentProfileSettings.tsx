@@ -674,7 +674,7 @@ export default function ParentProfileSettings({
       </div>
       {showDeleteModal && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-md overflow-hidden">
             {hasActiveSubscription ? (
               <>
                 <div className="bg-amber-500 px-6 py-5 text-white">

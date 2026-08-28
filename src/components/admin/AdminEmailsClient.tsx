@@ -331,7 +331,7 @@ export default function AdminEmailsClient({
         });
         return (
         <div className="fixed inset-0 z-[1060] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[95vh] flex flex-col">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-3xl max-h-[95vh] flex flex-col">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 shrink-0">
               <div>
                 <h3 className="font-bold text-[var(--greek-blue)]">{previewTmpl.name}</h3>
@@ -357,7 +357,7 @@ export default function AdminEmailsClient({
         });
         return (
         <div className="fixed inset-0 z-[1060] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[95vh] flex flex-col">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-3xl max-h-[95vh] flex flex-col">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 shrink-0">
               <h3 className="font-bold text-[var(--greek-blue)]">{editTmpl.name}</h3>
               <div className="flex items-center gap-3">
@@ -443,7 +443,7 @@ export default function AdminEmailsClient({
       {/* ── MODAL ENVOI ── */}
       {sendTmpl && (
         <div className="fixed inset-0 z-[1060] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-md">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h3 className="font-bold text-[var(--greek-blue)]">Envoyer — {sendTmpl.name}</h3>
               <GlassIconButton icon={X} onClick={() => setSendTmpl(null)} color="gray" size="sm" aria-label="Fermer" />
@@ -532,7 +532,7 @@ export default function AdminEmailsClient({
       {/* ── MODAL CRÉATION ── */}
       {createOpen && (
         <div className="fixed inset-0 z-[1060] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
               <h3 className="font-bold text-[var(--greek-blue)]">Nouveau</h3>
               <GlassIconButton icon={X} onClick={() => setCreateOpen(false)} color="gray" size="sm" aria-label="Fermer" />

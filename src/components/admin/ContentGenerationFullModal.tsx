@@ -37,7 +37,7 @@ export default function ContentGenerationFullModal() {
 
   return (
     <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-md p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden border border-gray-200">
+      <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden border border-gray-200">
         <div
           className="px-8 py-6 text-white flex justify-between items-center relative overflow-hidden flex-shrink-0"
           style={{ background: "linear-gradient(to right, var(--greek-blue), #1e3a8a)" }}

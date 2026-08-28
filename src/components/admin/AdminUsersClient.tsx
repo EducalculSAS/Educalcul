@@ -280,7 +280,7 @@ function ExportModal({ users, title, onClose }: { users: User[]; title: string; 
 
   return (
     <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-sm">
+      <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-sm">
         <div className="border-b border-[rgba(197,161,72,0.25)] px-6 py-4 flex items-center justify-between rounded-t-2xl">
           <h2 className="text-lg font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Exporter</h2>
           <GlassCloseButton onClick={onClose} />
@@ -663,7 +663,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
       {/* ── MODAL: Créer utilisateur ── */}
       {showFormModal && (
         <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-lg">
             <div className="sticky top-0 bg-white border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between z-10 rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Nouvel utilisateur</h2>
               <GlassCloseButton onClick={() => setShowFormModal(false)} />
@@ -725,7 +725,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
       {/* ── MODAL: Ban / Unban ── */}
       {showBanModal && banTarget && (
         <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-md">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className={`text-xl font-bold font-[family-name:var(--font-display)] ${banTarget.status === "inactive" ? "text-green-600" : "text-orange-500"}`}>
                 {banTarget.status === "inactive" ? "Réactiver le compte" : "Bannir l'utilisateur"}
@@ -776,7 +776,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
       {/* ── MODAL: Supprimer ── */}
       {showDeleteModal && deleteTarget && (
         <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-md">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-red-600 font-[family-name:var(--font-display)]">Supprimer le compte</h2>
               <GlassCloseButton onClick={() => setShowDeleteModal(false)} />

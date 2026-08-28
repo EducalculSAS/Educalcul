@@ -66,7 +66,7 @@ function ConfirmModal({ open, onClose, onConfirm, title, description, confirmLab
   if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+      <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-md">
         <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
           <h2 className="text-xl font-bold font-[family-name:var(--font-display)] text-gray-800">{title}</h2>
           <GlassCloseButton onClick={onClose} />
@@ -125,6 +125,10 @@ export default function AdminUserDetailClient({
   const [showBanModal, setShowBanModal] = useState(false);
   const [banReason, setBanReason] = useState("");
   const [banDays, setBanDays] = useState<number | null>(null);
+  // Modale de traitement d'un signalement (message + conséquence).
+  const [reportModal, setReportModal] = useState<any>(null);
+  const [reportMsg, setReportMsg] = useState("");
+  const [reportConsequence, setReportConsequence] = useState<"none" | "warn" | "ban7" | "ban_perm">("none");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [currentAuthId, setCurrentAuthId] = useState<string | null>(null);
 
@@ -214,6 +218,32 @@ export default function AdminUserDetailClient({
   };
 
   const handleBan = async () => { await doAction("ban", { reason: banReason, banDays }); setShowBanModal(false); setBanReason(""); setBanDays(null); };
+
+  const submitReportAction = async () => {
+    if (!reportModal) return;
+    setActionLoading(true);
+    try {
+      // 1. Marque le signalement traité.
+      await fetch(`/api/admin/user-detail?id=${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "review_report", payload: { report_id: reportModal.id } }) });
+      // 2. Message à l'utilisateur signalé (facultatif).
+      if (reportMsg.trim()) {
+        await fetch(`/api/admin/user-detail?id=${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "send_message", payload: { title: "Suite à un signalement", content: reportMsg.trim(), type: "warning" } }) });
+      }
+      // 3. Conséquence.
+      if (reportConsequence === "ban7") {
+        await fetch(`/api/admin/user-detail?id=${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "ban", payload: { reason: `Signalement retenu : ${reportModal.reason}`, banDays: 7 } }) });
+      } else if (reportConsequence === "ban_perm") {
+        await fetch(`/api/admin/user-detail?id=${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: "ban", payload: { reason: `Signalement retenu : ${reportModal.reason}`, banDays: null } }) });
+      }
+      showToast("success", "Signalement traité");
+      setReportModal(null); setReportMsg(""); setReportConsequence("none");
+      fetchUser();
+    } catch (err: any) {
+      showToast("error", err.message || "Échec");
+    } finally {
+      setActionLoading(false);
+    }
+  };
 
   const handleDelete = async () => {
     setActionLoading(true);
@@ -774,8 +804,8 @@ export default function AdminUserDetailClient({
                       <div className="flex gap-1 shrink-0">
                         {r.status === "pending" && (
                           <>
-                            <GlassIconButton icon={CheckCircle} color="green" size="sm" onClick={() => doAction("review_report", { report_id: r.id })} aria-label="Marquer traité" />
-                            <GlassIconButton icon={X} color="gray" size="sm" onClick={() => doAction("dismiss_report", { report_id: r.id })} aria-label="Ignorer" />
+                            <GlassIconButton icon={CheckCircle} color="green" size="sm" loading={actionLoading} onClick={() => { setReportModal(r); setReportMsg(""); setReportConsequence("none"); }} aria-label="Traiter le signalement" />
+                            <GlassIconButton icon={X} color="gray" size="sm" loading={actionLoading} onClick={() => doAction("dismiss_report", { report_id: r.id })} aria-label="Ignorer le signalement" />
                           </>
                         )}
                         <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${r.status === "pending" ? "bg-red-100 text-red-700" : r.status === "reviewed" ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"}`}>
@@ -794,7 +824,7 @@ export default function AdminUserDetailClient({
       {/* ── MODAL: Modifier le profil ── */}
       {showEditModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-lg">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Modifier le profil</h2>
               <GlassCloseButton onClick={() => setShowEditModal(false)} />
@@ -844,7 +874,7 @@ export default function AdminUserDetailClient({
       {/* ── MODAL: Reset MDP ── */}
       {showResetModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-md">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-purple-600 font-[family-name:var(--font-display)]">Nouveau mot de passe</h2>
               <GlassCloseButton onClick={() => setShowResetModal(false)} />
@@ -898,7 +928,7 @@ export default function AdminUserDetailClient({
       {/* Message modal */}
       {showMessageModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-lg">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-8 py-5 flex items-center justify-between rounded-t-2xl">
               <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">Envoyer un message</h2>
               <GlassCloseButton onClick={() => setShowMessageModal(false)} />
@@ -947,6 +977,43 @@ export default function AdminUserDetailClient({
         description={`Supprimer définitivement le compte de ${data?.user.first_name} ${data?.user.last_name} ? Cette action est irréversible.`}
         confirmLabel="Supprimer définitivement" confirmVariant="danger" loading={actionLoading}
       />
+
+      {/* Traitement d'un signalement */}
+      <ConfirmModal
+        open={!!reportModal}
+        onClose={() => { setReportModal(null); setReportMsg(""); setReportConsequence("none"); }}
+        onConfirm={submitReportAction}
+        title="Traiter le signalement"
+        description="Marque le signalement comme traité, avec un message et/ou une sanction pour l'utilisateur signalé."
+        confirmLabel="Valider le traitement"
+        confirmVariant={reportConsequence.startsWith("ban") ? "danger" : "navy"}
+        loading={actionLoading}
+      >
+        <div className="space-y-3 text-left">
+          <div className="rounded-xl bg-red-50 border border-red-100 px-4 py-3">
+            <p className="text-xs font-bold text-red-700 uppercase tracking-wide mb-1">Motif signalé</p>
+            <p className="text-sm text-gray-700">{reportModal?.reason}</p>
+            <p className="text-xs text-gray-400 mt-1">
+              Par {reportModal?.reporter?.first_name || "Anonyme"}
+              {reportModal?.post && ` · Sujet "${reportModal.post.title}"`}
+              {reportModal?.comment && ` · Commentaire`}
+            </p>
+          </div>
+          <div>
+            <label className={labelCls}>Message à l'utilisateur signalé (facultatif)</label>
+            <textarea value={reportMsg} onChange={e => setReportMsg(e.target.value)} className={inputCls + " h-24 resize-none"} placeholder="Ex : ton message enfreint la charte du forum…" />
+          </div>
+          <div>
+            <label className={labelCls}>Conséquence</label>
+            <select value={reportConsequence} onChange={e => setReportConsequence(e.target.value as any)} className={inputCls}>
+              <option value="none">Aucune — juste marquer traité</option>
+              <option value="warn">Avertissement (message seul)</option>
+              <option value="ban7">Bannir le compte 7 jours</option>
+              <option value="ban_perm">Bannir le compte définitivement</option>
+            </select>
+          </div>
+        </div>
+      </ConfirmModal>
     </div>
   );
 }

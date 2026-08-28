@@ -92,7 +92,7 @@ export default function QuizGeneratorModal({
 
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[1060] p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden border border-[rgba(197,161,72,0.25)]">
+      <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden border border-[rgba(197,161,72,0.25)]">
         {/* Navy hero header */}
         <div className="px-8 py-6 bg-gradient-to-r from-[var(--greek-blue)] to-blue-900 text-white flex justify-between items-center flex-shrink-0 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 pattern-grid-lg pointer-events-none" />

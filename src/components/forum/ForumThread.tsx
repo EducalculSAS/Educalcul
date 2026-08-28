@@ -251,7 +251,7 @@ export default function ForumThread({ role, postId, userDbId, onBack }: {
       {/* Modal signalement */}
       {reportModal && (
         <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md border border-[var(--greek-gold)]">
+          <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-md border border-[var(--greek-gold)]">
             <div className="border-b border-[rgba(197,161,72,0.25)] px-6 py-4 flex items-center justify-between rounded-t-2xl">
               <h2 className="font-bold text-[var(--greek-blue)] flex items-center gap-2">
                 <AlertTriangle className="w-4 h-4 text-orange-500" />
