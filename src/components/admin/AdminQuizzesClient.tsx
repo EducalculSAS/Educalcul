@@ -525,7 +525,7 @@ export default function AdminQuizzesClient({
         name: folderFormData.name,
         status: folderFormData.status,
         color: folderFormData.color,
-        grade_level: null,
+        grade_level: folderFormData.grade_level || null,
         icon: folderFormData.icon || null,
       };
       const { ok, error } = editingFolder
@@ -1298,6 +1298,19 @@ export default function AdminQuizzesClient({
                   <option value="published">Publié</option>
                   <option value="archived">Archivé</option>
                 </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Niveau scolaire</label>
+                <select
+                  value={folderFormData.grade_level}
+                  onChange={(e) => setFolderFormData({ ...folderFormData, grade_level: e.target.value })}
+                  className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
+                >
+                  {SCHOOL_LEVELS.map((l) => (
+                    <option key={l.value} value={l.value}>{l.label}</option>
+                  ))}
+                </select>
+                <p className="text-xs text-gray-400 mt-1">Pré-sélectionne ce niveau lors de la génération IA dans ce dossier.</p>
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
