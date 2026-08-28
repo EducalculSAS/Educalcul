@@ -1,7 +1,7 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { createClient } from "@supabase/supabase-js";
 import { hashTwoFactorValue } from "@/lib/twoFactor";
 import { getTwoFactorCookieFromRequest } from "@/lib/twoFactorCookie";
+import { verifySupabaseJwt } from "@/lib/supabaseJwt";
 
 export interface AuthenticatedUser {
   authId: string;
@@ -14,40 +14,15 @@ export interface AuthenticatedUser {
 }
 
 export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedUser | null> {
-  const header = req.headers.get("authorization");
-  if (!header) return null;
-  const token = header.replace(/^Bearer\s+/i, "").trim();
-  if (!token) return null;
-
-  // Vérification expiration
-  try {
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    if (!payload.exp || payload.exp < Math.floor(Date.now() / 1000)) {
-      console.log("[apiAuth] Token expiré");
-      return null;
-    }
-  } catch {
-    return null;
-  }
-
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseAnonKey) {
-    console.log("[apiAuth] Variables d'environnement manquantes");
-    return null;
-  }
-
-  const supabaseUser = createClient(supabaseUrl, supabaseAnonKey, {
-    global: { headers: { Authorization: `Bearer ${token}` } },
-  });
-
-  const { data, error } = await supabaseUser.auth.getUser();
-  if (error || !data?.user) return null;
+  // Signature + expiration vérifiées en local via le JWKS Supabase (voir
+  // supabaseJwt.ts) — plus d'appel réseau à GoTrue par requête.
+  const identity = await verifySupabaseJwt(req);
+  if (!identity) return null;
 
   const { data: row } = await supabaseAdmin
     .from("users")
     .select("id, role, parent_id, status, ban_reason, two_factor_enabled, admin_level")
-    .eq("auth_id", data.user.id)
+    .eq("auth_id", identity.authId)
     .maybeSingle();
 
   if (!row) return null;
@@ -76,7 +51,7 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
     if (!session || new Date(session.expires_at) < new Date()) return null;
   }
 
-  return { authId: data.user.id, id: row.id, role: row.role, parent_id: row.parent_id, adminLevel: row.admin_level };
+  return { authId: identity.authId, id: row.id, role: row.role, parent_id: row.parent_id, adminLevel: row.admin_level };
 }
 
 /**
@@ -87,29 +62,7 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
  * else, prefer getAuthenticatedUser.
  */
 export async function getAuthIdentityOnly(req: Request): Promise<{ authId: string; email: string | null } | null> {
-  const header = req.headers.get("authorization");
-  if (!header) return null;
-  const token = header.replace(/^Bearer\s+/i, "").trim();
-  if (!token) return null;
-
-  try {
-    const payload = JSON.parse(atob(token.split(".")[1]));
-    if (!payload.exp || payload.exp < Math.floor(Date.now() / 1000)) return null;
-  } catch {
-    return null;
-  }
-
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseAnonKey) return null;
-
-  const supabaseUser = createClient(supabaseUrl, supabaseAnonKey, {
-    global: { headers: { Authorization: `Bearer ${token}` } },
-  });
-
-  const { data, error } = await supabaseUser.auth.getUser();
-  if (error || !data?.user) return null;
-  return { authId: data.user.id, email: data.user.email || null };
+  return verifySupabaseJwt(req);
 }
 
 export async function requireRole(req: Request, roles: string[]): Promise<AuthenticatedUser | null> {
