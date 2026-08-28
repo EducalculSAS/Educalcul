@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import { Send, Loader2, ChevronDown, ChevronUp, Mail, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
@@ -57,7 +58,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
     const { data: { session } } = await supabase.auth.getSession();
     const user = session?.user;
     if (!session || !user) { setSubmitting(false); return; }
-    const { data: profile } = await supabase.from("users").select("first_name, last_name, email").eq("auth_id", user.id).maybeSingle();
+    const profile = await getMyProfile<{ first_name?: string; last_name?: string; email?: string }>();
     const res = await fetch("/api/support", {
       method: "POST",
       headers: { "Content-Type": "application/json", Authorization: `Bearer ${session.access_token}` },

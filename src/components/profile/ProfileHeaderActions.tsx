@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, Flag, CheckCircle, AlertTriangle } from "lucide-react";
-import { supabase } from "@/lib/supabaseClient";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
@@ -34,27 +33,14 @@ export default function ProfileHeaderActions({
   const submitReport = async () => {
     if (!reportReason.trim()) return;
 
-    const { data: authData } = await supabase.auth.getUser();
-    const authUser = authData.user;
-    if (!authUser) {
-      setReportMessage({ type: "error", text: "Tu dois être connecté pour signaler un profil." });
-      return;
-    }
-
-    const { data: reporter } = await supabase.from("users").select("id").eq("auth_id", authUser.id).single();
-    if (!reporter) {
-      setReportMessage({ type: "error", text: "Profil utilisateur introuvable." });
-      return;
-    }
-
-    const { error } = await supabase.from("forum_reports").insert({
-      reporter_id: reporter.id,
-      reported_user_id: userId,
-      reason: reportReason.trim(),
+    const res = await fetch("/api/forum/reports", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ type: "profile", targetId: userId, reason: reportReason.trim() }),
     });
-
-    if (error) {
-      setReportMessage({ type: "error", text: error.message || "Impossible d'envoyer le signalement." });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setReportMessage({ type: "error", text: data.error || "Impossible d'envoyer le signalement." });
       return;
     }
 

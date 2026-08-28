@@ -405,7 +405,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) return;
         setCurrentAuthId(user.id);
-        await supabase.from("users").update({ last_active_at: new Date().toISOString() }).eq("auth_id", user.id);
+        await fetch("/api/admin/activity-ping", { method: "POST" });
       } catch {}
     })();
   }, []);

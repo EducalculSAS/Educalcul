@@ -3,6 +3,19 @@
  * `/api/user/profile` (allowlist stricte côté serveur). Remplace les anciens
  * `supabase.from("users").update(...)` éparpillés dans les composants client.
  */
+/** Lit le profil de l'utilisateur connecté (champs non sensibles) via
+ * `GET /api/user/profile`. Remplace les `supabase.from("users").select(...)
+ * .eq("auth_id", ...)` côté client. */
+export async function getMyProfile<T = Record<string, unknown>>(): Promise<T | null> {
+  try {
+    const res = await fetch("/api/user/profile");
+    if (!res.ok) return null;
+    return (await res.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
 export async function updateMyProfile(
   patch: Record<string, string | boolean>,
 ): Promise<{ ok: boolean; error?: string }> {

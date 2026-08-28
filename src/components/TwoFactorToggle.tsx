@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import { ShieldCheck, Loader2, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
 import TwoFactorSessions from "@/components/TwoFactorSessions";
 import GlassButton from "@/components/ui/GlassButton";
@@ -24,9 +25,7 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
 
   useEffect(() => {
     (async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) { setLoading(false); return; }
-      const { data } = await supabase.from("users").select("two_factor_enabled, role, two_factor_locked_by_parent").eq("auth_id", user.id).maybeSingle();
+      const data = await getMyProfile<{ two_factor_enabled?: boolean; two_factor_locked_by_parent?: boolean }>();
       setEnabled(mandatory || !!data?.two_factor_enabled);
       setLockedByParent(!!data?.two_factor_locked_by_parent);
       setLoading(false);

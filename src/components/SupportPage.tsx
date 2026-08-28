@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import { MessageCircle, Plus, CheckCircle, Clock, AlertCircle, X, Send, ChevronDown, ChevronUp } from "lucide-react";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
@@ -54,7 +55,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
     (async () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
-      const { data: u } = await supabase.from("users").select("first_name, last_name, email").eq("auth_id", user.id).maybeSingle();
+      const u = await getMyProfile<{ first_name?: string; last_name?: string; email?: string }>();
       setUserInfo({ ...u, authId: user.id, email: u?.email || user.email });
       fetchTickets(user.id);
     })();

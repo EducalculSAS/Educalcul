@@ -12,6 +12,26 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
  * — impossible de toucher `role`, `parent_id`, `status`, `two_factor_enabled`,
  * `grade_level`, etc. depuis ici.
  */
+/** Champs du profil que l'utilisateur peut lire sur lui-même (jamais les
+ * colonnes sensibles : parent_id, ban_reason, stripe ids, hash divers…). */
+const READABLE = "id, first_name, last_name, email, avatar, role, grade_level, child_username, onboarding_completed, two_factor_enabled, two_factor_locked_by_parent, notif_weekly_reports, notif_offers_news";
+
+export async function GET(req: Request) {
+  try {
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    const { data, error } = await supabaseAdmin
+      .from("users")
+      .select(READABLE)
+      .eq("id", me.id)
+      .maybeSingle();
+    if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json(data);
+  } catch (err: any) {
+    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || "Erreur interne") }, { status: 500 });
+  }
+}
+
 const STRING_FIELDS = new Set(["avatar"]);
 const BOOL_FIELDS = new Set([
   "notif_weekly_reports",

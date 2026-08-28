@@ -21,7 +21,7 @@ export async function POST(req: Request) {
     }
 
     const body = await req.json().catch(() => ({}));
-    const type = body.type === "post" || body.type === "comment" ? body.type : null;
+    const type = ["post", "comment", "profile"].includes(body.type) ? body.type : null;
     const targetId = Number(body.targetId);
     const reason = typeof body.reason === "string" ? stripHtml(body.reason).trim().slice(0, 1000) : "";
 
@@ -29,18 +29,22 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Signalement incomplet" }, { status: 400 });
     }
 
-    // Résout l'auteur signalé côté serveur (jamais une valeur du client).
-    const table = type === "post" ? "forum_posts" : "forum_comments";
-    const { data: target } = await supabaseAdmin
-      .from(table)
-      .select("author_id")
-      .eq("id", targetId)
-      .maybeSingle();
-    if (!target) return NextResponse.json({ error: "Contenu introuvable" }, { status: 404 });
+    // Résout l'utilisateur signalé côté serveur (jamais une valeur du client).
+    let reportedUserId: number | null = null;
+    if (type === "profile") {
+      const { data: u } = await supabaseAdmin.from("users").select("id").eq("id", targetId).maybeSingle();
+      if (!u) return NextResponse.json({ error: "Profil introuvable" }, { status: 404 });
+      reportedUserId = u.id;
+    } else {
+      const table = type === "post" ? "forum_posts" : "forum_comments";
+      const { data: target } = await supabaseAdmin.from(table).select("author_id").eq("id", targetId).maybeSingle();
+      if (!target) return NextResponse.json({ error: "Contenu introuvable" }, { status: 404 });
+      reportedUserId = target.author_id;
+    }
 
     const { error } = await supabaseAdmin.from("forum_reports").insert({
       reporter_id: me.id,
-      reported_user_id: target.author_id,
+      reported_user_id: reportedUserId,
       post_id: type === "post" ? targetId : null,
       comment_id: type === "comment" ? targetId : null,
       reason,

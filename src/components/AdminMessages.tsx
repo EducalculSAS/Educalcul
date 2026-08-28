@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { supabase } from "@/lib/supabaseClient";
 import { Bell, X, AlertTriangle, Info, MessageCircle, Ban } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
@@ -33,14 +32,8 @@ export default function AdminMessages() {
   useEffect(() => {
     (async () => {
       try {
-        const { data: { user } } = await supabase.auth.getUser();
-        if (!user) return;
-        const { data: userData, error: userError } = await supabase.from("users").select("id").eq("auth_id", user.id).maybeSingle();
-        if (userError) throw userError;
-        if (!userData) return;
-        const { data, error } = await supabase.from("admin_notifications").select("*").eq("user_id", userData.id).eq("is_read", false).order("created_at", { ascending: false });
-        if (error) throw error;
-        setNotifs(data || []);
+        const res = await fetch("/api/admin/notifications");
+        if (res.ok) setNotifs(await res.json());
       } catch (e) {
         console.error("Failed to load admin notifications:", e);
       }
@@ -48,9 +41,13 @@ export default function AdminMessages() {
   }, []);
 
   const dismiss = async (id: number) => {
-    const { error } = await supabase.from("admin_notifications").update({ is_read: true }).eq("id", id);
-    if (error) {
-      console.error("Failed to dismiss notification:", error);
+    const res = await fetch("/api/admin/notifications", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    if (!res.ok) {
+      console.error("Failed to dismiss notification");
       return;
     }
     setNotifs(n => n.filter(x => x.id !== id));
