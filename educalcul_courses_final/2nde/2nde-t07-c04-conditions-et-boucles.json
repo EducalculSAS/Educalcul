@@ -1,0 +1,508 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.144758+00:00",
+  "id": 537,
+  "code": "2nde-t07-c04",
+  "title": "Conditions et boucles",
+  "description": "Cours structuré Educalcul : Conditions et boucles.",
+  "subject": "Logique, ensembles, algorithmique et automatismes",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Logique, ensembles, algorithmique et automatismes",
+    "titre_du_cours": "Conditions et boucles",
+    "objectif_global": "Conditions et boucles",
+    "mini_lecons_imposees": [
+      "If.",
+      "For / while simple.",
+      "Déboguer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Logique, ensembles, algorithmique et automatismes",
+      "lessons": [
+        {
+          "title": "If.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les conditions : faire des choix dans un programme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu traverses une rue. Tu regardes à gauche, à droite, et tu décides : si une voiture arrive, tu attends ; sinon, tu traverses. C'est exactement ce qu'une structure conditionnelle permet à un programme de faire : examiner une situation et choisir quelle action effectuer selon le résultat. En algorithmique, on appelle cela une instruction conditionnelle, et c'est l'un des piliers de la programmation. Sans elle, un programme ne ferait que répéter les mêmes opérations dans le même ordre, sans jamais s'adapter aux données qu'il reçoit."
+            },
+            {
+              "type": "definition",
+              "term": "Condition",
+              "definition": "Une expression qui s'évalue à vrai ($True$) ou faux ($False$). En Python, on utilise les opérateurs de comparaison : $==$ (égal), $!=$ (différent), $<$ (strictement inférieur), $>$ (strictement supérieur), $<=$ (inférieur ou égal), $>=$ (supérieur ou égal).",
+              "example": "$age >= 18$ est une condition qui vaut $True$ si l'âge est au moins 18, $False$ sinon."
+            },
+            {
+              "type": "paragraph",
+              "content": "En Python, la syntaxe de base est très lisible : on écrit $if$ suivi de la condition, puis deux points, et on indente les instructions qui doivent s'exécuter si la condition est vraie. Le mot-clé $else$ permet de préciser quoi faire dans le cas contraire. L'indentation n'est pas une simple question de présentation : elle définit le bloc d'instructions rattaché au $if$ ou au $else$. Oublier l'indentation ou la deux-points est l'erreur la plus fréquente quand on commence."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie la question à laquelle le programme doit répondre par oui ou non. Traduis-la en expression booléenne avec les opérateurs de comparaison."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Structurer le if / else",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $if$ condition :$ à la ligne, indente d'un niveau (4 espaces ou une tabulation) les instructions du cas vrai. Ajoute $else :$ au même niveau que le $if$, puis indente les instructions du cas faux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester avec des valeurs limites",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que ton programme se comporte bien quand la condition est exactement à la frontière (par exemple $age = 18$ pour une condition $age >= 18$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Exemple : }\\\\ \\text{age} = 16\\\\ \\text{if age} \\ge 18:\\\\ \\quad \\text{print}(\\text{\"Majeur\"})\\\\ \\text{else}:\\\\ \\quad \\text{print}(\\text{\"Mineur\"})\\\\ \\text{Affichage : Mineur}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il y a plus de deux cas à distinguer. Imagine un programme qui affiche une mention selon la note d'un élève : on a besoin de plusieurs seuils. Python propose le mot-clé $elif$ (contraction de $else$ $if$) qui permet d'enchaîner plusieurs conditions sans créer d'imbrications profondes. Le programme teste chaque condition dans l'ordre, et exécute le bloc de la première qui est vraie. Si aucune n'est vraie et qu'un $else$ final existe, c'est ce dernier qui s'exécute. C'est comme une cascade de questions : on descend jusqu'à trouver une réponse positive."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : un système de tarifs pour un musée. Moins de 12 ans : gratuit. De 12 à 17 ans : tarif réduit. 18 à 64 ans : plein tarif. 65 ans et plus : tarif senior. Avec des $elif$, on écrit cela naturellement, dans l'ordre croissant des âges. L'ordre compte : si on testait d'abord $age < 65$, un enfant de 10 ans correspondrait à cette condition et n'aurait pas le gratuit. Il faut toujours placer les cas les plus restrictifs en premier."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tranche d'âge",
+                "Condition Python",
+                "Tarif"
+              ],
+              "rows": [
+                [
+                  "$age < 12$",
+                  "$age < 12$",
+                  "Gratuit"
+                ],
+                [
+                  "$12 \\le age < 18$",
+                  "$age < 18$",
+                  "Réduit"
+                ],
+                [
+                  "$18 \\le age < 65$",
+                  "$age < 65$",
+                  "Plein"
+                ],
+                [
+                  "$age \\ge 65$",
+                  "$else$",
+                  "Senior"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On a souvent besoin de combiner plusieurs conditions : \"si l'utilisateur est connecté ET qu'il a les droits admin\" ou \"si la note est supérieure à 10 OU si l'élève a fait l'oral de rattrapage\". Python propose trois opérateurs logiques : $and$ (et logique), $or$ (ou logique) et $not$ (négation). $and$ ne vaut $True$ que si les deux conditions sont vraies. $or$ vaut $True$ dès qu'au moins l'une des deux est vraie. $not$ inverse la valeur de vérité. Attention : en Python, $and$ et $or$ sont évalués paresseusement (court-circuit) : si la première condition d'un $and$ est fausse, la seconde n'est même pas testée car le résultat est déjà connu."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "A",
+                "B",
+                "A and B",
+                "A or B",
+                "not A"
+              ],
+              "rows": [
+                [
+                  "True",
+                  "True",
+                  "True",
+                  "True",
+                  "False"
+                ],
+                [
+                  "True",
+                  "False",
+                  "False",
+                  "True",
+                  "False"
+                ],
+                [
+                  "False",
+                  "True",
+                  "False",
+                  "True",
+                  "True"
+                ],
+                [
+                  "False",
+                  "False",
+                  "False",
+                  "False",
+                  "True"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège classique : écrire $if note == 10 or 12:$ en pensant tester si la note vaut 10 ou 12. En réalité, Python évalue $note == 10$ (vrai ou faux) puis $12$ (qui est toujours vrai car non nul), donc la condition est toujours vraie ! Il faut écrire $if note == 10 or note == 12:$. Un autre piège : les parenthèses. $not A and B$ signifie $(not A) and B$, pas $not (A and B)$. Pour éviter toute ambiguïté, n'hésite pas à mettre des parenthèses, ça ne coûte rien et ça rend le code plus lisible."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de découvrir les fondations de la prise de décision algorithmique. Les conditions permettent à tes programmes de réagir différemment selon les données, c'est ce qui les rend intelligents et utiles. Dans la prochaine leçon, nous verrons comment répéter des actions automatiquement grâce aux boucles, ce qui te permettra de traiter des quantités importantes de données sans écrire le même code encore et encore. Les conditions et les boucles ensemble forment le cœur de tout algorithme un peu élaboré."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris un programme qui demande l'âge de l'utilisateur et affiche \"Accès autorisé\" si l'âge est supérieur ou égal à 18, sinon \"Accès refusé\".",
+              "answer": "age = int(input(\"Quel est votre âge ? \"))\\nif age >= 18:\\n    print(\"Accès autorisé\")\\nelse:\\n    print(\"Accès refusé\")",
+              "hint": "Utilise input() pour lire l'entrée, int() pour convertir en entier, puis if/else avec l'opérateur >=.",
+              "explanation": "Le programme lit l'âge, le convertit en entier, teste la condition age >= 18. Si vraie, affiche le premier message, sinon le second. L'indentation est cruciale."
+            },
+            {
+              "question": "Complète ce programme pour afficher la mention selon la note : \"Insuffisant\" si note < 10, \"Passable\" si 10 <= note < 12, \"Assez bien\" si 12 <= note < 14, \"Bien\" si 14 <= note < 16, \"Très bien\" sinon.",
+              "answer": "note = float(input(\"Note : \"))\\nif note < 10:\\n    print(\"Insuffisant\")\\nelif note < 12:\\n    print(\"Passable\")\\nelif note < 14:\\n    print(\"Assez bien\")\\nelif note < 16:\\n    print(\"Bien\")\\nelse:\\n    print(\"Très bien\")",
+              "hint": "Les conditions sont testées dans l'ordre. Comme on a déjà éliminé les cas précédents, il suffit de tester la borne supérieure à chaque elif.",
+              "explanation": "L'ordre des elif est essentiel. On teste note < 10, puis note < 12 (ce qui implique note >= 10 car le cas précédent a été écarté), etc. Le else final attrape tout ce qui reste (note >= 16)."
+            },
+            {
+              "question": "Parmi ces conditions, lesquelles sont équivalentes à \"x est strictement compris entre 5 et 10\" ?\\nA) x > 5 and x < 10\\nB) 5 < x < 10\\nC) x > 5 or x < 10\\nD) not (x <= 5 or x >= 10)",
+              "answer": "A, B, D",
+              "hint": "Teste chaque proposition avec des valeurs comme x=3, x=7, x=12. Rappelle-toi que Python autorise l'écriture chaînée 5 < x < 10.",
+              "explanation": "A) et B) sont la définition même. C) est toujours vrai (tout nombre est >5 OU <10). D) utilise la loi de Morgan : not (A or B) = not A and not B, donc not (x<=5 or x>=10) = x>5 and x<10."
+            }
+          ]
+        },
+        {
+          "title": "For / while simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les boucles : répéter sans s'épuiser"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives envoyer une carte de vœux à chacun de tes 50 contacts. Tu ne vas pas écrire 50 fois le même code d'envoi en changeant seulement le nom. Tu vas préparer le texte une fois, puis dire : \"pour chaque contact dans ma liste, envoie la carte\". C'est l'idée fondamentale d'une boucle : factoriser une répétition. En algorithmique, les boucles transforment une tâche fastidieuse en quelques lignes expressives. Il existe deux grandes familles : les boucles $for$, qui itèrent sur une collection connue d'avance, et les boucles $while$, qui continuent tant qu'une condition reste vraie."
+            },
+            {
+              "type": "definition",
+              "term": "Boucle for",
+              "definition": "Une boucle qui parcourt les éléments d'un itérable (liste, chaîne, range, etc.) un par un. À chaque tour, la variable de boucle prend la valeur de l'élément courant.",
+              "example": "for prenom in [\"Alice\", \"Bob\", \"Chloé\"]:\\n    print(prenom)\\nAffiche chaque prénom sur une ligne."
+            },
+            {
+              "type": "paragraph",
+              "content": "La fonction $range()$ est le compagnon indispensable des boucles $for$ quand on veut répéter un nombre précis de fois. $range(n)$ génère les entiers de $0$ à $n-1$. $range(debut, fin)$ génère de $debut$ à $fin-1$. $range(debut, fin, pas)$ permet de choisir l'écart entre deux valeurs successives. C'est particulièrement utile pour les calculs mathématiques : somme des premiers entiers, table de multiplication, parcours d'indices dans une liste. Le $for$ avec $range$ est la traduction algorithmique du $\\sum$ des mathématiques."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le bon range",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine les bornes : inclusives ou exclusives ? Le pas est-il de 1 (par défaut) ou un autre ? Pour les indices d'une liste de longueur n, utilise range(n) qui donne 0 à n-1."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire l'en-tête de boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "for variable in range(...): avec deux-points et indentation pour le corps de la boucle. Choisis un nom de variable explicite : i, k pour un indice ; x, val pour une valeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire le corps de la boucle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris les instructions à répéter. Elles peuvent utiliser la variable de boucle. Attention : toute modification de la variable de boucle à l'intérieur du corps n'affecte pas l'itération suivante (Python la réaffecte au tour suivant)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Calcul de } 1 + 2 + \\dots + 100 :\\\\ total = 0\\\\ \\text{for } i \\text{ in range}(1, 101):\\\\ \\quad total = total + i\\\\ \\text{print}(total) \\quad \\text{# Affiche 5050}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne sait pas à l'avance combien de tours seront nécessaires. C'est le domaine de la boucle $while$ : tant qu'une condition est vraie, on continue. Pense à un jeu où le joueur devine un nombre : on répète la demande tant qu'il n'a pas trouvé. Ou à la lecture d'un fichier ligne par ligne jusqu'à la fin. La structure est simple : $while$ condition :$ suivi du corps indenté. Mais il faut une garantie absolue : la condition doit devenir fausse à un moment, sinon la boucle tourne indéfiniment (boucle infinie). C'est le danger principal du $while$ : il faut qu'une variable modifiée dans le corps finisse par invalider la condition."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple classique de la recherche du nombre mystère. L'ordinateur tire un nombre entre 1 et 100. Le joueur propose. Tant que la proposition n'est pas le nombre mystère, on redemande. À chaque tour, on peut donner un indice : \"c'est plus\" ou \"c'est moins\". La variable $proposition$ change à chaque tour, donc la condition $proposition != mystere$ finira par devenir fausse (sauf si le joueur abandonne, mais le programme ne le sait pas). C'est ce qui garantit l'arrêt."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Deviner un nombre :}\\\\ mystere = 42\\\\ proposition = 0\\\\ \\text{while proposition} \\neq mystere:\\\\ \\quad proposition = \\text{int}(\\text{input}(\\text{\"Votre proposition : \"}))\\\\ \\quad \\text{if proposition} < mystere:\\\\ \\quad \\quad \\text{print}(\\text{\"C'est plus\"})\\\\ \\quad \\text{elif proposition} > mystere:\\\\ \\quad \\quad \\text{print}(\\text{\"C'est moins\"})\\\\ \\text{print}(\\text{\"Bravo !\"})"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive qu'on veuille quitter une boucle plus tôt que prévu, ou sauter un tour. $break$ sort immédiatement de la boucle la plus proche (celle qui contient le $break$). $continue$ saute la fin du tour courant et passe directement à l'itération suivante. Ces instructions sont puissantes mais à utiliser avec parcimonie : elles rendent le flux de contrôle moins évident à lire. Une boucle $while$ avec un $break$ au milieu peut souvent être réécrite en déplaçant la condition dans le $while$ lui-même. Mais pour sortir de boucles imbriquées ou traiter des cas exceptionnels, $break$ reste très pratique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cas fréquent d'utilisation de $continue$ : filtrer des valeurs dans une boucle. Supposons qu'on veuille afficher seulement les nombres pairs de 1 à 20. On peut écrire $for i in range(1, 21):$ puis $if i \\% 2 != 0: continue$ et enfin $print(i)$. Le modulo $\\%$ donne le reste de la division euclidienne. Si le reste par 2 est non nul, le nombre est impair, on saute l'affichage. C'est plus lisible que d'imbriquer le print dans un $if i \\% 2 == 0:$. Le choix entre les deux styles est souvent une question de goût, mais $continue$ évite un niveau d'indentation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Comment choisir entre $for$ et $while$ ? La règle empirique : si tu connais le nombre d'itérations à l'avance (ou si tu parcours une collection), privilégie $for$. C'est plus sûr (pas de risque de boucle infinie) et plus lisible. Si la condition d'arrêt dépend de quelque chose qu'on ne peut pas prédire (entrée utilisateur, lecture fichier, convergence numérique), $while$ s'impose. Dans la pratique, la grande majorité des boucles en Python sont des $for$. Les $while$ restent indispensables pour les algorithmes itératifs (recherche de racine, tri, simulation) et les interactions utilisateur. Tu as maintenant les deux outils de répétition ; la prochaine leçon t'apprendra à les déboguer quand ils ne font pas ce que tu attends."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une boucle for qui affiche la table de multiplication par 7 (de 7x1 à 7x10) sous la forme \"7 x 1 = 7\", \"7 x 2 = 14\", etc.",
+              "answer": "for i in range(1, 11):\\n    print(f\"7 x {i} = {7 * i}\")",
+              "hint": "Utilise range(1, 11) pour avoir 1 à 10 inclus. Une f-string permet d'insérer les valeurs dans le texte.",
+              "explanation": "La boucle itère sur i de 1 à 10. À chaque tour, on calcule 7*i et on affiche la chaîne formatée. L'indentation montre que le print est dans la boucle."
+            },
+            {
+              "question": "Écris un programme qui demande des nombres à l'utilisateur et calcule leur somme. La saisie s'arrête quand l'utilisateur entre 0 (qui n'est pas ajouté à la somme). Affiche la somme finale.",
+              "answer": "somme = 0\\nnombre = int(input(\"Nombre (0 pour arrêter) : \"))\\nwhile nombre != 0:\\n    somme = somme + nombre\\n    nombre = int(input(\"Nombre (0 pour arrêter) : \"))\\nprint(f\"Somme = {somme}\")",
+              "hint": "Il faut initialiser nombre AVANT le while pour que la condition soit testable. Pense à redemander nombre à la fin de la boucle.",
+              "explanation": "C'est une boucle while classique : on ne sait pas combien de nombres l'utilisateur va entrer. La variable nombre change à chaque tour, donc la condition nombre != 0 finira par devenir fausse. Le 0 de fin n'est pas ajouté car le test a lieu avant l'ajout."
+            },
+            {
+              "question": "Que fait ce code ?\\nfor i in range(1, 21):\\n    if i % 3 == 0:\\n        continue\\n    print(i)",
+              "answer": "Il affiche les entiers de 1 à 20 qui NE sont PAS des multiples de 3 (donc 1, 2, 4, 5, 7, 8, 10, 11, 13, 14, 16, 17, 19, 20).",
+              "hint": "Le continue saute le print quand i est divisible par 3. Trace mentalement les premiers tours : i=1, 2, 3...",
+              "explanation": "Pour i=1 : 1%3=1 !=0, pas de continue, affiche 1. i=2 : affiche 2. i=3 : 3%3=0, continue exécuté, on saute print, tour suivant. i=4 : affiche 4. Et ainsi de suite jusqu'à 20."
+            }
+          ]
+        },
+        {
+          "title": "Déboguer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Déboguer : traquer les erreurs comme un détective"
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu sais écrire des conditions et des boucles. Maintenant, une vérité incontournable : ton code ne marchera pas du premier coup. C'est normal, c'est même la règle. La programmation, c'est 20% d'écriture et 80% de débogage (debugging). Les erreurs se divisent en trois grandes familles : les erreurs de syntaxe (le code ne démarre même pas), les erreurs d'exécution (le code plante en cours de route), et les erreurs logiques (le code tourne mais donne un mauvais résultat). Apprendre à lire les messages d'erreur, à poser des points d'observation et à raisonner pas à pas, c'est ce qui fait la différence entre un débutant qui subit son code et un programmeur qui le maîtrise."
+            },
+            {
+              "type": "definition",
+              "term": "Erreur de syntaxe (SyntaxError)",
+              "definition": "Le code ne respecte pas la grammaire de Python : parenthèse manquante, deux-points oublié, indentation incorrecte, mot-clé mal orthographié. Python signale la ligne (parfois la suivante) et arrête tout avant d'exécuter la première instruction.",
+              "example": "if x > 0\\n    print(x)\\n# SyntaxError: expected ':'"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le premier réflexe face à un $SyntaxError$ : regarde la ligne indiquée, mais aussi la ligne d'avant. Souvent, l'erreur est détectée seulement quand Python réalise que quelque chose manque pour continuer. Un $:$ oublié après un $if$, $for$, $while$, $def$ ou $else$ est la cause numéro un. L'indentation mixte (espaces et tabulations) est sournoise : le code a l'air aligné mais Python voit une incohérence. Configure ton éditeur pour afficher les caractères invisibles ou utilise toujours 4 espaces. Une parenthèse, un crochet ou une accolade non fermés font souvent pointer l'erreur sur la ligne suivante, voire très loin après."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les erreurs d'exécution ($RuntimeError$, $ZeroDivisionError$, $IndexError$, $KeyError$, $TypeError$...) surviennent pendant que le programme tourne. Le message indique le type d'erreur, la ligne, et souvent une description claire. $IndexError: list index out of range$ : tu essaies d'accéder à un index qui n'existe pas (ex: liste de 3 éléments, tu demandes l'index 3 alors que les indices valides sont 0, 1, 2). $TypeError: unsupported operand + for str and int$ : tu ajoutes une chaîne et un nombre, il faut convertir l'un des deux. Lis le message, il te dit exactement quoi faire."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire le message d'erreur calmement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ne panique pas. Le traceback (la pile d'appels) te donne le chemin exact : fichier, ligne, fonction. La dernière ligne est le type d'erreur et sa description. C'est ton indice numéro un."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Localiser et comprendre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ouvre le fichier à la ligne indiquée. Regarde cette ligne ET les lignes autour. Demande-toi : quelle variable a quelle valeur à cet instant ? La condition de boucle est-elle correcte ? L'indice est-il dans les bornes ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Corriger et retester",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la plus petite modification qui corrige le problème. Relance. Si une autre erreur apparaît, c'est un progrès : tu as corrigé la première ! Répète jusqu'à ce que le programme se lance sans planter."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les erreurs logiques sont les plus subtiles : le programme s'exécute sans planter, mais le résultat est faux. Aucune ligne rouge ne t'alerte. C'est là qu'intervient la trace pas à pas (ou table de traces). Le principe : on simule l'exécution à la main, en notant la valeur de chaque variable à chaque ligne clé. C'est fastidieux mais infaillible. On choisit un cas de test simple, on exécute mentalement (ou sur papier) chaque instruction, et on compare les valeurs observées à celles attendues. Dès qu'une divergence apparaît, on a localisé le bug."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple : une boucle qui doit calculer la somme des entiers de 1 à n. Le code affiche 0 au lieu de 55 pour n=10. On fait une trace : on crée un tableau avec les colonnes tour, i, total. Tour 0 (initialisation) : total=0. Tour 1 : i=1, total=0+1=1. Tour 2 : i=2, total=1+2=3... Si à un moment total ne vaut pas ce qu'on attend, on a trouvé l'instruction fautive. Souvent, c'est une initialisation mal placée (total=0 à l'intérieur de la boucle au lieu d'avant), ou une borne de range incorrecte (range(n) au lieu de range(1, n+1))."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Tour",
+                "i",
+                "total (avant)",
+                "total (après)"
+              ],
+              "rows": [
+                [
+                  "0 (init)",
+                  "-",
+                  "-",
+                  "0"
+                ],
+                [
+                  "1",
+                  "1",
+                  "0",
+                  "1"
+                ],
+                [
+                  "2",
+                  "2",
+                  "1",
+                  "3"
+                ],
+                [
+                  "3",
+                  "3",
+                  "3",
+                  "6"
+                ],
+                [
+                  "4",
+                  "4",
+                  "6",
+                  "10"
+                ],
+                [
+                  "5",
+                  "5",
+                  "10",
+                  "15"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une technique complémentaire, très utilisée par les pros : le \"print debugging\". On insère des $print()$ stratégiques pour afficher les valeurs des variables à des moments clés. Par exemple, au début de chaque tour de boucle : $print(f\"Début tour i={i}, total={total}\")$. Ou avant un $if$ critique : $print(f\"Condition : x={x}, seuil={seuil}\")$. Ces prints sont temporaires : on les retire une fois le bug corrigé. L'avantage sur la trace papier : on voit les vraies valeurs pendant l'exécution réelle, avec les vraies données. L'inconvénient : ça pollue la sortie. En développement professionnel, on utilise un vrai débogueur (breakpoints, inspection de variables), mais le print debugging reste un réflexe salvateur accessible immédiatement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un dernier conseil pour éviter les boucles infinies dans les $while$ : ajoute toujours un filet de sécurité. Par exemple, un compteur de tours max : $compteur = 0$ avant la boucle, $compteur += 1$ dans la boucle, et $if compteur > 10000: break$ avec un message d'alerte. Ça t'évite d'avoir à tuer le terminal. De même, pour les boucles $for$ sur des structures qu'on modifie en même temps (supprimer des éléments d'une liste en itérant dessus), c'est une source classique de bugs : Python saute des éléments car les indices décalent. La solution : itérer sur une copie ($for x in liste[:]:$) ou construire une nouvelle liste filtrée avec une compréhension."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète pour écrire des algorithmes robustes : conditions pour décider, boucles pour répéter, et méthodes de débogage pour corriger. Rappelle-toi que chaque erreur est une leçon déguisée. Les programmeurs les plus expérimentés ne sont pas ceux qui font le moins d'erreurs, mais ceux qui les trouvent et les comprennent le plus vite. La prochaine fois que ton code plantera, souris : c'est une énigme à résoudre, et tu as désormais les clés pour la résoudre. Continue à t'entraîner, à tester des cas limites, à tracer tes variables, et tu verras que la logique algorithmique deviendra une seconde nature."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais écrire une structure conditionnelle if / elif / else avec une indentation correcte.",
+                "Je connais les opérateurs de comparaison (==, !=, <, >, <=, >=) et logiques (and, or, not).",
+                "Je sais utiliser une boucle for avec range() pour répéter un nombre connu de fois.",
+                "Je sais utiliser une boucle while pour répéter tant qu'une condition est vraie, en garantissant l'arrêt.",
+                "Je connais break et continue pour contrôler le flux à l'intérieur d'une boucle.",
+                "Je sais lire un message d'erreur (SyntaxError, IndexError, TypeError...) et localiser la ligne fautive.",
+                "Je sais faire une trace pas à pas (table de traces) pour déboguer une erreur logique.",
+                "J'utilise des print() temporaires pour observer les valeurs des variables pendant l'exécution."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Ce code contient une erreur de syntaxe. Laquelle ?\\nfor i in range(10)\\n    print(i)",
+              "answer": "Il manque les deux-points (:) à la fin de la ligne for i in range(10).",
+              "hint": "Regarde la fin de la première ligne. Chaque structure de contrôle (if, for, while, def, else, elif) se termine par :",
+              "explanation": "Python signale SyntaxError: expected ':' sur cette ligne. Les deux-points sont obligatoires pour ouvrir le bloc indenté."
+            },
+            {
+              "question": "Ce programme doit afficher la somme des entiers de 1 à 5 (soit 15). Il affiche 0. Corrige-le.\\ntotal = 0\\nfor i in range(1, 6):\\n    total = 0\\n    total = total + i\\nprint(total)",
+              "answer": "Il faut déplacer total = 0 AVANT la boucle (l'initialisation ne doit pas être remise à zéro à chaque tour).\\n\\ntotal = 0\\nfor i in range(1, 6):\\n    total = total + i\\nprint(total)",
+              "hint": "Fais une trace pas à pas : note la valeur de total à chaque tour. Que se passe-t-il à la ligne 'total = 0' inside la boucle ?",
+              "explanation": "À chaque itération, total est réinitialisé à 0 avant d'ajouter i. À la fin, total vaut seulement la dernière valeur ajoutée (5). L'initialisation doit être hors de la boucle."
+            },
+            {
+              "question": "Ce code doit demander un mot de passe jusqu'à ce que l'utilisateur entre \"secret\". Il y a une erreur logique : la boucle ne s'arrête jamais même si on tape \"secret\". Pourquoi ?\\nmot_de_passe = \"\"\\nwhile mot_de_passe != \"secret\":\\n    input(\"Entrez le mot de passe : \")",
+              "answer": "Le résultat de input() n'est pas stocké dans la variable mot_de_passe. Il faut écrire : mot_de_passe = input(\"Entrez le mot de passe : \")",
+              "hint": "Que devient la chaîne tapée par l'utilisateur ? La variable mot_de_passe change-t-elle de valeur dans la boucle ?",
+              "explanation": "input() renvoie la chaîne saisie, mais si on ne l'affecte à aucune variable, elle est perdue. mot_de_passe reste \"\" pour toujours, la condition mot_de_passe != \"secret\" reste vraie, boucle infinie."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 364,
+  "_course_code": "6eme-t07-c02-patrons",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Construire",
+  "title": "Construction de patrons",
+  "blocks": [
+    {
+      "title": "Vocabulaire du patron",
+      "content": "Pour obtenir un solide à partir de son patron, il faut le {{1}} le long des arêtes. Sur le tracé, les traits pleins représentent les lignes de {{2}} et les traits pointillés les lignes de {{3}}.",
+      "blanks": [
+        "plier|replier",
+        "découpe|découper",
+        "pliage|plier"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Un patron est une figure plane que l'on plie pour former un solide. On découpe le contour (traits pleins) et on plie sur les lignes intérieures (traits pointillés).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Patron d'un cube",
+      "content": "Observe la figure ci-dessous. Ce patron est composé de {{1}} carrés identiques. En le pliant, on obtient un {{2}}.",
+      "blanks": [
+        "six|6",
+        "cube"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Un cube a 6 faces carrées. Son patron est donc constitué de 6 carrés identiques disposés de manière à pouvoir se refermer sur eux-mêmes.",
+      "points": 3,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "title": "Patron d'un pavé droit",
+      "content": "Pour tracer le patron d'un pavé droit de dimensions $4$ cm, $3$ cm et $2$ cm, on dessine d'abord un rectangle de $4$ cm sur {{1}} cm. Le patron complet comportera au total {{2}} rectangles.",
+      "blanks": [
+        "3",
+        "six|6"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Un pavé droit a 6 faces rectangulaires (3 paires de faces identiques). Le patron en contient donc 6. La première face tracée utilise les deux plus grandes dimensions : 4 cm et 3 cm.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 499,
+  "_course_code": "2nde-t01-c04-divisibilite-et-nombres-premiers",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Multiples / diviseurs",
+  "title": "Multiples et diviseurs : Entraînement",
+  "blocks": [
+    {
+      "title": "Diviseurs d'un entier",
+      "content": "Donne la liste de tous les diviseurs positifs de l'entier $36$. Sépare-les par des virgules et classe-les dans l'ordre croissant.",
+      "correctAnswer": "1, 2, 3, 4, 6, 9, 12, 18, 36",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver les diviseurs de $36$, on cherche les couples de nombres dont le produit est $36$ : $1 \\times 36$, $2 \\times 18$, $3 \\times 12$, $4 \\times 9$, $6 \\times 6$. En les réunissant et les triant, on obtient : $1, 2, 3, 4, 6, 9, 12, 18, 36$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Multiples et critère de divisibilité",
+      "content": "Parmi les entiers suivants, lesquels sont des multiples de $9$ ? $18, 27, 35, 45, 54, 63, 72, 80$. Donne la liste de ceux qui le sont, séparés par des virgules, dans l'ordre de l'énoncé.",
+      "correctAnswer": "18, 27, 45, 54, 63, 72",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un entier est multiple de $9$ si la somme de ses chiffres est un multiple de $9$. $1+8=9$, $2+7=9$, $3+5=8$ (non), $4+5=9$, $5+4=9$, $6+3=9$, $7+2=9$, $8+0=8$ (non). Les multiples de $9$ sont donc $18, 27, 45, 54, 63, 72$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Problème de diviseurs communs",
+      "content": "On veut partager $60$ bonbons et $84$ chocolats en un certain nombre de sachets identiques (même nombre de bonbons et même nombre de chocolats par sachet), sans rien laisser. Quel est le nombre maximal de sachets que l'on peut préparer ?",
+      "correctAnswer": "12",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le nombre maximal de sachets correspond au plus grand diviseur commun (PGCD) de $60$ et $84$. $60 = 2^2 \\times 3 \\times 5$ et $84 = 2^2 \\times 3 \\times 7$. Le PGCD est $2^2 \\times 3 = 12$. On peut faire $12$ sachets avec $5$ bonbons et $7$ chocolats chacun.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

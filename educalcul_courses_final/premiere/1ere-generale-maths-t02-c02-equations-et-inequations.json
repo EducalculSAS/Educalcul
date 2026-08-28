@@ -1,0 +1,640 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.298873+00:00",
+  "id": 578,
+  "code": "1ere-generale-maths-t02-c02",
+  "title": "Équations et inéquations",
+  "description": "Cours structuré Educalcul : Équations et inéquations.",
+  "subject": "Calcul numérique et algébrique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Calcul numérique et algébrique",
+    "titre_du_cours": "Équations et inéquations",
+    "objectif_global": "Équations et inéquations",
+    "mini_lecons_imposees": [
+      "Premier / second degré selon contexte.",
+      "Signe.",
+      "Interpréter."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul numérique et algébrique",
+      "lessons": [
+        {
+          "title": "Premier / second degré selon contexte.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître le degré d'une équation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu rencontres une équation, la première question à te poser est : quel est le plus haut exposant de l'inconnue après avoir simplifié l'expression ? C'est ce qu'on appelle le degré de l'équation. Si l'inconnue n'apparaît qu'au premier puissance, l'équation est du premier degré ; si elle apparaît au carré, c'est une équation du second degré. Cette distinction est cruciale car les méthodes de résolution sont complètement différentes. Prends le temps de lire chaque terme, de regrouper les semblables et de regarder l'exposant le plus élevé. Une erreur fréquente est de se laisser tromper par une écriture factorisée : par exemple, $(x-2)(x+3)=0$ cache un $x^2$ une fois développée. Alors, développe toujours mentalement ou sur papier avant de décider du degré."
+            },
+            {
+              "type": "definition",
+              "term": "degré d'un polynôme",
+              "definition": "Le degré d'un polynôme est le plus grand exposant de la variable qui apparaît avec un coefficient non nul après simplification.",
+              "example": "Dans $3x^2+5x-7$, le degré est $2$. Dans $4x-9$, le degré est $1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "ax+b=0 \\quad\\text{(premier degré)} \\qquad ax^2+bx+c=0 \\quad\\text{(second degré)}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais identifier le degré d'une équation simple, voyons ce qui se passe lorsque l'équation contient un paramètre. Le coefficient du terme de plus haut degré peut devenir nul pour certaines valeurs du paramètre, ce qui fait changer le degré de l'équation. C'est une situation classique en première : on te donne une équation comme $ax^2+bx+c=0$ et on te demande d'étudier la nature des solutions selon la valeur de $a$. Si $a=0$, l'équation se réduit à $bx+c=0$, qui est du premier degré. Il faut donc toujours vérifier le coefficient dominant avant d'appliquer la formule du discriminant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Équations à paramètre : le degré peut changer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine l'équation $k x^2 + 3x - 4 = 0$. Tant que $k \\neq 0$, c'est une équation du second degré. Mais si $k = 0$, le terme en $x^2$ disparaît et il ne reste plus que $3x - 4 = 0$, une équation du premier degré. Cette observation est la base de nombreuses questions d'examen : on te demande souvent de discuter le nombre de solutions selon la valeur du paramètre. Pour ne rien oublier, suis une petite procédure systématique : identifie le coefficient du terme de plus haut degré, écris la condition pour qu'il soit nul, et traite les deux cas séparément."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le coefficient dominant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $k x^2 + 3x - 4 = 0$, le coefficient dominant est $k$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire la condition de nullité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'équation devient du premier degré si $k = 0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Traiter les deux cas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cas 1 : $k = 0$ → équation $3x - 4 = 0$, solution unique $x = 4/3$. Cas 2 : $k \\neq 0$ → équation du second degré, on utilise le discriminant $\\Delta = 9 + 16k$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\Delta = b^2 - 4ac = 9 + 16k"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois le degré identifié, il faut résoudre l'équation. Pour le premier degré, la méthode est directe : isole l'inconnue. Pour le second degré, tu as deux outils principaux : la factorisation quand elle est évidente, sinon la formule du discriminant. Rappelle-toi que le discriminant $\\Delta = b^2 - 4ac$ te donne le nombre de solutions réelles : $\\Delta > 0$ deux solutions distinctes, $\\Delta = 0$ une solution double, $\\Delta < 0$ aucune solution réelle. Pour visualiser, imagine la parabole $y = ax^2+bx+c$ : les intersections avec l'axe des abscisses correspondent exactement aux solutions de l'équation."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre selon le degré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $2x^2 - 5x + 2 = 0$. Le discriminant est $\\Delta = (-5)^2 - 4 \\times 2 \\times 2 = 25 - 16 = 9$. Comme $\\Delta > 0$, il y a deux solutions : $x = \\frac{5 \\pm \\sqrt{9}}{4} = \\frac{5 \\pm 3}{4}$, donc $x_1 = 2$ et $x_2 = \\frac{1}{2}$. Si tu préfères factoriser, tu cherches deux nombres dont le produit vaut $2 \\times 2 = 4$ et la somme $-5$ ; ce sont $-4$ et $-1$, ce qui donne $(2x-1)(x-2)=0$. Les deux méthodes aboutissent aux mêmes résultats, choisis celle qui te semble la plus rapide."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le discriminant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie $a$, $b$, $c$ puis calcule $\\Delta = b^2 - 4ac$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Analyser le signe de $\\Delta$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $\\Delta > 0$, deux solutions ; si $\\Delta = 0$, une solution double ; si $\\Delta < 0$, aucune solution réelle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire les solutions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $x = \\frac{-b \\pm \\sqrt{\\Delta}}{2a}$ ou la factorisation si possible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "2*x^2-5*x+2",
+              "xmin": -1,
+              "xmax": 3,
+              "caption": "Parabole $y=2x^2-5x+2$ ; les intersections avec l'axe des abscisses sont les solutions $x=2$ et $x=0,5$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Détermine le degré de chaque équation suivante :\\n1) $5x - 7 = 0$\\n2) $3x^2 + 2x - 1 = 0$\\n3) $(x+4)(x-2) = 0$\\n4) $k x^2 + 3x + 1 = 0$ selon la valeur de $k$.",
+              "answer": "1) Premier degré. 2) Second degré. 3) Second degré (après développement $x^2+2x-8=0$). 4) Second degré si $k \\neq 0$, premier degré si $k = 0$.",
+              "hint": "Regarde l'exposant le plus élevé de $x$ après avoir simplifié ou développé.",
+              "explanation": "Pour 1) le terme de plus haut degré est $5x$ (exposant 1). Pour 2) c'est $3x^2$ (exposant 2). Pour 3) développe : $x^2+2x-8$, exposant 2. Pour 4) le coefficient de $x^2$ est $k$ ; s'il est nul, le terme disparaît."
+            },
+            {
+              "question": "Pour l'équation $k x^2 - 4x + 4 = 0$, trouve les valeurs de $k$ pour lesquelles l'équation est du premier degré, puis résous l'équation dans ce cas.",
+              "answer": "L'équation est du premier degré si $k = 0$. Alors $-4x + 4 = 0$, donc $x = 1$.",
+              "hint": "Le terme en $x^2$ disparaît quand son coefficient est nul.",
+              "explanation": "Le coefficient dominant est $k$. Si $k=0$, l'équation devient $-4x+4=0$, qui se résout classiquement."
+            },
+            {
+              "question": "Résous l'équation $3x^2 - 7x + 2 = 0$ en utilisant le discriminant. Donne les solutions exactes.",
+              "answer": "$\\Delta = 49 - 24 = 25$. Solutions : $x = \\frac{7 \\pm 5}{6}$, donc $x_1 = 2$ et $x_2 = \\frac{1}{3}$.",
+              "hint": "Calcule $\\Delta = b^2 - 4ac$ avec $a=3$, $b=-7$, $c=2$.",
+              "explanation": "Le discriminant est positif, donc deux solutions réelles distinctes. On applique la formule quadratique."
+            }
+          ]
+        },
+        {
+          "title": "Signe.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le signe d'un produit et d'un quotient"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de t'attaquer aux inéquations, il est indispensable de maîtriser la règle des signes. Le signe d'un produit ou d'un quotient dépend uniquement du nombre de facteurs négatifs. Si ce nombre est pair, le résultat est positif ; s'il est impair, le résultat est négatif. Cette règle vaut pour les nombres comme pour les expressions littérales. Par exemple, pour savoir où l'expression $(x-2)(x+3)$ est positive, tu n'as pas besoin de développer : il suffit de repérer les zéros de chaque facteur ($2$ et $-3$) et de tester le signe sur chaque intervalle. C'est exactement ce que fait un tableau de signes."
+            },
+            {
+              "type": "definition",
+              "term": "règle des signes",
+              "definition": "Le produit (ou quotient) de plusieurs nombres est positif si le nombre de facteurs négatifs est pair, négatif s'il est impair. Zéro annule le produit.",
+              "example": "Pour $(x-2)(x+3)$, les facteurs changent de signe en $x=2$ et $x=-3$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Intervalle",
+                "x+3",
+                "x-2",
+                "Produit"
+              ],
+              "rows": [
+                [
+                  "$]-\\infty; -3[$",
+                  "$-$",
+                  "$-$",
+                  "$+$"
+                ],
+                [
+                  "$-3$",
+                  "$0$",
+                  "$-$",
+                  "$0$"
+                ],
+                [
+                  "$-3; 2[$",
+                  "$+$",
+                  "$-$",
+                  "$-$"
+                ],
+                [
+                  "$2$",
+                  "$+$",
+                  "$0$",
+                  "$0$"
+                ],
+                [
+                  "$]2; +\\infty[$",
+                  "$+$",
+                  "$+$",
+                  "$+$"
+                ]
+              ],
+              "caption": "Tableau de signes de $(x+3)(x-2)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire un tableau de signes pour un produit simple, étendons la méthode aux expressions rationnelles. Une fraction change de signe soit quand son numérateur s'annule, soit quand son dénominateur s'annule (ce qui crée une asymptote verticale). Il faut donc placer sur la ligne des zéros du numérateur et les valeurs interdites du dénominateur, puis déterminer le signe sur chaque intervalle. Attention : les valeurs qui annulent le dénominateur ne font pas partie de l'ensemble de définition, elles sont exclues de la solution finale."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Signe d'une expression rationnelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $\\frac{x-1}{x+2}$. Le numérateur s'annule pour $x=1$, le dénominateur pour $x=-2$ (valeur interdite). On place ces deux valeurs sur une droite, on teste un point dans chaque intervalle : pour $x<-2$, numérateur négatif, dénominateur négatif → quotient positif. Entre $-2$ et $1$, numérateur négatif, dénominateur positif → quotient négatif. Pour $x>1$, les deux positifs → quotient positif. Le tableau de signes résume tout cela en un coup d'œil."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier zéros et interdits",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Zéros du numérateur : solutions de $N(x)=0$. Valeurs interdites : solutions de $D(x)=0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ordonner les valeurs sur une ligne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place les valeurs croissantes, sépare les intervalles."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer le signe sur chaque intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis une valeur test dans chaque intervalle, évalue le signe du numérateur et du dénominateur, applique la règle des signes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Construire le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplis les lignes pour chaque facteur et pour l'expression globale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Intervalle",
+                "x-1",
+                "x+2",
+                "Quotient"
+              ],
+              "rows": [
+                [
+                  "$]-\\infty; -2[$",
+                  "$-$",
+                  "$-$",
+                  "$+$"
+                ],
+                [
+                  "$-2$",
+                  "$-$",
+                  "$0$",
+                  "interdit"
+                ],
+                [
+                  "$-2; 1[$",
+                  "$-$",
+                  "$+$",
+                  "$-$"
+                ],
+                [
+                  "$1$",
+                  "$0$",
+                  "$+$",
+                  "$0$"
+                ],
+                [
+                  "$]1; +\\infty[$",
+                  "$+$",
+                  "$+$",
+                  "$+$"
+                ]
+              ],
+              "caption": "Tableau de signes de $\\frac{x-1}{x+2}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec un tableau de signes bien construit, résoudre une inéquation comme $\\frac{x-1}{x+2} \\ge 0$ devient immédiat. Il suffit de lire sur le tableau les intervalles où l'expression est positive ou nulle, en respectant les valeurs interdites. N'oublie pas d'inclure les zéros du numérateur (car l'inéquation est large) et d'exclure les zéros du dénominateur. La solution s'écrit alors sous forme d'intervalle ou de réunion d'intervalles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une inéquation à l'aide d'un tableau de signes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons $\\frac{x-1}{x+2} \\ge 0$. D'après le tableau, le quotient est positif sur $]-\\infty; -2[$ et sur $]1; +\\infty[$, et nul en $x=1$. La valeur $-2$ est interdite. Donc l'ensemble des solutions est $]-\\infty; -2[ \\cup [1; +\\infty[$. Pour t'en convaincre, tu peux placer ces intervalles sur une droite graduée : les parties pleines correspondent aux solutions, les trous aux valeurs exclues."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire le tableau de signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comme vu précédemment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire la solution selon le sens de l'inéquation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $\\ge 0$, prends les intervalles où le signe est $+$ ou $0$ (zéros du numérateur). Pour $>0$, seulement les $+$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'ensemble solution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la notation d'intervalles, n'oublie pas d'exclure les valeurs interdites."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "number_line",
+              "caption": "Représentation de l'ensemble solution $]-\\infty; -2[ \\cup [1; +\\infty[$",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "-2 (exclu)"
+                },
+                {
+                  "value": 1,
+                  "label": "1 (inclus)"
+                }
+              ],
+              "intervals": [
+                {
+                  "min": -5,
+                  "max": -2,
+                  "color": "blue"
+                },
+                {
+                  "min": 1,
+                  "max": 5,
+                  "color": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Construis le tableau de signes de l'expression $(x+4)(2x-3)$ et en déduis les intervalles où elle est positive.",
+              "answer": "Zéros : $x=-4$ et $x=1,5$. Tableau : $]-\\infty;-4[$ : $+$ ; $-4$ : $0$ ; $]-4;1,5[$ : $-$ ; $1,5$ : $0$ ; $]1,5;+\\infty[$ : $+$. Positive sur $]-\\infty;-4[ \\cup ]1,5;+\\infty[$.",
+              "hint": "Trouve les zéros de chaque facteur, puis teste le signe sur chaque intervalle.",
+              "explanation": "Le produit de deux facteurs change de signe à chaque zéro. Le nombre de facteurs négatifs détermine le signe global."
+            },
+            {
+              "question": "Étudie le signe de $\\frac{2x+1}{x-3}$ et résous l'inéquation $\\frac{2x+1}{x-3} < 0$.",
+              "answer": "Zéro numérateur : $x=-0,5$. Interdit : $x=3$. Tableau : $]-\\infty;-0,5[$ : $+$ ; $-0,5$ : $0$ ; $]-0,5;3[$ : $-$ ; $3$ : interdit ; $]3;+\\infty[$ : $+$. Solution de $<0$ : $]-0,5;3[$.",
+              "hint": "Place le zéro du numérateur et la valeur interdite du dénominateur, puis teste le signe.",
+              "explanation": "La fraction est négative quand numérateur et dénominateur ont des signes opposés. L'inéquation stricte exclut le zéro du numérateur."
+            },
+            {
+              "question": "Résous l'inéquation $\\frac{x^2-4}{x+1} \\ge 0$.",
+              "answer": "Factorise : $\\frac{(x-2)(x+2)}{x+1} \\ge 0$. Zéros : $-2, 2$. Interdit : $-1$. Tableau de signes : $]-\\infty;-2]$ : $+$ (inclut -2) ; $]-2;-1[$ : $-$ ; $-1$ exclu ; $]-1;2]$ : $+$ (inclut 2) ; $]2;+\\infty[$ : $+$. Solution : $]-\\infty;-2] \\cup ]-1;2] \\cup ]2;+\\infty[$ (mais $2$ déjà inclus). Simplifié : $]-\\infty;-2] \\cup ]-1;+\\infty[$.",
+              "hint": "Factorise le numérateur, identifie zéros et interdit, construit le tableau.",
+              "explanation": "Le numérateur donne deux zéros, le dénominateur une valeur interdite. Le tableau de signes permet de lire directement les intervalles où l'expression est positive ou nulle."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter les solutions d'une équation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre une équation, c'est bien, mais comprendre ce que représentent les solutions graphiquement, c'est encore mieux. Chaque solution d'une équation $f(x)=g(x)$ correspond à une abscisse d'intersection des courbes $y=f(x)$ et $y=g(x)$. Si tu traces les deux fonctions dans le même repère, les points où elles se croisent ont pour abscisse exactement les solutions de l'équation. Cette vision géométrique est très puissante : elle permet de deviner le nombre de solutions avant même de calculer, et de vérifier tes résultats algébriques."
+            },
+            {
+              "type": "definition",
+              "term": "solution graphique",
+              "definition": "Une solution de l'équation $f(x)=g(x)$ est l'abscisse d'un point d'intersection des courbes représentatives de $f$ et $g$ dans un repère orthonormé.",
+              "example": "L'équation $x^2 = 2x+3$ a pour solutions les abscisses des intersections de la parabole $y=x^2$ et de la droite $y=2x+3$."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -3,
+              "xmax": 5,
+              "caption": "Courbe $y=x^2$ (bleue) et droite $y=2x+3$ (rouge). Les intersections donnent les solutions de $x^2=2x+3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, transposons cette idée aux inéquations. Une inéquation $f(x) \\le g(x)$ demande pour quelles valeurs de $x$ la courbe de $f$ se trouve en dessous (ou sur) la courbe de $g$. Sur le graphique, cela correspond aux portions où la courbe bleue est sous la courbe rouge. Pour lire la solution, il suffit de repérer les intervalles d'abscisses où cette relation visuelle est vraie. C'est une méthode de vérification très intuitive, surtout quand les expressions sont compliquées à manipuler algébriquement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interpréter les solutions d'une inéquation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple $x^2 \\le 2x+3$. Les intersections sont aux abscisses $x=-1$ et $x=3$ (solutions de l'équation associée). Entre ces deux valeurs, la parabole $y=x^2$ passe sous la droite $y=2x+3$, donc l'inéquation est vérifiée. En dehors, la parabole est au-dessus. Ainsi l'ensemble solution est l'intervalle $[-1; 3]$. Sur le graphique, tu peux colorier la zone entre les deux courbes pour visualiser 바로 cette région."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Résoudre l'équation associée $f(x)=g(x)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve les abscisses d'intersection, ce sont les bornes des intervalles à tester."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir une valeur test dans chaque intervalle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Évalue $f(x)-g(x)$ (ou compare visuellement les courbes) pour savoir si $f(x) \\le g(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Rassembler les intervalles qui satisfont l'inéquation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Inclus les bornes si l'inéquation est large ($\\le$ ou $\\ge$), exclue-les si elle est stricte."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2 - (2*x+3)",
+              "xmin": -3,
+              "xmax": 5,
+              "caption": "Courbe de la différence $y=x^2-2x-3$. Les parties sous l'axe des abscisses correspondent à $x^2 \\le 2x+3$, soit $x \\in [-1;3]$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, voyons comment modéliser un problème concret par une équation ou une inéquation, puis l'interpréter. Imaginons qu'un projectile est lancé verticalement. Sa hauteur $h$ (en mètres) en fonction du temps $t$ (en secondes) est donnée par $h(t) = -5t^2 + 20t + 2$. On veut savoir à partir de quel instant le projectile dépasse $15$ mètres de hauteur. Cela se traduit par l'inéquation $-5t^2 + 20t + 2 \\ge 15$, soit $-5t^2 + 20t -13 \\ge 0$. En résolvant l'équation associée, on trouve les instants où la hauteur est exactement $15$ m ; l'intervalle entre ces deux instants correspond à la durée pendant laquelle le projectile est au-dessus de $15$ m. Le graphique de la parabole permet de visualiser cette fenêtre temporelle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modéliser un problème concret"
+            },
+            {
+              "type": "paragraph",
+              "content": "La démarche de modélisation suit toujours les mêmes étapes : identifier la variable inconnue, écrire la relation mathématique à partir du texte, simplifier pour obtenir une équation ou une inéquation standard, résoudre, puis réinterpréter le résultat dans le contexte du problème (vérifier que les solutions ont un sens physique, par exemple un temps positif). Cette approche structurée t'aidera à ne pas te perdre dans les calculs et à garder le sens de ce que tu fais."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir la variable et l'unité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici $t$ en secondes, $h$ en mètres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Traduire la condition en inéquation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$h(t) \\ge 15 \\Rightarrow -5t^2+20t+2 \\ge 15$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier et résoudre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$-5t^2+20t-13 \\ge 0$. Multiplie par $-1$ (change le sens) : $5t^2-20t+13 \\le 0$. Calcule $\\Delta = 400-260=140$. Racines : $t = \\frac{20 \\pm \\sqrt{140}}{10} = 2 \\pm \\frac{\\sqrt{35}}{5}$. Approximativement $t_1 \\approx 0,81$, $t_2 \\approx 3,19$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interpréter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le projectile est au-dessus de $15$ m pour $t \\in [0,81 ; 3,19]$ secondes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "-5*x^2+20*x+2",
+              "xmin": 0,
+              "xmax": 4,
+              "caption": "Hauteur du projectile $h(t)=-5t^2+20t+2$. La ligne horizontale $y=15$ coupe la parabole aux instants $t\\approx0,81$ et $t\\approx3,19$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier le degré d'une équation, même avec un paramètre.",
+                "Je sais construire un tableau de signes pour un produit, un quotient ou une expression rationnelle.",
+                "Je sais résoudre une inéquation à l'aide d'un tableau de signes.",
+                "Je peux interpréter graphiquement les solutions d'une équation ou d'une inéquation.",
+                "Je suis capable de modéliser un problème concret par une équation ou une inéquation du second degré."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Les courbes $y = x^2 - 4$ et $y = 2x - 1$ se coupent en deux points. Détermine leurs abscisses en résolvant l'équation $x^2 - 4 = 2x - 1$.",
+              "answer": "$x^2 - 2x - 3 = 0$. $\\Delta = 4 + 12 = 16$. Solutions : $x = \\frac{2 \\pm 4}{2} = -1$ et $3$.",
+              "hint": "Ramène tous les termes à gauche pour obtenir une équation du second degré standard.",
+              "explanation": "L'équation associée aux intersections est $x^2-2x-3=0$. Son discriminant est positif, donnant deux intersections aux abscisses $-1$ et $3$."
+            },
+            {
+              "question": "À l'aide du graphique de $y = x^2 - 2x - 3$, détermine l'ensemble des solutions de l'inéquation $x^2 - 2x - 3 \\le 0$.",
+              "answer": "Les zéros sont $-1$ et $3$. La parabole est convexe, elle est sous l'axe entre ses racines. Solution : $[-1; 3]$.",
+              "hint": "Repère les intersections avec l'axe des abscisses et observe où la courbe est négative ou nulle.",
+              "explanation": "L'inéquation $\\le 0$ correspond aux parties de la courbe situées en dessous ou sur l'axe des abscisses, soit l'intervalle fermé entre les deux racines."
+            },
+            {
+              "question": "Un objet est lancé vers le haut. Sa hauteur (en mètres) au bout de $t$ secondes est $h(t) = -4,9t^2 + 15t + 1$. Pendant combien de temps l'objet reste-t-il au-dessus de $10$ mètres ?",
+              "answer": "Inéquation $-4,9t^2+15t+1 \\ge 10 \\Rightarrow -4,9t^2+15t-9 \\ge 0$. Multiplie par $-1$ : $4,9t^2-15t+9 \\le 0$. $\\Delta = 225 - 176,4 = 48,6$. Racines : $t = \\frac{15 \\pm \\sqrt{48,6}}{9,8} \\approx 0,85$ et $2,15$. Durée : $2,15 - 0,85 = 1,30$ s (environ).",
+              "hint": "Écris l'inéquation, simplifie, résous l'équation associée, puis calcule la différence entre les deux racines positives.",
+              "explanation": "La condition $h(t) \\ge 10$ donne une inéquation du second degré. Les racines de l'équation associée bornent l'intervalle où la hauteur dépasse 10 m. La durée est la longueur de cet intervalle."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

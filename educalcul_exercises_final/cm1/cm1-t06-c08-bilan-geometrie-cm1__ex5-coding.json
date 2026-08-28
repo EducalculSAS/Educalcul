@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 255,
+  "_course_code": "cm1-t06-c08-bilan-geometrie-cm1",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Propriétés et constructions",
+  "title": "Algorithmes de construction géométrique",
+  "blocks": [
+    {
+      "title": "Construction d'un carré",
+      "content": "Écris un algorithme (suite d'instructions) pour construire un carré de côté $4$ cm à la règle et à l'équerre. Utilise le mot-clé \"Répète\" pour éviter de réécrire les mêmes instructions.",
+      "correctAnswer": "Algorithme Carre\\nDonnées : côté = 4 cm\\nDébut\\n  Tracer un segment [AB] de longueur 4 cm\\n  Répète 3 fois\\n    Construire la perpendiculaire au segment précédent en son extrémité\\n    Tracer un segment de 4 cm sur cette perpendiculaire\\n  Fin Répète\\n  Relier le dernier point au point de départ A\\nFin",
+      "explanation": "Un carré a 4 côtés égaux et 4 angles droits. L'instruction 'Répète 3 fois' permet de construire les 3 côtés restants après le premier : on construit l'angle droit (perpendiculaire) et on reporte la longueur du côté. La dernière instruction ferme la figure.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'un rectangle paramétré",
+      "content": "Écris un algorithme qui construit un rectangle en demandant à l'utilisateur la longueur $L$ et la largeur $l$ (en cm). L'algorithme doit utiliser des variables pour stocker ces mesures.",
+      "correctAnswer": "Algorithme Rectangle\\nDemander L (longueur en cm)\\nDemander l (largeur en cm)\\nDébut\\n  Tracer un segment [AB] de longueur L\\n  Construire la perpendiculaire à (AB) en B\\n  Tracer un segment [BC] de longueur l sur cette perpendiculaire\\n  Construire la perpendiculaire à (BC) en C\\n  Tracer un segment [CD] de longueur L sur cette perpendiculaire\\n  Tracer le segment [DA]\\nFin",
+      "explanation": "Le rectangle a deux paires de côtés opposés égaux (deux longueurs L et deux largeurs l) et quatre angles droits. L'algorithme construit les côtés les uns après les autres en alternant longueur et largeur, en construisant un angle droit à chaque sommet grâce à l'équerre (perpendiculaire).",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Analyse d'un algorithme de construction",
+      "content": "On exécute l'algorithme suivant :\\n1. Tracer un segment [AB] de 5 cm.\\n2. Construire le cercle de centre A et de rayon 5 cm.\\n3. Construire le cercle de centre B et de rayon 5 cm.\\n4. Nommer C l'intersection des deux cercles au-dessus de [AB].\\n5. Tracer les segments [AC] et [BC].\\nQuelle figure obtient-on ? Justifie ta réponse en citant les propriétés de cette figure.",
+      "correctAnswer": "On obtient un triangle équilatéral ABC.\\nJustification : D'après la construction, AC = 5 cm (rayon du cercle centre A) et BC = 5 cm (rayon du cercle centre B). On a aussi AB = 5 cm (étape 1). Les trois côtés ont la même longueur (5 cm), donc le triangle ABC est équilatéral. Ses trois angles mesurent 60 degrés.",
+      "explanation": "La construction du triangle équilatéral utilise la propriété des cercles : tous les points d'un cercle sont à même distance du centre. En prenant le même rayon que la base AB pour les deux cercles, le point d'intersection C est à distance égale de A et de B. Les trois côtés mesurent donc 5 cm.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 274,
+  "_course_code": "cm1-t09-c06-bilan-pensee-informatique-cm1",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Débogage",
+  "title": "Le débogage en informatique",
+  "blocks": [
+    {
+      "title": "Comprendre l'erreur",
+      "content": "En informatique, quand un programme ne fonctionne pas comme prévu, on dit qu'il contient un {{1}}. L'action de chercher et de corriger cette erreur s'appelle le {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "bug|bogue",
+        "débogage"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un bug (ou bogue en français) est une erreur dans le code. Le débogage est le processus qui consiste à identifier l'erreur et à la supprimer pour que le programme fonctionne correctement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Analyser un algorithme",
+      "content": "Je veux que mon robot avance de $3$ pas. Mon programme est : \\nAvancer\\nAvancer\\nTourner à droite\\nAvancer\\n\\nPour corriger ce programme, je dois {{1}} l'instruction Tourner à droite car elle est {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "supprimer|enlever",
+        "inutile|fausse|incorrecte"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le robot doit simplement avancer de $3$ pas. L'instruction de tourner à droite change la direction et empêche le robot d'aller tout droit. Il faut donc l'enlever pour déboguer le programme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Corriger une boucle",
+      "content": "Un élève veut répéter une action $4$ fois, mais il a écrit : \\nRépéter $3$ fois :\\nAvancer\\n\\nPour déboguer ce code et obtenir $4$ pas, il doit {{1}} le nombre de répétitions à $4$ ou ajouter {{2}} instruction Avancer après la boucle.",
+      "correctAnswer": "",
+      "blanks": [
+        "changer|modifier",
+        "une"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le programme actuel ne fait que $3$ pas. Pour arriver à $4$, on peut soit modifier le compteur de la boucle pour qu'il soit égal à $4$, soit ajouter un pas supplémentaire à la fin du programme.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

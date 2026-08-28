@@ -1,0 +1,56 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 398,
+  "_course_code": "5eme-t04-c04-raisonnement-geometrique",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Chaîner propriétés",
+  "title": "Chaîner des propriétés géométriques",
+  "blocks": [
+    {
+      "title": "Angles et droites parallèles",
+      "content": "Les droites $(d)$ et $(d')$ sont parallèles. La sécante $(t)$ les coupe respectivement en $E$ et $F$. L'angle $\\widehat{1}$ mesure $50^\\circ$. L'angle $\\widehat{2}$ est l'angle {{1}} de $\\widehat{1}$, il mesure donc $50^\\circ$. L'angle $\\widehat{3}$ est {{2}} à $\\widehat{2}$, il mesure donc $50^\\circ$.",
+      "correctAnswer": "",
+      "blanks": [
+        "correspondant",
+        "opposé par le sommet|vertiquement opposé"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Lorsque deux droites parallèles sont coupées par une sécante, les angles correspondants sont égaux. De plus, deux angles opposés par le sommet sont toujours égaux. On a donc : $\\widehat{2} = \\widehat{1} = 50^\\circ$ (correspondants) et $\\widehat{3} = \\widehat{2} = 50^\\circ$ (opposés par le sommet).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Triangle isocèle et parallèles",
+      "content": "Le triangle $ABC$ est isocèle en $A$ avec $\\widehat{BAC} = 40^\\circ$. Les angles $\\widehat{ABC}$ et $\\widehat{ACB}$ mesurent chacun {{1}}. La droite passant par $B$ et parallèle à $(AC)$ forme avec $(BC)$ un angle {{2}} à $\\widehat{ACB}$, qui mesure donc {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "$70^\\circ$",
+        "alternes-internes",
+        "$70^\\circ$"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle isocèle en $A$, les angles à la base $\\widehat{ABC}$ et $\\widehat{ACB}$ sont égaux. La somme des angles d'un triangle valant $180^\\circ$, on a $2 \\times \\widehat{ABC} = 180^\\circ - 40^\\circ = 140^\\circ$, donc $\\widehat{ABC} = \\widehat{ACB} = 70^\\circ$. Comme la droite tracée par $B$ est parallèle à $(AC)$, l'angle formé avec $(BC)$ et $\\widehat{ACB}$ sont des angles alternes-internes, ils sont donc égaux : l'angle cherché vaut $70^\\circ$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés du parallélogramme",
+      "content": "Dans le parallélogramme $ABCD$, $\\widehat{DAB} = 110^\\circ$. Les angles $\\widehat{DAB}$ et $\\widehat{ABC}$ sont {{1}}, donc $\\widehat{ABC} = $ {{2}}. L'angle $\\widehat{BCD}$ est {{3}} à $\\widehat{DAB}$, il mesure $110^\\circ$.",
+      "correctAnswer": "",
+      "blanks": [
+        "supplémentaires|consécutifs supplémentaires",
+        "$70^\\circ$",
+        "opposé|égal"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un parallélogramme, les angles consécutifs sont supplémentaires (leur somme vaut $180^\\circ$). Donc $\\widehat{ABC} = 180^\\circ - 110^\\circ = 70^\\circ$. Les angles opposés sont égaux deux à deux, donc $\\widehat{BCD} = \\widehat{DAB} = 110^\\circ$ et $\\widehat{CDA} = \\widehat{ABC} = 70^\\circ$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

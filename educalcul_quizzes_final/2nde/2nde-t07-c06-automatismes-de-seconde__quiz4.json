@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 539,
+  "_course_code": "2nde-t07-c06-automatismes-de-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Automatismes de seconde",
+  "title": "Quiz Automatismes de Seconde",
+  "questions": [
+    {
+      "text": "Simplifie l'expression $2(x+3)-4x$.",
+      "options": [
+        "-2x+6",
+        "2x+6",
+        "-2x-6",
+        "2x-6"
+      ],
+      "correctAnswer": "-2x+6",
+      "explanation": "On développe $2(x+3)$ ce qui donne $2x+6$. Ensuite on soustrait $4x$ : $2x+6-4x = -2x+6$. Les autres options correspondent à des erreurs de signe ou d'oubli de la distribution.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $A=\\{1,2,3,4\\}$ et $B=\\{3,4,5,6\\}$. Quelle est l'intersection $A \\cap B$ ?",
+      "options": [
+        "{3,4}",
+        "{1,2,3,4,5,6}",
+        "{1,2}",
+        "{}"
+      ],
+      "correctAnswer": "{3,4}",
+      "explanation": "L'intersection contient les éléments communs aux deux ensembles. Les nombres 3 et 4 appartiennent à la fois à A et à B, donc $A \\cap B = \\{3,4\\}$. Les autres options sont soit la réunion, soit des sous-ensembles incorrects.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Détermine la valeur de vérité de l'implication : \"Si $x>2$ alors $x^2>4$\" pour $x$ réel.",
+      "options": [
+        "Vrai",
+        "Faux",
+        "Indéterminé",
+        "Dépend de x"
+      ],
+      "correctAnswer": "Vrai",
+      "explanation": "Pour tout réel $x$, si $x>2$ alors $x^2>4$ est vérifié. Si $x \\le 2$, l'antécédent est faux, ce qui rend l'implication vraie par définition. Donc la proposition est toujours vraie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Exécute l'algorithme suivant :\\nx ← 5\\ntant que x > 0 faire\\n    x ← x - 2\\nfin tant que\\nQuelle est la valeur finale de x ?",
+      "options": [
+        "-1",
+        "1",
+        "0",
+        "3"
+      ],
+      "correctAnswer": "-1",
+      "explanation": "Les itérations successives donnent : x=5 → 3 → 1 → -1. La boucle s'arrête quand x n'est plus strictement positif, donc la dernière valeur assignée est -1.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Réduis la fraction $\\frac{18}{24}$ à sa forme irréductible.",
+      "options": [
+        "3/4",
+        "2/3",
+        "9/12",
+        "6/8"
+      ],
+      "correctAnswer": "3/4",
+      "explanation": "Le PGCD de 18 et 24 est 6. En divisant numérateur et dénominateur par 6, on obtient $\\frac{3}{4}$. Les autres fractions sont soit non réduites, soit égales à d'autres valeurs.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

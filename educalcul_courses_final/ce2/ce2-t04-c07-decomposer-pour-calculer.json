@@ -1,0 +1,340 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.031520+00:00",
+  "id": 175,
+  "code": "ce2-t04-c07",
+  "title": "Décomposer pour calculer",
+  "description": "Cours structuré Educalcul : Décomposer pour calculer.",
+  "subject": "Calcul mental et automatismes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Décomposer pour calculer",
+    "objectif_global": "Décomposer pour calculer",
+    "mini_lecons_imposees": [
+      "Additionner par morceaux.",
+      "Multiplier un nombre par un petit facteur.",
+      "Comparer deux procédures."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Additionner par morceaux.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Additionner par morceaux : l'idée de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $28$ billes et qu'on t'en donne $37$ de plus. Au lieu de tout compter une par une, tu peux séparer les nombres en dizaines et en unités. C'est comme si tu rangeais tes billes dans des boîtes de $10$ : tu as $2$ boîtes et $8$ billes à part, puis $3$ boîtes et $7$ billes à part. En réunissant les boîtes entre elles et les billes entre elles, tu vois tout de suite le total."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 8,
+              "caption": "$28$ : $2$ dizaines et $8$ unités"
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 3,
+              "units": 7,
+              "caption": "$37$ : $3$ dizaines et $7$ unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde : $2$ dizaines plus $3$ dizaines font $5$ dizaines, soit $50$. Et $8$ unités plus $7$ unités font $15$ unités, c'est-à-dire $1$ dizaine et $5$ unités. En tout, tu as $6$ dizaines et $5$ unités : $65$. C'est beaucoup plus rapide que de compter sur tes doigts !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec une autre astuce : on peut aussi décomposer seulement l'un des deux nombres. Par exemple, pour $46 + 25$, garde $46$ entier et casse $25$ en $20 + 5$. Ajoute $20$ à $46$, ça fait $66$, puis ajoute $5$, ça fait $71$. Cette méthode marche très bien quand l'un des nombres se termine par un zéro."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "46",
+                  "value": 46,
+                  "tone": "blue"
+                },
+                {
+                  "label": "+ 20",
+                  "value": 20,
+                  "tone": "green"
+                },
+                {
+                  "label": "+ 5",
+                  "value": 5,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "Ajouter par morceaux : $46 + 20 + 5 = 71$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut faire l'addition posée mais en gardant l'idée de morceaux. Écris les nombres l'un sous l'autre, aligne les unités et les dizaines. Commence par additionner les unités : si ça fait plus de $10$, note l'unité et garde la dizaine en mémoire (ou écris-la petit en haut). Ensuite, additionne les dizaines en ajoutant la dizaine gardée. C'est exactement ce que tu faisais mentalement, mais écrit sur papier pour ne rien oublier."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "28",
+                "37"
+              ],
+              "result": "65",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose $34$ en dizaines et unités, puis décompose $18$. Additionne les dizaines ensemble et les unités ensemble. Quel est le résultat final ?",
+              "answer": "$52$",
+              "hint": "Pense aux boîtes de $10$ : $3$ dizaines + $1$ dizaine = $4$ dizaines. $4$ unités + $8$ unités = $12$ unités, soit $1$ dizaine et $2$ unités.",
+              "explanation": "$34 = 30 + 4$ et $18 = 10 + 8$. $30 + 10 = 40$. $4 + 8 = 12$. $40 + 12 = 52$."
+            },
+            {
+              "question": "Calcule $53 + 26$ en gardant $53$ entier et en décomposant $26$ en $20 + 6$. Montre les étapes.",
+              "answer": "$79$",
+              "hint": "Ajoute $20$ à $53$, puis ajoute $6$ au résultat.",
+              "explanation": "$53 + 20 = 73$. $73 + 6 = 79$."
+            },
+            {
+              "question": "Fais l'addition posée de $47 + 35$. N'oublie pas la retenue s'il y en a une.",
+              "answer": "$82$",
+              "hint": "Unités : $7 + 5 = 12$, j'écris $2$ et je retiens $1$. Dizaines : $4 + 3 + 1 = 8$.",
+              "explanation": "$7 + 5 = 12$, j'écris $2$ unité et je retiens $1$ dizaine. $4 + 3 + 1 = 8$ dizaines. Résultat : $82$."
+            }
+          ]
+        },
+        {
+          "title": "Multiplier un nombre par un petit facteur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Multiplier par un petit nombre : découper pour simplifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà les tables de multiplication jusqu'à $5$. Mais comment faire pour multiplier $14$ par $3$ ? Pas de panique : on va découper $14$ en $10$ et $4$. Multiplier $10$ par $3$, c'est facile : $30$. Multiplier $4$ par $3$, tu sais : $12$. Il ne reste plus qu'à additionner $30$ et $12$ pour obtenir $42$. C'est comme si tu faisais deux petites multiplications au lieu d'une grande."
+            },
+            {
+              "type": "definition",
+              "term": "Produit",
+              "definition": "Le résultat d'une multiplication. Par exemple, dans $14 \\times 3 = 42$, le nombre $42$ est le produit.",
+              "example": "$5 \\times 4 = 20$, le produit est $20$."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 14,
+              "highlighted": 42,
+              "caption": "Rectangle $14 \\times 3$ : aire totale $42$ cases"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce quadrillage : il y a $3$ rangées de $14$ cases. Si tu traces une ligne après la $10^{\\text{ème}}$ colonne, tu vois deux rectangles : un de $10 \\times 3$ ($30$ cases) et un de $4 \\times 3$ ($12$ cases). L'aire totale, c'est bien $30 + 12 = 42$. Cette image t'aide à comprendre pourquoi la décomposition marche à tous les coups."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec $23 \\times 4$. Découpe $23$ en $20 + 3$. $20 \\times 4 = 80$ (car $2 \\times 4 = 8$ dizaines). $3 \\times 4 = 12$. $80 + 12 = 92$. Tu peux aussi le faire dans l'autre sens : $4 \\times 23$, c'est la même chose. L'ordre ne change pas le produit, c'est la commutativité."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 4,
+              "cols": 23,
+              "highlighted": 92,
+              "caption": "Rectangle $23 \\times 4$ : $20 \\times 4 = 80$ et $3 \\times 4 = 12$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on peut aussi décomposer le petit facteur. Pour $16 \\times 5$, tu sais que $5 = 2 + 3$ ou $5 = 10 \\div 2$. Une astuce : multiplier par $5$, c'est multiplier par $10$ et diviser par $2$. $16 \\times 10 = 160$, la moitié de $160$ est $80$. Mais restons sur la décomposition : $16 \\times 5 = (10 \\times 5) + (6 \\times 5) = 50 + 30 = 80$. Choisis la méthode qui te semble la plus simple !"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "10 × 5",
+                  "value": 50,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6 × 5",
+                  "value": 30,
+                  "tone": "green"
+                }
+              ],
+              "caption": "$16 \\times 5 = 50 + 30 = 80$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $12 \\times 3$ en décomposant $12$ en $10 + 2$. Écris les deux multiplications et l'addition finale.",
+              "answer": "$36$",
+              "hint": "$10 \\times 3 = 30$, $2 \\times 3 = 6$, $30 + 6 = 36$.",
+              "explanation": "On décompose $12$ en $10 + 2$. $10 \\times 3 = 30$. $2 \\times 3 = 6$. $30 + 6 = 36$."
+            },
+            {
+              "question": "Utilise la décomposition pour trouver $24 \\times 3$. Découpe $24$ en $20 + 4$.",
+              "answer": "$72$",
+              "hint": "$20 \\times 3 = 60$, $4 \\times 3 = 12$, $60 + 12 = 72$.",
+              "explanation": "$24 = 20 + 4$. $20 \\times 3 = 60$. $4 \\times 3 = 12$. $60 + 12 = 72$."
+            },
+            {
+              "question": "Propose une décomposition pour calculer $15 \\times 4$ facilement. Montre ton calcul.",
+              "answer": "$60$",
+              "hint": "Tu peux faire $10 \\times 4 + 5 \\times 4$ ou $15 \\times 2 \\times 2$.",
+              "explanation": "$15 = 10 + 5$. $10 \\times 4 = 40$, $5 \\times 4 = 20$, $40 + 20 = 60$. Ou bien $15 \\times 2 = 30$, $30 \\times 2 = 60$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer deux procédures.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux façons de faire : laquelle choisir ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais additionner par morceaux et multiplier en décomposant, regardons ensemble deux méthodes pour le même calcul. Pour $38 + 24$, Méthode A : décomposer les deux nombres en dizaines et unités ($30+20=50$, $8+4=12$, $50+12=62$). Méthode B : garder $38$ et ajouter $20$ puis $4$ ($38+20=58$, $58+4=62$). Les deux donnent $62$, mais la deuxième est souvent plus rapide en tête car il y a moins d'étapes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Méthode",
+                "Étapes",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "A : décomposer les deux",
+                  "$30+20=50$, $8+4=12$, $50+12$",
+                  "$62$"
+                ],
+                [
+                  "B : décomposer un seul",
+                  "$38+20=58$, $58+4$",
+                  "$62$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la multiplication, comparons $13 \\times 4$. Méthode 1 : décomposer $13$ en $10+3$ ($10\\times4=40$, $3\\times4=12$, $40+12=52$). Méthode 2 : utiliser le double : $13 \\times 2 = 26$, puis $26 \\times 2 = 52$. La première utilise la décomposition, la seconde utilise le fait que $\\times 4$ c'est $\\times 2$ deux fois. Les deux sont valides, choisis celle qui te vient le plus naturellement."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Méthode",
+                "Étapes",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "Décomposition",
+                  "$10\\times4=40$, $3\\times4=12$, $40+12$",
+                  "$52$"
+                ],
+                [
+                  "Double double",
+                  "$13\\times2=26$, $26\\times2$",
+                  "$52$"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le calcul demande de combiner addition et multiplication. Pour $5 \\times 12 + 8$, on peut faire d'abord la multiplication ($5\\times12=60$) puis l'addition ($60+8=68$). Ou bien décomposer $12$ en $10+2$ : $5\\times10=50$, $5\\times2=10$, $50+10=60$, puis $+8=68$. L'important est de repérer les nombres « amis » (ceux qui finissent par $0$ ou $5$) pour aller plus vite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais décomposer un nombre en dizaines et unités pour additionner.",
+                "Je sais multiplier un nombre à deux chiffres par $2$, $3$, $4$ ou $5$ en le décomposant.",
+                "Je peux choisir la méthode la plus simple selon les nombres.",
+                "Je vérifie mon résultat en refaisant le calcul autrement."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour $45 + 37$, quelle méthode préfères-tu ? Explique en une phrase puis donne le résultat.",
+              "answer": "$82$",
+              "hint": "Essai les deux : décomposer les deux ($40+30$, $5+7$) ou garder $45$ et ajouter $30$ puis $7$.",
+              "explanation": "Méthode B : $45 + 30 = 75$, $75 + 7 = 82$. C'est plus rapide car on n'a pas à recomposer les dizaines à la fin."
+            },
+            {
+              "question": "Calcule $14 \\times 3$ avec les deux méthodes : décomposition ($10+4$) et double-double ($\\times2$ puis $\\times2$). Les résultats sont-ils identiques ?",
+              "answer": "Oui, $42$ dans les deux cas.",
+              "hint": "Décomposition : $10\\times3=30$, $4\\times3=12$, $30+12=42$. Double-double : $14\\times2=28$, $28\\times2=56$... attention, $\\times4$ c'est double-double, mais ici c'est $\\times3$ ! Donc double-double ne marche pas pour $\\times3$.",
+              "explanation": "Pour $\\times3$, la décomposition est idéale. Le double-double ne fonctionne que pour $\\times4$. Résultat : $42$."
+            },
+            {
+              "question": "Résous $6 \\times 11 + 9$ en choisissant la décomposition qui te semble la plus facile.",
+              "answer": "$75$",
+              "hint": "$11 = 10 + 1$. $6 \\times 10 = 60$, $6 \\times 1 = 6$, $60 + 6 = 66$, $66 + 9 = 75$.",
+              "explanation": "On décompose $11$ en $10+1$. $6\\times10=60$, $6\\times1=6$, $60+6=66$. On ajoute $9$ : $66+9=75$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 186,
+  "_course_code": "ce2-t05-c09-bilan-problemes-ce2",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Mélanger structures",
+  "title": "Algorithmes mêlant plusieurs structures - CE2",
+  "blocks": [
+    {
+      "title": "Algorithme simple : addition puis augmentation",
+      "content": "Écris un algorithme (suite d'instructions) qui prend deux nombres $a$ et $b$, calcule leur somme, puis ajoute $5$ au résultat. Utilise une écriture pas à pas (style pseudo-code).",
+      "correctAnswer": "Début\\nLire a\\nLire b\\nsomme ← a + b\\nrésultat ← somme + 5\\nAfficher résultat\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On commence par lire les deux nombres. On calcule la somme avec l'opérateur +. Ensuite on ajoute 5 à cette somme. Enfin on affiche le résultat final.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec multiplication et soustraction",
+      "content": "Écris un algorithme qui demande le nombre d'élèves $n$ et le nombre de cahiers par élève $c$, calcule le total de cahiers, puis retire $3$ cahiers abîmés. Affiche le nombre de cahiers restants.",
+      "correctAnswer": "Début\\nLire n\\nLire c\\ntotal ← n × c\\nrestant ← total - 3\\nAfficher restant\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On lit les deux valeurs. On multiplie n par c pour obtenir le total de cahiers. On soustrait 3 pour enlever les cahiers abîmés. On affiche le nombre restant.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec condition (remise)",
+      "content": "Écris un algorithme qui demande le prix unitaire $p$ et la quantité $q$, calcule le montant total, et si ce montant est strictement supérieur à $50$, applique une remise de $10\\%$ (c'est-à-dire multiplie par $0,9$). Affiche le prix final.",
+      "correctAnswer": "Début\\nLire p\\nLire q\\ntotal ← p × q\\nSi total > 50 Alors\\n    total ← total × 0,9\\nFinSi\\nAfficher total\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule d'abord le total sans remise. Ensuite on teste la condition : si total > 50, on réduit le total de 10 % en le multipliant par 0,9. Sinon on laisse le total inchangé. On affiche le prix final.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,444 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.519307+00:00",
+  "id": 651,
+  "code": "terminale-generale-complementaires-t04-c03",
+  "title": "Valeur moyenne",
+  "description": "Cours structuré Educalcul : Valeur moyenne.",
+  "subject": "Calculs d'aires et intégrales",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Calculs d'aires et intégrales",
+    "titre_du_cours": "Valeur moyenne",
+    "objectif_global": "Valeur moyenne",
+    "mini_lecons_imposees": [
+      "Définition.",
+      "Calcul.",
+      "Interprétation."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Calculs d'aires et intégrales",
+      "lessons": [
+        {
+          "title": "Définition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'idée intuitive de la valeur moyenne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu suives la température d'une pièce pendant toute une journée. La courbe qui relie les mesures heure par heure monte et descend, mais tu aimerais connaître une seule température qui résumerait l'ensemble de la journée. C'est exactement ce que fait la valeur moyenne d'une fonction sur un intervalle : elle replace l'ensemble des variations par un nombre unique, comme si la fonction avait été constante et égale à ce nombre pendant tout l'intervalle. Pour bien visualiser, pense à un rectangle dont la base est l'intervalle considéré et dont la hauteur est cette valeur moyenne ; l'aire de ce rectangle est égale à l'aire sous la courbe de la fonction. Cette image géométrique est le point de départ de toute la théorie."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": 0,
+              "xmax": 6.28,
+              "caption": "Courbe de $f(x)=\\sin x$ sur $[0,2\\pi]$ et rectangle de hauteur valeur moyenne"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'image du rectangle est en place, nous allons donner une définition précise qui permettra de calculer cette hauteur pour n'importe quelle fonction intégrable. La transition vers le formalisme se fait en remplaçant l'aire sous la courbe par une intégrale, ce qui rend la notion manipulable algébriquement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition formelle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Soit $f$ une fonction continue sur un intervalle fermé $[a,b]$. La valeur moyenne de $f$ sur $[a,b]$, que l'on note souvent $m_f$ ou $\\overline{f}$, est le nombre réel défini par l'égalité $\\overline{f} = \\frac{1}{b-a}\\int_a^b f(x)\\,dx$. Cette formule dit simplement : on calcule l'intégrale de $f$ sur l'intervalle, ce qui donne l'aire algébrique sous la courbe, puis on divise par la longueur de l'intervalle $b-a$ pour obtenir la hauteur du rectangle équivalent. L'hypothèse de continuité garantit que l'intégrale existe et que la valeur moyenne est bien définie. On peut aussi étendre la définition aux fonctions intégrables au sens de Riemann, mais la continuité suffit pour tout le programme de terminale."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{f} = \\frac{1}{b-a}\\int_a^b f(x)\\,dx"
+            },
+            {
+              "type": "definition",
+              "term": "Valeur moyenne d'une fonction",
+              "definition": "Pour une fonction $f$ continue sur $[a,b]$, la valeur moyenne est le quotient de l'intégrale de $f$ sur $[a,b]$ par la longueur de l'intervalle $b-a$.",
+              "example": "Si $f(x)=x^2$ sur $[0,2]$, alors $\\overline{f} = \\frac{1}{2}\\int_0^2 x^2\\,dx = \\frac{1}{2}\\left[\\frac{x^3}{3}\\right]_0^2 = \\frac{4}{3}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier la continuité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que la fonction est continue sur l'intervalle fermé. Pour les fonctions usuelles (polynômes, trigonométriques, exponentielles), c'est toujours vrai."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'intégrale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trouve une primitive $F$ de $f$ et évalue $F(b)-F(a)$. C'est l'aire algébrique sous la courbe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser par la longueur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise le résultat par $b-a$ pour obtenir la valeur moyenne."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec la définition en main, nous pouvons examiner quelques propriétés immédiates qui facilitent les calculs et donnent du sens à la notion. La linéarité de l'intégrale entraîne la linéarité de la valeur moyenne, et la valeur moyenne d'une fonction constante est cette constante elle-même. Ces faits seront utiles pour le prochain exemple."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés de base et premier exemple"
+            },
+            {
+              "type": "paragraph",
+              "content": "La valeur moyenne respecte la linéarité : pour deux fonctions $f,g$ continues sur $[a,b]$ et des réels $\\alpha,\\beta$, on a $\\overline{\\alpha f + \\beta g} = \\alpha \\overline{f} + \\beta \\overline{g}$. De plus, si $f$ est constante égale à $c$, alors $\\overline{f}=c$. Pour illustrer, prenons $f(x)=3x+2$ sur $[1,4]$. L'intégrale est $\\int_1^4 (3x+2)\\,dx = \\left[\\frac{3}{2}x^2+2x\\right]_1^4 = (24+8)-(\\frac{3}{2}+2) = 32 - 3,5 = 28,5$. La longueur de l'intervalle est $3$, donc la valeur moyenne est $28,5/3 = 9,5$. On peut vérifier avec la linéarité : $\\overline{3x+2}=3\\overline{x}+2$. La valeur moyenne de $x$ sur $[1,4]$ est $\\frac{1}{3}\\int_1^4 x\\,dx = \\frac{1}{3}\\left[\\frac{x^2}{2}\\right]_1^4 = \\frac{1}{3}(8-0,5)=2,5$. Donc $3\\times2,5+2=9,5$, ce qui confirme le calcul direct."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{3x+2} = 3\\overline{x}+2 = 9,5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette première leçon a posé les fondations : l'intuition géométrique, la définition rigoureuse et les premières propriétés. Tu es maintenant prêt à aborder des calculs plus variés et à découvrir comment la valeur moyenne s'interprète dans des contextes physiques ou géométriques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne la définition de la valeur moyenne d'une fonction continue $f$ sur $[a,b]$.",
+              "answer": "$\\overline{f} = \\frac{1}{b-a}\\int_a^b f(x)\\,dx$",
+              "hint": "Rappelle-toi la formule qui divise l'intégrale par la longueur de l'intervalle.",
+              "explanation": "La valeur moyenne est le quotient de l'intégrale de la fonction sur l'intervalle par la mesure de cet intervalle."
+            },
+            {
+              "question": "Calcule la valeur moyenne de $f(x)=x^2$ sur l'intervalle $[0,3]$.",
+              "answer": "$3$",
+              "hint": "Calcule l'intégrale de $x^2$ de $0$ à $3$ puis divise par $3$.",
+              "explanation": "$\\int_0^3 x^2\\,dx = [x^3/3]_0^3 = 9$. En divisant par $3$, on obtient $3$."
+            },
+            {
+              "question": "Vérifie la linéarité de la valeur moyenne pour $f(x)=2x+5$ sur $[0,2]$ en calculant $\\overline{f}$ directement et via $\\overline{2x}+\\overline{5}$.",
+              "answer": "Les deux méthodes donnent $7$.",
+              "hint": "Calcule $\\int_0^2 (2x+5)\\,dx$ et divise par $2$. Ensuite calcule $\\overline{x}$ sur $[0,2]$.",
+              "explanation": "Direct : $\\int_0^2 (2x+5)\\,dx = [x^2+5x]_0^2 = 4+10=14$, divisé par $2$ donne $7$. Par linéarité : $\\overline{x}=1$, donc $2\\times1+5=7$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul de la valeur moyenne pour les fonctions polynomiales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les polynômes sont les fonctions les plus simples à intégrer, car il suffit d'appliquer la règle de la puissance pour chaque monôme. Pour un polynôme $P(x)=\\sum_{k=0}^n a_k x^k$ sur $[a,b]$, l'intégrale est $\\sum a_k \\frac{b^{k+1}-a^{k+1}}{k+1}$. La valeur moyenne s'obtient ensuite en divisant par $b-a$. Cette procédure algorithmique est fiable et ne demande aucune astuce particulière. Prenons l'exemple de $P(x)=4x^3-2x+7$ sur $[-1,2]$. L'intégrale est $\\int_{-1}^2 (4x^3-2x+7)\\,dx = \\left[x^4 - x^2 + 7x\\right]_{-1}^2 = (16-4+14) - (1-1-7) = 26 - (-7) = 33$. La longueur de l'intervalle est $3$, donc la valeur moyenne vaut $11$. On peut aussi utiliser la linéarité : $\\overline{4x^3}=4\\overline{x^3}$, $\\overline{-2x}=-2\\overline{x}$, $\\overline{7}=7$. Il suffit de connaître les valeurs moyennes des monômes $x^k$ sur $[-1,2]$, ce qui se calcule une fois pour toutes."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{P} = \\frac{1}{b-a}\\sum_{k=0}^n a_k \\frac{b^{k+1}-a^{k+1}}{k+1}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les polynômes, les fonctions trigonométriques apparaissent fréquemment, surtout en physique. Leur intégrale fait appel aux primitives usuelles : $\\int \\sin x\\,dx = -\\cos x$, $\\int \\cos x\\,dx = \\sin x$. La valeur moyenne de $\\sin$ ou $\\cos$ sur un intervalle de longueur multiple de la période est souvent nulle, ce qui reflète le fait que les parties positives et négatives s'annulent. Sur un intervalle non symétrique, le calcul demande un peu plus d'attention mais reste direct."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Valeur moyenne des fonctions trigonométriques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $f(x)=\\sin(2x)$ sur $[0,\\pi]$. L'intégrale est $\\int_0^{\\pi} \\sin(2x)\\,dx = \\left[-\\frac{1}{2}\\cos(2x)\\right]_0^{\\pi} = -\\frac{1}{2}(\\cos(2\\pi)-\\cos 0) = -\\frac{1}{2}(1-1)=0$. La longueur de l'intervalle est $\\pi$, donc la valeur moyenne est $0$. Cela était prévisible car sur une période complète de $\\sin(2x)$ (période $\\pi$), les aires positives et négatives s'annulent. Pour $g(x)=\\cos^2 x$ sur $[0,\\pi/2]$, on utilise l'identité $\\cos^2 x = \\frac{1+\\cos(2x)}{2}$. L'intégrale devient $\\int_0^{\\pi/2} \\frac{1+\\cos(2x)}{2}\\,dx = \\frac{1}{2}\\left[x+\\frac{1}{2}\\sin(2x)\\right]_0^{\\pi/2} = \\frac{1}{2}(\\pi/2+0) = \\pi/4$. La longueur est $\\pi/2$, donc la valeur moyenne vaut $\\frac{\\pi/4}{\\pi/2} = \\frac{1}{2}$. Ce résultat montre que la moyenne de $\\cos^2$ sur un quart de période est $1/2$, ce qui est cohérent avec l'égalité $\\sin^2+\\cos^2=1$ et la symétrie."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{\\cos^2 x}_{[0,\\pi/2]} = \\frac{1}{2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'intégrale ne se calcule pas directement avec les primitives élémentaires. Dans ces cas, on utilise des techniques comme le changement de variable ou l'intégration par parties. Ces méthodes transforment l'intégrale en une forme plus simple, après quoi on applique la définition de la valeur moyenne. Il est important de bien modifier les bornes d'intégration lors d'un changement de variable, sinon le résultat sera erroné."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Techniques d'intégration pour la valeur moyenne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $f(x)=x\\mathrm{e}^{x^2}$ sur $[0,1]$. Posons $u=x^2$, alors $du=2x\\,dx$ et $x\\,dx = du/2$. Les bornes deviennent $u=0$ et $u=1$. L'intégrale $\\int_0^1 x\\mathrm{e}^{x^2}\\,dx$ se transforme en $\\int_0^1 \\mathrm{e}^u \\frac{du}{2} = \\frac{1}{2}[\\mathrm{e}^u]_0^1 = \\frac{1}{2}(\\mathrm{e}-1)$. La longueur de l'intervalle est $1$, donc la valeur moyenne est $\\frac{\\mathrm{e}-1}{2}$. Pour un exemple d'intégration par parties, considérons $f(x)=x\\ln x$ sur $[1,\\mathrm{e}]$. Posons $u=\\ln x$, $dv=x\\,dx$, alors $du=dx/x$, $v=x^2/2$. L'intégrale $\\int_1^{\\mathrm{e}} x\\ln x\\,dx = \\left[\\frac{x^2}{2}\\ln x\\right]_1^{\\mathrm{e}} - \\int_1^{\\mathrm{e}} \\frac{x^2}{2}\\cdot\\frac{dx}{x} = \\frac{\\mathrm{e}^2}{2}\\cdot1 - 0 - \\frac{1}{2}\\int_1^{\\mathrm{e}} x\\,dx = \\frac{\\mathrm{e}^2}{2} - \\frac{1}{2}\\left[\\frac{x^2}{2}\\right]_1^{\\mathrm{e}} = \\frac{\\mathrm{e}^2}{2} - \\frac{1}{4}(\\mathrm{e}^2-1) = \\frac{\\mathrm{e}^2}{4} + \\frac{1}{4}$. La longueur est $\\mathrm{e}-1$, donc la valeur moyenne est $\\frac{\\mathrm{e}^2+1}{4(\\mathrm{e}-1)}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{x\\mathrm{e}^{x^2}}_{[0,1]} = \\frac{\\mathrm{e}-1}{2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive qu'une intégrale ne puisse pas s'exprimer en fonctions élémentaires. On peut alors approximer la valeur moyenne numériquement, par exemple avec la méthode des rectangles, des trapèzes ou de Simpson. L'idée est de partitionner l'intervalle, d'évaluer la fonction en des points choisis, de sommer les aires des rectangles ou trapèzes, puis de diviser par la longueur de l'intervalle. Plus le nombre de sous-intervalles est grand, plus l'approximation est précise. Cette approche numérique est très utile en sciences de l'ingénieur où les fonctions proviennent de mesures expérimentales."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Approximation numérique de la valeur moyenne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons qu'on veuille approximer la valeur moyenne de $f(x)=\\sqrt{1+x^3}$ sur $[0,2]$ avec la méthode des rectangles à gauche et $n=4$ sous-intervalles. La largeur de chaque sous-intervalle est $h=0,5$. Les abscisses gauche sont $0, 0,5, 1, 1,5$. Les valeurs de la fonction sont $f(0)=1$, $f(0,5)=\\sqrt{1+0,125}=\\sqrt{1,125}\\approx1,0607$, $f(1)=\\sqrt{2}\\approx1,4142$, $f(1,5)=\\sqrt{1+3,375}=\\sqrt{4,375}\\approx2,0917$. La somme des aires des rectangles est $h\\times(1+1,0607+1,4142+2,0917)=0,5\\times5,5666=2,7833$. La longueur de l'intervalle est $2$, donc la valeur moyenne approchée est $2,7833/2\\approx1,3917$. En augmentant $n$, on obtiendrait une valeur plus proche de la vraie valeur, qui est $\\frac{1}{2}\\int_0^2 \\sqrt{1+x^3}\\,dx$."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "sqrt(1+x^3)",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 8,
+              "caption": "Approximation de l'intégrale par rectangles de Riemann"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette leçon t'a montré comment calculer la valeur moyenne pour une grande variété de fonctions : polynômes, trigonométriques, et celles nécessitant des changements de variable ou des intégrations par parties. Tu as aussi découvert l'approximation numérique quand l'intégrale exacte est hors de portée. La prochaine leçon donnera du sens à ces calculs en explorant les interprétations géométriques et physiques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la valeur moyenne de $P(x)=2x^2-3x+4$ sur $[-2,1]$.",
+              "answer": "$\\frac{13}{3}$",
+              "hint": "Intègre le polynôme terme à terme, évalue entre -2 et 1, divise par 3.",
+              "explanation": "$\\int_{-2}^1 (2x^2-3x+4)\\,dx = [\\frac{2}{3}x^3-\\frac{3}{2}x^2+4x]_{-2}^1 = (\\frac{2}{3}-\\frac{3}{2}+4) - (-\\frac{16}{3}-6-8) = \\frac{13}{3}$ après division par 3."
+            },
+            {
+              "question": "Détermine la valeur moyenne de $f(x)=\\sin(3x)$ sur $[0,\\pi/3]$.",
+              "answer": "$\\frac{2}{\\pi}$",
+              "hint": "Utilise la primitive $-\\frac{1}{3}\\cos(3x)$ et évalue aux bornes.",
+              "explanation": "$\\int_0^{\\pi/3} \\sin(3x)\\,dx = [-\\frac{1}{3}\\cos(3x)]_0^{\\pi/3} = -\\frac{1}{3}(\\cos\\pi-\\cos0) = -\\frac{1}{3}(-1-1)=\\frac{2}{3}$. Divisé par $\\pi/3$ donne $\\frac{2}{\\pi}$."
+            },
+            {
+              "question": "En utilisant le changement de variable $u=x^2$, calcule la valeur moyenne de $f(x)=x\\cos(x^2)$ sur $[0,\\sqrt{\\pi}]$.",
+              "answer": "$0$",
+              "hint": "L'intégrale devient $\\frac{1}{2}\\int_0^{\\pi} \\cos u\\,du$.",
+              "explanation": "$\\int_0^{\\sqrt{\\pi}} x\\cos(x^2)\\,dx = \\frac{1}{2}\\int_0^{\\pi} \\cos u\\,du = \\frac{1}{2}[\\sin u]_0^{\\pi}=0$. La longueur est $\\sqrt{\\pi}$, donc la moyenne est $0$."
+            },
+            {
+              "question": "Approxime la valeur moyenne de $f(x)=\\ln(1+x)$ sur $[0,1]$ par la méthode des trapèzes avec $n=2$.",
+              "answer": "$\\frac{1}{2}\\left(\\frac{\\ln1+\\ln1.5}{2}+\\frac{\\ln1.5+\\ln2}{2}\\right) \\approx 0,306$",
+              "hint": "Largeur $h=0,5$. Calcule $f(0), f(0,5), f(1)$ et applique la formule des trapèzes.",
+              "explanation": "$f(0)=0$, $f(0,5)=\\ln1.5\\approx0,4055$, $f(1)=\\ln2\\approx0,6931$. Aire trapèzes $=0,5\\times\\frac{0+0,4055}{2}+0,5\\times\\frac{0,4055+0,6931}{2}=0,1014+0,2747=0,3761$. Divisé par $1$ donne $0,3761$ (valeur approchée)."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation géométrique : l'aire et le rectangle équivalent"
+            },
+            {
+              "type": "paragraph",
+              "content": "La définition même de la valeur moyenne repose sur une égalité d'aires : l'aire sous la courbe $y=f(x)$ entre $a$ et $b$ est exactement l'aire du rectangle de base $[a,b]$ et de hauteur $\\overline{f}$. Cela signifie que si l'on « rabattait » la courbe sur une ligne horizontale, on obtiendrait un rectangle de même aire. Cette vision est très puissante : elle permet de transformer un problème d'intégrale en un problème de géométrie simple, et réciproquement. Par exemple, si l'on connaît la valeur moyenne d'une fonction positive, on sait immédiatement l'aire sous sa courbe sans avoir à intégrer. Inversement, si l'on mesure l'aire (par exemple en comptant des cases sur un papier millimétré), on en déduit la valeur moyenne en divisant par la longueur de l'intervalle."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": 0,
+              "xmax": 2,
+              "caption": "Aire sous $y=x^2$ sur $[0,2]$ et rectangle de hauteur valeur moyenne $4/3$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Au-delà de la géométrie pure, la valeur moyenne a une signification concrète dans de nombreuses situations physiques. Lorsque la fonction représente une vitesse instantanée $v(t)$, sa valeur moyenne sur un intervalle de temps donne la vitesse moyenne, c'est-à-dire la vitesse constante qui aurait permis de parcourir la même distance en le même temps. De même, si $f(t)$ est la température à l'instant $t$, la valeur moyenne est la température constante qui aurait produit la même quantité de chaleur échangée sur la durée considérée. Cette interprétation physique est au cœur de la modélisation en sciences de l'ingénieur et en économie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation physique : vitesse moyenne, température moyenne"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un mobile dont la vitesse est $v(t)=3t^2+2$ (en $m/s$) pour $t\\in[0,4]$. La distance parcourue est l'intégrale de la vitesse : $\\int_0^4 (3t^2+2)\\,dt = [t^3+2t]_0^4 = 64+8=72$ mètres. La durée est $4$ secondes, donc la vitesse moyenne est $72/4=18\\,m/s$. On peut vérifier que la valeur moyenne de $v$ selon la définition donne le même résultat : $\\overline{v} = \\frac{1}{4}\\int_0^4 (3t^2+2)\\,dt = 18$. Pour un exemple thermique, supposons que la température d'un four varie selon $T(t)=150+50\\sin(\\pi t/12)$ degrés Celsius pendant $24$ heures ($t$ en heures). La température moyenne sur la journée est $\\overline{T} = \\frac{1}{24}\\int_0^{24} (150+50\\sin(\\pi t/12))\\,dt = 150 + \\frac{50}{24}\\left[-\\frac{12}{\\pi}\\cos(\\pi t/12)\\right]_0^{24} = 150 + 0 = 150^\\circ C$, car l'intégrale du sinus sur une période complète est nulle. La composante oscillante n'affecte pas la moyenne."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{v} = \\frac{1}{b-a}\\int_a^b v(t)\\,dt"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un résultat fondamental relie la valeur moyenne à l'existence d'un point où la fonction prend exactement cette valeur moyenne. C'est le théorème de la valeur moyenne pour les intégrales : si $f$ est continue sur $[a,b]$, il existe au moins un $c\\in[a,b]$ tel que $f(c)=\\overline{f}$. Ce théorème est une conséquence directe du théorème des valeurs intermédiaires appliqué à la fonction primitive. Il garantit que le rectangle équivalent « touche » la courbe en au moins un point. C'est un outil théorique important, mais aussi pratique : il assure qu'une valeur moyenne n'est pas un nombre purement abstrait, elle est réellement atteinte par la fonction."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Théorème de la valeur moyenne pour les intégrales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Énoncé précis : Soit $f$ continue sur $[a,b]$. Alors il existe $c\\in[a,b]$ tel que $\\int_a^b f(x)\\,dx = f(c)(b-a)$, c'est-à-dire $f(c)=\\overline{f}$. La démonstration utilise la fonction $F(x)=\\int_a^x f(t)\\,dt$. $F$ est dérivable et $F'(x)=f(x)$. D'après le théorème des accroissements finis appliqué à $F$ sur $[a,b]$, il existe $c\\in(a,b)$ tel que $F'(c)=\\frac{F(b)-F(a)}{b-a}$. Or $F(b)-F(a)=\\int_a^b f(t)\\,dt$ et $F(a)=0$. Donc $f(c)=\\frac{1}{b-a}\\int_a^b f(t)\\,dt = \\overline{f}$. Ce théorème est souvent utilisé pour prouver l'existence de solutions d'équations intégrales ou pour majorer des intégrales."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Construire la primitive",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Définis $F(x)=\\int_a^x f(t)\\,dt$. $F$ est continue sur $[a,b]$ et dérivable sur $(a,b)$ avec $F'=f$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer le théorème des accroissements finis",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il existe $c\\in(a,b)$ tel que $F'(c)=\\frac{F(b)-F(a)}{b-a}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace $F'(c)$ par $f(c)$ et $F(b)-F(a)$ par l'intégrale de $f$ pour obtenir $f(c)=\\overline{f}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, voyons comment la valeur moyenne intervient dans des problèmes concrets : estimation de la consommation moyenne d'énergie, calcul du prix moyen d'un produit dont le coût varie, ou détermination de la concentration moyenne d'un polluant dans une rivière. Dans chaque cas, on modélise la quantité d'intérêt par une fonction intégrable, on calcule ou on approxime son intégrale sur la période d'observation, et on divise par la durée. La valeur moyenne devient alors un indicateur de synthèse, facile à communiquer et à comparer. Elle permet aussi de définir des normes (par exemple, la concentration moyenne maximale admissible) et de vérifier leur respect."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications concrètes et synthèse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une usine dont la puissance électrique consommée (en kW) varie selon $P(t)=500+100\\sin(2\\pi t/24)$ où $t$ est en heures sur une journée. La consommation totale d'énergie sur $24$ h est $\\int_0^{24} P(t)\\,dt = 500\\times24 + 100\\int_0^{24}\\sin(2\\pi t/24)\\,dt = 12000 + 0 = 12000$ kWh. La puissance moyenne est donc $12000/24 = 500$ kW. Cette moyenne correspond exactement au terme constant, la partie sinusoïdale s'annulant sur une période. Si l'usine doit respecter un contrat limitant la puissance moyenne à $550$ kW, elle est en conformité. Un autre exemple : la concentration d'un polluant dans un fleuve est mesurée toutes les heures et modélisée par $C(t)=10+2\\cos(\\pi t/12)$ mg/L sur $24$ h. La concentration moyenne est $10$ mg/L, car le cosinus a moyenne nulle. Si la norme environnementale fixe une concentration moyenne maximale de $12$ mg/L, le fleuve est conforme. Ces exemples montrent que la valeur moyenne n'est pas un simple exercice de calcul, mais un outil de décision."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\overline{P} = \\frac{1}{24}\\int_0^{24} P(t)\\,dt = 500\\ \\text{kW}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant parcouru les trois piliers de la notion de valeur moyenne : sa définition rigoureuse, les techniques pour la calculer sur des fonctions variées, et ses interprétations géométriques, physiques et théoriques. Chaque leçon t'a apporté des outils complémentaires, et tu devrais être capable d'aborder sereinement les exercices du bac ou des concours qui font appel à cette idée centrale de l'analyse."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais donner la définition de la valeur moyenne d'une fonction continue sur un intervalle.",
+                "Je sais calculer la valeur moyenne pour des polynômes, des fonctions trigonométriques et en utilisant changement de variable ou intégration par parties.",
+                "Je sais approximer numériquement une valeur moyenne quand l'intégrale n'est pas élémentaire.",
+                "Je comprends l'interprétation géométrique : égalité des aires entre la courbe et le rectangle de hauteur moyenne.",
+                "Je sais expliquer la signification physique (vitesse moyenne, température moyenne, puissance moyenne).",
+                "Je connais le théorème de la valeur moyenne pour les intégrales et son lien avec le théorème des accroissements finis.",
+                "Je suis capable d'appliquer la valeur moyenne à des problèmes concrets de modélisation."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Exprime l'égalité des aires qui définit la valeur moyenne de $f$ sur $[a,b]$.",
+              "answer": "$\\int_a^b f(x)\\,dx = \\overline{f}\\,(b-a)$",
+              "hint": "Le rectangle a pour base $b-a$ et pour hauteur la valeur moyenne.",
+              "explanation": "L'aire sous la courbe est l'intégrale ; l'aire du rectangle est hauteur $\\times$ base."
+            },
+            {
+              "question": "Un mobile a pour vitesse $v(t)=4t+1$ (m/s) sur $[0,5]$. Quelle est sa vitesse moyenne ? Quelle distance a-t-il parcourue ?",
+              "answer": "Vitesse moyenne $=11$ m/s, distance $=55$ m.",
+              "hint": "Calcule l'intégrale de $v$ sur $[0,5]$ puis divise par $5$.",
+              "explanation": "$\\int_0^5 (4t+1)\\,dt = [2t^2+t]_0^5 = 50+5=55$. Distance $=55$ m. Vitesse moyenne $=55/5=11$ m/s."
+            },
+            {
+              "question": "Soit $f(x)=x^3$ sur $[-1,2]$. Montre qu'il existe $c\\in[-1,2]$ tel que $f(c)=\\overline{f}$ et donne une valeur approchée de $c$.",
+              "answer": "$c=\\sqrt[3]{15/4}\\approx1,55$",
+              "hint": "Calcule $\\overline{f}$, puis résous $c^3=\\overline{f}$.",
+              "explanation": "$\\overline{f} = \\frac{1}{3}\\int_{-1}^2 x^3\\,dx = \\frac{1}{3}[x^4/4]_{-1}^2 = \\frac{1}{3}(4-1/4)=5/4=1,25$. Il faut $c^3=1,25$, donc $c=\\sqrt[3]{1,25}\\approx1,077$ (mais $c$ doit être dans $[-1,2]$, $1,077$ convient)."
+            },
+            {
+              "question": "La concentration d'un médicament dans le sang suit $C(t)=20\\mathrm{e}^{-0,5t}$ mg/L pour $t\\in[0,6]$ heures. Calcule la concentration moyenne sur cette période.",
+              "answer": "$\\frac{20}{3}(1-\\mathrm{e}^{-3})\\approx6,3$ mg/L",
+              "hint": "Intègre $20\\mathrm{e}^{-0,5t}$, divise par $6$.",
+              "explanation": "$\\int_0^6 20\\mathrm{e}^{-0,5t}\\,dt = 20\\left[-\\frac{\\mathrm{e}^{-0,5t}}{0,5}\\right]_0^6 = -40(\\mathrm{e}^{-3}-1)=40(1-\\mathrm{e}^{-3})$. Divisé par $6$ donne $\\frac{20}{3}(1-\\mathrm{e}^{-3})$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

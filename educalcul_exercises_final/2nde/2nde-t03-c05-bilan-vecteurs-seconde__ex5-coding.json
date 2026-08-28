@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 514,
+  "_course_code": "2nde-t03-c05-bilan-vecteurs-seconde",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Approfondissement : Opérations et applications",
+  "title": "Algorithmes vectoriels - Approfondissement Seconde",
+  "blocks": [
+    {
+      "title": "Somme de deux vecteurs",
+      "content": "Écrire un algorithme (ou un programme en Python) qui prend en entrée les coordonnées de deux vecteurs $\\\\vec{u}(x_u, y_u)$ et $\\\\vec{v}(x_v, y_v)$ et affiche les coordonnées de leur somme $\\\\vec{u}+\\\\vec{v}$.",
+      "correctAnswer": "Algorithme :\\n1. Lire x_u, y_u, x_v, y_v.\\n2. Calculer x_s = x_u + x_v.\\n3. Calculer y_s = y_u + y_v.\\n4. Afficher (x_s, y_s).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme de deux vecteurs s'obtient en ajoutant leurs coordonnées correspondantes : $\\\\vec{u}+\\\\vec{v} = (x_u+x_v, y_u+y_v)$. L'algorithme implémente directement cette règle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Multiplication par un scalaire",
+      "content": "Écrire un algorithme qui, étant donnés un réel $k$ et un vecteur $\\\\vec{w}(x_w, y_w)$, calcule et affiche les coordonnées du vecteur $k\\\\vec{w}$.",
+      "correctAnswer": "Algorithme :\\n1. Lire k, x_w, y_w.\\n2. Calculer x_r = k * x_w.\\n3. Calculer y_r = k * y_w.\\n4. Afficher (x_r, y_r).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Multiplier un vecteur par un scalaire consiste à multiplier chacune de ses composantes par ce scalaire : $k\\\\vec{w} = (k x_w, k y_w)$. L'algorithme effectue ces deux multiplications.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Test de collinéarité de trois points",
+      "content": "Écrire un algorithme qui lit les coordonnées de trois points $A(x_A, y_A)$, $B(x_B, y_B)$ et $C(x_C, y_C)$ et détermine s'ils sont alignés en vérifiant si les vecteurs $\\\\overrightarrow{AB}$ et $\\\\overrightarrow{AC}$ sont colinéaires (produit vectoriel nul).",
+      "correctAnswer": "Algorithme :\\n1. Lire x_A, y_A, x_B, y_B, x_C, y_C.\\n2. Calculer AB_x = x_B - x_A, AB_y = y_B - y_A.\\n3. Calculer AC_x = x_C - x_A, AC_y = y_C - y_A.\\n4. Calculer det = AB_x * AC_y - AB_y * AC_x.\\n5. Si det = 0 alors afficher \"Alignés\" sinon afficher \"Non alignés\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les points A, B, C sont alignés si et seulement si les vecteurs $\\\\overrightarrow{AB}$ et $\\\\overrightarrow{AC}$ sont colinéaires, c'est-à-dire si leur déterminant (produit vectoriel en 2D) est nul : $(x_B-x_A)(y_C-y_A) - (y_B-y_A)(x_C-x_A) = 0$. L'algorithme calcule ce déterminant et teste s'il est nul.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

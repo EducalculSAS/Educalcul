@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Carré / inverse / racine ou autres prévues",
+  "title": "Approfondissement : Carré, inverse, racine",
+  "questions": [
+    {
+      "text": "Quel est l'ensemble de définition de la fonction $f(x)=√(x-2)$ ?",
+      "options": [
+        "$[2, +∞)$",
+        "$(2, +∞)$",
+        "$(-∞, 2]$",
+        "$(-∞, 2)$"
+      ],
+      "correctAnswer": "$[2, +∞)$",
+      "explanation": "L'expression sous la racine doit être positive ou nulle, donc $x-2 ≥ 0$, soit $x ≥ 2$. L'intervalle est donc $[2, +∞)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur quel intervalle la fonction $f(x)=x^2$ est-elle décroissante ?",
+      "options": [
+        "$(-∞, 0]$",
+        "$[0, +∞)$",
+        "$(-∞, 0)$",
+        "$(0, +∞)$"
+      ],
+      "correctAnswer": "$(-∞, 0]$",
+      "explanation": "Le carré est décroissant pour les nombres négatifs et atteint son minimum en 0, donc sur $(-∞, 0]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'image de $-2$ par la fonction inverse $g(x)=1/x$ ?",
+      "options": [
+        "$-1/2$",
+        "$1/2$",
+        "$-2$",
+        "$2$"
+      ],
+      "correctAnswer": "$-1/2$",
+      "explanation": "On calcule $g(-2)=1/(-2)=-1/2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'équation $√x = 3$.",
+      "options": [
+        "$3$",
+        "$9$",
+        "$6$",
+        "$12$"
+      ],
+      "correctAnswer": "$9$",
+      "explanation": "En élevant au carré les deux côtés, on obtient $x = 3^2 = 9$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour $x$ dans l'intervalle $(0,1)$, laquelle des affirmations suivantes est vraie concernant $x^2$ et $1/x$ ?",
+      "options": [
+        "$x^2 > 1/x$",
+        "$x^2 < 1/x$",
+        "$x^2 = 1/x$",
+        "Cela dépend de $x$"
+      ],
+      "correctAnswer": "$x^2 < 1/x$",
+      "explanation": "Pour $0 < x < 1$, on a $x^2 < x$ et $1/x > 1$, donc $x^2 < 1/x$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

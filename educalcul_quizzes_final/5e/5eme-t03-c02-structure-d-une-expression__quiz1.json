@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 390,
+  "_course_code": "5eme-t03-c02-structure-d-une-expression",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Somme / produit / différence",
+  "title": "Quiz : Structure d'une expression - Somme, produit, différence",
+  "questions": [
+    {
+      "text": "Dans l'expression $7x + 12$, comment nomme-t-on le terme $12$ par rapport à la variable $x$ ?",
+      "options": [
+        "Un coefficient",
+        "Un terme constant",
+        "Un facteur",
+        "Une variable"
+      ],
+      "correctAnswer": "Un terme constant",
+      "explanation": "L'expression $7x + 12$ est une somme de deux termes : $7x$ et $12$. Le terme $7x$ contient la variable $x$ (c'est un terme variable), tandis que $12$ ne contient pas de variable. On appelle donc $12$ un terme constant. Un coefficient est le nombre qui multiplie la variable (ici $7$). Un facteur est un élément d'un produit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'expression $5(3 + y)$. Quelle affirmation est exacte ?",
+      "options": [
+        "C'est une somme dont les termes sont $5$ et $3 + y$",
+        "C'est un produit dont les facteurs sont $5$ et $3 + y$",
+        "C'est une différence dont les termes sont $5$ et $3 + y$",
+        "C'est un produit dont les facteurs sont $5$, $3$ et $y$"
+      ],
+      "correctAnswer": "C'est un produit dont les facteurs sont $5$ et $3 + y$",
+      "explanation": "L'écriture $5(3 + y)$ signifie $5 \\times (3 + y)$. C'est donc un produit. Les facteurs sont ce qui est multiplié : ici le nombre $5$ et la somme $(3 + y)$. Attention : $3$ et $y$ sont les termes de la somme qui se trouve à l'intérieur de la parenthèse, ce ne sont pas des facteurs du produit principal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les expressions suivantes, laquelle est une différence ?",
+      "options": [
+        "$14 - 2x$",
+        "$14 \\times 2x$",
+        "$14 + 2x$",
+        "$14 \\div 2x$"
+      ],
+      "correctAnswer": "$14 - 2x$",
+      "explanation": "Une différence est une soustraction. L'expression $14 - 2x$ se lit 'quatorze moins deux x', c'est une différence de deux termes : $14$ et $2x$. L'option B est un produit, l'option C est une somme, l'option D est un quotient (division).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans l'expression $(x + 7) \\times 4$, quels sont les termes de la somme qui est un facteur du produit ?",
+      "options": [
+        "$x$ et $7$",
+        "$x$ et $4$",
+        "$7$ et $4$",
+        "$x + 7$ et $4$"
+      ],
+      "correctAnswer": "$x$ et $7$",
+      "explanation": "L'expression principale est un produit : $(x + 7) \\times 4$. Ses deux facteurs sont la somme $(x + 7)$ et le nombre $4$. La question porte sur les termes *de la somme* qui se trouve dans le premier facteur. Cette somme est $x + 7$, ses termes sont donc $x$ et $7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On développe l'expression $3(x - 5)$ pour obtenir $3x - 15$. Quelle opération a été effectuée sur la structure de l'expression ?",
+      "options": [
+        "On a transformé une somme en produit",
+        "On a transformé un produit en somme",
+        "On a transformé une différence en produit",
+        "On a transformé un produit en différence"
+      ],
+      "correctAnswer": "On a transformé un produit en différence",
+      "explanation": "L'expression de départ $3(x - 5)$ est un produit (facteurs $3$ et $x-5$). Après développement (distributivité), on obtient $3x - 15$ qui est une différence (termes $3x$ et $15$). On est donc passé d'une structure de produit à une structure de différence (qui est une soustraction, cas particulier de la somme algébrique).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

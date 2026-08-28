@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 76,
+  "_course_code": "ce1-t01-c09-droite-graduee-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Application : Droite graduée jusqu'à 1 000",
+  "title": "Quiz : Droite graduée jusqu'à 1000 - Applications",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, quelle est la valeur du point $A$ ?",
+      "options": [
+        "$300$",
+        "$400$",
+        "$500$",
+        "$600$"
+      ],
+      "correctAnswer": "$400$",
+      "explanation": "Le point $A$ se trouve sur la quatrième graduation après $0$. Comme chaque graduation représente $100$, la valeur est $4 × 100 = 400$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de $0$ à $1000$ par pas de $100$",
+        "min": 0,
+        "max": 1000,
+        "points": [
+          {
+            "value": 400,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée de $0$ à $1000$ par pas de $50$, quelle valeur correspond à la $12$e graduation (en partant de $0$) ?",
+      "options": [
+        "$550$",
+        "$600$",
+        "$650$",
+        "$700$"
+      ],
+      "correctAnswer": "$600$",
+      "explanation": "La $12$e graduation correspond à $12 × 50 = 600$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée par $10$, quelle graduation se trouve exactement au milieu entre $720$ et $740$ ?",
+      "options": [
+        "$725$",
+        "$730$",
+        "$735$",
+        "$740$"
+      ],
+      "correctAnswer": "$730$",
+      "explanation": "Le milieu entre $720$ et $740$ est $(720 + 740) / 2 = 730$, qui est une graduation car le pas est de $10$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En partant de $250$, on avance de $3$ graduations de $100$ sur une droite graduée jusqu'à $1000$. Sur quel nombre arrive-t-on ?",
+      "options": [
+        "$450$",
+        "$550$",
+        "$650$",
+        "$750$"
+      ],
+      "correctAnswer": "$550$",
+      "explanation": "On ajoute $3 × 100 = 300$ à $250$, ce qui donne $250 + 300 = 550$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une droite graduée par $100$, un point est placé exactement au milieu entre les graduations $600$ et $700$. Quel nombre ce point représente-t-il ?",
+      "options": [
+        "$625$",
+        "$650$",
+        "$675$",
+        "$700$"
+      ],
+      "correctAnswer": "$650$",
+      "explanation": "Le milieu entre $600$ et $700$ est $(600 + 700) / 2 = 650$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

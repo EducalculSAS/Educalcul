@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 418,
+  "_course_code": "5eme-t08-c04-fonctions-et-simulation-simples",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Définir une procédure",
+  "title": "Quiz : Définir une procédure en algorithmique",
+  "questions": [
+    {
+      "text": "Quelle est la caractéristique principale qui distingue une procédure d'une fonction en algorithmique ?",
+      "options": [
+        "Une procédure ne peut pas avoir de paramètres.",
+        "Une procédure ne renvoie pas de valeur de retour.",
+        "Une procédure s'exécute plus vite qu'une fonction.",
+        "Une procédure ne peut être appelée qu'une seule fois."
+      ],
+      "correctAnswer": "Une procédure ne renvoie pas de valeur de retour.",
+      "explanation": "La différence fondamentale est qu'une fonction renvoie une valeur (via l'instruction 'renvoyer' ou 'return') alors qu'une procédure effectue une action (affichage, dessin, modification de variable globale) sans renvoyer de résultat exploitable dans une expression. Les deux peuvent avoir des paramètres et être appelées plusieurs fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les écritures suivantes, laquelle représente correctement l'en-tête d'une procédure nommée 'Saluer' qui prend un paramètre 'prenom' de type chaîne de caractères ?",
+      "options": [
+        "fonction Saluer(prenom : chaîne) : chaîne",
+        "procédure Saluer(prenom : chaîne)",
+        "procédure Saluer() ← prenom",
+        "variable Saluer(prenom : chaîne)"
+      ],
+      "correctAnswer": "procédure Saluer(prenom : chaîne)",
+      "explanation": "L'en-tête d'une procédure commence par le mot-clé 'procédure', suivi du nom et de la liste des paramètres entre parenthèses avec leur type. Il n'y a pas de type de retour (contrairement à la fonction) ni de flèche d'affectation. L'option 'fonction' est incorrecte car elle définit une fonction. L'option 'variable' ne définit pas de sous-programme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On définit la procédure suivante :\\nprocédure AfficherCarre(cote : entier)\\n    afficher cote × cote\\nfin procédure\\nQue se passe-t-il lors de l'appel AfficherCarre(5) ?",
+      "options": [
+        "La procédure renvoie la valeur $25$ au programme principal.",
+        "La procédure affiche la valeur $25$ à l'écran.",
+        "La procédure stocke la valeur $25$ dans la variable 'cote'.",
+        "La procédure provoque une erreur car 'cote' n'est pas initialisé."
+      ],
+      "correctAnswer": "La procédure affiche la valeur $25$ à l'écran.",
+      "explanation": "La procédure calcule $5 \\times 5 = 25$ et exécute l'instruction 'afficher', ce qui écrit le résultat sur la sortie standard (l'écran). Comme c'est une procédure, elle ne 'renvoie' pas la valeur au sens algorithmique (pas de mot-clé 'renvoyer'). Le paramètre 'cote' reçoit la valeur $5$ à l'appel, il est donc initialisé. La variable 'cote' est un paramètre local, sa valeur ne change pas dans le programme principal.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un programme principal, on écrit :\\nvariable x : entier\\nx ← 10\\nAppeler Modifier(x)\\nafficher x\\nSi la procédure Modifier est définie par :\\nprocédure Modifier(n : entier)\\n    n ← 20\\nfin procédure\\nQuelle valeur est affichée à la fin ?",
+      "options": [
+        "La valeur $20$.",
+        "La valeur $10$.",
+        "La valeur $0$.",
+        "Une erreur d'exécution."
+      ],
+      "correctAnswer": "La valeur $10$.",
+      "explanation": "En algorithmique standard (passage de paramètres par valeur), la procédure reçoit une copie de la valeur de 'x' (donc $10$) dans sa variable locale 'n'. L'instruction 'n ← 20' modifie uniquement cette copie locale. La variable 'x' du programme principal reste inchangée à $10$. Si c'était un passage par référence (variable), la réponse serait $20$, mais au niveau 5e on considère généralement le passage par valeur pour les types simples.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite écrire une procédure 'TracerCarre' qui utilise une tortue graphique pour dessiner un carré. La procédure doit pouvoir dessiner des carrés de tailles différentes. Quel doit être le paramètre de cette procédure ?",
+      "options": [
+        "Le nombre de côtés (toujours $4$ pour un carré).",
+        "La couleur du trait.",
+        "La longueur du côté.",
+        "L'angle de rotation (toujours $90$ degrés)."
+      ],
+      "correctAnswer": "La longueur du côté.",
+      "explanation": "Pour pouvoir dessiner des carrés de tailles différentes, la procédure a besoin de connaître la dimension variable : la longueur du côté. Le nombre de côtés ($4$) et l'angle ($90^{\\circ}$) sont des constantes géométriques d'un carré, ils n'ont pas besoin d'être des paramètres (ils seront écrits en dur dans le corps de la procédure). La couleur pourrait être un paramètre optionnel mais ce n'est pas celui qui détermine la taille.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

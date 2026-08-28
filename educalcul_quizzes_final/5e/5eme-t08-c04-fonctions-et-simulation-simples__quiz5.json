@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 418,
+  "_course_code": "5eme-t08-c04-fonctions-et-simulation-simples",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Définir une procédure",
+  "title": "Quiz : Définir une procédure",
+  "questions": [
+    {
+      "text": "Dans un langage de programmation par blocs (type Scratch), quel bloc permet de créer une nouvelle procédure personnalisée nommée \"carre\" ?",
+      "options": [
+        "Le bloc \"quand drapeau vert cliqué\"",
+        "Le bloc \"définir carre\" (violet)",
+        "Le bloc \"carre\" (violet) sans le mot \"définir\"",
+        "Le bloc \"répéter 4 fois\""
+      ],
+      "correctAnswer": "Le bloc \"définir carre\" (violet)",
+      "explanation": "Pour créer une procédure, il faut utiliser le bloc de définition \"définir [nom]\" de la catégorie \"Mes blocs\" (couleur violette). Le bloc \"quand drapeau vert cliqué\" lance le programme principal. Le bloc \"carre\" seul (sans \"définir\") sert à appeler la procédure une fois qu'elle est définie. Le bloc \"répéter\" est une structure de contrôle, pas une définition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut définir une procédure \"saluer\" qui prend un paramètre \"prenom\" pour afficher \"Bonjour [prenom]\". Quelle est la bonne structure des blocs ?",
+      "options": [
+        "définir saluer (prenom) -> afficher \"Bonjour\" + prenom",
+        "définir saluer -> demander prenom -> afficher \"Bonjour\" + prenom",
+        "définir saluer (prenom) -> afficher prenom + \"Bonjour\"",
+        "quand prenom reçu -> afficher \"Bonjour\" + prenom"
+      ],
+      "correctAnswer": "définir saluer (prenom) -> afficher \"Bonjour\" + prenom",
+      "explanation": "La définition d'une procédure avec paramètre s'écrit \"définir nom (paramètre)\". Le paramètre \"prenom\" est une entrée fournie lors de l'appel, il ne faut pas le redemander avec \"demander\" à l'intérieur. L'ordre de l'affichage doit correspondre à la phrase demandée : \"Bonjour\" suivi du prénom.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La procédure \"calculer_carre\" est définie ainsi : \"définir calculer_carre (nombre) -> retourner nombre * nombre\". Que se passe-t-il si on place le bloc \"calculer_carre (5)\" dans le script principal ?",
+      "options": [
+        "Le programme affiche $25$ à l'écran",
+        "La procédure s'exécute et renvoie la valeur $25$ mais rien ne s'affiche",
+        "Le programme affiche une erreur car il manque le mot \"afficher\"",
+        "La procédure ne fait rien car $5$ n'est pas une variable"
+      ],
+      "correctAnswer": "La procédure s'exécute et renvoie la valeur $25$ mais rien ne s'affiche",
+      "explanation": "Le mot-clé \"retourner\" (ou \"renvoyer\") envoie une valeur au programme appelant mais ne l'affiche pas automatiquement. Pour voir le résultat, il faut utiliser un bloc \"afficher\" ou \"dire\" autour de l'appel : \"afficher calculer_carre (5)\". $5$ est un argument valide (un littéral numérique).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a défini la procédure \"tracer_carre (cote)\". Dans le script principal, on écrit :\\ntracer_carre (10)\\ntracer_carre (20)\\nQue dessine le programme ?",
+      "options": [
+        "Un seul carré de côté $10$",
+        "Un seul carré de côté $20$",
+        "Deux carrés : un de côté $10$ puis un de côté $20$",
+        "Un carré de côté $30$ (somme des deux)"
+      ],
+      "correctAnswer": "Deux carrés : un de côté $10$ puis un de côté $20$",
+      "explanation": "L'intérêt d'une procédure avec paramètre est de pouvoir la réutiliser avec des valeurs différentes. Chaque appel \"tracer_carre (valeur)\" exécute le code de la procédure avec cette valeur. Les deux appels se succèdent, donc deux carrés sont tracés l'un après l'autre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la définition d'une procédure \"perimetre_rectangle (longueur, largeur)\", les mots \"longueur\" et \"largeur\" s'appellent :",
+      "options": [
+        "Des variables globales",
+        "Des arguments",
+        "Des paramètres (ou entrées)",
+        "Des valeurs de retour"
+      ],
+      "correctAnswer": "Des paramètres (ou entrées)",
+      "explanation": "Dans la *définition* de la procédure, les variables listées entre parenthèses sont les **paramètres** (ou entrées formelles). Ce sont des emplacements qui recevront les valeurs lors de l'appel. Les **arguments** sont les valeurs *réelles* fournies lors de l'appel (ex: perimetre_rectangle(5, 3) -> 5 et 3 sont les arguments). La valeur de retour est le résultat envoyé par \"retourner\".",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

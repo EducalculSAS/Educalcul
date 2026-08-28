@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 169,
+  "_course_code": "ce2-t04-c01-tables-de-multiplication",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Application : Tables de multiplication",
+  "title": "Quiz : Applications des tables de multiplication (CE2)",
+  "questions": [
+    {
+      "text": "Une boîte contient $6$ crayons. Combien de crayons y a-t-il au total dans $4$ boîtes ?",
+      "options": [
+        "$24$ crayons",
+        "$10$ crayons",
+        "$20$ crayons",
+        "$28$ crayons"
+      ],
+      "correctAnswer": "$24$ crayons",
+      "explanation": "Il faut multiplier le nombre de boîtes par le nombre de crayons par boîte : $4 \\times 6 = 24$. L'option $10$ correspond à une addition $4 + 6$. L'option $20$ correspond à $4 \\times 5$. L'option $28$ correspond à $4 \\times 7$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 4,
+        "cols": 6,
+        "highlighted": 24,
+        "caption": "Représentation de 4 boîtes de 6 crayons"
+      }
+    },
+    {
+      "text": "Léo a $5$ paquets de $8$ autocollants. Mia a $6$ paquets de $7$ autocollants. Qui a le plus d'autocollants et de combien ?",
+      "options": [
+        "Mia, $2$ de plus",
+        "Léo, $2$ de plus",
+        "Mia, $10$ de plus",
+        "Léo, $10$ de plus"
+      ],
+      "correctAnswer": "Mia, $2$ de plus",
+      "explanation": "Léo a $5 \\times 8 = 40$ autocollants. Mia a $6 \\times 7 = 42$ autocollants. Mia en a $42 - 40 = 2$ de plus que Léo.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un jardinier plante $54$ fleurs. Il les range en $6$ rangées égales. Combien y a-t-il de fleurs dans chaque rangée ?",
+      "options": [
+        "$9$ fleurs",
+        "$7$ fleurs",
+        "$8$ fleurs",
+        "$6$ fleurs"
+      ],
+      "correctAnswer": "$9$ fleurs",
+      "explanation": "Il faut trouver le nombre qui multiplié par $6$ donne $54$. On cherche $6 \\times ? = 54$. Comme $6 \\times 9 = 54$, il y a $9$ fleurs par rangée. $6 \\times 7 = 42$, $6 \\times 8 = 48$, $6 \\times 6 = 36$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour une fête, on prépare $7$ plateaux de $6$ gâteaux. On mange $15$ gâteaux. Combien de gâteaux reste-t-il ?",
+      "options": [
+        "$27$ gâteaux",
+        "$42$ gâteaux",
+        "$37$ gâteaux",
+        "$33$ gâteaux"
+      ],
+      "correctAnswer": "$27$ gâteaux",
+      "explanation": "D'abord, on calcule le total de gâteaux : $7 \\times 6 = 42$. Ensuite, on soustrait ceux qui ont été mangés : $42 - 15 = 27$. L'option $42$ oublie la soustraction. L'option $37$ correspond à $42 - 5$. L'option $33$ correspond à une erreur sur la multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle égalité permet de calculer $12 \\times 3$ en utilisant la distributivité de la multiplication sur l'addition ?",
+      "options": [
+        "$12 \\times 3 = (10 \\times 3) + (2 \\times 3)$",
+        "$12 \\times 3 = (10 \\times 3) + 2$",
+        "$12 \\times 3 = 10 + (2 \\times 3)$",
+        "$12 \\times 3 = (10 + 2) \\times 3$"
+      ],
+      "correctAnswer": "$12 \\times 3 = (10 \\times 3) + (2 \\times 3)$",
+      "explanation": "La distributivité s'écrit $a \\times (b + c) = (a \\times b) + (a \\times c)$. Ici $12 = 10 + 2$, donc $12 \\times 3 = (10 + 2) \\times 3 = (10 \\times 3) + (2 \\times 3) = 30 + 6 = 36$. La dernière option est une réécriture mais pas l'application de la distributivité pour décomposer le calcul. Les deux du milieu sont fausses car il manque la multiplication par $3$ sur un des termes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

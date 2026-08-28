@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 495,
+  "_course_code": "3eme-t07-c06-bilan-general-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Méthodes",
+  "title": "Quiz Algorithmique - Méthodes",
+  "questions": [
+    {
+      "text": "Quelle structure de boucle permet d'additionner les entiers de $1$ à $n$ en pseudo‑code ?",
+      "options": [
+        "Pour i de 1 à n faire somme ← somme + i",
+        "Tant que i ≤ n faire somme ← somme + i ; i ← i + 1",
+        "Si i ≤ n alors somme ← somme + i",
+        "Répéter n fois somme ← somme + 1"
+      ],
+      "correctAnswer": "Pour i de 1 à n faire somme ← somme + i",
+      "explanation": "La boucle « Pour » initialise i à 1, l'incrémente automatiquement jusqu'à n et exécute le corps à chaque itération, ce qui correspond exactement à la somme des entiers de 1 à n. Les autres options utilisent une condition « Tant que » sans initialisation, un test « Si » unique ou une répétition fixe qui n'additionne pas les valeurs successives.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel mot‑clé introduit une structure conditionnelle qui exécute un bloc seulement si la condition est vraie ?",
+      "options": [
+        "Si … Alors … FinSi",
+        "Tant que … Faire … FinTantQue",
+        "Pour … Faire … FinPour",
+        "Répéter … Jusqu'à …"
+      ],
+      "correctAnswer": "Si … Alors … FinSi",
+      "explanation": "« Si … Alors … FinSi » est la syntaxe standard pour tester une condition et exécuter le bloc suivant seulement quand elle est vraie. « Tant que » crée une boucle, « Pour » une boucle bornée et « Répéter … Jusqu'à » une boucle à condition de sortie.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le rôle principal d'une variable dans un algorithme ?",
+      "options": [
+        "Stocker une valeur qui peut changer au cours de l'exécution",
+        "Définir une constante immuable",
+        "Afficher du texte à l'écran",
+        "Contrôler la vitesse d'exécution"
+      ],
+      "correctAnswer": "Stocker une valeur qui peut changer au cours de l'exécution",
+      "explanation": "Une variable est un emplacement de mémoire nommé dont le contenu peut être modifié pendant le déroulement de l'algorithme. Les constantes ne changent pas, l'affichage est une instruction distincte et la vitesse d'exécution n'est pas gérée par les variables.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle instruction permet de quitter prématurément une boucle en pseudo‑code ?",
+      "options": [
+        "Sortir",
+        "Continuer",
+        "Retourner",
+        "Arrêter"
+      ],
+      "correctAnswer": "Sortir",
+      "explanation": "L'instruction « Sortir » (ou « Quitter » selon les conventions) termine immédiatement la boucle en cours. « Continuer » passe à l'itération suivante, « Retourner » quitte une fonction et « Arrêter » stoppe tout le programme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après l'exécution du pseudo‑code suivant, quelle est la valeur de $z$ ?\\n$x$ ← $5$\\n$y$ ← $3$\\nSi $x$ > $y$ Alors\\n    $z$ ← $x$ - $y$\\nSinon\\n    $z$ ← $y$ - $x$\\nFinSi",
+      "options": [
+        "2",
+        "8",
+        "-2",
+        "0"
+      ],
+      "correctAnswer": "2",
+      "explanation": "La condition $x > y$ est vraie car $5 > 3$. Le bloc « Alors » s'exécute et affecte $z ← 5 - 3 = 2$. Les autres options correspondent à une évaluation erronée de la condition ou à une inversion des termes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

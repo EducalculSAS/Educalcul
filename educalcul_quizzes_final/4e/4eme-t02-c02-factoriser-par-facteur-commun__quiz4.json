@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 426,
+  "_course_code": "4eme-t02-c02-factoriser-par-facteur-commun",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Application : Factoriser par facteur commun",
+  "title": "Quiz : Applications de la factorisation par facteur commun",
+  "questions": [
+    {
+      "text": "Factorise complètement l'expression $12x + 18$.",
+      "options": [
+        "$6(2x + 3)$",
+        "$3(4x + 6)$",
+        "$2(6x + 9)$",
+        "$6(2x + 18)$"
+      ],
+      "correctAnswer": "$6(2x + 3)$",
+      "explanation": "Le plus grand commun diviseur des coefficients $12$ et $18$ est $6$. On met $6$ en facteur : $12x + 18 = 6 \\times 2x + 6 \\times 3 = 6(2x + 3)$. Les options $3(4x+6)$ et $2(6x+9)$ sont des factorisations partielles car il reste un facteur commun dans la parenthèse. L'option $6(2x+18)$ est fausse car $6 \\times 18 = 108$, pas $18$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la forme factorisée de $15x^2y - 20xy^2$ ?",
+      "options": [
+        "$5xy(3x - 4y)$",
+        "$5x(3xy - 4y^2)$",
+        "$5y(3x^2 - 4xy)$",
+        "$5(3x^2y - 4xy^2)$"
+      ],
+      "correctAnswer": "$5xy(3x - 4y)$",
+      "explanation": "On cherche le plus grand facteur commun. Pour les coefficients $15$ et $20$, c'est $5$. Pour les variables, on prend la plus petite puissance de $x$ (donc $x$) et de $y$ (donc $y$). Le facteur commun est donc $5xy$. En le mettant devant : $15x^2y = 5xy \\times 3x$ et $-20xy^2 = 5xy \\times (-4y)$. D'où $5xy(3x - 4y)$. Les autres options ne mettent pas tout le facteur commun en évidence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factorise l'expression $3x(x + 2) + 5(x + 2)$.",
+      "options": [
+        "$(x + 2)(3x + 5)$",
+        "$8x(x + 2)$",
+        "$3x + 5(x + 2)$",
+        "$15x(x + 2)^2$"
+      ],
+      "correctAnswer": "$(x + 2)(3x + 5)$",
+      "explanation": "Ici, le facteur commun est la parenthèse $(x + 2)$. On la met en facteur : $(x + 2)$ multiplié par ce qui reste, c'est-à-dire $3x$ du premier terme et $5$ du second. Cela donne $(x + 2)(3x + 5)$. L'option $8x(x+2)$ correspond à l'erreur d'additionner $3x$ et $5$ pour faire $8x$. Les deux dernières ne sont pas des formes factorisées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résous l'équation $x^2 - 4x = 0$ en factorisant.",
+      "options": [
+        "$0$ et $4$",
+        "$0$ et $-4$",
+        "$4$ seulement",
+        "$-4$ seulement"
+      ],
+      "correctAnswer": "$0$ et $4$",
+      "explanation": "On factorise par $x$ : $x(x - 4) = 0$. Un produit est nul si l'un au moins des facteurs est nul. Donc $x = 0$ ou $x - 4 = 0$. La seconde équation donne $x = 4$. Les solutions sont donc $0$ et $4$. L'option $0$ et $-4$ correspond à l'erreur de signe dans la factorisation ($x+4$ au lieu de $x-4$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'aire d'un rectangle est $6x^2 + 9x$. Sa largeur est $3x$. Exprime sa longueur en fonction de $x$.",
+      "options": [
+        "$2x + 3$",
+        "$2x + 9$",
+        "$3x(2x + 3)$",
+        "$6x + 9$"
+      ],
+      "correctAnswer": "$2x + 3$",
+      "explanation": "L'aire d'un rectangle est Longueur $\\times$ Largeur. Donc Longueur $= \\frac{\\text{Aire}}{\\text{Largeur}} = \\frac{6x^2 + 9x}{3x}$. On factorise le numérateur par $3x$ : $6x^2 + 9x = 3x(2x + 3)$. En simplifiant par $3x$ (non nul), on obtient la longueur $2x + 3$. L'option $3x(2x+3)$ est l'aire factorisée, pas la longueur. L'option $2x+9$ vient d'une erreur de division ($9x/3x = 3$, pas $9$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

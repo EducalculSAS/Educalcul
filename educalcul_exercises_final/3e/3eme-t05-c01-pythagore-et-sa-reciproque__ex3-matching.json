@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 479,
+  "_course_code": "3eme-t05-c01-pythagore-et-sa-reciproque",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Rédiger",
+  "title": "Rédiger le théorème de Pythagore et sa réciproque",
+  "blocks": [
+    {
+      "title": "Rédiger le théorème et sa réciproque",
+      "content": "Relie chaque énoncé à la rédaction correcte correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés.",
+          "right": "Théorème de Pythagore"
+        },
+        {
+          "left": "Si dans un triangle le carré du plus grand côté est égal à la somme des carrés des deux autres côtés, alors le triangle est rectangle.",
+          "right": "Réciproque du théorème de Pythagore"
+        },
+        {
+          "left": "Dans tout triangle, la somme des carrés des deux côtés adjacents à un angle est égale au carré du côté opposé.",
+          "right": "Faux (ne s'applique qu'aux triangles rectangles)"
+        },
+        {
+          "left": "Le théorème de Pythagore s'applique uniquement aux triangles rectangles.",
+          "right": "Vrai"
+        }
+      ],
+      "items": [],
+      "explanation": "Le premier énoncé est la formulation classique du théorème de Pythagore. Le second est exactement l'énoncé de sa réciproque. Le troisième énoncé est faux car la relation ne vaut que dans un triangle rectangle. Le quatrième énoncé est vrai : le théorème ne concerne que les triangles rectangles.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérifier numériquement un triangle rectangle",
+      "content": "Relie chaque triplet de longueurs à la conclusion qui s'impose.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Triangle ABC avec $AB=3$, $AC=4$, $BC=5$",
+          "right": "Triangle rectangle en A (Théorème de Pythagore)"
+        },
+        {
+          "left": "Triangle DEF avec $DE=5$, $DF=12$, $EF=13$",
+          "right": "Triangle rectangle en D"
+        },
+        {
+          "left": "Triangle GHI avec $GH=6$, $GI=8$, $HI=11$",
+          "right": "Pas un triangle rectangle (Réciproque non vérifiée)"
+        },
+        {
+          "left": "Triangle JKL avec $JK=7$, $JL=24$, $KL=25$",
+          "right": "Triangle rectangle en J"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour chaque triplet, on calcule la somme des carrés des deux plus petits côtés et on la compare au carré du plus grand côté. $3^2+4^2=9+16=25=5^2$ donc rectangle en A. $5^2+12^2=25+144=169=13^2$ donc rectangle en D. $6^2+8^2=36+64=100\\neq121=11^2$ donc non rectangle. $7^2+24^2=49+576=625=25^2$ donc rectangle en J.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rédiger les étapes d'une démonstration",
+      "content": "Relie chaque étape de la démonstration à sa justification.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "On calcule $AB^2 + AC^2$.",
+          "right": "Application du théorème de Pythagore"
+        },
+        {
+          "left": "On compare $AB^2 + AC^2$ à $BC^2$.",
+          "right": "Utilisation de la réciproque du théorème de Pythagore"
+        },
+        {
+          "left": "On conclut que le triangle est rectangle en A.",
+          "right": "Conclusion de la réciproque"
+        },
+        {
+          "left": "On écrit $AB^2 + AC^2 = BC^2$.",
+          "right": "Énoncé du théorème de Pythagore"
+        }
+      ],
+      "items": [],
+      "explanation": "La première étape consiste à appliquer le théorème de Pythagore pour exprimer la relation entre les côtés. La deuxième étape compare les deux membres pour vérifier l'égalité, ce qui correspond à l'utilisation de la réciproque. La troisième étape tire la conclusion que l'angle est droit grâce à la réciproque. La quatrième étape est simplement l'écriture de l'égalité issue du théorème direct.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

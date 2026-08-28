@@ -1,0 +1,463 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.977170+00:00",
+  "id": 483,
+  "code": "3eme-t05-c05",
+  "title": "Trigonométrie dans le triangle rectangle",
+  "description": "Cours structuré Educalcul : Trigonométrie dans le triangle rectangle.",
+  "subject": "Pythagore, Thalès et trigonométrie",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Pythagore, Thalès et trigonométrie",
+    "titre_du_cours": "Trigonométrie dans le triangle rectangle",
+    "objectif_global": "Trigonométrie dans le triangle rectangle",
+    "mini_lecons_imposees": [
+      "Sinus / cosinus / tangente selon programme.",
+      "Calcul longueur.",
+      "Calcul angle."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Pythagore, Thalès et trigonométrie",
+      "lessons": [
+        {
+          "title": "Sinus / cosinus / tangente selon programme.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les côtés par rapport à un angle aigu"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon de trigonométrie ! Tu vas découvrir des outils formidables pour calculer des longueurs ou des angles dans les triangles rectangles, sans même avoir besoin de mesurer. Avant de manipuler les formules, il faut savoir nommer les côtés correctement. Imagine un triangle rectangle $ABC$, rectangle en $B$. L'angle qui nous intéresse, c'est l'angle aigu $\\widehat{BAC}$, que l'on note souvent $\\alpha$ pour aller plus vite. Le plus long des trois côtés, celui qui se trouve en face de l'angle droit, porte un nom bien précis : c'est l'$\\textbf{hypoténuse}$. Elle est comme le \"chef\" du triangle, toujours la plus grande."
+            },
+            {
+              "type": "definition",
+              "term": "Hypoténuse",
+              "definition": "Dans un triangle rectangle, le côté opposé à l'angle droit. C'est toujours le plus long des trois côtés.",
+              "example": "Dans le triangle $ABC$ rectangle en $B$, le côté $[AC]$ est l'hypoténuse."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les deux autres côtés, ceux qui forment l'angle droit, changent de nom selon l'angle aigu que l'on regarde. Puisque nous nous intéressons à l'angle $\\alpha$ au sommet $A$, le côté $[AB]$ qui touche cet angle (sans être l'hypoténuse) s'appelle le $\\textbf{côté adjacent}$. Le dernier côté, $[BC]$, qui se trouve tout au bout, en face de l'angle $\\alpha$, est le $\\textbf{côté opposé}$. C'est une histoire de point de vue : si tu te places à l'angle $C$, les rôles d'adjacent et d'opposé s'inversent ! Prends le temps de visualiser cette danse des noms, c'est la clé de tout ce qui suit."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "c",
+                "a",
+                "b"
+              ],
+              "rightAngleAt": 1,
+              "caption": "Triangle rectangle en B. Angle étudié : $\\alpha$ en A. Hypoténuse $b$, adjacent $c$, opposé $a$."
+            },
+            {
+              "type": "definition",
+              "term": "Côté adjacent",
+              "definition": "Le côté qui forme l'angle aigu étudié avec l'hypoténuse. C'est le côté \"à côté\" de l'angle.",
+              "example": "Pour l'angle $\\alpha$ en $A$, le côté $[AB]$ est adjacent."
+            },
+            {
+              "type": "definition",
+              "term": "Côté opposé",
+              "definition": "Le côté qui ne touche pas l'angle aigu étudié. Il se trouve en face de cet angle.",
+              "example": "Pour l'angle $\\alpha$ en $A$, le côté $[BC]$ est opposé."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais étiqueter les côtés sans hésiter, nous pouvons passer à la découverte des trois rapports magiques qui lient les angles aux longueurs. C'est ici que la trigonométrie prend tout son sens : elle transforme une question de géométrie en un simple calcul de division."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les trois rapports fondamentaux : cosinus, sinus, tangente"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans tout triangle rectangle, si l'on divise la longueur d'un côté par la longueur d'un autre côté, le résultat ne dépend que de la valeur de l'angle aigu, pas de la taille du triangle. C'est une propriété incroyable : un triangle de $3\\,cm$ de haut et un autre de $3\\,m$ de haut, s'ils ont le même angle aigu, donneront exactement les mêmes résultats de division. Trois rapports sont particulièrement utiles et ont reçu un nom. Le premier, le $\\textbf{cosinus}$, compare le côté adjacent à l'hypoténuse. Le second, le $\\textbf{sinus}$, compare le côté opposé à l'hypoténuse. Le troisième, la $\\textbf{tangente}$, compare le côté opposé au côté adjacent, sans passer par l'hypoténuse."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\cos(\\alpha) = \\frac{\\text{côté adjacent}}{\\text{hypoténuse}} \\quad ; \\quad \\sin(\\alpha) = \\frac{\\text{côté opposé}}{\\text{hypoténuse}} \\quad ; \\quad \\tan(\\alpha) = \\frac{\\text{côté opposé}}{\\text{côté adjacent}}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne jamais les mélanger, les anglophones utilisent une phrase mnémotechnique célèbre : SOH-CAH-TOA. En français, on peut se créer sa propre petite phrase : \"\\textbf{S}inus = \\textbf{O}pposé sur \\textbf{H}ypoténuse\", \"\\textbf{C}osinus = \\textbf{A}djacent sur \\textbf{H}ypoténuse\", \"\\textbf{T}angente = \\textbf{O}pposé sur \\textbf{A}djacent\". Invente la tienne si tu veux, l'important est d'avoir un repère solide en tête. Regardons un exemple concret : dans un triangle rectangle où l'hypoténuse mesure $10\\,cm$, l'adjacent $8\\,cm$ et l'opposé $6\\,cm$, le cosinus de l'angle vaut $0,8$, le sinus $0,6$ et la tangente $0,75$. Ces nombres sont purs, sans unité, car ce sont des rapports de longueurs."
+            },
+            {
+              "type": "fraction",
+              "numerator": 6,
+              "denominator": 10,
+              "shape": "bar",
+              "caption": "Visualisation du sinus : opposé (6) sur hypoténuse (10) = 0,6"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de calculer des rapports à partir de longueurs connues. Mais le plus souvent, c'est l'inverse qui nous intéresse : on connaît l'angle (grâce à un rapporteur ou à l'énoncé) et on veut retrouver le rapport pour calculer une longueur. Pour cela, ta calculatrice est ton meilleure alliée. Elle connaît par cœur le sinus, le cosinus et la tangente de tous les angles. Attention, piège classique : elle doit être en mode $\\textbf{degrés}$ (souvent affiché $\\textbf{DEG}$ ou $\\textbf{D}$ en haut de l'écran), pas en radians ($\\\\text{RAD}$) ni en grades ($\\text{GRAD}$). Vérifie ce réglage avant chaque séance, c'est la cause numéro un des erreurs bêtes !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier le mode degrés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde l'indicateur en haut de l'écran. S'il y a $\\text{RAD}$ ou $\\text{GRAD}$, appuie sur la touche de changement de mode (souvent $\\text{MODE}$ ou $\\text{SETUP}$) jusqu'à voir $\\text{DEG}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Taper la fonction puis l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appuie sur la touche $\\cos$, $\\sin$ ou $\\tan$, tape la valeur de l'angle (par exemple $30$), ferme la parenthèse si nécessaire, et valide par $\\text{EXE}$ ou $=$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'écran affiche un nombre décimal. C'est la valeur du rapport. Note-la avec au moins 3 ou 4 chiffres après la virgule pour la précision."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les cartes en main pour nommer les côtés, écrire les formules et utiliser ta calculatrice. La dernière étape de cette leçon est de t'entraîner à choisir le bon rapport selon les données du problème. C'est ce que nous ferons dans l'exercice final, avant de passer au calcul de longueurs vraies dans la leçon suivante."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le triangle $DEF$ rectangle en $E$, on s'intéresse à l'angle $\\widehat{EDF}$. Parmi les côtés $[DE]$, $[EF]$, $[DF]$, lequel est l'hypoténuse ? Lequel est adjacent à l'angle ? Lequel est opposé ?",
+              "answer": "Hypoténuse : $[DF]$ (face à l'angle droit). Adjacent : $[DE]$ (touche l'angle en $D$). Opposé : $[EF]$ (face à l'angle en $D$).",
+              "hint": "Repère d'abord l'angle droit en $E$. L'hypoténuse est le côté qui ne touche pas cet angle droit.",
+              "explanation": "L'angle droit est en $E$, donc l'hypoténuse est le côté opposé, $[DF]$. L'angle étudié est en $D$. Le côté $[DE]$ forme cet angle avec l'hypoténuse, c'est l'adjacent. Le côté $[EF]$ ne touche pas l'angle $D$, c'est l'opposé."
+            },
+            {
+              "question": "Dans un triangle rectangle, l'hypoténuse mesure $13\\,cm$, le côté adjacent à un angle aigu $\\alpha$ mesure $12\\,cm$ et le côté opposé mesure $5\\,cm$. Calcule $\\cos(\\alpha)$, $\\sin(\\alpha)$ et $\\tan(\\alpha)$. Donne les résultats sous forme décimale arrondie au centième.",
+              "answer": "\\cos(\\alpha) = 0,92 ; \\sin(\\alpha) = 0,38 ; \\tan(\\alpha) = 0,42",
+              "hint": "Applique les formules : adjacent/hypoténuse, opposé/hypoténuse, opposé/adjacent. Fais les divisions sur ta calculatrice.",
+              "explanation": "\\cos(\\alpha) = 12/13 \\approx 0,923 \\rightarrow 0,92. \\sin(\\alpha) = 5/13 \\approx 0,385 \\rightarrow 0,38. \\tan(\\alpha) = 5/12 \\approx 0,417 \\rightarrow 0,42."
+            },
+            {
+              "question": "Règle ta calculatrice en mode degrés. Calcule les valeurs suivantes et arrondis au millième : $\\cos(60^{\\circ})$, $\\sin(30^{\\circ})$, $\\tan(45^{\\circ})$, $\\cos(0^{\\circ})$, $\\sin(90^{\\circ})$.",
+              "answer": "\\cos(60^{\\circ}) = 0,5 ; \\sin(30^{\\circ}) = 0,5 ; \\tan(45^{\\circ}) = 1 ; \\cos(0^{\\circ}) = 1 ; \\sin(90^{\\circ}) = 1",
+              "hint": "Vérifie l'affichage $\\text{DEG}$. Tape par exemple $\\cos$, $60$, $)$, $=$.",
+              "explanation": "Ce sont des valeurs remarquables à connaître. $\\cos(60^{\\circ}) = 1/2 = 0,5$. $\\sin(30^{\\circ}) = 1/2 = 0,5$. $\\tan(45^{\\circ}) = 1$. $\\cos(0^{\\circ}) = 1$ (triangle aplati, adjacent = hypoténuse). $\\sin(90^{\\circ}) = 1$ (triangle aplati, opposé = hypoténuse)."
+            },
+            {
+              "question": "Dans un triangle rectangle $JKL$ rectangle en $K$, on connaît l'angle $\\widehat{J} = 40^{\\circ}$. On sait que le côté $[KL]$ mesure $7\\,cm$. Quelle formule (cosinus, sinus ou tangente) permet de calculer la longueur de l'hypoténuse $[JL]$ ? Écris l'égalité avec les nombres, sans la résoudre.",
+              "answer": "\\sin(40^{\\circ}) = \\frac{7}{JL}",
+              "hint": "Identifie les côtés par rapport à l'angle de $40^{\\circ}$ en $J$. $[KL]$ est-il adjacent, opposé ou hypoténuse ?",
+              "explanation": "L'angle est en $J$. Le côté $[KL]$ est en face de cet angle, c'est le côté opposé. L'hypoténuse est $[JL]$. Le rapport qui lie l'opposé et l'hypoténuse est le sinus. Donc $\\sin(40^{\\circ}) = \\frac{\\text{opposé}}{\\text{hypoténuse}} = \\frac{7}{JL}$."
+            }
+          ]
+        },
+        {
+          "title": "Calcul longueur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver une longueur quand on connaît un angle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous entrons maintenant dans le vif du sujet : utiliser la trigonométrie pour mesurer l'inaccessible. Imagine que tu sois au pied d'un arbre et que tu veuilles connaître sa hauteur sans grimper dedans. Tu mesures la distance au tronc (le côté adjacent) et l'angle de vue vers la cime (l'angle aigu). La trigonométrie va te donner la hauteur (le côté opposé) instantanément. C'est le pouvoir du calcul de longueur. La méthode suit toujours le même chemin balisé : identifier les côtés par rapport à l'angle connu, choisir le bon rapport trigonométrique, écrire l'égalité, isoler l'inconnue et calculer. Ne brûle jamais les étapes, même si l'exercice te semble simple, car c'est la rigueur du chemin qui t'évitera les pièges plus tard."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Faire un schéma et nommer les côtés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine le triangle rectangle. Repère l'angle connu. Étiquette : Hypoténuse (H), Adjacent (A), Opposé (O). C'est ton plan de route."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde quels côtés sont concernés : celui que tu connais et celui que tu cherches. Est-ce le couple (Adjacent, Hypoténuse) ? $\\rightarrow$ Cosinus. Le couple (Opposé, Hypoténuse) ? $\\rightarrow$ Sinus. Le couple (Opposé, Adjacent) ? $\\rightarrow$ Tangente."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'égalité avec les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace la fonction trigonométrique par sa valeur (calculatrice), le côté connu par sa longueur, et l'inconnue par une lettre ($x$ par exemple). Tu obtiens une équation simple."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Isoler l'inconnue et calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'inconnue est au numérateur : multiplie les deux côtés par le dénominateur. Si elle est au dénominateur : multiplie par l'inconnue, puis divise par la valeur du trigonométrique. Fais le calcul final et arrondis selon la consigne (souvent au millimètre ou au dixième de $cm$)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "?",
+                "5",
+                "?"
+              ],
+              "rightAngleAt": 1,
+              "caption": "Exemple : Triangle rectangle en B. Angle $\\alpha = 30^{\\circ}$ en A. Adjacent $AB = 5\\,cm$. On cherche l'hypoténuse $AC$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons la méthode sur ce schéma. L'angle connu est $30^{\\circ}$ en $A$. Le côté connu est $AB = 5\\,cm$, qui est adjacent à l'angle. Le côté cherché est $AC$, l'hypoténuse. Le couple (Adjacent, Hypoténuse) correspond au cosinus. J'écris : $\\cos(30^{\\circ}) = \\frac{5}{AC}$. Ma calculatrice me donne $\\cos(30^{\\circ}) \\approx 0,866$. J'ai donc $0,866 = \\frac{5}{AC}$. Comme $AC$ est au dénominateur, je multiplie les deux côtés par $AC$ : $0,866 \\times AC = 5$. Je divise ensuite par $0,866$ : $AC = \\frac{5}{0,866} \\approx 5,77\\,cm$. L'hypoténuse mesure environ $5,8\\,cm$. Remarque que l'hypoténuse est bien plus grande que l'adjacent ($5,77 > 5$), c'est cohérent !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu comment faire quand l'inconnue est l'hypoténuse. Mais souvent, l'inconnue est l'un des côtés de l'angle droit. Si tu cherches le côté opposé en connaissant l'adjacent, c'est la tangente qui intervient. C'est même souvent plus simple car l'inconnue se retrouve directement au numérateur. Prenons un cas concret : une rampe d'accès pour fauteuils roulants. La réglementation impose un angle maximal de $6^{\\circ}$ par rapport à l'horizontale. Si la rampe doit franchir une marche de $15\\,cm$ de haut (côté opposé), quelle longueur de rampe (hypoténuse) faut-il prévoir ? Ici, on a l'opposé ($15\\,cm$) et on cherche l'hypoténuse. Le couple (Opposé, Hypoténuse) appelle le sinus. L'égalité est $\\sin(6^{\\circ}) = \\frac{15}{L}$. Ta calculatrice donne $\\sin(6^{\\circ}) \\approx 0,1045$. Donc $L = \\frac{15}{0,1045} \\approx 143,5\\,cm$. La rampe doit faire au moins $1,44\\,m$ de long. C'est long, mais c'est la loi de la géométrie !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi que tu connaisses l'hypoténuse et que tu cherches un côté de l'angle droit. Par exemple, une échelle de $4\\,m$ (hypoténuse) est appuyée contre un mur. Pour être stable, elle doit faire un angle de $75^{\\circ}$ avec le sol. À quelle hauteur (côté opposé) touche-t-elle le mur ? Le couple (Opposé, Hypoténuse) $\\rightarrow$ Sinus. $\\sin(75^{\\circ}) = \\frac{h}{4}$. $\\sin(75^{\\circ}) \\approx 0,966$. Donc $h = 0,966 \\times 4 = 3,86\\,m$. L'échelle monte très haut car l'angle est grand. À l'inverse, si l'angle était petit, disons $30^{\\circ}$, la hauteur serait $4 \\times 0,5 = 2\\,m$ seulement. Tu vois que le cosinus et le sinus donnent des résultats inférieurs à $1$ (car l'hypoténuse est le plus grand côté), tandis que la tangente peut dépasser $1$ (si l'angle $> 45^{\\circ}$). Garde cette intuition en tête pour vérifier la plausibilité de tes résultats."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Le vrai défi, maintenant, c'est de choisir seul la bonne formule face à un énoncé varié. Pour t'aider, pose-toi toujours ces trois questions dans l'ordre : 1. Quel est l'angle connu ? 2. Quel côté est connu ? (H, A ou O). 3. Quel côté est cherché ? (H, A ou O). Le couple (Connu, Cherché) te désigne le rapport. Entraîne-toi sur l'exercice final qui mélange tous les cas de figure. C'est en variant les situations que le réflexe deviendra automatique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle rectangle $MNP$ rectangle en $N$, l'angle $\\widehat{M} = 50^{\\circ}$ et le côté $[MN]$ (adjacent) mesure $8\\,cm$. Calcule la longueur de l'hypoténuse $[MP]$. Arrondis au dixième de $cm$.",
+              "answer": "MP \\approx 12,4\\,cm",
+              "hint": "Couple (Adjacent, Hypoténuse) $\\rightarrow$ Cosinus. $\\cos(50^{\\circ}) = \\frac{8}{MP}$.",
+              "explanation": "\\cos(50^{\\circ}) \\approx 0,643. MP = 8 / 0,643 \\approx 12,44 \\rightarrow 12,4\\,cm. Vérification : l'hypoténuse (12,4) est bien plus grande que l'adjacent (8)."
+            },
+            {
+              "question": "Un cerf-volant vole au bout d'un fil de $25\\,m$ (hypoténuse). Le fil fait un angle de $40^{\\circ}$ avec l'horizontale. À quelle hauteur (côté opposé) se trouve le cerf-volant par rapport à la main de l'enfant ? Arrondis au mètre.",
+              "answer": "Hauteur \\approx 16\\,m",
+              "hint": "Couple (Opposé, Hypoténuse) $\\rightarrow$ Sinus. $\\sin(40^{\\circ}) = \\frac{h}{25}$.",
+              "explanation": "\\sin(40^{\\circ}) \\approx 0,643. h = 25 \\times 0,643 = 16,075 \\rightarrow 16\\,m. Le cerf-volant est à 16 mètres de haut."
+            },
+            {
+              "question": "Pour arroser son jardin, Luc pose un tuyau au sol. Le jet d'eau forme un angle de $35^{\\circ}$ avec le sol et retombe à $3\\,m$ de lui (côté adjacent). Quelle est la portée maximale du jet (hypoténuse) ? Arrondis au centimètre.",
+              "answer": "Portée \\approx 3,66\\,m",
+              "hint": "Couple (Adjacent, Hypoténuse) $\\rightarrow$ Cosinus. $\\cos(35^{\\circ}) = \\frac{3}{\\text{portée}}$.",
+              "explanation": "\\cos(35^{\\circ}) \\approx 0,819. Portée = 3 / 0,819 \\approx 3,662 \\rightarrow 3,66\\,m."
+            },
+            {
+              "question": "Un toit de maison forme un triangle rectangle par rapport à l'horizontale. L'angle de pente est de $30^{\\circ}$. La largeur de la maison (côté adjacent) est de $6\\,m$. Calcule la longueur de la pente de toit (hypoténuse) et la hauteur du faîtage (côté opposé) au milieu de la maison. Arrondis au cm.",
+              "answer": "Longueur pente = 6,93\\,m ; Hauteur faîtage = 3,46\\,m",
+              "hint": "Pour l'hypoténuse : cosinus. Pour l'opposé : tangente (avec l'adjacent connu) ou sinus (avec l'hypoténuse trouvée).",
+              "explanation": "1. Hypoténuse : $\\cos(30^{\\circ}) = 6 / L \\Rightarrow L = 6 / 0,866 = 6,928 \\rightarrow 6,93\\,m$. 2. Hauteur : $\\tan(30^{\\circ}) = h / 6 \\Rightarrow h = 6 \\times 0,577 = 3,464 \\rightarrow 3,46\\,m$. (Ou $\\sin(30^{\\circ}) = h / 6,928 \\Rightarrow h = 3,464$)."
+            }
+          ]
+        },
+        {
+          "title": "Calcul angle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Retrouver un angle quand on connaît deux longueurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière pièce du puzzle : le calcul d'angle. Jusqu'ici, nous allions de l'angle vers le rapport (avec la touche $\\cos$, $\\sin$, $\\tan$). Maintenant, nous avons le rapport (car nous connaissons deux longueurs) et nous voulons remonter à l'angle. C'est l'opération inverse. Sur ta calculatrice, au-dessus des touches $\\cos$, $\\sin$, $\\tan$, tu vois souvent des inscriptions en jaune ou en rouge : $\\cos^{-1}$, $\\sin^{-1}$, $\\tan^{-1}$ (ou parfois $\\text{arccos}$, $\\text{arcsin}$, $\\text{arctan}$). Ce petit $-1$ en exposant ne veut pas dire \"puissance moins 1\" (ce ne serait pas $1/\\cos$) mais bien \"fonction réciproque\" ou \"inverse\". C'est la machine à remonter le temps : tu lui donnes le rapport, elle te rend l'angle. Attention, vérifie encore une fois que tu es en mode $\\text{DEG}$ (degrés), sinon l'angle sorti n'aura aucun sens pour nous."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer le rapport",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les deux côtés connus par rapport à l'angle cherché. Fais la division correspondante (opposé/hypoténuse, adjacent/hypoténuse, ou opposé/adjacent). Note le résultat décimal avec plusieurs chiffres."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la touche inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appuie sur la touche $\\text{SHIFT}$ (ou $\\text{2nd}$, $\\text{INV}$ selon les modèles) puis sur la touche de la fonction correspondante ($\\\\cos$, $\\\\sin$ ou $\\\\tan$). L'écran affiche $\\cos^{-1}($, $\\sin^{-1}($ ou $\\tan^{-1}($."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Entrer le rapport et valider",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tape la valeur du rapport que tu as calculée, ferme la parenthèse, valide par $=$. L'écran affiche l'angle en degrés. Arrondis selon la demande (souvent au degré près ou au dixième de degré)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "definition",
+              "term": "Fonctions réciproques (arccos, arcsin, arctan)",
+              "definition": "Ce sont les fonctions inverses du cosinus, sinus, tangente. Elles permettent de retrouver un angle aigu quand on connaît la valeur du rapport trigonométrique. Notation : $\\cos^{-1}$, $\\sin^{-1}$, $\\tan^{-1}$ ou $\\text{arccos}$, $\\text{arcsin}$, $\\text{arctan}$.",
+              "example": "Si $\\cos(\\alpha) = 0,5$, alors $\\alpha = \\cos^{-1}(0,5) = 60^{\\circ}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons tout de suite. Soit un triangle rectangle dont l'hypoténuse mesure $10\\,cm$ et un côté de l'angle droit (adjacent à l'angle $\\alpha$ cherché) mesure $5\\,cm$. Le couple est (Adjacent, Hypoténuse), donc cosinus. Le rapport est $5/10 = 0,5$. Je tape $\\text{SHIFT}$ $\\cos$ $0,5$ $)$ $=$. L'affiche montre $60$. L'angle $\\alpha$ vaut $60^{\\circ}$. C'est un angle remarquable, facile à vérifier mentalement. Mais si le rapport était $0,6$ ? $\\cos^{-1}(0,6) \\approx 53,1^{\\circ}$. La calculatrice fait le travail difficile pour toi. Garde bien en tête que le rapport doit être compris entre $-1$ et $1$ pour le cosinus et le sinus (car l'hypoténuse est le plus grand côté), alors que la tangente peut prendre n'importe quelle valeur positive. Si tu trouves un rapport $>1$ pour un cosinus, c'est que tu as inversé les côtés !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, l'énoncé ne te dit pas explicitement quel rapport utiliser. Il te donne deux longueurs quelconques dans un triangle rectangle et te demande de calculer un angle. C'est à toi de faire le tri. Reprenons l'exemple de l'échelle. Une échelle de $5\\,m$ (hypoténuse) a son pied à $3\\,m$ du mur (côté adjacent à l'angle au sol). Quel est l'angle que l'échelle fait avec le sol ? Côté adjacent connu ($3$), hypoténuse connue ($5$). Rapport = $3/5 = 0,6$. C'est un cosinus. Angle = $\\cos^{-1}(0,6) \\approx 53,1^{\\circ}$. Et l'angle avec le mur (au sommet de l'échelle) ? C'est l'autre angle aigu. Dans un triangle rectangle, la somme des deux angles aigus vaut $90^{\\circ}$. Donc l'angle au mur est $90 - 53,1 = 36,9^{\\circ}$. Tu peux aussi le recalculer : côté opposé au mur = $3$ (c'était l'adjacent au sol), hypoténuse = $5$. $\\sin^{-1}(0,6) \\approx 36,9^{\\circ}$. Les deux méthodes donnent le même résultat, c'est rassurant !"
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "4",
+                "3",
+                "5"
+              ],
+              "rightAngleAt": 1,
+              "caption": "Triangle 3-4-5. Angles environ 37° et 53°."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe un cas particulier très pratique : le triangle rectangle isocèle. Ses deux côtés de l'angle droit sont égaux. La tangente de l'angle aigu est alors $1$ (opposé/adjacent = 1). L'angle dont la tangente vaut $1$ est $45^{\\circ}$ ($\\tan(45^{\\circ}) = 1$). Donc dans tout triangle rectangle isocèle, les deux angles aigus valent $45^{\\circ}$. C'est une propriété à retenir, elle permet de vérifier un résultat en un clin d'œil. Autre repère : si l'hypoténuse vaut deux fois le côté adjacent, le cosinus vaut $0,5$, donc l'angle est $60^{\\circ}$ (et l'autre $30^{\\circ}$). Ces triangles \"remarquables\" ($30-60-90$ et $45-45-90$) reviennent sans cesse dans les exercices. Apprends à les reconnaître à leurs rapports : $1/2$ pour le cosinus $60^{\\circ}$, $\\sqrt{3}/2 \\approx 0,866$ pour le cosinus $30^{\\circ}$, $1/\\sqrt{2} \\approx 0,707$ pour le cosinus $45^{\\circ}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir ce chapitre en beauté, imaginons une situation réelle : tu veux installer une rampe pour accéder à une terrasse surélevée de $40\\,cm$. Tu as une planche de $2\\,m$ ($200\\,cm$) de long. Quel angle la planche fera-t-elle avec le sol ? Est-ce conforme aux normes d'accessibilité (souvent $< 6^{\\circ}$ ou $< 10^{\\circ}$ selon les pays) ? Ici, l'hypoténuse est $200\\,cm$, l'opposé est $40\\,cm$. Le sinus de l'angle est $40/200 = 0,2$. L'angle est $\\sin^{-1}(0,2) \\approx 11,5^{\\circ}$. C'est un peu raide pour une norme stricte à $6^{\\circ}$, mais acceptable pour une norme à $10^{\\circ}$ (en France, c'est souvent $5\\%$ de pente max, soit $\\tan^{-1}(0,05) \\approx 2,9^{\\circ}$ pour les ERP, mais $10^{\\circ}$ pour du privé). Tu vois que la trigonométrie n'est pas qu'un jeu scolaire : elle aide à prendre des décisions concrètes, à construire, à mesurer le monde. Bravo d'être arrivé au bout de ce parcours !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer l'hypoténuse, le côté adjacent et le côté opposé par rapport à un angle aigu dans un triangle rectangle.",
+                "Je connais par cœur les trois formules : cosinus = adjacent/hypoténuse, sinus = opposé/hypoténuse, tangente = opposé/adjacent.",
+                "Je sais mettre ma calculatrice en mode degrés (DEG) et calculer cos, sin, tan d'un angle.",
+                "Je sais utiliser les touches inverses (cos⁻¹, sin⁻¹, tan⁻¹) pour retrouver un angle à partir d'un rapport.",
+                "Je sais choisir la bonne formule selon les côtés connus et cherchés (calcul de longueur ou calcul d'angle).",
+                "Je vérifie toujours la cohérence de mon résultat : l'hypoténuse est le plus grand côté, les angles aigus sont entre 0° et 90°."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule l'angle $\\alpha$ (arrondi au degré) dans chaque cas :\\n1. $\\cos(\\alpha) = 0,8$ \\n2. $\\sin(\\alpha) = 0,5$ \\n3. $\\tan(\\alpha) = 1$ \\n4. $\\cos(\\alpha) = 0,25$",
+              "answer": "1. $\\alpha \\approx 37^{\\circ}$ ; 2. $\\alpha = 30^{\\circ}$ ; 3. $\\alpha = 45^{\\circ}$ ; 4. $\\alpha \\approx 76^{\\circ}$",
+              "hint": "Utilise les touches SHIFT + cos, SHIFT + sin, SHIFT + tan. Vérifie le mode DEG.",
+              "explanation": "1. $\\cos^{-1}(0,8) \\approx 36,87^{\\circ} \\rightarrow 37^{\\circ}$. 2. $\\sin^{-1}(0,5) = 30^{\\circ}$ (valeur remarquable). 3. $\\tan^{-1}(1) = 45^{\\circ}$ (triangle rectangle isocèle). 4. $\\cos^{-1}(0,25) \\approx 75,5^{\\circ} \\rightarrow 76^{\\\\circ}$."
+            },
+            {
+              "question": "Dans un triangle rectangle $RST$ rectangle en $S$, on sait que $RS = 6\\,cm$ et $RT = 10\\,cm$. Calcule la mesure de l'angle $\\widehat{R}$ arrondie au degré près.",
+              "answer": "\\widehat{R} \\approx 53^{\\circ}",
+              "hint": "Identifie les côtés par rapport à l'angle en R. RS est adjacent, RT est l'hypoténuse. Utilise le cosinus.",
+              "explanation": "L'angle est en R. Adjacent = 6, Hypoténuse = 10. $\\cos(\\widehat{R}) = 6/10 = 0,6$. $\\widehat{R} = \\cos^{-1}(0,6) \\approx 53,13^{\\circ} \\rightarrow 53^{\\circ}$."
+            },
+            {
+              "question": "Un toboggan pour enfants part d'une plateforme à $1,50\\,m$ de haut (côté opposé) et arrive au sol à $3\\,m$ de la base de l'échelle (côté adjacent). Quel est l'angle d'inclinaison du toboggan par rapport à l'horizontale ? Arrondis au dixième de degré.",
+              "answer": "Angle \\approx 26,6^{\\circ}",
+              "hint": "Tu connais l'opposé (1,50) et l'adjacent (3). Le couple (Opposé, Adjacent) correspond à la tangente.",
+              "explanation": "\\tan(\\alpha) = 1,5 / 3 = 0,5. $\\alpha = \\tan^{-1}(0,5) \\approx 26,565^{\\circ} \\rightarrow 26,6^{\\circ}$."
+            },
+            {
+              "question": "Une route de montagne monte de $150\\,m$ sur une distance horizontale de $1\\,km$ (côté adjacent). Calcule le pourcentage de pente (arrondi au dixième) et l'angle de pente (arrondi au centième de degré). Rappel : $\\%\\text{ pente} = \\frac{\\text{dénivelé}}{\\text{horizontal}} \\times 100$.",
+              "answer": "Pourcentage = 15,0 % ; Angle \\approx 8,53^{\\circ}",
+              "hint": "Le pourcentage est le rapport opposé/adjacent $\\times 100$. L'angle s'obtient par arctan de ce rapport (sans $\\times 100$).",
+              "explanation": "Rapport = 150 / 1000 = 0,15. Pourcentage = 0,15 $\\times$ 100 = 15,0 %. Angle = $\\tan^{-1}(0,15) \\approx 8,5307^{\\circ} \\rightarrow 8,53^{\\circ}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

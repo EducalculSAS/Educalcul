@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 213,
+  "_course_code": "cm1-t01-c03-comparer-ranger-et-encadrer-les-entiers",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Comparer, ranger et encadrer les entiers",
+  "title": "Comparer, ranger et encadrer les entiers - Mise en ordre",
+  "blocks": [
+    {
+      "title": "Ordre croissant (nombres < 1000)",
+      "content": "Range les nombres suivants du plus petit au plus grand : $342$, $231$, $432$, $123$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$123$",
+        "$231$",
+        "$342$",
+        "$432$"
+      ],
+      "explanation": "On compare d'abord les chiffres des centaines : $1$ pour $123$, $2$ pour $231$, $3$ pour $342$ et $4$ pour $432$. Comme $1 < 2 < 3 < 4$, l'ordre croissant est $123$, $231$, $342$, $432$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre décroissant (nombres < 10 000)",
+      "content": "Range les nombres suivants du plus grand au plus petit : $5000$, $4500$, $5200$, $4800$, $5100$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$5200$",
+        "$5100$",
+        "$5000$",
+        "$4800$",
+        "$4500$"
+      ],
+      "explanation": "On compare les milliers : tous ont $5$ milliers sauf $4500$ et $4800$ qui en ont $4$. Parmi ceux à $5$ milliers, on compare les centaines : $5200$ a $2$ centaines, $5100$ en a $1$, $5000$ en a $0$. Donc $5200 > 5100 > 5000$. Pour les nombres à $4$ milliers, $4800$ a $8$ centaines et $4500$ en a $5$, donc $4800 > 4500$. L'ordre décroissant est $5200$, $5100$, $5000$, $4800$, $4500$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ordre croissant (nombres à 5 chiffres)",
+      "content": "Range les nombres suivants du plus petit au plus grand : $12345$, $12435$, $12354$, $12453$, $12300$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$12300$",
+        "$12345$",
+        "$12354$",
+        "$12435$",
+        "$12453$"
+      ],
+      "explanation": "On compare les dizaines de milliers (tous $1$), puis les milliers (tous $2$), puis les centaines : $12300$, $12345$, $12354$ ont $3$ centaines, tandis que $12435$, $12453$ en ont $4$. Parmi ceux à $3$ centaines, on compare les dizaines : $12300$ a $0$ dizaine, $12345$ a $4$ dizaines, $12354$ a $5$ dizaines. Parmi ceux à $4$ centaines, $12435$ a $3$ dizaines et $12453$ en a $5$. L'ordre croissant est donc $12300$, $12345$, $12354$, $12435$, $12453$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

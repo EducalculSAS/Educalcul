@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 508,
+  "_course_code": "2nde-t02-c06-inequations",
+  "_level": "2nde",
+  "_subject": "Calcul algébrique",
+  "_subtheme": "Approfondissement : Résoudre",
+  "title": "Résolution d'inéquations : algorithmes",
+  "blocks": [
+    {
+      "title": "Inéquation linéaire",
+      "content": "Écrire un algorithme en pseudo‑code qui résout une inéquation linéaire de la forme $ax + b < c$ avec $a \\neq 0$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les coefficients a, b, c.\\n2. Si a > 0 alors faire x < (c - b) / a sinon faire x > (c - b) / a.\\n3. Afficher l'intervalle solution.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On isole x en soustrayant b des deux côtés puis en divisant par a. Le sens de l'inéquation change si a est négatif.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Inéquation quadratique",
+      "content": "Écrire un algorithme qui détermine l'ensemble des solutions d'une inéquation quadratique $ax^2 + bx + c \\ge 0$ avec $a \\neq 0$.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c.\\n2. Calculer le discriminant $\\Delta = b^2 - 4ac$.\\n3. Si $\\Delta < 0$ alors : si a > 0 solution = $\\mathbb{R}$ sinon solution = $\\emptyset$.\\n4. Si $\\Delta = 0$ alors : racine $x_0 = -b/(2a)$ ; si a > 0 solution = $\\mathbb{R}$ sinon solution = $\\{x_0\\}$.\\n5. Si $\\Delta > 0$ alors : racines $x_1 = (-b - \\sqrt{\\Delta})/(2a)$, $x_2 = (-b + \\sqrt{\\Delta})/(2a)$ avec $x_1 < x_2$ ; si a > 0 solution = $]-\\infty, x_1] \\cup [x_2, +\\infty[$ sinon solution = $[x_1, x_2]$.\\n6. Afficher la solution.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise le signe du trinôme en fonction du discriminant et du coefficient directeur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Inéquation rationnelle",
+      "content": "Écrire un algorithme qui résout une inéquation rationnelle $\\frac{ax+b}{cx+d} > 0$ avec $c \\neq 0$.",
+      "correctAnswer": "Algorithme :\\n1. Lire a, b, c, d.\\n2. Déterminer les zéros du numérateur : $x_N = -b/a$ si $a \\neq 0$ sinon pas de zéro.\\n3. Déterminer le zéro du dénominateur : $x_D = -d/c$ (exclu de l'ensemble de définition).\\n4. Construire un tableau de signes avec les points critiques $x_N$ et $x_D$ triés.\\n5. Choisir les intervalles où le quotient est strictement positif.\\n6. Afficher l'union des intervalles solution.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le signe d'une fraction est le produit des signes du numérateur et du dénominateur. On exclut la valeur qui annule le dénominateur.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

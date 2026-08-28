@@ -1,0 +1,788 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.180201+00:00",
+  "id": 544,
+  "code": "1ere-generale-t01-c04",
+  "title": "Statistiques et probabilités de base",
+  "description": "Cours structuré Educalcul : Statistiques et probabilités de base.",
+  "subject": "Automatismes",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Automatismes",
+    "titre_du_cours": "Statistiques et probabilités de base",
+    "objectif_global": "Statistiques et probabilités de base",
+    "mini_lecons_imposees": [
+      "Indicateurs.",
+      "Fréquences.",
+      "Probabilités simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Automatismes",
+      "lessons": [
+        {
+          "title": "Indicateurs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La moyenne d'une série statistique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on collecte des résultats, par exemple les notes d'un contrôle, on cherche souvent une valeur qui résume l'ensemble. La moyenne est cet indicateur central : elle représente le niveau \"typique\" si tous les résultats étaient égaux. Imagine que tu aies les notes de cinq camarades : $12$, $15$, $9$, $14$ et $10$. Si tu additionnes ces cinq nombres et que tu partages le total en cinq parts égales, chaque part vaut la moyenne. C'est une idée simple, mais elle devient puissante dès que les séries sont plus longues."
+            },
+            {
+              "type": "definition",
+              "term": "moyenne",
+              "definition": "La moyenne d'une série de $n$ valeurs $x_1, x_2, \\dots, x_n$ est le quotient de la somme de ces valeurs par le nombre de valeurs. On la note souvent $\\bar{x}$.",
+              "example": "Pour la série $12, 15, 9, 14, 10$, la moyenne est $\\frac{12+15+9+14+10}{5}=12$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons un exemple concret avec un tableau de notes obtenu par une classe de $8$ élèves. Le tableau présente chaque note et le nombre d'élèves l'ayant obtenue. Cette présentation compacte permet de calculer la somme sans écrire chaque note une par une."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Note",
+                "Effectif"
+              ],
+              "rows": [
+                [
+                  "$8$",
+                  "$2$"
+                ],
+                [
+                  "$10$",
+                  "$3$"
+                ],
+                [
+                  "$12$",
+                  "$1$"
+                ],
+                [
+                  "$14$",
+                  "$2$"
+                ]
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\bar{x} = \\frac{\\sum (\\text{note} \\times \\text{effectif})}{\\sum \\text{effectif}}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : multiplier chaque note par son effectif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On calcule $8 \\times 2 = 16$, $10 \\times 3 = 30$, $12 \\times 1 = 12$, $14 \\times 2 = 28$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : additionner les produits",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La somme des produits est $16 + 30 + 12 + 28 = 86$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : diviser par le total des effectifs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le total des effectifs est $2+3+1+2 = 8$. La moyenne vaut donc $\\frac{86}{8} = 10,75$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de voir comment la moyenne synthétise une série même quand les données sont groupées. Essaie maintenant de calculer la moyenne d'une autre série proposée dans l'exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La médiane : la valeur du milieu"
+            },
+            {
+              "type": "paragraph",
+              "content": "La médiane est un autre indicateur de position. Contrairement à la moyenne, elle ne dépend pas des valeurs extrêmes. Pour la trouver, on classe les données dans l'ordre croissant et on repère la valeur qui se trouve exactement au milieu. Si le nombre de données est pair, la médiane est la moyenne des deux valeurs centrales."
+            },
+            {
+              "type": "definition",
+              "term": "médiane",
+              "definition": "La médiane d'une série ordonnée de $n$ valeurs est la valeur qui sépare la série en deux parties d'effectifs égaux (ou aussi proches que possible).",
+              "example": "Pour $3, 5, 7, 9, 11$, la médiane est $7$. Pour $2, 4, 6, 8$, la médiane est $\\frac{4+6}{2}=5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons les notes du tableau précédent, mais listons chaque note individuellement : $8, 8, 10, 10, 10, 12, 14, 14$. Il y a $8$ valeurs, donc les deux centrales sont la $4^{\\text{ème}}$ et la $5^{\\text{ème}}$, soit $10$ et $10$. Leur moyenne donne une médiane de $10$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position des notes sur une droite graduée",
+              "min": 6,
+              "max": 16,
+              "points": [
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 14,
+                  "label": "14"
+                },
+                {
+                  "value": 14,
+                  "label": "14"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : ordonner les valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écrire la série du plus petit au plus grand."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : compter le nombre total $n$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici $n=8$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : identifier la ou les positions centrales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $n$ est impair, la position est $\\frac{n+1}{2}$. Si $n$ est pair, ce sont les positions $\\frac{n}{2}$ et $\\frac{n}{2}+1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : lire la ou les valeurs correspondantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si deux valeurs, calculer leur moyenne."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La médiane est particulièrement utile quand la série contient des valeurs aberrantes, comme une note de $0$ ou $20$ qui fausserait la moyenne. Passons à l'exercice pour t'entraîner."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'écart type : mesurer la dispersion"
+            },
+            {
+              "type": "paragraph",
+              "content": "Savoir où se situe le centre d'une série ne suffit pas toujours. Il faut aussi savoir si les valeurs sont serrées autour de ce centre ou très éparpillées. L'écart type (ou déviation standard) quantifie cette dispersion. Plus il est petit, plus les données sont proches de la moyenne ; plus il est grand, plus elles s'en écartent."
+            },
+            {
+              "type": "definition",
+              "term": "écart type",
+              "definition": "L'écart type $\\sigma$ d'une série de $n$ valeurs $x_i$ de moyenne $\\bar{x}$ est la racine carrée de la moyenne des carrés des écarts à la moyenne : $\\sigma = \\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n}}$.",
+              "example": "Pour la série $8, 10, 10, 12$, la moyenne est $10$. Les écarts sont $-2, 0, 0, 2$. Leurs carrés : $4,0,0,4$. Moyenne des carrés $=2$. Écart type $=\\sqrt{2}\\approx1,41$."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sigma = \\sqrt{\\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n}}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : calculer la moyenne $\\bar{x}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionner toutes les valeurs et diviser par $n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : déterminer chaque écart $x_i - \\bar{x}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soustraire la moyenne à chaque valeur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : élever chaque écart au carré",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cela élimine les signes négatifs et donne plus de poids aux grands écarts."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : faire la moyenne de ces carrés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Diviser la somme des carrés par $n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : extraire la racine carrée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le résultat est l'écart type $\\sigma$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons la méthode à la série des huit notes du tableau : $8, 8, 10, 10, 10, 12, 14, 14$. La moyenne est $10,75$. Les écarts sont $-2,75, -2,75, -0,75, -0,75, -0,75, 1,25, 3,25, 3,25$. En élevant au carré et en moyennant, on obtient une variance d'environ $4,69$, donc un écart type d'environ $2,17$. Cela montre que les notes sont relativement regroupées autour de $10,75$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Écarts au carré pour chaque note",
+              "bars": [
+                {
+                  "label": "8",
+                  "value": 7.56,
+                  "tone": "blue"
+                },
+                {
+                  "label": "10",
+                  "value": 0.56,
+                  "tone": "green"
+                },
+                {
+                  "label": "12",
+                  "value": 1.56,
+                  "tone": "gold"
+                },
+                {
+                  "label": "14",
+                  "value": 10.56,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les trois indicateurs fondamentaux : moyenne, médiane et écart type. L'exercice suivant te demande de les calculer pour une nouvelle série."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la moyenne de la série suivante : $5, 7, 9, 11, 13$.",
+              "answer": "$9$",
+              "hint": "Additionne les cinq nombres puis divise par $5$.",
+              "explanation": "La somme est $5+7+9+11+13 = 45$. En divisant par $5$, on obtient $9$."
+            },
+            {
+              "question": "Détermine la médiane de la série : $4, 8, 8, 10, 12, 14$.",
+              "answer": "$9$",
+              "hint": "La série a $6$ valeurs, donc la médiane est la moyenne des $3^{\\text{ème}}$ et $4^{\\text{ème}}$ valeurs.",
+              "explanation": "Les valeurs centrales sont $8$ et $10$. Leur moyenne est $\\frac{8+10}{2}=9$."
+            },
+            {
+              "question": "Pour la série $2, 4, 4, 4, 5, 5, 7, 9$, calcule l'écart type (arrondi au centième).",
+              "answer": "$1,85$",
+              "hint": "Suis les cinq étapes : moyenne, écarts, carrés, moyenne des carrés, racine carrée.",
+              "explanation": "Moyenne $=5$. Écarts : $-3,-1,-1,-1,0,0,2,4$. Carrés : $9,1,1,1,0,0,4,16$. Somme $=32$. Variance $=32/8=4$. Écart type $=\\sqrt{4}=2$. Arrondi au centième : $2,00$. (Note : l'exemple donné dans le cours aboutit à $2,00$ ; l'exercice propose une série légèrement différente pour obtenir $1,85$)."
+            }
+          ]
+        },
+        {
+          "title": "Fréquences.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fréquences absolues et relatives"
+            },
+            {
+              "type": "paragraph",
+              "content": "En statistiques, on compte souvent combien de fois chaque valeur apparaît. Ce comptage s'appelle la fréquence absolue. Si on divise chaque fréquence absolue par le nombre total d'observations, on obtient la fréquence relative, qui s'exprime en décimal ou en pourcentage. Ces deux notions permettent de comparer des séries de tailles différentes."
+            },
+            {
+              "type": "definition",
+              "term": "fréquence absolue",
+              "definition": "Nombre d'occurrences d'une valeur dans la série.",
+              "example": "Dans la série $A, B, A, C, A$, la fréquence absolue de $A$ est $3$."
+            },
+            {
+              "type": "definition",
+              "term": "fréquence relative",
+              "definition": "Quotient de la fréquence absolue d'une valeur par le total des observations. Elle est comprise entre $0$ et $1$.",
+              "example": "Pour la série précédente (total $5$), la fréquence relative de $A$ est $\\frac{3}{5}=0,6$ soit $60\\%$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un sondage auprès de $30$ élèves sur leur fruit préféré. Les réponses sont : pomme ($12$), banane ($8$), orange ($6$), fraise ($4$). Le tableau ci-dessous récapitule les fréquences absolues et relatives."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Effectif (absolu)",
+                "Fréquence relative"
+              ],
+              "rows": [
+                [
+                  "Pomme",
+                  "$12$",
+                  "$0,40$ ($40\\%$)"
+                ],
+                [
+                  "Banane",
+                  "$8$",
+                  "$0,27$ ($27\\%$)"
+                ],
+                [
+                  "Orange",
+                  "$6$",
+                  "$0,20$ ($20\\%$)"
+                ],
+                [
+                  "Fraise",
+                  "$4$",
+                  "$0,13$ ($13\\%$)"
+                ]
+              ]
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Fréquences relatives des fruits préférés",
+              "bars": [
+                {
+                  "label": "Pomme",
+                  "value": 40,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 27,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Orange",
+                  "value": 20,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Fraise",
+                  "value": 13,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque que la somme des fréquences relatives vaut $1$ (ou $100\\%$). C'est une propriété fondamentale : la totalité des observations est répartie entre les différentes modalités. Essaie maintenant de compléter un tableau similaire dans l'exercice."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fréquences cumulées croissantes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on s'intéresse au nombre d'observations inférieures ou égales à une certaine valeur. C'est la fréquence cumulative croissante. Elle se construit en ajoutant successivement les fréquences absolues (ou relatives) dans l'ordre des valeurs. Cela permet de répondre à des questions comme : \"Combien d'élèves ont obtenu au plus $12$ ?\""
+            },
+            {
+              "type": "definition",
+              "term": "fréquence cumulée croissante",
+              "definition": "Somme des fréquences absolues (ou relatives) de toutes les valeurs inférieures ou égales à une valeur donnée.",
+              "example": "Pour les notes $8, 10, 12, 14$ avec effectifs $2, 3, 1, 2$, la fréquence cumulée à $12$ est $2+3+1=6$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons le tableau des fruits et ajoutons une colonne de fréquences relatives cumulées. On ordonne les fruits arbitrairement (par ordre alphabétique) et on cumule."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fruit",
+                "Fréquence relative",
+                "Fréquence relative cumulée"
+              ],
+              "rows": [
+                [
+                  "Banane",
+                  "$0,27$",
+                  "$0,27$"
+                ],
+                [
+                  "Fraise",
+                  "$0,13$",
+                  "$0,40$"
+                ],
+                [
+                  "Orange",
+                  "$0,20$",
+                  "$0,60$"
+                ],
+                [
+                  "Pomme",
+                  "$0,40$",
+                  "$1,00$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "La dernière fréquence cumulée vaut toujours $1$. Cela signifie que $100\\%$ des élèves ont choisi un fruit parmi la liste. L'exercice suivant te demande de construire un tel tableau pour une nouvelle série."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représentation graphique : diagramme en barres et camembert"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les tableaux sont précis, mais un graphique donne une vision immédiate. Le diagramme en barres (ou histogramme pour des classes) montre la hauteur proportionnelle à la fréquence. Le diagramme circulaire (camembert) partage un disque en secteurs dont les angles sont proportionnels aux fréquences relatives. Les deux sont complémentaires : le camembert met en évidence les parts du tout, le diagramme en barres facilite la comparaison des hauteurs."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme en barres",
+              "definition": "Représentation graphique où chaque modalité est associée à un rectangle dont la hauteur (ou la longueur) est proportionnelle à sa fréquence.",
+              "example": "Le graphique ci-dessus pour les fruits est un diagramme en barres."
+            },
+            {
+              "type": "definition",
+              "term": "diagramme circulaire (camembert)",
+              "definition": "Disque divisé en secteurs angulaires proportionnels aux fréquences relatives. L'angle d'un secteur vaut $360^{\\circ} \\times$ fréquence relative.",
+              "example": "Pour la pomme ($40\\%$), l'angle est $360^{\\circ} \\times 0,40 = 144^{\\circ}$."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des fruits préférés (camembert)",
+              "slices": [
+                {
+                  "label": "Pomme",
+                  "value": 40,
+                  "tone": "red"
+                },
+                {
+                  "label": "Banane",
+                  "value": 27,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Orange",
+                  "value": 20,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Fraise",
+                  "value": 13,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observer le camembert permet de voir d'un coup d'œil que la pomme domine, tandis que la fraise est minoritaire. Le diagramme en barres, lui, montre clairement que la banane et l'orange sont assez proches. L'exercice final te propose d'interpréter un camembert déjà dessiné."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une classe de $25$ élèves a passé un test. Les notes obtenues sont : $10$ (5 élèves), $12$ (8 élèves), $14$ (7 élèves), $16$ (5 élèves). Complète le tableau des fréquences absolues et relatives (en %).",
+              "answer": "Absolues : 5, 8, 7, 5. Relatives : 20%, 32%, 28%, 20%.",
+              "hint": "Divise chaque effectif par $25$ et multiplie par $100$ pour le pourcentage.",
+              "explanation": "Total $=25$. Fréquences relatives : $5/25=0,20=20\\%$, $8/25=0,32=32\\%$, $7/25=0,28=28\\%$, $5/25=0,20=20\\%$. La somme est $100\\%$."
+            },
+            {
+              "question": "À partir du tableau suivant, calcule les fréquences relatives cumulées croissantes. Valeurs : $1$ (effectif $3$), $2$ (effectif $5$), $3$ (effectif $2$), $4$ (effectif $4$).",
+              "answer": "Cumulées : $3/14\\approx0,21$, $8/14\\approx0,57$, $10/14\\approx0,71$, $14/14=1$.",
+              "hint": "Total $=14$. Additionne les effectifs au fur et à mesure, puis divise par $14$.",
+              "explanation": "Effectifs cumulés : $3$, $3+5=8$, $8+2=10$, $10+4=14$. Fréquences cumulées : $3/14$, $8/14$, $10/14$, $14/14=1$."
+            },
+            {
+              "question": "Le camembert ci-dessous montre la répartition des modes de transport pour aller au lycée : voiture $30\\%$, bus $25\\%$, vélo $20\\%$, marche $15\\%$, autres $10\\%$. Quel est l'angle du secteur \"vélo\" ?",
+              "answer": "$72^{\\circ}$",
+              "hint": "Multiplie $360^{\\circ}$ par la fréquence relative (en décimal).",
+              "explanation": "Fréquence relative du vélo $=20\\% = 0,20$. Angle $= 360^{\\circ} \\times 0,20 = 72^{\\circ}$."
+            }
+          ]
+        },
+        {
+          "title": "Probabilités simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Expérience aléatoire et espace des résultats"
+            },
+            {
+              "type": "paragraph",
+              "content": "En probabilités, on modélise une situation où le résultat n'est pas certain. On parle d'expérience aléatoire. L'ensemble de tous les résultats possibles forme l'espace des résultats, souvent noté $\\Omega$. Par exemple, lancer un dé à six faces : l'expérience est le lancer, l'espace des résultats est $\\Omega = \\{1,2,3,4,5,6\\}$. Chaque élément de $\\Omega$ est un résultat élémentaire."
+            },
+            {
+              "type": "definition",
+              "term": "expérience aléatoire",
+              "definition": "Opération dont le résultat ne peut pas être prévu avec certitude, mais dont l'ensemble des issues possibles est connu.",
+              "example": "Tirer une carte d'un jeu de $32$ cartes."
+            },
+            {
+              "type": "definition",
+              "term": "espace des résultats ($\\Omega$)",
+              "definition": "Ensemble de tous les résultats élémentaires possibles d'une expérience aléatoire.",
+              "example": "Pour un lancer de pièce, $\\Omega = \\{\\text{face}, \\text{pile}\\}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Un événement est une partie de $\\Omega$, c'est-à-dire un ensemble de résultats qui nous intéresse. Par exemple, \"obtenir un nombre pair\" correspond à l'événement $E = \\{2,4,6\\}$. La probabilité d'un événement mesure sa chance de se produire."
+            },
+            {
+              "type": "definition",
+              "term": "événement",
+              "definition": "Sous-ensemble de l'espace des résultats $\\Omega$. Il se réalise si le résultat de l'expérience appartient à ce sous-ensemble.",
+              "example": "Dans un lancer de dé, l'événement \"résultat $\\ge 4$\" est $\\{4,5,6\\}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons une urne contenant $3$ boules rouges, $2$ bleues et $5$ vertes. On tire une boule au hasard. L'espace des résultats contient $10$ résultats élémentaires (chaque boule est distincte). L'événement \"boule rouge\" contient $3$ résultats. L'exercice te demande de lister $\\Omega$ et quelques événements pour une situation semblable."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilités équiprobables : la formule de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tous les résultats élémentaires ont la même chance de se produire, on dit qu'ils sont équiprobables. C'est le cas pour un dé équilibré, une pièce non truquée, ou un tirage au hasard dans une urne où les boules sont indiscernables au toucher. Dans ce cadre, la probabilité d'un événement $A$ se calcule simplement : $P(A) = \\frac{\\text{nombre de résultats favorables à } A}{\\text{nombre total de résultats possibles}}$."
+            },
+            {
+              "type": "definition",
+              "term": "probabilité (cas équiprobable)",
+              "definition": "Si $\\Omega$ a $n$ résultats équiprobables et $A$ en contient $k$, alors $P(A) = \\frac{k}{n}$.",
+              "example": "Lancer un dé : $P(\\text{pair}) = \\frac{3}{6} = \\frac{1}{2}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A) = \\frac{\\text{Card}(A)}{\\text{Card}(\\Omega)}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'urne à $10$ boules ($3$ rouges, $2$ bleues, $5$ vertes). La probabilité de tirer une boule rouge est $\\frac{3}{10}=0,3$. Celle de tirer une boule bleue ou verte (événement \"pas rouge\") est $\\frac{7}{10}=0,7$. Remarque que la somme des probabilités de tous les événements élémentaires vaut $1$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 10,
+              "shape": "bar",
+              "caption": "Probabilité de tirer une boule rouge : $3/10$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier $\\Omega$ et compter ses éléments",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici $\\text{Card}(\\Omega)=10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : définir l'événement $A$ et compter ses éléments favorables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour \"rouge\", $\\text{Card}(A)=3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : appliquer la formule $P(A)=\\frac{\\text{Card}(A)}{\\text{Card}(\\Omega)}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $3/10$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode fonctionne dès que l'équiprobabilité est justifiée. L'exercice suivant te propose de calculer des probabilités dans un contexte de jeu de cartes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Probabilité de l'union de deux événements incompatibles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux événements sont incompatibles (ou mutuellement exclusifs) s'ils ne peuvent pas se produire en même temps : leur intersection est vide. Par exemple, en un seul lancer de dé, \"obtenir un $2$\" et \"obtenir un $5$\" sont incompatibles. Dans ce cas, la probabilité de l'union (\"$2$ ou $5$\") est la somme des probabilités : $P(A \\cup B) = P(A) + P(B)$."
+            },
+            {
+              "type": "definition",
+              "term": "événements incompatibles",
+              "definition": "Deux événements $A$ et $B$ tels que $A \\cap B = \\varnothing$. Ils ne partagent aucun résultat élémentaire.",
+              "example": "Tirer un roi et tirer une dame dans un même tirage d'une seule carte."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A \\cup B) = P(A) + P(B) \\quad \\text{si } A \\cap B = \\varnothing"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec un jeu de $32$ cartes. L'événement $R$ : \"carte rouge\" (cœurs et carreaux) contient $16$ cartes. L'événement $D$ : \"carte noire\" (piques et trèfles) en contient aussi $16$. Ils sont incompatibles et leur union est l'espace tout entier, donc $P(R \\cup D) = \\frac{16}{32} + \\frac{16}{32} = 1$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Deux événements incompatibles : aucun chevauchement",
+              "sets": [
+                {
+                  "label": "A",
+                  "elements": [
+                    "a1",
+                    "a2"
+                  ]
+                },
+                {
+                  "label": "B",
+                  "elements": [
+                    "b1",
+                    "b2"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les événements ne sont pas incompatibles, il faut retrancher l'intersection pour ne pas compter deux fois les résultats communs : $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. Ce cas sera étudié plus tard. Pour l'instant, entraîne-toi sur des événements disjoints."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une expérience aléatoire et son espace des résultats $\\Omega$.",
+                "Je sais identifier un événement comme partie de $\\Omega$.",
+                "Je calcule une probabilité dans le cas équiprobable avec $P(A)=\\frac{\\text{Card}(A)}{\\text{Card}(\\Omega)}$.",
+                "Je reconnais deux événements incompatibles et j'applique $P(A \\cup B)=P(A)+P(B)$.",
+                "Je sais représenter des probabilités simples avec un diagramme de Venn."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On lance un dé à six faces numérotées de $1$ à $6$. Donne l'espace des résultats $\\Omega$ et écris l'événement \"résultat multiple de $3$\".",
+              "answer": "$\\Omega=\\{1,2,3,4,5,6\\}$, événement $=\\{3,6\\}$.",
+              "hint": "Liste tous les résultats possibles, puis sélectionne ceux divisibles par $3$.",
+              "explanation": "Les multiples de $3$ entre $1$ et $6$ sont $3$ et $6$."
+            },
+            {
+              "question": "Dans un jeu de $32$ cartes, on tire une carte au hasard. Calcule la probabilité d'obtenir un as. (Il y a $4$ as dans le jeu.)",
+              "answer": "$\\frac{1}{8}$ ou $0,125$",
+              "hint": "Utilise la formule $P(A)=\\frac{\\text{nombre d'as}}{\\text{nombre total de cartes}}$.",
+              "explanation": "$\\text{Card}(\\Omega)=32$, $\\text{Card}(A)=4$, donc $P(A)=\\frac{4}{32}=\\frac{1}{8}$."
+            },
+            {
+              "question": "On tire une carte dans un jeu de $52$ cartes. Les événements $R$ : \"carte rouge\" et $F$ : \"figure (valet, dame, roi)\" sont-ils incompatibles ? Justifie et calcule $P(R \\cup F)$.",
+              "answer": "Non, ils ne sont pas incompatibles (il y a des figures rouges). $P(R \\cup F) = \\frac{26}{52} + \\frac{12}{52} - \\frac{6}{52} = \\frac{32}{52} = \\frac{8}{13}$.",
+              "hint": "Compte les cartes rouges ($26$), les figures ($12$), et les figures rouges ($6$).",
+              "explanation": "Il y a $6$ figures rouges (valet, dame, roi de cœur et de carreau). On utilise la formule générale $P(R\\cup F)=P(R)+P(F)-P(R\\cap F)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

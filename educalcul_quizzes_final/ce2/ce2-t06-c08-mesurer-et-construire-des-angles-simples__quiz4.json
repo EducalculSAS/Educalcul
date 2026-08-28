@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 194,
+  "_course_code": "ce2-t06-c08-mesurer-et-construire-des-angles-simples",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Application : Mesurer et construire des angles simples",
+  "title": "Quiz : Mesurer et construire des angles simples",
+  "questions": [
+    {
+      "text": "Regarde le rapporteur ci-dessous. Quelle est la mesure de l'angle représenté ?",
+      "options": [
+        "$30^\\circ$",
+        "$90^\\circ$",
+        "$180^\\circ$",
+        "$45^\\circ$"
+      ],
+      "correctAnswer": "$90^\\circ$",
+      "explanation": "La aiguille du rapporteur pointe vers la graduation 90. Un angle de $90^\\circ$ est un angle droit. Les autres valeurs correspondent à des angles aigus ($30^\\circ$, $45^\\circ$) ou à un angle plat ($180^\\circ$).",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 90,
+        "caption": "Rapporteur indiquant 90 degrés"
+      }
+    },
+    {
+      "text": "Observe l'angle affiché sur ce rapporteur. Comment classe-t-on cet angle ?",
+      "options": [
+        "Aigu",
+        "Droit",
+        "Obtus",
+        "Plat"
+      ],
+      "correctAnswer": "Aigu",
+      "explanation": "L'angle mesure $45^\\circ$. Un angle aigu est strictement compris entre $0^\\circ$ et $90^\\circ$. Un angle droit vaut exactement $90^\\circ$, un angle obtus est entre $90^\\circ$ et $180^\\circ$, et un angle plat vaut $180^\\circ$.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 45,
+        "caption": "Rapporteur indiquant 45 degrés"
+      }
+    },
+    {
+      "text": "Il est 2 heures pile sur l'horloge. Quelle est la nature de l'angle formé par les deux aiguilles ?",
+      "options": [
+        "Aigu",
+        "Droit",
+        "Obtus",
+        "Plat"
+      ],
+      "correctAnswer": "Aigu",
+      "explanation": "À 2 heures, l'aiguille des heures pointe sur le 2 et celle des minutes sur le 12. Chaque heure correspond à $30^\\circ$ ($360^\\circ / 12$). L'angle vaut donc $2 \\times 30^\\circ = 60^\\circ$. Comme $60^\\circ$ est inférieur à $90^\\circ$, c'est un angle aigu.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 2,
+        "minutes": 0,
+        "caption": "Horloge indiquant 2 heures",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Tu dois construire un angle droit sur ta feuille. Quel instrument utilises-tu de préférence au CE2 ?",
+      "options": [
+        "Le rapporteur",
+        "L'équerre",
+        "La règle graduée",
+        "Le compas"
+      ],
+      "correctAnswer": "L'équerre",
+      "explanation": "L'équerre est l'outil de référence pour tracer des angles droits (perpendiculaires) rapidement et avec précision au primaire. Le rapporteur sert à mesurer ou tracer n'importe quel angle, la règle à tracer des segments et mesurer des longueurs, le compas à tracer des cercles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur cette horloge, il est 4 heures pile. Quelle est la mesure approximative de l'angle formé par les aiguilles ?",
+      "options": [
+        "$60^\\circ$",
+        "$90^\\circ$",
+        "$120^\\circ$",
+        "$180^\\circ$"
+      ],
+      "correctAnswer": "$120^\\circ$",
+      "explanation": "À 4 heures, l'écart entre les aiguilles est de 4 heures. Chaque heure vaut $30^\\circ$. La mesure est donc $4 \\times 30^\\circ = 120^\\circ$. C'est un angle obtus (compris entre $90^\\circ$ et $180^\\circ$).",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 4,
+        "minutes": 0,
+        "caption": "Horloge indiquant 4 heures",
+        "interactive": false
+      }
+    }
+  ]
+}

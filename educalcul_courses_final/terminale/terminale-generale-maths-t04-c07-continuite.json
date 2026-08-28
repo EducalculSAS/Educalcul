@@ -1,0 +1,505 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.658506+00:00",
+  "id": 696,
+  "code": "terminale-generale-maths-t04-c07",
+  "title": "Continuité",
+  "description": "Cours structuré Educalcul : Continuité.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Continuité",
+    "objectif_global": "Continuité",
+    "mini_lecons_imposees": [
+      "Définition / sens.",
+      "Opérations.",
+      "Lecture graphique."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Définition / sens.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Une idée intuitive : le trait de crayon sans lever la main"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu traces la courbe d'une fonction sur une feuille de papier. Si tu peux la dessiner sans jamais décoller ton crayon, alors la fonction est continue. Cette image, bien connue, capture l'essence de la continuité : il n'y a ni trou, ni saut brusque, ni branche qui part à l'infini verticalement. En Terminale spécialité, nous allons transformer cette intuition visuelle en une définition mathématique rigoureuse, celle de Cauchy, qui utilise les fameux $\\varepsilon$ et $\\delta$. C'est un passage obligé pour raisonner avec précision sur les limites, les dérivées et les intégrales qui suivront."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le cadre. Soit $f$ une fonction définie sur un intervalle $I$ (ouvert, fermé, ou semi-ouvert) et soit $a$ un point de $I$. On dit que $f$ est continue en $a$ si la limite de $f(x)$ quand $x$ tend vers $a$ existe, est finie, et coïncide exactement avec la valeur $f(a)$. En symboles : $\\lim_{x \\to a} f(x) = f(a)$. Cette égalité englobe trois conditions simultanées : $f(a)$ existe (la fonction est définie en $a$), la limite existe et est finie (pas d'asymptote verticale), et les deux nombres sont égaux (pas de « trou » où la limite vaudrait autre chose que l'image)."
+            },
+            {
+              "type": "definition",
+              "term": "Continuité en un point (définition $\\varepsilon-\\delta$)",
+              "definition": "La fonction $f$ est continue au point $a$ si, pour tout nombre réel strictement positif $\\varepsilon$, il existe un nombre réel strictement positif $\\delta$ tel que, pour tout $x$ dans l'intervalle de définition, $|x-a| < \\delta$ entraîne $|f(x)-f(a)| < \\varepsilon$.",
+              "example": "Pour $f(x)=x^2$ en $a=0$, on peut prendre $\\delta = \\sqrt{\\varepsilon}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette définition peut sembler technique, mais elle a un sens géométrique limpide. Le $\\varepsilon$ représente une tolérance verticale autour de $f(a)$ : tu acceptes que les valeurs de la fonction restent dans le corridor horizontal $(f(a)-\\varepsilon, f(a)+\\varepsilon)$. Le $\\delta$ est la tolérance horizontale correspondante autour de $a$ : si tu restreins $x$ à l'intervalle $(a-\\delta, a+\\delta)$, alors toutes les images $f(x)$ tombent dans le corridor vertical. La continuité signifie que, quel que soit le corridor vertical que tu imposes (si petit soit-il), tu peux toujours trouver un corridor horizontal assez étroit pour que la courbe ne sorte jamais du rectangle ainsi formé."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "La courbe de $f(x)=x^2$ autour de $0$ : pour tout $\\varepsilon>0$, on trouve un $\\delta>0$ tel que le rectangle vert ne soit jamais traversé par la courbe."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Continuité sur un intervalle : la condition aux bornes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction est continue sur un intervalle $I$ lorsqu'elle est continue en chaque point de $I$. La subtilité apparaît aux bornes si l'intervalle est fermé ou semi-fermé. Par exemple, sur $[a,b]$, on exige la continuité à droite en $a$ (limite quand $x\\to a^+$) et la continuité à gauche en $b$ (limite quand $x\\to b^-$). Cela veut dire que le crayon peut commencer et finir exactement sur les points $(a,f(a))$ et $(b,f(b))$ sans sauter. Si l'intervalle est ouvert $(a,b)$, on ne vérifie que l'intérieur. Cette distinction est cruciale pour appliquer plus tard le théorème des valeurs intermédiaires ou le théorème des bornes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier la définition en un point intérieur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $f(x)=\\sqrt{x}$ sur $[0,+\\infty[$, prenons $a>0$. On veut majorer $|\\sqrt{x}-\\sqrt{a}|$. On utilise l'identité $\\sqrt{x}-\\sqrt{a} = \\frac{x-a}{\\sqrt{x}+\\sqrt{a}}$. Donc $|\\sqrt{x}-\\sqrt{a}| = \\frac{|x-a|}{\\sqrt{x}+\\sqrt{a}} \\le \\frac{|x-a|}{\\sqrt{a}}$ pour $x$ assez proche de $a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir $\\delta$ en fonction de $\\varepsilon$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Donné $\\varepsilon>0$, on choisit $\\delta = \\varepsilon \\sqrt{a}$. Alors si $|x-a|<\\delta$, on a $|\\sqrt{x}-\\sqrt{a}| \\le \\frac{\\delta}{\\sqrt{a}} = \\varepsilon$. La fonction est donc continue en tout $a>0$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Traiter la borne $0$ (continuité à droite)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En $a=0$, $f(0)=0$. Pour $\\varepsilon>0$, on prend $\\delta = \\varepsilon^2$. Si $0 \\le x < \\delta$, alors $\\sqrt{x} < \\sqrt{\\delta} = \\varepsilon$, donc $|\\sqrt{x}-0|<\\varepsilon$. La fonction est continue à droite en $0$, donc continue sur tout $[0,+\\infty[$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les fonctions usuelles sont continues sur leur domaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est un fait fondamental que tu pourras utiliser sans redémontrer à chaque fois : les fonctions polynomiales, rationnelles (sur leur ensemble de définition), trigonométriques ($\\sin$, $\\cos$, $\\tan$ sur leurs domaines), exponentielle, logarithme népérien, et racines $n$-ièmes (pour $n$ impair sur $\\mathbb{R}$, pour $n$ pair sur $[0,+\\infty[$) sont continues sur leurs intervalles de définition. Cette liste constitue ta « boîte à outils » de base. Dès que tu reconnais une de ces formes, tu sais qu'elle est continue là où elle est définie, sans calcul de limite supplémentaire."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Polynômes, } \\frac{P}{Q} (Q\\neq 0), \\sin, \\cos, \\tan, \\exp, \\ln, \\sqrt[n]{x} \\text{ sont continues sur leur domaine.}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Discontinuités : trois cas de figure à reconnaître"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand une fonction n'est pas continue en $a$, on parle de discontinuité. Il y a trois types principaux. La discontinuité évitable (ou « trou ») : la limite existe et est finie, mais $f(a)$ n'existe pas ou vaut autre chose. Exemple : $f(x)=\\frac{x^2-1}{x-1}$ en $1$, la limite vaut $2$ mais $f(1)$ n'est pas définie. La discontinuité de premier genre (saut) : les limites à gauche et à droite existent, sont finies, mais sont différentes. Exemple : la partie entière $E(x)$ en tout entier. La discontinuité de second genre (asymptote verticale) : au moins une des limites latérales est infinie. Exemple : $f(x)=\\frac{1}{x}$ en $0$. Savoir classifier une discontinuité te permettra de comprendre pourquoi certaines fonctions ne vérifient pas les hypothèses des grands théorèmes."
+            },
+            {
+              "type": "graph",
+              "expression": "1/x",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Discontinuité de second genre en $0$ : les branches partent vers $\\pm\\infty$, impossible de relier les deux morceaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x) = \\frac{x^2-4}{x-2}$ pour $x \\neq 2$. Quel type de discontinuité $f$ présente-t-elle en $2$ ? Justifie.",
+              "answer": "Discontinuité évitable. La limite en $2$ vaut $4$ (factorisation), mais $f(2)$ n'est pas définie.",
+              "hint": "Factorise le numérateur et simplifie pour $x \\neq 2$.",
+              "explanation": "On a $x^2-4=(x-2)(x+2)$. Pour $x \\neq 2$, $f(x)=x+2$. La limite quand $x\\to 2$ est donc $4$, finie. Comme $f$ n'est pas définie en $2$, c'est une discontinuité évitable (on pourrait la rendre continue en posant $f(2)=4$)."
+            },
+            {
+              "question": "Montrer par la définition $\\varepsilon-\\delta$ que la fonction $f(x)=3x+1$ est continue en $a=0$.",
+              "answer": "Pour tout $\\varepsilon>0$, choisir $\\delta = \\varepsilon/3$. Si $|x-0|<\\delta$, alors $|f(x)-f(0)| = |3x| = 3|x| < 3\\delta = \\varepsilon$.",
+              "hint": "Calcule $|f(x)-f(0)|$ en fonction de $|x|$ et choisis $\\delta$ proportionnel à $\\varepsilon$.",
+              "explanation": "$f(0)=1$. $|f(x)-1| = |3x+1-1| = 3|x|$. Il suffit de prendre $\\delta = \\varepsilon/3$ pour garantir $3|x| < \\varepsilon$ dès que $|x|<\\delta$."
+            },
+            {
+              "question": "La fonction $g(x) = \\ln(x^2+1)$ est-elle continue sur $\\mathbb{R}$ ? Justifie sans calcul de limite.",
+              "answer": "Oui, $g$ est continue sur $\\mathbb{R}$ car $x \\mapsto x^2+1$ est un polynôme (continue sur $\\mathbb{R}$) et $x \\mapsto \\ln x$ est continue sur $]0,+\\infty[$. La composition de fonctions continues est continue.",
+              "hint": "Décompose $g$ en composition de deux fonctions usuelles continues.",
+              "explanation": "On écrit $g = \\ln \\circ h$ avec $h(x)=x^2+1$. $h$ est un polynôme, donc continue sur $\\mathbb{R}$. De plus, $h(x) \\ge 1 > 0$, donc $h(x)$ appartient au domaine de définition de $\\ln$ (qui est $]0,+\\infty[$). $\\ln$ est continue sur son domaine. La composition de deux fonctions continues est continue (théorème vu en prochaine leçon), donc $g$ est continue sur $\\mathbb{R}$."
+            },
+            {
+              "question": "Classifie la discontinuité de la fonction $h(x) = \\frac{1}{x-3}$ en $x=3$.",
+              "answer": "Discontinuité de second genre (asymptote verticale) car $\\lim_{x\\to 3^-} h(x) = -\\infty$ et $\\lim_{x\\to 3^+} h(x) = +\\infty$.",
+              "hint": "Étudie les limites à gauche et à droite de $3$.",
+              "explanation": "Quand $x\\to 3^-$, $x-3 \\to 0^-$, donc $\\frac{1}{x-3} \\to -\\infty$. Quand $x\\to 3^+$, $x-3 \\to 0^+$, donc $\\frac{1}{x-3} \\to +\\infty$. Les limites latérales sont infinies (et de signes opposés), c'est une discontinuité de second genre."
+            }
+          ]
+        },
+        {
+          "title": "Opérations.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Stabilité par opérations algébriques : somme, produit, quotient"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition est posée, nous allons voir comment la continuité se comporte quand on combine des fonctions. C'est une excellente nouvelle : l'ensemble des fonctions continues en un point (ou sur un intervalle) est stable par les opérations usuelles. Concrètement, si $f$ et $g$ sont deux fonctions continues en $a$, alors les fonctions $f+g$, $f-g$, $f \\times g$ sont également continues en $a$. Pour le quotient $\\frac{f}{g}$, il faut une condition supplémentaire : $g(a) \\neq 0$. Si $g(a)=0$, le quotient n'est pas défini en $a$ (ou tend vers l'infini), donc la continuité est perdue. Ces propriétés découlent directement des théorèmes sur les limites : la limite d'une somme est la somme des limites, etc., pourvu que les opérations soient licites."
+            },
+            {
+              "type": "definition",
+              "term": "Théorème : opérations sur les fonctions continues",
+              "definition": "Soient $f$ et $g$ continues en $a$. Alors $f+g$, $f-g$, $f\\cdot g$ sont continues en $a$. Si de plus $g(a)\\neq 0$, alors $\\frac{f}{g}$ est continue en $a$.",
+              "example": "Les fonctions polynomiales sont continues sur $\\mathbb{R}$ car elles s'obtiennent par sommes et produits de la fonction identité $x \\mapsto x$ (continue) et des fonctions constantes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Rappeler les théorèmes sur les limites",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $\\lim_{x\\to a} f(x) = L$ et $\\lim_{x\\to a} g(x) = M$, alors $\\lim_{x\\to a} (f+g)(x) = L+M$, $\\lim_{x\\to a} (f\\cdot g)(x) = L\\cdot M$, et si $M \\neq 0$, $\\lim_{x\\to a} \\frac{f}{g}(x) = \\frac{L}{M}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la définition de la continuité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comme $f$ et $g$ sont continues en $a$, on a $L=f(a)$ et $M=g(a)$. Donc $\\lim_{x\\to a} (f+g)(x) = f(a)+g(a) = (f+g)(a)$. La fonction somme est donc continue en $a$. Même raisonnement pour la différence et le produit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Cas du quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $g(a) \\neq 0$, alors $M \\neq 0$ et $\\lim_{x\\to a} \\frac{f}{g}(x) = \\frac{f(a)}{g(a)} = (\\frac{f}{g})(a)$. Le quotient est continu en $a$. Si $g(a)=0$, le quotient n'est pas défini en $a$ (ou sa limite est infinie), il n'y a pas continuité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Continuité des fonctions rationnelles et par morceaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction rationnelle $R(x) = \\frac{P(x)}{Q(x)}$ est continue sur tout son domaine de définition, c'est-à-dire sur $\\mathbb{R}$ privé des zéros du dénominateur $Q$. En chaque zéro de $Q$, on a une discontinuité : soit évitable (si le zéro annule aussi le numérateur et se simplifie), soit de second genre (asymptote verticale). Pour une fonction définie par morceaux, il faut vérifier la continuité sur chaque intervalle ouvert où la formule est une fonction usuelle, puis vérifier le « raccord » aux points de jonction : les limites à gauche et à droite doivent exister, être finies, égales entre elles, et égales à la valeur de la fonction en ce point."
+            },
+            {
+              "type": "graph",
+              "expression": "piecewise(x<0, x^2, x>=0, 2*x+1)",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Fonction par morceaux : $x^2$ pour $x<0$, $2x+1$ pour $x\\ge 0$. En $0$, limite à gauche $0$, valeur à droite $1$ : discontinuité de premier genre (saut)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème de composition : la continuité se propage"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est sans doute l'outil le plus puissant pour prouver la continuité de fonctions composées. Si $g$ est continue en $a$ et si $f$ est continue en $g(a)$, alors la fonction composée $f \\circ g$ (c'est-à-dire $x \\mapsto f(g(x))$) est continue en $a$. Attention à l'ordre des conditions : c'est bien la continuité de $f$ au point image $g(a)$ qui est requise, pas n'importe où. Ce théorème permet de dire immédiatement que $\\sin(x^2+1)$, $\\exp(\\cos x)$, $\\ln(x^2+4)$, $\\sqrt{3x+5}$ (sur leur domaine) sont continues, sans aucun calcul de limite."
+            },
+            {
+              "type": "display_math",
+              "latex": "g \\text{ continue en } a \\text{ et } f \\text{ continue en } g(a) \\implies f\\circ g \\text{ continue en } a."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien comprendre pourquoi ce théorème est vrai, imagine le processus en deux temps. D'abord, $g$ envoie les $x$ proches de $a$ vers des valeurs proches de $g(a)$ (car $g$ est continue en $a$). Ensuite, $f$ envoie ces valeurs proches de $g(a)$ vers des valeurs proches de $f(g(a))$ (car $f$ est continue en $g(a)$). La composition des deux « rapprochements » donne le résultat final. C'est exactement ce que traduit l'écriture $\\varepsilon-\\delta$ : le $\\delta$ final s'obtient en chaînant le $\\delta$ de $g$ et le $\\delta$ de $f$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Utiliser la continuité de $f$ en $g(a)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $\\varepsilon > 0$. Comme $f$ est continue en $g(a)$, il existe $\\eta > 0$ tel que pour tout $y$, $|y - g(a)| < \\eta \\implies |f(y) - f(g(a))| < \\varepsilon$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la continuité de $g$ en $a$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquons la continuité de $g$ en $a$ avec $\\eta$ (au lieu de $\\varepsilon$). Il existe $\\delta > 0$ tel que pour tout $x$, $|x-a| < \\delta \\implies |g(x) - g(a)| < \\eta$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Chaîner les deux inégalités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $|x-a| < \\delta$, alors $|g(x)-g(a)| < \\eta$. En posant $y = g(x)$, on a $|y-g(a)| < \\eta$, donc $|f(y)-f(g(a))| < \\varepsilon$, c'est-à-dire $|f(g(x))-f(g(a))| < \\varepsilon$. Donc $f\\circ g$ est continue en $a$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Continuité de la fonction inverse (bijection continue stricte)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un résultat plus avancé, mais essentiel pour la suite (dérivation des fonctions inverses, logarithme, arcsinus) : si $f$ est une bijection continue et strictement monotone sur un intervalle $I$, alors sa fonction réciproque $f^{-1}$ est continue sur l'intervalle $J = f(I)$. La démonstration utilise la définition $\\varepsilon-\\delta$ et la monotonie pour transformer les inégalités. Ce théorème justifie que $\\ln$ (inverse de $\\exp$), $\\arcsin$ (inverse de $\\sin$ sur $[-\\pi/2,\\pi/2]$), $\\arctan$ (inverse de $\\tan$ sur $]-\\pi/2,\\pi/2[$) sont continues sur leurs domaines. C'est un bel exemple où la continuité « passe » à l'inverse grâce à la monotonie stricte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x) = \\frac{x^2+1}{x-2}$. Sur quel ensemble $f$ est-elle continue ? Justifie.",
+              "answer": "$f$ est continue sur $\\mathbb{R} \\setminus \\{2\\}$ (c'est-à-dire $]-\\infty, 2[ \\cup ]2, +\\infty[$).",
+              "hint": "Identifie le domaine de définition de cette fonction rationnelle.",
+              "explanation": "$f$ est un quotient de deux polynômes. Les polynômes sont continus sur $\\mathbb{R}$. Le quotient est continu là où le dénominateur est non nul. Le dénominateur $x-2$ s'annule seulement en $x=2$. Donc $f$ est continue sur $\\mathbb{R} \\setminus \\{2\\}$."
+            },
+            {
+              "question": "On définit $g(x) = \\begin{cases} x^2 & \\text{si } x \\le 1 \\\\ 2x & \\text{si } x > 1 \\end{cases}$. $g$ est-elle continue en $1$ ?",
+              "answer": "Non, $g$ n'est pas continue en $1$. La limite à gauche vaut $1$, la limite à droite vaut $2$, la valeur $g(1)=1$. Il y a un saut (discontinuité de premier genre).",
+              "hint": "Calcule la limite à gauche, la limite à droite et la valeur en $1$.",
+              "explanation": "Pour $x\\le 1$, $g(x)=x^2$, donc $\\lim_{x\\to 1^-} g(x) = 1$. Pour $x>1$, $g(x)=2x$, donc $\\lim_{x\\to 1^+} g(x) = 2$. Les limites latérales sont différentes, donc la limite en $1$ n'existe pas. $g$ n'est pas continue en $1$ (discontinuité de premier genre, saut de $1$)."
+            },
+            {
+              "question": "Montrer que $h(x) = \\cos(e^x)$ est continue sur $\\mathbb{R}$.",
+              "answer": "$h = \\cos \\circ \\exp$. $\\exp$ est continue sur $\\mathbb{R}$, $\\cos$ est continue sur $\\mathbb{R}$. La composition de deux fonctions continues est continue, donc $h$ est continue sur $\\mathbb{R}$.",
+              "hint": "Décompose $h$ en composition de deux fonctions usuelles.",
+              "explanation": "On écrit $h(x) = f(g(x))$ avec $g(x)=e^x$ et $f(y)=\\cos y$. $g$ est continue sur $\\mathbb{R}$ (exponentielle). $f$ est continue sur $\\mathbb{R}$ (cosinus). Pour tout $a \\in \\mathbb{R}$, $g$ est continue en $a$ et $f$ est continue en $g(a)$. Par le théorème de composition, $h$ est continue en $a$. Comme $a$ est arbitraire, $h$ est continue sur $\\mathbb{R}$."
+            },
+            {
+              "question": "Pourquoi la fonction $k(x) = \\sqrt{x-3}$ est-elle continue sur $[3, +\\infty[$ ?",
+              "answer": "$k = \\sqrt{\\cdot} \\circ h$ avec $h(x)=x-3$. $h$ est continue sur $\\mathbb{R}$, $\\sqrt{\\cdot}$ est continue sur $[0,+\\infty[$. Pour $x\\ge 3$, $h(x)\\ge 0$, donc la composition est bien définie et continue sur $[3,+\\infty[$.",
+              "hint": "Décompose en composition et vérifie les domaines.",
+              "explanation": "La fonction racine carrée est continue sur $[0,+\\infty[$. La fonction $h(x)=x-3$ est un polynôme, continue sur $\\mathbb{R}$. Pour tout $x \\ge 3$, $h(x) = x-3 \\ge 0$, donc $h(x)$ appartient au domaine de continuité de la racine. Par composition, $k$ est continue sur $[3,+\\infty[$. En $3$, c'est une continuité à droite."
+            }
+          ]
+        },
+        {
+          "title": "Lecture graphique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire la continuité sur un graphique : ce que l'œil voit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons à l'image du crayon. Sur le graphique d'une fonction, la continuité se traduit par l'absence de trois défauts visuels majeurs. Premier défaut : un point isolé, un « trou » dans la courbe, avec éventuellement un point placé ailleurs (discontinuité évitable). Deuxième défaut : un saut brusque, la courbe fait un bond vertical sans passer par les valeurs intermédiaires (discontinuité de premier genre). Troisième défaut : la courbe s'envole vers le haut ou le bas de façon infinie près d'une verticale (asymptote verticale, discontinuité de second genre). Si aucun de ces trois défauts n'apparaît sur un intervalle, la courbe est un trait uni, continu, que tu peux suivre du doigt sans interruption."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(1/x)",
+              "xmin": -1,
+              "xmax": 1,
+              "caption": "Graphique de $x \\mapsto \\sin(1/x)$ près de $0$ : oscillations infinies, pas de limite, discontinuité essentielle (de second genre)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème des valeurs intermédiaires (TVI) : une conséquence visuelle majeure"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si une fonction $f$ est continue sur un intervalle fermé $[a,b]$, alors pour toute valeur $k$ comprise entre $f(a)$ et $f(b)$, il existe au moins un $c \\in [a,b]$ tel que $f(c)=k$. En mots simples : une courbe continue qui relie deux points de part et d'autre d'une ligne horizontale doit obligatoirement couper cette ligne. C'est l'intuition du crayon : tu ne peux pas passer de « en dessous » à « au-dessus » sans toucher la ligne. Ce théorème est un outil d'existence : il garantit qu'une équation $f(x)=k$ a au moins une solution, sans te la donner explicitement. Il est à la base de la méthode de dichotomie pour approcher les zéros d'une fonction."
+            },
+            {
+              "type": "definition",
+              "term": "Théorème des valeurs intermédiaires (TVI)",
+              "definition": "Soit $f$ continue sur $[a,b]$. Pour tout $k$ entre $f(a)$ et $f(b)$, il existe $c \\in [a,b]$ tel que $f(c)=k$. Si de plus $f$ est strictement monotone, ce $c$ est unique.",
+              "example": "$f(x)=x^3-x$ sur $[0,2]$. $f(0)=0$, $f(2)=6$. Pour tout $k \\in [0,6]$, l'équation $x^3-x=k$ a au moins une solution dans $[0,2]$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier les hypothèses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que $f$ est bien continue sur l'intervalle fermé $[a,b]$ considéré (continuité sur l'ouvert, continuité à droite en $a$, à gauche en $b$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier la valeur cible $k$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine $k$ (souvent $k=0$ pour chercher un zéro). Vérifie que $k$ est bien compris entre $f(a)$ et $f(b)$ (inclusivement)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure l'existence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par le TVI, il existe au moins un $c \\in [a,b]$ tel que $f(c)=k$. Si $f$ est strictement monotone sur $[a,b]$, ce $c$ est unique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le théorème des bornes : une fonction continue sur un segment est bornée et atteint ses bornes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre conséquence cruciale de la continuité sur un intervalle fermé $[a,b]$ (appelé « segment » en terminologie universitaire) : la fonction est bornée (il existe $m$ et $M$ tels que $m \\le f(x) \\le M$ pour tout $x \\in [a,b]$) et, mieux encore, elle atteint ses bornes : il existe $c, d \\in [a,b]$ tels que $f(c)=m$ (minimum) et $f(d)=M$ (maximum). Cela n'est pas vrai sur un intervalle ouvert : $f(x)=1/x$ sur $]0,1]$ n'est pas bornée (pas de maximum), et sur $]0,1[$ elle n'atteint pas son infimum $1$. La compacité du segment (fermé et borné) est la raison profonde, mais en Terminale on retient le résultat : sur un segment, une fonction continue a un minimum et un maximum réels, atteints en des points du segment."
+            },
+            {
+              "type": "graph",
+              "expression": "x^3-3*x",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Sur $[-2,2]$, $f(x)=x^3-3x$ atteint son minimum $-2$ en $x=1$ et son maximum $2$ en $x=-1$ (et aussi aux bornes)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications concrètes : dichotomie et équations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le TVI est la justification théorique de la méthode de dichotomie (recherche de zéro par encadrement successif). Si $f$ est continue sur $[a,b]$ et que $f(a)$ et $f(b)$ sont de signes opposés, alors $f$ a au moins un zéro sur $[a,b]$. On coupe l'intervalle en deux, on regarde le signe au milieu, on garde le sous-intervalle où le signe change, et on recommence. La continuité garantit qu'on ne « rate » pas le zéro au passage. C'est l'algorithme de base pour résoudre numériquement $f(x)=0$ quand on n'a pas de formule explicite. De même, pour montrer qu'une équation $f(x)=k$ a une solution unique, on combine TVI (existence) et monotonie stricte (unicité)."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def dichotomie(f, a, b, epsilon):\\n    \"\"\"Retourne un encadrement d'un zéro de f sur [a,b] de largeur < epsilon.\\n    Précondition : f continue sur [a,b], f(a)*f(b) < 0.\"\"\"\\n    while b - a > epsilon:\\n        m = (a + b) / 2\\n        if f(a) * f(m) <= 0:\\n            b = m\\n        else:\\n            a = m\\n    return a, b\\n\\n# Exemple : zéro de x^3 - x - 1 sur [1,2]\\nf = lambda x: x**3 - x - 1\\nprint(dichotomie(f, 1, 2, 1e-6))",
+              "caption": "Algorithme de dichotomie pour encadrer un zéro d'une fonction continue."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais donner la définition $\\varepsilon-\\delta$ de la continuité en un point et l'interpréter graphiquement (rectangle $\\delta \\times \\varepsilon$).",
+                "Je sais vérifier la continuité d'une fonction usuelle (polynôme, rationnelle, trigonométrique, exponentielle, logarithme, racine) sur son domaine.",
+                "Je sais utiliser les théorèmes d'opérations (somme, produit, quotient, composition) pour prouver la continuité d'une fonction construite.",
+                "Je sais reconnaître sur un graphique les trois types de discontinuités : évitable (trou), saut (premier genre), asymptote verticale (second genre).",
+                "Je sais énoncer et appliquer le théorème des valeurs intermédiaires (TVI) pour montrer l'existence d'une solution à $f(x)=k$ sur $[a,b]$.",
+                "Je sais énoncer le théorème des bornes : une fonction continue sur un segment $[a,b]$ est bornée et atteint son minimum et son maximum.",
+                "Je comprends pourquoi la dichotomie fonctionne pour encadrer un zéro d'une fonction continue."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le graphique ci-dessous, on voit une courbe avec un « trou » en $x=2$ (point vacant) et un point plein à $(2, 5)$. La courbe passe par $(2, 3)$ si on prolonge le trait. Quel type de discontinuité ? La fonction peut-elle être rendue continue ?",
+              "answer": "Discontinuité évitable. Oui, en redéfinissant $f(2)=3$ (la limite), la fonction devient continue.",
+              "hint": "La limite existe et est finie (le trou se boucherait naturellement), mais la valeur de la fonction est ailleurs.",
+              "explanation": "Le « trou » à $(2,3)$ indique que $\\lim_{x\\to 2} f(x) = 3$. Le point plein à $(2,5)$ donne $f(2)=5$. Comme la limite existe et est finie mais diffère de $f(2)$, c'est une discontinuité évitable. Il suffit de poser $f(2)=3$ pour rendre la fonction continue."
+            },
+            {
+              "question": "Soit $f(x) = x^3 - 2x - 5$. Montrer que l'équation $f(x)=0$ a une unique solution dans l'intervalle $[2,3]$.",
+              "answer": "$f$ est continue sur $[2,3]$ (polynôme). $f(2)=-1 < 0$, $f(3)=16 > 0$. Par TVI, il existe $c \\in [2,3]$ tel que $f(c)=0$. $f'(x)=3x^2-2 > 0$ sur $[2,3]$, donc $f$ est strictement croissante, donc la solution est unique.",
+              "hint": "Vérifie les signes aux bornes pour le TVI, puis étudie la dérivée pour la monotonie.",
+              "explanation": "$f$ est un polynôme, donc continue sur $\\mathbb{R}$, en particulier sur $[2,3]$. $f(2)=8-4-5=-1$, $f(3)=27-6-5=16$. $0$ est entre $-1$ et $16$, donc par TVI il existe au moins un $c \\in [2,3]$ tel que $f(c)=0$. De plus, $f'(x)=3x^2-2$. Pour $x \\in [2,3]$, $x^2 \\ge 4$, donc $3x^2-2 \\ge 10 > 0$. $f$ est strictement croissante sur $[2,3]$, donc elle ne peut croiser l'axe qu'une seule fois. La solution est unique."
+            },
+            {
+              "question": "La fonction $g(x) = \\frac{1}{x}$ est-elle bornée sur $]0,1]$ ? Atteint-elle ses bornes ?",
+              "answer": "Non, $g$ n'est pas bornée sur $]0,1]$ (elle tend vers $+\\infty$ quand $x\\to 0^+$). Elle n'atteint pas de maximum. Son minimum est $1$ atteint en $x=1$.",
+              "hint": "Regarde le comportement près de $0$ (exclu de l'intervalle) et en $1$.",
+              "explanation": "Sur $]0,1]$, $g$ est continue (quotient de fonctions continues, dénominateur non nul). Mais l'intervalle n'est pas fermé (c'est un intervalle ouvert à gauche). Quand $x\\to 0^+$, $g(x) \\to +\\infty$, donc $g$ n'est pas majorée, elle n'a pas de maximum. En revanche, $g$ est décroissante, donc son minimum est atteint à la borne droite : $g(1)=1$."
+            },
+            {
+              "question": "On veut approcher le zéro de $h(x) = e^x - 2x - 1$ sur $[1,2]$ par dichotomie à $10^{-4}$ près. Combien d'itérations sont nécessaires au minimum ?",
+              "answer": "La longueur initiale est $1$. Après $n$ itérations, la longueur est $1/2^n$. On veut $1/2^n \\le 10^{-4}$, soit $2^n \\ge 10^4$. $2^{13}=8192$, $2^{14}=16384$. Il faut au moins $14$ itérations.",
+              "hint": "La longueur de l'intervalle est divisée par $2$ à chaque itération. Résous $1/2^n \\le 10^{-4}$.",
+              "explanation": "L'intervalle initial $[1,2]$ a une longueur $L_0 = 1$. Après $n$ itérations, la longueur est $L_n = 1/2^n$. On veut $L_n \\le 10^{-4}$, c'est-à-dire $2^n \\ge 10^4 = 10000$. Comme $2^{13} = 8192 < 10000$ et $2^{14} = 16384 \\ge 10000$, il faut au minimum $14$ itérations pour garantir un encadrement de largeur $\\le 10^{-4}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

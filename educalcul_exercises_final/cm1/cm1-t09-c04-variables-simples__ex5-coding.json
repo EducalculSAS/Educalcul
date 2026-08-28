@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 272,
+  "_course_code": "cm1-t09-c04-variables-simples",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Approfondissement : Stocker une valeur",
+  "title": "Stocker des valeurs avec des variables",
+  "blocks": [
+    {
+      "title": "Création d'une variable",
+      "content": "Tu veux créer un programme pour compter des points. Écris l'instruction qui permet de créer une variable nommée score et de lui attribuer la valeur $0$.",
+      "correctAnswer": "score = 0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour stocker une valeur dans une variable, on écrit le nom de la variable, suivi du signe égal et de la valeur. Ici, on écrit score = $0$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Mise à jour d'une valeur",
+      "content": "Une variable nommée points contient déjà la valeur $10$. Le joueur gagne $5$ points supplémentaires. Écris l'algorithme pour mettre à jour la variable points afin qu'elle contienne désormais le nouveau total.",
+      "correctAnswer": "points = points + 5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour ajouter une valeur à une variable existante, on prend l'ancienne valeur, on ajoute le nombre et on range le résultat dans la même variable. Le calcul est $10 + 5 = 15$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Échange de valeurs",
+      "content": "Tu as deux variables : boîte A qui contient le nombre $8$ et boîte B qui contient le nombre $3$. Tu veux échanger leurs contenus pour que la boîte A contienne $3$ et la boîte B contienne $8$.\\n\\nUtilise une troisième variable nommée temporaire pour réussir cet échange. Écris les trois étapes de ton raisonnement.",
+      "correctAnswer": "temporaire = boîte A\\nboîte A = boîte B\\nboîte B = temporaire",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Si on écrit boîte A = boîte B, on efface la valeur $8$. Il faut donc d'abord copier le contenu de la boîte A dans une variable temporaire. Ensuite, on peut copier la boîte B dans la boîte A. Enfin, on place la valeur sauvegardée dans la temporaire vers la boîte B.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

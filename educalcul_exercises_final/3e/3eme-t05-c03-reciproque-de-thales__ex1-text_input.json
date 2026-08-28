@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 481,
+  "_course_code": "3eme-t05-c03-reciproque-de-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Hypothèses",
+  "title": "Réciproque de Thalès : Hypothèses",
+  "blocks": [
+    {
+      "title": "Hypothèses nécessaires",
+      "content": "Quelles sont les deux hypothèses qu'il faut vérifier pour pouvoir appliquer la réciproque du théorème de Thalès dans un triangle ?",
+      "correctAnswer": "Deux points sur les côtés et égalité des rapports",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour utiliser la réciproque de Thalès, il faut d'abord que la droite coupe les deux côtés du triangle (ou leurs prolongements) en deux points distincts. Ensuite, il faut que les rapports des segments déterminés sur ces deux côtés soient égaux. Si ces deux conditions sont remplies, on peut conclure que la droite est parallèle au troisième côté.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conclusion de parallélisme",
+      "content": "Dans le triangle $ABC$, les points $D \\in AB$ et $E \\in AC$ sont tels que $\\frac{AD}{DB} = \\frac{3}{4}$ et $\\frac{AE}{EC} = \\frac{3}{4}$. Que peut-on affirmer sur la droite $(DE)$ par rapport à $(BC)$ ?",
+      "correctAnswer": "DE ∥ BC",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les rapports $\\frac{AD}{DB}$ et $\\frac{AE}{EC}$ sont égaux (tous deux valent $\\frac{3}{4}$). Comme les points $D$ et $E$ appartiennent respectivement aux côtés $AB$ et $AC$, les hypothèses de la réciproque de Thalès sont satisfaites. Par conséquent, la droite $(DE)$ est parallèle à la droite $(BC)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification numérique",
+      "content": "Dans le triangle $ABC$, on a $AB = 12$ cm et $AC = 15$ cm. Le point $D$ appartient au segment $[AB]$ avec $AD = 5$ cm. Le point $E$ appartient au segment $[AC]$ avec $AE = 6,25$ cm. La droite $(DE)$ est-elle parallèle à $(BC)$ ?",
+      "correctAnswer": "Oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule les rapports : $\\frac{AD}{DB} = \\frac{5}{12-5} = \\frac{5}{7}$ et $\\frac{AE}{EC} = \\frac{6,25}{15-6,25} = \\frac{6,25}{8,75} = \\frac{5}{7}$. Les deux rapports sont égaux et les points $D$, $E$ sont sur les côtés $AB$ et $AC$. Les hypothèses de la réciproque de Thalès sont donc vérifiées, ce qui permet d'affirmer que $(DE) \\parallel (BC)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

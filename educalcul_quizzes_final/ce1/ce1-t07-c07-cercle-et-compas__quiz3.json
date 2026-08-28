@@ -1,0 +1,81 @@
+{
+  "_status": "done",
+  "_course_id": 132,
+  "_course_code": "ce1-t07-c07-cercle-et-compas",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Reproduire un cercle donné",
+  "title": "Quiz : Reproduire un cercle au compas",
+  "questions": [
+    {
+      "text": "Quel est l'outil indispensable pour reproduire un cercle donné avec precision ?",
+      "options": [
+        "Une regle graduee",
+        "Un compas",
+        "Une equerre",
+        "Un rapporteur"
+      ],
+      "correctAnswer": "Un compas",
+      "explanation": "Le compas est l'unique outil qui permet de tracer un cercle en gardant une distance constante (le rayon) entre la pointe seche (le centre) et la mine (le cercle). La regle, l'equerre et le rapporteur ne permettent pas de tracer une courbe continue a distance fixe d'un point.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 5,
+        "centerLabel": "O",
+        "caption": "Un compas pret a tracer un cercle de centre O"
+      }
+    },
+    {
+      "text": "Pour reproduire un cercle modele, comment doit-on regler l'ouverture du compas ?",
+      "options": [
+        "On l'ouvre au maximum",
+        "On l'ouvre au hasard",
+        "On place la pointe seche sur le centre et le crayon sur le cercle donne",
+        "On place les deux branches sur le centre du cercle"
+      ],
+      "correctAnswer": "On place la pointe seche sur le centre et le crayon sur le cercle donne",
+      "explanation": "L'ouverture du compas doit correspondre exactement au rayon du cercle a reproduire. Pour cela, on pose la pointe seche sur le centre du cercle modele et on ecarte la branche crayon jusqu'a ce qu'elle touche le trait du cercle. Ainsi, l'ecartement memorise la longueur du rayon.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans quel ordre effectue-t-on les etapes pour reproduire un cercle ?",
+      "options": [
+        "Je trace le cercle, puis je regle le compas, enfin je pointe le centre.",
+        "Je pointe le centre, je regle le compas sur le rayon, puis je trace le cercle.",
+        "Je regle le compas, je trace le cercle, puis je pointe le centre.",
+        "Je trace le cercle, je pointe le centre, puis je regle le compas."
+      ],
+      "correctAnswer": "Je pointe le centre, je regle le compas sur le rayon, puis je trace le cercle.",
+      "explanation": "La procedure logique est : 1. Identifier et marquer le centre du nouveau cercle (ou reperer le centre du modele). 2. Regler l'ecartement du compas sur la longueur du rayon (distance centre-bord). 3. Poser la pointe seche sur le centre definitif et tourner le compas pour tracer le cercle. Les autres ordres melent les etapes ou tentent de tracer avant d'avoir l'outil pret.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur le cercle donne, quel segment correspond au rayon que l'on doit reporter sur le compas ?",
+      "options": [
+        "Le diametre",
+        "Une corde quelconque",
+        "Le segment reliant le centre a un point du cercle",
+        "La circonference"
+      ],
+      "correctAnswer": "Le segment reliant le centre a un point du cercle",
+      "explanation": "Par definition, le rayon d'un cercle est la distance entre son centre et n'importe quel point de sa circonference. C'est cette longueur qu'il faut bloquer sur le compas. Le diametre est le double du rayon, une corde ne passe pas forcement par le centre, et la circonference est la ligne courbe elle-meme, pas une longueur droite reportable sur le compas.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lea veut reproduire un cercle. Elle pose la pointe seche sur le centre, mais son cercle trace est plus petit que le modele. Quelle erreur a-t-elle commise ?",
+      "options": [
+        "Elle a appuye trop fort sur le crayon",
+        "Elle n'a pas assez ouvert le compas : le crayon n'etait pas sur le cercle modele",
+        "Elle a tourne le compas dans le mauvais sens",
+        "Elle a utilise une regle au lieu du compas"
+      ],
+      "correctAnswer": "Elle n'a pas assez ouvert le compas : le crayon n'etait pas sur le cercle modele",
+      "explanation": "Si le cercle trace est plus petit, c'est que l'ecartement du compas (le rayon choisi) est inferieur au rayon du modele. Cela signifie que lors du reglage sur le cercle modele, la mine du crayon n'avait pas ete placee exactement sur le trait du cercle (elle etait trop pres du centre). Appuyer fort, le sens de rotation ou l'outil n'auraient pas pour consequence un cercle plus petit mais bien trace.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

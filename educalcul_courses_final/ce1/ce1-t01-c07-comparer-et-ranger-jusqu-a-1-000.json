@@ -1,0 +1,450 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.706488+00:00",
+  "id": 74,
+  "code": "ce1-t01-c07",
+  "title": "Comparer et ranger jusqu'à 1 000",
+  "description": "Cours structuré Educalcul : Comparer et ranger jusqu'à 1 000.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Comparer et ranger jusqu'à 1 000",
+    "objectif_global": "Comparer et ranger jusqu'à 1 000",
+    "mini_lecons_imposees": [
+      "Comparer les centaines.",
+      "Comparer dizaines puis unités.",
+      "Ranger plusieurs nombres."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Comparer les centaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les centaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien le chiffre des centaines : il te montre combien de groupes de cent il y a dans le nombre. Par exemple, dans $320$ il y a $3$ centaines, dans $450$ il y a $4$ centaines, et dans $100$ il y a exactement $1$ centaine."
+            },
+            {
+              "type": "definition",
+              "term": "centaine",
+              "definition": "Un groupe de cent unités, noté par le chiffre des centaines.",
+              "example": "Dans $320$, le chiffre $3$ représente $3$ centaines."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le bloc de base dix ci‑dessous représente $300$ avec trois centaines, zéro dizaine et zéro unité, ce qui t’aide à voir la valeur de chaque chiffre."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 0,
+              "units": 0,
+              "caption": "300 : 3 centaines"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essaie de dire quel nombre a le plus de centaines entre $210$ et $390$, et explique pourquoi."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux nombres par les centaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si le chiffre des centaines est plus grand, le nombre entier est plus grand, peu importe les dizaines ou les unités. $400$ est plus grand que $250$ parce que $4$ centaines valent plus que $2$ centaines, même si $250$ a plus de dizaines."
+            },
+            {
+              "type": "paragraph",
+              "content": "L’affichage mathématique $400 > 250$ résume cette règle et te permet de vérifier rapidement tes comparaisons."
+            },
+            {
+              "type": "display_math",
+              "latex": "400 > 250"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voyons comment ranger trois nombres en ne regardant que les centaines, comme on le fait pour classer des scores."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ranger trois nombres par les centaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ranger $530$, $210$ et $470$, compare d’abord les centaines : $5$, $2$ et $4$. Le plus grand est $530$ avec $5$ centaines, puis $470$ avec $4$ centaines, enfin $210$ avec $2$ centaines."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme en barres ci‑dessous montre visuellement ces trois quantités de centaines pour t’aider à mémoriser l’ordre."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "530",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "210",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "470",
+                  "value": 4,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "Comparaison des centaines"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Lequel de ces nombres a le plus de centaines ? $210$ ou $390$ ?",
+              "answer": "$390$",
+              "hint": "Regarde le chiffre des centaines.",
+              "explanation": "Le chiffre des centaines de $390$ est $3$, celui de $210$ est $2$, donc $390$ a plus de centaines."
+            },
+            {
+              "question": "Compare $400$ et $250$ en utilisant seulement les centaines.",
+              "answer": "$400 > 250$",
+              "hint": "Combien de centaines dans chaque nombre ?",
+              "explanation": "$400$ a $4$ centaines, $250$ en a $2$, donc $400$ est plus grand."
+            },
+            {
+              "question": "Range $530$, $210$, $470$ du plus grand au plus petit.",
+              "answer": "$530$, $470$, $210$",
+              "hint": "Compare les centaines.",
+              "explanation": "Les centaines sont $5$, $2$, $4$ ; l’ordre décroissant donne $530$, $470$, $210$."
+            }
+          ]
+        },
+        {
+          "title": "Comparer dizaines puis unités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand les centaines sont égales"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand deux nombres ont le même chiffre des centaines, tu dois regarder le chiffre des dizaines pour savoir lequel est le plus grand. C’est comme comparer la taille de deux tours qui ont le même nombre d’étages."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, $340$ et $360$ ont tous les deux $3$ centaines, mais $340$ a $4$ dizaines alors que $360$ en a $6$, donc $360$ est le plus grand."
+            },
+            {
+              "type": "definition",
+              "term": "dizaine",
+              "definition": "Un groupe de dix unités, noté par le chiffre des dizaines.",
+              "example": "Dans $340$, le chiffre $4$ représente $4$ dizaines."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 1,
+              "cols": 10,
+              "highlighted": 6,
+              "caption": "6 dizaines = 60"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de dire lequel de $420$ et $480$ a le plus de dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer les dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer les dizaines, tu regardes seulement le deuxième chiffre en partant de la gauche. $480$ a $8$ dizaines, $420$ en a $2$, donc $480$ est plus grand que $420$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle du mètre ci‑dessous montre une longueur de $8$ dizaines, ce qui correspond à $80$ et t’aide à visualiser la différence."
+            },
+            {
+              "type": "ruler_measurer",
+              "segmentLength": 8,
+              "unit": "cm",
+              "caption": "8 dizaines = 80"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les dizaines sont aussi égales, il faut regarder les unités pour départager les nombres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Si les dizaines sont égales, regarde les unités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons $345$ et $347$ : ils ont les mêmes centaines ($3$) et les mêmes dizaines ($4$). Le chiffre des unités fait la différence, $7$ est plus grand que $5$, donc $347$ l’emporte."
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite numérique ci‑dessous place $345$ et $347$ pour que tu vois visuellement lequel est à droite."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de 345 et 347",
+              "min": 340,
+              "max": 350,
+              "points": [
+                {
+                  "value": 345,
+                  "label": "345"
+                },
+                {
+                  "value": 347,
+                  "label": "347"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Les nombres $340$ et $360$ ont le même chiffre des centaines. Lequel a plus de dizaines ?",
+              "answer": "$360$",
+              "hint": "Regarde le chiffre des dizaines.",
+              "explanation": "$340$ a $4$ dizaines, $360$ a $6$ dizaines."
+            },
+            {
+              "question": "Compare $420$ et $480$.",
+              "answer": "$480 > 420$",
+              "hint": "Regarde les dizaines.",
+              "explanation": "$480$ a $8$ dizaines, $420$ en a $2$."
+            },
+            {
+              "question": "Si deux nombres ont les mêmes centaines et dizaines, comment départager $345$ et $347$ ?",
+              "answer": "$347$ est plus grand",
+              "hint": "Regarde les unités.",
+              "explanation": "Les unités sont $5$ et $7$, $7$ est plus grand."
+            }
+          ]
+        },
+        {
+          "title": "Ranger plusieurs nombres.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ranger une liste de nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ranger plusieurs nombres, commence par comparer les centaines, puis les dizaines et enfin les unités, exactement comme tu viens de l’apprendre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau ci‑dessous : $215$ a $2$ centaines, $342$ en a $3$, $198$ en a $1$. L’ordre croissant est donc $198$, $215$, $342$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Nombre",
+                "Centaines"
+              ],
+              "rows": [
+                [
+                  "215",
+                  "2"
+                ],
+                [
+                  "342",
+                  "3"
+                ],
+                [
+                  "198",
+                  "1"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, place $250$ et $380$ sur une droite numérique pour voir lequel est plus grand."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser une droite numérique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une droite numérique te montre la position de chaque nombre ; le plus grand se trouve toujours plus à droite. $380$ est à droite de $250$, donc $380 > 250$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique en barres ci‑dessous représente le nombre de centaines de cinq nombres pour t’aider à les classer rapidement."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Centaines de cinq nombres",
+              "bars": [
+                {
+                  "label": "120",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "305",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "290",
+                  "value": 2,
+                  "tone": "gold"
+                },
+                {
+                  "label": "150",
+                  "value": 1,
+                  "tone": "red"
+                },
+                {
+                  "label": "400",
+                  "value": 4,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant de ranger $120$, $305$, $290$, $150$, $400$ du plus grand au plus petit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraînement : ranger cinq nombres"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ce dernier exercice, compare d’abord les centaines : $400$ en a $4$, $305$ en a $3$, $290$ en a $2$, $150$ et $120$ en ont $1$. Ensuite, pour $150$ et $120$, regarde les dizaines : $5$ contre $2$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le camembert ci‑dessous montre la part de chaque centaine dans l’ensemble des cinq nombres, ce qui t’aide à visualiser la répartition."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des centaines",
+              "slices": [
+                {
+                  "label": "1 centaine",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2 centaines",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "3 centaines",
+                  "value": 1,
+                  "tone": "gold"
+                },
+                {
+                  "label": "4 centaines",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux nombres jusqu’à 1000 en regardant d’abord les centaines.",
+                "Je sais ranger une liste de nombres du plus petit au plus grand.",
+                "Je sais utiliser une droite numérique pour vérifier l’ordre."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Range $215$, $342$, $198$ du plus petit au plus grand.",
+              "answer": "$198$, $215$, $342$",
+              "hint": "Compare d’abord les centaines.",
+              "explanation": "Centaines : $1$, $2$, $3$ => ordre croissant."
+            },
+            {
+              "question": "Sur une droite de $100$ à $400$, place $250$ et $380$. Lequel est plus à droite ?",
+              "answer": "$380$",
+              "hint": "Le plus grand nombre est plus à droite.",
+              "explanation": "$380 > 250$, donc $380$ est à droite."
+            },
+            {
+              "question": "Range $120$, $305$, $290$, $150$, $400$ du plus grand au plus petit.",
+              "answer": "$400$, $305$, $290$, $150$, $120$",
+              "hint": "Compare les centaines, puis les dizaines.",
+              "explanation": "Centaines : $4$, $3$, $2$, $1$, $1$ ; pour $150$ et $120$ même centaine, compare dizaines $5$ vs $2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

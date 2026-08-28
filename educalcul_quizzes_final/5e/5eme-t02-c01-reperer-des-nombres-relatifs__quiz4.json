@@ -1,0 +1,147 @@
+{
+  "_status": "done",
+  "_course_id": 384,
+  "_course_code": "5eme-t02-c01-reperer-des-nombres-relatifs",
+  "_level": "5e",
+  "_subject": "Nombres relatifs, rationnels et puissances",
+  "_subtheme": "Application : Repérer des nombres relatifs",
+  "title": "Repérer des nombres relatifs : Applications",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, quel est l'abscisse du point A ?",
+      "options": [
+        "-3",
+        "3",
+        "-2",
+        "2"
+      ],
+      "correctAnswer": "-3",
+      "explanation": "Le point A se trouve sur la graduation -3. Il est placé à 3 unités à gauche de l'origine (zéro). Les nombres négatifs se repèrent à gauche de zéro, les positifs à droite. L'option 3 correspond au point symétrique de A par rapport à zéro. Les options -2 et 2 ne correspondent pas à la position du point sur la figure.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de -5 à 5",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -3,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On place le point B d'abscisse 4 sur une droite graduée. Quel est l'abscisse du point C, symétrique de B par rapport à l'origine ?",
+      "options": [
+        "-4",
+        "4",
+        "-5",
+        "5"
+      ],
+      "correctAnswer": "-4",
+      "explanation": "Deux nombres sont opposés s'ils ont le même chiffre mais des signes contraires. L'opposé de 4 est -4. Sur la droite graduée, les points d'abscisses opposées sont symétriques par rapport à l'origine (zéro) : ils sont à la même distance de zéro, mais de part et d'autre. L'option 4 correspond au point B lui-même. Les options -5 et 5 n'ont pas la même distance à l'origine que 4.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de -5 à 5 avec point B",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": 4,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, quatre points sont repérés : A(-2), B(3), C(-4), D(1). Lequel de ces points est le plus à gauche ?",
+      "options": [
+        "C",
+        "A",
+        "D",
+        "B"
+      ],
+      "correctAnswer": "C",
+      "explanation": "Sur une droite graduée, les nombres sont rangés dans l'ordre croissant de la gauche vers la droite. Le plus petit nombre est le plus à gauche. Parmi -4, -2, 1 et 3, le plus petit est -4 (car -4 < -2 < 1 < 3). Le point C d'abscisse -4 est donc le plus à gauche. Le point A (-2) est à droite de C. Les points D (1) et B (3) sont à droite de l'origine.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée avec points A, B, C, D",
+        "min": -5,
+        "max": 5,
+        "points": [
+          {
+            "value": -2,
+            "label": "A"
+          },
+          {
+            "value": 3,
+            "label": "B"
+          },
+          {
+            "value": -4,
+            "label": "C"
+          },
+          {
+            "value": 1,
+            "label": "D"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Un thermomètre indique une température de $-7\\,\\degree C$. Comment repère-t-on cette température sur l'échelle du thermomètre ?",
+      "options": [
+        "7 graduations au-dessus de 0",
+        "7 graduations en-dessous de 0",
+        "7 graduations à droite de 0",
+        "7 graduations à gauche de 0"
+      ],
+      "correctAnswer": "7 graduations en-dessous de 0",
+      "explanation": "Sur un thermomètre (axe vertical), le zéro est le repère. Les températures positives (au-dessus de zéro) se lisent vers le haut. Les températures négatives (sous zéro) se lisent vers le bas. $-7\\,\\degree C$ est une température négative, elle se situe donc 7 graduations en-dessous du zéro. Les termes « à droite » ou « à gauche » s'utilisent pour une droite horizontale, pas pour un thermomètre vertical.",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "caption": "Thermomètre de -10 à 10 degrés",
+        "min": -10,
+        "max": 10,
+        "points": [
+          {
+            "value": -7,
+            "label": "A"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Sur une droite graduée dont le pas (l'unité) vaut 10, on veut placer le point M d'abscisse -30. Combien de graduations faut-il compter à partir de l'origine et dans quel sens ?",
+      "options": [
+        "3 graduations à gauche de 0",
+        "3 graduations à droite de 0",
+        "30 graduations à gauche de 0",
+        "3 graduations au-dessus de 0"
+      ],
+      "correctAnswer": "3 graduations à gauche de 0",
+      "explanation": "Le pas de la graduation est 10. Chaque graduation représente donc 10 unités. Pour atteindre -30, il faut faire $|-30| \\div 10 = 3$ pas. Comme l'abscisse est négative (-30), on se déplace vers la gauche (dans le sens des nombres négatifs). L'option « 30 graduations » confond la valeur du nombre avec le nombre de graduations. L'option « au-dessus » ne s'applique qu'à un axe vertical.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de -50 à 50 par pas de 10",
+        "min": -50,
+        "max": 50,
+        "points": [
+          {
+            "value": -30,
+            "label": "M"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

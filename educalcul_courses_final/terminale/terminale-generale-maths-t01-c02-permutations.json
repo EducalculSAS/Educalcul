@@ -1,0 +1,480 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.584608+00:00",
+  "id": 674,
+  "code": "terminale-generale-maths-t01-c02",
+  "title": "Permutations",
+  "description": "Cours structuré Educalcul : Permutations.",
+  "subject": "Dénombrement et algèbre",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Dénombrement et algèbre",
+    "titre_du_cours": "Permutations",
+    "objectif_global": "Permutations",
+    "mini_lecons_imposees": [
+      "Définir.",
+      "Calculer.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Dénombrement et algèbre",
+      "lessons": [
+        {
+          "title": "Définir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définir une permutation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu doives ranger trois livres différents sur une étagère. Chaque ordre possible correspond à une permutation de cet ensemble de trois objets. En mathématiques, une permutation est un arrangement ordonné de tous les éléments d'un ensemble fini, sans répétition et sans omission. Ce concept apparaît naturellement quand on compte le nombre de façons d'organiser des objets distincts, que ce soit des livres, des personnes autour d'une table ou des chiffres dans un code. La notion est fondamentale en combinatoire et elle sert de base à de nombreux problèmes de dénombrement plus complexes. Pour bien la saisir, il est utile de visualiser concrètement les arrangements avant d'aborder les formules abstraites."
+            },
+            {
+              "type": "definition",
+              "term": "permutation",
+              "definition": "Une permutation d'un ensemble fini est une bijection de cet ensemble sur lui-même, c'est-à-dire un réordonnancement complet de ses éléments sans répétition ni omission.",
+              "example": "Pour l'ensemble {1, 2, 3}, la suite (2, 1, 3) est une permutation."
+            },
+            {
+              "type": "paragraph",
+              "content": "La notation factorielle permet de compter instantanément le nombre de permutations d'un ensemble à n éléments. On écrit n! (se lit « n factorielle ») pour désigner le produit de tous les entiers naturels de 1 jusqu'à n. Par convention, 0! vaut 1. Cette notation compacte évite d'avoir à lister chaque arrangement un par un, ce qui devient impossible dès que n dépasse quelques unités. Le lien entre la définition intuitive et la formule factorielle se fait en observant que pour placer le premier élément on a n choix, pour le second n-1 choix, et ainsi de suite jusqu'au dernier qui n'a qu'une seule place possible. Le produit de ces choix successifs donne exactement n!."
+            },
+            {
+              "type": "display_math",
+              "latex": "n! = n \\times (n-1) \\times \\dots \\times 2 \\times 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le temps de vérifier cette formule sur un exemple simple. Pour n = 3, on obtient 3! = 3 × 2 × 1 = 6 permutations. Effectivement, l'ensemble {1, 2, 3} admet six arrangements distincts : (1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2) et (3,2,1). Cette correspondance entre le produit factoriel et la liste exhaustive est la clé qui permet de passer du concret à l'abstrait sans perte de rigueur. Nous allons maintenant construire pas à pas la liste complète des permutations pour un ensemble à trois éléments, afin de voir le mécanisme en action."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir le premier élément",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On place l'un des trois éléments en première position. Il y a trois possibilités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le second élément",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Parmi les deux restants, on en sélectionne un pour la deuxième place. Cela donne deux choix pour chaque premier choix."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Placer le dernier élément",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'unique élément restant occupe la troisième position, ce qui termine la permutation. Le total est 3 × 2 × 1 = 6."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Numéro",
+                "Permutation"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "(1,2,3)"
+                ],
+                [
+                  "2",
+                  "(1,3,2)"
+                ],
+                [
+                  "3",
+                  "(2,1,3)"
+                ],
+                [
+                  "4",
+                  "(2,3,1)"
+                ],
+                [
+                  "5",
+                  "(3,1,2)"
+                ],
+                [
+                  "6",
+                  "(3,2,1)"
+                ]
+              ],
+              "caption": "Les six permutations de l'ensemble {1,2,3}."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons vu comment lister les permutations d'un petit ensemble, il est naturel de se demander comment la notation factorielle se comporte quand on ajoute un élément. La relation (n+1)! = (n+1) × n! exprime exactement cette idée : chaque permutation de n éléments peut être étendue en insérant le nouvel élément dans n+1 positions différentes. Cette propriété récursive est très utile pour calculer des factorielles successives sans tout recommencer à zéro. Elle montre aussi pourquoi la factorielle croît extrêmement vite : chaque nouvel élément multiplie le nombre d'arrangements par sa valeur."
+            },
+            {
+              "type": "display_math",
+              "latex": "(n+1)! = (n+1) \\times n!"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, observons que la factorielle n! devient rapidement un nombre très grand. Déjà pour n = 10, on obtient 3 628 800 permutations, ce qui dépasse largement ce qu'on peut écrire à la main. Cette croissance explosive explique pourquoi les problèmes de dénombrement font souvent appel à des approximations ou à des propriétés algébriques pour simplifier les calculs. Dans la prochaine leçon, nous apprendrons à manipuler ces expressions factoriels, à les simplifier et à les évaluer efficacement, tout en gardant une compréhension claire de ce qu'elles représentent concrètement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien y a-t-il de permutations de l'ensemble {a, b, c} ?",
+              "answer": "6",
+              "hint": "Utilise la factorielle 3!.",
+              "explanation": "L'ensemble a 3 éléments, donc le nombre de permutations est 3! = 3 × 2 × 1 = 6."
+            },
+            {
+              "question": "Écris la factorielle 4! sous forme de produit.",
+              "answer": "4 × 3 × 2 × 1",
+              "hint": "Développe la définition de la factorielle.",
+              "explanation": "Par définition, 4! = 4 × 3 × 2 × 1 = 24."
+            },
+            {
+              "question": "Si on ajoute un quatrième élément à un ensemble de 3, combien de permutations supplémentaires apparaissent ?",
+              "answer": "18",
+              "hint": "Calcule 4! - 3!.",
+              "explanation": "4! = 24, 3! = 6, la différence est 18 nouvelles permutations."
+            }
+          ]
+        },
+        {
+          "title": "Calculer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calculer le nombre de permutations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir défini ce qu'est une permutation et introduit la notation factorielle, il est temps de passer au calcul effectif. Savoir que n! représente le produit des entiers de 1 à n est une chose, mais être capable de l'évaluer rapidement, de simplifier des expressions contenant des factorielles et d'estimer leur ordre de grandeur en est une autre. Dans cette leçon, nous allons développer des techniques concrètes pour manipuler les factorielles, en nous appuyant sur des exemples numériques progressifs. L'objectif est d'acquérir une aisance qui permettra ensuite d'aborder des problèmes de dénombrement plus sophistiqués sans se noyer dans les calculs."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "n",
+                "n!"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "1"
+                ],
+                [
+                  "1",
+                  "1"
+                ],
+                [
+                  "2",
+                  "2"
+                ],
+                [
+                  "3",
+                  "6"
+                ],
+                [
+                  "4",
+                  "24"
+                ],
+                [
+                  "5",
+                  "120"
+                ],
+                [
+                  "6",
+                  "720"
+                ],
+                [
+                  "7",
+                  "5040"
+                ],
+                [
+                  "8",
+                  "40320"
+                ],
+                [
+                  "9",
+                  "362880"
+                ],
+                [
+                  "10",
+                  "3628800"
+                ]
+              ],
+              "caption": "Valeurs des factorielles de 0! à 10! pour référence rapide."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau de référence est un outil précieux : il permet de vérifier un calcul mental ou de repérer une erreur évidente. Par exemple, si tu obtiens 5000 pour 7!, tu sais immédiatement que quelque chose ne va pas car la valeur exacte est 5040. La mémorisation des premières factorielles jusqu'à 7! ou 8! est souvent recommandée car elles reviennent fréquemment dans les exercices. Au-delà, l'usage d'une calculatrice ou d'un logiciel devient naturel, mais la compréhension de la structure du calcul reste essentielle pour simplifier des expressions avant d'évaluer numériquement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la factorielle à calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère l'entier n dont tu as besoin. Si n ≤ 10, tu peux consulter le tableau ou faire le produit à la main."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Utiliser la récurrence (n+1)! = (n+1) × n!",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu connais déjà n!, multiplie-le par n+1 pour obtenir (n+1)! sans recommencer le produit complet."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier les rapports de factorielles avant de calculer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans une fraction comme 9! / 7!, annule les facteurs communs 7! pour ne garder que 9 × 8 = 72. Cela évite de manipuler des nombres énormes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La simplification des rapports de factorielles est une technique centrale. Elle repose sur l'observation que n! contient (n-1)! comme facteur. Ainsi, n! / (n-1)! = n, et plus généralement n! / (n-k)! = n × (n-1) × ... × (n-k+1). Cette écriture en produit de k facteurs consécutifs est souvent plus maniable que la factorielle complète. Elle apparaît naturellement quand on compte les arrangements partiels (les p-listes) mais aussi quand on compare des nombres de permutations pour des ensembles de tailles différentes. Maîtriser cette simplification te fera gagner un temps considérable et réduira les risques d'erreur de calcul."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{n!}{(n-k)!} = n \\times (n-1) \\times \\dots \\times (n-k+1)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les valeurs de n plus grandes, le calcul exact de n! peut devenir fastidieux même avec une calculatrice, car le nombre de chiffres explose. Les mathématiciens utilisent alors l'approximation de Stirling, qui donne une estimation très précise de n! à l'aide de fonctions exponentielles et de puissances. Cette formule n'est pas au programme pour être démontrée, mais il est utile de la connaître pour avoir une intuition de la croissance factorielle. Elle montre que n! se comporte approximativement comme la racine carrée de 2πn multipliée par (n/e)^n. Cette approximation devient excellente dès n = 10 et elle est à la base de nombreux résultats en probabilités et en algorithmique."
+            },
+            {
+              "type": "display_math",
+              "latex": "n! \\sim \\sqrt{2\\pi n}\\,\\left(\\frac{n}{e}\\right)^n"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "En résumé, calculer le nombre de permutations d'un ensemble à n éléments revient à évaluer n!. Grâce au tableau des petites factorielles, à la relation de récurrence et à la simplification des rapports, tu disposes maintenant d'une boîte à outils complète pour manipuler ces expressions avec aisance. La prochaine leçon mettra ces compétences en pratique sur des situations concrètes : rangement de livres, création de codes, placement autour d'une table. Tu verras comment le même outil factoriel s'adapte à des contextes variés, et comment quelques raisonnements supplémentaires permettent de traiter des contraintes comme l'indistinguabilité ou la circularité."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule 7!.",
+              "answer": "5040",
+              "hint": "Multiplie les entiers de 1 à 7.",
+              "explanation": "7! = 7 × 6 × 5 × 4 × 3 × 2 × 1 = 5040."
+            },
+            {
+              "question": "Simplifie l'expression 9! / 7!.",
+              "answer": "72",
+              "hint": "Annule les facteurs communs 7!.",
+              "explanation": "9! / 7! = (9 × 8 × 7!) / 7! = 9 × 8 = 72."
+            },
+            {
+              "question": "Donne la valeur exacte de 10!.",
+              "answer": "3628800",
+              "hint": "Utilise la table des factorielles ou la récurrence à partir de 9!.",
+              "explanation": "10! = 10 × 9! = 10 × 362880 = 3 628 800."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications des permutations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les permutations ne sont pas seulement des objets abstraits : elles modélisent une multitude de situations réelles où l'ordre compte. Que ce soit pour ranger des livres sur une étagère, composer un mot de passe sans répétition, installer des convives autour d'une table ou organiser le passage de coureurs dans une course, le même principe factoriel s'applique. Dans cette leçon, nous allons traduire des énoncés concrets en langage mathématique, identifier le nombre d'éléments à permuter, puis calculer le résultat. L'enjeu est de reconnaître la structure de permutation derrière des formulations variées et d'éviter les pièges classiques comme le surcomptage ou l'oubli de contraintes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'ensemble des objets à permuter",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine quels sont les éléments distincts et compte-les. Ce nombre sera n."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier qu'il s'agit bien d'une permutation complète",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tous les objets doivent être utilisés exactement une fois, sans répétition ni omission. Si une sélection partielle est demandée, on utilise alors les arrangements (p-listes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule n!",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule n! soit directement, soit en simplifiant avec des factorielles connues."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Prendre en compte d'éventuelles symétries",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour une table ronde, on divise par n car les rotations ne changent pas l'arrangement. Pour des objets identiques, on divise par les factorielles des multiplicités."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Situation",
+                "Objets distincts (n)",
+                "Contrainte particulière",
+                "Nombre d'arrangements"
+              ],
+              "rows": [
+                [
+                  "Rangement de 5 livres différents",
+                  "5",
+                  "Aucune",
+                  "5! = 120"
+                ],
+                [
+                  "Code à 4 chiffres avec {1,2,3,4} sans répétition",
+                  "4",
+                  "Aucune",
+                  "4! = 24"
+                ],
+                [
+                  "6 personnes autour d'une table ronde",
+                  "6",
+                  "Invariance par rotation",
+                  "(6-1)! = 120"
+                ],
+                [
+                  "Permutation des lettres du mot \"MATHS\"",
+                  "5",
+                  "Toutes lettres distinctes",
+                  "5! = 120"
+                ]
+              ],
+              "caption": "Exemples d'applications directes de la factorielle avec ou sans contrainte de symétrie."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les exemples du tableau illustrent la diversité des contextes. Le passage d'une étagère linéaire à une table ronde introduit la notion d'équivalence par rotation : deux placements qui ne diffèrent que par une rotation globale sont considérés identiques. On divise donc le nombre de permutations linéaires (n!) par n, ce qui donne (n-1)!. Cette astuce vaut pour toute configuration circulaire où il n'y a pas de place distinguée. De même, si certains objets sont indiscernables (par exemple des lettres répétées dans un mot), il faut diviser par la factorielle du nombre de répétitions pour chaque groupe d'objets identiques. Ces ajustements sont essentiels pour ne pas surcompter."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Permutations circulaires de } n \\text{ objets} = (n-1)!"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, considérons un problème légèrement plus riche : on veut former un mot de 5 lettres en utilisant les lettres A, B, C, D, E, mais les voyelles A et E ne doivent pas être adjacentes. On commence par compter toutes les permutations sans restriction (5! = 120), puis on soustrait celles où A et E sont collées. Pour compter les permutations avec A et E adjacentes, on traite le bloc {AE} comme un seul objet, ce qui donne 4! arrangements du bloc et des trois consonnes, et à l'intérieur du bloc les deux ordres AE ou EA, soit 2 × 4! = 48. Le résultat final est 120 - 48 = 72. Cette méthode d'inclusion-exclusion est un prolongement naturel des permutations de base et montre la puissance du raisonnement combinatoire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une permutation et reconnaître une situation de permutation complète.",
+                "Je sais calculer n! pour n ≤ 10 et utiliser la relation de récurrence (n+1)! = (n+1) × n!.",
+                "Je sais simplifier des rapports de factorielles comme n! / (n-k)!.",
+                "Je sais modéliser un problème de rangement ou de code avec les permutations, y compris les cas circulaires ou avec objets identiques."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "De combien de façons peut-on ranger 5 livres différents sur une étagère ?",
+              "answer": "120",
+              "hint": "C'est une permutation de 5 objets distincts.",
+              "explanation": "Le nombre d'arrangements est 5! = 5 × 4 × 3 × 2 × 1 = 120."
+            },
+            {
+              "question": "Un code de sécurité à 4 chiffres utilise les chiffres 1, 2, 3, 4 sans répétition. Combien de codes possibles ?",
+              "answer": "24",
+              "hint": "Permutation de 4 chiffres distincts.",
+              "explanation": "4! = 4 × 3 × 2 × 1 = 24 codes différents."
+            },
+            {
+              "question": "Six personnes s'assoient autour d'une table ronde. Combien d'arrangements distincts ?",
+              "answer": "120",
+              "hint": "Pour une table ronde, on fixe une personne et on permute les autres.",
+              "explanation": "Le nombre d'arrangements circulaires est (6-1)! = 5! = 120."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

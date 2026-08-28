@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 402,
+  "_course_code": "5eme-t05-c03-translations-transformations-prevues",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Constructions",
+  "title": "Constructions de translations",
+  "blocks": [
+    {
+      "title": "Vocabulaire du vecteur",
+      "content": "Une translation est définie par un $vecteur$ caractérisé par sa {{1}}, son {{2}} et sa {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "direction",
+        "sens",
+        "longueur|norme"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un vecteur est une entité mathématique qui possède trois caractéristiques : une direction (la droite sur laquelle il agit), un sens (l'orientation sur cette droite, souvent indiquée par une flèche) et une longueur (aussi appelée norme ou module, qui correspond à la distance du déplacement).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriété fondamentale",
+      "content": "Soit $M'$ l'image d'un point $M$ par la translation de vecteur $\\vec{u}$. Les segments $[MM']$ et le vecteur $\\vec{u}$ ont même {{1}}, même {{2}} et même {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "direction",
+        "sens",
+        "longueur|norme"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "C'est la propriété caractéristique de la translation : le segment reliant un point à son image est un représentant du vecteur de la translation. Il a donc la même direction (il est parallèle au vecteur), le même sens (il pointe du point initial vers son image) et la même longueur (la distance $MM'$ vaut la norme du vecteur).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Étapes de construction à la règle et au compas",
+      "content": "Pour construire l'image $A'$ d'un point $A$ par une translation de vecteur $\\vec{v}$ à la règle et au compas : on trace la parallèle à la {{1}} passant par $A$, puis on reporte la {{2}} du vecteur sur cette parallèle en partant de $A$ dans le bon {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "droite support du vecteur|direction du vecteur",
+        "longueur|norme",
+        "sens"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction classique utilise le parallélogramme : 1) On trace la droite passant par $A$ et parallèle à la droite support du vecteur $\\vec{v}$ (donc même direction). 2) Avec le compas, on prend la longueur du vecteur (distance entre son origine et son extrémité). 3) On pointe le compas sur $A$ et on trace un arc coupant la parallèle du côté correspondant au sens du vecteur. Le point d'intersection est $A'$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

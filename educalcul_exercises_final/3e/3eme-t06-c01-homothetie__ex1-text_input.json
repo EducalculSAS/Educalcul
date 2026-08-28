@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 485,
+  "_course_code": "3eme-t06-c01-homothetie",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Rapport",
+  "title": "Homothétie : le rapport",
+  "blocks": [
+    {
+      "title": "Calcul du rapport",
+      "content": "Soit une homothétie de centre $O$ qui transforme le point $A$ en $A'$. On sait que $OA = 4$ cm et $OA' = 10$ cm. Les points $O$, $A$ et $A'$ sont alignés dans cet ordre. Quel est le rapport $k$ de cette homothétie ?",
+      "correctAnswer": "2,5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le rapport $k$ d'une homothétie de centre $O$ est défini par $k = \\frac{OA'}{OA}$. Ici, $OA = 4$ et $OA' = 10$. Donc $k = \\frac{10}{4} = 2,5$. Comme les points sont dans l'ordre $O, A, A'$, le rapport est positif.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Longueur de l'image",
+      "content": "Une homothétie de centre $I$ et de rapport $k = -0,6$ transforme le segment $[AB]$ en segment $[A'B']$. Si la longueur $AB = 5$ cm, quelle est la longueur $A'B'$ en cm ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans une homothétie de rapport $k$, les longueurs sont multipliées par la valeur absolue du rapport : $A'B' = |k| \\times AB$. Ici $|k| = 0,6$ et $AB = 5$. Donc $A'B' = 0,6 \\times 5 = 3$ cm. Le signe négatif indique que $I$ est entre $A$ et $A'$ (et entre $B$ et $B'$), mais n'affecte pas la longueur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Rapport et alignement",
+      "content": "Soit une homothétie $h$ de centre $O$ et de rapport $k = -2$. Le point $M$ est distinct de $O$. Son image par $h$ est $M'$. Complétez : Les points $O$, $M$ et $M'$ sont ... et le vecteur $\\overrightarrow{OM'}$ est égal à ... $\\times \\overrightarrow{OM}$.",
+      "correctAnswer": "alignés ; -2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Par définition d'une homothétie de centre $O$ et de rapport $k$, pour tout point $M$, son image $M'$ satisfait $\\overrightarrow{OM'} = k \\overrightarrow{OM}$. Cela implique que les points $O$, $M$ et $M'$ sont alignés. Ici $k = -2$, donc $\\overrightarrow{OM'} = -2 \\overrightarrow{OM}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

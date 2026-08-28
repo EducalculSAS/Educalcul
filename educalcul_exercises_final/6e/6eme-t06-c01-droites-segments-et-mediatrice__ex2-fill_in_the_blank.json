@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 357,
+  "_course_code": "6eme-t06-c01-droites-segments-et-mediatrice",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Construire",
+  "title": "Constructions géométriques : segments et médiatrices",
+  "blocks": [
+    {
+      "title": "Tracer un segment de longueur donnée",
+      "content": "Pour tracer un segment de longueur $4\\,\\text{cm}$, je place le {{1}} de la règle sur le point de départ et je reporte la longueur à l'aide du {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "zéro de la règle|zéro de la règle graduée",
+        "compas|compas sec"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour tracer un segment d'une longueur précise, on utilise la règle pour mesurer : on aligne le zéro de la règle (ou de la règle graduée) sur le point de départ. Ensuite, on utilise un compas (souvent appelé compas sec pour cette opération) pour reporter exactement cette longueur sur la droite en piquant la pointe au point de départ et en traçant un arc qui coupe la droite.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construire une perpendiculaire passant par un point sur la droite",
+      "content": "Pour construire la perpendiculaire à une droite $(d)$ passant par un point $A$ appartenant à $(d)$, on trace un arc de cercle de centre $A$ coupant $(d)$ en $B$ et $C$. Ensuite, on trace deux arcs de cercle de même rayon, centres $B$ et $C$, qui se coupent en un point $D$. La droite $(AD)$ est la {{1}} cherchée.",
+      "correctAnswer": "",
+      "blanks": [
+        "perpendiculaire|droite perpendiculaire"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La construction de la perpendiculaire en un point de la droite utilise la propriété du losange (ou du cerf-volant) : les points $B$ et $C$ sont à égale distance de $A$, et $D$ est à égale distance de $B$ et $C$. La droite $(AD)$ est donc l'axe de symétrie de $[BC]$, elle passe par $A$ et est perpendiculaire à $(d)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Propriétés et construction de la médiatrice",
+      "content": "La médiatrice d'un segment $[EF]$ est la droite qui passe par le {{1}} de ce segment et qui lui est {{2}}. Pour la tracer au compas, on choisit une ouverture {{3}} à la demi-longueur de $[EF]$, on trace quatre arcs de cercle (deux de chaque côté du segment) depuis les points $E$ et $F$, puis on relie les deux intersections.",
+      "correctAnswer": "",
+      "blanks": [
+        "milieu|point milieu",
+        "perpendiculaire|orthogonale",
+        "supérieure|plus grande|strictement supérieure"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La médiatrice est définie comme la droite perpendiculaire au segment passant par son milieu. Pour la construire au compas, l'ouverture doit être strictement supérieure à la demi-longueur du segment pour que les arcs de cercle tracés depuis $E$ et $F$ se coupent en deux points distincts de part et d'autre du segment. La droite passant par ces deux intersections est la médiatrice.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

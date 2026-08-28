@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 525,
+  "_course_code": "2nde-t05-c06-modeliser-avec-une-fonction",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Construire formule",
+  "title": "Quiz : Construire une formule de fonction",
+  "questions": [
+    {
+      "text": "On considère un rectangle de longueur $L$ (en cm) et de largeur $l$ (en cm). Sa longueur est supérieure de $5$ cm à sa largeur. On note $A(L)$ l'aire de ce rectangle en fonction de sa longueur. Quelle est l'expression de $A(L)$ ?",
+      "options": [
+        "A(L) = L(L + 5)",
+        "A(L) = L(L - 5)",
+        "A(L) = 2L + 2(L - 5)",
+        "A(L) = L × 5"
+      ],
+      "correctAnswer": "A(L) = L(L - 5)",
+      "explanation": "La longueur est $L$. La largeur est inférieure de $5$ cm à la longueur, donc $l = L - 5$. L'aire d'un rectangle est $L \\times l$. En remplaçant $l$, on obtient $A(L) = L \\times (L - 5) = L(L - 5)$. L'option A correspondrait à une largeur supérieure à la longueur. L'option C est la formule du périmètre. L'option D n'a pas de sens géométrique ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un artisan vend des objets artisanaux. Ses coûts fixes (loyer, assurance) s'élèvent à $200$ euros par mois. Le coût de matière première pour chaque objet est de $15$ euros. Il vend chaque objet $40$ euros. On note $B(x)$ le bénéfice (en euros) en fonction du nombre $x$ d'objets vendus dans le mois. Quelle est l'expression de $B(x)$ ?",
+      "options": [
+        "B(x) = 40x - 15x - 200",
+        "B(x) = 40x - 15 - 200",
+        "B(x) = 25x + 200",
+        "B(x) = 55x - 200"
+      ],
+      "correctAnswer": "B(x) = 40x - 15x - 200",
+      "explanation": "Le chiffre d'affaires pour $x$ objets est $40x$. Le coût variable (matière) est $15x$. Le coût total est coût fixe + coût variable = $200 + 15x$. Le bénéfice est Chiffre d'affaires - Coût total = $40x - (200 + 15x) = 40x - 15x - 200$. On peut simplifier en $25x - 200$, mais la forme développée montre la construction. L'option B oublie de multiplier le coût variable par $x$. L'option C ajoute les coûts fixes au lieu de les soustraire. L'option D additionne le prix de vente et le coût unitaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un réservoir d'eau contient initialement $500$ litres. Il se remplit grâce à un robinet avec un débit constant de $12$ litres par minute. On note $V(t)$ le volume d'eau (en litres) dans le réservoir après $t$ minutes. Quelle est l'expression de $V(t)$ ?",
+      "options": [
+        "V(t) = 500 + 12t",
+        "V(t) = 12t - 500",
+        "V(t) = 500 × 12t",
+        "V(t) = 500 + 12"
+      ],
+      "correctAnswer": "V(t) = 500 + 12t",
+      "explanation": "Il s'agit d'une situation d'évolution linéaire. Le volume initial (pour $t=0$) est $500$ L. Chaque minute, le volume augmente de $12$ L. Après $t$ minutes, l'augmentation est $12t$. Le volume total est donc la somme du volume initial et de l'augmentation : $V(t) = 500 + 12t$. L'option B correspond à une vidange. L'option C est un produit absurde. L'option D ne dépend pas du temps $t$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On découpe quatre carrés de côté $x$ (en cm) aux quatre coins d'une feuille de papier rectangulaire de dimensions $30$ cm par $20$ cm. On replie les bords pour former une boîte ouverte (sans couvercle). On note $V(x)$ le volume de cette boîte en $cm^3$. Quelle est l'expression de $V(x)$ ?",
+      "options": [
+        "V(x) = x(30 - 2x)(20 - 2x)",
+        "V(x) = x(30 - x)(20 - x)",
+        "V(x) = (30 - 2x)(20 - 2x)",
+        "V(x) = 4x(30 - x)(20 - x)"
+      ],
+      "correctAnswer": "V(x) = x(30 - 2x)(20 - 2x)",
+      "explanation": "La hauteur de la boîte est la longueur du côté du carré découpé, donc $x$. La longueur de la base de la boîte est la longueur initiale moins deux fois $x$ (un carré de chaque côté), soit $30 - 2x$. La largeur de la base est $20 - 2x$. Le volume d'un pavé droit est Longueur $\\times$ Largeur $\\times$ Hauteur, donc $V(x) = (30 - 2x)(20 - 2x)x$. L'option B oublie le facteur 2 (on ne découpe qu'un côté). L'option C calcule l'aire de la base seulement. L'option D multiplie par 4 sans raison.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une entreprise de location de vélos propose deux tarifs. Tarif A : $15$ euros par jour. Tarif B : abonnement mensuel de $30$ euros plus $5$ euros par jour de location. On note $P_A(j)$ le prix payé avec le tarif A pour $j$ jours de location, et $P_B(j)$ le prix avec le tarif B. Quelles sont les expressions correctes de $P_A(j)$ et $P_B(j)$ ?",
+      "options": [
+        "P_A(j) = 15j  et  P_B(j) = 30 + 5j",
+        "P_A(j) = 15 + j  et  P_B(j) = 30j + 5",
+        "P_A(j) = 15j  et  P_B(j) = 30j + 5",
+        "P_A(j) = 15  et  P_B(j) = 30 + 5j"
+      ],
+      "correctAnswer": "P_A(j) = 15j  et  P_B(j) = 30 + 5j",
+      "explanation": "Pour le tarif A, le prix est proportionnel au nombre de jours : $15 \\times j = 15j$. Pour le tarif B, il y a une partie fixe (l'abonnement) de $30$ euros, indépendante de $j$, et une partie variable de $5$ euros par jour, soit $5j$. Le total est donc $30 + 5j$. L'option B inverse les rôles des parties fixes et variables. L'option C rend l'abonnement proportionnel aux jours. L'option D rend le tarif A constant (un seul jour).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

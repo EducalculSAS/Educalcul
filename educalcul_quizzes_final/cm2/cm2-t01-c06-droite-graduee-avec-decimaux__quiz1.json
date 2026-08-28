@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 280,
+  "_course_code": "cm2-t01-c06-droite-graduee-avec-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Lire échelle",
+  "title": "Lire l'échelle d'une droite graduée décimale",
+  "questions": [
+    {
+      "text": "Sur une droite graduée, il y a $10$ petits intervalles entre le nombre $0$ et le nombre $1$. Quelle est la valeur d'un seul petit intervalle ?",
+      "options": [
+        "$0,1$",
+        "$0,01$",
+        "$1,1$",
+        "$0,5$"
+      ],
+      "correctAnswer": "$0,1$",
+      "explanation": "Quand on divise l'unité $1$ en $10$ parties égales, chaque partie vaut $1 \\div 10$, ce qui donne $0,1$. C'est l'échelle classique des dixièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une droite graduée affiche les nombres $2$ puis $3$. Entre ces deux nombres, on compte $5$ intervalles égaux. Quelle est la valeur d'un intervalle ?",
+      "options": [
+        "$0,1$",
+        "$0,2$",
+        "$0,5$",
+        "$0,02$"
+      ],
+      "correctAnswer": "$0,2$",
+      "explanation": "La distance entre $2$ et $3$ est de $1$. Si cette distance est partagée en $5$ intervalles, on calcule $1 \\div 5 = 0,2$. Chaque graduation représente donc $0,2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une règle, on voit les graduations $4$ et $5$. Il y a $100$ petits traits entre ces deux nombres. Quelle est la valeur d'un petit trait ?",
+      "options": [
+        "$0,1$",
+        "$0,01$",
+        "$0,001$",
+        "$1,00$"
+      ],
+      "correctAnswer": "$0,01$",
+      "explanation": "L'unité est divisée en cent parties égales. $1 \\div 100 = 0,01$. Chaque petit trait représente donc un centième.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe la droite graduée suivante. Quelles sont les valeurs des graduations entre $0$ et $1$ ?",
+      "options": [
+        "$0,1$, $0,2$, $0,3$, $0,4$, $0,5$, $0,6$, $0,7$, $0,8$, $0,9$",
+        "$0,2$, $0,4$, $0,6$, $0,8$",
+        "$0,25$, $0,5$, $0,75$",
+        "$0,01$, $0,02$, $0,03$, $0,04$, $0,05$"
+      ],
+      "correctAnswer": "$0,1$, $0,2$, $0,3$, $0,4$, $0,5$, $0,6$, $0,7$, $0,8$, $0,9$",
+      "explanation": "Avec $10$ intervalles entre $0$ et $1$, chaque graduation avance de $0,1$ en $0,1$. On compte donc : $0,1$ puis $0,2$ et ainsi de suite jusqu'à $0,9$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de $0$ à $1$",
+        "min": 0,
+        "max": 1,
+        "points": [],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée, la première graduation après $0$ est $0,5$. La deuxième est $1$. Quelle est la valeur de l'échelle de cette droite ?",
+      "options": [
+        "$0,1$",
+        "$0,5$",
+        "$1$, $0$",
+        "$0,25$"
+      ],
+      "correctAnswer": "$0,5$",
+      "explanation": "On observe que l'on ajoute $0,5$ à chaque graduation pour passer à la suivante. L'échelon est donc de $0,5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

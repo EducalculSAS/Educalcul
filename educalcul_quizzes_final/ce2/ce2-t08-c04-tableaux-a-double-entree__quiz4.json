@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 208,
+  "_course_code": "ce2-t08-c04-tableaux-a-double-entree",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Tableaux à double entrée",
+  "title": "Quiz : Application des tableaux à double entrée (CE2)",
+  "questions": [
+    {
+      "text": "Dans le tableau ci-dessous, les lignes correspondent aux animaux (chat, chien) et les colonnes aux couleurs (rouge, bleu). Le tableau indique : chat rouge $3$, chat bleu $2$, chien rouge $1$, chien bleu $4$. Combien y a-t-il de chats rouges ?",
+      "options": [
+        "$3$",
+        "$2$",
+        "$1$",
+        "$4$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Le tableau donne directement le nombre de chats rouges : $3$. Les autres nombres correspondent aux chats bleus ($2$), aux chiens rouges ($1$) et aux chiens bleus ($4$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le tableau suivant donne le nombre de fruits par type et par couleur. Les totaux de lignes et de colonnes sont indiqués. Ligne pommes : rouge $?$, vert $5$, total $11$. Ligne poires : rouge $4$, vert $3$, total $7$. Colonne rouge total $10$, colonne vert total $9$. Quel est le nombre de pommes rouges ?",
+      "options": [
+        "$6$",
+        "$5$",
+        "$7$",
+        "$4$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "Le total de la colonne rouge est $10$. On sait qu'il y a $4$ poires rouges, donc les pommes rouges font $10 - 4 = 6$. On vérifie avec la ligne pommes : $6 + 5 = 11$, ce qui correspond au total indiqué.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un tableau à double entrée, les lignes sont les jours de la semaine (lundi, mardi) et les colonnes sont les activités (lecture, sport). Les nombres indiquent le nombre d'élèves. Lundi lecture $8$, lundi sport $5$, mardi lecture $6$, mardi sport $9$. Quel jour a le plus grand total d'élèves ?",
+      "options": [
+        "lundi",
+        "mardi",
+        "les deux jours ont le même total",
+        "on ne peut pas savoir"
+      ],
+      "correctAnswer": "mardi",
+      "explanation": "Le total du lundi est $8 + 5 = 13$. Le total du mardi est $6 + 9 = 15$. Puisque $15 > 13$, c'est mardi qui a le plus grand total.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un tableau à double entrée montre le nombre de livres par genre (roman, bande dessinée) et par langue (français, anglais). Roman français $12$, roman anglais $8$, BD français $5$, BD anglais $7$. Quel est le nombre total de livres ?",
+      "options": [
+        "$32$",
+        "$30$",
+        "$28$",
+        "$34$"
+      ],
+      "correctAnswer": "$32$",
+      "explanation": "On additionne toutes les cases du tableau : $12 + 8 + 5 + 7 = 32$. Les autres propositions correspondent à des erreurs d'addition ou à l'oubli d'une case.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut représenter les résultats d'un sondage : 10 filles aiment le football, 6 filles aiment la danse, 8 garçons aiment le football, 4 garçons aiment la danse. Quel tableau à double entrée correspond à ces données ?",
+      "options": [
+        "Lignes : Filles, Garçons ; Colonnes : Football, Danse ; Valeurs : Filles-Football $10$, Filles-Danse $6$, Garçons-Football $8$, Garçons-Danse $4$",
+        "Lignes : Filles, Garçons ; Colonnes : Football, Danse ; Valeurs : Filles-Football $6$, Filles-Danse $10$, Garçons-Football $4$, Garçons-Danse $8$",
+        "Lignes : Filles, Garçons ; Colonnes : Football, Danse ; Valeurs : Filles-Football $10$, Filles-Danse $6$, Garçons-Football $4$, Garçons-Danse $8$",
+        "Lignes : Filles, Garçons ; Colonnes : Football, Danse ; Valeurs : Filles-Football $10$, Filles-Danse $6$, Garçons-Football $8$ (case Danse manquante)"
+      ],
+      "correctAnswer": "Lignes : Filles, Garçons ; Colonnes : Football, Danse ; Valeurs : Filles-Football $10$, Filles-Danse $6$, Garçons-Football $8$, Garçons-Danse $4$",
+      "explanation": "Le bon tableau place les effectifs exactement comme donnés : $10$ filles pour le football, $6$ filles pour la danse, $8$ garçons pour le football et $4$ garçons pour la danse. Les autres options inversent des nombres, mélangent les catégories ou omettent une case.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,309 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.631325+00:00",
+  "id": 689,
+  "code": "terminale-generale-maths-t03-c06",
+  "title": "Bilan - Suites Terminale",
+  "description": "Cours structuré Educalcul : Bilan - Suites Terminale.",
+  "subject": "Suites",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Suites",
+    "titre_du_cours": "Bilan - Suites Terminale",
+    "objectif_global": "Bilan - Suites Terminale",
+    "mini_lecons_imposees": [
+      "Récurrence et convergence.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Suites",
+      "lessons": [
+        {
+          "title": "Récurrence et convergence.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les deux visages d'une suite : explicite ou récurrente"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan consacré aux suites, notion centrale de votre année de Terminale. Vous les avez croisées sous toutes les coutures : arithmétiques, géométriques, définies par une fonction $f$, ou encore nées d'un algorithme. Avant de plonger dans les théorèmes de convergence, rappelons-nous qu'une suite n'est jamais qu'une fonction discrète, une liste ordonnée de nombres $u_0, u_1, u_2, \\dots$ indexée par les entiers naturels. La grande question, c'est souvent : comment accède-t-on au terme $u_n$ ? Deux philosophies s'affrontent, et il est crucial de savoir passer de l'une à l'autre."
+            },
+            {
+              "type": "paragraph",
+              "content": "La forme « explicite », c'est la formule directe : $u_n = f(n)$. On pose $n$, on calcule, on a le résultat immédiatement. C'est confortable pour programmer, pour tracer le nuage de points sur un graphique, ou pour conjecturer une limite. La forme « récurrente », elle, raconte une histoire étape par étape : $u_{n+1} = f(u_n)$ avec une valeur initiale $u_0$. On ne connaît $u_{n+1}$ que si on a déjà calculé $u_n$. C'est la logique même de la programmation itérative, et c'est souvent sous cette forme que la suite apparaît naturellement dans un problème concret (intérêts composés, dynamique de population, méthode de Newton)."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def suite_recurrente(u0, n_max):\\n    u = u0\\n    termes = [u]\\n    for i in range(n_max):\\n        u = 0.5 * u + 1  # Exemple : u_{n+1} = 0.5 u_n + 1\\n        termes.append(u)\\n    return termes\\n\\nprint(suite_recurrente(10, 10))",
+              "caption": "Calcul itératif des 10 premiers termes de $u_{n+1} = 0,5 u_n + 1$ avec $u_0=10$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardez ce petit algorithme : il incarne parfaitement la récurrence. On ne donne pas la formule du $n$-ième terme, on donne la règle de transition. Pourtant, dans ce cas précis, on peut trouver l'explicite : $u_n = 2 + 8 \\times 0,5^n$. Voyez-vous la puissance de l'explicite ? Elle révèle tout de suite la limite $2$ et la monotonie. Mais attention : toutes les récurrences ne se «résolvent» pas aussi facilement en forme close. C'est là que les théorèmes de convergence deviennent vos meilleurs outils : ils permettent d'affirmer l'existence d'une limite sans connaître la formule générale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Convergence, divergence : le vocabulaire de la rigueur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant au cœur du sujet : la convergence. Dire qu'une suite $u_n$ « tend vers $L $» n'est pas une impression visuelle, c'est une définition $\\varepsilon$-$N$ d'une précision chirurgicale. $\\forall \\varepsilon > 0, \\exists N \\in \\mathbb{N}, \\forall n \\ge N, |u_n - L| < \\varepsilon$. En mots : quel que soit le couloir de largeur $2\\varepsilon$ que je trace autour de $L$, il existe un rang $N$ à partir duquel éternellement tous les termes restent dans le couloir. C'est cette définition qui permet de démontrer rigoureusement les propriétés algébriques des limites : somme, produit, quotient, passage à la limite dans les inégalités."
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais au-delà de la définition, vous devez maîtriser la galerie des comportements possibles. Une suite convergente a une limite finie $L \\in \\mathbb{R}$. Une suite divergente peut partir vers $+\\infty$ ou $-\\infty$ (on dit qu'elle a pour limite $+\\infty$ si $\\forall A, \\exists N, \\forall n \\ge N, u_n > A$), ou bien osciller sans s'installer nulle part comme $u_n = (-1)^n$. Ce dernier cas est le piège classique : elle est bornée, mais pas convergente. La distinction « bornée » vs « convergente » est fondamentale et source d'erreurs fréquentes en dissertations."
+            },
+            {
+              "type": "graph",
+              "expression": "(-1)^x",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Nuage de points de $u_n = (-1)^n$ : bornée, non convergente"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Monotonie et majoration : le couple gagnant pour la convergence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici le théorème roi de ce chapitre, celui que vous devez pouvoir énoncer, démontrer (esquisse) et surtout épeler dans une épreuve : « Toute suite croissante et majorée converge vers sa borne supérieure. Toute suite décroissante et minorée converge vers sa borne inférieure. » C'est le théorème de convergence monotone. Il transforme une question d'existence de limite (difficile à attaquer directement) en deux questions plus simples : la suite est-elle monotone ? Est-elle bornée ? C'est une méthode en deux temps, très algorithmique, qui structure votre rédaction."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour étudier la monotonie, vous avez trois outils principaux selon la forme de la suite. Si $u_n$ est explicite : étudiez le signe de $u_{n+1} - u_n$ ou le rapport $u_{n+1}/u_n$ (si termes de signe constant). Si $u_{n+1} = f(u_n)$ : comparez $f(x)$ et $x$ sur l'intervalle où vit la suite. C'est là que le tableau de variation de $f$ devient votre allié. Pour la majoration/minoration, l'induction est reine : on conjecture une borne $M$ (souvent la limite présumée), on vérifie l'initialisation $u_0 \\le M$, et on montre l'hérédité : $u_n \\le M \\implies u_{n+1} = f(u_n) \\le f(M) \\le M$ (grâce à la croissance de $f$)."
+            },
+            {
+              "type": "variation_table",
+              "caption": "Exemple : $f(x) = \\sqrt{x+2}$ sur $[0, +\\infty[$, utilisée pour $u_{n+1}=f(u_n)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Point fixe, fonction auxiliaire et théorème des gendarmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque la suite est définie par $u_{n+1} = f(u_n)$ avec $f$ continue, la limite $L$ (si elle existe) est nécessairement un point fixe de $f$ : $L = f(L)$. Résoudre $f(x)=x$ donne les candidats. Mais attention, l'existence de la limite n'est pas acquise ! C'est là que la méthode graphique (toiles d'araignée) ou l'étude de $|f'(L)|$ (si $f$ est $C^1$) entrent en scène pour déterminer l'attractivité. Si $|f'(L)| < 1$, $L$ est attractif ; si $|f'(L)| > 1$, il est répulsif. C'est un raffinement de niveau spécialité qui fait la différence aux écrits."
+            },
+            {
+              "type": "paragraph",
+              "content": "N'oubliez pas le théorème des gendarmes (ou du sandwich) : si $v_n \\le u_n \\le w_n$ et que $v_n$ et $w_n$ convergent vers la même limite $L$, alors $u_n$ converge vers $L$. C'est l'outil idéal pour les suites définies par une somme (lien avec les intégrales via encadrement de Riemann) ou par des expressions compliquées comme $u_n = \\frac{\\sin n}{n}$. Ici, $-\\frac{1}{n} \\le u_n \\le \\frac{1}{n}$ et les deux bornes tendent vers $0$. Simple, élégant, redoutable."
+            },
+            {
+              "type": "tangent_scrubber",
+              "expression": "sqrt(x+2)",
+              "x0": 2,
+              "xMin": 0,
+              "xMax": 5,
+              "caption": "Recherche graphique du point fixe de $f(x)=\\sqrt{x+2}$ (intersection avec $y=x$)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la suite définie par $u_0 = 3$ et $u_{n+1} = \\frac{1}{2}u_n + 1$. Calculer $u_1, u_2, u_3$. Conjecturer la limite. Vérifier que la suite est convergente en étudiant $u_{n+1} - u_n$ et en trouvant une majoration.",
+              "answer": "$u_1 = 2,5$, $u_2 = 2,25$, $u_3 = 2,125$. Limite conjecturée : $2$. La suite est décroissante (car $u_{n+1}-u_n = 1 - 0,5 u_n < 0$ pour $u_n > 2$) et minorée par $2$ (par récurrence). Elle converge donc vers $2$.",
+              "hint": "Calculez les différences successives. Pour la majoration/minoration, testez l'hérédité de la propriété $u_n \\ge 2$.",
+              "explanation": "On calcule les premiers termes. La différence $u_{n+1}-u_n = 1 - 0,5 u_n$. Tant que $u_n > 2$, la différence est négative : la suite est décroissante. On montre par récurrence que $u_n \\ge 2$ pour tout $n$ (initialisation $u_0=3\\ge2$, hérédité : si $u_n\\ge2$ alors $u_{n+1} = 0,5 u_n + 1 \\ge 0,5\\times2+1 = 2$). Suite décroissante minorée $\\Rightarrow$ convergente. La limite $L$ vérifie $L = 0,5 L + 1 \\iff L=2$."
+            },
+            {
+              "question": "Déterminer la nature (CV ou DV) et la limite ventuelle des suites : $v_n = \\frac{3n^2+2n}{n^2-5}$, $w_n = \\frac{(-1)^n n}{n+1}$, $x_n = \\sqrt{n+1} - \\sqrt{n}$.",
+              "answer": "$v_n \\to 3$ (CV). $w_n$ diverge (oscille entre environ $-1$ et $1$, deux valeurs d'adhérence). $x_n = \\frac{1}{\\sqrt{n+1}+\\sqrt{n}} \\to 0$ (CV).",
+              "hint": "Pour $v_n$, factorisez par $n^2$. Pour $w_n$, étudiez les sous-suites de rang pair et impair. Pour $x_n$, rationalisez l'expression.",
+              "explanation": "$v_n = \\frac{3+2/n}{1-5/n^2} \\to 3$. $w_{2n} = \\frac{2n}{2n+1} \\to 1$, $w_{2n+1} = \\frac{-(2n+1)}{2n+2} \\to -1$ : deux limites différentes $\\Rightarrow$ divergence. $x_n = \\frac{(\\sqrt{n+1}-\\sqrt{n})(\\sqrt{n+1}+\\sqrt{n})}{\\sqrt{n+1}+\\sqrt{n}} = \\frac{1}{\\sqrt{n+1}+\\sqrt{n}} \\sim \\frac{1}{2\\sqrt{n}} \\to 0$."
+            },
+            {
+              "question": "On définit $u_0 = 1$ et $u_{n+1} = \\sqrt{u_n + 2}$. Montrer que la suite est bien définie, croissante et majorée par $2$. En déduire sa limite.",
+              "answer": "Bien définie car $u_n+2 \\ge 0$ (majoration par $2$). Croissante : $u_{n+1}^2 - u_n^2 = u_n + 2 - u_n^2 = (2-u_n)(1+u_n) \\ge 0$ car $u_n \\le 2$. Majorée par $2$ par récurrence. Convergente vers $L$ solution de $L=\\sqrt{L+2} \\iff L^2-L-2=0 \\iff L=2$ (car $L\\ge0$).",
+              "hint": "Pour la monotonie, étudiez le signe de $u_{n+1}^2 - u_n^2$ car les termes sont positifs. Pour la majoration, montrez par récurrence que $u_n \\le 2$.",
+              "explanation": "Positivité : $u_0=1>0$, si $u_n>0$ alors $u_{n+1}=\\sqrt{u_n+2}>0$. Majoration : $u_0=1\\le2$. Si $u_n\\le2$, $u_{n+1}=\\sqrt{u_n+2}\\le\\sqrt{4}=2$. Monotonie : $u_{n+1}^2-u_n^2 = u_n+2-u_n^2 = -(u_n-2)(u_n+1)$. Comme $0< u_n \\le 2$, ce produit est $\\ge 0$, donc $u_{n+1}\\ge u_n$. Suite croissante majorée $\\Rightarrow$ CV. Limite $L$ : $L=\\sqrt{L+2} \\Rightarrow L^2=L+2 \\Rightarrow L=2$ ou $L=-1$ (rejeté car $u_n\\ge0$)."
+            },
+            {
+              "question": "Soit $u_n = \\sum_{k=1}^{n} \\frac{1}{k^2}$. En utilisant un encadrement par intégrale (comparaison série-intégrale), montrer que la suite converge et donner un encadrement de sa limite.",
+              "answer": "La fonction $f(x)=1/x^2$ est décroissante sur $[1,+\\infty[$. Pour $k\\ge 1$, $\\int_{k}^{k+1} f(x)dx \\le \\frac{1}{k^2} \\le \\int_{k-1}^{k} f(x)dx$. En sommant de $k=1$ \\`a $n$ : $\\int_1^{n+1} \\frac{dx}{x^2} \\le u_n \\le 1 + \\int_1^n \\frac{dx}{x^2}$. Soit $1 - \\frac{1}{n+1} \\le u_n \\le 2 - \\frac{1}{n}$. La suite est croissante et majorée par $2$, elle converge. La limite $\\zeta(2)$ est dans $[1, 2]$ (en fait $\\pi^2/6 \\approx 1,64$).",
+              "hint": "Utilisez le fait que pour une fonction décroissante, l'intégrale sur $[k, k+1]$ est un minorant du terme $k$ et l'intégrale sur $[k-1, k]$ en est un majorant.",
+              "explanation": "C'est l'application classique du critère intégral pour les séries de Riemann. On encadre la somme par des intégrales de la fonction $x \\mapsto 1/x^2$. La primitive est $-1/x$. L'encadrement obtenu montre que $u_n$ est majorée par $2$. Comme les termes sont positifs, $u_n$ est croissante. D'où convergence par le théorème de la suite croissante majorée."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le vocabulaire indispensable : ni trous, ni approximations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce deuxième volet de notre bilan n'est pas une simple liste à cocher machinalement. C'est une révision active : chaque item doit réveiller en vous une image mentale, un contre-exemple, une méthode de preuve. Commençons par le socle lexical. Savoir différencier « suite convergente » (limite finie), « suite divergente » (limite infinie ou pas de limite), « suite bornée » (existe $M$ tel que $|u_n| \\le M$), « suite monotone » (croissante ou décroissante) n'est pas de la littérature. Confondre « bornée » et « convergente » est l'erreur n°1 aux partiels. Rappelez-vous : $u_n = (-1)^n$ est bornée mais divergente. Une suite convergente est évidemment bornée, mais la réciproque est fausse. Autre piège : « décroissante » ne veut pas dire « tend vers $-\\infty$ », elle peut converger vers une limite finie si elle est minorée."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur d'adhérence",
+              "definition": "Un réel $L$ (ou $\\pm\\infty$) est une valeur d'adhérence de la suite $(u_n)$ s'il existe une sous-suite $(u_{\\varphi(n)})$ qui converge vers $L$.",
+              "example": "Pour $u_n = \\cos(\\frac{n\\pi}{2})$, les valeurs d'adhérence sont $1, 0, -1$."
+            },
+            {
+              "type": "definition",
+              "term": "Suite adjacente",
+              "definition": "Deux suites $(u_n)$ et $(v_n)$ sont adjacentes si l'une est croissante, l'autre décroissante, et $u_n - v_n \\to 0$. Elles convergent alors vers une même limite commune.",
+              "example": "Les suites d'encadrement de $\\sqrt{2}$ par dichotomie : $u_0=1, v_0=2$, $u_{n+1}=\\frac{u_n+v_n}{2}$, $v_{n+1}$ choisi pour garder l'encadrement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La boîte à outils théorémiques : savoir choisir la bonne clé"
+            },
+            {
+              "type": "paragraph",
+              "content": "Devant une suite à étudier, votre réflexe doit être : « Quel théorème puis-je invoquer ? ». La hiérarchie est simple. 1) Forme explicite simple : calcul direct de limite (règles opératoires, formes indéterminées résolues par factorisation, conjugués, croissance comparée). 2) Forme récurrente $u_{n+1}=f(u_n)$ : étude de $f$ (variations, point fixe, inégalités $f(x) \\ge x$ ou $\\le x$), théorème de convergence monotone (croissante + majorée / décroissante + minorée). 3) Suite encadrée : théorème des gendarmes. 4) Suite définie par une somme : comparaison intégrale/série de Riemann, ou théorème des gendarmes avec intégrales. 5) Suite adjacente : pour prouver convergence sans connaître la limite (ex: $e$, $\\ln$, $\\pi$). Ne cherchez pas midi à quatorze heures : si la suite est croissante et majorée, le théorème monotone s'impose, même si vous pourriez utiliser les gendarmes."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Identifier la forme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Explicite ($u_n = f(n)$) ? Récurrence ($u_{n+1}=f(u_n)$) ? Somme ? Algorithme ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Choisir la stratégie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Explicite → Calcul limite direct. Récurrence → Monotonie + Bornitude (Théorème monotone) ou Point fixe attractif. Somme → Encadrement intégral / Riemann. Encadrée → Gendarmes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Rédiger la preuve",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Monotonie : signe de $u_{n+1}-u_n$ ou $u_{n+1}/u_n$ ou étude de $f(x)-x$. Bornitude : Récurrence sur l'inégalité. Limite : Résolution $L=f(L)$ ou encadrement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges classiques qui font perdre des points"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici les erreurs que je vois régulièrement dans les copies, et que vous devez bannir définitivement. Premièrement : écrire $\\lim u_n = \\infty$ sans préciser $+\\infty$ ou $-\\infty$, ou dire « la suite n'a pas de limite » pour une suite qui tend vers $+\\infty$ (elle a une limite, elle est infinie). Deuxièmement : utiliser le théorème de convergence monotone sans vérifier les deux conditions. Dire « la suite est croissante donc elle converge » est faux (ex: $u_n=n$). Il faut écrire « croissante ET majorée ». Troisièmement : dans une récurrence $u_{n+1}=f(u_n)$, oublier de vérifier que $f$ est bien définie sur l'intervalle où vit la suite (ex: racine carrée, division). Quatrièmement : confondre $\\lim (u_n+v_n) = \\lim u_n + \\lim v_n$ (vrai si les deux limites sont finies) avec le cas formes indéterminées $\\infty - \\infty$ ou $0 \\times \\infty$. Cinquièmement : rédiger une récurrence sans phrase d'initialisation, sans hypothèse de récurrence claire, sans conclusion. La rigueur formelle rapporte les points de présentation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Liens transversaux : suites, intégrales, séries, algorithmes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ne voyez pas les suites comme un chapitre isolé. Elles sont le fil conducteur de l'analyse. La méthode des rectangles pour calculer une intégrale $\\int_a^b f(x)dx$ construit deux suites adjacentes (somme inférieure $s_n$ croissante, somme supérieure $S_n$ décroissante) qui encadrent l'intégrale. C'est là une application majeure du théorème des suites adjacentes. En probabilités, les marchés aléatoires, les temps d'attente, les lois geométriques génèrent des suites. En algorithmique, la complexité en temps d'un algorithme récursif se traduit souvent par une suite (ex: $u_{n+1} = 2u_n + n$ pour le tri fusion). Maîtriser les suites, c'est tenir la clé de voùte du programme de spécialité. Pour le Bac, attendez-vous à un exercice long mîlant étude de fonction, suite récurrente asociée, point fixe, et interprétation graphique (toiles d'araignée)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int_a^b f(x) dx = \\lim_{n\\to\\infty} \\sum_{k=1}^n f(a+k\\frac{b-a}{n}) \\frac{b-a}{n}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais donner la définition rigoureuse ($\\varepsilon$-$N$) de la convergence vers un réel $L$ et vers $+\\infty$.",
+                "Je distingue clairement : convergente, divergente, bornée, monotone, adjacente, valeur d'adhérence.",
+                "Je sais calculer une limite de forme explicite : factorisation, rationalisation, croissance comparée (référentielles).",
+                "Je sais étudier une suite récurrente $u_{n+1}=f(u_n)$ : domaine de $f$, variations de $f$, point fixe, monotonie par $f(x)-x$, bornitude par récurrence, convergence par théorème monotone.",
+                "Je sais utiliser le théorème des gendarmes (encadrement) et le théorème des suites adjacentes.",
+                "Je sais étudier une suite définie par une somme (comparaison intégrale, encadrement Riemann).",
+                "Je rédis une récurrence correctement : Initialisation, Hérédité, Conclusion.",
+                "Je sais tracer/interpretér la représentation graphique (toiles d'araignée) d'une suite récurrente.",
+                "Je connais les limites classiques : $1/n \\to 0$, $q^n \\to 0$ ($|q|<1$), $(1+1/n)^n \\to e$, $\\ln(1+1/n) \\sim 1/n$.",
+                "Je relis mon sujet pour éviter : confusion CV/DV, oubli majoration/mineoration, forme indéterminée non traitée, récurrence mal structurée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vrai ou Faux ? Justifiez brièvement. 1) Une suite bornée est convergente. 2) Une suite convergente est bornée. 3) Une suite croissante tend vers $+\\infty$. 4) Si $u_n \\to L$ et $v_n \\to L$, alors $u_n \\le w_n \\le v_n \\implies w_n \\to L$. 5) Si $u_{n+1} = f(u_n)$ avec $f$ continue et $u_n \\to L$, alors $L=f(L)$.",
+              "answer": "1) Faux (ex: $(-1)^n$). 2) Vrai (théorème). 3) Faux (ex: $1-1/n$ croissante vers 1). 4) Vrai (théorème des gendarmes). 5) Vrai (passage à la limite dans $u_{n+1}=f(u_n)$ par continuité).",
+              "hint": "Cherchez des contre-exemples pour les assertions fausses. Pour la 3), une suite croissante convergente est un contre-exemple parfait.",
+              "explanation": "Rappel des définitions et théorèmes fondamentaux. 1) Bornée $\\not\\Rightarrow$ CV. 2) CV $\\Rightarrow$ Bornée. 3) Croissante $\\Rightarrow$ CV si majorée, sinon DV vers $+\\infty$. 4) C'est l'énoncé exact du théorème des gendarmes. 5) Propriété fondamentale du point fixe pour les récurrences continues."
+            },
+            {
+              "question": "On définit $u_0 = 0$ et $u_{n+1} = \\frac{1}{2} \\sin(u_n) + \\frac{1}{2}$. Choisir la méthode la plus adaptée pour montrer la convergence et trouver la limite. Justifier le choix.",
+              "answer": "Méthode : Théorème de convergence monotone. $f(x) = \\frac{1}{2}\\sin x + \\frac{1}{2}$. $f$ est croissante sur $\\mathbb{R}$ (dérivée $\\frac{1}{2}\\cos x \\ge -0,5$, mais ici $u_n \\in [0,1]$ donc $f'>0$). $u_1 = 0,5 > u_0$. Par récurrence, suite croissante. Majorée par 1 car $\\sin x \\le 1 \\Rightarrow f(x) \\le 1$. Convergence vers $L$ solution de $L = \\frac{1}{2}\\sin L + \\frac{1}{2}$. $L=1$ est solution. Unicité car $g(x)=x-f(x)$ est strictement croissante ($g'(x)=1-\\frac{1}{2}\\cos x > 0$).",
+              "hint": "La forme récurrente appelle l'étude de la fonction $f$. Regardez la dérivée pour la monotonie de $f$ et l'inégalité $f(x) \\ge x$ pour la monotonie de la suite.",
+              "explanation": "C'est le cas d'école de la récurrence $u_{n+1}=f(u_n)$ avec $f$ croissante. On montre que la suite est monotone (par récurrence en utilisant $f$ croissante et $u_1 \\ge u_0$) et bornée (par récurrence en utilisant $f(x) \\le 1$). Le théorème monotone donne la convergence. La limite est un point fixe. L'unicité du point fixe vient de la monotonie stricte de $x-f(x)$."
+            },
+            {
+              "question": "Repérez l'erreur dans le raisonnement suivant : « Soit $u_n = n(\\sqrt{n+1} - \\sqrt{n})$. On a $\\sqrt{n+1} - \\sqrt{n} \\to 0$ et $n \\to +\\infty$, donc $u_n \\to 0 \\times \\infty = 0$. »",
+              "answer": "Erreur : forme indéterminée $0 \\times \\infty$ traitée n'importe comment. Il faut rationaliser : $u_n = \\frac{n}{\\sqrt{n+1}+\\sqrt{n}} = \\frac{\\sqrt{n}}{\\sqrt{1+1/n}+1} \\sim \\frac{\\sqrt{n}}{2} \\to +\\infty$. La limite n'est pas $0$.",
+              "hint": "Ne jamais écrire $0 \\times \\infty = 0$. C'est une forme indéterminée. Il faut transformer l'expression pour faire apparaître les comportements asymptotiques.",
+              "explanation": "L'erreur classique est de croire que 'quelque chose qui tend vers 0 fois quelque chose qui tend vers l'infini donne 0'. C'est faux. La vitesse de convergence vers 0 et la vitesse de divergence vers l'infini sont en concurrence. Ici, $\\sqrt{n+1}-\\sqrt{n} \\sim 1/(2\\sqrt{n})$, donc le produit vaut $\\sim n/(2\\sqrt{n}) = \\sqrt{n}/2 \\to +\\infty$."
+            },
+            {
+              "question": "Soit $I_n = \\int_0^1 \\frac{x^n}{1+x} dx$. Montrer que $(I_n)$ est décroissante, convergente, et calculer sa limite. Donner un équivalent de $I_n$ au voisinage de $+\\infty$.",
+              "answer": "Pour $x \\in [0,1]$, $x^{n+1} \\le x^n \\Rightarrow \\frac{x^{n+1}}{1+x} \\le \\frac{x^n}{1+x} \\Rightarrow I_{n+1} \\le I_n$ : décroissante. $I_n \\ge 0$ (intégrale positive) : minorée. Donc convergente. Limite $L=0$ (théorème de convergence dominée ou encadrement $0 \\le I_n \\le \\int_0^1 x^n dx = 1/(n+1) \\to 0$). Équivalent : $I_n \\sim \\int_0^1 \\frac{x^n}{2} dx = \\frac{1}{2(n+1)} \\sim \\frac{1}{2n}$.",
+              "hint": "Monotonie par comparaison des fonctions intégrées. Limite par encadrement (gendarmes) avec $\\int_0^1 x^n dx$. Équivalent en remplaçant $1+x$ par sa valeur en 1 (majorité de la masse de l'intégrale près de 1).",
+              "explanation": "Lien fort Suites/Intégrales. Monotonie : intégrand décroissant en $n$. Minorante 0. Convergence par théorème monotone. Limite 0 par encadrement $0 \\le I_n \\le 1/(n+1)$ (car $1/(1+x) \\le 1$). Équivalent : pour $x$ proche de 1, $1/(1+x) \\approx 1/2$. L'intégrale se concentre près de 1. On a $I_n \\sim 1/(2n)$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

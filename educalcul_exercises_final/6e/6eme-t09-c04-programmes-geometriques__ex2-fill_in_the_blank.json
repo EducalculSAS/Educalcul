@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 377,
+  "_course_code": "6eme-t09-c04-programmes-geometriques",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Tracer",
+  "title": "Programmes de tracé : boucles et angles",
+  "blocks": [
+    {
+      "title": "Tracer un carré",
+      "content": "Pour tracer un carré de côté $50$ pixels, on utilise le programme suivant :\\nRépéter {{1}} fois\\n  Avancer de {{2}} pixels\\n  Tourner de {{3}} degrés",
+      "correctAnswer": "",
+      "blanks": [
+        "4",
+        "50",
+        "90"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un carré a 4 côtés égaux. On répète donc 4 fois la séquence « Avancer de 50 pixels » (la longueur du côté) puis « Tourner de 90 degrés » (l'angle droit extérieur).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer un triangle équilatéral",
+      "content": "On veut tracer un triangle équilatéral de côté $80$ pixels. Complète le programme :\\nRépéter {{1}} fois\\n  Avancer de {{2}} pixels\\n  Tourner de {{3}} degrés",
+      "correctAnswer": "",
+      "blanks": [
+        "3",
+        "80",
+        "120"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un triangle équilatéral a 3 côtés égaux, donc on répète 3 fois. La longueur du côté est de 80 pixels. L'angle de rotation est l'angle extérieur : $180 - 60 = 120$ degrés (ou $360 / 3 = 120$ degrés).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tracer un rectangle avec une boucle",
+      "content": "Le programme ci-dessous trace un rectangle de longueur $100$ pixels et de largeur $40$ pixels.\\nRépéter {{1}} fois\\n  Avancer de {{2}} pixels\\n  Tourner de $90$ degrés\\n  Avancer de {{3}} pixels\\n  Tourner de $90$ degrés",
+      "correctAnswer": "",
+      "blanks": [
+        "2",
+        "100",
+        "40"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un rectangle a deux longueurs et deux largeurs. On peut tracer les deux paires de côtés en répétant 2 fois un bloc qui trace une longueur puis une largeur. On avance de 100 (longueur), on tourne de 90°, on avance de 40 (largeur), on tourne de 90°.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

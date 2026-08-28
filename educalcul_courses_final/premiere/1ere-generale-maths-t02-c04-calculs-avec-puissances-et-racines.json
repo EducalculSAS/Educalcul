@@ -1,0 +1,560 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.306442+00:00",
+  "id": 580,
+  "code": "1ere-generale-maths-t02-c04",
+  "title": "Calculs avec puissances et racines",
+  "description": "Cours structuré Educalcul : Calculs avec puissances et racines.",
+  "subject": "Calcul numérique et algébrique",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Calcul numérique et algébrique",
+    "titre_du_cours": "Calculs avec puissances et racines",
+    "objectif_global": "Calculs avec puissances et racines",
+    "mini_lecons_imposees": [
+      "Règles.",
+      "Simplifier.",
+      "Applications."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul numérique et algébrique",
+      "lessons": [
+        {
+          "title": "Règles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les puissances entières : rappels et mise en place"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier rendez-vous consacré aux calculs avec puissances et racines. En classe de Première spécialité, nous ne nous contentons pas d'appliquer des formules : nous cherchons à comprendre pourquoi elles fonctionnent pour les utiliser en toute confiance, même quand les expressions deviennent impressionnantes. Commençons par poser les bases solides sur lesquelles tout le reste va s'appuyer."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tout nombre réel $a$ et tout entier relatif $n$, la puissance $a^n$ est définie de la manière suivante : si $n > 0$, c'est le produit de $n$ facteurs égaux à $a$ ; si $n = 0$, on pose $a^0 = 1$ (pour $a \\neq 0$) ; si $n < 0$, on pose $a^n = \\frac{1}{a^{-n}}$ (toujours pour $a \\neq 0$). Cette définition unique permet d'unifier le traitement des exposants positifs, nuls et négatifs. C'est une convention commode qui évite de traiter des cas séparés à chaque calcul."
+            },
+            {
+              "type": "display_math",
+              "latex": "a^m \\times a^n = a^{m+n} \\quad ; \\quad \\frac{a^m}{a^n} = a^{m-n} \\quad ; \\quad (a^m)^n = a^{mn} \\quad ; \\quad (ab)^n = a^n b^n \\quad ; \\quad \\left(\\frac{a}{b}\\right)^n = \\frac{a^n}{b^n}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ces cinq propriétés fondamentales restent valides pour tous les entiers relatifs $m, n$, à condition que les expressions aient un sens (dénominateurs non nuls, pas de $0^0$). Elles sont le moteur de toutes nos simplifications futures. Par exemple, pour calculer $2^{-3} \\times 2^5$, on additionne les exposants : $-3+5=2$, ce qui donne $2^2=4$. On évite ainsi d'écrire les fractions $\\frac{1}{8} \\times 32$. C'est là toute la puissance de la notation : elle transforme des multiplications fastidieuses en simples additions d'entiers."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Définition des puissances rationnelles et des racines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous voulons maintenant donner un sens à $a^{\\frac{p}{q}}$ où $p$ est un entier relatif et $q$ un entier naturel non nul. L'idée directrice est de conserver les propriétés précédentes, notamment $(a^m)^n = a^{mn}$. Si l'on pose $x = a^{\\frac{1}{q}}$, alors $x^q = a$. On définit donc la racine $q$-ième de $a$, notée $\\sqrt[q]{a}$, comme l'unique réel $x$ tel que $x^q = a$. Attention : pour les racines d'ordre pair ($q$ pair), $a$ doit être positif ou nul, et la racine est prise positive par convention. Pour $q$ impair, $a$ peut être n'importe quel réel."
+            },
+            {
+              "type": "definition",
+              "term": "Racine $n$-ième",
+              "definition": "Soient $a \\in \\mathbb{R}$ et $n \\in \\mathbb{N}^*$. Si $n$ est impair, $\\sqrt[n]{a}$ est l'unique réel $x$ tel que $x^n = a$. Si $n$ est pair, $\\sqrt[n]{a}$ est défini pour $a \\ge 0$ et désigne l'unique réel $x \\ge 0$ tel que $x^n = a$.",
+              "example": "$\\sqrt[3]{-8} = -2$ car $(-2)^3 = -8$ ; $\\sqrt[4]{16} = 2$ car $2^4=16$ et $2 \\ge 0$."
+            },
+            {
+              "type": "paragraph",
+              "content": "On étend ensuite la notation aux exposants rationnels quelconques : pour $a > 0$ (ou $a \\ge 0$ si le dénominateur est pair après simplification), on pose $a^{\\frac{p}{q}} = (a^{\\frac{1}{q}})^p = (\\sqrt[q]{a})^p = \\sqrt[q]{a^p}$. Cette définition garantit que la règle $(a^m)^n = a^{mn}$ reste vraie. Par exemple, $8^{\\frac{2}{3}} = (\\sqrt[3]{8})^2 = 2^2 = 4$. On a tout intérêt à calculer la racine d'abord si c'est simple, puis la puissance, pour garder des nombres petits."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les lois des exposants pour les rationnels"
+            },
+            {
+              "type": "paragraph",
+              "content": "La excellente nouvelle, c'est que toutes les propriétés vues pour les entiers relatifs restent **exactement les mêmes** pour les exposants rationnels, sous réserve de rester dans le domaine de définition (bases strictement positives en général, ou positives/nulles selon la parité des dénominateurs). Cela signifie que vous n'avez pas de nouvelles formules à apprendre par cœur : vous avez juste le droit d'appliquer les vieilles formules à des nombres comme $\\frac{1}{2}, -\\frac{3}{4}, \\frac{5}{3}$..."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Unifier les dénominateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour additionner $\\frac{2}{3}$ et $\\frac{1}{6}$, on passe au dénominateur commun $6$ : $\\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la règle de la multiplication",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x^{\\frac{2}{3}} \\times x^{\\frac{1}{6}} = x^{\\frac{2}{3} + \\frac{1}{6}} = x^{\\frac{5}{6}}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le domaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici $x > 0$ suffit car les dénominateurs $3$ et $6$ impliquent des racines d'ordre impair et pair. L'expression finale $x^{\\frac{5}{6}} = \\sqrt[6]{x^5}$ demande $x \\ge 0$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette uniformité est un gain de temps considérable. Elle permet de traiter des expressions comme $\\frac{\\sqrt{x} \\cdot x^{\\frac{1}{3}}}{x^{-\\frac{1}{6}}}$ en les réécrivant $x^{\\frac{1}{2} + \\frac{1}{3} - (-\\frac{1}{6})} = x^{\\frac{3}{6}+\\frac{2}{6}+\\frac{1}{6}} = x^1 = x$, pour $x > 0$. C'est souvent plus rapide et moins source d'erreurs que de manipuler des symboles de radicaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pièges classiques et valeurs absolues"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a un point subtil où beaucoup d'élèves trébuchent : $\\sqrt{x^2}$. On a envie d'écrire $x$, mais c'est faux si $x$ est négatif ! Par définition, la racine carrée (d'ordre pair) renvoie le nombre **positif** dont le carré donne $x^2$. Or, si $x = -3$, $x^2 = 9$ et $\\sqrt{9} = 3$, pas $-3$. La formule correcte est $\\sqrt{x^2} = |x|$. Cette valeur absolue n'est pas un détail : elle assure la cohérence de la définition de la racine comme fonction positive."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention au piège",
+              "paragraphs": [
+                "On a $\\sqrt{x^2} = |x|$ pour tout réel $x$.",
+                "En revanche, $(\\sqrt{x})^2 = x$ **uniquement pour $x \\ge 0$** (domaine de la racine).",
+                "Ne confondez pas $\\sqrt{x^2}$ (défini partout, vaut $|x|$) et $(\\sqrt{x})^2$ (défini seulement pour $x \\ge 0$, vaut $x$)."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce distinguo est crucial pour la suite, notamment quand on résout des équations ou qu'on étudie des fonctions. Gardez en tête que la racine carrée 'efface' le carré mais impose le positif, d'où la valeur absolue. C'est une sécurité, pas une complication."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer sans calculatrice : $5^{-2} \\times 5^4$, $\\frac{10^3}{10^{-2}}$, $(3^{-1})^2$.",
+              "answer": "$5^2 = 25$ ; $10^5 = 100\\,000$ ; $3^{-2} = \\frac{1}{9}$.",
+              "hint": "Utilisez les règles $a^m a^n = a^{m+n}$, $\\frac{a^m}{a^n} = a^{m-n}$ et $(a^m)^n = a^{mn}$.",
+              "explanation": "Pour le premier : $-2+4=2$. Pour le second : $3-(-2)=5$. Pour le troisième : $(-1)\\times 2 = -2$."
+            },
+            {
+              "question": "Réécrire sous la forme $a^{\\frac{p}{q}}$ (avec $p,q$ entiers, $q>0$) : $\\sqrt[3]{x^2}$, $\\frac{1}{\\sqrt{y}}$, $(\\sqrt[4]{z})^3$. On précisera les conditions sur $x,y,z$.",
+              "answer": "$x^{\\frac{2}{3}}$ ($x \\in \\mathbb{R}$) ; $y^{-\\frac{1}{2}}$ ($y > 0$) ; $z^{\\frac{3}{4}}$ ($z \\ge 0$).",
+              "hint": "Rappelez-vous : $\\sqrt[n]{a^m} = a^{\\frac{m}{n}}$ et $\\frac{1}{a^r} = a^{-r}$.",
+              "explanation": "Racine cubique -> exposant $1/3$, carrée au numérateur -> $2/3$. Racine carrée au dénominateur -> exposant $-1/2$, condition $y>0$. Racine 4ème -> $1/4$, puissance 3 -> $3/4$, condition $z \\ge 0$ car racine d'ordre pair."
+            },
+            {
+              "question": "Simplifier l'expression $E = \\frac{a^{\\frac{2}{3}} \\cdot a^{-\\frac{1}{6}}}{a^{\\frac{1}{2}}}$ pour $a > 0$.",
+              "answer": "$a^0 = 1$.",
+              "hint": "Additionnez les exposants au numérateur, puis soustrayez l'exposant du dénominateur.",
+              "explanation": "Numérateur : $\\frac{2}{3} - \\frac{1}{6} = \\frac{4}{6} - \\frac{1}{6} = \\frac{3}{6} = \\frac{1}{2}$. Fraction : $\\frac{1}{2} - \\frac{1}{2} = 0$. Donc $a^0 = 1$."
+            },
+            {
+              "question": "Vrai ou Faux ? Justifiez. 1) $\\sqrt{(-5)^2} = -5$. 2) $(\\sqrt{7})^2 = 7$. 3) $\\sqrt{x^2} = x$ pour tout réel $x$.",
+              "answer": "1) Faux (vaut $5$). 2) Vrai. 3) Faux (vaut $|x|$).",
+              "hint": "Rappelez-vous la définition de la racine carrée : elle renvoie toujours le nombre positif.",
+              "explanation": "1) $(-5)^2=25$, $\\sqrt{25}=5$. 2) Par définition de la racine, pour $7 \\ge 0$. 3) Contre-exemple : $x=-2$, $\\sqrt{4}=2 \\neq -2$. La formule exacte est $\\sqrt{x^2}=|x|$."
+            }
+          ]
+        },
+        {
+          "title": "Simplifier.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire un radical sous la forme $a\\sqrt{b}$ : la forme simplifiée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons apprendre à 'ranger' les expressions contenant des racines carrées (et d'autres ordres) pour leur donner une apparence standard, plus lisible et plus facile à comparer. C'est un peu comme réduire une fraction : on veut extraire ce qui peut l'être pour ne garder sous le radical que l'indispensable. C'est la compétence de base pour tout calcul exact en géométrie, en physique ou en algèbre."
+            },
+            {
+              "type": "paragraph",
+              "content": "La règle fondamentale repose sur la propriété $\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$ pour $a,b \\ge 0$. Si $a$ est un carré parfait (comme $4, 9, 16, 25, 36...$ ou $x^2, x^4, y^6...$), sa racine carrée est un entier ou un monôme qu'on peut sortir devant le radical. Par exemple, $\\sqrt{50} = \\sqrt{25 \\times 2} = \\sqrt{25}\\sqrt{2} = 5\\sqrt{2}$. On dit qu'on a 'simplifié' $\\sqrt{50}$ en $5\\sqrt{2}$. Le nombre sous le radical ($2$ ici) n'a plus de diviseur qui soit un carré parfait (autre que $1$)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer le radicande en facteurs premiers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $\\sqrt{72}$ : $72 = 2 \\times 36 = 2 \\times 6^2 = 2^3 \\times 3^2$. On repère les puissances d'exposant pair : $2^2$ et $3^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Extraire les carrés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\sqrt{72} = \\sqrt{2^2 \\times 3^2 \\times 2} = \\sqrt{2^2}\\sqrt{3^2}\\sqrt{2} = 2 \\times 3 \\sqrt{2} = 6\\sqrt{2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier le résidu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le nombre restant sous le radical est $2$. Il n'a pas de diviseur carré (à part $1$). La forme $6\\sqrt{2}$ est bien la forme simplifiée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode marche aussi avec des lettres. Pour $\\sqrt{x^5 y^8}$ (avec $x \\ge 0$), on écrit $x^5 = x^4 \\cdot x = (x^2)^2 \\cdot x$ et $y^8 = (y^4)^2$. On sort $x^2$ et $y^4$ : $\\sqrt{x^5 y^8} = x^2 y^4 \\sqrt{x}$. L'astuce : divisez l'exposant de chaque variable par $2$. Le quotient sort, le reste (0 ou 1) reste sous le radical."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Produits, quotients et rationalisation des dénominateurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "On a souvent à multiplier ou diviser des radicaux. Les règles $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$ et $\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}$ (pour $a,b \\ge 0, b \\neq 0$) permettent de regrouper ou séparer les racines. Mais en mathématiques, on a une convention esthétique et pratique : **on ne laisse jamais de radical au dénominateur**. C'est ce qu'on appelle 'rationaliser le dénominateur'."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si le dénominateur est une racine simple, comme $\\frac{5}{\\sqrt{3}}$, on multiplie le numérateur et le dénominateur par $\\sqrt{3}$ : $\\frac{5}{\\sqrt{3}} = \\frac{5\\sqrt{3}}{(\\sqrt{3})^2} = \\frac{5\\sqrt{3}}{3}$. Le dénominateur devient un entier, c'est beaucoup plus facile à manipuler ensuite (pour additionner, comparer, dériver...)."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\frac{a}{\\sqrt{b}} = \\frac{a\\sqrt{b}}{b} \\quad (b>0) \\qquad \\frac{a}{b\\sqrt{c}} = \\frac{a\\sqrt{c}}{bc} \\quad (c>0)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si le dénominateur est une somme ou différence contenant une racine, comme $\\frac{2}{\\sqrt{5}+1}$, on utilise l'identité remarquable $(a-b)(a+b)=a^2-b^2$. On multiplie par le **conjugué** : $\\frac{2}{\\sqrt{5}+1} \\times \\frac{\\sqrt{5}-1}{\\sqrt{5}-1} = \\frac{2(\\sqrt{5}-1)}{5-1} = \\frac{2\\sqrt{5}-2}{4} = \\frac{\\sqrt{5}-1}{2}$. Le radical a disparu du dénominateur ! C'est une technique standard qu'il faut maîtriser parfaitement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Addition, soustraction et mise en forme $a\\sqrt{b}$"
+            },
+            {
+              "type": "paragraph",
+              "content": "On ne peut additionner des radicaux que s'ils ont **exactement le même radicande** (le nombre sous la racine). C'est exactement comme pour les termes semblables en algèbre : $3x + 2x = 5x$, mais $3x + 2y$ ne se simplifie pas. Donc $3\\sqrt{2} + 5\\sqrt{2} = 8\\sqrt{2}$, mais $\\sqrt{2} + \\sqrt{3}$ reste tel quel. La stratégie est donc toujours : **simplifier chaque radical au maximum** pour voir si des radicandes identiques apparaissent."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Simplifier chaque terme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exemple : $\\sqrt{12} + \\sqrt{27} - \\sqrt{75}$. $\\sqrt{12} = 2\\sqrt{3}$, $\\sqrt{27} = 3\\sqrt{3}$, $\\sqrt{75} = 5\\sqrt{3}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Factoriser le radicande commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$2\\sqrt{3} + 3\\sqrt{3} - 5\\sqrt{3} = (2+3-5)\\sqrt{3}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le coefficient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$0 \\times \\sqrt{3} = 0$. L'expression valait zéro, ce qu'on n'aurait pas deviné au départ !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, il faut aussi simplifier des fractions de radicaux avant d'additionner. Par exemple $\\frac{\\sqrt{8}}{\\sqrt{2}} + \\frac{\\sqrt{18}}{\\sqrt{3}}$. Le premier terme fait $\\sqrt{4}=2$. Le second fait $\\sqrt{6}$. On obtient $2+\\sqrt{6}$, qu'on ne peut pas réduire davantage. L'ordre des opérations compte : simplifiez **chaque fraction** (éventuellement en rationalisant) avant de tenter une addition."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écriture sous forme de puissance $a^q$ : l'outil universel"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, rappelons que la notation racine est juste un habillage de la notation puissance. Tout radical $\\sqrt[n]{a^m}$ s'écrit $a^{\\frac{m}{n}}$. Cette forme unique est souvent **beaucoup plus efficace** pour calculer, dériver ou intégrer plus tard. Elle évite les pièges de la racine (valeur absolue, conditions de parité) car les règles des exposants sont uniformes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple mixte : $E = \\frac{\\sqrt{x} \\cdot x^{\\frac{2}{3}}}{x^{-\\frac{1}{6}}}$ pour $x>0$. En notation puissance : $E = \\frac{x^{\\frac{1}{2}} x^{\\frac{2}{3}}}{x^{-\\frac{1}{6}}} = x^{\\frac{1}{2}+\\frac{2}{3}+\\frac{1}{6}}$. Mettons au dénominateur $6$ : $\\frac{3}{6}+\\frac{4}{6}+\\frac{1}{6} = \\frac{8}{6} = \\frac{4}{3}$. Donc $E = x^{\\frac{4}{3}}$. Si on veut la forme radicale : $\\sqrt[3]{x^4} = x\\sqrt[3]{x}$. La voie des puissances a été linéaire, sans casse-tête."
+            },
+            {
+              "type": "definition",
+              "term": "Forme canonique (puissance)",
+              "definition": "Une expression de la forme $a^q$ où $a>0$ est la base et $q \\in \\mathbb{Q}$ l'exposant. C'est la forme unique la plus compacte pour manipuler les puissances et racines.",
+              "example": "$\\frac{\\sqrt[3]{x^2}}{\\sqrt{x}} = x^{\\frac{2}{3} - \\frac{1}{2}} = x^{\\frac{1}{6}} = \\sqrt[6]{x}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Adoptez le réflexe : devant une expression mêlant racines et puissances, convertissez tout en exposants rationnels, calculez l'exposant final, et reconvertissez en radical seulement si l'énoncé le demande explicitement. C'est la méthode des mathématiciens pour éviter les erreurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Simplifier les radicaux suivants (formule $a\\sqrt{b}$ avec $b$ le plus petit possible) : $\\sqrt{98}$, $\\sqrt{48}$, $\\sqrt{200}$, $\\sqrt{x^7}$ ($x \\ge 0$).",
+              "answer": "$7\\sqrt{2}$, $4\\sqrt{3}$, $10\\sqrt{2}$, $x^3\\sqrt{x}$.",
+              "hint": "Cherchez le plus grand carré parfait diviseur du radicande (49 pour 98, 16 pour 48, 100 pour 200). Pour $x^7$, écrivez $x^6 \\cdot x$.",
+              "explanation": "$98=49\\times2 \\to 7\\sqrt{2}$. $48=16\\times3 \\to 4\\sqrt{3}$. $200=100\\times2 \\to 10\\sqrt{2}$. $x^7 = (x^3)^2 \\cdot x \\to x^3\\sqrt{x}$."
+            },
+            {
+              "question": "Rationaliser les dénominateurs et simplifier : $\\frac{6}{\\sqrt{2}}$, $\\frac{5}{\\sqrt{3}-1}$, $\\frac{\\sqrt{5}+2}{\\sqrt{5}-2}$.",
+              "answer": "$3\\sqrt{2}$, $\\frac{5(\\sqrt{3}+1)}{2}$, $9+4\\sqrt{5}$.",
+              "hint": "Pour le premier, multipliez par $\\frac{\\sqrt{2}}{\\sqrt{2}}$. Pour les deux autres, multipliez par le conjugué du dénominateur.",
+              "explanation": "1) $\\frac{6\\sqrt{2}}{2}=3\\sqrt{2}$. 2) $\\frac{5(\\sqrt{3}+1)}{3-1} = \\frac{5\\sqrt{3}+5}{2}$. 3) $\\frac{(\\sqrt{5}+2)^2}{5-4} = 5+4\\sqrt{5}+4 = 9+4\\sqrt{5}$."
+            },
+            {
+              "question": "Calculer et simplifier : $A = \\sqrt{50} - \\sqrt{18} + \\sqrt{8}$, $B = \\frac{\\sqrt{27}}{\\sqrt{3}} + \\frac{\\sqrt{12}}{\\sqrt{2}}$.",
+              "answer": "$A = 4\\sqrt{2}$, $B = 3 + \\sqrt{6}$.",
+              "hint": "Simplifiez chaque racine pour $A$. Pour $B$, simplifiez chaque fraction séparément : $\\frac{\\sqrt{27}}{\\sqrt{3}} = \\sqrt{9}$.",
+              "explanation": "$A = 5\\sqrt{2} - 3\\sqrt{2} + 2\\sqrt{2} = 4\\sqrt{2}$. $B = \\sqrt{9} + \\sqrt{6} = 3+\\sqrt{6}$."
+            },
+            {
+              "question": "Écrire sous la forme $x^q$ ($q$ rationnel) : $\\frac{\\sqrt[4]{x^3} \\cdot \\sqrt{x}}{x^{-\\frac{1}{4}}}$ ($x>0$). Ensuite, redonner la forme radicale simplifiée.",
+              "answer": "$x^{\\frac{3}{2}} = x\\sqrt{x}$.",
+              "hint": "Convertissez tout en exposants : $\\frac{3}{4} + \\frac{1}{2} - (-\\frac{1}{4})$.",
+              "explanation": "Exposants : $\\frac{3}{4} + \\frac{2}{4} + \\frac{1}{4} = \\frac{6}{4} = \\frac{3}{2}$. Donc $x^{\\frac{3}{2}} = x^1 \\cdot x^{\\frac{1}{2}} = x\\sqrt{x}$."
+            }
+          ]
+        },
+        {
+          "title": "Applications.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Notation scientifique et ordres de grandeur : dompter l'infiniment grand et petit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon, celle où tout ce qu'on a construit devient un outil concret pour décrire le monde. Les puissances de 10 sont le langage universel des sciences pour écrire des nombres immenses (distance des étoiles) ou minuscules (taille d'un atome) sans s'encombrer de zéros. C'est la **notation scientifique** : tout nombre non nul s'écrit de manière unique sous la forme $a \\times 10^n$ avec $1 \\le a < 10$ et $n \\in \\mathbb{Z}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple réel : la distance Terre-Soleil est d'environ $150\\,000\\,000\\,000$ mètres. En notation scientifique : $1,5 \\times 10^{11}\\,\\text{m}$. Le nombre $a=1,5$ s'appelle la **mantisse**, l'exposant $n=11$ donne l'**ordre de grandeur**. Cela veut dire que cette distance est de l'ordre de $10^{11}$ mètres. Pour un atome d'hydrogène, le rayon est d'environ $0,000\\,000\\,000\\,053$ m, soit $5,3 \\times 10^{-11}$ m. L'exposant négatif signale l'infiniment petit. C'est d'une lisibilité incomparable."
+            },
+            {
+              "type": "display_math",
+              "latex": "x = a \\times 10^n \\quad \\text{avec } 1 \\le a < 10, \\, n \\in \\mathbb{Z}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Calculer en notation scientifique redevient un jeu d'enfant grâce aux règles des exposants. Pour multiplier $(3 \\times 10^4) \\times (2 \\times 10^5)$, on fait $(3\\times2) \\times 10^{4+5} = 6 \\times 10^9$. Pour diviser $\\frac{8 \\times 10^{-3}}{2 \\times 10^2}$, on fait $\\frac{8}{2} \\times 10^{-3-2} = 4 \\times 10^{-5}$. Il faut juste veiller à ce que le résultat reste en forme normale ($1 \\le a < 10$) : si on obtient $12 \\times 10^3$, on réécrit $1,2 \\times 10^4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applications géométriques et physiques : les formules qui font sens"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les racines carrées et cubiques apparaissent naturellement dès qu'on mesure des longueurs, des aires ou des volumes. Le théorème de Pythagore donne l'hypoténuse $c = \\sqrt{a^2+b^2}$. La diagonale d'un cube de côté $c$ vaut $c\\sqrt{3}$. En physique, la période d'un pendule simple est $T = 2\\pi \\sqrt{\\frac{L}{g}}$ : la racine carrée relie la longueur du fil à la durée d'une oscillation. La troisième loi de Kepler s'écrit $\\frac{T^2}{a^3} = \\text{constante}$, où $a$ est le demi-grand axe de l'orbite : on y voit une puissance $3/2$ déguisée."
+            },
+            {
+              "type": "graph",
+              "expression": "sqrt(x)",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Graphique de la fonction racine carrée $f(x)=\\sqrt{x}$. On voit la courbe s'aplatir : pour de grandes valeurs, la racine croît très lentement."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons ce graphique. La fonction racine carrée est définie pour $x \\ge 0$, elle passe par $(0,0)$ et $(1,1)$, elle est croissante mais sa pente diminue. Cela modélise des phénomènes de 'rendements décroissants' : doubler la surface d'un carré ne double pas son côté (il le multiplie par $\\sqrt{2} \\approx 1,41$). Cette intuition visuelle est précieuse pour interpréter des formules physiques sans même calculer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Algorithme d'Héron : calculer une racine carrée à la main (ou presque)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant les calculatrices, comment trouvait-on $\\sqrt{2}$ ? Les mathématiciens grecs, notamment Héron d'Alexandrie, ont inventé une méthode itérative incroyablement efficace. Pour calculer $\\sqrt{a}$, on part d'une estimation $u_0$ (par exemple $1$), puis on construit la suite : $u_{n+1} = \\frac{1}{2}(u_n + \\frac{a}{u_n})$. Cette suite converge **très vite** vers $\\sqrt{a}$. C'est l'ancêtre direct de la méthode de Newton pour résoudre les équations, et c'est souvent encore l'algorithme utilisé dans les processeurs modernes !"
+            },
+            {
+              "type": "sequence_cobweb",
+              "expression": "0.5*(x + 2/x)",
+              "u0": 1,
+              "iterations": 6,
+              "xMin": 0,
+              "xMax": 3,
+              "caption": "Méthode d'Héron pour $\\sqrt{2}$ : la suite $u_{n+1} = \\frac{1}{2}(u_n + \\frac{2}{u_n})$ converge vers $\\sqrt{2} \\approx 1,414$. La toile d'araignée montre l'emballement vers le point fixe."
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons pour $a=2$ avec $u_0=1$. $u_1 = 0,5(1+2) = 1,5$. $u_2 = 0,5(1,5 + 2/1,5) \\approx 0,5(1,5+1,333) = 1,4166...$. $u_3 \\approx 1,414215...$. En trois étapes, on a déjà 5 décimales exactes ! La convergence est quadratique : le nombre de chiffres exacts double à chaque tour. C'est la puissance de l'algorithmique alliée à l'analyse."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def heron(a, u0, n):\\n    u = u0\\n    for i in range(n):\\n        u = 0.5 * (u + a / u)\\n    return u\\n\\nprint(heron(2, 1, 5))  # Affiche 1.4142135623746899",
+              "language": "python",
+              "caption": "Implémentation Python de la méthode d'Héron. En 5 itérations, on atteint la précision machine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résolution d'équations et inéquations : la stratégie unifiée"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce cours, rappelons la méthode standard pour résoudre les équations du type $x^p = a$ ou $\\sqrt[n]{f(x)} = g(x)$. L'idée est toujours de **revenir à une équation polynomiale ou simple** en élevant aux bonnes puissances, tout en surveillant les conditions d'existence (domaines) et les solutions parasites introduites par l'élévation au carré (ou puissance paire)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Conditions d'existence (Domaine)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $\\sqrt{x-3} = x-5$, il faut $x-3 \\ge 0$ (radicande) ET $x-5 \\ge 0$ (car racine $\\ge 0$). Donc $x \\ge 5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Éliminer la racine (élever au carré)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x-3 = (x-5)^2 = x^2 -10x +25$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Résoudre l'équation polynomiale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x^2 -11x +28 = 0 \\iff (x-4)(x-7)=0$. Solutions candidates : $4$ et $7$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier dans le domaine initial",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$4$ ne convient pas ($4 \\ngeq 5$). $7$ convient ($7 \\ge 5$). Solution unique : $S = \\{7\\}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode rigoureuse (Domaine -> Élévation -> Résolution -> Vérification) vous garantit de ne jamais perdre de solutions ni d'en inventer. Elle s'applique identiquement aux inéquations (avec le soin de gérer le sens de l'inégalité selon la parité de la puissance). Vous avez maintenant une boîte à outils complète : règles des exposants, simplification des radicaux, notation scientifique, modélisation géométrique/physique, algorithmes numériques et résolution d'équations. C'est un socle solide pour la suite de l'année."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais manipuler les puissances à exposants entiers et rationnels en appliquant les cinq lois fondamentales.",
+                "Je sais passer de la notation radicale $\\sqrt[n]{a^m}$ à la notation puissance $a^{\\frac{m}{n}}$ et inversement.",
+                "Je sais simplifier un radical sous la forme $a\\sqrt{b}$ (ou $a\\sqrt[n]{b}$) en extrayant les puissances parfaites.",
+                "Je sais rationaliser un dénominateur (racine simple ou somme/différence avec conjugué).",
+                "J'écris un nombre en notation scientifique $a \\times 10^n$ ($1 \\le a < 10$) et j'effectue des calculs dans ce formalisme.",
+                "Je résous une équation ou inéquation contenant des racines en respectant la procédure : Domaine -> Élévation à la puissance -> Résolution -> Vérification.",
+                "Je comprends le principe itératif de la méthode d'Héron pour approcher une racine carrée."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écrire en notation scientifique : la masse de la Terre ($\\approx 5\\,972 \\times 10^{24}$ kg), le rayon d'un atome d'hydrogène ($\\approx 5,3 \\times 10^{-11}$ m). Calculer le rapport masse/rayon (ordre de grandeur).",
+              "answer": "Masse : $5,972 \\times 10^{24}$ kg. Rayon : $5,3 \\times 10^{-11}$ m. Rapport $\\approx 1,1 \\times 10^{35}$ kg/m.",
+              "hint": "Divisez les mantisses et soustrayez les exposants : $10^{24 - (-11)} = 10^{35}$.",
+              "explanation": "$\\frac{5,972}{5,3} \\approx 1,12$. Exposant : $24 - (-11) = 35$. Résultat $\\approx 1,12 \\times 10^{35}$, soit $1,1 \\times 10^{35}$ à $10\\%$ près."
+            },
+            {
+              "question": "Un carré a pour aire $A = 50\\,\\text{cm}^2$. Calculer la longueur exacte de son côté $c$, puis de sa diagonale $d$. Donner les résultats sous forme simplifiée $a\\sqrt{b}$.",
+              "answer": "$c = 5\\sqrt{2}\\,\\text{cm}$, $d = 10\\,\\text{cm}$.",
+              "hint": "Côté $c = \\sqrt{A}$. Diagonale $d = c\\sqrt{2}$ (théorème de Pythagore ou propriété du carré).",
+              "explanation": "$c = \\sqrt{50} = 5\\sqrt{2}$. $d = c\\sqrt{2} = 5\\sqrt{2}\\times\\sqrt{2} = 5\\times2 = 10$."
+            },
+            {
+              "question": "On veut approximer $\\sqrt{10}$ par la méthode d'Héron en partant de $u_0 = 3$. Calculer $u_1$ et $u_2$ sous forme fractionnaire simplifiée. Comparer $u_2$ à la valeur réelle $\\approx 3,162277$.",
+              "answer": "$u_1 = \\frac{19}{6} \\approx 3,1667$, $u_2 = \\frac{721}{228} \\approx 3,16228$.",
+              "hint": "Appliquez la formule $u_{n+1} = \\frac{1}{2}(u_n + \\frac{10}{u_n})$.",
+              "explanation": "$u_1 = 0,5(3 + 10/3) = 0,5(19/3) = 19/6$. $u_2 = 0,5(19/6 + 10/(19/6)) = 0,5(19/6 + 60/19) = 0,5((361+360)/114) = 721/228 \\approx 3,1622807$. Déjà 5 décimales exactes !"
+            },
+            {
+              "question": "Résoudre dans $\\mathbb{R}$ : $\\sqrt{2x+3} = x-1$.",
+              "answer": "$S = \\{2+\\sqrt{6}\\}$ (car $2-\\sqrt{6} < 1$ est exclu par les conditions).",
+              "hint": "Commencez par lister les conditions : $2x+3 \\ge 0$ et $x-1 \\ge 0$. Élevez au carré. Résolvez le trinôme. Vérifiez chaque racine.",
+              "explanation": "Conditions : $x \\ge -1,5$ et $x \\ge 1$, donc $x \\ge 1$. Au carré : $2x+3 = x^2 -2x +1 \\iff x^2 -4x -2 = 0$. $\\Delta = 16+8=24$. Racines : $2 \\pm \\sqrt{6}$. $2-\\sqrt{6} \\approx -0,45 < 1$ (rejeté). $2+\\sqrt{6} \\approx 4,45 \\ge 1$ (accepté)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

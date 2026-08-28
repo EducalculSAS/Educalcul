@@ -1,0 +1,627 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.429013+00:00",
+  "id": 299,
+  "code": "cm2-t04-c04",
+  "title": "Suites et motifs généralisés",
+  "description": "Cours structuré Educalcul : Suites et motifs généralisés.",
+  "subject": "Problèmes et initiation à l'algèbre",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Problèmes et initiation à l'algèbre",
+    "titre_du_cours": "Suites et motifs généralisés",
+    "objectif_global": "Suites et motifs généralisés",
+    "mini_lecons_imposees": [
+      "Décrire règle.",
+      "Prédire terme lointain.",
+      "Exprimer avec mots / schéma."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Problèmes et initiation à l'algèbre",
+      "lessons": [
+        {
+          "title": "Décrire règle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre ce qu'est une suite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une file de bonbons que tu poses sur la table : un bonbon rouge, puis un bonbon jaune, puis un bonbon rouge, puis un bonbon jaune, et ainsi de suite. Cette file ordonnée est ce qu'on appelle une suite. Chaque bonbon correspond à un terme de la suite, et l'ordre dans lequel ils apparaissent est très important."
+            },
+            {
+              "type": "definition",
+              "term": "terme",
+              "definition": "Un terme est un élément unique qui occupe une place précise dans la suite. On le note souvent $u_1$, $u_2$, $u_3$... selon sa position.",
+              "example": "Dans la suite 2, 4, 6, 8, le troisième terme est $u_3 = 6$."
+            },
+            {
+              "type": "definition",
+              "term": "règle",
+              "definition": "La règle décrit comment passer d'un terme au suivant ou comment calculer directement n'importe quel terme. Elle peut être une addition, une multiplication ou une alternance de couleurs.",
+              "example": "Pour la suite 2, 4, 6, 8, la règle est « ajouter 2 »."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Position",
+                "Terme"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "2"
+                ],
+                [
+                  "2",
+                  "4"
+                ],
+                [
+                  "3",
+                  "6"
+                ],
+                [
+                  "4",
+                  "8"
+                ],
+                [
+                  "5",
+                  "10"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons vu à quoi ressemble une suite, nous allons apprendre à repérer la règle qui la génère. Regarde attentivement les nombres du tableau : que se passe-t-il entre deux termes consécutifs ?"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver la règle à partir des premiers termes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la suite 3, 6, 9, 12. Écris les différences entre chaque terme : $6-3 = 3$, $9-6 = 3$, $12-9 = 3$. La différence est toujours la même, ce qui nous indique une règle additive : on ajoute $3$ à chaque fois. Si les différences changent, la règle peut être multiplicative ou plus complexe."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer les écarts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soustrais chaque terme du suivant pour voir si l'écart est constant."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier le type de règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'écart est constant, la règle est additive. Si le rapport entre termes successifs est constant, la règle est multiplicative."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Énoncer la règle en mots",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple : « On commence à $3$ et on ajoute $3$ à chaque étape. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir découvert la règle, il est utile de l'exprimer avec des mots simples pour la retenir facilement. Essaie de formuler la règle de la suite 5, 10, 15, 20 à voix haute."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exprimer la règle avec des mots simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la suite 5, 10, 15, 20, on peut dire : « Le premier terme vaut $5$ et chaque terme suivant est obtenu en ajoutant $5$ au terme précédent. » Cette phrase décrit entièrement la suite sans avoir besoin de la réécrire en chiffres."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Croissance de la suite 5, 10, 15, 20",
+              "bars": [
+                {
+                  "label": "u1",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "u2",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "u3",
+                  "value": 15,
+                  "tone": "blue"
+                },
+                {
+                  "label": "u4",
+                  "value": 20,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être certain que la règle trouvée est correcte, il suffit de l'appliquer pour calculer un terme plus loin, par exemple le sixième terme. Vérifions ensemble."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier la règle sur un terme lointain"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec la règle « ajouter $5$ » et le premier terme $5$, le sixième terme s'obtient en ajoutant $5$ cinq fois : $5 + 5\\times5 = 30$. On peut aussi utiliser la formule $u_n = 5\\times n$ pour aller plus vite."
+            },
+            {
+              "type": "number_line",
+              "caption": "Positions des termes sur une droite graduée",
+              "min": 0,
+              "max": 35,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "u1"
+                },
+                {
+                  "value": 10,
+                  "label": "u2"
+                },
+                {
+                  "value": 15,
+                  "label": "u3"
+                },
+                {
+                  "value": 20,
+                  "label": "u4"
+                },
+                {
+                  "value": 30,
+                  "label": "u6"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la suite 7, 14, 21, 28, quel est le cinquième terme ?",
+              "answer": "35",
+              "hint": "Calcule la différence entre deux termes consécutifs.",
+              "explanation": "La différence est $7$. En ajoutant $7$ au quatrième terme $28$, on obtient $35$."
+            },
+            {
+              "question": "Quelle est la règle de la suite 2, 4, 8, 16 ?",
+              "answer": "Multiplier par 2 à chaque étape",
+              "hint": "Regarde le rapport entre un terme et le précédent.",
+              "explanation": "Chaque terme est le double du précédent : $2\\times2=4$, $4\\times2=8$, $8\\times2=16$."
+            },
+            {
+              "question": "Écris en mots la règle de la suite 10, 20, 30, 40.",
+              "answer": "On commence à 10 et on ajoute 10 à chaque fois.",
+              "hint": "Utilise les mots « commencer » et « ajouter ».",
+              "explanation": "Le premier terme est $10$ et l'écart constant est $10$."
+            },
+            {
+              "question": "Calcule le huitième terme de la suite dont le premier terme est 4 et la règle « ajouter 6 ».",
+              "answer": "46",
+              "hint": "Utilise la formule $u_n = 4 + 6\\times(n-1)$.",
+              "explanation": "Pour $n=8$ : $u_8 = 4 + 6\\times7 = 4 + 42 = 46$."
+            }
+          ]
+        },
+        {
+          "title": "Prédire terme lointain.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prédire un terme lointain sans tout écrire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on a besoin du centième terme d'une suite sans écrire les 99 précédents. Heureusement, la règle qu'on a découverte permet de calculer directement n'importe quel terme. C'est comme connaître le secret d'une machine qui fabrique les nombres."
+            },
+            {
+              "type": "definition",
+              "term": "terme général",
+              "definition": "Une formule qui donne la valeur du terme de rang $n$ pour tout entier $n\\ge1$. On l'écrit souvent $u_n = ...$.",
+              "example": "Pour la suite 3, 6, 9, 12, le terme général est $u_n = 3n$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons la suite 4, 9, 14, 19. L'écart entre deux termes successifs est $5$. Le premier terme vaut $4$. Pour obtenir le terme de rang $n$, on part de $4$ et on ajoute $5$ exactement $n-1$ fois. Cela s'écrit $u_n = 4 + 5\\times(n-1)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le premier terme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note $u_1$, la valeur de départ de la suite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver l'écart constant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $u_2-u_1$, $u_3-u_2$... Si c'est toujours le même nombre $d$, la suite est arithmétique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La formule générale est $u_n = u_1 + d\\times(n-1)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Remplacer $n$ par le rang voulu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple pour $n=100$, calcule $u_{100} = u_1 + d\\times99$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons construire la formule, essayons de l'utiliser pour prédire un terme très lointain. Imagine que tu veux connaître le terme de rang 50 d'une suite qui commence à 7 et dont l'écart est 4."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Appliquer la formule à un grand rang"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec $u_1 = 7$ et $d = 4$, la formule donne $u_n = 7 + 4\\times(n-1)$. Pour $n=50$, on calcule $4\\times49 = 196$, puis $7 + 196 = 203$. Le cinquantième terme vaut donc $203$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position du terme 50 sur une droite graduée",
+              "min": 0,
+              "max": 210,
+              "points": [
+                {
+                  "value": 7,
+                  "label": "u1"
+                },
+                {
+                  "value": 203,
+                  "label": "u50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois la suite n'est pas arithmétique mais géométrique : chaque terme est obtenu en multipliant le précédent par un même nombre. La méthode change légèrement, mais l'idée de prédire un terme lointain reste la même."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prédire avec une suite géométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considère la suite 3, 6, 12, 24. Le rapport entre deux termes consécutifs est $2$ ($6/3=2$, $12/6=2$, $24/12=2$). Le premier terme est $3$. La formule générale est $u_n = 3\\times2^{n-1}$. Pour $n=10$, on calcule $2^{9}=512$ puis $3\\times512=1536$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Croissance rapide d'une suite géométrique",
+              "bars": [
+                {
+                  "label": "u1",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "u2",
+                  "value": 6,
+                  "tone": "green"
+                },
+                {
+                  "label": "u3",
+                  "value": 12,
+                  "tone": "green"
+                },
+                {
+                  "label": "u4",
+                  "value": 24,
+                  "tone": "green"
+                },
+                {
+                  "label": "u10",
+                  "value": 1536,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous allons vérifier que nos prédictions sont correctes en les testant sur des rangs plus petits, puis nous résumerons la démarche à retenir pour la prochaine fois."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier et résumer la méthode"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprends la suite arithmétique 5, 11, 17, 23. Calcule $u_5$ avec la formule $u_n = 5 + 6\\times(n-1)$ : $u_5 = 5 + 6\\times4 = 29$. Écris les cinq premiers termes pour confirmer : 5, 11, 17, 23, 29. La méthode fonctionne à tous les coups."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne le terme général de la suite 2, 5, 8, 11.",
+              "answer": "u_n = 2 + 3\\times(n-1)",
+              "hint": "Identifie le premier terme et l'écart constant.",
+              "explanation": "Le premier terme est $2$, l'écart $d=3$. La formule est $u_n = 2 + 3(n-1)$."
+            },
+            {
+              "question": "Calcule le 20e terme de la suite dont $u_1=10$ et $d=7$.",
+              "answer": "143",
+              "hint": "Utilise $u_n = u_1 + d\\times(n-1)$ avec $n=20$.",
+              "explanation": "$u_{20} = 10 + 7\\times19 = 10 + 133 = 143$."
+            },
+            {
+              "question": "Quelle est la formule du terme général pour la suite 4, 12, 36, 108 ?",
+              "answer": "u_n = 4\\times3^{n-1}",
+              "hint": "Trouve le rapport entre deux termes consécutifs.",
+              "explanation": "Le rapport est $3$, le premier terme $4$, donc $u_n = 4\\times3^{n-1}$."
+            },
+            {
+              "question": "Prédis le 8e terme de la suite géométrique de premier terme 5 et de raison 2.",
+              "answer": "640",
+              "hint": "Applique $u_n = 5\\times2^{n-1}$ avec $n=8$.",
+              "explanation": "$2^{7}=128$, $5\\times128=640$."
+            }
+          ]
+        },
+        {
+          "title": "Exprimer avec mots / schéma.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dire la règle avec des mots du quotidien"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu explains une suite à un ami, tu n'utilises pas de symboles compliqués. Tu dis par exemple : « On commence avec 3 billes et à chaque tour on en ajoute 4. » Cette phrase raconte toute la suite sans écrire de chiffres. C'est exactement ce qu'on attend dans cette leçon : traduire la règle mathématique en langage courant."
+            },
+            {
+              "type": "definition",
+              "term": "description verbale",
+              "definition": "Une phrase qui explique comment la suite se construit, sans utiliser de formule algébrique.",
+              "example": "« Le premier terme est 6 et chaque terme suivant est le double du précédent. »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons la suite 1, 4, 7, 10. Une description verbale pourrait être : « On démarre à 1 et on ajoute 3 à chaque étape. » Essaie de dire la même chose pour la suite 2, 6, 18, 54."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, nous allons représenter la même règle avec un petit schéma visuel. Un diagramme en barres ou un tableau aide à voir la régularité d'un coup d'œil."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter la règle par un schéma"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dessine une flèche qui part du premier terme et qui porte l'inscription « +3 ». Répète la flèche pour chaque passage au terme suivant. Le schéma montre visuellement que l'action est toujours la même."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Schéma de la suite 1, 4, 7, 10 avec flèches +3",
+              "bars": [
+                {
+                  "label": "1",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "+3",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "4",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "+3",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "7",
+                  "value": 7,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la règle alterne entre deux actions, comme ajouter 2 puis multiplier par 3. Dans ce cas, la description verbale doit mentionner les deux étapes et le schéma doit montrer deux flèches différentes qui se répètent."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Règles à deux étapes alternées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine la suite 1, 3, 9, 11, 33, 35. On ajoute 2, puis on multiplie par 3, puis on ajoute 2, puis on multiplie par 3, etc. En mots : « On commence à 1, on ajoute 2, on multiplie par 3, on ajoute 2, on multiplie par 3, et ainsi de suite. »"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Action",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Départ",
+                  "1"
+                ],
+                [
+                  "2",
+                  "+2",
+                  "3"
+                ],
+                [
+                  "3",
+                  "×3",
+                  "9"
+                ],
+                [
+                  "4",
+                  "+2",
+                  "11"
+                ],
+                [
+                  "5",
+                  "×3",
+                  "33"
+                ],
+                [
+                  "6",
+                  "+2",
+                  "35"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, nous allons synthétiser tout ce que nous avons appris : décrire une règle, prédire un terme lointain et l'exprimer en mots ou en schéma. Cette checklist te permettra de vérifier que tu maîtrises chaque compétence."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan de la leçon"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer le premier terme et l'écart ou le rapport d'une suite.",
+                "J'écris la formule du terme général pour une suite arithmétique ou géométrique.",
+                "Je calcule un terme lointain sans lister tous les précédents.",
+                "Je décris la règle d'une suite avec une phrase claire en français.",
+                "Je représente la règle par un schéma simple (flèches, tableau, barres)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une phrase qui décrit la suite 5, 10, 20, 40.",
+              "answer": "On commence à 5 et on multiplie par 2 à chaque étape.",
+              "hint": "Regarde comment on passe d'un terme au suivant.",
+              "explanation": "Chaque terme est le double du précédent, donc la règle est multiplicative par 2."
+            },
+            {
+              "question": "Dessine un schéma (flèches) pour la suite 2, 5, 8, 11.",
+              "answer": "Flèches +3 entre chaque terme.",
+              "hint": "L'écart constant est 3.",
+              "explanation": "On part de 2, on ajoute 3 pour obtenir 5, on ajoute 3 pour obtenir 8, etc."
+            },
+            {
+              "question": "Donne la description verbale de la suite 3, 5, 15, 17, 51.",
+              "answer": "On commence à 3, on ajoute 2, on multiplie par 3, on ajoute 2, on multiplie par 3, ...",
+              "hint": "Identifie les deux opérations qui se répètent.",
+              "explanation": "La suite alterne addition de 2 et multiplication par 3."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

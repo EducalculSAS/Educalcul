@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 415,
+  "_course_code": "5eme-t08-c01-variables-et-expressions",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Affecter",
+  "title": "Quiz - Affecter (Variables et expressions)",
+  "questions": [
+    {
+      "text": "Que fait l'instruction $x ← 7$ ?",
+      "options": [
+        "Elle affecte la valeur 7 à la variable x",
+        "Elle additionne 7 à la variable x",
+        "Elle compare x à 7",
+        "Elle affiche 7"
+      ],
+      "correctAnswer": "Elle affecte la valeur 7 à la variable x",
+      "explanation": "Le symbole « ← » est l'opérateur d'affectation. L'instruction $x ← 7$ place la valeur 7 dans la variable x, remplaçant toute valeur précédente. Les autres options décrivent une addition, une comparaison ou un affichage, ce qui ne correspond pas à l'affectation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après l'exécution des deux instructions $a ← 3$ puis $a ← a + 2$, quelle est la valeur de $a$ ?",
+      "options": [
+        "5",
+        "3",
+        "2",
+        "6"
+      ],
+      "correctAnswer": "5",
+      "explanation": "La première instruction donne à $a$ la valeur 3. La seconde instruction calcule $a + 2$ (donc $3 + 2 = 5$) et affecte ce résultat à $a$. La valeur finale est donc 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des lignes suivantes est une affectation correcte ?",
+      "options": [
+        "$5 ← x$",
+        "$x ← 5$",
+        "$x = 5$",
+        "$x → 5$"
+      ],
+      "correctAnswer": "$x ← 5$",
+      "explanation": "En algorithmique, l'affectation s'écrit avec la flèche vers la gauche : la variable reçoit la valeur. $x ← 5$ signifie que la variable $x$ prend la valeur 5. $5 ← x$ est inversé, $x = 5$ est une égalité mathématique, et $x → 5$ n'est pas une syntaxe d'affectation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute la suite d'instructions : $b ← 10$, $b ← b - 4$, $b ← b × 2$. Quelle est la valeur finale de $b$ ?",
+      "options": [
+        "12",
+        "20",
+        "8",
+        "16"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Étape par étape : $b$ commence à 10. Après $b ← b - 4$, $b$ vaut $10 - 4 = 6$. Après $b ← b × 2$, $b$ vaut $6 × 2 = 12$. La réponse correcte est 12.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Que signifie l'instruction $c ← c + 1$ ?",
+      "options": [
+        "Elle incrémente la variable c de 1",
+        "Elle affecte la valeur 1 à c",
+        "Elle additionne 1 à c et stocke le résultat dans une nouvelle variable",
+        "Elle compare c à 1"
+      ],
+      "correctAnswer": "Elle incrémente la variable c de 1",
+      "explanation": "L'instruction $c ← c + 1$ prend la valeur actuelle de $c$, y ajoute 1, puis réaffecte ce résultat à $c$. C'est l'opération classique d'incrémentation. Les autres options décrivent une affectation constante, une création de variable ou une comparaison.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

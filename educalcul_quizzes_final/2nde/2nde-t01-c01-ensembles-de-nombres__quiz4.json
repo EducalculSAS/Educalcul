@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 496,
+  "_course_code": "2nde-t01-c01-ensembles-de-nombres",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Ensembles de nombres",
+  "title": "Quiz : Applications sur les ensembles de nombres (Seconde)",
+  "questions": [
+    {
+      "text": "Parmi les affirmations suivantes, laquelle est fausse ?",
+      "options": [
+        "$\\sqrt{4} \\in \\mathbb{N}$",
+        "$-\\frac{5}{2} \\in \\mathbb{D}$",
+        "$\\frac{\\pi}{2} \\in \\mathbb{Q}$",
+        "$-3 \\in \\mathbb{Z}$"
+      ],
+      "correctAnswer": "$\\frac{\\pi}{2} \\in \\mathbb{Q}$",
+      "explanation": "$\\sqrt{4}=2$ qui est un entier naturel, donc l'affirmation A est vraie. $-\\frac{5}{2}=-2,5$ est un nombre décimal (écriture décimale finie), donc B est vraie. $-3$ est un entier relatif, donc D est vraie. $\\pi$ est irrationnel, donc $\\frac{\\pi}{2}$ l'est aussi : il n'appartient pas à $\\mathbb{Q}$. L'affirmation C est fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'ensemble $E = \\{ x \\in \\mathbb{Z} \\mid -2 < x \\le 3 \\}$ s'écrit en extension :",
+      "options": [
+        "$\\{-2, -1, 0, 1, 2, 3\\}$",
+        "$\\{-1, 0, 1, 2, 3\\}$",
+        "$\\{-2, -1, 0, 1, 2\\}$",
+        "$\\{-1, 0, 1, 2\\}$"
+      ],
+      "correctAnswer": "$\\{-1, 0, 1, 2, 3\\}$",
+      "explanation": "La condition $-2 < x$ exclut $-2$ (inégalité stricte). La condition $x \\le 3$ inclut $3$. Les entiers vérifiant ces deux conditions sont $-1, 0, 1, 2, 3$. L'option A inclut $-2$ à tort. L'option C exclut $3$ à tort. L'option D exclut $3$ à tort.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des inégalités suivantes a pour ensemble de solutions dans $\\mathbb{R}$ l'intervalle $[-2, 5[$ ?",
+      "options": [
+        "$-2 \\le x < 5$",
+        "$-2 < x \\le 5$",
+        "$-2 \\le x \\le 5$",
+        "$-2 < x < 5$"
+      ],
+      "correctAnswer": "$-2 \\le x < 5$",
+      "explanation": "La notation d'intervalle $[-2, 5[$ signifie que la borne inférieure $-2$ est incluse (crochet $[$) et la borne supérieure $5$ est exclue (parenthèse $[$). Cela se traduit par l'inégalité double $-2 \\le x < 5$. L'option B correspond à $]-2, 5]$. L'option C correspond à $[-2, 5]$. L'option D correspond à $]-2, 5[$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère les nombres : $a = \\sqrt{9}$, $b = 0,\\overline{3}$, $c = \\sqrt{2}$, $d = \\frac{\\sqrt{8}}{2}$. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "$a$ et $b$ sont irrationnels",
+        "$c$ et $d$ sont rationnels",
+        "$a$ et $b$ sont rationnels ; $c$ et $d$ sont irrationnels",
+        "$a$, $b$, $c$ sont rationnels ; $d$ est irrationnel"
+      ],
+      "correctAnswer": "$a$ et $b$ sont rationnels ; $c$ et $d$ sont irrationnels",
+      "explanation": "$a = \\sqrt{9} = 3 \\in \\mathbb{Q}$. $b = 0,\\overline{3} = \\frac{1}{3} \\in \\mathbb{Q}$ (décimal périodique). $c = \\sqrt{2} \\notin \\mathbb{Q}$ (irrationnel classique). $d = \\frac{\\sqrt{8}}{2} = \\frac{2\\sqrt{2}}{2} = \\sqrt{2} \\notin \\mathbb{Q}$. Donc $a$ et $b$ sont rationnels, $c$ et $d$ sont irrationnels.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $A = \\{ x \\in \\mathbb{R} \\mid x^2 \\le 4 \\}$ et $B = \\{ x \\in \\mathbb{R} \\mid x > 1 \\}$. L'intersection $A \\cap B$ est l'intervalle :",
+      "options": [
+        "$]-2, 1]$",
+        "$]1, 2]$",
+        "$[-2, 2]$",
+        "$]1, 2[$"
+      ],
+      "correctAnswer": "$]1, 2]$",
+      "explanation": "On résout $x^2 \\le 4 \\iff -2 \\le x \\le 2$, donc $A = [-2, 2]$. $B = ]1, +\\infty[$. L'intersection $A \\cap B$ contient les réels supérieurs à $1$ (exclu car $B$ est ouvert en $1$) et inférieurs ou égaux à $2$ (inclus car $A$ est fermé en $2$). Donc $A \\cap B = ]1, 2]$. L'option D exclut $2$ à tort car $2 \\in A$ et $2 \\in B$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

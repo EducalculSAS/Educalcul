@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 174,
+  "_course_code": "ce2-t04-c06-multiplier-par-10-et-100-mentalement",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Approfondissement : Comprendre la valeur de position",
+  "title": "Quiz : Multiplier par 10 et 100 - Valeur de position",
+  "questions": [
+    {
+      "text": "Que devient le chiffre des unités d'un nombre entier lorsqu'on le multiplie par $10$ ?",
+      "options": [
+        "Il devient le chiffre des dizaines",
+        "Il devient le chiffre des centaines",
+        "Il disparaît du nombre",
+        "Il reste au chiffre des unités"
+      ],
+      "correctAnswer": "Il devient le chiffre des dizaines",
+      "explanation": "Multiplier par $10$ décale tous les chiffres d'un rang vers la gauche sur le tableau de position. Le chiffre qui était aux unités passe donc au rang des dizaines, et on place un $0$ aux unités. Les autres options correspondent à des erreurs fréquentes : confusion avec la multiplication par $100$ (centaines), croyance que le chiffre s'efface, ou oubli du décalage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On multiplie le nombre $452$ par $10$. Quel chiffre se trouve alors au rang des centaines ?",
+      "options": [
+        "4",
+        "5",
+        "2",
+        "0"
+      ],
+      "correctAnswer": "5",
+      "explanation": "Le nombre $452$ s'écrit avec $4$ centaines, $5$ dizaines et $2$ unités. En multipliant par $10$, chaque chiffre décale d'un rang vers la gauche : le $4$ passe aux milliers, le $5$ passe aux centaines, le $2$ passe aux dizaines, et un $0$ vient aux unités. Le nouveau nombre est $4\\,520$. Le chiffre des centaines est donc $5$. L'option $4$ correspond à l'ancien chiffre des centaines, $2$ à l'ancien chiffre des unités, et $0$ au nouveau chiffre des unités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si on multiplie $37$ par $100$, le chiffre $3$ occupe quelle position dans le résultat ?",
+      "options": [
+        "Unités",
+        "Dizaines",
+        "Centaines",
+        "Milliers"
+      ],
+      "correctAnswer": "Milliers",
+      "explanation": "Multiplier par $100$ revient à décaler les chiffres de deux rangs vers la gauche. Dans $37$, le $3$ est au rang des dizaines. Après un décalage de deux rangs : dizaines $\\rightarrow$ centaines $\\rightarrow$ milliers. Le $3$ se retrouve donc au rang des milliers. Le résultat est $3\\,700$. Les autres options correspondent à un décalage insuffisant (centaines) ou à une erreur de lecture du nombre de départ.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre a-t-on multiplié par $10$ pour obtenir $2\\,450$ ?",
+      "options": [
+        "245",
+        "2 450",
+        "24 500",
+        "24,5"
+      ],
+      "correctAnswer": "245",
+      "explanation": "Pour retrouver le nombre de départ, il faut faire l'opération inverse : diviser par $10$. Diviser par $10$ décale les chiffres d'un rang vers la droite. $2\\,450$ devient $245,0$ soit $245$. L'option $2\\,450$ serait le résultat d'une multiplication par $1$, l'option $24\\,500$ serait une multiplication par $100$, et $24,5$ n'est pas un nombre entier (ce qui contredit l'énoncé 'nombre entier' implicite au programme CE2 sur ce sujet).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a multiplié un nombre entier par $100$. Le résultat obtenu se termine par deux zéros. Que peut-on affirmer avec certitude sur le nombre de départ ?",
+      "options": [
+        "Il se termine forcément par un zéro",
+        "Il ne se termine pas forcément par un zéro",
+        "Il est forcément pair",
+        "Il est forcément impair"
+      ],
+      "correctAnswer": "Il ne se termine pas forcément par un zéro",
+      "explanation": "Multiplier par $100$ ajoute deux zéros à la fin du nombre (décalage de deux rangs). Le nombre de départ peut très bien ne pas se terminer par zéro. Par exemple : $12 \\times 100 = 1\\,200$ (résultat avec deux zéros, départ $12$ sans zéro final) ou $20 \\times 100 = 2\\,000$ (départ avec zéro). On ne peut donc pas affirmer qu'il se termine forcément par un zéro. La parité (pair/impair) ne se déduit pas non plus de la présence de zéros finaux ajoutés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

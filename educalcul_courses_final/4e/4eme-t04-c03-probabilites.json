@@ -1,0 +1,634 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.851657+00:00",
+  "id": 437,
+  "code": "4eme-t04-c03",
+  "title": "Probabilités",
+  "description": "Cours structuré Educalcul : Probabilités.",
+  "subject": "Statistiques et probabilités",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Statistiques et probabilités",
+    "titre_du_cours": "Probabilités",
+    "objectif_global": "Probabilités",
+    "mini_lecons_imposees": [
+      "Univers simple.",
+      "Événements.",
+      "Calculs."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et probabilités",
+      "lessons": [
+        {
+          "title": "Univers simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Univers simple : qu'est‑ce qu'un univers ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu prépares une expérience aléatoire, comme lancer une pièce de monnaie ou tirer une carte d'un jeu. L'ensemble de tous les résultats possibles de cette expérience s'appelle l'univers, souvent noté $Ω$. C'est un peu le décor sur lequel va se jouer l'aléa : chaque issue possible y a sa place, sans qu'aucune ne soit oubliée. Pour bien visualiser, pense à une boîte qui contient toutes les issues ; quand l'expérience se produit, une seule issue sort de la boîte. Ce cadre est indispensable, car c'est à l'intérieur de cet univers que nous pourrons parler d'événements et calculer des probabilités. Rassure‑toi, la notion est simple : il suffit de lister ce qui peut arriver, sans juger ce qui est plus ou moins probable pour l'instant."
+            },
+            {
+              "type": "definition",
+              "term": "Univers",
+              "definition": "Ensemble de toutes les issues possibles d'une expérience aléatoire, noté $Ω$.",
+              "example": "Pour un lancer de dé à six faces, $Ω = \\{1,2,3,4,5,6\\}$."
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre des issues d'un lancer de pièce : Pile et Face.",
+              "branches": [
+                {
+                  "label": "Pile",
+                  "probability": "1/2"
+                },
+                {
+                  "label": "Face",
+                  "probability": "1/2"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'univers est clair, penchons‑nous sur les éléments qui le composent : les issues élémentaires. Chaque issue individuelle, comme « obtenir 4 » au dé, est une issue élémentaire. Elles sont les briques de base de l'univers."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les issues élémentaires"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une issue élémentaire est un résultat unique qui ne peut pas être décomposé davantage pour l'expérience considérée. Dans le lancer d'un dé à six faces, les six issues élémentaires sont $1$, $2$, $3$, $4$, $5$ et $6$. Elles sont mutuellement exclusives : on ne peut obtenir qu'une seule d'entre elles à la fois. Cette propriété est cruciale, car elle garantit que la somme des probabilités de toutes les issues élémentaires vaudra $1$ lorsque l'univers est équiprobable. Pour t'en convaincre, imagine que tu écris chaque issue sur un petit papier et que tu les mets dans un sac ; tu ne peux en piocher qu'un à la fois."
+            },
+            {
+              "type": "definition",
+              "term": "Issue élémentaire",
+              "definition": "Résultat unique et indivisible d'une expérience aléatoire, élément de l'univers $Ω$.",
+              "example": "Au lancer d'une pièce, les issues élémentaires sont « Pile » et « Face »."
+            },
+            {
+              "type": "display_math",
+              "latex": "Ω = \\{1,2,3,4,5,6\\}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Certaines expériences offrent des issues qui ont toutes la même chance de se produire ; on parle alors d'univers équiprobable. D'autres, comme un dé truqué, ne le sont pas. Comprendre cette différence est la clé pour savoir si l'on peut utiliser la formule simple « cas favorables / cas totaux »."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Univers équiprobable ou non"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un univers est dit équiprobable lorsque chaque issue élémentaire a exactement la même probabilité de se réaliser. C'est le cas pour un dé parfait, une pièce équilibrée ou un tirage au sort dans une urne où toutes les boules sont identiques. À l'inverse, si tu utilises un dé dont la face $6$ est plus lourde, la probabilité d'obtenir $6$ sera plus grande que celle d'obtenir $1$ ; l'univers n'est alors pas équiprobable. Reconnaître cette situation te permettra de choisir la bonne méthode de calcul : dans un univers équiprobable, la probabilité d'un événement se calcule par le quotient $\\frac{\\text{nombre de cas favorables}}{\\text{nombre total de cas}}$, tandis que dans le cas général il faut connaître les probabilités individuelles de chaque issue."
+            },
+            {
+              "type": "definition",
+              "term": "Univers équiprobable",
+              "definition": "Univers dans lequel toutes les issues élémentaires ont la même probabilité.",
+              "example": "Lancer d'un dé non truqué : chaque face a une chance sur six."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(\\text{issue}) = \\frac{1}{\\text{card}(Ω)}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, voyons comment représenter concrètement un univers. On peut le lister entre accolades, le dessiner sous forme d'arbre ou même le montrer dans un tableau. Chaque représentation a ses avantages selon la complexité de l'expérience."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Représenter un univers"
+            },
+            {
+              "type": "paragraph",
+              "content": "La notation ensembliste $Ω = \\{a,b,c\\}$ est concise et idéale pour un petit nombre d'issues. L'arbre des possibilités, déjà aperçu, montre bien la succession des étapes quand l'expérience comporte plusieurs lancers. Enfin, un tableau à double entrée peut croiser deux caractéristiques (par exemple : couleur et forme d'un pion). Choisis la représentation qui te parle le plus ; l'important est de ne perdre aucune issue."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'expérience",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine précisément ce qui est aléatoire (lancer, tirage, mesure)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister toutes les issues possibles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris chaque résultat distinct sans en oublier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'équiprobabilité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Demande‑toi si chaque issue a la même chance d'apparaître."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris l'univers $Ω$ pour l'expérience : tirer une carte d'un jeu de 32 cartes.",
+              "answer": "$Ω = \\{\\text{As de cœur}, \\text{Roi de cœur}, \\dots, \\text{7 de trèfle}\\}$ (32 éléments).",
+              "hint": "Un jeu de 32 cartes contient 4 couleurs × 8 valeurs.",
+              "explanation": "Il faut lister les 32 cartes distinctes ; chaque carte est une issue élémentaire."
+            },
+            {
+              "question": "Parmi les issues du lancer de deux dés à six faces, combien y a‑t‑il d'issues élémentaires ?",
+              "answer": "$36$",
+              "hint": "Chaque dé a 6 issues ; on multiplie.",
+              "explanation": "Le couple (résultat dé 1, résultat dé 2) forme une issue élémentaire ; $6 \\times 6 = 36$."
+            },
+            {
+              "question": "Un dé est truqué : la face 6 a une probabilité de $0,3$ et les cinq autres faces se partagent le reste équitablement. L'univers est‑il équiprobable ?",
+              "answer": "Non",
+              "hint": "Compare la probabilité de la face 6 avec celle des autres.",
+              "explanation": "Les probabilités ne sont pas toutes égales ($0,3 \\neq 0,14$), donc l'univers n'est pas équiprobable."
+            },
+            {
+              "question": "Représente par un arbre les issues du lancer successif de deux pièces équilibrées.",
+              "answer": "Premier niveau : Pile / Face. Deuxième niveau : pour chaque branche, Pile / Face. Total 4 feuilles : PP, PF, FP, FF.",
+              "hint": "Chaque pièce double le nombre de branches.",
+              "explanation": "L'arbre montre les 4 issues élémentaires possibles pour deux lancers."
+            }
+          ]
+        },
+        {
+          "title": "Événements.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Événements : définition et exemples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'univers est bien en place, nous pouvons parler d'événements. Un événement n'est rien d'autre qu'un sous‑ensemble de l'univers : on sélectionne certaines issues qui nous intéressent. Par exemple, dans le lancer d'un dé, l'événement « obtenir un nombre pair » correspond au sous‑ensemble $\\{2,4,6\\}$. C'est une façon de regrouper des issues pour pouvoir leur attribuer une probabilité globale. Garde en tête que chaque événement est lui‑même un ensemble, ce qui nous permettra d'utiliser les opérations ensemblistes comme l'union ou l'intersection."
+            },
+            {
+              "type": "definition",
+              "term": "Événement",
+              "definition": "Sous‑ensemble de l'univers $Ω$ ; ensemble d'issues élémentaires qui nous intéressent.",
+              "example": "Événement « multiple de 3 » au dé : $\\{3,6\\}$."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Diagramme de Venn : univers $Ω$ et événement $A$ (nombre pair).",
+              "sets": [
+                {
+                  "label": "Ω",
+                  "elements": "1,2,3,4,5,6"
+                },
+                {
+                  "label": "A",
+                  "elements": "2,4,6"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les événements peuvent être classés selon leur relation avec l'univers : certains, impossibles, élémentaires, contraires ou incompatibles. Chaque catégorie a une signification précise qui facilite le raisonnement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Types d'événements"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un événement certain contient toutes les issues de $Ω$ (probabilité $1$). Un événement impossible est l'ensemble vide $\\varnothing$ (probabilité $0$). Un événement élémentaire ne contient qu'une seule issue. Deux événements sont contraires si l'un est le complémentaire de l'autre dans $Ω$ ; ils sont incompatibles s'ils n'ont aucune issue en commun. Par exemple, au dé, « pair » et « impair » sont contraires, tandis que « pair » et « multiple de 3 » sont incompatibles ? Non, ils partagent le 6, donc ils ne sont pas incompatibles. Cette distinction aide à appliquer les formules de probabilité."
+            },
+            {
+              "type": "definition",
+              "term": "Événements contraires",
+              "definition": "Deux événements $A$ et $\\overline{A}$ tels que $A \\cup \\overline{A} = Ω$ et $A \\cap \\overline{A} = \\varnothing$.",
+              "example": "Au dé, $A = \\{2,4,6\\}$ et $\\overline{A} = \\{1,3,5\\}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "A \\cap B = \\varnothing \\Rightarrow A \\text{ et } B \\text{ incompatibles}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous pouvons combiner des événements grâce aux opérations ensemblistes : union (au moins l'un se réalise), intersection (les deux se réalisent) et complémentaire (l'événement ne se réalise pas). Ces opérations se traduisent directement en probabilités."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Opérations sur les événements"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'union $A \\cup B$ regroupe les issues qui appartiennent à $A$ ou à $B$ (ou aux deux). L'intersection $A \\cap B$ ne garde que les issues communes. Le complémentaire $\\overline{A}$ contient toutes les issues de $Ω$ qui ne sont pas dans $A$. Par exemple, avec $A = \\{2,4,6\\}$ (pair) et $B = \\{3,6\\}$ (multiple de 3), on a $A \\cup B = \\{2,3,4,6\\}$ et $A \\cap B = \\{6\\}$. Ces ensembles sont la base des formules de calcul de probabilités composées."
+            },
+            {
+              "type": "definition",
+              "term": "Union, intersection, complémentaire",
+              "definition": "Opérations ensemblistes appliquées aux événements : $A \\cup B$, $A \\cap B$, $\\overline{A}$.",
+              "example": "Voir ci‑dessus."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les événements",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note les ensembles $A$ et $B$ en listant leurs issues."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire l'union",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Rassemble toutes les issues de $A$ et $B$ sans doublon."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire l'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Garde seulement les issues présentes dans les deux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Construire le complémentaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends les issues de $Ω$ qui ne sont pas dans $A$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Le diagramme de Venn est un outil visuel puissant pour voir ces opérations d'un coup d'œil. Il représente l'univers par un rectangle et chaque événement par un disque à l'intérieur. Les zones de chevauchement montrent l'intersection, la zone hors des disques montre le complémentaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Visualiser avec un diagramme de Venn"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dessine un rectangle pour $Ω$. Trace un disque pour l'événement $A$ et un autre pour $B$. La région commune aux deux disques est $A \\cap B$. La réunion des deux disques est $A \\cup B$. La partie du rectangle en dehors du disque $A$ est $\\overline{A}$. Cette image mentale te servira tout au long du chapitre pour vérifier tes calculs."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Événements A (pair) et B (multiple de 3) dans Ω = {1..6}.",
+              "sets": [
+                {
+                  "label": "Ω",
+                  "elements": "1,2,3,4,5,6"
+                },
+                {
+                  "label": "A",
+                  "elements": "2,4,6"
+                },
+                {
+                  "label": "B",
+                  "elements": "3,6"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'univers $Ω = \\{1,2,3,4,5,6\\}$, écris l'événement « nombre supérieur à 4 ».",
+              "answer": "$\\{5,6\\}$",
+              "hint": "Quels nombres de 1 à 6 sont > 4 ?",
+              "explanation": "Seuls 5 et 6 satisfont la condition."
+            },
+            {
+              "question": "Les événements $A = \\{2,4,6\\}$ et $B = \\{1,3,5\\}$ sont‑ils contraires ?",
+              "answer": "Oui",
+              "hint": "Vérifie si $A \\cup B = Ω$ et $A \\cap B = \\varnothing$.",
+              "explanation": "Leur réunion donne tout l'univers et ils n'ont rien en commun."
+            },
+            {
+              "question": "Pour $A = \\{2,4,6\\}$ et $B = \\{3,6\\}$, donne $A \\cup B$ et $A \\cap B$.",
+              "answer": "$A \\cup B = \\{2,3,4,6\\}$ ; $A \\cap B = \\{6\\}$",
+              "hint": "Liste les éléments de chaque ensemble puis applique les définitions.",
+              "explanation": "L'union rassemble tous les éléments distincts ; l'intersection ne garde que le 6."
+            },
+            {
+              "question": "Sur un diagramme de Venn, quelle région correspond à $\\overline{A \\cup B}$ ?",
+              "answer": "La partie du rectangle en dehors des deux disques.",
+              "hint": "Le complémentaire de l'union est ce qui n'est ni dans A ni dans B.",
+              "explanation": "C'est l'ensemble des issues qui n'appartiennent ni à A ni à B."
+            }
+          ]
+        },
+        {
+          "title": "Calculs.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Calcul de probabilité dans un univers équiprobable"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons au cœur du chapitre : calculer la probabilité d'un événement. Lorsque l'univers est équiprobable, la formule est d'une simplicité trompeuse : $P(A) = \\frac{\\text{nombre d'issues favorables à } A}{\\text{nombre total d'issues de } Ω}$. Le numérateur compte les issues qui font partie de l'événement $A$, le dénominateur est le cardinal de l'univers. Par exemple, pour « obtenir un nombre pair » au dé à six faces, il y a $3$ issues favorables ($2,4,6$) sur $6$ issues totales, donc $P = \\frac{3}{6} = \\frac{1}{2}$. Cette fraction peut être simplifiée, exprimée en décimal ($0,5$) ou en pourcentage ($50\\%$). Rappelle‑toi que la probabilité est toujours un nombre entre $0$ et $1$ inclus."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité (univers équiprobable)",
+              "definition": "$P(A) = \\frac{\\text{card}(A)}{\\text{card}(Ω)}$, avec $0 \\le P(A) \\le 1$.",
+              "example": "Au dé, $P(\\text{pair}) = \\frac{3}{6} = \\frac{1}{2}$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Illustration de $3/6$ : trois parts sur six."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Deux propriétés fondamentales encadrent tout calcul de probabilité : la somme des probabilités de toutes les issues élémentaires vaut $1$, et la probabilité de l'événement certain est $1$ tandis que celle de l'événement impossible est $0$. Ces règles servent de filet de sécurité pour vérifier tes résultats."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si $Ω = \\{ω_1, ω_2, \\dots, ω_n\\}$ est équiprobable, alors $\\sum_{i=1}^{n} P(\\{ω_i\\}) = n \\times \\frac{1}{n} = 1$. De plus, pour tout événement $A$, $P(\\varnothing) = 0$ et $P(Ω) = 1$. Si tu trouves une probabilité négative ou supérieure à $1$, c'est qu'une erreur s'est glissée dans le comptage des cas favorables ou totaux."
+            },
+            {
+              "type": "definition",
+              "term": "Propriétés de la probabilité",
+              "definition": "$0 \\le P(A) \\le 1$, $P(Ω)=1$, $P(\\varnothing)=0$, $\\sum P(\\text{issues}) = 1$.",
+              "example": "Au dé, $6 \\times \\frac{1}{6} = 1$."
+            },
+            {
+              "type": "display_math",
+              "latex": "0 \\le P(A) \\le 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les opérations sur les événements se traduisent en formules de probabilité. Pour l'union de deux événements, on a $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. Si $A$ et $B$ sont incompatibles, l'intersection est vide et la formule se simplifie en $P(A \\cup B) = P(A) + P(B)$. Pour le complémentaire, $P(\\overline{A}) = 1 - P(A)$. Ces relations sont très utiles pour éviter de recompter les issues à la main."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Formules pour l'union, l'intersection et le complémentaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du dé avec $A = \\text{pair} = \\{2,4,6\\}$ et $B = \\text{multiple de 3} = \\{3,6\\}$. On a $P(A) = \\frac{3}{6}$, $P(B) = \\frac{2}{6}$, $P(A \\cap B) = \\frac{1}{6}$ (seul le 6). Donc $P(A \\cup B) = \\frac{3}{6} + \\frac{2}{6} - \\frac{1}{6} = \\frac{4}{6} = \\frac{2}{3}$. Le complémentaire de $A$ est $\\overline{A} = \\{1,3,5\\}$ avec $P(\\overline{A}) = 1 - \\frac{3}{6} = \\frac{3}{6} = \\frac{1}{2}$. Vérifie que les résultats correspondent bien aux ensembles trouvés précédemment."
+            },
+            {
+              "type": "definition",
+              "term": "Formule de l'union",
+              "definition": "$P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$. Si $A \\cap B = \\varnothing$, alors $P(A \\cup B) = P(A) + P(B)$.",
+              "example": "Voir ci‑dessus."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer $P(A)$ et $P(B)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Compte les issues favorables pour chaque événement et divise par $\\text{card}(Ω)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver $P(A \\cap B)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les issues communes et calcule leur probabilité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $P(A \\cup B) = P(A) + P(B) - P(A \\cap B)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Complémentaire si besoin",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $1 - P(A)$ pour $P(\\overline{A})$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, appliquons ces outils à des situations concrètes : tirage d'une carte, lancer de deux dés, choix d'un élève dans une classe. Chaque exemple renforce la méthode et montre la polyvalence des formules."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemples d'application"
+            },
+            {
+              "type": "paragraph",
+              "content": "Exemple 1 : Dans un jeu de 32 cartes, quel est $P(\\text{tirer un roi})$ ? Il y a 4 rois sur 32 cartes, donc $P = \\frac{4}{32} = \\frac{1}{8}$. Exemple 2 : Lancer deux dés. Quelle est la probabilité d'obtenir une somme égale à $7$ ? Les couples favorables sont $(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)$ soit $6$ cas sur $36$ : $P = \\frac{6}{36} = \\frac{1}{6}$. Exemple 3 : Une classe de $28$ élèves dont $16$ filles. $P(\\text{choisir une fille}) = \\frac{16}{28} = \\frac{4}{7}$. Ces calculs illustrent la même logique : compter, diviser, simplifier."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Probabilités des sommes de deux dés (2 à 12).",
+              "bars": [
+                {
+                  "label": "2",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "3",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "5",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "6",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "7",
+                  "value": 6,
+                  "tone": "gold"
+                },
+                {
+                  "label": "8",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "9",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "10",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "11",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "12",
+                  "value": 1,
+                  "tone": "blue"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'univers $Ω$ d'une expérience aléatoire.",
+                "Je sais identifier les issues élémentaires et dire si l'univers est équiprobable.",
+                "Je sais écrire un événement comme sous‑ensemble de $Ω$.",
+                "Je connais les notions d'événement certain, impossible, contraire, incompatible.",
+                "Je sais utiliser l'union, l'intersection et le complémentaire d'événements.",
+                "Je calcule la probabilité d'un événement dans un univers équiprobable avec $P(A)=\\frac{\\text{card}(A)}{\\text{card}(Ω)}$.",
+                "J'applique les formules $P(A\\cup B)=P(A)+P(B)-P(A\\cap B)$ et $P(\\overline{A})=1-P(A)$.",
+                "Je vérifie que mes probabilités sont comprises entre $0$ et $1$ et que la somme des issues vaut $1$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un dé à six faces est lancé. Calcule $P(\\text{multiple de 3})$.",
+              "answer": "$\\frac{2}{6} = \\frac{1}{3}$",
+              "hint": "Quels nombres de 1 à 6 sont multiples de 3 ?",
+              "explanation": "Les multiples de 3 sont 3 et 6 : 2 cas favorables sur 6."
+            },
+            {
+              "question": "Dans un univers équiprobable à 10 issues, un événement $A$ contient 4 issues. Quelle est $P(A)$ ?",
+              "answer": "$\\frac{4}{10} = \\frac{2}{5}$",
+              "hint": "Applique la formule $\\frac{\\text{card}(A)}{\\text{card}(Ω)}$.",
+              "explanation": "4 cas favorables sur 10 cas totaux."
+            },
+            {
+              "question": "Soit $A$ et $B$ deux événements incompatibles avec $P(A)=0,3$ et $P(B)=0,4$. Calcule $P(A \\cup B)$.",
+              "answer": "$0,7$",
+              "hint": "Pour événements incompatibles, $P(A\\cup B)=P(A)+P(B)$.",
+              "explanation": "0,3 + 0,4 = 0,7."
+            },
+            {
+              "question": "On tire une carte au hasard dans un jeu de 52 cartes. Quelle est la probabilité d'obtenir un cœur ou une figure (valet, dame, roi) ?",
+              "answer": "$\\frac{13 + 12 - 3}{52} = \\frac{22}{52} = \\frac{11}{26}$",
+              "hint": "Compte les cœurs (13), les figures (12), retire les 3 figures de cœur comptées deux fois.",
+              "explanation": "Utilise la formule de l'union avec intersection = figures de cœur (3)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

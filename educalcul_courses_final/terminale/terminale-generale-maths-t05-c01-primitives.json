@@ -1,0 +1,491 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.678593+00:00",
+  "id": 702,
+  "code": "terminale-generale-maths-t05-c01",
+  "title": "Primitives",
+  "description": "Cours structuré Educalcul : Primitives.",
+  "subject": "Primitives, intégrales et équations différentielles",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Primitives, intégrales et équations différentielles",
+    "titre_du_cours": "Primitives",
+    "objectif_global": "Primitives",
+    "mini_lecons_imposees": [
+      "Définition.",
+      "Primitives usuelles.",
+      "Vérifier par dérivation."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Primitives, intégrales et équations différentielles",
+      "lessons": [
+        {
+          "title": "Définition.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une primitive ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on dérive une fonction, on obtient sa fonction dérivée. L'opération inverse consiste à retrouver une fonction dont la dérivée est une fonction donnée. Cette fonction s'appelle une primitive. En termes simples, si on vous donne $f(x)=2x$, une primitive est $F(x)=x^2$ car la dérivée de $x^2$ est bien $2x$. Il est important de garder à l'esprit qu'une primitive n'est jamais unique : on peut ajouter n'importe quelle constante sans changer la dérivée. Cette idée peut sembler déroutante au premier abord, mais elle devient naturelle dès qu'on visualise les courbes : toutes les primitives d'une même fonction sont des translations verticales les unes des autres. Imaginez une famille de paraboles $y=x^2+C$ qui glissent le long de l'axe des ordonnées ; chacune d'entre elles a exactement la même pente en tout point, donc la même dérivée."
+            },
+            {
+              "type": "display_math",
+              "latex": "F'(x)=f(x)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La présence de cette constante, notée $C$, reflète le fait que la dérivée d'une constante est nulle. Ainsi, $x^2+5$, $x^2-3$ ou $x^2+0$ sont toutes des primitives de $2x$. On écrit alors l'ensemble des primitives sous la forme $F(x)+C$. Cette notation compacte permet de manipuler des familles entières de fonctions d'un seul coup. Quand vous verrez un intégral indéfini, rappelez-vous que le $+C$ n'est pas une simple formalité : il rappelle qu'une infinité de fonctions satisfont la même relation de dérivation. C'est cette richesse qui rend le calcul intégral si puissant pour résoudre des problèmes concrets, comme retrouver une position à partir d'une vitesse."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "2*x",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 8,
+              "caption": "Aire sous la courbe $y=2x$ de $0$ à $2$, illustration du lien avec la primitive $x^2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que la définition et le rôle de la constante sont posés, voyons comment la linéarité de la dérivation se transpose aux primitives. Si on connaît une primitive de $f$ et une primitive de $g$, alors la somme de ces primitives est une primitive de $f+g$. De même, multiplier une primitive par un nombre réel donne une primitive de la fonction multipliée par ce nombre. Cette propriété n'est pas un hasard : elle découle directement de la règle de dérivation $(u+v)'=u'+v'$ et $(ku)'=ku'$. En l'utilisant, on peut décomposer n'importe quelle expression polynomiale, rationnelle ou trigonométrique en blocs élémentaires dont on connaît déjà les primitives."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Linéarité de la primitive"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété est un outil puissant : elle permet de décomposer une fonction compliquée en morceaux simples dont on connaît déjà les primitives. Par exemple, pour $f(x)=3x^2+4x$, on peut prendre une primitive de $3x^2$, qui est $x^3$, et une primitive de $4x$, qui est $2x^2$. En les ajoutant, on obtient $x^3+2x^2+C$, primitive de $f$. La constante unique $C$ regroupe toutes les constantes intermédiaires. Prenons un autre exemple : $f(x)=5x^4-2x+7$. Une primitive de $5x^4$ est $x^5$, une primitive de $-2x$ est $-x^2$, une primitive de $7$ est $7x$. La somme $x^5-x^2+7x+C$ dérive bien en $5x^4-2x+7$. Vous voyez que la méthode consiste simplement à traiter chaque terme indépendamment, puis à rassembler le tout."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les termes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repérez chaque terme de la fonction comme une somme de fonctions plus simples."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Chercher une primitive de chaque terme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez les primitives usuelles (puissances, exponentielles, etc.) pour chaque terme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner et ajouter $C$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sommez les primitives trouvées et n'oubliez pas la constante d'intégration."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour aller plus loin, examinons le cas particulier des puissances de $x$. La règle de dérivation $(x^{n+1})' = (n+1)x^n$ se inverse naturellement : une primitive de $x^n$ est $x^{n+1}/(n+1)$ à condition que $n\\neq -1$. Ce cas à part fera l'objet d'une attention spéciale dans la leçon suivante. Notez que cette formule fonctionne pour tout exposant réel, pas seulement les entiers. Par exemple, une primitive de $x^{1/2}$ (la racine carrée de $x$) est $x^{3/2}/(3/2) = \\frac{2}{3}x^{3/2}$. La dérivée de $\\frac{2}{3}x^{3/2}$ est bien $x^{1/2}$. Cette universalité rend la règle des puissances l'un des piliers du calcul intégral."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Primitive d'une puissance"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $f(x)=x^3$. En appliquant la règle, $n=3$, donc une primitive est $x^{4}/4$. Vérifions : la dérivée de $x^{4}/4$ est $4x^{3}/4 = x^3$, c'est correct. Si $n=-2$, la primitive est $x^{-1}/(-1) = -1/x$. La dérivée de $-1/x$ est bien $1/x^2$. Cette mécanique fonctionne pour tout entier ou réel $n$ sauf $-1$. Lorsque $n=-1$, la formule donnerait une division par zéro, ce qui signale qu'il faut un autre outil : le logarithme naturel. Nous verrons cela dès la prochaine leçon."
+            },
+            {
+              "type": "display_math",
+              "latex": "x^{n+1}/(n+1)+C, n\\neq -1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous verrons dans la prochaine leçon les primitives usuelles qui découlent directement de cette règle, notamment le logarithme pour $n=-1$, l'exponentielle et les fonctions trigonométriques. Chaque nouvelle primitive usuelle élargit votre boîte à outils et vous permettra d'intégrer des expressions de plus en plus variées."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donnez une primitive de $f(x)=5x^4$.",
+              "answer": "$x^5+C$",
+              "hint": "Utilisez la règle des puissances : augmentez l'exposant de 1 et divisez par le nouvel exposant.",
+              "explanation": "La dérivée de $x^5$ est $5x^4$, donc une primitive est $x^5+C$. N'oubliez pas la constante d'intégration."
+            },
+            {
+              "question": "Trouvez une primitive de $f(x)=2x^3+6x$.",
+              "answer": "$x^4/2+3x^2+C$",
+              "hint": "Traitez chaque terme séparément avec la règle des puissances, puis additionnez.",
+              "explanation": "Primitive de $2x^3$ : $2 \\cdot x^{4}/4 = x^4/2$. Primitive de $6x$ : $6 \\cdot x^{2}/2 = 3x^2$. La somme donne $x^4/2+3x^2+C$."
+            },
+            {
+              "question": "Quelle est la primitive de $x^{-3}$ ?",
+              "answer": "$-1/(2x^2)+C$",
+              "hint": "Appliquez la formule avec $n=-3$ ; attention au signe.",
+              "explanation": "Avec $n=-3$, $n+1=-2$. La primitive est $x^{-2}/(-2) = -1/2 \\cdot x^{-2} = -1/(2x^2)$. Ajoutez $+C$."
+            }
+          ]
+        },
+        {
+          "title": "Primitives usuelles.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les primitives des puissances, y compris le cas $n=-1$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, nous avons établi la règle générale pour les puissances : une primitive de $x^n$ est $x^{n+1}/(n+1)+C$ tant que $n\\neq -1$. Il reste à comprendre ce qui se passe quand $n=-1$, c'est-à-dire pour la fonction $f(x)=1/x$. La dérivée du logarithme naturel $\\ln|x|$ est exactement $1/x$ sur tout intervalle ne contenant pas $0$. Par conséquent, une primitive de $1/x$ est $\\ln|x|+C$. L'utilisation de la valeur absolue garantit que la primitive est définie aussi bien pour $x>0$ que pour $x<0$. C'est une subtilité importante : sans la valeur absolue, $\\ln x$ ne serait pas dérivable pour $x<0$. Retenez que le logarithne naturel est l'unique primitive usuelle qui n'est pas une fonction rationnelle ou algébrique simple."
+            },
+            {
+              "type": "display_math",
+              "latex": "ln|x|+C"
+            },
+            {
+              "type": "graph",
+              "expression": "ln(x)",
+              "xmin": 0.1,
+              "xmax": 5,
+              "caption": "Courbe de $y=\\ln x$, primitive de $1/x$ pour $x>0$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les puissances et le logarithme, abordons l'exponentielle. La fonction exponentielle $e^x$ a la propriété remarquable d'être sa propre dérivée : $(e^x)' = e^x$. Par conséquent, une primitive de $e^x$ est simplement $e^x+C$. Cette auto‑réplication rend l'exponentielle extrêmement commode en intégration. De plus, pour une exponentielle de base quelconque $a>0$, $a\\neq 1$, on a $(a^x)' = a^x \\ln a$, donc une primitive de $a^x$ est $a^x/\\ln a + C$. Vous verrez que cette formule réapparaît souvent quand on intègre des fonctions de la forme $e^{kx}$."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exponentielle et logarithme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret : $f(x)=3e^{2x}$. Pour trouver une primitive, on peut d'abord poser $u=2x$, puis utiliser la règle de la chaîne à l'envers. Une primitive de $e^{2x}$ est $\\frac{1}{2}e^{2x}$, donc une primitive de $3e^{2x}$ est $\\frac{3}{2}e^{2x}+C$. Vérifiez en dérivant : $(\\frac{3}{2}e^{2x})' = \\frac{3}{2} \\cdot 2 e^{2x} = 3e^{2x}$. Cette technique de \"facteur compensateur\" (diviser par la dérivée intérieure) est systématique pour les exponentielles composées."
+            },
+            {
+              "type": "display_math",
+              "latex": "e^x+C"
+            },
+            {
+              "type": "graph",
+              "expression": "exp(x)",
+              "xmin": -2,
+              "xmax": 2,
+              "caption": "Courbe de $y=e^x$, qui est sa propre primitive."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fonctions trigonométriques offrent d'autres primitives usuelles indispensables. Rappelons les dérivées de base : $(\\sin x)' = \\cos x$ et $(\\cos x)' = -\\sin x$. En les inversant, on obtient : une primitive de $\\cos x$ est $\\sin x + C$, et une primitive de $\\sin x$ est $-\\cos x + C$. De même, $(\\tan x)' = 1/\\cos^2 x$, donc une primitive de $1/\\cos^2 x$ est $\\tan x + C$. Ces formules s'étendent aux fonctions composées : pour $\\sin(kx)$, une primitive est $-\\frac{1}{k}\\cos(kx)+C$ ; pour $\\cos(kx)$, une primitive est $\\frac{1}{k}\\sin(kx)+C$. Le facteur $1/k$ compense la dérivée intérieure $k$, exactement comme pour l'exponentielle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Fonctions trigonométriques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons avec $f(x)=4\\sin(3x)$. Une primitive de $\\sin(3x)$ est $-\\frac{1}{3}\\cos(3x)$. En multipliant par $4$, on obtient $-\\frac{4}{3}\\cos(3x)+C$. Dérivons pour vérifier : $(-\\frac{4}{3}\\cos(3x))' = -\\frac{4}{3} \\cdot (-\\sin(3x)) \\cdot 3 = 4\\sin(3x)$. La méthode est donc fiable. Notez que les primitives de $\\tan x$ et $\\cot x$ font intervenir des logarithmes : $\\int \\tan x \\,dx = -\\ln|\\cos x|+C$ et $\\int \\cot x \\,dx = \\ln|\\sin x|+C$. Ces cas seront utiles plus tard."
+            },
+            {
+              "type": "display_math",
+              "latex": "-cos(x)+C"
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": -6.28,
+              "xmax": 6.28,
+              "caption": "Courbe de $y=\\sin x$, dont une primitive est $-\\cos x$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous disposons d'un catalogue de primitives usuelles (puissances, logarithme, exponentielle, trigonométriques), la linéarité nous permet de les combiner pour intégrer des sommes, des différences et des multiples de ces fonctions. La stratégie est toujours la même : décomposez l'expression en termes élémentaires, trouvez une primitive pour chaque terme grâce au catalogue, puis additionnez le tout en n'oubliant pas la constante globale $C$. Cette approche systématique évite les erreurs et rend l'intégration presque mécanique pour une grande classe de fonctions."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Combinaison linéaire de primitives usuelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $f(x)=2x^3 - \\frac{5}{x} + 3e^{x} - 4\\sin x$. D'après les règles : primitive de $2x^3$ est $\\frac{2}{4}x^4 = \\frac{1}{2}x^4$ ; primitive de $-\\frac{5}{x}$ est $-5\\ln|x|$ ; primitive de $3e^{x}$ est $3e^{x}$ ; primitive de $-4\\sin x$ est $4\\cos x$. En additionnant, on obtient $F(x)=\\frac{1}{2}x^4 -5\\ln|x| + 3e^{x} + 4\\cos x + C$. Vérifiez terme à terme si vous le souhaitez. Cette méthode fonctionne pour toute combinaison linéaire de fonctions dont vous connaissez les primitives."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Séparez la fonction en une somme de termes simples (puissances, 1/x, exponentielles, trigonométriques)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer le catalogue",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque terme, écrivez sa primitive usuelle (avec le facteur compensateur si composition)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner et ajouter $C$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupez toutes les primitives trouvées et n'oubliez pas la constante d'intégration unique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la prochaine leçon, nous apprendrons à vérifier systématiquement qu'une fonction candidate est bien une primitive en la dérivant. Cette vérification est votre filet de sécurité : elle garantit que vous n'avez pas oublié de facteur, de signe ou de constante."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trouvez une primitive de $f(x)=\\frac{7}{x}$.",
+              "answer": "$7\\ln|x|+C$",
+              "hint": "Utilisez la primitive de $1/x$ et la linéarité.",
+              "explanation": "Une primitive de $1/x$ est $\\ln|x|$. Par linéarité, multipliez par $7$ : $7\\ln|x|+C$."
+            },
+            {
+              "question": "Déterminez une primitive de $f(x)=5e^{3x}$.",
+              "answer": "$\\frac{5}{3}e^{3x}+C$",
+              "hint": "Compensez le facteur $3$ issu de la dérivée de $3x$.",
+              "explanation": "Primitive de $e^{3x}$ est $\\frac{1}{3}e^{3x}$. Multipliez par $5$ : $\\frac{5}{3}e^{3x}+C$."
+            },
+            {
+              "question": "Quelle est une primitive de $f(x)=\\cos(2x)$ ?",
+              "answer": "$\\frac{1}{2}\\sin(2x)+C$",
+              "hint": "La primitive de $\\cos u$ est $\\sin u$ ; divisez par la dérivée de $2x$.",
+              "explanation": "Dérivée de $\\sin(2x)$ est $2\\cos(2x)$. Donc une primitive de $\\cos(2x)$ est $\\frac{1}{2}\\sin(2x)+C$."
+            },
+            {
+              "question": "Intégrez $f(x)=x^2 - \\frac{2}{x} + 4\\sin x$.",
+              "answer": "$x^3/3 - 2\\ln|x| - 4\\cos x + C$",
+              "hint": "Traitez chaque terme avec les primitives usuelles, puis additionnez.",
+              "explanation": "Primitive de $x^2$ : $x^3/3$. Primitive de $-2/x$ : $-2\\ln|x|$. Primitive de $4\\sin x$ : $-4\\cos x$. Somme plus $C$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier par dérivation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi vérifier une primitive ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Trouver une primitive demande de l'attention : un facteur manquant, un signe inversé ou une constante oubliée peuvent transformer une réponse correcte en erreur. Heureusement, la dérivation est une opération mécanique et sans ambiguïté. Vérifier une primitive consiste simplement à dériver la fonction candidate et à comparer le résultat à la fonction de départ. Si les deux coïncident, la candidate est une primitive ; sinon, il faut corriger. Cette étape de contrôle est rapide, ne nécessite pas de nouvelles connaissances, et elle renforce la compréhension du lien intime entre dérivation et intégration. Pensez-y comme à une relecture avant de rendre un devoir : elle évite les fautes bêtes et consolide la confiance."
+            },
+            {
+              "type": "display_math",
+              "latex": "F'(x)=f(x)"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la candidate",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Notez la fonction $F(x)$ que vous proposez comme primitive, y compris la constante $C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dériver $F$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Appliquez les règles de dérivation (puissances, chaîne, Produit, quotient, trigonométriques, exponentielles, logarithme) pour obtenir $F'(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifiez que $F'(x)$ est identiquement égal à $f(x)$. Si oui, $F$ est une primitive ; sinon, repérez l'erreur et corrigez."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Appliquons cette méthode à un polynôme. Supposons qu'on vous propose $F(x)=\\frac{1}{3}x^3 - 2x^2 + 5x$ comme primitive de $f(x)=x^2 - 4x + 5$. Dérivons $F$ : $(\\frac{1}{3}x^3)' = x^2$, $(-2x^2)' = -4x$, $(5x)' = 5$. La somme donne $x^2 - 4x + 5$, exactement $f(x)$. La candidate est donc correcte. Si au contraire vous aviez écrit $F(x)=\\frac{1}{2}x^3 - 2x^2 + 5x$, la dérivation aurait donné $\\frac{3}{2}x^2 - 4x + 5$, ce qui ne correspond pas. L'erreur sautait aux yeux grâce à la vérification."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple polynôme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple un peu plus riche : $f(x)=4x^3 - 6x + 2$. Une primitive candidate est $F(x)=x^4 - 3x^2 + 2x + C$. Dérivons : $(x^4)' = 4x^3$, $(-3x^2)' = -6x$, $(2x)' = 2$, $(C)' = 0$. La somme est $4x^3 - 6x + 2 = f(x)$. La vérification confirme que $F$ est bien une primitive. Notez que la constante $C$ disparaît à la dérivation, ce qui montre qu'elle n'affecte pas la validité de la primitive. C'est pourquoi on peut l'omettre pendant la vérification, mais il faut la remettre dans la réponse finale."
+            },
+            {
+              "type": "graph",
+              "expression": "x^4 - 3*x^2 + 2*x",
+              "xmin": -3,
+              "xmax": 3,
+              "caption": "Courbe d'une primitive de $4x^3-6x+2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à une primitive faisant intervenir le logarithme. On vous propose $F(x)=3\\ln|x| - 2x$ comme primitive de $f(x)=\\frac{3}{x} - 2$. Dérivons : $(3\\ln|x|)' = 3 \\cdot \\frac{1}{x} = \\frac{3}{x}$ (rappel : $(\\ln|x|)' = 1/x$), $(-2x)' = -2$. La somme donne $\\frac{3}{x} - 2$, qui est bien $f(x)$. La candidate est validée. Si vous aviez oublié la valeur absolue et écrit $3\\ln x$, la dérivée serait encore $\\frac{3}{x}$ pour $x>0$, mais la fonction ne serait pas définie pour $x<0$. La vérification par dérivation ne signale pas ce problème de domaine ; il faut donc rester vigilant sur l'ensemble de définition."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple logarithmique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $f(x)=\\frac{5}{x} + 7$. Une primitive candidate est $F(x)=5\\ln|x| + 7x + C$. Dérivons : $(5\\ln|x|)' = 5/x$, $(7x)' = 7$, $(C)' = 0$. On retrouve $5/x+7$. La vérification réussit. Remarquez que la constante $C$ n'apparaît pas dans la dérivée, confirmant qu'elle est libre. Cette simplicité fait de la vérification par dérivation un outil incontournable, surtout quand on commence à manipuler des primitives composées."
+            },
+            {
+              "type": "graph",
+              "expression": "5*ln(abs(x)) + 7*x",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Courbe d'une primitive de $5/x+7$ (représentée pour $x\\neq0$)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, testons une primitive trigonométrique. Soit $f(x)=2\\cos(3x) - \\sin x$. Une candidate est $F(x)=\\frac{2}{3}\\sin(3x) + \\cos x + C$. Dérivons : $(\\frac{2}{3}\\sin(3x))' = \\frac{2}{3} \\cdot \\cos(3x) \\cdot 3 = 2\\cos(3x)$ ; $(\\cos x)' = -\\sin x$ ; $(C)' = 0$. La somme est $2\\cos(3x) - \\sin x = f(x)$. La vérification est concluante. Si vous aviez écrit $\\frac{2}{3}\\cos(3x)$ au lieu de $\\frac{2}{3}\\sin(3x)$, la dérivée aurait donné $-2\\sin(3x)$, ce qui ne correspond pas. La méthode de vérification révèle immédiatement l'erreur de fonction trigonométrique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple trigonométrique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $f(x)=-\\sin(2x) + 4\\cos x$. Une primitive candidate est $F(x)=\\frac{1}{2}\\cos(2x) + 4\\sin x + C$. Dérivons : $(\\frac{1}{2}\\cos(2x))' = \\frac{1}{2} \\cdot (-\\sin(2x)) \\cdot 2 = -\\sin(2x)$ ; $(4\\sin x)' = 4\\cos x$. La somme correspond à $f(x)$. La candidate est donc correcte. Cet exemple montre comment le facteur compensateur $1/2$ apparaît naturellement lors de la vérification, confirmant la règle de la chaîne à l'envers."
+            },
+            {
+              "type": "graph",
+              "expression": "0.5*cos(2*x) + 4*sin(x)",
+              "xmin": -6.28,
+              "xmax": 6.28,
+              "caption": "Courbe d'une primitive de $-\\sin(2x)+4\\cos x$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir une primitive et expliquer le rôle de la constante $C$.",
+                "Je connais les primitives usuelles : puissances, $1/x$, exponentielles, sinus, cosinus.",
+                "J'applique la linéarité pour intégrer des combinaisons de ces fonctions.",
+                "Je vérifie systématiquement mes primitives en les dérivant."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifiez si $F(x)=\\frac{1}{4}x^4 - x^2$ est une primitive de $f(x)=x^3 - 2x$.",
+              "answer": "Oui, car $F'(x)=x^3-2x=f(x)$.",
+              "hint": "Dérivez $F$ terme par terme.",
+              "explanation": "Dérivée de $\\frac{1}{4}x^4$ est $x^3$, dérivée de $-x^2$ est $-2x$. La somme donne $x^3-2x$, donc $F$ est une primitive (à constante près)."
+            },
+            {
+              "question": "Est-ce que $F(x)=x^4 - 3x^2 + 2x$ est une primitive de $f(x)=4x^3 - 6x + 2$ ?",
+              "answer": "Oui, $F'(x)=4x^3-6x+2=f(x)$.",
+              "hint": "Calculez la dérivée de chaque terme de $F$.",
+              "explanation": "($x^4)'=4x^3$, $(-3x^2)'=-6x$, $(2x)'=2$. La somme correspond exactement à $f$."
+            },
+            {
+              "question": "Vérifiez la candidate $F(x)=5\\ln|x|+7x$ pour $f(x)=\\frac{5}{x}+7$.",
+              "answer": "Oui, $F'(x)=\\frac{5}{x}+7=f(x)$.",
+              "hint": "Rappelez-vous que $(\\ln|x|)'=1/x$.",
+              "explanation": "Dérivée de $5\\ln|x|$ est $5/x$, dérivée de $7x$ est $7$. La somme donne $f$."
+            },
+            {
+              "question": "La fonction $F(x)=\\frac{1}{2}\\cos(2x)+4\\sin x$ est-elle une primitive de $f(x)=-\\sin(2x)+4\\cos x$ ?",
+              "answer": "Oui, car $F'(x)=-\\sin(2x)+4\\cos x=f(x)$.",
+              "hint": "Utilisez la règle de la chaîne pour le terme en $\\cos(2x)$.",
+              "explanation": "Dérivée de $\\frac{1}{2}\\cos(2x)$ est $\\frac{1}{2}\\cdot(-\\sin(2x))\\cdot2 = -\\sin(2x)$. Dérivée de $4\\sin x$ est $4\\cos x$. La somme coïncide avec $f$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

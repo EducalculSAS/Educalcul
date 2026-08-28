@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 349,
+  "_course_code": "6eme-t04-c03-programmes-de-calcul",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Comparer",
+  "title": "Quiz : Comparer des programmes de calcul (6e)",
+  "questions": [
+    {
+      "text": "On considère deux programmes de calcul :\\nProgramme A : choisis un nombre, multiplie par 3, puis ajoute 4.\\nProgramme B : choisis un nombre, ajoute 4, puis multiplie par 3.\\nPour le nombre de départ $5$, quel programme donne le plus grand résultat ?",
+      "options": [
+        "Le programme A donne un résultat plus grand",
+        "Le programme B donne un résultat plus grand",
+        "Les deux programmes donnent le même résultat",
+        "On ne peut pas comparer sans connaître le nombre de départ"
+      ],
+      "correctAnswer": "Le programme B donne un résultat plus grand",
+      "explanation": "Pour $x = 5$ : Programme A donne $3 \\times 5 + 4 = 19$. Programme B donne $(5 + 4) \\times 3 = 27$. Donc le programme B donne un résultat plus grand.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Programme 1 : choisis un nombre, ajoute 7, puis multiplie par 2.\\nProgramme 2 : choisis un nombre, multiplie par 2, puis ajoute 7.\\nLaquelle des affirmations suivantes est vraie pour tout nombre de départ $x$ ?",
+      "options": [
+        "Pour tout nombre de départ, le premier programme donne un résultat plus grand de 7",
+        "Pour tout nombre de départ, le second programme donne un résultat plus grand de 7",
+        "Ils donnent le même résultat pour $x = 0$",
+        "Ils donnent le même résultat pour $x = 7$"
+      ],
+      "correctAnswer": "Pour tout nombre de départ, le premier programme donne un résultat plus grand de 7",
+      "explanation": "Programme 1 : $2(x + 7) = 2x + 14$. Programme 2 : $2x + 7$. La différence est $(2x + 14) - (2x + 7) = 7$, donc le premier programme est toujours plus grand de 7.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Programme 1 : multiplie le nombre choisi par 5, puis soustrait 10.\\nProgramme 2 : soustrait 2 au nombre choisi, puis multiplie par 5.\\nPour quels nombres de départ les deux programmes donnent-ils le même résultat ?",
+      "options": [
+        "Ils donnent le même résultat pour tout nombre de départ",
+        "Ils donnent le même résultat seulement pour $x = 2$",
+        "Le programme 1 donne toujours un résultat plus grand",
+        "Le programme 2 donne toujours un résultat plus grand"
+      ],
+      "correctAnswer": "Ils donnent le même résultat pour tout nombre de départ",
+      "explanation": "Programme 1 : $5x - 10$. Programme 2 : $5(x - 2) = 5x - 10$. Les deux expressions sont identiques, donc les résultats sont égaux pour toute valeur de $x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Programme A : choisis un nombre, ajoute 3, multiplie par 4, puis soustrait 12.\\nProgramme B : multiplie le nombre choisi par 4.\\nLaquelle des affirmations est correcte ?",
+      "options": [
+        "Les deux programmes donnent le même résultat pour tout nombre de départ",
+        "Le premier programme donne un résultat plus grand de 12",
+        "Le second programme donne un résultat plus grand de 12",
+        "Ils donnent le même résultat seulement pour $x = 3$"
+      ],
+      "correctAnswer": "Les deux programmes donnent le même résultat pour tout nombre de départ",
+      "explanation": "Programme A : $4(x + 3) - 12 = 4x + 12 - 12 = 4x$. Programme B : $4x$. Les deux programmes sont équivalents.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Programme A : choisis un nombre, multiplie par 2, ajoute 6, puis divise par 2.\\nProgramme B : choisis un nombre, ajoute 3.\\nPour quels nombres de départ le programme A donne-t-il un résultat strictement plus grand que le programme B ?",
+      "options": [
+        "Pour aucun nombre, ils sont toujours égaux",
+        "Pour tout nombre, le programme A est plus grand",
+        "Pour tout nombre, le programme B est plus grand",
+        "Seulement pour les nombres négatifs"
+      ],
+      "correctAnswer": "Pour aucun nombre, ils sont toujours égaux",
+      "explanation": "Programme A : $\\frac{2x + 6}{2} = x + 3$. Programme B : $x + 3$. Les deux programmes donnent exactement le même résultat pour toute valeur de $x$, donc il n'existe aucun nombre pour lequel A est strictement plus grand.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

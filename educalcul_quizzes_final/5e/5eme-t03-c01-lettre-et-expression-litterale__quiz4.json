@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 389,
+  "_course_code": "5eme-t03-c01-lettre-et-expression-litterale",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Application : Lettre et expression littérale",
+  "title": "Applications : Lettre et expression littérale",
+  "questions": [
+    {
+      "text": "On considère un rectangle dont la longueur est $L$ et la largeur est $l$. Quelle expression littérale représente le périmètre $P$ de ce rectangle ?",
+      "options": [
+        "P = L × l",
+        "P = L + l",
+        "P = 2 × (L + l)",
+        "P = 2 × L × l"
+      ],
+      "correctAnswer": "P = 2 × (L + l)",
+      "explanation": "Le périmètre d'un rectangle est la somme des longueurs de ses quatre côtés. Il y a deux côtés de longueur $L$ et deux côtés de largeur $l$. On calcule donc $L + l + L + l$, ce qui se factorise en $2 \\times (L + l)$. L'option A correspond à l'aire, l'option B oublie de doubler la somme, et l'option D double le produit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Julie achète $x$ stylos à $2$ euros l'unité et $3$ cahiers à $5$ euros l'unité. Elle paie avec un billet de $50$ euros. Quelle expression littérale représente la monnaie $M$ qu'elle reçoit ?",
+      "options": [
+        "M = 50 - (2x + 15)",
+        "M = 50 - 2x + 15",
+        "M = 2x + 15 - 50",
+        "M = 50 - 2x - 3"
+      ],
+      "correctAnswer": "M = 50 - (2x + 15)",
+      "explanation": "Le prix total des stylos est $2 \\times x = 2x$ euros. Le prix total des cahiers est $3 \\times 5 = 15$ euros. La somme dépensée est donc $2x + 15$ euros. La monnaie est la différence entre la somme donnée ($50$) et la somme dépensée, soit $50 - (2x + 15)$. L'option B oublie les parenthèses (ce qui changerait le signe du $15$), l'option C fait dépense moins billet, et l'option D calcule mal le prix des cahiers ($3$ au lieu de $15$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un carré a pour côté $c$. On augmente sa longueur de $4$ cm et sa largeur de $2$ cm pour obtenir un rectangle. Quelle expression littérale représente l'aire $A$ de ce nouveau rectangle ?",
+      "options": [
+        "A = c^2 + 6",
+        "A = (c + 4) \\times (c + 2)",
+        "A = c^2 + 4c + 2c + 8",
+        "A = (c + 6)^2"
+      ],
+      "correctAnswer": "A = (c + 4) \\times (c + 2)",
+      "explanation": "Le nouveau rectangle a pour longueur $c + 4$ et pour largeur $c + 2$. L'aire d'un rectangle est le produit de sa longueur par sa largeur, donc $A = (c + 4) \\times (c + 2)$. L'option A est fausse (on n'additionne pas les augmentations à l'aire initiale). L'option C est le développement de l'expression correcte, mais ce n'est pas l'expression littérale directe de l'énoncé (forme factorisée attendue). L'option D suppose une augmentation de $6$ des deux côtés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le périmètre d'un triangle équilatéral est $36$ cm. On note $c$ la longueur d'un côté. Quelle équation permet de trouver $c$ ?",
+      "options": [
+        "c + 3 = 36",
+        "3c = 36",
+        "c^3 = 36",
+        "36 / 3 = c"
+      ],
+      "correctAnswer": "3c = 36",
+      "explanation": "Un triangle équilatéral a trois côtés de même longueur $c$. Son périmètre est la somme des trois côtés : $c + c + c = 3c$. Comme le périmètre vaut $36$ cm, l'équation est $3c = 36$. L'option A ajoute $3$ au lieu de multiplier. L'option C élève au cube. L'option D est le calcul de la solution ($c = 12$), pas l'équation de départ.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un programme de calcul : \"Choisir un nombre, le multiplier par $5$, ajouter $12$, multiplier le résultat par $3$.\" Si on note $n$ le nombre de départ, quelle expression littérale donne le résultat final $R$ ?",
+      "options": [
+        "R = 5n + 12 \\times 3",
+        "R = 3 \\times (5n + 12)",
+        "R = 15n + 12",
+        "R = 5 \\times (n + 12) \\times 3"
+      ],
+      "correctAnswer": "R = 3 \\times (5n + 12)",
+      "explanation": "On suit les étapes : 1) Multiplier $n$ par $5$ : $5n$. 2) Ajouter $12$ : $5n + 12$. 3) Multiplier ce résultat par $3$ : $3 \\times (5n + 12)$. Les parenthèses sont obligatoires car la multiplication par $3$ porte sur la somme totale. L'option A ne met pas de parenthèses (priorité à la multiplication, ce qui donnerait $5n + 36$). L'option C développe mal (oublie de multiplier $12$ par $3$). L'option D ajoute $12$ avant de multiplier par $5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

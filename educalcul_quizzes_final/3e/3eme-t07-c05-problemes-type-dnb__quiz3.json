@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Contrôler",
+  "title": "Algorithmique : Structures de contrôle",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nVariables : $n$ en entier\\nDébut\\n$n \\leftarrow 0$\\nTant que $n < 10$ faire\\n$n \\leftarrow n + 3$\\nFin Tant que\\nAfficher $n$\\nFin\\nQuelle valeur est affichée à la fin de l'exécution ?",
+      "options": [
+        "9",
+        "10",
+        "12",
+        "13"
+      ],
+      "correctAnswer": "12",
+      "explanation": "On trace l'algorithme : au début $n=0$. 1er tour : $0<10$ vrai, $n$ devient $3$. 2e tour : $3<10$ vrai, $n$ devient $6$. 3e tour : $6<10$ vrai, $n$ devient $9$. 4e tour : $9<10$ vrai, $n$ devient $12$. 5e tour : $12<10$ faux, on sort de la boucle. La valeur affichée est $12$. L'erreur courante est de s'arrêter à $9$ (option A) ou de penser que la condition s'évalue après l'incrémentation sans faire le dernier tour.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Considérez cet algorithme :\\nVariables : $x$ en entier\\nDébut\\nLire $x$ (on entre $7$)\\nSi $x > 5$ alors\\n$x \\leftarrow x \\times 2$\\nSinon\\n$x \\leftarrow x + 10$\\nFin Si\\nAfficher $x$\\nFin\\nQue affiche l'algorithme ?",
+      "options": [
+        "14",
+        "17",
+        "12",
+        "7"
+      ],
+      "correctAnswer": "14",
+      "explanation": "La variable $x$ vaut $7$ au départ. La condition $x > 5$ est vraie car $7 > 5$. On exécute donc l'instruction du 'Alors' : $x \\leftarrow 7 \\times 2 = 14$. L'instruction du 'Sinon' est ignorée. L'algorithme affiche $14$. L'option B ($17$) correspond à l'exécution du 'Sinon' par erreur. L'option C ($12$) n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut écrire un algorithme qui demande un nombre à l'utilisateur et qui affiche 'Positif' si le nombre est strictement supérieur à $0$, 'Négatif' s'il est strictement inférieur à $0$ et 'Nul' s'il vaut $0$. Parmi les structures suivantes, laquelle est la plus adaptée et correcte ?",
+      "options": [
+        "Si $n > 0$ alors Afficher 'Positif' Sinon Si $n < 0$ alors Afficher 'Négatif' Sinon Afficher 'Nul' Fin Si Fin Si",
+        "Si $n > 0$ alors Afficher 'Positif' Fin Si Si $n < 0$ alors Afficher 'Négatif' Fin Si Si $n = 0$ alors Afficher 'Nul' Fin Si",
+        "Tant que $n > 0$ faire Afficher 'Positif' Fin Tant que",
+        "Pour $n$ de $1$ à $3$ faire Afficher 'Positif' Fin Pour"
+      ],
+      "correctAnswer": "Si $n > 0$ alors Afficher 'Positif' Sinon Si $n < 0$ alors Afficher 'Négatif' Sinon Afficher 'Nul' Fin Si Fin Si",
+      "explanation": "Il s'agit d'un choix exclusif parmi trois cas mutuellement exclusifs ($>0$, $<0$, $=0$). La structure 'Si ... Sinon Si ... Sinon ... Fin Si' (ou 'Sinon Si' imbriqué) est la structure conditionnelle multiple adaptée. L'option B avec trois 'Si' indépendants fonctionne mais est moins élégante et moins efficace (les trois conditions sont testées). Les options C et D sont des boucles, inadaptées pour un test unique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Analysez cet algorithme :\\nVariables : $k$, $s$ en entiers\\nDébut\\n$s \\leftarrow 0$\\nPour $k$ de $1$ à $5$ faire\\n$s \\leftarrow s + k$\\nFin Pour\\nAfficher $s$\\nFin\\nQuelle valeur est affichée ?",
+      "options": [
+        "10",
+        "15",
+        "20",
+        "5"
+      ],
+      "correctAnswer": "15",
+      "explanation": "C'est une boucle 'Pour' classique qui calcule la somme des entiers de $1$ à $5$. On trace : $k=1, s=1$ ; $k=2, s=3$ ; $k=3, s=6$ ; $k=4, s=10$ ; $k=5, s=15$. La boucle s'arrête après $k=5$. La somme est $1+2+3+4+5 = 15$. L'option A ($10$) est la somme jusqu'à $4$. L'option D ($5$) est la dernière valeur de $k$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme ci-dessous :\\nVariables : $a$, $b$ en entiers\\nDébut\\n$a \\leftarrow 12$\\n$b \\leftarrow 18$\\nTant que $a \\neq b$ faire\\nSi $a > b$ alors\\n$a \\leftarrow a - b$\\nSinon\\n$b \\leftarrow b - a$\\nFin Si\\nFin Tant que\\nAfficher $a$\\nFin\\nQuelle valeur est affichée ?",
+      "options": [
+        "2",
+        "6",
+        "12",
+        "18"
+      ],
+      "correctAnswer": "6",
+      "explanation": "Cet algorithme implémente la soustraction successive (algorithme d'Euclide par soustractions) pour trouver le PGCD de $12$ et $18$. Trace : $a=12, b=18$. $a \\neq b$, $a<b$ donc $b \\leftarrow 18-12=6$. $a=12, b=6$. $a \\neq b$, $a>b$ donc $a \\leftarrow 12-6=6$. $a=6, b=6$. Condition $a \\neq b$ fausse, sortie de boucle. Affichage $6$. C'est le PGCD de $12$ et $18$. L'option A ($2$) est un diviseur commun mais pas le plus grand. Les options C et D sont les valeurs initiales.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

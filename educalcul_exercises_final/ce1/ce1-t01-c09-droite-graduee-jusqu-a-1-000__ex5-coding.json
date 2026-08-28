@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 76,
+  "_course_code": "ce1-t01-c09-droite-graduee-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Lire l'échelle",
+  "title": "Algorithme de lecture d'échelle sur droite graduée",
+  "blocks": [
+    {
+      "title": "Calculer le pas de l'échelle",
+      "content": "On a une droite graduée qui commence à $0$ et finit à $100$. Il y a $10$ intervalles (espaces entre deux grandes graduations). Écris l'algorithme qui permet de trouver la valeur d'un pas (l'écart entre deux graduations). Utilise les variables debut, fin, nbIntervalles et pas.",
+      "correctAnswer": "debut = 0\\nfin = 100\\nnbIntervalles = 10\\npas = (fin - debut) / nbIntervalles\\nAfficher pas",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver la valeur d'un pas, on calcule l'étendue totale (fin - debut) soit $100 - 0 = 100$, puis on divise par le nombre d'intervalles ($10$). Le résultat est $10$. Chaque graduation vaut donc dix de plus que la précédente.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver la valeur d'une graduation",
+      "content": "Une droite graduée commence à $200$ et finit à $300$. Il y a $10$ intervalles. Écris l'algorithme qui calcule la valeur affichée sur la 3e grande graduation (celle qui suit le départ). Utilise les variables debut, fin, nbIntervalles, numeroGraduation (valeur 3) et valeur.",
+      "correctAnswer": "debut = 200\\nfin = 300\\nnbIntervalles = 10\\npas = (fin - debut) / nbIntervalles\\nnumeroGraduation = 3\\nvaleur = debut + numeroGraduation * pas\\nAfficher valeur",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'abord on calcule le pas : $(300 - 200) / 10 = 10$. La 3e graduation correspond à 3 pas après le départ. On fait donc $200 + 3 \\times 10 = 230$. La valeur affichée est deux cent trente.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Situer un nombre sur la droite",
+      "content": "Une droite graduée va de $0$ à $500$ avec $5$ intervalles. On veut savoir sur quelle graduation (quel numéro) se trouve le nombre $300$. Écris l'algorithme qui trouve ce numéro. Utilise les variables debut, fin, nbIntervalles, nombreCherche (valeur 300) et numero.",
+      "correctAnswer": "debut = 0\\nfin = 500\\nnbIntervalles = 5\\npas = (fin - debut) / nbIntervalles\\nnombreCherche = 300\\nnumero = (nombreCherche - debut) / pas\\nAfficher numero",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le pas vaut $(500 - 0) / 5 = 100$. Pour trouver le numéro de la graduation, on calcule l'écart entre le nombre cherché et le départ ($300 - 0 = 300$) et on divise par le pas ($300 / 100 = 3$). Le nombre 300 se trouve sur la 3e graduation.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

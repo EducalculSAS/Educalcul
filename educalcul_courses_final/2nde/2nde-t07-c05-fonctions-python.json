@@ -1,0 +1,219 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.147173+00:00",
+  "id": 538,
+  "code": "2nde-t07-c05",
+  "title": "Fonctions Python",
+  "description": "Cours structuré Educalcul : Fonctions Python.",
+  "subject": "Logique, ensembles, algorithmique et automatismes",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Logique, ensembles, algorithmique et automatismes",
+    "titre_du_cours": "Fonctions Python",
+    "objectif_global": "Fonctions Python",
+    "mini_lecons_imposees": [
+      "Paramètres.",
+      "Retour.",
+      "Utiliser."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Logique, ensembles, algorithmique et automatismes",
+      "lessons": [
+        {
+          "title": "Paramètres.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles créer un petit robot assistant pour ton école. Tu veux qu'il puisse saluer chaque élève qui arrive, mais tu ne veux pas écrire $100$ fois la phrase 'Bonjour' suivie du nom de chaque personne. Ce serait un travail épuisant et très répétitif, n'est-ce pas ? C'est là qu'intervient la magie des fonctions en Python. Une fonction, c'est comme une machine à laquelle on donne des instructions une seule fois, et qu'on peut ensuite utiliser autant de fois qu'on le souhaite. Mais pour que notre robot soit vraiment utile, il doit être capable de s'adapter. S'il dit toujours 'Bonjour Marc', ce sera gênant quand il rencontrera Sarah ! Nous avons donc besoin de quelque chose que l'on appelle des paramètres. Les paramètres sont comme des étiquettes ou des boîtes vides que l'on place dans la définition de la fonction. Au moment où l'on utilise la fonction, on remplit ces boîtes avec des valeurs réelles. C'est ce qui permet à un même bloc de code de produire des résultats différents selon les informations qu'on lui fournit. C'est la base fondamentale de toute l'informatique moderne : créer des structures flexibles et réutilisables pour gagner un temps précieux."
+            },
+            {
+              "type": "paragraph",
+              "content": "En Python, pour créer une fonction, on utilise le mot-clé 'def', qui est l'abréviation de 'define' (définir en anglais). La structure type ressemble à ceci : 'def nom_de_la_fonction(paramètre1, paramètre2):'. Les paramètres, situés entre les parenthèses, sont des variables locales. Cela signifie qu'elles n'existent qu'à l'intérieur de la fonction. On peut les voir comme des placeholders ou des variables d'entrée. Par exemple, si tu définis une fonction 'calcul_prix(quantite, prix_unitaire)', les mots 'quantite' et 'prix_unitaire' sont tes paramètres. Ils ne possèdent pas de valeur fixe au moment où tu écris le code. C'est seulement lorsque tu appelles la fonction, par exemple 'calcul_prix(5, 2.5)', que Python assigne la valeur $5$ à 'quantite' et $2.5$ à 'prix_unitaire'. Le corps de la fonction, qui est obligatoirement décalé vers la droite grâce à l'indentation, utilise ensuite ces paramètres pour effectuer des calculs ou manipuler du texte. La puissance des paramètres réside dans l'abstraction : on décrit l'action à effectuer sur des données quelconques, sans savoir encore quelles seront ces données précisément, ce qui rend le programme extrêmement polyvalent et facile à maintenir."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def saluer(nom):\\n    print('Bonjour ' + nom)\\n\\nsaluer('Alice')\\nsaluer('Bob')",
+              "language": "python",
+              "caption": "Définition et appel d'une fonction avec un paramètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour créer une fonction avec des paramètres, suis rigoureusement ces étapes. D'abord, commence par écrire le mot-clé 'def' suivi d'un espace. Ensuite, choisis un nom explicite pour ta fonction, comme 'calculer_perimetre', car un bon nom permet de comprendre immédiatement ce que fait le code sans avoir à le lire en entier. Juste après le nom, ouvre des parenthèses et liste tes paramètres séparés par des virgules. Par exemple, '(largeur, hauteur)'. N'oublie surtout pas de fermer la parenthèse et de mettre deux-points ':' à la fin de la ligne. Ce symbole est crucial car il indique à Python que le bloc d'instructions commence maintenant. À la ligne suivante, appuie sur la touche Tabulation pour créer l'indentation. C'est dans ce bloc décalé que tu vas écrire les instructions utilisant tes paramètres. Par exemple, tu pourrais écrire 'resultat = 2 * (largeur + hauteur)'. Enfin, pour que ta fonction s'exécute, tu dois l'appeler plus bas dans ton programme, en dehors du bloc indenté, en écrivant son nom avec des valeurs concrètes entre parenthèses, comme 'calculer_perimetre(10, 5)'. Chaque valeur passée lors de l'appel est appelée un argument."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons un cas très simple : nous voulons une fonction qui affiche un message de bienvenue personnalisé. Nous allons définir la fonction 'saluer' avec un paramètre appelé 'prenom'. Le code sera : 'def saluer(prenom): print(\"Bonjour \" + prenom + \" !\")'. Ici, 'prenom' est notre paramètre. Si nous écrivons ensuite 'saluer(\"Léo\")', Python va remplacer 'prenom' par la chaîne de caractères \"Léo\" et afficher 'Bonjour Léo !'. Si nous écrivons 'saluer(\"Emma\")', le programme affichera 'Bonjour Emma !'. Remarque bien que nous n'avons écrit la ligne 'print' qu'une seule fois, mais nous avons pu obtenir deux résultats différents. C'est l'intérêt majeur des paramètres : on définit la structure du message une fois pour toutes, et on change seulement l'information variable. L'argument fourni lors de l'appel (comme \"Léo\") est injecté directement dans la variable locale de la fonction, permettant une exécution dynamique et rapide du code selon le contexte."
+            },
+            {
+              "type": "paragraph",
+              "content": "Montons d'un cran avec un exemple mathématique. Imaginons que nous voulions calculer l'aire d'un rectangle. On sait que l'aire est égale au produit de la longueur par la largeur. Nous créons donc une fonction avec deux paramètres : 'def calculer_aire(longueur, largeur): aire = longueur * largeur; print(\"L'aire est de\", aire)'. Dans ce cas, notre fonction attend deux nombres. Si nous appelons 'calculer_aire(8, 3)', Python affecte $8$ à 'longueur' et $3$ à 'largeur', puis effectue l'opération $8 \\times 3$ pour obtenir an aire de $24$. Si nous changeons les arguments, par exemple 'calculer_aire(12, 7)', le calcul devient $12 \\times 7$ et le résultat affiché sera $84$. Cet exemple montre que les paramètres peuvent être de type numérique et être utilisés dans des opérations arithmétiques. On peut même passer des nombres à virgule, comme 'calculer_aire(5.5, 2.1)', et Python gérera automatiquement le calcul avec des nombres flottants, rendant l'outil extrêmement flexible pour tous types de mesures."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est de confondre le paramètre et l'argument. Le paramètre est le nom utilisé dans la définition (la boîte), tandis que l'argument est la valeur réelle passée lors de l'appel (le contenu). Un autre piège classique est l'oubli des deux-points ':' à la fin de la ligne 'def'. Sans eux, Python renvoie une 'SyntaxError' car il ne sait pas où commence le corps de la fonction. L'indentation est également une source fréquente de frustration. Si les instructions à l'intérieur de la fonction ne sont pas décalées vers la droite, Python pensera qu'elles ne font pas partie de la fonction et provoquera une erreur d'indentation. Enfin, attention à l'ordre des arguments : si tu as défini 'def coordonnees(x, y):', appeler 'coordonnees(10, 20)' assignera $10$ à $x$ et $20$ à $y$. Si tu inverses les valeurs, tu inverses les rôles des variables à l'intérieur de ton calcul, ce qui peut conduire à des erreurs de logique très difficiles à détecter si le code est long."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu dois créer une fonction nommée 'double' qui prend un nombre en paramètre et affiche le double de ce nombre. Quel code dois-tu écrire pour définir cette fonction et l'appeler avec le nombre $7$ ?",
+              "answer": "def double(n):\\n    print(n * 2)\\ndouble(7)",
+              "hint": "Pense au mot-clé 'def' et n'oublie pas l'indentation pour le 'print'.",
+              "explanation": "On définit la fonction 'double' avec un paramètre 'n'. À l'intérieur, on multiplie 'n' par $2$ et on affiche le résultat. L'appel 'double(7)' remplace 'n' par $7$, donc $7 \\times 2 = 14$."
+            }
+          ]
+        },
+        {
+          "title": "Retour.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Jusqu'à présent, nos fonctions étaient un peu comme des haut-parleurs : elles recevaient une information et 'criaient' le résultat à l'écran grâce à 'print'. C'est utile pour nous, humains, mais pour l'ordinateur, c'est un problème. Imagine que tu demandes à une fonction de calculer la TVA d'un produit. Si la fonction utilise 'print', elle affiche le résultat sur l'écran, mais elle ne 'donne' pas ce nombre au reste du programme. Si tu as besoin de ce montant de TVA pour l'ajouter au prix total, tu ne peux pas, car l'information a été simplement affichée et a disparu. C'est ici qu'intervient l'instruction 'return'. Utiliser 'return', c'est transformer notre fonction en une véritable machine à calculer. Au lieu de simplement nous dire le résultat, la fonction nous le 'rend'. C'est comme si tu demandais à un ami de calculer un score et qu'il t'écrivait le résultat sur un petit papier qu'il te tend. Maintenant que tu as ce papier (la valeur de retour), tu peux l'utiliser pour d'autres calculs, le stocker dans une base de données ou le comparer à un autre nombre. C'est l'étape indispensable pour créer des programmes complexes où les fonctions collaborent entre elles."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'instruction 'return' permet à une fonction de renvoyer une valeur unique à l'endroit où la fonction a été appelée. Contrairement à 'print', qui envoie du texte vers la console pour l'utilisateur, 'return' transmet une donnée technique au programme. Une fois que Python rencontre l'instruction 'return', il arrête immédiatement l'exécution de la fonction et sort de celle-ci en rapportant la valeur spécifiée. C'est un point crucial : tout code écrit après un 'return' à l'intérieur d'une même fonction sera totalement ignoré, on dit qu'il est inatteignable. La valeur retournée peut être n'importe quoi : un nombre entier, un nombre à virgule, une chaîne de caractères ou même une liste. Lorsque nous appelons une fonction qui utilise 'return', nous pouvons récupérer ce résultat en l'assignant à une variable. Par exemple, si on écrit 'resultat = calculer_carre(4)', la fonction 'calculer_carre' s'exécute, renvoie $16$, et Python place alors la valeur $16$ dans la variable 'resultat'. Cela permet de chaîner les opérations : on peut utiliser le retour d'une fonction comme argument pour une autre fonction, créant ainsi un flux de données logique et structuré."
+            },
+            {
+              "type": "display_math",
+              "latex": "F = C \\times \\frac{9}{5} + 32"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour mettre en place un retour de valeur, suis ces étapes. D'abord, définis ta fonction normalement avec 'def' et tes paramètres. À l'intérieur du corps de la fonction, effectue tes calculs et stocke’le résultat dans une variable temporaire, ou effectue le calcul directement après le mot-clé 'return'. Par exemple, 'return a * b'. Assure-toi que l'instruction 'return' est bien indentée. Ensuite, au moment de l'appel de la fonction, ne te contente pas d'écrire le nom de la fonction seul. Pour ne pas perdre l'information renvoyée, crée une variable pour réceptionner le résultat. Écris par exemple 'mon_score = calculer_points(10)'. Maintenant, la variable 'mon_score' contient la valeur renvoyée. Si tu veux voir ce résultat à l'écran, c'est à ce moment-là, et à l'extérieur de la fonction, que tu utiliseras 'print(mon_score)'. Cette séparation entre le calcul (le return) et l'affichage (le print) est la marque d'un code professionnel, car elle rend ta fonction réutilisable dans différents contextes, que ce soit pour l'afficher, l'enregistrer ou le modifier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Créons une fonction simple qui calcule le carré d'un nombre. Le code est le suivant : 'def carre(n): return n * n'. Remarque qu'il n'y a aucun 'print' ici. Si on écrit juste 'carre(5)' dans un script, rien ne s'affichera à l'écran, même si le calcul a bien été fait. Pour utiliser ce résultat, on fera : 'valeur_finale = carre(5)'. À ce stade, 'valeur_finale' vaut $25$. Si nous voulons maintenant afficher ce résultat, nous ajoutons 'print(valeur_finale)'. L'avantage est immense : imagine que tu veuilles calculer la somme des carrés de $2$ et $3$. Tu peux simplement écrire 'total = carre(2) + carre(3)'. Python va d'abord calculer 'carre(2)' qui renvoie $4$, puis 'carre(3)' qui renvoie $9$, et enfin faire l'addition pour donner 'total' égal à $13$. Cela aurait été impossible si la fonction 'carre' s'était contentée d'afficher le résultat avec 'print', car on ne peut pas additionner des affichages écran."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple plus concret : convertir une température de degrés Celsius en degrés Fahrenheit. La formule mathématique est : $F = C \\times \\frac{9}{5} + 32$. Nous créons la fonction suivante : 'def celsius_vers_fahrenheit(c): f = c * (9/5) + 32; return f'. Si nous voulons convertir $20$ degrés Celsius, nous écrivons : 'temp_f = celsius_vers_fahrenheit(20)'. Le calcul interne sera $20 \\times 1.8 + 32$, ce qui donne $36 + 32 = 68$. La variable 'temp_f' recevra donc la valeur $68.0$. Nous pouvons alors utiliser ce résultat pour vérifier s'il fait chaud : 'if temp_f > 30: print(\"Il fait chaud !\")'. Ici, la fonction ne fait que le travail technique de conversion, et c'est le programme principal qui décide quoi faire de l'information. Cette modularité est essentielle : si demain la formule de conversion changeait, tu n'aurais qu'à modifier une seule ligne dans la fonction, et tout le reste de ton programme continuerait de fonctionner parfaitement."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus fréquente est de penser que 'return' affiche quelque chose à l'écran. C'est l'inverse de 'print'. 'print' est pour l'humain, 'return' est pour la machine. Un autre piège est de placer du code après l'instruction 'return'. Par exemple, si tu écris 'return a; print(\"Terminé\")', la phrase \"Terminé\" ne sera jamais affichée, car le 'return' agit comme une porte de sortie immédiate : dès qu'il est franchi, la fonction est terminée. Enfin, attention aux fonctions qui n'ont pas de 'return'. Si tu appelles une fonction qui ne renvoie rien et que tu essaies de stocker son résultat dans une variable, comme 'x = saluer(\"Léo\")', la variable 'x' contiendra une valeur spéciale appelée 'None' (rien en anglais). Cela arrive souvent quand on a oublié d'ajouter le 'return' ou qu'on a utilisé 'print' à la place. Vérifie toujours que ta fonction renvoie bien le type de donnée attendu pour les calculs suivants."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris une fonction nommée 'somme' qui prend deux nombres en paramètres et renvoie leur addition. Appelle ensuite cette fonction pour calculer la somme de $15$ et $27$ et stocke le résultat dans une variable nommée 'total'.",
+              "answer": "def somme(a, b):\\n    return a + b\\ntotal = somme(15, 27)",
+              "hint": "Utilise le mot-clé 'return' et non 'print' pour que la valeur puisse être stockée.",
+              "explanation": "La fonction 'somme' additionne 'a' et 'b' puis renvoie le résultat. L'appel 'somme(15, 27)' renvoie $42$, qui est ensuite assigné à la variable 'total'."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant appris à fabriquer des outils puissants : des fonctions avec des paramètres pour la flexibilité et des retours de valeur pour la précision. Mais avoir des outils dans sa boîte ne sert à rien si on ne sait pas comment les utiliser pour construire un projet ! L'étape finale est l'utilisation stratégique de ces fonctions. Pense à ton programme comme à une chaîne de montage d'usine. La première machine (fonction) prépare la pièce, la deuxième la peint, et la troisième l'emballe. Pour que cela fonctionne, la pièce doit passer physiquement de la première à la deuxième, puis à la troisième. En Python, cela se traduit par l'appel de fonctions et la transmission de leurs résultats. Utiliser une fonction, c'est lui envoyer un signal pour qu'elle s'active. Mais le vrai pouvoir apparaît quand on commence à imbriquer les fonctions, c'est-à-dire qu'on utilise le résultat d'une fonction directement comme argument pour une autre. C'est ainsi que l'on construit des programmes complexes à partir de petites briques simples et robustes. C'est l'essence même de la programmation : diviser un problème immense en plusieurs petits problèmes faciles à résoudre indépendamment."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'utilisation d'une fonction commence par son appel, qui consiste à écrire son nom suivi de parenthèses contenant les arguments. Un point fondamentale est l'ordre d'exécution : Python lit le code de haut en bas. Par conséquent, tu dois impérativement définir ta fonction (avec 'def') AVANT de tenter de l'appeler. Si tu appelles 'calculer_aire()' à la ligne $2$ mais que tu ne la définis qu'à la ligne $10$, Python renverra une 'NameError' car il ne connaît pas encore ce nom. L'exécution d'une fonction crée un petit saut dans le code : quand Python rencontre un appel, il 'saute' vers la définition de la fonction, exécute toutes les instructions indentées, puis 'revient' exactement là où il s'était arrêté avec la valeur de retour. L'imbrication est une technique avancée où l'on écrit quelque chose comme 'print(carre(somme(2, 3)))'. Ici, Python résout d'abord la fonction la plus profonde : 'somme(2, 3)' donne $5$. Ensuite, il utilise ce $5$ pour appeler 'carre(5)' qui donne $25$. Enfin, il appelle 'print(25)'. C'est un processus de résolution en cascade, comme des poupées russes, où chaque résultat devient le carburant de l'étape suivante."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Etape 1 : Appel",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Python rencontre 'f(x)', il met le programme principal en pause."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 2 : Saut",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il saute vers la définition de 'f' et remplace le paramètre par 'x'."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 3 : Execution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il execute toutes les instructions indentées jusqu'au 'return'."
+                    }
+                  ]
+                },
+                {
+                  "title": "Etape 4 : Retour",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Il revient au point de départ en ramenant la valeur calculée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour utiliser tes fonctions efficacement, suis cette méthodologie. Premièrement, organise ton fichier en plaçant toutes tes définitions de fonctions au début du script. De cette façon, elles sont chargées en mémoire et disponibles pour tout le reste du programme. Deuxièmement, identifie les données dont tu as besoin pour chaque appel. Si ta fonction attend deux paramètres, assure-toi de fournir exactement deux arguments. Troisièmement, si ta fonction utilise 'return', utilise systématiquement une variable pour capturer le résultat, comme 'prix_final = calculer_total(100)'. Cela rend ton code plus lisible et facilite le débogage. Quatrièmement, pour les opérations complexes, procède par étapes plutôt que d'imbriquer trop de fonctions. Au lieu de 'print(f3(f2(f1(x))))', écris : 'res1 = f1(x)'; 'res2 = f2(res1)'; 'res3 = f3(res2)'; 'print(res3)'. Cette approche appelée décomposition rend ton code beaucoup plus facile à lire et à corriger en cas d'erreur, car tu peux vérifier la valeur de chaque étape intermédiaire."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un programme de gestion de magasin. Nous avons une fonction 'appliquer_remise(prix, pourcentage)' qui renvoie le prix après remise. Le code est : 'def appliquer_remise(prix, p): return prix * (1 - p/100)'. Pour l'utiliser, nous avons un article à $80$ euros avec une remise de $15\\%$. Nous écrivons : 'prix_soldé = appliquer_remise(80, 15)'. Python calcule $80 \\times 0.85$, ce qui donne $68$. La variable 'prix_soldé' contient maintenant $68.0$. Si nous voulons ensuite ajouter des frais de port de $5$ euros, nous faisons simplement 'total = prix_soldé + 5'. On a utilisé le résultat de la fonction comme base pour un calcul suivant. C'est l'utilisation classique : on délègue le calcul complexe du pourcentage à la fonction, et on gère la logique métier (comme les frais de port) dans le corps principal du programme. C'est propre, efficace et très facile à modifier : si la remise devient de $20\\%$, on change juste l'argument de l'appel."
+            },
+            {
+              "type": "paragraph",
+              "content": "Explorons maintenant l'imbrication avec deux fonctions : une pour convertir des minutes en secondes, et une pour calculer le temps total d'un trajet. 'def min_vers_sec(m): return m * 60' et 'def trajet_total(t1, t2): return t1 + t2'. Si un coureur a fait deux étapes de $5$ minutes et $8$ minutes, et qu'on veut le résultat total en secondes, on peut imbriquer les appels : 'total_sec = min_vers_sec(trajet_total(5, 8))'. Analysons l'ordre : Python calcule d'abord 'trajet_total(5, 8)' qui renvoie $13$. Ensuite, il transforme l'expression en 'min_vers_sec(13)'. Enfin, il calcule $13 \\times 60$ pour renvoyer $780$. Le résultat final $780$ est stocké dans 'total_sec'. Cette méthode est élégante car elle évite de créer des variables intermédiaires inutiles. Cependant, comme nous l'avons vu, si le calcul devient trop lourd, il est préférable de séparer les étapes pour garder une clarté maximale dans le raisonnement algorithmique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège majeur est l'oubli des parenthèses lors de l'appel. Écrire 'resultat = calculer_aire' sans parenthèses ne lance pas la fonction, mais assigne la fonction elle-même à la variable 'resultat'. Pour activer le code, les parenthèses sont obligatoires, même s'il n'y a pas de paramètres. Un autre problème fréquent est la confusion entre le nom de la fonction et le nom des variables à l'intérieur. Si ta fonction s'appelle 'calcul' et que tu as une variable 'calcul' ailleurs, Python risque de s'embrouiller. Utilise des noms distincts et clairs. Enfin, attention aux erreurs de type. Si ta fonction attend un nombre pour faire une multiplication mais que tu lui passes une chaîne de caractères par erreur, comme 'appliquer_remise(\"80\", 15)', Python renverra une 'TypeError'. Assure-toi toujours que les arguments que tu envoies correspondent au type de données que la fonction a été conçue pour manipuler."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On dispose de deux fonctions : 'def carre(n): return n*n' et 'def ajouter_un(n): return n+1'. Quelle est la valeur finale de la variable 'res' si on écrit : 'res = ajouter_un(carre(4))' ?",
+              "answer": "17",
+              "hint": "Calcule d'abord la fonction la plus intérieure, puis utilise son résultat pour la fonction extérieure.",
+              "explanation": "D'abord, 'carre(4)' est calculé : $4 \\times 4 = 16$. Ensuite, ce résultat est passé à 'ajouter_un', donc 'ajouter_un(16)' donne $16 + 1 = 17$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

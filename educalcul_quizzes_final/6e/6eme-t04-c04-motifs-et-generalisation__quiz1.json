@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 350,
+  "_course_code": "6eme-t04-c04-motifs-et-generalisation",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Repérer règle",
+  "title": "Repérer une règle dans une suite ou un motif",
+  "questions": [
+    {
+      "text": "On considère la suite de nombres : $2, 5, 8, 11, 14, ...$ Quelle est la règle pour passer d'un terme au suivant ?",
+      "options": [
+        "Ajouter 3",
+        "Multiplier par 3",
+        "Ajouter 2",
+        "Multiplier par 2"
+      ],
+      "correctAnswer": "Ajouter 3",
+      "explanation": "Pour trouver la règle, on calcule la différence entre deux termes consécutifs : $5 - 2 = 3$, $8 - 5 = 3$, $11 - 8 = 3$. La différence est constante et égale à 3. La règle est donc d'ajouter 3 à chaque fois. Multiplier ne convient pas car $2 \\times 3 = 6 \\neq 5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici une suite : $3, 6, 12, 24, 48, ...$ Quelle opération permet de passer d'un terme au terme suivant ?",
+      "options": [
+        "Multiplier par 2",
+        "Ajouter 3",
+        "Multiplier par 3",
+        "Ajouter 6"
+      ],
+      "correctAnswer": "Multiplier par 2",
+      "explanation": "On observe les rapports entre termes consécutifs : $6 \\div 3 = 2$, $12 \\div 6 = 2$, $24 \\div 12 = 2$. Le rapport est constant (2), c'est une suite géométrique de raison 2. La règle est de multiplier par 2. Ajouter 3 ne fonctionne qu'au premier passage ($3+3=6$) mais échoue ensuite ($6+3=9 \\neq 12$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le motif ci-dessous. Quelle figure vient ensuite dans la suite ?",
+      "options": [
+        "Un cercle",
+        "Un carré",
+        "Un triangle",
+        "Un losange"
+      ],
+      "correctAnswer": "Un cercle",
+      "explanation": "Le motif alterne régulièrement : cercle, carré, cercle, carré. La règle de construction est une alternance à deux états. Après le quatrième terme (un carré), le cinquième terme doit être un cercle pour respecter l'alternance. Le triangle et le losange n'apparaissent pas dans le motif donné.",
+      "points": 1,
+      "figure": {
+        "type": "pattern_maker",
+        "sequence": [
+          "cercle",
+          "carre",
+          "cercle",
+          "carre"
+        ],
+        "options": [
+          "cercle",
+          "triangle"
+        ],
+        "answer": "cercle",
+        "caption": "Motif alterné : cercle, carré, cercle, carré..."
+      }
+    },
+    {
+      "text": "Une machine à calculer applique la même règle à des nombres entrants. Entrée $1 \\rightarrow$ Sortie $5$ ; Entrée $2 \\rightarrow$ Sortie $7$ ; Entrée $3 \\rightarrow$ Sortie $9$. Quelle est la règle de cette machine ?",
+      "options": [
+        "Multiplier par 2 puis ajouter 3",
+        "Multiplier par 3 puis ajouter 2",
+        "Ajouter 4",
+        "Multiplier par 2"
+      ],
+      "correctAnswer": "Multiplier par 2 puis ajouter 3",
+      "explanation": "On teste les hypothèses sur les couples (entrée, sortie). Pour l'entrée 1 : $1 \\times 2 + 3 = 5$ (correct). Pour l'entrée 2 : $2 \\times 2 + 3 = 7$ (correct). Pour l'entrée 3 : $3 \\times 2 + 3 = 9$ (correct). L'option 'Multiplier par 3 puis ajouter 2' donne $1 \\times 3 + 2 = 5$ pour la première mais $2 \\times 3 + 2 = 8 \\neq 7$ pour la seconde. 'Ajouter 4' ne marche que pour le premier couple.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une suite commence par $5$ et sa règle de construction est : « multiplier par 3 ». Quel est le troisième terme de cette suite ?",
+      "options": [
+        "45",
+        "15",
+        "20",
+        "30"
+      ],
+      "correctAnswer": "45",
+      "explanation": "On construit la suite pas à pas. Le premier terme est donné : $5$. Deuxième terme : on applique la règle au premier : $5 \\times 3 = 15$. Troisième terme : on applique la règle au deuxième : $15 \\times 3 = 45$. L'option 15 correspond au deuxième terme, pas au troisième. Les options 20 et 30 ne correspondent à aucune étape de cette suite géométrique.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

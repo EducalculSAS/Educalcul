@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 481,
+  "_course_code": "3eme-t05-c03-reciproque-de-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Rapports",
+  "title": "Réciproque de Thalès : rapports et parallélisme",
+  "blocks": [
+    {
+      "title": "Calcul d'une longueur par le théorème de Thalès",
+      "content": "Dans le triangle $ABC$, les points $D$ et $E$ appartiennent respectivement aux côtés $[AB]$ et $[AC]$ tels que $(DE) \\parallel (BC)$. Sachant que $AD = 3$ cm, $DB = 6$ cm et $AE = 4$ cm, la longueur $EC$ vaut {{1}} cm.",
+      "correctAnswer": "",
+      "blanks": [
+        "8"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après le théorème de Thalès, comme $(DE) \\parallel (BC)$, on a $\\frac{AD}{DB} = \\frac{AE}{EC}$. En remplaçant : $\\frac{3}{6} = \\frac{4}{EC}$, donc $EC = \\frac{4 \\times 6}{3} = 8$ cm.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Vérification de la parallélisme par les rapports",
+      "content": "Dans le triangle $ABC$, les points $D$ et $E$ sont sur $[AB]$ et $[AC]$ avec $AD = 5$ cm, $DB = 10$ cm, $AE = 6$ cm et $EC = 12$ cm. Les droites $(DE)$ et $(BC)$ sont-elles parallèles ? Réponse : {{1}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "oui"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On calcule les rapports : $\\frac{AD}{DB} = \\frac{5}{10} = \\frac{1}{2}$ et $\\frac{AE}{EC} = \\frac{6}{12} = \\frac{1}{2}$. Comme les rapports sont égaux, d'après la réciproque de Thalès, $(DE) \\parallel (BC)$. La réponse est donc oui.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche d'une longueur pour obtenir des droites parallèles",
+      "content": "Dans le triangle $ABC$, on place $D$ sur $[AB]$ et $E$ sur $[AC]$ de sorte que $(DE) \\parallel (BC)$. Si $AB = 10$ cm, $AC = 15$ cm et $AD = 6$ cm, alors $AE = {{1}}$ cm.",
+      "correctAnswer": "",
+      "blanks": [
+        "9"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "D'après la réciproque de Thalès, si $(DE) \\parallel (BC)$ alors $\\frac{AD}{AB} = \\frac{AE}{AC}$. On a $\\frac{6}{10} = \\frac{AE}{15}$, d'où $AE = \\frac{6 \\times 15}{10} = 9$ cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

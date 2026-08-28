@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 516,
+  "_course_code": "2nde-t04-c02-equation-de-droite",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Application : Équation de droite",
+  "title": "Quiz : Application : Équation de droite",
+  "questions": [
+    {
+      "text": "Déterminer l'équation de la droite passant par les points A(2,3) et B(5,9).",
+      "options": [
+        "$y = 2x - 1$",
+        "$y = 2x + 1$",
+        "$y = 3x - 3$",
+        "$y = 3x - 1$"
+      ],
+      "correctAnswer": "$y = 2x - 1$",
+      "explanation": "Le coefficient directeur est (9-3)/(5-2) = 6/3 = 2. En utilisant le point A(2,3), on a y - 3 = 2(x - 2), soit y = 2x - 1. Les autres options correspondent à des erreurs de calcul du coefficient directeur ou de l'ordonnée à l'origine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour la droite d'équation y = -3x + 4, quelle est la valeur de y lorsque x = 2 ?",
+      "options": [
+        "$-2$",
+        "$2$",
+        "$-10$",
+        "$10$"
+      ],
+      "correctAnswer": "$-2$",
+      "explanation": "On remplace x par 2 : y = -3 * 2 + 4 = -6 + 4 = -2. Les autres valeurs proviennent d'erreurs de signe ou d'oubli de l'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite d'équation 2x + y = 3, quelle est la valeur de y pour x = 4 ?",
+      "options": [
+        "$-5$",
+        "$-1$",
+        "$5$",
+        "$1$"
+      ],
+      "correctAnswer": "$-5$",
+      "explanation": "On substitue x = 4 : 2*4 + y = 3, donc 8 + y = 3, ce qui donne y = -5. Les autres options correspondent à des erreurs de résolution de l'équation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trouver l'équation de la droite parallèle à y = 4x - 7 et passant par le point (1,2).",
+      "options": [
+        "$y = 4x - 2$",
+        "$y = 4x + 2$",
+        "$y = -4x - 2$",
+        "$y = 4x - 6$"
+      ],
+      "correctAnswer": "$y = 4x - 2$",
+      "explanation": "Les droites parallèles ont même coefficient directeur, ici 4. En utilisant le point (1,2) : y - 2 = 4(x - 1), soit y = 4x - 2. Les autres options proviennent d'erreurs sur l'ordonnée à l'origine ou sur le signe du coefficient.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Déterminer l'équation de la droite perpendiculaire à y = (1/2)x + 3 et passant par (0,-1).",
+      "options": [
+        "$y = -2x - 1$",
+        "$y = 2x - 1$",
+        "$y = -0,5x - 1$",
+        "$y = -2x + 1$"
+      ],
+      "correctAnswer": "$y = -2x - 1$",
+      "explanation": "Le coefficient directeur de la droite donnée est 1/2, donc celui de la perpendiculaire est -2. Comme la droite passe par (0,-1), son ordonnée à l'origine est -1, ce qui donne y = -2x - 1. Les autres options correspondent à des erreurs sur le coefficient directeur ou sur l'ordonnée à l'origine.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 493,
+  "_course_code": "3eme-t07-c04-programmes-de-calcul",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Traduire",
+  "title": "Traduction de programmes de calcul en algorithmes",
+  "blocks": [
+    {
+      "title": "Calcul du périmètre d'un rectangle",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo-code) qui demande la longueur $L$ et la largeur $l$ d'un rectangle, puis calcule et affiche son périmètre.",
+      "correctAnswer": "Algorithme :\\n1. Lire $L$\\n2. Lire $l$\\n3. Calculer $P = 2 \\times (L + l)$\\n4. Afficher $P$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On lit les deux mesures, on applique la formule du périmètre $P = 2(L + l)$, puis on affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Évaluation d'un trinôme du second degré",
+      "content": "Écrire un programme (pseudo-code ou Python) qui demande une valeur de $x$, calcule la valeur de l'expression $2x^{2} + 3x - 5$ et affiche le résultat.",
+      "correctAnswer": "Programme :\\nLire $x$\\nCalculer $valeur = 2 \\times x^{2} + 3 \\times x - 5$\\nAfficher $valeur$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On saisit $x$, on calcule le trinôme en respectant la priorité des opérations : le carré, les multiplications, puis l'addition et la soustraction, enfin on affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Traduction d'un programme de calcul",
+      "content": "Traduire le programme de calcul suivant en algorithme structuré :\\n\"Choisir un nombre, lui ajouter 4, multiplier le résultat par 3, puis soustraire 7. Afficher le résultat final.\"",
+      "correctAnswer": "Algorithme :\\n1. Lire $n$\\n2. $n \\leftarrow n + 4$\\n3. $n \\leftarrow n \\times 3$\\n4. $n \\leftarrow n - 7$\\n5. Afficher $n$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On suit les étapes dans l'ordre : on stocke le nombre choisi dans une variable, on effectue chaque opération successivement en mettant à jour la variable, puis on affiche la valeur finale.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

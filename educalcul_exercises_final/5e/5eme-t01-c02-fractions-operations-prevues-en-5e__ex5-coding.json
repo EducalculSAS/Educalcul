@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 380,
+  "_course_code": "5eme-t01-c02-fractions-operations-prevues-en-5e",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Approfondissement : Addition / soustraction",
+  "title": "Addition et soustraction de fractions : algorithmes",
+  "blocks": [
+    {
+      "title": "Question 1",
+      "content": "Écrivez un algorithme en langage naturel (ou pseudo-code) qui permet d'additionner deux fractions ayant le même dénominateur. Par exemple, pour additionner $3/7$ et $2/7$, décrivez les étapes.",
+      "correctAnswer": "Algorithme :\\n1. Lire les numérateurs a et b et le dénominateur commun d.\\n2. Calculer le numérateur somme = a + b.\\n3. Le résultat est la fraction $somme/d$.\\n4. Si possible, simplifier la fraction.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme les dénominateurs sont identiques, on ajoute simplement les numérateurs et on conserve le dénominateur commun. On simplifie ensuite si le numérateur et le dénominateur ont un diviseur commun.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Question 2",
+      "content": "Proposez un algorithme pour soustraire deux fractions ayant des dénominateurs différents. Illustrer avec l'exemple $5/6 - 1/4$.",
+      "correctAnswer": "Algorithme :\\n1. Lire les fractions $a/b$ et $c/d$.\\n2. Calculer le plus petit commun multiple (PPCM) de b et d, appelons-le p.\\n3. Convertir les fractions : $a*(p/b)/p$ et $c*(p/d)/p$.\\n4. Soustraire les numérateurs : nouveau numérateur = a*(p/b) - c*(p/d).\\n5. Résultat : $nouveau numerateur/p$.\\n6. Simplifier si nécessaire.\\nPour l'exemple : PPCM(6,4)=12. $5/6=10/12$, $1/4=3/12$. $10-3=7$. Résultat $7/12$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour soustraire des fractions à dénominateurs différents, il faut les mettre au même dénominateur (le PPCM). On multiplie numérateur et dénominateur de chaque fraction par le facteur approprié, puis on soustrait les numérateurs. On simplifie le résultat final.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Question 3",
+      "content": "Écrivez un algorithme en pseudo-code qui prend en entrée quatre entiers (num1, den1, num2, den2) et renvoie la somme des deux fractions sous forme simplifiée (numérateur, dénominateur). Utilisez le PGCD pour simplifier.",
+      "correctAnswer": "Algorithme :\\nFonction AjouterFractions(num1, den1, num2, den2)\\n    pgcd <- PGCD(den1, den2)\\n    ppcm <- den1 * den2 / pgcd\\n    num <- num1 * (ppcm / den1) + num2 * (ppcm / den2)\\n    den <- ppcm\\n    g <- PGCD(num, den)\\n    num <- num / g\\n    den <- den / g\\n    Retourner (num, den)\\nFin Fonction",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme calcule le PPCM des dénominateurs à l'aide du PGCD, met les deux fractions au même dénominateur, additionne les numérateurs, puis simplifie la fraction résultante en divisant le numérateur et le dénominateur par leur PGCD.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

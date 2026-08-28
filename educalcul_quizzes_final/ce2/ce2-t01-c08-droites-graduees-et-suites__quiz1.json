@@ -1,0 +1,128 @@
+{
+  "_status": "done",
+  "_course_id": 149,
+  "_course_code": "ce2-t01-c08-droites-graduees-et-suites",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Lire une échelle",
+  "title": "Quiz : Lire une échelle",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, quelle est la valeur du point A ?",
+      "options": [
+        "$6$",
+        "$7$",
+        "$8$",
+        "$9$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "La droite est graduée de $1$ en $1$. Le point A se trouve sur la septième graduation après $0$, il correspond donc au nombre $7$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 10",
+        "min": 0,
+        "max": 10,
+        "points": [
+          {
+            "value": 7,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Cette droite est graduée de $2$ en $2$. Quelle est la valeur du point B ?",
+      "options": [
+        "$10$",
+        "$12$",
+        "$14$",
+        "$16$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Les graduations principales indiquent $0$, $2$, $4$, $6$, $8$, $10$, $12$... Le point B est placé sur la graduation qui suit $10$, soit $12$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 20 par 2",
+        "min": 0,
+        "max": 20,
+        "points": [
+          {
+            "value": 12,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Le thermomètre indique une température. Quelle est cette température en degrés Celsius ?",
+      "options": [
+        "$16$",
+        "$17$",
+        "$18$",
+        "$19$"
+      ],
+      "correctAnswer": "$18$",
+      "explanation": "L'échelle du thermomètre monte de $2$ en $2$ ($0$, $2$, $4$...). Le niveau du liquide atteint la graduation $18$.",
+      "points": 1,
+      "figure": {
+        "type": "thermometer_axis",
+        "caption": "Thermomètre de 0 à 30 degrés",
+        "min": 0,
+        "max": 30,
+        "points": [
+          {
+            "value": 18,
+            "label": "T"
+          }
+        ]
+      }
+    },
+    {
+      "text": "À l'aide de la règle, quelle est la longueur du segment bleu en centimètres ?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$9$",
+        "$10$"
+      ],
+      "correctAnswer": "$8$",
+      "explanation": "Le segment commence au repère $0$ et se termine exactement sur la graduation $8$. Sa longueur est donc de $8$ cm.",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 8,
+        "unit": "cm",
+        "caption": "Règle mesurant un segment de 8 cm"
+      }
+    },
+    {
+      "text": "Sur cette droite graduée par $100$, quel nombre est repéré par le point C ?",
+      "options": [
+        "$500$",
+        "$600$",
+        "$700$",
+        "$800$"
+      ],
+      "correctAnswer": "$600$",
+      "explanation": "Les grandes graduations marquent les centaines : $0$, $100$, $200$... Le point C se situe sur la sixième graduation, celle de $600$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 1000 par 100",
+        "min": 0,
+        "max": 1000,
+        "points": [
+          {
+            "value": 600,
+            "label": "C"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

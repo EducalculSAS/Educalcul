@@ -1,0 +1,389 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.928295+00:00",
+  "id": 143,
+  "code": "ce2-t01-c02",
+  "title": "Lire et écrire jusqu'à 2 000",
+  "description": "Cours structuré Educalcul : Lire et écrire jusqu'à 2 000.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Lire et écrire jusqu'à 2 000",
+    "objectif_global": "Lire et écrire jusqu'à 2 000",
+    "mini_lecons_imposees": [
+      "Lire avec zéros internes.",
+      "Écrire un nombre dicté.",
+      "Relier oral et décomposition."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Lire avec zéros internes.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les nombres de 100 à 199 avec un zéro des dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu entends un nombre comme cent cinq, le zéro des dizaines ne se prononce pas, mais il est bien là pour tenir la place. Imagine une étagère avec une case pour les centaines, une pour les dizaines et une pour les unités. Si la case des dizaines est vide, on met un zéro pour dire qu'il n'y a rien. Ainsi $105$ s'écrit avec un $1$ pour la centaine, un $0$ pour la dizaine et un $5$ pour l'unité."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 5,
+              "caption": "$105$ : 1 centaine, 0 dizaine, 5 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons avec des centaines plus grandes, où le zéro peut apparaître aussi chez les dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les nombres de 200 à 999 avec un zéro des dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour deux cents, on dit simplement deux cents, le zéro des dizaines et des unités est muet. Mais si le nombre est trois cent cinq, on entend trois cent cinq, le zéro des dizaines est encore invisible à l'oral. Regarde la décomposition : $3$ centaines, $0$ dizaine, $5$ unités. Le zéro garde la place pour que le $5$ reste bien dans la case des unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 2,
+              "tens": 0,
+              "units": 0,
+              "caption": "$200$ : 2 centaines, 0 dizaine, 0 unité"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux nombres qui dépassent mille, où le zéro peut se cacher dans les centaines ou les dizaines."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire les nombres de 1000 à 2000 avec des zéros"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le nombre a un mille, on commence par dire mille, puis on continue comme pour les centaines. Par exemple, mille cinq se lit mille cinq, car il n'y a ni centaines ni dizaines. Mille dix se lit mille dix, le zéro des centaines est muet. Mille cent se lit mille cent, le zéro des dizaines est muet. Regarde le tableau de position pour voir chaque chiffre à sa place."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Milliers",
+                "Centaines",
+                "Dizaines",
+                "Unités"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "0",
+                  "0",
+                  "5"
+                ],
+                [
+                  "1",
+                  "0",
+                  "1",
+                  "0"
+                ],
+                [
+                  "1",
+                  "1",
+                  "0",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en chiffres le nombre que tu entends : cent sept.",
+              "answer": "$107$",
+              "hint": "Pense à la case des dizaines : elle est vide, donc tu mets un zéro.",
+              "explanation": "Cent sept veut dire $1$ centaine, $0$ dizaine, $7$ unités. On écrit donc $107$."
+            },
+            {
+              "question": "Comment lit-on le nombre $405$ ?",
+              "answer": "quatre cent cinq",
+              "hint": "Le zéro des dizaines ne se prononce pas.",
+              "explanation": "$405$ contient $4$ centaines, $0$ dizaine, $5$ unités. On dit « quatre cent cinq »."
+            },
+            {
+              "question": "Écris en lettres le nombre $1010$.",
+              "answer": "mille dix",
+              "hint": "Il y a un mille, zéro centaine, une dizaine, zéro unité.",
+              "explanation": "$1010$ se décompose en $1$ mille, $0$ centaine, $1$ dizaine, $0$ unité. On lit « mille dix »."
+            }
+          ]
+        },
+        {
+          "title": "Écrire un nombre dicté.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire les nombres de 100 à 199 dictés avec un zéro des dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on te dicte « cent douze », tu entends bien le mot « cent » puis « douze ». Mais si on te dit « cent cinq », le mot « zéro » n'est pas prononcé. Pourtant, pour écrire le nombre correctement, il faut placer un zéro là où il n'y a pas de dizaines. Essaie d'imaginer les trois cases : centaines, dizaines, unités. Remplis chaque case avec le chiffre entendu, et mets un zéro si rien n'est dit pour les dizaines."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 1,
+              "tens": 0,
+              "units": 5,
+              "caption": "Écriture de $105$ après dictée"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, montons d'un cran : les centaines plus grandes peuvent aussi cacher un zéro au milieu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire les nombres de 200 à 999 dictés avec un zéro des dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si on te dicte « trois cent huit », tu entends « trois cent » puis « huit ». Il n'y a pas de mot pour les dizaines, donc tu dois écrire un zéro à cet endroit. Le nombre devient $308$. De même, « six cent un » s'écrit $601$. Le zéro est le gardien invisible qui garde la place des unités."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 0,
+              "units": 8,
+              "caption": "Écriture de $308$ après dictée"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, abordons les nombres qui passent le cap des mille. Le mille apporte une nouvelle case à gauche, et les zéros peuvent s'y glisser aussi."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire les nombres de 1000 à 2000 dictés avec des zéros"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écoute « mille quinze » : tu entends « mille » puis « quinze ». Il n'y a ni centaines ni dizaines, donc tu mets deux zéros après le $1$ des milliers : $1015$. Si on te dit « mille cent », tu as un mille, une centaine, zéro dizaine, zéro unité : $1100$. Le tableau de position t'aide à ne rien oublier."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Milliers",
+                "Centaines",
+                "Dizaines",
+                "Unités"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "0",
+                  "1",
+                  "5"
+                ],
+                [
+                  "1",
+                  "1",
+                  "0",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris en chiffres : cent neuf.",
+              "answer": "$109$",
+              "hint": "Il y a une centaine, zéro dizaine, neuf unités.",
+              "explanation": "Cent neuf donne $1$ centaine, $0$ dizaine, $9$ unités → $109$."
+            },
+            {
+              "question": "La dictée dit : « quatre cent deux ». Quel nombre écris-tu ?",
+              "answer": "$402$",
+              "hint": "Quatre centaines, zéro dizaine, deux unités.",
+              "explanation": "Quatre cent deux = $4$ centaines, $0$ dizaine, $2$ unités = $402$."
+            },
+            {
+              "question": "Transforme en chiffres : mille vingt.",
+              "answer": "$1020$",
+              "hint": "Un mille, zéro centaine, deux dizaines, zéro unité.",
+              "explanation": "Mille vingt = $1$ mille, $0$ centaine, $2$ dizaines, $0$ unité = $1020$."
+            }
+          ]
+        },
+        {
+          "title": "Relier oral et décomposition.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier l'oral à la décomposition pour les nombres jusqu'à 999"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu lis « deux cent trente-quatre », tu peux le décomposer tout de suite : $2$ centaines, $3$ dizaines, $4$ unités. Essaie de le dire en montrant du doigt chaque case d'un tableau imaginaire. Le zéro n'apparaît pas ici, mais l'habitude de nommer chaque classe t'aidera plus tard."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Centaines",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Dizaines",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Unités",
+                  "value": 4,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "Décomposition de $234$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant aux nombres qui franchissent le mille. La case des milliers s'ajoute à gauche, et les zéros peuvent s'y installer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Relier l'oral à la décomposition pour les nombres de 1000 à 2000"
+            },
+            {
+              "type": "paragraph",
+              "content": "Entends « mille cent deux » : il y a $1$ mille, $1$ centaine, $0$ dizaine, $2$ unités. Écris-le sous forme de somme : $1000 + 100 + 0 + 2$. Le zéro des dizaines est important pour que le $2$ reste bien à la place des unités."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Milliers",
+                  "value": 1,
+                  "tone": "navy"
+                },
+                {
+                  "label": "Centaines",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Dizaines",
+                  "value": 0,
+                  "tone": "gray"
+                },
+                {
+                  "label": "Unités",
+                  "value": 2,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "Décomposition de $1102$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, entraînons-nous à passer de l'oral à l'écrit et de l'écrit à la décomposition, en changeant l'ordre des opérations pour bien fixer la logique."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Aller et retour entre oral, écriture et décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si je te donne $1507$, tu peux le lire « mille cinq cent sept », puis le décomposer : $1$ mille, $5$ centaines, $0$ dizaine, $7$ unités. Fais l'inverse : à partir de la décomposition $1$ mille, $0$ centaine, $3$ dizaines, $5$ unités, écris le nombre et lis-le. C'est comme un jeu de puzzle où chaque pièce a sa place."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un nombre avec un zéro à l'intérieur (ex. $105$, $200$, $1005$).",
+                "J'arrive à écrire en chiffres un nombre dicté jusqu'à $2000$, même s'il y a des zéros.",
+                "Je peux décomposer un nombre en milliers, centaines, dizaines et unités et le relier à sa lecture orale."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Décompose $560$ en centaines, dizaines, unités.",
+              "answer": "$5$ centaines, $6$ dizaines, $0$ unité",
+              "hint": "Regarde les chiffres de gauche à droite.",
+              "explanation": "$560$ = $5$ centaines ($500$), $6$ dizaines ($60$), $0$ unité."
+            },
+            {
+              "question": "Écris le nombre qui correspond à : $1$ mille, $0$ centaine, $4$ dizaines, $8$ unités.",
+              "answer": "$1048$",
+              "hint": "Place chaque chiffre dans sa case : milliers, centaines, dizaines, unités.",
+              "explanation": "Un mille = $1000$, zéro centaine = $0$, quatre dizaines = $40$, huit unités = $8$. Total $1048$."
+            },
+            {
+              "question": "Lis le nombre $1203$ et donne sa décomposition.",
+              "answer": "mille deux cent trois ; $1$ mille, $2$ centaines, $0$ dizaine, $3$ unités",
+              "hint": "Le zéro des dizaines ne se prononce pas mais il existe.",
+              "explanation": "$1203$ se lit « mille deux cent trois ». Décomposition : $1$ mille, $2$ centaines, $0$ dizaine, $3$ unités."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

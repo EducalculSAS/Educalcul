@@ -1,0 +1,127 @@
+{
+  "_status": "done",
+  "_course_id": 214,
+  "_course_code": "cm1-t01-c04-fractions-decimales",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Relier fraction et partage de l'unité",
+  "title": "Relier fraction et partage de l'unité",
+  "questions": [
+    {
+      "text": "On partage 1 mètre de ruban en 10 parties égales. Quelle fraction du mètre représente chaque partie ?",
+      "options": [
+        "$\\frac{1}{10}$",
+        "$\\frac{1}{100}$",
+        "$\\frac{10}{1}$",
+        "$\\frac{1}{5}$"
+      ],
+      "correctAnswer": "$\\frac{1}{10}$",
+      "explanation": "Partager l'unité (1 mètre) en 10 parties égales signifie diviser 1 par 10. Chaque partie vaut donc 1 divisé par 10, ce qui s'écrit en fraction $\\frac{1}{10}$. L'option $\\frac{1}{100}$ correspond à un partage en 100 parties. L'option $\\frac{10}{1}$ vaut 10, ce qui est plus grand que l'unité. L'option $\\frac{1}{5}$ correspond à un partage en 5 parties.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 10
+          }
+        ],
+        "caption": "1 mètre divisé en 10 parts égales"
+      }
+    },
+    {
+      "text": "Léa partage 1 litre de jus équitablement entre 4 verres. Quelle fraction de litre y a-t-il dans chaque verre ?",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{4}{1}$",
+        "$\\frac{1}{8}$"
+      ],
+      "correctAnswer": "$\\frac{1}{4}$",
+      "explanation": "Le partage de l'unité (1 litre) en 4 parts égales correspond à la division $1 \\div 4$. Le résultat est la fraction $\\frac{1}{4}$ (un quart). L'option $\\frac{1}{2}$ serait pour 2 verres. L'option $\\frac{4}{1}$ vaut 4 litres. L'option $\\frac{1}{8}$ correspondrait à 8 verres.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "1 litre partagé en 4 quarts"
+      }
+    },
+    {
+      "text": "On découpe un carré (l'unité) en 8 parts égales. On colorie 3 de ces parts. Quelle fraction de l'unité est colorée ?",
+      "options": [
+        "$\\frac{3}{8}$",
+        "$\\frac{8}{3}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{5}{8}$"
+      ],
+      "correctAnswer": "$\\frac{3}{8}$",
+      "explanation": "Le dénominateur de la fraction indique en combien de parts égales l'unité est divisée (ici 8). Le numérateur indique combien de ces parts sont prises ou coloriées (ici 3). La fraction est donc $\\frac{3}{8}$. L'option $\\frac{8}{3}$ inverse les nombres. L'option $\\frac{3}{5}$ suppose un partage en 5 parts. L'option $\\frac{5}{8}$ correspond aux parts non coloriées.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 8,
+        "shape": "bar",
+        "caption": "Carré divisé en 8, 3 parts coloriées"
+      }
+    },
+    {
+      "text": "Tom partage 1 kg de farine en 5 sacs identiques. Il écrit la fraction $\\frac{1}{5}$. Que représente le nombre 5 (le dénominateur) dans cette situation ?",
+      "options": [
+        "Le nombre de sacs (le nombre de parts égales)",
+        "La quantité de farine dans un sac",
+        "Le nombre total de kilogrammes",
+        "Le nombre de sacs restants"
+      ],
+      "correctAnswer": "Le nombre de sacs (le nombre de parts égales)",
+      "explanation": "Dans une fraction issue d'un partage ($\\frac{1}{5}$), le dénominateur (le nombre du bas) indique en combien de parts égales l'unité a été divisée. Ici, l'unité (1 kg) est divisée en 5 sacs, donc le 5 représente le nombre de parts (ou de sacs). Le numérateur (1) représente la quantité prise (1 sac).",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "1/5",
+            "value": 1,
+            "tone": "blue"
+          },
+          {
+            "label": "1/5",
+            "value": 1,
+            "tone": "gray"
+          },
+          {
+            "label": "1/5",
+            "value": 1,
+            "tone": "gray"
+          },
+          {
+            "label": "1/5",
+            "value": 1,
+            "tone": "gray"
+          },
+          {
+            "label": "1/5",
+            "value": 1,
+            "tone": "gray"
+          }
+        ],
+        "caption": "1 kg partagé en 5 sacs égaux"
+      }
+    },
+    {
+      "text": "On partage 1 unité en $d$ parties égales. On prend $n$ de ces parties. Quelle écriture fractionnaire correspond à cette quantité ?",
+      "options": [
+        "$\\frac{n}{d}$",
+        "$\\frac{d}{n}$",
+        "$n \\times d$",
+        "$d - n$"
+      ],
+      "correctAnswer": "$\\frac{n}{d}$",
+      "explanation": "Par définition, lorsque l'unité est partagée en $d$ parties égales ($d$ est le dénominateur), chaque partie vaut $\\frac{1}{d}$. Si on en prend $n$ ($n$ est le numérateur), la quantité totale est $n \\times \\frac{1}{d} = \\frac{n}{d}$. L'option $\\frac{d}{n}$ inverse les rôles. Les options $n \\times d$ et $d - n$ sont des opérations, pas des fractions représentant un partage.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

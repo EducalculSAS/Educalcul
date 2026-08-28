@@ -1,0 +1,427 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.698244+00:00",
+  "id": 389,
+  "code": "5eme-t03-c01",
+  "title": "Lettre et expression littérale",
+  "description": "Cours structuré Educalcul : Lettre et expression littérale.",
+  "subject": "Calcul littéral et initiation à l'algèbre",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Calcul littéral et initiation à l'algèbre",
+    "titre_du_cours": "Lettre et expression littérale",
+    "objectif_global": "Lettre et expression littérale",
+    "mini_lecons_imposees": [
+      "Lettre comme nombre.",
+      "Substitution.",
+      "Modéliser une situation."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral et initiation à l'algèbre",
+      "lessons": [
+        {
+          "title": "Lettre comme nombre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une lettre ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce premier chapitre où nous allons découvrir ensemble ce qu'est une lettre en mathématiques. Tu as déjà l'habitude de manipuler des nombres concrets comme $2$, $7$ ou $12$. Aujourd'hui, nous allons faire un pas de côté : nous allons utiliser une petite lettre, par exemple $x$ ou $y$, pour parler d'un nombre sans le fixer tout de suite. C'est un peu comme si tu écrivais un mot‑clé sur une étiquette pour dire « ici, il y a un nombre, mais je ne sais pas encore lequel ». Cette idée peut sembler nouvelle, mais elle est très naturelle : quand tu joues à cache‑cache, tu dis « je suis derrière l'arbre » sans dire exactement quel arbre. La lettre joue le même rôle, elle marque la place d'un nombre que nous choisirons plus tard. Prends le temps de lire calmement, nous allons avancer pas à pas."
+            },
+            {
+              "type": "definition",
+              "term": "lettre",
+              "definition": "Symbole (généralement une minuscule) qui peut représenter n'importe quel nombre : entier, décimal, négatif ou fraction.",
+              "example": "Dans $3x+5$, la lettre $x$ attend une valeur numérique."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment une lettre peut tenir la place d'un nombre, nous allons explorer comment on utilise cette lettre pour parler d'un nombre inconnu que l'on cherche à déterminer. C'est le cœur de l'algèbre : poser une équation où la lettre est l'inconnue, puis la retrouver grâce aux règles du calcul. Prépare-toi, nous allons écrire une première petite équation ensemble."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La lettre comme inconnue"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons que tu as acheté trois cahiers identiques et un stylo à $2$ euros. Le total dépensé est de $14$ euros. Si tu notes $c$ le prix d'un cahier, la situation s'écrit $3c + 2 = 14$. La lettre $c$ représente ici le prix inconnu que tu veux trouver. Pour la résoudre, tu vas isoler $c$ en faisant les mêmes opérations des deux côtés : soustraire $2$, puis diviser par $3$. Cette méthode, appelée « résoudre une équation », fonctionne parce que l'égalité reste vraie si l'on transforme les deux membres de la même façon. C'est une règle fondamentale que tu utiliseras tout au long du collège."
+            },
+            {
+              "type": "display_math",
+              "latex": "3c+2=14"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : soustraire 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On écrit $3c + 2 - 2 = 14 - 2$, ce qui donne $3c = 12$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : diviser par 3",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On divise les deux membres par $3$ : $\\frac{3c}{3} = \\frac{12}{3}$, donc $c = 4$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une première expérience de la lettre comme inconnue. Dans la prochaine partie, nous allons voir comment construire nous‑mêmes une expression littérale à partir d'une phrase du quotidien, sans équation au départ. C'est l'art de modéliser une situation, et c'est exactement ce que nous ferons dans la troisième leçon. Mais avant, entraînons‑nous à écrire une expression simple."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une expression littérale"
+            },
+            {
+              "type": "paragraph",
+              "content": "Écrire une expression littérale, c'est traduire une phrase en langage mathématique. Par exemple : « Le double d'un nombre augmenté de $7$ ». Tu choisis une lettre, disons $n$, pour le nombre. « Le double » signifie $2n$, « augmenté de $7$ » ajoute $+7$. L'expression finale est $2n + 7$. Remarque que le signe de multiplication est souvent omis devant une lettre : on écrit $2n$ au lieu de $2 \\times n$. Essaie maintenant avec « le triple d'un nombre diminué de $4$ » : tu dois obtenir $3n - 4$. Prends le temps de vérifier chaque mot avant d'écrire le symbole."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : choisir la lettre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décide quelle lettre représentera le nombre inconnu, par exemple $n$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : repérer les opérations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les verbes : double → $\\times 2$, triple → $\\times 3$, augmenté → $+$, diminué → $-$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : assembler",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le terme avec le coefficient devant la lettre, puis ajoute ou soustrait le nombre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Si $x = 4$, quelle est la valeur de $2x + 3$ ?",
+              "answer": "11",
+              "hint": "Remplace $x$ par 4 puis calcule.",
+              "explanation": "En substituant 4 à $x$, on obtient $2 \\times 4 + 3 = 8 + 3 = 11$."
+            },
+            {
+              "question": "Résous l'équation $3c + 2 = 14$ pour trouver $c$.",
+              "answer": "$c = 4$",
+              "hint": "Soustrais 2 des deux côtés, puis divise par 3.",
+              "explanation": "$3c + 2 = 14 \\Rightarrow 3c = 12 \\Rightarrow c = 4$."
+            },
+            {
+              "question": "Écris l'expression littérale pour : « le triple d'un nombre diminué de 5 ».",
+              "answer": "$3n - 5$",
+              "hint": "Choisis une lettre pour le nombre, multiplie par 3, puis soustrais 5.",
+              "explanation": "Le triple de $n$ s'écrit $3n$, diminué de 5 donne $3n - 5$."
+            }
+          ]
+        },
+        {
+          "title": "Substitution.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Remplacer la lettre par une valeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par l'opération la plus simple du calcul littéral : la substitution. Cela consiste à prendre une expression qui contient une lettre, par exemple $5y - 2$, et à remplacer cette lettre par une valeur numérique précise. Imagine que tu as une machine à calculer où tu insères une carte avec le nombre choisi ; la machine exécute alors le même programme pour toutes les cartes. Si tu décides que $y = -3$, tu écris $5(-3) - 2$. Attention au signe moins devant le $3$ : le produit $5 \\times (-3)$ donne $-15$, puis tu soustrais $2$ pour obtenir $-17$. Cette manipulation est exactement la même que celle que tu fais avec des nombres concrets, sauf que la lettre te permet de préparer le programme une seule fois pour l'utiliser avec autant de valeurs que tu veux. Prends le temps de visualiser le remplacement comme un échange de carte, cela rend l'opération très concrète."
+            },
+            {
+              "type": "thermometer_axis",
+              "min": -10,
+              "max": 10,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "y"
+                }
+              ],
+              "caption": "La valeur $y = -3$ sur un thermomètre gradué."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de remplacer une lettre par un nombre entier négatif. La même règle s'applique quand la lettre apparaît plusieurs fois dans l'expression. Nous allons voir comment procéder sans rien oublier."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La lettre apparaît plusieurs fois"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la même lettre se retrouve à plusieurs endroits dans une expression, comme dans $a^2 + 3a + 1$. Lorsque tu substitues une valeur, tu dois la remplacer **partout** où la lettre apparaît, sinon le calcul devient faux. Supposons $a = 2$. Tu écris $2^2 + 3 \\times 2 + 1$. Le carré $2^2$ donne $4$, le terme $3 \\times 2$ donne $6$, et tu ajoutes $1$ pour arriver à $11$. C'est une règle d'or : chaque occurrence de la lettre reçoit la même valeur, un peu comme si tu donnais le même badge à tous les membres d'une équipe. Si tu oublies une occurrence, le résultat ne correspond plus à l'expression originale. Entraîne‑toi à repérer toutes les lettres avant de commencer le remplacement, cela évite les erreurs les plus fréquentes."
+            },
+            {
+              "type": "display_math",
+              "latex": "a^2+3a+1"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier les occurrences",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère chaque $a$ dans l'expression : $a^2$, $3a$, et le terme constant $1$ n'en contient pas."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : substituer la valeur choisie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace chaque $a$ par $2$ : $2^2 + 3 \\times 2 + 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : calculer dans l'ordre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puissance d'abord : $2^2 = 4$. Multiplication : $3 \\times 2 = 6$. Addition : $4 + 6 + 1 = 11$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les entiers et les multiples occurrences, voyons comment la substitution fonctionne avec une fraction. La règle ne change pas, il faut seulement être attentif au calcul du produit."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Substitution avec une fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les fractions ne changent pas la règle de la substitution, elles demandent simplement un peu plus de soin. Prenons $t = \\frac{1}{2}$ dans l'expression $4t + 3$. Remplace $t$ par $\\frac{1}{2}$ : $4 \\times \\frac{1}{2} + 3$. Le produit $4 \\times \\frac{1}{2}$ vaut $2$, puis $2 + 3 = 5$. Tu peux aussi penser à la fraction comme à « la moitié de 4 », ce qui donne directement $2$. Cette manière de voir aide à éviter les erreurs de calcul mental. N'oublie pas que la fraction est un nombre comme les autres, elle obéit aux mêmes règles de priorité : multiplication avant addition. Essaie avec $t = \\frac{3}{4}$ dans $2t - 1$ pour t'entraîner."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "La fraction $\\frac{1}{2}$ représentée par une barre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule la valeur de $5y - 2$ pour $y = -3$.",
+              "answer": "-17",
+              "hint": "Remplace $y$ par -3, attention au signe.",
+              "explanation": "$5(-3) - 2 = -15 - 2 = -17$."
+            },
+            {
+              "question": "Si $a = 2$, calcule $a^2 + 3a + 1$.",
+              "answer": "11",
+              "hint": "Remplace chaque $a$ par 2.",
+              "explanation": "$2^2 + 3 \\times 2 + 1 = 4 + 6 + 1 = 11$."
+            },
+            {
+              "question": "Pour $t = \\frac{1}{2}$, quelle est la valeur de $4t + 3$ ?",
+              "answer": "5",
+              "hint": "Multiplie 4 par 1/2 puis ajoute 3.",
+              "explanation": "$4 \\times \\frac{1}{2} + 3 = 2 + 3 = 5$."
+            }
+          ]
+        },
+        {
+          "title": "Modéliser une situation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modéliser un périmètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Modéliser une situation, c'est transformer un énoncé du quotidien en une expression mathématique que l'on pourra ensuite utiliser. Supposons qu'on t'indique : « Un rectangle a une longueur de $L$ centimètres et une largeur fixe de $5$ centimètres. Écris son périmètre. » Le périmètre d'un rectangle se calcule par $2 \\times (\\text{longueur} + \\text{largeur})$. En remplaçant les mots par les symboles, tu obtiens $2(L + 5)$. En développant, cela devient $2L + 10$. La lettre $L$ est la seule inconnue ; tout le reste est connu. Cette expression te permettra de connaître le périmètre pour n'importe quelle longueur sans avoir à refaire le raisonnement à chaque fois. C'est la puissance de la modélisation : une seule formule, une infinité de cas possibles."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 7,
+                  "label": "L"
+                }
+              ],
+              "caption": "Position possible de la longueur $L = 7$ cm sur une droite graduée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant une expression qui donne le périmètre en fonction de $L$. Voyons comment l'utiliser pour répondre à une question précise."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser l'expression"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous avons l'expression $2L + 10$, nous pouvons l'utiliser pour répondre à des questions concrètes. Par exemple : « Quel est le périmètre si la longueur vaut $7$ cm ? » Il suffit de substituer $L = 7$ dans l'expression : $2 \\times 7 + 10 = 14 + 10 = 24$ cm. Remarque que la substitution suit exactement la même règle que dans la leçon précédente : on remplace la lettre par sa valeur, on respecte l'ordre des opérations, et on obtient le résultat. Cette étape montre pourquoi il est utile d'avoir d'abord construit l'expression : elle devient un outil réutilisable, un peu comme une calculette programmée pour ce problème précis."
+            },
+            {
+              "type": "display_math",
+              "latex": "2L+10"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le problème t'impose le résultat et te demande de retrouver la dimension inconnue. Reprenons le même rectangle : on sait que le périmètre doit être de $30$ cm. L'équation à résoudre est $2L + 10 = 30$. Pour isoler $L$, on commence par soustraire $10$ des deux côtés : $2L = 20$. Ensuite, on divise par $2$ : $L = 10$. La longueur recherchée est donc $10$ cm. Cette démarche est identique à celle que tu as vue pour résoudre $3c + 2 = 14$ ; seule l'histoire change. Entraîne‑toi à écrire l'équation à partir de l'expression, puis à la résoudre étape par étape, en vérifiant que chaque opération conserve l'égalité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Trouver la dimension imposée"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : écrire l'équation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À partir de l'expression du périmètre $2L + 10$, on écrit $2L + 10 = 30$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : soustraire 10",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $2L = 20$ en enlevant $10$ des deux côtés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : diviser par 2",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On divise par $2$ : $L = 10$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer ce qu'est une lettre en mathématiques.",
+                "Je sais substituer une valeur à une lettre dans une expression.",
+                "Je sais modéliser une situation concrète par une expression littérale.",
+                "Je sais utiliser l'expression pour calculer ou résoudre une équation simple."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un rectangle a une longueur de $L$ cm et une largeur de 5 cm. Écris l'expression de son périmètre.",
+              "answer": "$2L + 10$",
+              "hint": "Périmètre = 2 × (longueur + largeur).",
+              "explanation": "$2(L + 5) = 2L + 10$."
+            },
+            {
+              "question": "Avec l'expression $2L + 10$, calcule le périmètre si $L = 7$ cm.",
+              "answer": "24 cm",
+              "hint": "Remplace $L$ par 7.",
+              "explanation": "$2 \\times 7 + 10 = 14 + 10 = 24$."
+            },
+            {
+              "question": "Si le périmètre doit être 30 cm, quelle doit être la longueur $L$ ?",
+              "answer": "$L = 10$ cm",
+              "hint": "Résous $2L + 10 = 30$.",
+              "explanation": "$2L + 10 = 30 \\Rightarrow 2L = 20 \\Rightarrow L = 10$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

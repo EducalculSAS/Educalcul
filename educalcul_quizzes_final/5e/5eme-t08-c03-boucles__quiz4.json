@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 417,
+  "_course_code": "5eme-t08-c03-boucles",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Application : Boucles",
+  "title": "Quiz : Application des boucles",
+  "questions": [
+    {
+      "text": "Dans un programme, l'instruction « répéter 10 fois » fait exécuter le bloc d'instructions combien de fois ?",
+      "options": [
+        "Une fois",
+        "Dix fois",
+        "Indéfiniment",
+        "Jusqu'à ce qu'une condition devienne fausse"
+      ],
+      "correctAnswer": "Dix fois",
+      "explanation": "L'instruction « répéter 10 fois » indique explicitement que le bloc doit être exécuté 10 fois. Les autres options correspondent à d'autres structures de contrôle : une exécution unique, une boucle infinie ou une boucle conditionnelle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si la variable $x$ vaut $0$ au départ et qu'on exécute la boucle « répéter 5 fois : ajouter 2 à $x$ », quelle est la valeur finale de $x$ ?",
+      "options": [
+        "$2$",
+        "$5$",
+        "$10$",
+        "$7$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "Chaque itération ajoute 2 à $x$. Après 5 itérations, l'augmentation totale est $5 \\times 2 = 10$. Comme $x$ part de $0$, la valeur finale est $10$. Les distracteurs correspondent à une seule addition, au nombre d'itérations ou à une addition erronée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On part de $x = 1$ et on exécute la boucle « tant que $x < 10$ : $x = x + 3$ ». Combien de fois le corps de la boucle est exécuté ?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctAnswer": "3",
+      "explanation": "Les valeurs successives de $x$ sont 1, 4, 7, 10. La condition $x < 10$ est vraie pour 1, 4 et 7, ce qui donne 3 exécutions du corps. Lorsque $x$ devient 10, la condition devient fausse et la boucle s'arrête.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une boucle externe « répéter 3 fois » contient une boucle interne « répéter 4 fois ». Combien de fois le bloc interne est exécuté au total ?",
+      "options": [
+        "7",
+        "12",
+        "3",
+        "4"
+      ],
+      "correctAnswer": "12",
+      "explanation": "La boucle externe s'exécute 3 fois. À chaque tour, la boucle interne s'exécute 4 fois. Le nombre total d'exécutions du bloc interne est donc $3 \\times 4 = 12$. Les autres options correspondent à une addition, au nombre de tours de l'externe ou de l'interne seule.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En programmation graphique (type tortue), l'instruction « répéter 4 fois : avancer 100 ; tourner droite 90 » dessine quelle figure ?",
+      "options": [
+        "Un triangle",
+        "Un carré",
+        "Un cercle",
+        "Une ligne"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Répéter 4 fois un déplacement suivi d'un quart de tour (90 degrés) trace quatre côtés égaux avec des angles droits, ce qui forme un carré. Un triangle nécessiterait 3 répétitions, un cercle une courbe continue, et une ligne un seul déplacement.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

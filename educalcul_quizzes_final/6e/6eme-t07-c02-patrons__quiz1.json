@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 364,
+  "_course_code": "6eme-t07-c02-patrons",
+  "_level": "6e",
+  "_subject": "Espace",
+  "_subtheme": "Associer",
+  "title": "Associer un solide et son patron",
+  "questions": [
+    {
+      "text": "Parmi les patrons suivants, lequel correspond à un cube ?",
+      "options": [
+        "Un patron en forme de croix : 4 carrés alignés, avec 1 carré attaché de chaque côté du deuxième carré",
+        "Un patron en forme de T : 3 carrés alignés, avec 3 carrés attachés sous le carré central",
+        "Un patron en zigzag : 6 carrés alignés en ligne brisée",
+        "Un rectangle de 2 carrés sur 3 carrés (6 carrés au total)"
+      ],
+      "correctAnswer": "Un patron en forme de croix : 4 carrés alignés, avec 1 carré attaché de chaque côté du deuxième carré",
+      "explanation": "Un cube possède 6 faces carrées identiques. Pour former un cube, le patron doit permettre de replier les faces sans chevauchement. Le patron en croix (4 carrés en ligne, 1 de chaque côté du 2e) est un des 11 patrons valides du cube. Le patron en T (3+3) ne se referme pas correctement. Le zigzag de 6 carrés ne forme pas un volume clos. Le rectangle 2x3 ne peut pas se replier en cube car les faces opposées resteraient collées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On dispose d'un patron composé de 2 triangles équilatéraux identiques et de 3 rectangles de même hauteur. Quel solide ce patron permet-il de construire ?",
+      "options": [
+        "Une pyramide à base triangulaire",
+        "Un prisme droit à base triangulaire",
+        "Un cylindre",
+        "Un cône"
+      ],
+      "correctAnswer": "Un prisme droit à base triangulaire",
+      "explanation": "Un prisme droit à base triangulaire a 5 faces : 2 bases triangulaires (identiques et parallèles) et 3 faces latérales rectangulaires. Le patron décrit correspond exactement à cette composition. Une pyramide à base triangulaire (tétraèdre) n'a que 4 faces triangulaires. Un cylindre a 2 disques et 1 rectangle. Un cône a 1 disque et 1 secteur de disque.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le patron d'un cylindre de révolution est constitué de :",
+      "options": [
+        "Deux cercles et un rectangle",
+        "Un cercle et un secteur de cercle",
+        "Deux rectangles et un carré",
+        "Quatre triangles et un carré"
+      ],
+      "correctAnswer": "Deux cercles et un rectangle",
+      "explanation": "Un cylindre de révolution possède 3 surfaces : deux bases qui sont des disques (cercles pleins) et une surface latérale qui, une fois développée, forme un rectangle. La longueur de ce rectangle est égale au périmètre de la base ($2\\pi r$) et sa largeur est la hauteur du cylindre. Un cercle et un secteur de cercle forment un cône. Les autres combinaisons ne correspondent à aucun solide de révolution courant.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le patron d'une pyramide à base carrée ?",
+      "options": [
+        "Un carré entouré de 4 triangles isocèles identiques",
+        "Un carré entouré de 4 rectangles identiques",
+        "Deux carrés et 4 rectangles",
+        "Un triangle entouré de 3 triangles"
+      ],
+      "correctAnswer": "Un carré entouré de 4 triangles isocèles identiques",
+      "explanation": "Une pyramide à base carrée a 5 faces : 1 base carrée et 4 faces latérales triangulaires. Dans un patron classique, la base carrée est au centre et les 4 triangles isocèles (les faces latérales) sont attachés à chacun de ses côtés. L'option avec des rectangles correspond à un prisme (pavé droit). Deux carrés et 4 rectangles forment un pavé droit. Un triangle entouré de 3 triangles forme un tétraèdre (pyramide à base triangulaire).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observez le patron ci-dessous. Quel solide peut-on obtenir en le pliant ?",
+      "options": [
+        "Un pavé droit",
+        "Un cube",
+        "Un prisme droit à base triangulaire",
+        "Une pyramide à base carrée"
+      ],
+      "correctAnswer": "Un pavé droit",
+      "explanation": "La figure présente un patron classique de pavé droit : 3 paires de rectangles identiques (deux de dimensions $4\\times3$, deux de $4\\times2$, deux de $3\\times2$). En pliant les faces latérales le long des arêtes communes, on obtient un solide à 6 faces rectangulaires, c'est-à-dire un pavé droit. Ce n'est pas un cube car les faces n'ont pas toutes la même dimension. Ce n'est pas un prisme triangulaire (pas de triangles) ni une pyramide (pas de sommet unique où convergent des triangles).",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cuboid",
+        "width": 4,
+        "height": 3,
+        "depth": 2,
+        "caption": "Patron d'un pavé droit de dimensions 4, 3 et 2"
+      }
+    }
+  ]
+}

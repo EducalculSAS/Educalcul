@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 524,
+  "_course_code": "2nde-t05-c05-resoudre-graphiquement-equations-et-inequations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Intersections",
+  "title": "Intersections graphiques : algorithmes de balayage et dichotomie",
+  "blocks": [
+    {
+      "title": "Algorithme de balayage pour intersections",
+      "content": "Écrire un algorithme (en pseudo-code) qui, étant donnés deux fonctions continues $f$ et $g$ sur un intervalle $[a,b]$ et un pas $h>0$, renvoie une liste d'approximations des abscisses des points d'intersection des courbes $y=f(x)$ et $y=g(x)$. L'algorithme doit détecter les changements de signe de $f(x)-g(x)$ au pas $h$ et stocker le milieu de chaque sous-intervalle où un changement se produit.",
+      "correctAnswer": "Algorithme (pseudo-code) :\\n1. Initialiser liste L vide.\\n2. Pour x de a à b-h par pas h :\\n   si (f(x)-g(x))*(f(x+h)-g(x+h)) <= 0 alors\\n       ajouter (x + x+h)/2 à L.\\n3. Retourner L.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On évalue la différence $f-g$ aux points du maillage. Un changement de signe (ou un zéro) entre deux points consécutifs indique la présence d'une intersection d'après le théorème des valeurs intermédiaires. Le milieu de l'intervalle est une première approximation.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Affinement par dichotomie",
+      "content": "Compléter l'algorithme précédent en ajoutant une procédure de dichotomie (bissection) pour affiner chaque approximation trouvée jusqu'à une précision $\\varepsilon>0$. Écrire la fonction `dichotomie(f,g, a, b, eps)` qui suppose que $f(a)-g(a)$ et $f(b)-g(b)$ ont des signes opposés et retourne une approximation de l'intersection avec une erreur inférieure à $\\varepsilon$.",
+      "correctAnswer": "Fonction dichotomie(f,g,a,b,eps) :\\n    tant que b-a > eps :\\n        m = (a+b)/2\\n        si (f(a)-g(a))*(f(m)-g(m)) <= 0 :\\n            b = m\\n        sinon :\\n            a = m\\n    retourner (a+b)/2",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La dichotomie réduit l'intervalle contenant la racine de $f-g$ en le divisant par deux à chaque itération, garantissant une convergence linéaire. La condition d'arrêt $b-a<\\varepsilon$ assure la précision demandée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application numérique",
+      "content": "On considère $f(x)=x^2-2$ et $g(x)=2x-1$. En utilisant l'algorithme de balayage avec $a=-3$, $b=3$, $h=0,5$ puis la dichotomie avec $\\varepsilon=10^{-3}$, donner les valeurs approchées des abscisses des points d'intersection des deux courbes. Présenter le résultat sous forme de liste de nombres arrondis à $10^{-3}$.",
+      "correctAnswer": "Les intersections exactes sont les solutions de $x^2-2=2x-1$ c'est-à-dire $x^2-2x-1=0$, soit $x=1\\pm\\sqrt{2}\\approx -0,414$ et $2,414$. Le balayage avec $h=0,5$ détecte des changements de signe sur $[-1,-0,5]$ et $[2,2,5]$. La dichotomie affine à $10^{-3}$ donne $[-0,414, 2,414]$ (arrondis au millième).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On résout $f(x)=g(x)$ analytiquement pour vérifier. Le balayage trouve les intervalles contenant les racines. La dichotomie converge vers $1-\\sqrt{2}\\approx -0,41421356$ et $1+\\sqrt{2}\\approx 2,41421356$. Arrondis à $10^{-3}$ : $-0,414$ et $2,414$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

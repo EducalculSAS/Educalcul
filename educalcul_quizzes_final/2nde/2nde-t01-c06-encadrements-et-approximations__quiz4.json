@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 501,
+  "_course_code": "2nde-t01-c06-encadrements-et-approximations",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Application : Encadrements et approximations",
+  "title": "Quiz : Encadrements et approximations - Applications",
+  "questions": [
+    {
+      "text": "On arrondit le nombre $x = 3,14159$ au dixième près. Quel encadrement (intervalle) contient la valeur exacte de $x$ ?",
+      "options": [
+        "$[3,05 ; 3,15[$",
+        "$[3,1 ; 3,2]$",
+        "$[3,14 ; 3,15]$",
+        "$[3,0 ; 3,2]$"
+      ],
+      "correctAnswer": "$[3,05 ; 3,15[$",
+      "explanation": "L'arrondi au dixième près donne $3,1$. L'erreur maximale est la moitié de l'unité du dernier chiffre conservé, soit $0,05$. La valeur exacte se trouve donc dans l'intervalle $[3,1-0,05 ; 3,1+0,05[ = [3,05 ; 3,15[$. Les autres intervalles sont soit trop larges, soit ne correspondent pas à la précision du dixième.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On sait qu'un nombre réel $y$ appartient à l'intervalle $[2,34 ; 2,36]$. Quelle est la meilleure approximation de $y$ au centième près ?",
+      "options": [
+        "$2,34$",
+        "$2,35$",
+        "$2,36$",
+        "$2,3$"
+      ],
+      "correctAnswer": "$2,35$",
+      "explanation": "L'intervalle a pour centre $(2,34+2,36)/2 = 2,35$ et une demi-largeur de $0,01$. La valeur la plus représentative au centième près est ce centre, $2,35$. Les bornes $2,34$ et $2,36$ sont les extrémités, et $2,3$ correspond à un arrondi au dixième, moins précis.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a deux mesures approchées : $a = 12,3 \\pm 0,05$ et $b = 4,56 \\pm 0,01$. On calcule $s = a + b$. Quel est l'encadrement de $s$ ?",
+      "options": [
+        "$16,86 \\pm 0,06$",
+        "$16,86 \\pm 0,05$",
+        "$16,86 \\pm 0,01$",
+        "$16,86 \\pm 0,07$"
+      ],
+      "correctAnswer": "$16,86 \\pm 0,06$",
+      "explanation": "La valeur approchée de la somme est $12,3 + 4,56 = 16,86$. Pour une addition, les erreurs absolues s'additionnent : $0,05 + 0,01 = 0,06$. L'encadrement est donc $16,86 \\pm 0,06$. Les autres options correspondent à une erreur non additionnée ou mal calculée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a $u = 3,2 \\pm 0,1$ et $v = 1,5 \\pm 0,05$. On calcule $p = u \\times v$. Quelle est l'erreur absolue approchée sur $p$ ?",
+      "options": [
+        "$0,31$",
+        "$0,15$",
+        "$0,48$",
+        "$0,05$"
+      ],
+      "correctAnswer": "$0,31$",
+      "explanation": "La valeur nominale du produit est $3,2 \\times 1,5 = 4,8$. Les erreurs relatives sont $0,1/3,2 \\approx 0,03125$ et $0,05/1,5 \\approx 0,03333$. Leur somme donne l'erreur relative sur le produit : $\\approx 0,0646$. L'erreur absolue est $4,8 \\times 0,0646 \\approx 0,31$. Les autres valeurs correspondent à des calculs erronés (erreur relative unique, produit des erreurs, etc.).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur $L = 10,0 \\pm 0,1$ cm et une largeur $l = 5,0 \\pm 0,1$ cm. Quelle est l'encadrement de l'aire $A = L \\times l$ ?",
+      "options": [
+        "$[48,5 ; 51,5]$",
+        "$[49,0 ; 51,0]$",
+        "$[49,5 ; 50,5]$",
+        "$[48,0 ; 52,0]$"
+      ],
+      "correctAnswer": "$[48,5 ; 51,5]$",
+      "explanation": "L'aire nominale est $10,0 \\times 5,0 = 50,0$ cm². Les erreurs relatives sont $0,1/10,0 = 0,01$ et $0,1/5,0 = 0,02$. Leur somme $0,03$ donne l'erreur relative sur l'aire. L'erreur absolue est $50,0 \\times 0,03 = 1,5$ cm². L'encadrement est donc $[50,0-1,5 ; 50,0+1,5] = [48,5 ; 51,5]$. Les autres intervalles ne correspondent pas à la propagation correcte des incertitudes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 211,
+  "_course_code": "cm1-t01-c01-lire-et-ecrire-les-grands-nombres",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Classes milliers / millions selon attendus",
+  "title": "Algorithmes sur les classes milliers et millions",
+  "blocks": [
+    {
+      "title": "Décomposition en classes",
+      "content": "Écris un algorithme (en langage naturel ou pseudo‑code) qui prend en entrée un nombre entier positif inférieur à $10\\,000\\,000$ et affiche ses trois classes : millions, milliers, unités (chaque classe sur trois chiffres).",
+      "correctAnswer": "Algorithme :\\n1. Lire le nombre N.\\n2. Calculer millions = partie entière de N / $1\\,000\\,000$.\\n3. Calculer reste = N modulo $1\\,000\\,000$.\\n4. Calculer milliers = partie entière de reste / $1\\,000$.\\n5. Calculer unités = reste modulo $1\\,000$.\\n6. Afficher millions, milliers, unités (en complétant avec des zéros à gauche pour avoir trois chiffres chacun).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On isole la classe des millions en divisant par 1 000 000, le reste contient les milliers et les unités. On répète l'opération avec 1 000 pour obtenir la classe des milliers, le dernier reste étant la classe des unités. L'affichage sur trois chiffres assure une lecture uniforme (ex. 005 pour 5).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Reconstruction du nombre",
+      "content": "À partir des trois classes obtenues (millions, milliers, unités), écris la formule mathématique qui permet de retrouver le nombre initial.",
+      "correctAnswer": "Nombre = millions $\\times$ $1\\,000\\,000$ + milliers $\\times$ $1\\,000$ + unités.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque classe correspond à un groupe de trois chiffres. Les millions valent 1 000 000 fois leur chiffre, les milliers valent 1 000 fois leur chiffre, les unités valent leur chiffre. En additionnant ces trois produits, on reconstitue exactement le nombre d'origine.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparaison de deux grands nombres",
+      "content": "Propose un algorithme qui compare deux nombres entiers (inférieurs à $10\\,000\\,000$) en examinant successivement leurs classes millions, puis milliers, puis unités, et qui renvoie le plus grand des deux.",
+      "correctAnswer": "Algorithme :\\n1. Décomposer les deux nombres A et B en classes (millions_A, milliers_A, unités_A) et (millions_B, milliers_B, unités_B) comme dans la question 1.\\n2. Si millions_A > millions_B alors afficher A.\\n3. Sinon si millions_A < millions_B alors afficher B.\\n4. Sinon (millions égaux) comparer milliers_A et milliers_B de la même façon.\\n5. Si milliers égaux, comparer unités_A et unités_B.\\n6. Si toutes les classes sont égales, les deux nombres sont égaux.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La comparaison lexicographique des classes (millions, milliers, unités) fonctionne car chaque classe pèse strictement plus que la suivante. On compare d'abord la classe la plus significative ; si elle départage, on s'arrête. Sinon on passe à la classe suivante jusqu'à trancher ou constater l'égalité totale.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

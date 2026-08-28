@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 492,
+  "_course_code": "3eme-t07-c03-simulations-probabilistes",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Approfondissement : Répéter",
+  "title": "Algorithmes de simulation : boucles et répétitions",
+  "blocks": [
+    {
+      "title": "Simulation simple avec compteur",
+      "content": "On veut écrire un algorithme qui simule le lancer d'un dé à six faces équilibré 100 fois et qui compte combien de fois la face 6 est obtenue. \\nCompléter l'algorithme ci-dessous en écrivant les lignes manquantes (en langage naturel ou syntaxe type Python). \\n\\nVariables : nbreSix, i, lance\\nDébut\\n  nbreSix prend la valeur 0\\n  Pour i allant de 1 à 100 faire\\n    lance prend une valeur aléatoire entière entre 1 et 6\\n    Si lance = 6 alors\\n      ... \\n    Fin Si\\n  Fin Pour\\n  Afficher nbreSix\\nFin",
+      "correctAnswer": "nbreSix prend la valeur nbreSix + 1\\n(ou nbreSix ← nbreSix + 1)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "À chaque tour de boucle, on tire un entier entre 1 et 6. Si ce tirage vaut 6, on incrémente le compteur nbreSix de 1. L'instruction d'incrémentation se place à l'intérieur du Si, car on ne compte que les succès.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation d'une probabilité par répétition",
+      "content": "On lance deux dés équilibrés. On note l'événement A : \"La somme des deux dés est supérieure ou égale à 10\". \\nÉcrire un algorithme complet qui simule cette expérience 1000 fois, compte le nombre de fois où A se réalise, puis affiche la fréquence de A (quotient du nombre de succès sur le nombre total d'essais) comme estimation de la probabilité.",
+      "correctAnswer": "Variables : nbSucces, i, de1, de2, somme, frequence\\nDébut\\n  nbSucces ← 0\\n  Pour i de 1 à 1000 faire\\n    de1 ← aléa_entier(1, 6)\\n    de2 ← aléa_entier(1, 6)\\n    somme ← de1 + de2\\n    Si somme ≥ 10 alors\\n      nbSucces ← nbSucces + 1\\n    Fin Si\\n  Fin Pour\\n  frequence ← nbSucces / 1000\\n  Afficher frequence\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme initialise un compteur à 0. La boucle Pour répète 1000 fois le tirage de deux dés. On calcule la somme et on teste la condition (somme ≥ 10). Si elle est vraie, on incrémente le compteur. Après la boucle, on calcule la fréquence en divisant le nombre de succès par 1000. Cette fréquence approche la probabilité théorique (6/36 = 1/6).",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Simulation d'un jeu et gain moyen",
+      "content": "Un jeu consiste à lancer une pièce de monnaie équilibrée. \\n- Si c'est \"Face\", le joueur gagne 2 €. \\n- Si c'est \"Pile\", le joueur perd 1 €. \\nÉcrire un algorithme qui simule 500 parties de ce jeu, calcule le gain total accumulé sur ces 500 parties, puis affiche le gain moyen par partie (gain total divisé par 500).",
+      "correctAnswer": "Variables : gainTotal, i, tirage, gainMoyen\\nDébut\\n  gainTotal ← 0\\n  Pour i de 1 à 500 faire\\n    tirage ← aléa_entier(0, 1)  // 0 pour Pile, 1 pour Face\\n    Si tirage = 1 alors\\n      gainTotal ← gainTotal + 2\\n    Sinon\\n      gainTotal ← gainTotal - 1\\n    Fin Si\\n  Fin Pour\\n  gainMoyen ← gainTotal / 500\\n  Afficher gainMoyen\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise gainTotal à 0. La boucle répète 500 fois : on simule la pièce (0 ou 1). Si Face (1), on ajoute 2 au total ; si Pile (0), on soustrait 1. Après la boucle, on divise le total par 500 pour obtenir la moyenne. Le gain moyen théorique est (1/2)×2 + (1/2)×(-1) = 0,5 €. La simulation doit donner une valeur proche.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

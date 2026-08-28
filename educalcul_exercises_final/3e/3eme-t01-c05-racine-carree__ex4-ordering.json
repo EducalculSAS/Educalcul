@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 459,
+  "_course_code": "3eme-t01-c05-racine-carree",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Application : Racine carrée",
+  "title": "Applications de la racine carrée : mise en ordre",
+  "blocks": [
+    {
+      "title": "Résolution d'une équation du second degré",
+      "content": "Range les étapes dans l'ordre logique pour résoudre l'équation $x^{2}=49$ avec la condition $x>0$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écrire l'équation $x^{2}=49$.",
+        "Prendre la racine carrée des deux membres : $\\sqrt{x^{2}}=\\sqrt{49}$.",
+        "Simplifier $\\sqrt{x^{2}}$ en $x$ (car $x>0$) et $\\sqrt{49}$ en $7$.",
+        "Conclure que $x=7$."
+      ],
+      "explanation": "On commence par écrire l'équation. Ensuite, on applique la racine carrée aux deux membres pour éliminer le carré. Comme $x$ est positif, $\\sqrt{x^{2}}=x$. La racine carrée de $49$ est $7$. Donc $x=7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul du côté d'un carré connaissant son aire",
+      "content": "Range les étapes dans l'ordre pour déterminer la longueur du côté d'un carré dont l'aire est $64\\text{ cm}^{2}$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Rappeler la formule de l'aire d'un carré : $A=c^{2}$ où $c$ est la longueur du côté.",
+        "Remplacer $A$ par $64$ : $c^{2}=64$.",
+        "Prendre la racine carrée des deux membres : $c=\\sqrt{64}$.",
+        "Calculer $\\sqrt{64}=8$ et conclure que le côté mesure $8\\text{ cm}$."
+      ],
+      "explanation": "On utilise la relation $A=c^{2}$. En substituant $A=64$, on obtient $c^{2}=64$. La racine carrée donne $c=\\sqrt{64}=8$. Le côté vaut donc $8\\text{ cm}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification d'une racine carrée",
+      "content": "Range les étapes pour écrire $\\sqrt{180}$ sous la forme la plus simple $a\\sqrt{b}$ avec $a,b$ entiers et $b$ sans facteur carré.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Décomposer $180$ en produit d'un carré parfait et d'un autre nombre : $180 = 36 \\times 5$.",
+        "Écrire $\\sqrt{180} = \\sqrt{36 \\times 5}$.",
+        "Utiliser la propriété $\\sqrt{ab} = \\sqrt{a}\\sqrt{b}$ : $\\sqrt{36}\\sqrt{5}$.",
+        "Calculer $\\sqrt{36}=6$.",
+        "Obtenir la forme simplifiée $6\\sqrt{5}$."
+      ],
+      "explanation": "On cherche un facteur carré dans $180$. $36$ est un carré parfait ($6^{2}$). On réécrit $180 = 36 \\times 5$. La racine du produit se sépare en produit des racines. $\\sqrt{36}=6$, donc $\\sqrt{180}=6\\sqrt{5}$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

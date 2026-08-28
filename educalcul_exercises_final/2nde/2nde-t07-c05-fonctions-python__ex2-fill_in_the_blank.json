@@ -1,0 +1,53 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 538,
+  "_course_code": "2nde-t07-c05-fonctions-python",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Retour",
+  "title": "Les instructions de retour en Python",
+  "blocks": [
+    {
+      "title": "Retour simple",
+      "content": "Complétez la fonction suivante pour qu'elle renvoie le carré du nombre passé en paramètre :\\n\\ndef carre(x):\\n    {{1}} x * x",
+      "correctAnswer": "",
+      "blanks": [
+        "return"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "En Python, le mot-clé return permet de quitter la fonction et de transmettre une valeur au code appelant. Ici, on écrit return x * x pour que la fonction carre renvoie le carré de x.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Retour conditionnel",
+      "content": "Dans la fonction suivante, complétez les trois instructions de retour pour que la fonction renvoie $1$ si le nombre est positif, $-1$ s'il est négatif et $0$ s'il est nul :\\n\\ndef signe(n):\\n    if n > 0:\\n        {{1}}\\n    elif n < 0:\\n        {{2}}\\n    else:\\n        {{3}}",
+      "correctAnswer": "",
+      "blanks": [
+        "return 1",
+        "return -1",
+        "return 0"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque branche du test conditionnel doit se terminer par une instruction return suivie de la valeur à renvoyer. Ainsi, si n > 0 on exécute return 1, si n < 0 on exécute return -1, sinon (n == 0) on exécute return 0.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Retour de plusieurs valeurs",
+      "content": "Complétez la fonction pour qu'elle renvoie à la fois le quotient et le reste de la division euclidienne de $a$ par $b$ :\\n\\ndef division(a, b):\\n    q = a // b\\n    r = a % b\\n    {{1}}",
+      "correctAnswer": "",
+      "blanks": [
+        "return q, r|return (q, r)"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Python permet de renvoyer plusieurs valeurs en les séparant par des virgules ; cela crée un tuple. L'instruction return q, r (ou return (q, r)) renvoie donc le couple (quotient, reste) au programme appelant.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

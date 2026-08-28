@@ -1,0 +1,521 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.612013+00:00",
+  "id": 359,
+  "code": "6eme-t06-c03",
+  "title": "Triangles et quadrilatères",
+  "description": "Cours structuré Educalcul : Triangles et quadrilatères.",
+  "subject": "Géométrie plane",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Géométrie plane",
+    "titre_du_cours": "Triangles et quadrilatères",
+    "objectif_global": "Triangles et quadrilatères",
+    "mini_lecons_imposees": [
+      "Propriétés.",
+      "Construire.",
+      "Coder."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane",
+      "lessons": [
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les triangles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un triangle est une figure plane formée de trois segments qui se rejoignent deux à deux. Chaque segment s'appelle un côté, chaque point de rencontre un sommet, et l'espace entre deux côtés un angle. Tu vas rencontrer plusieurs familles de triangles : l'équilatéral où les trois côtés ont la même longueur, l'isocèle qui a deux côtés égaux, le rectangle qui possède un angle droit, et le triangle quelconque qui ne rentre dans aucune de ces catégories. Prends le temps d'observer chaque forme, car reconnaître la famille d'un triangle t'aidera plus tard à appliquer les bonnes propriétés."
+            },
+            {
+              "type": "definition",
+              "term": "Triangle",
+              "definition": "Figure plane limitée par trois segments de droite qui se coupent deux à deux en trois points distincts appelés sommets.",
+              "example": "Le triangle ABC a les sommets A, B et C."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un triangle équilatéral de côté $5\\,cm$. Ses trois angles mesurent chacun $60^{\\circ}$, car la somme des angles d'un triangle vaut toujours $180^{\\circ}$. Si tu traces la hauteur depuis un sommet, elle coupe le côté opposé en son milieu et forme deux triangles rectangles identiques. C'est une propriété très utile pour calculer des longueurs ou des aires plus tard."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle équilatéral de côté 5 cm",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "5 cm",
+                "5 cm",
+                "5 cm"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu les triangles, passons aux quadrilatères. Tu vas découvrir qu'ils partagent aussi des règles simples, mais avec quatre côtés au lieu de trois."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les quadrilatères"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un quadrilatère est une figure plane à quatre côtés. Comme pour les triangles, il existe des familles bien connues : le carré (quatre côtés égaux et quatre angles droits), le rectangle (angles droits, côtés opposés égaux), le losange (quatre côtés égaux, angles non droits), le parallélogramme (côtés opposés parallèles deux à deux) et le trapèze (au moins une paire de côtés parallèles). Chaque famille a ses propres propriétés, mais toutes ont en commun que la somme de leurs angles intérieurs vaut $360^{\\circ}$."
+            },
+            {
+              "type": "definition",
+              "term": "Quadrilatère",
+              "definition": "Figure plane fermée délimitée par quatre segments de droite qui se rejoignent deux à deux en quatre sommets.",
+              "example": "Le carré ABCD est un quadrilatère particulier."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un rectangle de longueur $8\\,cm$ et de largeur $3\\,cm$. Ses angles sont tous droits, donc $90^{\\circ}$ chacun. La somme $4 \\times 90^{\\circ} = 360^{\\circ}$ se vérifie. Si tu traces les diagonales, elles ont la même longueur et se coupent en leur milieu. Cette particularité permet de vérifier qu'un quadrilatère est bien un rectangle."
+            },
+            {
+              "type": "display_math",
+              "latex": "360^{\\circ}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir identifié les familles, regardons ce qui unit triangles et quadrilatères : la somme des angles et les relations entre côtés parallèles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés communes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quel que soit le triangle, la somme de ses trois angles intérieurs est toujours $180^{\\circ}$. Pour un quadrilatère, on peut le diviser en deux triangles en traçant une diagonale ; chaque triangle apporte $180^{\\circ}$, donc le total est $360^{\\circ}$. Cette astuce te permet de retrouver un angle manquant quand tu connais les autres. De plus, dans un parallélogramme, les côtés opposés sont parallèles et égaux, et les angles opposés sont égaux. Ces faits sont des outils puissants pour résoudre des problèmes de géométrie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la figure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre de côtés et note les parallélismes ou les égalités de longueurs indiqués par le codage."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la somme des angles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si c'est un triangle, écris $180^{\\circ} = \\text{angle}_1 + \\text{angle}_2 + \\text{angle}_3$. Si c'est un quadrilatère, écris $360^{\\circ} = \\text{somme des quatre angles}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer l'inconnu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résous l'équation simple pour trouver l'angle ou le côté manquant."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une bonne vision d'ensemble des triangles et quadrilatères. La prochaine leçon t'apprendra à les construire avec précision."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un triangle isocèle, les deux angles à la base mesurent $50^{\\circ}$ chacun. Quelle est la mesure de l'angle au sommet ?",
+              "answer": "$80^{\\circ}$",
+              "hint": "Utilise la somme des angles d'un triangle : $180^{\\circ}$.",
+              "explanation": "La somme des trois angles vaut $180^{\\circ}$. Les deux angles à la base font $50^{\\circ}+50^{\\circ}=100^{\\circ}$. L'angle au sommet est donc $180^{\\circ}-100^{\\circ}=80^{\\circ}$."
+            },
+            {
+              "question": "Un losange a un angle de $70^{\\circ}$. Quelles sont les mesures des trois autres angles ?",
+              "answer": "$110^{\\circ}, 70^{\\circ}, 110^{\\circ}$",
+              "hint": "Les angles opposés d'un losange sont égaux, et les angles adjacents sont supplémentaires.",
+              "explanation": "Dans un losange, les angles opposés sont égaux. L'angle adjacent à $70^{\\circ}$ est supplémentaire : $180^{\\circ}-70^{\\circ}=110^{\\circ}$. Donc les angles sont $70^{\\circ}, 110^{\\circ}, 70^{\\circ}, 110^{\\circ}$."
+            },
+            {
+              "question": "Dans un parallélogramme, un angle mesure $120^{\\circ}$. Donne les mesures des trois autres angles.",
+              "answer": "$60^{\\circ}, 120^{\\circ}, 60^{\\circ}$",
+              "hint": "Les angles opposés sont égaux, les angles adjacents sont supplémentaires.",
+              "explanation": "L'angle opposé à $120^{\\circ}$ est aussi $120^{\\circ}$. Les deux angles adjacents sont supplémentaires : $180^{\\circ}-120^{\\circ}=60^{\\circ}$. Donc les angles sont $120^{\\circ}, 60^{\\circ}, 120^{\\circ}, 60^{\\circ}$."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle à trois côtés"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand on connaît les trois longueurs d'un triangle, on peut le tracer à la règle et au compas. La méthode repose sur le fait que deux cercles de rayons égaux aux deux côtés se coupent en un point qui sera le troisième sommet. C'est une construction classique qui garantit l'unicité du triangle (si les longueurs respectent l'inégalité triangulaire). Prends ton compas, règle et crayon, et suis les étapes calmement."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine un segment $AB$ dont la longueur correspond au premier côté donné."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer le premier cercle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la pointe du compas sur $A$, ouvre-le à la longueur du deuxième côté, et trace un cercle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer le second cercle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sans changer l'écartement, place la pointe sur $B$, ouvre à la longueur du troisième côté, et trace un second cercle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Repérer le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux cercles se coupent en deux points symétriques par rapport à $AB$. Choisis l'un d'eux, appelle-le $C$, et relie $C$ à $A$ et $B$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "compass_tool",
+              "radius": 5,
+              "centerLabel": "A",
+              "caption": "Cercle de rayon 5 cm centré en A pour la construction"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu connais deux côtés et l'angle compris, la construction change légèrement : on trace d'abord un côté, puis on reporte l'angle à l'aide du rapporteur, et enfin on marque la longueur du second côté sur la demi-droite de l'angle."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle à deux côtés et l'angle compris"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette situation arrive souvent dans les problèmes concrets : on a une base, un angle au sommet et la longueur du côté adjacent. Le rapporteur permet de tracer l'angle avec précision, puis le compas reporte la longueur. Vérifie toujours que l'angle est bien mesuré dans le bon sens (sens trigonométrique ou horaire selon la consigne)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le côté connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine le segment $AB$ de la longueur donnée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Reporter l'angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le rapporteur sur $A$, aligne la base sur $AB$, marque le point correspondant à l'angle donné, et trace la demi-droite $Ax$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Marquer le deuxième côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec le compas, prends la longueur du second côté, pointe sur $A$, et coupe la demi-droite $Ax$ en $C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Fermer le triangle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie $C$ à $B$. Le triangle $ABC$ est construit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "interactive_protractor",
+              "angleDeg": 40,
+              "caption": "Rapporteur pour tracer un angle de 40°"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les quadrilatères particuliers comme le carré ou le rectangle se construisent aussi à la règle et au compas. Pour un carré, il suffit de tracer un segment, de construire un angle droit à chaque extrémité, puis de reporter la même longueur sur les deux demi-droites."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un carré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le carré est le quadrilatère le plus simple à construire car il ne nécessite que des angles droits et des côtés égaux. Une fois le premier côté tracé, l'équerre ou le compas (en traçant un arc de cercle de rayon égal au côté) permet de lever les perpendiculaires. La vérification finale consiste à mesurer les diagonales : elles doivent être égales et se couper à leur milieu."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine $AB$ de la longueur désirée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Construire les angles droits",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "À $A$ et $B$, trace une perpendiculaire à $AB$ (avec l'équerre ou en construisant un angle droit au compas)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter la longueur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur chaque perpendiculaire, marque un point $D$ et $C$ tels que $AD = AB$ et $BC = AB$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Fermer le carré",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie $C$ et $D$. Vérifie que $CD = AB$ et que les diagonales $AC$ et $BD$ ont la même longueur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant construire les figures de base. La dernière leçon t'apprendra à les coder pour communiquer tes constructions sans ambiguïté."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Construction : trace un triangle dont les côtés mesurent $4\\,cm$, $5\\,cm$ et $6\\,cm$. Quelle est la première étape ?",
+              "answer": "Tracer le segment de $4\\,cm$ (ou le plus long) comme base.",
+              "hint": "Choisis un côté comme base, puis utilise le compas pour les deux autres longueurs.",
+              "explanation": "On commence par dessiner un côté, par exemple $AB = 4\\,cm$. Ensuite on trace un cercle de centre $A$ et rayon $5\\,cm$, et un cercle de centre $B$ et rayon $6\\,cm$. Leur intersection donne le troisième sommet."
+            },
+            {
+              "question": "Tu dois construire un triangle $ABC$ avec $AB = 5\\,cm$, $AC = 4\\,cm$ et $\\widehat{BAC} = 30^{\\circ}$. Après avoir tracé $AB$, que fais-tu ?",
+              "answer": "Reporter l'angle de $30^{\\circ}$ en $A$ sur la demi-droite, puis marquer $AC = 4\\,cm$ sur cette demi-droite.",
+              "hint": "Utilise le rapporteur pour l'angle, puis le compas pour la longueur.",
+              "explanation": "On place le rapporteur sur $A$ avec la base sur $AB$, on marque $30^{\\circ}$, on trace la demi-droite. Avec le compas ouvert à $4\\,cm$, on pointe $A$ et on coupe la demi-droite en $C$. Enfin on relie $C$ à $B$."
+            },
+            {
+              "question": "Pour construire un carré de côté $3\\,cm$, combien de perpendiculaires dois-tu tracer au minimum ?",
+              "answer": "Deux perpendiculaires (une à chaque extrémité du premier côté).",
+              "hint": "Un carré a quatre angles droits, mais deux suffisent pour déterminer les deux côtés adjacents.",
+              "explanation": "On trace $AB = 3\\,cm$. En $A$ et $B$, on construit une perpendiculaire à $AB$. Sur chacune, on reporte $3\\,cm$ pour obtenir $D$ et $C$. Le segment $CD$ se ferme tout seul et mesure aussi $3\\,cm$."
+            }
+          ]
+        },
+        {
+          "title": "Coder.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coder les longueurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le codage des longueurs permet de montrer visuellement quels côtés ont la même mesure sans écrire de chiffres. On utilise des petits traits : un trait pour la première longueur, deux traits pour la seconde, trois traits pour la troisième, et ainsi de suite. C'est une convention universelle en géométrie qui rend les figures lisibles au premier coup d'œil. Quand tu vois deux côtés marqués d'un seul trait, tu sais immédiatement qu'ils sont égaux."
+            },
+            {
+              "type": "definition",
+              "term": "Codage des longueurs",
+              "definition": "Convention graphique consistant à marquer les segments de même longueur par le même nombre de traits courts perpendiculaires au segment.",
+              "example": "Dans un triangle isocèle, les deux côtés égaux portent un trait chacun."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un parallélogramme $ABCD$. Les côtés opposés $AB$ et $CD$ sont égaux, on les code avec un trait. Les côtés $BC$ et $AD$ sont aussi égaux, on les code avec deux traits. Ainsi, rien qu'en regardant la figure, on devine les parallélismes et les égalités. Essaie de reproduire ce codage sur une feuille : trace un quadrilatère quelconque, mesure les côtés, puis appose les traits correspondants."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de traits selon les groupes de longueurs égales",
+              "bars": [
+                {
+                  "label": "1 trait",
+                  "value": 2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "2 traits",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "3 traits",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le codage des angles suit le même principe : on utilise de petits arcs de cercle près du sommet. Un arc pour le premier angle, deux arcs pour le second, etc. Cela évite d'écrire les valeurs en degrés sur la figure et garde le dessin propre. C'est particulièrement utile quand plusieurs angles sont égaux, comme dans un losange ou un parallélogramme."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coder les angles"
+            },
+            {
+              "type": "definition",
+              "term": "Codage des angles",
+              "definition": "Marquage d'un angle par un ou plusieurs arcs de cercle centrés au sommet ; le même nombre d'arcs indique des angles égaux.",
+              "example": "Dans un rectangle, les quatre angles droits portent un arc chacun."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un losange $EFGH$. Les angles opposés sont égaux : $\\widehat{E} = \\widehat{G}$ et $\\widehat{F} = \\widehat{H}$. On code $\\widehat{E}$ et $\\widehat{G}$ avec un arc, $\\widehat{F}$ et $\\widehat{H}$ avec deux arcs. Si en plus le losange est un carré, les quatre angles sont droits et on peut mettre un petit carré dans chaque angle au lieu d'arcs, mais la règle des arcs reste valable."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, le codage des parallélismes utilise des flèches placées sur les côtés. Une flèche simple pour la première paire de côtés parallèles, une double flèche pour la deuxième paire. Cela se voit souvent sur les parallélogrammes, les trapèzes et les rectangles. Grâce à ces trois codes (longueurs, angles, parallélismes), une figure géométrique devient un langage visuel complet que tout mathématicien comprend instantanément."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Coder les parallélismes"
+            },
+            {
+              "type": "definition",
+              "term": "Codage des parallélismes",
+              "definition": "Utilisation de flèches (simples, doubles, triples) sur les segments pour indiquer quelles droites sont parallèles deux à deux.",
+              "example": "Dans un trapèze, les bases portent une flèche simple."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde un trapèze isocèle $IJKL$ avec $IJ \\parallel KL$. On trace une flèche sur $IJ$ et une flèche sur $KL$. Les côtés non parallèles $JK$ et $IL$ n'ont pas de flèche. Si le trapèze est aussi isocèle, les angles à la base sont égaux, on les code avec des arcs. Ainsi, la figure porte toute l'information nécessaire sans aucun texte."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître et nommer les principaux triangles (équilatéral, isocèle, rectangle, quelconque).",
+                "Je sais identifier les quadrilatères courants (carré, rectangle, losange, parallélogramme, trapèze).",
+                "Je connais la somme des angles d'un triangle ($180^{\\circ}$) et d'un quadrilatère ($360^{\\circ}$).",
+                "Je sais construire un triangle à la règle et au compas connaissant trois côtés ou deux côtés et l'angle compris.",
+                "Je sais construire un carré à la règle et au compas.",
+                "Je sais coder les longueurs égales, les angles égaux et les parallélismes sur une figure."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la figure, les côtés $AB$ et $CD$ portent un trait, les côtés $BC$ et $AD$ portent deux traits. Quels côtés sont égaux ?",
+              "answer": "$AB = CD$ et $BC = AD$.",
+              "hint": "Le nombre de traits indique l'égalité des longueurs.",
+              "explanation": "Un trait signifie que les deux segments ont la même longueur. Deux traits indiquent une autre paire de segments égaux. Donc $AB$ et $CD$ sont égaux, $BC$ et $AD$ sont égaux."
+            },
+            {
+              "question": "Dans un parallélogramme, les angles opposés sont codés avec un arc et les autres avec deux arcs. Quelles égalités d'angles cela montre-t-il ?",
+              "answer": "$\\widehat{A} = \\widehat{C}$ et $\\widehat{B} = \\widehat{D}$.",
+              "hint": "Même nombre d'arcs = angles égaux.",
+              "explanation": "Les angles marqués d'un seul arc sont égaux entre eux, ceux marqués de deux arcs le sont aussi. Dans un parallélogramme, les angles opposés sont égaux, ce que le codage représente."
+            },
+            {
+              "question": "Un trapèze a ses bases marquées d'une flèche simple. Que peux-tu déduire ?",
+              "answer": "Les deux bases sont parallèles.",
+              "hint": "Une flèche simple sur deux segments signifie qu'ils sont parallèles.",
+              "explanation": "Le codage des parallélismes utilise des flèches. Une flèche sur chaque base indique que ces deux droites sont parallèles, ce qui est la définition d'un trapèze."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

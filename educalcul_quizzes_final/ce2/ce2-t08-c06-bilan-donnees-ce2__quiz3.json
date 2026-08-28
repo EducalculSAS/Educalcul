@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 210,
+  "_course_code": "ce2-t08-c06-bilan-donnees-ce2",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Checklist",
+  "title": "Quiz : La liste de contrôle (Checklist)",
+  "questions": [
+    {
+      "text": "À quoi sert principalement une checklist (liste de contrôle) ?",
+      "options": [
+        "Faire des calculs rapides",
+        "Vérifier qu'on n'oublie rien dans une liste",
+        "Dessiner un graphique en barres",
+        "Ranger les nombres par ordre croissant"
+      ],
+      "correctAnswer": "Vérifier qu'on n'oublie rien dans une liste",
+      "explanation": "Une checklist est un outil d'organisation qui permet de cocher chaque élément au fur et à mesure pour être sûr de ne rien oublier, comme une liste de courses ou des tâches à faire. Les autres options correspondent à d'autres activités mathématiques.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa a une checklist pour son cartable : $4$ cahiers, $2$ stylos, $1$ règle. Elle a déjà coché $4$ cahiers et $1$ règle. Combien de stylos lui reste-t-il à cocher ?",
+      "options": [
+        "Zéro",
+        "Un",
+        "Deux",
+        "Trois"
+      ],
+      "correctAnswer": "Deux",
+      "explanation": "La checklist demande $2$ stylos. Léa n'en a coché aucun pour l'instant (seuls les cahiers et la règle sont cochés). Il lui reste donc les $2$ stylos à cocher. L'erreur serait de compter les objets déjà cochés au lieu de ceux qui manquent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le tableau ci-dessous. Combien de tâches Tom a-t-il déjà faites (marquées \"Oui\") ?",
+      "options": [
+        "Une",
+        "Deux",
+        "Trois",
+        "Zéro"
+      ],
+      "correctAnswer": "Deux",
+      "explanation": "Dans le tableau, la colonne \"Fait ?\" indique \"Oui\" pour \"Ranger sa chambre\" et pour \"Mettre la table\". Cela fait $2$ tâches effectuées. La tâche \"Faire ses devoirs\" est marquée \"Non\", elle n'est pas comptée.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Tâche",
+          "Fait ?"
+        ],
+        "rows": [
+          [
+            "Ranger sa chambre",
+            "Oui"
+          ],
+          [
+            "Faire ses devoirs",
+            "Non"
+          ],
+          [
+            "Mettre la table",
+            "Oui"
+          ]
+        ],
+        "caption": "Checklist des tâches de Tom"
+      }
+    },
+    {
+      "text": "Pour un goûter, la checklist prévoit : $10$ gâteaux, $12$ jus de fruits, $20$ bonbons. Sur la table, il y a : $10$ gâteaux, $10$ jus de fruits, $20$ bonbons. Quel élément manque-t-il par rapport à la liste ?",
+      "options": [
+        "$2$ gâteaux",
+        "$2$ jus de fruits",
+        "$2$ bonbons",
+        "Rien, tout y est"
+      ],
+      "correctAnswer": "$2$ jus de fruits",
+      "explanation": "On compare chaque ligne de la checklist avec la réalité : Gâteaux $10 = 10$ (bon), Bonbons $20 = 20$ (bon), Jus de fruits $12$ prévus mais seulement $10$ sur la table. Il manque $12 - 10 = 2$ jus de fruits.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Maître Lucas a une checklist de $25$ élèves pour la sortie piscine. $18$ élèves ont rendu leur autorisation. Combien d'autorisations manquent encore ?",
+      "options": [
+        "$7$",
+        "$8$",
+        "$17$",
+        "$43$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "Pour trouver le nombre manquant, on soustrait le nombre d'autorisations rendues ($18$) du total d'élèves ($25$) : $25 - 18 = 7$. L'option $8$ est une erreur de calcul fréquente, $17$ correspond à une soustraction inversée ($25 - 8$), et $43$ à une addition.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

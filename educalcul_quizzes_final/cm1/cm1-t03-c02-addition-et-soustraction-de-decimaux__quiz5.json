@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 227,
+  "_course_code": "cm1-t03-c02-addition-et-soustraction-de-decimaux",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Aligner valeurs de position",
+  "title": "Approfondissement : Aligner les valeurs de position (décimaux)",
+  "questions": [
+    {
+      "text": "Pour calculer $12,5 + 3,75$, quelle proposition montre le bon alignement en colonne ?",
+      "options": [
+        "Les unités sous les unités, les dixièmes sous les dixièmes, et un $0$ ajouté aux centièmes du premier nombre",
+        "Le chiffre $5$ de $12,5$ aligné sous le chiffre $5$ de $3,75$ (alignement à droite)",
+        "Le chiffre $1$ de $12,5$ aligné sous le chiffre $3$ de $3,75$ (alignement à gauche)",
+        "La virgule de $12,5$ alignée sous le chiffre $7$ de $3,75$"
+      ],
+      "correctAnswer": "Les unités sous les unités, les dixièmes sous les dixièmes, et un $0$ ajouté aux centièmes du premier nombre",
+      "explanation": "Pour additionner des nombres décimaux, il faut aligner les virgules (donc les unités sous les unités, les dixièmes sous les dixièmes, etc.). Comme $12,5$ n'a pas de chiffre des centièmes, on ajoute un $0$ pour pouvoir ajouter aux centièmes de $3,75$. L'alignement à droite ou à gauche est une erreur fréquente qui donne un résultat faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut calculer $4,2 + 1,36$. Quel chiffre doit-on placer au-dessus du $6$ (chiffre des centièmes) du second nombre pour bien aligner l'opération ?",
+      "options": [
+        "$0$",
+        "$2$",
+        "Rien, on laisse la case vide",
+        "$4$"
+      ],
+      "correctAnswer": "$0$",
+      "explanation": "Le nombre $4,2$ a 1 chiffre après la virgule (dixièmes), alors que $1,36$ en a 2 (centièmes). Pour aligner correctement les valeurs de position, il faut écrire $4,2$ comme $4,20$. Le $0$ aux centièmes ne change pas la valeur du nombre mais permet d'ajouter chiffre par chiffre : $0 + 6 = 6$ aux centièmes. Laisser vide risque d'oublier d'ajouter les centièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces écritures en colonne est correcte pour effectuer la soustraction $10 - 2,5$ ?",
+      "options": [
+        "$10,0$\\n$- 2,5$",
+        "$10$\\n$- 2,5$ (alignés à droite)",
+        "$10$\\n$- 2,5$ (virgule de $2,5$ sous le $0$ d'unités de $10$)",
+        "$10,00$\\n$- 2,5$"
+      ],
+      "correctAnswer": "$10,0$\\n$- 2,5$",
+      "explanation": "Il faut aligner les virgules. Le nombre entier $10$ s'écrit $10,0$ (ou $10,00$) pour avoir le même nombre de décimales que $2,5$. Cela permet de poser la retenue correctement : on ne peut pas soustraire $5$ dixièmes à $0$ dixième sans retenue. L'alignement à droite met le $5$ sous le $0$ des unités, ce qui est faux. Mettre la virgule sous le $0$ des unités décale toutes les valeurs de position.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo a posé l'addition $5,4 + 2,38$ de cette façon :\\n$5,4$\\n$+ 2,38$\\nQuelle erreur a-t-il commise ?",
+      "options": [
+        "Il n'a pas mis de $0$ aux centièmes du premier nombre pour aligner les décimales",
+        "Il a aligné les virgules mais a inversé les deux nombres",
+        "Il a oublié d'écrire la virgule dans le résultat",
+        "Il a aligné les nombres à gauche au lieu de les aligner à la virgule"
+      ],
+      "correctAnswer": "Il n'a pas mis de $0$ aux centièmes du premier nombre pour aligner les décimales",
+      "explanation": "Léo a bien aligné les virgules (donc les unités et les dixièmes), mais $5,4$ n'a qu'un chiffre après la virgule alors que $2,38$ en a deux. Il manque un $0$ aux centièmes de $5,4$ (qui devient $5,40$). Sans ce $0$, on risque d'oublier d'ajouter les $8$ centièmes ou de les ajouter aux dixièmes. Les nombres ne sont pas inversés, et l'alignement à la virgule est correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $15,6 + 4,08$ en alignant correctement les valeurs de position.",
+      "options": [
+        "$19,68$",
+        "$19,14$",
+        "$20,48$",
+        "$59,6$"
+      ],
+      "correctAnswer": "$19,68$",
+      "explanation": "On écrit $15,6$ sous la forme $15,60$ pour l'aligner avec $4,08$. Centièmes : $0 + 8 = 8$. Dixièmes : $6 + 0 = 6$. Unités : $5 + 4 = 9$. Dizaines : $1$. Résultat : $19,68$. L'option $19,14$ correspond à l'erreur d'aligner à droite ($6$ sous $8$ : $6+8=14$). L'option $20,48$ vient d'un mauvais alignement ($6$ dixièmes + $0$ dixièmes mais erreur de retenue). L'option $59,6$ est une erreur de lecture (alignement à gauche).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

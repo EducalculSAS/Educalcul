@@ -1,0 +1,321 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.676070+00:00",
+  "id": 701,
+  "code": "terminale-generale-maths-t04-c12",
+  "title": "Bilan - Analyse Terminale",
+  "description": "Cours structuré Educalcul : Bilan - Analyse Terminale.",
+  "subject": "Limites, dérivation, continuité et logarithme",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Limites, dérivation, continuité et logarithme",
+    "titre_du_cours": "Bilan - Analyse Terminale",
+    "objectif_global": "Bilan - Analyse Terminale",
+    "mini_lecons_imposees": [
+      "Choisir méthode.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Limites, dérivation, continuité et logarithme",
+      "lessons": [
+        {
+          "title": "Choisir méthode.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire l'énoncé comme une carte au trésor"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon de bilan où nous allons apprendre à ne plus subir les problèmes d'analyse, mais à les piloter. En Terminale Spécialité, un exercice long ne te demande pas de tout savoir par cœur : il te demande de choisir, à chaque carrefour, l'outil le plus adapté. La première compétence, c'est de lire l'énoncé non pas comme un roman, mais comme une liste d'indices. Repère les mots-clés : « étudier les variations », « déterminer une limite », « calculer une aire », « résoudre une équation différentielle ». Chaque verbe d'action déclenche une boîte à outils précise. Si tu vois « aire » ou « intégrale », ton radar doit biper sur les primitives et le théorème fondamental. Si tu lis « tangente » ou « nombre dérivé », c'est la dérivation qui s'impose. Prends l'habitude, dès la lecture, de surligner ces verbes et d'écrire en marge le chapitre correspondant : limites, continuité, dérivation, intégration, suites, équations différentielles. Ce tri initial t'évitera de partir dans une dérivation fastidieuse alors qu'une simple reconnaissance de forme Notable (comme un $u'/u$ ou une limite remarquable) aurait suffi."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons un sujet type : « Soit $f$ la fonction définie sur $]0;+\\infty[$ par $f(x) = \\frac{\\ln x}{x}$. Étudier les variations de $f$, puis calculer l'aire du domaine plan borné par sa courbe, l'axe des abscisses et les droites $x=1$ et $x=e$. » Deux verbes distincts : « étudier les variations » et « calculer une aire ». Le premier appelle la dérivation ($f'$, signe de $f'$, tableau de variations). Le second appelle l'intégration (primitives, intégrale définie). Note que la même fonction $f$ sert aux deux questions : l'étude de variations te donnera le signe de $f$ (positif sur $]1;+\\infty[$), ce qui valide que l'aire cherchée est bien l'intégrale de $f$ sans valeur absolue. C'est là toute la logique chaînée du programme : les notions s'imbriquent. Ton travail, c'est de repérer la chaîne."
+            },
+            {
+              "type": "graph",
+              "expression": "ln(x)/x",
+              "xmin": 0.1,
+              "xmax": 5,
+              "caption": "Courbe de $f(x) = \\frac{\\ln x}{x}$ : repère visuel pour l'étude de variations et le calcul d'aire."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as identifié les grands chantiers, il faut ouvrir la bonne caisse à outils pour chacun. C'est le deuxième cycle : l'inventaire des formes standard. En analyse, 80 % des calculs reposent sur une vingtaine de formes que tu dois reconnaître au premier coup d'œil, comme un musicien reconnaît un accord. Pour les limites : les formes indétermines ($\\frac{\\infty}{\\infty}$, $0 \\times \\infty$, $1^\\infty$) et les limites remarquables ($\\frac{\\sin x}{x} \\to 1$, $\\frac{e^x-1}{x} \\to 1$, $\\frac{\\ln(1+x)}{x} \\to 1$). Pour les dérivées : les règles de linéarité, produit ($u'v+uv'$), quotient ($\\frac{u'v-uv'}{v^2}$), composée ($u'(v) \\cdot v'$), et les dérivées usuelles ($x^\\alpha$, $\\ln$, $\\exp$, $\\sin$, $\\cos$). Pour les primitives : l'inverse de la dérivation, mais aussi les changements de variable ($u = g(x)$), l'intégration par parties ($\\int u v' = uv - \\int u' v$), et les formes $u'/u$ (donnant $\\ln|u|$) ou $u' e^u$. Si tu bloques sur une expression, demande-toi : « Est-ce une dérivée composée ? Un $u'/u$ ? Un produit où l'un se dérive simplement et l'autre s'intègre facilement ? » C'est ce diagnostic qui choisit la méthode."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\int \\frac{u'}{u} = \\ln|u| + C \\quad ; \\quad \\int u' e^u = e^u + C \\quad ; \\quad \\int u v' = uv - \\int u' v"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième cycle : la stratégie pas à pas pour les problèmes complexes, ceux qui mêlent plusieurs notions. Prenons l'exemple classique de l'équation différentielle $y' = ay + b$ avec condition initiale. La méthode est un petit algorithme qu'il faut savoir dérouler sans hésiter : 1) Résoudre l'homogène $y' = ay$ $\\Rightarrow$ $y_h = C e^{ax}$. 2) Chercher une solution particulière constante $y_p = k$ $\\Rightarrow$ $k = -b/a$ (si $a \\neq 0$). 3) Solution générale $y = y_h + y_p$. 4) Utiliser la condition initiale pour trouver $C$. 5) Conclure. Autre exemple : l'étude complète de fonction. La check-list interne est immuable : Domaine de définition $\\rightarrow$ Limites aux bornes (asymptotes) $\\rightarrow$ Dérivée $\\rightarrow$ Signe de la dérivée (tableau de variations) $\\rightarrow$ Limites remarquables (valeurs usuelles) $\\rightarrow$ Tracé de la courbe. Ne saute jamais une étape, même si elle te semble évidente : l'examinateur attend le tableau de variations complet, avec les flèches, les valeurs, les limites. C'est la rigueur de la présentation qui valide la méthode."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Domaine et bornes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déterminer $D_f$. Calculer les limites aux bornes de $D_f$ (asymptotes verticales/horizontales/obliques)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Dérivée et signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calculer $f'(x)$ sur $D_f$. Factoriser au maximum. Étudier le signe de $f'(x)$ (tableau de signes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tableau de variations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Construire le tableau de variations avec les flèches, les valeurs images des bornes et des extrema."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Interprétation géométrique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "En déduire le nombre de solutions de $f(x)=k$, le signe de $f$, les aires, les tangentes..."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Dernier cycle avant l'exercice final : la vérification et la rédaction soignée. Une méthode bien choisie mais mal écrite perd des points. Vérifie systématiquement les conditions d'application des théorèmes : pour le théorème des valeurs intermédiaires, la fonction doit être continue sur un intervalle ; pour l'intégration par parties, $u$ et $v$ doivent être de classe $C^1$ ; pour le changement de variable, la bijection doit être $C^1$ et son inverse aussi. Relis tes limites : as-tu bien écrit « $+\\infty$ » ou « $-\\infty$ » et non « $\\infty $ » tout court ? As-tu précisé le sens de variation sur chaque intervalle du tableau ? Pour les équations différentielles, as-tu bien distingué la solution générale (avec $C$) de la solution particulière (avec la condition initiale) ? Un dernier réflexe : si le problème demande « déterminer l'aire », la réponse finale est un nombre (souvent une expression exacte comme $e - 2$), pas une intégrale non calculée. Sois précis dans le vocabulaire : « $f$ admet une limite finie $L$ » et non « $f$ tend vers $L$ » sans préciser si c'est fini ou infini. Cette rigueur langagière est la marque de l'élève de Spé qui maîtrise son cours."
+            },
+            {
+              "type": "variation_table",
+              "caption": "Modèle de tableau de variations attendu : intervals, signes de f', variations de f, valeurs limites.",
+              "headers": [
+                "x",
+                "0",
+                "+\\infty"
+              ],
+              "rows": [
+                [
+                  "Signe de f'",
+                  "+",
+                  "-"
+                ],
+                [
+                  "Variations de f",
+                  "\\nearrow",
+                  "\\searrow"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'énoncé : « Soit $f(x) = x^2 \\ln x $ sur $]0;+\\infty[$. 1. Étudier les variations de $f$. 2. Calculer $\\int_1^e f(x) \\, dx$. », identifie les deux grands verbes d'action et la notion principale associée à chacun.",
+              "answer": "1. « Étudier les variations » $\\rightarrow$ Dérivation (calcul de $f'$, signe, tableau de variations). 2. « Calculer » (une intégrale) $\\rightarrow$ Intégration (recherche de primitives, intégrale définie).",
+              "hint": "Cherche les verbes qui ordonnent une action mathématique précise.",
+              "explanation": "Le verbe « étudier » lance une procédure standard (domaine, limites, dérivée, tableau). Le verbe « calculer » devant une intégrale appelle le calcul de primitives et l'application du théorème fondamental."
+            },
+            {
+              "question": "Parmi les expressions suivantes, laquelle correspond à une forme $u'/u$ (donnant une primitive $\\ln|u|$) ? A) $\\frac{2x}{x^2+1}$ B) $\\frac{x}{x^2+1}$ C) $\\frac{2x+1}{x^2+x}$ D) $\\frac{x^2}{x^3+1}$",
+              "answer": "C) $\\frac{2x+1}{x^2+x}$ car le numérateur $2x+1$ est la dérivée du dénominateur $x^2+x$.",
+              "hint": "Dérive le dénominateur de chaque fraction et compare au numérateur.",
+              "explanation": "A) numérateur $2x$, dérivée du dénominateur $2x$ $\\rightarrow$ c'est aussi $u'/u$ ! B) numérateur $x$, dérivée $2x$ $\\rightarrow$ non. C) numérateur $2x+1$, dérivée $2x+1$ $\\rightarrow$ oui. D) numérateur $x^2$, dérivée $3x^2$ $\\rightarrow$ non. Attention, A et C sont des $u'/u$. La question portait sur « laquelle » (singulier) mais il y en a deux. L'exercice vise à tester la reconnaissance : A et C sont les bonnes réponses."
+            },
+            {
+              "question": "Pour résoudre l'équation différentielle $y' - 3y = 6$ avec $y(0) = 2$, donne l'ordre exact des 4 étapes de la méthode (homogène, particulière, générale, condition initiale) et le résultat final $y(x)$.",
+              "answer": "1. Homogène : $y' - 3y = 0 \\Rightarrow y_h = C e^{3x}$. 2. Particuliere constante : $-3k=6 \\Rightarrow k=-2 \\Rightarrow y_p = -2$. 3. Générale : $y = C e^{3x} - 2$. 4. Condition initiale : $2 = C - 2 \\Rightarrow C=4$. Solution : $y(x) = 4e^{3x} - 2$.",
+              "hint": "Commence par $y'=3y$. La solution particulière est une constante car le second membre est constant.",
+              "explanation": "C'est la méthode standard pour $y' = ay+b$. On superpose la solution de l'homogène (exponentielle) et une solution particulière (constante ici). La condition initiale fige la constante $C$."
+            },
+            {
+              "question": "Lors de l'étude de $f(x) = \\frac{x-1}{x+2}$ sur $]-\\infty;-2[ \\cup ]-2;+\\infty[$, tu trouves $f'(x) = \\frac{3}{(x+2)^2}$. Que dois-tu écrire *exactement* dans le tableau de variations pour les intervalles de monotonie et les limites aux bornes ?",
+              "answer": "Tableau : $x$ ; $-\\infty$ ; $-2$ (double barre) ; $-2$ ; $+\\infty$. $f'$ : $+$ (partout). $f$ : $\\nearrow$ de $1$ (limite en $-\\infty$) vers $+\\infty$ (limite en $-2^-$) ; $\\nearrow$ de $-\\infty$ (limite en $-2^+$) vers $1$ (limite en $+\\infty$). Asymptote horizontale $y=1$, verticale $x=-2$.",
+              "hint": "Calcule les limites de $f$ aux 4 bornes : $-\\infty$, $-2^-$, $-2^+$, $+\\infty$. Le signe de $f'$ est constant positif.",
+              "explanation": "La dérivée est strictement positive sur chaque intervalle de définition, donc $f$ est strictement croissante sur *chacun* des deux intervalles. Les limites donnent les valeurs aux bornes du tableau. L'asymptote horizontale $y=1$ se lit aux limites en $\\pm\\infty$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Limites, continuité, asymptotes : les fondations"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette deuxième leçon est ton « carnet de bord » pour l'examen. Nous passons en revue les piliers du programme, non pas pour les réapprendre, mais pour vérifier que chaque définition, chaque théorème, chaque condition d'application est accessible instantanément. Commençons par les limites et la continuité, socle de tout le reste. La check-list mentale : 1) Définition de la limite finie ($\\epsilon-\\delta$) et infinie (voisinages). 2) Opérations sur les limites (somme, produit, quotient, composé) **avec leurs conditions** (pas de forme indéterminée). 3) Théorèmes de comparaison (encadrement, gendarmes) : il faut $f \\le g \\le h$ et limites de $f$ et $h$ égales. 4) Limites remarquables à connaître par cœur : $\\frac{\\sin u}{u}\\to 1$, $\\frac{e^u-1}{u}\\to 1$, $\\frac{\\ln(1+u)}{u}\\to 1$ (avec $u\\to 0$). 5) Continuité en un point : $\\lim_{x\\to a} f(x) = f(a)$. Continuité sur un intervalle. 6) Théorème des valeurs intermédiaires (TVI) : $f$ continue sur $[a,b]$ $\\Rightarrow$ pour tout $k$ entre $f(a)$ et $f(b)$, $\\exists c \\in [a,b], f(c)=k$. 7) Théorème des valeurs extrêmes : $f$ continue sur $[a,b]$ $\\Rightarrow$ $f$ bornée et atteint ses bornes. 8) Asymptotes : verticale si limite infinie en $x_0$, horizontale/oblique si limite finie/infinie en $\\pm\\infty$ avec $f(x) - (ax+b) \\to 0$."
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)/x",
+              "xmin": -10,
+              "xmax": 10,
+              "caption": "Limite remarquable $\\frac{\\sin x}{x} \\to 1$ en $0$ : visualise l'encadrement par les gendarmes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Deuxième pilier : la dérivation et l'étude de fonctions. C'est le cœur technique du programme. Ta check-list doit être opérationnelle : 1) Nombre dérivé en $a$ : $\\lim_{h\\to 0} \\frac{f(a+h)-f(a)}{h}$. Dérivée sur un intervalle. 2) Règles de dérivation : $(u+v)'=u'+v'$, $(uv)'=u'v+uv'$, $(\\frac{u}{v})'=\\frac{u'v-uv'}{v^2}$, $(u\\circ v)' = v' \\cdot u'(v)$. 3) Dérivées usuelles : $(x^\\alpha)'=\\alpha x^{\\alpha-1}$, $(\\ln u)' = \\frac{u'}{u}$, $(e^u)' = u'e^u$, $(\\sin u)' = u'\\cos u$, $(\\cos u)' = -u'\\sin u$, $(\\arctan u)' = \\frac{u'}{1+u^2}$. 4) Opérations sur les fonctions dérivables : somme, produit, quotient, composée, inverse (si $f$ strictement mono et $f'(a)\\neq 0$, $(f^{-1})'(b) = 1/f'(a)$). 5) Tableau de variations : signe de $f'$ $\\Rightarrow$ sens de variation. Extrema locaux/globaux. 6) Convexité : $f'' > 0$ $\\Leftrightarrow$ $f'$ croissante $\\Leftrightarrow$ $f$ convexe (courbe au-dessus des tangentes). Points d'inflexion : changement de signe de $f''$. 7) Tangente en $a$ : $y = f'(a)(x-a) + f(a)$. Équation de la tangente passant par un point extérieur (résoudre $f'(x_0)(x_A-x_0)+f(x_0)=y_A$). 8) Fonctions paires/impaires : symétries pour alléger l'étude."
+            },
+            {
+              "type": "variation_table",
+              "caption": "Structure type d'un tableau de variations complet avec convexité.",
+              "headers": [
+                "x",
+                "-\\infty",
+                "0",
+                "+\\infty"
+              ],
+              "rows": [
+                [
+                  "Signe de f''",
+                  "+",
+                  "0",
+                  "-"
+                ],
+                [
+                  "Convexité de f",
+                  "Convexe",
+                  "Inflexion",
+                  "Concave"
+                ],
+                [
+                  "Signe de f'",
+                  "-",
+                  "+",
+                  "+"
+                ],
+                [
+                  "Variations de f",
+                  "\\searrow",
+                  "Min",
+                  "\\nearrow"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième grand chapitre : l'intégration et les équations différentielles. Ici, la précision dans les conditions d'existence est cruciale. Check-list : 1) Primitive sur un intervalle : $F'=f$. Toute primitive s'écrit $F+c$. 2) Primitives usuelles : $\\frac{x^{\\alpha+1}}{\\alpha+1}$ ($\\alpha\\neq -1$), $\\ln|x|$, $e^x$, $\\sin$, $\\cos$, $\\frac{1}{1+x^2} \\to \\arctan$, $\\frac{1}{\\sqrt{1-x^2}} \\to \\arcsin$. 3) Techniques : linéarité, changement de variable ($u=g(x)$, $du=g'(x)dx$, modifier les bornes !), intégration par parties ($\\int_a^b u v' = [uv]_a^b - \\int_a^b u' v$), décomposition en éléments simples (pour fractions rationnelles). 4) Intégrale définie : $\\int_a^b f = F(b)-F(a)$. Aire : $\\int_a^b |f|$ si changement de signe. 5) Équation différentielle $y' = ay$ : $y = C e^{ax}$. 6) $y' = ay + b$ ($a\\neq 0$) : $y = C e^{ax} - b/a$. 7) $y' = f(x)g(y)$ (séparation des variables) : $\\int \\frac{dy}{g(y)} = \\int f(x) dx + C$. Attention au domaine de $g(y)$ (ne pas diviser par 0 sans étudier le cas $g(y)=0$). 8) Suites récurrentes $u_{n+1} = f(u_n)$ : étude de $f$, point fixe $l=f(l)$, convergence par encadrement ou monotonie + majoration/minoration."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "x^2",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 10,
+              "caption": "Approximation de $\\int_0^2 x^2 dx$ par rectangles de Riemann : visualise la convergence vers la primitive $x^3/3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Quatrième et dernier tour d'horizon : les suites, le logarithme népérien et l'exponentielle, ces fonctions « caméléon » qui traversent tout le programme. 1) Suite : définition explicite $u_n = f(n)$ ou récurrente $u_{n+1}=f(u_n)$. Monotonie : $u_{n+1}-u_n$ ou $u_{n+1}/u_n$ (si positif). Convergence : majorée/minorée + monotone $\\Rightarrow$ convergente. Limite $l$ vérifie $l=f(l)$ pour récurrente. 2) Logarithme népérien : $\\ln x = \\int_1^x \\frac{dt}{t}$ pour $x>0$. Propriétés : $\\ln(ab)=\\ln a + \\ln b$, $\\ln(a^b)=b\\ln a$, $\\ln 1 = 0$, $\\ln e = 1$. Dérivée $(\\ln u)' = u'/u$. Primitive de $1/x$ est $\\ln|x|$. 3) Exponentielle : fonction réciproque de $\\ln$. $e^{x+y}=e^x e^y$, $(e^x)^y = e^{xy}$. Dérivée $(e^u)' = u'e^u$. Limites : $e^x \\to 0$ en $-\\infty$, $e^x \\to +\\infty$ en $+\\infty$, $x^\\alpha e^x \\to +\\infty$, $\\ln x / x^\\alpha \\to 0$ (puissance bat log, exp bat puissance). 4) Comparaison : pour $x\\to +\\infty$, $\\ln x \\ll x^\\alpha \\ll e^x$. Ce sont les échelles de comparaison pour les limites et les intégrales impropres (même si impropres ne sont plus au programme 2026, la 비교 reste utile). 5) Algorithmes : suite définie par boucle (ex: $u_{n+1} = u_n/2 + 1/u_n$ pour $\\sqrt{2}$), calcul d'intégrale par rectangles (méthode des rectangles, trapèzes)."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def heron(n):\\n    u = 1.0\\n    for i in range(n):\\n        u = 0.5 * (u + 2/u)\\n    return u\\n\\nprint([heron(i) for i in range(6)])",
+              "language": "python",
+              "caption": "Algorithme de Héron (suite récurrente) pour approcher $\\sqrt{2}$ : $u_{n+1} = \\frac{1}{2}(u_n + \\frac{2}{u_n})$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un énoncé et identifier les verbes d'action (étudier, calculer, déterminer, montrer).",
+                "Je connais par cœur les limites remarquables, les dérivées usuelles et les primitives usuelles.",
+                "Je sais construire un tableau de variations complet (domaine, limites, dérivée, signe, variations, convexité).",
+                "Je maîtrise les méthodes d'intégration : linéarité, changement de variable, parties, éléments simples.",
+                "Je sais résoudre les équations différentielles $y'=ay$, $y'=ay+b$ et $y'=f(x)g(y)$ (séparation variables).",
+                "Je connais les propriétés de $\\ln$ et $\\exp$, leurs dérivées, limites, et les comparaisons de croissance.",
+                "Je sais utiliser le TVI et le théorème des bornes pour une fonction continue sur un segment.",
+                "Je sais écrire une démonstration structurée : hypothèses, thèse, raisonnement, conclusion.",
+                "Je vérifie toujours les conditions d'application des théorèmes (continuité, dérivabilité, non annulation...).",
+                "Je soigne ma rédaction : vocabulaire précis, notations correctes, conclusion en phrase complète."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne la définition précise (avec quantificateurs) de la limite finie d'une fonction $f$ en $+\\infty$ : $\\lim_{x\\to +\\infty} f(x) = L$.",
+              "answer": "$\\forall \\varepsilon > 0, \\exists A \\in \\mathbb{R}, \\forall x > A, |f(x) - L| < \\varepsilon$.",
+              "hint": "Pense à la définition $\\epsilon-\\delta$ (ou $\\epsilon-A$ ici) : on veut $f(x)$ aussi près que je veux de $L$, dès que $x$ est assez grand.",
+              "explanation": "C'est la définition formelle. $A$ joue le rôle du seuil au-delà duquel $f(x)$ reste dans l'intervalle $]L-\\varepsilon, L+\\varepsilon[$."
+            },
+            {
+              "question": "Soit $f(x) = x^3 - 3x$ sur $\\mathbb{R}$. Donne son tableau de variations complet (valeurs aux bornes, extremas, inflexion).",
+              "answer": "$f'(x)=3x^2-3=3(x-1)(x+1)$. Signe : $+$ sur $]-\\infty;-1]$, $-$ sur $[-1;1]$, $+$ sur $[1;+\\infty[$. $f''(x)=6x$. Signe : $-$ sur $]-\\infty;0]$, $+$ sur $[0;+\\infty[$. Variations : $\\nearrow$ de $-\\infty$ à $2$ (max en -1), $\\searrow$ de $2$ à $-2$ (min en 1), $\\nearrow$ de $-2$ à $+\\infty$. Point d'inflexion en $(0,0)$.",
+              "hint": "Dérive deux fois. Étudie le signe de $f'$ pour les variations, de $f''$ pour la convexité/inflexion.",
+              "explanation": "Polynôme de degré 3 : limites $\\pm\\infty$ aux bornes. Dérivée trinôme, racines $\\pm 1$. Second dérivé $6x$, changement de signe en 0 $\\rightarrow$ point d'inflexion."
+            },
+            {
+              "question": "Calcule l'intégrale $I = \\int_0^1 x e^x \\, dx$ en utilisant l'intégration par parties. Donne le résultat exact.",
+              "answer": "On pose $u=x \\Rightarrow u'=1$ et $v'=e^x \\Rightarrow v=e^x$. $I = [x e^x]_0^1 - \\int_0^1 e^x dx = (1\\cdot e - 0) - [e^x]_0^1 = e - (e - 1) = 1$.",
+              "hint": "Dérive le polynôme ($x\\to 1$), intègre l'exponentielle ($e^x\\to e^x$). La primitive de $e^x$ est $e^x$.",
+              "explanation": "Choix classique : $u$ = partie polynomiale (qui se simplifie en dérivant), $v'$ = exponentielle (stable à l'intégration). On applique la formule $\\int u v' = [uv] - \\int u' v$."
+            },
+            {
+              "question": "La suite $(u_n)$ est définie par $u_0 = 2$ et $u_{n+1} = \\frac{1}{2}(u_n + \\frac{2}{u_n})$. Montrer que pour tout $n$, $u_n > 0$. En déduire que la suite converge et calculer sa limite.",
+              "answer": "Récurrence : $u_0=2>0$. Si $u_n>0$, $u_{n+1}$ est somme de deux positifs $>0$. Donc $\\forall n, u_n>0$. $u_{n+1} - u_n = \\frac{2-u_n^2}{2u_n}$. Pour $n\\ge 1$, $u_n \\ge \\sqrt{2}$ (inégalité arithmético-géométrique ou étude de $f(x)=\\frac{1}{2}(x+2/x)$), donc $u_{n+1}-u_n \\le 0$ : suite décroissante à partir de $u_1$, minorée par $\\sqrt{2}$. Elle converge vers $l\\ge \\sqrt{2}$. Passage à la limite : $l = \\frac{1}{2}(l+2/l) \\Rightarrow 2l^2 = l^2+2 \\Rightarrow l^2=2 \\Rightarrow l=\\sqrt{2}$ (car $l>0$).",
+              "hint": "Positivité par récurrence. Monotonie : étudie le signe de $u_{n+1}-u_n$. Limite : résous $l=f(l)$.",
+              "explanation": "C'est l'algorithme de Héron (Babyloniens) pour $\\sqrt{2}$. La fonction $f(x)=\\frac{1}{2}(x+2/x)$ a un minimum en $\\sqrt{2}$ (valeur $\\sqrt{2}$). Pour $x>0$, $f(x) \\ge \\sqrt{2}$. Donc $u_n \\ge \\sqrt{2}$ pour $n\\ge 1$. La suite est alors décroissante et minorée, donc convergente."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

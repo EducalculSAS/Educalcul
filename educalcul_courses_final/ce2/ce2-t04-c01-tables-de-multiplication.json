@@ -1,0 +1,465 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.014845+00:00",
+  "id": 169,
+  "code": "ce2-t04-c01",
+  "title": "Tables de multiplication",
+  "description": "Cours structuré Educalcul : Tables de multiplication.",
+  "subject": "Calcul mental et automatismes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Calcul mental et automatismes",
+    "titre_du_cours": "Tables de multiplication",
+    "objectif_global": "Tables de multiplication",
+    "mini_lecons_imposees": [
+      "Consolider tables travaillées.",
+      "Utiliser commutativité.",
+      "Répondre avec fluence."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et automatismes",
+      "lessons": [
+        {
+          "title": "Consolider tables travaillées.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel : la multiplication, c'est des groupes égaux"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu te souviens ? Multiplier, c'est ajouter plusieurs fois le même nombre. Par exemple, $3 \\times 4$, ça veut dire 3 groupes de 4 objets. On peut le voir comme $4 + 4 + 4$. Aujourd'hui, on remet en route les tables que tu as déjà apprises : 2, 3, 4, 5 et 10. Pas de panique, tu les connais mieux que tu ne le penses !"
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Groupe 1",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 2",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 3",
+                  "value": 4,
+                  "tone": "blue"
+                }
+              ],
+              "caption": "$3 \\times 4 = 12$ : trois groupes de quatre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce schéma : trois barres bleues de la même longueur. Chaque barre vaut $4$. Ensemble, elles font $12$. C'est exactement ce que fait la multiplication : elle regroupe des parts égales pour aller plus vite que l'addition."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les tables faciles : 2, 5 et 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les plus sympas. La table de $2$, c'est juste les nombres pairs : $2, 4, 6, 8, 10...$ La table de $5$ finit toujours par $5$ ou $0$ : $5, 10, 15, 20...$ Et la table de $10$ ? Tu ajoutes un zéro : $1 \\times 10 = 10$, $7 \\times 10 = 70$. Essaie de les réciter à voix haute, comme une comptine."
+            },
+            {
+              "type": "number_line",
+              "caption": "Compter par sauts de 5 sur une droite",
+              "min": 0,
+              "max": 50,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 25,
+                  "label": "25"
+                },
+                {
+                  "value": 30,
+                  "label": "30"
+                },
+                {
+                  "value": 35,
+                  "label": "35"
+                },
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 45,
+                  "label": "45"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite, tu vois les sauts de $5$. Chaque trait est un multiple de $5$. Essaie de poser le doigt sur chaque nombre en disant la multiplication correspondante : $1 \\times 5$, $2 \\times 5$, etc."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tables de 3 et 4 : des repères pour ne pas tout réapprendre"
+            },
+            {
+              "type": "paragraph",
+              "content": "La table de $3$ et celle de $4$ sont un peu moins automatiques. Mais tu as des astuces ! Pour $3$, tu peux doubler puis ajouter une fois : $3 \\times 6 = (2 \\times 6) + 6 = 12 + 6 = 18$. Pour $4$, tu doubles deux fois : $4 \\times 6 = 2 \\times (2 \\times 6) = 2 \\times 12 = 24$. C'est comme construire une tour avec des briques que tu possèdes déjà."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 2,
+              "units": 4,
+              "caption": "$24 = 2 \\times 10 + 4$ : décomposition pour $4 \\times 6$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde les blocs : $24$ se décompose en $2$ dizaines et $4$ unités. Quand tu fais $4 \\times 6$, tu peux penser $2 \\times 6 = 12$, puis encore $2 \\times 6 = 12$, et $12 + 12 = 24$. Tu utilises la table de $2$ que tu connais par cœur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mélangeons tout pour vérifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, on mélange les tables $2, 3, 4, 5, 10$. L'objectif n'est pas d'aller vite, mais d'être sûr de toi. Si une multiplication te bloque, reprends l'astuce : décompose, double, ou rappelle-toi le résultat d'une table voisine. Par exemple, $7 \\times 4$ ? Tu sais $7 \\times 2 = 14$, alors $7 \\times 4 = 14 + 14 = 28$. Tu as le droit de prendre ton temps, le cerveau a besoin de répéter pour graver."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète : $3 \\times 5 = \\ldots$",
+              "answer": "15",
+              "hint": "Compte par sauts de 5 : 5, 10, 15.",
+              "explanation": "$3 \\times 5$ fait trois groupes de 5. $5 + 5 + 5 = 15$."
+            },
+            {
+              "question": "Sur la droite graduée, quel nombre correspond à $6 \\times 5$ ?",
+              "answer": "30",
+              "hint": "Fais 6 sauts de 5 depuis 0.",
+              "explanation": "$6 \\times 5 = 30$. C'est le 6e trait après 0 sur la droite des multiples de 5."
+            },
+            {
+              "question": "Calcule $4 \\times 7$ en utilisant le double du double.",
+              "answer": "28",
+              "hint": "Double 7, puis double le résultat.",
+              "explanation": "$2 \\times 7 = 14$. Double de 14 : $14 + 14 = 28$. Donc $4 \\times 7 = 28$."
+            },
+            {
+              "question": "Choisis le bon résultat : $8 \\times 3 = ?$  A) 21  B) 24  C) 27",
+              "answer": "B",
+              "hint": "Pense à $8 \\times 2 = 16$ et ajoute 8.",
+              "explanation": "$8 \\times 3 = (8 \\times 2) + 8 = 16 + 8 = 24$. C'est la réponse B."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser commutativité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvre la commutativité : l'ordre ne change pas le résultat"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine tu as 3 boîtes de 4 crayons. Cela fait $3 \\times 4 = 12$ crayons. Maintenant, range-les différemment : 4 boîtes de 3 crayons. Combien de crayons au total ? Toujours $12$ ! C'est la commutativité : $3 \\times 4 = 4 \\times 3$. Tu peux tourner le problème dans tous les sens, le total ne bouge pas."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 12,
+              "caption": "$3 \\times 4$ : 3 lignes de 4 cases"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde cette grille : 3 lignes, 4 colonnes. Si tu tournes la tête, tu vois 4 lignes et 3 colonnes. Le nombre de cases colorées ne change pas. C'est pour cela qu'on dit que la multiplication est commutative : les facteurs peuvent échanger leur place."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utilise la commutativité pour simplifier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une multiplication te semble difficile dans un sens, mais facile dans l'autre. Par exemple, $7 \\times 3$ : tu ne sais pas trop. Mais $3 \\times 7$ ? C'est $7 + 7 + 7 = 21$. Comme $7 \\times 3 = 3 \\times 7$, tu as la réponse ! C'est comme avoir deux clés pour la même serrure. Essaie toujours de retourner la multiplication pour voir si l'autre sens te parle mieux."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 7,
+              "cols": 3,
+              "highlighted": 21,
+              "caption": "$7 \\times 3$ vu comme 3 lignes de 7 cases"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, la grille montre $7 \\times 3$ (7 lignes, 3 colonnes). Mais tu peux la lire comme $3 \\times 7$ (3 lignes, 7 colonnes). Les cases bleues sont les mêmes. Cette astuce marche pour toutes les tables, même les grandes comme $8 \\times 6 = 6 \\times 8$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Applique-la aux tables de 6, 7, 8, 9"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les tables de $6, 7, 8, 9$ arrivent en CE2. La commutativité est ton meilleure amie pour elles. Si tu bloques sur $8 \\times 7$, retourne-le : $7 \\times 8$. Peut-être que tu connais mieux la table de $7$ ? Ou tu peux décomposer : $7 \\times 8 = 7 \\times (4 \\times 2) = (7 \\times 4) \\times 2 = 28 \\times 2 = 56$. L'important, c'est d'avoir le choix. Tu n'es pas obligé de tout apprendre par cœur dans l'ordre, tu peux piocher dans ce que tu sais déjà."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "7 groupes de 8",
+                  "value": 56,
+                  "tone": "green"
+                }
+              ],
+              "caption": "$7 \\times 8 = 56$ : même total que $8 \\times 7$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce barreau unique de 56 représente $7 \\times 8$. Si tu le coupes en 8 parts égales, chaque part vaut 7. Si tu le coupes en 7 parts, chaque part vaut 8. La commutativité, c'est ça : le même total, deux façons de le découper."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Entraîne-toi à retourner les multiplications"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, à toi de jouer. Pour chaque multiplication, écris-la dans l'autre sens et donne le résultat. Ne cherche pas à tout refaire : utilise ce que tu sais. Si $6 \\times 9$ te fait peur, pense $9 \\times 6$. Tu connais peut-être la table de 9 jusqu'à 5 ? $9 \\times 5 = 45$, alors $9 \\times 6 = 45 + 9 = 54$. La commutativité te donne une porte de secours. C'est malin, non ?"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Écris la multiplication commutée de $4 \\times 6$ et donne le résultat.",
+              "answer": "$6 \\times 4 = 24$",
+              "hint": "Inverse les deux nombres.",
+              "explanation": "La commutativité dit que $4 \\times 6 = 6 \\times 4$. $6 \\times 4 = 24$."
+            },
+            {
+              "question": "Quelle multiplication est plus facile pour trouver $8 \\times 3$ ?  A) $3 \\times 8$  B) $8 \\times 3$  C) Les deux",
+              "answer": "A",
+              "hint": "Compter par 3 ou par 8 ?",
+              "explanation": "$3 \\times 8$ veut dire $8 + 8 + 8$. C'est souvent plus simple que d'ajouter 3 huit fois. Les deux donnent 24, mais $3 \\times 8$ est plus rapide."
+            },
+            {
+              "question": "Utilise la commutativité pour calculer $9 \\times 6$.",
+              "answer": "54",
+              "hint": "Pense à $6 \\times 9$ ou décompose $9 \\times 6$.",
+              "explanation": "$9 \\times 6 = 6 \\times 9$. $6 \\times 9 = 54$ (ou $9 \\times 5 = 45$, plus $9 = 54$)."
+            },
+            {
+              "question": "Vrai ou faux ? $7 \\times 8 = 8 \\times 7$",
+              "answer": "Vrai",
+              "hint": "La commutativité marche pour tous les nombres.",
+              "explanation": "C'est la propriété de commutativité : l'ordre des facteurs ne change pas le produit. $7 \\times 8 = 56$ et $8 \\times 7 = 56$."
+            }
+          ]
+        },
+        {
+          "title": "Répondre avec fluence.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "C'est quoi, la fluidité ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fluidité, ce n'est pas être un robot qui va vite. C'est savoir la réponse sans compter sur ses doigts, sans reprendre toute la table depuis le début. Quand on te demande $6 \\times 7$, le chiffre $42$ arrive tout seul, comme ton prénom. C'est le signe que ton cerveau a bien rangé l'information. Aujourd'hui, on travaille pour que de plus en plus de tables deviennent automatiques."
+            },
+            {
+              "type": "paragraph",
+              "content": "Ne t'inquiète pas si certaines te résistent encore. Chacun a son rythme. L'astuce, c'est de les revoir souvent, un peu chaque jour, plutôt qu'une longue séance une fois par semaine. C'est comme arroser une plante : un peu d'eau tous les jours vaut mieux qu'un seau une fois par mois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des jeux pour gagner en rapidité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux t'amuser à la maison : tire une carte de jeu (valet=11, dame=12, roi=13) et multiplie par la table que tu travailles. Ou lance deux dés à 10 faces et multiplie les résultats. Chronomètre-toi sur 10 multiplications, note ton temps, et la semaine d'après, essaie de battre ton record. L'important, c'est de progresser, pas d'être parfait du premier coup."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Temps pour 10 multiplications sur 4 semaines",
+              "bars": [
+                {
+                  "label": "Semaine 1",
+                  "value": 120,
+                  "tone": "red"
+                },
+                {
+                  "label": "Semaine 2",
+                  "value": 95,
+                  "tone": "orange"
+                },
+                {
+                  "label": "Semaine 3",
+                  "value": 70,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Semaine 4",
+                  "value": 55,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce graphique montre un élève qui mettait 2 minutes au début et descend à 55 secondes après 4 semaines. La courbe descend parce qu'il s'entraîne 5 minutes par jour. Toi aussi, tu verras ta barre baisser si tu t'y mets régulièrement. C'est la preuve que le cerveau apprend quand on répète."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repère tes tables \"pièges\" et cible-les"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tout le monde a des multiplications qui résistent : souvent $7 \\times 8$, $6 \\times 8$, $7 \\times 9$... Fais le test : écris toutes les tables de 2 à 9 sur une feuille, cache les résultats, et coche celles que tu sais instantanément. Les non cochées, ce sont tes \"pièges\". Choisis-en une ou deux par jour. Écris-les en gros sur un papier collé au frigo, dis-les en te brossant les dents. En trois jours, elles basculent dans l'automatique."
+            },
+            {
+              "type": "paragraph",
+              "content": "Par exemple, $7 \\times 8 = 56$. Une astuce mnémotechnique : $5, 6, 7, 8$ -> $56 = 7 \\times 8$. Les chiffres se suivent ! Trouve ta propre phrase ou image pour chaque piège. C'est ton secret, personne ne te le volera."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : mélange final et fierté"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici le grand mélange : tables de 2 à 10, dans le désordre, avec la commutativité en bonus. Tu as tous les outils : le sens des groupes, les astuces de décomposition, la commutativité pour retourner les difficiles, et l'entraînement régulier pour la fluidité. Fais cet exercice sans stress. Si tu bloques, passe à la suivante et reviens après. Le but, c'est de voir combien tu en as maintenant sans compter. Tu as fait un chemin énorme depuis le début de l'année : félicite-toi !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais représenter une multiplication par des groupes égaux (schéma en barres).",
+                "Je connais par cœur les tables de 2, 3, 4, 5 et 10.",
+                "J'utilise la commutativité ($a \\times b = b \\times a$) pour simplifier mes calculs.",
+                "J'ai des astuces pour retenir les tables de 6, 7, 8, 9 (double, décomposition, commutativité).",
+                "Je réponds de plus en plus vite aux multiplications simples sans recompter."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne le résultat de $6 \\times 4$ sans calculer sur les doigts.",
+              "answer": "24",
+              "hint": "Pense au double de $3 \\times 4$ ou à $4 \\times 6$.",
+              "explanation": "$6 \\times 4 = 24$. C'est une table à connaître automatiquement."
+            },
+            {
+              "question": "En 30 secondes, combien de ces multiplications peux-tu résoudre ? $3\\times7, 5\\times9, 2\\times8, 4\\times6, 10\\times7$",
+              "answer": "21, 45, 16, 24, 70",
+              "hint": "Utilise la commutativité si ça aide : $7\\times3, 9\\times5...$",
+              "explanation": "L'objectif n'est pas la vitesse pour la vitesse, mais l'automatisme. $3\\times7=21, 5\\times9=45, 2\\times8=16, 4\\times6=24, 10\\times7=70$."
+            },
+            {
+              "question": "Quelle est ta table \"piège\" préférée ? Écris-la et donne une astuce pour la retenir.",
+              "answer": "Exemple : $7\\times8=56$ car les chiffres 5,6,7,8 se suivent.",
+              "hint": "Cherche une phrase, une image ou une décomposition qui te parle.",
+              "explanation": "Chaque élève a ses pièges. L'important est de créer un lien personnel (mnémotechnique, décomposition) pour la débloquer."
+            },
+            {
+              "question": "Complète le produit manquant : $\\ldots \\times 9 = 54$",
+              "answer": "6",
+              "hint": "Pense à la table de 9 ou utilise la commutativité : $9 \\times ? = 54$.",
+              "explanation": "$6 \\times 9 = 54$. On peut le trouver en cherchant dans la table de 9 : $9, 18, 27, 36, 45, 54$ (6e multiple)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

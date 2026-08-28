@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 361,
+  "_course_code": "6eme-t06-c05-symetrie-axiale",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Figures invariantes",
+  "title": "Quiz : Figures invariantes par symétrie axiale",
+  "questions": [
+    {
+      "text": "Une figure est dite invariante par symétrie axiale d'axe $(d)$ si :",
+      "options": [
+        "Son image par la symétrie est une figure différente de la figure initiale.",
+        "Son image par la symétrie se superpose exactement à la figure initiale.",
+        "Tous ses points sont situés sur l'axe $(d)$.",
+        "Elle n'a aucun point commun avec son image."
+      ],
+      "correctAnswer": "Son image par la symétrie se superpose exactement à la figure initiale.",
+      "explanation": "Par définition, une figure est invariante (ou globale) par une symétrie axiale si l'image de la figure par cette symétrie coïncide point par point avec la figure de départ. L'axe $(d)$ est alors un axe de symétrie de la figure. Les autres propositions sont fausses : l'image n'est pas différente (A), tous les points ne sont pas sur l'axe (C), et la figure a une infinité de points communs avec son image (D).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les triangles suivants, lequel admet toujours au moins un axe de symétrie ?",
+      "options": [
+        "Un triangle quelconque",
+        "Un triangle isocèle",
+        "Un triangle rectangle",
+        "Un triangle équilatéral"
+      ],
+      "correctAnswer": "Un triangle isocèle",
+      "explanation": "Un triangle isocèle possède toujours exactement un axe de symétrie : la médiatrice de sa base (qui est aussi la hauteur, la médiane et la bissectrice issue du sommet principal). Un triangle quelconque (scalène) n'en a aucun. Un triangle rectangle n'en a pas systématiquement (seulement s'il est isocèle). Un triangle équilatéral en a trois, mais la proposition 'triangle isocèle' est la réponse la plus générale correcte car tout triangle équilatéral est isocèle, et la question porte sur l'existence d'au moins un axe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une figure invariante par symétrie axiale d'axe $(d)$. Que deviennent les points de cette figure qui appartiennent à l'axe $(d)$ ?",
+      "options": [
+        "Ils sont distincts de leur image.",
+        "Ils sont confondus avec leur image (points fixes).",
+        "Ils n'ont pas d'image par la symétrie.",
+        "Leur image est symétrique par rapport au milieu du segment les reliant à l'axe."
+      ],
+      "correctAnswer": "Ils sont confondus avec leur image (points fixes).",
+      "explanation": "Par définition de la symétrie axiale, tout point appartenant à l'axe de symétrie $(d)$ est invariant : son image est le point lui-même. On dit que ce sont des points fixes. Les points n'appartenant pas à l'axe sont, eux, distincts de leur image (symétrique par rapport à $(d)$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel quadrilatère parmi les suivants admet exactement quatre axes de symétrie ?",
+      "options": [
+        "Un rectangle",
+        "Un losange",
+        "Un carré",
+        "Un trapèze isocèle"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Le carré possède quatre axes de symétrie : les deux médiateurs des côtés opposés et les deux diagonales. Le rectangle et le losange n'en possèdent que deux chacun (médiateurs pour le rectangle, diagonales pour le losange). Le trapèze isocèle n'en possède qu'un seul (la médiatrice des bases).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cercle de centre $O$ est invariant par symétrie axiale. Combien d'axes de symétrie possède-t-il ?",
+      "options": [
+        "Un seul (un diamètre quelconque)",
+        "Deux (deux diamètres perpendiculaires)",
+        "Quatre (les deux diagonales d'un carré inscrit)",
+        "Une infinité (toutes les droites passant par $O$)"
+      ],
+      "correctAnswer": "Une infinité (toutes les droites passant par $O$)",
+      "explanation": "Toute droite passant par le centre $O$ d'un cercle est un axe de symétrie de ce cercle. Comme il existe une infinité de droites passant par un point, le cercle possède une infinité d'axes de symétrie. C'est la figure plane qui en possède le plus grand nombre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

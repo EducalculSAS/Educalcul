@@ -1,0 +1,413 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.733403+00:00",
+  "id": 398,
+  "code": "5eme-t04-c04",
+  "title": "Raisonnement géométrique",
+  "description": "Cours structuré Educalcul : Raisonnement géométrique.",
+  "subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Géométrie plane : angles, triangles et parallélogrammes",
+    "titre_du_cours": "Raisonnement géométrique",
+    "objectif_global": "Raisonnement géométrique",
+    "mini_lecons_imposees": [
+      "Données / conclusion.",
+      "Chaîner propriétés.",
+      "Rédiger court."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane : angles, triangles et parallélogrammes",
+      "lessons": [
+        {
+          "title": "Données / conclusion.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre les données et la conclusion"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon sur le raisonnement géométrique. Imagine que tu ouvres un cahier de géométrie et que tu tombes sur une figure un peu mystérieuse : un triangle $ABC$ avec un trait parallèle à $BC$ qui passe par $A$, ou encore un parallélogramme $DEFG$ dont on ne connaît que quelques angles. La première chose à faire, avant même de sortir ton rapporteur ou ton compas, c'est de lire la figure comme on lirait une énigme. Qu'est-ce que l'énoncé te donne explicitement ? Qu'est-ce qu'il te demande de prouver ? Prendre le temps de séparer ces deux morceaux, c'est comme ranger tes affaires avant de commencer un devoir : tu gagnes en clarté et tu évites de te perdre en chemin. Dans cette leçon, nous allons apprendre à repérer les données, à formuler la conclusion attendue et à les écrire proprement pour que le raisonnement suivant soit solide."
+            },
+            {
+              "type": "definition",
+              "term": "Donnée",
+              "definition": "Une information que l'énoncé ou la figure te fournit sans que tu aies à la démontrer. Cela peut être une longueur, un angle, un parallélisme, une perpendicularité, etc.",
+              "example": "Dans le triangle $ABC$, on sait que $\\angle A = 40^{\\circ}$ et que $AB = AC$. Ces deux faits sont des données."
+            },
+            {
+              "type": "definition",
+              "term": "Conclusion",
+              "definition": "Ce que l'exercice te demande de montrer ou de trouver à partir des données. C'est le but final de ton raisonnement.",
+              "example": "Prouver que $\\angle B = \\angle C$ ou calculer la mesure de $\\angle B$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne rien oublier, adopte une petite routine à chaque nouvel exercice. Première étape : observe la figure et lis l'énoncé lentement, comme si tu racontais l'histoire à un ami. Deuxième étape : note sur une feuille de brouillard toutes les informations explicites (longueurs, angles, parallélismes, points milieux, etc.). Troisième étape : écris en une phrase claire ce que tu dois démontrer ou calculer. Cette phrase devient ta conclusion. Si tu arrives à formuler la conclusion avec tes propres mots, tu as déjà fait la moitié du travail. N'hésite pas à utiliser des symboles comme $AB \\parallel CD$ ou $\\angle X = 30^{\\circ}$ pour être précis."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire et observer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la figure, repère les noms des points, les traits de parallélisme, les carrés d'angle droit, les marques d'égalité de longueurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lister les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris chaque information donnée sous forme de phrase ou d'égalité, par exemple $AB = 5\\,cm$, $\\angle EFG = 110^{\\circ}$, $IJ \\parallel KL$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Formuler la conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Transforme la question de l'énoncé en une affirmation précise : « Je dois montrer que $MN = NP$ » ou « Je dois trouver la mesure de $\\angle RST$ »."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle $ABC$ avec $AB = AC$ et $\\angle A = 40^{\\circ}$",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "c",
+                "a",
+                "b"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais isoler les données et la conclusion, essayons de repérer des informations qui ne sont pas écrites noir sur blanc mais qui se déduisent directement de la figure, comme un angle droit marqué par un petit carré ou des côtés égaux signalés par des traits identiques."
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, la figure contient des indices visuels que l'énoncé ne répète pas. Un petit carré dans un angle signifie un angle droit de $90^{\\circ}$. Deux traits sur les côtés $AB$ et $AC$ veulent dire $AB = AC$. Une flèche sur deux droites indique qu'elles sont parallèles. Apprends à lire ces codes graphiques : ils sont des données à part entière. Lorsque tu les ajoutes à ta liste, tu enrichis ton stock d'informations sans avoir à les démontrer. C'est un gain de temps précieux pour la suite du raisonnement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, entraîne-toi à rédiger la conclusion sous une forme standardisée. Une conclusion bien formulée commence souvent par « Donc » ou « Par conséquent » suivi de l'égalité ou de la propriété à prouver. Par exemple : « Donc $\\angle B = \\angle C$ » ou « Par conséquent, $ABCD$ est un parallélogramme ». Cette habitude te servira plus tard quand tu devras chaîner plusieurs propriétés."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la figure ci-dessous, le triangle $ABC$ a $AB = AC$ et $\\angle A = 40^{\\circ}$. Quelles sont les données explicites ? Quelle conclusion l'exercice pourrait-il te demander de prouver ?",
+              "answer": "Données : $AB = AC$, $\\angle A = 40^{\\circ}$. Conclusion possible : $\\angle B = \\angle C$ ou calculer $\\angle B$.",
+              "hint": "Repère les marques d'égalité sur les côtés et la valeur de l'angle au sommet.",
+              "explanation": "Les traits sur $AB$ et $AC$ indiquent l'égalité des longueurs. L'angle $\\angle A$ est donné. La conclusion classique dans un triangle isocèle est l'égalité des angles à la base."
+            },
+            {
+              "question": "Observe un quadrilatère $EFGH$ où $EF \\parallel GH$ et $FG \\parallel EH$. Un angle droit est marqué en $E$. Liste les données que tu peux lire directement sur la figure.",
+              "answer": "Données : $EF \\parallel GH$, $FG \\parallel EH$, $\\angle E = 90^{\\circ}$.",
+              "hint": "Cherche les flèches de parallélisme et le petit carré d'angle droit.",
+              "explanation": "Les flèches sur les côtés opposés montrent le parallélisme. Le carré dans l'angle $E$ signale un angle droit."
+            },
+            {
+              "question": "On te donne un triangle $JKL$ avec $\\angle J = 30^{\\circ}$ et $\\angle K = 70^{\\circ}$. Écris la conclusion que tu dois atteindre pour trouver $\\angle L$.",
+              "answer": "Conclusion : déterminer la mesure de $\\angle L$.",
+              "hint": "Rappelle-toi que la somme des angles d'un triangle vaut $180^{\\circ}$.",
+              "explanation": "La conclusion est de calculer l'angle manquant. Les données sont les deux angles connus."
+            }
+          ]
+        },
+        {
+          "title": "Chaîner propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Chaîner les propriétés géométriques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais identifier les données et la conclusion, voyons comment avancer pas à pas vers le but. En géométrie, on ne saute pas directement de l'énoncé à la réponse. On construit un chemin logique en reliant des propriétés connues les unes aux autres, comme les maillons d'une chaîne. Chaque maillon est une propriété : « Les angles alternes-internes sont égaux quand deux droites sont parallèles », « La somme des angles d'un triangle vaut $180^{\\circ}$ », « Les côtés opposés d'un parallélogramme sont parallèles et égaux ». Ton travail consiste à choisir les bonnes propriétés, dans le bon ordre, pour aller des données à la conclusion. C'est un peu comme suivre une recette : chaque étape prépare la suivante."
+            },
+            {
+              "type": "definition",
+              "term": "Propriété",
+              "definition": "Un énoncé mathématique toujours vrai dans le cadre considéré (triangles, parallélogrammes, droites parallèles, etc.) et que l'on peut utiliser sans le redémontrer.",
+              "example": "Propriété des angles alternes-internes : si deux droites sont parallèles, les angles alternes-internes formés par une sécante sont égaux."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour chaîner correctement, suis cette méthode en quatre temps. Premièrement, relis tes données et ta conclusion. Deuxièmement, cherche dans ton cours ou dans ta mémoire les propriétés qui font le lien entre ce que tu sais et ce que tu veux obtenir. Troisièmement, ordonne ces propriétés de façon logique : la conclusion de l'une devient la donnée de la suivante. Quatrièmement, écris chaque étape en justifiant par le nom de la propriété utilisée. Ainsi, ton raisonnement devient clair, vérifiable et élégant. Ne te précipite pas : une propriété mal appliquée casse la chaîne."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le point de départ et le but",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note les données (ex. $AB \\parallel CD$) et la conclusion visée (ex. $\\angle 1 = \\angle 2$)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Sélectionner les propriétés utiles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par exemple : angles correspondants, angles alternes-internes, somme angles triangle, propriétés du parallélogramme."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ordonner les propriétés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place-les de manière que chaque conclusion alimente l'étape suivante."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Rédiger le chainage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris : « Puisque $AB \\parallel CD$, les angles alternes-internes sont égaux, donc $\\angle 1 = \\angle 3$. Or $\\angle 3 = \\angle 2$ car... »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Propriété",
+                "Condition",
+                "Conséquence"
+              ],
+              "rows": [
+                [
+                  "Angles alternes-internes",
+                  "Deux droites parallèles coupées par une sécante",
+                  "Angles égaux"
+                ],
+                [
+                  "Angles correspondants",
+                  "Deux droites parallèles coupées par une sécante",
+                  "Angles égaux"
+                ],
+                [
+                  "Somme angles triangle",
+                  "Tout triangle",
+                  "Somme = $180^{\\circ}$"
+                ],
+                [
+                  "Parallélogramme",
+                  "Quadrilatère à côtés opposés parallèles",
+                  "Côtés opposés égaux, angles opposés égaux, diagonales se coupent au milieu"
+                ]
+              ],
+              "caption": "Principales propriétés à chaîner en 5e"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons un premier chainage simple. On a deux droites parallèles $d_1$ et $d_2$ coupées par une sécante $t$. L'angle formé en haut à gauche sur $d_1$ mesure $55^{\\circ}$. Quelle propriété permet de trouver l'angle alterné-interne sur $d_2$ ? Écris le chainage en une ligne."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un chainage un peu plus long. Dans un triangle $MNP$, on sait que $MN \\parallel PQ$ avec $Q$ sur $NP$. On connaît $\\angle M = 40^{\\circ}$ et $\\angle N = 70^{\\circ}$. Pour trouver $\\angle P$, tu vas utiliser la propriété des angles correspondants puis la somme des angles du triangle. Détaille les deux étapes du chainage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Deux droites parallèles $d_1$ et $d_2$ sont coupées par une sécante. L'angle alterné-interne sur $d_1$ vaut $55^{\\circ}$. Quelle est la mesure de l'angle alterné-interne correspondant sur $d_2$ ? Justifie par la propriété utilisée.",
+              "answer": "$55^{\\circ}$ ; propriété des angles alternes-internes égaux.",
+              "hint": "Rappelle la définition des angles alternes-internes quand les droites sont parallèles.",
+              "explanation": "Comme $d_1 \\parallel d_2$, les angles alternes-internes sont égaux. Donc l'angle sur $d_2$ a la même mesure."
+            },
+            {
+              "question": "Dans le triangle $MNP$, $MN \\parallel PQ$ avec $Q$ sur $NP$. Sachant $\\angle M = 40^{\\circ}$ et $\\angle N = 70^{\\circ}$, calcule $\\angle P$ en chaînant deux propriétés.",
+              "answer": "$\\angle P = 70^{\\circ}$.",
+              "hint": "Utilise d'abord les angles correspondants pour trouver $\\angle Q$, puis la somme des angles du triangle $MNP$.",
+              "explanation": "Puisque $MN \\parallel PQ$, $\\angle M$ et $\\angle Q$ sont correspondants, donc $\\angle Q = 40^{\\circ}$. Dans le triangle $MNP$, $\\angle M + \\angle N + \\angle P = 180^{\\circ}$, soit $40 + 70 + \\angle P = 180$, d'où $\\angle P = 70^{\\circ}$."
+            },
+            {
+              "question": "Un parallélogramme $ABCD$ a $\\angle A = 110^{\\circ}$. En chaînant les propriétés du parallélogramme, donne les mesures de $\\angle B$, $\\angle C$ et $\\angle D$.",
+              "answer": "$\\angle B = 70^{\\circ}$, $\\angle C = 110^{\\circ}$, $\\angle D = 70^{\\circ}$.",
+              "hint": "Angles opposés égaux, angles adjacents supplémentaires.",
+              "explanation": "Dans un parallélogramme, angles opposés égaux : $\\angle C = \\angle A = 110^{\\circ}$. Angles adjacents supplémentaires : $\\angle B = 180 - 110 = 70^{\\circ}$, $\\angle D = 70^{\\circ}$."
+            }
+          ]
+        },
+        {
+          "title": "Rédiger court.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rédiger un raisonnement court et clair"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant les données, la conclusion et tu sais chaîner les propriétés. Il reste une compétence essentielle : savoir écrire ton raisonnement de façon concise, lisible et convaincante. Un bon raisonnement géométrique, c'est comme une petite histoire bien racontée : chaque phrase a sa place, aucun mot superflu, et le lecteur (ton professeur, ton camarade, ou toi-même plus tard) suit le fil sans effort. En 5e, on attend de toi une rédaction structurée : énoncé de la propriété utilisée, référence aux données ou aux résultats précédents, puis conclusion partielle. Évite les phrases à rallonge qui mélangent plusieurs idées. Préfère des phrases courtes, chacune portant une seule étape logique."
+            },
+            {
+              "type": "definition",
+              "term": "Raisonnement géométrique",
+              "definition": "Suite d'affirmations logiques, chacune justifiée par une propriété, une définition ou un résultat déjà prouvé, qui mène des données à la conclusion.",
+              "example": "« Comme $AB \\parallel CD$, les angles alternes-internes sont égaux, donc $\\angle 1 = \\angle 2$. Or $\\angle 2 = 30^{\\circ}$ (donnée), donc $\\angle 1 = 30^{\\circ}$. »"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour rédiger court, adopte ce canevas en quatre lignes. Ligne 1 : rappelle la propriété que tu vas utiliser (nomme-la). Ligne 2 : montre comment les données ou les résultats précédents satisfont la condition de cette propriété. Ligne 3 : écris la conséquence directe (l'égalité, le parallélisme, la mesure d'angle). Ligne 4 : si ce n'est pas la conclusion finale, annonce la prochaine propriété à utiliser. Ce format te force à être précis et à ne rien sauter. Avec l'habitude, tu pourras condenser certaines lignes, mais garde toujours la clarté."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Énoncer la propriété",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« D'après la propriété des angles alternes-internes... »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Vérifier la condition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« Comme les droites $d_1$ et $d_2$ sont parallèles... »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tirer la conséquence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« ...les angles alternes-internes $\\angle 1$ et $\\angle 2$ sont égaux. »"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure ou enchaîner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "« Donc $\\angle 1 = \\angle 2 = 55^{\\circ}$. On pourra ensuite utiliser la somme des angles du triangle. »"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "display_math",
+              "latex": "\\angle 1 = \\angle 2 = 55^{\\circ}",
+              "caption": "Exemple de conclusion partielle bien rédigée"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour gagner en concision, évite les formules de politesse comme « Je pense que » ou « Il me semble que ». Écris directement l'affirmation justifiée. Utilise les symboles mathématiques ($=$, $\\parallel$, $\\perp$, $\\angle$) au lieu de tout écrire en toutes lettres. Par exemple, préfère « $\\angle ABC = 40^{\\circ}$ » à « L'angle ABC mesure quarante degrés ». Cela rend la lecture plus rapide et laisse la place au raisonnement lui-même."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges fréquents : ne pas confondre « donc » (conséquence logique) et « car » (justification). Ne pas mélanger deux propriétés dans la même phrase sans transition. Ne pas oublier de nommer la propriété utilisée (angles correspondants, somme angles triangle, etc.). Relis toujours ton texte à voix haute : si tu butes sur une phrase, c'est qu'elle est trop chargée. Simplifie-la."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier les données et la conclusion d'un énoncé géométrique.",
+                "Je sais sélectionner et ordonner les propriétés pour chaîner un raisonnement.",
+                "Je sais rédiger un raisonnement court, structuré et justifié."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit un triangle $XYZ$ avec $XY \\parallel ZT$ ($T$ sur $YZ$). On sait $\\angle X = 50^{\\circ}$ et $\\angle Y = 60^{\\circ}$. Rédige en quatre lignes le raisonnement pour trouver $\\angle Z$.",
+              "answer": "1. Propriété des angles correspondants : $\\angle X = \\angle ZT Y = 50^{\\circ}$. 2. Dans le triangle $XYZ$, somme des angles = $180^{\\circ}$. 3. $50 + 60 + \\angle Z = 180$. 4. Donc $\\angle Z = 70^{\\circ}$.",
+              "hint": "Utilise d'abord les angles correspondants pour avoir un angle du triangle, puis la somme des angles.",
+              "explanation": "La parallèle donne $\\angle ZTY = 50^{\\circ}$. Comme $T$ est sur $YZ$, $\\angle Z = \\angle ZTY$. Ensuite la somme des angles du triangle donne $\\angle Z = 70^{\\circ}$."
+            },
+            {
+              "question": "Écris une justification courte pour l'affirmation : « Dans un parallélogramme $ABCD$, les diagonales se coupent en leur milieu. »",
+              "answer": "D'après la propriété des parallélogrammes, les diagonales se coupent en leur milieu. Donc $O$, intersection de $AC$ et $BD$, est le milieu de $AC$ et de $BD$.",
+              "hint": "Cite la propriété du parallélogramme sur les diagonales.",
+              "explanation": "La propriété est connue en 5e : dans un parallélogramme, les diagonales se coupent en leur milieu. Il suffit de l'énoncer."
+            },
+            {
+              "question": "Corrige la rédaction suivante : « Parce que $AB \\parallel CD$, alors $\\angle 1 = \\angle 2$, donc $\\angle 1 = 40^{\\circ}$ car $\\angle 2 = 40^{\\circ}$ ».",
+              "answer": "« D'après la propriété des angles alternes-internes, comme $AB \\parallel CD$, nous avons $\\angle 1 = \\angle 2$. Or $\\angle 2 = 40^{\\circ}$ (donnée), donc $\\angle 1 = 40^{\\circ}$ ».",
+              "hint": "Sépare la justification (propriété) de la donnée numérique.",
+              "explanation": "La phrase originale mélange « parce que » et « alors ». Il faut d'abord nommer la propriété, puis donner la condition, puis la conséquence, enfin utiliser la valeur numérique."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

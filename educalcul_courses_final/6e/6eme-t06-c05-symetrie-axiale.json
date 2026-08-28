@@ -1,0 +1,443 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.619012+00:00",
+  "id": 361,
+  "code": "6eme-t06-c05",
+  "title": "Symétrie axiale",
+  "description": "Cours structuré Educalcul : Symétrie axiale.",
+  "subject": "Géométrie plane",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Géométrie plane",
+    "titre_du_cours": "Symétrie axiale",
+    "objectif_global": "Symétrie axiale",
+    "mini_lecons_imposees": [
+      "Construire.",
+      "Propriétés.",
+      "Figures invariantes."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane",
+      "lessons": [
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que la symétrie axiale ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu te regardes dans un miroir : ton image te renvoie exactement ta silhouette, mais inversée de gauche à droite. En géométrie, on appelle cela une symétrie axiale. L'axe de symétrie joue le rôle du miroir : c'est une droite invisible qui sépare la figure en deux parties qui se superposent parfaitement si on les replie l'une sur l'autre. Aujourd'hui, tu vas apprendre à construire toi-même ces figures miroirs, sans miroir, seulement avec ta règle et ton compas."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Trace une droite $d$ sur ta feuille. Place un point $A$ quelque part, pas sur la droite. La question est : où se trouve le point $A'$, le symétrique de $A$ par rapport à $d$ ? Pour le trouver, il faut respecter deux règles simples : la droite $d$ doit passer pile au milieu du segment $[AA']$, et elle doit être perpendiculaire à ce segment. En d'autres termes, $d$ est le médiateur de $[AA']$. C'est cette propriété qui va nous guider pour la construction."
+            },
+            {
+              "type": "compass_tool",
+              "radius": 5,
+              "centerLabel": "A",
+              "caption": "Premier tracé : on pose la pointe du compas sur A et on trace un arc qui coupe la droite d en deux points."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La méthode pas à pas pour un point"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer un arc de cercle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pointe du compas sur $A$, ouverture assez large pour que l'arc coupe la droite $d$ en deux points. Nomme ces intersections $B$ et $C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver le milieu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sans changer l'écartement du compas, pose la pointe sur $B$ et trace un arc de chaque côté de $d$. Fais de même depuis $C$. Les deux nouveaux arcs se coupent en deux points : relie-les, tu obtiens le médiateur de $[BC]$, qui est aussi la perpendiculaire à $d$ passant par $A$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporter la distance",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La perpendiculaire coupe $d$ en un point $H$. C'est le milieu de $[AA']$. Reporte la distance $AH$ de l'autre côté de $d$ sur la perpendiculaire : tu obtiens $A'$. Vérifie : $AH = HA'$ et $(AA') \\perp d$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire le symétrique d'un point, tu peux t'attaquer à n'importe quelle figure : il suffit de répéter l'opération pour chaque sommet. Essaie sur un triangle ou un quadrilatère simple. Trace d'abord l'axe, puis construis l'image de chaque sommet un par un, et relie-les dans le même ordre. Tu verras apparaître la figure miroir comme par magie."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle ABC et son image A'B'C' par symétrie axiale d'axe d."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire le symétrique d'un segment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un segment, c'est juste deux points reliés. Pour obtenir son image, construis les symétriques de ses deux extrémités, puis relie ces deux nouveaux points. Le segment image a exactement la même longueur que le segment de départ. C'est une propriété fondamentale que tu vérifieras dans la prochaine leçon. Pour l'instant, entraîne-toi : trace un segment $[EF]$, une droite $d$ qui ne le coupe pas, et construis $[E'F']$. Mesure les deux segments avec ta règle : ils sont égaux."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu viens de découvrir le cœur de la construction : le compas est ton meilleur allié pour reporter les distances de part et d'autre de l'axe. Dans la leçon suivante, nous allons explorer toutes les propriétés que cette construction garantit : conservation des longueurs, des angles, des alignements. Tu verras que la symétrie axiale est une transformation incroyablement respectueuse de la figure !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur ta feuille, trace une droite $d$ et un point $M$ non situé sur $d$. Construis le point $M'$, symétrique de $M$ par rapport à $d$, en suivant la méthode au compas. Laisse apparentes les traces de construction.",
+              "answer": "Le point $M'$ est situé de l'autre côté de $d$, sur la perpendiculaire à $d$ passant par $M$, à la même distance de $d$ que $M$. Les traces de construction montrent les arcs de cercle ayant permis de tracer la perpendiculaire et de reporter la distance.",
+              "hint": "Commence par tracer un arc de cercle centré en $M$ qui coupe $d$ en deux points. Ces deux points te permettront de tracer la perpendiculaire à $d$ passant par $M$.",
+              "explanation": "La construction utilise le fait que l'axe de symétrie est le médiateur du segment joignant un point à son image. En traçant deux arcs de même rayon depuis les intersections de l'arc initial avec $d$, on obtient la perpendiculaire. Le milieu $H$ est l'intersection de cette perpendiculaire avec $d$. On reporte alors $MH$ de l'autre côté pour obtenir $M'$."
+            },
+            {
+              "question": "Trace un triangle $RST$ et une droite $\\Delta$ qui ne passe par aucun sommet. Construis le triangle $R'S'T'$, image de $RST$ par symétrie axiale d'axe $\\Delta$.",
+              "answer": "Le triangle $R'S'T'$ est de l'autre côté de $\\Delta$. Les segments $[RR']$, $[SS']$, $[TT']$ ont leurs milieux sur $\\Delta$ et sont perpendiculaires à $\\Delta$. Les deux triangles sont superposables par pliage le long de $\\Delta$.",
+              "hint": "Traite chaque sommet indépendamment : construis $R'$, puis $S'$, puis $T'$. Relie ensuite $R'S'$, $S'T'$, $T'R'$ dans cet ordre.",
+              "explanation": "La symétrie axiale transforme une figure en construisant l'image de chacun de ses points. Pour un polygone, il suffit de construire les images des sommets et de les relier dans le même ordre. Les traces de construction pour chaque sommet doivent rester visibles."
+            },
+            {
+              "question": "Soit un segment $[AB]$ et une droite $d$ parallèle à $(AB)$. Construis le segment $[A'B']$ image de $[AB]$ par symétrie d'axe $d$. Que peux-tu dire des droites $(AB)$ et $(A'B')$ ?",
+              "answer": "Les droites $(AB)$ et $(A'B')$ sont parallèles. Les segments $[AB]$ et $[A'B']$ ont même longueur et sont à égale distance de $d$.",
+              "hint": "Construis $A'$ et $B'$ comme d'habitude. Observe la position relative des deux segments par rapport à l'axe.",
+              "explanation": "Comme $d$ est parallèle à $(AB)$, les perpendiculaires tracées depuis $A$ et $B$ vers $d$ sont elles-mêmes parallèles. Les images $A'$ et $B'$ se trouvent sur ces mêmes perpendiculaires, de l'autre côté de $d$. Donc $(A'B')$ est parallèle à $(AB)$. La symétrie axiale conserve le parallélisme."
+            }
+          ]
+        },
+        {
+          "title": "Propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'axe, ce médiateur fidèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la leçon précédente, tu as construit des symétriques en utilisant ton compas. Tu as peut-être remarqué une chose étonnante : l'axe de symétrie passe toujours pile au milieu du segment qui relie un point à son image, et il le coupe à angle droit. C'est une propriété fondamentale, pas un hasard. Pour tout point $M$ et son image $M'$, l'axe $d$ est exactement le médiateur du segment $[MM']$. Cela veut dire deux choses : $d$ est perpendiculaire à $(MM')$, et $d$ passe par le milieu de $[MM']$. Cette double information est la clé pour comprendre toutes les autres propriétés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'en convaincre, reprends une de tes constructions de la dernière fois. Mesure la distance du point initial à l'axe, puis la distance de l'image à l'axe. Tu trouveras la même valeur à chaque fois. C'est ce qu'on appelle la conservation des distances à l'axe. Et si tu mesures l'angle entre le segment $[MM']$ et l'axe, tu tombes sur $90^{\\circ}$ immanquablement. La symétrie axiale est une transformation rigoureuse : elle ne triche jamais sur les distances ni sur les angles droits."
+            },
+            {
+              "type": "interactive_protractor",
+              "angleDeg": 90,
+              "caption": "Vérification : l'angle entre le segment joignant un point à son image et l'axe de symétrie est toujours un angle droit."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les longueurs et les angles ne bougent pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici une excellente nouvelle : quand tu fais une symétrie axiale, tu ne déformes rien. Les longueurs restent exactement les mêmes. Si ton segment $[AB]$ mesure $5,3\\,cm$, alors son image $[A'B']$ mesurera aussi $5,3\\,cm$. Pareil pour les angles : si ton triangle a un angle de $42^{\\circ}$, l'angle correspondant dans l'image vaudra aussi $42^{\\circ}$. On dit que la symétrie axiale conserve les longueurs et les mesures d'angles. C'est pour cela qu'on l'appelle une isométrie : une transformation qui garde les mesures intactes."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie par toi-même. Construis un angle quelconque, disons $\\widehat{XYZ} = 60^{\\circ}$, et son image par symétrie axiale. Mesure l'angle image avec ton rapporteur. Tu verras $60^{\\circ}$ à nouveau. Cette conservation est très utile : si un problème te donne la mesure d'un angle dans la figure de départ, tu connais déjà la mesure de l'angle correspondant dans l'image sans même avoir à le construire."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB = A'B' \\quad \\text{et} \\quad \\widehat{XYZ} = \\widehat{X'Y'Z'}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Alignement et milieux : ce qui reste en place"
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a encore deux propriétés très pratiques. D'abord, l'alignement : si trois points $A$, $B$, $C$ sont alignés (ils sont sur la même droite), alors leurs images $A'$, $B'$, $C'$ seront aussi alignées. La symétrie transforme une droite en une autre droite. Ensuite, les milieux : si $I$ est le milieu de $[AB]$, alors l'image $I'$ de $I$ sera exactement le milieu de $[A'B']$. Le milieu d'un segment est envoyé sur le milieu de l'image du segment. C'est logique, puisque l'axe coupe $[AA']$ et $[BB']$ à leur milieu, il respecte les proportions."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un segment $[CD]$ de $8\\,cm$ avec son milieu $M$. Trace un axe $d$ oblique. Construis les images $C'$, $D'$, $M'$. Mesure $[C'M']$ et $[M'D']$ : tu trouveras $4\\,cm$ pour les deux. Le milieu reste le milieu. Cette propriété te sera précieuse quand tu devras construire l'image d'un segment dont tu connais le milieu, sans avoir à refaire toute la construction pour le milieu."
+            },
+            {
+              "type": "number_line",
+              "min": 0,
+              "max": 8,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "C"
+                },
+                {
+                  "value": 4,
+                  "label": "M"
+                },
+                {
+                  "value": 8,
+                  "label": "D"
+                }
+              ],
+              "intervals": [],
+              "caption": "Sur une droite, le milieu M de [CD] est envoyé sur le milieu M' de [C'D'] par symétrie axiale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète : l'axe est médiateur, les longueurs et angles sont conservés, l'alignement et les milieux sont respectés. Ces propriétés ne sont pas des règles à mémoriser par cœur, ce sont des conséquences logiques de la définition. Dans la prochaine leçon, nous allons voir ce qui se passe quand une figure coïncide avec sa propre image : les figures invariantes. C'est là que la symétrie axiale devient vraiment fascinante !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit un segment $[EF]$ de longueur $6\\,cm$ et une droite $d$ qui ne le coupe pas. On note $E'$ et $F'$ les symétriques de $E$ et $F$ par rapport à $d$. Quelle est la longueur de $[E'F']$ ? Justifie ta réponse.",
+              "answer": "La longueur de $[E'F']$ est de $6\\,cm$. La symétrie axiale conserve les longueurs.",
+              "hint": "Rappelle-toi la propriété fondamentale : une isométrie ne change pas les distances.",
+              "explanation": "La symétrie axiale est une isométrie : elle conserve toutes les longueurs. Le segment image $[E'F']$ a donc exactement la même longueur que le segment initial $[EF]$, soit $6\\,cm$. Cette propriété est valable quelle que soit la position de l'axe par rapport au segment."
+            },
+            {
+              "question": "Un angle $\\widehat{PQR}$ mesure $115^{\\circ}$. On construit l'image de cet angle par symétrie axiale d'axe $d$. Quelle est la mesure de l'angle image $\\widehat{P'Q'R'}$ ?",
+              "answer": "L'angle image $\\widehat{P'Q'R'}$ mesure aussi $115^{\\circ}$. La symétrie axiale conserve les mesures d'angles.",
+              "hint": "La symétrie axiale ne déforme pas les angles, elle les retourne comme dans un miroir.",
+              "explanation": "La conservation des angles est une propriété fondamentale de la symétrie axiale. L'angle et son image ont même mesure, même si leur orientation dans le plan est inversée (le sens de rotation change). Ici, $115^{\\circ}$ reste $115^{\\circ}$."
+            },
+            {
+              "question": "Les points $A$, $B$, $C$ sont alignés dans cet ordre. $B$ est le milieu de $[AC]$. On note $A'$, $B'$, $C'$ leurs images par symétrie axiale d'axe $d$. Les points $A'$, $B'$, $C'$ sont-ils alignés ? $B'$ est-il le milieu de $[A'C']$ ?",
+              "answer": "Oui, $A'$, $B'$, $C'$ sont alignés. Oui, $B'$ est le milieu de $[A'C']$. La symétrie axiale conserve l'alignement et les milieux.",
+              "hint": "Une droite est transformée en une droite. Le milieu d'un segment est envoyé sur le milieu de l'image du segment.",
+              "explanation": "La symétrie axiale transforme une droite en une droite, donc l'alignement est conservé. De plus, comme $B$ est le milieu de $[AC]$, son image $B'$ est le milieu de l'image du segment $[AC]$, c'est-à-dire $[A'C']$. Les deux propriétés s'appliquent simultanément."
+            }
+          ]
+        },
+        {
+          "title": "Figures invariantes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quand une figure se superpose à son image"
+            },
+            {
+              "type": "paragraph",
+              "content": "Jusqu'ici, nous avons construit l'image d'une figure par symétrie, et cette image était toujours distincte de la figure de départ, de l'autre côté de l'axe. Mais imagine un instant : et si la figure était déjà parfaitement symétrique par rapport à l'axe ? Dans ce cas, quand on construit son image, on retombe exactement sur la figure de départ. On dit que la figure est invariante par symétrie axiale, ou qu'elle admet cet axe comme axe de symétrie. C'est comme si le miroir ne changeait rien : tu te regardes et tu te vois exactement tel que tu es."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple le plus simple : un cercle. Trace un cercle de centre $O$ et un diamètre $[AB]$. La droite $(AB)$ est un axe de symétrie du cercle. Si tu construis l'image du cercle par symétrie d'axe $(AB)$, tu obtiens... le même cercle ! Chaque point du cercle a son symétrique qui est aussi sur le cercle. En fait, un cercle a une infinité d'axes de symétrie : toutes les droites passant par son centre. C'est la figure la plus symétrique qui soit."
+            },
+            {
+              "type": "compass_tool",
+              "radius": 4,
+              "centerLabel": "O",
+              "caption": "Un cercle admet une infinité d'axes de symétrie : toutes les droites passant par son centre O."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les polygones réguliers et leurs axes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les polygones réguliers (triangle équilatéral, carré, pentagone régulier, etc.) sont aussi des figures invariantes, mais ils n'ont pas une infinité d'axes. Un triangle équilatéral a exactement trois axes de symétrie : ce sont les trois hauteurs, qui sont aussi les médiatrices et les bissectrices. Un carré en a quatre : les deux médiatrices des côtés opposés et les deux diagonales. Un pentagone régulier en a cinq, un hexagone régulier en a six. En général, un polygone régulier à $n$ côtés a $n$ axes de symétrie. C'est une règle facile à retenir : le nombre d'axes égale le nombre de côtés."
+            },
+            {
+              "type": "paragraph",
+              "content": "Mais attention, tous les triangles ne sont pas équilatéraux ! Un triangle isocèle (deux côtés égaux) a exactement un axe de symétrie : la hauteur issue du sommet principal, qui est aussi la médiatrice de la base. Un triangle quelconque (scalène) n'a aucun axe de symétrie. Essaie de plier mentalement un triangle aux trois côtés différents : tu ne pourras jamais faire coïncider les deux moitiés."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "5",
+                "5",
+                "8"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle isocèle AB = AC. L'axe de symétrie est la hauteur issue de A, médiatrice de [BC]."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quadrilatères particuliers : rectangle, losange, carré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parmi les quadrilatères, trois cas sont incontournables. Le rectangle a deux axes de symétrie : les médiatrices de ses côtés opposés. Les diagonales ne sont pas des axes de symétrie pour un rectangle (sauf s'il est carré). Le losange a aussi deux axes de symétrie : ce sont ses deux diagonales. Les médiatrices des côtés ne sont pas des axes pour un losange (sauf s'il est carré). Le carré, lui, cumule les deux : il a quatre axes de symétrie, les deux médiatrices et les deux diagonales. C'est le quadrilatère le plus symétrique après le cercle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour t'en souvenir, imagine un rectangle allongé : si tu le plies en deux dans le sens de la longueur, les bords coïncident. Si tu le plies dans le sens de la largeur, ça marche aussi. Mais si tu essaies de le plier le long d'une diagonale, les coins ne tombent pas l'un sur l'autre. Pour un losange, c'est l'inverse : les diagonales fonctionnent, les médiatrices non. Le carré, être parfait, accepte les quatre pliages."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Carré : 4 axes} \\quad \\text{Rectangle : 2 axes} \\quad \\text{Losange : 2 axes} \\quad \\text{Cercle : \\infty axes}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Reconnaître les axes sur une figure complexe"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, une figure est composée de plusieurs parties. Pour trouver ses axes de symétrie, il faut que chaque partie de la figure soit invariante par la symétrie. Une méthode simple : imagine que tu plies la feuille le long d'une droite candidate. Est-ce que tous les traits, tous les points, toutes les courbes se superposent parfaitement ? Si oui, c'est un axe. Si ne serait-ce qu'un petit détail ne coïncide pas, ce n'est pas un axe. C'est un jeu d'observation et de rigueur : un seul contre-exemple suffit pour éliminer un axe candidat."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons une figure en forme de papillon : deux ailes symétriques par rapport au corps. Le corps (une ligne verticale) est l'unique axe de symétrie. Si tu ajoutes un petit point sur l'aile gauche seulement, la figure perd sa symétrie. La symétrie axiale est exigeante : elle demande une correspondance parfaite point par point. C'est ce qui la rend si belle et si utile en géométrie, mais aussi en architecture, en art, dans la nature (les ailes de papillon, les feuilles, les flocons de neige)."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d'axes de symétrie pour quelques figures usuelles.",
+              "bars": [
+                {
+                  "label": "Triangle équilatéral",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Carré",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Rectangle",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Losange",
+                  "value": 2,
+                  "tone": "red"
+                },
+                {
+                  "label": "Cercle",
+                  "value": 10,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu as maintenant toutes les clés de la symétrie axiale : tu sais construire des images, tu connais les propriétés qui garantissent la justesse de tes constructions, et tu sais repérer les figures qui ne changent pas quand on les miroite. Ces outils te serviront tout au long de l'année en géométrie, et bien au-delà. La symétrie, c'est l'art de l'équilibre parfait."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire le symétrique d'un point par rapport à une droite à la règle et au compas.",
+                "Je sais construire l'image d'une figure (segment, angle, polygone) par symétrie axiale.",
+                "Je connais les propriétés de la symétrie axiale : conservation des longueurs, des angles, de l'alignement et des milieux.",
+                "Je sais que l'axe de symétrie est le médiateur du segment joignant un point à son image.",
+                "Je sais identifier les axes de symétrie d'un cercle, d'un triangle équilatéral, d'un triangle isocèle, d'un carré, d'un rectangle, d'un losange.",
+                "Je sais dire si une figure donnée admet un axe de symétrie et en tracer tous les axes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien d'axes de symétrie a un cercle ? Comment sont-ils positionnés par rapport au centre ?",
+              "answer": "Un cercle a une infinité d'axes de symétrie. Ce sont toutes les droites qui passent par son centre.",
+              "hint": "Pense à un diamètre : la droite qui le porte est un axe. Combien y a-t-il de diamètres ?",
+              "explanation": "Tout diamètre définit un axe de symétrie du cercle. Comme il y a une infinité de diamètres (un pour chaque direction), il y a une infinité d'axes. Tous passent par le centre du cercle."
+            },
+            {
+              "question": "Un triangle isocèle a pour sommet principal $A$ et pour base $[BC]$. Trace ce triangle et son unique axe de symétrie. Que peut-on dire de cet axe par rapport au segment $[BC]$ ?",
+              "answer": "L'axe de symétrie est la droite $(AH)$ où $H$ est le milieu de $[BC]$. C'est la hauteur issue de $A$, la médiatrice de $[BC]$ et la bissectrice de l'angle $\\widehat{BAC}$. Il est perpendiculaire à $[BC]$ et passe par son milieu.",
+              "hint": "Dans un triangle isocèle, la hauteur, la médiane, la médiatrice de la base et la bissectrice du sommet principal coïncident.",
+              "explanation": "L'unique axe de symétrie d'un triangle isocèle est la droite qui passe par le sommet principal et le milieu de la base. Cette droite est à la fois hauteur, médiane, médiatrice de la base et bissectrice de l'angle au sommet. Elle coupe la base perpendiculairement en son milieu."
+            },
+            {
+              "question": "Vrai ou faux ? Justifie chaque réponse. (a) Un rectangle a pour axes de symétrie ses deux diagonales. (b) Un losange a pour axes de symétrie les médiatrices de ses côtés. (c) Un carré a quatre axes de symétrie.",
+              "answer": "(a) Faux. Les axes d'un rectangle sont les médiatrices de ses côtés opposés. (b) Faux. Les axes d'un losange sont ses diagonales. (c) Vrai. Le carré a quatre axes : les deux médiatrices et les deux diagonales.",
+              "hint": "Teste mentalement le pliage : pour un rectangle allongé, les diagonales ne font pas coïncider les coins.",
+              "explanation": "Il faut distinguer les propriétés du rectangle, du losange et du carré. Le rectangle (non carré) a 2 axes : médiatrices des côtés. Le losange (non carré) a 2 axes : les diagonales. Le carré, cas particulier des deux, a 4 axes : médiatrices et diagonales."
+            },
+            {
+              "question": "On donne une figure formée d'un carré $ABCD$ et de son centre $O$. On trace la diagonale $[AC]$. Cette figure a-t-elle des axes de symétrie ? Lesquels ?",
+              "answer": "Oui, la figure a deux axes de symétrie : la diagonale $[AC]$ (qui est tracée) et la diagonale $[BD]$ (non tracée mais existante). La médiatrice de $[AB]$ et celle de $[BC]$ ne sont pas des axes car le centre $O$ brise la symétrie par rapport à ces droites (le point $O$ ne serait pas sur son image).",
+              "hint": "Le point $O$ est le centre du carré. Vérifie pour chaque axe candidat si $O$ coïncide avec son image.",
+              "explanation": "Le carré seul a 4 axes. L'ajout du centre $O$ (point unique) ne change rien pour les axes qui passent par $O$ : les deux diagonales. Mais les médiatrices des côtés ne passent pas par $O$ (elles passent par les milieux des côtés). Or $O$ n'est pas sur ces droites, donc son image par symétrie par rapport à une médiatrice serait un point distinct de $O$, qui n'existe pas dans la figure. Donc les médiatrices ne sont plus des axes de la figure complète."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

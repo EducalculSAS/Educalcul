@@ -1,0 +1,65 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 193,
+  "_course_code": "ce2-t06-c07-perimetre-d-une-figure",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Comprendre contour",
+  "title": "Le contour des figures",
+  "blocks": [
+    {
+      "title": "Vocabulaire du contour",
+      "content": "Complète la phrase : Le contour d'une figure plane, c'est la      qui limite cette figure.",
+      "correctAnswer": "ligne fermée",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le contour est la ligne continue et fermée qui entoure entièrement la figure. On peut le suivre avec le doigt sans lever le doigt et sans s'arrêter.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Mesurer un contour sur une figure",
+      "content": "Observe le rectangle ci-contre. Sa largeur mesure $4$ cm et sa hauteur mesure $3$ cm. Quelle est la longueur totale de son contour en centimètres ?",
+      "correctAnswer": "14 cm",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le contour d'un rectangle est la somme de ses quatre côtés : deux largeurs et deux hauteurs. Calcul : $4 + 3 + 4 + 3 = 14$. Le contour mesure donc $14$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 4,
+            "height": 3,
+            "label": "Rectangle 4 cm x 3 cm"
+          }
+        ],
+        "caption": "Rectangle de largeur 4 cm et hauteur 3 cm"
+      }
+    },
+    {
+      "title": "Retrouver une dimension",
+      "content": "Un carré a un contour de $20$ cm. Tous les côtés ont la même longueur. Quelle est la longueur d'un côté de ce carré en centimètres ?",
+      "correctAnswer": "5 cm",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un carré a $4$ côtés de même longueur. Le contour est la somme des $4$ côtés. Pour trouver la longueur d'un côté, on divise le contour par $4$ : $20 \\div 4 = 5$. Chaque côté mesure $5$ cm.",
+      "points": 2,
+      "figure": {
+        "type": "area_decomposer",
+        "shapes": [
+          {
+            "width": 5,
+            "height": 5,
+            "label": "Carré côté 5 cm"
+          }
+        ],
+        "caption": "Carré de côté inconnu, contour 20 cm"
+      }
+    }
+  ]
+}

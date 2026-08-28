@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 482,
+  "_course_code": "3eme-t05-c04-triangles-semblables",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Reconnaître",
+  "title": "Reconnaître les triangles semblables",
+  "questions": [
+    {
+      "text": "Quelle condition est suffisante pour affirmer que deux triangles sont semblables ?",
+      "options": [
+        "Ils ont un côté de même longueur.",
+        "Leurs trois angles correspondants sont deux à deux égaux.",
+        "Leur périmètre est identique.",
+        "Ils ont la même aire."
+      ],
+      "correctAnswer": "Leurs trois angles correspondants sont deux à deux égaux.",
+      "explanation": "Deux triangles sont semblables si leurs angles correspondants sont égaux (critère AA) ou si leurs côtés sont proportionnels (critère SSS ou SAS). L'égalité d'un seul côté, du périmètre ou de l'aire ne garantit pas la similitude.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les triangles $ABC$ et $DEF$ ont les longueurs de côtés suivantes : $AB=6$, $BC=8$, $AC=10$ et $DE=3$, $EF=4$, $DF=5$. Sont-ils semblables ?",
+      "options": [
+        "Oui, car les rapports des côtés correspondants sont égaux.",
+        "Non, car les côtés ne sont pas dans le même ordre.",
+        "Oui, car ils ont le même périmètre.",
+        "Non, car un triangle est rectangle et l'autre ne l'est pas."
+      ],
+      "correctAnswer": "Oui, car les rapports des côtés correspondants sont égaux.",
+      "explanation": "On calcule les rapports $AB/DE = 6/3 = 2$, $BC/EF = 8/4 = 2$, $AC/DF = 10/5 = 2$. Les trois rapports sont égaux, donc les triangles sont semblables (critère SSS). Le périmètre n'est pas un critère, et l'ordre des côtés correspond bien aux sommets donnés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la figure, les droites $(MN)$ et $(BC)$ sont parallèles. Le triangle $AMN$ est-il semblable au triangle $ABC$ ?",
+      "options": [
+        "Oui, grâce au théorème de Thalès.",
+        "Non, car ils n'ont pas le même nombre de côtés.",
+        "Oui, car ils partagent le sommet $A$ seulement.",
+        "Non, car les angles en $M$ et $B$ ne sont pas égaux."
+      ],
+      "correctAnswer": "Oui, grâce au théorème de Thalès.",
+      "explanation": "Si $(MN) \\parallel (BC)$, alors les angles correspondants sont égaux : $\\angle AMN = \\angle ABC$ et $\\angle ANM = \\angle ACB$. Les deux triangles partagent aussi l'angle en $A$. Donc ils ont trois angles égaux deux à deux, ce qui assure la similitude (critère AA), conséquence directe du théorème de Thalès.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux triangles rectangles ont les longueurs des côtés de l'angle droit respectivement $9$ et $12$ pour le premier, $6$ et $8$ pour le second. Peut-on affirmer qu'ils sont semblables ?",
+      "options": [
+        "Oui, car les rapports des deux côtés de l'angle droit sont égaux.",
+        "Non, car l'hypoténuse n'est pas donnée.",
+        "Oui, car ils sont tous les deux rectangles.",
+        "Non, car les côtés ne sont pas dans le même ordre."
+      ],
+      "correctAnswer": "Oui, car les rapports des deux côtés de l'angle droit sont égaux.",
+      "explanation": "Pour le premier triangle, le rapport des côtés de l'angle droit est $9/12 = 3/4$. Pour le second, $6/8 = 3/4$. Comme les triangles sont rectangles et que les deux côtés de l'angle droit sont proportionnels, le troisième côté (l'hypoténuse) l'est aussi automatiquement (critère SAS pour les triangles rectangles). Le fait d'être rectangle seul ne suffit pas, il faut la proportionnalité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les paires de triangles suivantes, laquelle n'est pas nécessairement semblable ?",
+      "options": [
+        "Deux triangles ayant trois angles respectivement égaux.",
+        "Deux triangles dont les trois côtés sont proportionnels.",
+        "Deux triangles rectangles ayant un angle aigu égal.",
+        "Deux triangles ayant deux côtés proportionnels et l'angle non compris égal."
+      ],
+      "correctAnswer": "Deux triangles ayant deux côtés proportionnels et l'angle non compris égal.",
+      "explanation": "Les trois premiers critères sont des critères de similitude valides : AA (trois angles égaux), SSS (trois côtés proportionnels) et le cas particulier des triangles rectangles avec un angle aigu égal (ce qui donne AA). Le dernier correspond au cas \"côté-angle-côté\" mais l'angle n'est pas compris entre les deux côtés proportionnels ; cela ne garantit pas la similitude (c'est le cas ambigu SSA).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

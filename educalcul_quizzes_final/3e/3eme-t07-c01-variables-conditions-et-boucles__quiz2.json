@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 490,
+  "_course_code": "3eme-t07-c01-variables-conditions-et-boucles",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Prédire",
+  "title": "Quiz Prédire - Algorithmique 3e",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\n$s \\leftarrow 0$\\npour $i$ de $1$ à $5$ faire\\n    $s \\leftarrow s + i$\\nfin pour\\nAfficher $s$\\nQuelle valeur est affichée ?",
+      "options": [
+        "15",
+        "10",
+        "20",
+        "5"
+      ],
+      "correctAnswer": "15",
+      "explanation": "La boucle ajoute les entiers de $1$ à $5$ : $1+2+3+4+5 = 15$. Les autres options correspondent à des sommes partielles ou à une erreur de comptage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n$x \\leftarrow 0$\\npour $i$ de $1$ à $4$ faire\\n    si $i \\bmod 2 = 0$ alors\\n        $x \\leftarrow x + i$\\n    sinon\\n        $x \\leftarrow x - i$\\n    fin si\\nfin pour\\nAfficher $x$\\nQuelle valeur est affichée ?",
+      "options": [
+        "2",
+        "0",
+        "-2",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "explanation": "Pour $i=1$ (impair) $x=-1$ ; $i=2$ (pair) $x=1$ ; $i=3$ (impair) $x=-2$ ; $i=4$ (pair) $x=2$. Le résultat final est $2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n$compteur \\leftarrow 0$\\npour $i$ de $1$ à $3$ faire\\n    pour $j$ de $1$ à $2$ faire\\n        $compteur \\leftarrow compteur + 1$\\n    fin pour\\nfin pour\\nAfficher $compteur$\\nQuelle valeur est affichée ?",
+      "options": [
+        "6",
+        "5",
+        "3",
+        "9"
+      ],
+      "correctAnswer": "6",
+      "explanation": "La boucle extérieure s'exécute $3$ fois, la boucle intérieure $2$ fois à chaque tour, soit $3 \\times 2 = 6$ incrémentations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n$n \\leftarrow 10$\\ntantque $n > 0$ faire\\n    $n \\leftarrow n - 3$\\nfin tantque\\nAfficher $n$\\nQuelle valeur est affichée ?",
+      "options": [
+        "-2",
+        "1",
+        "4",
+        "0"
+      ],
+      "correctAnswer": "-2",
+      "explanation": "Les valeurs successives de $n$ sont $10 \\rightarrow 7 \\rightarrow 4 \\rightarrow 1 \\rightarrow -2$. La condition $n>0$ devient fausse pour $-2$, qui est donc la valeur finale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\n$a \\leftarrow 5$\\n$b \\leftarrow 3$\\nsi $a > b$ alors\\n    $a \\leftarrow a - b$\\n    $b \\leftarrow a + b$\\n    $a \\leftarrow b - a$\\nfin si\\nAfficher $a$, $b$\\nQuel couple est affiché ?",
+      "options": [
+        "a = 3, b = 5",
+        "a = 5, b = 3",
+        "a = 2, b = 5",
+        "a = 3, b = 2"
+      ],
+      "correctAnswer": "a = 3, b = 5",
+      "explanation": "Le bloc échange les valeurs de $a$ et $b$ sans variable temporaire. Au départ $a=5$, $b=3$. Après les trois affectations on obtient $a=3$, $b=5$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

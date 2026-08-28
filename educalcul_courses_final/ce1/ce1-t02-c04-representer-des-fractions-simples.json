@@ -1,0 +1,404 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.732898+00:00",
+  "id": 82,
+  "code": "ce1-t02-c04",
+  "title": "Représenter des fractions simples",
+  "description": "Cours structuré Educalcul : Représenter des fractions simples.",
+  "subject": "Fractions simples et premières écritures décimales",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Fractions simples et premières écritures décimales",
+    "titre_du_cours": "Représenter des fractions simples",
+    "objectif_global": "Représenter des fractions simples",
+    "mini_lecons_imposees": [
+      "Colorier une fraction.",
+      "Construire une représentation.",
+      "Passer d'une image à l'écriture fractionnaire."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions simples et premières écritures décimales",
+      "lessons": [
+        {
+          "title": "Colorier une fraction.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la fraction en coloriant"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une barre de chocolat que tu partages avec tes copains. Si tu la coupes en $4$ morceaux identiques et que tu en prends $1$, tu as mangé une partie du tout. En mathématiques, on appelle cela une fraction. Aujourd'hui, tu vas apprendre à la voir avec tes yeux en coloriant."
+            },
+            {
+              "type": "definition",
+              "term": "Fraction",
+              "definition": "Une fraction montre une partie d'un tout qui a été découpé en parts égales. Elle s'écrit avec deux nombres, l'un au-dessus de l'autre, séparés par un trait.",
+              "example": "$\\frac{1}{4}$ se lit \"un quart\"."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Une barre partagée en $4$ parts égales, $1$ part colorée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde bien l'image. Le nombre du bas, $4$, c'est le nombre total de parts. On l'appelle le dénominateur. Il te dit en combien de morceaux le tout a été coupé. Le nombre du haut, $1$, c'est le nombre de parts que l'on colore ou que l'on prend. On l'appelle le numérateur. Pour colorier $\\frac{1}{4}$, je compte $4$ parts en tout, puis je colorie $1$ seule part."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter les parts totales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Observe la figure. En combien de parties égales est-elle divisée ? Ce nombre sera le dénominateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les parts colorées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Combien de parts sont déjà colorées ou doivent l'être ? Ce nombre sera le numérateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Colorier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Colorie exactement le nombre de parts indiqué par le numérateur. Pas une de plus, pas une de moins !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, tu viens de colorier ta première fraction ! Maintenant, essayons avec un autre exemple. Regarde cette barre partagée en $3$ parts égales. Si je te demande de colorier $\\frac{2}{3}$, que dois-tu faire ? D'abord, tu vois le $3$ en bas : la barre est déjà bien coupée en $3$. Ensuite, le $2$ en haut te dit de colorier $2$ parts sur les $3$. Essaie sur ton cahier ou sur l'exercice suivant."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Barre en $3$ parts, $2$ parts colorées pour $\\frac{2}{3}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est parfait ! Tu commences à bien voir le lien entre les nombres et le dessin. Mais attention, parfois la figure n'est pas encore colorée du tout. C'est à toi de tout faire : compter les parts, lire les nombres, puis colorier. Par exemple, si je te donne $\\frac{3}{5}$, tu cherches une figure en $5$ parts, et tu en colories $3$. C'est comme une recette de cuisine : le dénominateur, c'est le nombre de parts du gâteau, le numérateur, c'est le nombre de parts pour toi."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Cinq parts au total, trois parts colorées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour colorier n'importe quelle fraction simple. Rappelle-toi : le nombre du bas guide tes yeux pour voir le découpage, le nombre du haut guide ton crayon pour colorier. À la prochaine leçon, nous allons apprendre à construire nous-mêmes ces dessins, sans figure toute faite !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Colorie $\\frac{1}{2}$ sur cette barre partagée en $2$ parts égales.",
+              "answer": "Une part sur deux colorée.",
+              "hint": "Le dénominateur est $2$, donc $2$ parts en tout. Le numérateur est $1$, colorie $1$ part.",
+              "explanation": "La fraction $\\frac{1}{2}$ signifie qu'on prend $1$ part sur $2$ parts égales. On colorie donc une seule des deux parties."
+            },
+            {
+              "question": "Sur une barre divisée en $4$ parts, colorie $\\frac{3}{4}$.",
+              "answer": "Trois parts sur quatre colorées.",
+              "hint": "Regarde le nombre du bas : $4$ parts. Le nombre du haut : $3$ parts à colorier.",
+              "explanation": "$\\frac{3}{4}$ veut dire $3$ parts prises sur $4$ parts égales. On colorie trois des quatre rectangles."
+            },
+            {
+              "question": "Voici une figure en $5$ parts égales. Colorie $\\frac{2}{5}$.",
+              "answer": "Deux parts sur cinq colorées.",
+              "hint": "Compte $5$ parts en tout (dénominateur). Colorie $2$ parts (numérateur).",
+              "explanation": "Le dénominateur $5$ montre le découpage en $5$ parts. Le numérateur $2$ indique combien de parts colorier : $2$ parts sur les $5$."
+            }
+          ]
+        },
+        {
+          "title": "Construire une représentation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dessiner sa propre fraction"
+            },
+            {
+              "type": "paragraph",
+              "content": "La fois dernière, les figures étaient déjà dessinées. Aujourd'hui, c'est toi qui tiens le crayon pour tracer les traits ! C'est une grande étape : tu vas pouvoir représenter n'importe quelle fraction, même si personne ne t'a donné le dessin tout prêt. Prêt à devenir un petit architecte des fractions ?"
+            },
+            {
+              "type": "definition",
+              "term": "Parts égales",
+              "definition": "Des parties qui ont toutes la même taille. Quand on découpe un tout en parts égales, chaque part mesure la même chose.",
+              "example": "Un carré coupé en $4$ petits carrés de même taille."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire une fraction, la règle d'or est simple : il faut d'abord découper le tout en parts égales. Si les parts ne sont pas de la même grandeur, ce n'est plus une fraction correcte. Imagine que tu coupes une pomme : si un morceau est tout petit et l'autre énorme, ce n'est pas juste ! En maths, on veut que chaque part ait exactement la même taille."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 4,
+              "highlighted": 3,
+              "caption": "Un rectangle $2 \\times 4$ découpé en $8$ cases égales, $3$ cases colorées pour $\\frac{3}{8}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre du bas. Il te dit en combien de parts égales tu dois couper ta figure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer les traits de découpage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec ta règle, divise le rectangle, le cercle ou le carré en ce nombre de parts. Vérifie qu'elles ont toutes la même taille."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire le numérateur et colorier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nombre du haut. Colorie ce nombre de parts. Le tour est joué !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as bien travaillé ! Mais attention, toutes les figures ne se découpent pas de la même façon. Un rectangle, on le coupe souvent en bandes droites. Un cercle, on le coupe comme une tarte, depuis le centre. Un carré, on peut le quadriller. L'important, c'est que les parts soient égales. Essaie maintenant de représenter $\\frac{1}{3}$ sur un cercle. Tu vas devoir tracer $3$ parts égales, comme trois parts de gâteau, puis en colorier une seule."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "circle",
+              "caption": "Un disque partagé en $3$ parts égales, $1$ part colorée."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "C'était un peu plus difficile avec le cercle, n'est-ce-pas ? Tracer des parts égales sur un rond demande de l'entraînement. Heureusement, il y a une astuce : pour $\\frac{1}{3}$, imagine une horloge. Les aiguilles sur $12$, $4$ et $8$ te donnent trois parts parfaites ! Maintenant, essayons sur un carré. Pour montrer $\\frac{2}{4}$, tu peux tracer une croix au milieu : une ligne verticale, une ligne horizontale. Tu obtiens $4$ petits carrés identiques. Il ne te reste plus qu'à en colorier $2$."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 2,
+              "cols": 2,
+              "highlighted": 2,
+              "caption": "Carré quadrillé en $4$ parts, $2$ parts colorées pour $\\frac{2}{4}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce que tu viens de faire : $\\frac{2}{4}$ sur un carré, et tout à l'heure $\\frac{1}{2}$ sur une barre. Si tu compares les deux dessins, tu vois que la partie colorée prend la même place ! Eh oui, $\\frac{2}{4}$ et $\\frac{1}{2}$, c'est la même quantité. On le verra plus tard. Pour l'instant, retiens bien la méthode : lire le dénominateur, découper en parts égales, lire le numérateur, colorier. À la prochaine leçon, nous ferons le chemin inverse : du dessin à l'écriture !"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur un rectangle vide, représente $\\frac{1}{4}$ en traçant les traits puis en coloriant.",
+              "answer": "Rectangle divisé en $4$ bandes égales, $1$ bande colorée.",
+              "hint": "Le dénominateur $4$ : coupe en $4$ parts égales. Le numérateur $1$ : colorie $1$ part.",
+              "explanation": "On divise le rectangle en $4$ parties égales (bandes verticales ou horizontales). On colorie ensuite $1$ seule partie pour montrer $\\frac{1}{4}$."
+            },
+            {
+              "question": "Sur un cercle vide, représente $\\frac{3}{4}$.",
+              "answer": "Cercle divisé en $4$ quarts égaux, $3$ quarts colorés.",
+              "hint": "Trace deux diamètres perpendiculaires pour faire $4$ parts. Colorie $3$ parts.",
+              "explanation": "Pour diviser un cercle en $4$ parts égales, on trace deux droites qui se coupent au centre et sont perpendiculaires. On obtient $4$ quarts. On en colorie $3$ pour $\\frac{3}{4}$."
+            },
+            {
+              "question": "Sur un carré, représente $\\frac{3}{4}$ en quadrillant.",
+              "answer": "Carré divisé en $4$ petits carrés, $3$ colorés.",
+              "hint": "Trace une ligne verticale et une horizontale au milieu. Colorie $3$ des $4$ petits carrés.",
+              "explanation": "Le quadrillage en $2 \\times 2$ donne $4$ carrés égaux. Le numérateur $3$ demande de colorier $3$ de ces carrés."
+            }
+          ]
+        },
+        {
+          "title": "Passer d'une image à l'écriture fractionnaire.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire la fraction sur l'image"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant colorier une fraction toute faite et même construire ton propre dessin. Aujourd'hui, nous jouons à un jeu inverse : je te montre un dessin déjà colorié, et toi, tu trouves l'écriture fractionnaire qui correspond. C'est comme être détective : tu observes les indices (les traits, les couleurs) et tu écris le code secret !"
+            },
+            {
+              "type": "definition",
+              "term": "Écriture fractionnaire",
+              "definition": "La façon d'écrire une fraction avec deux nombres séparés par un trait horizontal. Le nombre du haut (numérateur) compte les parts choisies. Le nombre du bas (dénominateur) compte les parts totales.",
+              "example": "$\\frac{3}{5}$ se lit \"trois cinquièmes\"."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour lire une fraction sur une image, tu as deux questions à te poser, toujours dans le même ordre. Première question : en combien de parts égales la figure est-elle coupée ? Tu comptes les parts, tu as ton dénominateur, tu l'écris en bas. Deuxième question : combien de parts sont colorées ? Tu comptes, tu as ton numérateur, tu l'écris en haut. C'est tout !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter le total des parts",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les traits de découpage. Compte toutes les parts, coloriées ou non. Écris ce nombre en bas du trait : c'est le dénominateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter les parts colorées",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde la couleur. Compte seulement les parts qui sont coloriées. Écris ce nombre en haut du trait : c'est le numérateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la fraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le numérateur au-dessus, le dénominateur en dessous, avec un trait horizontal entre les deux. Lis ta fraction à voix haute !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent travail ! Tu as trouvé la fraction toute seul. Maintenant, regardons une image un peu différente. Voici un cercle partagé en $5$ parts égales, comme une tarte coupée en $5$. Trois parts sont colorées en bleu, deux parts sont blanches. Prends ton temps : compte le total, compte les bleues, écris la fraction. C'est comme compter les parts de gâteau mangées et les parts qui restent sur le plateau."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 5,
+              "shape": "circle",
+              "caption": "Disque en $5$ parts, $3$ parts colorées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens vraiment fort ! Essayons encore avec une figure en barres, mais cette fois il y a deux couleurs différentes. Imagine une barre découpée en $6$ parts. $2$ parts sont rouges, $4$ parts sont vertes. Si je te demande la fraction des parts rouges, tu comptes : $6$ en tout (dénominateur), $2$ rouges (numérateur) $\\rightarrow \\frac{2}{6}$. Et pour les parts vertes ? $6$ en tout, $4$ vertes $\\rightarrow \\frac{4}{6}$. Une même figure peut donner plusieurs fractions selon ce qu'on observe !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 6,
+              "shape": "bar",
+              "caption": "Barre en $6$ parts, $2$ parts rouges, $4$ parts vertes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est la fin de notre parcours sur les fractions simples. Tu sais maintenant faire les trois grandes choses : colorier une fraction qu'on te donne, construire le dessin toi-même, et lire l'écriture sur une image. Tu as tous les outils pour parler le langage des parts et des touts. Continue à t'entraîner avec des gâteaux, des barres de chocolat, des feuilles de papier découpées... Les fractions sont partout autour de toi !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais colorier une fraction sur une figure déjà découpée.",
+                "Je sais découper une figure en parts égales pour représenter une fraction.",
+                "Je sais compter les parts totales pour trouver le dénominateur.",
+                "Je sais compter les parts colorées pour trouver le numérateur.",
+                "Je sais écrire la fraction correspondante à une image."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un rectangle divisé en $3$ parts égales. $2$ parts sont colorées. Écris la fraction.",
+              "answer": "$\\frac{2}{3}$",
+              "hint": "Compte les parts en tout (dénominateur), puis les parts colorées (numérateur).",
+              "explanation": "Le rectangle est en $3$ parts égales, donc le dénominateur est $3$. Deux parts sont colorées, donc le numérateur est $2$. La fraction est $\\frac{2}{3}$."
+            },
+            {
+              "question": "Un cercle est coupé en $4$ quarts. $1$ quart est coloré. Quelle est la fraction ?",
+              "answer": "$\\frac{1}{4}$",
+              "hint": "Le cercle a $4$ parts en tout. Une seule est colorée.",
+              "explanation": "Le découpage donne $4$ parts égales (dénominateur $4$). Une part est colorée (numérateur $1$). On écrit $\\frac{1}{4}$."
+            },
+            {
+              "question": "Une barre a $8$ parts. $5$ sont bleues, $3$ sont jaunes. Écris la fraction pour les parts bleues.",
+              "answer": "$\\frac{5}{8}$",
+              "hint": "Total des parts : $8$. Parts bleues : $5$.",
+              "explanation": "Il y a $8$ parts au total, donc le dénominateur est $8$. Parmi elles, $5$ sont bleues, donc le numérateur est $5$. La fraction des parts bleues est $\\frac{5}{8}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

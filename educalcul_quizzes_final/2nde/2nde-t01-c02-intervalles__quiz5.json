@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 497,
+  "_course_code": "2nde-t01-c02-intervalles",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Approfondissement : Notation",
+  "title": "Quiz : Notation des intervalles (Approfondissement)",
+  "questions": [
+    {
+      "text": "Quel intervalle correspond à l'ensemble $ \\{x \\in \\mathbb{R} \\mid 2 < x \\le 5\\} $ ?",
+      "options": [
+        "$(2, 5]$",
+        "$[2, 5]$",
+        "$(2, 5)$",
+        "$[2, 5)$"
+      ],
+      "correctAnswer": "$(2, 5]$",
+      "explanation": "L'intervalle $(2, 5]$ inclut tous les réels strictement supérieurs à $2$ et inférieurs ou égaux à $5$, ce qui correspond exactement à la condition $2 < x \\le 5$. Les autres options incluent $2$ ou excluent $5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle notation d'intervalle représente l'ensemble des réels $x$ tels que $x \\ge -3$ ?",
+      "options": [
+        "$[-3, +\\infty)$",
+        "$(-3, +\\infty)$",
+        "$[-3, +\\infty]$",
+        "$(-3, +\\infty]$"
+      ],
+      "correctAnswer": "$[-3, +\\infty)$",
+      "explanation": "L'intervalle $[-3, +\\infty)$ contient $-3$ (crochet fermé) et tous les nombres plus grands, sans borne supérieure finie (parenthèse à l'infini). Les autres choix excluent $-3$ ou utilisent une notation incorrecte pour l'infini.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des notations suivantes décrit l'ensemble $\\{x \\in \\mathbb{R} \\mid x < -1 \\text{ ou } x \\ge 4\\}$ ?",
+      "options": [
+        "$(-\\infty, -1) \\cup [4, +\\infty)$",
+        "$(-\\infty, -1] \\cup [4, +\\infty)$",
+        "$(-\\infty, -1) \\cup (4, +\\infty)$",
+        "$(-\\infty, -1] \\cup (4, +\\infty)$"
+      ],
+      "correctAnswer": "$(-\\infty, -1) \\cup [4, +\\infty)$",
+      "explanation": "La condition $x < -1$ donne l'intervalle ouvert $(-\\infty, -1)$ ; la condition $x \\ge 4$ donne $[4, +\\infty)$. L'union des deux est donc $(-\\infty, -1) \\cup [4, +\\infty)$. Les autres options ferment ou ouvrent incorrectement l'une des bornes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'intersection des intervalles $[1, 6)$ et $(3, 8]$ ?",
+      "options": [
+        "$(3, 6)$",
+        "$[3, 6)$",
+        "$(3, 6]$",
+        "$[3, 6]$"
+      ],
+      "correctAnswer": "$(3, 6)$",
+      "explanation": "Le premier intervalle contient les nombres de $1$ inclus jusqu'à $6$ exclus. Le second contient les nombres strictement supérieurs à $3$ jusqu'à $8$ inclus. Les nombres communs sont ceux strictement supérieurs à $3$ et strictement inférieurs à $6$, soit l'intervalle ouvert $(3, 6)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écrivez en notation d'intervalle l'ensemble $\\{x \\in \\mathbb{R} \\mid x \\le -2 \\text{ ou } x > 5\\}$.",
+      "options": [
+        "$(-\\infty, -2] \\cup (5, +\\infty)$",
+        "$(-\\infty, -2) \\cup [5, +\\infty)$",
+        "$(-\\infty, -2] \\cup [5, +\\infty)$",
+        "$(-\\infty, -2) \\cup (5, +\\infty)$"
+      ],
+      "correctAnswer": "$(-\\infty, -2] \\cup (5, +\\infty)$",
+      "explanation": "La condition $x \\le -2$ correspond à l'intervalle $(-\\infty, -2]$ (fermé à $-2$). La condition $x > 5$ correspond à $(5, +\\infty)$ (ouvert à $5$). L'union des deux donne $(-\\infty, -2] \\cup (5, +\\infty)$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

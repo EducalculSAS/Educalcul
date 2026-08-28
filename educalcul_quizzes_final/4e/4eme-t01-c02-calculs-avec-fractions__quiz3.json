@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 421,
+  "_course_code": "4eme-t01-c02-calculs-avec-fractions",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Priorités",
+  "title": "Quiz sur les priorités avec fractions",
+  "questions": [
+    {
+      "text": "Calcule $ \\frac{1}{2} + \\frac{3}{4} \\times 2 $ en respectant les priorités opératoires.",
+      "options": [
+        "$2$",
+        "$\\frac{5}{4}$",
+        "$\\frac{7}{4}$",
+        "$\\frac{3}{2}$"
+      ],
+      "correctAnswer": "$2$",
+      "explanation": "On effectue d'abord la multiplication $ \\frac{3}{4} \\times 2 = \\frac{3}{2} $. Ensuite on additionne $ \\frac{1}{2} + \\frac{3}{2} = \\frac{4}{2} = 2 $. Les autres réponses correspondent à des erreurs d'ordre (addition avant multiplication) ou de calcul de fractions.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $ ( \\frac{2}{3} + \\frac{1}{6} ) \\div \\frac{1}{2} $.",
+      "options": [
+        "$\\frac{5}{3}$",
+        "$\\frac{5}{6}$",
+        "$\\frac{10}{3}$",
+        "$\\frac{5}{12}$"
+      ],
+      "correctAnswer": "$\\frac{5}{3}$",
+      "explanation": "D'abord la parenthèse : $ \\frac{2}{3} + \\frac{1}{6} = \\frac{4}{6} + \\frac{1}{6} = \\frac{5}{6} $. Ensuite la division par $ \\frac{1}{2} $ équivaut à multiplier par $ 2 $ : $ \\frac{5}{6} \\times 2 = \\frac{10}{6} = \\frac{5}{3} $. Les distracteurs proviennent d'oubli de la priorité des parenthèses ou d'erreur sur la division.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $ \\frac{3}{5} \\times ( \\frac{4}{7} + \\frac{2}{7} ) - \\frac{1}{5} $.",
+      "options": [
+        "$\\frac{11}{35}$",
+        "$\\frac{18}{35}$",
+        "$\\frac{6}{35}$",
+        "$\\frac{13}{35}$"
+      ],
+      "correctAnswer": "$\\frac{11}{35}$",
+      "explanation": "Parenthèse d'abord : $ \\frac{4}{7} + \\frac{2}{7} = \\frac{6}{7} $. Multiplication : $ \\frac{3}{5} \\times \\frac{6}{7} = \\frac{18}{35} $. Soustraction : $ \\frac{18}{35} - \\frac{1}{5} = \\frac{18}{35} - \\frac{7}{35} = \\frac{11}{35} $. Les autres choix correspondent à l'oubli de la soustraction, à une addition au lieu de soustraction, ou à une erreur de réduction.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $ \\frac{1}{2} \\times ( \\frac{3}{4} - \\frac{1}{8} ) + \\frac{5}{8} $.",
+      "options": [
+        "$\\frac{15}{16}$",
+        "$\\frac{5}{16}$",
+        "$\\frac{10}{16}$",
+        "$\\frac{20}{16}$"
+      ],
+      "correctAnswer": "$\\frac{15}{16}$",
+      "explanation": "Parenthèse : $ \\frac{3}{4} - \\frac{1}{8} = \\frac{6}{8} - \\frac{1}{8} = \\frac{5}{8} $. Multiplication : $ \\frac{1}{2} \\times \\frac{5}{8} = \\frac{5}{16} $. Addition : $ \\frac{5}{16} + \\frac{5}{8} = \\frac{5}{16} + \\frac{10}{16} = \\frac{15}{16} $. Les distracteurs proviennent de l'oubli de l'addition finale, d'une multiplication mal faite ou d'une addition avant multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule $ ( \\frac{2}{3} \\times \\frac{3}{4} ) + ( \\frac{5}{6} \\div \\frac{5}{2} ) - \\frac{1}{3} $.",
+      "options": [
+        "$\\frac{1}{2}$",
+        "$\\frac{5}{6}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{1}{3}$"
+      ],
+      "correctAnswer": "$\\frac{1}{2}$",
+      "explanation": "Première parenthèse : $ \\frac{2}{3} \\times \\frac{3}{4} = \\frac{6}{12} = \\frac{1}{2} $. Deuxième parenthèse : $ \\frac{5}{6} \\div \\frac{5}{2} = \\frac{5}{6} \\times \\frac{2}{5} = \\frac{10}{30} = \\frac{1}{3} $. Somme : $ \\frac{1}{2} + \\frac{1}{3} = \\frac{3}{6} + \\frac{2}{6} = \\frac{5}{6} $. Soustraction finale : $ \\frac{5}{6} - \\frac{1}{3} = \\frac{5}{6} - \\frac{2}{6} = \\frac{3}{6} = \\frac{1}{2} $. Les autres réponses correspondent à l'arrêt après la somme, à une erreur sur la division ou à une simplification incorrecte.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

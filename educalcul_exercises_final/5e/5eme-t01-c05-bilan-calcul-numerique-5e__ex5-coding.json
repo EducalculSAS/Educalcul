@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 383,
+  "_course_code": "5eme-t01-c05-bilan-calcul-numerique-5e",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Approfondissement : Priorités, fractions, estimation",
+  "title": "Algorithmes : priorités, fractions et estimation",
+  "blocks": [
+    {
+      "title": "Calcul respectant les priorités",
+      "content": "Écrire un algorithme qui calcule la valeur de l'expression $3 + 4 \\times \\frac{2}{5} - \\frac{1}{2}$ en respectant les priorités opératoires.",
+      "correctAnswer": "Algorithme :\\n1. Calculer le produit $4 \\times \\frac{2}{5} = \\frac{8}{5}$.\\n2. Convertir les nombres en fractions de même dénominateur : $3 = \\frac{15}{5}$, $\\frac{1}{2} = \\frac{5}{10} = \\frac{2.5}{5}$ (ou utiliser le dénominateur 10).\\n3. Effectuer l'addition et la soustraction : $\\frac{15}{5} + \\frac{8}{5} - \\frac{5}{10} = \\frac{23}{5} - \\frac{1}{2} = \\frac{46}{10} - \\frac{5}{10} = \\frac{41}{10}$.\\n4. Résultat final : $\\frac{41}{10}$ ou $4,1$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique d'abord la multiplication, puis on met au même dénominateur pour additionner et soustraire les fractions. Le résultat exact est $\\frac{41}{10}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Estimation à l'entier le plus proche",
+      "content": "Écrire un algorithme qui donne une estimation à l'entier le plus proche du résultat de l'expression $7 \\times \\frac{3}{4} + \\frac{5}{6}$.",
+      "correctAnswer": "Algorithme :\\n1. Calculer le produit $7 \\times \\frac{3}{4} = \\frac{21}{4} = 5,25$.\\n2. Convertir $\\frac{5}{6}$ en décimal approché : $0,833...$.\\n3. Additionner les deux valeurs approchées : $5,25 + 0,833 = 6,083$.\\n4. Arrondir à l'entier le plus proche : $6$.\\nRésultat estimé : $6$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On évalue chaque terme, on les additionne, puis on arrondit le total à l'entier le plus proche. Le calcul exact donne $\\frac{71}{12} \\approx 5,92$, qui s'arrondit aussi à $6$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification d'une expression fractionnaire",
+      "content": "Écrire un algorithme qui simplifie la fraction obtenue par l'expression $\\frac{3}{4} + \\frac{2}{3} \\times \\frac{5}{6}$.",
+      "correctAnswer": "Algorithme :\\n1. Effectuer la multiplication : $\\frac{2}{3} \\times \\frac{5}{6} = \\frac{10}{18} = \\frac{5}{9}$.\\n2. Mettre $\\frac{3}{4}$ et $\\frac{5}{9}$ au même dénominateur (36) : $\\frac{27}{36} + \\frac{20}{36} = \\frac{47}{36}$.\\n3. Vérifier si la fraction est simplifiable : $47$ et $36$ sont premiers entre eux.\\n4. Résultat final : $\\frac{47}{36}$ (ou $1 \\frac{11}{36}$).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On respecte la priorité de la multiplication, on simplifie le produit, on additionne les fractions en les mettant au même dénominateur, puis on vérifie l'irréductibilité.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

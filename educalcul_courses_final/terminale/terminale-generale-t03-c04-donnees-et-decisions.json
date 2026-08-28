@@ -1,0 +1,464 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.458762+00:00",
+  "id": 630,
+  "code": "terminale-generale-t03-c04",
+  "title": "Données et décisions",
+  "description": "Cours structuré Educalcul : Données et décisions.",
+  "subject": "Statistiques et données",
+  "level": "terminale",
+  "source_level_label": "Terminale générale sans mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale générale sans mathématiques",
+    "theme": "Statistiques et données",
+    "titre_du_cours": "Données et décisions",
+    "objectif_global": "Données et décisions",
+    "mini_lecons_imposees": [
+      "Choisir indicateur.",
+      "Argumenter.",
+      "Limites."
+    ],
+    "conformite_programme_2026_2027": "Ce parcours Educalcul n’est pas un programme officiel autonome de mathématiques."
+  },
+  "content_json": [
+    {
+      "title": "Statistiques et données",
+      "lessons": [
+        {
+          "title": "Choisir indicateur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir le bon indicateur statistique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon. Nous allons apprendre à regarder un jeu de données et à décider quel indicateur résume le mieux son information centrale. Pas de panique : chaque notion sera illustrée par un exemple concret, et tu verras que le raisonnement devient naturel dès qu'on le décompose étape par étape."
+            },
+            {
+              "type": "definition",
+              "term": "Indicateur de position",
+              "definition": "Une valeur unique qui représente le centre d'une distribution de données. Les plus courants sont la moyenne arithmétique, la médiane et le mode.",
+              "example": "Pour les notes $12, 14, 14, 16$, la moyenne est $14$, la médiane $14$ et le mode $14$."
+            },
+            {
+              "type": "definition",
+              "term": "Indicateur de dispersion",
+              "definition": "Une mesure qui quantifie l'étalement des données autour de leur centre. L'écart-type, la variance et l'intervalle interquartile en sont des exemples.",
+              "example": "Deux classes ont la même moyenne $12$ mais des écarts-types très différents : $2$ pour la première, $8$ pour la seconde."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la moyenne arithmétique. Elle se calcule en additionnant toutes les valeurs et en divisant par le nombre d'observations. C'est l'indicateur le plus utilisé quand la distribution est à peu près symétrique et sans valeurs extrêmes. Imagine que tu réunis les résultats d'un contrôle de $30$ élèves : si la plupart des notes sont regroupées autour de $13$ et qu'aucune note ne dépasse $18$ ni ne tombe sous $8$, la moyenne donne une image fidèle du niveau de la classe."
+            },
+            {
+              "type": "paragraph",
+              "content": "La médiane, elle, coupe la série ordonnée en deux groupes de même effectif. Elle résiste aux valeurs aberrantes. Si un élève obtient $0$ alors que les autres sont entre $10$ et $16$, la moyenne chute, mais la médiane reste stable. C'est pourquoi on la préfère pour des données asymétriques ou contenant des outliers."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le mode est simplement la valeur la plus fréquente. Il est utile pour des données qualitatives ou discrètes, comme la pointure la plus vendue dans un magasin. Pour des données continues, on parle plutôt de classe modale dans un histogramme."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de trois distributions : symétrique, asymétrique à droite, asymétrique à gauche",
+              "bars": [
+                {
+                  "label": "Symétrique",
+                  "value": 50,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Asymétrique droite",
+                  "value": 70,
+                  "tone": "red"
+                },
+                {
+                  "label": "Asymétrique gauche",
+                  "value": 30,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Observer la forme de la distribution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un histogramme ou un diagramme en boîtes. Repère la symétrie, la présence de queues longues ou de pics multiples."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Identifier les valeurs aberrantes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise la règle des $1,5 \\times$ intervalle interquartile au-delà des quartiles pour repérer les outliers."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Choisir l'indicateur adapté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Distribution symétrique sans outliers → moyenne et écart-type. Distribution asymétrique ou avec outliers → médiane et intervalle interquartile. Données catégorielles → mode."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer la forme d'une distribution, penchons-nous sur les indicateurs de dispersion. L'écart-type mesure la distance moyenne des données à la moyenne, mais il suppose une certaine symétrie. L'intervalle interquartile (IQR) ne regarde que la partie centrale ($50\\%$ des données) et ignore les queues. C'est un atout majeur quand les extrêmes sont peu fiables."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de la moyenne, de la médiane et des quartiles sur une échelle de notes",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 8,
+                  "label": "Q1"
+                },
+                {
+                  "value": 12,
+                  "label": "Médiane"
+                },
+                {
+                  "value": 14,
+                  "label": "Moyenne"
+                },
+                {
+                  "value": 16,
+                  "label": "Q3"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sigma = \\sqrt{\\frac{1}{N}\\sum_{i=1}^{N}(x_i-\\mu)^2}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, appliquons la méthode à un cas réel. Supposons que tu analyses les temps de trajet (en minutes) de $20$ employés : $25, 27, 28, 30, 30, 31, 32, 33, 34, 35, 35, 36, 37, 38, 40, 42, 45, 48, 55, 70$. La valeur $70$ est clairement un outlier. Calcule la moyenne, la médiane, l'écart-type et l'IQR, puis décide quels indicateurs présenter dans ton rapport."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pour la série $5, 7, 7, 9, 10, 100$, quel indicateur de position est le plus représentatif ? Justifie ton choix.",
+              "answer": "La médiane ($8$) car la valeur $100$ est un outlier qui fausse la moyenne ($23$).",
+              "hint": "Ordonne les valeurs et repère la valeur centrale. Compare la moyenne et la médiane.",
+              "explanation": "La médiane résiste aux valeurs extrêmes, contrairement à la moyenne qui les intègre pleinement."
+            },
+            {
+              "question": "Calcule l'intervalle interquartile (IQR) pour la série $3, 5, 7, 8, 9, 11, 13, 14, 18$.",
+              "answer": "IQR = $11 - 6 = 5$ (Q1 = 6, Q3 = 11).",
+              "hint": "Détermine Q1 (médiane de la moitié inférieure) et Q3 (médiane de la moitié supérieure).",
+              "explanation": "L'IQR mesure l'étalement des $50\\%$ centraux des données, insensible aux extrêmes."
+            },
+            {
+              "question": "Pour les temps de trajet donnés, donne la moyenne, la médiane, l'écart-type et l'IQR. Quels indicateurs choisis-tu pour ton rapport ?",
+              "answer": "Moyenne ≈ $38,1$, médiane = $35$, écart-type ≈ $11,3$, IQR = $11$ (Q1=30, Q3=41). Choisis médiane et IQR.",
+              "hint": "Utilise la règle des $1,5 \\times$ IQR pour confirmer l'outlier $70$.",
+              "explanation": "La présence de l'outlier $70$ rend la moyenne et l'écart-type peu représentatifs ; la médiane et l'IQR sont robustes."
+            }
+          ]
+        },
+        {
+          "title": "Argumenter.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Argumenter avec des données statistiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, tu vas découvrir comment transformer des résultats chiffrés en arguments convaincants. Nous allons avancer pas à pas, en prenant le temps de comprendre chaque outil avant de l'utiliser. Tu verras que l'argumentation statistique n'est pas une boîte noire, mais une suite logique que tu peux maîtriser."
+            },
+            {
+              "type": "definition",
+              "term": "Intervalle de confiance",
+              "definition": "Un intervalle qui, avec un niveau de confiance donné (souvent $95\\%$), contient la valeur réelle du paramètre de la population. Il se construit à partir de l'estimateur ponctuel et de son erreur standard.",
+              "example": "Pour une proportion observée $p=0,6$ sur $n=400$, l'intervalle à $95\\%$ est $[0,55 ; 0,65]$."
+            },
+            {
+              "type": "definition",
+              "term": "Valeur p (p-value)",
+              "definition": "Probabilité d'obtenir un résultat au moins aussi extrême que celui observé, sous l'hypothèse nulle. Une p-value faible (généralement $<0,05$) suggère que l'hypothèse nulle est peu plausible.",
+              "example": "Test de comparaison de deux moyennes : p-value $=0,03$ → on rejette l'hypothèse d'égalité au seuil $5\\%$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par la structure d'un argument statistique solide. Premièrement, expose clairement la question : quelle comparaison ou quelle relation étudies-tu ? Deuxièmement, présente les données : effectifs, indicateurs choisis (moyenne, médiane, proportion) et leur précision (écart-type, intervalle de confiance). Troisièmement, réalise le test approprié (test t de Student, chi‑carré, ANOVA, etc.) et rapporte la statistique de test, les degrés de liberté et la p-value. Quatrièmement, interprète le résultat en langage courant, en liant la conclusion au contexte initial."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Formuler l'hypothèse nulle et l'hypothèse alternative",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'hypothèse nulle $H_0$ exprime l'absence d'effet ou d'égalité. L'alternative $H_1$ exprime ce que tu cherches à mettre en évidence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir le test et vérifier ses conditions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie l'indépendance des observations, la normalité approximative (ou effectifs grands) et l'homogénéité des variances si nécessaire."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer la statistique de test et la p-value",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les formules adaptées ou un logiciel. Note la valeur critique ou la p-value exacte."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure et communiquer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si p-value $< \\alpha$ (souvent $0,05$), rejette $H_0$ ; sinon, ne la rejette pas. Exprime la conclusion avec l'intervalle de confiance pour donner l'amplitude de l'effet."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à l'illustration graphique d'un argument. Un intervalle de confiance se visualise très bien sur un graphique en barre d'erreur ou sur une courbe de densité. Cela permet à ton lecteur de saisir d'un coup d'œil l'incertitude autour de l'estimation. Nous allons voir comment construire et lire un tel graphique."
+            },
+            {
+              "type": "graph",
+              "expression": "exp(-(x-0.6)^2/(2*0.02^2))",
+              "xmin": 0.5,
+              "xmax": 0.7,
+              "caption": "Densité d'échantillonnage d'une proportion avec intervalle de confiance à 95 %"
+            },
+            {
+              "type": "display_math",
+              "latex": "IC_{95\\%} = \\hat{p} \\pm 1,96 \\sqrt{\\frac{\\hat{p}(1-\\hat{p})}{n}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, abordons la taille de l'effet (effect size). Une p-value significative ne garantit pas que l'effet soit important en pratique. Le coefficient $d$ de Cohen pour la différence de moyennes, ou le rapport de cotes (odds ratio) pour des proportions, quantifient l'amplitude. Inclure cette mesure dans ton argument renforce sa crédibilité et évite le piège du « significatif mais négligeable »."
+            },
+            {
+              "type": "display_math",
+              "latex": "d = \\frac{\\bar{x}_1 - \\bar{x}_2}{s_{\\text{pooled}}}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu compares la moyenne de deux groupes ($n_1=30, \\bar{x}_1=12, s_1=3$) et ($n_2=30, \\bar{x}_2=14, s_2=4$). Écris l'hypothèse nulle, calcule la statistique t de Student (suppose variances égales) et donne la p-value approximative.",
+              "answer": "$H_0: \\mu_1=\\mu_2$. $t \\approx -2,18$, p-value $\\approx 0,034$.",
+              "hint": "Utilise la formule du t pour variances égales : $t = \\frac{\\bar{x}_1-\\bar{x}_2}{s_p\\sqrt{2/n}}$ avec $s_p^2 = \\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2}$.",
+              "explanation": "La p-value $<0,05$ conduit au rejet de $H_0$ : les moyennes diffèrent significativement."
+            },
+            {
+              "question": "Interprète l'intervalle de confiance $[0,48 ; 0,62]$ pour une proportion estimée $\\hat{p}=0,55$ sur $n=500$.",
+              "answer": "On est confiant à $95\\%$ que la vraie proportion dans la population se situe entre $48\\%$ et $62\\%$.",
+              "hint": "Rappelle la définition d'un intervalle de confiance à $95\\%$.",
+              "explanation": "L'intervalle ne signifie pas qu'il y a $95\\%$ de chances que la vraie valeur soit dedans pour cet échantillon précis, mais que la méthode produit un intervalle contenant la vraie valeur dans $95\\%$ des répétitions."
+            },
+            {
+              "question": "Calcule le $d$ de Cohen pour les deux groupes de l'exercice 1 et commente l'amplitude de l'effet.",
+              "answer": "$s_{\\text{pooled}} \\approx 3,54$, $d \\approx -0,56$ (effet moyen).",
+              "hint": "Utilise la formule $d = (\\bar{x}_1-\\bar{x}_2)/s_{\\text{pooled}}$.",
+              "explanation": "Un $d$ de $0,56$ indique une différence modérée, ce qui nuance la significativité statistique par une portée pratique."
+            }
+          ]
+        },
+        {
+          "title": "Limites.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les limites de l'inférence statistique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce parcours. Ici, nous allons prendre du recul et examiner ce que les outils statistiques ne peuvent pas faire. C'est une étape essentielle pour devenir un utilisateur critique et responsable des données. Chaque limite sera illustrée par une situation concrète, afin que tu puisses la reconnaître dans tes propres analyses."
+            },
+            {
+              "type": "definition",
+              "term": "Biais de sélection",
+              "definition": "Distorsion systématique due à un échantillon qui ne représente pas la population cible. Les résultats ne peuvent pas être généralisés.",
+              "example": "Une enquête en ligne sur les habitudes de lecture qui ne touche que les internautes assidus."
+            },
+            {
+              "type": "definition",
+              "term": "Confusion (variable confondante)",
+              "definition": "Variable liée à la fois à l'exposition et à l'issue, qui crée une association trompeuse si elle n'est pas contrôlée.",
+              "example": "La consommation de café semble liée au cancer du poumon, mais le tabac est la variable confondante."
+            },
+            {
+              "type": "paragraph",
+              "content": "La première grande limite est le biais de sélection. Même un calcul parfait d'intervalle de confiance ou de p-value ne répare pas un échantillon mal choisi. Imagine que tu veuilles estimer le temps d'écran moyen des adolescents français, mais tu ne sondes que des lycéens d'un établissement privé parisien. Tes résultats seront biaisés vers le haut ou le bas selon le profil de l'école, et aucun test statistique ne corrige ce défaut."
+            },
+            {
+              "type": "paragraph",
+              "content": "La seconde limite concerne la confusion. Une corrélation observée entre deux variables peut être entièrement due à une troisième variable non mesurée. C'est le piège classique « corrélation n'implique pas causalité ». Pour t'en convaincre, pensons à la relation entre les ventes de glaces et les noyades : toutes deux augmentent l'été, mais ce n'est pas la glace qui cause la noyade, c'est la chaleur."
+            },
+            {
+              "type": "venn_diagram",
+              "caption": "Corrélation vs causalité : trois ensembles (Glaces, Noyades, Chaleur) avec intersections",
+              "sets": [
+                {
+                  "label": "Glaces",
+                  "elements": [
+                    "été",
+                    "ventes"
+                  ]
+                },
+                {
+                  "label": "Noyades",
+                  "elements": [
+                    "été",
+                    "baignade"
+                  ]
+                },
+                {
+                  "label": "Chaleur",
+                  "elements": [
+                    "été",
+                    "température"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Troisième limite : la taille de l'échantillon. Un échantillon trop petit rend les estimations imprécises (intervalles de confiance très larges) et les tests peu puissants (risque élevé de ne pas détecter un effet réel). À l'inverse, un échantillon gigantesque peut rendre significatifs des effets minimes, sans intérêt pratique. Il faut donc toujours regarder la taille de l'effet en parallèle de la p-value."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Largeur de l'intervalle de confiance selon la taille d'échantillon (proportion 0,5, niveau 95 %)",
+              "bars": [
+                {
+                  "label": "n=30",
+                  "value": 0.36,
+                  "tone": "red"
+                },
+                {
+                  "label": "n=100",
+                  "value": 0.2,
+                  "tone": "orange"
+                },
+                {
+                  "label": "n=1000",
+                  "value": 0.06,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quatrième limite : le multiples tests et le « p-hacking ». Si tu testes vingt hypothèses différentes sur le même jeu de données, tu as environ une chance sur cinq d'obtenir au moins une p-value $<0,05$ par pur hasard. Corriger pour la multiplicité (Bonferroni, Benjamini‑Hochberg) ou pré-enregistrer ton plan d'analyse protège contre ce travers. C'est une discipline rigoureuse qui sépare l'exploration de la confirmation."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\alpha_{\\text{Bonf}} = \\frac{\\alpha}{m}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour clore ce cours, rappelle-toi que la statistique est un outil d'aide à la décision, pas une baguette magique. Chaque indicateur, chaque test, chaque intervalle a des conditions d'application et des zones d'ombre. Ton rôle est de les connaître, de les vérifier et de communiquer honnêtement les incertitudes qui restent. C'est cette humilité méthodologique qui fera de toi un analyste de confiance."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais identifier le biais de sélection dans une étude.",
+                "Je sais expliquer pourquoi corrélation ne signifie pas causalité.",
+                "Je sais évaluer l'impact de la taille d'échantillon sur la précision et la puissance.",
+                "Je sais appliquer une correction pour multiplicité des tests.",
+                "Je sais présenter mes résultats avec leurs limites de façon transparente."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Une étude rapporte que les personnes qui boivent du thé vert vivent plus longtemps. Quelle variable confondante plausible pourrait expliquer cette association ?",
+              "answer": "Le mode de vie global (alimentation équilibrée, activité physique, non-tabagisme) souvent associé à la consommation de thé vert.",
+              "hint": "Pense aux facteurs liés à la fois à l'exposition (thé vert) et à l'issue (longévité).",
+              "explanation": "Sans contrôler ces facteurs, l'effet apparent du thé vert peut être entièrement dû au mode de vie plus sain."
+            },
+            {
+              "question": "Pour une proportion vraie $p=0,5$, calcule la largeur approximative de l'intervalle de confiance à $95\\%$ pour $n=30$, $n=100$ et $n=1000$.",
+              "answer": "Largeurs ≈ $0,36$, $0,20$, $0,06$ respectivamente.",
+              "hint": "Utilise la formule $1,96 \\times 2 \\sqrt{p(1-p)/n}$.",
+              "explanation": "La largeur diminue avec la racine carrée de $n$ ; un échantillon 10 fois plus grand divise la largeur par $\\sqrt{10} \\approx 3,16$."
+            },
+            {
+              "question": "Tu réalises $20$ tests d'hypothèse indépendants au seuil $\\alpha=0,05$ sans correction. Quelle est la probabilité d'obtenir au moins un faux positif ?",
+              "answer": "$1-(1-0,05)^{20} \\approx 0,64$ (64 %).",
+              "hint": "Calcule la probabilité de zéro faux positif puis fais le complément.",
+              "explanation": "Sans correction, le risque d'erreur de première espèce famille explose ; la correction de Bonferroni ramène le seuil individuel à $0,0025$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 471,
+  "_course_code": "3eme-t03-c05-modeliser-avec-une-fonction",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation de fonctions - Association",
+  "blocks": [
+    {
+      "title": "Coefficients d'une fonction affine",
+      "content": "Relie chaque fonction affine à son coefficient directeur et son ordonnée à l'origine.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$f(x)=3x-2$",
+          "right": "coefficient directeur $3$, ordonnée à l'origine $-2$"
+        },
+        {
+          "left": "$g(x)=-x+5$",
+          "right": "coefficient directeur $-1$, ordonnée à l'origine $5$"
+        },
+        {
+          "left": "$h(x)=\\frac{1}{2}x$",
+          "right": "coefficient directeur $0,5$, ordonnée à l'origine $0$"
+        },
+        {
+          "left": "$k(x)=4$",
+          "right": "coefficient directeur $0$, ordonnée à l'origine $4$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour une fonction affine de la forme $ax+b$, le coefficient directeur est $a$ et l'ordonnée à l'origine est $b$. On identifie $a$ et $b$ dans chaque expression : $3x-2$ donne $a=3$, $b=-2$ ; $-x+5$ donne $a=-1$, $b=5$ ; $\\frac{1}{2}x$ donne $a=0,5$, $b=0$ ; $4$ s'écrit $0x+4$ donc $a=0$, $b=4$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modélisation de situations réelles",
+      "content": "Relie chaque situation à la fonction qui la modélise.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Le prix total d'un article à 5 € l'unité en fonction du nombre d'articles achetés.",
+          "right": "$P(n)=5n$"
+        },
+        {
+          "left": "La distance parcourue par une voiture roulant à 60 km/h en fonction du temps en heures.",
+          "right": "$d(t)=60t$"
+        },
+        {
+          "left": "La hauteur d'une balle lancée verticalement avec une vitesse initiale de 20 m/s (en négligeant la résistance de l'air) en fonction du temps t en secondes.",
+          "right": "$h(t)=-5t^2+20t$"
+        },
+        {
+          "left": "Le coût d'un abonnement mensuel de 10 € plus 2 € par film regardé.",
+          "right": "$C(f)=2f+10$"
+        }
+      ],
+      "items": [],
+      "explanation": "Une relation proportionnelle s'écrit $y=kx$ (prix unitaire, vitesse constante). Une relation affine s'écrit $y=ax+b$ (coût fixe + coût variable). Le mouvement d'un projectile sous l'effet de la gravité ($g\\approx10\\,m/s^2$) donne une fonction quadratique $h(t)=-\\frac{g}{2}t^2+v_0t = -5t^2+20t$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Description graphique et expression",
+      "content": "Relie chaque description graphique à l'expression de la fonction correspondante.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Droite passant par l'origine et le point (2,4).",
+          "right": "$f(x)=2x$"
+        },
+        {
+          "left": "Droite coupant l'axe des ordonnées en 3 et de pente -1.",
+          "right": "$f(x)=-x+3$"
+        },
+        {
+          "left": "Parabole de sommet à l'origine passant par (1,1).",
+          "right": "$f(x)=x^2$"
+        },
+        {
+          "left": "Droite horizontale passant par y = -2.",
+          "right": "$f(x)=-2$"
+        }
+      ],
+      "items": [],
+      "explanation": "Une droite passant par l'origine a pour équation $y=ax$ ; le coefficient directeur est le quotient $\\frac{4}{2}=2$. Une droite d'ordonnée à l'origine $3$ et de pente $-1$ s'écrit $y=-x+3$. Une parabole de sommet à l'origine a pour forme $y=ax^2$ ; le passage par $(1,1)$ donne $a=1$. Une droite horizontale a pour équation $y=c$ avec $c=-2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

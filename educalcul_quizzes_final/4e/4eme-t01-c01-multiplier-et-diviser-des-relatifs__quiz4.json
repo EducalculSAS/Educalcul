@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 420,
+  "_course_code": "4eme-t01-c01-multiplier-et-diviser-des-relatifs",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Application : Multiplier et diviser des relatifs",
+  "title": "Applications : Multiplier et diviser des relatifs",
+  "questions": [
+    {
+      "text": "La température est de $-5$ °C. Elle diminue de $3$ °C par heure pendant $4$ heures. Quelle est la température finale ?",
+      "options": [
+        "$-17$ °C",
+        "$7$ °C",
+        "$-7$ °C",
+        "$17$ °C"
+      ],
+      "correctAnswer": "$-17$ °C",
+      "explanation": "La diminution totale est une multiplication : $4 \\times (-3) = -12$ °C. On ajoute cette variation à la température initiale : $-5 + (-12) = -17$ °C. L'option $7$ °C correspond à $-5 + 12$ (erreur de signe sur la variation), $-7$ °C à $-5 - 2$ (calcul incorrect) et $17$ °C à $5 + 12$ (oubli des signes).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un sous-marin se trouve à l'altitude $-120$ m. Il remonte de $25$ m par minute pendant $3$ minutes, puis redescend de $15$ m par minute pendant $2$ minutes. Quelle est son altitude finale ?",
+      "options": [
+        "$-75$ m",
+        "$-165$ m",
+        "$-45$ m",
+        "$75$ m"
+      ],
+      "correctAnswer": "$-75$ m",
+      "explanation": "Remontée : $3 \\times 25 = 75$ m (positif). Descente : $2 \\times (-15) = -30$ m. Variation totale : $75 + (-30) = 45$ m. Altitude finale : $-120 + 45 = -75$ m. L'option $-165$ m correspond à $-120 - 45$ (soustraction au lieu d'addition), $-45$ m à une erreur de signe sur le départ, $75$ m à l'oubli du signe initial.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un commerçant achète $15$ articles à $8$ € l'unité. Il les revend tous à $12$ € l'unité. Quel est son bénéfice total ?",
+      "options": [
+        "$60$ €",
+        "$20$ €",
+        "$180$ €",
+        "$-60$ €"
+      ],
+      "correctAnswer": "$60$ €",
+      "explanation": "Bénéfice par article : $12 - 8 = 4$ €. Bénéfice total : $15 \\times 4 = 60$ €. On peut aussi calculer : Recettes $15 \\times 12 = 180$ €, Dépenses $15 \\times 8 = 120$ €, Bénéfice $180 - 120 = 60$ €. L'option $20$ € est la différence de prix unitaire sans multiplier par la quantité, $180$ € est le chiffre d'affaires, $-60$ € inverse les opérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calcule le résultat de l'expression : $(-24) \\div 3 \\times (-2)$.",
+      "options": [
+        "$16$",
+        "$-16$",
+        "$4$",
+        "$-4$"
+      ],
+      "correctAnswer": "$16$",
+      "explanation": "On calcule de la gauche vers la droite. Première étape : $(-24) \\div 3 = -8$. Deuxième étape : $-8 \\times (-2) = 16$ (le produit de deux nombres négatifs est positif). L'option $-16$ oublie que le produit de deux négatifs est positif, $4$ et $-4$ correspondent à des erreurs d'ordre de priorité ou de calcul ($24 \\div 6 = 4$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le produit de deux nombres relatifs est $-56$. L'un des nombres est $8$. Quel est l'autre nombre ?",
+      "options": [
+        "$-7$",
+        "$7$",
+        "$-48$",
+        "$48$"
+      ],
+      "correctAnswer": "$-7$",
+      "explanation": "On cherche le nombre $x$ tel que $8 \\times x = -56$. Il faut diviser $-56$ par $8$ : $x = (-56) \\div 8 = -7$. Le produit est négatif, donc les deux nombres ont des signes contraires ; comme $8$ est positif, l'autre est négatif. L'option $7$ oublie le signe, $-48$ et $48$ correspondent à une addition/soustraction au lieu d'une division.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

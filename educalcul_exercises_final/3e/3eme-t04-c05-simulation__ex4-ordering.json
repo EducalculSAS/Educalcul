@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 477,
+  "_course_code": "3eme-t04-c05-simulation",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Simulation",
+  "title": "Simulation : Mise en ordre des étapes",
+  "blocks": [
+    {
+      "title": "Démarche générale d'une simulation",
+      "content": "Remets dans l'ordre chronologique les grandes étapes pour mener une simulation d'une expérience aléatoire et estimer une probabilité.",
+      "items": [
+        "Définir précisément l'expérience aléatoire et l'événement dont on veut estimer la probabilité.",
+        "Choisir un modèle probabiliste adapté (loi uniforme, etc.) et un outil de simulation (calculatrice, Python, tableur).",
+        "Écrire et exécuter l'algorithme qui répète l'expérience un grand nombre de fois et compte les succès.",
+        "Calculer la fréquence de l'événement (nombre de succès divisé par le nombre total d'essais).",
+        "Conclure en donnant la valeur approchée de la probabilité et préciser que la précision augmente avec le nombre d'essais."
+      ],
+      "explanation": "La démarche standard est : 1. Définir le problème (expérience, événement). 2. Modéliser et choisir l'outil. 3. Programmer et lancer la simulation (boucle, tirages, comptage). 4. Calculer la fréquence observée. 5. Interpréter au regard de la loi des grands nombres (plus N est grand, plus la fréquence est proche de la probabilité).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme Python : Simulation d'un dé",
+      "content": "On veut simuler 1000 lancers d'un dé à 6 faces équilibré pour estimer la probabilité d'obtenir un 6. Remets les blocs d'instructions dans l'ordre logique pour obtenir un programme correct.",
+      "items": [
+        "from random import randint\\ncompteur = 0",
+        "for i in range(1000):",
+        "    resultat = randint(1, 6)",
+        "    if resultat == 6:\\n        compteur = compteur + 1",
+        "frequence = compteur / 1000\\nprint(frequence)"
+      ],
+      "explanation": "L'ordre est imposé par la syntaxe Python et la logique : 1. Importer la fonction de hasard et initialiser les variables. 2. Démarrer la boucle de répétition (1000 fois). 3. Effectuer un tirage aléatoire à l'intérieur de la boucle. 4. Tester le résultat et mettre à jour le compteur (toujours dans la boucle). 5. Après la boucle, calculer la fréquence et l'afficher.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Lien entre fréquence et probabilité (Loi des grands nombres)",
+      "content": "Classe ces affirmations pour expliquer pourquoi la fréquence obtenue par simulation approche la probabilité théorique lorsque le nombre d'essais augmente.",
+      "items": [
+        "On répète l'expérience aléatoire un grand nombre de fois $N$ de manière indépendante.",
+        "On observe le nombre $n$ de fois où l'événement étudié se réalise.",
+        "On calcule la fréquence $f = \\frac{n}{N}$ de cet événement.",
+        "D'après la loi des grands nombres, quand $N$ devient très grand, la fréquence $f$ se stabilise autour de la probabilité $p$.",
+        "On peut donc prendre $f$ comme valeur approchée de $p$ ; la précision est meilleure si $N$ est plus grand."
+      ],
+      "explanation": "C'est l'énoncé même de la loi des grands nombres : la suite des fréquences converge vers la probabilité. La simulation exploitent ce théorème : on fait un grand $N$, on compte $n$, on calcule $f = n/N$, et on sait que $f \\approx p$ pour $N$ assez grand.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

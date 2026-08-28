@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 487,
+  "_course_code": "3eme-t06-c03-sections-de-solides",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Lire schéma",
+  "title": "Quiz : Sections de solides - Lecture de schémas",
+  "questions": [
+    {
+      "text": "On considère un cube $ABCDEFGH$. Un plan $\\mathcal{P}$ parallèle à la face $(ABCD)$ coupe ce cube. Quelle est la nature de la section obtenue ?",
+      "options": [
+        "Un carré",
+        "Un rectangle non carré",
+        "Un losange non carré",
+        "Un trapèze"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Dans un cube, toute face est un carré. Un plan parallèle à une face coupe le solide en une figure homothétique à cette face. La section est donc un carré de même orientation que la face $(ABCD)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit une pyramide $SABCD$ à base carrée $ABCD$. Un plan $\\mathcal{P}$ parallèle à la base $ABCD$ coupe la pyramide. Quelle est la nature de la section plane ?",
+      "options": [
+        "Un carré",
+        "Un rectangle",
+        "Un triangle",
+        "Un trapèze"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "La section d'une pyramide par un plan parallèle à sa base est un polygone homothétique à la base. Comme la base $ABCD$ est un carré, la section est nécessairement un carré (plus petit que la base).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cylindre de révolution est coupé par un plan oblique par rapport à son axe, ne passant pas par l'axe. Quelle est la forme de la section obtenue ?",
+      "options": [
+        "Une ellipse",
+        "Un cercle",
+        "Un rectangle",
+        "Une parabole"
+      ],
+      "correctAnswer": "Une ellipse",
+      "explanation": "La section d'un cylindre de révolution par un plan oblique (non parallèle à l'axe, non perpendiculaire, ne contenant pas l'axe) est une ellipse. Un cercle s'obtient avec un plan perpendiculaire à l'axe, un rectangle avec un plan contenant l'axe, une parabole est une section de cône.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cône de révolution de sommet $S$ et de base un disque de centre $O$ est coupé par un plan $\\mathcal{P}$ passant par le sommet $S$ et deux points $A$ et $B$ du cercle de base distincts et non diamétralement opposés. Quelle est la nature de la section ?",
+      "options": [
+        "Un triangle",
+        "Un cercle",
+        "Une ellipse",
+        "Une parabole"
+      ],
+      "correctAnswer": "Un triangle",
+      "explanation": "Tout plan passant par le sommet d'un cône le coupe selon deux droites génératrices. La section est donc un triangle (ici $SAB$). Pour obtenir une ellipse, le plan ne doit pas passer par le sommet ; pour un cercle, il doit être perpendiculaire à l'axe ; pour une parabole, il doit être parallèle à une génératrice.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un cube $ABCDEFGH$, on considère le plan $\\mathcal{P}$ passant par les trois sommets $B$, $D$ et $F$. Quelle est la nature exacte du triangle $BDF$ obtenu en section ?",
+      "options": [
+        "Un triangle équilatéral",
+        "Un triangle rectangle isocèle",
+        "Un triangle isocèle non rectangle",
+        "Un triangle quelconque"
+      ],
+      "correctAnswer": "Un triangle équilatéral",
+      "explanation": "Les segments $BD$, $DF$ et $FB$ sont des diagonales de faces du cube. Dans un cube, toutes les faces sont des carrés congrus, donc leurs diagonales ont la même longueur. Les trois côtés du triangle $BDF$ sont égaux : c'est un triangle équilatéral.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

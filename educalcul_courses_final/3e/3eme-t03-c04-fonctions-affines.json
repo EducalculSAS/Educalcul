@@ -1,0 +1,294 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.942193+00:00",
+  "id": 470,
+  "code": "3eme-t03-c04",
+  "title": "Fonctions affines",
+  "description": "Cours structuré Educalcul : Fonctions affines.",
+  "subject": "Proportionnalité et fonctions",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Proportionnalité et fonctions",
+    "titre_du_cours": "Fonctions affines",
+    "objectif_global": "Fonctions affines",
+    "mini_lecons_imposees": [
+      "a et b.",
+      "Graphique.",
+      "Interprétation."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Proportionnalité et fonctions",
+      "lessons": [
+        {
+          "title": "a et b.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veuilles t'abonner à un service de location de vélos électriques dans ta ville. Le gérant t'explique le tarif ainsi : tu paies d'abord $5$ euros de frais de dossier fixes pour l'inscription, et ensuite, chaque kilomètre parcouru te coûte $2$ euros. Si tu parcours $x$ kilomètres, combien vas-tu payer ? Tu vas naturellement calculer $2$ fois le nombre de kilomètres, puis ajouter les $5$ euros de départ. On peut écrire cela sous la forme $2x + 5$. C'est exactement cela qu'est une fonction affine ! C'est un outil mathématique qui permet de modéliser des situations où l'on a une valeur de départ fixe et une progression régulière. Que ce soit pour calculer le prix d'un taxi avec sa prise en charge, ou l'évolution de la taille d'une plante qui a déjà grandi de quelques centimètres, la fonction affine est partout. Elle nous permet de prédire un résultat futur avec une précision absolue, à condition de connaître le rythme de l'augmentation et le point de départ. C'est une notion fondamentale qui fait le pont entre le calcul simple et l'analyse plus complexe que tu verras au lycée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction affine est une fonction définie pour tout nombre réel $x$ par l'expression $f(x) = ax + b$. Dans cette formule, $a$ et $b$ sont deux nombres fixes que l'on appelle les coefficients de la fonction. Le nombre $a$ est appelé le coefficient directeur. Il représente la pente, c'est-à-dire la vitesse à laquelle la valeur de $f(x)$ change quand $x$ augmente. Par exemple, si $a = 3$, alors chaque fois que $x$ augmente de $1$, le résultat $f(x)$ augmente de $3$. Le nombre $b$ est appelé l'ordonnée à l'origine. C'est la valeur de la fonction quand $x$ vaut $0$. Dans notre exemple du vélo, $b = 5$ car même si tu parcours $0$ km, tu as déjà payé les frais d'inscription. Il est important de noter qu'une fonction linéaire est en fait un cas particulier de fonction affine où $b = 0$. On dit alors que la fonction est simplement $f(x) = ax$. Dès que $b$ est différent de $0$, la fonction ne passe plus par l'origine du repère, et elle devient proprement affine. C'est cette petite différence qui change tout dans la modélisation du monde réel."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x) = ax + b"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour manipuler une fonction affine, on rencontre souvent deux types de problèmes : calculer l'image d'un nombre ou identifier les coefficients. Pour calculer l'image d'un nombre $x_0$ par la fonction $f(x) = ax + b$, suis ces étapes : d'abord, remplace $x$ par la valeur de $x_0$ dans l'expression. Ensuite, effectue la multiplication $a$ fois $x_0$. Enfin, ajoute ou soustrais la valeur de $b$ pour obtenir le résultat final. C'est une simple substitution. Si on te demande d'identifier $a$ et $b$ dans une expression comme $f(x) = -4x + 7$, regarde simplement le nombre qui multiplie $x$ : c'est ton coefficient directeur $a$, donc $a = -4$. Ensuite, regarde le nombre qui est seul, sans $x$ : c'est ton ordonnée à l'origine $b$, donc $b = 7$. Attention, si l'expression est écrite $f(x) = 7 - 4x$, ne te laisse pas piéger par l'ordre. Le coefficient $a$ reste celui collé au $x$, donc $a = -4$ et $b = 7$. Prends toujours le signe qui précède le nombre pour ne pas faire d'erreur."
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons la fonction $f$ définie par $f(x) = 3x - 2$. Nous voulons calculer l'image de $4$ par cette fonction. On cherche donc la valeur de $f(4)$. La première étape consiste à remplacer $x$ par $4$ dans la formule : $f(4) = 3 \\times 4 - 2$. On commence par la multiplication car elle est prioritaire sur la soustraction. $3 \\times 4$ nous donne $12$. L'expression devient alors $f(4) = 12 - 2$. Enfin, on effectue la soustraction finale : $12 - 2 = 10$. L'image de $4$ par la fonction $f$ est donc $10$. On peut aussi dire que si $x = 4$, alors $f(x) = 10$. Dans cet exemple, le coefficient directeur $a$ est $3$, ce qui signifie que la fonction grimpe rapidement. L'ordonnée à l'origine $b$ est $-2$, ce qui signifie que si on remplaçait $x$ par $0$, on obtiendrait $f(0) = 3 \\times 0 - 2 = -2$. C'est un exemple simple qui montre comment la structure $ax + b$ s'applique concrètement."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons maintenant une fonction un peu plus délicate : $g(x) = -0,5x + 4$. Nous allons calculer l'image de $-6$ par cette fonction $g$. On cherche $g(-6)$. Remplaçons $x$ par $-6$ dans l'expression : $g(-6) = -0,5 \\times (-6) + 4$. Ici, il faut être très vigilant avec les signes. On multiplie un nombre négatif par un autre nombre négatif, le résultat sera donc positif. $-0,5 \\times (-6) = 3$. L'expression devient alors $g(-6) = 3 + 4$. Le résultat final est $g(-6) = 7$. L'image de $-6$ par la fonction $g$ est $7$. Analysons les coefficients : ici $a = -0,5$ et $b = 4$. Comme $a$ est négatif, la fonction est décroissante, ce qui signifie que plus $x$ augmente, plus $g(x)$ diminue. Le coefficient $b = 4$ nous indique que la courbe de cette fonction couperait l'axe vertical au point $4$. Cet exemple montre l'importance de bien gérer les priorités opératoires et la règle des signes, surtout quand on travaille avec des coefficients décimaux ou négatifs."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'erreur la plus courante est la confusion entre le coefficient $a$ et le coefficient $b$. Certains élèves pensent que $a$ est toujours le premier nombre écrit. Mais si on te donne $f(x) = 5 + 2x$, le coefficient directeur $a$ est $2$ et non $5$. Rappelle-toi toujours que $a$ est le compagnon inséparable du $x$. Un autre piège classique concerne les signes. Par exemple, dans $f(x) = -3x - 8$, le coefficient $b$ est $-8$ et non $8$. Le signe moins fait partie intégrante du nombre. Enfin, attention aux calculs d'images avec des nombres négatifs. Comme nous l'avons vu dans l'exemple $2$, multiplier $-0,5$ par $-6$ donne un résultat positif. Beaucoup d'élèves oublient ce changement de signe et écrivent $-3 + 4 = 1$ au lieu de $3 + 4 = 7$. Pour éviter cela, je te conseille d'écrire chaque étape de ton calcul sur une ligne différente et de bien entourer les signes moins avant de commencer tes multiplications. Prends ton temps, la rigueur est la clé du succès en 3e."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la fonction $f(x) = 5x + 3$. Quelle est l'image de $2$ par cette fonction ?",
+              "answer": "$13$",
+              "hint": "Remplace $x$ par $2$ et fais d'abord la multiplication.",
+              "explanation": "On calcule $f(2) = 5 \\times 2 + 3 = 10 + 3 = 13$."
+            },
+            {
+              "question": "Dans la fonction $g(x) = -2x + 7$, identifie les valeurs de $a$ et $b$.",
+              "answer": "$a = -2, b = 7$",
+              "hint": "Le coefficient $a$ est celui qui multiplie $x$.",
+              "explanation": "Le nombre devant $x$ est $-2$, donc $a = -2$. Le nombre seul est $7$, donc $b = 7$."
+            },
+            {
+              "question": "Calculer l'image de $-3$ par la fonction $h(x) = -4x - 5$.",
+              "answer": "$7$",
+              "hint": "Attention au produit de deux nombres négatifs $(-4 \\times -3)$.",
+              "explanation": "$h(-3) = -4 \\times (-3) - 5 = 12 - 5 = 7$."
+            }
+          ]
+        },
+        {
+          "title": "Graphique.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà remarqué comment on dessine les pentes de ski ou les rampes de skatepark ? Certaines sont très raides, d'autres sont presque plates. En mathématiques, pour représenter une fonction affine, on utilise un graphique. Et devine quoi ? Le résultat est toujours une ligne droite ! Ce n'est pas une courbe sinueuse ou un zigzag, mais une trajectoire parfaitement droite. Imagine que tu marches sur un chemin qui monte régulièrement. Chaque pas que tu fais vers l'avant te fait monter d'une certaine hauteur. C'est exactement ce que représente le coefficient directeur $a$ sur un graphique : il définit l'inclinaison de ta droite. Si $a$ est grand, la rampe est raide. Si $a$ est petit, elle est douce. Si $a$ est négatif, tu descends au lieu de monter. Le coefficient $b$, lui, est comme ton point de départ sur l'axe vertical. C'est l'endroit où tu poses ton pied avant même de commencer à avancer. Apprendre à tracer ces droites, c'est apprendre à visualiser le mouvement et la progression d'une valeur, ce qui est extrêmement utile pour comprendre des graphiques de température ou de croissance."
+            },
+            {
+              "type": "paragraph",
+              "content": "La représentation graphique d'une fonction affine $f(x) = ax + b$ est une droite. Pour bien comprendre comment elle se place dans le repère, on regarde les deux coefficients. L'ordonnée à l'origine $b$ est le point où la droite coupe l'axe des ordonnées (l'axe vertical). C'est le point de coordonnées $(0, b)$. Si $b = 3$, la droite passera pile par le chiffre $3$ sur l'axe vertical. Le coefficient directeur $a$ détermine l'inclinaison de la droite. On dit que c'est la pente. Si $a$ est positif, la droite monte quand on la regarde de gauche à droite. Si $a$ est négatif, elle descend. Plus la valeur absolue de $a$ est grande, plus la droite est raide. Par exemple, une droite avec $a = 5$ monte beaucoup plus vite qu'une droite avec $a = 0,5$. Si $b = 0$, la droite passe par l'origine $(0,0)$, et on retrouve alors la représentation d'une fonction linéaire. Savoir lire un graphique permet d'identifier immédiatement si une situation évolue positivement ou négativement, et à quel rythme cela se produit."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+1",
+              "xmin": -5,
+              "xmax": 5,
+              "caption": "Représentation de f(x) = 2x + 1"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour tracer la droite d'une fonction affine $f(x) = ax + b$, la méthode la plus simple consiste à placer deux points précis et à les relier à la règle. Étape 1 : Place le premier point grâce à $b$. C'est l'ordonnée à l'origine. Marque un point sur l'axe vertical à la valeur de $b$. Ses coordonnées sont $(0, b)$. Étape 2 : Trouve un deuxième point en choisissant une valeur simple pour $x$, par exemple $x = 1$ ou $x = 2$. Calcule l'image de ce nombre. Si tu as choisi $x = 1$, calcule $f(1) = a \\times 1 + b$. Place ensuite ce point de coordonnées $(1, f(1))$ dans ton repère. Étape 3 : Prends ta règle et trace la droite qui passe par ces deux points. Elle doit être parfaitement droite. Si tu veux vérifier ton travail, tu peux calculer un troisième point. S'il n'est pas aligné avec les deux premiers, c'est que tu as fait une erreur de calcul. C'est une technique infaillible car deux points uniques définissent toujours une seule et unique droite."
+            },
+            {
+              "type": "paragraph",
+              "content": "Traçons la fonction $f(x) = 2x + 1$. On commence par identifier $b = 1$. On place donc le premier point sur l'axe vertical au niveau du chiffre $1$. Ses coordonnées sont $(0, 1)$. Maintenant, cherchons un deuxième point. Choisissons $x = 2$. On calcule l'image : $f(2) = 2 \\times 2 + 1 = 4 + 1 = 5$. On place donc le point de coordonnées $(2, 5)$ dans le repère. On a maintenant nos deux points : $(0, 1)$ et $(2, 5)$. En traçant la droite qui les relie, on voit qu'elle monte. C'est logique puisque $a = 2$, ce qui est un nombre positif. On peut vérifier avec un autre point, par exemple $x = -1$. On a $f(-1) = 2 \\times (-1) + 1 = -2 + 1 = -1$. Le point $(-1, -1)$ est bien aligné avec les autres. Nous avons donc une droite ascendante qui coupe l'axe vertical à $1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Abordons un cas où la droite descend : $g(x) = -x + 3$. Ici, $b = 3$, donc on place le premier point sur l'axe vertical à la valeur $3$. Ses coordonnées sont $(0, 3)$. Pour le deuxième point, choisissons $x = 3$. On calcule l'image : $g(3) = -1 \\times 3 + 3 = -3 + 3 = 0$. Le point de coordonnées $(3, 0)$ se trouve donc pile sur l'axe horizontal (l'axe des abscisses). On relie $(0, 3)$ et $(3, 0)$ à la règle. On obtient une droite qui descend. C'est cohérent car le coefficient directeur $a = -1$ est négatif. On remarque que pour chaque unité vers la droite, on descend d'une unité vers le bas. C'est l'essence même du coefficient directeur négatif. La droite est moins raide que dans l'exemple précédent car la valeur absolue de $-1$ est plus petite que celle de $2$. On a ainsi une visualisation claire d'une diminution régulière."
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège le plus courant est de confondre les axes. Certains élèves placent $b$ sur l'axe horizontal (des abscisses) au lieu de l'axe vertical (des ordonnées). Rappelle-toi que $b$ est l'ordonnée à l'origine, donc il va forcément sur l'axe des ordonnées. Une autre erreur classique est l'oubli du signe moins pour le coefficient $a$. Si $a$ est négatif, la droite DOIT descendre. Si tu traces une droite qui monte alors que $a = -2$, tu sais immédiatement que tu as fait une erreur. Enfin, méfie-toi de la précision du tracé. Un petit décalage du point $b$ ou du deuxième point peut fausser toute la droite. Je te conseille d'utiliser un crayon bien taillé et de bien vérifier que ton point est exactement sur l'intersection des lignes du quadrillage. Si ton point tombe entre deux lignes, utilise un calcul d'image plus simple pour tomber sur des nombres entiers."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la valeur de l'ordonnée à l'origine pour la fonction $f(x) = -3x + 4$ ? Où se place le point sur le graphique ?",
+              "answer": "$b = 4$, sur l'axe vertical au point $4$.",
+              "hint": "L'ordonnée à l'origine est le coefficient $b$.",
+              "explanation": "Dans $f(x) = -3x + 4$, on a $b = 4$. Le point se place donc sur l'axe des ordonnées à la valeur $4$."
+            },
+            {
+              "question": "Une droite passe par les points $(0, 2)$ et $(1, 5)$. Quel est son coefficient directeur $a$ ?",
+              "answer": "$a = 3$",
+              "hint": "Calcule la différence entre les ordonnées divisée par la différence des abscisses.",
+              "explanation": "Entre $x=0$ et $x=1$, la valeur passe de $2$ à $5$, soit une augmentation de $3$. Donc $a = 3$."
+            },
+            {
+              "question": "La fonction $h(x) = -2x - 1$ a-t-elle une représentation graphique qui monte ou qui descend ? Justifie.",
+              "answer": "Elle descend car $a = -2$ est négatif.",
+              "hint": "Regarde le signe du coefficient $a$.",
+              "explanation": "Le coefficient directeur $a = -2$. Comme $a < 0$, la fonction est décroissante, donc sa droite descend."
+            }
+          ]
+        },
+        {
+          "title": "Interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "As-tu déjà essayé de comparer deux offres d'abonnement pour une salle de sport ? L'une te propose une inscription gratuite mais un prix mensuel de $30$ euros. L'autre te demande $50$ euros d'inscription, mais seulement $20$ euros par mois. Pour savoir laquelle est la plus rentable, tu ne peux pas juste regarder un seul nombre. Tu dois analyser comment le coût total évolue avec le temps. C'est là que l'interprétation des fonctions affines devient ton super-pouvoir. En mathématiques, on ne se contente pas de calculer $x$ et $y$, on cherche à comprendre ce que ces nombres racontent sur la réalité. Le coefficient $a$ nous parle d'un rythme, d'un prix à l'unité, d'une vitesse de remplissage ou de vidage. Le coefficient $b$ nous raconte l'histoire du départ, l'état initial du système. Apprendre à interpréter ces fonctions, c'est devenir capable de lire entre les lignes d'un contrat, de comprendre des statistiques économiques ou même de prévoir la consommation d'énergie d'un appareil. C'est transformer des chiffres froids en informations concrètes et utiles pour prendre des décisions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Interpréter une fonction affine, c'est donner un sens concret aux coefficients $a$ et $b$ dans un contexte donné. Le coefficient directeur $a$ représente la variation. S'il s'agit d'un prix, $a$ est le coût pour une unité supplémentaire (par exemple, le prix d'un seul kilomètre ou d'un seul produit). Si c'est une mesure de temps, $a$ peut être une vitesse. Quand $a$ est positif, on parle d'une augmentation constante. Quand $a$ est négatif, on parle d'une diminution constante. L'ordonnée à l'origine $b$ représente la valeur initiale, le point de départ. C'est ce qu'on a au début, quand le temps est à $0$ ou que la quantité est nulle. On l'appelle souvent la valeur fixe ou les frais de base. Par exemple, pour un taxi, $b$ est la prise en charge fixe que tu paies dès que tu montes dans la voiture, quel que soit le trajet. Comprendre cette distinction permet de décomposer n'importe quel problème de proportionnalité avec valeur ajoutée. On passe ainsi d'une simple expression algébrique $ax + b$ à une phrase compréhensible : Valeur Totale = (Rythme $\\times$ Quantité) + Valeur Initiale."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Distance $x$ (km)",
+                "Prix $P(x)$ (euros)"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "4"
+                ],
+                [
+                  "1",
+                  "5,5"
+                ],
+                [
+                  "2",
+                  "7"
+                ],
+                [
+                  "10",
+                  "19"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour interpréter ou modéliser une situation avec une fonction affine, suis ces étapes méthodiques. Étape 1 : Identifie la valeur fixe. Cherche dans l'énoncé un montant qui ne change pas, un frais d'entrée ou une mesure initiale. Ce nombre sera ton coefficient $b$. Étape 2 : Identifie la valeur variable. Cherche le montant qui dépend d'une quantité, souvent introduit par les mots par, chaque, ou unité. Ce nombre sera ton coefficient $a$. Étape 3 : Détermine le sens de variation. Si la situation décrit une hausse, $a$ sera positif. S'il s'agit d'une perte, d'une consommation ou d'une baisse, $a$ sera négatif. Étape 4 : Assemble l'expression $f(x) = ax + b$. Par exemple, si on a $10$ euros de base et $3$ euros par article, on écrit $f(x) = 3x + 10$. Pour faire l'inverse, si on te donne $f(x) = -5x + 100$, tu peux dire : on part de $100$ unités et on en perd $5$ à chaque intervalle de temps. Cette structure permet de traduire instantanément le langage naturel en langage mathématique sans se tromper."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Analysons le cas d'un taxi. Le chauffeur applique un tarif de prise en charge de $4$ euros, puis $1,50$ euro par kilomètre parcouru. Traduisons cela en fonction affine. On cherche d'abord la valeur fixe : c'est la prise en charge, donc $b = 4$. Ensuite, on cherche la valeur variable : c'est le prix par kilomètre, donc $a = 1,50$. La fonction qui calcule le prix $P$ en fonction de la distance $x$ est donc $P(x) = 1,50x + 4$. Que signifie $a = 1,50$ ici ? Cela signifie que chaque kilomètre supplémentaire augmente la facture de $1,50$ euro. Que signifie $b = 4$ ? Cela signifie que même pour un trajet de $0$ km, le client doit payer $4$ euros. Si on veut savoir le prix pour $10$ km, on calcule $P(10) = 1,50 \\times 10 + 4 = 15 + 4 = 19$ euros. On a ici une application parfaite où les coefficients mathématiques correspondent à des réalités financières très précises."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons maintenant un réservoir d'eau de $500$ litres. On ouvre une vanne et l'eau s'écoule à un débit constant de $20$ litres par minute. Modélisons le volume d'eau restant $V$ après $x$ minutes. La valeur initiale est le volume total au début, donc $b = 500$. L'eau sort du réservoir, donc le volume diminue. Le rythme de diminution est de $20$ litres par minute, donc le coefficient directeur est négatif : $a = -20$. La fonction est $V(x) = -20x + 500$. Ici, $a = -20$ représente le débit de vidange. L'ordonnée à l'origine $b = 500$ est la capacité initiale du réservoir. Si on veut savoir quand le réservoir sera vide, on cherche quand $V(x) = 0$. On résout $-20x + 500 = 0$, ce qui donne $20x = 500$, donc $x = 500 / 20 = 25$ minutes. Cet exemple montre comment une fonction affine peut servir à calculer un temps d'épuisement d'une ressource."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 5
+            },
+            {
+              "type": "paragraph",
+              "content": "Le piège majeur est l'oubli du signe négatif pour les situations de diminution. Beaucoup d'élèves écrivent $V(x) = 20x + 500$ pour le réservoir, mais cela signifierait que le réservoir se remplit ! Il faut toujours se demander : est-ce que la quantité augmente ou diminue ? Un autre piège concerne les unités. Si le débit est donné en litres par minute mais que le temps est demandé en heures, il faut convertir les unités avant de construire la fonction. Enfin, attention à ne pas inverser $a$ et $b$. Il arrive que l'on écrive $f(x) = bx + a$. Rappelle-toi que le coefficient qui multiplie la variable $x$ est TOUJOURS le coefficient directeur $a$, celui qui représente le rythme. Pour ne plus te tromper, je te conseille de toujours écrire une petite phrase sous ton expression, comme : $a = \\text{prix par km}$ et $b = \\text{prix fixe}$, pour ancrer la logique mathématique dans la réalité concrète du problème."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 6
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais expliquer cette notion avec mes mots.",
+                "Je sais l'appliquer dans un exercice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Un abonnement de magazine coûte $10$ euros pour l'expédition et $5$ euros par numéro commandé. Écris l'expression de la fonction $f(x)$ qui donne le prix total pour $x$ numéros.",
+              "answer": "$f(x) = 5x + 10$",
+              "hint": "Le montant fixe est l'expédition, le montant variable est le prix par numéro.",
+              "explanation": "Le prix par numéro est $a = 5$ et les frais fixes sont $b = 10$. Donc $f(x) = 5x + 10$."
+            },
+            {
+              "question": "Une bougie de $15$ cm brûle à une vitesse constante de $2$ cm par heure. Quelle est la fonction $h(t)$ qui donne la hauteur de la bougie après $t$ heures ?",
+              "answer": "$h(t) = -2t + 15$",
+              "hint": "La bougie diminue, donc le coefficient directeur doit être négatif.",
+              "explanation": "Hauteur initiale $b = 15$, diminution $a = -2$. La fonction est $h(t) = -2t + 15$."
+            },
+            {
+              "question": "Dans la fonction $C(x) = 0,80x + 2$, que représente le nombre $0,80$ si $C$ est le coût d'un envoi de colis en fonction de son poids $x$ en kg ?",
+              "answer": "Le prix par kilogramme supplémentaire.",
+              "hint": "$0,80$ est le coefficient directeur $a$.",
+              "explanation": "Le coefficient $a = 0,80$ représente la variation du prix pour chaque unité de poids ajoutée."
+            },
+            {
+              "question": "Vrai ou Faux : Dans une fonction affine $f(x)=ax+b$, si $a$ est négatif, alors la situation modélisée est en croissance.",
+              "answer": "Faux",
+              "hint": "Pense à la pente de la droite.",
+              "explanation": "Si $a$ est négatif, la fonction est décroissante, donc la situation est en diminution."
+            },
+            {
+              "question": "Un club de sport demande $30$ euros d'entrée et $5$ euros par séance. Combien paie un membre après $8$ séances ?",
+              "answer": "$70$ euros",
+              "hint": "Utilise la fonction $f(x) = 5x + 30$.",
+              "explanation": "$f(8) = 5 \\times 8 + 30 = 40 + 30 = 70$."
+            },
+            {
+              "question": "Je pars de $100$ euros et je dépense $10$ euros par jour. Quelle est la fonction du montant restant après $x$ jours ?",
+              "answer": "$f(x) = -10x + 100$",
+              "hint": "C'est une diminution.",
+              "explanation": "Valeur initiale $100$, variation $-10$. Donc $f(x) = -10x + 100$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

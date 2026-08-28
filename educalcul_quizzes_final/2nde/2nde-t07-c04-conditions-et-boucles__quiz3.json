@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Déboguer",
+  "title": "Quiz : Débogage d'algorithmes (Secondes)",
+  "questions": [
+    {
+      "text": "On exécute l'algorithme suivant :\\nDébut\\n  x ← 0\\n  Tant que x ≤ 5 faire\\n    x ← x + 1\\n  Fin tant que\\n  Afficher x\\nFin\\nQuelle valeur est affichée ?",
+      "options": [
+        "5",
+        "6",
+        "4",
+        "0"
+      ],
+      "correctAnswer": "6",
+      "explanation": "La boucle 'Tant que x ≤ 5' s'exécute tant que x est inférieur ou égal à 5. Au départ x=0. Les itérations successives donnent x=1, 2, 3, 4, 5, 6. Lorsque x devient 6, la condition x ≤ 5 devient fausse, la boucle s'arrête et on affiche 6. L'erreur classique (off-by-one) est de croire que la boucle s'arrête à 5, mais la condition est '≤' et non '<'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nDébut\\n  k ← 10\\n  Tant que k > 0 faire\\n    Afficher k\\n  Fin tant que\\nFin\\nQue se passe-t-il lors de l'exécution ?",
+      "options": [
+        "Les nombres de 10 à 1 sont affichés",
+        "Le nombre 10 est affiché indéfiniment",
+        "Rien n'est affiché",
+        "Une erreur de syntaxe arrête le programme"
+      ],
+      "correctAnswer": "Le nombre 10 est affiché indéfiniment",
+      "explanation": "À l'intérieur de la boucle 'Tant que', la variable k n'est jamais modifiée (pas d'instruction k ← k - 1). La condition k > 0 reste donc vraie pour toujours (k vaut toujours 10). La boucle est infinie et affiche '10' sans s'arrêter. C'est une erreur classique : oublier la mise à jour de la variable de boucle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut écrire un algorithme qui affiche le maximum de deux nombres a et b. Voici une proposition buggée :\\nDébut\\n  Lire a, b\\n  Si a < b alors\\n    max ← a\\n  Sinon\\n    max ← b\\n  Fin si\\n  Afficher max\\nFin\\nSi on entre a = 5 et b = 3, que affiche l'algorithme ?",
+      "options": [
+        "5",
+        "3",
+        "8",
+        "0"
+      ],
+      "correctAnswer": "3",
+      "explanation": "La condition du 'Si' est inversée : on teste 'a < b' (5 < 3 est faux), donc on exécute le 'Sinon' qui affecte max ← b (donc max = 3). L'algorithme affiche donc le minimum au lieu du maximum. Pour corriger le bug, il faut écrire 'Si a > b alors max ← a Sinon max ← b'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant censé calculer la somme des entiers de 1 à 5 :\\nDébut\\n  Pour i de 1 à 5 faire\\n    S ← S + i\\n  Fin pour\\n  Afficher S\\nFin\\nQuel est le problème principal de cet algorithme ?",
+      "options": [
+        "La boucle ne s'exécute pas",
+        "La variable S n'est pas initialisée avant la boucle",
+        "L'affichage est incorrect (somme de 1 à 4)",
+        "La variable i n'est pas déclarée"
+      ],
+      "correctAnswer": "La variable S n'est pas initialisée avant la boucle",
+      "explanation": "Avant d'entrer dans la boucle, la variable S n'a aucune valeur définie (elle n'a pas été affectée, par exemple S ← 0). L'instruction S ← S + i tente d'ajouter i à une valeur inconnue, ce qui provoque une erreur d'exécution ou un résultat aléatoire selon les langages. Il faut initialiser S à 0 avant le 'Pour'.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut trouver le maximum d'un tableau T contenant uniquement des nombres négatifs (exemple : [-5, -2, -8]). Voici l'algorithme :\\nDébut\\n  max ← 0\\n  Pour chaque valeur dans T faire\\n    Si valeur > max alors\\n      max ← valeur\\n    Fin si\\n  Fin pour\\n  Afficher max\\nFin\\nQuelle valeur est affichée pour T = [-5, -2, -8] ?",
+      "options": [
+        "-2",
+        "0",
+        "-5",
+        "-8"
+      ],
+      "correctAnswer": "0",
+      "explanation": "L'initialisation max ← 0 suppose que le maximum est au moins 0. Or, toutes les valeurs du tableau sont négatives (inférieures à 0). La condition 'valeur > max' (ex: -5 > 0) est toujours fausse. La variable max n'est jamais modifiée et reste 0. Le bug est l'initialisation : il faut initialiser max avec le premier élément du tableau (max ← T[0]) pour que l'algorithme fonctionne pour tous les ensembles de nombres.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

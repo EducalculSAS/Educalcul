@@ -1,0 +1,452 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.094085+00:00",
+  "id": 198,
+  "code": "ce2-t07-c03",
+  "title": "Triangles particuliers accessibles",
+  "description": "Cours structuré Educalcul : Triangles particuliers accessibles.",
+  "subject": "Espace et géométrie",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Espace et géométrie",
+    "titre_du_cours": "Triangles particuliers accessibles",
+    "objectif_global": "Triangles particuliers accessibles",
+    "mini_lecons_imposees": [
+      "Triangle rectangle.",
+      "Isocèle par observation.",
+      "Construire dans cas simples."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Espace et géométrie",
+      "lessons": [
+        {
+          "title": "Triangle rectangle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le triangle rectangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un coin de ta table, le bord d'une feuille de papier ou le cadre d'une porte : tous ces angles sont des $angles$ $droits$. Un triangle qui possède un angle droit s'appelle un $triangle$ $rectangle$. C'est une figure très utile car on la retrouve partout dans la construction, le bricolage et même dans les jeux vidéo !"
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un triangle rectangle avec l'angle droit en B.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "5 cm",
+                "4 cm",
+                "3 cm"
+              ],
+              "rightAngleAt": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr qu'un triangle est rectangle, on utilise une $équerre$ (ou un coin de feuille bien droit). Pose l'équerre sur le sommet de l'angle : si les deux côtés du triangle épousent parfaitement les bords de l'équerre, alors c'est un angle droit. Essaie sur ton cahier : dessine un grand triangle, puis teste chaque angle avec ton équerre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisis un sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le sommet de l'équerre exactement sur le sommet du triangle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Aligne un côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais coïncider un bord de l'équerre avec l'un des côtés du triangle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Regarde l'autre côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'autre côté du triangle suit parfaitement le second bord de l'équerre, l'angle est droit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais repérer l'angle droit, observons les côtés. Dans un triangle rectangle, le côté le plus long, celui qui se trouve en face de l'angle droit, porte un nom spécial : l'$hypoténuse$. Les deux autres côtés, qui forment l'angle droit, sont appelés les $côtés$ $de$ $l'angle$ $droit$."
+            },
+            {
+              "type": "definition",
+              "term": "Hypoténuse",
+              "definition": "Le plus long côté d'un triangle rectangle, situé en face de l'angle droit.",
+              "example": "Dans un triangle rectangle de côtés 3 cm, 4 cm et 5 cm, l'hypoténuse mesure 5 cm."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le triangle du dessin : les côtés de $3$ $cm$ et $4$ $cm$ forment l'angle droit, donc l'hypoténuse est le côté de $5$ $cm$. Essaie de mesurer les côtés d'un triangle rectangle que tu as dessiné : tu verras que l'hypoténuse est toujours le plus grand."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "À ton tour de tracer un angle droit ! Avec une règle et une équerre, c'est très simple. D'abord, trace un segment avec la règle. Ensuite, place l'équerre sur une extrémité du segment, aligne un bord sur le segment, et trace le long de l'autre bord. Tu obtiens un angle parfait."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trace une base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine un segment $[AB]$ à la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Pose l'équerre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'équerre sur le point $A$, un bord le long de $[AB]$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trace la perpendiculaire",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine un trait le long de l'autre bord de l'équerre : c'est la droite perpendiculaire."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as devant toi trois triangles. Le premier a un angle qui rentre pile dans le coin de ton équerre. Le deuxième a trois angles pointus. Le troisième a un angle très large. Lequel est un triangle rectangle ?",
+              "answer": "Le premier triangle.",
+              "hint": "Rappelle-toi : l'équerre ne ment jamais. Si l'angle épouse les bords, c'est un angle droit.",
+              "explanation": "Seul le premier triangle possède un angle droit, donc c'est un triangle rectangle. Les deux autres n'en ont pas."
+            },
+            {
+              "question": "Dans un triangle rectangle, les deux côtés qui forment l'angle droit mesurent $6$ $cm$ et $8$ $cm$. Quel est le nom du troisième côté, le plus long ?",
+              "answer": "L'hypoténuse.",
+              "hint": "Ce côté se trouve toujours en face de l'angle droit.",
+              "explanation": "Le côté opposé à l'angle droit s'appelle l'hypoténuse. C'est toujours le plus grand côté du triangle rectangle."
+            },
+            {
+              "question": "Quelle est la toute première chose à faire pour tracer un angle droit à l'équerre ?",
+              "answer": "Tracer un segment de base à la règle.",
+              "hint": "Sans base, l'équerre ne sait pas où se poser.",
+              "explanation": "On commence toujours par dessiner un segment. C'est lui qui servira de repère pour poser l'équerre et tracer la perpendiculaire."
+            }
+          ]
+        },
+        {
+          "title": "Isocèle par observation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le triangle isocèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde une part de pizza, le toit d'une maison ou un cerf-volant : ces formes ont deux côtés de même longueur. Un triangle qui possède $deux$ $côtés$ $de$ $même$ $longueur$ s'appelle un $triangle$ $isocèle$. C'est comme s'il avait deux jambes jumelles !"
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un triangle isocèle avec deux côtés de 5 cm.",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "5 cm",
+                "5 cm",
+                "8 cm"
+              ],
+              "rightAngleAt": -1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour reconnaître un triangle isocèle, il faut comparer les longueurs des côtés. Tu peux utiliser une règle pour mesurer chaque côté en centimètres. Si deux mesures donnent le même chiffre, c'est gagné ! Tu peux aussi utiliser un compas : pointe sur un sommet, crayon sur l'autre, et vois si le compas s'ouvre exactement pareil pour le troisième côté."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Mesure le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le zéro de ta règle au début du côté et lis la mesure à la fin."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Mesure le deuxième côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais la même chose pour un autre côté. Note la mesure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compare",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux nombres sont identiques, les deux côtés ont la même longueur : le triangle est isocèle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un triangle isocèle, les deux côtés égaux s'appellent les $côtés$ $égaux$ (ou les $jambes$). Le troisième côté, qui a une longueur différente, est la $base$. Le sommet où se rejoignent les deux côtés égaux est le $sommet$ $principal$. Ces mots aident à bien se comprendre quand on décrit la figure."
+            },
+            {
+              "type": "definition",
+              "term": "Triangle isocèle",
+              "definition": "Un triangle qui a au moins deux côtés de même longueur.",
+              "example": "Un triangle avec des côtés de $7$ $cm$, $7$ $cm$ et $10$ $cm$ est isocèle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Observons le triangle du dessin : les côtés $AB$ et $AC$ mesurent tous les deux $5$ $cm$, ce sont les côtés égaux. Le côté $BC$ mesure $8$ $cm$, c'est la base. Le sommet $A$ est le sommet principal. Essaie de trouver des triangles isocèles autour de toi : un panneau de signalisation, un pliage de papier..."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne voit pas tout de suite que deux côtés sont égaux. Un bon truc : plie le triangle le long de la médiane (la droite qui part du sommet principal au milieu de la base). Si les deux moitiés se superposent parfaitement, c'est que le triangle est isocèle. C'est une façon visuelle et amusante de vérifier sans mesurer !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu mesures les trois côtés d'un triangle : $4$ $cm$, $4$ $cm$ et $6$ $cm$. Est-ce un triangle isocèle ?",
+              "answer": "Oui.",
+              "hint": "Combien de côtés ont la même mesure ?",
+              "explanation": "Deux côtés mesurent $4$ $cm$, donc le triangle a deux côtés de même longueur. C'est bien un triangle isocèle."
+            },
+            {
+              "question": "Dans un triangle isocèle, comment appelle-t-on le côté qui n'a pas la même longueur que les deux autres ?",
+              "answer": "La base.",
+              "hint": "C'est le côté qui reste tout seul avec sa longueur.",
+              "explanation": "Les deux côtés égaux sont les jambes. Le troisième côté, unique, est la base."
+            },
+            {
+              "question": "Tu as découpé un triangle en papier. Tu le plies en deux en joignant les deux sommets de la base. Les deux moitiés coïncident exactement. Que peux-tu dire de ce triangle ?",
+              "answer": "C'est un triangle isocèle.",
+              "hint": "Le pliage montre une symétrie : les deux côtés se superposent.",
+              "explanation": "Si les deux moitiés se superposent parfaitement, c'est que les deux côtés sont de même longueur. Le triangle est donc isocèle."
+            }
+          ]
+        },
+        {
+          "title": "Construire dans cas simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire des triangles particuliers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, tu vas devenir un petit architecte ! Avec ta règle, ton équerre et ton compas, tu sais construire toi-même des triangles rectangles et isocèles. C'est comme suivre une recette de cuisine : chaque étape a son importance pour que le résultat soit parfait."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par un triangle rectangle dont on connaît les deux côtés de l'angle droit, par exemple $4$ $cm$ et $3$ $cm$. Trace d'abord un segment de $4$ $cm$. À l'une de ses extrémités, trace un angle droit à l'équerre. Sur ce nouveau trait, mesure $3$ $cm$ et marque le point. Relie ce point à l'autre extrémité du premier segment : ton triangle rectangle est fini !"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trace la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine un segment $[AB]$ de $4$ $cm$ à la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trace l'angle droit",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place l'équerre sur $A$, aligne un bord sur $[AB]$, trace une droite le long de l'autre bord."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Reporte la deuxième longueur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur la perpendiculaire, mesure $3$ $cm$ depuis $A$ et marque le point $C$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Ferme le triangle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace le segment $[BC]$ à la règle. Le triangle $ABC$ est rectangle en $A$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour construire un triangle isocèle quand on connaît la base (par exemple $6$ $cm$) et la longueur des côtés égaux (par exemple $5$ $cm$), le compas est ton meilleur ami. Trace la base de $6$ $cm$. Ensuite, pointe du compas sur un bout de la base, ouvre-le à $5$ $cm$ et trace un arc de cercle. Fais pareil de l'autre bout. Les deux arcs se coupent en un point : c'est le sommet principal ! Relie-le aux deux extrémités de la base."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trace la base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dessine un segment $[AB]$ de $6$ $cm$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trace le premier arc",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pointe sur $A$, ouverture $5$ $cm$, trace un arc de cercle au-dessus du segment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Trace le deuxième arc",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pointe sur $B$, même ouverture $5$ $cm$, trace un second arc qui coupe le premier."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Termine le triangle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Nomme $C$ le point d'intersection. Trace $[AC]$ et $[BC]$. Le triangle $ABC$ est isocèle en $C$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant reconnaître, nommer et construire deux triangles très spéciaux. Le triangle rectangle avec son angle droit et son hypoténuse, et le triangle isocèle avec ses deux côtés jumeaux. Ces figures vont t'accompagner tout au long de l'année en géométrie, et même plus tard au collège. Garde bien ton matériel (règle, équerre, compas) à portée de main pour t'entraîner !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer un angle droit avec une équerre.",
+                "Je connais le nom du plus grand côté d'un triangle rectangle : l'hypoténuse.",
+                "Je sais tracer un angle droit à la règle et à l'équerre.",
+                "Je reconnais un triangle isocèle en comparant les longueurs des côtés.",
+                "Je connais le vocabulaire : côtés égaux, base, sommet principal.",
+                "Je sais construire un triangle rectangle connaissant les deux côtés de l'angle droit.",
+                "Je sais construire un triangle isocèle connaissant la base et la longueur des côtés égaux."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu veux construire un triangle rectangle dont les côtés de l'angle droit mesurent $5$ $cm$ et $12$ $cm$. Quelle est la longueur de l'hypoténuse une fois le triangle terminé ? (Tu n'as pas besoin de calculer, réponds par le nom du côté.)",
+              "answer": "L'hypoténuse.",
+              "hint": "C'est le côté opposé à l'angle droit, celui qu'on trace en dernier.",
+              "explanation": "Dans la construction, on trace d'abord les deux côtés de l'angle droit, puis on relie leurs extrémités libres. Ce dernier côté est l'hypoténuse."
+            },
+            {
+              "question": "Pour construire un triangle isocèle de base $8$ $cm$ et de côtés égaux $7$ $cm$, à quelle ouverture dois-tu régler ton compas ?",
+              "answer": "$7$ $cm$.",
+              "hint": "L'ouverture du compas correspond à la longueur des côtés égaux.",
+              "explanation": "On trace d'abord la base de $8$ $cm$. Ensuite, pour placer le sommet, on utilise le compas ouvert à la longueur des côtés égaux, ici $7$ $cm$."
+            },
+            {
+              "question": "Vrai ou faux : pour construire un triangle isocèle, on peut se passer de compas si on a une règle et une équerre.",
+              "answer": "Faux.",
+              "hint": "Le compas permet de reporter une longueur sans la mesurer en chiffres.",
+              "explanation": "La règle et l'équerre servent à tracer des segments et des angles droits. Pour reporter exactement la même longueur des deux côtés égaux, le compas est l'outil indispensable."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 377,
+  "_course_code": "6eme-t09-c04-programmes-geometriques",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Déboguer",
+  "title": "Déboguer des programmes géométriques",
+  "blocks": [
+    {
+      "title": "Erreurs de syntaxe et de structure",
+      "content": "Relie chaque programme buggé à la correction qu'il faut apporter pour qu'il fonctionne.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Répéter 4 fois\\n  Avancer 50\\n  Tourner droite 90\\nFin répéter\\n(Tourner droite n'est pas indenté)",
+          "right": "Indenter les instructions à l'intérieur de la boucle"
+        },
+        {
+          "left": "Répéter 3 fois\\n  Avancer 40\\n  Tourner gauche 120\\nFin répéter\\n(Il manque 'Fin répéter')",
+          "right": "Ajouter 'Fin répéter' à la fin du programme"
+        },
+        {
+          "left": "Répéter 5 fois\\n  Avancer 30\\n  Tourner droite 72\\nFin répéter\\n(L'instruction 'Répéter' est écrite 'Repeter')",
+          "right": "Corriger l'orthographe de l'instruction 'Répéter'"
+        },
+        {
+          "left": "Avancer 100\\nTourner gauche 90\\nAvancer 100\\n(Pas de boucle pour faire un carré)",
+          "right": "Utiliser une boucle 'Répéter 4 fois' pour éviter la répétition"
+        }
+      ],
+      "items": [],
+      "explanation": "Un programme doit respecter une syntaxe précise : les mots-clés (Répéter, Fin répéter) s'écrivent correctement, les blocs d'instructions sont indentés pour être reconnus à l'intérieur de la boucle, et on utilise une boucle pour factoriser les instructions identiques.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Erreurs logiques sur les angles",
+      "content": "Relie chaque programme (qui s'exécute sans planter) à la figure qu'il trace réellement.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Répéter 4 fois\\n  Avancer 50\\n  Tourner droite 60\\nFin répéter",
+          "right": "Un losange (ou un parallélogramme) qui ne se ferme pas"
+        },
+        {
+          "left": "Répérer 3 fois\\n  Avancer 40\\n  Tourner gauche 120\\nFin répéter",
+          "right": "Un triangle équilatéral"
+        },
+        {
+          "left": "Répéter 5 fois\\n  Avancer 30\\n  Tourner droite 72\\nFin répéter",
+          "right": "Un pentagone régulier"
+        },
+        {
+          "left": "Répéter 6 fois\\n  Avancer 20\\n  Tourner gauche 45\\nFin répéter",
+          "right": "Une spirale qui ne se ferme pas (angle total 270°)"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour tracer un polygone régulier à $n$ côtés, l'angle de rotation doit être $360/n$ degrés. Pour le carré : $90^\\circ$, triangle : $120^\\circ$, pentagone : $72^\\circ$. Si l'angle est incorrect (ex: $60^\\circ$ pour un carré ou $45^\\circ$ pour un hexagone), la figure ne se referme pas ou n'est pas régulière.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Erreurs sur les variables et l'initialisation",
+      "content": "Relie chaque programme à l'erreur qu'il contient ou à son comportement.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Côté ← 50\\nRépéter 4 fois\\n  Avancer Côté\\n  Tourner droite 90\\nFin répéter",
+          "right": "Programme correct : trace un carré de côté 50"
+        },
+        {
+          "left": "Répéter 4 fois\\n  Avancer Côté\\n  Tourner droite 90\\nFin répéter\\n(Côté n'a pas de valeur au départ)",
+          "right": "Erreur : variable 'Côté' non initialisée (valeur inconnue)"
+        },
+        {
+          "left": "Côté ← 30\\nRépéter 4 fois\\n  Avancer Côté\\n  Côté ← Côté + 10\\n  Tourner droite 90\\nFin répéter",
+          "right": "Trace un polygone ouvert aux côtés grandissants (30, 40, 50, 60)"
+        },
+        {
+          "left": "Côté ← 20\\nRépéter 5 fois\\n  Avancer Côté\\n  Tourner droite 72\\n  Côté ← Côté - 5\\nFin répéter",
+          "right": "Trace un pentagone qui rétrécit (dernier côté = 0 ou négatif)"
+        }
+      ],
+      "items": [],
+      "explanation": "Une variable doit être initialisée (recevoir une valeur) avant d'être utilisée. Modifier la variable 'Côté' à l'intérieur de la boucle change la longueur des côtés suivants : si on l'augmente, la figure s'ouvre en spirale ; si on la diminue trop, les côtés deviennent nuls ou négatifs.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

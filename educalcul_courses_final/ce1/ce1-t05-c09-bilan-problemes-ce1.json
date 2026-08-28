@@ -1,0 +1,390 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.843961+00:00",
+  "id": 116,
+  "code": "ce1-t05-c09",
+  "title": "Bilan - Problèmes CE1",
+  "description": "Cours structuré Educalcul : Bilan - Problèmes CE1.",
+  "subject": "Résolution de problèmes",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Bilan - Problèmes CE1",
+    "objectif_global": "Bilan - Problèmes CE1",
+    "mini_lecons_imposees": [
+      "Choisir un modèle.",
+      "Mélanger structures.",
+      "Checklist de méthode."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Choisir un modèle.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir un modèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! Aujourd'hui, tu vas apprendre à choisir le bon modèle pour résoudre un problème. Imagine que tu as $5$ pommes dans un panier et que tu en ajoutes $3$ de plus. C'est une situation de réunion : deux groupes se retrouvent ensemble."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Deux groupes qui se rejoignent",
+              "bars": [
+                {
+                  "label": "Groupe 1",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Groupe 2",
+                  "value": 3,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu vois les mots « ajout », « ensemble » ou « en plus », le modèle qui convient est l'addition. Tu peux tracer une petite barre pour chaque groupe et les coller l'un à l'autre. Essaie sur l'exercice qui suit."
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'histoire raconte qu'on retire quelque chose. Par exemple, tu as $8$ billes et tu en donnes $2$ à ton ami. Ici, le groupe diminue : c'est une situation de retrait. Le modèle à utiliser est la soustraction. Sur la droite graduée, tu pars de $8$ et tu recules de $2$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Retrait de 2 sur 8",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 8,
+                  "label": "Départ"
+                },
+                {
+                  "value": 6,
+                  "label": "Arrivée"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a aussi les problèmes où plusieurs groupes identiques se répètent. Si tu as $3$ boîtes de $4$ crayons chacune, tu peux penser à une multiplication. Un quadrillage de $3$ lignes et $4$ colonnes montre bien les groupes égaux. Essaie l'exercice pour t'entraîner."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 12,
+              "caption": "3 groupes de 4 crayons"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant reconnaître trois grands modèles : addition, soustraction et multiplication. Garde ces repères pour la suite du bilan."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $5$ pommes et tu en ajoutes $3$. Combien de pommes as-tu maintenant ?",
+              "answer": "$8$",
+              "hint": "Pense à réunir les deux groupes.",
+              "explanation": "On additionne $5+3=8$."
+            },
+            {
+              "question": "Tu as $8$ billes et tu en donnes $2$. Combien te reste-t-il ?",
+              "answer": "$6$",
+              "hint": "Recule sur la droite graduée.",
+              "explanation": "On soustrait $8-2=6$."
+            },
+            {
+              "question": "Il y a $3$ boîtes de $4$ crayons chacune. Combien de crayons au total ?",
+              "answer": "$12$",
+              "hint": "Compte les cases du quadrillage.",
+              "explanation": "On multiplie $3\\\\times4=12$."
+            }
+          ]
+        },
+        {
+          "title": "Mélanger structures.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mélanger structures"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, les problèmes peuvent mélanger plusieurs actions. Prenons l'exemple : « Léa a $6$ autocollants, elle en reçoit $4$ puis elle en donne $2$ à son frère. » Il y a d'abord une réunion, ensuite un retrait. Il faut repérer chaque étape dans l'ordre."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Deux étapes : ajout puis retrait",
+              "bars": [
+                {
+                  "label": "Après ajout",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Après retrait",
+                  "value": 8,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour ne pas te perdre, suis une méthode en deux temps. Première étape : ajoute $6$ et $4$. Deuxième étape : retire $2$ du résultat. Le bloc « étapes » ci-dessous te guide pas à pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : addition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $6+4=10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : soustraction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $10-2=8$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la droite graduée, tu peux avancer de $6$, puis de $4$, puis reculer de $2$. Le point final te donne la réponse. Observe le schéma et teste l'exercice suivant."
+            },
+            {
+              "type": "number_line",
+              "caption": "Avancer puis reculer",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 6,
+                  "label": "Départ"
+                },
+                {
+                  "value": 10,
+                  "label": "Après +4"
+                },
+                {
+                  "value": 8,
+                  "label": "Après -2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois l'ordre change : on retire d'abord, puis on ajoute. La règle reste la même : traite chaque action l'une après l'autre. Le tableau récapitulatif t'aide à voir la suite des opérations. Essaie l'exercice pour vérifier."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Opération",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "$10-3$",
+                  "$7$"
+                ],
+                [
+                  "2",
+                  "$7+5$",
+                  "$12$"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant l'habitude de décomposer un problème en plusieurs petites étapes. Continue à t'entraîner pour gagner en rapidité."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Léa a $6$ autocollants, elle en reçoit $4$ puis en donne $2$. Combien en a-t-elle à la fin ?",
+              "answer": "$8$",
+              "hint": "Fais d'abord $6+4$, puis retire $2$.",
+              "explanation": "$6+4=10$, $10-2=8$."
+            },
+            {
+              "question": "Tom a $10$ bonbons, il en mange $3$ puis il en reçoit $5$. Combien a-t-il maintenant ?",
+              "answer": "$12$",
+              "hint": "Commence par $10-3$, puis ajoute $5$.",
+              "explanation": "$10-3=7$, $7+5=12$."
+            },
+            {
+              "question": "Il y a $2$ boîtes de $5$ billes. On ajoute $3$ billes. Combien au total ?",
+              "answer": "$13$",
+              "hint": "Multiplie d'abord, puis ajoute.",
+              "explanation": "$2\\\\times5=10$, $10+3=13$."
+            }
+          ]
+        },
+        {
+          "title": "Checklist de méthode.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Checklist de méthode"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, voici une checklist simple qui t'accompagnera à chaque problème. Elle comporte cinq petites actions : lire, identifier, choisir, calculer, vérifier. Prends le temps de les faire dans l'ordre, même si le problème te semble facile."
+            },
+            {
+              "type": "table",
+              "caption": "Les cinq étapes de la checklist",
+              "headers": [
+                "Étape",
+                "Action"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Lire le problème"
+                ],
+                [
+                  "2",
+                  "Identifier les nombres et mots-clés"
+                ],
+                [
+                  "3",
+                  "Choisir le modèle (addition, soustraction, multiplication)"
+                ],
+                [
+                  "4",
+                  "Calculer l'opération"
+                ],
+                [
+                  "5",
+                  "Vérifier que la réponse a du sens"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le tableau : chaque ligne correspond à une action. « Lire » veut dire comprendre l'histoire. « Identifier » signifie repérer les nombres et les mots-clés. « Choisir » est le moment où tu décides si c'est une addition, une soustraction ou une multiplication. « Calculer » : tu fais l'opération. « Vérifier » : tu relis pour voir si la réponse a du sens."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Lire attentivement l'énoncé",
+                "Repérer les nombres : $7$, $2$, $1$",
+                "Choisir addition puis soustraction",
+                "Calculer $7+2=9$ puis $9-1=8$",
+                "Vérifier : $8$ livres, c'est logique"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie maintenant un problème complet en suivant la liste. Ne saute aucune étape, même si tu connais déjà la réponse. L'exercice te permettra de t'entraîner."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu as maintenant une méthode claire pour aborder n'importe quel problème de CE1. Garde cette checklist près de toi lors des devoirs."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire le problème et trouver les nombres",
+                "Je sais choisir le bon modèle",
+                "Je sais calculer étape par étape",
+                "Je sais vérifier ma réponse"
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous ce problème en suivant la checklist : « Ana a $7$ livres. Elle en achète $2$ puis elle en prête $1$. Combien lui reste-t-il ? »",
+              "answer": "$8$",
+              "hint": "Lis, identifie $7$, $2$, $1$. Choisis addition puis soustraction. Calcule. Vérifie.",
+              "explanation": "$7+2=9$, $9-1=8$."
+            },
+            {
+              "question": "Il y a $4$ rangées de $3$ chaises. On ajoute $2$ chaises. Combien de chaises au total ?",
+              "answer": "$14$",
+              "hint": "Multiplie $4\\\\times3$, puis ajoute $2$.",
+              "explanation": "$4\\\\times3=12$, $12+2=14$."
+            },
+            {
+              "question": "Vérifie si cette réponse est correcte : $5+6=10$.",
+              "answer": "Non, $5+6=11$.",
+              "hint": "Recalcule l'addition.",
+              "explanation": "L'addition donne $11$, pas $10$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

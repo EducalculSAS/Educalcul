@@ -1,0 +1,97 @@
+{
+  "_status": "done",
+  "_course_id": 157,
+  "_course_code": "ce2-t02-c06-fractions-decimales",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Dixièmes comme parts de 10",
+  "title": "Quiz : Les dixièmes, parts de 10",
+  "questions": [
+    {
+      "text": "On partage 1 unité en 10 parts égales. Quelle fraction représente une de ces parts ?",
+      "options": [
+        "Un dixième",
+        "Un centième",
+        "Un demi",
+        "Un quart"
+      ],
+      "correctAnswer": "Un dixième",
+      "explanation": "Lorsqu'on divise 1 unité en 10 parts égales, chaque part vaut 1 divisé par 10, ce qui s'écrit en fraction 1/10 et se lit 'un dixième'. Un centième correspond à 1/100 (100 parts), un demi à 1/2 (2 parts) et un quart à 1/4 (4 parts).",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 10
+          }
+        ],
+        "caption": "1 unité divisée en 10 parts égales"
+      }
+    },
+    {
+      "text": "Parmi ces fractions, laquelle est égale à 3 dixièmes ?",
+      "options": [
+        "$3/10$",
+        "$3/100$",
+        "$10/3$",
+        "$30/10$"
+      ],
+      "correctAnswer": "$3/10$",
+      "explanation": "3 dixièmes signifie 3 parts sur 10 parts égales, ce qui s'écrit $3/10$. L'option $3/100$ correspond à 3 centièmes. L'option $10/3$ est une fraction impropre (plus grande que 1). L'option $30/10$ vaut 3 unités entières.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une bande de 10 cases, 7 cases sont coloriées. Quelle fraction de la bande est coloriée ?",
+      "options": [
+        "$7/10$",
+        "$7/100$",
+        "$3/10$",
+        "$10/7$"
+      ],
+      "correctAnswer": "$7/10$",
+      "explanation": "La bande entière représente 1 unité divisée en 10 parties (les 10 cases). Comme 7 cases sont coloriées sur les 10, la fraction coloriée est 7 parties sur 10, soit $7/10$. L'option $3/10$ correspondrait aux cases non coloriées. $7/100$ serait pour une bande de 100 cases.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 1,
+        "cols": 10,
+        "highlighted": 7,
+        "caption": "Bande de 10 cases, 7 coloriées"
+      }
+    },
+    {
+      "text": "Complète l'égalité : $1 = \\frac{?}{10}$",
+      "options": [
+        "$10$",
+        "$1$",
+        "$0$",
+        "$100$"
+      ],
+      "correctAnswer": "$10$",
+      "explanation": "Pour obtenir 1 unité entière avec des dixièmes, il faut réunir les 10 parts. En fraction, $1 = 10/10$ car 10 divisé par 10 fait 1. Si on met 1 au numérateur ($1/10$), on n'a qu'un dixième. Si on met 0, on a 0. Si on met 100 ($100/10$), on obtient 10 unités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léo a découpé une barre de chocolat en 10 parts égales. Il en mange 4. Quelle fraction de la barre lui reste-t-il ?",
+      "options": [
+        "$6/10$",
+        "$4/10$",
+        "$10/4$",
+        "$1/6$"
+      ],
+      "correctAnswer": "$6/10$",
+      "explanation": "La barre entière fait 10/10. Léo en mange 4/10. Il reste donc 10 - 4 = 6 parts sur les 10 initiales, soit $6/10$. L'option $4/10$ est la partie mangée, pas la partie restante. $10/4$ n'a pas de sens ici (plus grand que 1). $1/6$ ne correspond pas au partage en 10.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 4,
+        "denominator": 10,
+        "shape": "bar",
+        "caption": "Barre de chocolat : 4 parts mangées sur 10"
+      }
+    }
+  ]
+}

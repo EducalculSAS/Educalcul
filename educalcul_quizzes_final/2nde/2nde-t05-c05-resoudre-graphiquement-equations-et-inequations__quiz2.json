@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 524,
+  "_course_code": "2nde-t05-c05-resoudre-graphiquement-equations-et-inequations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Signe",
+  "title": "Quiz sur le signe des fonctions",
+  "questions": [
+    {
+      "text": "Soit la fonction f définie par f(x)=2x-3. Pour quelles valeurs de x la fonction est-elle positive ?",
+      "options": [
+        "$x > 3/2$",
+        "$x < 3/2$",
+        "$x > 2$",
+        "$x < 2$"
+      ],
+      "correctAnswer": "$x > 3/2$",
+      "explanation": "On résout l'inéquation 2x-3 > 0. En ajoutant 3 des deux côtés on obtient 2x > 3, puis en divisant par 2 on a x > 3/2. Les autres options correspondent à des erreurs de manipulation (inversion du sens, mauvaise division).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction f définie par f(x)=x^2-4. L'ensemble des x tels que f(x) ≤ 0 est :",
+      "options": [
+        "$-2 ≤ x ≤ 2$",
+        "$x ≤ -2 ou x ≥ 2$",
+        "$-2 < x < 2$",
+        "$x < -2 ou x > 2$"
+      ],
+      "correctAnswer": "$-2 ≤ x ≤ 2$",
+      "explanation": "L'inéquation x^2-4 ≤ 0 se factorise en (x-2)(x+2) ≤ 0. Le trinôme est négatif ou nul entre ses racines -2 et 2. L'option avec les intervalles extérieurs correspond à f(x) ≥ 0, les intervalles ouverts excluent les zéros.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction f définie par f(x) = (x+1)/(x-2). Quel est le signe de f(x) sur l'intervalle ]2; +∞[ ?",
+      "options": [
+        "Positif",
+        "Négatif",
+        "Nul",
+        "Indéfini"
+      ],
+      "correctAnswer": "Positif",
+      "explanation": "Pour x > 2, le numérateur x+1 est positif et le dénominateur x-2 est aussi positif. Le quotient de deux nombres positifs est positif. La fonction n'est pas nulle (numérateur non nul) et est définie (dénominateur non nul).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère la fonction g(x) = -x^2 + 4. L'ensemble de solutions de l'inéquation g(x) ≥ 0 est :",
+      "options": [
+        "$[-2; 2]$",
+        "$]-∞; -2] ∪ [2; +∞[$",
+        "$]-2; 2[$",
+        "$ℝ$"
+      ],
+      "correctAnswer": "$[-2; 2]$",
+      "explanation": "L'inéquation -x^2+4 ≥ 0 s'écrit x^2 ≤ 4, donc -2 ≤ x ≤ 2. L'intervalle est fermé car l'inéquation est large. Les autres options correspondent à x^2 ≥ 4 ou à l'intervalle ouvert.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit h(x) = (x-3)(x+2). On veut résoudre h(x) < 0. La solution est :",
+      "options": [
+        "$]-2; 3[$",
+        "$]-∞; -2[ ∪ ]3; +∞[$",
+        "$[-2; 3]$",
+        "$ℝ$"
+      ],
+      "correctAnswer": "$]-2; 3[$",
+      "explanation": "Le produit (x-3)(x+2) est négatif lorsque les deux facteurs ont des signes opposés. Cela se produit pour x entre -2 et 3, bornes exclues car l'inéquation est stricte. L'intervalle ouvert ]-2; 3[ est la solution.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

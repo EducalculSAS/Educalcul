@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 511,
+  "_course_code": "2nde-t03-c02-somme-de-vecteurs",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Application : Somme de vecteurs",
+  "title": "Applications de la somme de vecteurs",
+  "blocks": [
+    {
+      "title": "Construction de la somme de deux vecteurs",
+      "content": "Range les étapes dans l'ordre logique pour construire la somme $\\vec{u} + \\vec{v}$ par la règle du triangle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Trace le vecteur $\\vec{u}$ à partir de son origine.",
+        "Place l'origine du vecteur $\\vec{v}$ à l'extrémité du vecteur $\\vec{u}$.",
+        "Trace le vecteur $\\vec{v}$ à partir de cette nouvelle origine.",
+        "Le vecteur somme $\\vec{u}+\\vec{v}$ joint l'origine de $\\vec{u}$ à l'extrémité de $\\vec{v}$."
+      ],
+      "explanation": "On commence par tracer le premier vecteur, puis on déplace le second pour que son origine coïncide avec l'extrémité du premier. On trace alors le second vecteur. Le vecteur reliant l'origine du premier à l'extrémité du second est la somme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simplification par la relation de Chasles",
+      "content": "Range les étapes pour simplifier l'expression $\\vec{AB} + \\vec{BC} + \\vec{CD}$ en utilisant la relation de Chasles.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repère les vecteurs consécutifs qui partagent un point : $\\vec{AB}$ et $\\vec{BC}$, puis $\\vec{AC}$ et $\\vec{CD}$.",
+        "Applique la relation de Chasles à la première paire : $\\vec{AB} + \\vec{BC} = \\vec{AC}$.",
+        "Remplace la somme par $\\vec{AC}$ et applique à nouveau Chasles : $\\vec{AC} + \\vec{CD} = \\vec{AD}$.",
+        "La somme initiale se réduit au vecteur $\\vec{AD}$."
+      ],
+      "explanation": "La relation de Chasles permet de remplacer la somme de deux vecteurs consécutifs par le vecteur qui joint l'origine du premier à l'extrémité du second. On l'applique deux fois de suite.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme des vecteurs d'un polygone fermé",
+      "content": "Range les étapes pour montrer que la somme des vecteurs $\\vec{AB}, \\vec{BC}, \\vec{CD}, \\vec{DA}$ d'un quadrilatère $ABCD$ est le vecteur nul.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Écris la somme $\\vec{AB} + \\vec{BC} + \\vec{CD} + \\vec{DA}$.",
+        "Regroupe les deux premiers vecteurs avec Chasles : $\\vec{AB} + \\vec{BC} = \\vec{AC}$.",
+        "Regroupe le résultat avec le troisième : $\\vec{AC} + \\vec{CD} = \\vec{AD}$.",
+        "Ajoute le dernier vecteur : $\\vec{AD} + \\vec{DA} = \\vec{0}$.",
+        "Conclus que la somme totale est le vecteur nul."
+      ],
+      "explanation": "En appliquant successivement la relation de Chasles, la somme des quatre vecteurs se réduit à $\\vec{AD} + \\vec{DA}$, qui est le vecteur nul car ils sont opposés.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

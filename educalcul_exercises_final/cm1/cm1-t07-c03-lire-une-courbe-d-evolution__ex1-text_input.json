@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 258,
+  "_course_code": "cm1-t07-c03-lire-une-courbe-d-evolution",
+  "_level": "cm1",
+  "_subject": "Données et probabilités",
+  "_subtheme": "Axes",
+  "title": "Lire les axes d'une courbe d'évolution",
+  "blocks": [
+    {
+      "title": "Échelle de l'axe vertical",
+      "content": "Observe la courbe d'évolution ci-dessous. Elle représente la hauteur d'une plante en centimètres au fil des semaines. Quelle est l'échelle de l'axe vertical (ordonnées) ? De combien de centimètres en combien de centimètres les graduations principales augmentent-elles ?",
+      "correctAnswer": "2 cm",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sur l'axe vertical, les graduations principales sont 0, 2, 4, 6, 8, 10. L'écart entre deux graduations successives est de 2. L'échelle est donc de 2 cm par graduation.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Évolution de la hauteur d'une plante (cm) selon les semaines"
+      }
+    },
+    {
+      "title": "Lecture d'une valeur sur la courbe",
+      "content": "En te servant de la même courbe, détermine la hauteur de la plante à la fin de la 3e semaine.",
+      "correctAnswer": "6 cm",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il faut repérer 3 sur l'axe horizontal (abscisses, les semaines), monter jusqu'à la courbe, puis lire la valeur sur l'axe vertical. Pour $x = 3$, $y = 2 \\times 3 = 6$. La plante mesure 6 cm.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Évolution de la hauteur d'une plante (cm) selon les semaines"
+      }
+    },
+    {
+      "title": "Recherche d'une abscisse",
+      "content": "D'après la courbe, au bout de combien de semaines la plante atteint-elle une hauteur de 8 cm ?",
+      "correctAnswer": "4 semaines",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il faut repérer 8 cm sur l'axe vertical, aller horizontalement jusqu'à la courbe, puis descendre sur l'axe horizontal. La valeur trouvée est 4. Cela correspond à 4 semaines.",
+      "points": 2,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x",
+        "xmin": 0,
+        "xmax": 5,
+        "caption": "Évolution de la hauteur d'une plante (cm) selon les semaines"
+      }
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Rédiger",
+  "title": "Quiz Algorithmique - Rédiger un algorithme",
+  "questions": [
+    {
+      "text": "Dans un algorithme, comment initialise-t-on correctement la variable somme à zéro avant une boucle ?",
+      "options": [
+        "somme = 0",
+        "somme ← 0",
+        "somme := 0",
+        "somme == 0"
+      ],
+      "correctAnswer": "somme ← 0",
+      "explanation": "En algorithmique au niveau 3e, l'affectation se note avec la flèche « ← ». Les autres symboles (=, :=, ==) correspondent à d'autres langages ou à des tests d'égalité, ce qui n'est pas la notation attendue pour l'initialisation.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle structure permet de répéter un bloc d'instructions tant qu'une condition est vraie ?",
+      "options": [
+        "TantQue i < 10 Faire ... FinTantQue",
+        "Pour i de 1 à 10 Faire ... FinPour",
+        "Si i < 10 Alors ... FinSi",
+        "Répéter ... JusquÀ i >= 10"
+      ],
+      "correctAnswer": "TantQue i < 10 Faire ... FinTantQue",
+      "explanation": "La boucle « TantQue » exécute le bloc tant que la condition reste vraie. « Pour » est utilisée quand le nombre d'itérations est connu à l'avance, « Si » n'est qu'un test conditionnel, et « Répéter ... JusquÀ » teste la condition à la fin, ce qui n'est pas la syntaxe demandée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment affiche-t-on la valeur d'une variable nommée resultat dans un algorithme écrit en français ?",
+      "options": [
+        "Afficher resultat",
+        "Ecrire resultat",
+        "Print resultat",
+        "Sortie resultat"
+      ],
+      "correctAnswer": "Afficher resultat",
+      "explanation": "Le mot-clé standard au programme de 3e pour afficher une valeur est « Afficher ». « Ecrire » est parfois utilisé dans d'autres contextes, « Print » vient de l'anglais, et « Sortie » n'est pas un mot-clé d'affichage.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle structure de contrôle permet d'exécuter un bloc d'instructions un nombre connu d'itérations ?",
+      "options": [
+        "TantQue",
+        "Si",
+        "Pour",
+        "Répéter"
+      ],
+      "correctAnswer": "Pour",
+      "explanation": "La boucle « Pour » est conçue pour un nombre d'itérations déterminé à l'avance (par exemple « Pour i de 1 à n »). « TantQue » et « Répéter » dépendent d'une condition, et « Si » n'est pas une boucle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans une boucle « Pour i de 1 à n », quelle instruction met à jour correctement la variable somme pour calculer la somme des premiers entiers ?",
+      "options": [
+        "somme ← somme + i",
+        "somme ← i",
+        "i ← somme + i",
+        "somme ← somme - i"
+      ],
+      "correctAnswer": "somme ← somme + i",
+      "explanation": "À chaque itération, on ajoute la valeur courante de i à la somme accumulée. « somme ← i » écrase la somme, « i ← somme + i » modifie le compteur de boucle, et « somme ← somme - i » soustrait au lieu d'additionner.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

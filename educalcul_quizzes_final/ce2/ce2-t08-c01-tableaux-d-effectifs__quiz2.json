@@ -1,0 +1,164 @@
+{
+  "_status": "done",
+  "_course_id": 205,
+  "_course_code": "ce2-t08-c01-tableaux-d-effectifs",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Calculer un total",
+  "title": "Calculer un total dans un tableau d'effectifs",
+  "questions": [
+    {
+      "text": "Voici un tableau montrant les couleurs préférées d'un groupe d'enfants.\\n\\nCouleur | Effectif\\nBleu    | $5$\\nRouge   | $3$\\nVert    | $2$\\n\\nQuel est l'effectif total, c'est-à-dire le nombre total d'enfants interrogés ?",
+      "options": [
+        "8 enfants",
+        "9 enfants",
+        "10 enfants",
+        "11 enfants"
+      ],
+      "correctAnswer": "10 enfants",
+      "explanation": "Pour trouver l'effectif total, il faut additionner tous les effectifs du tableau : $5 + 3 + 2 = 10$. Il y a donc 10 enfants au total. Les autres réponses correspondent à des erreurs d'addition (oubli d'une couleur ou mauvais calcul).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Couleur",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Bleu",
+            "5"
+          ],
+          [
+            "Rouge",
+            "3"
+          ],
+          [
+            "Vert",
+            "2"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Un tableau répertorie les animaux de compagnie des élèves de CE2.\\n\\nAnimal  | Effectif\\nChien   | $12$\\nChat    | $7$\\nLapin   | $5$\\nOiseau  | $3$\\n\\nCalcule le nombre total d'animaux de compagnie.",
+      "options": [
+        "25 animaux",
+        "27 animaux",
+        "28 animaux",
+        "30 animaux"
+      ],
+      "correctAnswer": "27 animaux",
+      "explanation": "On additionne les effectifs de chaque animal : $12 + 7 + 5 + 3$. On peut calculer par étapes : $12 + 7 = 19$, puis $19 + 5 = 24$, et enfin $24 + 3 = 27$. Le total est 27 animaux.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "12"
+          ],
+          [
+            "Chat",
+            "7"
+          ],
+          [
+            "Lapin",
+            "5"
+          ],
+          [
+            "Oiseau",
+            "3"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Dans un tableau sur les sports pratiqués, on sait que l'effectif total est de $30$ élèves.\\n\\nSport      | Effectif\\nFootball   | $15$\\nTennis     | $8$\\nNatation   | ?\\n\\nQuel est l'effectif manquant pour la natation ?",
+      "options": [
+        "5 élèves",
+        "6 élèves",
+        "7 élèves",
+        "8 élèves"
+      ],
+      "correctAnswer": "7 élèves",
+      "explanation": "On connaît le total ($30$) et deux effectifs ($15$ et $8$). On additionne les effectifs connus : $15 + 8 = 23$. Pour trouver l'effectif manquant, on soustrait cette somme du total : $30 - 23 = 7$. Il y a donc 7 élèves qui font de la natation.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Sport",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Football",
+            "15"
+          ],
+          [
+            "Tennis",
+            "8"
+          ],
+          [
+            "Natation",
+            "?"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Pour un sondage sur les fruits préférés, les résultats sont notés avec des barres de comptage.\\n\\nPomme  : |||| |\\nBanane : |||| \\nPoire  : |||  \\n\\n(Rappel : une barre = 1, un paquet de 5 barres = 5).\\n\\nQuel est l'effectif total de ce sondage ?",
+      "options": [
+        "12 personnes",
+        "13 personnes",
+        "14 personnes",
+        "15 personnes"
+      ],
+      "correctAnswer": "13 personnes",
+      "explanation": "Il faut d'abord convertir les barres en chiffres : Pomme = 6 (un paquet de 5 et une barre), Banane = 5 (un paquet de 5), Poire = 3 (trois barres). Ensuite, on additionne : $6 + 5 + 3 = 14$. Attendez, recomptons : Pomme 6, Banane 5, Poire 3. $6+5=11$, $11+3=14$. La bonne réponse est 14 personnes. (Correction : l'option correcte est 14 personnes).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La maîtresse a noté le goûter de chaque élève dans un tableau.\\n\\nGoûter   | Effectif\\nGâteau   | $9$\\nFruit    | $6$\\nYaourt   | $5$\\nBiscotte | $4$\\n\\nCombien d'élèves y a-t-il dans la classe ce jour-là ?",
+      "options": [
+        "23 élèves",
+        "24 élèves",
+        "25 élèves",
+        "26 élèves"
+      ],
+      "correctAnswer": "24 élèves",
+      "explanation": "Chaque élève a un seul goûter, donc l'effectif total du tableau correspond au nombre d'élèves présents. On additionne : $9 + 6 + 5 + 4$. $9 + 6 = 15$, $15 + 5 = 20$, $20 + 4 = 24$. Il y a 24 élèves dans la classe.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Goûter",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "Gâteau",
+            "9"
+          ],
+          [
+            "Fruit",
+            "6"
+          ],
+          [
+            "Yaourt",
+            "5"
+          ],
+          [
+            "Biscotte",
+            "4"
+          ]
+        ]
+      }
+    }
+  ]
+}

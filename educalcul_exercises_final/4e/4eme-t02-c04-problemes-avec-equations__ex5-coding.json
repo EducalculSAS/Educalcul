@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 428,
+  "_course_code": "4eme-t02-c04-problemes-avec-equations",
+  "_level": "4e",
+  "_subject": "Calcul littéral et équations",
+  "_subtheme": "Approfondissement : Choisir inconnue",
+  "title": "Choisir l'inconnue et écrire un algorithme de résolution",
+  "blocks": [
+    {
+      "title": "Choix de l'inconnue simple",
+      "content": "Écrire un algorithme (en pseudo‑code ou style Python) qui résout le problème suivant : « Un nombre augmenté de 5 donne 12 ». L'algorithme doit choisir l'inconnue, écrire l'équation correspondante et afficher la solution.",
+      "correctAnswer": "Algorithme :\\n1. Choisir l'inconnue : soit $x$ le nombre cherché.\\n2. Écrire l'équation : $x + 5 = 12$.\\n3. Résoudre : $x = 12 - 5$.\\n4. Afficher $x = 7$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On pose $x$ comme le nombre inconnu. La phrase « augmenté de 5 » se traduit par $x+5$. « donne 12 » signifie égal à 12. On résout l'équation en soustrayant 5 des deux côtés, ce qui donne $x=7$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix de l'inconnue pour un rectangle",
+      "content": "Un rectangle a une longueur supérieure de 3 cm à sa largeur. Son périmètre est 30 cm. Écrire un algorithme qui choisit l'inconnue, établit l'équation du périmètre et calcule la largeur et la longueur.",
+      "correctAnswer": "Algorithme :\\n1. Choisir l'inconnue : soit $x$ la largeur en cm.\\n2. Exprimer la longueur : $x + 3$.\\n3. Écrire l'équation du périmètre : $2 × (x + (x + 3)) = 30$.\\n4. Simplifier : $2 × (2x + 3) = 30$ → $4x + 6 = 30$.\\n5. Résoudre : $4x = 24$ → $x = 6$.\\n6. Longueur = $x + 3 = 9$.\\n7. Afficher largeur = 6 cm, longueur = 9 cm.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On choisit la largeur comme inconnue $x$. La longueur est $x+3$. Le périmètre d'un rectangle est $2 × (largeur + longueur)$. On établit l'équation $2(x + x+3)=30$, on simplifie et on résout pour obtenir $x=6$. La longueur vaut alors $9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choix de l'inconnue pour une variation de prix",
+      "content": "Le prix d'un article est augmenté de 20 % puis diminué de 10 %. Le prix final est 108 €. Écrire un algorithme qui choisit l'inconnue (prix initial), écrit l'équation et détermine le prix initial.",
+      "correctAnswer": "Algorithme :\\n1. Choisir l'inconnue : soit $p$ le prix initial en euros.\\n2. Appliquer l'augmentation de 20 % : $p × 1,2$.\\n3. Appliquer la diminution de 10 % : $(p × 1,2) × 0,9$.\\n4. Écrire l'équation : $p × 1,2 × 0,9 = 108$.\\n5. Calculer le produit : $1,2 × 0,9 = 1,08$.\\n6. Résoudre : $p × 1,08 = 108$ → $p = 108 / 1,08 = 100$.\\n7. Afficher le prix initial = 100 €.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On pose $p$ comme prix initial. Une augmentation de 20 % correspond à multiplier par $1,2$. Une diminution de 10 % correspond à multiplier par $0,9$. Le prix final est $p × 1,2 × 0,9 = 108$. Le produit $1,2 × 0,9 = 1,08$. On divise 108 par 1,08 pour trouver $p = 100$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

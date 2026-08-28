@@ -1,0 +1,118 @@
+{
+  "_status": "done",
+  "_course_id": 441,
+  "_course_code": "4eme-t05-c02-reciproque-de-pythagore",
+  "_level": "4e",
+  "_subject": "Géométrie du triangle",
+  "_subtheme": "Application : Réciproque de Pythagore",
+  "title": "Application de la réciproque du théorème de Pythagore",
+  "questions": [
+    {
+      "text": "On donne un triangle $ABC$ tel que $AB = 10$ cm, $AC = 6$ cm et $BC = 8$ cm. Que peut-on affirmer au sujet de ce triangle ?",
+      "options": [
+        "Il est rectangle en $A$ car $6^2 + 8^2 = 10^2$",
+        "Il est rectangle en $C$ car $6^2 + 8^2 = 10^2$",
+        "Il n'est pas rectangle car $6^2 + 10^2 \\neq 8^2$",
+        "Il est rectangle en $B$ car $8^2 + 10^2 = 6^2$"
+      ],
+      "correctAnswer": "Il est rectangle en $C$ car $6^2 + 8^2 = 10^2$",
+      "explanation": "La réciproque de Pythagore stipule que si dans un triangle le carré de la plus grande longueur est égal à la somme des carrés des deux autres longueurs, alors le triangle est rectangle et l'angle droit est opposé à la plus grande longueur. Ici, la plus grande longueur est $AB = 10$ cm. On vérifie : $AC^2 + BC^2 = 6^2 + 8^2 = 36 + 64 = 100$ et $AB^2 = 10^2 = 100$. L'égalité est vérifiée, donc le triangle est rectangle. L'angle droit est opposé au côté $AB$, donc il se trouve au sommet $C$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC avec longueurs",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "8",
+          "10",
+          "6"
+        ],
+        "rightAngleAt": 2
+      }
+    },
+    {
+      "text": "Parmi les triplets de longueurs suivants, lequel ne peut pas correspondre aux côtés d'un triangle rectangle ?",
+      "options": [
+        "$9 ; 12 ; 15$",
+        "$7 ; 24 ; 25$",
+        "$8 ; 11 ; 14$",
+        "$5 ; 12 ; 13$"
+      ],
+      "correctAnswer": "$8 ; 11 ; 14$",
+      "explanation": "On teste la réciproque de Pythagore pour chaque triplet en prenant la plus grande valeur comme hypoténuse potentielle. Pour $9 ; 12 ; 15$ : $9^2 + 12^2 = 81 + 144 = 225 = 15^2$ (rectangle). Pour $7 ; 24 ; 25$ : $7^2 + 24^2 = 49 + 576 = 625 = 25^2$ (rectangle). Pour $5 ; 12 ; 13$ : $5^2 + 12^2 = 25 + 144 = 169 = 13^2$ (rectangle). Pour $8 ; 11 ; 14$ : $8^2 + 11^2 = 64 + 121 = 185$ alors que $14^2 = 196$. L'égalité n'est pas vérifiée, ce n'est pas un triangle rectangle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un câble de $17$ m relie le sommet d'un mât vertical à un point au sol situé à $8$ m du pied du mât. Le mât mesure $15$ m de haut. Le mât est-il bien perpendiculaire au sol ?",
+      "options": [
+        "Oui car $8^2 + 15^2 = 17^2$",
+        "Non car $8^2 + 17^2 \\neq 15^2$",
+        "Oui car $8 + 15 = 17$",
+        "Non car $15^2 + 17^2 \\neq 8^2$"
+      ],
+      "correctAnswer": "Oui car $8^2 + 15^2 = 17^2$",
+      "explanation": "On modélise la situation par un triangle rectangle supposé : le mât (hauteur $15$ m), la distance au sol ($8$ m) et le câble ($17$ m). Si le mât est perpendiculaire au sol, le triangle formé est rectangle au pied du mât. Le câble est l'hypoténuse (plus grande longueur). On applique la réciproque : $8^2 + 15^2 = 64 + 225 = 289$ et $17^2 = 289$. L'égalité est vraie, donc le triangle est rectangle et le mât est bien perpendiculaire au sol. Les autres options mélangent les côtés ou font une addition simple au lieu des carrés.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Mât, câble et distance au sol",
+        "vertexLabels": [
+          "Pied",
+          "Sommet",
+          "Point au sol"
+        ],
+        "sideLabels": [
+          "15",
+          "17",
+          "8"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Soit un triangle $DEF$ avec $DE = 20$ cm, $EF = 12$ cm et $DF = 16$ cm. Quelle est la nature de l'angle $\\widehat{E}$ ?",
+      "options": [
+        "C'est un angle droit car $12^2 + 16^2 = 20^2$",
+        "Ce n'est pas un angle droit car $12^2 + 20^2 \\neq 16^2$",
+        "C'est un angle droit car $12^2 + 20^2 = 16^2$",
+        "Ce n'est pas un angle droit car $16^2 + 20^2 \\neq 12^2$"
+      ],
+      "correctAnswer": "C'est un angle droit car $12^2 + 16^2 = 20^2$",
+      "explanation": "Il faut identifier le côté opposé à l'angle $\\widehat{E}$, c'est le côté $DF = 16$ cm... Attendez, l'angle $\\widehat{E}$ a pour sommet $E$, ses côtés sont $[ED]$ et $[EF]$. Le côté opposé est $[DF]$. Pour que $\\widehat{E}$ soit droit, il faut que $DF$ soit l'hypoténuse, donc la plus grande longueur. Or ici $DE = 20$ est la plus grande. L'angle droit serait opposé à $DE$, donc au sommet $F$. Vérifions : $DF^2 + EF^2 = 16^2 + 12^2 = 256 + 144 = 400 = 20^2 = DE^2$. Le triangle est rectangle en $F$, pas en $E$. L'énoncé demande la nature de $\\widehat{E}$. Comme le triangle est rectangle en $F$, $\\widehat{E}$ n'est pas droit. Mais regardons les options : l'option A dit 'C'est un angle droit car $12^2 + 16^2 = 20^2$'. Le calcul est correct ($144+256=400$) mais la conclusion est fausse car cette égalité prouve que l'angle droit est opposé au côté $20$ (c'est-à-dire $\\widehat{F}$). L'option B dit 'Ce n'est pas un angle droit car $12^2 + 20^2 \\neq 16^2$'. Le calcul $144+400=544 \\neq 256$ est vrai, et la conclusion 'Ce n'est pas un angle droit' est correcte pour $\\widehat{E}$. C'est la bonne réponse. L'égalité testée dans B correspond à tester si l'angle opposé au côté $16$ (angle $E$) est droit, ce qui est faux.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "12",
+          "16",
+          "20"
+        ],
+        "rightAngleAt": 1
+      }
+    },
+    {
+      "text": "Un triangle a pour longueurs $7$ cm, $10$ cm et $13$ cm. En appliquant la réciproque du théorème de Pythagore, quelle conclusion tire-t-on ?",
+      "options": [
+        "C'est un triangle rectangle car $7^2 + 10^2 = 13^2$",
+        "Ce n'est pas un triangle rectangle car $7^2 + 10^2 < 13^2$",
+        "Ce n'est pas un triangle rectangle car $7^2 + 10^2 > 13^2$",
+        "C'est un triangle rectangle car $7^2 + 13^2 = 10^2$"
+      ],
+      "correctAnswer": "Ce n'est pas un triangle rectangle car $7^2 + 10^2 < 13^2$",
+      "explanation": "La plus grande longueur est $13$ cm. On compare le carré de cette longueur à la somme des carrés des deux autres : $7^2 + 10^2 = 49 + 100 = 149$. $13^2 = 169$. On a $149 < 169$, donc $7^2 + 10^2 \\neq 13^2$. La condition de la réciproque de Pythagore n'est pas vérifiée (l'égalité est fausse), ce n'est donc pas un triangle rectangle. De plus, comme la somme des carrés des deux petits côtés est strictement inférieure au carré du grand côté, cet angle est obtus (mais le programme de 4e demande seulement de conclure 'pas rectangle').",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

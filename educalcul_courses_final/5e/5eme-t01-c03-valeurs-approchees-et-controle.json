@@ -1,0 +1,676 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.674899+00:00",
+  "id": 381,
+  "code": "5eme-t01-c03",
+  "title": "Valeurs approchées et contrôle",
+  "description": "Cours structuré Educalcul : Valeurs approchées et contrôle.",
+  "subject": "Opérations et calcul numérique",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Opérations et calcul numérique",
+    "titre_du_cours": "Valeurs approchées et contrôle",
+    "objectif_global": "Valeurs approchées et contrôle",
+    "mini_lecons_imposees": [
+      "Arrondir.",
+      "Ordre de grandeur.",
+      "Vérifier calculatrice."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Opérations et calcul numérique",
+      "lessons": [
+        {
+          "title": "Arrondir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir à l'entier le plus proche"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu achètes un jouet à $4,3$ euros et que tu veux payer avec une pièce de $5$ euros. Le commerçant arrondit le prix à l'entier le plus proche pour savoir combien te rendre. Ici $4,3$ est plus proche de $4$ que de $5$, donc l'arrondi donne $4$. Si le prix était $4,7$ euros, il serait plus proche de $5$ et l'arrondi donnerait $5$. Cette idée simple s'appelle l'arrondi à l'unité."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la vie de tous les jours, l'arrondi permet de faire des estimations rapides, par exemple pour savoir si tu as assez d'argent pour plusieurs articles."
+            },
+            {
+              "type": "definition",
+              "term": "arrondi",
+              "definition": "Remplacer un nombre par une valeur plus simple, en gardant une proximité maximale avec le nombre initial.",
+              "example": "$4,3$ arrondi à l'entier donne $4$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $4,3$ et $4,7$ par rapport aux entiers",
+              "min": 3,
+              "max": 6,
+              "points": [
+                {
+                  "value": 4.3,
+                  "label": "4,3"
+                },
+                {
+                  "value": 4.7,
+                  "label": "4,7"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le chiffre des dixièmes est exactement $5$, la règle conventionnelle en France est d'arrondir au nombre supérieur. Ainsi $4,5$ devient $5$ et $3,5$ devient $4$. Cette convention évite l'ambiguïté et s'applique à tous les arrondis, quel que soit le rang demandé."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention, arrondir trop tôt dans un calcul peut modifier le résultat final de manière notable, surtout quand on enchaîne plusieurs opérations."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : repérer le chiffre de l'arrondi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour arrondir à l'entier, regarde le chiffre des unités."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : regarder le chiffre suivant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le premier chiffre après la virgule (les dixièmes)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : décider",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si ce chiffre est $0,1,2,3,4$ on ne change pas le chiffre de l'arrondi. S'il est $5,6,7,8,9$ on augmente de $1$ le chiffre de l'arrondi."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais arrondir à l'entier, nous allons apprendre à arrondir à un chiffre après la virgule, ce qui est très utile pour les mesures de longueur ou de masse."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir à un chiffre après la virgule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu mesures la longueur d'une table et que tu obtiennes $123,46\\,cm$. Pour noter la mesure avec une seule décimale, tu regardes le chiffre des centièmes qui est $6$. Comme $6\\ge5$, tu augmentes le chiffre des dixièmes ($4$) de $1$, ce qui donne $123,5\\,cm$. Si la mesure était $123,44\\,cm$, le chiffre des centièmes est $4$, donc tu laisses le chiffre des dixièmes inchangé et tu obtiens $123,4\\,cm$."
+            },
+            {
+              "type": "display_math",
+              "latex": "123,46 \\\\approx 123,5"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier le rang de l'arrondi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ici on veut une décimale, donc le chiffre visé est celui des dixièmes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : observer le chiffre suivant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le chiffre des centièmes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : appliquer la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si ce chiffre est $5$ ou plus, ajoute $1$ au chiffre des dixièmes ; sinon laisse-le tel quel."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous verrons comment arrondir à deux chiffres après la virgule, une précision souvent demandée en sciences pour exprimer des résultats de calculs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir à deux chiffres après la virgule"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons le nombre $0,6789$. Pour l'arrondir au centième, on regarde le chiffre des millièmes qui est $8$. Comme $8\\ge5$, on augmente le chiffre des centièmes ($7$) de $1$, ce qui donne $0,68$. Si le nombre était $0,6723$, le chiffre des millièmes est $2$, donc on conserve $0,67$. Cette technique permet de garder une information suffisante tout en simplifiant l'écriture."
+            },
+            {
+              "type": "display_math",
+              "latex": "0,6789 \\\\approx 0,68"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les scientifiques utilisent souvent l'arrondi à deux décimales pour présenter des mesures de laboratoire sans noyer le lecteur dans des chiffres insignifiants."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : choisir le rang",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Deux décimales signifie viser le chiffre des centièmes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : regarder le chiffre d'après",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "C'est le chiffre des millièmes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : arrondir selon la règle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$5$ ou plus → augmenter le centième ; sinon le laisser."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque tu arrondis un résultat final, pense à indiquer le nombre de décimales conservé pour que ton lecteur sache la précision de ton approximation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Arrondis $7,4$ à l'entier.",
+              "answer": "$7$",
+              "hint": "Regarde le chiffre des dixièmes.",
+              "explanation": "Le chiffre des dixièmes est $4$, inférieur à $5$, donc on ne change pas l'unité."
+            },
+            {
+              "question": "Arrondis $12,68$ à une décimale.",
+              "answer": "$12,7$",
+              "hint": "Regarde le chiffre des centièmes.",
+              "explanation": "Le chiffre des centièmes est $8\\ge5$, on augmente le chiffre des dixièmes ($6$) de $1$."
+            },
+            {
+              "question": "Arrondis $0,4567$ à deux décimales.",
+              "answer": "$0,46$",
+              "hint": "Regarde le chiffre des millièmes.",
+              "explanation": "Le chiffre des millièmes est $6\\ge5$, on augmente le centième ($5$) de $1$."
+            }
+          ]
+        },
+        {
+          "title": "Ordre de grandeur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un ordre de grandeur ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'ordre de grandeur d'un nombre positif est la puissance de $10$ la plus proche de ce nombre. Par exemple, $3450$ se situe entre $10^3=1000$ et $10^4=10000$. Comme $3450$ est plus proche de $1000$, son ordre de grandeur est $10^3$. Cette notion aide à comparer rapidement des valeurs très différentes sans faire de calculs précis."
+            },
+            {
+              "type": "definition",
+              "term": "ordre de grandeur",
+              "definition": "Puissance de $10$ qui se rapproche le plus d'un nombre donné, utilisée pour estimer sa taille.",
+              "example": "L'ordre de grandeur de $0,0042$ est $10^{-3}$."
+            },
+            {
+              "type": "number_line",
+              "caption": "Puissances de $10$ de $10^{-2}$ à $10^4$",
+              "min": -2,
+              "max": 4,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "$10^{-2}$"
+                },
+                {
+                  "value": -1,
+                  "label": "$10^{-1}$"
+                },
+                {
+                  "value": 0,
+                  "label": "$10^{0}$"
+                },
+                {
+                  "value": 1,
+                  "label": "$10^{1}$"
+                },
+                {
+                  "value": 2,
+                  "label": "$10^{2}$"
+                },
+                {
+                  "value": 3,
+                  "label": "$10^{3}$"
+                },
+                {
+                  "value": 4,
+                  "label": "$10^{4}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver l'ordre de grandeur d'un nombre entier, compte le nombre de chiffres avant la virgule. Si le nombre a $n$ chiffres, son ordre de grandeur est $10^{n-1}$. Pour un nombre décimal inférieur à $1$, compte le nombre de zéros après la virgule avant le premier chiffre non nul ; s'il y a $k$ zéros, l'ordre de grandeur est $10^{-(k+1)}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : écrire le nombre en notation scientifique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprime le nombre sous la forme $a \\\\times 10^p$ avec $1 \\\\le a < 10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : lire l'exposant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'exposant $p$ donne directement l'ordre de grandeur $10^p$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais déterminer un ordre de grandeur, nous allons voir comment l'utiliser pour estimer le résultat d'une multiplication ou d'une division sans calculatrice."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer un produit ou un quotient grâce aux ordres de grandeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si tu dois calculer $48 \\\\times 27$, tu peux remplacer chaque facteur par son ordre de grandeur : $48 \\\\approx 5 \\\\times 10^1$ et $27 \\\\approx 3 \\\\times 10^1$. Le produit estimé devient $5 \\\\times 3 \\\\times 10^{1+1}=15 \\\\times 10^2 = 1,5 \\\\times 10^3$. Le résultat exact $1296$ est bien de l'ordre de $10^3$. Cette méthode donne une idée rapide de la taille du résultat."
+            },
+            {
+              "type": "display_math",
+              "latex": "48 \\\\times 27 \\\\approx 1,5 \\\\times 10^3"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : arrondir chaque nombre à une seule chiffre significatif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Garde le premier chiffre non nul et remplace les autres par des zéros."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : additionner les exposants pour un produit, les soustraire pour un quotient",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les règles des puissances de $10$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écrire l'estimation finale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Exprime le résultat sous la forme $a \\\\times 10^p$ avec $1 \\\\le a < 10$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, nous verrons comment l'ordre de grandeur permet de vérifier la plausibilité d'un résultat obtenu à la calculatrice, notamment pour des divisions donnant de très petits nombres."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier un résultat à l'aide de l'ordre de grandeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que la calculatrice affiche $0,0045$ pour le calcul $\\\\frac{9}{2000}$. Le numérateur $9$ a pour ordre de grandeur $10^1$, le dénominateur $2000 = 2 \\\\times 10^3$ a pour ordre de grandeur $10^3$. Le quotient attendu est donc de l'ordre de $10^{1-3}=10^{-2}$, soit quelques centièmes. Le résultat $0,0045$ correspond à $4,5 \\\\times 10^{-3}$, ce qui est compatible avec un ordre de grandeur $10^{-3}$ à $10^{-2}$. Si la calculatrice avait donné $0,45$, l'ordre de grandeur aurait été $10^{-1}$ et l'erreur aurait été évidente."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\frac{9}{2000} \\\\approx 4,5 \\\\times 10^{-3}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : déterminer l'ordre de grandeur du numérateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le numérateur en notation scientifique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : déterminer l'ordre de grandeur du dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le dénominateur en notation scientifique."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : soustraire les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'exposant du quotient est la différence entre l'exposant du numérateur et celui du dénominateur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : comparer avec le résultat affiché",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'ordre de grandeur correspond, le résultat est plausible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Donne l'ordre de grandeur de $3450$.",
+              "answer": "$10^3$",
+              "hint": "Compte le nombre de chiffres avant la virgule.",
+              "explanation": "Il y a 4 chiffres, donc l'ordre de grandeur est $10^{4-1}=10^3$."
+            },
+            {
+              "question": "Estime le produit $48 \\\\times 27$ en utilisant les ordres de grandeur.",
+              "answer": "$10^3$ (environ $1300$) ",
+              "hint": "Arrondis chaque nombre à son ordre de grandeur.",
+              "explanation": "$48\\\\approx5\\\\times10^1$, $27\\\\approx3\\\\times10^1$, produit $\\\\approx15\\\\times10^2=1,5\\\\times10^3$."
+            },
+            {
+              "question": "Vérifie si le résultat $0,0045$ est plausible pour $\\\\frac{9}{2000}$.",
+              "answer": "Oui, l'ordre de grandeur est $10^{-3}$.",
+              "hint": "Calcule l'ordre de grandeur de la division.",
+              "explanation": "$9\\\\approx10^1$, $2000=2\\\\times10^3$, quotient $\\\\approx5\\\\times10^{-3}$, donc $0,0045$ est cohérent."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier calculatrice.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi vérifier un calculateur ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Même si la calculatrice est un outil puissant, elle peut afficher un résultat erroné à cause d'une faute de frappe, d'une parenthèse oubliée ou d'un mode mal réglé. Apprendre à contrôler le résultat sans refaire tout le calcul est une compétence essentielle pour gagner en autonomie et en confiance."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu calcules $12,3 \\\\times 4,6$ et que l'écran montre $565,8$. Une estimation rapide te dit que le produit doit être proche de $12 \\\\times 5 = 60$, donc $565,8$ est manifestement trop grand. Ce réflexe de vérification t'évite de valider une erreur."
+            },
+            {
+              "type": "definition",
+              "term": "vérification par estimation",
+              "definition": "Remplacer les nombres d'un calcul par des valeurs arrondies simples pour obtenir un résultat approché et comparer avec l'affichage de la calculatrice.",
+              "example": "$12,3 \\\\times 4,6 \\\\approx 12 \\\\times 5 = 60$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : arrondir chaque nombre à une valeur commode",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis un arrondi à l'entier ou à une décimale selon la simplicité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : effectuer le calcul mental ou sur papier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les tables de multiplication ou les additions simples."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer les ordres de grandeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'estimation et le résultat de la calculatrice ont le même ordre de grandeur, le calcul est probable."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une autre technique consiste à utiliser l'opération inverse pour retrouver le nombre de départ. C'est particulièrement utile pour les divisions et les multiplications."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérification par l'opération inverse"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si la calculatrice te donne $84 \\\\div 7 = 12$, tu peux multiplier $12 \\\\times 7$ mentalement. Le produit $84$ retrouvant le dividende initial confirme que la division est correcte. De même, après une multiplication $9 \\\\times 6 = 54$, tu peux diviser $54 \\\\div 6$ et vérifier que tu retombes sur $9$."
+            },
+            {
+              "type": "display_math",
+              "latex": "12 \\\\times 7 = 84"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : identifier l'opération effectuée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Est-ce une addition, soustraction, multiplication ou division ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : appliquer l'opération inverse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Addition ↔ soustraction, multiplication ↔ division."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : comparer le résultat obtenu avec la donnée de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu retrouves exactement le nombre initial, le calcul est validé."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les calculs donnant des nombres très petits ou très grands, l'ordre de grandeur reste le moyen le plus rapide de détecter une erreur de saisie, comme un point décimal mal placé."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Contrôle d'un résultat très petit à l'aide de l'ordre de grandeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "La calculatrice affiche $0,00032$ pour $\\\\frac{8}{25000}$. Le numérateur $8$ a pour ordre de grandeur $10^1$, le dénominateur $25000 = 2,5 \\\\times 10^4$ a pour ordre de grandeur $10^4$. Le quotient attendu est donc de l'ordre de $10^{1-4}=10^{-3}$. Le résultat $0,00032 = 3,2 \\\\times 10^{-4}$ est d'un ordre de grandeur légèrement inférieur, ce qui reste plausible compte tenu de l'arrondi du dénominateur. Si l'écran avait montré $0,032$, l'ordre de grandeur aurait été $10^{-2}$ et l'erreur aurait été flagrante."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\\\frac{8}{25000} \\\\approx 3,2 \\\\times 10^{-4}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : écrire numérateur et dénominateur en notation scientifique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les puissances de $10$ associées."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : soustraire les exposants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'exposant du quotient est la différence."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : juger la cohérence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si l'affichage a un exposant proche, le résultat est crédible."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais arrondir un nombre à l'entier, à une décimale ou à deux décimales.",
+                "Je connais la règle du chiffre 5 pour arrondir au supérieur.",
+                "Je peux déterminer l'ordre de grandeur d'un nombre entier ou décimal.",
+                "J'utilise les ordres de grandeur pour estimer un produit ou un quotient.",
+                "Je vérifie un résultat de calculatrice par estimation, par l'opération inverse ou par l'ordre de grandeur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as calculé $12,3 \\\\times 4,6 = 56,58$. Vérifie avec une estimation par arrondi.",
+              "answer": "Estimation $12 \\\\times 5 = 60$, proche de $56,58$.",
+              "hint": "Arrondis chaque facteur à l'entier.",
+              "explanation": "L'arrondi donne $12\\\\times5=60$, le résultat exact $56,58$ est raisonnable."
+            },
+            {
+              "question": "Pour vérifier $84 \\\\div 7 = 12$, quelle opération inverse peux-tu faire ?",
+              "answer": "$12 \\\\times 7 = 84$.",
+              "hint": "Multiplie le quotient par le diviseur.",
+              "explanation": "Si la multiplication retrouve le dividende, la division est correcte."
+            },
+            {
+              "question": "Le calculateur affiche $0,00032$ pour $\\\\frac{8}{25000}$. Est-ce plausible ?",
+              "answer": "Oui, l'ordre de grandeur est $10^{-4}$.",
+              "hint": "Compare les ordres de grandeur du numérateur et du dénominateur.",
+              "explanation": "$8\\\\approx10^1$, $25000=2,5\\\\times10^4$, quotient $\\\\approx3\\\\times10^{-4}$, donc $0,00032$ est cohérent."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

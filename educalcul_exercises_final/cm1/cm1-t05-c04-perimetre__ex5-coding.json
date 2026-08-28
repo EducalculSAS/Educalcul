@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 244,
+  "_course_code": "cm1-t05-c04-perimetre",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Approfondissement : Polygone",
+  "title": "Algorithmes pour le périmètre des polygones",
+  "blocks": [
+    {
+      "title": "Carré : périmètre par multiplication",
+      "content": "On veut écrire un algorithme qui calcule le périmètre d'un carré. L'algorithme demande la longueur d'un côté (en centimètres) et affiche le périmètre. Complète l'algorithme ci-dessous en écrivant les instructions manquantes.\\n\\nAlgorithme PerimetreCarre\\nDemander côté\\n... (instruction de calcul) ...\\nAfficher périmètre\\nFin",
+      "correctAnswer": "périmètre ← 4 × côté",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le périmètre d'un carré est la somme des longueurs de ses 4 côtés égaux. On multiplie donc la longueur d'un côté par 4. Dans un algorithme, on utilise une flèche d'affectation (←) pour stocker le résultat du calcul dans la variable 'périmètre'.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Quadrilatère quelconque : périmètre par addition successive",
+      "content": "On veut maintenant calculer le périmètre d'un quadrilatère quelconque (4 côtés de longueurs différentes). L'algorithme demande les quatre longueurs $c_1$, $c_2$, $c_3$, $c_4$ et affiche le périmètre. Écris l'algorithme complet en utilisant une variable 'somme' que l'on met à jour à chaque saisie.\\n\\nAlgorithme PerimetreQuadrilatere\\nsomme ← 0\\nDemander c1\\n... (instructions pour c1, c2, c3, c4) ...\\nAfficher somme\\nFin",
+      "correctAnswer": "somme ← somme + c1\\nDemander c2\\nsomme ← somme + c2\\nDemander c3\\nsomme ← somme + c3\\nDemander c4\\nsomme ← somme + c4",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour additionner plusieurs valeurs une par une, on initialise une variable 'somme' à 0. À chaque nouvelle saisie (c1, puis c2, etc.), on ajoute la valeur saisie à la variable 'somme' grâce à l'instruction 'somme ← somme + ci'. À la fin, 'somme' contient le total $c_1 + c_2 + c_3 + c_4$, qui est le périmètre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Polygone régulier à n côtés : formule générale",
+      "content": "On souhaite un algorithme plus général pour calculer le périmètre d'un polygone régulier (tous les côtés ont la même longueur). L'algorithme demande le nombre de côtés $n$ (entier supérieur ou égal à 3) et la longueur d'un côté $c$, puis affiche le périmètre $P$. Écris l'algorithme complet.\\n\\nAlgorithme PerimetrePolygoneRegulier\\n... (tes instructions) ...\\nFin",
+      "correctAnswer": "Demander n\\nDemander c\\nP ← n × c\\nAfficher P",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Un polygone régulier a $n$ côtés de même longueur $c$. Son périmètre est le produit du nombre de côtés par la longueur d'un côté : $P = n \\times c$. L'algorithme demande les deux valeurs nécessaires, effectue la multiplication et stocke le résultat dans $P$ avant de l'afficher.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

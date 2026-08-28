@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 347,
+  "_course_code": "6eme-t04-c01-egalites-et-valeurs-manquantes",
+  "_level": "6e",
+  "_subject": "Algèbre et problèmes",
+  "_subtheme": "Vérifier",
+  "title": "Quiz : Vérifier une solution d'égalité",
+  "questions": [
+    {
+      "text": "On considère l'égalité $x + 7 = 15$. Quelle affirmation est vraie pour vérifier si $x = 8$ est la solution ?",
+      "options": [
+        "On remplace $x$ par 8 et on calcule $8 + 7$ ; on obtient 15 donc c'est la solution.",
+        "On remplace $x$ par 8 et on calcule $8 + 7$ ; on obtient 16 donc ce n'est pas la solution.",
+        "On fait $15 - 7$ pour trouver $x$ ; on obtient 8 donc c'est la solution.",
+        "On fait $15 + 7$ pour trouver $x$ ; on obtient 22 donc ce n'est pas la solution."
+      ],
+      "correctAnswer": "On remplace $x$ par 8 et on calcule $8 + 7$ ; on obtient 15 donc c'est la solution.",
+      "explanation": "Pour vérifier une valeur proposée, on substitue la variable par cette valeur dans l'égalité. Ici, on remplace $x$ par 8 : $8 + 7 = 15$. Comme le résultat (15) est égal au second membre (15), l'égalité est vraie, donc $x = 8$ est bien la solution. L'option C décrit la méthode de résolution, pas la vérification.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier si $y = 6$ est solution de $3 \\times y = 21$, quel calcul doit-on effectuer et quel résultat attendre ?",
+      "options": [
+        "Calculer $3 \\times 6$ et trouver 18.",
+        "Calculer $3 \\times 6$ et trouver 21.",
+        "Calculer $21 : 3$ et trouver 7.",
+        "Calculer $3 \\times 6$ et trouver 18, donc ce n'est pas la solution."
+      ],
+      "correctAnswer": "Calculer $3 \\times 6$ et trouver 18, donc ce n'est pas la solution.",
+      "explanation": "La vérification consiste à remplacer $y$ par 6 dans le premier membre : $3 \\times 6 = 18$. On compare ce résultat (18) au second membre (21). Comme $18 \\neq 21$, l'égalité est fausse, donc $y = 6$ n'est pas solution. Les options A et B donnent de mauvais résultats de calcul ou de comparaison. L'option C est une résolution.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "L'égalité est $m - 9 = 24$. On veut tester si $m = 33$ convient. Quelle est la bonne démarche de vérification ?",
+      "options": [
+        "On calcule $33 - 9 = 24$, c'est vrai donc $m = 33$ est la solution.",
+        "On calcule $33 - 9 = 22$, c'est faux donc $m = 33$ n'est pas la solution.",
+        "On calcule $24 + 9 = 33$, donc $m = 33$ est la solution.",
+        "On calcule $33 + 9 = 42$, c'est faux donc $m = 33$ n'est pas la solution."
+      ],
+      "correctAnswer": "On calcule $33 - 9 = 24$, c'est vrai donc $m = 33$ est la solution.",
+      "explanation": "On substitue $m$ par 33 dans l'expression $m - 9$. On effectue la soustraction : $33 - 9 = 24$. Le résultat obtenu (24) est identique au second membre de l'égalité (24). L'égalité est donc vérifiée, $m = 33$ est bien la solution. L'option B fait une erreur de calcul ($33-9=24$, pas 22). L'option C est une résolution inverse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On teste la valeur $n = 5$ pour l'égalité $4 \\times n + 2 = 25$. Quelle conclusion tire-t-on de la vérification ?",
+      "options": [
+        "$4 \\times 5 + 2 = 22$, ce n'est pas égal à 25, donc $n = 5$ n'est pas solution.",
+        "$4 \\times 5 + 2 = 20$, ce n'est pas égal à 25, donc $n = 5$ n'est pas solution.",
+        "$4 \\times 5 + 2 = 22$, c'est égal à 25, donc $n = 5$ est la solution.",
+        "$25 - 2 = 23$ et $23 : 4 = 5,75$, donc $n = 5$ n'est pas solution."
+      ],
+      "correctAnswer": "$4 \\times 5 + 2 = 22$, ce n'est pas égal à 25, donc $n = 5$ n'est pas solution.",
+      "explanation": "On remplace $n$ par 5 en respectant l'ordre des priorités (multiplication avant addition) : $4 \\times 5 = 20$, puis $20 + 2 = 22$. On compare 22 au second membre 25. Comme $22 \\neq 25$, l'égalité n'est pas vérifiée. L'option B fait une erreur de calcul ($20+2=22$). L'option C affirme à tort que $22=25$. L'option D résout l'équation au lieu de vérifier la valeur proposée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les égalités suivantes, laquelle a pour solution $k = 12$ ? (Il faut vérifier chaque proposition).",
+      "options": [
+        "$k + 15 = 27$",
+        "$k - 5 = 8$",
+        "$2 \\times k = 26$",
+        "$k : 3 = 5$"
+      ],
+      "correctAnswer": "$k + 15 = 27$",
+      "explanation": "On vérifie chaque option en remplaçant $k$ par 12 :\\nA) $12 + 15 = 27$ : Vrai ($27=27$).\\nB) $12 - 5 = 7$, différent de 8 : Faux.\\nC) $2 \\times 12 = 24$, différent de 26 : Faux.\\nD) $12 : 3 = 4$, différent de 5 : Faux.\\nSeule l'option A est une égalité vraie pour $k = 12$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

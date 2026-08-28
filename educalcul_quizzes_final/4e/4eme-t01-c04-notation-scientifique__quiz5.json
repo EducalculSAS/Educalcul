@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 423,
+  "_course_code": "4eme-t01-c04-notation-scientifique",
+  "_level": "4e",
+  "_subject": "Nombres relatifs, fractions et puissances",
+  "_subtheme": "Approfondissement : Écrire",
+  "title": "Notation scientifique : Écrire",
+  "questions": [
+    {
+      "text": "Parmi les écritures suivantes, laquelle respecte la forme normalisée de la notation scientifique $a \\times 10^n$ avec $1 \\le a < 10$ et $n$ entier relatif ?",
+      "options": [
+        "$0,5 \\times 10^4$",
+        "$5 \\times 10^4$",
+        "$50 \\times 10^3$",
+        "$5 \\times 10^{3,5}$"
+      ],
+      "correctAnswer": "$5 \\times 10^4$",
+      "explanation": "La notation scientifique normalisée impose que le coefficient $a$ (la mantisse) soit un nombre compris entre 1 (inclus) et 10 (exclus), et que l'exposant $n$ soit un entier. L'option A a une mantisse $0,5 < 1$. L'option C a une mantisse $50 \\ge 10$. L'option D a un exposant décimal $3,5$ qui n'est pas un entier. Seule l'option B vérifie les deux conditions : $1 \\le 5 < 10$ et $4 \\in \\mathbb{Z}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On souhaite écrire le nombre $42\\,000\\,000$ en notation scientifique. Quelle est l'écriture correcte ?",
+      "options": [
+        "$4,2 \\times 10^6$",
+        "$42 \\times 10^6$",
+        "$4,2 \\times 10^7$",
+        "$0,42 \\times 10^8$"
+      ],
+      "correctAnswer": "$4,2 \\times 10^7$",
+      "explanation": "Pour obtenir la mantisse $a$, on place la virgule après le premier chiffre significatif non nul, ici $4$, ce qui donne $4,2$. Pour retrouver le nombre initial, il faut déplacer la virgule de 7 rangs vers la droite, ce qui correspond à multiplier par $10^7$. L'option A ne décale que de 6 rangs ($4\\,200\\,000$). L'option B a une mantisse $42 \\ge 10$. L'option D a une mantisse $0,42 < 1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la notation scientifique du nombre décimal $0,000\\,000\\,36$ ?",
+      "options": [
+        "$3,6 \\times 10^{-7}$",
+        "$36 \\times 10^{-8}$",
+        "$3,6 \\times 10^{-8}$",
+        "$0,36 \\times 10^{-6}$"
+      ],
+      "correctAnswer": "$3,6 \\times 10^{-7}$",
+      "explanation": "On place la virgule après le premier chiffre non nul ($3$) pour obtenir la mantisse $3,6$ (comprise entre 1 et 10). Pour passer de $3,6$ à $0,000\\,000\\,36$, il faut déplacer la virgule de 7 rangs vers la gauche, ce qui équivaut à multiplier par $10^{-7}$. L'option B a une mantisse $36 \\ge 10$. L'option C correspond à un décalage de 8 rangs ($0,000\\,000\\,036$). L'option D a une mantisse $0,36 < 1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un élève écrit $85 \\times 10^5$ pour noter le nombre $8\\,500\\,000$ en notation scientifique. Pourquoi cette écriture est-elle incorrecte ?",
+      "options": [
+        "L'exposant devrait être $4$ au lieu de $5$.",
+        "Le coefficient $85$ n'est pas compris entre $1$ et $10$.",
+        "Il faut écrire $8,5 \\times 10^6$ car on a déplacé la virgule de $6$ rangs.",
+        "On ne peut pas utiliser un exposant positif pour un nombre aussi grand."
+      ],
+      "correctAnswer": "Le coefficient $85$ n'est pas compris entre $1$ et $10$.",
+      "explanation": "La définition de la notation scientifique normalisée impose que le coefficient (ou mantisse) $a$ vérifie $1 \\le a < 10$. Ici, le coefficient proposé est $85$, ce qui viole cette règle fondamentale ($85 \\ge 10$). L'option A est fausse car $85 \\times 10^4 = 850\\,000$. L'option C donne la bonne écriture corrigée mais ne répond pas à la question \"Pourquoi est-elle incorrecte ?\" (la raison est la valeur du coefficient). L'option D est fausse car les grands nombres s'écrivent avec un exposant positif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est l'écriture en notation scientifique de l'expression $0,0045 \\times 10^6$ ?",
+      "options": [
+        "$4,5 \\times 10^2$",
+        "$4,5 \\times 10^3$",
+        "$45 \\times 10^2$",
+        "$0,45 \\times 10^4$"
+      ],
+      "correctAnswer": "$4,5 \\times 10^3$",
+      "explanation": "On convertit d'abord $0,0045$ en notation scientifique : $0,0045 = 4,5 \\times 10^{-3}$ (décalage de 3 rangs vers la droite). On multiplie ensuite par $10^6$ : $(4,5 \\times 10^{-3}) \\times 10^6 = 4,5 \\times 10^{-3+6} = 4,5 \\times 10^3$. On peut aussi calculer le produit numérique : $0,0045 \\times 1\\,000\\,000 = 4\\,500 = 4,5 \\times 10^3$. L'option A correspond à $450$. L'option C a une mantisse $45 \\ge 10$. L'option D a une mantisse $0,45 < 1$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

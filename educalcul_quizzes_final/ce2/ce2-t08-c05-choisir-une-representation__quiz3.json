@@ -1,0 +1,125 @@
+{
+  "_status": "done",
+  "_course_id": 209,
+  "_course_code": "ce2-t08-c05-choisir-une-representation",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Justifier le choix",
+  "title": "Justifier le choix d'une représentation",
+  "questions": [
+    {
+      "text": "La maîtresse veut connaître le nombre exact de livres lus par Léa pendant les vacances. Quelle representation est la plus adaptée pour trouver cette information précise rapidement ?",
+      "options": [
+        "Un tableau avec les noms et les nombres",
+        "Un diagramme en bâtons",
+        "Un diagramme circulaire",
+        "Une liste à puces sans chiffres"
+      ],
+      "correctAnswer": "Un tableau avec les noms et les nombres",
+      "explanation": "Le tableau permet de lire directement la valeur exacte associée à un nom. Le diagramme en bâtons donne une idée visuelle de la quantité mais la lecture précise peut être approximative si l'échelle n'est pas détaillée. Le diagramme circulaire montre des proportions, pas des valeurs exactes. Une liste sans chiffres ne donne aucune information numérique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a relevé le nombre d'élèves qui viennent à l'école à vélo dans quatre classes différentes. On veut comparer ces quatre nombres d'un seul coup d'œil pour voir quelle classe en a le plus. Quelle représentation faut-il choisir ?",
+      "options": [
+        "Un tableau de valeurs",
+        "Un diagramme en bâtons",
+        "Un texte explicatif",
+        "Une droite graduée"
+      ],
+      "correctAnswer": "Un diagramme en bâtons",
+      "explanation": "Le diagramme en bâtons (ou barres) est fait pour comparer des quantités entre plusieurs catégories (ici les classes). La hauteur des bâtons se compare visuellement instantanément. Le tableau oblige à lire et comparer mentalement chaque chiffre. Le texte et la droite graduée ne sont pas des outils de comparaison de catégories discrètes.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de vélos par classe",
+        "bars": [
+          {
+            "label": "CE2 A",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "CE2 B",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "CE1 A",
+            "value": 12,
+            "tone": "gold"
+          },
+          {
+            "label": "CE1 B",
+            "value": 3,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Regarde ce tableau des fruits préférés des élèves. Si la question est : \"Combien d'élèves ont choisi la pomme exactement ?\", pourquoi le tableau est-il mieux qu'un diagramme en bâtons ?",
+      "options": [
+        "Le tableau donne la valeur exacte sans lire sur une échelle",
+        "Le diagramme en bâtons ne montre pas les fruits",
+        "Le tableau est plus joli et coloré",
+        "Le diagramme en bâtons ne marche qu'avec de grands nombres"
+      ],
+      "correctAnswer": "Le tableau donne la valeur exacte sans lire sur une échelle",
+      "explanation": "Dans un tableau, le nombre exact (ici $12$ pour la pomme) est écrit en chiffres. Dans un diagramme en bâtons, il faut lire la hauteur du bâton sur l'axe vertical (l'échelle) ; si l'échelle va par pas de $2$ ou $5$, la lecture peut être imprécise pour une valeur comme $12$. Les deux représentent les mêmes données, mais le tableau est plus précis pour la lecture chiffrée.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Nombre d'élèves"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "12"
+          ],
+          [
+            "Banane",
+            "8"
+          ],
+          [
+            "Fraise",
+            "15"
+          ],
+          [
+            "Raisin",
+            "5"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Pour une enquête sur les couleurs préférées (bleu, rouge, vert, jaune), on a $30$ réponses. On veut montrer quelle couleur arrive en tête et les écarts entre elles. Pourquoi choisir un diagramme en bâtons plutôt qu'un tableau ?",
+      "options": [
+        "Le diagramme montre visuellement les différences de hauteur",
+        "Le tableau ne peut pas contenir de couleurs",
+        "Le diagramme en bâtons calcule le total automatiquement",
+        "Le tableau est interdit pour les enquêtes"
+      ],
+      "correctAnswer": "Le diagramme montre visuellement les différences de hauteur",
+      "explanation": "L'avantage principal du diagramme en bâtons est la comparaison visuelle immédiate : on voit tout de suite que le bâton 'Bleu' est plus haut que 'Rouge', sans avoir à comparer des nombres dans sa tête. Le tableau contient les mêmes informations mais sous forme chiffrée, ce qui demande un effort de lecture et de comparaison mentale. Les deux peuvent contenir des couleurs et calculer des totaux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Hugo a noté les scores de $5$ amis à un jeu vidéo : $45$, $52$, $48$, $60$, $55$. Il veut répondre à cette question : \"Quel est l'écart entre le meilleur score et le moins bon ?\" Quelle représentation lui permet de calculer cela le plus facilement ?",
+      "options": [
+        "Un diagramme en bâtons",
+        "Un tableau ordonné du plus petit au plus grand",
+        "Un dessin des $5$ amis",
+        "Une droite numérique de $0$ à $100$"
+      ],
+      "correctAnswer": "Un tableau ordonné du plus petit au plus grand",
+      "explanation": "Pour trouver l'écart entre le max ($60$) et le min ($45$), il faut identifier ces deux valeurs. Un tableau trié (ordonné) place le minimum en première ligne ($45$) et le maximum en dernière ($60$) : on les repère instantanément. Le diagramme en bâtons oblige à regarder toutes les barres pour trouver la plus haute et la plus basse. Le dessin et la droite numérique ne classent pas les données par valeur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

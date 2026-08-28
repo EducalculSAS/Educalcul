@@ -1,0 +1,104 @@
+{
+  "_status": "done",
+  "_course_id": 135,
+  "_course_code": "ce1-t07-c10-bilan-espace-et-geometrie-ce1",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Reconnaître et construire",
+  "title": "Quiz - Reconnaître et construire (CE1)",
+  "questions": [
+    {
+      "text": "Observe la figure sur le quadrillage. Comment nomme-t-on cette figure géométrique ?",
+      "options": [
+        "C'est un carré",
+        "C'est un rectangle",
+        "C'est un losange",
+        "C'est un triangle"
+      ],
+      "correctAnswer": "C'est un carré",
+      "explanation": "La figure présentée possède $4$ côtés de même longueur et $4$ angles droits. C'est la définition d'un carré. Le rectangle a $4$ angles droits mais pas forcément $4$ côtés égaux. Le losange a $4$ côtés égaux mais pas forcément d'angles droits. Le triangle n'a que $3$ côtés.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 3,
+        "highlighted": 9,
+        "caption": "Carré sur quadrillage"
+      }
+    },
+    {
+      "text": "Sur un quadrillage, je trace un rectangle de $4$ carrés de longueur et $3$ carrés de largeur. Combien de petits carrés y a-t-il à l'intérieur de ce rectangle ?",
+      "options": [
+        "7",
+        "12",
+        "14",
+        "10"
+      ],
+      "correctAnswer": "12",
+      "explanation": "Pour trouver le nombre de petits carrés à l'intérieur d'un rectangle sur un quadrillage, on multiplie le nombre de carrés en longueur par le nombre de carrés en largeur : $4 \\times 3 = 12$. L'option $7$ correspond à une addition ($4+3$), $14$ et $10$ sont des résultats erronés.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 12,
+        "caption": "Rectangle 4 par 3"
+      }
+    },
+    {
+      "text": "Regarde le patron représenté. Quel solide obtiendra-t-on en le pliant ?",
+      "options": [
+        "Un cube",
+        "Un pavé droit",
+        "Une pyramide",
+        "Un cylindre"
+      ],
+      "correctAnswer": "Un cube",
+      "explanation": "Ce patron est composé de $6$ carrés identiques disposés en croix. En le pliant, les $6$ faces carrées forment un cube. Un pavé droit a au moins des faces rectangulaires non carrées. Une pyramide a une base polygonale et des faces triangulaires. Un cylindre a des faces courbes.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube"
+      }
+    },
+    {
+      "text": "À l'aide d'une équerre, on vérifie l'angle présenté sur la figure. Quel type d'angle est-ce ?",
+      "options": [
+        "Un angle aigu",
+        "Un angle obtus",
+        "Un angle droit",
+        "Un angle plat"
+      ],
+      "correctAnswer": "Un angle droit",
+      "explanation": "L'équerre est l'instrument qui permet de vérifier les angles droits. La figure affiche un angle de $90$ degrés, ce qui correspond exactement à un angle droit. Un angle aigu est plus petit ($< 90^\\circ$), un angle obtus est plus grand ($> 90^\\circ$) et un angle plat mesure $180^\\circ$.",
+      "points": 1,
+      "figure": {
+        "type": "interactive_protractor",
+        "angleDeg": 90,
+        "caption": "Angle droit à l'équerre"
+      }
+    },
+    {
+      "text": "Pour construire un triangle, je dois tracer trois segments. Le premier segment mesure $5$ cm. Quel instrument est indispensable pour tracer les deux autres segments avec la bonne longueur ?",
+      "options": [
+        "Le compas",
+        "La règle graduée",
+        "L'équerre",
+        "Le rapporteur"
+      ],
+      "correctAnswer": "La règle graduée",
+      "explanation": "Au CE1, on utilise la règle graduée pour mesurer et tracer des segments d'une longueur donnée (en centimètres). Le compas sert à reporter des longueurs ou tracer des cercles (programme cycle 3). L'équerre sert à tracer des perpendiculaires ou vérifier des angles droits. Le rapporteur sert à mesurer des angles (cycle 3).",
+      "points": 1,
+      "figure": {
+        "type": "ruler_measurer",
+        "segmentLength": 5,
+        "unit": "cm",
+        "caption": "Segment de 5 cm"
+      }
+    }
+  ]
+}

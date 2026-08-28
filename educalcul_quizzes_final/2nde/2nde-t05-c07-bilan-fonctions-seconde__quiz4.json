@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 526,
+  "_course_code": "2nde-t05-c07-bilan-fonctions-seconde",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Application : Bilan - Fonctions Seconde",
+  "title": "Application : Bilan - Fonctions Seconde",
+  "questions": [
+    {
+      "text": "Quelle est l'ensemble de définition de la fonction $f(x)=\\sqrt{x-2}+\\frac{1}{x-3}$ ?",
+      "options": [
+        "$]2,3[ \\cup ]3,+\\infty[$",
+        "$[2,3[ \\cup ]3,+\\infty[$",
+        "$]2,+\\infty[$",
+        "$[2,+\\infty[$"
+      ],
+      "correctAnswer": "$[2,3[ \\cup ]3,+\\infty[$",
+      "explanation": "La racine carrée impose $x-2 \\ge 0$, donc $x \\ge 2$. Le dénominateur $x-3$ ne doit pas s'annuler, donc $x \\neq 3$. L'intersection donne $[2,3[ \\cup ]3,+\\infty[$. Les autres options oublient soit l'exclusion de 3, soit la condition de la racine.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur quel intervalle la fonction $g(x)=-2x^2+4x+1$ est-elle croissante ?",
+      "options": [
+        "$]-\\infty,1]$",
+        "$[1,+\\infty[$",
+        "$]-\\infty,1[$",
+        "$]1,+\\infty[$"
+      ],
+      "correctAnswer": "$]-\\infty,1]$",
+      "explanation": "Le coefficient de $x^2$ est négatif, la parabole est tournée vers le bas. Le sommet a pour abscisse $x_v = -b/(2a) = -4/(2\\times -2)=1$. La fonction croît jusqu'au sommet, donc sur $]-\\infty,1]$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelles sont les coordonnées du sommet de la parabole représentée ?",
+      "options": [
+        "$(1,-3)$",
+        "$(-1,-3)$",
+        "$(1,3)$",
+        "$(-1,3)$"
+      ],
+      "correctAnswer": "$(1,-3)$",
+      "explanation": "La fonction est $h(x)=(x-1)^2-3$, forme canonique $a(x-h)^2+k$ avec sommet $(h,k)=(1,-3)$. Le graphique confirme ce point.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "(x-1)^2-3",
+        "xmin": -3,
+        "xmax": 5,
+        "caption": "Parabole $h(x)=(x-1)^2-3$"
+      }
+    },
+    {
+      "text": "La fonction $k(x)=x^3-x$ est-elle paire, impaire ou ni l'une ni l'autre ?",
+      "options": [
+        "Paire",
+        "Impaire",
+        "Ni l'une ni l'autre",
+        "Constante"
+      ],
+      "correctAnswer": "Impaire",
+      "explanation": "On calcule $k(-x)=(-x)^3-(-x)=-x^3+x=-(x^3-x)=-k(x)$. La relation $k(-x)=-k(x)$ caractérise une fonction impaire.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résolvez l'inéquation $\\frac{x+2}{x-1}>0$.",
+      "options": [
+        "$]-\\infty,-2[ \\cup ]1,+\\infty[$",
+        "$[-2,1[$",
+        "$]-2,1[$",
+        "$]-\\infty,-2] \\cup [1,+\\infty[$"
+      ],
+      "correctAnswer": "$]-\\infty,-2[ \\cup ]1,+\\infty[$",
+      "explanation": "Le numérateur s'annule en $-2$, le dénominateur en $1$. Un tableau de signes montre que le quotient est positif pour $x<-2$ et pour $x>1$. Les bornes $-2$ et $1$ sont exclues car l'inéquation est stricte et le dénominateur ne doit pas s'annuler.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.925468+00:00",
+  "id": 142,
+  "code": "ce2-t01-c01",
+  "title": "Construire le millier",
+  "description": "Cours structuré Educalcul : Construire le millier.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Construire le millier",
+    "objectif_global": "Construire le millier",
+    "mini_lecons_imposees": [
+      "Relier 10 centaines et 1 millier.",
+      "Manipuler M-C-D-U.",
+      "Reconnaître 1 000 dans plusieurs représentations."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Relier 10 centaines et 1 millier.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as dix boîtes pleines de cent billes chacune. Si tu verses toutes ces billes dans un grand sac, combien en as-tu au total ? C'est exactement ce que nous allons découvrir aujourd'hui : comment dix centaines forment un nouveau nombre, le mille."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Dix centaines, un nouveau palier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais déjà les centaines : $100$, $200$, $300$... jusqu'à $900$. Mais que se passe-t-il après $900$ ? Eh bien, on ajoute une centaine de plus, et on arrive à dix centaines. Dix fois cent, cela s'écrit $10 \\times 100 = 1\\,000$. Ce nombre a un nom spécial : on l'appelle **un millier**."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 10,
+              "tens": 0,
+              "units": 0,
+              "caption": "Dix plaques de cent : cela fait un gros cube de mille"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce gros cube. Il est composé de dix plaques de cent. Chaque plaque est une centaine. Ensemble, elles forment un millier. C'est comme une tour de dix étages, chaque étage étant une centaine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, prenons un exemple concret. Suppose que tu comptes des boutons par paquets de cent. Tu as fait neuf paquets complets, soit $900$ boutons. Tu fais un dixième paquet de cent. Combien as-tu de boutons en tout ? Écris le calcul et le résultat."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Paquet 1",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Paquet 2",
+                  "value": 100,
+                  "tone": "green"
+                },
+                {
+                  "label": "Paquet 3",
+                  "value": 100,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Paquet 4",
+                  "value": 100,
+                  "tone": "red"
+                },
+                {
+                  "label": "Paquet 5",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Paquet 6",
+                  "value": 100,
+                  "tone": "green"
+                },
+                {
+                  "label": "Paquet 7",
+                  "value": 100,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Paquet 8",
+                  "value": 100,
+                  "tone": "red"
+                },
+                {
+                  "label": "Paquet 9",
+                  "value": 100,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Paquet 10",
+                  "value": 100,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Dix paquets de cent boutons font mille boutons"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? Chaque rectangle représente un paquet de cent. Quand on les met bout à bout, on obtient une longue barre qui vaut mille. C'est une façon visuelle de voir que $10 \\times 100 = 1\\,000$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec des billets. Imagine que tu as dix billets de $100\\,\\text{\\u20ac}$. Quelle somme possèdes-tu ? Pour le savoir, tu peux additionner : $100 + 100 + 100 + 100 + 100 + 100 + 100 + 100 + 100 + 100$. Mais c'est long ! Heureusement, la multiplication est plus rapide : $10 \\times 100 = 1\\,000$. Tu as donc $1\\,000\\,\\text{\\u20ac}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "10 \\times 100 = 1\\,000"
+            },
+            {
+              "type": "paragraph",
+              "content": "Retiens bien cette égalité : dix centaines font un millier. C'est le passage à l'ordre supérieur, comme dix unités font une dizaine et dix dizaines font une centaine."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de centaines y a-t-il dans un millier ?",
+              "answer": "10",
+              "hint": "Repense aux dix plaques de cent qui formaient le gros cube.",
+              "explanation": "Un millier est exactement égal à dix centaines. C'est la définition même du millier : $1\\,000 = 10 \\times 100$."
+            },
+            {
+              "question": "Si j'ai 8 centaines et j'ajoute 2 centaines, quel nombre obtiens-je ? Écris-le en chiffres.",
+              "answer": "1000",
+              "hint": "8 centaines + 2 centaines = 10 centaines. Et 10 centaines, c'est quel nombre ?",
+              "explanation": "8 centaines valent $800$. 2 centaines valent $200$. $800 + 200 = 1\\,000$. C'est bien un millier."
+            },
+            {
+              "question": "Vrai ou faux ? $10 \\times 100 = 1000$.",
+              "answer": "Vrai",
+              "hint": "Dix fois cent, cela fait combien ?",
+              "explanation": "Multiplier $100$ par $10$, c'est ajouter un zéro à droite de $100$, ce qui donne $1\\,000$. C'est la façon rapide de calculer dix centaines."
+            }
+          ]
+        },
+        {
+          "title": "Manipuler M-C-D-U.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Aujourd'hui, nous allons apprendre à ranger les grands nombres dans un tableau bien pratique. Ce tableau a quatre colonnes : les unités, les dizaines, les centaines, et maintenant... les milliers ! C'est comme une maison à quatre chambres, chaque chiffre a sa place."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le tableau M-C-D-U"
+            },
+            {
+              "type": "paragraph",
+              "content": "M signifie **milliers**, C signifie **centaines**, D signifie **dizaines**, et U signifie **unités**. On lit le tableau de gauche à droite, en commençant par les milliers. C'est l'ordre des grandeurs, du plus grand au plus petit."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 1234,
+              "caption": "Le nombre 1234 dans le tableau M-C-D-U"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le nombre $1\\,234$. Le chiffre $1$ est dans la colonne des milliers : c'est $1$ mille. Le chiffre $2$ est dans la colonne des centaines : ce sont $2$ centaines. Le chiffre $3$ est dans la colonne des dizaines : ce sont $3$ dizaines. Le chiffre $4$ est dans la colonne des unités : ce sont $4$ unités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant de décomposer un nombre ensemble. Prenons $2\\,050$. Écrivons-le dans le tableau. Dans la colonne M, on met $2$ car il y a $2$ milliers. Dans la colonne C, on met $0$ car il n'y a aucune centaine. Dans la colonne D, on met $5$ car il y a $5$ dizaines. Dans la colonne U, on met $0$ car il n'y a aucune unité."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 2050,
+              "caption": "Le nombre 2050 : attention aux zéros !"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois les deux zéros ? Ils sont très importants ! Le zéro des centaines montre qu'il n'y a pas de centaine. Le zéro des unités montre qu'il n'y a pas d'unité. Sans eux, on écrirait $25$ au lieu de $2\\,050$. Le zéro garde la place vide."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on veut retrouver le nombre à partir de sa décomposition. Par exemple : $3$ milliers, $4$ centaines, $0$ dizaine, $7$ unités. On place chaque chiffre dans sa colonne : $3$ en M, $4$ en C, $0$ en D, $7$ en U. Le nombre est $3\\,407$. Lis-le bien : trois mille quatre cent sept."
+            },
+            {
+              "type": "display_math",
+              "latex": "3\\,407 = 3 \\times 1\\,000 + 4 \\times 100 + 0 \\times 10 + 7 \\times 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette écriture s'appelle la **décomposition en chiffres des unités**. Elle montre la valeur de chaque chiffre selon sa position. C'est comme une carte d'identité du nombre !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à un piège fréquent : ne pas confondre le chiffre et le nombre de dizaines, par exemple. Dans $1\\,230$, le chiffre des dizaines est $3$, mais le nombre de dizaines dans tout le nombre est $123$ (car $1\\,230 = 123 \\times 10$). Pour l'instant, concentre-toi sur le chiffre de chaque colonne."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans le nombre 3 582, quel chiffre est dans la colonne des centaines ?",
+              "answer": "5",
+              "hint": "Regarde le tableau : M=3, C=?, D=8, U=2.",
+              "explanation": "En plaçant $3\\,582$ dans le tableau : $3$ milliers, $5$ centaines, $8$ dizaines, $2$ unités. Le chiffre des centaines est bien $5$."
+            },
+            {
+              "question": "Écris le nombre qui a 4 milliers, 0 centaine, 6 dizaines et 3 unités.",
+              "answer": "4063",
+              "hint": "Place chaque chiffre dans sa colonne : M=4, C=0, D=6, U=3. N'oublie pas le zéro !",
+              "explanation": "$4$ milliers = $4\\,000$, $0$ centaine = $0$, $6$ dizaines = $60$, $3$ unités = $3$. Total : $4\\,063$. Le zéro des centaines est indispensable."
+            },
+            {
+              "question": "Décompose 1 805 en chiffres des unités : ___ milliers + ___ centaines + ___ dizaines + ___ unités.",
+              "answer": "1 mille + 8 centaines + 0 dizaines + 5 unités",
+              "hint": "Utilise le tableau M-C-D-U pour t'aider à séparer les chiffres.",
+              "explanation": "$1\\,805$ donne : $1$ en M, $8$ en C, $0$ en D, $5$ en U. Donc $1$ mille, $8$ centaines, $0$ dizaines, $5$ unités."
+            },
+            {
+              "question": "Dans 5 009, que signifie le zéro des dizaines ?",
+              "answer": "Il n'y a aucune dizaine dans ce nombre.",
+              "hint": "Le zéro indique une absence. Quelle absence ici ?",
+              "explanation": "Le zéro en colonne D signifie qu'il y a $0$ dizaine. Le nombre est $5\\,000 + 0 + 9 = 5\\,009$. Sans ce zéro, on écrirait $509$ ce qui est tout autre chose."
+            }
+          ]
+        },
+        {
+          "title": "Reconnaître 1 000 dans plusieurs représentations.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant que dix centaines font un millier et tu sais ranger les chiffres dans le tableau M-C-D-U. Pour finir, jouons à reconnaître le nombre mille sous toutes ses coutures. Car mille peut se cacher derrière bien des apparences !"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mille en chiffres, en lettres, en décomposition"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le nombre mille s'écrit en chiffres : $1\\,000$. En lettres, on écrit **mille** (sans 's' car c'est un seul mille). Attention, on n'écrit pas 'un mille', on écrit simplement 'mille'. C'est une particularité de ce mot."
+            },
+            {
+              "type": "display_math",
+              "latex": "1\\,000 = \\text{mille}"
+            },
+            {
+              "type": "paragraph",
+              "content": "Mille peut aussi s'écrire en décomposition additive : $1\\,000 = 1000$ (c'est trivial), ou bien $1\\,000 = 10 \\times 100$, ou encore $1\\,000 = 100 \\times 10$, ou même $1\\,000 = 500 + 500$. Il y a une infinité de façons de le décomposer !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons maintenant des représentations visuelles. Sur une droite numérotée, mille se trouve loin à droite de zéro. Mais on peut zoomer : entre $900$ et $1\\,100$, mille est exactement au milieu de l'intervalle. C'est le repère qui sépare les nombres à trois chiffres des nombres à quatre chiffres."
+            },
+            {
+              "type": "number_line",
+              "caption": "Mille sur la droite numérique, entre 900 et 1100",
+              "min": 900,
+              "max": 1100,
+              "points": [
+                {
+                  "value": 1000,
+                  "label": "1000"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois ? Mille est pile au centre. C'est le point de passage obligé pour aller vers les nombres plus grands. C'est comme un col de montagne : une fois franchi, on entre dans le territoire des milliers."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Autre représentation : les regroupements. Imagine $1\\,000$ petites graines. Tu peux les regrouper en $10$ tas de $100$ graines. Ou en $100$ tas de $10$ graines. Ou en $1\\,000$ tas d'$1$ graine. Ou encore en $50$ tas de $20$ graines. Le total ne change pas, seule la façon de grouper change."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Différents groupements pour obtenir 1000",
+              "bars": [
+                {
+                  "label": "10 × 100",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "100 × 10",
+                  "value": 100,
+                  "tone": "green"
+                },
+                {
+                  "label": "50 × 20",
+                  "value": 50,
+                  "tone": "gold"
+                },
+                {
+                  "label": "200 × 5",
+                  "value": 200,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce graphique montre le nombre de groupes selon la taille choisie. Plus les groupes sont petits, plus il y en a. Mais le produit reste toujours $1\\,000$. C'est la magie de la multiplication !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, mille peut apparaître dans des problèmes de la vie courante. Par exemple : 'L'école a acheté 20 boîtes de crayons. Dans chaque boîte, il y a 50 crayons. Combien de crayons au total ?' Le calcul est $20 \\times 50$. Comme $2 \\times 5 = 10$, alors $20 \\times 50 = 1\\,000$. Il y a mille crayons !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais que 10 centaines font 1 millier (1 000).",
+                "Je sais placer un nombre jusqu'à 9 999 dans le tableau M-C-D-U.",
+                "Je sais lire et écrire un nombre en chiffres et en lettres jusqu'au millier.",
+                "Je sais reconnaître 1 000 dans différentes représentations (droite, groupements, décompositions).",
+                "Je comprends que le zéro garde la place d'une grandeur absente (ex: 2 050)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Comment écrit-on le nombre mille en lettres ?",
+              "answer": "mille",
+              "hint": "Pas de 'un' devant, et pas de 's' à la fin car c'est un seul mille.",
+              "explanation": "On écrit 'mille' (sans 's') pour $1\\,000$. On écrit 'deux mille' pour $2\\,000$, 'trois mille' pour $3\\,000$, etc. Le 's' n'apparaît que s'il y a plusieurs milliers et qu'aucun autre chiffre ne suit (ex: 'cinq mille'), mais pas pour 'mille' seul."
+            },
+            {
+              "question": "Sur une droite graduée de 0 à 2 000, où se trouve 1 000 ?",
+              "answer": "Exactement au milieu.",
+              "hint": "1 000 est la moitié de 2 000.",
+              "explanation": "Puisque $1\\,000 \\times 2 = 2\\,000$, le nombre $1\\,000$ se place à mi-chemin entre $0$ et $2\\,000$. C'est le point médian."
+            },
+            {
+              "question": "Lequel de ces calculs ne donne PAS 1 000 ? A) 10 × 100  B) 100 × 10  C) 50 × 20  D) 25 × 30",
+              "answer": "D) 25 × 30",
+              "hint": "Calcule mentalement chaque produit. 25 × 30 = 25 × 3 × 10 = 75 × 10 = 750.",
+              "explanation": "A) $10 \\times 100 = 1\\,000$. B) $100 \\times 10 = 1\\,000$. C) $50 \\times 20 = 1\\,000$. D) $25 \\times 30 = 750$. Seule la proposition D ne donne pas mille."
+            },
+            {
+              "question": "Une bibliothèque a 40 étagères. Sur chaque étagère, il y a 25 livres. Combien de livres au total ?",
+              "answer": "1000",
+              "hint": "40 × 25 = 4 × 10 × 25 = 4 × 250 = 1000.",
+              "explanation": "$40 \\times 25 = (4 \\times 10) \\times 25 = 4 \\times (10 \\times 25) = 4 \\times 250 = 1\\,000$. La bibliothèque possède mille livres."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

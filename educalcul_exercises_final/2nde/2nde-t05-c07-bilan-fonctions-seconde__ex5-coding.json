@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 526,
+  "_course_code": "2nde-t05-c07-bilan-fonctions-seconde",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Représentations et variations",
+  "title": "Algorithmes et fonctions : images, tableaux et dichotomie",
+  "blocks": [
+    {
+      "title": "Calcul d'image par un algorithme",
+      "content": "On considère la fonction $f$ définie sur $\\mathbb{R}$ par $f(x) = -x^2 + 4x - 1$. Écris un algorithme qui demande à l'utilisateur de saisir une valeur $x$, calcule puis affiche l'image $f(x)$.",
+      "correctAnswer": "Algorithme :\\nVariables : x, y (réels)\\nDébut\\n    Afficher \"Entrez la valeur de x :\"\\n    Saisir x\\n    y <- -x^2 + 4*x - 1\\n    Afficher \"f(x) = \", y\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme déclare deux variables réelles : x pour l'entrée et y pour stocker le résultat. Il demande la saisie de x, applique la formule de la fonction $f(x) = -x^2 + 4x - 1$ en respectant la priorité des opérations (le carré avant la multiplication par -1), stocke le résultat dans y et l'affiche.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'un tableau de valeurs par boucle",
+      "content": "On considère la fonction $g$ définie sur $\\mathbb{R}$ par $g(x) = 3x - 5$. Écris un algorithme qui affiche un tableau de valeurs de $g$ pour $x$ variant de $0$ à $5$ avec un pas de $1$. L'affichage doit présenter les couples $(x, g(x))$ ligne par ligne.",
+      "correctAnswer": "Algorithme :\\nVariables : x, image (réels ou entiers)\\nDébut\\n    Pour x de 0 à 5 faire\\n        image <- 3*x - 5\\n        Afficher x, image\\n    Fin pour\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise une boucle « Pour » qui fait varier x de 0 à 5 par pas de 1 (implicite). À chaque itération, on calcule l'image par la formule $3x - 5$ et on affiche le couple. Cela produit les lignes : (0, -5), (1, -2), (2, 1), (3, 4), (4, 7), (5, 10).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Recherche de zéro par dichotomie",
+      "content": "Soit la fonction $h$ définie sur $[1 ; 2]$ par $h(x) = x^3 - 2$. Cette fonction est continue et strictement croissante sur $[1 ; 2]$. On a $h(1) = -1 < 0$ et $h(2) = 6 > 0$. L'équation $h(x) = 0$ admet donc une unique solution $\\alpha$ dans $[1 ; 2]$. Écris un algorithme de dichotomie qui détermine un encadrement de $\\alpha$ d'amplitude inférieure à $0,01$.",
+      "correctAnswer": "Algorithme :\\nVariables : a, b, m (réels)\\nDébut\\n    a <- 1\\n    b <- 2\\n    Tant que b - a > 0,01 faire\\n        m <- (a + b) / 2\\n        Si m^3 - 2 < 0 alors\\n            a <- m\\n        Sinon\\n            b <- m\\n        Fin si\\n    Fin tant que\\n    Afficher \"Encadrement : [\", a, \" ; \", b, \"]\"\\nFin",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise a = 1 et b = 2. La boucle « Tant que » se poursuit tant que l'amplitude $b - a$ est supérieure à la précision demandée ($0,01$). On calcule le milieu $m$. Comme $h$ est croissante, si $h(m) < 0$ (i.e. $m^3 - 2 < 0$), la solution est dans $[m ; b]$, donc on affecte $a \\leftarrow m$. Sinon, elle est dans $[a ; m]$, on affecte $b \\leftarrow m$. À la sortie, $[a ; b]$ encadre $\\alpha$ avec l'amplitude requise.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

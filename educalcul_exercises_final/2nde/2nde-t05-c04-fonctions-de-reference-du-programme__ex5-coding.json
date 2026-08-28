@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 523,
+  "_course_code": "2nde-t05-c04-fonctions-de-reference-du-programme",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Approfondissement : Carré / inverse / racine ou autres prévues",
+  "title": "Algorithmes sur le carré, l'inverse et la racine carrée",
+  "blocks": [
+    {
+      "title": "Algorithme de base",
+      "content": "Écrire un algorithme qui demande à l'utilisateur un nombre réel $x$ et affiche le carré de $x$, l'inverse de $x$ (si $x \\neq 0$) et la racine carrée de $x$ (si $x \\ge 0$).",
+      "correctAnswer": "Algorithme :\\n1. Lire x\\n2. Afficher x * x\\n3. Si x != 0 alors afficher 1 / x sinon afficher \"Inverse non défini\"\\n4. Si x >= 0 alors afficher sqrt(x) sinon afficher \"Racine non définie pour x négatif\"",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme commence par la lecture de la variable x. Le carré s'obtient par la multiplication x * x. L'inverse 1/x n'est défini que si x est non nul, d'où le test. La racine carrée sqrt(x) n'est réelle que pour x positif ou nul, d'où le second test. Chaque résultat est affiché avec un message clair en cas d'indétermination.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Méthode de Newton pour la racine carrée",
+      "content": "Compléter la fonction Python suivante pour qu'elle renvoie une valeur approchée de $\\sqrt{a}$ par la méthode de Newton, en effectuant $n$ itérations. La fonction prend en paramètres $a>0$ et $n\\ge 1$.\\n\\ndef racine_newton(a, n):\\n    x = a\\n    for i in range(n):\\n        # à compléter\\n    return x",
+      "correctAnswer": "def racine_newton(a, n):\\n    x = a\\n    for i in range(n):\\n        x = 0.5 * (x + a / x)\\n    return x",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La méthode de Newton pour $\\sqrt{a}$ utilise la relation de récurrence $x_{k+1} = \\frac{1}{2}\\left(x_k + \\frac{a}{x_k}\\right)$. On initialise $x_0 = a$ (ou toute valeur positive). À chaque itération, on met à jour x selon cette formule. Après n itérations, x est une approximation de la racine carrée. La fonction retourne cette valeur.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Somme de valeurs d'une fonction rationnelle",
+      "content": "On considère la fonction $f(x)=\\frac{1}{x^2+1}$. Écrire un algorithme qui calcule la somme $\\sum_{k=1}^{N} f(k)$ pour un entier $N$ donné, et affiche le résultat.",
+      "correctAnswer": "Algorithme :\\n1. Lire N\\n2. somme = 0\\n3. Pour k de 1 à N faire\\n       somme = somme + 1 / (k * k + 1)\\n4. Afficher somme",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On initialise une variable somme à 0. Une boucle parcourt les entiers k de 1 à N inclus. À chaque passage, on ajoute la valeur de $f(k) = 1/(k^2+1)$ à somme. Après la boucle, somme contient la somme désirée, que l'on affiche. La division est une division réelle pour obtenir un résultat décimal.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

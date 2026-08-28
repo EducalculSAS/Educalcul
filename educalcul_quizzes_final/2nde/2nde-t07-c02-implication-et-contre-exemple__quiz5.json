@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 535,
+  "_course_code": "2nde-t07-c02-implication-et-contre-exemple",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Approfondissement : Si... alors",
+  "title": "Approfondissement : Si... alors",
+  "questions": [
+    {
+      "text": "Quelle est la signification correcte de l'implication « Si $P$ alors $Q$ » ?",
+      "options": [
+        "L'implication est vraie seulement si $P$ est vrai et $Q$ est faux",
+        "Si $P$ est vrai alors $Q$ doit être vrai",
+        "Si $P$ est faux alors $Q$ est vrai",
+        "$P$ et $Q$ sont toujours vrais"
+      ],
+      "correctAnswer": "Si $P$ est vrai alors $Q$ doit être vrai",
+      "explanation": "L'implication « Si $P$ alors $Q$ » est fausse uniquement lorsque l'antécédent $P$ est vrai et le conséquent $Q$ est faux. Dans tous les autres cas ( $P$ faux ou $Q$ vrai ) elle est vraie. L'option B exprime exactement cette règle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Trouvez un contre‑exemple à l'implication « Si $x$ est pair alors $x^2$ est impair ».",
+      "options": [
+        "$x=2$",
+        "$x=3$",
+        "$x=4$",
+        "$x=5$"
+      ],
+      "correctAnswer": "$x=2$",
+      "explanation": "Pour $x=2$, l'antécédent « $x$ est pair » est vrai, mais $x^2=4$ est pair, donc le conséquent « $x^2$ est impair » est faux. Cela rend l'implication fausse, ce qui constitue un contre‑exemple. Les autres valeurs ne satisfont pas l'antécédent ou donnent un conséquent vrai.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la valeur de vérité de l'implication « Si $5 > 3$ alors $2+2=5$ » ?",
+      "options": [
+        "Vrai",
+        "Faux",
+        "Indéterminé",
+        "Ni vrai ni faux"
+      ],
+      "correctAnswer": "Faux",
+      "explanation": "L'antécédent $5 > 3$ est vrai. Le conséquent $2+2=5$ est faux. Une implication avec antécédent vrai et conséquent faux est fausse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la contraposée de l'implication « Si un triangle est équilatéral alors il est isocèle » ?",
+      "options": [
+        "Si un triangle n'est pas équilatéral alors il n'est pas isocèle",
+        "Si un triangle n'est pas isocèle alors il n'est pas équilatéral",
+        "Si un triangle est isocèle alors il est équilatéral",
+        "Si un triangle est équilatéral alors il n'est pas isocèle"
+      ],
+      "correctAnswer": "Si un triangle n'est pas isocèle alors il n'est pas équilatéral",
+      "explanation": "La contraposée de « Si $P$ alors $Q$ » est « Si non $Q$ alors non $P$ ». Ici $P$ : « le triangle est équilatéral », $Q$ : « le triangle est isocèle ». Donc la contraposée est « Si le triangle n'est pas isocèle alors il n'est pas équilatéral ».",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les propositions suivantes, laquelle est logiquement équivalente à « Si $n$ est multiple de $6$ alors $n$ est multiple de $3$ » ?",
+      "options": [
+        "Si $n$ n'est pas multiple de $3$ alors $n$ n'est pas multiple de $6$",
+        "Si $n$ est multiple de $3$ alors $n$ est multiple de $6$",
+        "Si $n$ n'est pas multiple de $6$ alors $n$ n'est pas multiple de $3$",
+        "$n$ est multiple de $6$ si et seulement si $n$ est multiple de $3$"
+      ],
+      "correctAnswer": "Si $n$ n'est pas multiple de $3$ alors $n$ n'est pas multiple de $6$",
+      "explanation": "L'implication originale a pour contraposée « Si $n$ n'est pas multiple de $3$ alors $n$ n'est pas multiple de $6$ ». La contraposée est logiquement équivalente à l'implication initiale. Les autres options correspondent à la réciproque, à l'inverse ou à un biconditionnel, qui ne sont pas équivalents.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

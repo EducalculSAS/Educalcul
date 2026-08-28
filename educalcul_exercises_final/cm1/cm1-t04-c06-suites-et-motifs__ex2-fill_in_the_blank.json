@@ -1,0 +1,54 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 239,
+  "_course_code": "cm1-t04-c06-suites-et-motifs",
+  "_level": "cm1",
+  "_subject": "Résolution de problèmes et pensée algébrique",
+  "_subtheme": "Poursuivre",
+  "title": "Poursuivre des suites numériques et logiques",
+  "blocks": [
+    {
+      "title": "Suite additive simple",
+      "content": "Complète la suite numérique suivante : $5 ; 9 ; 13 ; 17 ;$ {{1}} ; {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "21",
+        "25"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle de cette suite est d'ajouter $4$ à chaque terme pour obtenir le suivant. Après $17$, on ajoute $4$ ce qui donne $21$, puis on ajoute encore $4$ ce qui donne $25$. Les deux termes manquants sont donc $21$ et $25$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Suite à règle alternée",
+      "content": "Voici une suite dont la règle alterne entre deux opérations : $2 ; 4 ; 7 ; 9 ; 12 ;$ {{1}} ; {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "14",
+        "17"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On observe les écarts entre les termes successifs : $4 - 2 = 2$, $7 - 4 = 3$, $9 - 7 = 2$, $12 - 9 = 3$. La règle alterne entre « ajouter $2$ » et « ajouter $3$ ». La dernière opération effectuée était « ajouter $3$ » (pour passer de $9$ à $12$), il faut donc maintenant « ajouter $2$ » ce qui donne $14$, puis « ajouter $3$ » ce qui donne $17$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Suite de motifs géométriques",
+      "content": "Observe la suite de motifs : cercle, carré, triangle, cercle, carré, {{1}}, {{2}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "triangle",
+        "cercle"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Cette suite suit un motif qui se répète tous les trois termes dans l'ordre : cercle, puis carré, puis triangle. La suite donnée contient un cycle complet (cercle, carré, triangle) et le début du cycle suivant (cercle, carré). Le terme suivant est donc le troisième du motif : triangle. Le terme d'après recommence le cycle : cercle.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

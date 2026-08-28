@@ -1,0 +1,118 @@
+{
+  "_status": "done",
+  "_course_id": 479,
+  "_course_code": "3eme-t05-c01-pythagore-et-sa-reciproque",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Calculer",
+  "title": "Quiz : Calculer avec le théorème de Pythagore",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$ rectangle en $A$, on sait que $AB = 3$ et $AC = 4$. Calcule la longueur $BC$.",
+      "options": [
+        "5",
+        "7",
+        "25",
+        "12"
+      ],
+      "correctAnswer": "5",
+      "explanation": "On applique le théorème de Pythagore : dans un triangle rectangle, le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés. Ici, l'hypoténuse est $BC$. On a $BC^2 = AB^2 + AC^2 = 3^2 + 4^2 = 9 + 16 = 25$. Donc $BC = \\sqrt{25} = 5$. L'option 7 correspond à l'addition $3+4$, l'option 25 au carré de la longueur sans prendre la racine, et l'option 12 au produit $3 \\times 4$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "?",
+          "4",
+          "3"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Un triangle $DEF$ est rectangle en $D$. L'hypoténuse $EF$ mesure $13$ cm et le côté $DE$ mesure $5$ cm. Calcule la longueur du côté $DF$.",
+      "options": [
+        "12 cm",
+        "8 cm",
+        "18 cm",
+        "144 cm"
+      ],
+      "correctAnswer": "12 cm",
+      "explanation": "D'après le théorème de Pythagore, $EF^2 = DE^2 + DF^2$. On isole $DF^2$ : $DF^2 = EF^2 - DE^2 = 13^2 - 5^2 = 169 - 25 = 144$. Donc $DF = \\sqrt{144} = 12$ cm. L'option 8 cm correspond à la différence $13-5$, 18 cm à la somme $13+5$, et 144 cm au carré de la longueur sans extraire la racine carrée.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF rectangle en D",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "13",
+          "5",
+          "?"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Un rectangle a pour dimensions $12$ cm de longueur et $5$ cm de largeur. Calcule la longueur de sa diagonale.",
+      "options": [
+        "13 cm",
+        "17 cm",
+        "7 cm",
+        "169 cm"
+      ],
+      "correctAnswer": "13 cm",
+      "explanation": "La diagonale d'un rectangle coupe ce dernier en deux triangles rectangles. La diagonale est l'hypoténuse. On applique Pythagore : $d^2 = 12^2 + 5^2 = 144 + 25 = 169$. Donc $d = \\sqrt{169} = 13$ cm. L'option 17 cm est la somme des côtés, 7 cm leur différence, et 169 cm le carré de la diagonale sans racine carrée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés $20$, $21$ et $29$. En effectuant le calcul nécessaire, détermine si ce triangle est rectangle.",
+      "options": [
+        "Oui car $20^2 + 21^2 = 29^2$",
+        "Non car $20 + 21 \\neq 29$",
+        "Oui car $20 + 21 > 29$",
+        "Non car $20^2 + 21^2 \\neq 29^2$"
+      ],
+      "correctAnswer": "Oui car $20^2 + 21^2 = 29^2$",
+      "explanation": "On utilise la réciproque du théorème de Pythagore. On calcule la somme des carrés des deux plus petits côtés : $20^2 + 21^2 = 400 + 441 = 841$. On calcule le carré du plus grand côté : $29^2 = 841$. Comme les deux résultats sont égaux ($841 = 841$), le triangle est rectangle. L'addition des longueurs (option 2 et 3) ne permet pas de conclure sur la nature du triangle, seule l'égalité des carrés le permet.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle isocèle $ABC$ de sommet $A$, la base $BC$ mesure $10$ cm et les côtés égaux $AB$ et $AC$ mesurent $13$ cm. Calcule la hauteur $AH$ issue de $A$.",
+      "options": [
+        "12 cm",
+        "11 cm",
+        "13 cm",
+        "5 cm"
+      ],
+      "correctAnswer": "12 cm",
+      "explanation": "Dans un triangle isocèle, la hauteur issue du sommet est aussi médiatrice de la base. Le point $H$ est le milieu de $[BC]$, donc $BH = 10 / 2 = 5$ cm. Le triangle $ABH$ est rectangle en $H$. On applique Pythagore : $AB^2 = AH^2 + BH^2$. Soit $13^2 = AH^2 + 5^2$. $169 = AH^2 + 25$. $AH^2 = 144$. Donc $AH = 12$ cm. L'option 5 cm correspond à la demi-base, 13 cm à la longueur du côté égal, et 11 cm est une approximation incorrecte.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle rectangle AHB",
+        "vertexLabels": [
+          "H",
+          "A",
+          "B"
+        ],
+        "sideLabels": [
+          "12",
+          "5",
+          "13"
+        ],
+        "rightAngleAt": 0
+      }
+    }
+  ]
+}

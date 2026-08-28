@@ -1,0 +1,151 @@
+{
+  "_status": "done",
+  "_course_id": 409,
+  "_course_code": "5eme-t06-c05-bilan-statistiques-et-probabilites-5e",
+  "_level": "5e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Données et hasard",
+  "title": "Quiz - Approfondissement : Données et hasard",
+  "questions": [
+    {
+      "text": "Le diagramme en barres ci-dessous représente le nombre de livres lus par cinq élèves sur une semaine. Quel est le mode de cette série statistique ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$2$"
+      ],
+      "correctAnswer": "$5$",
+      "explanation": "Le mode est la valeur qui apparaît le plus souvent. Dans la série $3,5,5,2,4$, la valeur $5$ apparaît deux fois, toutes les autres une seule fois. Donc le mode est $5$.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par jour",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 3,
+            "tone": "blue"
+          },
+          {
+            "label": "Mardi",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Mercredi",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Jeudi",
+            "value": 2,
+            "tone": "navy"
+          },
+          {
+            "label": "Vendredi",
+            "value": 4,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le tableau suivant donne les valeurs et leurs effectifs. Calculez la moyenne de cette série statistique.",
+      "options": [
+        "$20$",
+        "$23$",
+        "$25$",
+        "$30$"
+      ],
+      "correctAnswer": "$23$",
+      "explanation": "La moyenne = (10×2 + 20×3 + 30×5) / (2+3+5) = (20+60+150)/10 = 230/10 = $23$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Valeur",
+          "Effectif"
+        ],
+        "rows": [
+          [
+            "10",
+            "2"
+          ],
+          [
+            "20",
+            "3"
+          ],
+          [
+            "30",
+            "5"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "On lance un dé à six faces équilibré. Quelle est la probabilité d'obtenir un nombre pair ?",
+      "options": [
+        "$1/6$",
+        "$1/3$",
+        "$1/2$",
+        "$2/3$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "Les faces paires sont 2, 4, 6 soit 3 issues favorables sur 6 issues possibles, donc la probabilité est $3/6 = 1/2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un sac contient $3$ billes rouges, $5$ billes bleues et $2$ billes vertes. On tire une bille au hasard. Quelle est la probabilité de tirer une bille bleue ?",
+      "options": [
+        "$1/5$",
+        "$1/2$",
+        "$3/10$",
+        "$2/5$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "Il y a $5$ billes bleues sur un total de $3+5+2 = 10$ billes, donc la probabilité est $5/10 = 1/2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme circulaire ci-dessous montre les pourcentages des sports préférés chez des élèves. Quel est l'angle du secteur correspondant au football ?",
+      "options": [
+        "$120°$",
+        "$144°$",
+        "$150°$",
+        "$160°$"
+      ],
+      "correctAnswer": "$144°$",
+      "explanation": "Le football représente $40$ % des réponses. L'angle du secteur est $40$ % × 360° = 0,4 × 360° = 144°.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Sports préférés des élèves",
+        "slices": [
+          {
+            "label": "Football",
+            "value": 40,
+            "tone": "blue"
+          },
+          {
+            "label": "Basketball",
+            "value": 25,
+            "tone": "green"
+          },
+          {
+            "label": "Tennis",
+            "value": 20,
+            "tone": "red"
+          },
+          {
+            "label": "Natation",
+            "value": 15,
+            "tone": "gold"
+          }
+        ]
+      }
+    }
+  ]
+}

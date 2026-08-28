@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 478,
+  "_course_code": "3eme-t04-c06-bilan-stats-probas-3e",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Indicateurs et probabilités",
+  "title": "Indicateurs statistiques et probabilités",
+  "blocks": [
+    {
+      "title": "Calcul de la moyenne",
+      "content": "On considère la série statistique suivante : $5 ; 8 ; 10 ; 12 ; 8 ; 15$. Calcule la moyenne de cette série. Donne le résultat sous forme de fraction irréductible.",
+      "correctAnswer": "29/3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La moyenne est la somme des valeurs divisée par l'effectif total. La somme est $5 + 8 + 10 + 12 + 8 + 15 = 58$. L'effectif total est $6$. La moyenne est donc $58 / 6 = 29 / 3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Détermination de la médiane",
+      "content": "On reprend la série statistique : $5 ; 8 ; 10 ; 12 ; 8 ; 15$. Détermine la médiane de cette série.",
+      "correctAnswer": "9",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Il faut d'abord ordonner la série par ordre croissant : $5 ; 8 ; 8 ; 10 ; 12 ; 15$. L'effectif total est $6$ (pair). La médiane est la moyenne des deux valeurs centrales (les 3e et 4e valeurs), soit $(8 + 10) / 2 = 9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Probabilité avec un dé pipé",
+      "content": "Un dé à six faces numérotées de 1 à 6 est pipé. La probabilité d'obtenir un 6 est $0,3$. Les cinq autres faces ont toutes la même probabilité d'apparaître. Quelle est la probabilité d'obtenir un 2 ? Donne le résultat sous forme décimale.",
+      "correctAnswer": "0,14",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La somme des probabilités de tous les événements élémentaires vaut $1$. La probabilité du 6 est $0,3$. La probabilité totale pour les cinq autres faces est $1 - 0,3 = 0,7$. Comme ces cinq faces sont équiprobables, la probabilité de chaque face (dont le 2) est $0,7 / 5 = 0,14$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

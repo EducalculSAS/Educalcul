@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Approfondissement : Tests",
+  "title": "Tests conditionnels approfondis",
+  "blocks": [
+    {
+      "title": "Test simple : signe d'un nombre",
+      "content": "Écrire un algorithme qui demande à l'utilisateur de saisir un nombre $x$ (entier ou décimal) et qui affiche : \"Positif\" si $x > 0$, \"Négatif\" si $x < 0$ et \"Nul\" si $x = 0$. Utiliser une structure conditionnelle complète (SI ... ALORS ... SINON SI ... ALORS ... SINON ... FIN SI).",
+      "correctAnswer": "ALGORITHME SigneNombre\\nVARIABLES x : RÉEL\\nDÉBUT\\n    AFFICHER \"Entrez un nombre : \"\\n    SAISIR x\\n    SI x > 0 ALORS\\n        AFFICHER \"Positif\"\\n    SINON SI x < 0 ALORS\\n        AFFICHER \"Négatif\"\\n    SINON\\n        AFFICHER \"Nul\"\\n    FIN SI\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme utilise une structure conditionnelle à trois branches pour tester les trois cas possibles mutuellement exclusifs : strictement positif, strictement négatif, ou nul. L'ordre des tests n'a pas d'importance ici car les conditions sont exclusives deux à deux. La variable $x$ est de type réel pour accepter les décimaux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Tests multiples : mention au brevet",
+      "content": "Écrire un algorithme qui demande la moyenne générale $m$ (sur 20) d'un élève et qui affiche la mention obtenue selon le barème officiel :\\n- \"Pas de mention\" si $m < 12$\\n- \"Assez Bien\" si $12 \\le m < 14$\\n- \"Bien\" si $14 \\le m < 16$\\n- \"Très Bien\" si $m \\ge 16$\\nOn supposera que la moyenne saisie est un nombre compris entre 0 et 20.",
+      "correctAnswer": "ALGORITHME MentionBrevet\\nVARIABLES m : RÉEL\\nDÉBUT\\n    AFFICHER \"Entrez la moyenne (sur 20) : \"\\n    SAISIR m\\n    SI m < 12 ALORS\\n        AFFICHER \"Pas de mention\"\\n    SINON SI m < 14 ALORS\\n        AFFICHER \"Assez Bien\"\\n    SINON SI m < 16 ALORS\\n        AFFICHER \"Bien\"\\n    SINON\\n        AFFICHER \"Très Bien\"\\n    FIN SI\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Comme les tranches sont contiguës et ordonnées, on peut simplifier les conditions en ne testant que la borne supérieure de chaque intervalle (grâce au SINON SI qui garantit que les conditions précédentes sont fausses). Si $m < 12$ est faux, on sait que $m \\ge 12$. Le test suivant $m < 14$ équivaut donc à $12 \\le m < 14$. La dernière branche SINON couvre automatiquement le cas $m \\ge 16$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Conditions imbriquées : année bissextile",
+      "content": "Une année est bissextile si elle est divisible par 4, sauf si elle est divisible par 100, à moins qu'elle ne soit divisible par 400.\\nÉcrire un algorithme qui demande une année $a$ (entier positif) et qui affiche \"Bissextile\" ou \"Non bissextile\" selon la règle. Utiliser des conditions imbriquées (un SI à l'intérieur d'un autre SI).\\nIndication : L'opérateur \"modulo\" (reste de la division euclidienne) s'écrit MOD en pseudo-code ou % en Python. $a$ divisible par 4 s'écrit $a \\bmod 4 = 0$.",
+      "correctAnswer": "ALGORITHME AnneeBissextile\\nVARIABLES a : ENTIER\\nDÉBUT\\n    AFFICHER \"Entrez une année : \"\\n    SAISIR a\\n    SI a MOD 4 = 0 ALORS\\n        SI a MOD 100 = 0 ALORS\\n            SI a MOD 400 = 0 ALORS\\n                AFFICHER \"Bissextile\"\\n            SINON\\n                AFFICHER \"Non bissextile\"\\n            FIN SI\\n        SINON\\n            AFFICHER \"Bissextile\"\\n        FIN SI\\n    SINON\\n        AFFICHER \"Non bissextile\"\\n    FIN SI\\nFIN",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle se traduit naturellement par des SI imbriqués. Premier niveau : test de divisibilité par 4. Si faux, année commune. Si vrai, deuxième niveau : test de divisibilité par 100. Si faux (non divisible par 100), c'est une année bissextile. Si vrai (divisible par 100), troisième niveau : test de divisibilité par 400. Si divisible par 400 -> bissextile, sinon -> non bissextile. Cette structure respecte exactement la hiérarchie des exceptions de la règle.",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

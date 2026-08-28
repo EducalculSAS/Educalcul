@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 379,
+  "_course_code": "5eme-t01-c01-priorites-operatoires",
+  "_level": "5e",
+  "_subject": "Opérations et calcul numérique",
+  "_subtheme": "Parenthèses",
+  "title": "Priorités opératoires : les parenthèses",
+  "blocks": [
+    {
+      "title": "Priorité aux parenthèses",
+      "content": "Dans l'expression $18 - (5 + 3)$, la priorité est donnée à l'opération {{1}}. Le calcul de cette parenthèse donne {{2}}. Le résultat final de l'expression est {{3}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "5 + 3",
+        "8",
+        "10"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La règle des priorités impose de commencer par les calculs à l'intérieur des parenthèses. On calcule donc d'abord $5 + 3 = 8$. L'expression devient $18 - 8$, ce qui donne $10$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Plusieurs parenthèses",
+      "content": "Pour calculer $(14 - 8) \\times (2 + 3)$, on commence par résoudre les deux parenthèses : {{1}} et {{2}}. On obtient alors la multiplication ${{3}} \\times {{4}}$ dont le résultat est {{5}}.",
+      "correctAnswer": "",
+      "blanks": [
+        "14 - 8",
+        "2 + 3",
+        "6",
+        "5",
+        "30"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque parenthèse est traitée en priorité. La première donne $14 - 8 = 6$, la seconde donne $2 + 3 = 5$. Il reste à faire la multiplication $6 \\times 5 = 30$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Placer les parenthèses",
+      "content": "Ajoute des parenthèses dans l'expression $10 - 4 \\times 2$ pour obtenir le résultat $12$. L'expression correcte est ${{1}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "(10 - 4) \\times 2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Sans parenthèses, la multiplication est prioritaire : $4 \\times 2 = 8$, puis $10 - 8 = 2$. Pour obtenir $12$, il faut forcer la soustraction en premier : $(10 - 4) = 6$, puis $6 \\times 2 = 12$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

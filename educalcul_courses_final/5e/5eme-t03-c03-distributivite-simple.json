@@ -1,0 +1,447 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.703648+00:00",
+  "id": 391,
+  "code": "5eme-t03-c03",
+  "title": "Distributivité simple",
+  "description": "Cours structuré Educalcul : Distributivité simple.",
+  "subject": "Calcul littéral et initiation à l'algèbre",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Calcul littéral et initiation à l'algèbre",
+    "titre_du_cours": "Distributivité simple",
+    "objectif_global": "Distributivité simple",
+    "mini_lecons_imposees": [
+      "Développer k(a+b).",
+      "Développer k(a-b).",
+      "Vérifier par substitution."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral et initiation à l'algèbre",
+      "lessons": [
+        {
+          "title": "Développer k(a+b).",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Découvrir la distributivité avec une aire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un grand rectangle. Sa longueur mesure $a + b$ et sa largeur vaut $k$. Si tu coupes ce rectangle en deux plus petits rectangles le long de la longueur, tu obtiens un rectangle de dimensions $k \\times a$ et un autre de dimensions $k \\times b$. L'aire totale ne change pas : elle vaut $k \\times (a + b)$ d'un côté, et $k \\times a + k \\times b$ de l'autre. C'est l'idée profonde de la distributivité : multiplier une somme par un nombre, c'est multiplier chaque terme de la somme par ce nombre."
+            },
+            {
+              "type": "area_decomposer",
+              "shapes": [
+                {
+                  "width": 6,
+                  "height": 4,
+                  "label": "Grand rectangle $k \\times (a+b)$"
+                },
+                {
+                  "width": 4,
+                  "height": 4,
+                  "label": "$k \\times a$"
+                },
+                {
+                  "width": 2,
+                  "height": 4,
+                  "label": "$k \\times b$"
+                }
+              ],
+              "caption": "Le rectangle $4 \\times (4+2)$ découpé en $4 \\times 4$ et $4 \\times 2$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le dessin : le grand rectangle a pour longueur $4+2=6$ et pour largeur $4$. Son aire est $4 \\times 6 = 24$. Les deux petits rectangles ont des aires $4 \\times 4 = 16$ et $4 \\times 2 = 8$. La somme $16+8$ fait bien $24$. Cette propriété marche pour tous les nombres, même négatifs, même avec des lettres. C'est un outil puissant pour transformer des expressions."
+            },
+            {
+              "type": "definition",
+              "term": "Développer",
+              "definition": "Développer une expression, c'est réécrire un produit de la forme $k \\times (a+b)$ sous la forme d'une somme : $k \\times a + k \\times b$. On dit qu'on « distribue » la multiplication sur l'addition.",
+              "example": "$3 \\times (x+5) = 3 \\times x + 3 \\times 5 = 3x + 15$"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la forme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie le facteur commun $k$ devant la parenthèse et les deux termes $a$ et $b$ à l'intérieur."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier chaque terme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $k \\times a$ puis $k \\times b$. N'oublie pas le signe $+$ entre les deux produits."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule les produits numériques et regroupe les termes semblables s'il y en a."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons sur un exemple avec des nombres relatifs : $-2 \\times (x + 7)$. Le facteur commun est $-2$. Je multiplie $-2$ par $x$, ça donne $-2x$. Je multiplie $-2$ par $+7$, ça donne $-14$. Le résultat est $-2x - 14$. Attention au signe : moins fois plus donne moins. Maintenant, c'est à toi de t'entraîner sur un cas simple."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as vu comment développer quand la parenthèse contient une addition. Mais que se passe-t-il s'il y a une soustraction à l'intérieur ? La méthode est très proche, il suffit de bien gérer les signes. C'est ce que nous allons voir maintenant."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers et pièges à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois le facteur $k$ est lui-même une somme, comme $(a+b) \\times c$. La distributivité marche aussi : on multiplie $c$ par $a$ et $c$ par $b$. L'ordre n'a pas d'importance grâce à la commutativité de la multiplication. Un autre piège : quand $k$ est un nombre négatif, les signes changent. Par exemple $-5 \\times (y + 3) = -5y - 15$. Le $+3$ devient $-15$ car moins fois plus donne moins. Prends le temps de bien écrire chaque étape."
+            },
+            {
+              "type": "display_math",
+              "latex": "k \\times (a+b) = k \\times a + k \\times b"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais développer $k(a+b)$, tu vas pouvoir t'attaquer à des expressions un peu plus longues, comme $2(x+3) + 4(x+1)$. Tu développes chaque produit, puis tu regroupes les termes en $x$ et les nombres. C'est la base pour résoudre des équations plus tard. Continue sur l'exercice suivant pour bien ancrer la méthode."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant développer une multiplication par une somme. La prochaine leçon va te montrer comment faire quand il y a une différence dans la parenthèse. C'est presque la même chose, mais les signes demandent une attention particulière."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe $5 \\times (x + 4)$.",
+              "answer": "$5x + 20$",
+              "hint": "Multiplie $5$ par $x$, puis $5$ par $4$.",
+              "explanation": "On distribue le $5$ : $5 \\times x = 5x$ et $5 \\times 4 = 20$. On écrit la somme : $5x + 20$."
+            },
+            {
+              "question": "Développe $-3 \\times (y + 6)$.",
+              "answer": "$-3y - 18$",
+              "hint": "Attention aux signes : moins fois plus donne moins.",
+              "explanation": "On distribue $-3$ : $(-3) \\times y = -3y$ et $(-3) \\times 6 = -18$. Résultat : $-3y - 18$."
+            },
+            {
+              "question": "Développe et simplifie $2(x+3) + 4(x+1)$.",
+              "answer": "$6x + 10$",
+              "hint": "Développe chaque produit, puis regroupe les $x$ ensemble et les nombres ensemble.",
+              "explanation": "$2(x+3) = 2x+6$ et $4(x+1) = 4x+4$. En ajoutant : $2x+4x = 6x$ et $6+4 = 10$. Donc $6x+10$."
+            }
+          ]
+        },
+        {
+          "title": "Développer k(a-b).",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La distributivité avec une différence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre modèle d'aire. Cette fois, le grand rectangle a pour longueur $a - b$ (avec $a > b$) et pour largeur $k$. On peut voir ce rectangle comme la différence de deux rectangles : un grand de dimensions $k \\times a$ dont on retire un petit de dimensions $k \\times b$. L'aire totale vaut donc $k \\times a - k \\times b$. C'est exactement la même idée qu'avec l'addition, mais avec une soustraction à la place."
+            },
+            {
+              "type": "area_decomposer",
+              "shapes": [
+                {
+                  "width": 6,
+                  "height": 4,
+                  "label": "Rectangle $k \\times a$"
+                },
+                {
+                  "width": 2,
+                  "height": 4,
+                  "label": "Partie retirée $k \\times b$"
+                }
+              ],
+              "caption": "Le rectangle $4 \\times 6$ moins le rectangle $4 \\times 2$ donne $4 \\times (6-2)$"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le dessin, le grand rectangle $4 \\times 6$ a une aire de $24$. On enlève le rectangle $4 \\times 2$ d'aire $8$. Il reste $16$, ce qui est bien $4 \\times 4 = 4 \\times (6-2)$. La formule s'écrit $k \\times (a - b) = k \\times a - k \\times b$. Le signe moins se distribue aussi : on multiplie $k$ par $a$, on met un moins, puis on multiplie $k$ par $b$."
+            },
+            {
+              "type": "definition",
+              "term": "Différence",
+              "definition": "Une différence est une soustraction entre deux termes, écrite $a - b$. Dans un développement, le signe moins devant $b$ fait partie du terme : on dit que le second terme est $-b$.",
+              "example": "Dans $5(x - 3)$, les termes sont $x$ et $-3$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les termes avec leurs signes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $k(a-b)$, le premier terme est $a$ (positif), le second est $-b$ (négatif)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Distribuer $k$ sur chaque terme",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule $k \\times a$ puis $k \\times (-b) = -k \\times b$. Écris la soustraction entre les deux produits."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Simplifier l'écriture",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si $k$ est un nombre, fais le calcul. Attention : moins fois moins donne plus !"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Testons avec des nombres relatifs : $-4 \\times (x - 5)$. Le facteur est $-4$. Premier produit : $-4 \\times x = -4x$. Second produit : $-4 \\times (-5) = +20$ car moins fois moins donne plus. Le résultat est $-4x + 20$. Beaucoup d'élèves oublient le double signe et écrivent $-4x - 20$. Prends l'habitude d'écrire l'étape intermédiaire : $-4 \\times (-5)$ pour ne pas te tromper."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Remarque importante : une soustraction $a - b$ peut s'écrire comme une addition $a + (-b)$. Alors la formule $k(a-b) = ka - kb$ n'est qu'un cas particulier de $k(a+(-b)) = ka + k(-b) = ka - kb$. Cette vision unifiée aide à ne pas confondre les règles. Maintenant, essayons un cas où le facteur $k$ est lui-même négatif et la parenthèse contient une différence."
+            },
+            {
+              "type": "display_math",
+              "latex": "k \\times (a-b) = k \\times a - k \\times b"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois l'expression contient plusieurs parenthèses à développer, comme $3(x-2) - 2(x-4)$. Il faut développer chaque produit séparément, en faisant très attention aux signes devant les parenthèses. Le moins devant $2(x-4)$ s'applique à tout le développement : $-(2x - 8) = -2x + 8$. C'est une source d'erreurs fréquente. L'exercice suivant te permettra de t'entraîner sur ce point précis."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant le développement avec une somme et avec une différence. La dernière leçon de ce cours va t'apprendre une technique indispensable pour vérifier tes résultats : la substitution numérique. C'est un filet de sécurité qui te permettra de repérer tes erreurs tout seul."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe $6 \\times (x - 3)$.",
+              "answer": "$6x - 18$",
+              "hint": "Multiplie $6$ par $x$, puis $6$ par $3$, et garde le moins.",
+              "explanation": "$6 \\times x = 6x$ et $6 \\times 3 = 18$. Avec le moins : $6x - 18$."
+            },
+            {
+              "question": "Développe $-2 \\times (y - 7)$.",
+              "answer": "$-2y + 14$",
+              "hint": "Moins fois moins donne plus pour le second terme.",
+              "explanation": "$(-2) \\times y = -2y$ et $(-2) \\times (-7) = +14$. Résultat : $-2y + 14$."
+            },
+            {
+              "question": "Développe et simplifie $3(x-2) - 2(x-4)$.",
+              "answer": "$x + 2$",
+              "hint": "Développe chaque produit, attention au moins devant la seconde parenthèse.",
+              "explanation": "$3(x-2) = 3x-6$. $-2(x-4) = -2x+8$. En ajoutant : $3x-2x = x$ et $-6+8 = 2$. Donc $x+2$."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier par substitution.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi et comment vérifier par substitution"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu développes une expression littérale, tu peux faire une erreur de signe, oublier un terme, ou mal calculer un produit. Heureusement, il existe une méthode simple pour contrôler ton travail : la vérification par substitution. L'idée est de remplacer la variable par une valeur numérique précise, de calculer l'expression de départ et ton résultat développé. Si les deux donnent le même nombre, ton développement est très probablement correct."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple $3(x+4) = 3x+12$. Choisis $x = 2$. Expression de départ : $3(2+4) = 3 \\times 6 = 18$. Expression développée : $3 \\times 2 + 12 = 6 + 12 = 18$. Les deux résultats sont égaux, le développement est bon. Si tu avais écrit $3x+4$ par erreur, tu aurais obtenu $3 \\times 2 + 4 = 10$, ce qui est différent de $18$. L'erreur saute aux yeux."
+            },
+            {
+              "type": "definition",
+              "term": "Substitution",
+              "definition": "Remplacer une variable (lettre) par une valeur numérique choisie pour calculer la valeur d'une expression littérale.",
+              "example": "Dans $5x-3$, substituer $x=2$ donne $5 \\times 2 - 3 = 7$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir une valeur simple",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Prends un petit entier facile à calculer : $0$, $1$, $2$, ou $-1$. Évite les valeurs qui annulent des termes si possible."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer l'expression originale",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace la lettre par la valeur choisie dans l'expression de départ (avec parenthèses). Respecte l'ordre des opérations."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer l'expression développée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais le même remplacement dans ton résultat développé. Calcule."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si les deux résultats sont égaux, ton développement est correct. Sinon, reprends ton travail."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention : une seule substitution ne garantit pas à 100 % l'égalité des expressions (deux expressions différentes peuvent coïncider sur une valeur par hasard). Mais si tu testes deux valeurs différentes, par exemple $x=1$ et $x=-2$, et que ça marche à chaque fois, tu peux être très confiant. C'est une habitude à prendre à chaque développement, surtout au début."
+            },
+            {
+              "type": "thermometer_axis",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -2,
+                  "label": "Test $x=-2$"
+                },
+                {
+                  "value": 1,
+                  "label": "Test $x=1$"
+                },
+                {
+                  "value": 3,
+                  "label": "Test $x=3$"
+                }
+              ],
+              "caption": "Trois valeurs de test bien réparties sur l'axe des nombres relatifs"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La substitution est aussi utile pour comparer deux expressions et deviner si elles sont égales. Par exemple, est-ce que $2(x+3)$ et $2x+6$ sont toujours égales ? Testons $x=0$ : $2(0+3)=6$ et $2\\times0+6=6$. Testons $x=-4$ : $2(-4+3)=2(-1)=-2$ et $2(-4)+6=-8+6=-2$. Ça marche. Cette méthode de « test par valeurs » est souvent utilisée en programmation pour vérifier des formules."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\text{Si } E_1(x) = E_2(x) \\text{ pour plusieurs valeurs de } x, \\text{ alors } E_1 = E_2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un cas piège : les expressions rationnelles ou avec des divisions. La substitution peut masquer des problèmes si la valeur choisie annule un dénominateur. Mais pour nos expressions polynomiales (sommes de termes comme $ax^n$), la méthode est fiable. Une astuce : choisis des valeurs qui donnent des calculs mentaux faciles. $x=0$ donne souvent le terme constant directement. $x=1$ donne la somme des coefficients. $x=-1$ donne la somme alternée. Ces trois tests couvrent beaucoup de cas."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés : développer une somme, développer une différence, et vérifier tes résultats par substitution. Ces trois compétences forment la base du calcul littéral au collège. Elles te serviront pour résoudre des équations, factoriser, et manipuler des formules géométriques. Le bilan final te permettra de vérifier que tout est bien acquis."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais développer $k(a+b)$ en $ka+kb$ en expliquant la démarche.",
+                "Je sais développer $k(a-b)$ en $ka-kb$ sans me tromper sur les signes.",
+                "Je sais vérifier un développement en remplaçant la variable par au moins deux valeurs numériques.",
+                "Je repère l'erreur si les deux calculs donnent des résultats différents.",
+                "J'utilise la distributivité pour simplifier des expressions comme $2(x+3)-4(x-1)$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie par substitution si $4(x-2) = 4x-2$ est correct. Choisis $x=3$.",
+              "answer": "L'égalité est fausse.",
+              "hint": "Calcule $4(3-2)$ et $4\\times3-2$. Compare.",
+              "explanation": "$4(3-2) = 4 \\times 1 = 4$. $4 \\times 3 - 2 = 12 - 2 = 10$. $4 \\neq 10$, donc le développement $4x-2$ est faux. Le bon développement est $4x-8$."
+            },
+            {
+              "question": "Le développement de $-3(2x-5)$ est $-6x+15$. Vérifie avec $x=-1$.",
+              "answer": "Le développement est correct.",
+              "hint": "Calcule l'expression de départ et le développement avec $x=-1$.",
+              "explanation": "Départ : $-3(2(-1)-5) = -3(-2-5) = -3(-7) = 21$. Développé : $-6(-1)+15 = 6+15 = 21$. Égalité confirmée."
+            },
+            {
+              "question": "Parmi ces développements, lequel est correct ? Teste avec $x=2$.\\nA) $5(x-3) = 5x-3$\\nB) $5(x-3) = 5x-15$\\nC) $5(x-3) = 5x+15$",
+              "answer": "B",
+              "hint": "Remplace $x$ par $2$ dans $5(x-3)$ et dans chaque proposition.",
+              "explanation": "$5(2-3) = 5(-1) = -5$. A) $5\\times2-3=7$. B) $5\\times2-15=-5$. C) $5\\times2+15=25$. Seul B donne $-5$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

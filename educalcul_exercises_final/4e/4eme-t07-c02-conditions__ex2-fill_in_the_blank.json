@@ -1,0 +1,55 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 451,
+  "_course_code": "4eme-t07-c02-conditions",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Cas",
+  "title": "Exercices sur les structures conditionnelles : les cas",
+  "blocks": [
+    {
+      "title": "Compléter une instruction conditionnelle simple",
+      "content": "Complète l'algorithme suivant pour afficher « Positif » si la variable $x$ est strictement supérieure à $0$, sinon afficher « Négatif ou nul » :\\n\\nSi {{1}} Alors\\n    Afficher « Positif »\\n{{2}}\\n    Afficher « Négatif ou nul »\\nFin Si",
+      "correctAnswer": "",
+      "blanks": [
+        "x > 0|x>0",
+        "Sinon"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La condition à tester est $x > 0$ (ou $x>0$ sans espace). Si cette condition est vraie, on exécute l'instruction après « Alors ». Sinon, on exécute l'instruction après « Sinon ». Le mot-clé « Sinon » permet de gérer le cas contraire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Utiliser une structure « Selon » avec plusieurs cas",
+      "content": "Complète l'algorithme suivant qui affiche une appréciation selon la valeur de la variable $note$ (entier entre $0$ et $20$) :\\n\\nSelon {{1}}\\n    Cas 10 .. 20 : Afficher « Bien »\\n    Cas 0 .. 9 : Afficher « Insuffisant »\\n    {{2}} : Afficher « Erreur »\\nFin Selon",
+      "correctAnswer": "",
+      "blanks": [
+        "note",
+        "Sinon"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La structure « Selon » attend une variable ou une expression après le mot-clé. Ici, on teste la variable $note$. Les mots-clés « Cas » définissent les intervalles. Le mot-clé « Sinon » (ou « Défaut ») capture toutes les valeurs non prévues, ici une erreur si $note$ n'est pas entre $0$ et $20$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Imbriquer deux conditions",
+      "content": "Complète l'algorithme suivant qui détermine si une personne peut conduire :\\n\\nSi age >= 18 {{1}}\\n    Si permis = vrai {{2}}\\n        Afficher « Peut conduire »\\n    {{3}}\\n        Afficher « Pas de permis »\\n    Fin Si\\nSinon\\n    Afficher « Mineur »\\nFin Si",
+      "correctAnswer": "",
+      "blanks": [
+        "Alors",
+        "Alors",
+        "Sinon"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "La première condition « Si age >= 18 » doit être suivie du mot-clé « Alors » pour introduire le bloc d'instructions si la condition est vraie. À l'intérieur, une seconde condition « Si permis = vrai » nécessite aussi « Alors ». Le « Sinon » de cette seconde condition gère le cas où le permis n'est pas obtenu. Le « Sinon » externe (déjà présent) gère le cas où l'âge est inférieur à 18 ans.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

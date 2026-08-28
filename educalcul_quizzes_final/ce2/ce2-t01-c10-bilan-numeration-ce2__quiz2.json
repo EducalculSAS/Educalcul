@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 151,
+  "_course_code": "ce2-t01-c10-bilan-numeration-ce2",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Comparaison, encadrement, droite",
+  "title": "Quiz : Comparaison, encadrement et droite graduée",
+  "questions": [
+    {
+      "text": "Quelle est la bonne comparaison entre les deux nombres $456$ et $465$ ?",
+      "options": [
+        "$456 < 465$",
+        "$456 > 465$",
+        "$456 = 465$",
+        "$456 ≈ 465$"
+      ],
+      "correctAnswer": "$456 < 465$",
+      "explanation": "On compare les chiffres en commençant par la gauche : les centaines sont identiques (4), les dizaines sont différentes : 5 dizaines pour 456 et 6 dizaines pour 465. Comme 5 est plus petit que 6, 456 est plus petit que 465. On écrit donc $456 < 465$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Range les nombres suivants dans l'ordre croissant : $308$, $380$, $803$, $830$.",
+      "options": [
+        "$308$, $380$, $803$, $830$",
+        "$380$, $308$, $830$, $803$",
+        "$830$, $803$, $380$, $308$",
+        "$308$, $803$, $380$, $830$"
+      ],
+      "correctAnswer": "$308$, $380$, $803$, $830$",
+      "explanation": "Pour ranger par ordre croissant (du plus petit au plus grand), on compare d'abord le chiffre des centaines. 308 et 380 ont 3 centaines (plus petits que 803 et 830 qui en ont 8). Parmi 308 et 380, on compare les dizaines : 0 dizaine pour 308 et 8 dizaines pour 380, donc $308 < 380$. Parmi 803 et 830, on compare les dizaines : 0 dizaine pour 803 et 3 dizaines pour 830, donc $803 < 830$. L'ordre final est $308 < 380 < 803 < 830$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le nombre $547$ est encadré par quelles deux centaines consécutives ?",
+      "options": [
+        "500 et 600",
+        "540 et 550",
+        "500 et 550",
+        "400 et 500"
+      ],
+      "correctAnswer": "500 et 600",
+      "explanation": "Encadrer un nombre par deux centaines consécutives signifie trouver la centaine inférieure et la centaine supérieure. Le nombre 547 a 5 centaines. La centaine inférieure est 500, la centaine supérieure est 600. On écrit $500 < 547 < 600$. Les options 540 et 550 sont des dizaines consécutives, pas des centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la droite graduée ci-dessous, quelle est la valeur du point A ?",
+      "options": [
+        "35",
+        "40",
+        "45",
+        "50"
+      ],
+      "correctAnswer": "45",
+      "explanation": "La droite est graduée de 0 à 100 par pas de 10 (0, 10, 20, 30, 40, 50...). Le point A se situe exactement au milieu entre 40 et 50. Le nombre au milieu de 40 et 50 est 45. Donc la valeur du point A est 45.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée de 0 à 100",
+        "min": 0,
+        "max": 100,
+        "points": [
+          {
+            "value": 45,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On veut encadrer le nombre $628$ par deux dizaines consécutives. Quelle est l'écriture correcte ?",
+      "options": [
+        "$620 < 628 < 630$",
+        "$600 < 628 < 700$",
+        "$628 < 620 < 630$",
+        "$620 > 628 > 630$"
+      ],
+      "correctAnswer": "$620 < 628 < 630$",
+      "explanation": "Le nombre 628 a 6 centaines, 2 dizaines et 8 unités. La dizaine inférieure est 620 (6 centaines, 2 dizaines, 0 unité) et la dizaine supérieure est 630 (6 centaines, 3 dizaines, 0 unité). Comme 628 est plus grand que 620 et plus petit que 630, on écrit $620 < 628 < 630$. L'option $600 < 628 < 700$ est un encadrement par centaines. Les deux dernières options ont les symboles d'inégalité dans le mauvais sens.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

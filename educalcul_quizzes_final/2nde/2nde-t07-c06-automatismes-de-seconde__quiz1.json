@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 539,
+  "_course_code": "2nde-t07-c06-automatismes-de-seconde",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Calcul numérique",
+  "title": "Quiz Automatismes : Calcul numérique",
+  "questions": [
+    {
+      "text": "Calculer l'expression suivante en respectant les priorités opératoires : $5^2 - 2 \\times (8 - 3) + 6 \\div 3$.",
+      "options": [
+        "17",
+        "11",
+        "13",
+        "2"
+      ],
+      "correctAnswer": "17",
+      "explanation": "On commence par les parenthèses : $8 - 3 = 5$. L'expression devient $5^2 - 2 \\times 5 + 6 \\div 3$. Puis les puissances : $5^2 = 25$. Ensuite les multiplications et divisions de gauche à droite : $2 \\times 5 = 10$ et $6 \\div 3 = 2$. Enfin les additions et soustractions de gauche à droite : $25 - 10 + 2 = 17$. Les distracteurs correspondent à l'oubli des parenthèses (11), l'addition avant la soustraction (13) ou l'erreur sur $5^2 = 10$ (2).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifier l'expression $\\frac{2^{-3} \\times 2^5}{2^{-2}}$ en l'écrivant comme une puissance de 2 puis en donnant sa valeur numérique.",
+      "options": [
+        "16",
+        "1",
+        "$\\frac{1}{16}$",
+        "64"
+      ],
+      "correctAnswer": "16",
+      "explanation": "On utilise les lois des puissances : au numérateur, $2^{-3} \\times 2^5 = 2^{-3+5} = 2^2$. La fraction devient $\\frac{2^2}{2^{-2}} = 2^{2 - (-2)} = 2^{4} = 16$. Le distracteur 1 vient de l'erreur $-3+5-(-2)=0$, $1/16$ d'une erreur de signe à la division, et 64 d'une multiplication des exposants au lieu de l'addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Écrire le nombre $0,000\\,000\\,003\\,2$ en notation scientifique.",
+      "options": [
+        "$3,2 \\times 10^{-9}$",
+        "$32 \\times 10^{-10}$",
+        "$3,2 \\times 10^9$",
+        "$0,32 \\times 10^{-8}$"
+      ],
+      "correctAnswer": "$3,2 \\times 10^{-9}$",
+      "explanation": "La notation scientifique s'écrit $a \\times 10^n$ avec $1 \\le a < 10$. Il faut déplacer la virgule de 9 rangs vers la droite pour obtenir $3,2$, ce qui donne un exposant $-9$. Les options $32 \\times 10^{-10}$ et $0,32 \\times 10^{-8}$ ne respectent pas la condition sur $a$, et $3,2 \\times 10^9$ correspond à un nombre très grand (signe de l'exposant inversé).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifier l'expression $\\sqrt{75} - \\sqrt{27} + \\sqrt{48}$.",
+      "options": [
+        "$6\\sqrt{3}$",
+        "$12\\sqrt{3}$",
+        "$2\\sqrt{3}$",
+        "$\\sqrt{96}$"
+      ],
+      "correctAnswer": "$6\\sqrt{3}$",
+      "explanation": "On simplifie chaque racine : $\\sqrt{75} = \\sqrt{25 \\times 3} = 5\\sqrt{3}$, $\\sqrt{27} = \\sqrt{9 \\times 3} = 3\\sqrt{3}$, $\\sqrt{48} = \\sqrt{16 \\times 3} = 4\\sqrt{3}$. L'expression devient $5\\sqrt{3} - 3\\sqrt{3} + 4\\sqrt{3} = (5 - 3 + 4)\\sqrt{3} = 6\\sqrt{3}$. Le distracteur $12\\sqrt{3}$ additionne tout, $2\\sqrt{3}$ soustrait le dernier terme, et $\\sqrt{96}$ ajoute les radicandes ce qui est faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculer et simplifier au maximum : $\\frac{\\frac{3}{4} + \\frac{1}{2}}{\\frac{5}{6} - \\frac{1}{3}}$.",
+      "options": [
+        "$\\frac{5}{2}$",
+        "$\\frac{5}{8}$",
+        "$\\frac{4}{5}$",
+        "$\\frac{15}{8}$"
+      ],
+      "correctAnswer": "$\\frac{5}{2}$",
+      "explanation": "Numérateur : $\\frac{3}{4} + \\frac{1}{2} = \\frac{3}{4} + \\frac{2}{4} = \\frac{5}{4}$. Dénominateur : $\\frac{5}{6} - \\frac{1}{3} = \\frac{5}{6} - \\frac{2}{6} = \\frac{3}{6} = \\frac{1}{2}$. La division donne $\\frac{5}{4} \\div \\frac{1}{2} = \\frac{5}{4} \\times 2 = \\frac{10}{4} = \\frac{5}{2}$. Le distracteur $5/8$ correspond à une multiplication au lieu d'une division, $4/5$ à l'inverse, et $15/8$ à une erreur de simplification croisée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

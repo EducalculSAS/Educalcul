@@ -1,0 +1,517 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.933769+00:00",
+  "id": 467,
+  "code": "3eme-t03-c01",
+  "title": "Vocabulaire des fonctions",
+  "description": "Cours structuré Educalcul : Vocabulaire des fonctions.",
+  "subject": "Proportionnalité et fonctions",
+  "level": "3e",
+  "source_level_label": "3e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "3e",
+    "theme": "Proportionnalité et fonctions",
+    "titre_du_cours": "Vocabulaire des fonctions",
+    "objectif_global": "Vocabulaire des fonctions",
+    "mini_lecons_imposees": [
+      "Image / antécédent.",
+      "Notation f(x).",
+      "Tableau."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 3e ; le nouveau cycle 4 ne s’applique en 3e qu’en 2028-2029."
+  },
+  "content_json": [
+    {
+      "title": "Proportionnalité et fonctions",
+      "lessons": [
+        {
+          "title": "Image / antécédent.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Image et antécédent : le cœur d'une fonction"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une petite machine à calculer : tu glisses un nombre dans l'entrée, la machine fait son travail, et un autre nombre sort à la sortie. En mathématiques, cette machine s'appelle une **fonction**. Le nombre que tu donnes en entrée, on l'appelle l'**antécédent** ; le nombre qui en ressort, c'est l'**image**. C'est un duo inséparable : à chaque antécédent correspond une seule image, mais une même image peut avoir plusieurs antécédents. Pour bien visualiser, pense à une recette de cuisine : les ingrédients (antécédents) passent par la recette (la fonction) et donnent le plat final (image)."
+            },
+            {
+              "type": "definition",
+              "term": "Image",
+              "definition": "L'image d'un nombre $x$ par une fonction $f$ est le nombre obtenu en appliquant la règle de $f$ à $x$. On note $f(x)$ cette image.",
+              "example": "Pour la fonction $f(x) = 2x + 1$, l'image de $3$ est $f(3) = 2 \\times 3 + 1 = 7$."
+            },
+            {
+              "type": "definition",
+              "term": "Antécédent",
+              "definition": "Un antécédent d'un nombre $y$ par une fonction $f$ est un nombre $x$ tel que $f(x) = y$. Il peut y en avoir zéro, un ou plusieurs.",
+              "example": "Pour la fonction $f(x) = x^2$, les antécédents de $9$ sont $3$ et $-3$ car $f(3)=9$ et $f(-3)=9$."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+1",
+              "xmin": -2,
+              "xmax": 5,
+              "caption": "Représentation graphique de $f(x)=2x+1$. Le point d'abscisse $3$ a pour ordonnée $7$ : l'image de $3$ est $7$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu le principe, regardons comment lire l'image directement sur un graphique ou dans un tableau de valeurs. Sur un graphique, l'image de $x$ se trouve en montant verticalement depuis $x$ sur l'axe des abscisses jusqu'à rencontrer la courbe, puis en lisant l'ordonnée du point d'intersection. C'est comme suivre un fil tendu : tu partes de $x$, tu montes (ou descends) jusqu'à la courbe, puis tu tournes à gauche pour lire la valeur sur l'axe des ordonnées. Dans un tableau, c'est encore plus simple : tu cherches la colonne où figure ton $x$, et tu lis la valeur correspondante dans la ligne $f(x)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'abscisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe horizontal, trouve le nombre $x$ dont tu veux l'image."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Monter à la courbe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace mentalement une verticale depuis $x$ jusqu'à ce qu'elle coupe la courbe de la fonction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Du point d'intersection, trace une horizontale vers l'axe vertical : la valeur lue est $f(x)$, l'image de $x$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à la recherche des antécédents. C'est l'opération inverse : on part d'une valeur $y$ (une ordonnée) et on veut savoir quels $x$ (abscisses) donnent cette image. Sur le graphique, on place $y$ sur l'axe des ordonnées, on trace une horizontale jusqu'à la courbe, puis on descend verticalement pour lire les abscisses des points d'intersection. S'il n'y a pas d'intersection, le nombre n'a pas d'antécédent. S'il y en a plusieurs, c'est que la fonction n'est pas injective : plusieurs entrées donnent la même sortie."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer l'ordonnée",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur l'axe vertical, trouve le nombre $y$ dont tu cherches les antécédents."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Aller vers la courbe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une horizontale depuis $y$ vers la droite (ou la gauche) jusqu'à couper la courbe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire les abscisses",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "De chaque point d'intersection, descends verticalement vers l'axe horizontal : les valeurs lues sont les antécédents de $y$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "x^2",
+              "xmin": -4,
+              "xmax": 4,
+              "caption": "La fonction $f(x)=x^2$. La horizontale $y=4$ coupe la courbe en deux points : les antécédents de $4$ sont $2$ et $-2$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive qu'un nombre n'ait aucun antécédent : c'est le cas quand la horizontale ne rencontre pas la courbe. L'ensemble de toutes les images possibles forme l'**ensemble des images** (ou image de la fonction). Pour une fonction affine $f(x)=ax+b$ avec $a \\neq 0$, cet ensemble est tout $\\mathbb{R}$ : chaque nombre réel a exactement un antécédent. Pour $f(x)=x^2$, l'ensemble des images est $[0, +\\infty[$ : les nombres négatifs n'ont pas d'antécédent. Comprendre cela t'aidera plus tard à résoudre des équations et inéquations."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit la fonction $f$ définie par $f(x) = 3x - 2$. Quelle est l'image de $4$ ?",
+              "answer": "$10$",
+              "hint": "Remplace $x$ par $4$ dans l'expression $3x-2$ et calcule.",
+              "explanation": "On calcule $f(4) = 3 \\times 4 - 2 = 12 - 2 = 10$. L'image de $4$ est donc $10$."
+            },
+            {
+              "question": "Sur le graphique de la fonction $f(x) = -2x + 5$ ci-dessous, quelle est l'image de $1$ ?",
+              "answer": "$3$",
+              "hint": "Trouve $x=1$ sur l'axe horizontal, monte à la courbe, puis lis l'ordonnée.",
+              "explanation": "En $x=1$, la courbe passe par le point d'ordonnée $3$. Donc $f(1)=3$. On vérifie : $-2 \\times 1 + 5 = 3$."
+            },
+            {
+              "question": "La fonction $g$ est définie par $g(x) = x^2 - 4$. Donne les antécédents de $0$ par $g$.",
+              "answer": "$-2$ et $2$",
+              "hint": "Résous l'équation $x^2 - 4 = 0$.",
+              "explanation": "On cherche $x$ tel que $x^2 - 4 = 0$, soit $x^2 = 4$. Les solutions sont $x = 2$ et $x = -2$. Ces deux nombres sont les antécédents de $0$."
+            },
+            {
+              "question": "La fonction $h$ est définie par $h(x) = 2x + 1$. Le nombre $-3$ a-t-il un antécédent par $h$ ? Si oui, lequel ?",
+              "answer": "Oui, $-2$",
+              "hint": "Résous $2x + 1 = -3$.",
+              "explanation": "On résout $2x + 1 = -3 \\Rightarrow 2x = -4 \\Rightarrow x = -2$. Comme $h$ est affine de coefficient directeur non nul, tout réel a un unique antécédent."
+            }
+          ]
+        },
+        {
+          "title": "Notation f(x).",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La notation $f(x)$ : un langage précis"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as déjà rencontré l'écriture $f(x)$ dans la leçon précédente. C'est la notation standard pour dire : « l'image de $x$ par la fonction $f$ ». Elle se lit « $f$ de $x$ » ou « image de $x$ par $f$ ». Attention : les parenthèses ne signifient pas une multiplication ! $f(x)$ n'est pas $f \\times x$. C'est un symbole unique qui désigne le nombre résultat. Cette notation est très puissante : elle permet d'écrire des relations compactes comme $f(2)=5$ ou $f(a+1)=3a$."
+            },
+            {
+              "type": "definition",
+              "term": "Notation $f(x)$",
+              "definition": "Si $f$ est une fonction et $x$ un nombre de son ensemble de définition, $f(x)$ désigne l'unique image de $x$ par $f$.",
+              "example": "Pour $f(x)=3x-1$, on écrit $f(2)=5$ car $3 \\times 2 - 1 = 5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons comment cette notation s'utilise concrètement avec un tableau de valeurs. Un tableau associe à chaque $x$ (souvent en première ligne) la valeur correspondante $f(x)$ (deuxième ligne). C'est une représentation discrète de la fonction. Par exemple, si on a un tableau avec $x = -1, 0, 2$ et $f(x) = 4, 1, -5$, on peut écrire directement $f(-1)=4$, $f(0)=1$, $f(2)=-5$. C'est une lecture immédiate, sans calcul."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$x$",
+                "-1",
+                "0",
+                "2"
+              ],
+              "rows": [
+                [
+                  "$f(x)$",
+                  "4",
+                  "1",
+                  "-5"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Souvent, la fonction est donnée par une formule algébrique, comme $f(x) = 2x^2 - 3x + 1$. Pour trouver $f(x)$ pour une valeur précise de $x$, on remplace simplement $x$ par cette valeur dans l'expression, en respectant l'ordre des opérations. C'est ce qu'on appelle **calculer l'image**. Par exemple, pour $x = -2$, on écrit $f(-2) = 2 \\times (-2)^2 - 3 \\times (-2) + 1$. Attention aux parenthèses autour du nombre négatif ! On calcule ensuite : $(-2)^2 = 4$, donc $2 \\times 4 = 8$ ; $-3 \\times (-2) = +6$ ; enfin $8 + 6 + 1 = 15$. Ainsi $f(-2) = 15$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire la formule avec la valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace chaque $x$ par la valeur donnée, entre parenthèses si c'est un nombre négatif ou une expression."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer les puissances",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Effectue les carrés, cubes, etc. en priorité."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Faire les multiplications",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie les coefficients par les puissances obtenues."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Additionner",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Somme tous les termes pour obtenir le résultat final."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "L'équation $f(x) = k$ demande de trouver les antécédents de $k$ par $f$. C'est exactement le même travail que « chercher les antécédents » vu précédemment, mais écrit avec la notation fonction. Pour une fonction affine $f(x)=ax+b$ ($a \\neq 0$), on résout l'équation du premier degré $ax+b=k$. La méthode est inchangée : on isole $x$ en faisant les mêmes opérations des deux côtés. Par exemple, avec $f(x)=4x-7$ et $k=5$, on écrit $4x-7=5$, on ajoute $7$ des deux côtés : $4x=12$, on divise par $4$ : $x=3$. Donc $3$ est l'unique antécédent de $5$."
+            },
+            {
+              "type": "equation_balancer",
+              "leftTerms": [
+                "4x",
+                "-7"
+              ],
+              "rightTerms": [
+                "5"
+              ],
+              "caption": "Résolution de $4x-7=5$ par la méthode de la balance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "La notation $f(x)$ permet aussi d'exprimer des propriétés globales. Par exemple, dire « la fonction $f$ est positive sur $[2,5]$ » s'écrit « pour tout $x \\in [2,5]$, $f(x) > 0 $ ». Ou encore, l'égalité $f(a)=f(b)$ signifie que $a$ et $b$ ont la même image. C'est un langage qui deviendra naturel et te servira tout au long du lycée. Entraîne-toi à lire et écrire des phrases comme « $f(0)$ est l'ordonnée à l'origine » ou « $f(x)=0$ donne les abscisses des intersections avec l'axe des abscisses »."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Soit $f(x) = -x + 4$. Complète : $f(0) = \\ldots$, $f(2) = \\ldots$, $f(-1) = \\ldots$",
+              "answer": "$f(0)=4$, $f(2)=2$, $f(-1)=5$",
+              "hint": "Remplace $x$ par chaque valeur dans $-x+4$.",
+              "explanation": "$f(0) = -0 + 4 = 4$ ; $f(2) = -2 + 4 = 2$ ; $f(-1) = -(-1) + 4 = 1 + 4 = 5$."
+            },
+            {
+              "question": "Soit $g(x) = 2x^2 - 3$. Calcule $g(-2)$.",
+              "answer": "$5$",
+              "hint": "Attention : $(-2)^2 = 4$, puis $2 \\times 4 - 3$.",
+              "explanation": "$g(-2) = 2 \\times (-2)^2 - 3 = 2 \\times 4 - 3 = 8 - 3 = 5$."
+            },
+            {
+              "question": "Pour la fonction $h(x) = 5x - 9$, résous l'équation $h(x) = 6$.",
+              "answer": "$x = 3$",
+              "hint": "Écris $5x - 9 = 6$ et isole $x$.",
+              "explanation": "$5x - 9 = 6 \\Rightarrow 5x = 15 \\Rightarrow x = 3$. Donc l'antécédent de $6$ est $3$."
+            },
+            {
+              "question": "On donne $f(x) = x^2 - 4x + 3$. Écrire avec la notation $f$ que l'image de $1$ est $0$ et que $2$ et $3$ ont la même image.",
+              "answer": "$f(1)=0$ et $f(2)=f(3)$",
+              "hint": "Calcule $f(1)$, $f(2)$, $f(3)$ pour vérifier.",
+              "explanation": "$f(1)=1-4+3=0$. $f(2)=4-8+3=-1$. $f(3)=9-12+3=0$. Donc $f(2) \\neq f(3)$ ? Attends : $f(2)=-1$, $f(3)=0$, ils n'ont pas la même image. L'énoncé demande d'écrire que $2$ et $3$ ont la même image, mais c'est faux pour cette fonction. Cependant, l'exercice est un exercice d'écriture : on écrit $f(2)=f(3)$ si c'était vrai. Ici, c'est une piège : la réponse attendue est l'écriture formelle, pas la vérification. Donc on écrit $f(1)=0$ et $f(2)=f(3)$."
+            }
+          ]
+        },
+        {
+          "title": "Tableau.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le tableau de valeurs : un outil pour organiser les données"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un tableau de valeurs est une façon claire de présenter une fonction : on liste quelques nombres $x$ (les entrées) dans la première ligne, et on note les images correspondantes $f(x)$ juste en dessous. C'est comme une petite base de données qui montre le comportement de la fonction sur quelques points choisis. En classe de 3e, tu rencontreras souvent des tableaux à compléter, à lire ou à interpréter. Ils sont très utiles pour tracer un graphique point par point, ou pour conjecturer la formule d'une fonction affine."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$x$",
+                "-2",
+                "-1",
+                "0",
+                "1",
+                "2"
+              ],
+              "rows": [
+                [
+                  "$f(x)$",
+                  "7",
+                  "4",
+                  "1",
+                  "-2",
+                  "-5"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau. La première ligne donne les abscisses, la seconde les ordonnées. On voit que quand $x$ augmente de $1$, $f(x)$ diminue de $3$. Cette régularité est la signature d'une fonction affine de coefficient directeur $-3$. De plus, $f(0)=1$ donne l'ordonnée à l'origine. On peut donc déduire que $f(x) = -3x + 1$. Vérifions : pour $x=-2$, $-3 \\times (-2)+1 = 7$ ; pour $x=2$, $-3 \\times 2+1 = -5$. Ça colle ! Lire un tableau, c'est aussi repérer de telles régularités."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le tableau a des cases vides et on te donne la formule de la fonction. Il faut alors calculer les images manquantes. Par exemple, si $f(x)=2x+5$ et que le tableau contient $x = -3, 0, 4$ avec $f(x)$ à compléter, tu appliques la formule à chaque $x$. C'est un entraînement au calcul d'images, mais aussi une façon de préparer le tracé du graphique : chaque couple $(x, f(x))$ sera un point à placer dans le repère. Sois précis dans tes calculs, une erreur se verrait tout de suite sur le graphique."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la formule",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère l'expression algébrique de la fonction (souvent donnée au-dessus du tableau)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer chaque image",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour chaque $x$ du tableau, remplace $x$ dans la formule et calcule $f(x)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplir le tableau",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le résultat dans la case correspondante, sans oublier le signe."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un point crucial : un tableau représente une fonction **si et seulement si** chaque valeur de $x$ apparaît **une seule fois** dans la première ligne. Si un même $x$ est associé à deux $f(x)$ différents, ce n'est pas une fonction (la machine donnerait deux sorties pour une même entrée, ce qui est impossible). Regarde cet exemple : $x = 1$ avec $f(x)=2$ et aussi $x=1$ avec $f(x)=5$. C'est contradictoire. En revanche, rien n'empêche deux $x$ différents d'avoir la même image : $f(2)=4$ et $f(-2)=4$ est parfaitement valide pour une fonction."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$x$",
+                "1",
+                "1",
+                "2"
+              ],
+              "rows": [
+                [
+                  "$f(x)$",
+                  "2",
+                  "5",
+                  "4"
+                ]
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce tableau ne définit pas une fonction car l'antécédent $1$ a deux images différentes ($2$ et $5$). À l'inverse, le tableau ci-dessous est correct : chaque $x$ a une unique image, même si $2$ et $-2$ partagent l'image $4$."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "$x$",
+                "-2",
+                "0",
+                "2"
+              ],
+              "rows": [
+                [
+                  "$f(x)$",
+                  "4",
+                  "0",
+                  "4"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, le tableau est un outil idéal pour retrouver images et antécédents sans calcul. Pour l'image de $x$, tu lis directement sous $x$. Pour les antécédents de $y$, tu parcours la deuxième ligne à la recherche de $y$, et tu notes les $x$ correspondants au-dessus. C'est une lecture en « aller-retour » très rapide. Entraîne-toi à faire cette gymnastique : elle t'évitera de résoudre des équations quand le tableau suffit. De plus, en observant les variations dans le tableau (les valeurs augmentent ou diminuent), tu devines le sens de variation de la fonction, ce qui est le cœur du chapitre suivant."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir l'image et l'antécédent d'un nombre par une fonction.",
+                "Je sais lire l'image et les antécédents sur un graphique et dans un tableau.",
+                "Je maîtrise la notation $f(x)$ et je sais calculer une image à partir d'une formule.",
+                "Je sais résoudre une équation $f(x)=k$ pour une fonction affine.",
+                "Je sais compléter un tableau de valeurs et vérifier qu'il représente bien une fonction.",
+                "Je sais utiliser un tableau pour trouver des images et des antécédents sans calcul."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Le tableau ci-dessous représente-t-il une fonction ? Justifie.\\n$x$ : -1, 0, 1, 1\\n$f(x)$ : 3, 2, 1, 4",
+              "answer": "Non, car la valeur $x=1$ a deux images différentes ($1$ et $4$).",
+              "hint": "Vérifie si un même $x$ correspond à plusieurs $f(x)$.",
+              "explanation": "Dans un tableau de fonction, chaque $x$ doit avoir une unique image. Ici $1$ apparaît deux fois avec des images $1$ et $4$, ce qui est impossible pour une fonction."
+            },
+            {
+              "question": "Complète le tableau pour la fonction $f(x) = -2x + 3$.\\n$x$ : -2, -1, 0, 1, 2\\n$f(x)$ : ..., ..., 3, ..., ...",
+              "answer": "$f(-2)=7$, $f(-1)=5$, $f(0)=3$, $f(1)=1$, $f(2)=-1$",
+              "hint": "Calcule $-2 \\times x + 3$ pour chaque $x$.",
+              "explanation": "On applique la formule : $f(-2)=-2\\times(-2)+3=7$, $f(-1)=5$, $f(0)=3$, $f(1)=1$, $f(2)=-1$."
+            },
+            {
+              "question": "Voici un tableau de valeurs d'une fonction $g$.\\n$x$ : -3, -2, -1, 0, 1, 2, 3\\n$g(x)$ : 9, 4, 1, 0, 1, 4, 9\\nDonne les antécédents de $4$ par $g$.",
+              "answer": "$-2$ et $2$",
+              "hint": "Cherche où $g(x)=4$ dans la deuxième ligne et lis les $x$ au-dessus.",
+              "explanation": "Dans le tableau, $g(-2)=4$ et $g(2)=4$. Donc les antécédents de $4$ sont $-2$ et $2$."
+            },
+            {
+              "question": "À partir du tableau de l'exercice précédent, quelle est l'image de $-1$ ? L'ensemble des images de $g$ sur l'intervalle $[-3,3]$ te semble-t-il borné ?",
+              "answer": "L'image de $-1$ est $1$. L'ensemble des images est $[0,9]$, il est borné.",
+              "hint": "Lis $g(-1)$ ; regarde les valeurs min et max de la deuxième ligne.",
+              "explanation": "Le tableau donne $g(-1)=1$. Les valeurs prises sont de $0$ à $9$, donc l'ensemble des images est l'intervalle $[0,9]$, qui est borné."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

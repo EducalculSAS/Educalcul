@@ -1,0 +1,758 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.376681+00:00",
+  "id": 602,
+  "code": "1ere-generale-maths-t05-c08",
+  "title": "Fonctions trigonométriques prévues",
+  "description": "Cours structuré Educalcul : Fonctions trigonométriques prévues.",
+  "subject": "Analyse : dérivation, exponentielle et trigonométrie",
+  "level": "premiere",
+  "source_level_label": "Première spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première spécialité mathématiques",
+    "theme": "Analyse : dérivation, exponentielle et trigonométrie",
+    "titre_du_cours": "Fonctions trigonométriques prévues",
+    "objectif_global": "Fonctions trigonométriques prévues",
+    "mini_lecons_imposees": [
+      "Courbes.",
+      "Périodicité.",
+      "Résolutions simples."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de spécialité mathématiques de Première applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Analyse : dérivation, exponentielle et trigonométrie",
+      "lessons": [
+        {
+          "title": "Courbes.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les courbes du sinus et du cosinus"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans l'univers des fonctions trigonométriques. Imagine une roue qui tourne doucement : la hauteur d'un point sur son bord par rapport au centre dessine une vague régulière. C'est exactement ce que représente la fonction sinus. Sur un repère orthonormé, l'abscisse correspond à l'angle en radians et l'ordonnée à la valeur du sinus de cet angle. La courbe obtenue est continue, lisse et se répète indéfiniment. Elle passe par l'origine, monte jusqu'à 1 à \\(\\frac{\\pi}{2}\\), redescend à 0 à \\(\\pi\\), atteint -1 à \\(\\frac{3\\pi}{2}\\) et revient à 0 à \\(2\\pi\\). Ce motif de base se reproduit tous les \\(2\\pi\\)."
+            },
+            {
+              "type": "display_math",
+              "latex": "y = \\sin x"
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": -6.283,
+              "xmax": 6.283,
+              "caption": "Courbe de la fonction sinus sur deux périodes"
+            },
+            {
+              "type": "definition",
+              "term": "Amplitude",
+              "definition": "L'amplitude d'une fonction trigonométrique est la moitié de la distance entre sa valeur maximale et sa valeur minimale. Pour \\(\\sin x\\) et \\(\\cos x\\), l'amplitude vaut 1.",
+              "example": "La fonction \\(y = 3\\sin x\\) a une amplitude de 3."
+            },
+            {
+              "type": "definition",
+              "term": "Période",
+              "definition": "La période est la plus petite valeur positive \\(T\\) telle que \\(f(x+T) = f(x)\\) pour tout \\(x\\). Pour \\(\\sin x\\) et \\(\\cos x\\), la période fondamentale est \\(2\\pi\\).",
+              "example": "La fonction \\(y = \\sin(2x)\\) a une période de \\(\\pi\\)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer les points remarquables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère les angles \\(0, \\frac{\\pi}{2}, \\pi, \\frac{3\\pi}{2}, 2\\pi\\) sur l'axe des abscisses et note les valeurs correspondantes \\(0, 1, 0, -1, 0\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer la courbe lisse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie ces points par une courbe arrondie, sans angles vifs, en respectant la symétrie par rapport à l'origine."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Prolonger par périodicité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Reproduis le motif à gauche et à droite en ajoutant ou retranchant \\(2\\pi\\)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Le cosinus est le frère jumeau du sinus, simplement décalé d'un quart de tour. Si tu déplaces la courbe du sinus vers la gauche de \\(\\frac{\\pi}{2}\\), tu obtiens exactement la courbe du cosinus. Cela signifie que \\(\\cos x = \\sin\\left(x + \\frac{\\pi}{2}\\right)\\). La courbe du cosinus part de 1 à l'origine, descend à 0 à \\(\\frac{\\pi}{2}\\), atteint -1 à \\(\\pi\\), remonte à 0 à \\(\\frac{3\\pi}{2}\\) et revient à 1 à \\(2\\pi\\)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La courbe du cosinus"
+            },
+            {
+              "type": "graph",
+              "expression": "cos(x)",
+              "xmin": -6.283,
+              "xmax": 6.283,
+              "caption": "Courbe de la fonction cosinus sur deux périodes"
+            },
+            {
+              "type": "definition",
+              "term": "Décalage de phase",
+              "definition": "Un décalage de phase correspond à une translation horizontale de la courbe. Pour \\(y = \\sin(x + \\phi)\\), le graphique est décalé de \\(-\\phi\\) sur l'axe des abscisses.",
+              "example": "La courbe \\(y = \\sin\\left(x - \\frac{\\pi}{4}\\right)\\) est décalée de \\(\\frac{\\pi}{4}\\) vers la droite."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le décalage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère la valeur de \\(\\phi\\) dans l'expression \\(\\sin(x + \\phi)\\) ou \\(\\cos(x + \\phi)\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Déplacer les points de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la translation à chaque point remarquable du sinus ou du cosinus standard."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tracer la nouvelle courbe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Relie les points translatés en conservant la forme d'onde originale."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "La tangente raconte une autre histoire : elle mesure la pente de la droite qui joint l'origine au point du cercle trigonométrique. Contrairement au sinus et au cosinus, la tangente n'est pas bornée ; elle possède des asymptotes verticales là où le cosinus s'annule, c'est-à-dire en \\(\\frac{\\pi}{2} + k\\pi\\). Entre deux asymptotes successives, la courbe est strictement croissante et traverse l'origine. Sa période fondamentale est \\(\\pi\\)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La courbe de la tangente"
+            },
+            {
+              "type": "graph",
+              "expression": "tan(x)",
+              "xmin": -3.1415,
+              "xmax": 3.1415,
+              "caption": "Courbe de la fonction tangente sur une période"
+            },
+            {
+              "type": "definition",
+              "term": "Asymptote verticale",
+              "definition": "Une droite verticale \\(x = a\\) est une asymptote si la fonction tend vers \\(+\\infty\\) ou \\(-\\infty\\) lorsque \\(x\\) approche \\(a\\). Pour \\(\\tan x\\), les asymptotes sont \\(x = \\frac{\\pi}{2} + k\\pi\\).",
+              "example": "À \\(x = \\frac{\\pi}{2}\\), \\(\\tan x\\) n'est pas définie et la courbe s'éloigne indéfiniment."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Localiser les asymptotes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace les droites \\(x = \\frac{\\pi}{2} + k\\pi\\) pour quelques entiers \\(k\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Placer le point d'inflexion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "La courbe passe toujours par \\((0,0)\\) et par \\((\\pi, 0)\\), \\((-\\pi, 0)\\), etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Dessiner les branches",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Entre deux asymptotes, trace une courbe croissante qui coupe l'axe des abscisses au milieu."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu maîtrises les trois courbes de base, voyons comment les transformer. Multiplier la fonction par un coefficient \\(a\\) change l'amplitude : \\(y = a\\sin x\\) a une amplitude \\(|a|\\). Multiplier la variable par \\(b\\) modifie la période : la nouvelle période devient \\(\\frac{2\\pi}{|b|}\\) pour le sinus et le cosinus, \\(\\frac{\\pi}{|b|}\\) pour la tangente. Ajouter une constante \\(c\\) à l'intérieur de l'argument produit un décalage horizontal de \\(-\\frac{c}{b}\\)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Transformations simples"
+            },
+            {
+              "type": "display_math",
+              "latex": "y = a \\sin(bx + c)"
+            },
+            {
+              "type": "graph",
+              "expression": "2*sin(2*x + pi/4)",
+              "xmin": -6.283,
+              "xmax": 6.283,
+              "caption": "Exemple : amplitude 2, période π, décalage -π/8"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier \\(a, b, c\\)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans \\(y = 2\\sin(2x + \\frac{\\pi}{4})\\), on a \\(a = 2\\), \\(b = 2\\), \\(c = \\frac{\\pi}{4}\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer amplitude et période",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Amplitude = 2. Période = \\(\\frac{2\\pi}{2} = \\pi\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer le décalage",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décalage = \\(-\\frac{c}{b} = -\\frac{\\pi/4}{2} = -\\frac{\\pi}{8}\\) (vers la gauche)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Tracer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique ces trois transformations à la courbe de base du sinus."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Trace la courbe de \\(y = \\sin x\\) sur l'intervalle \\([-\\pi, 3\\pi]\\). Indique les coordonnées des points où la courbe coupe l'axe des abscisses.",
+              "answer": "Les zéros sont \\(x = -\\pi, 0, \\pi, 2\\pi, 3\\pi\\).",
+              "hint": "Rappelle-toi que \\(\\sin x = 0\\) pour \\(x = k\\pi\\).",
+              "explanation": "La fonction sinus s'annule exactement aux multiples entiers de \\(\\pi\\). Sur l'intervalle donné, les entiers \\(k\\) vont de -1 à 3."
+            },
+            {
+              "question": "Donne l'amplitude, la période et le décalage de phase de \\(y = -3\\cos\\left(4x - \\frac{\\pi}{2}\\right)\\).",
+              "answer": "Amplitude = 3, Période = \\(\\frac{\\pi}{2}\\), Décalage = \\(\\frac{\\pi}{8}\\) vers la droite.",
+              "hint": "Écris l'argument sous la forme \\(4(x - \\frac{\\pi}{8})\\).",
+              "explanation": "Le coefficient devant le cosinus donne l'amplitude (valeur absolue). La période vaut \\(\\frac{2\\pi}{4} = \\frac{\\pi}{2}\\). Le terme constant à l'intérieur se factorise par 4 pour lire le décalage."
+            },
+            {
+              "question": "Quelles sont les asymptotes verticales de \\(y = \\tan\\left(\\frac{x}{2}\\right)\\) sur \\([-\\pi, \\pi]\\) ?",
+              "answer": "Asymptotes en \\(x = -\\pi\\) et \\(x = \\pi\\).",
+              "hint": "Résous \\(\\frac{x}{2} = \\frac{\\pi}{2} + k\\pi\\).",
+              "explanation": "L'argument de la tangente doit être \\(\\frac{\\pi}{2} + k\\pi\\). En multipliant par 2, on obtient \\(x = \\pi + 2k\\pi\\). Dans l'intervalle, seul \\(k = -1\\) et \\(k = 0\\) donnent \\(-\\pi\\) et \\(\\pi\\)."
+            },
+            {
+              "question": "Esquisse la courbe de \\(y = 0,5\\sin(3x - \\pi)\\) en précisant amplitude, période et décalage.",
+              "answer": "Amplitude = 0,5, Période = \\(\\frac{2\\pi}{3}\\), Décalage = \\(\\frac{\\pi}{3}\\) vers la droite.",
+              "hint": "Factorise 3 dans l'argument : \\(3(x - \\frac{\\pi}{3})\\).",
+              "explanation": "Le coefficient 0,5 donne l'amplitude. Le facteur 3 devant \\(x\\) divise la période par 3. Le terme \\(-\\pi\\) correspond à un décalage de \\(\\frac{\\pi}{3}\\) vers la droite."
+            }
+          ]
+        },
+        {
+          "title": "Périodicité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce que la périodicité ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fonction est dite périodique lorsqu'il existe un nombre positif \\(T\\) tel que pour tout \\(x\\) de son ensemble de définition, \\(f(x+T) = f(x)\\). Le plus petit \\(T\\) qui vérifie cette propriété s'appelle la période fondamentale. Pour le sinus et le cosinus, cette période fondamentale vaut \\(2\\pi\\) : après un tour complet du cercle trigonométrique, les coordonnées du point reviennent à leur position initiale. La tangente, elle, retrouve sa valeur après un demi-tour, donc sa période fondamentale est \\(\\pi\\)."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x+T) = f(x)"
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": -12.566,
+              "xmax": 12.566,
+              "caption": "Deux périodes complètes du sinus mises côte à côte"
+            },
+            {
+              "type": "definition",
+              "term": "Période fondamentale",
+              "definition": "La plus petite valeur positive \\(T\\) pour laquelle l'égalité \\(f(x+T)=f(x)\\) est vraie pour tout \\(x\\).",
+              "example": "Pour \\(\\cos x\\), la période fondamentale est \\(2\\pi\\)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la fonction de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Détermine si tu as affaire à un sinus, un cosinus ou une tangente."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Lire le coefficient devant \\(x\\)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si la fonction s'écrit \\(\\sin(bx)\\) ou \\(\\cos(bx)\\), la période est \\(\\frac{2\\pi}{|b|}\\). Pour \\(\\tan(bx)\\), c'est \\(\\frac{\\pi}{|b|}\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'absence de modification de période",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Un décalage horizontal ou un changement d'amplitude ne modifie pas la période."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La périodicité est un outil puissant pour calculer la valeur d'une fonction trigonométrique pour n'importe quel angle, même très grand ou négatif. Il suffit de ramener l'angle dans un intervalle de référence, généralement \\([0, 2\\pi)\\) pour le sinus et le cosinus, ou \\((-\\frac{\\pi}{2}, \\frac{\\pi}{2})\\) pour la tangente, en ajoutant ou retranchant des multiples de la période. Cette opération s'appelle la réduction modulo la période."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser la période pour calculer des valeurs"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sin(x + 2k\\pi) = \\sin x"
+            },
+            {
+              "type": "graph",
+              "expression": "sin(x)",
+              "xmin": -6.283,
+              "xmax": 6.283,
+              "caption": "Points équivalents sur la courbe du sinus séparés de 2π"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Diviser l'angle par la période",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Calcule le quotient et le reste de la division euclidienne de l'angle par \\(2\\pi\\) (ou \\(\\pi\\) pour la tangente)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Garder le reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le reste est l'angle équivalent dans l'intervalle principal."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Évaluer la fonction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les valeurs connues du cercle trigonométrique pour cet angle réduit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Outre la répétition, les fonctions trigonométriques possèdent des symétries qui simplifient encore les calculs. Le cosinus est une fonction paire : \\(\\cos(-x) = \\cos x\\). Son graphe est symétrique par rapport à l'axe des ordonnées. Le sinus et la tangente sont des fonctions impaires : \\(\\sin(-x) = -\\sin x\\) et \\(\\tan(-x) = -\\tan x\\). Leurs graphes sont symétriques par rapport à l'origine. Ces propriétés permettent de déduire la valeur pour un angle négatif à partir de la valeur positive correspondante."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Parité et symétries"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\cos(-x) = \\cos x, \\quad \\sin(-x) = -\\sin x, \\quad \\tan(-x) = -\\tan x"
+            },
+            {
+              "type": "graph",
+              "expression": "cos(x)",
+              "xmin": -6.283,
+              "xmax": 6.283,
+              "caption": "Symétrie axiale du cosinus (fonction paire)"
+            },
+            {
+              "type": "definition",
+              "term": "Fonction paire",
+              "definition": "Une fonction \\(f\\) est paire si \\(f(-x) = f(x)\\) pour tout \\(x\\). Son graphe est symétrique par rapport à l'axe des ordonnées.",
+              "example": "Le cosinus est pair."
+            },
+            {
+              "type": "definition",
+              "term": "Fonction impaire",
+              "definition": "Une fonction \\(f\\) est impaire si \\(f(-x) = -f(x)\\) pour tout \\(x\\). Son graphe est symétrique par rapport à l'origine.",
+              "example": "Le sinus et la tangente sont impairs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour récapituler, le sinus et le cosinus ont une période de \\(2\\pi\\), la tangente une période de \\(\\pi\\). Le cosinus est pair, le sinus et la tangente sont impairs. Toute transformation de la variable \\(x\\) par un facteur \\(b\\) divise la période par \\(|b|\\), tandis qu'un décalage horizontal ou un changement d'amplitude laisse la période inchangée. Ces règles te permettront d'analyser n'importe quelle fonction trigonométrique élémentaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résumé des propriétés périodiques"
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la période fondamentale de \\(f(x) = \\cos(5x)\\) ?",
+              "answer": "\\(\\frac{2\\pi}{5}\\)",
+              "hint": "Applique la formule \\(\\frac{2\\pi}{|b|}\\) avec \\(b=5\\).",
+              "explanation": "Le coefficient 5 devant \\(x\\) comprime l'onde horizontalement, divisant la période par 5."
+            },
+            {
+              "question": "Calcule \\(\\sin\\left(\\frac{17\\pi}{6}\\right)\\) en utilisant la périodicité.",
+              "answer": "\\(\\frac{1}{2}\\)",
+              "hint": "Soustray \\(2\\pi\\) jusqu'à obtenir un angle dans \\([0, 2\\pi)\\).",
+              "explanation": "\\(\\frac{17\\pi}{6} - 2\\pi = \\frac{17\\pi}{6} - \\frac{12\\pi}{6} = \\frac{5\\pi}{6}\\). Or \\(\\sin\\frac{5\\pi}{6} = \\sin\\left(\\pi - \\frac{\\pi}{6}\\right) = \\sin\\frac{\\pi}{6} = \\frac{1}{2}\\)."
+            },
+            {
+              "question": "Détermine \\(\\tan\\left(-\\frac{3\\pi}{4}\\right)\\) en exploitant la parité.",
+              "answer": "1",
+              "hint": "Utilise \\(\\tan(-x) = -\\tan x\\) et la valeur de \\(\\tan\\frac{3\\pi}{4}\\).",
+              "explanation": "\\(\\tan\\left(-\\frac{3\\pi}{4}\\right) = -\\tan\\frac{3\\pi}{4}\\). Comme \\(\\tan\\frac{3\\pi}{4} = -1\\), le résultat est \\(-(-1) = 1\\)."
+            }
+          ]
+        },
+        {
+          "title": "Résolutions simples.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre \\(\\sin x = a\\)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Résoudre une équation trigonométrique simple consiste à retrouver tous les angles \\(x\\) dont le sinus vaut un nombre donné \\(a\\). La méthode standard utilise le cercle trigonométrique : on repère les points dont l'ordonnée est \\(a\\), on lit les angles principaux dans \\([0, 2\\pi)\\), puis on ajoute des multiples de la période \\(2\\pi\\). Si \\(a\\) est en dehors de \\([-1, 1]\\), l'équation n'a aucune solution réelle."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\sin x = a \\implies x = \\arcsin a + 2k\\pi \\text{ ou } x = \\pi - \\arcsin a + 2k\\pi, \\ k \\in \\mathbb{Z}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier l'intervalle de \\(a\\)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si \\(|a| > 1\\), stop : pas de solution."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Trouver l'angle principal \\(\\alpha = \\arcsin a\\)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "\\(\\alpha\\) appartient à \\([-\\frac{\\pi}{2}, \\frac{\\pi}{2}]\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire les deux familles de solutions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les solutions sont \\(x = \\alpha + 2k\\pi\\) et \\(x = \\pi - \\alpha + 2k\\pi\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Simplifier si possible",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe ou factorise pour présenter l'ensemble des solutions clairement."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La résolution de \\(\\cos x = a\\) suit le même schéma, mais les angles principaux se cherchent dans \\([0, \\pi]\\) car le cosinus est décroissant sur cet intervalle. La formule générale donne deux familles symétriques par rapport à l'axe des abscisses. Attention : l'arccosinus renvoie un angle dans \\([0, \\pi]\\)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre \\(\\cos x = a\\)"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\cos x = a \\implies x = \\arccos a + 2k\\pi \\text{ ou } x = -\\arccos a + 2k\\pi, \\ k \\in \\mathbb{Z}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier \\(|a| \\le 1\\)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sinon, aucune solution."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer \\(\\beta = \\arccos a\\)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "\\(\\beta \\) est dans \\([0, \\pi]\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire les solutions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "\\(x = \\beta + 2k\\pi\\) ou \\(x = -\\beta + 2k\\pi\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Présenter l'ensemble solution",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On peut aussi écrire \\(x = \\pm \\beta + 2k\\pi\\)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la tangente, la période est \\(\\pi\\) et la fonction est bijective sur \\((-\\frac{\\pi}{2}, \\frac{\\pi}{2})\\). Il n'y a donc qu'une seule famille de solutions : on prend l'arctangente de \\(a\\) (qui appartient à \\(\\mathbb{R}\\)) et on ajoute \\(k\\pi\\). C'est souvent plus rapide car il n'y a pas de deuxième branche à considérer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre \\(\\tan x = a\\)"
+            },
+            {
+              "type": "display_math",
+              "latex": "\\tan x = a \\implies x = \\arctan a + k\\pi, \\ k \\in \\mathbb{Z}"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Calculer \\(\\gamma = \\arctan a\\)",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "\\(\\gamma \\) est dans \\((-\\frac{\\pi}{2}, \\frac{\\pi}{2})\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter la période",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Toutes les solutions sont \\(x = \\gamma + k\\pi\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Vérifier l'appartenance au domaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure-toi que les solutions ne tombent pas sur les asymptotes (ce qui n'arrive jamais avec cette formule)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, mélangeons les trois types d'équations dans un même exercice pour t'habituer à choisir la bonne méthode selon la fonction rencontrée. N'oublie pas de toujours commencer par identifier la fonction (sinus, cosinus, tangente), puis d'appliquer la formule correspondante. Une vérification rapide avec la calculatrice ou le cercle trigonométrique permet d'éviter les erreurs de signe ou de période."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exercices mixtes et vérification"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier la fonction",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde si l'équation contient \\(\\sin\\), \\(\\cos\\) ou \\(\\tan\\)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Appliquer la formule adéquate",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise les formes générales vues précédemment."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Tester quelques valeurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace \\(k\\) par 0, 1, -1 pour voir si les solutions semblent correctes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais tracer les courbes de \\(\\sin x\\), \\(\\cos x\\) et \\(\\tan x\\).",
+                "Je connais l'amplitude, la période et le décalage de phase d'une fonction transformée.",
+                "J'utilise la périodicité pour réduire n'importe quel angle à un angle principal.",
+                "Je reconnais la parité du cosinus (pair) et du sinus, tangente (impairs).",
+                "Je résous \\(\\sin x = a\\), \\(\\cos x = a\\), \\(\\tan x = a\\) en donnant l'ensemble des solutions.",
+                "Je vérifie mes solutions par substitution ou avec une calculatrice."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résous \\(\\sin x = \\frac{\\sqrt{3}}{2}\\) dans \\(\\mathbb{R}\\).",
+              "answer": "\\(x = \\frac{\\pi}{3} + 2k\\pi\\) ou \\(x = \\frac{2\\pi}{3} + 2k\\pi\\), \\(k \\in \\mathbb{Z}\\).",
+              "hint": "L'angle principal est \\(\\frac{\\pi}{3}\\). La seconde solution est \\(\\pi - \\frac{\\pi}{3}\\).",
+              "explanation": "\\(\\arcsin\\frac{\\sqrt{3}}{2} = \\frac{\\pi}{3}\\). Les deux familles sont \\(\\frac{\\pi}{3} + 2k\\pi\\) et \\(\\pi - \\frac{\\pi}{3} + 2k\\pi = \\frac{2\\pi}{3} + 2k\\pi\\)."
+            },
+            {
+              "question": "Trouve toutes les solutions de \\(\\cos x = -\\frac{1}{2}\\).",
+              "answer": "\\(x = \\frac{2\\pi}{3} + 2k\\pi\\) ou \\(x = \\frac{4\\pi}{3} + 2k\\pi\\), \\(k \\in \\mathbb{Z}\\).",
+              "hint": "\\(\\arccos(-\\frac{1}{2}) = \\frac{2\\pi}{3}\\). La seconde famille est l'opposé modulo \\(2\\pi\\).",
+              "explanation": "\\(\\beta = \\frac{2\\pi}{3}\\). Les solutions sont \\(\\pm \\beta + 2k\\pi\\), soit \\(\\frac{2\\pi}{3} + 2k\\pi\\) et \\(-\\frac{2\\pi}{3} + 2k\\pi = \\frac{4\\pi}{3} + 2k\\pi\\)."
+            },
+            {
+              "question": "Résous \\(\\tan x = -1\\).",
+              "answer": "\\(x = -\\frac{\\pi}{4} + k\\pi\\), \\(k \\in \\mathbb{Z}\\).",
+              "hint": "\\(\\arctan(-1) = -\\frac{\\pi}{4}\\).",
+              "explanation": "L'arctangente de -1 est \\(-\\frac{\\pi}{4}\\). En ajoutant \\(k\\pi\\) on obtient toutes les solutions."
+            },
+            {
+              "question": "Détermine l'ensemble des solutions de \\(2\\sin(3x) = 1\\).",
+              "answer": "\\(x = \\frac{\\pi}{18} + \\frac{2k\\pi}{3}\\) ou \\(x = \\frac{5\\pi}{18} + \\frac{2k\\pi}{3}\\), \\(k \\in \\mathbb{Z}\\).",
+              "hint": "Divise par 2, puis résous \\(\\sin(3x) = \\frac{1}{2}\\) et divise les angles par 3.",
+              "explanation": "\\(\\sin(3x) = \\frac{1}{2}\\) donne \\(3x = \\frac{\\pi}{6} + 2k\\pi\\) ou \\(3x = \\frac{5\\pi}{6} + 2k\\pi\\). En divisant par 3 : \\(x = \\frac{\\pi}{18} + \\frac{2k\\pi}{3}\\) ou \\(x = \\frac{5\\pi}{18} + \\frac{2k\\pi}{3}\\)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

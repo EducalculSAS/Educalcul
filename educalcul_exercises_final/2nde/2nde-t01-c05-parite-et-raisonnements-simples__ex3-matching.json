@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 500,
+  "_course_code": "2nde-t01-c05-parite-et-raisonnements-simples",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Contre-exemple",
+  "title": "Exercice sur les contre-exemples",
+  "blocks": [
+    {
+      "title": "Contre-exemples simples sur la parité",
+      "content": "Relie chaque affirmation à un contre-exemple qui la rend fausse.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Si $n$ est pair, alors $n$ est multiple de $4$.",
+          "right": "$n=2$"
+        },
+        {
+          "left": "Si $n$ est impair, alors $n^2$ est pair.",
+          "right": "$n=3$"
+        },
+        {
+          "left": "Si $a$ et $b$ sont pairs, alors $a+b$ est impair.",
+          "right": "$a=2, b=4$"
+        }
+      ],
+      "explanation": "Pour la première affirmation, $2$ est pair mais n'est pas multiple de $4$. Pour la seconde, $3$ est impair et $3^2=9$ qui est impair, pas pair. Pour la troisième, $2$ et $4$ sont pairs et leur somme $6$ est paire, non impaire.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Contre-exemples sur les carrés et la divisibilité",
+      "content": "Associe chaque conjecture à un contre-exemple approprié.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Si $x^2 = 16$, alors $x = 4$.",
+          "right": "$x = -4$"
+        },
+        {
+          "left": "Si un entier se termine par $5$, il est premier.",
+          "right": "$15$"
+        },
+        {
+          "left": "Si $a$ et $b$ sont premiers entre eux, alors $a+b$ est premier.",
+          "right": "$a=3, b=5$"
+        },
+        {
+          "left": "Si $m$ et $n$ sont impairs, alors $m+n$ est impair.",
+          "right": "$m=3, n=5$"
+        }
+      ],
+      "explanation": "L'équation $x^2=16$ a deux solutions $4$ et $-4$, donc $x=-4$ contredit l'unicité. $15$ se termine par $5$ mais n'est pas premier ($3 \\times 5$). $3$ et $5$ sont premiers entre eux mais leur somme $8$ n'est pas premier. La somme de deux impairs $3+5=8$ est paire, donc l'affirmation est fausse.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Contre-exemples dans les raisonnements sur les réels",
+      "content": "Relie chaque affirmation à un contre-exemple qui montre qu'elle n'est pas toujours vraie.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Pour tout réel $x$, $x^2 \\ge x$.",
+          "right": "$x = \\frac{1}{2}$"
+        },
+        {
+          "left": "Si $a < b$, alors $a^2 < b^2$.",
+          "right": "$a = -3, b = 1$"
+        },
+        {
+          "left": "Si $x$ est rationnel, alors $\\sqrt{x}$ est rationnel.",
+          "right": "$x = 2$"
+        },
+        {
+          "left": "Pour tout entier $n$, $n^2 + n$ est impair.",
+          "right": "$n = 2$"
+        },
+        {
+          "left": "Si $u_n$ est une suite croissante, alors $u_n$ converge.",
+          "right": "$u_n = n$"
+        }
+      ],
+      "explanation": "Pour $x=1/2$, $x^2=1/4 < 1/2$. Avec $a=-3, b=1$, on a $a<b$ mais $a^2=9 > 1=b^2$. $\\sqrt{2}$ est irrationnel bien que $2$ soit rationnel. Pour $n=2$, $n^2+n=6$ qui est pair. La suite $u_n=n$ est strictement croissante mais diverge vers $+\\infty$, elle ne converge pas.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

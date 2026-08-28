@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 139,
+  "_course_code": "ce1-t08-c04-construire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Tracer des barres",
+  "title": "Tracer des barres dans un diagramme en bâtons",
+  "questions": [
+    {
+      "text": "Dans un diagramme en bâtons, que représente la hauteur d'une barre ?",
+      "options": [
+        "Le nom de la catégorie",
+        "La valeur (le nombre)",
+        "La couleur choisie",
+        "La largeur de la barre"
+      ],
+      "correctAnswer": "La valeur (le nombre)",
+      "explanation": "Dans un diagramme en bâtons, chaque barre correspond à une catégorie (comme un fruit, un jeu, etc.). La hauteur de la barre est proportionnelle à la quantité ou au nombre associé à cette catégorie : c'est la valeur numérique. La largeur n'a pas de sens mathématique, elle est constante pour toutes les barres.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur un quadrillage où chaque case vaut $1$, tu dois tracer une barre pour la valeur $5$. En partant de la ligne de base (zéro), jusqu'où dois-tu colorier ?",
+      "options": [
+        "Jusqu'au trait du haut de la 4e case",
+        "Jusqu'au trait du haut de la 5e case",
+        "Jusqu'au milieu de la 5e case",
+        "Jusqu'au trait du bas de la 5e case"
+      ],
+      "correctAnswer": "Jusqu'au trait du haut de la 5e case",
+      "explanation": "La ligne de base correspond à $0$. La première case monte jusqu'à $1$, la deuxième jusqu'à $2$, et ainsi de suite. Pour atteindre la valeur $5$, il faut colorier 5 cases pleines, donc s'arrêter exactement sur le trait horizontal qui marque la fin de la 5e case (le chiffre $5$ sur l'axe vertical). S'arrêter au bas de la 5e case donne $4$, au milieu donne $4,5$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Léa trace une barre pour le nombre $6$. Elle commence à colorier non pas sur la ligne de base, mais sur le trait au-dessus (celui du $1$). Elle colorie ensuite $6$ cases. Quelle valeur sa barre indique-t-elle à la fin ?",
+      "options": [
+        "Elle indique $5$",
+        "Elle indique $6$",
+        "Elle indique $7$",
+        "Elle indique $8$"
+      ],
+      "correctAnswer": "Elle indique $7$",
+      "explanation": "En commençant sur le trait du $1$, Léa décale sa barre de $1$ unité vers le haut. Elle colorie $6$ cases : de $1$ à $2$, $2$ à $3$, $3$ à $4$, $4$ à $5$, $5$ à $6$, $6$ à $7$. Le sommet de la barre se trouve donc sur le trait du $7$. C'est une erreur fréquente : il faut toujours partir de la ligne de base (zéro).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le diagramme ci-dessous. La barre des « Poires » n'est pas encore tracée. Si les poires ont obtenu $5$ voix, jusqu'à quel numéro sur l'axe vertical doit monter le haut de la barre ?",
+      "options": [
+        "Jusqu'au $3$",
+        "Jusqu'au $4$",
+        "Jusqu'au $5$",
+        "Jusqu'au $6$"
+      ],
+      "correctAnswer": "Jusqu'au $5$",
+      "explanation": "Le diagramme utilise une échelle où chaque case correspond à $1$ voix. Les barres « Pommes » (hauteur $3$) et « Bananes » (hauteur $2$) sont correctement tracées. Pour représenter $5$ voix pour les poires, il faut tracer une barre dont le sommet atteint le trait horizontal gradué $5$ sur l'axe vertical, soit 5 cases au-dessus de la ligne de base.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Fruits préférés (barre Poires manquante)",
+        "bars": [
+          {
+            "label": "Pommes",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Poires",
+            "value": 0,
+            "tone": "green"
+          },
+          {
+            "label": "Bananes",
+            "value": 2,
+            "tone": "yellow"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Pour tracer une barre correctement, quelle action doit-on faire en premier ?",
+      "options": [
+        "Choisir la couleur la plus jolie",
+        "Repérer la valeur sur l'axe vertical et tracer un trait horizontal à cette hauteur",
+        "Colorier toute la colonne très vite",
+        "Écrire le nombre au-dessus de la barre"
+      ],
+      "correctAnswer": "Repérer la valeur sur l'axe vertical et tracer un trait horizontal à cette hauteur",
+      "explanation": "La méthode rigoureuse pour tracer une barre propre et précise est : 1) Trouver la valeur sur l'axe des nombres (vertical). 2) Tracer un petit trait horizontal (ou poser une règle) à cette hauteur pour marquer le sommet. 3) Relier ce trait à la ligne de base en coloriant la largeur de la barre. Cela évite les barres de travers, trop hautes ou trop basses. La couleur et l'écriture du nombre sont des finitions.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

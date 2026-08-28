@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 233,
+  "_course_code": "cm1-t03-c08-bilan-calcul-cm1",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Quatre opérations",
+  "title": "Approfondissement : Les quatre opérations",
+  "questions": [
+    {
+      "text": "Quel est le résultat du calcul $15 + 6 × 3$ ?",
+      "options": [
+        "33",
+        "63",
+        "24",
+        "18"
+      ],
+      "correctAnswer": "33",
+      "explanation": "On respecte la priorité des opérations : on calcule d'abord la multiplication $6 × 3 = 18$, puis l'addition $15 + 18 = 33$. L'option 63 correspond à l'erreur de calculer de gauche à droite ($15 + 6 = 21$ puis $21 × 3 = 63$). L'option 24 correspond à une addition simple $15 + 6 + 3$. L'option 18 ne garde que le résultat de la multiplication.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Effectue la multiplication posée $234 × 6$.",
+      "options": [
+        "1 404",
+        "1 384",
+        "1 224",
+        "1 424"
+      ],
+      "correctAnswer": "1 404",
+      "explanation": "On multiplie chaque chiffre par 6 en gérant les retenues : $4 × 6 = 24$ (j'écris 4, je retiens 2) ; $3 × 6 = 18$, plus 2 = 20 (j'écris 0, je retiens 2) ; $2 × 6 = 12$, plus 2 = 14. Le résultat est 1 404. L'option 1 384 oublie la retenue des unités sur les dizaines. L'option 1 224 oublie les deux retenues. L'option 1 424 confond les retenues.",
+      "points": 1,
+      "figure": {
+        "type": "column_operation",
+        "operator": "x",
+        "operands": [
+          "234",
+          "6"
+        ],
+        "result": "1404",
+        "carries": [
+          "2",
+          "2"
+        ]
+      }
+    },
+    {
+      "text": "Donne le quotient de la division euclidienne $456 ÷ 4$.",
+      "options": [
+        "114",
+        "113",
+        "104",
+        "115"
+      ],
+      "correctAnswer": "114",
+      "explanation": "On divise 45 par 4 : $45 ÷ 4 = 11$ reste 1. On abaisse le 6 pour former 16. $16 ÷ 4 = 4$. Le quotient est donc 114. L'option 113 se trompe sur le dernier chiffre. L'option 104 oublie la retenue de 1 sur le chiffre des dizaines. L'option 115 ajoute 1 par erreur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une caisse contient 8 boîtes de craies. Chaque boîte contient 12 craies. Le maître distribue 3 craies à chacun de ses 6 élèves. Combien de craies restent dans la caisse ?",
+      "options": [
+        "78",
+        "96",
+        "54",
+        "114"
+      ],
+      "correctAnswer": "78",
+      "explanation": "D'abord, on calcule le total de craies : $8 × 12 = 96$. Ensuite, on calcule le nombre de craies distribuées : $6 × 3 = 18$. Enfin, on soustrait : $96 - 18 = 78$. L'option 96 est le total avant distribution. L'option 114 fait une addition au lieu d'une soustraction. L'option 54 ne correspond à aucune étape logique.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour vérifier l'égalité $372 ÷ 6 = 62$, quelle multiplication faut-il effectuer ?",
+      "options": [
+        "$62 × 6 = 372$",
+        "$62 + 6 = 68$",
+        "$372 - 62 = 310$",
+        "$62 × 3 = 186$"
+      ],
+      "correctAnswer": "$62 × 6 = 372$",
+      "explanation": "Pour vérifier une division, on utilise l'opération inverse : on multiplie le quotient (62) par le diviseur (6). On doit retrouver le dividende (372). $62 × 6 = 372$. Les autres options utilisent de mauvaises opérations ou de mauvais nombres.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_course_id": 468,
+  "_course_code": "3eme-t03-c02-lire-une-fonction-graphiquement",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Antécédents",
+  "title": "Quiz : Les antécédents par lecture graphique",
+  "questions": [
+    {
+      "text": "On donne ci-contre la représentation graphique de la fonction $f$ définie par $f(x) = x^2 - 4$. Quels sont les antécédent(s) de $0$ par $f$ ?",
+      "options": [
+        "-2 et 2",
+        "0",
+        "-4",
+        "2 seulement"
+      ],
+      "correctAnswer": "-2 et 2",
+      "explanation": "Les antécédents de $0$ sont les valeurs de $x$ pour lesquelles $f(x) = 0$. Graphiquement, ce sont les abscisses des points d'intersection de la courbe avec l'axe des abscisses (axe $x$). La courbe coupe l'axe des abscisses aux points d'abscisses $-2$ et $2$. Donc $f(-2)=0$ et $f(2)=0$. L'option \"0\" correspond à l'image de $-2$ et $2$ par la fonction $x \\mapsto x^2$, pas à l'antécédent. L'option \"-4\" est l'ordonnée au sommet (minimum).",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2 - 4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x) = x^2 - 4"
+      }
+    },
+    {
+      "text": "Toujours avec la fonction $f(x) = x^2 - 4$ représentée ci-contre, quels sont les antécédent(s) de $5$ par $f$ ?",
+      "options": [
+        "-3 et 3",
+        "-1 et 1",
+        "5",
+        "Il n'y en a pas"
+      ],
+      "correctAnswer": "-3 et 3",
+      "explanation": "On cherche les $x$ tels que $f(x) = 5$. Graphiquement, on trace la droite horizontale d'équation $y = 5$ et on lit les abscisses des points d'intersection avec la courbe. La courbe passe par les points de coordonnées $(-3, 5)$ et $(3, 5)$ car $(-3)^2 - 4 = 9 - 4 = 5$ et $3^2 - 4 = 5$. Les antécédents de $5$ sont donc $-3$ et $3$. L'option \"-1 et 1\" correspond aux antécédents de $-3$. L'option \"5\" confond antécédent et image.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2 - 4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x) = x^2 - 4"
+      }
+    },
+    {
+      "text": "Sur le même graphique, quel est l'antécédent de $-4$ par la fonction $f$ ?",
+      "options": [
+        "0",
+        "-4",
+        "-2 et 2",
+        "Il n'y en a pas"
+      ],
+      "correctAnswer": "0",
+      "explanation": "On cherche $x$ tel que $f(x) = -4$. Le minimum de la fonction $f(x) = x^2 - 4$ est $-4$, atteint pour $x = 0$ (sommet de la parabole). La droite $y = -4$ est tangente à la courbe au point de coordonnées $(0, -4)$. Il y a donc un unique antécédent : $0$. L'option \"-4\" est la valeur cherchée (l'image), pas l'antécédent. L'option \"-2 et 2\" correspond aux antécédents de $0$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2 - 4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x) = x^2 - 4"
+      }
+    },
+    {
+      "text": "Soit une fonction $f$ et un nombre $y$ appartenant à l'ensemble de définition de $f$. On note $x$ un nombre tel que $f(x) = y$. Quel terme désigne $x$ par rapport à $y$ ?",
+      "options": [
+        "Un antécédent de $y$ par $f$",
+        "Une image de $y$ par $f$",
+        "Le coefficient directeur de $f$",
+        "L'ordonnée à l'origine de $f$"
+      ],
+      "correctAnswer": "Un antécédent de $y$ par $f$",
+      "explanation": "Par définition, si $f(x) = y$, alors $x$ est un antécédent de $y$ par la fonction $f$, et $y$ est l'image de $x$ par $f$. L'image est le résultat obtenu en appliquant la fonction à l'antécédent. Le coefficient directeur et l'ordonnée à l'origine sont des notions liées aux fonctions affines, pas à la définition générale d'antécédent.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "D'après le graphique de $f(x) = x^2 - 4$, que peut-on dire des solutions de l'équation $f(x) = -5$ ?",
+      "options": [
+        "Il n'y a pas de solution",
+        "Il y a une solution : 0",
+        "Il y a deux solutions : -1 et 1",
+        "Il y a deux solutions : -2 et 2"
+      ],
+      "correctAnswer": "Il n'y a pas de solution",
+      "explanation": "Résoudre $f(x) = -5$ revient à chercher les antécédents de $-5$. La valeur minimale de la fonction $f(x) = x^2 - 4$ est $-4$ (au sommet de la parabole). La courbe ne descend jamais jusqu'à $-5$. La droite horizontale $y = -5$ ne coupe pas la courbe. Il n'existe donc aucun $x$ tel que $f(x) = -5$. L'équation n'a pas de solution (l'ensemble des solutions est vide).",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2 - 4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de la fonction f(x) = x^2 - 4"
+      }
+    }
+  ]
+}

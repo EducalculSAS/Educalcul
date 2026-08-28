@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 255,
+  "_course_code": "cm1-t06-c08-bilan-geometrie-cm1",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Propriétés et constructions",
+  "title": "Quiz - Approfondissement : Propriétés et constructions (CM1)",
+  "questions": [
+    {
+      "text": "Quelle propriété caractérise un triangle isocèle ?",
+      "options": [
+        "Les trois côtés sont égaux.",
+        "Deux côtés sont égaux et les angles à la base sont égaux.",
+        "Un angle droit est présent.",
+        "Les trois angles sont différents."
+      ],
+      "correctAnswer": "Deux côtés sont égaux et les angles à la base sont égaux.",
+      "explanation": "Un triangle isocèle a exactement deux côtés de même longueur ; les angles opposés à ces côtés, appelés angles à la base, sont donc égaux. Les autres propositions correspondent à un triangle équilatéral, un triangle rectangle ou un triangle quelconque.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment construit-on la médiatrice d'un segment avec règle et compas ?",
+      "options": [
+        "Tracer un cercle de centre un extrémité du segment.",
+        "Tracer deux arcs de même rayon depuis les deux extrémités et relier leurs intersections.",
+        "Mesurer la moitié du segment avec une règle.",
+        "Tracer une droite passant par le milieu sans compas."
+      ],
+      "correctAnswer": "Tracer deux arcs de même rayon depuis les deux extrémités et relier leurs intersections.",
+      "explanation": "La construction classique de la médiatrice consiste à placer le compas sur chaque extrémité du segment, à tracer des arcs de rayon supérieur à la demi-longueur, puis à joindre les deux points d'intersection des arcs. Cette droite est perpendiculaire au segment et passe par son milieu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les quadrilatères suivants, lequel est un carré ?",
+      "options": [
+        "Un rectangle avec deux côtés adjacents égaux.",
+        "Un losange avec un angle droit.",
+        "Un quadrilatère avec quatre côtés égaux et quatre angles droits.",
+        "Un trapèze isocèle."
+      ],
+      "correctAnswer": "Un quadrilatère avec quatre côtés égaux et quatre angles droits.",
+      "explanation": "Un carré est défini par la réunion des propriétés du rectangle (quatre angles droits) et du losange (quatre côtés égaux). Les autres options décrivent un rectangle non carré, un losange non carré ou un trapèze.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour mesurer un angle de $60^\\circ$ avec un rapporteur, quelle est la procédure correcte ?",
+      "options": [
+        "Placer le centre du rapporteur sur le sommet, aligner un côté sur le zéro, lire la graduation où l'autre côté coupe.",
+        "Placer le rapporteur n'importe où sur la figure.",
+        "Mesurer la longueur des côtés de l'angle.",
+        "Utiliser une règle seulement."
+      ],
+      "correctAnswer": "Placer le centre du rapporteur sur le sommet, aligner un côté sur le zéro, lire la graduation où l'autre côté coupe.",
+      "explanation": "Le rapporteur doit être centré sur le sommet de l'angle ; un côté de l'angle est aligné sur la graduation zéro, puis on lit la valeur indiquée par l'autre côté. Les autres propositions ne permettent pas une mesure angulaire fiable.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lequel de ces développés peut se replier pour former un cube ?",
+      "options": [
+        "Un développement en croix avec six carrés.",
+        "Un développement en ligne de six carrés.",
+        "Un développement avec cinq carrés.",
+        "Un développement avec quatre carrés."
+      ],
+      "correctAnswer": "Un développement en croix avec six carrés.",
+      "explanation": "Un cube possède six faces carrées. Le développement en croix (un carré central entouré de quatre carrés latéraux et un sixième carré attaché à l'un d'eux) est un patron valide. Une ligne de six carrés ne se referme pas, et les patrons à cinq ou quatre carrés manquent de faces.",
+      "points": 1,
+      "figure": {
+        "type": "net_folder",
+        "solid": "cube",
+        "width": 4,
+        "height": 4,
+        "depth": 4,
+        "caption": "Patron d'un cube en forme de croix"
+      }
+    }
+  ]
+}

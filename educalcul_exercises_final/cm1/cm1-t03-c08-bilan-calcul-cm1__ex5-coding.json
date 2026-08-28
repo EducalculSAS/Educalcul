@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 233,
+  "_course_code": "cm1-t03-c08-bilan-calcul-cm1",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Approfondissement : Quatre opérations",
+  "title": "Écrire des algorithmes pour les quatre opérations",
+  "blocks": [
+    {
+      "title": "Algorithme d'addition posée",
+      "content": "Écris l'algorithme (la suite d'étapes) pour calculer l'addition posée $456 + 278$. Détaille la gestion des retenues.",
+      "correctAnswer": "Étape 1 : Écrire les nombres en colonnes (unités sous unités, dizaines sous dizaines, centaines sous centaines).\\nÉtape 2 : Additionner les unités : $6 + 8 = 14$. J'écris $4$ dans la colonne des unités et je retiens $1$ dizaine.\\nÉtape 3 : Additionner les dizaines : $5 + 7 + 1 (retenue) = 13$. J'écris $3$ dans la colonne des dizaines et je retiens $1$ centaine.\\nÉtape 4 : Additionner les centaines : $4 + 2 + 1 (retenue) = 7$. J'écris $7$ dans la colonne des centaines.\\nRésultat : $734$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme de l'addition posée se fait de droite à gauche (unités vers centaines). À chaque colonne, on additionne les chiffres et la retenue éventuelle. Si le résultat fait plus de $9$, on n'écrit que le chiffre des unités et on reporte le chiffre des dizaines (la retenue) au-dessus de la colonne suivante.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de multiplication posée",
+      "content": "Écris l'algorithme pour calculer la multiplication posée $34 \\times 6$. Précise ce que tu fais pour les retenues.",
+      "correctAnswer": "Étape 1 : Écrire $34$ au-dessus et $6$ dessous, alignés à droite.\\nÉtape 2 : Multiplier les unités : $6 \\times 4 = 24$. J'écris $4$ dans la colonne des unités du résultat et je retiens $2$ dizaines.\\nÉtape 3 : Multiplier les dizaines : $6 \\times 3 = 18$. J'ajoute la retenue : $18 + 2 = 20$. J'écris $20$ à gauche du $4$ (zéro dans les dizaines, deux dans les centaines).\\nRésultat : $204$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour multiplier un nombre à deux chiffres par un chiffre, on commence par les unités. On multiplie le chiffre du bas par chaque chiffre du haut en ajoutant la retenue de l'étape précédente. Ici, $6 \\times 4 = 24$ (retenue $2$), puis $6 \\times 3 = 18$, plus $2$ fait $20$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour un problème à deux étapes",
+      "content": "Un boulanger a $8$ plaques de gâteaux. Sur chaque plaque, il y a $6$ gâteaux. Il vend $15$ gâteaux dans la matinée. Écris l'algorithme pour trouver combien il lui reste de gâteaux.",
+      "correctAnswer": "Étape 1 : Calculer le nombre total de gâteaux au départ (multiplication).\\n$8 \\times 6 = 48$ gâteaux.\\nÉtape 2 : Soustraire le nombre de gâteaux vendus (soustraction).\\n$48 - 15 = 33$ gâteaux.\\nÉtape 3 : Conclure.\\nIl reste $33$ gâteaux.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Ce problème nécessite deux opérations successives. D'abord une multiplication pour trouver le total ($8$ plaques de $6$), ensuite une soustraction pour enlever les gâteaux vendus. L'algorithme structure la résolution en étapes logiques et ordonnées.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

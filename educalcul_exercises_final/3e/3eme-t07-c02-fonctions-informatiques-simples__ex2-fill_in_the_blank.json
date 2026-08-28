@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 491,
+  "_course_code": "3eme-t07-c02-fonctions-informatiques-simples",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Appeler",
+  "title": "Appeler une fonction en Python",
+  "blocks": [
+    {
+      "title": "Syntaxe d'appel simple",
+      "content": "On a d\\u00e9fini la fonction suivante :\\n\\ndef saluer(prenom):\\n    print(\"Bonjour \" + prenom)\\n\\nPour afficher \"Bonjour Alice\", on doit appeler la fonction en écrivant : {{1}}",
+      "blanks": [
+        "saluer(\"Alice\") | saluer('Alice')"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour appeler une fonction qui attend un paramètre (ici `prenom`), on écrit le nom de la fonction suivi de parenthèses contenant la valeur (l'argument) à transmettre. Comme la valeur est une chaîne de caractères, elle doit être entre guillemets (simples ou doubles).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Récupérer une valeur de retour",
+      "content": "On a défini la fonction suivante :\\n\\ndef carre(x):\\n    return x * x\\n\\nPour stocker le résultat du carré de $5$ dans une variable `resultat`, on écrit : {{1}}",
+      "blanks": [
+        "resultat = carre(5)"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction `carre` renvoie une valeur grâce au mot-clé `return`. Pour utiliser cette valeur, il faut l'affecter à une variable avec le signe `=` lors de l'appel : `variable = nom_fonction(argument)`.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Appel imbriqué et affichage direct",
+      "content": "On a défini deux fonctions :\\n\\ndef double(n):\\n    return n * 2\\n\\ndef afficher(valeur):\\n    print(\"Valeur : \" + str(valeur))\\n\\nPour afficher directement le double de $7$ sans variable intermédiaire, on écrit : {{1}}",
+      "blanks": [
+        "afficher(double(7))"
+      ],
+      "correctAnswer": "",
+      "pairs": [],
+      "items": [],
+      "explanation": "On peut imbriquer les appels de fonctions : le résultat de `double(7)` (qui est $14$) est directement passé comme argument à la fonction `afficher`. L'expression `double(7)` est évaluée en premier, puis sa valeur de retour est utilisée pour l'appel extérieur.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

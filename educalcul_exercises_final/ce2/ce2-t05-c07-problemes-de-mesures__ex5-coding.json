@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 184,
+  "_course_code": "ce2-t05-c07-problemes-de-mesures",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Approfondissement : Choisir unité",
+  "title": "Choisir l'unité de mesure adaptée",
+  "blocks": [
+    {
+      "title": "Choisir l'unité de longueur",
+      "content": "Écris un algorithme qui permet de choisir l'unité de longueur la plus adaptée pour mesurer un objet. L'algorithme doit tester la taille de l'objet et afficher l'unité choisie parmi centimètre, mètre ou kilomètre.",
+      "correctAnswer": "Algorithme ChoisirUniteLongueur\\nEntrée : tailleObjet (en mètres)\\nSi tailleObjet $< 1$ Alors\\n    Afficher \"centimètre\"\\nSinon Si tailleObjet $< 1000$ Alors\\n    Afficher \"mètre\"\\nSinon\\n    Afficher \"kilomètre\"\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme compare la taille de l'objet à des seuils : en dessous de $1$ mètre on utilise le centimètre, entre $1$ mètre et $1000$ mètres le mètre, au-delà le kilomètre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choisir l'unité de masse",
+      "content": "Écris un algorithme qui permet de choisir l'unité de masse la plus adaptée pour peser un objet. L'algorithme doit tester la masse de l'objet et afficher l'unité choisie parmi gramme ou kilogramme.",
+      "correctAnswer": "Algorithme ChoisirUniteMasse\\nEntrée : masseObjet (en kilogrammes)\\nSi masseObjet $< 1$ Alors\\n    Afficher \"gramme\"\\nSinon\\n    Afficher \"kilogramme\"\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme vérifie si la masse est inférieure à $1$ kilogramme : dans ce cas on utilise le gramme, sinon le kilogramme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Choisir l'unité de capacité",
+      "content": "Écris un algorithme qui permet de choisir l'unité de capacité la plus adaptée pour mesurer un volume de liquide. L'algorithme doit tester le volume et afficher l'unité choisie parmi millilitre, litre ou mètre cube.",
+      "correctAnswer": "Algorithme ChoisirUniteCapacite\\nEntrée : volume (en litres)\\nSi volume $< 1$ Alors\\n    Afficher \"millilitre\"\\nSinon Si volume $< 1000$ Alors\\n    Afficher \"litre\"\\nSinon\\n    Afficher \"mètre cube\"\\nFin Si",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme compare le volume à des seuils : en dessous de $1$ litre on utilise le millilitre, entre $1$ litre et $1000$ litres le litre, au-delà le mètre cube.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

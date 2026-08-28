@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 361,
+  "_course_code": "6eme-t06-c05-symetrie-axiale",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Approfondissement : Construire",
+  "title": "Quiz : Symétrie axiale - Construction",
+  "questions": [
+    {
+      "text": "Pour construire le symétrique d'un point $A$ par rapport à une droite $d$, quelle est la première étape à réaliser avec la règle et le compas ?",
+      "options": [
+        "Tracer la perpendiculaire à $d$ passant par $A$.",
+        "Mesurer la distance $A$ à $d$ avec le compas.",
+        "Tracer une parallèle à $d$ passant par $A$.",
+        "Marquer le point $A'$ sur $d$ au hasard."
+      ],
+      "correctAnswer": "Tracer la perpendiculaire à $d$ passant par $A$.",
+      "explanation": "La construction de la symétrie axiale commence par tracer la perpendiculaire à l'axe $d$ qui passe par le point $A$. Cette perpendiculaire est la ligne sur laquelle se trouve le symétrique $A'$. Les autres options correspondent à des erreurs fréquentes : mesurer la distance sans tracer la perpendiculaire, tracer une parallèle (qui ne garantit pas la symétrie), ou placer le point au hasard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après avoir tracé la perpendiculaire à $d$ passant par $A$, comment obtient-on le point symétrique $A'$ ?",
+      "options": [
+        "On reporte la distance $A$ à $d$ de l'autre côté de $d$ sur la perpendiculaire.",
+        "On trace un cercle de centre $A$ coupant $d$ en deux points.",
+        "On trace la médiatrice du segment $AA'$.",
+        "On prolonge la perpendiculaire jusqu'à ce qu'elle coupe $d$ à mi-distance."
+      ],
+      "correctAnswer": "On reporte la distance $A$ à $d$ de l'autre côté de $d$ sur la perpendiculaire.",
+      "explanation": "Une fois la perpendiculaire tracée, on prend l'intersection $H$ de cette perpendiculaire avec $d$. Le symétrique $A'$ est tel que $H$ est le milieu de $[AA']$. On utilise donc le compas pour reporter la longueur $AH$ de l'autre côté de $d$ sur la même perpendiculaire. Les autres propositions ne donnent pas le point symétrique correct.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire le symétrique d'un segment $[BC]$ par rapport à une droite $d$, quelle méthode est correcte ?",
+      "options": [
+        "Construire les symétriques $B'$ et $C'$ de $B$ et $C$ par rapport à $d$, puis tracer le segment $[B'C']$.",
+        "Tracer la médiatrice de $[BC]$ et la faire coïncider avec $d$.",
+        "Mesurer la longueur de $[BC]$ et la reporter de l'autre côté de $d$ sans changer d'orientation.",
+        "Tracer une parallèle à $d$ passant par le milieu de $[BC]$."
+      ],
+      "correctAnswer": "Construire les symétriques $B'$ et $C'$ de $B$ et $C$ par rapport à $d$, puis tracer le segment $[B'C']$.",
+      "explanation": "La symétrie axiale conserve les distances et les angles. Le symétrique d'un segment est le segment dont les extrémités sont les symétriques des extrémités initiales. Il faut donc construire $B'$ et $C'$ un par un (perpendiculaire, report de distance) puis relier $B'$ et $C'$. Les autres options ne respectent pas la définition de la symétrie axiale.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des affirmations suivantes est fausse concernant la construction du symétrique d'une figure par rapport à une droite $d$ ?",
+      "options": [
+        "Chaque point de la figure a son symétrique obtenu par la même construction.",
+        "La droite $d$ est l'axe de symétrie de la figure originale et de son image.",
+        "Il suffit de construire le symétrique d'un seul point pour obtenir toute la figure symétrique.",
+        "Les distances des points à la droite $d$ sont conservées."
+      ],
+      "correctAnswer": "Il suffit de construire le symétrique d'un seul point pour obtenir toute la figure symétrique.",
+      "explanation": "La symétrie axiale s'applique point par point. Pour obtenir l'image complète d'une figure, il faut construire le symétrique de chaque point (ou au moins de points caractéristiques comme les sommets). Construire un seul point ne donne qu'un seul point de l'image, pas la figure entière. Les trois autres affirmations sont vraies.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la construction du symétrique d'un triangle $ABC$ par rapport à une droite $d$, combien de perpendiculares à $d$ doit-on tracer au minimum ?",
+      "options": [
+        "Trois, une pour chaque sommet.",
+        "Une seule, passant par le centre de gravité.",
+        "Deux, pour deux sommets seulement.",
+        "Aucune, on utilise seulement le compas."
+      ],
+      "correctAnswer": "Trois, une pour chaque sommet.",
+      "explanation": "Pour obtenir les symétriques $A'$, $B'$, $C'$ des trois sommets, il faut tracer la perpendiculaire à $d$ passant par chaque sommet. Chaque perpendiculaire permet de reporter la distance du sommet à $d$ de l'autre côté. Une seule perpendiculaire ne suffit pas (le centre de gravité n'est pas sur $d$ en général), et le compas seul ne permet pas de garantir la perpendicularité.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "_status": "done",
+  "_course_id": 359,
+  "_course_code": "6eme-t06-c03-triangles-et-quadrilateres",
+  "_level": "6e",
+  "_subject": "Géométrie plane",
+  "_subtheme": "Coder",
+  "title": "Coder les figures géométriques",
+  "questions": [
+    {
+      "text": "On considère un triangle isocèle en A. Les deux côtés de même longueur sont [AB] et [AC]. Quel codage faut-il utiliser pour indiquer que ces deux côtés ont la même longueur ?",
+      "options": [
+        "Un trait unique sur [AB] et un trait unique sur [AC]",
+        "Deux traits sur [AB] et un trait sur [AC]",
+        "Un trait sur [AB] et deux traits sur [AC]",
+        "Trois traits sur [AB] et trois traits sur [AC]"
+      ],
+      "correctAnswer": "Un trait unique sur [AB] et un trait unique sur [AC]",
+      "explanation": "En géométrie, pour coder des segments de même longueur, on utilise le même nombre de traits sur chaque segment. Comme il s'agit de la première paire de côtés égaux, on utilise un trait unique (un petit trait) sur chacun des deux côtés concernés. Les autres options utilisent des nombres de traits différents, ce qui indiquerait des longueurs différentes, ou trois traits qui correspondent habituellement à une troisième paire de côtés égaux.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC isocèle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Sur la figure, l'angle $\\widehat{BAC}$ est un angle droit. Quel symbole doit-on tracer pour coder cet angle droit ?",
+      "options": [
+        "Un petit carré à l'intérieur de l'angle",
+        "Un petit arc de cercle à l'intérieur de l'angle",
+        "Deux petits arcs de cercle à l'intérieur de l'angle",
+        "Un trait de codage sur les côtés [AB] et [AC]"
+      ],
+      "correctAnswer": "Un petit carré à l'intérieur de l'angle",
+      "explanation": "La convention de codage pour un angle droit est de tracer un petit carré (un quart de carré) à l'intérieur de l'angle, au sommet. Un arc de cercle simple ou double sert à coder des angles de même mesure qui ne sont pas nécessairement droits. Les traits de codage sur les côtés indiquent des longueurs égales, pas la nature de l'angle.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC rectangle en A",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Dans un quadrilatère ABCD, les côtés [AB] et [CD] sont parallèles. On veut aussi indiquer que les côtés [BC] et [AD] sont parallèles entre eux, mais pas parallèles à [AB] et [CD]. Comment doit-on coder ces deux paires de parallèles ?",
+      "options": [
+        "Un trait unique sur [AB] et [CD] ; deux traits sur [BC] et [AD]",
+        "Un trait unique sur les quatre côtés",
+        "Une flèche sur [AB] et [CD] ; deux flèches sur [BC] et [AD]",
+        "Un trait unique sur [AB] et [BC] ; deux traits sur [CD] et [AD]"
+      ],
+      "correctAnswer": "Une flèche sur [AB] et [CD] ; deux flèches sur [BC] et [AD]",
+      "explanation": "Le codage des droites parallèles se fait à l'aide de flèches (ou de traits obliques) tracées sur les côtés concernés. On utilise une flèche pour la première paire de parallèles ([AB] et [CD]) et deux flèches pour la deuxième paire ([BC] et [AD]) afin de bien les distinguer. L'utilisation de traits simples (comme pour les longueurs) est une confusion fréquente. L'option D code des côtés adjacents, ce qui ne correspond pas aux parallèles opposés.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a codé un triangle avec un trait unique sur chacun de ses trois côtés. Quel type de triangle est-ce obligatoirement ?",
+      "options": [
+        "Un triangle équilatéral",
+        "Un triangle isocèle",
+        "Un triangle rectangle",
+        "Un triangle quelconque"
+      ],
+      "correctAnswer": "Un triangle équilatéral",
+      "explanation": "Si les trois côtés portent le même codage (un trait unique sur chacun), cela signifie que les trois côtés ont la même longueur. Par définition, un triangle qui a trois côtés de même longueur est un triangle équilatéral. Un triangle isocèle n'a que deux côtés de même longueur (donc seulement deux côtés codés de la même façon). Le codage des côtés ne donne aucune information sur les angles (rectangle ou non).",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle équilatéral",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "",
+          "",
+          ""
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "Dans un quadrilatère, on a codé : un angle droit en A (par un petit carré), un angle droit en B, une flèche sur [AB] et [CD], deux flèches sur [BC] et [AD]. Quelle est la nature de ce quadrilatère ?",
+      "options": [
+        "Un rectangle",
+        "Un carré",
+        "Un parallélogramme",
+        "Un losange"
+      ],
+      "correctAnswer": "Un rectangle",
+      "explanation": "Le codage indique deux angles droits consécutifs (en A et B) et les deux paires de côtés opposés parallèles (flèches simples et doubles). Un quadrilatère ayant ses côtés opposés parallèles est un parallélogramme. Un parallélogramme qui possède un angle droit est un rectangle (les autres angles sont alors droits par propriété). Pour être un carré, il faudrait en plus que les quatre côtés soient codés avec le même nombre de traits (côtés égaux), ce qui n'est pas indiqué ici. Le losange a quatre côtés égaux mais pas d'angle droit nécessairement.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

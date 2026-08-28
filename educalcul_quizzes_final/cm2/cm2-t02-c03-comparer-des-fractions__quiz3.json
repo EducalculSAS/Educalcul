@@ -1,0 +1,101 @@
+{
+  "_status": "done",
+  "_course_id": 284,
+  "_course_code": "cm2-t02-c03-comparer-des-fractions",
+  "_level": "cm2",
+  "_subject": "Fractions",
+  "_subtheme": "Représentation",
+  "title": "Représenter et comparer des fractions",
+  "questions": [
+    {
+      "text": "Quelle fraction correspond à la figure suivante ?",
+      "options": [
+        "$\\frac{1}{4}$",
+        "$\\frac{3}{4}$",
+        "$\\frac{1}{3}$",
+        "$\\frac{3}{8}$"
+      ],
+      "correctAnswer": "$\\frac{3}{4}$",
+      "explanation": "La figure est divisée en $4$ parts égales et $3$ de ces parts sont coloriées. Le numérateur est donc $3$ et le dénominateur est $4$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 3,
+        "denominator": 4,
+        "shape": "circle",
+        "caption": "Représentation d'une fraction"
+      }
+    },
+    {
+      "text": "Si on divise une barre unité en $6$ parts égales et que l'on colorie $2$ parts, quelle fraction est représentée ?",
+      "options": [
+        "$\\frac{6}{2}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{2}{6}$",
+        "$\\frac{2}{4}$"
+      ],
+      "correctAnswer": "$\\frac{2}{6}$",
+      "explanation": "Le nombre total de parts égales donne le dénominateur, soit $6$. Le nombre de parts coloriées donne le numérateur, soit $2$. On obtient donc $\\frac{2}{6}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "En observant les deux bandes suivantes, laquelle est la plus grande ?",
+      "options": [
+        "La fraction $\\frac{1}{2}$",
+        "La fraction $\\frac{1}{4}$",
+        "Les deux sont égales",
+        "Aucune des deux"
+      ],
+      "correctAnswer": "La fraction $\\frac{1}{2}$",
+      "explanation": "Lorsque le numérateur est le même, la fraction est plus grande quand le dénominateur est plus petit. $\\frac{1}{2}$ représente la moitié d'une unité, alors que $\\frac{1}{4}$ n'en représente qu'un quart.",
+      "points": 1,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 1,
+            "denominator": 4
+          }
+        ],
+        "caption": "Comparaison de deux bandes"
+      }
+    },
+    {
+      "text": "Quelle fraction représente la partie colorée de cette grille ?",
+      "options": [
+        "$\\frac{6}{12}$",
+        "$\\frac{6}{10}$",
+        "$\\frac{1}{2}$",
+        "$\\frac{6}{12}$ et $\\frac{1}{2}$ sont correctes"
+      ],
+      "correctAnswer": "$\\frac{6}{12}$ et $\\frac{1}{2}$ sont correctes",
+      "explanation": "La grille a $12$ cases au total et $6$ sont colorées, ce qui donne $\\frac{6}{12}$. Comme $6$ est la moitié de $12$, cette fraction est égale à $\\frac{1}{2}$.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 3,
+        "cols": 4,
+        "highlighted": 6,
+        "caption": "Grille de fractions"
+      }
+    },
+    {
+      "text": "Si une fraction a un numérateur égal à son dénominateur, comme $\\frac{8}{8}$, elle est représentée par quoi ?",
+      "options": [
+        "Un quart de l'unité",
+        "L'unité entière",
+        "Zéro",
+        "Deux unités"
+      ],
+      "correctAnswer": "L'unité entière",
+      "explanation": "Quand on a $8$ parts sur un total de $8$ parts égales, on a reconstitué l'objet complet. Toute fraction dont le numérateur et le dénominateur sont identiques est égale à $1$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

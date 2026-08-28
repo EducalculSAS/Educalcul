@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 524,
+  "_course_code": "2nde-t05-c05-resoudre-graphiquement-equations-et-inequations",
+  "_level": "2nde",
+  "_subject": "Fonctions, représentations et variations",
+  "_subtheme": "Application : Résoudre graphiquement équations et inéquations",
+  "title": "Quiz : Résolution graphique d'équations et d'inéquations",
+  "questions": [
+    {
+      "text": "D'après le graphique de la fonction $f(x)=x^2-4$, quelle est la solution positive de l'équation $f(x)=0$ ?",
+      "options": [
+        "-2",
+        "0",
+        "2",
+        "4"
+      ],
+      "correctAnswer": "2",
+      "explanation": "Le graphique coupe l'axe des abscisses en $x=-2$ et $x=2$. La solution positive est donc $2$. Les autres options correspondent à la solution négative, à l'ordonnée à l'origine ou à une valeur non solution.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2-4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de $f(x)=x^2-4$"
+      }
+    },
+    {
+      "text": "Toujours pour la fonction $f(x)=x^2-4$, l'inéquation $f(x)>0$ est vérifiée pour quels $x$ ?",
+      "options": [
+        "$x<-2$ ou $x>2$",
+        "$-2<x<2$",
+        "$x<-2$",
+        "$x>2$"
+      ],
+      "correctAnswer": "$x<-2$ ou $x>2$",
+      "explanation": "Le graphique est au-dessus de l'axe des abscisses en dehors des racines $-2$ et $2$. Donc $f(x)>0$ pour $x<-2$ ou $x>2$. L'intervalle $-2<x<2$ correspond à $f(x)<0$, et les deux dernières options ne donnent qu'une partie de la solution.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "x^2-4",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de $f(x)=x^2-4$"
+      }
+    },
+    {
+      "text": "Le graphique représente la fonction $g(x)=-x^2+4$. En lisant le graphique, quelle est l'approximation de la solution positive de l'équation $g(x)=2$ ?",
+      "options": [
+        "1",
+        "1,4",
+        "2",
+        "3"
+      ],
+      "correctAnswer": "1,4",
+      "explanation": "L'équation $-x^2+4=2$ donne $x^2=2$, donc $x=√2≈1,41$. Sur le graphique, la courbe coupe la droite $y=2$ près de $x≈1,4$. Les autres valeurs ne correspondent pas à l'intersection.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-x^2+4",
+        "xmin": -3,
+        "xmax": 3,
+        "caption": "Graphique de $g(x)=-x^2+4$"
+      }
+    },
+    {
+      "text": "Pour la fonction $h(x)=-x^2+4$, sur quel intervalle la fonction est-elle strictement croissante ?",
+      "options": [
+        "$x<0$",
+        "$x>0$",
+        "$-2<x<2$",
+        "$x>2$"
+      ],
+      "correctAnswer": "$x<0$",
+      "explanation": "La parabole $h(x)=-x^2+4$ a son sommet en $x=0$ et s'ouvre vers le bas. Elle croît pour $x<0$ et décroît pour $x>0$. Donc l'intervalle de croissance est $x<0$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "-x^2+4",
+        "xmin": -3,
+        "xmax": 3,
+        "caption": "Graphique de $h(x)=-x^2+4$"
+      }
+    },
+    {
+      "text": "Le graphique montre la fonction $k(x)=\\frac{1}{x}$. L'inéquation $k(x)<0$ est vérifiée pour quels $x$ ?",
+      "options": [
+        "$x<0$",
+        "$x>0$",
+        "$x\\neq0$",
+        "$x=0$"
+      ],
+      "correctAnswer": "$x<0$",
+      "explanation": "La fonction $k(x)=1/x$ est négative lorsque $x$ est négatif, car le numérateur est positif. Pour $x>0$, $k(x)>0$ ; $x=0$ n'appartient pas au domaine. Donc la solution est $x<0$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "1/x",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Graphique de $k(x)=1/x$"
+      }
+    }
+  ]
+}

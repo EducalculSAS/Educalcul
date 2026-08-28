@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 453,
+  "_course_code": "4eme-t07-c04-fonctions-et-simulation",
+  "_level": "4e",
+  "_subject": "Algorithmique et programmation",
+  "_subtheme": "Simuler",
+  "title": "Quiz : Simuler avec Python (4e)",
+  "questions": [
+    {
+      "text": "On souhaite simuler le lancer équilibré d'un dé à six faces numérotées de 1 à 6. Quelle instruction Python permet de générer un entier aléatoire entre 1 et 6 inclus ?",
+      "options": [
+        "random.random() * 6",
+        "random.randint(1, 6)",
+        "random.uniform(1, 6)",
+        "random.choice([0, 1, 2, 3, 4, 5])"
+      ],
+      "correctAnswer": "random.randint(1, 6)",
+      "explanation": "La fonction randint(a, b) du module random renvoie un entier choisi aléatoirement entre a et b inclus. C'est l'instruction standard pour simuler un dé. random.random() renvoie un flottant entre 0 et 1. random.uniform renvoie un flottant. random.choice sur une liste commençant à 0 simulerait un dé de 0 à 5.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme suivant :\\nimport random\\nsomme = 0\\nfor i in range(100):\\n    x = random.randint(1, 6)\\n    somme = somme + x\\nprint(somme / 100)\\nQue représente approximativement la valeur affichée ?",
+      "options": [
+        "La somme des 100 lancers",
+        "La moyenne théorique d'un lancer de dé ($3,5$)",
+        "Le nombre de fois où on a obtenu un 6",
+        "La fréquence d'apparition du nombre 1"
+      ],
+      "correctAnswer": "La moyenne théorique d'un lancer de dé ($3,5$)",
+      "explanation": "La boucle simule 100 lancers de dé. La variable 'somme' accumule la somme des résultats. À la fin, on divise cette somme par le nombre d'essais (100). On calcule donc la moyenne empirique. Par la loi des grands nombres, cette moyenne empirique tend vers l'espérance mathématique (moyenne théorique) qui est $(1+2+3+4+5+6)/6 = 3,5$. Ce n'est pas la somme totale, ni un compteur, ni une fréquence.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour simuler une expérience aléatoire à deux issues (Succès / Échec) avec une probabilité de succès $p = 0,3$, on utilise souvent l'instruction :\\nif random.random() < 0.3:\\n    ...\\nPourquoi la condition utilise-t-elle random.random() et non random.randint(0, 1) ?",
+      "options": [
+        "Parce que random.randint(0, 1) ne renvoie que des entiers (0 ou 1) avec une probabilité fixe de 0,5 chacun, ce qui ne permet pas de régler $p=0,3$.",
+        "Parce que random.random() est plus rapide à exécuter.",
+        "Parce que random.randint(0, 1) renvoie des nombres entre 0 et 1 exclus.",
+        "Parce qu'il faut importer un module différent pour randint."
+      ],
+      "correctAnswer": "Parce que random.randint(0, 1) ne renvoie que des entiers (0 ou 1) avec une probabilité fixe de 0,5 chacun, ce qui ne permet pas de régler $p=0,3$.",
+      "explanation": "random.random() renvoie un nombre flottant uniformément réparti dans l'intervalle $[0, 1[$. La probabilité qu'il soit strictement inférieur à 0,3 est exactement 0,3. À l'inverse, random.randint(0, 1) renvoie soit 0 soit 1, chacun avec une probabilité de 0,5 (équipe face/pile). On ne peut pas obtenir une probabilité de 0,3 avec cette fonction. Les deux fonctions sont dans le module random. randint inclut les bornes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut estimer la probabilité d'obtenir au moins un '6' en lançant deux dés. On écrit l'algorithme suivant :\\ncompteur = 0\\nN = 10000\\nfor i in range(N):\\n    d1 = random.randint(1, 6)\\n    d2 = random.randint(1, 6)\\n    if d1 == 6 or d2 == 6:\\n        compteur = compteur + 1\\nprint(compteur / N)\\nQuelle est la valeur théorique exacte que ce programme approxime ?",
+      "options": [
+        "$\\frac{1}{3}$",
+        "$\\frac{11}{36}$",
+        "$\\frac{1}{6}$",
+        "$\\frac{1}{12}$"
+      ],
+      "correctAnswer": "$\\frac{11}{36}$",
+      "explanation": "On cherche P(au moins un 6). Il est plus simple de calculer le complémentaire : P(aucun 6). Pour un dé, P(pas 6) = $5/6$. Pour deux dés indépendants, P(aucun 6) = $(5/6) \\times (5/6) = 25/36$. Donc P(au moins un 6) = $1 - 25/36 = 11/36$. La simulation avec N grand (10000) donne une fréquence proche de cette valeur. $1/3 \\approx 12/36$, $1/6 = 6/36$, $1/12 = 3/36$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute ce script pour simuler la rencontre de deux joueurs A et B. A gagne avec une probabilité de 0,55.\\ngagnes_A = 0\\nfor i in range(1000):\\n    if random.random() < 0.55:\\n        gagnes_A = gagnes_A + 1\\nprint(gagnes_A / 1000)\\nSi on relance le script une seconde fois, que peut-on affirmer avec certitude ?",
+      "options": [
+        "Le résultat affiché sera exactement identique au premier.",
+        "Le résultat affiché sera exactement $0,55$.",
+        "Le résultat affiché sera un nombre voisin de $0,55$, généralement différent du premier résultat.",
+        "Le résultat affiché sera soit 0 soit 1."
+      ],
+      "correctAnswer": "Le résultat affiché sera un nombre voisin de $0,55$, généralement différent du premier résultat.",
+      "explanation": "La simulation utilise un générateur de nombres pseudo-aléatoires. Chaque exécution (run) produit une suite de nombres différente (sauf si la graine 'seed' est fixée, ce qui n'est pas fait ici). La fréquence observée fluctue autour de la probabilité théorique $0,55$ (loi des grands nombres). Elle n'est pas figée, ni exactement égale à la théorie, ni binaire (0 ou 1). Elle varie d'une simulation à l'autre.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

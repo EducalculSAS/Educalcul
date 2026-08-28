@@ -1,0 +1,139 @@
+{
+  "_status": "done",
+  "_course_id": 280,
+  "_course_code": "cm2-t01-c06-droite-graduee-avec-decimaux",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Estimer",
+  "title": "Estimer sur une droite graduée avec des décimaux",
+  "questions": [
+    {
+      "text": "Sur la droite graduée ci-dessous, les graduations principales représentent les nombres entiers. Quel nombre décimal est le plus proche du point A ?",
+      "options": [
+        "3,2",
+        "3,5",
+        "3,8",
+        "4,1"
+      ],
+      "correctAnswer": "3,8",
+      "explanation": "La droite va de 3 à 4. Le point A est placé très près de la graduation 4, mais avant. Parmi les choix, 3,8 est le plus proche de 4 (à 0,2 près), alors que 3,5 est au milieu et 3,2 est plus proche de 3. 4,1 est au-delà de 4.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 3 à 4",
+        "min": 3,
+        "max": 4,
+        "points": [
+          {
+            "value": 3.8,
+            "label": "A"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On a repéré un point B entre 0 et 1. La droite est graduée par dixième (0,1 ; 0,2 ; ...). Le point B se situe entre les graduations 0,6 et 0,7, plus près de 0,6. Quelle est la meilleure estimation de la valeur de B ?",
+      "options": [
+        "0,55",
+        "0,62",
+        "0,68",
+        "0,71"
+      ],
+      "correctAnswer": "0,62",
+      "explanation": "Puisque B est entre 0,6 et 0,7, sa valeur est comprise entre ces deux nombres. Comme il est plus près de 0,6, la partie des centièmes doit être faible (inférieure à 5). 0,62 correspond à 0,6 + 0,02, ce qui est très proche de 0,6. 0,68 est près de 0,7. 0,55 est avant 0,6. 0,71 est après 0,7.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 1 graduée par dixièmes",
+        "min": 0,
+        "max": 1,
+        "points": [
+          {
+            "value": 0.62,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Regarde la droite graduée de 5 à 6. Le point C est placé exactement au milieu entre 5,3 et 5,4. Quelle est la valeur exacte du point C ?",
+      "options": [
+        "5,34",
+        "5,35",
+        "5,36",
+        "5,45"
+      ],
+      "correctAnswer": "5,35",
+      "explanation": "Le milieu entre 5,3 (soit 5,30) et 5,4 (soit 5,40) correspond à la moyenne : (5,30 + 5,40) / 2 = 5,35. C'est le nombre qui a 5 centièmes de plus que 5,3 et 5 centièmes de moins que 5,4.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 5 à 6 zoom entre 5,3 et 5,4",
+        "min": 5.3,
+        "max": 5.4,
+        "points": [
+          {
+            "value": 5.35,
+            "label": "C"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "text": "On veut placer le nombre $4,73$ sur une droite graduée de 4 à 5 par dixièmes (4,1 ; 4,2 ; ... ; 4,9). Entre quelles deux graduations principales se trouve ce nombre ?",
+      "options": [
+        "Entre 4,6 et 4,7",
+        "Entre 4,7 et 4,8",
+        "Entre 4,8 et 4,9",
+        "Entre 4,5 et 4,6"
+      ],
+      "correctAnswer": "Entre 4,7 et 4,8",
+      "explanation": "Le nombre 4,73 s'écrit 4 + 0,7 + 0,03. La partie dixième est 7, donc le nombre est supérieur ou égal à 4,7. Comme les centièmes (3) sont inférieurs à 10, le nombre est strictement inférieur à 4,8. Il se situe donc entre les graduations 4,7 et 4,8, plus près de 4,7.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 4 à 5 graduée par dixièmes",
+        "min": 4,
+        "max": 5,
+        "points": [],
+        "intervals": []
+      }
+    },
+    {
+      "text": "Sur une droite graduée de 0 à 10 par unité, on place les points D ($2,9$), E ($3,1$) et F ($3,05$). Lequel de ces points est le plus proche de la graduation 3 ?",
+      "options": [
+        "Le point D",
+        "Le point E",
+        "Le point F",
+        "Les points D et E sont à égale distance"
+      ],
+      "correctAnswer": "Le point F",
+      "explanation": "Calculons les distances à 3 :\\n- D (2,9) : $3 - 2,9 = 0,1$ (soit 1 dixième).\\n- E (3,1) : $3,1 - 3 = 0,1$ (soit 1 dixième).\\n- F (3,05) : $3,05 - 3 = 0,05$ (soit 5 centièmes).\\n0,05 est plus petit que 0,1. Le point F est donc le plus proche de 3.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite de 0 à 10",
+        "min": 2,
+        "max": 4,
+        "points": [
+          {
+            "value": 2.9,
+            "label": "D"
+          },
+          {
+            "value": 3.1,
+            "label": "E"
+          },
+          {
+            "value": 3.05,
+            "label": "F"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

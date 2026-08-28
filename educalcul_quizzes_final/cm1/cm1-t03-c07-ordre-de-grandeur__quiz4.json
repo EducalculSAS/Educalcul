@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 232,
+  "_course_code": "cm1-t03-c07-ordre-de-grandeur",
+  "_level": "cm1",
+  "_subject": "Calcul mental et quatre opérations",
+  "_subtheme": "Application : Ordre de grandeur",
+  "title": "Quiz : Application de l'ordre de grandeur",
+  "questions": [
+    {
+      "text": "On veut donner un ordre de grandeur de la somme $47 + 38$. Quelle est la meilleure estimation en arrondissant chaque nombre à la dizaine la plus proche ?",
+      "options": [
+        "$70$",
+        "$80$",
+        "$90$",
+        "$100$"
+      ],
+      "correctAnswer": "$90$",
+      "explanation": "On arrondit $47$ à $50$ et $38$ à $40$. L'estimation de la somme est $50 + 40 = 90$. L'option $80$ correspondrait à un arrondi à la dizaine inférieure pour $47$ ($40+40$). L'option $100$ correspondrait à un arrondi au supérieur pour les deux ($50+50$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'ordre de grandeur de la différence $423 - 187$ en arrondissant les nombres à la centaine la plus proche ?",
+      "options": [
+        "$100$",
+        "$200$",
+        "$300$",
+        "$400$"
+      ],
+      "correctAnswer": "$200$",
+      "explanation": "On arrondit $423$ à $400$ (centaine la plus proche) et $187$ à $200$. L'estimation de la différence est $400 - 200 = 200$. L'option $300$ serait obtenue en arrondissant $423$ à $400$ et $187$ à $100$ (erreur d'arrondi pour $187$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On calcule le produit $24 \\times 39$. En arrondissant chaque facteur à la dizaine la plus proche, quel ordre de grandeur obtient-on pour le résultat ?",
+      "options": [
+        "$600$",
+        "$800$",
+        "$1\\ 000$",
+        "$1\\ 200$"
+      ],
+      "correctAnswer": "$800$",
+      "explanation": "On arrondit $24$ à $20$ et $39$ à $40$. Le produit estimé est $20 \\times 40 = 800$. L'option $600$ correspond à $20 \\times 30$ (arrondi de $39$ à $30$ incorrect). L'option $1\\ 000$ correspond à $25 \\times 40$ ou $30 \\times 30$ (arrondis trop gros).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les propositions suivantes, laquelle donne le meilleur ordre de grandeur du quotient $587 \\div 6$ ?",
+      "options": [
+        "$10$",
+        "$50$",
+        "$100$",
+        "$500$"
+      ],
+      "correctAnswer": "$100$",
+      "explanation": "On cherche un multiple de $6$ proche de $587$. $6 \\times 100 = 600$, ce qui est très proche de $587$. Le quotient est donc proche de $100$. $10$ est trop petit ($6 \\times 10 = 60$), $500$ est trop grand ($6 \\times 500 = 3\\ 000$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une bibliothécaire range $18$ boîtes de livres. Chaque boîte contient $24$ livres. Quel est l'ordre de grandeur du nombre total de livres ?",
+      "options": [
+        "$200$",
+        "$400$",
+        "$600$",
+        "$800$"
+      ],
+      "correctAnswer": "$400$",
+      "explanation": "On arrondit $18$ à $20$ et $24$ à $20$. Le produit estimé est $20 \\times 20 = 400$. Le calcul exact donne $18 \\times 24 = 432$, ce qui confirme que $400$ est le bon ordre de grandeur. $200$ sous-estime (arrondi à $10 \\times 20$), $600$ et $800$ surestiment.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

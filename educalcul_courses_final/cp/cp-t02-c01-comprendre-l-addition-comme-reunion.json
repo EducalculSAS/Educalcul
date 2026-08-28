@@ -1,0 +1,368 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.533479+00:00",
+  "id": 15,
+  "code": "cp-t02-c01",
+  "title": "Comprendre l'addition comme réunion",
+  "description": "Cours structuré Educalcul : Comprendre l'addition comme réunion.",
+  "subject": "Addition et soustraction",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Addition et soustraction",
+    "titre_du_cours": "Comprendre l'addition comme réunion",
+    "objectif_global": "Comprendre l'addition comme réunion",
+    "mini_lecons_imposees": [
+      "Réunir deux collections.",
+      "Écrire une addition simple.",
+      "Interpréter le résultat comme un total."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Addition et soustraction",
+      "lessons": [
+        {
+          "title": "Réunir deux collections.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Mettre deux groupes ensemble"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $3$ billes rouges dans ta main gauche et $2$ billes bleues dans ta main droite. Tu veux savoir combien tu as de billes en tout. Pour le savoir, tu vas réunir les deux groupes : tu verses les billes bleues dans la main gauche. Maintenant, toutes tes billes sont ensemble."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 3,
+              "caption": "3 billes rouges"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici le deuxième groupe : $2$ billes bleues. Quand tu les ajoutes aux rouges, tu obtiens un seul grand groupe."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 5,
+              "caption": "5 billes au total"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter pour trouver le total"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour être sûr du résultat, tu peux recompter toutes les billes une par une : une, deux, trois, quatre, cinq. Tu as bien $5$ billes en tout. Cette action de mettre deux groupes bout à bout pour n'en former qu'un seul, c'est ce qu'on appelle réunir."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compter le premier groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Touche chaque objet du premier groupe en disant les nombres : $1$, $2$, $3$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Compter le deuxième groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Continue en touchant les objets du deuxième groupe : $4$, $5$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Le total",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le dernier nombre dit, $5$, est le total des deux groupes réunis."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le mot « réunir »"
+            },
+            {
+              "type": "definition",
+              "term": "Réunir",
+              "definition": "Mettre plusieurs collections ensemble pour n'en faire qu'une seule grande collection.",
+              "example": "Réunir $4$ crayons et $1$ crayon donne $5$ crayons."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essaie avec tes jouets : prends $4$ voitures rouges et $1$ voiture bleue. Réunis-les sur le tapis. Combien as-tu de voitures maintenant ? Tu as fait une réunion de deux collections."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $2$ pommes rouges et $3$ pommes vertes. Tu réunis les deux groupes. Combien as-tu de pommes en tout ?",
+              "answer": "$5$ pommes",
+              "hint": "Compte les pommes rouges, puis continue avec les vertes.",
+              "explanation": "Le premier groupe a $2$ pommes, le deuxième en a $3$. En les réunissant, on compte $2$, puis $3$, $4$, $5$. Le total est $5$."
+            },
+            {
+              "question": "Sur ton bureau, il y a $1$ gomme bleue et $4$ gommes roses. Tu les mets toutes dans ta trousse. Combien de gommes y a-t-il dans la trousse ?",
+              "answer": "$5$ gommes",
+              "hint": "Utilise tes doigts : lève $1$ doigt pour la bleue, puis $4$ doigts pour les roses.",
+              "explanation": "On commence à $1$ (la bleue), on ajoute $4$ (les roses) : $2$, $3$, $4$, $5$. Il y a $5$ gommes au total."
+            },
+            {
+              "question": "Léo a $3$ billes. Il en gagne $2$ de plus. Combien a-t-il de billes maintenant ?",
+              "answer": "$5$ billes",
+              "hint": "Imagine les $3$ billes de départ, puis ajoute les $2$ nouvelles.",
+              "explanation": "Les $3$ billes de départ et les $2$ billes gagnées forment deux collections. Réunies, elles donnent $5$ billes."
+            }
+          ]
+        },
+        {
+          "title": "Écrire une addition simple.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "De l'action à l'écriture"
+            },
+            {
+              "type": "paragraph",
+              "content": "Hier, tu as réuni des billes, des pommes, des crayons. Aujourd'hui, nous allons apprendre à écrire ce que tu as fait avec des signes mathématiques. C'est comme un code secret qui dit la même chose mais plus vite."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des billes : tu avais $3$ billes rouges et $2$ billes bleues. En les réunissant, tu as obtenu $5$ billes. On peut écrire cette histoire avec des chiffres et deux signes spéciaux : $3 + 2 = 5$."
+            },
+            {
+              "type": "display_math",
+              "latex": "3 + 2 = 5"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le signe $+$ signifie « et » ou « on ajoute ». Le signe $=$ signifie « ça fait » ou « le total est ». Lis l'écriture comme une phrase : « trois plus deux font cinq »."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les signes $+$ et $=$"
+            },
+            {
+              "type": "definition",
+              "term": "Le signe +",
+              "definition": "Il montre qu'on réunit deux quantités. On le lit « plus ».",
+              "example": "Dans $4 + 1$, on ajoute $1$ à $4$."
+            },
+            {
+              "type": "definition",
+              "term": "Le signe =",
+              "definition": "Il sépare le calcul de son résultat. Il signifie « égale » ou « fait ».",
+              "example": "Dans $4 + 1 = 5$, le total $5$ est après le $=$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à l'ordre : on écrit d'abord les deux nombres qu'on réunit, séparés par $+$, puis le signe $=$, et enfin le total. C'est comme une recette : ingrédients à gauche, gâteau à droite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une addition d'après un dessin"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce dessin : il y a $4$ fleurs jaunes et $1$ fleur rouge. Pour écrire l'addition, suis ces étapes :"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Compte le premier groupe : $4$. Écris $4$.",
+                "Écris le signe $+$.",
+                "Compte le deuxième groupe : $1$. Écris $1$.",
+                "Écris le signe $=$.",
+                "Compte tout ensemble : $5$. Écris $5$."
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as écrit $4 + 1 = 5$. Bravo ! Tu sais maintenant transformer une réunion d'objets en une vraie addition écrite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète l'addition qui correspond à cette histoire : « J'ai $2$ bonbons, j'en prends $3$ autres. » Écris les chiffres dans les cases : $\\square + \\square = \\square$.",
+              "answer": "$2 + 3 = 5$",
+              "hint": "Le premier nombre est ce que tu as au départ, le deuxième est ce que tu ajoutes.",
+              "explanation": "Tu as $2$ bonbons au départ, tu en ajoutes $3$. L'addition s'écrit $2 + 3 = 5$."
+            },
+            {
+              "question": "Parmi ces écritures, laquelle est une addition correcte pour « $4$ billes et $1$ bille » ?",
+              "answer": "$4 + 1 = 5$",
+              "hint": "Vérifie que les deux nombres avant le $=$ sont bien $4$ et $1$.",
+              "explanation": "Les deux groupes sont $4$ et $1$. On les sépare par $+$. Le total est $5$, après le $=$. Donc $4 + 1 = 5$."
+            },
+            {
+              "question": "Tu vois $3$ oiseaux sur une branche et $2$ oiseaux sur une autre. Écris l'addition qui donne le total d'oiseaux.",
+              "answer": "$3 + 2 = 5$",
+              "hint": "Note d'abord les oiseaux de la première branche, puis ceux de la deuxième.",
+              "explanation": "Première branche : $3$ oiseaux. Deuxième branche : $2$ oiseaux. Addition : $3 + 2 = 5$ oiseaux en tout."
+            }
+          ]
+        },
+        {
+          "title": "Interpréter le résultat comme un total.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Le résultat, c'est le total"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant écrire une addition comme $3 + 2 = 5$. Mais que veut dire exactement le $5$ à la fin ? C'est la réponse à la question « Combien en tout ? ». C'est le nombre total d'objets quand on a tout mis ensemble."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine : tu as $4$ bonbons dans ta poche. Ton ami t'en donne $3$ de plus. Tu les mets tous dans ta main. Combien as-tu de bonbons dans la main maintenant ? Tu as réuni $4$ et $3$, le total est $7$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 0,
+              "units": 7,
+              "caption": "7 bonbons au total"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les questions « combien en tout ? »"
+            },
+            {
+              "type": "definition",
+              "term": "Total",
+              "definition": "Le nombre final obtenu quand on a réuni toutes les collections. C'est la réponse à « Combien en tout ? »",
+              "example": "Pour $4 + 3$, le total est $7$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans les problèmes, on te demande souvent : « Combien y a-t-il en tout ? », « Quel est le total ? » ou « Combien as-tu maintenant ? ». Toutes ces questions veulent dire la même chose : trouve le résultat de l'addition."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Voir le total sur une droite numérique"
+            },
+            {
+              "type": "number_line",
+              "caption": "Départ à 3, j'ajoute 2, j'arrive à 5",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "Départ"
+                },
+                {
+                  "value": 5,
+                  "label": "Total"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur cette droite, tu commences au nombre $3$ (le premier groupe). Tu fais $2$ sauts vers la droite (le deuxième groupe). Tu arrives sur $5$. Ce nombre $5$ où tu arrives, c'est le total. C'est une autre façon de voir la réunion : on avance sur le chemin des nombres."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais réunir deux collections d'objets concrets.",
+                "Je sais écrire une addition avec les signes $+$ et $=$.",
+                "Je sais que le résultat de l'addition est le total des objets réunis.",
+                "Je peux lire une addition comme « 3 plus 2 font 5 »."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Il y a $5$ crayons dans la boîte. J'en ajoute $2$. Combien de crayons y a-t-il en tout dans la boîte ?",
+              "answer": "$7$ crayons",
+              "hint": "Pars de $5$ et compte $2$ de plus : $6$, $7$.",
+              "explanation": "On réunit $5$ crayons et $2$ crayons. Le total est $7$ crayons. L'addition est $5 + 2 = 7$."
+            },
+            {
+              "question": "Dans l'addition $4 + 3 = 7$, que représente le nombre $7$ ?",
+              "answer": "Le total des deux groupes réunis.",
+              "hint": "Regarde le signe $=$ : ce qui est après est le résultat final.",
+              "explanation": "Le $7$ est écrit après le signe $=$. Il indique le nombre total d'objets quand on a mis ensemble le groupe de $4$ et le groupe de $3$."
+            },
+            {
+              "question": "Sur la droite numérique, je suis sur le $6$. Je fais $3$ sauts vers la droite. Sur quel nombre j'arrive ? Quel est le total ?",
+              "answer": "J'arrive sur $9$, le total est $9$.",
+              "hint": "Compte les sauts : $7$, $8$, $9$.",
+              "explanation": "En partant de $6$ et en ajoutant $3$ (trois sauts), on arrive à $9$. Cela correspond à l'addition $6 + 3 = 9$. Le total est $9$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

@@ -1,0 +1,515 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.608747+00:00",
+  "id": 358,
+  "code": "6eme-t06-c02",
+  "title": "Angles",
+  "description": "Cours structuré Educalcul : Angles.",
+  "subject": "Géométrie plane",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Géométrie plane",
+    "titre_du_cours": "Angles",
+    "objectif_global": "Angles",
+    "mini_lecons_imposees": [
+      "Mesurer.",
+      "Construire.",
+      "Classer."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane",
+      "lessons": [
+        {
+          "title": "Mesurer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un angle ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un angle est la figure formée par deux demi‑droites qui partent du même point. Ce point commun s'appelle le sommet, et les deux demi‑droites sont les côtés de l'angle. Imagine deux rayons de soleil qui sortent d'un même point sur le sol : l'espace entre eux est l'angle. Plus l'écart est grand, plus l'angle est grand. Pour pouvoir comparer les angles, on a inventé une unité de mesure : le degré. Un tour complet correspond à $360^{\\circ}$, un demi‑tour à $180^{\\circ}$ et un quart de tour à $90^{\\circ}$."
+            },
+            {
+              "type": "definition",
+              "term": "angle",
+              "definition": "Figure formée par deux demi‑droites ayant la même origine.",
+              "example": "L'angle formé par les murs d'un coin de pièce."
+            },
+            {
+              "type": "definition",
+              "term": "sommet",
+              "definition": "Point commun aux deux côtés de l'angle.",
+              "example": "Le coin où se rejoignent les deux murs."
+            },
+            {
+              "type": "definition",
+              "term": "côté",
+              "definition": "Chacune des deux demi‑droites qui délimitent l'angle.",
+              "example": "Les deux murs qui partent du coin."
+            },
+            {
+              "type": "definition",
+              "term": "degré",
+              "definition": "Unité de mesure des angles, notée $^{\\circ}$. Un angle droit vaut $90^{\\circ}$.",
+              "example": "Un angle de $45^{\\circ}$ est un angle aigu."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pourquoi est‑il utile de connaître la mesure d'un angle ? Dans la vie de tous les jours, les charpentiers, les architectes et même les cuisiniers utilisent des angles pour couper, assembler ou décorer. Savoir mesurer un angle te permettra plus tard de construire des figures précises et de résoudre des problèmes de géométrie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Utiliser le rapporteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le rapporteur est un instrument gradué de $0^{\\circ}$ à $180^{\\circ}$ (parfois jusqu'à $360^{\\circ}$). Pour mesurer un angle, pose le centre du rapporteur exactement sur le sommet. Aligne ensuite le zéro du rapporteur avec l'un des côtés. L'autre côté coupe alors le rapporteur en un point qui donne la mesure en degrés. Il faut bien regarder si on lit l'échelle intérieure ou extérieure, selon l'orientation de l'angle."
+            },
+            {
+              "type": "interactive_protractor",
+              "angleDeg": 45,
+              "caption": "Rapporteur positionné sur un angle de $45^{\\circ}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde l'image du rapporteur placé sur un angle de $45^{\\circ}$. Le côté gauche est aligné sur le zéro, le second côté coupe le rapporteur à la graduation $45$. Essaie de reproduire ce placement sur ton cahier avec un angle que tu as tracé toi‑même."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Placer le centre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pose le petit trou ou la marque centrale du rapporteur sur le sommet de l'angle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Aligner le zéro",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Fais coïncider la graduation $0^{\\circ}$ avec l'un des côtés de l'angle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Lire la mesure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère où le second côté coupe le rapporteur. La graduation correspond à la mesure de l'angle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à ne pas confondre les deux échelles. Si tu lis le mauvais chiffre, ton angle sera faux. Un bon réflexe : vérifie toujours que la mesure que tu as lue correspond à l'ouverture que tu vois."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais positionner le rapporteur, entraî‑toi à lire la mesure sur plusieurs angles dessinés sur ton cahier. Essaie de mesurer un angle de $30^{\\circ}$, un de $120^{\\circ}$ et un de $150^{\\circ}$. Note chaque valeur et vérifie avec ton professeur."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire la mesure sur les deux échelles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le rapporteur possède deux échelles qui vont en sens inverse. Si le côté aligné sur le zéro est à gauche, lis l'échelle qui commence à gauche (souvent en rouge). Si le côté est à droite, lis l'échelle qui commence à droite (souvent en bleu). Par exemple, un angle de $45^{\\circ}$ se lit $45$ sur l'échelle intérieure, tandis qu'un angle de $135^{\\circ}$ se lit $135$ sur l'échelle extérieure. Prends le temps de bien identifier quelle échelle utiliser avant de noter le chiffre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons un exemple concret. Dessine un angle de $60^{\\circ}$ et un de $150^{\\circ}$. Place le rapporteur, choisis la bonne échelle et note les mesures. Compare tes résultats avec ceux de ton voisin."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les angles droits et plats sont des repères très utiles. Un angle droit mesure exactement $90^{\\circ}$ ; on le reconnaît souvent grâce à un petit carré tracé au sommet. Un angle plat mesure $180^{\\circ}$ et correspond à une ligne droite. Quand tu mesures un angle, compare‑le mentalement à ces deux repères pour vérifier si ta lecture est plausible."
+            },
+            {
+              "type": "paragraph",
+              "content": "Les angles droits apparaissent partout : les coins d'une feuille, les coins d'une table, les intersections de rues perpendiculaires. Les angles plats sont simplement des lignes droites. Apprends à les repérer rapidement sans même sortir le rapporteur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Mesure l'angle représenté sur la figure ci‑dessus (angle de $45^{\\circ}$). Quelle est sa mesure en degrés ?",
+              "answer": "$45^{\\circ}$",
+              "hint": "Place le centre du rapporteur sur le sommet et aligne le zéro sur un côté.",
+              "explanation": "L'angle ouvre un quart de tour, donc $45^{\\circ}$."
+            },
+            {
+              "question": "Si tu alignes le zéro du rapporteur sur le côté gauche d'un angle et que le second côté coupe la graduation $120$ sur l'échelle intérieure, quelle est la mesure de l'angle ?",
+              "answer": "$120^{\\circ}$",
+              "hint": "Vérifie que tu lis l'échelle qui commence du même côté que le zéro.",
+              "explanation": "Le côté gauche est sur le zéro, l'échelle intérieure donne $120^{\\circ}$."
+            },
+            {
+              "question": "Un angle droit mesure $90^{\\circ}$. Si tu mesures un angle et que tu obtiens $88^{\\circ}$, que peux‑tu déduire ?",
+              "answer": "L'angle n'est pas un angle droit, il est légèrement plus petit.",
+              "hint": "Compare ta mesure à $90^{\\circ}$.",
+              "explanation": "Un angle droit vaut exactement $90^{\\circ}$, donc $88^{\\circ}$ est un angle aigu proche du droit."
+            }
+          ]
+        },
+        {
+          "title": "Construire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Copier un angle avec un compas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour reproduire un angle sans rapporteur, on utilise un compas et une règle. L'idée est de reporter l'ouverture de l'angle sur un nouveau sommet. Cette technique repose sur le fait que deux triangles having the same three side lengths sont congrus, donc leurs angles correspondants sont égaux. C'est la base de nombreuses constructions géométriques au collège."
+            },
+            {
+              "type": "compass_tool",
+              "radius": 5,
+              "centerLabel": "O",
+              "caption": "Compas ouvert à une certaine ouverture pour reporter un angle."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer un rayon de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sur une feuille, trace une demi‑droite [OX). Ce sera le premier côté de ton nouvel angle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Reporter l'ouverture",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la pointe du compas sur le sommet de l'angle original. Ouvre le compas jusqu'à ce que le crayon touche les deux côtés de l'angle. Sans changer l'écartement, déplace le compas sur le point O et trace un arc qui coupe la demi‑droite [OX)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire le second côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Garde le même écartement, place la pointe du compas sur l'intersection de l'arc avec [OX) et trace un second arc qui coupe le premier. Relie O à ce point d'intersection : tu as copié l'angle."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à ne pas modifier l'écartement du compas entre les deux arcs. Si tu changes la largeur, l'angle copié ne sera plus égal à l'original. Vérifie toujours en mesurant les deux angles avec un rapporteur après la construction."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais copier un angle, essaye de reproduire l'angle de $40^{\\circ}$ que ton professeur a tracé au tableau. Construis-le sur ton cahier, puis mesure-le pour contrôler ton travail."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire les angles remarquables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Certains angles reviennent sans cesse en géométrie : $60^{\\circ}$, $90^{\\circ}$ et $45^{\\circ}$. On peut les obtenir sans rapporteur, seulement avec règle et compas. Le $60^{\\circ}$ vient du triangle équilatéral, le $90^{\\circ}$ d'une perpendiculaire ou du cercle de Thalès, et le $45^{\\circ}$ en bissectant un angle droit. Ces constructions sont des briques pour résoudre bien des problèmes."
+            },
+            {
+              "type": "triangle_diagram",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0,
+              "caption": "Triangle équilatéral : chaque angle vaut $60^{\\circ}$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Construire $60^{\\circ}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment AB. Avec le compas, trace un arc de centre A et de rayon AB, puis un arc de centre B et de même rayon. Les arcs se coupent en C. Le triangle ABC est équilatéral, donc l'angle en A vaut $60^{\\circ}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Construire $90^{\\circ}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace une droite et un point O sur cette droite. Avec le compas, trace un cercle de centre O. Les intersections du cercle avec la droite donnent A et B. Trace les médiatrices de OA et OB ; elles se coupent en O et forment un angle droit."
+                    }
+                  ]
+                },
+                {
+                  "title": "Construire $45^{\\circ}$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Une fois l'angle droit obtenu, bissecte-le : place le compas sur le sommet, trace un arc coupant les deux côtés, puis depuis ces intersections trace deux arcs qui se coupent. Relie le sommet à ce point : tu as $45^{\\circ}$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour chaque construction, prends le temps de bien garder l'écartement du compas constant. Un petit décalage peut changer la mesure de plusieurs degrés. Après avoir tracé, mesure chaque angle avec ton rapporteur pour t'assurer de la précision."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir construit un angle de $45^{\\circ}$ par bisection d'un angle droit, mesure‑le avec un rapporteur pour vérifier. Quelle valeur dois‑tu obtenir ?"
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier sa construction"
+            },
+            {
+              "type": "paragraph",
+              "content": "La vérification est une étape essentielle. Pose ton rapporteur sur l'angle que tu viens de construire, aligne le zéro sur un côté et lis la graduation sur l'autre côté. Si la mesure correspond à l'angle visé ($60^{\\circ}$, $90^{\\circ}$ ou $45^{\\circ}$), ta construction est correcte. Sinon, reprends les étapes pour trouver où l'écartement a pu changer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Constructis un angle de $60^{\\circ}$ à l'aide d'un compas et d'une règle. Décris les étapes principales.",
+              "answer": "Trace un segment, place le compas sur une extrémité, trace un arc, sans changer l'écartement place le compas sur l'autre extrémité, trace un second arc qui coupe le premier, relie le sommet au point d'intersection.",
+              "hint": "Utilise la construction du triangle équilatéral.",
+              "explanation": "Le triangle équilatéral a trois angles de $60^{\\circ}$."
+            },
+            {
+              "question": "Pour construire un angle droit ($90^{\\circ}$), on peut tracer une perpendiculaire à une droite passant par un point. Quelle propriété utilises‑tu ?",
+              "answer": "La médiatrice d'un segment ou l'angle inscrit dans un demi‑cercle.",
+              "hint": "Pense au cercle de Thalès.",
+              "explanation": "Un angle inscrit dans un demi‑cercle est un angle droit."
+            },
+            {
+              "question": "Après avoir construit un angle de $45^{\\circ}$ par bisection d'un angle droit, mesure‑le avec un rapporteur pour vérifier. Quelle valeur dois‑tu obtenir ?",
+              "answer": "$45^{\\circ}$",
+              "hint": "La bisection partage l'angle en deux parties égales.",
+              "explanation": "Un angle droit $90^{\\circ}$ divisé par deux donne $45^{\\circ}$."
+            }
+          ]
+        },
+        {
+          "title": "Classer.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les quatre familles d'angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "En géométrie, on classe les angles selon leur mesure. Un angle aigu mesure moins de $90^{\\circ}$, un angle droit vaut exactement $90^{\\circ}$, un angle obtus mesure entre $90^{\\circ}$ et $180^{\\circ}$, et un angle plat vaut $180^{\\\\circ}$. Cette classification aide à raisonner sur les figures, à comparer des angles et à résoudre des problèmes sans toujours sortir le rapporteur."
+            },
+            {
+              "type": "definition",
+              "term": "angle aigu",
+              "definition": "Angle dont la mesure est strictement inférieure à $90^{\\circ}$.",
+              "example": "Un angle de $30^{\\circ}$ est aigu."
+            },
+            {
+              "type": "definition",
+              "term": "angle droit",
+              "definition": "Angle dont la mesure est exactement $90^{\\circ}$. On le marque souvent par un petit carré.",
+              "example": "Le coin d'une feuille de papier."
+            },
+            {
+              "type": "definition",
+              "term": "angle obtus",
+              "definition": "Angle dont la mesure est strictement comprise entre $90^{\\circ}$ et $180^{\\circ}$.",
+              "example": "Un angle de $120^{\\circ}$ est obtus."
+            },
+            {
+              "type": "definition",
+              "term": "angle plat",
+              "definition": "Angle dont la mesure est $180^{\\circ}$. Il correspond à une ligne droite.",
+              "example": "Une ligne tracée sans changer de direction."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition d'angles dans un exercice type : 3 aigus, 1 droit, 2 obtus, 1 plat.",
+              "slices": [
+                {
+                  "label": "Aigus",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Droit",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Obtus",
+                  "value": 2,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Plat",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Observe le diagramme circulaire : il montre combien d'angles de chaque famille apparaissent dans une série d'exercices. Essaie de deviner la famille d'un angle de $85^{\\circ}$, puis d'un angle de $95^{\\circ}$, et enfin d'un angle de $179^{\\circ}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu connais les familles, compare deux angles donnés. Regarde leurs mesures et dis lequel est aigu, lequel est obtus, ou s'ils appartiennent à la même famille. C'est un entraînement utile avant d'aborder les problèmes de géométrie plus complexes."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer deux angles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux angles, on peut soit les mesurer avec un rapporteur, soit raisonner par rapport aux repères $90^{\\circ}$ et $180^{\\circ}$. Par exemple, si un angle mesure $70^{\\circ}$ et l'autre $110^{\\circ}$, le premier est aigu (inférieur à $90^{\\circ}$) et le second est obtus (supérieur à $90^{\\circ}$ mais inférieur à $180^{\\circ}$). Parfois, on n'a pas besoin de mesure exacte : savoir qu'un angle est plus ouvert qu'un angle droit suffit à le classer."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position des angles $70^{\\circ}$ et $110^{\\circ}$ par rapport à $90^{\\circ}$.",
+              "min": 0,
+              "max": 180,
+              "points": [
+                {
+                  "value": 70,
+                  "label": "A"
+                },
+                {
+                  "value": 90,
+                  "label": "Droit"
+                },
+                {
+                  "value": 110,
+                  "label": "B"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, utilise la classification pour résoudre un petit problème concret. Imagine un triangle dont les angles mesurent $50^{\\circ}$, $60^{\\circ}$ et $70^{\\circ}$. Tous sont inférieurs à $90^{\\circ}$, donc le triangle est aigu. Quel est l'angle le plus grand ? C'est celui de $70^{\\circ}$, encore aigu. Ce type de raisonnement te servira plus tard pour démontrer des propriétés des triangles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre un problème de classification"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un triangle, les trois angles mesurent $50^{\\circ}$, $60^{\\circ}$ et $70^{\\circ}$. Quel type d'angle est le plus grand ?",
+              "hint": "Additionne les angles pour vérifier qu'ils font $180^{\\circ}$.",
+              "explanation": "Tous sont inférieurs à $90^{\\circ}$, donc tous aigus, le plus grand est $70^{\\circ}$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais mesurer un angle avec un rapporteur.",
+                "Je sais construire un angle de $60^{\\circ}$, $90^{\\circ}$ et $45^{\\circ}$ à la règle et au compas.",
+                "Je sais classer un angle en aigu, droit, obtus ou plat.",
+                "Je peux comparer deux angles et dire lequel est le plus grand.",
+                "Je vérifie mes constructions en mesurant avec le rapporteur."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Classe les angles suivants : $30^{\\circ}$, $90^{\\circ}$, $120^{\\circ}$, $180^{\\circ}$.",
+              "answer": "$30^{\\circ}$ aigu, $90^{\\circ}$ droit, $120^{\\circ}$ obtus, $180^{\\circ}$ plat.",
+              "hint": "Rappelle‑toi les bornes : aigu $<90^{\\circ}$, droit $=90^{\\circ}$, obtus $>90^{\\circ}$ et $<180^{\\circ}$, plat $=180^{\\circ}$.",
+              "explanation": "Chaque angle correspond à une catégorie précise."
+            },
+            {
+              "question": "Deux angles mesurent $70^{\\circ}$ et $110^{\\circ}$. Lequel est aigu, lequel est obtus ?",
+              "answer": "$70^{\\circ}$ est aigu, $110^{\\circ}$ est obtus.",
+              "hint": "Compare chaque mesure à $90^{\\circ}$.",
+              "explanation": "$70^{\\circ}<90^{\\circ}$ donc aigu, $110^{\\circ}>90^{\\circ}$ donc obtus."
+            },
+            {
+              "question": "Dans un triangle, les trois angles mesurent $50^{\\circ}$, $60^{\\circ}$ et $70^{\\circ}$. Quel type d'angle est le plus grand ?",
+              "answer": "L'angle de $70^{\\circ}$ est le plus grand, c'est un angle aigu.",
+              "hint": "Additionne les angles pour vérifier qu'ils font $180^{\\circ}$.",
+              "explanation": "Tous sont inférieurs à $90^{\\circ}$, donc tous aigus, le plus grand est $70^{\\circ}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

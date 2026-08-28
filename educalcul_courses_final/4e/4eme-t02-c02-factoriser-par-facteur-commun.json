@@ -1,0 +1,346 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.819027+00:00",
+  "id": 426,
+  "code": "4eme-t02-c02",
+  "title": "Factoriser par facteur commun",
+  "description": "Cours structuré Educalcul : Factoriser par facteur commun.",
+  "subject": "Calcul littéral et équations",
+  "level": "4e",
+  "source_level_label": "4e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "4e",
+    "theme": "Calcul littéral et équations",
+    "titre_du_cours": "Factoriser par facteur commun",
+    "objectif_global": "Factoriser par facteur commun",
+    "mini_lecons_imposees": [
+      "Repérer facteur.",
+      "Mettre en facteur.",
+      "Vérifier en développant."
+    ],
+    "conformite_programme_2026_2027": "En 2026-2027, conserver le programme encore applicable à la 4e ; le nouveau cycle 4 ne s’applique en 4e qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral et équations",
+      "lessons": [
+        {
+          "title": "Repérer facteur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'un facteur dans une expression ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de parler de facteur commun, rappelons ce qu'est un facteur. Dans une multiplication, chaque nombre ou expression multipliée est un facteur. Par exemple, dans $6 \\times 4 = 24$, les nombres $6$ et $4$ sont des facteurs de $24$. En calcul littéral, c'est pareil : dans le produit $3x \\times 5y = 15xy$, les facteurs sont $3x$ et $5y$. Mais attention : une expression comme $15xy$ peut aussi être vue comme la somme de deux termes, par exemple $10xy + 5xy$. Là, on ne parle plus de facteurs mais de termes. Un terme est ce qui est ajouté ou soustrait. Pour factoriser, il faut repérer ce qui est multiplié à l'intérieur de chaque terme."
+            },
+            {
+              "type": "display_math",
+              "latex": "10xy = 2 \\times 5 \\times x \\times y"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons l'expression $12x^2 + 8x$. Chaque terme est un produit : $12x^2 = 12 \\times x \\times x$ et $8x = 8 \\times x$. En décomposant les coefficients en facteurs premiers, on voit plus clair : $12 = 2 \\times 2 \\times 3$ et $8 = 2 \\times 2 \\times 2$. Donc $12x^2 = 2 \\times 2 \\times 3 \\times x \\times x$ et $8x = 2 \\times 2 \\times 2 \\times x$. Qu'est-ce qui revient dans les deux décompositions ? On retrouve $2 \\times 2 \\times x$, c'est-à-dire $4x$. Ce $4x$ est un facteur commun aux deux termes."
+            },
+            {
+              "type": "fraction",
+              "numerator": 12,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "Comparaison des coefficients 12 et 8"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais décomposer un terme en facteurs, passons à la recherche systématique du facteur commun. La méthode est simple : on écrit la décomposition en facteurs premiers de chaque coefficient, on note les puissances de chaque variable, et on garde ce qui est présent dans **tous** les termes avec l'exposant le plus petit. Prenons $18a^3b - 27a^2b^2 + 36ab$. Décomposons : $18 = 2 \\times 3^2$, $27 = 3^3$, $36 = 2^2 \\times 3^2$. Pour les variables : le premier terme a $a^3$ et $b$, le second $a^2$ et $b^2$, le troisième $a$ et $b$. Le facteur commun en chiffres est $3^2 = 9$ (la plus petite puissance de 3 présente partout). En variables : $a$ (exposant 1 minimum) et $b$ (exposant 1 minimum). Le facteur commun est donc $9ab$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Décomposer les coefficients",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris chaque coefficient en produit de facteurs premiers : $18 = 2 \\times 3^2$, $27 = 3^3$, $36 = 2^2 \\times 3^2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer les variables communes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde chaque variable : $a$ apparaît avec les exposants 3, 2, 1 → on prend $a^1$. $b$ apparaît avec les exposants 1, 2, 1 → on prend $b^1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Construire le facteur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie les facteurs premiers communs (avec le plus petit exposant) et les variables communes (plus petit exposant) : $3^2 \\times a \\times b = 9ab$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges classiques ! Si un terme n'a pas de variable, cette variable n'est pas commune. Par exemple dans $5x^2 + 10$, le nombre $10$ n'a pas de $x$, donc $x$ n'est pas un facteur commun. Le facteur commun est seulement $5$. Autre piège : le signe moins. Dans $-6x + 12$, le facteur commun peut être $6$ ou $-6$. On préfère souvent sortir le signe pour que le premier terme à l'intérieur de la parenthèse soit positif : $-6(x - 2)$. Vérifie : $-6 \\times x = -6x$ et $-6 \\times -2 = +12$. C'est correct. Essaie maintenant de repérer le facteur commun dans des expressions un peu plus variées."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'expression $24m^3n - 16m^2n^2 + 8mn$, décompose chaque coefficient en facteurs premiers et indique le facteur commun numérique.",
+              "answer": "Facteurs premiers : $24 = 2^3 \\times 3$, $16 = 2^4$, $8 = 2^3$. Le facteur commun numérique est $2^3 = 8$.",
+              "hint": "Écris chaque coefficient comme un produit de nombres premiers (2, 3, 5...). Cherche la plus petite puissance de 2 présente dans les trois.",
+              "explanation": "On décompose : $24 = 2 \\times 2 \\times 2 \\times 3 = 2^3 \\times 3$, $16 = 2^4$, $8 = 2^3$. Le commun est $2^3 = 8$."
+            },
+            {
+              "question": "Quel est le facteur commun total (chiffres et variables) de $24m^3n - 16m^2n^2 + 8mn$ ?",
+              "answer": "$8mn$",
+              "hint": "Tu as déjà le facteur numérique $8$. Regarde les variables : $m$ a des exposants 3, 2, 1 → garde $m^1$. $n$ a des exposants 1, 2, 1 → garde $n^1$.",
+              "explanation": "Facteur numérique : $8$. Variables : $m$ exposant minimal 1, $n$ exposant minimal 1. Donc $8mn$."
+            },
+            {
+              "question": "Repère le facteur commun dans les expressions suivantes : A) $15p^2q - 20pq^2$  B) $-9x^3 + 6x^2 - 3x$  C) $7a^2b + 14ab^2 - 21$",
+              "answer": "A) $5pq$  B) $-3x$ (ou $3x$ mais on préfère $-3x$ pour avoir un premier terme positif dans la parenthèse)  C) $7$ (pas de variable commune à tous les termes)",
+              "hint": "Décompose les coefficients. Pour B, pense au signe. Pour C, le dernier terme n'a pas de variable.",
+              "explanation": "A) $15=3\\times5$, $20=2^2\\times5$ → $5$. Variables : $p$ exposant min 1, $q$ exposant min 1 → $5pq$. B) Coefficients $9,6,3$ → $3$. Variable $x$ exposant min 1. On prend $-3x$ pour avoir $x^2$ positif dedans. C) $7,14,21$ → $7$. Le terme $21$ n'a ni $a$ ni $b$, donc pas de variable commune."
+            }
+          ]
+        },
+        {
+          "title": "Mettre en facteur.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La distributivité à l'envers : mettre en facteur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu connais la distributivité : $a(b+c) = ab + ac$. Factoriser, c'est faire le chemin inverse : partir de la somme $ab + ac$ pour retrouver le produit $a(b+c)$. C'est exactement comme si on rangeait une pièce : au lieu d'avoir des objets éparpillés (les termes), on les regroupe dans une boîte (la parenthèse) en sortant ce qu'ils ont en commun. Reprenons $12x^2 + 8x$. Nous avons trouvé le facteur commun $4x$. On écrit $4x$ devant une parenthèse, et à l'intérieur on met ce qui reste quand on divise chaque terme par $4x$ : $12x^2 \\div 4x = 3x$ et $8x \\div 4x = 2$. Donc $12x^2 + 8x = 4x(3x + 2)$. La parenthèse contient une somme, le signe $+$ est gardé."
+            },
+            {
+              "type": "display_math",
+              "latex": "12x^2 + 8x = 4x(3x + 2)"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode en trois temps est toujours la même. Première étape : identifie le facteur commun (comme on a appris à la leçon précédente). Deuxième étape : écris ce facteur devant une parenthèse. Troisième étape : à l'intérieur de la parenthèse, écris le quotient de chaque terme original par le facteur commun. C'est une division terme à terme. Attention aux signes ! Si le facteur commun est négatif, les signes à l'intérieur s'inversent. Par exemple $-6x^2 + 9x$. Facteur commun : $3x$ ou $-3x$. Si on choisit $3x$ : $3x(-2x + 3)$. Si on choisit $-3x$ : $-3x(2x - 3)$. Les deux sont corrects, mais la convention veut souvent qu'on fasse en sorte que le premier terme de la parenthèse soit positif, donc on privilégie $-3x(2x - 3)$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Trouver le facteur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Décompose les coefficients, repère les variables communes avec le plus petit exposant. Pour $-6x^2 + 9x$ : coefficients $6$ et $9$ → $3$. Variable $x$ exposant min 1 → $x$. Facteur commun : $3x$ ou $-3x$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire le facteur devant la parenthèse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisis le signe pour que le premier terme dans la parenthèse soit positif. Ici $-3x$ devant : $-3x(\\ldots)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Remplir la parenthèse par division",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Divise chaque terme par $-3x$ : $-6x^2 \\div (-3x) = 2x$ et $9x \\div (-3x) = -3$. Résultat : $-3x(2x - 3)$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous sur une expression à trois termes avec des puissances différentes : $20a^3b^2 - 15a^2b^3 + 10a^2b$. Décomposons : coefficients $20=2^2\\times5$, $15=3\\times5$, $10=2\\times5$ → commun $5$. Variables : $a$ exposants 3,2,2 → $a^2$. $b$ exposants 2,3,1 → $b$. Facteur commun : $5a^2b$. On l'écrit devant : $5a^2b(\\ldots)$. Divisions : $20a^3b^2 \\div 5a^2b = 4ab$, $-15a^2b^3 \\div 5a^2b = -3b^2$, $10a^2b \\div 5a^2b = 2$. Résultat : $5a^2b(4ab - 3b^2 + 2)$. Remarque : le terme $2$ dans la parenthèse n'a plus de variable, c'est normal, il a été entièrement divisé."
+            },
+            {
+              "type": "display_math",
+              "latex": "20a^3b^2 - 15a^2b^3 + 10a^2b = 5a^2b(4ab - 3b^2 + 2)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois le facteur commun est lui-même une expression entre parenthèses, par exemple $(x+2)$. C'est le cas quand on a une somme de produits qui partagent le même facteur binomial. Regarde : $3x(x+2) + 5(x+2)$. Ici les deux termes ont le facteur $(x+2)$ en commun. On le met dehors : $(x+2)(3x + 5)$. C'est exactement la même mécanique, mais le facteur commun n'est plus un monôme, c'est un binôme. Essaie de voir $(x+2)$ comme un seul bloc, une \"brique\" qu'on sort. C'est très utile plus tard pour factoriser des trinômes. Attention : ne confonds pas $3x(x+2)$ qui est un produit, et $3x + (x+2)$ qui serait une somme. Ici c'est bien une somme de deux produits."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factorise l'expression $14y^3 - 21y^2 + 7y$ en suivant les trois étapes.",
+              "answer": "$7y(2y^2 - 3y + 1)$",
+              "hint": "Facteur commun numérique : PGCD de 14, 21, 7. Variable : plus petit exposant de y. Puis division terme à terme.",
+              "explanation": "Coefficients : $14=2\\times7$, $21=3\\times7$, $7=7$ → $7$. Variable $y$ : exposants 3,2,1 → $y$. Facteur commun $7y$. Divisions : $14y^3/7y=2y^2$, $-21y^2/7y=-3y$, $7y/7y=1$. Donc $7y(2y^2 - 3y + 1)$."
+            },
+            {
+              "question": "Factorise $-8m^2n + 12mn^2 - 4mn$. Choisis le facteur commun pour que le premier terme de la parenthèse soit positif.",
+              "answer": "$-4mn(2m - 3n + 1)$",
+              "hint": "Le facteur commun numérique est 4. Variable : $m$ exposant min 1, $n$ exposant min 1. Comme le premier terme est négatif, sors $-4mn$.",
+              "explanation": "Coefficients : $8,12,4$ → $4$. Variables : $m$ et $n$ exposant 1 minimum. Facteur commun possible $4mn$ ou $-4mn$. Pour avoir $+2m$ au début, on prend $-4mn$. Divisions : $-8m^2n/(-4mn)=2m$, $12mn^2/(-4mn)=-3n$, $-4mn/(-4mn)=1$. Résultat $-4mn(2m - 3n + 1)$."
+            },
+            {
+              "question": "Factorise en sortant le facteur binomial commun : $7x(x-4) - 2(x-4)$.",
+              "answer": "$(x-4)(7x - 2)$",
+              "hint": "Identifie le facteur commun aux deux termes : c'est la parenthèse $(x-4)$. Sors-la devant, il reste $7x$ et $-2$.",
+              "explanation": "Les deux termes sont $7x(x-4)$ et $-2(x-4)$. Le facteur commun est $(x-4)$. On écrit $(x-4)(7x - 2)$. Vérifie en développant : $(x-4)\\times7x = 7x^2-28x$ et $(x-4)\\times(-2) = -2x+8$, somme $7x^2-30x+8$. L'original donne $7x(x-4)-2(x-4)=7x^2-28x-2x+8=7x^2-30x+8$. C'est bon."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier en développant.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Pourquoi et comment vérifier sa factorisation ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Factoriser, c'est transformer une somme en produit. Mais comment être sûr de ne pas s'être trompé ? La meilleure méthode, c'est de développer le résultat obtenu et de comparer avec l'expression de départ. C'est une vérification immédiate, qui ne demande qu'un peu de distributivité. Si tu as factorisé $12x^2 + 8x$ en $4x(3x+2)$, développe $4x(3x+2) = 4x \\times 3x + 4x \\times 2 = 12x^2 + 8x$. Tu retrouves exactement l'original. Si tu as fait une erreur de signe ou oublié un terme, le développement ne correspondra pas. C'est ton filet de sécurité."
+            },
+            {
+              "type": "display_math",
+              "latex": "4x(3x+2) = 12x^2 + 8x"
+            },
+            {
+              "type": "paragraph",
+              "content": "Faisons le test sur un cas avec des pièges : $-6x^2 + 9x$ factorisé en $-3x(2x - 3)$. Développons : $-3x \\times 2x = -6x^2$ et $-3x \\times (-3) = +9x$. Somme : $-6x^2 + 9x$. C'est bon. Imagine qu'on ait écrit par erreur $-3x(2x + 3)$. Le développement donnerait $-6x^2 - 9x$, ce qui n'est pas l'expression de départ. Le signe $+$ à l'intérieur aurait dû être un $-$. La vérification te signale l'erreur tout de suite. Autre erreur fréquente : oublier de diviser un terme. Si on écrit $4x(3x+2)$ pour $12x^2 + 8x + 4$, le développement donne $12x^2+8x$, il manque le $+4$. La vérification montre qu'un terme a disparu."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour vérifier proprement, utilise la distributivité terme à terme : multiplie le facteur dehors par chaque terme de la parenthèse, en respectant scrupuleusement les signes. Écris les produits intermédiaires si ça t'aide. Par exemple pour vérifier $5a^2b(4ab - 3b^2 + 2)$ : $5a^2b \\times 4ab = 20a^3b^2$, $5a^2b \\times (-3b^2) = -15a^2b^3$, $5a^2b \\times 2 = 10a^2b$. Somme : $20a^3b^2 - 15a^2b^3 + 10a^2b$. C'est l'expression de départ. Si tu as factorisé avec un facteur binomial comme $(x-4)(7x-2)$, développe avec la double distributivité (ou FOIL) : $x \\times 7x = 7x^2$, $x \\times (-2) = -2x$, $-4 \\times 7x = -28x$, $-4 \\times (-2) = 8$. Somme : $7x^2 -30x +8$. Compare à l'original $7x(x-4)-2(x-4)$ développé : même résultat."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Multiplier le facteur extérieur par le premier terme intérieur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la distributivité : facteur $\\times$ premier terme de la parenthèse. Note le signe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier par le deuxième terme, puis les suivants",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Continue terme par terme. Si la parenthèse a trois termes, tu fais trois multiplications."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Additionner les résultats et comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regroupe les termes semblables si besoin. Le résultat doit être identique terme à terme à l'expression de départ."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on factorise une expression qui peut l'être encore davantage. C'est le cas quand le facteur commun qu'on a sorti n'est pas le plus grand possible, ou quand la parenthèse obtenue admet encore un facteur commun. Par exemple $12x^2 + 8x$ factorisé en $2x(6x+4)$. Ce n'est pas faux, mais $6x+4$ a encore un facteur commun $2$. On n'est pas allé au bout. La factorisation complète serait $4x(3x+2)$. Vérifier en développant $2x(6x+4)$ donne bien $12x^2+8x$, donc la factorisation est correcte mais incomplète. En 4e, on demande souvent la factorisation **complète** : il faut sortir le plus grand facteur commun possible. Pour t'en assurer, après avoir factorisé, regarde la parenthèse : ses termes ont-ils encore un facteur commun (autre que 1) ? Si oui, factorise encore. C'est comme éplucher un oignon : on enlève les couches une par une jusqu'au cœur."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par un exemple complet qui résume tout le parcours : factorise complètement $18x^3y^2 - 27x^2y^3 + 9xy$. Étape 1 : cherche le plus grand facteur commun. Coefficients $18, 27, 9$ → $9$. Variables : $x$ exposants 3,2,1 → $x$. $y$ exposants 2,3,1 → $y$. Facteur commun : $9xy$. Étape 2 : factorise : $9xy(2x^2y - 3xy^2 + 1)$. Étape 3 : vérifie en développant : $9xy \\times 2x^2y = 18x^3y^2$, $9xy \\times (-3xy^2) = -27x^2y^3$, $9xy \\times 1 = 9xy$. Somme : $18x^3y^2 - 27x^2y^3 + 9xy$. C'est l'original. Étape 4 : regarde la parenthèse $2x^2y - 3xy^2 + 1$. Les coefficients $2,3,1$ n'ont pas de facteur commun (PGCD=1). Les variables : le dernier terme n'a ni $x$ ni $y$. Donc c'est fini, la factorisation est complète. Bravo, tu as maintenant toutes les clés pour factoriser sereinement !"
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais repérer les facteurs d'un terme (coefficient et variables).",
+                "Je sais trouver le plus grand facteur commun de plusieurs termes (PGCD des coefficients, plus petit exposant pour chaque variable).",
+                "Je sais écrire la factorisation : facteur commun $\\times$ (somme des quotients).",
+                "Je sais choisir le signe du facteur commun pour que le premier terme de la parenthèse soit positif.",
+                "Je sais vérifier ma factorisation en développant et en comparant à l'expression de départ.",
+                "Je sais repérer si une factorisation est complète (plus de facteur commun dans la parenthèse)."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie par développement si la factorisation $3x(4x - 5)$ correspond à $12x^2 - 15x$.",
+              "answer": "Oui, car $3x \\times 4x = 12x^2$ et $3x \\times (-5) = -15x$, somme $12x^2 - 15x$.",
+              "hint": "Distribue $3x$ aux deux termes de la parenthèse. Regarde les signes.",
+              "explanation": "Développement : $3x(4x-5) = 3x\\times4x + 3x\\times(-5) = 12x^2 - 15x$. C'est l'expression de départ, la factorisation est correcte."
+            },
+            {
+              "question": "On a factorisé $-20a^2b + 15ab^2$ en $5ab(-4a + 3b)$. Est-ce correct ? Vérifie en développant.",
+              "answer": "Oui, c'est correct. Développement : $5ab \\times (-4a) = -20a^2b$, $5ab \\times 3b = 15ab^2$. Somme $-20a^2b + 15ab^2$.",
+              "hint": "Multiplie $5ab$ par chaque terme de la parenthèse. Attention aux signes : moins fois moins fait plus.",
+              "explanation": "$5ab(-4a+3b) = 5ab\\times(-4a) + 5ab\\times3b = -20a^2b + 15ab^2$. On retrouve l'original."
+            },
+            {
+              "question": "Factorise complètement $24m^3n^2 - 36m^2n^3 + 12mn$ et vérifie ton résultat.",
+              "answer": "Factorisation complète : $12mn(2m^2n - 3mn^2 + 1)$. Vérification : $12mn \\times 2m^2n = 24m^3n^2$, $12mn \\times (-3mn^2) = -36m^2n^3$, $12mn \\times 1 = 12mn$. Somme identique.",
+              "hint": "PGCD des coefficients 24, 36, 12. Exposants min de m et n. Vérifie que la parenthèse n'a plus de facteur commun.",
+              "explanation": "Coefficients : PGCD(24,36,12)=12. Variables : $m$ exposant min 1, $n$ exposant min 1 → $mn$. Facteur commun $12mn$. Divisions : $24m^3n^2/12mn=2m^2n$, $-36m^2n^3/12mn=-3mn^2$, $12mn/12mn=1$. Parenthèse $2m^2n-3mn^2+1$ sans facteur commun (dernier terme 1). Vérification par développement redonne l'original."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

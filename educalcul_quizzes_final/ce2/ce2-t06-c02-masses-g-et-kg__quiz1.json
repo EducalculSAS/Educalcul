@@ -1,0 +1,86 @@
+{
+  "_status": "done",
+  "_course_id": 188,
+  "_course_code": "ce2-t06-c02-masses-g-et-kg",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Lire une masse",
+  "title": "Quiz : Lire une masse (CE2)",
+  "questions": [
+    {
+      "text": "Sur une balance electronique, l'affichage indique $250$ g. Quelle est la masse lue ?",
+      "options": [
+        "$250$ g",
+        "$2,5$ kg",
+        "$25$ kg",
+        "$2500$ g"
+      ],
+      "correctAnswer": "$250$ g",
+      "explanation": "L'affichage montre directement la masse en grammes, donc la lecture est $250$ g. Les autres propositions correspondent a des conversions erronees : $2,5$ kg serait $2500$ g, $25$ kg serait $25000$ g, et $2500$ g est dix fois la valeur affichee.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La balance ci-dessous est en equilibre. Quelle est la masse de l'objet place sur le plateau de droite ?",
+      "options": [
+        "$300$ g",
+        "$200$ g",
+        "$100$ g",
+        "$400$ g"
+      ],
+      "correctAnswer": "$300$ g",
+      "explanation": "Les masses sur le plateau de gauche totalisent $200 + 100 = 300$ g. A l'equilibre, la masse sur le plateau de droite doit etre egale, soit $300$ g.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          200,
+          100
+        ],
+        "right": [
+          300
+        ],
+        "caption": "La balance est en equilibre"
+      }
+    },
+    {
+      "text": "Un sac de farine porte l'etiquette $1,2$ kg. Combien de grammes cela represente-t-il ?",
+      "options": [
+        "$1200$ g",
+        "$120$ g",
+        "$12$ g",
+        "$12000$ g"
+      ],
+      "correctAnswer": "$1200$ g",
+      "explanation": "Pour passer des kilogrammes aux grammes, on multiplie par $1000$. $1,2 \\times 1000 = 1200$, donc $1,2$ kg equivaut a $1200$ g.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une balance a aiguille, l'aiguille se trouve exactement entre les graduations $500$ g et $600$ g. Quelle est la masse approximative ?",
+      "options": [
+        "$550$ g",
+        "$500$ g",
+        "$600$ g",
+        "$650$ g"
+      ],
+      "correctAnswer": "$550$ g",
+      "explanation": "L'aiguille au milieu indique la valeur moyenne des deux graduations : $(500 + 600) / 2 = 550$ g.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un manuel scolaire a une masse d'environ $800$ g. Quelle proposition correspond le mieux a cette masse ?",
+      "options": [
+        "$0,8$ kg",
+        "$8$ kg",
+        "$80$ g",
+        "$8000$ g"
+      ],
+      "correctAnswer": "$0,8$ kg",
+      "explanation": "$800$ g divise par $1000$ donne $0,8$ kg. Les autres choix sont soit trop grands, soit trop petits.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

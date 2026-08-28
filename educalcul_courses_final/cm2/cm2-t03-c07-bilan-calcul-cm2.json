@@ -1,0 +1,364 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.418257+00:00",
+  "id": 295,
+  "code": "cm2-t03-c07",
+  "title": "Bilan - Calcul CM2",
+  "description": "Cours structuré Educalcul : Bilan - Calcul CM2.",
+  "subject": "Calcul et techniques opératoires",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Calcul et techniques opératoires",
+    "titre_du_cours": "Bilan - Calcul CM2",
+    "objectif_global": "Bilan - Calcul CM2",
+    "mini_lecons_imposees": [
+      "Techniques et mental.",
+      "Ordre de grandeur.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul et techniques opératoires",
+      "lessons": [
+        {
+          "title": "Techniques et mental.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'addition posée et le calcul mental"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette première partie, nous allons revoir comment poser une addition en colonnes et comment le calcul mental peut t'aider à aller plus vite. Imagine que tu as 28 billes dans une boîte et que tu en ajoutes 37 autres. Pour poser l'addition, tu écris les dizaines les unes sous les autres et les unités les unes sous les autres. Tu commences par ajouter les unités : 8 plus 7 font 15, tu écris 5 et tu retiens 1 dizaine. Ensuite, tu ajoutes les dizaines : 2 plus 3 plus la retenue 1 donnent 6. Le résultat est donc 65. Cette méthode s'appelle l'addition posée et elle fonctionne pour tous les nombres, même très grands. En parallèle, tu peux utiliser le calcul mental en décomposant 28 en 20 et 8, et 37 en 30 et 7, puis en ajoutant les dizaines et les unités séparément. Cela te donne le même total sans écrire l'opération."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "28",
+                "37"
+              ],
+              "result": "65",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que l'addition posée est claire, nous passons à la soustraction posée. Le principe est semblable : on aligne les chiffres et on procède colonne par colonne, en empruntant si nécessaire."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La soustraction posée et la vérification"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons que tu doives calculer 84 moins 29. Tu écris 84 au-dessus de 29, unités sous unités et dizaines sous dizaines. Pour les unités, 4 est plus petit que 9, donc tu empruntes 1 dizaine au 8, ce qui le transforme en 7 dizaines et donne 14 unités. 14 moins 9 font 5. Pour les dizaines, 7 moins 2 font 5. Le résultat est 55. Pour vérifier, tu peux ajouter 55 et 29 : 5 plus 9 font 14 (écris 4, retiens 1), 5 plus 2 plus 1 font 8, tu retrouves 84. Cette vérification par l'addition inverse est un excellent réflexe pour être sûr de ton calcul."
+            },
+            {
+              "type": "column_operation",
+              "operator": "-",
+              "operands": [
+                "84",
+                "29"
+              ],
+              "result": "55",
+              "carries": [
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après l'addition et la soustraction posées, découvrons des astuces de calcul mental qui te feront gagner du temps au quotidien."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Stratégies de calcul mental : décomposition et compléments à 10"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour additionner 63 et 17 mentalement, décompose 63 en 60 et 3, et 17 en 10 et 7. Additionne les dizaines : 60 plus 10 font 70. Additionne les unités : 3 plus 7 font 10. Enfin, 70 plus 10 font 80. Cette technique utilise les compléments à 10 (3 et 7) pour créer une dizaine supplémentaire. Tu peux aussi penser à 63 plus 20 égale 83, puis retirer 3 pour obtenir 80. Choisis la méthode qui te semble la plus naturelle ; l'essentiel est de comprendre pourquoi elle marche."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 6,
+              "units": 3,
+              "caption": "63 : 6 dizaines et 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule 28 + 37 en posant l'addition.",
+              "answer": "65",
+              "hint": "Ajoute d'abord les unités, puis les dizaines avec la retenue.",
+              "explanation": "8+7=15, écris 5 retiens 1 ; 2+3+1=6."
+            },
+            {
+              "question": "Effectue la soustraction 84 - 29 en posant l'opération.",
+              "answer": "55",
+              "hint": "Si l'unité du haut est plus petite, emprunte une dizaine.",
+              "explanation": "4-9 impossible, emprunte 1 dizaine -> 14-9=5 ; 7-2=5."
+            },
+            {
+              "question": "Utilise le calcul mental pour trouver 63 + 17.",
+              "answer": "80",
+              "hint": "Décompose 63 en 60+3 et 17 en 10+7.",
+              "explanation": "60+10=70 ; 3+7=10 ; 70+10=80."
+            }
+          ]
+        },
+        {
+          "title": "Ordre de grandeur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Arrondir à la dizaine et à la centaine"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'arrondi permet de remplacer un nombre par un nombre plus simple, tout en restant proche de la valeur réelle. Pour arrondir 47 à la dizaine, regarde le chiffre des unités : c'est 7. Comme 7 est supérieur ou égal à 5, on augmente la dizaine de 1 : 4 dizaines deviennent 5 dizaines, et les unités deviennent 0. On obtient donc 50. Si le chiffre des unités avait été 3 (par exemple 43), on aurait gardé la dizaine 4 et mis 0 aux unités, ce qui donne 40. La même règle s'applique à la centaine : on regarde le chiffre des dizaines. Cette technique est très utile pour estimer rapidement un résultat sans faire le calcul exact."
+            },
+            {
+              "type": "number_line",
+              "caption": "Arrondi de 47 à la dizaine",
+              "min": 40,
+              "max": 50,
+              "points": [
+                {
+                  "value": 47,
+                  "label": "47"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après l'arrondi simple, voyons comment l'utiliser pour estimer un produit. L'idée est de remplacer chaque facteur par un nombre arrondi, puis de multiplier ces nombres arrondis."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Estimer un produit par ordre de grandeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple 23 multiplié par 41. Arrondis 23 à la dizaine : 20. Arrondis 41 à la dizaine : 40. Multiplie 20 par 40 : 20 fois 4 font 80, et comme il y a deux zéros au total (un dans 20, un dans 40), on ajoute deux zéros pour obtenir 800. Le produit exact est 943, mais 800 donne une idée rapide de la taille du résultat. C'est ce qu'on appelle un ordre de grandeur. Si tu obtiens un résultat très éloigné de 800, tu sais qu'il y a probablement une erreur dans ton calcul posé."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison du produit exact et de l'estimation",
+              "bars": [
+                {
+                  "label": "Exact",
+                  "value": 943,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Estimation",
+                  "value": 800,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, apprenons à utiliser l'ordre de grandeur pour vérifier si un résultat donné est plausible, surtout quand des nombres décimaux sont en jeu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier un résultat avec l'ordre de grandeur"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine qu'on te donne le calcul 12,3 fois 24,8 et qu'on t'annonce le résultat 304,5. Pour vérifier rapidement, arrondis 12,3 à 12 et 24,8 à 25. 12 fois 25, c'est 12 fois 100 divisé par 4, soit 1200 divisé 4 = 300. L'estimation 300 est très proche de 304,5, donc le résultat est plausible. Si on t'avait annoncé 3045, l'écart aurait été énorme et tu aurais su qu'il y a une erreur de virgule. Le tableau de numération t'aide à voir la place de la virgule et à ne pas la déplacer par mégarde."
+            },
+            {
+              "type": "place_value_chart",
+              "number": 304.5,
+              "caption": "Décomposition de 304,5 dans le tableau de numération"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Arrondis 47 à la dizaine la plus proche.",
+              "answer": "50",
+              "hint": "Regarde l'unité : si elle est 5 ou plus, augmente la dizaine.",
+              "explanation": "L'unité est 7, donc on passe à 50."
+            },
+            {
+              "question": "Estime le produit 23 × 41 en arrondissant chaque nombre à la dizaine.",
+              "answer": "800",
+              "hint": "23≈20, 41≈40, puis 20×40.",
+              "explanation": "20×40=800."
+            },
+            {
+              "question": "Vérifie si le résultat 304,5 est plausible pour 12,3 × 24,8 en utilisant l'ordre de grandeur.",
+              "answer": "Oui, car 12×25≈300",
+              "hint": "Arrondis 12,3 à 12 et 24,8 à 25.",
+              "explanation": "12×25=300, proche de 304,5."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des techniques d'addition et de soustraction posées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons un exemple un peu plus grand pour consolider l'addition posée. Calcule 156 plus 289. Écris les nombres en alignant les unités, les dizaines et les centaines. Commence par les unités : 6 plus 9 font 15, écris 5, retiens 1 dizaine. Passe aux dizaines : 5 plus 8 plus la retenue 1 font 14, écris 4, retiens 1 centaine. Termine par les centaines : 1 plus 2 plus la retenue 1 font 4. Le total est 445. Pour la soustraction, le principe de l'emprunt reste identique, même avec trois chiffres. Entraîne-toi à poser ces opérations plusieurs fois pour que le geste devienne automatique."
+            },
+            {
+              "type": "column_operation",
+              "operator": "+",
+              "operands": [
+                "156",
+                "289"
+              ],
+              "result": "445",
+              "carries": [
+                "1",
+                "1"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que les opérations posées sont bien en place, revenons sur l'arrondi et l'estimation, deux outils indispensables pour gagner du temps et contrôler tes calculs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel de l'arrondi et de l'estimation de produit"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour arrondir 372 à la centaine, regarde le chiffre des dizaines : c'est 7. Comme 7 est supérieur ou égal à 5, on augmente la centaine de 1 : 3 centaines deviennent 4 centaines, et les dizaines et unités deviennent 0. On obtient 400. Si le chiffre des dizaines avait été 2 (par exemple 322), on aurait gardé 3 centaines et mis 0 aux dizaines et unités, ce qui donne 300. Pour estimer un produit comme 48 fois 53, arrondis les deux nombres à la dizaine : 48 devient 50, 53 devient 50. 50 fois 50 font 2500. Le produit exact est 2544, l'estimation 2500 est très proche, ce qui confirme que l'ordre de grandeur est correct."
+            },
+            {
+              "type": "number_line",
+              "caption": "Arrondi de 372 à la centaine",
+              "min": 300,
+              "max": 400,
+              "points": [
+                {
+                  "value": 372,
+                  "label": "372"
+                },
+                {
+                  "value": 400,
+                  "label": "400"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer ce bilan, fais le point sur tout ce que tu sais faire maintenant. La liste ci-dessous te permettra de vérifier chaque compétence acquise au fil des leçons."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan personnel : checklist"
+            },
+            {
+              "type": "paragraph",
+              "content": "Coche mentalement chaque item quand tu te sens à l'aise. Si un point te semble encore flou, reviens sur la leçon correspondante et refais l'exercice associé."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais poser une addition en colonnes avec retenue.",
+                "Je sais poser une soustraction en colonnes avec emprunt.",
+                "J'utilise le calcul mental en décomposant les nombres et en cherchant les compléments à 10.",
+                "Je sais arrondir un nombre à la dizaine ou à la centaine selon le chiffre clé.",
+                "J'estime un produit en arrondissant chaque facteur à la dizaine.",
+                "Je vérifie la plausibilité d'un résultat grâce à l'ordre de grandeur."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Pose l'addition 156 + 289.",
+              "answer": "445",
+              "hint": "Ajoute unités, dizaines, centaines avec retenues.",
+              "explanation": "6+9=15 (5 ret 1), 5+8+1=14 (4 ret1), 1+2+1=4."
+            },
+            {
+              "question": "Arrondis 372 à la centaine.",
+              "answer": "400",
+              "hint": "Regarde la dizaine : 7 ≥5 donc on monte.",
+              "explanation": "La dizaine est 7, on passe à 400."
+            },
+            {
+              "question": "Estime 48 × 53 en arrondissant à la dizaine.",
+              "answer": "2500",
+              "hint": "48≈50, 53≈50, 50×50.",
+              "explanation": "50×50=2500."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

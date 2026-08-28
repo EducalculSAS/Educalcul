@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 485,
+  "_course_code": "3eme-t06-c01-homothetie",
+  "_level": "3e",
+  "_subject": "Transformations, espace et grandeurs",
+  "_subtheme": "Application : Homothétie",
+  "title": "Applications de l'homothétie : Mise en ordre",
+  "blocks": [
+    {
+      "title": "Construction de l'image d'un segment",
+      "content": "Range dans l'ordre chronologique les étapes pour construire l'image du segment $[AB]$ par l'homothétie de centre $O$ et de rapport $k = -2$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Repérer le centre $O$ et le rapport $k = -2$ de l'homothétie.",
+        "Tracer les droites $(OA)$ et $(OB)$.",
+        "Construire le point $A'$ sur la droite $(OA)$ tel que $A'$ et $A$ soient de part et d'autre de $O$ et $OA' = 2 \\times OA$.",
+        "Construire le point $B'$ sur la droite $(OB)$ tel que $B'$ et $B$ soient de part et d'autre de $O$ et $OB' = 2 \\times OB$.",
+        "Tracer le segment $[A'B']$, image de $[AB]$ par l'homothétie."
+      ],
+      "explanation": "On commence par identifier les données du problème (centre, rapport). Puis on trace les droites passant par le centre et chaque sommet. Comme le rapport est négatif ($k=-2$), les images $A'$ et $B'$ se placent sur les prolongements des segments $[OA]$ et $[OB]$ de l'autre côté de $O$, à une distance double. Enfin, on relie les images pour obtenir le segment image.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Déterminer le centre et le rapport",
+      "content": "On donne deux triangles $ABC$ et $A'B'C'$ tels que $A'B'C'$ est l'image de $ABC$ par une homothétie. Range les étapes pour déterminer le centre et le rapport de cette homothétie.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier les points correspondants : $A \\rightarrow A'$, $B \\rightarrow B'$, $C \\rightarrow C'$.",
+        "Tracer les droites $(AA')$ et $(BB')$.",
+        "Repérer leur point d'intersection $O$ ; c'est le centre de l'homothétie.",
+        "Mesurer les distances $OA$ et $OA'$ (signées ou avec orientation).",
+        "Calculer le rapport $k = \\dfrac{OA'}{OA}$."
+      ],
+      "explanation": "Le centre d'une homothétie est l'intersection des droites joignant deux points correspondants distincts (ici $(AA')$ et $(BB')$). Une fois le centre $O$ trouvé, le rapport est le quotient signé des distances du centre à un point et à son image ($k = OA'/OA$). Le signe du rapport indique si les points sont du même côté (positif) ou de part et d'autre (négatif) du centre.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résolution de problème : calcul de longueur",
+      "content": "Dans une figure, les droites $(AB)$ et $(A'B')$ sont parallèles. Les droites $(AA')$ et $(BB')$ se coupent en $O$. On sait $OA = 3$ cm, $OA' = 7,5$ cm et $OB = 4$ cm. Range les étapes pour calculer $OB'$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Observer que $(AB) \\parallel (A'B')$ et que $(AA')$ et $(BB')$ se coupent en $O$.",
+        "En déduire que l'homothétie de centre $O$ transformant $A$ en $A'$ transforme aussi $B$ en $B'$.",
+        "Calculer le rapport de l'homothétie : $k = \\dfrac{OA'}{OA} = \\dfrac{7,5}{3} = 2,5$.",
+        "Appliquer le rapport au segment $OB$ : $OB' = k \\times OB$.",
+        "Calculer $OB' = 2,5 \\times 4 = 10$ cm."
+      ],
+      "explanation": "La configuration (deux droites parallèles coupées par deux sécantes) est caractéristique d'une homothétie. Le centre est l'intersection des sécantes $(AA')$ et $(BB')$. Le rapport se calcule sur les distances connues ($OA$ et $OA'$). Ce même rapport s'applique ensuite à l'autre sécante pour trouver la longueur inconnue $OB'$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

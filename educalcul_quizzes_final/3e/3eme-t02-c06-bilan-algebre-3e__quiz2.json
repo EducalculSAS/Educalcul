@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 466,
+  "_course_code": "3eme-t02-c06-bilan-algebre-3e",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Checklist",
+  "title": "Quiz : Checklist Algèbre 3e",
+  "questions": [
+    {
+      "text": "Développer et réduire l'expression $E = (2x - 3)(x + 4) - 5x$.",
+      "options": [
+        "$2x^2 - 12$",
+        "$2x^2 + 10x - 12$",
+        "$2x^2 - 10x - 12$",
+        "$2x^2 + 8x - 12$"
+      ],
+      "correctAnswer": "$2x^2 - 12$",
+      "explanation": "On développe le produit $(2x - 3)(x + 4)$ par double distributivité : $2x \\times x + 2x \\times 4 - 3 \\times x - 3 \\times 4 = 2x^2 + 8x - 3x - 12 = 2x^2 + 5x - 12$. On soustrait ensuite $5x$ : $2x^2 + 5x - 12 - 5x = 2x^2 - 12$. Les autres réponses correspondent à des erreurs de signes ou d'oubli du terme $-5x$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Factoriser l'expression $F = 9x^2 - 25$.",
+      "options": [
+        "$(3x - 5)(3x + 5)$",
+        "$(3x - 5)^2$",
+        "$(9x - 25)(9x + 25)$",
+        "$3x - 5$"
+      ],
+      "correctAnswer": "$(3x - 5)(3x + 5)$",
+      "explanation": "On reconnaît une différence de deux carrés : $9x^2 = (3x)^2$ et $25 = 5^2$. L'identité remarquable $a^2 - b^2 = (a - b)(a + b)$ donne $(3x)^2 - 5^2 = (3x - 5)(3x + 5)$. L'option $(3x - 5)^2$ correspondrait à $9x^2 - 30x + 25$. L'option $(9x - 25)(9x + 25)$ développerait en $81x^2 - 625$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'équation $3(2x - 1) = 4(x + 2) + 1$.",
+      "options": [
+        "$x = 6$",
+        "$x = 3$",
+        "$x = 5$",
+        "$x = 4$"
+      ],
+      "correctAnswer": "$x = 6$",
+      "explanation": "On développe les parenthèses : $6x - 3 = 4x + 8 + 1$, soit $6x - 3 = 4x + 9$. On regroupe les $x$ à gauche et les nombres à droite : $6x - 4x = 9 + 3$, donc $2x = 12$. En divisant par 2, on trouve $x = 6$. L'erreur $x=3$ vient souvent d'un oubli de multiplier le $-1$ par 3 au premier membre.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Résoudre l'inéquation $5 - 2x \\le 3x + 15$.",
+      "options": [
+        "$x \\ge -2$",
+        "$x \\le -2$",
+        "$x \\ge 2$",
+        "$x \\le 2$"
+      ],
+      "correctAnswer": "$x \\ge -2$",
+      "explanation": "On regroupe les $x$ à gauche : $-2x - 3x \\le 15 - 5$, soit $-5x \\le 10$. On divise par $-5$, ce qui inverse le sens de l'inégalité : $x \\ge -2$. L'option $x \\le -2$ correspond à l'oubli du changement de sens lors de la division par un nombre négatif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le triple d'un nombre augmenté de 5 est égal au double de ce nombre augmenté de 14. Quel est ce nombre ?",
+      "options": [
+        "9",
+        "19",
+        "5",
+        "3"
+      ],
+      "correctAnswer": "9",
+      "explanation": "On note $x$ le nombre cherché. La phrase se traduit par l'équation $3x + 5 = 2x + 14$. On résout : $3x - 2x = 14 - 5$, donc $x = 9$. Vérification : triple de 9 plus 5 = 27 + 5 = 32 ; double de 9 plus 14 = 18 + 14 = 32. L'égalité est respectée.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

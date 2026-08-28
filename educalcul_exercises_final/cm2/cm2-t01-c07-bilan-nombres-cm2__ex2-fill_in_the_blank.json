@@ -1,0 +1,51 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 281,
+  "_course_code": "cm2-t01-c07-bilan-nombres-cm2",
+  "_level": "cm2",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Comparaison / arrondi",
+  "title": "Comparaison et arrondis des nombres décimaux",
+  "blocks": [
+    {
+      "title": "Comparer des nombres décimaux",
+      "content": "Pour comparer deux nombres décimaux, on regarde d'abord la partie entière. Si elle est identique, on compare les dixièmes, puis les centièmes. Par exemple, le nombre $12,45$ est {{1}} que le nombre $12,39$ car $4$ dixièmes est supérieur à $3$ dixièmes.",
+      "correctAnswer": "supérieur",
+      "blanks": [
+        "supérieur|plus grand"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare les parties entières : $12$ est égal à $12$. On regarde ensuite le premier chiffre après la virgule. $4$ est plus grand que $3$, donc $12,45$ est supérieur à $12,39$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "L'arrondi à l'unité",
+      "content": "Pour arrondir un nombre décimal à l'unité, on regarde le chiffre des dixièmes. Si ce chiffre est $0, 1, 2, 3$ ou $4$, on arrondit à l'unité inférieure. Si c'est $5, 6, 7, 8$ ou $9$, on arrondit à l'unité supérieure. L'arrondi à l'unité de $7,62$ est donc {{1}}.",
+      "correctAnswer": "8",
+      "blanks": [
+        "$8$"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans $7,62$, le chiffre des dixièmes est $6$. Comme $6$ est supérieur ou égal à $5$, on arrondit à l'unité supérieure, soit $8$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "L'arrondi au dixième",
+      "content": "Pour arrondir au dixième, on observe le chiffre des centièmes. Dans le nombre $14,382$, le chiffre des centièmes est $8$. Comme $8$ est supérieur ou égal à $5$, on ajoute une unité au chiffre des dixièmes. Le nombre $14,382$ arrondi au dixième est {{1}}.",
+      "correctAnswer": "14,4",
+      "blanks": [
+        "$14,4$"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le chiffre des dixièmes est $3$ et celui des centièmes est $8$. Puisque $8$ est supérieur ou égal à $5$, on arrondit au dixième supérieur, ce qui donne $14,4$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

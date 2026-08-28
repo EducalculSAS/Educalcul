@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 139,
+  "_course_code": "ce1-t08-c04-construire-un-diagramme-en-batons",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Choisir une échelle simple",
+  "title": "Choisir une échelle simple pour un diagramme en bâtons",
+  "questions": [
+    {
+      "text": "Dans un diagramme en bâtons, à quoi correspond l'échelle choisie ?",
+      "options": [
+        "Au nombre total de bâtons",
+        "À la valeur représentée par un seul bâton",
+        "À la couleur des bâtons",
+        "À la largeur des bâtons"
+      ],
+      "correctAnswer": "À la valeur représentée par un seul bâton",
+      "explanation": "L'échelle d'un diagramme en bâtons indique combien d'unités (ou d'objets comptés) correspond un seul bâton. Par exemple, si l'échelle est « 1 bâton = 2 », chaque bâton compte pour deux unités. Les autres options (nombre total, couleur, largeur) ne définissent pas l'échelle.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut représenter les effectifs suivants : $2$, $5$ et $8$. Quelle échelle simple permet de tracer des bâtons d'une hauteur entière sans dépasser $10$ bâtons de haut ?",
+      "options": [
+        "1 bâton = $1$",
+        "1 bâton = $2$",
+        "1 bâton = $5$",
+        "1 bâton = $10$"
+      ],
+      "correctAnswer": "1 bâton = $1$",
+      "explanation": "Avec l'échelle 1 bâton = $1$, les hauteurs sont $2$, $5$ et $8$ bâtons : ce sont des nombres entiers et le maximum ($8$) reste inférieur à $10$. Avec l'échelle 2, la hauteur pour $5$ serait $2,5$ bâtons (impossible à tracer simplement au CE1). Avec l'échelle 5 ou 10, les hauteurs seraient inférieures à $1$ bâton pour les petites valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On a relevé le nombre de voitures passées devant l'école : $4$, $10$, $16$ et $20$. Quelle est l'échelle la plus adaptée pour que tous les bâtons aient une hauteur entière et que le diagramme ne soit pas trop grand ?",
+      "options": [
+        "1 bâton = $1$",
+        "1 bâton = $2$",
+        "1 bâton = $5$",
+        "1 bâton = $10$"
+      ],
+      "correctAnswer": "1 bâton = $2$",
+      "explanation": "Il faut diviser chaque effectif par l'échelle pour obtenir la hauteur en bâtons. Avec 1 bâton = $2$ : $4/2=2$, $10/2=5$, $16/2=8$, $20/2=10$. Toutes les hauteurs sont entières et le maximum est $10$ bâtons. Avec l'échelle 1, le maximum serait $20$ bâtons (trop grand). Avec l'échelle 5, $4/5$ et $16/5$ ne sont pas entiers. Avec l'échelle 10, $4/10$ n'est pas entier.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le diagramme ci-dessous. L'échelle indiquée est : 1 bâton = $2$. Quelle est la valeur exacte représentée par le bâton « Mardi » ?",
+      "options": [
+        "3",
+        "6",
+        "2",
+        "4"
+      ],
+      "correctAnswer": "6",
+      "explanation": "L'échelle « 1 bâton = $2$ » signifie que chaque bâton vertical compte pour $2$ unités. Sur le diagramme, la barre « Mardi » monte jusqu'à $3$ bâtons de haut. La valeur réelle est donc $3 \\times 2 = 6$. L'option « 3 » correspond au nombre de bâtons visuels, pas à la valeur de la donnée.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de voitures - Échelle : 1 bâton = 2",
+        "bars": [
+          {
+            "label": "Lundi",
+            "value": 4,
+            "tone": "blue"
+          },
+          {
+            "label": "Mardi",
+            "value": 6,
+            "tone": "green"
+          },
+          {
+            "label": "Mercredi",
+            "value": 8,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Pour représenter les nombres $15$, $25$ et $30$, un élève propose l'échelle « 1 bâton = $10$ ». Pourquoi cette échelle n'est-elle pas simple à utiliser au CE1 ?",
+      "options": [
+        "Les bâtons seraient trop larges",
+        "Les hauteurs ne seraient pas des nombres entiers de bâtons",
+        "Le diagramme serait trop petit",
+        "Il n'y a pas assez de couleurs"
+      ],
+      "correctAnswer": "Les hauteurs ne seraient pas des nombres entiers de bâtons",
+      "explanation": "Avec l'échelle 1 bâton = $10$, les hauteurs seraient $15/10 = 1,5$ bâtons, $25/10 = 2,5$ bâtons et $30/10 = 3$ bâtons. Au CE1, on cherche une échelle qui donne des hauteurs entières (comme 1 bâton = $5$ qui donne $3$, $5$ et $6$ bâtons) pour pouvoir tracer et lire le diagramme facilement sans demi-bâtons.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

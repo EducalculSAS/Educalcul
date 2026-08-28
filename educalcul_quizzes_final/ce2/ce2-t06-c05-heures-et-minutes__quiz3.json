@@ -1,0 +1,88 @@
+{
+  "_status": "done",
+  "_course_id": 191,
+  "_course_code": "ce2-t06-c05-heures-et-minutes",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Convertir cas simples",
+  "title": "Quiz : Convertir les heures et minutes (cas simples)",
+  "questions": [
+    {
+      "text": "Combien de minutes y a-t-il dans $1$ heure ?",
+      "options": [
+        "$30$ minutes",
+        "$60$ minutes",
+        "$100$ minutes",
+        "$45$ minutes"
+      ],
+      "correctAnswer": "$60$ minutes",
+      "explanation": "Une heure dure exactement $60$ minutes. C'est la base de la conversion. $30$ minutes correspondent à une demi-heure, $45$ minutes à trois quarts d'heure et $100$ minutes n'est pas une durée standard pour une heure.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 1,
+        "minutes": 0,
+        "caption": "Une heure pile",
+        "interactive": false
+      }
+    },
+    {
+      "text": "Une demi-heure correspond à combien de minutes ?",
+      "options": [
+        "$15$ minutes",
+        "$30$ minutes",
+        "$45$ minutes",
+        "$60$ minutes"
+      ],
+      "correctAnswer": "$30$ minutes",
+      "explanation": "Une demi-heure est la moitié d'une heure. Comme une heure vaut $60$ minutes, la moitié est $60 \\div 2 = 30$ minutes. $15$ minutes est un quart d'heure, $45$ minutes est trois quarts d'heure et $60$ minutes est une heure entière.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un quart d'heure correspond à combien de minutes ?",
+      "options": [
+        "$10$ minutes",
+        "$15$ minutes",
+        "$20$ minutes",
+        "$25$ minutes"
+      ],
+      "correctAnswer": "$15$ minutes",
+      "explanation": "Un quart d'heure est le quart d'une heure. Une heure vaut $60$ minutes, donc un quart vaut $60 \\div 4 = 15$ minutes. $10$, $20$ et $25$ minutes ne correspondent pas à un quart d'heure.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Convertis $1$ heure $30$ minutes en minutes.",
+      "options": [
+        "$80$ minutes",
+        "$90$ minutes",
+        "$100$ minutes",
+        "$60$ minutes"
+      ],
+      "correctAnswer": "$90$ minutes",
+      "explanation": "$1$ heure vaut $60$ minutes. On ajoute les $30$ minutes : $60 + 30 = 90$ minutes. $80$ minutes oublie d'ajouter correctement, $100$ minutes arrondit à la centaine et $60$ minutes ne compte que l'heure.",
+      "points": 1,
+      "figure": {
+        "type": "clock",
+        "hours": 1,
+        "minutes": 30,
+        "caption": "1 heure 30",
+        "interactive": false
+      }
+    },
+    {
+      "text": "$90$ minutes, cela fait combien d'heures et de minutes ?",
+      "options": [
+        "$1$ heure $20$ minutes",
+        "$1$ heure $30$ minutes",
+        "$1$ heure $40$ minutes",
+        "$2$ heures"
+      ],
+      "correctAnswer": "$1$ heure $30$ minutes",
+      "explanation": "On sait que $1$ heure $= 60$ minutes. $90 - 60 = 30$ minutes restantes. Donc $90$ minutes $= 1$ heure $30$ minutes. $1$ heure $20$ fait $80$ minutes, $1$ heure $40$ fait $100$ minutes et $2$ heures font $120$ minutes.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,378 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.782438+00:00",
+  "id": 98,
+  "code": "ce1-t04-c01",
+  "title": "Tables d'addition",
+  "description": "Cours structuré Educalcul : Tables d'addition.",
+  "subject": "Calcul mental et tables",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Calcul mental et tables",
+    "titre_du_cours": "Tables d'addition",
+    "objectif_global": "Tables d'addition",
+    "mini_lecons_imposees": [
+      "Mémoriser faits fréquents.",
+      "Utiliser commutativité.",
+      "Répondre avec fluence."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Calcul mental et tables",
+      "lessons": [
+        {
+          "title": "Mémoriser faits fréquents.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les doubles, des repères solides"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as deux mains. Sur chaque main, tu comptes $2$ doigts levés. Si tu les mets ensemble, tu as $4$ doigts en tout. C'est un double : $2 + 2 = 4$. Les doubles sont comme des petits raccourcis que ton cerveau adore reconnaître tout de suite. Quand tu vois $3 + 3$, tu sais que ça fait $6$ sans même réfléchir, parce que tu as déjà vu cette image mentale deux fois le même nombre. Aujourd'hui, on va ancrer ces repères pour qu'ils deviennent automatiques."
+            },
+            {
+              "type": "number_line",
+              "caption": "Deux sauts de $2$ sur la droite numérique mènent à $4$",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "départ"
+                },
+                {
+                  "value": 2,
+                  "label": "+2"
+                },
+                {
+                  "value": 4,
+                  "label": "arrivée"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 0,
+                  "end": 2
+                },
+                {
+                  "start": 2,
+                  "end": 4
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons les nombres qui aiment se retrouver pour former exactement $10$. C'est comme une équipe de deux joueurs qui, ensemble, marquent toujours $10$ points. Par exemple, $3$ et $7$ sont inséparables : $3 + 7 = 10$. Si tu connais ces paires, tu gagnes un temps fou dès qu'une addition approche de la dizaine."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Deux parts qui forment $10$ : $3$ et $7$",
+              "slices": [
+                {
+                  "label": "3",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "7",
+                  "value": 7,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "On peut aussi utiliser ce qu'on sait déjà pour découvrir de nouvelles additions sans tout recalculer. Si tu es certain que $5 + 5 = 10$, alors $5 + 6$ c'est juste $1$ de plus, donc $11$. C'est comme monter une marche d'escalier : tu partes d'un palier connu et tu fais un petit pas en avant. Cette astuce marche pour tous les doubles et tous les compléments à $10$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repère un fait connu",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Cherche un double ou un complément à $10$ tout près de l'addition proposée."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajuste d'un petit pas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute $1$ si le deuxième nombre est plus grand, ou enlève $1$ s'il est plus petit."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien font $2 + 2$ ?",
+              "answer": "$4$",
+              "hint": "Utilise la droite numérique : deux sauts de $2$.",
+              "explanation": "En partant de $0$, deux sauts de $2$ mènent à $4$. C'est le double de $2$."
+            },
+            {
+              "question": "Quel nombre ajouter à $6$ pour obtenir $10$ ?",
+              "answer": "$4$",
+              "hint": "Regarde le camembert : les deux parts forment $10$.",
+              "explanation": "Les deux parts du camembert sont $6$ et $4$. Donc $6 + 4 = 10$."
+            },
+            {
+              "question": "Si $4 + 4 = 8$, combien font $4 + 5$ ?",
+              "answer": "$9$",
+              "hint": "Ajoute $1$ au résultat du double.",
+              "explanation": "On connaît $4 + 4 = 8$. $4 + 5$ c'est $1$ de plus, donc $9$."
+            }
+          ]
+        },
+        {
+          "title": "Utiliser commutativité.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'ordre ne change pas la somme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prends $3$ billes bleues et $4$ billes rouges. Si tu comptes les bleues d'abord puis les rouges, tu trouves $7$. Si tu comptes les rouges d'abord puis les bleues, tu trouves encore $7$. L'ordre dans lequel tu les réunis n'a aucune importance : le total reste identique. C'est la grande idée de la commutativité, un mot un peu savant pour dire qu'on a le droit d'échanger les nombres."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Deux additions différentes, même résultat : $7$",
+              "bars": [
+                {
+                  "label": "3+4",
+                  "value": 7,
+                  "tone": "blue"
+                },
+                {
+                  "label": "4+3",
+                  "value": 7,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette propriété s'appelle la commutativité. Elle est très utile pour calculer plus vite : quand tu dois ajouter un petit nombre à un grand nombre, tu as tout intérêt à mettre le grand nombre en premier. Compter $3$ en partant de $9$ est plus facile que compter $9$ en partant de $3$. On va s'entraîner à retourner les additions pour toujours choisir le départ le plus confortable."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Compare les deux nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde quel nombre est le plus grand des deux."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Place le plus grand en premier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris l'addition en commençant par le plus grand nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Compte à partir du grand",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute le petit nombre en comptant sur tes doigts ou dans ta tête."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous maintenant à repérer les paires d'additions qui sont commutatives l'une de l'autre. C'est comme un jeu de mémoire : tu dois associer chaque addition à son miroir. Par exemple, $4 + 6$ et $6 + 4$ forment un duo. $5 + 5$ est son propre miroir parce que les deux nombres sont identiques. À toi de jouer pour trouver les autres duos."
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "items": [
+                "$4 + 6$",
+                "$6 + 4$",
+                "$5 + 5$",
+                "$7 + 3$"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $5 + 2$ et $2 + 5$. Que remarques-tu ?",
+              "answer": "Les deux donnent $7$.",
+              "hint": "Regarde les barres : elles ont la même hauteur.",
+              "explanation": "L'ordre des nombres ne change pas le résultat : $5 + 2 = 7$ et $2 + 5 = 7$."
+            },
+            {
+              "question": "Pour calculer $3 + 9$, par quel nombre commences-tu ?",
+              "answer": "$9$",
+              "hint": "Le plus grand des deux.",
+              "explanation": "On commence par $9$ (le plus grand) et on ajoute $3$ : $10, 11, 12$. C'est plus rapide."
+            },
+            {
+              "question": "Parmi $4+6$, $6+4$, $5+5$, $7+3$, lesquelles sont commutatives deux à deux ?",
+              "answer": "$4+6$ et $6+4$ ; $7+3$ et $3+7$ (mais $3+7$ n'est pas dans la liste).",
+              "hint": "Cherche les mêmes nombres dans l'ordre inverse.",
+              "explanation": "$4+6$ et $6+4$ utilisent les mêmes nombres. $5+5$ est son propre commutatif. $7+3$ aurait pour commutatif $3+7$."
+            }
+          ]
+        },
+        {
+          "title": "Répondre avec fluence.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Des stratégies pour aller vite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour répondre du tac au tac, ton cerveau a besoin de plusieurs petits outils bien aiguisés. Le premier, c'est de partir du plus grand nombre et de compter le petit en avant. Le deuxième, c'est de reconnaître les doubles en un clin d'œil. Le troisième, c'est de voir tout de suite les compléments à $10$. Selon l'addition, tu choisis l'outil le plus pratique. C'est comme avoir une boîte à outils : tu ne prends pas un marteau pour visser une vis."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Observe l'addition",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde les deux nombres : sont-ils proches d'un double ? Font-ils $10$ ensemble ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisis la meilleure stratégie",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Double, complément à $10$, ou compter depuis le plus grand."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Donne la réponse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Annonce le résultat sans hésiter."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, essayons de répondre à plusieurs additions de suite, comme si on faisait un petit sprint mental. L'objectif n'est pas d'être parfait du premier coup, mais de gagner en aisance. Chaque série te rendra un peu plus rapide. Ne t'inquiète pas si tu comptes encore sur les doigts au début : c'est le chemin normal vers l'automatisme."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "$2 + 8$",
+                "$5 + 5$",
+                "$6 + 4$",
+                "$1 + 9$"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, vérifions que tu connais tes faits d'addition jusqu'à $10 + 10$. Tu as maintenant toutes les cartes en main : les doubles, les compléments à $10$, la commutativité et la stratégie du plus grand d'abord. C'est ton tour de briller. Si tu bloques sur l'une, repense à l'outil qui va bien. Tu es prêt pour le bilan."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je connais mes doubles jusqu'à $5 + 5$.",
+                "Je retrouve les compléments à $10$ sans compter.",
+                "J'utilise la commutativité pour calculer plus vite.",
+                "Je réponds aux additions courantes en moins de $3$ secondes."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calcule $7 + 3$ le plus vite possible.",
+              "answer": "$10$",
+              "hint": "C'est un complément à $10$.",
+              "explanation": "$7$ et $3$ font $10$. C'est une paire inséparable."
+            },
+            {
+              "question": "Donne les résultats de $2+8$, $5+5$, $6+4$, $1+9$.",
+              "answer": "$10, 10, 10, 10$",
+              "hint": "Tous font $10$.",
+              "explanation": "Ce sont tous des compléments à $10$ : $2+8=10$, $5+5=10$, $6+4=10$, $1+9=10$."
+            },
+            {
+              "question": "Complète : $8 + \\square = 10$",
+              "answer": "$2$",
+              "hint": "Quel nombre manque pour faire $10$ ?",
+              "explanation": "$8 + 2 = 10$. Le complément de $8$ à $10$ est $2$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

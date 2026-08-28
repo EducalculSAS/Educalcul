@@ -1,0 +1,139 @@
+{
+  "_status": "done",
+  "_course_id": 137,
+  "_course_code": "ce1-t08-c02-construire-un-tableau-simple",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Organiser catégories et effectifs",
+  "title": "Organiser catégories et effectifs",
+  "questions": [
+    {
+      "text": "Regarde le tableau ci-dessous. Combien y a-t-il de poires ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$8$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Dans le tableau, la ligne 'Poires' correspond à l'effectif $3$. Les autres nombres correspondent aux pommes ($5$) et aux bananes ($4$). L'option $8$ est la somme des pommes et des poires, ce qui n'est pas la question.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruits",
+          "Nombre"
+        ],
+        "rows": [
+          [
+            "Pommes",
+            "5"
+          ],
+          [
+            "Poires",
+            "3"
+          ],
+          [
+            "Bananes",
+            "4"
+          ]
+        ],
+        "caption": "Tableau des fruits"
+      }
+    },
+    {
+      "text": "En additionnant tous les fruits du tableau, quel est le total ?",
+      "options": [
+        "$10$",
+        "$11$",
+        "$12$",
+        "$13$"
+      ],
+      "correctAnswer": "$12$",
+      "explanation": "Il faut additionner les effectifs de chaque catégorie : $5$ pommes + $3$ poires + $4$ bananes = $12$ fruits au total. $10$ oublie une catégorie, $11$ et $13$ sont des erreurs de calcul.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruits",
+          "Nombre"
+        ],
+        "rows": [
+          [
+            "Pommes",
+            "5"
+          ],
+          [
+            "Poires",
+            "3"
+          ],
+          [
+            "Bananes",
+            "4"
+          ]
+        ],
+        "caption": "Tableau des fruits"
+      }
+    },
+    {
+      "text": "Dans un tableau à deux colonnes qui range des objets, la première colonne contient généralement :",
+      "options": [
+        "Les effectifs (les nombres)",
+        "Les catégories (les noms)",
+        "Le total final",
+        "La date du jour"
+      ],
+      "correctAnswer": "Les catégories (les noms)",
+      "explanation": "La première colonne d'un tableau de recensement sert à identifier les catégories (ex: noms des fruits, couleurs, animaux). La deuxième colonne indique les effectifs (les nombres). Le total se calcule à la fin, il n'est pas une colonne de base.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un tableau sur les animaux préférés. Quel animal a le plus grand effectif ?",
+      "options": [
+        "Chats",
+        "Chiens",
+        "Lapins",
+        "Il y a égalité"
+      ],
+      "correctAnswer": "Lapins",
+      "explanation": "Il faut comparer les nombres de la colonne 'Nombre' : Chats $6$, Chiens $4$, Lapins $7$. Le plus grand nombre est $7$, il correspond aux Lapins. Les chats sont deuxièmes avec $6$, les chiens derniers avec $4$.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animaux",
+          "Nombre"
+        ],
+        "rows": [
+          [
+            "Chats",
+            "6"
+          ],
+          [
+            "Chiens",
+            "4"
+          ],
+          [
+            "Lapins",
+            "7"
+          ]
+        ],
+        "caption": "Animaux préférés"
+      }
+    },
+    {
+      "text": "Léo a trié ses billes : $4$ rouges, $6$ bleues, $2$ vertes. Il remplit un tableau. Quelle ligne doit-il écrire pour les billes bleues ?",
+      "options": [
+        "Bleues | $2$",
+        "Bleues | $4$",
+        "Bleues | $6$",
+        "Bleues | $12$"
+      ],
+      "correctAnswer": "Bleues | $6$",
+      "explanation": "L'énoncé dit qu'il y a $6$ billes bleues. Dans le tableau, la catégorie est 'Bleues' et l'effectif associé est $6$. L'option $2$ correspond aux vertes, $4$ aux rouges, $12$ au total.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

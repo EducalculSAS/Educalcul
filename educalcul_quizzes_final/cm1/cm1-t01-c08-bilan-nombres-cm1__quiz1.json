@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_course_id": 218,
+  "_course_code": "cm1-t01-c08-bilan-nombres-cm1",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Entiers et décimaux",
+  "title": "Quiz - Nombres entiers et décimaux CM1",
+  "questions": [
+    {
+      "text": "Observe le tableau de positionnement ci-dessous. Quel est le chiffre des dixièmes ?",
+      "options": [
+        "4",
+        "0",
+        "3",
+        "7"
+      ],
+      "correctAnswer": "7",
+      "explanation": "Dans le nombre $403,7$, le chiffre 4 est le chiffre des centaines, le 0 celui des dizaines, le 3 celui des unités et le 7 est le premier chiffre après la virgule, c'est-à-dire le chiffre des dixièmes.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 403.7,
+        "caption": "Tableau de positionnement du nombre 403,7"
+      }
+    },
+    {
+      "text": "Écris en chiffres le nombre : trois cent deux virgule cinq.",
+      "options": [
+        "$302,5$",
+        "$3002,5$",
+        "$302,05$",
+        "$3,025$"
+      ],
+      "correctAnswer": "$302,5$",
+      "explanation": "Trois cent deux s'écrit $302$. La partie décimale « cinq » correspond à 5 dixièmes, donc $0,5$. Le nombre complet est $302,5$. L'option $3002,5$ correspond à trois mille deux virgule cinq. L'option $302,05$ correspond à trois cent deux virgule zéro cinq (5 centièmes). L'option $3,025$ correspond à trois virgule zéro vingt-cinq.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Compare les deux nombres décimaux : $4,06$ ... $4,6$. Quel signe faut-il mettre ?",
+      "options": [
+        "$4,06 > 4,6$",
+        "$4,06 < 4,6$",
+        "$4,06 = 4,6$",
+        "On ne peut pas les comparer"
+      ],
+      "correctAnswer": "$4,06 < 4,6$",
+      "explanation": "Pour comparer, on aligne la virgule. $4,6$ a 6 dixièmes. $4,06$ a 0 dixième et 6 centièmes. Comme 6 dixièmes vaut plus que 0 dixième, $4,6$ est plus grand que $4,06$. On peut aussi écrire $4,60$ pour voir que $60$ centièmes $>$ $6$ centièmes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la décomposition correcte du nombre $105,08$ ?",
+      "options": [
+        "$100 + 5 + 0,08$",
+        "$100 + 5 + 0,8$",
+        "$10 + 5 + 0,08$",
+        "$100 + 5 + 8$"
+      ],
+      "correctAnswer": "$100 + 5 + 0,08$",
+      "explanation": "Le nombre $105,08$ se décompose en $1$ centaine ($100$), $0$ dizaine, $5$ unités ($5$), $0$ dixième et $8$ centièmes ($0,08$). L'option $100 + 5 + 0,8$ confond 8 centièmes et 8 dixièmes. L'option $10 + 5 + 0,08$ oublie la centaine. L'option $100 + 5 + 8$ traite les centièmes comme des unités.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur la graduation ci-dessous, le point A est sur $2,4$ et le point B sur $2,8$. Quel nombre parmi les propositions se trouve entre A et B ?",
+      "options": [
+        "$2,2$",
+        "$2,5$",
+        "$2,9$",
+        "$3,1$"
+      ],
+      "correctAnswer": "$2,5$",
+      "explanation": "Le point A est à $2,4$ et le point B à $2,8$. Un nombre entre les deux doit être strictement supérieur à $2,4$ et strictement inférieur à $2,8$. $2,2$ est avant A. $2,9$ et $3,1$ sont après B. Seul $2,5$ (qui vaut $2,50$) est compris entre $2,40$ et $2,80$.",
+      "points": 1,
+      "figure": {
+        "type": "number_line",
+        "caption": "Graduation de 2 à 3 avec points A et B",
+        "min": 2,
+        "max": 3,
+        "points": [
+          {
+            "value": 2.4,
+            "label": "A"
+          },
+          {
+            "value": 2.8,
+            "label": "B"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.268321+00:00",
+  "id": 255,
+  "code": "cm1-t06-c08",
+  "title": "Bilan - Géométrie CM1",
+  "description": "Cours structuré Educalcul : Bilan - Géométrie CM1.",
+  "subject": "Géométrie plane, solides et espace",
+  "level": "cm1",
+  "source_level_label": "CM1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CM1",
+    "theme": "Géométrie plane, solides et espace",
+    "titre_du_cours": "Bilan - Géométrie CM1",
+    "objectif_global": "Bilan - Géométrie CM1",
+    "mini_lecons_imposees": [
+      "Propriétés et constructions.",
+      "Solides.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3, applicable au CM1 depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane, solides et espace",
+      "lessons": [
+        {
+          "title": "Propriétés et constructions.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les quadrilatères : les reconnaître et les nommer"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan de géométrie ! Aujourd'hui, on fait le point sur tout ce que tu as appris cette année. Commence par regarder autour de toi : une feuille de papier, une porte, un carrelage... Tous ces objets ont une forme à quatre côtés. En géométrie, on appelle ça un $quadrilatère$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Il y a plusieurs familles de quadrilatères. Le $carré$ a quatre côtés de même longueur et quatre angles droits. Le $rectangle$ a aussi quatre angles droits, mais seulement les côtés opposés sont égaux. Le $losange$ a quatre côtés égaux, mais ses angles ne sont pas forcément droits. Le $parallélogramme$ a ses côtés opposés parallèles deux à deux. Et le $trapèze$ a au moins une paire de côtés parallèles."
+            },
+            {
+              "type": "definition",
+              "term": "Quadrilatère",
+              "definition": "Figure plane fermée à quatre côtés et quatre sommets.",
+              "example": "Un carré, un rectangle, un losange sont des quadrilatères."
+            },
+            {
+              "type": "fraction_strips",
+              "fractions": [
+                {
+                  "numerator": 1,
+                  "denominator": 4
+                },
+                {
+                  "numerator": 1,
+                  "denominator": 2
+                }
+              ],
+              "caption": "Comparer des longueurs de côtés avec des réglettes"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais les nommer, intéressons-nous à leurs diagonales. Une $diagonale$ relie deux sommets opposés. Dans un carré, les diagonales sont perpendiculaires, elles ont la même longueur et se coupent au milieu. Dans un rectangle, elles ont la même longueur et se coupent au milieu, mais ne sont pas perpendiculaires. Dans un losange, elles sont perpendiculaires et se coupent au milieu, mais n'ont pas la même longueur. Ces propriétés aident à reconnaître la figure sans mesurer tous les angles."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer les diagonales",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec ta règle, relie les sommets opposés."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Observer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Sont-elles perpendiculaires ? Ont-elles la même longueur ? Se coupent-elles au milieu ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "D'après tes observations, de quel quadrilatère s'agit-il ?"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux triangles. Tu en connais déjà plusieurs : le $triangle\\ rectangle$ a un angle droit, le $triangle\\ isocèle$ a deux côtés de même longueur, le $triangle\\ équilatéral$ a trois côtés égaux (et donc trois angles de $60^\\circ$), et le $triangle\\ quelconque$ n'a aucune particularité. Pour les identifier, on regarde les longueurs des côtés et la mesure des angles. Rappelle-toi : la somme des angles d'un triangle vaut toujours $180^\\circ$."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle isocèle : un angle droit et deux côtés égaux",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, un peu de construction ! Tu sais tracer une perpendiculaire à une droite en un point avec ton équerre, et une parallèle en glissant l'équerre le long de la règle. Pour construire un carré de côté $5$ cm, trace un segment $AB = 5$ cm, puis la perpendiculaire en $A$, repère $D$ à $5$ cm, fais de même en $B$ pour $C$, et relie $C$ et $D$. Vérifie que $CD = 5$ cm et que les angles sont droits. C'est la même idée pour un rectangle : deux longueurs et deux largeurs."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces figures : carré, rectangle, losange, parallélogramme, trapèze, lesquelles ont au moins une paire de côtés parallèles ?",
+              "answer": "Toutes sauf le losange ? Non, le losange en a deux paires. En fait, toutes ces figures ont au moins une paire de côtés parallèles.",
+              "hint": "Regarde la définition de chaque quadrilatère : le trapèze a au moins une paire, les autres en ont deux.",
+              "explanation": "Le carré, le rectangle, le losange et le parallélogramme ont deux paires de côtés parallèles. Le trapèze en a au moins une. Donc toutes les figures citées ont au moins une paire de côtés parallèles."
+            },
+            {
+              "question": "Dans un losange, les diagonales sont-elles toujours de même longueur ?",
+              "answer": "Non, dans un losange les diagonales sont perpendiculaires et se coupent à leur milieu, mais elles n'ont pas la même longueur (sauf si c'est un carré).",
+              "hint": "Pense à un losange bien aplati : ses diagonales sont très différentes.",
+              "explanation": "Seuls le carré et le rectangle ont des diagonales de même longueur. Dans un losange, les diagonales sont perpendiculaires mais inégales."
+            },
+            {
+              "question": "Un triangle a deux angles de $50^\\circ$ et $60^\\circ$. Quelle est la valeur du troisième angle ?",
+              "answer": "$70^\\circ$",
+              "hint": "La somme des trois angles d'un triangle vaut $180^\\circ$.",
+              "explanation": "On calcule $180 - (50 + 60) = 180 - 110 = 70$. Le troisième angle mesure $70^\\circ$."
+            },
+            {
+              "question": "Pour construire un rectangle de $6$ cm sur $4$ cm, quelle est la première chose à tracer ?",
+              "answer": "Un segment de $6$ cm (ou $4$ cm) qui sera un côté du rectangle.",
+              "hint": "On commence toujours par tracer un côté, puis on construit les perpendiculaires aux extrémités.",
+              "explanation": "On trace d'abord un côté, par exemple $AB = 6$ cm. Ensuite, on trace les perpendiculaires en $A$ et en $B$. Sur ces perpendiculaires, on repère $D$ et $C$ à $4$ cm. Enfin, on relie $C$ et $D$."
+            }
+          ]
+        },
+        {
+          "title": "Solides.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les solides : les nommer et les décrire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Changeons de dimension ! Les solides occupent l'espace : ils ont du volume. Tu en manipules tous les jours : un dé (cube), une boîte de chaussures (pavé droit), une pyramide d'Égypte, une boîte de conserve (cylindre), un cône de glace, un ballon (sphère). Pour les décrire, on compte leurs $faces$ (les surfaces planes ou courbes), leurs $arêtes$ (les segments où deux faces se rejoignent) et leurs $sommets$ (les points où plusieurs arêtes se croisent)."
+            },
+            {
+              "type": "definition",
+              "term": "Face",
+              "definition": "Chacune des surfaces planes ou courbes qui limitent un solide.",
+              "example": "Un cube a $6$ faces carrées."
+            },
+            {
+              "type": "definition",
+              "term": "Arête",
+              "definition": "Segment intersection de deux faces planes.",
+              "example": "Un pavé droit a $12$ arêtes."
+            },
+            {
+              "type": "definition",
+              "term": "Sommet",
+              "definition": "Point où se rejoignent au moins trois arêtes.",
+              "example": "Une pyramide à base carrée a $5$ sommets."
+            },
+            {
+              "type": "net_folder",
+              "solid": "cube",
+              "width": 4,
+              "height": 4,
+              "depth": 4,
+              "caption": "Patron d'un cube : 6 carrés qui se replient"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regardons de plus près le $cube$ et le $pavé\\ droit$. Ce sont des $pavés$ : leurs faces sont toutes des rectangles (des carrés pour le cube). Un cube a $6$ faces carrées, $12$ arêtes de même longueur et $8$ sommets. Un pavé droit a $6$ faces rectangulaires (par paires égales), $12$ arêtes (groupées par $3$ longueurs égales) et $8$ sommets. Pour ne pas te tromper en comptant, imagine que tu démonte la boîte : tu obtiens un $patron$, c'est-à-dire toutes les faces aplaties et attachées les unes aux autres."
+            },
+            {
+              "type": "net_folder",
+              "solid": "pave",
+              "width": 6,
+              "height": 4,
+              "depth": 3,
+              "caption": "Patron d'un pavé droit : 3 paires de rectangles"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les autres solides ont des faces courbes. Le $cylindre$ a deux faces planes circulaires (les bases) et une face courbe latérale. Il a $2$ arêtes (les cercles des bases) et $0$ sommet. Le $cône$ a une base circulaire plane, une face courbe latérale, $1$ arête (le cercle de la base) et $1$ sommet (le sommet du cône). La $sphère$ n'a que une face courbe, aucune arête, aucun sommet. C'est la seule qui roule dans tous les sens !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, sache reconnaître un solide à partir de son patron. Si tu vois six carrés en croix, c'est un cube. Si tu vois trois paires de rectangles, c'est un pavé droit. Si tu vois un cercle et un secteur de cercle, c'est un cône. Deux cercles et un rectangle ? C'est un cylindre. Et une base polygonale avec des triangles autour ? C'est une pyramide. Essaie de visualiser le pliage dans ta tête : les arêtes collées ensemble deviennent les arêtes du solide."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Combien de faces, d'arêtes et de sommets a un cube ?",
+              "answer": "6 faces, 12 arêtes, 8 sommets.",
+              "hint": "Compte sur un dé ou sur le patron du cube.",
+              "explanation": "Un cube a 6 faces carrées, 12 arêtes de même longueur et 8 sommets."
+            },
+            {
+              "question": "Lequel de ces patrons correspond à un pavé droit ? (Description) : Patron A : 6 carrés. Patron B : 3 paires de rectangles de dimensions différentes. Patron C : 1 carré et 4 triangles.",
+              "answer": "Patron B",
+              "hint": "Un pavé droit a des faces rectangulaires, par paires égales.",
+              "explanation": "Le patron A est celui d'un cube (6 carrés). Le patron C est celui d'une pyramide à base carrée. Le patron B montre bien 3 paires de rectangles : c'est le patron d'un pavé droit."
+            },
+            {
+              "question": "Un cylindre a-t-il des sommets ?",
+              "answer": "Non, un cylindre n'a aucun sommet.",
+              "hint": "Regarde une boîte de conserve : il n'y a pas de coin pointu.",
+              "explanation": "Le cylindre a 2 faces planes (les bases), 1 face courbe, 2 arêtes (les cercles des bases) et 0 sommet."
+            },
+            {
+              "question": "Quel solide a pour patron un cercle et un secteur de cercle ?",
+              "answer": "Un cône.",
+              "hint": "Le secteur de cercle forme la face courbe, le cercle forme la base.",
+              "explanation": "En repliant le secteur de cercle, on obtient la face courbe du cône qui se referme sur la base circulaire."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : je sais faire tout ça !"
+            },
+            {
+              "type": "paragraph",
+              "content": "C'est la dernière leçon de ce bilan. Tu as travaillé dur toute l'année en géométrie. Maintenant, prenons le temps de vérifier que chaque notion est bien ancrée. Pas de stress : cette checklist est là pour t'aider à voir ce que tu maîtrises déjà et ce qu'il te reste à réviser tranquillement. Chaque item correspond à une compétence du programme de CM1. Coche mentalement ceux que tu sens solides."
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par le vocabulaire des figures planes. Tu sais nommer et décrire un carré, un rectangle, un losange, un parallélogramme, un trapèze. Tu connais la définition de $côté$, $sommet$, $angle$, $diagonale$, $droite\\ parallèle$, $droite\\ perpendiculaire$. Tu sais reconnaître un triangle rectangle, isocèle, équilatéral, quelconque. Tu sais que la somme des angles d'un triangle vaut $180^\\circ$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Côté constructions, tu es capable de tracer avec règle et équerre : une perpendiculaire à une droite passant par un point, une parallèle à une droite passant par un point, un carré de côté donné, un rectangle de dimensions données, un triangle connaissant trois côtés (ou deux côtés et l'angle compris). Tu sais utiliser le compas pour reporter une longueur ou tracer un cercle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour les solides, tu sais nommer : cube, pavé droit, pyramide, cylindre, cône, sphère. Tu sais compter faces, arêtes, sommets. Tu reconnais les patrons du cube, du pavé droit, de la pyramide, du cylindre, du cône. Tu sais décrire un solide à l'oral : par exemple « Cette boîte a 6 faces rectangulaires, 12 arêtes et 8 sommets, c'est un pavé droit »."
+            },
+            {
+              "type": "paragraph",
+              "content": "Et n'oublie pas la symétrie axiale ! Tu sais repérer un axe de symétrie sur une figure, compléter une figure par symétrie axiale, et construire le symétrique d'un point par rapport à une droite. C'est une notion qui servira beaucoup au collège."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais nommer et décrire les quadrilatères (carré, rectangle, losange, parallélogramme, trapèze).",
+                "Je connais les propriétés des diagonales de ces quadrilatères.",
+                "Je sais reconnaître et nommer les triangles (rectangle, isocèle, équilatéral, quelconque).",
+                "Je sais que la somme des angles d'un triangle vaut 180°.",
+                "Je sais tracer une perpendiculaire et une parallèle à la règle et à l'équerre.",
+                "Je sais construire un carré, un rectangle, un triangle aux instruments.",
+                "Je sais utiliser le compas pour reporter une longueur ou tracer un cercle.",
+                "Je sais nommer les solides courants : cube, pavé droit, pyramide, cylindre, cône, sphère.",
+                "Je sais compter faces, arêtes et sommets d'un solide.",
+                "Je reconnais les patrons du cube, du pavé droit, de la pyramide, du cylindre, du cône.",
+                "Je sais décrire un solide à l'oral avec le vocabulaire précis.",
+                "Je repère un axe de symétrie et je complète une figure par symétrie axiale."
+              ]
+            }
+          ],
+          "exercises": []
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

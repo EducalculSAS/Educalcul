@@ -1,0 +1,177 @@
+{
+  "_status": "done",
+  "_course_id": 141,
+  "_course_code": "ce1-t08-c06-bilan-donnees-ce1",
+  "_level": "ce1",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Lire diagramme et tableau",
+  "title": "Quiz - Lire un diagramme et un tableau",
+  "questions": [
+    {
+      "text": "Regarde le tableau ci-dessous. Combien d'enfants ont choisi la pomme comme fruit préféré ?",
+      "options": [
+        "cinq",
+        "six",
+        "huit",
+        "neuf"
+      ],
+      "correctAnswer": "huit",
+      "explanation": "Dans le tableau, la ligne \"Pomme\" correspond au nombre $8$. Huit s'écrit en lettres \"huit\". Les autres nombres correspondent à la banane ($5$) et à la fraise ($6$).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "caption": "Fruits préférés",
+        "headers": [
+          "Fruit",
+          "Nombre"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "8"
+          ],
+          [
+            "Banane",
+            "5"
+          ],
+          [
+            "Fraise",
+            "6"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Observe le diagramme en barres. Quel est l'animal préféré des enfants de la classe ?",
+      "options": [
+        "le chat",
+        "le chien",
+        "le lapin",
+        "le hamster"
+      ],
+      "correctAnswer": "le chat",
+      "explanation": "La barre la plus haute est celle du chat avec une valeur de $6$. Le chien est à $4$ et le lapin à $3$. Le hamster n'apparaît pas sur le diagramme.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Animaux préférés",
+        "bars": [
+          {
+            "label": "Chat",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Chien",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "Lapin",
+            "value": 3,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans ce tableau à double entrée, combien y a-t-il de garçons qui pratiquent le football ?",
+      "options": [
+        "deux",
+        "trois",
+        "cinq",
+        "six"
+      ],
+      "correctAnswer": "cinq",
+      "explanation": "Il faut croiser la ligne \"Football\" et la colonne \"Garçons\". La case d'intersection indique le nombre $5$, qui s'écrit \"cinq\". Les filles sont au nombre de $3$ sur cette ligne.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "caption": "Activités sportives",
+        "headers": [
+          "Activité",
+          "Garçons",
+          "Filles"
+        ],
+        "rows": [
+          [
+            "Football",
+            "5",
+            "3"
+          ],
+          [
+            "Danse",
+            "2",
+            "6"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme montre le nombre de livres lus pendant les vacances. De combien de livres Julie a-t-elle lu plus que Paul ?",
+      "options": [
+        "un",
+        "deux",
+        "trois",
+        "quatre"
+      ],
+      "correctAnswer": "trois",
+      "explanation": "Julie a lu $7$ livres (barre bleue). Paul en a lu $4$ (barre rouge). La différence se calcule par $7 - 4 = 3$. Trois s'écrit \"trois\".",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus",
+        "bars": [
+          {
+            "label": "Julie",
+            "value": 7,
+            "tone": "blue"
+          },
+          {
+            "label": "Paul",
+            "value": 4,
+            "tone": "red"
+          },
+          {
+            "label": "Léa",
+            "value": 5,
+            "tone": "green"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Ce diagramme circulaire représente les couleurs préférées. Quelle couleur a été choisie par le plus grand nombre d'enfants ?",
+      "options": [
+        "le rouge",
+        "le vert",
+        "le bleu",
+        "le jaune"
+      ],
+      "correctAnswer": "le bleu",
+      "explanation": "La part la plus grande du cercle est celle du bleu avec une valeur de $10$. Le rouge et le vert ont chacun une valeur de $5$. Le jaune n'est pas présent.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Couleurs préférées",
+        "slices": [
+          {
+            "label": "Bleu",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Rouge",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Vert",
+            "value": 5,
+            "tone": "green"
+          }
+        ]
+      }
+    }
+  ]
+}

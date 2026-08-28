@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 401,
+  "_course_code": "5eme-t05-c02-symetrie-centrale",
+  "_level": "5e",
+  "_subject": "Repérage, transformations et géométrie dans l'espace",
+  "_subtheme": "Approfondissement : Construction",
+  "title": "Symétrie centrale : construction et algorithme",
+  "blocks": [
+    {
+      "title": "Étape de construction à la règle et au compas",
+      "content": "Écrire les étapes successives de la construction du point symétrique $A'$ d'un point $A$ par rapport à un centre $O$ en utilisant uniquement la règle et le compas.",
+      "correctAnswer": "1. Tracer la droite $(OA)$. 2. Placer la pointe du compas en $O$ et ouvrir le compas avec la distance $OA$. 3. Reporter cette distance sur la droite $(OA)$ de l'autre côté de $O$ pour obtenir le point $A'$ tel que $O$ soit le milieu de $[AA']$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La symétrie centrale de centre $O$ transforme $A$ en $A'$ tel que $O$ est le milieu du segment $[AA']$. La construction à la règle et au compas consiste à tracer la droite $(OA)$ puis à reporter la longueur $OA$ de l'autre côté de $O$ pour placer $A'$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme de calcul des coordonnées",
+      "content": "Écrire un algorithme (ou une fonction Python) qui prend en entrée les coordonnées du centre $O(x_O, y_O)$ et du point $A(x_A, y_A)$ et qui renvoie les coordonnées du point symétrique $A'(x_{A'}, y_{A'})$.",
+      "correctAnswer": "Algorithme :\\n1. Lire xO, yO, xA, yA.\\n2. Calculer xAprime = 2 * xO - xA.\\n3. Calculer yAprime = 2 * yO - yA.\\n4. Afficher (xAprime, yAprime).\\n\\nEn Python :\\ndef symetrie_centrale(xO, yO, xA, yA):\\n    xAprime = 2 * xO - xA\\n    yAprime = 2 * yO - yA\\n    return (xAprime, yAprime)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les coordonnées du symétrique $A'$ s'obtiennent par la formule $x_{A'} = 2 x_O - x_A$ et $y_{A'} = 2 y_O - y_A$, car $O$ est le milieu de $[AA']$ : $(x_A + x_{A'})/2 = x_O$ et $(y_A + y_{A'})/2 = y_O$. L'algorithme applique directement ces formules.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Application numérique",
+      "content": "Appliquer l'algorithme précédent pour déterminer les coordonnées du point $A'$ symétrique de $A(5,7)$ par rapport au centre $O(2,3)$.",
+      "correctAnswer": "xAprime = 2 * 2 - 5 = -1\\nyAprime = 2 * 3 - 7 = -1\\nLe point symétrique est $A'(-1,-1)$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On utilise les formules $x_{A'} = 2 x_O - x_A$ et $y_{A'} = 2 y_O - y_A$. Avec $x_O=2$, $y_O=3$, $x_A=5$, $y_A=7$, on obtient $x_{A'} = 4-5 = -1$ et $y_{A'} = 6-7 = -1$. Donc $A'(-1,-1)$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

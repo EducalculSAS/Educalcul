@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 637,
+  "_course_code": "terminale-generale-complementaires-t01-c01-etudier-les-variations-d-un-modele",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Signe",
+  "title": "Étude du signe dans les modèles mathématiques",
+  "questions": [
+    {
+      "text": "Soit une fonction $f$ définie sur $D_f$. Si on sait que la dérivée $f'$ est strictement positive sur un intervalle $I$, que peut on en déduire pour le signe de $f$ sur cet intervalle ?",
+      "options": [
+        "$f$ est strictement positive sur $I$",
+        "$f$ est strictement négative sur $I$",
+        "On ne peut pas conclure sur le signe de $f$ sans valeur particulière",
+        "$f$ s'annule exactement une fois sur $I$"
+      ],
+      "correctAnswer": "On ne peut pas conclure sur le signe de $f$ sans valeur particulière",
+      "explanation": "Le signe de la dérivée $f'$ détermine les variations de la fonction (croissante ou décroissante), mais pas le signe de la fonction $f$ elle même. Une fonction peut être croissante tout en étant négative, positive ou en changeant de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère le modèle $g(x) = 2e^{x} - 5$. Pour quelles valeurs de $x$ la fonction $g$ est elle strictement positive ?",
+      "options": [
+        "Pour $x > 2.5$",
+        "Pour $x > \\ln(2.5)$",
+        "Pour $x < \\ln(5)$",
+        "Pour tout $x$ appartenant à $\\mathbb{R}$"
+      ],
+      "correctAnswer": "Pour $x > \\ln(2.5)$",
+      "explanation": "On résout $2e^{x} - 5 > 0$. Cela donne $2e^{x} > 5$, puis $e^{x} > 2.5$. En appliquant la fonction logarithme népérien, on obtient $x > \\ln(2.5)$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction $h(x) = (x - 3)e^{-x}$ définie sur $\\mathbb{R}$. Quel est le signe de $h(x)$ sur l'intervalle $]-\\infty, 3[$ ?",
+      "options": [
+        "Strictement positif",
+        "Strictement négatif",
+        "Nul",
+        "Variable selon la valeur de $x$"
+      ],
+      "correctAnswer": "Strictement négatif",
+      "explanation": "L'exponentielle $e^{-x}$ est toujours strictement positive pour tout réel $x$. Le signe de $h(x)$ dépend donc uniquement du signe de $x - 3$. Sur $]-\\infty, 3[$, $x$ est inférieur à $3$, donc $x - 3$ est strictement négatif.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On étudie le signe de la dérivée $f'(x) = \\frac{3x - 6}{x^{2} + 1}$ pour déterminer les variations de $f$. Sur quel intervalle l'expression $f'(x)$ est elle strictement positive ?",
+      "options": [
+        "Sur $]0, 2[$",
+        "Sur $]-\\infty, 2[$",
+        "Sur $]2, +\\infty[$",
+        "Sur $\\mathbb{R}$"
+      ],
+      "correctAnswer": "Sur $]2, +\\infty[$",
+      "explanation": "Le dénominateur $x^{2} + 1$ est toujours strictement positif. Le signe de $f'(x)$ est donc celui du numérateur $3x - 6$. On a $3x - 6 > 0$ équivalent à $3x > 6$, soit $x > 2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $f$ une fonction dérivable sur $[0, 10]$. On sait que $f'(x) < 0$ pour tout $x \\in [0, 10]$ et que $f(5) = 0$. Quel est le signe de $f(x)$ sur l'intervalle $]5, 10]$ ?",
+      "options": [
+        "Strictement positif",
+        "Strictement négatif",
+        "Nul",
+        "Indéterminé"
+      ],
+      "correctAnswer": "Strictement négatif",
+      "explanation": "Puisque $f'(x) < 0$, la fonction $f$ est strictement décroissante sur $[0, 10]$. Comme $f(5) = 0$ et que la fonction décroît, pour tout $x > 5$, on a $f(x) < f(5)$, donc $f(x) < 0$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

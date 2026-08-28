@@ -1,0 +1,414 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.057892+00:00",
+  "id": 185,
+  "code": "ce2-t05-c08",
+  "title": "Problèmes ouverts courts",
+  "description": "Cours structuré Educalcul : Problèmes ouverts courts.",
+  "subject": "Résolution de problèmes",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Résolution de problèmes",
+    "titre_du_cours": "Problèmes ouverts courts",
+    "objectif_global": "Problèmes ouverts courts",
+    "mini_lecons_imposees": [
+      "Essayer une stratégie.",
+      "Organiser les essais.",
+      "Justifier une réponse."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Résolution de problèmes",
+      "lessons": [
+        {
+          "title": "Essayer une stratégie.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comprendre le problème avant d'agir"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu lis un problème ouvert, la première chose à faire est de bien lire l'énoncé. Repère les nombres importants, les mots qui indiquent une action comme \"ajouter\", \"enlever\" ou \"partager\". Pose-toi la question : que cherche-t-on vraiment ? Par exemple, si le texte dit \"Il y a $12$ bonbons et on en donne $5$ à un ami\", tu sais qu'il faut trouver combien il en reste."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Total",
+                  "value": 12,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Donnés",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ],
+              "caption": "Représentation du problème avec un schéma en barres"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as identifié ce qu'on te demande, choisis une stratégie simple. Tu peux dessiner, faire un essai avec des objets ou écrire un petit calcul. L'important est d'essayer quelque chose sans attendre d'avoir la réponse parfaite tout de suite."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir une stratégie d'essai"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une stratégie courante est l'essai-erreur : tu proposes un nombre, tu vérifies s'il convient, sinon tu changes. Une autre façon est de faire un dessin concret. Par exemple, pour savoir combien de groupes de $3$ on peut faire avec $14$ billes, tu peux tracer des petits cercles et les regrouper par trois."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 4,
+              "caption": "14 représenté par 1 dizaine et 4 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir testé une première idée, regarde si le résultat te paraît logique. Si ton essai donne un nombre trop grand ou trop petit, modifie-le et recommence. C'est ainsi que tu avances pas à pas vers la solution."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Tester et ajuster son essai"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu dois trouver un nombre mystère : \"Je pense à un nombre, j'ajoute $4$, je multiplie par $2$ et j'obtiens $18$.\" Essaie $5$ : $(5+4)\\times2 = 18$. Ça marche ! Si tu avais essayé $3$, tu aurais obtenu $14$, ce qui n'est pas bon. Tu vois comment un essai te guide vers la bonne réponse."
+            },
+            {
+              "type": "number_line",
+              "caption": "Essais successifs pour trouver le nombre mystère",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 3,
+                  "label": "Essai 1"
+                },
+                {
+                  "value": 5,
+                  "label": "Essai 2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans un sac, il y a $12$ billes. Tu en donnes $5$ à ton ami. Combien de billes restent dans le sac ?",
+              "answer": "$7$",
+              "hint": "Utilise le schéma en barres pour visualiser ce qui est enlevé.",
+              "explanation": "On part de $12$ et on retire $5$. $12-5 = 7$. Il reste donc $7$ billes."
+            },
+            {
+              "question": "Combien de groupes de $3$ billes peux-tu faire avec $14$ billes ?",
+              "answer": "$4$ groupes et $2$ billes en reste",
+              "hint": "Dessine les $14$ billes et regroupe-les par trois.",
+              "explanation": "$14 = 3 \\times 4 + 2$. Tu formes $4$ groupes complets de $3$ et il reste $2$ billes."
+            },
+            {
+              "question": "Trouve le nombre mystère : j'ajoute $4$, je multiplie par $2$, j'obtiens $18$.",
+              "answer": "$5$",
+              "hint": "Teste plusieurs nombres sur la droite numérique jusqu'à obtenir $18$.",
+              "explanation": "On cherche $x$ tel que $(x+4)\\times2 = 18$. En testant $5$, $(5+4)\\times2 = 18$. Le nombre mystère est $5$."
+            }
+          ]
+        },
+        {
+          "title": "Organiser les essais.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Noter chaque essai dans un tableau"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu testes plusieurs réponses, il est très utile d'écrire chaque essai dans un petit tableau. Ainsi tu vois tout de suite ce que tu as déjà essayé et ce qui a marché ou pas. Dessine deux colonnes : une pour l'essai, une pour le résultat obtenu."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Essai",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "3",
+                  "14"
+                ],
+                [
+                  "5",
+                  "18"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as un tableau, observe les résultats. Souvent, les nombres évoluent de façon régulière : ils augmentent ou diminuent toujours de la même quantité. Repérer cette régularité t'aide à deviner le bon essai suivant sans tout recalculer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer la régularité des résultats"
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple du nombre mystère. Quand l'essai passe de $3$ à $5$, le résultat passe de $14$ à $18$. La différence est de $4$ à chaque fois. Si tu continues, l'essai $7$ donnerait $22$. Tu vois le motif ? C'est une progression constante qui guide ton choix."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Évolution des résultats selon les essais",
+              "bars": [
+                {
+                  "label": "Essai 3",
+                  "value": 14,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Essai 5",
+                  "value": 18,
+                  "tone": "green"
+                },
+                {
+                  "label": "Essai 7",
+                  "value": 22,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand le tableau montre que tu t'approches de la bonne réponse, tu peux décider d'arrêter les essais. Si le résultat attendu est $18$ et que tu l'as déjà obtenu, il n'est plus nécessaire de continuer. Apprends à dire : \"C'est bon, j'ai trouvé.\""
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Savoir s'arrêter au bon moment"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, le problème demande une réponse exacte, parfois une estimation. Si tu as atteint la valeur demandée, note-la et passe à la suite. Si tu n'es pas sûr, fais un dernier essai pour vérifier. C'est comme quand tu cherches une clé : quand la porte s'ouvre, tu arrêtes de chercher."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Objectif",
+                  "value": 18,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Essai réussi",
+                  "value": 18,
+                  "tone": "green"
+                }
+              ],
+              "caption": "Comparaison de l'objectif et de l'essai réussi"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète le tableau pour le nombre mystère : j'ajoute $4$, je multiplie par $2$. Essais : $2$, $4$, $6$.",
+              "answer": "Essai 2 -> 12 ; Essai 4 -> 16 ; Essai 6 -> 20",
+              "hint": "Calcule $(essai+4)\\times2$ pour chaque ligne.",
+              "explanation": "Pour $2$ : $(2+4)\\times2=12$. Pour $4$ : $(4+4)\\times2=16$. Pour $6$ : $(6+4)\\times2=20$."
+            },
+            {
+              "question": "Regarde les résultats du tableau précédent. Quelle est la différence entre deux résultats successifs ?",
+              "answer": "$4$",
+              "hint": "Soustrait le résultat de l'essai $2$ de celui de l'essai $4$.",
+              "explanation": "$16-12 = 4$ et $20-16 = 4$. La différence est constante, elle vaut $4$."
+            },
+            {
+              "question": "Si le résultat attendu est $18$, quel essai du tableau donne la bonne réponse ?",
+              "answer": "Aucun des essais $2$, $4$, $6$ ne donne $18$. Il faut essayer $5$.",
+              "hint": "Vérifie chaque résultat du tableau par rapport à $18$.",
+              "explanation": "Les résultats sont $12$, $16$, $20$. Aucun n'est $18$. En testant $5$, on obtient $(5+4)\\times2=18$."
+            }
+          ]
+        },
+        {
+          "title": "Justifier une réponse.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Expliquer sa démarche à l'oral"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as trouvé une réponse, dis-le à voix haute comme si tu l'expliquais à un ami. Par exemple : \"J'ai lu le problème, j'ai vu qu'il fallait enlever $5$ à $12$, alors j'ai fait $12-5=7$.\" Dire les étapes t'aide à vérifier que rien n'a été oublié."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire et souligner les nombres",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Repère $12$ et $5$ dans l'énoncé."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Choisir l'opération",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le mot \"donner\" signifie soustraction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer et répondre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$12-5=7$. Il reste $7$ billes."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Après l'oral, écris une justification courte sur ton cahier. Utilise des phrases simples et les signes mathématiques. Une bonne justification montre le cheminement : ce que tu as fait, pourquoi tu l'as fait, et quel résultat tu as obtenu."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écrire une justification claire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici un modèle : \"J'ai soustrait $5$ de $12$ car on donne $5$ billes. $12-5=7$. Donc il reste $7$ billes.\" Essaie d'écrire la tienne pour le problème du nombre mystère."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 2,
+              "shape": "bar",
+              "caption": "Exemple de fraction pour illustrer une partie du raisonnement"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, relis la question du problème et vérifie que ta réponse y répond exactement. Parfois on trouve un nombre correct mais qui ne correspond pas à ce qu'on demande (par exemple le nombre de groupes au lieu du reste). Prends le temps de comparer."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier que la réponse correspond à la question"
+            },
+            {
+              "type": "paragraph",
+              "content": "Si le problème demande \"Combien de groupes de $3$ ?\" et que tu as écrit \"$4$ groupes et $2$ billes en reste\", c'est une réponse complète. Si tu as écrit seulement \"$14$\", ce n'est pas la bonne réponse. La vérification évite les erreurs bêtes."
+            },
+            {
+              "type": "number_line",
+              "caption": "Contrôle : la réponse trouvée correspond-elle à la question ?",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 4,
+                  "label": "Groupes"
+                },
+                {
+                  "value": 2,
+                  "label": "Reste"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire un problème et repérer les nombres importants.",
+                "Je sais choisir une stratégie d'essai (dessin, calcul, tableau).",
+                "Je sais noter mes essais dans un tableau et voir la régularité.",
+                "Je sais expliquer ma démarche à l'oral et l'écrire.",
+                "Je sais vérifier que ma réponse répond bien à la question."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Explique à voix haute comment tu as trouvé qu'il reste $7$ billes quand on enlève $5$ à $12$.",
+              "answer": "J'ai lu le problème, j'ai vu les nombres $12$ et $5$, j'ai fait la soustraction $12-5=7$.",
+              "hint": "Suis les trois étapes : lire, choisir l'opération, calculer.",
+              "explanation": "L'explication orale doit reprendre chaque étape dans l'ordre."
+            },
+            {
+              "question": "Écris une justification pour le nombre mystère : j'ajoute $4$, je multiplie par $2$, j'obtiens $18$. Quelle est la phrase complète ?",
+              "answer": "J'ai cherché un nombre $x$ tel que $(x+4)\\times2=18$. En testant $5$, $(5+4)\\times2=18$. Donc le nombre mystère est $5$.",
+              "hint": "Utilise le modèle : opération, test, conclusion.",
+              "explanation": "La justification montre le raisonnement, le test effectué et la réponse finale."
+            },
+            {
+              "question": "Le problème demande : \"Combien de groupes de $3$ peut-on faire avec $14$ billes ?\" Tu as répondu \"$14$ billes\". Est-ce correct ?",
+              "answer": "Non, la réponse attendue est le nombre de groupes, soit $4$ groupes (et $2$ billes en reste).",
+              "hint": "Relis la question : on demande le nombre de groupes, pas le total.",
+              "explanation": "La vérification consiste à comparer ta réponse à la question posée."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

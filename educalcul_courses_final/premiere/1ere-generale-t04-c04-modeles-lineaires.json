@@ -1,0 +1,378 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.227775+00:00",
+  "id": 559,
+  "code": "1ere-generale-t04-c04",
+  "title": "Modèles linéaires",
+  "description": "Cours structuré Educalcul : Modèles linéaires.",
+  "subject": "Variation linéaire",
+  "level": "premiere",
+  "source_level_label": "Première générale sans spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Première générale sans spécialité mathématiques",
+    "theme": "Variation linéaire",
+    "titre_du_cours": "Modèles linéaires",
+    "objectif_global": "Modèles linéaires",
+    "mini_lecons_imposees": [
+      "Ajuster simple.",
+      "Prévoir.",
+      "Limites du modèle."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de mathématiques intégré à l’enseignement scientifique applicable en Première générale à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Variation linéaire",
+      "lessons": [
+        {
+          "title": "Ajuster simple.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ajuster un modèle linéaire simple"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette première leçon où nous allons découvrir comment construire un modèle linéaire à partir de quelques points de données. Imagine que tu as relevé la taille d'une plante chaque semaine pendant un mois. Tu as maintenant une série de couples (semaine, hauteur) et tu aimerais tracer une droite qui passe au plus près de tous ces points. C'est exactement ce que l'on appelle ajuster un modèle linéaire simple : on cherche une droite de la forme $y = a x + b$ qui résume la tendance globale. Pourquoi une droite ? Parce qu'au début d'une croissance, beaucoup de phénomènes évoluent de façon à peu près constante, ce qui se traduit par une relation quasi proportionnelle entre la variable explicative $x$ (ici le temps) et la variable réponse $y$ (la hauteur). Nous allons voir pas à comment déterminer les deux nombres $a$ (le coefficient directeur, c'est‑à‑dire la pente) et $b$ (l'ordonnée à l'origine) à partir de deux points représentatifs. Cette méthode est volontairement simple pour que tu puisses l'appliquer rapidement, tout en comprenant ce que chaque calcul signifie concrètement."
+            },
+            {
+              "type": "definition",
+              "term": "Modèle linéaire",
+              "definition": "Une relation mathématique qui relie deux variables par une équation du premier degré $y = a x + b$, où $a$ et $b$ sont des nombres réels fixes.",
+              "example": "Si $a = 2$ et $b = 5$, le modèle prédit $y = 2x + 5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver $a$ et $b$, nous avons besoin de deux points que l'on juge représentatifs de l'ensemble des données. Supposons que nos mesures donnent les points $A(1; 7)$ et $B(4; 13)$. Le coefficient directeur $a$ correspond à la variation de $y$ quand $x$ augmente de $1$. On calcule donc $a = \\frac{y_B - y_A}{x_B - x_A}$. Ici $a = \\frac{13 - 7}{4 - 1} = \\frac{6}{3} = 2$. Cela signifie que chaque semaine supplémentaire ajoute environ $2$ cm à la plante. Une fois $a$ connu, on utilise l'un des points pour retrouver $b$ : $b = y_A - a \\times x_A = 7 - 2 \\times 1 = 5$. Le modèle final est donc $y = 2x + 5$. Vérifie mentalement : pour $x = 4$, $y = 2 \\times 4 + 5 = 13$, ce qui correspond bien au point $B$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Choisir deux points représentatifs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regarde le nuage de points et sélectionne deux points qui ne sont pas trop proches l'un de l'autre et qui semblent suivre la tendance générale."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer le coefficient directeur $a$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique la formule $a = \\frac{y_2 - y_1}{x_2 - x_1}$ avec les coordonnées des deux points choisis."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Déterminer l'ordonnée à l'origine $b$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $b = y_1 - a \\times x_1$ (ou $y_2 - a \\times x_2$) pour obtenir la valeur de $b$. Écris ensuite l'équation $y = a x + b$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+5",
+              "xmin": 0,
+              "xmax": 5,
+              "caption": "Droite d'ajustement $y = 2x + 5$ superposée aux points $A(1;7)$ et $B(4;13)$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons tracer la droite, il est utile de mesurer à quel point elle colle aux données. Pour cela, on regarde la distance verticale entre chaque point observé et le point correspondant sur la droite. Cette distance s'appelle le résidu. Un résidu positif signifie que le point réel se trouve au‑dessus de la droite, un résidu négatif qu'il est en dessous. Si les résidus sont petits et répartis de part et d'autre de zéro sans motif évident, notre modèle simple est plutôt bon."
+            },
+            {
+              "type": "definition",
+              "term": "Résidu",
+              "definition": "Différence entre la valeur observée $y_i$ et la valeur prédite par le modèle $\\hat{y}_i = a x_i + b$ ; noté $e_i = y_i - \\hat{y}_i$.",
+              "example": "Pour $x=2$, le modèle donne $\\hat{y}=9$. Si l'observation est $10$, le résidu vaut $1$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons notre exemple avec trois points supplémentaires : $C(2; 10)$, $D(3; 11)$ et $E(5; 15)$. Calculons les résidus. Pour $C$, $\\hat{y}=2\\times2+5=9$, résidu $=10-9=1$. Pour $D$, $\\hat{y}=11$, résidu $=0$. Pour $E$, $\\hat{y}=15$, résidu $=0$. Les résidus sont $1, 0, 0$ : ils sont proches de zéro et n'affichent pas de tendance systématique, ce qui confirme que la droite $y=2x+5$ résume bien l'ensemble."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Point",
+                "x",
+                "y observé",
+                "y prédit",
+                "Résidu"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "1",
+                  "7",
+                  "7",
+                  "0"
+                ],
+                [
+                  "B",
+                  "4",
+                  "13",
+                  "13",
+                  "0"
+                ],
+                [
+                  "C",
+                  "2",
+                  "10",
+                  "9",
+                  "1"
+                ],
+                [
+                  "D",
+                  "3",
+                  "11",
+                  "11",
+                  "0"
+                ],
+                [
+                  "E",
+                  "5",
+                  "15",
+                  "15",
+                  "0"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, nous allons voir comment juger rapidement la qualité d'un ajustement sans refaire tous les calculs. Une astuce consiste à tracer les résidus sur un petit graphique : l'axe horizontal garde les $x$, l'axe vertical montre les résidus. Si les points forment un nuage centré sur zéro sans forme courbe, le modèle linéaire est adapté. Si au contraire tu aperçois une courbe (par exemple les résidus sont d'abord positifs, puis négatifs, puis positifs), cela signale que la relation n'est pas linéaire. Nous approfondirons ce diagnostic dans la leçon sur les limites du modèle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Données : points $P(2; 8)$ et $Q(5; 17)$. Détermine l'équation de la droite $y = a x + b$ qui passe par ces deux points.",
+              "answer": "$y = 3x + 2$",
+              "hint": "Calcule $a = (17-8)/(5-2)$ puis $b = 8 - a \\times 2$.",
+              "explanation": "Le coefficient directeur $a = 9/3 = 3$. L'ordonnée à l'origine $b = 8 - 3\\times2 = 2$. Donc l'équation est $y = 3x + 2$."
+            },
+            {
+              "question": "Avec le modèle $y = 3x + 2$, calcule le résidu pour le point $R(4; 13)$.",
+              "answer": "Le résidu vaut $-1$.",
+              "hint": "Évalue $\\hat{y} = 3\\times4+2$ puis fais $y - \\hat{y}$.",
+              "explanation": "La valeur prédite est $\\hat{y}=14$. Le résidu $e = 13 - 14 = -1$, le point est légèrement sous la droite."
+            },
+            {
+              "question": "Tu as les résidus suivants pour $x = 1,2,3,4,5$ : $0.2, -0.1, 0.3, -0.2, 0.1$. Que peux‑tu dire de l'ajustement ?",
+              "answer": "Les résidus sont petits et alternent autour de zéro sans tendance, le modèle linéaire semble convenable.",
+              "hint": "Regarde l'amplitude et l'absence de motif courbe.",
+              "explanation": "Tous les résidus sont inférieurs à $0.3$ en valeur absolue et changent de signe, ce qui indique un bon ajustement linéaire."
+            }
+          ]
+        },
+        {
+          "title": "Prévoir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Prévoir avec un modèle linéaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire une droite qui résume tes données, il est temps de l'utiliser pour faire des prévisions. Prévoir, c'est simplement remplacer $x$ par une valeur qui ne figure pas dans ton tableau original et lire le $y$ correspondant sur la droite. C'est très puissant : si ton modèle décrit bien la tendance, tu peux estimer la hauteur de la plante la semaine prochaine, ou le chiffre d'affaires du mois suivant. Mais attention, la fiabilité de la prévision dépend de l'endroit où se situe la nouvelle valeur de $x$ par rapport à l'intervalle de tes données d'origine."
+            },
+            {
+              "type": "definition",
+              "term": "Interpolation",
+              "definition": "Prédiction pour une valeur de $x$ située à l'intérieur de l'intervalle des données utilisées pour ajuster le modèle.",
+              "example": "Si tes données vont de $x=1$ à $x=5$, prévoir pour $x=3$ est une interpolation."
+            },
+            {
+              "type": "paragraph",
+              "content": "L'interpolation est généralement assez fiable car la droite a été calibrée précisément sur cet intervalle. Imaginons que notre modèle $y = 2x + 5$ a été obtenu avec des mesures pour les semaines $1$ à $5$. Si on veut connaître la hauteur à la semaine $3$, on calcule $y = 2 \\times 3 + 5 = 11$ cm. Comme $3$ est bien entre $1$ et $5$, on a confiance dans ce chiffre. Pour renforcer cette confiance, on peut aussi regarder les résidus calculés précédemment : s'ils sont petits autour de $x=3$, la prédiction sera d'autant plus précise."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+5",
+              "xmin": 0,
+              "xmax": 6,
+              "caption": "Interpolation à $x=3$ (point rouge sur la droite)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'extrapolation, c'est quand on prédit pour une valeur de $x$ en dehors de l'intervalle d'origine. C'est tentant, mais risqué. Reprenons le même modèle $y = 2x + 5$ et demandons la hauteur à la semaine $10$. Le calcul donne $y = 2 \\times 10 + 5 = 25$ cm. Pourtant, rien ne garantit que la plante continue de grandir de $2$ cm par semaine indéfiniment : elle peut ralentir, s'arrêter, ou même dépérir. En science, on dit que le modèle n'est valide que sur le domaine où il a été testé. Donc, toute extrapolation doit être accompagnée d'une phrase de prudence : « Cette prévision suppose que la tendance linéaire se prolonge, ce qui n'est pas certain. »"
+            },
+            {
+              "type": "definition",
+              "term": "Extrapolation",
+              "definition": "Prédiction pour une valeur de $x$ située en dehors de l'intervalle des données d'ajustement.",
+              "example": "Prévoir pour $x=10$ quand les données vont de $1$ à $5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour illustrer le danger, imaginons que la plante entre dans une phase de floraison à partir de la semaine $6$ et que sa croissance chute à $0,5$ cm par semaine. Notre modèle linéaire continuerait à prédire $2$ cm par semaine, surestimant fortement la hauteur réelle. C'est pourquoi, avant d'extrapoler, il faut se poser trois questions : (1) Y a‑t‑il une raison physique pour que la relation reste linéaire ? (2) Ai‑je des données plus lointaines qui confirment la tendance ? (3) Quel est l'impact d'une erreur de prévision ? Si les enjeux sont faibles, une extrapolation prudente peut être acceptée ; sinon, il faut collecter plus de données."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+5",
+              "xmin": 0,
+              "xmax": 12,
+              "caption": "Extrapolation à $x=10$ (point bleu) – attention au risque"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, il existe une notion intermédiaire : la prévision avec intervalle de confiance. Même en interpolation, la valeur prédite n'est pas exacte ; elle s'accompagne d'une marge d'erreur qui dépend de la dispersion des résidus. Si l'écart type des résidus est $s = 0,8$ cm, on peut dire que la vraie valeur a environ $95\\%$ de chances de se trouver dans $[-1,96s ; +1,96s]$ autour de la prédiction. Pour $x=3$, la prédiction est $11$ cm, l'intervalle approximatif est $[11-1,6 ; 11+1,6] = [9,4 ; 12,6]$ cm. Cela donne une idée concrète de l'incertitude, bien plus utile qu'un seul nombre."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\hat{y} \\pm 1.96 \\, s"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Avec le modèle $y = 2x + 5$ ajusté sur $x \\in [1,5]$, donne la prédiction pour $x = 4$ et précise s'il s'agit d'une interpolation ou d'une extrapolation.",
+              "answer": "Prédiction $13$ cm, c'est une interpolation.",
+              "hint": "Calcule $2\\times4+5$ et compare $4$ à l'intervalle $[1,5]$.",
+              "explanation": "Le calcul donne $13$. Comme $4$ appartient à $[1,5]$, c'est une interpolation."
+            },
+            {
+              "question": "Même modèle, prédis pour $x = 8$. Est‑ce prudent ? Justifie en une phrase.",
+              "answer": "Prédiction $21$ cm, mais c'est une extrapolation risquée car $8$ est hors de l'intervalle d'ajustement.",
+              "hint": "Identifie le type de prévision et rappelle la prudence nécessaire.",
+              "explanation": "Le calcul donne $21$. Comme $8 > 5$, c'est une extrapolation ; la relation linéaire n'est pas garantie au‑delà des données observées."
+            },
+            {
+              "question": "Si l'écart type des résidus est $s = 0,5$, écris l'intervalle approximatif à $95\\%$ pour une prédiction $\\hat{y}=12$.",
+              "answer": "$[11,02 ; 12,98]$",
+              "hint": "Utilise $\\hat{y} \\pm 1,96 s$.",
+              "explanation": "La marge est $1,96 \\times 0,5 \\approx 0,98$. L'intervalle est $12 \\pm 0,98$, soit $[11,02 ; 12,98]$."
+            }
+          ]
+        },
+        {
+          "title": "Limites du modèle.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Limites du modèle linéaire"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous arrivons à la dernière leçon de ce chapitre. Jusqu'ici, nous avons vu comment tracer une droite, l'utiliser pour prévoir et mesurer l'erreur avec les résidus. Pourtant, un modèle linéaire n'est pas une baguette magique : il a des limites précises qu'il faut connaître pour ne pas tirer de conclusions hâtives. La première limite, c'est la forme même de la relation. Si le nuage de points dessine une courbe (parabole, exponentielle, palier), une droite ne pourra jamais le suivre correctement, peu importe comment on la place. Les résidus montreront alors un motif systématique : par exemple, ils seront positifs au début, négatifs au milieu, puis positifs à la fin. Ce pattern en « U » ou en « S » est le signal d'alerte qu'il faut changer de modèle."
+            },
+            {
+              "type": "definition",
+              "term": "Non‑linéarité",
+              "definition": "Situation où la relation entre $x$ et $y$ ne peut pas être décrite par une droite ; le nuage de points présente une courbure.",
+              "example": "Croissance bactérienne qui suit une exponentielle $y = a e^{bx}$."
+            },
+            {
+              "type": "paragraph",
+              "content": "La deuxième limite concerne les valeurs aberrantes, aussi appelées outliers. Un seul point très éloigné de la tendance peut tirer la droite vers lui et fausser tous les coefficients. Imagine que tu mesures la taille de $10$ élèves, mais l'un d'eux a une erreur de saisie : $200$ cm au lieu de $170$ cm. Le coefficient directeur $a$ va augmenter artificiellement, et toutes les prévisions seront biaisées. Heureusement, les résidus révèlent ce point : son résidu sera énorme par rapport aux autres. Une bonne pratique est de repérer les résidus dont la valeur absolue dépasse $2$ ou $3$ fois l'écart type des résidus, puis de vérifier s'il s'agit d'une erreur de mesure ou d'un cas vraiment particulier."
+            },
+            {
+              "type": "graph",
+              "expression": "2*x+5",
+              "xmin": 0,
+              "xmax": 10,
+              "caption": "Nuage avec un point aberrant (rouge) qui tire la droite"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La troisième limite, c'est l'hypothèse de variance constante, qu'on appelle homoscédasticité. Cela veut dire que la dispersion des résidus doit être à peu près la même pour toutes les valeurs de $x$. Si tu observes que les résidus sont très serrés pour les petits $x$ et s'écartent beaucoup pour les grands $x$ (ou l'inverse), le modèle linéaire simple n'est plus adapté : la précision des prévisions dépend de $x$. Dans ce cas, on peut transformer les données (par exemple prendre le logarithme de $y$) ou utiliser un modèle plus sophistiqué. Nous n'irons pas plus loin ici, mais sache que ce diagnostic se fait en traçant les résidus en fonction de $x$ ou de $\\hat{y}$."
+            },
+            {
+              "type": "definition",
+              "term": "Hétéroscédasticité",
+              "definition": "Variation de la dispersion des résidus selon la valeur de $x$ ; les erreurs ne sont pas constantes.",
+              "example": "Résidus proches de zéro pour $x<5$ et très dispersés pour $x>5$."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer, rappelons les trois vérifications indispensables avant de valider un modèle linéaire : (1) Regarder le nuage de points – la tendance est‑elle grossièrement droite ? (2) Examiner les résidus – sont‑ils centrés sur zéro, sans motif, de dispersion constante ? (3) Identifier les points influents – y a‑t‑il des outliers qui changent la pente si on les retire ? Si les trois tests sont passés, tu peux utiliser le modèle avec une confiance raisonnable, en gardant toujours en tête la distinction entre interpolation et extrapolation. Ce petit rituel de validation te servira tout au long de tes études scientifiques."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais calculer $a$ et $b$ à partir de deux points.",
+                "Je sais interpréter un résidu positif ou négatif.",
+                "Je distingue interpolation et extrapolation et j'en connais les risques.",
+                "Je sais repérer une non‑linéarité grâce au graphique des résidus.",
+                "Je sais détecter un point aberrant par un résidu très grand.",
+                "Je connais le terme hétéroscédasticité et son impact sur la fiabilité."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as tracé les résidus d'un ajustement linéaire et tu observes un motif en « U » (positifs, puis négatifs, puis positifs). Que conclure ?",
+              "answer": "La relation n'est pas linéaire ; un modèle courbe serait plus adapté.",
+              "hint": "Un motif systématique dans les résidus signale une non‑linéarité.",
+              "explanation": "Le « U » indique que la droite sous‑estime aux extrémités et sur‑estime au centre, typique d'une courbure."
+            },
+            {
+              "question": "Dans un nuage de 8 points, un point a un résidu de $4,2$ alors que l'écart type des résidus est $0,9$. Que faire ?",
+              "answer": "Vérifier si ce point est une erreur de mesure ; sinon, l'analyser à part car il influence fortement la droite.",
+              "hint": "Compare la valeur du résidu à $3 \\times s$.",
+              "explanation": "$4,2 > 3 \\times 0,9 = 2,7$, le point est un outlier potentiel."
+            },
+            {
+              "question": "Explique en une phrase pourquoi l'homoscédasticité est importante pour les prévisions.",
+              "answer": "Elle garantit que la précision des prédictions est uniforme sur tout l'intervalle de $x$.",
+              "hint": "Pense à la dispersion constante des résidus.",
+              "explanation": "Si la dispersion varie, l'incertitude des prévisions dépend de $x$, ce qui complique l'intervalle de confiance."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

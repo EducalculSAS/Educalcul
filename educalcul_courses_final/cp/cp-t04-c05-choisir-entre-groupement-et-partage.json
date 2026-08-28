@@ -1,0 +1,347 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.594063+00:00",
+  "id": 37,
+  "code": "cp-t04-c05",
+  "title": "Choisir entre groupement et partage",
+  "description": "Cours structuré Educalcul : Choisir entre groupement et partage.",
+  "subject": "Premiers problèmes de multiplication et de partage",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Premiers problèmes de multiplication et de partage",
+    "titre_du_cours": "Choisir entre groupement et partage",
+    "objectif_global": "Choisir entre groupement et partage",
+    "mini_lecons_imposees": [
+      "Lire la question du problème.",
+      "Identifier ce qui est connu et recherché.",
+      "Justifier la stratégie choisie."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Premiers problèmes de multiplication et de partage",
+      "lessons": [
+        {
+          "title": "Lire la question du problème.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lire la question, c'est comme écouter une devinette"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu ouvres un problème, la première chose à faire est de lire la question attentivement. La question, c'est la phrase qui se termine par un point d'interrogation. Elle te dit exactement ce que tu dois trouver. Prends le temps de la lire à voix haute, comme si tu posais la question à un ami."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "Énoncé",
+                  "Il y a $4$ pots de fleurs. Dans chaque pot, il y a $3$ fleurs."
+                ],
+                [
+                  "Question",
+                  "Combien de fleurs y a-t-il en tout ?"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as repéré la question, demande-toi : qu'est-ce qu'on me demande de trouver ? Parfois on veut connaître un total, parfois le nombre dans chaque groupe, ou encore le nombre de groupes. Essaie de le dire avec tes propres mots."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Astuce",
+              "paragraphs": [
+                "Si la question demande « Combien en tout ? », on cherche un total.",
+                "Si elle demande « Combien dans chaque ? », on cherche une quantité par groupe.",
+                "Si elle demande « Combien de groupes ? », on cherche un nombre de groupes."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Entraînons-nous avec deux nouveaux problèmes. Lis chaque énoncé, trouve la question et dis ce qu'on cherche."
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "items": [
+                "Problème A : « Il y a $6$ boîtes de crayons. Chaque boîte contient $5$ crayons. Combien de crayons au total ? »",
+                "Problème B : « Paul a $15$ bonbons. Il veut les partager équitablement entre $3$ amis. Combien de bonbons chaque ami recevra-t-il ? »"
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu sais maintenant lire la question comme un détective. Dans la prochaine leçon, nous verrons comment repérer les nombres utiles dans le texte."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Voici un problème : « Il y a $4$ pots de fleurs. Dans chaque pot, il y a $3$ fleurs. Combien de fleurs y a-t-il en tout ? » Quelle est la question du problème ?",
+              "answer": "Combien de fleurs y a-t-il en tout ?",
+              "hint": "Cherche la phrase qui se termine par un point d'interrogation.",
+              "explanation": "La question est toujours la phrase qui finit par un point d'interrogation. Ici, on demande le total des fleurs."
+            },
+            {
+              "question": "Dans ce problème : « Paul a $15$ bonbons. Il veut les partager équitablement entre $3$ amis. Combien de bonbons chaque ami recevra-t-il ? » Que demande-t-on ?",
+              "answer": "Combien de bonbons chaque ami recevra-t-il ?",
+              "hint": "Relis la dernière phrase.",
+              "explanation": "On demande le nombre de bonbons par ami, c'est un partage."
+            },
+            {
+              "question": "Lis ce problème : « Il y a $6$ boîtes de crayons. Chaque boîte contient $5$ crayons. Combien y a-t-il de boîtes ? » La question est-elle bien posée ?",
+              "answer": "Non, la question ne correspond pas aux données. On connaît déjà le nombre de boîtes ($6$).",
+              "hint": "Vérifie si la réponse est déjà dans l'énoncé.",
+              "explanation": "Le problème donne le nombre de boîtes ($6$) et le nombre de crayons par boîte ($5$). La question devrait demander le total de crayons, pas le nombre de boîtes."
+            }
+          ]
+        },
+        {
+          "title": "Identifier ce qui est connu et recherché.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Repérer les nombres connus, comme une chasse au trésor"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans un problème, il y a des nombres qui sont donnés : ce sont les informations connues. Ils sont comme des indices que tu as déjà dans ta poche. Pour les trouver, lis l'énoncé lentement et souligne chaque chiffre que tu vois."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 1,
+              "units": 2,
+              "caption": "Le nombre $12$ : $1$ dizaine et $2$ unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Une fois les connus trouvés, il faut identifier ce qui est recherché. C'est la réponse à la question que tu as lue dans la leçon précédente. Le recherché n'est pas écrit en chiffre dans le texte, c'est toi qui vas le calculer."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Connu",
+                "Recherché"
+              ],
+              "rows": [
+                [
+                  "$4$ pots",
+                  "Total de fleurs"
+                ],
+                [
+                  "$3$ fleurs par pot",
+                  ""
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons sur un problème complet. Lis bien : « Il y a $5$ paniers. Dans chaque panier, il y a $4$ pommes. Combien de pommes au total ? » Quels sont les connus ? Qu'est-ce qui est recherché ?"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Ton tour",
+              "paragraphs": [
+                "Connu 1 : $5$ paniers.",
+                "Connu 2 : $4$ pommes par panier.",
+                "Recherché : total de pommes."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu deviens expert pour séparer ce qu'on sait de ce qu'on cherche. La prochaine leçon t'aidera à choisir la bonne méthode pour trouver la réponse."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans l'énoncé : « Il y a $8$ cahiers. Chaque cahier a $10$ pages. Combien de pages en tout ? », quels sont les deux nombres connus ?",
+              "answer": "$8$ cahiers et $10$ pages par cahier.",
+              "hint": "Cherche les chiffres écrits dans le texte.",
+              "explanation": "Les connus sont les quantités données explicitement : le nombre de cahiers ($8$) et le nombre de pages par cahier ($10$)."
+            },
+            {
+              "question": "Pour le même problème, que cherche-t-on ?",
+              "answer": "Le total de pages.",
+              "hint": "Regarde la question du problème.",
+              "explanation": "La question demande « Combien de pages en tout ? », donc le recherché est le total de pages."
+            },
+            {
+              "question": "Complète le tableau pour ce problème : « Léa a $20$ autocollants. Elle veut les mettre par paquets de $4$. Combien de paquets fera-t-elle ? »",
+              "answer": "Connu 1 : $20$ autocollants. Connu 2 : $4$ autocollants par paquet. Recherché : nombre de paquets.",
+              "hint": "Identifie le total et la taille des groupes.",
+              "explanation": "On connaît le total ($20$) et le nombre dans chaque paquet ($4$). On cherche le nombre de paquets, c'est un partage."
+            }
+          ]
+        },
+        {
+          "title": "Justifier la stratégie choisie.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir sa stratégie : groupement ou partage ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais lire la question et repérer les connus, il faut décider comment calculer. Il y a deux grandes façons : le groupement et le partage. Le groupement, c'est quand on connaît le nombre de groupes et le nombre dans chaque groupe, et qu'on veut le total. Le partage, c'est quand on connaît le total et qu'on veut le répartir."
+            },
+            {
+              "type": "grid_painter",
+              "rows": 3,
+              "cols": 4,
+              "highlighted": 12,
+              "caption": "Groupement : $3$ groupes de $4$ font $12$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce partage : tu as $12$ bonbons et tu veux les donner à $3$ amis équitablement. Tu vas faire des parts égales. C'est un partage. On peut le montrer avec un porte-monnaie : on répartit les pièces."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100,
+                100
+              ],
+              "target": 1200,
+              "caption": "Partage de $12$ pièces entre $3$ amis"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on connaît le total et la taille des groupes, et on cherche le nombre de groupes. C'est aussi un partage ! Par exemple : « J'ai $12$ crayons. Je fais des paquets de $4$. Combien de paquets ? » C'est un partage par groupement (quotition)."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Je lis la question",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Je cherche ce qu'on me demande."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Je regarde les connus",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Est-ce que j'ai le total ? Ou le nombre de groupes ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Je choisis",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si j'ai nombre de groupes et taille → groupement. Si j'ai le total → partage."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations ! Tu sais maintenant justifier ton choix de stratégie. Tu es prêt à résoudre plein de problèmes."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire la question d'un problème.",
+                "Je sais identifier les nombres connus et le recherché.",
+                "Je sais dire si c'est un groupement ou un partage."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Problème : « Il y a $4$ boîtes. Chaque boîte contient $6$ billes. Combien de billes au total ? » Est-ce un groupement ou un partage ?",
+              "answer": "Groupement",
+              "hint": "Est-ce qu'on connaît le total ou le nombre de groupes ?",
+              "explanation": "On connaît le nombre de groupes ($4$ boîtes) et le nombre dans chaque groupe ($6$ billes). On cherche le total, c'est un groupement."
+            },
+            {
+              "question": "Problème : « Tom a $18$ cartes. Il veut les donner à $3$ copains. Combien de cartes chacun ? » Est-ce un groupement ou un partage ?",
+              "answer": "Partage",
+              "hint": "Quelle quantité est connue au départ ?",
+              "explanation": "On connaît le total ($18$ cartes) et le nombre de groupes ($3$ copains). On cherche la part de chacun, c'est un partage."
+            },
+            {
+              "question": "Problème : « J'ai $20$ bonbons. Je fais des sachets de $5$ bonbons. Combien de sachets ? » Justifie ton choix.",
+              "answer": "C'est un partage car on connaît le total ($20$) et la taille des groupes ($5$), on cherche le nombre de groupes.",
+              "hint": "Regarde ce qui est connu : le total ou le nombre de groupes ?",
+              "explanation": "Le total ($20$) et la quantité par sachet ($5$) sont donnés. On cherche le nombre de sachets, donc c'est un partage (quotition)."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

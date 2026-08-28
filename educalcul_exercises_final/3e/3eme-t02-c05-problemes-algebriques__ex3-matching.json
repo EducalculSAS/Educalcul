@@ -1,0 +1,96 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 465,
+  "_course_code": "3eme-t02-c05-problemes-algebriques",
+  "_level": "3e",
+  "_subject": "Calcul littéral, équations et inéquations",
+  "_subtheme": "Interpréter",
+  "title": "Interprétation et modélisation algébrique",
+  "blocks": [
+    {
+      "title": "Traduire un énoncé en équation",
+      "content": "Relie chaque énoncé à l'équation qui le modélise correctement.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Le triple d'un nombre augmenté de 5 vaut 20.",
+          "right": "$3x + 5 = 20$"
+        },
+        {
+          "left": "La moitié d'un nombre diminuée de 4 vaut 10.",
+          "right": "$\\frac{x}{2} - 4 = 10$"
+        },
+        {
+          "left": "Un nombre auquel on ajoute son double donne 18.",
+          "right": "$x + 2x = 18$"
+        },
+        {
+          "left": "La différence entre le quadruple d'un nombre et 7 est 25.",
+          "right": "$4x - 7 = 25$"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut identifier les mots-clés : 'triple' signifie $\\times 3$, 'augmenté de' signifie $+$, 'moitié' signifie $\\div 2$ ou $\\times 0,5$, 'diminuée de' signifie $-$, 'double' signifie $\\times 2$, 'différence' signifie soustraction. La variable $x$ représente le nombre inconnu.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modéliser une situation géométrique",
+      "content": "Relie chaque description de figure à l'expression littérale de la grandeur demandée (aire ou périmètre).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Le périmètre d'un rectangle de longueur $x$ et de largeur $x - 3$.",
+          "right": "$4x - 6$"
+        },
+        {
+          "left": "L'aire d'un carré de côté $x + 2$.",
+          "right": "$(x + 2)^2$"
+        },
+        {
+          "left": "L'aire d'un triangle rectangle dont les côtés de l'angle droit mesurent $x$ et $x + 4$.",
+          "right": "$\\frac{x(x + 4)}{2}$"
+        },
+        {
+          "left": "Le périmètre d'un triangle isocèle de base $x$ et de côtés égaux $x + 1$.",
+          "right": "$3x + 2$"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour le rectangle : $P = 2 \\times (x + x - 3) = 2(2x - 3) = 4x - 6$. Pour le carré : $A = (x + 2) \\times (x + 2) = (x + 2)^2$. Pour le triangle rectangle : $A = \\frac{\\text{base} \\times \\text{hauteur}}{2} = \\frac{x(x + 4)}{2}$. Pour le triangle isocèle : $P = x + (x + 1) + (x + 1) = 3x + 2$.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Choisir le système modélisant un problème",
+      "content": "Relie chaque problème concret au système d'équations qui permet de le résoudre.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Deux nombres ont une somme de 50 et une différence de 10 (le plus grand moins le petit).",
+          "right": "$\\begin{cases} x + y = 50 \\\\ x - y = 10 \\end{cases}$"
+        },
+        {
+          "left": "Le prix de 3 stylos et 2 cahiers est 12 €. Le prix de 2 stylos et 3 cahiers est 13 €.",
+          "right": "$\\begin{cases} 3s + 2c = 12 \\\\ 2s + 3c = 13 \\end{cases}$"
+        },
+        {
+          "left": "Un rectangle a un périmètre de 40 cm. Sa longueur dépasse sa largeur de 6 cm.",
+          "right": "$\\begin{cases} 2(L + l) = 40 \\\\ L - l = 6 \\end{cases}$"
+        },
+        {
+          "left": "La somme de l'âge du père et du fils est 50 ans. Dans 10 ans, le père aura le double de l'âge du fils.",
+          "right": "$\\begin{cases} p + f = 50 \\\\ p + 10 = 2(f + 10) \\end{cases}$"
+        }
+      ],
+      "items": [],
+      "explanation": "Il faut définir deux inconnues par problème. 1er : $x$ et $y$ les nombres, somme et différence. 2e : $s$ prix stylo, $c$ prix cahier, combinaisons linéaires. 3e : $L$ longueur, $l$ largeur, formule périmètre et écart. 4e : $p$ âge père, $f$ âge fils, somme actuelle et relation dans 10 ans (attention d'ajouter 10 aux deux âges).",
+      "points": 4,
+      "figure": null
+    }
+  ]
+}

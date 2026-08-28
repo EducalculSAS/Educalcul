@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Approfondissement : Arbre / tableau si prévu",
+  "title": "Algorithmes pour expériences à deux étapes",
+  "blocks": [
+    {
+      "title": "Calcul des probabilités jointes",
+      "content": "Écrire un algorithme qui, étant donné les probabilités des issues de la première étape $p_1$ et $p_2$ (avec $p_1+p_2=1$) et les probabilités conditionnelles de la deuxième étape pour chaque issue de la première ($q_1$, $q_2$ pour la première issue ; $r_1$, $r_2$ pour la seconde, avec $q_1+q_2=1$ et $r_1+r_2=1$), calcule et affiche les probabilités des quatre issues finales : $p_1 q_1$, $p_1 q_2$, $p_2 r_1$, $p_2 r_2$.",
+      "correctAnswer": "Algorithme :\\n1. Lire $p_1$, $p_2$, $q_1$, $q_2$, $r_1$, $r_2$.\\n2. Calculer $a = p_1 * q_1$.\\n3. Calculer $b = p_1 * q_2$.\\n4. Calculer $c = p_2 * r_1$.\\n5. Calculer $d = p_2 * r_2$.\\n6. Afficher $a$, $b$, $c$, $d$.\\n(Vérifier que $a+b+c+d = 1$.)",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme implémente la règle des probabilités composées pour un arbre à deux étapes. Les quatre produits correspondent aux quatre branches terminales de l'arbre. La somme des quatre probabilités doit être égale à 1, ce qui permet de vérifier la cohérence des données d'entrée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Remplissage d'un tableau de probabilités jointes",
+      "content": "Adapter l'algorithme précédent pour qu'il remplisse un tableau à deux lignes (issues de la première étape) et deux colonnes (issues de la deuxième étape) avec les probabilités jointes. Le tableau doit être affiché sous forme de lignes de texte, par exemple :\\nLigne 1 : $p_1 q_1$ $p_1 q_2$\\nLigne 2 : $p_2 r_1$ $p_2 r_2$",
+      "correctAnswer": "Algorithme :\\n1. Lire $p_1$, $p_2$, $q_1$, $q_2$, $r_1$, $r_2$.\\n2. Calculer $a = p_1 * q_1$, $b = p_1 * q_2$, $c = p_2 * r_1$, $d = p_2 * r_2$.\\n3. Créer un tableau `T` à deux lignes et deux colonnes.\\n4. Affecter `T[0][0] = a`, `T[0][1] = b`, `T[1][0] = c`, `T[1][1] = d`.\\n5. Pour chaque ligne `i` de 0 à 1 :\\n   Afficher `T[i][0]` suivi d'un espace puis `T[i][1]`.\\n6. (Optionnel) Vérifier que la somme de tous les éléments de `T` vaut 1.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On stocke les quatre probabilités jointes dans une structure de données à deux dimensions (liste de listes ou tableau). L'affichage ligne par ligne reproduit la présentation classique d'un tableau de probabilités pour une expérience à deux étapes.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Simulation de l'expérience à deux étapes",
+      "content": "Écrire un algorithme de simulation qui répète l'expérience à deux étapes $N$ fois, en utilisant les mêmes probabilités $p_1$, $p_2$, $q_1$, $q_2$, $r_1$, $r_2$. L'algorithme doit compter le nombre d'occurrences de chaque issue finale et afficher les fréquences observées (nombre d'occurrences divisé par $N$).",
+      "correctAnswer": "Algorithme :\\n1. Lire $p_1$, $p_2$, $q_1$, $q_2$, $r_1$, $r_2$, $N$.\\n2. Initialiser quatre compteurs `c1`, `c2`, `c3`, `c4` à 0.\\n3. Répéter $N$ fois :\\n   a. Tirer un nombre aléatoire `u` uniforme entre 0 et 1.\\n   b. Si `u < p_1` alors première issue = 1 sinon première issue = 2.\\n   c. Si première issue = 1 :\\n        Tirer `v` uniforme entre 0 et 1.\\n        Si `v < q_1` alors `c1 = c1 + 1` sinon `c2 = c2 + 1`.\\n      Sinon (première issue = 2) :\\n        Tirer `v` uniforme entre 0 et 1.\\n        Si `v < r_1` alors `c3 = c3 + 1` sinon `c4 = c4 + 1`.\\n4. Calculer les fréquences : `f1 = c1 / N`, `f2 = c2 / N`, `f3 = c3 / N`, `f4 = c4 / N`.\\n5. Afficher `f1`, `f2`, `f3`, `f4`.\\n6. (Optionnel) Afficher aussi les compteurs bruts `c1`, `c2`, `c3`, `c4`.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La simulation utilise la méthode des nombres aléatoires pour reproduire l'arbre probabiliste. À chaque essai, on détermine la première étape selon $p_1$, puis la seconde étape selon les probabilités conditionnelles correspondantes. Les compteurs accumulent les occurrences, et les fréquences tendent vers les probabilités théoriques quand $N$ est grand (loi des grands nombres).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

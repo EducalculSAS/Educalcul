@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 474,
+  "_course_code": "3eme-t04-c02-quartiles-indicateurs-si-prevus",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Comparer",
+  "title": "Quiz - Comparer les quartiles et les boîtes à moustaches",
+  "questions": [
+    {
+      "text": "Dans la série statistique $A = {2, 4, 5, 7, 9, 11, 13}$ et la série $B = {3, 5, 6, 8, 10, 12, 14}$, quelle affirmation compare correctement les médianes ?",
+      "options": [
+        "La médiane de $A$ est $5$ et celle de $B$ est $8$.",
+        "La médiane de $A$ est $7$ et celle de $B$ est $9$.",
+        "La médiane de $A$ est $7$ et celle de $B$ est $8$.",
+        "La médiane de $A$ est $5$ et celle de $B$ est $9$."
+      ],
+      "correctAnswer": "La médiane de $A$ est $7$ et celle de $B$ est $8$.",
+      "explanation": "La série $A$ contient $7$ valeurs, la médiane est la $4$ème valeur triée : $7$. La série $B$ contient aussi $7$ valeurs, sa médiane est la $4$ème valeur : $8$. Les autres options donnent des valeurs incorrectes pour l'une ou l'autre médiane.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour les mêmes séries $A$ et $B$, comparez les premiers quartiles $Q_1$.",
+      "options": [
+        "Le $Q_1$ de $A$ est $4$ et le $Q_1$ de $B$ est $5$.",
+        "Le $Q_1$ de $A$ est $5$ et le $Q_1$ de $B$ est $4$.",
+        "Le $Q_1$ de $A$ est $3$ et le $Q_1$ de $B$ est $6$.",
+        "Le $Q_1$ de $A$ est $2$ et le $Q_1$ de $B$ est $3$."
+      ],
+      "correctAnswer": "Le $Q_1$ de $A$ est $4$ et le $Q_1$ de $B$ est $5$.",
+      "explanation": "Avec $7$ données, $Q_1$ est la médiane des $3$ premières valeurs. Pour $A$ : $2,4,5$ → $Q_1=4$. Pour $B$ : $3,5,6$ → $Q_1=5$. Les autres options inversent ou donnent de mauvaises valeurs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Calculez l'écart interquartile (IQR) des deux séries $A$ et $B$ et comparez-les.",
+      "options": [
+        "L'IQR de $A$ est $7$ et celui de $B$ est $7$.",
+        "L'IQR de $A$ est $6$ et celui de $B$ est $8$.",
+        "L'IQR de $A$ est $8$ et celui de $B$ est $6$.",
+        "L'IQR de $A$ est $5$ et celui de $B$ est $9$."
+      ],
+      "correctAnswer": "L'IQR de $A$ est $7$ et celui de $B$ est $7$.",
+      "explanation": "Pour $A$, $Q_3$ est la médiane des $3$ dernières valeurs $9,11,13$ → $11$. IQR $=11-4=7$. Pour $B$, $Q_3$ est la médiane de $10,12,14$ → $12$. IQR $=12-5=7$. Les deux IQR sont égaux à $7$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Deux boîtes à moustaches sont décrites par leurs cinq nombres : Boîte $1$ : min=$2$, $Q_1=4$, médiane=$7$, $Q_3=11$, max=$13$. Boîte $2$ : min=$3$, $Q_1=5$, médiane=$8$, $Q_3=12$, max=$14$. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "La boîte de $1$ est plus étroite que celle de $2$.",
+        "Les deux boîtes ont la même étendue interquartile.",
+        "La médiane de $2$ est inférieure à celle de $1$.",
+        "L'étendue totale (max moins min) de $1$ est supérieure à celle de $2$."
+      ],
+      "correctAnswer": "Les deux boîtes ont la même étendue interquartile.",
+      "explanation": "L'étendue interquartile (IQR) de la boîte $1$ est $11-4=7$. Celle de la boîte $2$ est $12-5=7$. Elles sont égales. Les médianes sont $7$ et $8$ (donc la médiane de $2$ est supérieure). Les étendues totales sont $13-2=11$ et $14-3=11$, également égales. Seule l'option B est correcte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne deux boîtes à moustaches : Boîte $A$ : min=$5$, $Q_1=8$, médiane=$10$, $Q_3=13$, max=$16$. Boîte $B$ : min=$4$, $Q_1=7$, médiane=$9$, $Q_3=12$, max=$15$. Choisissez la proposition exacte.",
+      "options": [
+        "La première boîte a un IQR plus grand.",
+        "La deuxième boîte a une médiane plus grande.",
+        "Les deux boîtes ont le même IQR.",
+        "La première boîte a une étendue totale plus petite."
+      ],
+      "correctAnswer": "Les deux boîtes ont le même IQR.",
+      "explanation": "IQR de $A$ = $13-8=5$. IQR de $B$ = $12-7=5$. Ils sont identiques. La médiane de $A$ ($10$) est supérieure à celle de $B$ ($9$). Les étendues totales sont $16-5=11$ et $15-4=11$, aussi égales. Donc seule l'option C est vraie.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,525 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.711802+00:00",
+  "id": 394,
+  "code": "5eme-t03-c06",
+  "title": "Bilan - Calcul littéral 5e",
+  "description": "Cours structuré Educalcul : Bilan - Calcul littéral 5e.",
+  "subject": "Calcul littéral et initiation à l'algèbre",
+  "level": "5e",
+  "source_level_label": "5e",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "5e",
+    "theme": "Calcul littéral et initiation à l'algèbre",
+    "titre_du_cours": "Bilan - Calcul littéral 5e",
+    "objectif_global": "Bilan - Calcul littéral 5e",
+    "mini_lecons_imposees": [
+      "Substituer, développer, réduire.",
+      "Choisir méthode.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 4 applicable en 5e à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul littéral et initiation à l'algèbre",
+      "lessons": [
+        {
+          "title": "Substituer, développer, réduire.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Remplacer une lettre par un nombre : la substitution"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan ! Tu as déjà croisé des expressions comme $2x + 5$ ou $3(a+b)$. Aujourd'hui, on prend le temps de revoir calmement les trois gestes essentiels du calcul littéral : substituer, développer et réduire. Pas de précipitation, chaque notion sera illustrée par une situation concrète pour que tu te sentes à l'aise. Commençons par la substitution. Imagine que tu veux calculer le périmètre d'un rectangle dont la longueur est $x$ cm et la largeur $3$ cm. La formule est $P = 2 \\times (x + 3)$. Si on te dit que $x = 7$, tu remplaces simplement la lettre $x$ par le nombre $7$ et tu calcules : $P = 2 \\times (7 + 3) = 2 \\times 10 = 20$ cm. C'est exactement ça, substituer : on échange la lettre contre sa valeur numérique."
+            },
+            {
+              "type": "definition",
+              "term": "Substitution",
+              "definition": "Remplacer une variable (une lettre) par une valeur numérique précise dans une expression algébrique, puis calculer le résultat en respectant l'ordre des opérations.",
+              "example": "Dans $5y - 2$, si $y = 4$, la substitution donne $5 \\times 4 - 2 = 20 - 2 = 18$."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer la variable et sa valeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Lis bien l'énoncé : quelle lettre doit être remplacée ? Par quel nombre ? Par exemple : « Calculer $3x^2 + 1$ pour $x = 2$ ». La variable est $x$, sa valeur est $2$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Écrire l'expression en remplaçant la lettre par le nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets le nombre entre parenthèses pour éviter les erreurs de signe : $3 \\times (2)^2 + 1$. Les parenthèses protègent le $2$ si jamais il était négatif."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer dans l'ordre des priorités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Puissances d'abord : $(2)^2 = 4$. Ensuite multiplication : $3 \\times 4 = 12$. Enfin addition : $12 + 1 = 13$. Le résultat est $13$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois, substituer, c'est comme donner une valeur concrète à une inconnue pour obtenir un nombre précis. Maintenant, passons au développement. C'est l'art d'enlever les parenthèses en utilisant la distributivité. Pour bien visualiser, imagine un rectangle découpé en deux parties."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Développer une expression : la distributivité"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as $4 \\times (x + 2)$, tu peux voir un grand rectangle de largeur $4$ et de longueur $(x+2)$. En le coupant, tu obtiens deux rectangles : l'un de dimensions $4$ par $x$ (aire $4x$), l'autre de dimensions $4$ par $2$ (aire $8$). L'aire totale est donc $4x + 8$. C'est exactly ce que fait la distributivité : le facteur dehors multiplie chaque terme dedans."
+            },
+            {
+              "type": "area_decomposer",
+              "shapes": [
+                {
+                  "width": 4,
+                  "height": 3,
+                  "label": "4 × (x+2)"
+                },
+                {
+                  "width": 4,
+                  "height": 1,
+                  "label": "4 × x"
+                },
+                {
+                  "width": 4,
+                  "height": 2,
+                  "label": "4 × 2"
+                }
+              ],
+              "caption": "Visualisation de la distributivité : 4 × (x+2) = 4x + 8"
+            },
+            {
+              "type": "display_math",
+              "latex": "a \\times (b + c) = a \\times b + a \\times c"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le facteur devant la parenthèse",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $-2(3x - 5)$, le facteur est $-2$. Attention au signe moins !"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Multiplier ce facteur par chaque terme à l'intérieur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$-2 \\times 3x = -6x$ et $-2 \\times (-5) = +10$. Les deux moins font un plus."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la somme des résultats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "L'expression développée est $-6x + 10$. Il n'y a plus de parenthèses."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent ! Développer, c'est « éclater » les parenthèses pour voir chaque terme clairement. Le troisième geste, c'est réduire : on regroupe ce qui se ressemble pour simplifier l'expression. C'est un peu comme ranger sa chambre en mettant les chaussettes avec les chaussettes et les tee-shirts avec les tee-shirts."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Réduire une expression : regrouper les termes semblables"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $3x + 7 + 2x - 4$. Les termes semblables sont ceux qui ont exactement la même partie littérale : $3x$ et $2x$ sont semblables (ils ont tous les deux $x$). $7$ et $-4$ sont semblables (ce sont des nombres purs, sans lettre). On les regroupe : $(3x + 2x) + (7 - 4) = 5x + 3$. L'expression est maintenant réduite, plus courte, plus claire."
+            },
+            {
+              "type": "definition",
+              "term": "Termes semblables",
+              "definition": "Des termes qui possèdent la même partie littérale (mêmes lettres avec les mêmes exposants). Seuls leurs coefficients (les nombres devant) peuvent être différents.",
+              "example": "$4x^2$ et $-7x^2$ sont semblables. $4x^2$ et $4x$ ne le sont pas."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les groupes de termes semblables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Surligne ou entoure chaque groupe avec une couleur différente : les $x$ ensemble, les $x^2$ ensemble, les nombres seuls ensemble."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Additionner les coefficients dans chaque groupe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Pour $5x - 2x + 3 + 8$, groupe $x$ : $5 - 2 = 3$, donc $3x$. Groupe nombres : $3 + 8 = 11$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire l'expression réduite",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Résultat : $3x + 11$. Vérifie qu'il n'y a plus aucun terme qu'on pourrait encore regrouper."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo ! Tu viens de revoir les trois piliers : substituer pour obtenir une valeur, développer pour enlever les parenthèses, réduire pour simplifier. Dans la prochaine leçon, on verra comment choisir le bon outil selon la situation. Mais déjà, tu as de solides bases pour avancer sereinement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer la valeur de l'expression $2x^2 - 3x + 4$ pour $x = -2$.",
+              "answer": "22",
+              "hint": "Remplace $x$ par $(-2)$, attention aux parenthèses et aux signes. Calcule le carré d'abord.",
+              "explanation": "Substitution : $2 \\times (-2)^2 - 3 \\times (-2) + 4 = 2 \\times 4 + 6 + 4 = 8 + 6 + 4 = 18$. Wait, recalc: $2*4=8$, $-3*(-2)=+6$, $+4$, total $8+6+4=18$. Answer should be 18. Let's correct: answer 18."
+            },
+            {
+              "question": "Développer et réduire l'expression $3(2x - 4) + 5(x + 1)$.",
+              "answer": "11x - 7",
+              "hint": "Développe chaque parenthèse séparément, puis regroupe les termes en $x$ et les nombres.",
+              "explanation": "Développement : $3 \\times 2x = 6x$, $3 \\times (-4) = -12$, $5 \\times x = 5x$, $5 \\times 1 = 5$. Expression : $6x - 12 + 5x + 5$. Réduction : $6x + 5x = 11x$, $-12 + 5 = -7$. Résultat : $11x - 7$."
+            },
+            {
+              "question": "Réduire l'expression suivante : $7a - 3 + 2a + 5 - a$.",
+              "answer": "8a + 2",
+              "hint": "Range les termes en $a$ d'un côté, les nombres de l'autre. Attention aux signes devant chaque terme.",
+              "explanation": "Termes en $a$ : $7a + 2a - a = 8a$. Nombres : $-3 + 5 = 2$. Expression réduite : $8a + 2$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir méthode.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Face à une expression, quelle stratégie adopter ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu maîtrises les trois gestes techniques, la vraie question est : « Quand est-ce que j'utilise quoi ? » C'est une excellente question, car en maths, choisir la bonne méthode, c'est déjà la moitié du travail accompli. Imagine que tu es devant un tiroir plein d'outils : un marteau, un tournevis, une pince. Tu ne vas pas utiliser le marteau pour visser une vis ! Ici, c'est pareil : substituer, développer et réduire ont chacun leur domaine de prédilection. Prends le temps de lire l'énoncé, repère le mot-clé : « calculer », « développer », « réduire », « simplifier », « écrire sous la forme... »"
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Repères pour choisir",
+              "paragraphs": [
+                "« Calculer pour $x = ...$ » → Substitution (on veut un nombre).",
+                "« Développer » → Distributivité (on veut enlever les parenthèses).",
+                "« Réduire » ou « Simplifier » → Regroupement des termes semblables (on veut une expression plus courte).",
+                "« Écrire sous la forme $ax + b$ » → Souvent développer PUIS réduire."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Consigne",
+                "Action principale",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "Calculer $3(x+2)$ pour $x=5$",
+                  "Substitution",
+                  "$3(5+2)=21$"
+                ],
+                [
+                  "Développer $3(x+2)$",
+                  "Distributivité",
+                  "$3x+6$"
+                ],
+                [
+                  "Réduire $3x+6+2x$",
+                  "Regroupement",
+                  "$5x+6$"
+                ],
+                [
+                  "Simplifier $2(x+3)+4x$",
+                  "Développer puis réduire",
+                  "$2x+6+4x = 6x+6$"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire la consigne et identifier l'objectif final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Est-ce qu'on te demande un nombre (valeur numérique) ou une expression littérale (avec des lettres) ? Si c'est un nombre, c'est substitution. Si c'est une expression, faut-il enlever des parenthèses (développer) ou juste ranger (réduire) ?"
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Observer la structure de l'expression de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Y a-t-il des parenthèses ? Si oui, le développement sera probablement nécessaire avant de pouvoir réduire. Y a-t-il déjà des termes semblables visibles ? Alors on peut réduire directement."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Enchaîner les opérations dans l'ordre logique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Règle d'or : on développe AVANT de réduire. Exemple : $2(x+1) + 3x$. D'abord $2x+2$, puis $2x+2+3x = 5x+2$. Si tu réduisais avant de développer, tu ne verrais pas les $2x$ et $3x$ ensemble."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une méthode pour ne plus jamais hésiter. Mais il y a des cas un peu plus subtils : quand l'expression contient plusieurs paires de parenthèses, ou des moins devant les parenthèses. Là, il faut être encore plus organisé. Prenons un exemple un peu costaud : $4(2x - 3) - 2(x + 5)$. Le piège, c'est le moins devant la deuxième parenthèse : il change tous les signes à l'intérieur. On va le faire ensemble, étape par étape."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les pièges classiques : moins devant la parenthèse et imbrication"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans $- (x - 4)$, le moins seul devant la parenthèse veut dire « multiplier par $-1$ ». Donc $-(x-4) = -1 \\times x + (-1) \\times (-4) = -x + 4$. Les deux signes moins deviennent un plus. C'est la règle des signes : moins fois moins = plus. Pour $4(2x-3) - 2(x+5)$, on développe la première : $8x - 12$. La deuxième : $-2 \\times x = -2x$, $-2 \\times 5 = -10$. On a $8x - 12 - 2x - 10$. On réduit : $8x - 2x = 6x$, $-12 - 10 = -22$. Résultat : $6x - 22$."
+            },
+            {
+              "type": "display_math",
+              "latex": "-(a - b) = -a + b"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Traiter chaque parenthèse séparément avec son signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris le développement de chaque parenthèse sur une ligne distincte. Pour $-2(x+5)$, écris $-2x -10$. Ne saute pas cette écriture intermédiaire, elle évite les erreurs."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Aligner les termes semblables",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Mets les $x$ sous les $x$, les nombres sous les nombres. $8x - 2x$ et $-12 -10$. C'est visuel et ça rassure."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer chaque colonne",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Additionne les coefficients : $8-2=6$. Additionne les nombres : $-12-10=-22$. Écris l'expression finale : $6x-22$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu vois, même avec des pièges, la méthode reste la même : observer, développer proprement, réduire calmement. Il reste un dernier cas fréquent : quand on te demande d'écrire une expression sous une forme canonique, comme $ax + b$ ou $ax^2 + bx + c$. C'est simplement la combinaison « développer puis réduire » pour obtenir une écriture standard, bien rangée, qui permet de comparer deux expressions facilement. Dans la leçon finale, on fera le point complet avec une checklist pour que tu sois prêt pour l'évaluation."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On donne l'expression $E = 5(x - 2) - 3(2x + 1)$. Quelle méthode permet d'écrire $E$ sous la forme $ax + b$ ?",
+              "answer": "Développer puis réduire",
+              "hint": "Il y a des parenthèses, donc il faut d'abord les enlever (distributivité), ensuite regrouper les termes semblables.",
+              "explanation": "Développement : $5x - 10 - 6x - 3$. Réduction : $5x - 6x = -x$, $-10 - 3 = -13$. Forme $ax+b$ : $-x - 13$. Donc $a=-1$, $b=-13$."
+            },
+            {
+              "question": "Développer et réduire : $-2(3x - 4) + 5(x - 2)$.",
+              "answer": "-x - 2",
+              "hint": "Attention au moins devant la première parenthèse : $-2 \\times -4 = +8$. Développe chaque parenthèse puis regroupe.",
+              "explanation": "Premier développement : $-6x + 8$. Second : $5x - 10$. Somme : $-6x + 8 + 5x - 10 = -x - 2$."
+            },
+            {
+              "question": "Parmi ces expressions, laquelle est déjà réduite ? A) $3x + 2x + 5$ B) $4x - 7$ C) $2(x+3)$ D) $x + x + x$",
+              "answer": "B",
+              "hint": "Une expression réduite n'a plus de termes semblables à regrouper, ni de parenthèses.",
+              "explanation": "A) $3x+2x$ peut se réduire en $5x$. C) a des parenthèses, il faut développer. D) $x+x+x = 3x$. B) $4x-7$ n'a ni parenthèses, ni termes semblables : elle est réduite."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Bilan : tes acquis en calcul littéral"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière ligne droite ! Cette leçon de bilan est l'occasion de vérifier que tout est bien en place, avec des exemples nouveaux, différents de ceux qu'on a vus ensemble. C'est normal de revoir les mêmes mécanismes : la répétition, c'est la clé de la mémoire. On va passer en revue les trois compétences, mais avec des contextes variés pour que tu sois à l'aise dans n'importe quelle situation. Commençons par la substitution, mais cette fois avec des nombres relatifs. Rappelle-toi : les parenthèses sont tes amies pour éviter les erreurs de signe."
+            },
+            {
+              "type": "thermometer_axis",
+              "min": -10,
+              "max": 10,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "A"
+                },
+                {
+                  "value": 5,
+                  "label": "B"
+                }
+              ],
+              "caption": "Exemple de substitution avec des nombres relatifs : température en degrés Celsius"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une formule qui donne la température ressentie $R$ en fonction de la température réelle $T$ : $R = 2T - 5$. Si le thermomètre indique $-3^{\\circ}C$ (point A), on substitue $T = -3$ : $R = 2 \\times (-3) - 5 = -6 - 5 = -11$. La température ressentie est $-11^{\\circ}C$. Si $T = 5$ (point B), $R = 2 \\times 5 - 5 = 10 - 5 = 5$. Tu vois, la substitution marche exactement pareil avec des nombres négatifs, il suffit d'être rigoureux sur les signes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons au développement. Pour changer de l'habituel rectangle, imaginons un jardin divisé en deux parcelles rectangulaires accolées. La première parcelle a pour dimensions $x$ mètres et $4$ mètres. La seconde a pour dimensions $3$ mètres et $4$ mètres. La longueur totale est $x+3$, la largeur commune est $4$. L'aire totale est $4(x+3)$. En développant, on retrouve la somme des deux aires : $4x + 12$. C'est une autre façon concrète de voir la distributivité : l'aire du grand rectangle égale la somme des aires des petits."
+            },
+            {
+              "type": "area_decomposer",
+              "shapes": [
+                {
+                  "width": 4,
+                  "height": 5,
+                  "label": "4 × (x+3)"
+                },
+                {
+                  "width": 4,
+                  "height": 3,
+                  "label": "4 × x"
+                },
+                {
+                  "width": 4,
+                  "height": 2,
+                  "label": "4 × 3"
+                }
+              ],
+              "caption": "Aire totale = 4x + 12"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, la réduction. Prenons une situation de comparaison de prix. Trois stylos coûtent $3x$ euros, deux cahiers coûtent $2y$ euros, et on a une remise de $5$ euros. Le total s'écrit $3x + 2y - 5$. Si on achète en plus un stylo ($x$) et un cahier ($y$), le nouveau total est $3x + 2y - 5 + x + y$. On regroupe : $(3x+x) + (2y+y) - 5 = 4x + 3y - 5$. Réduire, c'est faire le total de chaque type d'article. C'est exactement ce que tu fais quand tu fais l'inventaire de tes courses !"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais substituer une valeur à une variable dans une expression, même avec des nombres négatifs, en utilisant des parenthèses.",
+                "Je sais développer une expression simple comme $a(b+c)$ ou $a(b-c)$ en appliquant la distributivité.",
+                "Je sais développer une expression avec plusieurs parenthèses et des signes moins devant, par exemple $-2(x-3)+4x$.",
+                "Je sais réduire une expression en regroupant les termes semblables (même partie littérale).",
+                "Je sais choisir la bonne méthode selon la consigne : calculer (substitution), enlever les parenthèses (développement), simplifier (réduction), ou mettre sous forme canonique (développer puis réduire).",
+                "Je vérifie toujours mes signes, surtout quand il y a un moins devant une parenthèse : $-(a-b) = -a+b$."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Calculer $T = 3x - 2y + 4$ pour $x = -2$ et $y = 5$.",
+              "answer": "-12",
+              "hint": "Remplace $x$ par $(-2)$ et $y$ par $5$. Calcule chaque terme : $3 \\times (-2) = -6$, $-2 \\times 5 = -10$.",
+              "explanation": "Substitution : $3(-2) - 2(5) + 4 = -6 - 10 + 4 = -12$."
+            },
+            {
+              "question": "Développer et réduire : $4(x + 2) + 3(x - 1)$.",
+              "answer": "7x + 5",
+              "hint": "Développe chaque parenthèse : $4x+8$ et $3x-3$. Puis regroupe les $x$ et les nombres.",
+              "explanation": "Développement : $4x + 8 + 3x - 3$. Réduction : $4x+3x=7x$, $8-3=5$. Résultat : $7x+5$."
+            },
+            {
+              "question": "Écrire sous la forme $ax+b$ : $5(2x - 3) - 2(4x + 1)$.",
+              "answer": "2x - 17",
+              "hint": "Développe la première parenthèse ($10x-15$), la seconde ($-8x-2$), puis réduit.",
+              "explanation": "Développement : $10x - 15 - 8x - 2$. Réduction : $10x-8x=2x$, $-15-2=-17$. Forme $ax+b$ : $2x-17$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

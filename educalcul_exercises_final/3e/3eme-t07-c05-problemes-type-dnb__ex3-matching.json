@@ -1,0 +1,92 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Contrôler",
+  "title": "Algorithmique : Contrôler",
+  "blocks": [
+    {
+      "title": "Structure de contrôle conditionnelle",
+      "content": "Relie chaque instruction à sa description.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Si ... Alors ... Sinon ... Fin Si",
+          "right": "Exécute un bloc si la condition est vraie, sinon un autre bloc"
+        },
+        {
+          "left": "Tant que ... Faire ... Fin Tant que",
+          "right": "Répète un bloc tant que la condition reste vraie"
+        },
+        {
+          "left": "Pour ... De ... À ... Faire ... Fin Pour",
+          "right": "Répète un bloc un nombre déterminé de fois"
+        },
+        {
+          "left": "Fin Si",
+          "right": "Marque la fin d'une structure conditionnelle"
+        }
+      ],
+      "items": [],
+      "explanation": "L'instruction « Si ... Alors ... Sinon ... Fin Si » permet de choisir entre deux blocs selon la valeur de la condition. « Tant que ... Faire ... Fin Tant que » répète un bloc tant que la condition est vraie. « Pour ... De ... À ... Faire ... Fin Pour » effectue un nombre fixe d'itérations. « Fin Si » termine uniquement la structure conditionnelle.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Évaluation de conditions",
+      "content": "Relie chaque condition à sa valeur de vérité pour $x = 4$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$x > 3$",
+          "right": "Vrai"
+        },
+        {
+          "left": "$x \\le 5$",
+          "right": "Vrai"
+        },
+        {
+          "left": "$x = 5$",
+          "right": "Faux"
+        },
+        {
+          "left": "$x \\neq 4$",
+          "right": "Faux"
+        }
+      ],
+      "items": [],
+      "explanation": "Avec $x = 4$ : $4 > 3$ est vrai, $4 \\le 5$ est vrai, $4 = 5$ est faux, $4 \\neq 4$ est faux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Résultat d'un algorithme itératif",
+      "content": "Relie chaque algorithme à la valeur finale de la variable $s$ après exécution.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "s ← 0 ; Pour i de 1 à 4 faire s ← s + i ; Fin Pour",
+          "right": "10"
+        },
+        {
+          "left": "s ← 1 ; Tant que s < 10 faire s ← s × 2 ; Fin Tant que",
+          "right": "16"
+        },
+        {
+          "left": "s ← 5 ; Si s > 3 Alors s ← s - 2 Sinon s ← s + 3 Fin Si",
+          "right": "3"
+        }
+      ],
+      "items": [],
+      "explanation": "Premier algorithme : somme de 1 à 4 = 10. Deuxième : 1→2→4→8→16 (sortie quand 16 ≥ 10). Troisième : condition vraie (5>3) donc s = 5-2 = 3.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

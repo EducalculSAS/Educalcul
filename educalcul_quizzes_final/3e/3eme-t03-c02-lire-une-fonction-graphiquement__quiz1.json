@@ -1,0 +1,106 @@
+{
+  "_status": "done",
+  "_course_id": 468,
+  "_course_code": "3eme-t03-c02-lire-une-fonction-graphiquement",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Images",
+  "title": "Lecture graphique : les images",
+  "questions": [
+    {
+      "text": "Sur le graphique ci-dessous, la fonction $f$ est représentée. Quelle est l'image de $0$ par $f$ ?",
+      "options": [
+        "$-1$",
+        "$1$",
+        "$0$",
+        "$2$"
+      ],
+      "correctAnswer": "$-1$",
+      "explanation": "L'image de $0$ est la coordonnée $y$ du point du graphique d'abscisse $0$. Le graphique coupe l'axe des ordonnées au point de coordonnées $(0 ; -1)$. Donc $f(0) = -1$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x - 1",
+        "xmin": -2,
+        "xmax": 4,
+        "caption": "Graphique de la fonction f(x) = 2x - 1"
+      }
+    },
+    {
+      "text": "Quelle est l'image de $1$ par la fonction $f$ ?",
+      "options": [
+        "$1$",
+        "$2$",
+        "$0$",
+        "$-1$"
+      ],
+      "correctAnswer": "$1$",
+      "explanation": "On repère l'abscisse $1$ sur l'axe horizontal, on monte jusqu'au graphique et on lit l'ordonnée correspondante : $1$. Donc $f(1) = 1$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x - 1",
+        "xmin": -2,
+        "xmax": 4,
+        "caption": "Graphique de la fonction f(x) = 2x - 1"
+      }
+    },
+    {
+      "text": "Quelle est l'image de $-1$ par la fonction $f$ ?",
+      "options": [
+        "$-3$",
+        "$-1$",
+        "$1$",
+        "$3$"
+      ],
+      "correctAnswer": "$-3$",
+      "explanation": "Pour $x = -1$, on lit l'ordonnée du point sur la courbe : $-3$. On vérifie par le calcul : $f(-1) = 2 \\times (-1) - 1 = -3$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x - 1",
+        "xmin": -2,
+        "xmax": 4,
+        "caption": "Graphique de la fonction f(x) = 2x - 1"
+      }
+    },
+    {
+      "text": "Quelle est l'image de $2$ par la fonction $f$ ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$2$",
+        "$1$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Le point du graphique d'abscisse $2$ a pour ordonnée $3$. Donc $f(2) = 3$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x - 1",
+        "xmin": -2,
+        "xmax": 4,
+        "caption": "Graphique de la fonction f(x) = 2x - 1"
+      }
+    },
+    {
+      "text": "Quelle est l'image de $0,5$ par la fonction $f$ ?",
+      "options": [
+        "$0$",
+        "$1$",
+        "$-1$",
+        "$0,5$"
+      ],
+      "correctAnswer": "$0$",
+      "explanation": "Pour $x = 0,5$, on calcule $f(0,5) = 2 \\times 0,5 - 1 = 1 - 1 = 0$. Sur le graphique, le point d'abscisse $0,5$ a pour ordonnée $0$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x - 1",
+        "xmin": -2,
+        "xmax": 4,
+        "caption": "Graphique de la fonction f(x) = 2x - 1"
+      }
+    }
+  ]
+}

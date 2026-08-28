@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 248,
+  "_course_code": "cm1-t06-c01-droites-paralleles-et-perpendiculaires",
+  "_level": "cm1",
+  "_subject": "Géométrie plane, solides et espace",
+  "_subtheme": "Approfondissement : Définir",
+  "title": "Algorithmes et définitions : parallèles et perpendiculaires",
+  "blocks": [
+    {
+      "title": "Condition pour des perpendiculaires",
+      "content": "On veut écrire un algorithme qui décide si deux droites sont perpendiculaires. Complète la condition à tester dans la structure suivante :\\nSI [condition] ALORS\\n  Afficher \"Les droites sont perpendiculaires\"\\nSINON\\n  Afficher \"Les droites ne sont pas perpendiculaires\"\\nFIN SI",
+      "correctAnswer": "SI les droites se coupent et forment un angle droit (ou un angle de $90^\\circ$) ALORS",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "En géométrie, deux droites sont perpendiculaires si elles se coupent en formant un angle droit. Un angle droit mesure $90^\\circ$. C'est la propriété définitoire à tester dans l'algorithme.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme pour tester des parallèles",
+      "content": "Voici un algorithme incomplet pour tester si deux droites sont parallèles :\\nDEBUT\\n  Demander la position relative des deux droites\\n  SI [condition] ALORS\\n    Afficher \"Les droites sont parallèles\"\\n  SINON\\n    Afficher \"Les droites ne sont pas parallèles\"\\n  FIN SI\\nFIN\\nÉcris la condition exacte à placer entre SI et ALORS en utilisant le vocabulaire de la géométrie (direction, coupe, distance).",
+      "correctAnswer": "SI les droites ont la même direction (ou ne se coupent jamais / sont à distance constante) ALORS",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Au niveau CM1, deux droites sont parallèles si elles ont la même direction. Cela signifie qu'elles ne se coupent pas et que la distance entre elles reste constante. L'algorithme doit tester cette propriété fondamentale.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Corriger un algorithme de tracé",
+      "content": "Un élève a programmé un robot pour tracer une droite perpendiculaire à une droite (d) passant par un point A. Voici son algorithme :\\nDEBUT\\n  Poser l'équerre sur la droite (d)\\n  Glisser l'équerre jusqu'au point A\\n  Tracer le trait le long du bord de l'équerre\\nFIN\\nLe robot trace parfois une droite qui n'est pas perpendiculaire à (d). Quelle instruction précise manque-t-il après la première ligne pour garantir le tracé correct ?",
+      "correctAnswer": "Aligner le bord de l'angle droit de l'équerre sur la droite (d) (ou : faire coïncider le bord de l'équerre correspondant à l'angle droit avec la droite (d)).",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour tracer une perpendiculaire avec une équerre, il ne suffit pas de la poser sur la droite. Il faut impérativement aligner le côté de l'équerre qui forme l'angle droit (souvent le bord gradué ou le petit côté) exactement sur la droite (d) avant de glisser vers le point A. Sans cet alignement initial, l'angle tracé n'est pas garanti droit.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

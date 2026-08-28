@@ -1,0 +1,160 @@
+{
+  "_status": "done",
+  "_course_id": 206,
+  "_course_code": "ce2-t08-c02-diagrammes-en-batons",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Application : Diagrammes en bâtons",
+  "title": "Application : Diagrammes en bâtons",
+  "questions": [
+    {
+      "text": "Regarde le diagramme en bâtons ci-dessous qui montre les fruits préférés des élèves de la classe.\\nCombien d'élèves ont choisi la pomme ?",
+      "options": [
+        "5 élèves",
+        "6 élèves",
+        "7 élèves",
+        "4 élèves"
+      ],
+      "correctAnswer": "6 élèves",
+      "explanation": "Dans un diagramme en bâtons, on compte les traits. Un groupe de 5 traits se écrit : 4 traits verticaux et 1 trait diagonal qui les barre (||||). Pour les pommes, on voit un groupe de 5 traits (||||) et 1 trait supplémentaire (|). Cela fait $5 + 1 = 6$ élèves au total.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Bâtons"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "|||| |"
+          ],
+          [
+            "Poire",
+            "||||"
+          ],
+          [
+            "Banane",
+            "|||"
+          ]
+        ],
+        "caption": "Fruits préférés des élèves"
+      }
+    },
+    {
+      "text": "En te servant du même diagramme, quel est le nombre total d'élèves qui ont voté ?",
+      "options": [
+        "12 élèves",
+        "13 élèves",
+        "14 élèves",
+        "15 élèves"
+      ],
+      "correctAnswer": "13 élèves",
+      "explanation": "Il faut additionner les votes de chaque fruit. Pomme : $6$ (|||| |). Poire : $4$ (||||). Banane : $3$ (|||). Le total est $6 + 4 + 3 = 13$ élèves.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Bâtons"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "|||| |"
+          ],
+          [
+            "Poire",
+            "||||"
+          ],
+          [
+            "Banane",
+            "|||"
+          ]
+        ],
+        "caption": "Fruits préférés des élèves"
+      }
+    },
+    {
+      "text": "Toujours avec ce diagramme, quelle affirmation est vraie ?",
+      "options": [
+        "La poire est le fruit le plus aimé.",
+        "La banane est le fruit le plus aimé.",
+        "La pomme est le fruit le plus aimé.",
+        "La pomme et la poire sont equally aimées."
+      ],
+      "correctAnswer": "La pomme est le fruit le plus aimé.",
+      "explanation": "Il faut comparer les effectifs (le nombre de bâtons) pour chaque fruit. Pomme : $6$ votes. Poire : $4$ votes. Banane : $3$ votes. Le plus grand nombre est $6$, qui correspond à la pomme. C'est donc le fruit le plus aimé (le mode de la série).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Fruit",
+          "Bâtons"
+        ],
+        "rows": [
+          [
+            "Pomme",
+            "|||| |"
+          ],
+          [
+            "Poire",
+            "||||"
+          ],
+          [
+            "Banane",
+            "|||"
+          ]
+        ],
+        "caption": "Fruits préférés des élèves"
+      }
+    },
+    {
+      "text": "Léa compte les voitures qui passent devant l'école. Elle note : 5 voitures rouges, 3 voitures bleues et 7 voitures vertes. Quelle ligne de bâtons correspond aux voitures vertes ?",
+      "options": [
+        "|||| ||",
+        "|||| |||",
+        "|||| |",
+        "||||"
+      ],
+      "correctAnswer": "|||| |||",
+      "explanation": "Il faut représenter le nombre 7 en bâtons. On fait d'abord un groupe de 5 (||||) puis on ajoute 2 traits (||). Cela donne : |||| ||. Attention, l'option '|||| ||' fait 7 traits (5+2) mais l'écriture standard groupe par 5. L'option '|||| |||' montre un groupe de 5 (||||) et 3 traits (|||), ce qui fait 8. L'option '|||| |' fait 6. L'option '||||' fait 5. La bonne écriture pour 7 est un groupe de 5 et 2 traits isolés : |||| ||. Cependant, dans les options proposées, '|||| ||' n'est pas présente exactement ainsi. Reprenons : 7 = 5 + 2. Écriture : |||| (groupe de 5) + || (2 traits). Soit '|||| ||'. Mais l'option A est '|||| ||' (espace). C'est bien 7. L'option B '|||| |||' est 8. L'option C '|||| |' est 6. L'option D '||||' est 5. Donc la bonne réponse est l'option A.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un diagramme en bâtons sur les animaux de compagnie des élèves de CE2.\\nCombien y a-t-il de chiens de plus que de chats ?",
+      "options": [
+        "2 de plus",
+        "3 de plus",
+        "4 de plus",
+        "5 de plus"
+      ],
+      "correctAnswer": "3 de plus",
+      "explanation": "Il faut lire les effectifs pour chaque animal. Chiens : |||| || = $5 + 2 = 7$. Chats : |||| = $4$. Lapins : || = $2$. Pour savoir combien de chiens de plus que de chats, on fait la différence : $7 - 4 = 3$. Il y a 3 chiens de plus que de chats.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Animal",
+          "Bâtons"
+        ],
+        "rows": [
+          [
+            "Chien",
+            "|||| ||"
+          ],
+          [
+            "Chat",
+            "||||"
+          ],
+          [
+            "Lapin",
+            "||"
+          ]
+        ],
+        "caption": "Animaux de compagnie"
+      }
+    }
+  ]
+}

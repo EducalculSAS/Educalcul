@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 166,
+  "_course_code": "ce2-t03-c07-comprendre-la-division-comme-groupement",
+  "_level": "ce2",
+  "_subject": "Addition, soustraction, multiplication et division",
+  "_subtheme": "Interpréter le reste",
+  "title": "Quiz : Interpréter le reste dans le groupement",
+  "questions": [
+    {
+      "text": "On place $18$ jetons en paquets de $4$. Combien y a-t-il de paquets complets et combien de jetons restent-ils ?",
+      "options": [
+        "4 paquets, 2 jetons",
+        "4 paquets, 4 jetons",
+        "5 paquets, 2 jetons",
+        "3 paquets, 6 jetons"
+      ],
+      "correctAnswer": "4 paquets, 2 jetons",
+      "explanation": "On cherche combien de fois $4$ rentre dans $18$. $4 \\times 4 = 16$. On peut faire $4$ paquets complets. Il reste $18 - 16 = 2$ jetons. L'option B compte mal le reste, l'option C fait un paquet de trop, l'option D ne fait pas le maximum de paquets.",
+      "points": 1,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 5,
+        "cols": 4,
+        "highlighted": 18,
+        "caption": "18 jetons groupés par 4"
+      }
+    },
+    {
+      "text": "Une maîtresse a $27$ cahiers. Elle veut faire des piles de $5$ cahiers. Combien de piles complètes peut-elle faire ?",
+      "options": [
+        "5 piles",
+        "6 piles",
+        "4 piles",
+        "5 piles et 2 cahiers"
+      ],
+      "correctAnswer": "5 piles",
+      "explanation": "On divise $27$ par $5$ pour connaître le nombre de piles complètes. $5 \\times 5 = 25$. On peut faire $5$ piles. Il reste $2$ cahiers, mais la question demande le nombre de piles complètes, pas le reste. L'option B arrondit au supérieur, l'option C sous-estime, l'option D mélange la réponse et le reste.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un boulanger a $38$ croissants. Il les met dans des boîtes de $6$. Combien de boîtes lui faut-il pour ranger tous les croissants ?",
+      "options": [
+        "6 boîtes",
+        "7 boîtes",
+        "6 boîtes et 2 croissants",
+        "5 boîtes"
+      ],
+      "correctAnswer": "7 boîtes",
+      "explanation": "Ici, le reste oblige à prendre une boîte de plus. $6 \\times 6 = 36$. Avec $6$ boîtes, il range $36$ croissants. Il en reste $2$. Il lui faut donc une $7^{\\text{ème}}$ boîte pour ces $2$ croissants. L'option A oublie les croissants restants, l'option C donne le quotient et le reste mais pas le nombre total de boîtes nécessaires, l'option D est trop peu.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour calculer $45 \\div 4$, un élève a écrit : $45 = 4 \\times 11 + 1$. Est-ce correct ?",
+      "options": [
+        "Oui, car $4 \\times 11 = 44$ et $44 + 1 = 45$.",
+        "Non, le quotient est $10$ et le reste $5$.",
+        "Non, le quotient est $11$ et le reste $2$.",
+        "Non, le reste ne peut pas être $1$."
+      ],
+      "correctAnswer": "Oui, car $4 \\times 11 = 44$ et $44 + 1 = 45$.",
+      "explanation": "La division euclidienne s'écrit : Dividende = Diviseur $\\times$ Quotient + Reste. Ici $45 = 4 \\times 11 + 1$. Le calcul est exact : $44 + 1 = 45$. Le reste $1$ est bien strictement inférieur au diviseur $4$. L'option B donne un reste ($5$) plus grand que le diviseur. L'option C fait une erreur de calcul ($44+2=46$). L'option D est fausse car le reste peut être $1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On effectue la division $52 \\div 7$. Quelle phrase décrit correctement le résultat ?",
+      "options": [
+        "On peut faire $7$ groupes de $7$ et il reste $3$.",
+        "On peut faire $7$ groupes de $7$ et il reste $7$.",
+        "On peut faire $8$ groupes de $7$ et il reste $3$.",
+        "On peut faire $7$ groupes de $7$ et il ne reste rien."
+      ],
+      "correctAnswer": "On peut faire $7$ groupes de $7$ et il reste $3$.",
+      "explanation": "On cherche le plus grand multiple de $7$ inférieur ou égal à $52$. $7 \\times 7 = 49$. $8 \\times 7 = 56$ (trop grand). Le quotient est $7$. Le reste est $52 - 49 = 3$. L'option B donne un reste égal au diviseur, ce qui est impossible. L'option C dépasse le nombre total. L'option D correspond à $49$, pas $52$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

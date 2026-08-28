@@ -1,0 +1,281 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.736425+00:00",
+  "id": 83,
+  "code": "ce1-t02-c05",
+  "title": "Comparer des fractions simples dans des cas accessibles",
+  "description": "Cours structuré Educalcul : Comparer des fractions simples dans des cas accessibles.",
+  "subject": "Fractions simples et premières écritures décimales",
+  "level": "ce1",
+  "source_level_label": "CE1",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE1",
+    "theme": "Fractions simples et premières écritures décimales",
+    "titre_du_cours": "Comparer des fractions simples dans des cas accessibles",
+    "objectif_global": "Comparer des fractions simples dans des cas accessibles",
+    "mini_lecons_imposees": [
+      "Comparer avec même dénominateur.",
+      "Comparer à 1.",
+      "Justifier à l'aide d'une représentation."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions simples et premières écritures décimales",
+      "lessons": [
+        {
+          "title": "Comparer avec même dénominateur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Même dénominateur, même taille de parts"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon où nous allons apprendre à comparer des fractions qui ont le même dénominateur. Imagine que tu partages une pizza coupée en cinq parts égales. Si tu prends deux parts, tu as $\\frac{2}{5}$ de la pizza. Si ton ami en prend trois, il a $\\frac{3}{5}$. Comme les parts sont de la même taille, il suffit de compter combien de parts chacun a pour savoir qui en a le plus."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Deux parts sur cinq : $\\frac{2}{5}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, regardons la règle simple : quand le dénominateur est identique, la fraction qui a le numérateur le plus grand est la plus grande. Dans notre exemple, $3$ est plus grand que $2$, donc $\\frac{3}{5}$ est plus grande que $\\frac{2}{5}$. Essaie avec d'autres nombres : $\\frac{1}{4}$ et $\\frac{3}{4}$ ; $\\frac{2}{7}$ et $\\frac{5}{7}$. À chaque fois, compare seulement les numérateurs."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Trois parts sur cinq : $\\frac{3}{5}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien ancrer cette idée, dessinons une barre fractionnée. Colorie deux parts sur cinq pour $\\frac{2}{5}$ et trois parts sur cinq pour $\\frac{3}{5}$. Tu verras tout de suite que la partie colorée de $\\frac{3}{5}$ est plus longue. Regarde aussi comme la barre de $\\frac{1}{4}$ est plus courte que celle de $\\frac{3}{4}$. C'est cette image qui te permettra de justifier ta réponse sans hésiter. Prêt à t'exercer ?"
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Une part sur quatre : $\\frac{1}{4}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Laquelle est plus grande : $\\frac{2}{5}$ ou $\\frac{3}{5}$ ?",
+              "answer": "$\\frac{3}{5}$",
+              "hint": "Regarde les numérateurs, le dénominateur est le même.",
+              "explanation": "Comme le dénominateur est identique, la fraction qui a le plus grand numérateur est la plus grande. Ici $3 > 2$, donc $\\frac{3}{5} > \\frac{2}{5}$."
+            },
+            {
+              "question": "Compare $\\frac{1}{4}$ et $\\frac{3}{4}$.",
+              "answer": "$\\frac{3}{4}$",
+              "hint": "Même dénominateur, compare les numérateurs.",
+              "explanation": "Les deux fractions ont le dénominateur $4$. Puisque $3 > 1$, $\\frac{3}{4}$ est plus grande que $\\frac{1}{4}$."
+            },
+            {
+              "question": "Si tu as $\\frac{2}{7}$ et $\\frac{5}{7}$, laquelle est la plus petite ?",
+              "answer": "$\\frac{2}{7}$",
+              "hint": "Le numérateur plus petit donne la plus petite fraction.",
+              "explanation": "Avec le même dénominateur $7$, on compare $2$ et $5$. Comme $2 < 5$, $\\frac{2}{7}$ est la plus petite."
+            }
+          ]
+        },
+        {
+          "title": "Comparer à 1.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer une fraction à 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans cette leçon, nous allons comparer une fraction au nombre 1. Rappelle-toi : le nombre 1 peut s'écrire sous forme de fraction quand le numérateur et le dénominateur sont égaux. Par exemple, $\\frac{4}{4}$, $\\frac{5}{5}$ ou $\\frac{10}{10}$ valent exactement 1. C'est comme si tu avais une barre entière découpée en quatre parts et que tu les colories toutes : la barre est complète."
+            },
+            {
+              "type": "fraction",
+              "numerator": 4,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Quatre parts sur quatre : $\\frac{4}{4} = 1$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Si le numérateur est plus petit que le dénominateur, la fraction est plus petite que 1. Prenons $\\frac{2}{5}$ : tu as deux parts sur cinq, il en manque encore trois pour remplir la barre. Donc $\\frac{2}{5}$ est plus petit que 1. Essaie avec $\\frac{1}{3}$ ou $\\frac{3}{8}$ : à chaque fois, la partie colorée n'atteint pas le bout de la barre."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Deux parts sur cinq : $\\frac{2}{5} < 1$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "À l'inverse, quand le numérateur est plus grand que le dénominateur, la fraction dépasse 1. Regarde $\\frac{5}{4}$ : tu as cinq parts sur quatre, c'est une barre entière plus une part en plus. Donc $\\frac{5}{4}$ est plus grand que 1. Tu peux aussi rencontrer $\\frac{7}{6}$ ou $\\frac{9}{8}$ ; chacune de ces fractions représente plus d'une unité complète. Maintenant, tu sais situer n'importe quelle fraction par rapport à 1."
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "Cinq parts sur quatre : $\\frac{5}{4} > 1$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Est-ce que $\\frac{4}{4}$ est plus petit, égal ou plus grand que 1 ?",
+              "answer": "Égal à 1",
+              "hint": "Numérateur et dénominateur identiques.",
+              "explanation": "Lorsque le numérateur et le dénominateur sont égaux, la fraction vaut exactement 1. Donc $\\frac{4}{4} = 1$."
+            },
+            {
+              "question": "Compare $\\frac{2}{5}$ à 1.",
+              "answer": "Plus petit que 1",
+              "hint": "Numérateur plus petit que dénominateur.",
+              "explanation": "Ici $2 < 5$, donc la fraction représente moins d'une unité entière : $\\frac{2}{5} < 1$."
+            },
+            {
+              "question": "Compare $\\frac{5}{4}$ à 1.",
+              "answer": "Plus grand que 1",
+              "hint": "Numérateur plus grand que dénominateur.",
+              "explanation": "Puisque $5 > 4$, la fraction dépasse une unité : $\\frac{5}{4} > 1$."
+            }
+          ]
+        },
+        {
+          "title": "Justifier à l'aide d'une représentation.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Justifier avec un dessin"
+            },
+            {
+              "type": "paragraph",
+              "content": "Ici, nous allons apprendre à justifier nos comparaisons en dessinant. Lorsque tu dois dire laquelle de deux fractions est la plus grande, trace deux barres de même longueur. Divise la première en trois parts égales pour $\\frac{1}{3}$ et colorie une part. Divise la seconde aussi en trois parts et colorie deux parts pour $\\frac{2}{3}$. La barre dont la partie colorée est la plus longue correspond à la fraction la plus grande."
+            },
+            {
+              "type": "fraction",
+              "numerator": 1,
+              "denominator": 3,
+              "shape": "bar",
+              "caption": "Un tiers : $\\frac{1}{3}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu peux aussi utiliser une droite numérique graduée. Place $\\frac{1}{2}$ et $\\frac{3}{4}$ sur la droite entre 0 et 1. Comme $\\frac{3}{4}$ est plus loin à droite, elle est plus grande. Essaie avec $\\frac{2}{5}$ et $\\frac{4}{5}$ : celle qui se trouve le plus à droite gagne. Cette représentation visuelle te donne une preuve claire sans calcul compliqué."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $\\frac{1}{2}$ et $\\frac{3}{4}$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.5,
+                  "label": "1/2"
+                },
+                {
+                  "value": 0.75,
+                  "label": "3/4"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, entraîne-toi à expliquer avec tes propres mots. Dis par exemple : « $\\frac{3}{5}$ est plus grande que $\\frac{2}{5}$ parce que les parts ont la même taille et qu'il y en a trois au lieu de deux ». Cette phrase montre que tu as compris le rôle du dénominateur et du numérateur. Bravo, tu sais maintenant justifier tes réponses comme un vrai mathématicien !"
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "Trois cinquièmes : $\\frac{3}{5}$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux fractions qui ont le même dénominateur.",
+                "Je sais dire si une fraction est plus petite, égale ou plus grande que 1.",
+                "Je sais justifier ma comparaison en dessinant des barres ou en utilisant une droite numérique."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dessine deux barres pour $\\frac{1}{3}$ et $\\frac{2}{3}$. Laquelle est plus grande ?",
+              "answer": "$\\frac{2}{3}$",
+              "hint": "Regarde la partie colorée de chaque barre.",
+              "explanation": "Les deux barres sont divisées en trois parts égales. La barre de $\\frac{2}{3}$ a deux parts colorées, celle de $\\frac{1}{3}$ n'en a qu'une. Donc $\\frac{2}{3} > \\frac{1}{3}$."
+            },
+            {
+              "question": "Sur une droite numérique, place $\\frac{1}{2}$ et $\\frac{3}{4}$. Laquelle est à droite ?",
+              "answer": "$\\frac{3}{4}$",
+              "hint": "Plus la fraction est grande, plus elle est à droite.",
+              "explanation": "Sur la droite de 0 à 1, $\\frac{1}{2}$ se trouve à 0,5 et $\\frac{3}{4}$ à 0,75. Comme 0,75 > 0,5, $\\frac{3}{4}$ est à droite de $\\frac{1}{2}$."
+            },
+            {
+              "question": "Explique pourquoi $\\frac{3}{5}$ est plus grande que $\\frac{2}{5}$ en utilisant un dessin.",
+              "answer": "Parce que les parts ont la même taille et qu'il y en a trois au lieu de deux.",
+              "hint": "Même dénominateur, compare le nombre de parts colorées.",
+              "explanation": "Les deux fractions ont le dénominateur 5, donc les parts sont identiques. $\\frac{3}{5}$ colorie trois parts, $\\frac{2}{5}$ seulement deux. Trois parts couvrent une plus grande longueur, donc $\\frac{3}{5} > \\frac{2}{5}$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

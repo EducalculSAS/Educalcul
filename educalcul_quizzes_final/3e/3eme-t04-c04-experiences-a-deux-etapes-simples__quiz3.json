@@ -1,0 +1,209 @@
+{
+  "_status": "done",
+  "_course_id": 476,
+  "_course_code": "3eme-t04-c04-experiences-a-deux-etapes-simples",
+  "_level": "3e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Interpréter",
+  "title": "Interpréter les expériences à deux étapes",
+  "questions": [
+    {
+      "text": "On lance un dé à six faces numérotées de 1 à 6, puis on lance une pièce de monnaie équilibrée. On note le résultat du dé puis celui de la pièce (P ou F). Quelle est la probabilité d'obtenir un nombre pair au dé et Pile à la pièce ?",
+      "options": [
+        "1/4",
+        "1/6",
+        "1/12",
+        "1/3"
+      ],
+      "correctAnswer": "1/4",
+      "explanation": "L'expérience comporte deux étapes indépendantes. Le dé a 6 issues équiproables dont 3 paires (2, 4, 6), donc probabilité $3/6 = 1/2$. La pièce a 2 issues équiproables dont 1 Pile, probabilité $1/2$. Par indépendance, on multiplie : $1/2 \\times 1/2 = 1/4$. L'option 1/6 correspond à la probabilité d'un seul couple précis (ex: 2 puis P). L'option 1/12 est le nombre total de couples possibles (12). L'option 1/3 est la probabilité d'avoir un nombre pair uniquement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une urne contient 3 boules rouges (R) et 2 boules bleues (B). On tire une boule, on note sa couleur, on la remet dans l'urne, puis on tire une seconde boule. L'arbre des probabilités est construit. Quelle est la probabilité d'obtenir deux boules de couleurs différentes ?",
+      "options": [
+        "12/25",
+        "6/25",
+        "13/25",
+        "1/2"
+      ],
+      "correctAnswer": "12/25",
+      "explanation": "Avec remise, les tirages sont indépendants. $P(R) = 3/5$, $P(B) = 2/5$. Les couples de couleurs différentes sont (R, B) et (B, R). $P(R \\text{ puis } B) = 3/5 \\times 2/5 = 6/25$. $P(B \\text{ puis } R) = 2/5 \\times 3/5 = 6/25$. Probabilité totale = $6/25 + 6/25 = 12/25$. L'option 6/25 correspond à un seul des deux ordres possibles. L'option 13/25 est la probabilité de deux boules de même couleur (complémentaire). L'option 1/2 est une approximation erronée.",
+      "points": 1,
+      "figure": {
+        "type": "probability_tree",
+        "caption": "Arbre des probabilités pour deux tirages avec remise (3R, 2B)",
+        "branches": [
+          {
+            "label": "R",
+            "probability": "3/5",
+            "children": [
+              {
+                "label": "R",
+                "probability": "3/5"
+              },
+              {
+                "label": "B",
+                "probability": "2/5"
+              }
+            ]
+          },
+          {
+            "label": "B",
+            "probability": "2/5",
+            "children": [
+              {
+                "label": "R",
+                "probability": "3/5"
+              },
+              {
+                "label": "B",
+                "probability": "2/5"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "text": "On lance deux dés à six faces équilibrés simultanément. On note la somme des points obtenus. En interprétant le tableau des issues possibles (36 couples équiproables), quelle est la probabilité que la somme soit supérieure ou égale à 10 ?",
+      "options": [
+        "1/6",
+        "1/4",
+        "1/12",
+        "5/18"
+      ],
+      "correctAnswer": "1/6",
+      "explanation": "Le tableau à double entrée compte 36 issues équiproables. Les couples donnant une somme $\\ge 10$ sont : somme 10 : (4,6), (5,5), (6,4) soit 3 cas ; somme 11 : (5,6), (6,5) soit 2 cas ; somme 12 : (6,6) soit 1 cas. Total favorable = $3+2+1 = 6$. Probabilité = $6/36 = 1/6$. L'option 1/4 correspond à 9 cas (erreur de comptage). L'option 1/12 correspond à 3 cas (somme = 10 seulement). L'option 5/18 correspond à 10 cas.",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Dé 1 \\ Dé 2",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "rows": [
+          [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          [
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          [
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          [
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          [
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          [
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Un jeu consiste à tourner une roue sectorisée en 4 parties égales numérotées 1, 2, 3, 4, puis à tirer une carte parmi 3 cartes étiquetées A, B, C. On note le couple (numéro, lettre). Sachant que la lettre tirée est une voyelle (A), quelle est la probabilité que le numéro soit pair ?",
+      "options": [
+        "1/2",
+        "1/4",
+        "1/3",
+        "2/3"
+      ],
+      "correctAnswer": "1/2",
+      "explanation": "C'est une probabilité conditionnelle. L'événement conditionnant est 'Lettre = A (voyelle)'. Les issues compatibles sont (1,A), (2,A), (3,A), (4,A) : 4 issues équiproables. Parmi elles, les numéros pairs sont 2 et 4, soit les issues (2,A) et (4,A) : 2 cas favorables. Probabilité = $2/4 = 1/2$. L'indépendance des étapes (roue et carte) implique que la condition sur la lettre ne change pas la probabilité sur le numéro. L'option 1/4 serait la probabilité d'un couple précis comme (2,A). L'option 1/3 confond avec le nombre de cartes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire deux boules successivement SANS remise dans une urne contenant 4 boules vertes (V) et 1 boule jaune (J). On considère l'événement A : 'Les deux boules sont de la même couleur' et l'événement B : 'La première boule est verte'. Quelle est la probabilité de l'événement A sachant B ?",
+      "options": [
+        "3/4",
+        "2/5",
+        "1/2",
+        "3/5"
+      ],
+      "correctAnswer": "3/4",
+      "explanation": "On cherche $P(A | B) = P(A \\cap B) / P(B)$. $P(B) = 4/5$ (4 vertes sur 5). $A \\cap B$ : 'Première verte ET même couleur' signifie 'Première verte ET deuxième verte'. Sans remise, après une verte tirée, il reste 3 vertes et 1 jaune (4 boules). $P(\\text{2e verte} | \\text{1e verte}) = 3/4$. Donc $P(A \\cap B) = P(\\text{1e V}) \\times P(\\text{2e V} | \\text{1e V}) = 4/5 \\times 3/4 = 3/5$. Finalement $P(A | B) = (3/5) / (4/5) = 3/4$. L'option 3/5 est $P(A \\cap B)$ (non conditionnelle). L'option 1/2 correspondrait à une erreur de comptage (ex: 2 vertes restantes). L'option 2/5 est la probabilité de tirer deux jaunes (impossible ici).",
+      "points": 1,
+      "figure": {
+        "type": "probability_tree",
+        "caption": "Arbre pour deux tirages sans remise (4V, 1J)",
+        "branches": [
+          {
+            "label": "V",
+            "probability": "4/5",
+            "children": [
+              {
+                "label": "V",
+                "probability": "3/4"
+              },
+              {
+                "label": "J",
+                "probability": "1/4"
+              }
+            ]
+          },
+          {
+            "label": "J",
+            "probability": "1/5",
+            "children": [
+              {
+                "label": "V",
+                "probability": "1"
+              },
+              {
+                "label": "J",
+                "probability": "0"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

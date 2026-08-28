@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 499,
+  "_course_code": "2nde-t01-c04-divisibilite-et-nombres-premiers",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Décomposition",
+  "title": "Quiz : Décomposition en facteurs premiers",
+  "questions": [
+    {
+      "text": "Quelle est la décomposition en facteurs premiers de $60$ ?",
+      "options": [
+        "$2 \\times 3 \\times 10$",
+        "$2^2 \\times 3 \\times 5$",
+        "$4 \\times 3 \\times 5$",
+        "$2 \\times 30$"
+      ],
+      "correctAnswer": "$2^2 \\times 3 \\times 5$",
+      "explanation": "On divise successivement par les nombres premiers : $60 = 2 \\times 30 = 2 \\times 2 \\times 15 = 2 \\times 2 \\times 3 \\times 5 = 2^2 \\times 3 \\times 5$. Les autres propositions contiennent des facteurs non premiers ($10$, $4$, $30$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $n = 2^3 \\times 3^2 \\times 5$. Combien de diviseurs positifs l'entier $n$ possède-t-il ?",
+      "options": [
+        "$6$",
+        "$12$",
+        "$24$",
+        "$30$"
+      ],
+      "correctAnswer": "$24$",
+      "explanation": "Si $n = p_1^{\\alpha_1} \\times p_2^{\\alpha_2} \\times \\dots$, le nombre de diviseurs est $(\\alpha_1+1)(\\alpha_2+1)\\dots$. Ici $(3+1)(2+1)(1+1) = 4 \\times 3 \\times 2 = 24$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne $a = 2^4 \\times 3^2 \\times 7$ et $b = 2^2 \\times 3^3 \\times 5$. Quelle est la décomposition en facteurs premiers du PGCD de $a$ et $b$ ?",
+      "options": [
+        "$2^2 \\times 3^2$",
+        "$2^4 \\times 3^3$",
+        "$2^2 \\times 3^2 \\times 5 \\times 7$",
+        "$2^6 \\times 3^5 \\times 5 \\times 7$"
+      ],
+      "correctAnswer": "$2^2 \\times 3^2$",
+      "explanation": "Le PGCD se construit en prenant les facteurs communs avec le plus petit exposant. Communs : $2$ (min $4,2 = 2$) et $3$ (min $2,3 = 2$). Les facteurs $5$ et $7$ ne sont pas communs. Donc $2^2 \\times 3^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le plus petit entier naturel non nul $k$ tel que $252 \\times k$ soit un carré parfait ?",
+      "options": [
+        "$3$",
+        "$5$",
+        "$7$",
+        "$21$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "On décompose $252 = 2^2 \\times 3^2 \\times 7$. Pour obtenir un carré parfait, tous les exposants doivent être pairs. L'exposant de $7$ est $1$ (impair), il faut le multiplier par $7$ pour obtenir $7^2$. $k=7$ donne $2^2 \\times 3^2 \\times 7^2 = (2 \\times 3 \\times 7)^2 = 42^2$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $N = 2^a \\times 3^b \\times 5^c$ avec $a,b,c$ entiers naturels non nuls. On sait que $N$ a exactement $24$ diviseurs et que $N$ est multiple de $150$. Quelle affirmation est nécessairement vraie ?",
+      "options": [
+        "$a \\ge 1, b \\ge 1, c \\ge 2$",
+        "$a \\ge 2, b \\ge 1, c \\ge 1$",
+        "$a \\ge 1, b \\ge 2, c \\ge 1$",
+        "$a \\ge 2, b \\ge 2, c \\ge 2$"
+      ],
+      "correctAnswer": "$a \\ge 1, b \\ge 1, c \\ge 2$",
+      "explanation": "$150 = 2 \\times 3 \\times 5^2$. Pour que $N$ soit multiple de $150$, ses exposants doivent satisfaire $a \\ge 1$, $b \\ge 1$, $c \\ge 2$. Le nombre de diviseurs est $(a+1)(b+1)(c+1)=24$. Avec $c \\ge 2$, $c+1 \\ge 3$. Les valeurs minimales $a=1, b=1, c=2$ donnent $(2)(2)(3)=12$ diviseurs. Pour atteindre $24$, il faut augmenter $a$ ou $b$ (ex: $a=3,b=1,c=2 \\to 4\\times2\\times3=24$). La condition $c \\ge 2$ est la seule imposée par le multiple de $150$ parmi les choix.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

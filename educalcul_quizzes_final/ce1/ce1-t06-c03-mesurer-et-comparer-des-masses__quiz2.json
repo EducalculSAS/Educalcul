@@ -1,0 +1,122 @@
+{
+  "_status": "done",
+  "_course_id": 119,
+  "_course_code": "ce1-t06-c03-mesurer-et-comparer-des-masses",
+  "_level": "ce1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Lire une balance simple",
+  "title": "Lire une balance simple",
+  "questions": [
+    {
+      "text": "Regarde la balance. Le plateau de gauche porte une masse de $2$ kg et le plateau de droite une masse de $3$ kg. Quel plateau descend ?",
+      "options": [
+        "Le plateau de gauche",
+        "Le plateau de droite",
+        "Les deux plateaux sont à la même hauteur",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "Le plateau de droite",
+      "explanation": "La balance compare les masses : le côté le plus lourd descend. $3$ kg est plus grand que $2$ kg, donc le plateau de droite est plus bas.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          2
+        ],
+        "right": [
+          3
+        ],
+        "caption": "Balance avec 2 kg à gauche et 3 kg à droite"
+      }
+    },
+    {
+      "text": "Sur cette balance, le plateau de gauche porte $4$ kg et le plateau de droite aussi $4$ kg. Que montre la balance ?",
+      "options": [
+        "Le plateau de gauche descend",
+        "Le plateau de droite descend",
+        "Les plateaux sont en équilibre",
+        "La balance est cassée"
+      ],
+      "correctAnswer": "Les plateaux sont en équilibre",
+      "explanation": "Lorsque les deux masses sont égales, la balance reste horizontale : les plateaux sont en équilibre.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          4
+        ],
+        "right": [
+          4
+        ],
+        "caption": "Balance en équilibre avec 4 kg de chaque côté"
+      }
+    },
+    {
+      "text": "La balance est en équilibre. À gauche il y a une masse de $5$ kg. Quelle est la masse de l'objet posé sur le plateau de droite ?",
+      "options": [
+        "$5$ kg",
+        "$4$ kg",
+        "$6$ kg",
+        "$3$ kg"
+      ],
+      "correctAnswer": "$5$ kg",
+      "explanation": "Pour que la balance soit en équilibre, les masses des deux plateaux doivent être identiques. Donc l'objet de droite pèse aussi $5$ kg.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          5
+        ],
+        "right": [
+          5
+        ],
+        "caption": "Balance en équilibre avec 5 kg à gauche"
+      }
+    },
+    {
+      "text": "Sur le plateau de gauche, on a mis deux masses : $2$ kg et $3$ kg. Le plateau de droite porte une seule masse de $5$ kg. La balance est en équilibre. Combien pèse l'objet sur le plateau de droite ?",
+      "options": [
+        "$5$ kg",
+        "$2$ kg",
+        "$3$ kg",
+        "$7$ kg"
+      ],
+      "correctAnswer": "$5$ kg",
+      "explanation": "La masse totale à gauche est $2+3 = 5$ kg. Comme la balance est en équilibre, la masse à droite doit être aussi $5$ kg.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          2,
+          3
+        ],
+        "right": [
+          5
+        ],
+        "caption": "Balance avec 2 kg et 3 kg à gauche, 5 kg à droite"
+      }
+    },
+    {
+      "text": "La balance penche vers la gauche. À gauche il y a $6$ kg. À droite il y a $2$ kg et un objet de masse inconnue. Quelle pourrait être la masse de cet objet pour que la balance penche à gauche ?",
+      "options": [
+        "$3$ kg",
+        "$4$ kg",
+        "$5$ kg",
+        "$6$ kg"
+      ],
+      "correctAnswer": "$3$ kg",
+      "explanation": "Pour que le côté gauche descende, sa masse ($6$ kg) doit être strictement supérieure à la masse totale à droite ($2 + x$). Il faut $2 + x < 6$, donc $x < 4$. Parmi les propositions, seule $3$ kg vérifie cette condition.",
+      "points": 1,
+      "figure": {
+        "type": "balance_scale",
+        "left": [
+          6
+        ],
+        "right": [
+          2
+        ],
+        "caption": "Balance penchant à gauche, 6 kg à gauche, 2 kg et inconnu à droite"
+      }
+    }
+  ]
+}

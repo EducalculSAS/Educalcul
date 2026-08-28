@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 175,
+  "_course_code": "ce2-t04-c07-decomposer-pour-calculer",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Approfondissement : Additionner par morceaux",
+  "title": "Additionner par morceaux - Algorithmes",
+  "blocks": [
+    {
+      "title": "Addition simple par dizaines et unités",
+      "content": "Écris un algorithme (suite d'instructions) pour calculer $27 + 35$ en décomposant les nombres en dizaines et unités, puis en additionnant chaque partie séparément.",
+      "correctAnswer": "Algorithme :\\n1. Décomposer 27 en 20 + 7.\\n2. Décomposer 35 en 30 + 5.\\n3. Additionner les dizaines : 20 + 30 = 50.\\n4. Additionner les unités : 7 + 5 = 12.\\n5. Additionner les résultats partiels : 50 + 12 = 62.\\n6. Afficher 62.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On sépare chaque nombre en dizaines et unités. On additionne les dizaines entre elles (20+30=50) et les unités entre elles (7+5=12). Puis on combine les deux totaux (50+12=62). Cette méthode évite la retenue immédiate et montre le principe de l'addition par morceaux.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition avec retenue par morceaux",
+      "content": "Propose un algorithme pour calculer $48 + 56$ en utilisant la décomposition en dizaines et unités, en gérant la retenue qui apparaît lors de l'addition des unités.",
+      "correctAnswer": "Algorithme :\\n1. Décomposer 48 en 40 + 8.\\n2. Décomposer 56 en 50 + 6.\\n3. Additionner les dizaines : 40 + 50 = 90.\\n4. Additionner les unités : 8 + 6 = 14.\\n5. Décomposer 14 en 10 + 4 (retenue de 10).\\n6. Ajouter la retenue aux dizaines : 90 + 10 = 100.\\n7. Additionner le reste des unités : 100 + 4 = 104.\\n8. Afficher 104.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Après avoir additionné les dizaines (90) et les unités (14), on voit que les unités donnent 14, soit 1 dizaine et 4 unités. On ajoute cette dizaine aux dizaines précédentes (90+10=100) puis on ajoute les 4 unités restantes pour obtenir 104.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Addition de trois nombres par morceaux",
+      "content": "Écris un algorithme pour calculer $123 + 45 + 37$ en décomposant chaque nombre en centaines, dizaines et unités, puis en additionnant chaque colonne séparément.",
+      "correctAnswer": "Algorithme :\\n1. Décomposer 123 en 100 + 20 + 3.\\n2. Décomposer 45 en 0 + 40 + 5.\\n3. Décomposer 37 en 0 + 30 + 7.\\n4. Additionner les centaines : 100 + 0 + 0 = 100.\\n5. Additionner les dizaines : 20 + 40 + 30 = 90.\\n6. Additionner les unités : 3 + 5 + 7 = 15.\\n7. Décomposer 15 en 10 + 5 (retenue de 10).\\n8. Ajouter la retenue aux dizaines : 90 + 10 = 100.\\n9. Décomposer 100 en 1 centaine + 0 dizaine.\\n10. Additionner les centaines : 100 (étape 4) + 100 (nouvelle centaine) = 200.\\n11. Les dizaines finales sont 0, les unités finales sont 5.\\n12. Résultat final : 200 + 0 + 5 = 205.\\n13. Afficher 205.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On additionne chaque ordre de grandeur séparément. Les unités donnent 15, ce qui crée une retenue de 10 ajoutée aux dizaines. Les dizaines deviennent 100, ce qui crée une nouvelle centaine ajoutée aux centaines initiales. Le total final est 205.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

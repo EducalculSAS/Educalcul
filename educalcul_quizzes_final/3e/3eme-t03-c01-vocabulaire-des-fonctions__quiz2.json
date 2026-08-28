@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 467,
+  "_course_code": "3eme-t03-c01-vocabulaire-des-fonctions",
+  "_level": "3e",
+  "_subject": "Proportionnalité et fonctions",
+  "_subtheme": "Notation f(x)",
+  "title": "Quiz : Notation f(x)",
+  "questions": [
+    {
+      "text": "Soit la fonction f définie par $f(x) = 3x - 4$. Quelle est l'image de $2$ par cette fonction ?",
+      "options": [
+        "2",
+        "10",
+        "-2",
+        "6"
+      ],
+      "correctAnswer": "2",
+      "explanation": "L'image de $2$ se note $f(2)$. On remplace $x$ par $2$ dans l'expression : $f(2) = 3 \\times 2 - 4 = 6 - 4 = 2$. Les autres réponses correspondent à des erreurs de calcul ou de signe.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction f définie par $f(x) = 5 - 2x$. Quel est l'antécédent de $1$ par f ?",
+      "options": [
+        "2",
+        "-2",
+        "3",
+        "1"
+      ],
+      "correctAnswer": "2",
+      "explanation": "On cherche $x$ tel que $f(x) = 1$. On résout l'équation $5 - 2x = 1$, soit $-2x = -4$, donc $x = 2$. Vérification : $f(2) = 5 - 4 = 1$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit la fonction f définie par $f(x) = x^2 + 1$. Quelle est l'expression littérale de $f(x+1)$ ?",
+      "options": [
+        "$x^2 + 2x + 2$",
+        "$x^2 + 2$",
+        "$x^2 + 1$",
+        "$x^2 + 2x + 1$"
+      ],
+      "correctAnswer": "$x^2 + 2x + 2$",
+      "explanation": "On remplace $x$ par $(x+1)$ : $f(x+1) = (x+1)^2 + 1 = x^2 + 2x + 1 + 1 = x^2 + 2x + 2$. L'option B oublie le terme $2x$, l'option C ne fait pas la substitution, l'option D oublie le $+1$ final.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le graphique ci-dessous représente la fonction f définie par $f(x) = 2x + 1$. En lisant graphiquement, quelle est la valeur de $f(-2)$ ?",
+      "options": [
+        "-3",
+        "-1",
+        "3",
+        "5"
+      ],
+      "correctAnswer": "-3",
+      "explanation": "Sur le graphique, on repère l'abscisse $-2$ sur l'axe des x, on monte jusqu'à la courbe, puis on lit l'ordonnée correspondante sur l'axe des y. Le point de la courbe d'abscisse $-2$ a pour ordonnée $-3$. On vérifie par le calcul : $f(-2) = 2 \\times (-2) + 1 = -4 + 1 = -3$.",
+      "points": 1,
+      "figure": {
+        "type": "graph",
+        "expression": "2*x+1",
+        "xmin": -5,
+        "xmax": 5,
+        "caption": "Courbe représentative de la fonction f définie par f(x)=2x+1"
+      }
+    },
+    {
+      "text": "Une fonction f est définie par $f(x) = ax + 3$ où $a$ est un nombre réel. Sachant que $f(4) = 15$, détermine la valeur de $a$.",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "2"
+      ],
+      "correctAnswer": "3",
+      "explanation": "On utilise la condition $f(4) = 15$ : $a \\times 4 + 3 = 15$, soit $4a = 12$, d'où $a = 3$. On vérifie : $f(x) = 3x + 3$, alors $f(4) = 12 + 3 = 15$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

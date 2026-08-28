@@ -1,0 +1,116 @@
+{
+  "_status": "done",
+  "_course_id": 479,
+  "_course_code": "3eme-t05-c01-pythagore-et-sa-reciproque",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Application : Pythagore et sa réciproque",
+  "title": "Applications du théorème de Pythagore et de sa réciproque",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$ rectangle en $A$, on sait que $AB = 3$ cm et $AC = 4$ cm. Quelle est la longueur de l'hypoténuse $BC$ ?",
+      "options": [
+        "$5$ cm",
+        "$7$ cm",
+        "$25$ cm",
+        "$12$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "On applique le théorème de Pythagore : $BC^2 = AB^2 + AC^2$. Donc $BC^2 = 3^2 + 4^2 = 9 + 16 = 25$. La longueur $BC$ est la racine carrée de $25$, soit $5$ cm. L'option $7$ cm correspond à l'addition des longueurs ($3+4$), $25$ cm à l'oubli de la racine carrée, et $12$ cm à la multiplication ($3 \\times 4$).",
+      "points": 1,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 3,
+        "b": 4,
+        "c": 5,
+        "caption": "Triangle rectangle 3-4-5 avec carrés sur les côtés"
+      }
+    },
+    {
+      "text": "Le triangle $DEF$ est rectangle en $D$. On a $DE = 12$ cm et $EF = 13$ cm. Quelle est la longueur du côté $DF$ ?",
+      "options": [
+        "$5$ cm",
+        "$25$ cm",
+        "$19$ cm",
+        "$144$ cm"
+      ],
+      "correctAnswer": "$5$ cm",
+      "explanation": "L'hypoténuse est $EF = 13$ cm. On utilise la relation $EF^2 = DE^2 + DF^2$, soit $DF^2 = EF^2 - DE^2 = 13^2 - 12^2 = 169 - 144 = 25$. Donc $DF = \\sqrt{25} = 5$ cm. L'option $25$ cm est l'erreur classique d'oublier la racine carrée. $144$ cm correspond à $12^2$. $19$ cm n'a pas de justification géométrique.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle DEF rectangle en D",
+        "vertexLabels": [
+          "D",
+          "E",
+          "F"
+        ],
+        "sideLabels": [
+          "13",
+          "?",
+          "12"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Un triangle a pour longueurs de côtés $7$ cm, $8$ cm et $10$ cm. Quelle est la nature de ce triangle ?",
+      "options": [
+        "C'est un triangle rectangle",
+        "C'est un triangle aigu",
+        "C'est un triangle obtus",
+        "On ne peut pas savoir"
+      ],
+      "correctAnswer": "C'est un triangle aigu",
+      "explanation": "On teste la réciproque de Pythagore avec le plus grand côté ($10$ cm). On calcule $7^2 + 8^2 = 49 + 64 = 113$ et $10^2 = 100$. Comme $113 > 100$, la somme des carrés des deux plus petits côtés est supérieure au carré du plus grand côté. L'angle opposé au côté de $10$ cm est donc aigu, et le triangle est aigu. Si l'égalité avait lieu, ce serait rectangle ; si la somme était plus petite, ce serait obtus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une échelle de $5$ m de long est appuyée contre un mur. Son pied est à $3$ m du mur. À quelle hauteur du sol se trouve le haut de l'échelle ?",
+      "options": [
+        "$4$ m",
+        "$2$ m",
+        "$16$ m",
+        "$8$ m"
+      ],
+      "correctAnswer": "$4$ m",
+      "explanation": "L'échelle, le mur et le sol forment un triangle rectangle. L'échelle est l'hypoténuse ($5$ m), la distance au mur est un côté de l'angle droit ($3$ m). On cherche l'autre côté $h$ : $h^2 = 5^2 - 3^2 = 25 - 9 = 16$, donc $h = 4$ m. $2$ m correspond à la soustraction $5-3$, $16$ m au carré de la hauteur sans racine, et $8$ m à l'addition $5+3$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Échelle contre un mur",
+        "vertexLabels": [
+          "Pied",
+          "Haut",
+          "Bas mur"
+        ],
+        "sideLabels": [
+          "5",
+          "3",
+          "?"
+        ],
+        "rightAngleAt": 0
+      }
+    },
+    {
+      "text": "Un rectangle a pour dimensions $30$ cm et $16$ cm. Quelle est la longueur de sa diagonale ?",
+      "options": [
+        "$34$ cm",
+        "$46$ cm",
+        "$1156$ cm",
+        "$14$ cm"
+      ],
+      "correctAnswer": "$34$ cm",
+      "explanation": "La diagonale d'un rectangle est l'hypoténuse d'un triangle rectangle dont les côtés de l'angle droit sont les côtés du rectangle. On applique Pythagore : $d^2 = 30^2 + 16^2 = 900 + 256 = 1156$. La diagonale vaut $\\sqrt{1156} = 34$ cm. $46$ cm est la somme des côtés, $1156$ cm est le carré de la diagonale (oubli de la racine), $14$ cm est la différence des côtés.",
+      "points": 1,
+      "figure": {
+        "type": "pythagoras_visualizer",
+        "a": 16,
+        "b": 30,
+        "c": 34,
+        "caption": "Rectangle 16x30 et sa diagonale"
+      }
+    }
+  ]
+}

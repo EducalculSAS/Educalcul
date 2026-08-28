@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 482,
+  "_course_code": "3eme-t05-c04-triangles-semblables",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Approfondissement : Reconnaître",
+  "title": "Quiz : Reconnaître les triangles semblables",
+  "questions": [
+    {
+      "text": "On donne les mesures des angles de quatre triangles : $\\triangle ABC$ a $30^\\circ$, $60^\\circ$, $90^\\circ$ ; $\\triangle DEF$ a $30^\\circ$, $60^\\circ$, $90^\\circ$ ; $\\triangle GHI$ a $40^\\circ$, $70^\\circ$, $70^\\circ$ ; $\\triangle JKL$ a $45^\\circ$, $45^\\circ$, $90^\\circ$. Quelle paire de triangles est semblable ?",
+      "options": [
+        "Triangle ABC et triangle DEF",
+        "Triangle ABC et triangle GHI",
+        "Triangle DEF et triangle JKL",
+        "Triangle GHI et triangle JKL"
+      ],
+      "correctAnswer": "Triangle ABC et triangle DEF",
+      "explanation": "Deux triangles sont semblables s'ils ont deux angles respectifs égaux (critère AA). Les triangles ABC et DEF possèdent les trois angles identiques ($30^\\circ$, $60^\\circ$, $90^\\circ$), donc ils sont semblables. Les autres paires n'ont pas deux angles égaux en commun.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Les longueurs des côtés de trois triangles sont : $\\triangle PQR$ : $3$, $4$, $5$ ; $\\triangle STU$ : $6$, $8$, $10$ ; $\\triangle VWX$ : $5$, $12$, $13$. Laquelle des affirmations suivantes est vraie ?",
+      "options": [
+        "Triangle PQR et triangle STU sont semblables",
+        "Triangle PQR et triangle VWX sont semblables",
+        "Triangle STU et triangle VWX sont semblables",
+        "Aucun couple de triangles n'est semblable"
+      ],
+      "correctAnswer": "Triangle PQR et triangle STU sont semblables",
+      "explanation": "Les triangles PQR et STU ont des côtés dans le rapport $3:6 = 4:8 = 5:10 = 1:2$, donc ils sont semblables (critère SSS). Les triangles PQR et VWX n'ont pas de rapports constants, ni STU et VWX.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $\\triangle ABC$, on a $AB = 4$, $AC = 6$ et $\\angle A = 50^\\circ$. Dans le triangle $\\triangle DEF$, on a $DE = 8$, $DF = 12$ et $\\angle D = 50^\\circ$. Quelle conclusion peut-on tirer ?",
+      "options": [
+        "Les triangles ABC et DEF sont semblables",
+        "Les triangles ABC et DEF ne sont pas semblables car les côtés ne sont pas proportionnels",
+        "Les triangles ABC et DEF sont semblables seulement si angle B = angle E",
+        "On ne peut pas conclure sans connaître le troisième côté"
+      ],
+      "correctAnswer": "Les triangles ABC et DEF sont semblables",
+      "explanation": "Le rapport $AB/DE = 4/8 = 1/2$ et $AC/DF = 6/12 = 1/2$, les deux côtés sont proportionnels et l'angle compris $\\angle A = \\angle D = 50^\\circ$. Selon le critère SAS, les triangles sont semblables.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans la figure, les droites $(BC)$ et $(DE)$ sont parallèles. Le point $A$ est commun aux deux triangles $\\triangle ABC$ et $\\triangle ADE$. Quelle affirmation est correcte ?",
+      "options": [
+        "Les triangles ABC et ADE sont semblables par le critère AA",
+        "Les triangles ABC et ADE sont semblables par le critère SSS",
+        "Les triangles ABC et ADE ne sont pas semblables",
+        "Les triangles ABC et ADE sont semblables seulement si AB = AD"
+      ],
+      "correctAnswer": "Les triangles ABC et ADE sont semblables par le critère AA",
+      "explanation": "Comme $(BC) \\parallel (DE)$, les angles $\\angle ABC = \\angle ADE$ et $\\angle ACB = \\angle AED$ (angles correspondants). Ils partagent aussi $\\angle A$. Donc deux angles égaux => AA.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les propositions suivantes, laquelle est toujours vraie pour deux triangles semblables ?",
+      "options": [
+        "Leurs aires sont égales",
+        "Leurs périmètres sont proportionnels au coefficient de similitude",
+        "Leurs angles correspondants sont supplémentaires",
+        "Leurs côtés correspondants sont parallèles"
+      ],
+      "correctAnswer": "Leurs périmètres sont proportionnels au coefficient de similitude",
+      "explanation": "Dans des triangles semblables, les longueurs des côtés correspondants sont proportionnelles au coefficient de similitude $k$. Par conséquent, les périmètres, sommes des côtés, le sont aussi. Les aires sont proportionnelles à $k^2$, pas égales. Les angles correspondants sont égaux, pas supplémentaires. Les côtés correspondants ne sont pas nécessairement parallèles.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

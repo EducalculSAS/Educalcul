@@ -1,0 +1,70 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 155,
+  "_course_code": "ce2-t02-c04-fractions-equivalentes-simples",
+  "_level": "ce2",
+  "_subject": "Fractions et nombres décimaux en contexte",
+  "_subtheme": "Approfondissement : Reconnaître 1/2=2/4 sur dessin",
+  "title": "Reconnaissance de fractions équivalentes $1/2$ = $2/4$",
+  "blocks": [
+    {
+      "title": "Question 1 : Identifier la fraction d'un dessin",
+      "content": "Observe le dessin ci-dessous. Écris un algorithme (une suite d'instructions claires) pour déterminer quelle fraction est représentée par la partie colorée.",
+      "correctAnswer": "Algorithme :\\nÉtape un : compter le nombre total de parts égales dans la figure.\\nÉtape deux : compter le nombre de parts colorées.\\nÉtape trois : écrire la fraction sous la forme (parts colorées) / (total parts).\\nPour le dessin donné, le total est $2$ et les parts colorées sont $1$, donc la fraction est $1/2$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'algorithme consiste à compter les parties totales et les parties colorées, puis à former la fraction. Sur le dessin, la barre est divisée en $2$ parties égales et $1$ est colorée, ce qui donne $1/2$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 1,
+        "denominator": 2,
+        "shape": "bar",
+        "caption": "Fraction $1/2$ représentée par une barre"
+      }
+    },
+    {
+      "title": "Question 2 : Identifier la fraction d'un autre dessin",
+      "content": "Observe le deuxième dessin. Écris un algorithme pour déterminer la fraction représentée par la partie colorée.",
+      "correctAnswer": "Algorithme :\\nÉtape un : compter le nombre total de parts égales dans la figure.\\nÉtape deux : compter le nombre de parts colorées.\\nÉtape trois : écrire la fraction sous la forme (parts colorées) / (total parts).\\nPour ce dessin, le total est $4$ et les parts colorées sont $2$, donc la fraction est $2/4$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On applique le même algorithme : la barre est divisée en $4$ parties égales, $2$ sont colorées, ce qui donne $2/4$.",
+      "points": 2,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 4,
+        "shape": "bar",
+        "caption": "Fraction $2/4$ représentée par une barre"
+      }
+    },
+    {
+      "title": "Question 3 : Comparer les deux fractions et décider si elles sont équivalentes",
+      "content": "En te basant sur les deux fractions trouvées, écris un raisonnement structuré (ou un algorithme) pour montrer que $1/2$ et $2/4$ sont équivalentes.",
+      "correctAnswer": "Raisonnement :\\nÉtape un : multiplier le numérateur de la première fraction par le dénominateur de la seconde : $1 \\times 4 = 4$.\\nÉtape deux : multiplier le numérateur de la seconde fraction par le dénominateur de la première : $2 \\times 2 = 4$.\\nÉtape trois : comme les deux produits sont égaux ($4 = 4$), les fractions sont équivalentes.\\nOn peut aussi diviser : $1/2 = 0,5$ et $2/4 = 0,5$, donc elles représentent la même quantité.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le produit en croix permet de vérifier l'équivalence sans calculer la valeur décimale. Ici $1 \\times 4 = 2 \\times 2$, donc $1/2 = 2/4$. La division donne aussi $0,5$ pour les deux.",
+      "points": 2,
+      "figure": {
+        "type": "fraction_strips",
+        "fractions": [
+          {
+            "numerator": 1,
+            "denominator": 2
+          },
+          {
+            "numerator": 2,
+            "denominator": 4
+          }
+        ],
+        "caption": "Comparaison de $1/2$ et $2/4$"
+      }
+    }
+  ]
+}

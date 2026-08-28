@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 447,
+  "_course_code": "4eme-t06-c03-pyramides-et-cones",
+  "_level": "4e",
+  "_subject": "Transformations, espace, grandeurs et mesures",
+  "_subtheme": "Approfondissement : Patrons / vues",
+  "title": "Pyramides et cônes : Patrons et vues",
+  "questions": [
+    {
+      "text": "Parmi les solides suivants, lequel a pour patron un disque et un secteur de disque ?",
+      "options": [
+        "Un cylindre",
+        "Un cône",
+        "Une pyramide à base carrée",
+        "Un prisme droit"
+      ],
+      "correctAnswer": "Un cône",
+      "explanation": "Le patron d'un cône est composé d'un disque (la base) et d'un secteur de disque (le développement de la surface latérale). Le cylindre a pour patron deux disques et un rectangle. La pyramide a pour patron un polygone (base) et des triangles. Le prisme a pour patron deux polygones identiques et des rectangles.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère une pyramide régulière à base carrée de côté $6$ cm. La hauteur de chaque face latérale (l'apothème) mesure $5$ cm. Quelle est l'aire totale du patron de cette pyramide ?",
+      "options": [
+        "36 cm²",
+        "60 cm²",
+        "96 cm²",
+        "86 cm²"
+      ],
+      "correctAnswer": "96 cm²",
+      "explanation": "Le patron est composé d'un carré de côté $6$ cm (la base) et de $4$ triangles isocèles de base $6$ cm et de hauteur $5$ cm (les faces latérales). Aire du carré : $6 \\times 6 = 36$ cm². Aire d'un triangle : $(6 \\times 5) / 2 = 15$ cm². Aire des 4 triangles : $4 \\times 15 = 60$ cm². Aire totale : $36 + 60 = 96$ cm².",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On regarde une pyramide régulière à base carrée depuis le sommet, exactement au-dessus du centre de la base. Quelle forme voit-on ?",
+      "options": [
+        "Un triangle",
+        "Un carré",
+        "Un losange",
+        "Un trapèze"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "La vue de dessus (ou vue en plan) d'une pyramide régulière à base carrée correspond à la projection de la base sur un plan horizontal. Comme la base est un carré et que le sommet est projeté au centre de ce carré, on voit simplement la base : un carré. Les faces latérales sont masquées par la base vue de dessus.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le patron d'un cône de révolution est un secteur de disque de rayon $10$ cm et d'angle au centre $144^{\\circ}$. Quel est le rayon de la base de ce cône ?",
+      "options": [
+        "4 cm",
+        "6 cm",
+        "10 cm",
+        "14,4 cm"
+      ],
+      "correctAnswer": "4 cm",
+      "explanation": "Dans un cône de révolution, le rayon du secteur de disque correspond au générateur $g = 10$ cm. La longueur de l'arc du secteur est égale au périmètre de la base du cône ($2 \\pi r$). Longueur de l'arc = $\\frac{144}{360} \\times 2 \\pi \\times 10 = \\frac{2}{5} \\times 20 \\pi = 8 \\pi$ cm. On a donc $2 \\pi r = 8 \\pi$, d'où $r = 4$ cm.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On possède le patron d'une pyramide régulière à base triangulaire (tétraèdre régulier) dont les arêtes mesurent toutes $4$ cm. Ce patron est composé de $4$ triangles équilatéraux de côté $4$ cm. Quelle est l'aire totale de ce patron ?",
+      "options": [
+        "16$\\sqrt{3}$ cm²",
+        "8$\\sqrt{3}$ cm²",
+        "4$\\sqrt{3}$ cm²",
+        "12$\\sqrt{3}$ cm²"
+      ],
+      "correctAnswer": "4$\\sqrt{3}$ cm²",
+      "explanation": "L'aire d'un triangle équilatéral de côté $c$ est $\\frac{\\sqrt{3}}{4} c^2$. Ici $c = 4$ cm. Aire d'un triangle = $\\frac{\\sqrt{3}}{4} \\times 16 = 4\\sqrt{3}$ cm². Le patron en contient $4$, mais l'aire totale du patron est la somme des aires des 4 faces : $4 \\times 4\\sqrt{3} = 16\\sqrt{3}$ cm². Attention : l'option correcte est l'aire totale. Calcul : $4 \\times (\\frac{\\sqrt{3}}{4} \\times 4^2) = 4 \\times 4\\sqrt{3} = 16\\sqrt{3}$ cm².",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,415 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.969318+00:00",
+  "id": 156,
+  "code": "ce2-t02-c05",
+  "title": "Comparer des fractions simples",
+  "description": "Cours structuré Educalcul : Comparer des fractions simples.",
+  "subject": "Fractions et nombres décimaux en contexte",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Fractions et nombres décimaux en contexte",
+    "titre_du_cours": "Comparer des fractions simples",
+    "objectif_global": "Comparer des fractions simples",
+    "mini_lecons_imposees": [
+      "Même dénominateur.",
+      "Même numérateur dans cas accessibles.",
+      "Comparer à 1."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Fractions et nombres décimaux en contexte",
+      "lessons": [
+        {
+          "title": "Même dénominateur.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Même dénominateur : comparer les numérateurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine deux parts de gâteau découpées en huit morceaux identiques. La première part correspond à trois morceaux, la seconde à cinq morceaux. Comme le découpage est le même, il suffit de compter les morceaux pour savoir laquelle est la plus grande."
+            },
+            {
+              "type": "definition",
+              "term": "dénominateur",
+              "definition": "Le nombre écrit sous la barre de fraction. Il indique en combien de parts égales l'unité est divisée.",
+              "example": "Dans $\\frac{3}{8}$, le dénominateur est $8$."
+            },
+            {
+              "type": "definition",
+              "term": "numérateur",
+              "definition": "Le nombre écrit au‑dessus de la barre de fraction. Il montre combien de parts sont prises.",
+              "example": "Dans $\\frac{5}{8}$, le numérateur est $5$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "$\\frac{3}{8}$ : trois parts sur huit"
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "$\\frac{5}{8}$ : cinq parts sur huit"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour comparer deux fractions qui ont le même dénominateur, regarde seulement les numérateurs. Celui qui est le plus grand correspond à la fraction la plus grande, parce que les parts ont toutes la même taille."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Vérifier le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Assure‑toi que les deux fractions possèdent le même nombre sous la barre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les numérateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le numérateur le plus grand désigne la fraction la plus grande."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire le signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilise $>$, $<$ ou $=$ selon le résultat."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Si les deux numérateurs sont identiques, les fractions sont exactement égales. Par exemple, $\\frac{4}{9}$ et $\\frac{4}{9}$ représentent la même quantité, car le nombre de parts prises et la taille des parts sont les mêmes."
+            },
+            {
+              "type": "fraction",
+              "numerator": 4,
+              "denominator": 9,
+              "shape": "bar",
+              "caption": "$\\frac{4}{9}$ : quatre parts sur neuf"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant comparer des fractions qui partagent le même dénominateur. Dans la prochaine leçon, nous verrons comment faire quand ce sont les numérateurs qui sont identiques."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{2}{7}$ et $\\frac{5}{7}$ en utilisant le signe $>$, $<$ ou $=$.",
+              "answer": "$\\frac{2}{7} < \\frac{5}{7}$",
+              "hint": "Regarde les numérateurs, le dénominateur est le même.",
+              "explanation": "Comme le dénominateur $7$ est identique, la fraction qui a le plus grand numérateur ($5$) est la plus grande."
+            },
+            {
+              "question": "Laquelle est la plus grande : $\\frac{6}{11}$ ou $\\frac{6}{11}$ ?",
+              "answer": "$\\frac{6}{11} = \\frac{6}{11}$",
+              "hint": "Les deux fractions sont écrites de la même façon.",
+              "explanation": "Numérateurs et dénominateurs sont égaux, donc les fractions sont égales."
+            },
+            {
+              "question": "Écris le bon signe entre $\\frac{4}{9}$ et $\\frac{7}{9}$.",
+              "answer": "$\\frac{4}{9} < \\frac{7}{9}$",
+              "hint": "Compare $4$ et $7$.",
+              "explanation": "Le dénominateur $9$ est commun, le numérateur $7$ est plus grand que $4$, donc $\\frac{7}{9}$ est plus grande."
+            }
+          ]
+        },
+        {
+          "title": "Même numérateur dans cas accessibles.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Même numérateur : comparer les dénominateurs"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons deux barres de chocolat. La première est partagée en cinq carrés, la seconde en sept carrés. Si tu prends deux carrés sur chaque barre, les parts ne font pas la même taille : plus il y a de carrés au total, plus chaque carré est petit."
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 5,
+              "shape": "bar",
+              "caption": "$\\frac{2}{5}$ : deux parts sur cinq"
+            },
+            {
+              "type": "fraction",
+              "numerator": 2,
+              "denominator": 7,
+              "shape": "bar",
+              "caption": "$\\frac{2}{7}$ : deux parts sur sept"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand les numérateurs sont identiques, la fraction qui a le plus petit dénominateur est la plus grande, car l'unité est découpée en moins de morceaux, donc chaque morceau est plus gros."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Repérer le numérateur commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifie que le nombre au‑dessus de la barre est le même pour les deux fractions."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer les dénominateurs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Le dénominateur le plus petit correspond à la fraction la plus grande."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Noter le résultat",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Écris $>$, $<$ ou $=$ selon la comparaison."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien visualiser, place les fractions sur une droite graduée de $0$ à $1$. Tu verras que $\\frac{2}{5}$ se trouve plus à droite que $\\frac{2}{7}$, confirmant qu'elle est plus grande."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $\\frac{2}{5}$ et $\\frac{2}{7}$",
+              "min": 0,
+              "max": 1,
+              "points": [
+                {
+                  "value": 0.4,
+                  "label": "$\\frac{2}{5}$"
+                },
+                {
+                  "value": 0.2857,
+                  "label": "$\\frac{2}{7}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant deux outils : comparer les numérateurs quand les dénominateurs sont égaux, et comparer les dénominateurs quand les numérateurs sont égaux. La dernière leçon montrera comment utiliser le nombre $1$ comme repère."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Compare $\\frac{3}{8}$ et $\\frac{3}{10}$.",
+              "answer": "$\\frac{3}{8} > \\frac{3}{10}$",
+              "hint": "Le numérateur est $3$ pour les deux, regarde les dénominateurs.",
+              "explanation": "Comme $8 < 10$, les parts de $\\frac{3}{8}$ sont plus grandes, donc la fraction est plus grande."
+            },
+            {
+              "question": "Laquelle est la plus petite : $\\frac{5}{12}$ ou $\\frac{5}{9}$ ?",
+              "answer": "$\\frac{5}{12} < \\frac{5}{9}$",
+              "hint": "Compare $12$ et $9$.",
+              "explanation": "Le dénominateur $12$ est plus grand que $9$, donc chaque part est plus petite, ce qui rend $\\frac{5}{12}$ plus petite."
+            },
+            {
+              "question": "Place $\\frac{4}{6}$ et $\\frac{4}{5}$ sur une droite de $0$ à $1$ et dis laquelle est à droite.",
+              "answer": "$\\frac{4}{5}$ est à droite de $\\frac{4}{6}$.",
+              "hint": "Transforme en décimal si besoin : $4/6 \\approx 0,67$, $4/5 = 0,8$.",
+              "explanation": "Sur la droite, la fraction la plus grande se trouve plus près de $1$. Comme $0,8 > 0,67$, $\\frac{4}{5}$ est à droite."
+            }
+          ]
+        },
+        {
+          "title": "Comparer à 1.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Comparer une fraction à 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le nombre $1$ représente une unité entière. Une fraction vaut $1$ exactement quand son numérateur et son dénominateur sont égaux. Si le numérateur est plus grand, la fraction dépasse $1$ ; s'il est plus petit, elle reste en dessous de $1$."
+            },
+            {
+              "type": "fraction",
+              "numerator": 5,
+              "denominator": 4,
+              "shape": "bar",
+              "caption": "$\\frac{5}{4}$ : plus grande que $1$"
+            },
+            {
+              "type": "fraction",
+              "numerator": 7,
+              "denominator": 7,
+              "shape": "bar",
+              "caption": "$\\frac{7}{7}$ : égale à $1$"
+            },
+            {
+              "type": "fraction",
+              "numerator": 3,
+              "denominator": 8,
+              "shape": "bar",
+              "caption": "$\\frac{3}{8}$ : plus petite que $1$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour savoir où se situe une fraction par rapport à $1$, compare simplement le numérateur au dénominateur. C'est une règle rapide qui évite de dessiner à chaque fois."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lire le numérateur et le dénominateur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les deux nombres de la fraction."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Les comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si numérateur $>$ dénominateur → fraction $> 1$. Si numérateur $=$ dénominateur → fraction $= 1$. Sinon fraction $< 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Écrire la conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Note le signe $>$, $=$ ou $<$ entre la fraction et $1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette idée permet aussi de comparer deux fractions entre elles : si l'une est supérieure à $1$ et l'autre inférieure à $1$, la première est forcément la plus grande. Regardons $\\frac{5}{4}$ et $\\frac{3}{2}$ sur une droite."
+            },
+            {
+              "type": "number_line",
+              "caption": "Position de $\\frac{5}{4}$ et $\\frac{3}{2}$",
+              "min": 0,
+              "max": 2,
+              "points": [
+                {
+                  "value": 1.25,
+                  "label": "$\\frac{5}{4}$"
+                },
+                {
+                  "value": 1.5,
+                  "label": "$\\frac{3}{2}$"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais comparer deux fractions qui ont le même dénominateur.",
+                "Je sais comparer deux fractions qui ont le même numérateur.",
+                "Je sais dire si une fraction est plus grande, égale ou plus petite que 1.",
+                "Je peux utiliser ces trois méthodes pour ordonner plusieurs fractions."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Indique si $\\frac{9}{9}$ est $>$, $=$ ou $<$ à $1$.",
+              "answer": "$\\frac{9}{9} = 1$",
+              "hint": "Numérateur et dénominateur sont identiques.",
+              "explanation": "Quand numérateur = dénominateur, la fraction vaut exactement une unité."
+            },
+            {
+              "question": "Compare $\\frac{11}{6}$ et $1$.",
+              "answer": "$\\frac{11}{6} > 1$",
+              "hint": "Regarde si $11$ est plus grand que $6$.",
+              "explanation": "Le numérateur $11$ dépasse le dénominateur $6$, donc la fraction est supérieure à $1$."
+            },
+            {
+              "question": "Laquelle est la plus grande : $\\frac{5}{4}$ ou $\\frac{7}{10}$ ?",
+              "answer": "$\\frac{5}{4} > \\frac{7}{10}$",
+              "hint": "Compare chaque fraction à $1$ d'abord.",
+              "explanation": "$\\frac{5}{4} > 1$ alors que $\\frac{7}{10} < 1$, donc $\\frac{5}{4}$ est la plus grande."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

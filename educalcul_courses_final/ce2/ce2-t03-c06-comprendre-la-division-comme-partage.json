@@ -1,0 +1,411 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.001357+00:00",
+  "id": 165,
+  "code": "ce2-t03-c06",
+  "title": "Comprendre la division comme partage",
+  "description": "Cours structuré Educalcul : Comprendre la division comme partage.",
+  "subject": "Addition, soustraction, multiplication et division",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Addition, soustraction, multiplication et division",
+    "titre_du_cours": "Comprendre la division comme partage",
+    "objectif_global": "Comprendre la division comme partage",
+    "mini_lecons_imposees": [
+      "Partager équitablement.",
+      "Quotient et reste concrets.",
+      "Vérifier par multiplication."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Addition, soustraction, multiplication et division",
+      "lessons": [
+        {
+          "title": "Partager équitablement.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Partager équitablement"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu as $12$ bonbons dans ta main et que tu veux les donner à tes $3$ copains pour que tout le monde ait la même quantité. Tu donnes un bonbon au premier, un au deuxième, un au troisième, puis tu recommences jusqu'à ce qu'il n'en reste plus. Combien en a chaque copain ? C'est ça, partager équitablement : on répartit le total en parts toutes égales."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Copain 1",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Copain 2",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Copain 3",
+                  "value": 4,
+                  "tone": "gold"
+                }
+              ],
+              "caption": "12 bonbons partagés en 3 parts égales : chaque part vaut 4."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le schéma, la barre du haut représente les $12$ bonbons. Elle est coupée en $3$ rectangles de la même taille. Chaque rectangle correspond à la part d'un copain. On voit bien que $12$ divisé en $3$ parts égales fait $4$ par part. On écrit souvent cela avec le signe de la division : $12 \\div 3 = 4$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, changeons d'histoire. Tu as $15$ crayons de couleur et tu veux les ranger dans $5$ boîtes identiques, en mettant le même nombre de crayons dans chaque boîte. Tu commences par poser un crayon dans chaque boîte, puis un deuxième tour, puis un troisième. Au bout de trois tours, toutes les boîtes sont pleines et il n'y a plus de crayons. Combien y a-t-il de crayons par boîte ?"
+            },
+            {
+              "type": "bar_chart",
+              "caption": "5 boîtes avec chacune 3 crayons : le total est 15.",
+              "bars": [
+                {
+                  "label": "Boîte 1",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Boîte 2",
+                  "value": 3,
+                  "tone": "green"
+                },
+                {
+                  "label": "Boîte 3",
+                  "value": 3,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Boîte 4",
+                  "value": 3,
+                  "tone": "red"
+                },
+                {
+                  "label": "Boîte 5",
+                  "value": 3,
+                  "tone": "navy"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique à barres montre $5$ barres de la même hauteur. Chaque barre représente une boîte et sa hauteur donne le nombre de crayons dedans. Toutes les barres montent jusqu'à $3$. Donc $15$ crayons partagés en $5$ boîtes équivalentes, ça fait $3$ crayons par boîte. On écrit $15 \\div 5 = 3$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Donnons un nom à ce que nous faisons. L'opération qui consiste à partager un nombre en parts égales s'appelle une **division**. Le nombre de départ est le **dividende** (ici $12$ ou $15$), le nombre de parts est le **diviseur** ($3$ ou $5$), et le résultat, c'est-à-dire la taille de chaque part, est le **quotient** ($4$ ou $3$). Ces mots sont nouveaux, mais tu les entendras souvent."
+            },
+            {
+              "type": "definition",
+              "term": "division (partage)",
+              "definition": "Opération qui consiste à répartir une quantité (le dividende) en un certain nombre de parts égales (le diviseur). Le résultat est la valeur de chaque part (le quotient).",
+              "example": "$12 \\div 3 = 4$ se lit : douze divisé par trois égale quatre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Retiens bien : dans un partage équitable, toutes les parts ont exactement la même valeur. Si on partage $12$ entre $3$, chaque part vaut $4$. Si on partage $15$ entre $5$, chaque part vaut $3$. C'est cette égalité entre les parts qui caractérise la division comme partage."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $18$ billes et tu veux les partager équitablement entre $3$ amis. Combien de billes reçoit chaque ami ? Écris la division.",
+              "answer": "$18 \\div 3 = 6$",
+              "hint": "Repartis les 18 billes en 3 tas égaux. Combien y a-t-il dans un tas ?",
+              "explanation": "On partage 18 en 3 parts égales. 18 divisé par 3 fait 6. Chaque ami reçoit 6 billes."
+            },
+            {
+              "question": "Complète : $20 \\div \\square = 4$. Combien y a-t-il de parts ?",
+              "answer": "$20 \\div 5 = 4$",
+              "hint": "Quelle division donne 4 comme quotient quand le dividende est 20 ?",
+              "explanation": "Si on partage 20 en parts de 4, il faut 5 parts. Donc le diviseur est 5."
+            },
+            {
+              "question": "Léa a $24$ autocollants. Elle en donne autant à sa sœur qu'à son frère, et elle garde le même nombre pour elle. Combien en a chaque enfant ?",
+              "answer": "Chaque enfant a $8$ autocollants. $24 \\div 3 = 8$",
+              "hint": "Il y a 3 enfants au total (Léa, sa sœur, son frère).",
+              "explanation": "On partage 24 autocollants en 3 parts égales (Léa, sœur, frère). 24 divisé par 3 égale 8."
+            }
+          ]
+        },
+        {
+          "title": "Quotient et reste concrets.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Quotient et reste concrets"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on ne peut pas partager exactement en parts égales. Imagine $13$ bonbons pour $3$ copains. Tu donnes $4$ bonbons à chacun : $4 + 4 + 4 = 12$. Il t'en reste $1$ dans la main. Ce bonbon qui ne peut pas être réparti équitablement, on l'appelle le **reste**."
+            },
+            {
+              "type": "tape_diagram",
+              "parts": [
+                {
+                  "label": "Copain 1",
+                  "value": 4,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Copain 2",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Copain 3",
+                  "value": 4,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Reste",
+                  "value": 1,
+                  "tone": "red"
+                }
+              ],
+              "caption": "13 bonbons partagés entre 3 : 4 chacun et 1 reste."
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur le diagramme, les trois premiers rectangles valent $4$ chacun (le quotient). Le petit rectangle rouge à la fin vaut $1$ : c'est le reste. Le reste est toujours **strictement plus petit** que le nombre de parts (le diviseur). Ici, le reste $1$ est bien plus petit que $3$. On écrit : $13 \\div 3 = 4$ reste $1$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec une droite numérique. Pour partager $13$ par $3$, on fait des sauts de $3$ en partant de $0$ : $3$, $6$, $9$, $12$. Le prochain saut irait à $15$, mais ça dépasse $13$. On s'arrête à $12$. Combien de sauts a-t-on fait ? $4$ sauts. La distance entre $12$ et $13$ est de $1$ : c'est le reste."
+            },
+            {
+              "type": "number_line",
+              "caption": "Sauts de 3 pour partager 13 : 4 sauts complets, reste 1.",
+              "min": 0,
+              "max": 15,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 3,
+                  "label": "3"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 9,
+                  "label": "9"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 13,
+                  "label": "13"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite montre bien les $4$ groupes de $3$ (les sauts) et le petit bout qui dépasse ($1$). Le quotient, c'est le nombre de sauts complets ($4$). Le reste, c'est ce qu'il reste pour atteindre le total ($1$). Cette image aide à voir que le reste est toujours plus petit que le pas du saut (le diviseur)."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Donnons des noms précis. Dans un partage avec reste, le **quotient** est le nombre d'objets dans chaque part égale. Le **reste** est le nombre d'objets qui n'ont pas pu être distribués. Le reste est **toujours plus petit que le diviseur**. Si le reste était égal ou plus grand que le diviseur, on pourrait encore faire une part entière de plus."
+            },
+            {
+              "type": "definition",
+              "term": "quotient",
+              "definition": "Résultat du partage équitable : nombre d'objets dans chaque part.",
+              "example": "Dans $13 \\div 3 = 4$ reste $1$, le quotient est $4$."
+            },
+            {
+              "type": "definition",
+              "term": "reste",
+              "definition": "Ce qui reste après avoir fait le maximum de parts égales. Il est toujours strictement plus petit que le diviseur.",
+              "example": "Dans $13 \\div 3 = 4$ reste $1$, le reste est $1$ ($1 < 3$)."
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant tu sais repérer le quotient et le reste dans un partage concret. La prochaine étape sera de vérifier que ton partage est correct en utilisant la multiplication."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Partage $17$ billes entre $5$ copains. Quel est le quotient ? Quel est le reste ?",
+              "answer": "Quotient : $3$, Reste : $2$ ($17 \\div 5 = 3$ reste $2$)",
+              "hint": "Fais des groupes de 5 jusqu'à ne plus pouvoir. Combien de groupes complets ? Combien de billes en trop ?",
+              "explanation": "5 × 3 = 15. 17 - 15 = 2. Chaque copain a 3 billes, il en reste 2."
+            },
+            {
+              "question": "Sur une droite graduée, on fait des sauts de $4$ pour atteindre $18$. Combien de sauts complets ? Quelle est la distance restante ?",
+              "answer": "$4$ sauts complets, reste $2$ ($18 \\div 4 = 4$ reste $2$)",
+              "hint": "4, 8, 12, 16... le prochain saut irait à 20, trop loin.",
+              "explanation": "4 sauts de 4 font 16. La distance de 16 à 18 est 2. Donc quotient 4, reste 2."
+            },
+            {
+              "question": "Vrai ou faux ? Dans $19 \\div 4 = 4$ reste $3$, le reste est plus grand que le diviseur.",
+              "answer": "Faux. Le reste est 3, le diviseur est 4. 3 < 4.",
+              "hint": "Compare le reste (3) et le diviseur (4).",
+              "explanation": "Le reste doit toujours être strictement plus petit que le diviseur. Ici 3 < 4, c'est correct."
+            }
+          ]
+        },
+        {
+          "title": "Vérifier par multiplication.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vérifier par multiplication"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as fait un partage, comment être sûr de ne pas t'être trompé ? Il existe une astuce toute simple : on utilise la multiplication. Comme la division, c'est l'opération inverse de la multiplication, on peut reconstruire le total de départ."
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple des $13$ bonbons partagés entre $3$ copains. Tu as trouvé : quotient $4$, reste $1$. Pour vérifier, tu multiplies le quotient par le diviseur, puis tu ajoutes le reste. $4 \\times 3 = 12$. $12 + 1 = 13$. Tu retrouves le total de départ ! C'est la preuve que ton partage est correct."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Multiplier",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Multiplie le quotient par le diviseur. Ici $4 \\times 3 = 12$. Cela donne le nombre d'objets qui ont été distribués dans les parts égales."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ajouter le reste",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ajoute le reste au résultat. Ici $12 + 1 = 13$. Cela reconstitue le total initial (le dividende)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le total retrouvé est égal au dividende de départ, la division est juste. Sinon, il y a une erreur."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un autre exemple : $25$ crayons partagés en $4$ boîtes. Tu as trouvé quotient $6$, reste $1$. Vérifions ensemble. Étape 1 : $6 \\times 4 = 24$. Étape 2 : $24 + 1 = 25$. Étape 3 : On retrouve $25$, le nombre de départ. C'est bon !"
+            },
+            {
+              "type": "display_math",
+              "latex": "Dividende = (Quotient \\times Diviseur) + Reste"
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette formule magique marche à tous les coups. Elle dit : le total (dividende) est égal au nombre de parts (diviseur) multiplié par la taille de chaque part (quotient), plus ce qui a été mis de côté (reste). Retiens-la bien, elle sera ta meilleure amie pour vérifier tes divisions."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention à une erreur fréquente : oublier d'ajouter le reste. Si tu ne fais que $6 \\times 4 = 24$ et que tu compares $24$ à $25$, tu vas croire que c'est faux. N'oublie jamais le reste ! Une autre erreur : multiplier le diviseur par le reste au lieu du quotient. Relis bien la formule : quotient $\\times$ diviseur + reste."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour comprendre la division comme partage : savoir répartir équitablement, identifier quotient et reste, et vérifier ton résultat par la multiplication. Ces trois leçons forment un tout cohérent que tu réutiliseras tout au long de l'année."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais partager un nombre en parts égales avec des objets concrets.",
+                "Je sais représenter un partage avec un diagramme en barres ou sur une droite numérique.",
+                "Je connais le vocabulaire : dividende, diviseur, quotient, reste.",
+                "Je sais que le reste est toujours plus petit que le diviseur.",
+                "Je sais vérifier ma division en faisant : quotient × diviseur + reste = dividende."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Vérifie si ce partage est correct : $22 \\div 5 = 4$ reste $2$.",
+              "answer": "Correct car $4 \\times 5 + 2 = 20 + 2 = 22$.",
+              "hint": "Applique la formule : quotient × diviseur + reste.",
+              "explanation": "4 × 5 = 20. 20 + 2 = 22. On retrouve le dividende, donc le partage est juste."
+            },
+            {
+              "question": "Une division donne un quotient de $7$, un diviseur de $3$ et un reste de $2$. Quel est le dividende ?",
+              "answer": "$23$ car $7 \\times 3 + 2 = 21 + 2 = 23$.",
+              "hint": "Utilise la formule magique : dividende = quotient × diviseur + reste.",
+              "explanation": "On multiplie 7 par 3 (21), on ajoute le reste 2, on obtient 23."
+            },
+            {
+              "question": "Pierre a fait $31 \\div 4 = 7$ reste $3$. Il vérifie : $7 \\times 4 = 28$. Il dit : \"28 est différent de 31, donc c'est faux.\" Pourquoi a-t-il tort ?",
+              "answer": "Il a oublié d'ajouter le reste. $28 + 3 = 31$, c'est correct.",
+              "hint": "Regarde la formule complète : quotient × diviseur + reste.",
+              "explanation": "La vérification nécessite d'ajouter le reste au produit. 7 × 4 = 28, plus le reste 3 fait 31. Le partage est bon."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

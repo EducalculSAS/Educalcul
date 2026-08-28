@@ -1,0 +1,175 @@
+{
+  "_status": "done",
+  "_course_id": 210,
+  "_course_code": "ce2-t08-c06-bilan-donnees-ce2",
+  "_level": "ce2",
+  "_subject": "Organisation et gestion de données",
+  "_subtheme": "Approfondissement : Lire et produire",
+  "title": "Quiz : Lire et produire des données (CE2)",
+  "questions": [
+    {
+      "text": "Observe le tableau ci-dessous. Combien de billes possède Sam ?",
+      "options": [
+        "8 billes",
+        "10 billes",
+        "12 billes",
+        "15 billes"
+      ],
+      "correctAnswer": "15 billes",
+      "explanation": "Dans le tableau, la ligne correspondant à Sam indique le nombre 15 dans la colonne 'Nombre de billes'. Les autres propositions correspondent aux nombres de billes de Léo (12), Ana (10) et Mia (8).",
+      "points": 1,
+      "figure": {
+        "type": "table",
+        "headers": [
+          "Prénom",
+          "Nombre de billes"
+        ],
+        "rows": [
+          [
+            "Léo",
+            "12"
+          ],
+          [
+            "Mia",
+            "8"
+          ],
+          [
+            "Sam",
+            "15"
+          ],
+          [
+            "Ana",
+            "10"
+          ]
+        ]
+      }
+    },
+    {
+      "text": "Regarde le diagramme en barres représentant le nombre de livres lus par mois. Pendant quel mois a-t-on lu le plus de livres ?",
+      "options": [
+        "Janvier",
+        "Février",
+        "Mars",
+        "Avril"
+      ],
+      "correctAnswer": "Février",
+      "explanation": "La barre la plus haute correspond au mois de Février avec une valeur de 8 livres. Janvier est à 5, Mars à 3 et Avril à 6. Il faut repérer la barre qui monte le plus haut.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus pendant les vacances",
+        "bars": [
+          {
+            "label": "Janvier",
+            "value": 5,
+            "tone": "blue"
+          },
+          {
+            "label": "Février",
+            "value": 8,
+            "tone": "green"
+          },
+          {
+            "label": "Mars",
+            "value": 3,
+            "tone": "red"
+          },
+          {
+            "label": "Avril",
+            "value": 6,
+            "tone": "navy"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Dans la classe, 6 élèves prennent le bus, 4 viennent à pied, 10 viennent en voiture et 2 à vélo. Quelle ligne complète correctement le tableau des moyens de transport ?",
+      "options": [
+        "Bus : 6, Voiture : 10, Pied : 4, Vélo : 2",
+        "Bus : 4, Voiture : 6, Pied : 10, Vélo : 2",
+        "Bus : 10, Voiture : 6, Pied : 4, Vélo : 2",
+        "Bus : 6, Voiture : 4, Pied : 10, Vélo : 2"
+      ],
+      "correctAnswer": "Bus : 6, Voiture : 10, Pied : 4, Vélo : 2",
+      "explanation": "Il faut associer chaque moyen de transport au bon nombre énoncé dans le texte : le bus correspond à 6, la voiture à 10, le pied à 4 et le vélo à 2. Les autres réponses mélangent les chiffres entre les catégories.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le diagramme circulaire (camembert) sur les couleurs préférées. Quelle couleur est préférée par le plus grand nombre d'élèves ?",
+      "options": [
+        "Bleu",
+        "Rouge",
+        "Vert",
+        "Jaune"
+      ],
+      "correctAnswer": "Bleu",
+      "explanation": "La part du camembert la plus grande est celle de la couleur Bleue (valeur 10). Les parts Rouge, Vert et Jaune sont égales et plus petites (valeur 5 chacune). La plus grande part représente le plus grand effectif.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Couleurs préférées des élèves de CE2",
+        "slices": [
+          {
+            "label": "Bleu",
+            "value": 10,
+            "tone": "blue"
+          },
+          {
+            "label": "Rouge",
+            "value": 5,
+            "tone": "red"
+          },
+          {
+            "label": "Vert",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Jaune",
+            "value": 5,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Le diagramme en barres montre les points de quatre équipes. Combien de points ont marqué l'Équipe A et l'Équipe B ensemble ?",
+      "options": [
+        "17 points",
+        "21 points",
+        "27 points",
+        "20 points"
+      ],
+      "correctAnswer": "21 points",
+      "explanation": "L'Équipe A a 12 points (barre bleue) et l'Équipe B a 9 points (barre verte). Pour trouver le total, on additionne : $12 + 9 = 21$. Les autres résultats correspondent à d'autres additions (A+C=27, A+D=20, B+C=24).",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Points marqués par les équipes",
+        "bars": [
+          {
+            "label": "Équipe A",
+            "value": 12,
+            "tone": "blue"
+          },
+          {
+            "label": "Équipe B",
+            "value": 9,
+            "tone": "green"
+          },
+          {
+            "label": "Équipe C",
+            "value": 15,
+            "tone": "red"
+          },
+          {
+            "label": "Équipe D",
+            "value": 8,
+            "tone": "navy"
+          }
+        ]
+      }
+    }
+  ]
+}

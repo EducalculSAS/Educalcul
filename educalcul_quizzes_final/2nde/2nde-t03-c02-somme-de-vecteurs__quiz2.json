@@ -1,0 +1,83 @@
+{
+  "_status": "done",
+  "_course_id": 511,
+  "_course_code": "2nde-t03-c02-somme-de-vecteurs",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Construction",
+  "title": "Construction de la somme de deux vecteurs",
+  "questions": [
+    {
+      "text": "Pour construire la somme $\\vec{u}+\\vec{v}$ de deux vecteurs ayant la même origine, on utilise la règle du parallélogramme. Quelle description correspond exactement à cette construction ?",
+      "options": [
+        "On trace le parallélogramme ayant $\\vec{u}$ et $\\vec{v}$ comme côtés adjacents ; la somme est la diagonale qui part de l'origine commune.",
+        "On place $\\vec{v}$ à la suite de $\\vec{u}$ ; la somme va de l'origine de $\\vec{u}$ à l'extrémité de $\\vec{v}$.",
+        "On trace le parallélogramme ayant $\\vec{u}$ et $\\vec{v}$ comme côtés adjacents ; la somme est la diagonale qui ne passe pas par l'origine commune.",
+        "On place $\\vec{u}$ à la suite de $\\vec{v}$ ; la somme va de l'origine de $\\vec{v}$ à l'extrémité de $\\vec{u}$."
+      ],
+      "correctAnswer": "On trace le parallélogramme ayant $\\vec{u}$ et $\\vec{v}$ comme côtés adjacents ; la somme est la diagonale qui part de l'origine commune.",
+      "explanation": "La règle du parallélogramme s'applique lorsque les deux vecteurs ont la même origine. On construit le parallélogramme dont $\\vec{u}$ et $\\vec{v}$ sont deux côtés consécutifs. Le vecteur somme $\\vec{u}+\\vec{v}$ est alors représenté par la diagonale de ce parallélogramme qui part de l'origine commune des deux vecteurs. L'option B et D décrivent la règle du triangle (relation de Chasles) qui s'utilise quand les vecteurs sont placés bout à bout. L'option C désigne l'autre diagonale, qui ne représente pas la somme.",
+      "points": 1,
+      "figure": {
+        "type": "vector_addition_pad",
+        "ux": 2,
+        "uy": 1,
+        "vx": 1,
+        "vy": 2,
+        "caption": "Vecteurs $\\vec{u}$ et $\\vec{v}$ de même origine pour la règle du parallélogramme"
+      }
+    },
+    {
+      "text": "Soient $\\vec{u}$ et $\\vec{v}$ deux vecteurs. On a construit $\\vec{v}$ à la suite de $\\vec{u}$ (l'origine de $\\vec{v}$ est confondue avec l'extrémité de $\\vec{u}$). Quel vecteur représente la somme $\\vec{u}+\\vec{v}$ ?",
+      "options": [
+        "Le vecteur qui va de l'origine de $\\vec{u}$ à l'extrémité de $\\vec{v}$.",
+        "Le vecteur qui va de l'extrémité de $\\vec{u}$ à l'origine de $\\vec{v}$.",
+        "Le vecteur qui a même direction que $\\vec{u}$ et même norme que $\\vec{v}$.",
+        "Le vecteur qui relie les milieux des segments support de $\\vec{u}$ et $\\vec{v}$."
+      ],
+      "correctAnswer": "Le vecteur qui va de l'origine de $\\vec{u}$ à l'extrémité de $\\vec{v}$.",
+      "explanation": "C'est la règle du triangle (ou relation de Chasles) : si $\\vec{u} = \\vec{AB}$ et $\\vec{v} = \\vec{BC}$, alors $\\vec{u}+\\vec{v} = \\vec{AB}+\\vec{BC} = \\vec{AC}$. Le vecteur somme part donc de l'origine du premier vecteur ($A$) pour aller à l'extrémité du second ($C$). L'option B correspond au vecteur nul (origine et extrémité confondues). Les options C et D n'ont pas de sens géométrique pour une somme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour construire graphiquement la différence $\\vec{u} - \\vec{v}$ de deux vecteurs ayant la même origine, quelle est la méthode standard ?",
+      "options": [
+        "On construit le vecteur opposé $-\\vec{v}$, puis on utilise la règle du parallélogramme avec $\\vec{u}$ et $-\\vec{v}$.",
+        "On trace le parallélogramme avec $\\vec{u}$ et $\\vec{v}$, la différence est la diagonale passant par l'origine.",
+        "On place $\\vec{v}$ à la suite de $\\vec{u}$, la différence va de l'extrémité de $\\vec{v}$ à l'origine de $\\vec{u}$.",
+        "On soustrait les coordonnées graphiquement en traçant des parallèles aux axes."
+      ],
+      "correctAnswer": "On construit le vecteur opposé $-\\vec{v}$, puis on utilise la règle du parallélogramme avec $\\vec{u}$ et $-\\vec{v}$.",
+      "explanation": "Par définition, $\\vec{u} - \\vec{v} = \\vec{u} + (-\\vec{v})$. La construction se fait donc en deux étapes : 1) tracer le vecteur opposé $-\\vec{v}$ (même direction, même norme, sens inverse) à partir de l'origine commune ; 2) construire la somme $\\vec{u} + (-\\vec{v})$ par la règle du parallélogramme (ou du triangle). L'option B donnerait la somme $\\vec{u}+\\vec{v}$. L'option C correspond à $-(\\vec{u}+\\vec{v})$. L'option D n'est pas une construction géométrique standard au niveau Seconde.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une figure, les vecteurs $\\vec{AB}$, $\\vec{BC}$ et $\\vec{AC}$ sont tracés. Les points $A$, $B$, $C$ sont dans cet ordre sur une ligne brisée. Quelle relation de Chasles est illustrée par cette construction 'tête-bêche' ?",
+      "options": [
+        "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+        "$\\vec{AB} + \\vec{AC} = \\vec{BC}$",
+        "$\\vec{BA} + \\vec{AC} = \\vec{BC}$",
+        "$\\vec{AB} - \\vec{BC} = \\vec{AC}$"
+      ],
+      "correctAnswer": "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+      "explanation": "La relation de Chasles fondamentale stipule que pour trois points $A$, $B$, $C$ quelconques, $\\vec{AB} + \\vec{BC} = \\vec{AC}$. Graphiquement, cela correspond exactement à la construction 'tête-bêche' : on place l'origine de $\\vec{BC}$ à l'extrémité de $\\vec{AB}$ ; le vecteur qui relie l'origine de $\\vec{AB}$ (point $A$) à l'extrémité de $\\vec{BC}$ (point $C$) est la somme. Les autres options mélangent les points ou utilisent des opposés incorrectement.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On donne trois points $A$, $B$, $C$ non alignés. On construit le point $D$ tel que $\\vec{AD} = \\vec{AB} + \\vec{AC}$. Quelle est la nature du quadrilatère $ABDC$ ?",
+      "options": [
+        "Un parallélogramme.",
+        "Un rectangle.",
+        "Un trapèze.",
+        "Un triangle."
+      ],
+      "correctAnswer": "Un parallélogramme.",
+      "explanation": "La condition $\\vec{AD} = \\vec{AB} + \\vec{AC}$ signifie que $\\vec{AD}$ est la diagonale du parallélogramme construit sur les vecteurs $\\vec{AB}$ et $\\vec{AC}$ ayant même origine $A$. D'après la règle du parallélogramme, le quatrième sommet $D$ est tel que $ABDC$ est un parallélogramme (avec $\\vec{AB} = \\vec{CD}$ et $\\vec{AC} = \\vec{BD}$). Ce n'est pas nécessairement un rectangle (angles droits non garantis), ni un trapèze (deux côtés parallèles seulement), ni un triangle (quadrilatère à 4 sommets).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

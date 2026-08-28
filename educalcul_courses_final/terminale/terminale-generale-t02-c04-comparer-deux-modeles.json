@@ -1,0 +1,519 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.444927+00:00",
+  "id": 625,
+  "code": "terminale-generale-t02-c04",
+  "title": "Comparer deux modèles",
+  "description": "Cours structuré Educalcul : Comparer deux modèles.",
+  "subject": "Fonctions et lecture de graphiques",
+  "level": "terminale",
+  "source_level_label": "Terminale générale sans mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale générale sans mathématiques",
+    "theme": "Fonctions et lecture de graphiques",
+    "titre_du_cours": "Comparer deux modèles",
+    "objectif_global": "Comparer deux modèles",
+    "mini_lecons_imposees": [
+      "Graphiques.",
+      "Intersections.",
+      "Choisir."
+    ],
+    "conformite_programme_2026_2027": "Ce parcours Educalcul n’est pas un programme officiel autonome de mathématiques."
+  },
+  "content_json": [
+    {
+      "title": "Fonctions et lecture de graphiques",
+      "lessons": [
+        {
+          "title": "Graphiques.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Lecture de deux courbes sur un même repère"
+            },
+            {
+              "type": "paragraph",
+              "content": "Lorsque l'on veut comparer deux modèles mathématiques, la première étape consiste à les représenter graphiquement dans le même système d'axes. Cela permet d'apprécier visuellement leurs comportements respectifs : croissance, décroissance, concavité, asymptotes et valeurs remarquables. Imaginez que vous suivez l'évolution de deux placements financiers sur dix ans ; les courbes de leur capital en fonction du temps vous montrent immédiatement lequel est le plus performant à chaque instant. Pour lire correctement un tel graphique, il faut d'abord identifier l'échelle des axes, les unités utilisées et la légende qui associe chaque courbe à son modèle. Prenez le temps de repérer l'origine, les graduations et de noter si les axes sont linéaires ou logarithmiques, car cela change radicalement l'interprétation des pentes."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2, 2*x+1",
+              "xmin": -3,
+              "xmax": 4,
+              "caption": "Comparaison de $f(x)=x^{2}$ (parabole) et $g(x)=2x+1$ (droite)"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la figure ci‑dessus, la parabole $f(x)=x^{2}$ ouvre vers le haut et passe par l'origine, tandis que la droite $g(x)=2x+1$ coupe l'axe des ordonnées en $1$ et a une pente de $2$. Observez comment les deux courbes se croisent en deux points : cela signifie qu'il existe deux abscisses pour lesquelles les deux modèles donnent la même valeur. Pour comparer les modèles en un point précis, il suffit de lire l'ordonnée de chaque courbe à l'abscisse choisie. Par exemple, en $x=2$, la parabole atteint $4$ et la droite atteint $5$ ; le modèle linéaire est donc supérieur à cet instant. Cette lecture directe est la base de toute analyse comparative."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier le domaine commun",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Déterminez l'intervalle sur lequel les deux fonctions sont définies simultanément. Pour des fonctions polynomiales, c'est généralement $\\mathbb{R}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Repérer les points caractéristiques",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Notez les intercepts, les extrema, les points d'inflexion et les asymptotes éventuelles de chaque courbe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Comparer les valeurs en quelques abscisses clés",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisissez des abscisses représentatives (zéros, extrema, points d'intersection) et lisez les ordonnées correspondantes sur chaque courbe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Conclure sur la supériorité relative",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "D'après les lectures, décidez sur quels intervalles un modèle domine l'autre et notez les zones d'égalité."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que nous savons lire les valeurs ponctuelles, intéressons‑nous aux points caractéristiques qui structurent chaque courbe : les intercepts avec les axes, les extrema et les points d'inflexion. Ces repères permettent de dresser un portrait rapide du modèle sans avoir à calculer une multitude de valeurs."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Points caractéristiques des deux modèles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour la parabole $f(x)=x^{2}$, l'intercept à l'origine est $(0,0)$, c'est aussi son minimum global. La droite $g(x)=2x+1$ coupe l'axe des ordonnées en $(0,1)$ et l'axe des abscisses en $(-\\frac{1}{2},0)$. La parabole n'a pas d'asymptote, tandis que la droite s'étend indéfiniment. Le point d'inflexion de la parabole est absent car sa concavité est constante. Ces éléments se lisent directement sur le graphique et servent de points de référence pour toute comparaison ultérieure."
+            },
+            {
+              "type": "display_math",
+              "latex": "f(x)=x^{2},\\quad g(x)=2x+1"
+            },
+            {
+              "type": "number_line",
+              "caption": "Domaine commun et points remarquables",
+              "min": -3,
+              "max": 4,
+              "points": [
+                {
+                  "value": -0.5,
+                  "label": "Zero de g"
+                },
+                {
+                  "value": 0,
+                  "label": "Origine"
+                },
+                {
+                  "value": 1,
+                  "label": "Intersection 1"
+                },
+                {
+                  "value": 3,
+                  "label": "Intersection 2"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir identifié les points remarquables, nous pouvons quantifier l'écart global entre les deux modèles sur un intervalle donné. L'aire comprise entre les courbes est un indicateur synthétique de la différence cumulative. Pour l'obtenir, on intègre la valeur absolue de la différence des fonctions. Cette approche est particulièrement utile en économie pour mesurer le gain ou la perte totale d'un placement par rapport à un autre sur une période."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Écart cumulé : aire entre les courbes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur l'intervalle $[0,2]$, la droite $g$ se trouve au‑dessus de la parabole $f$. L'aire entre elles est donc $\\int_{0}^{2} (g(x)-f(x))\\,dx = \\int_{0}^{2} (2x+1 - x^{2})\\,dx$. Le calcul donne $\\left[ x^{2}+x-\\frac{x^{3}}{3} \\right]_{0}^{2} = (4+2-\\frac{8}{3}) = \\frac{10}{3}$. Cette valeur positive confirme que le modèle linéaire accumule un avantage de $\\frac{10}{3}$ unités d'ordonnée sur cet intervalle. Si l'on change d'intervalle, le signe de l'écart peut s'inverser, ce qui montre l'importance de préciser le domaine d'étude."
+            },
+            {
+              "type": "integral_riemann_slider",
+              "expression": "2*x+1 - x^2",
+              "xMin": 0,
+              "xMax": 2,
+              "rectangles": 8,
+              "caption": "Approximation de l'aire entre $g$ et $f$ sur $[0,2]$"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous avez maintenant tous les outils pour lire, comparer et quantifier la différence entre deux modèles représentés graphiquement. La suite du cours montrera comment déterminer exactement les abscisses d'intersection, puis comment choisir le modèle le plus adapté à une situation concrète."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur le graphique ci‑dessus, quelle est la valeur de $f(2)$ et de $g(2)$ ?",
+              "answer": "$f(2)=4$, $g(2)=5$",
+              "hint": "Lisez l'ordonnée au point d'abscisse $2$ sur chaque courbe.",
+              "explanation": "On repère $x=2$ sur l'axe horizontal, puis on monte verticalement jusqu'à rencontrer la courbe de $f$ (parabole) et celle de $g$ (droite). Les ordonnées lues donnent les valeurs cherchées."
+            },
+            {
+              "question": "Déterminez l'intervalle sur lequel $f(x) > g(x)$.",
+              "answer": "$x \\in (-\\infty, 1-\\sqrt{2}) \\cup (1+\\sqrt{2}, +\\infty)$",
+              "hint": "Résolvez l'inéquation $x^{2} > 2x+1$ en ramenant tout à gauche et en étudiant le signe du trinôme.",
+              "explanation": "L'inéquation $x^{2}-2x-1>0$ a pour racines $1\\pm\\sqrt{2}$. Le trinôme est positif en dehors de l'intervalle formé par ces racines, d'où la solution."
+            },
+            {
+              "question": "Calculez l'aire entre les deux courbes sur l'intervalle $[0,2]$.",
+              "answer": "$\\frac{10}{3}$",
+              "hint": "Intégrez $g(x)-f(x)$ sur $[0,2]$ car $g \\ge f$ sur cet intervalle.",
+              "explanation": "L'intégrale $\\int_{0}^{2} (2x+1-x^{2})\\,dx$ vaut $\\left[x^{2}+x-\\frac{x^{3}}{3}\\right]_{0}^{2} = 4+2-\\frac{8}{3} = \\frac{10}{3}$."
+            }
+          ]
+        },
+        {
+          "title": "Intersections.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intersection de deux courbes : définition et enjeux"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'intersection de deux modèles correspond aux abscisses où ils prennent la même valeur. Concrètement, si vous comparez deux prévisions de ventes, les points d'intersection indiquent les moments où les deux scénarios prédisent un chiffre d'affaires identique. Trouver ces points permet de savoir à partir de quand un modèle devient plus avantageux que l'autre. La méthode la plus rigoureuse consiste à résoudre l'équation $f(x)=g(x)$, mais la lecture graphique offre une première estimation visuelle très précieuse, surtout lorsque les expressions analytiques sont complexes."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2, 2*x+1",
+              "xmin": -3,
+              "xmax": 4,
+              "caption": "Les deux courbes $f(x)=x^{2}$ et $g(x)=2x+1$ avec leurs intersections"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Écrire l'équation d'intersection",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On pose $f(x)=g(x)$, ici $x^{2}=2x+1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Ramener à une forme standard",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On obtient $x^{2}-2x-1=0$, un trinôme du second degré."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Calculer le discriminant",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$\\Delta = (-2)^{2}-4\\times1\\times(-1)=4+4=8$. Comme $\\Delta>0$, il y a deux solutions réelles distinctes."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Appliquer la formule quadratique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$x = \\frac{2 \\pm \\sqrt{8}}{2} = 1 \\pm \\sqrt{2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Vérifier graphiquement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les abscisses $1-\\sqrt{2}\\approx -0.41$ et $1+\\sqrt{2}\\approx 2.41$ correspondent bien aux points de croisement observés sur le graphique."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode algébrique vient d'être détaillée pas à pas. Cependant, en situation d'examen ou de projet, vous n'aurez pas toujours la forme explicite des fonctions. La lecture graphique, assistée par un logiciel ou une calculatrice, permet alors de localiser les intersections avec une grande précision. Voyons comment exploiter le zoom et le curseur pour affiner les coordonnées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Localisation graphique des intersections"
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur un logiciel de tracé, placez le curseur sur le premier point de croisement. Les coordonnées s'affichent généralement avec plusieurs décimales. Faites de même pour le second point. Notez que la symétrie de la parabole par rapport à son axe $x=1$ se retrouve dans les abscisses des intersections : elles sont équidistantes de $1$. Cette observation graphique peut servir de contrôle rapide du calcul algébrique. Si les valeurs lues diffèrent notablement des solutions exactes, revérifiez l'équation ou l'échelle des axes."
+            },
+            {
+              "type": "graph",
+              "expression": "x^2, 2*x+1",
+              "xmin": -1,
+              "xmax": 3,
+              "caption": "Zoom sur la zone des intersections pour une lecture précise"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive que deux modèles ne se croisent pas, ou qu'ils se touchent en un unique point (tangence). Ces cas particuliers sont tout aussi informatifs : l'absence d'intersection signifie qu'un modèle domine strictement l'autre sur tout le domaine, tandis que la tangence indique un changement de dominance sans croisement franc. Le discriminant de l'équation $f(x)=g(x)$ révèle directement la nature des intersections."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Cas particuliers : pas d'intersection ou tangence"
+            },
+            {
+              "type": "paragraph",
+              "content": "Considérons $f(x)=x^{2}$ et $h(x)=x^{2}+2$. L'équation $x^{2}=x^{2}+2$ n'a pas de solution ; le discriminant serait négatif si l'on écrivait $0=2$. Graphiquement, les deux paraboles sont parallèles, l'une au‑dessus de l'autre, sans jamais se rencontrer. Pour une tangence, prenons $f(x)=x^{2}$ et $k(x)=2x-1$. L'équation $x^{2}=2x-1$ donne $x^{2}-2x+1=0$ dont le discriminant $\\Delta=0$ ; l'unique solution $x=1$ correspond au point de tangence $(1,1)$. Dans ce cas, les courbes ont la même pente au point de contact."
+            },
+            {
+              "type": "display_math",
+              "latex": "\\Delta = b^{2}-4ac"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous maîtrisez maintenant la détermination des intersections, tant par le calcul exact que par la lecture graphique, et vous savez interpréter les cas limites. La dernière leçon vous guidera pour choisir le modèle le plus pertinent en fonction de critères quantitatifs et qualitatifs."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Résolvez $x^{2}=2x+1$.",
+              "answer": "$x = 1 \\pm \\sqrt{2}$",
+              "hint": "Réorganisez en $x^{2}-2x-1=0$ et utilisez la formule quadratique.",
+              "explanation": "Le trinôme $x^{2}-2x-1$ a pour discriminant $\\Delta = 8$. Les racines sont $\\frac{2\\pm\\sqrt{8}}{2}=1\\pm\\sqrt{2}$."
+            },
+            {
+              "question": "Sur le graphique, repérez les points d'intersection et donnez leurs coordonnées approchées à deux décimales.",
+              "answer": "$(-0.41; 0.17)$ et $(2.41; 5.83)$",
+              "hint": "Utilisez le zoom du graphique pour lire les abscisses et ordonnées au plus près.",
+              "explanation": "Les abscisses exactes sont $1\\pm\\sqrt{2}$. En les évaluant numériquement, on obtient $-0.414...$ et $2.414...$. Les ordonnées correspondantes sont $g(x)=2x+1$."
+            },
+            {
+              "question": "Quel est le discriminant de $x^{2}-2x-1=0$ et que signifie‑t‑il pour le nombre d'intersections ?",
+              "answer": "$\\Delta = 8 > 0$, donc deux intersections distinctes.",
+              "hint": "Rappelez la formule $\\Delta = b^{2}-4ac$ avec $a=1$, $b=-2$, $c=-1$.",
+              "explanation": "Un discriminant strictement positif indique que l'équation du second degré admet deux solutions réelles distinctes, ce qui correspond à deux points d'intersection distincts des courbes."
+            }
+          ]
+        },
+        {
+          "title": "Choisir.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Critères de choix d'un modèle mathématique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir su lire, comparer et intersectoriser deux modèles, l'étape finale consiste à décider lequel adopter pour représenter une situation réelle. Le choix ne se base pas uniquement sur la proximité numérique ; il intègre la simplicité d'écriture, la facilité d'interprétation, la robustesse face aux données bruitées et la capacité à extrapoler sans produire de résultats aberrants. Par exemple, un polynôme de degré élevé peut passer exactement par tous les points de mesure, mais il oscillera violemment entre eux, le rendant inutilisable pour la prévision. À l'inverse, une droite de régression, bien qu'imparfaite, offre une lisibilité immédiate et une extrapolation prudente."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Critère",
+                "Modèle linéaire",
+                "Modèle exponentiel",
+                "Modèle logistique"
+              ],
+              "rows": [
+                [
+                  "Simplicité",
+                  "Élevée",
+                  "Moyenne",
+                  "Faible"
+                ],
+                [
+                  "Interprétabilité",
+                  "Très bonne",
+                  "Bonne",
+                  "Moyenne"
+                ],
+                [
+                  "Adaptation à la saturation",
+                  "Non",
+                  "Non",
+                  "Oui"
+                ],
+                [
+                  "Extrapolation prudente",
+                  "Oui",
+                  "Risquée",
+                  "Oui"
+                ]
+              ]
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Lister les exigences du problème",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifiez si le phénomène présente une saturation, une croissance illimitée, une periodicité, etc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Sélectionner une famille de modèles candidats",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Choisissez parmi linéaire, exponentiel, logarithmique, logistique, polynomial, selon la forme attendue."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ajuster les paramètres sur les données",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Utilisez la méthode des moindres carrés ou une estimation par maximum de vraisemblance selon le modèle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Évaluer la qualité d'ajustement",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Regardez le coefficient de détermination $R^{2}$, les résidus, et testez la validité des hypothèses (indépendance, homoscédasticité)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 5 : Privilégier le modèle le plus parcimonieux",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si deux modèles ont une performance équivalente, retenez le plus simple (rasoir d'Ockham)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Illustrons cette démarche sur un exemple concret : la croissance d'une population bactérienne dans un milieu nutritif limité. Au début, la croissance est quasi exponentielle ; puis, les ressources s'épuisent et la population se stabilise autour d'une capacité maximale. Deux modèles naturels se présentent : le modèle exponentiel $P(t)=P_{0}e^{kt}$ et le modèle logistique $P(t)=\\frac{K}{1+ae^{-rt}}$. Le premier ignore la saturation, le second l'intègre via le paramètre $K$ (capacité)."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple : croissance bactérienne, exponentiel vs logistique"
+            },
+            {
+              "type": "paragraph",
+              "content": "Supposons des mesures horaires pendant 20 heures. Le graphique ci‑dessus superpose les points expérimentaux, la courbe exponentielle ajustée et la courbe logistique ajustée. On voit que l'exponentiel suit bien les premières heures, mais s'éloigne fortement après 12 heures, prédisant une population irréaliste. La logistique, elle, épouse la courbure de ralentissement et se rapproche d'une asymptote horizontale proche de la capacité du milieu. Le critère de saturation du tableau précédent oriente donc vers le modèle logistique."
+            },
+            {
+              "type": "graph",
+              "expression": "1000/(1+9*exp(-0.5*x)), 100*exp(0.3*x)",
+              "xmin": 0,
+              "xmax": 20,
+              "caption": "Ajustement exponentiel (bleu) et logistique (rouge) sur des données simulées"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, rappelons les erreurs fréquentes à éviter lors du choix d'un modèle. Ne vous laissez pas séduire par un $R^{2}$ très élevé obtenu avec un polynôme de degré élevé ; il s'agit souvent de surapprentissage. Ne négligez pas l'analyse des résidus : une structure systématique (courbe en U) trahit un modèle inadapté. Ne confondez pas corrélation et causalité ; un bon ajustement statistique ne prouve pas un lien physique. Gardez à l'esprit le domaine de validité : un modèle calibré sur $[0,20]$ heures ne doit pas être extrapolé à $t=100$ sans justification."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Erreurs fréquentes et conseils pratiques"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour résumer, la démarche de choix combine rigueur quantitative (indicateurs d'ajustement, tests statistiques) et jugement qualitatif (connaissance du phénomène, parcimonie, extrapolation). En suivant les cinq étapes décrites, vous serez en mesure de justifier votre choix devant un jury ou dans un rapport technique. Le cours se termine ici ; vous disposez désormais d'une boîte à outils complète pour comparer deux modèles, de la lecture graphique à la décision finale."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais lire et comparer deux courbes sur un même graphique.",
+                "Je sais déterminer les points d'intersection algébriquement et graphiquement.",
+                "Je sais choisir un modèle adapté en fonction de critères clairs et justifier ce choix."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi les critères du tableau, lequel privilégieriez‑vous pour modéliser une croissance rapide mais limitée ?",
+              "answer": "Le critère « adaptation à la saturation » oriente vers le modèle logistique.",
+              "hint": "Pensez à la forme en S de la courbe logistique et à sa capacité à modéliser un plafond.",
+              "explanation": "La croissance rapide au début correspond à la phase exponentielle, mais la limitation impose une saturation que seul le modèle logistique intègre explicitement via le paramètre $K$."
+            },
+            {
+              "question": "En observant le graphique, quel modèle semble mieux s'ajuster aux données après $t=10$ ?",
+              "answer": "Le modèle logistique.",
+              "hint": "Regardez la courbe qui se rapproche d'une asymptote horizontale tandis que l'autre s'en écarte.",
+              "explanation": "Après $t=10$, la courbe exponentielle (bleue) continue de monter fortement, alors que les points expérimentaux fléchissent. La courbe logistique (rouge) suit cette inflexion et tend vers une valeur maximale."
+            },
+            {
+              "question": "Donnez une raison pour laquelle un modèle exponentiel peut être inadapté à long terme pour une population.",
+              "answer": "Il prédit une croissance sans limite, ce qui est irréaliste dans un environnement à ressources finies.",
+              "hint": "Considérez la notion de capacité de charge du milieu.",
+              "explanation": "L'exponentiel $P(t)=P_{0}e^{kt}$ ne possède pas d'asymptote horizontale ; la population tend vers l'infini. Or tout écosystème impose une capacité maximale $K$ au‑delà de laquelle la croissance s'arrête."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

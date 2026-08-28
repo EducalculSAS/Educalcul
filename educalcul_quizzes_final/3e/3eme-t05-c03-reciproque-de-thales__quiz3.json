@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 481,
+  "_course_code": "3eme-t05-c03-reciproque-de-thales",
+  "_level": "3e",
+  "_subject": "Pythagore, Thalès et trigonométrie",
+  "_subtheme": "Conclure parallélisme",
+  "title": "Quiz : Réciproque de Thalès - Conclure parallélisme",
+  "questions": [
+    {
+      "text": "Dans le triangle $ABC$, les points $D$ et $E$ appartiennent respectivement aux côtés $[AB]$ et $[AC]$. On sait que $\\frac{AD}{DB} = \\frac{AE}{EC}$. Quelle conclusion peut-on tirer ?",
+      "options": [
+        "$DE \\parallel BC$",
+        "$DE \\perp BC$",
+        "$D$ et $E$ sont les milieux de $[AB]$ et $[AC]$",
+        "Le triangle $ADE$ est semblable au triangle $ABC$"
+      ],
+      "correctAnswer": "$DE \\parallel BC$",
+      "explanation": "D'après la réciproque du théorème de Thalès, si les points $D$ et $E$ divisent les côtés $AB$ et $AC$ dans le même rapport, alors la droite $(DE)$ est parallèle à $(BC)$. Les autres affirmations ne découlent pas nécessairement de cette hypothèse.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit un triangle $ABC$. Sur $[AB]$ on prend $D$ et sur $[AC]$ on prend $E$ tels que $\\frac{AD}{AB} = \\frac{AE}{AC}$. Que peut-on affirmer sur la droite $(DE)$ ?",
+      "options": [
+        "$(DE) \\parallel (BC)$",
+        "$(DE) \\perp (BC)$",
+        "$D$ et $E$ sont les milieux de $[AB]$ et $[AC]$",
+        "Les triangles $ADE$ et $ABC$ sont isométriques"
+      ],
+      "correctAnswer": "$(DE) \\parallel (BC)$",
+      "explanation": "La condition $\\frac{AD}{AB} = \\frac{AE}{AC}$ est équivalente à $\\frac{AD}{DB} = \\frac{AE}{EC}$ (car $DB = AB - AD$ et $EC = AC - AE$). Par la réciproque de Thalès, cela implique $(DE) \\parallel (BC)$. Les autres propositions ne sont pas des conséquences directes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, $D \\in [AB]$, $E \\in [AC]$ avec $AD = 3$, $DB = 2$, $AE = 4,5$, $EC = 3$. Peut-on conclure que $(DE) \\parallel (BC)$ ?",
+      "options": [
+        "Oui, car $\\frac{AD}{DB} = \\frac{AE}{EC}$",
+        "Non, car $\\frac{AD}{DB} \\neq \\frac{AE}{EC}$",
+        "Oui, car $AD + DB = AB$",
+        "Non, car $AE + EC \\neq AC$"
+      ],
+      "correctAnswer": "Oui, car $\\frac{AD}{DB} = \\frac{AE}{EC}$",
+      "explanation": "On calcule $\\frac{AD}{DB} = \\frac{3}{2} = 1,5$ et $\\frac{AE}{EC} = \\frac{4,5}{3} = 1,5$. Les rapports sont égaux, donc par la réciproque de Thalès, $(DE) \\parallel (BC)$. Les options C et D utilisent des arguments sans lien avec le théorème.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle des égalités de rapports suivantes permet, par la réciproque de Thalès, de conclure que $(DE) \\parallel (BC)$ dans un triangle $ABC$ avec $D \\in [AB]$, $E \\in [AC]$ ?",
+      "options": [
+        "$\\frac{AD}{DB} = \\frac{AE}{EC}$",
+        "$\\frac{AD}{AB} = \\frac{AE}{AC}$",
+        "$\\frac{AD}{AC} = \\frac{AE}{AB}$",
+        "$\\frac{AD}{BC} = \\frac{AE}{BC}$"
+      ],
+      "correctAnswer": "$\\frac{AD}{DB} = \\frac{AE}{EC}$",
+      "explanation": "La forme classique de la réciproque de Thalès utilise les segments partagés par le point sur chaque côté : $\\frac{AD}{DB} = \\frac{AE}{EC}$. L'égalité $\\frac{AD}{AB} = \\frac{AE}{AC}$ est également vraie si $(DE) \\parallel (BC)$, mais elle n'est pas la condition directe de la réciproque (elle en découle). Les options C et D ne correspondent à aucun critère de parallélisme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un triangle $ABC$, on a $AD = 5$, $DB = 3$, $AE = 8$, $EC = 4,8$. La droite $(DE)$ est-elle parallèle à $(BC)$ ?",
+      "options": [
+        "Oui, car $\\frac{AD}{DB} = \\frac{AE}{EC}$",
+        "Non, car $\\frac{AD}{DB} \\neq \\frac{AE}{EC}$",
+        "Oui, car $AD + DB = AB$",
+        "Non, car $AE + EC \\neq AC$"
+      ],
+      "correctAnswer": "Oui, car $\\frac{AD}{DB} = \\frac{AE}{EC}$",
+      "explanation": "On vérifie $\\frac{AD}{DB} = \\frac{5}{3} \\approx 1,666...$ et $\\frac{AE}{EC} = \\frac{8}{4,8} = \\frac{80}{48} = \\frac{5}{3}$. Les rapports sont égaux, donc par la réciproque de Thalès, $(DE) \\parallel (BC)$. Les options C et D invoquent des sommes de longueurs qui ne sont pas le critère du théorème.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

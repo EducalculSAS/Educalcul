@@ -1,0 +1,126 @@
+{
+  "_status": "done",
+  "_course_id": 368,
+  "_course_code": "6eme-t08-c01-tableaux-et-diagrammes",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Application : Tableaux et diagrammes",
+  "title": "Application : Tableaux et diagrammes",
+  "questions": [
+    {
+      "text": "Le tableau ci-dessous présente le nombre d'élèves par niveau dans une école.\\n\\nNiveau | Effectif\\n6e | 120\\n5e | 105\\n4e | 98\\n3e | 112\\n\\nQuel est le total des effectifs de l'école ?",
+      "options": [
+        "425",
+        "435",
+        "445",
+        "455"
+      ],
+      "correctAnswer": "435",
+      "explanation": "Pour trouver le total, on additionne les effectifs de chaque niveau : $120 + 105 + 98 + 112$. On peut calculer par étapes : $120 + 105 = 225$, puis $225 + 98 = 323$, et enfin $323 + 112 = 435$. Les autres propositions correspondent à des erreurs d'addition (oubli de retenue, erreur sur les unités).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme en barres ci-dessous représente le nombre de livres lus par cinq élèves pendant les vacances.\\n\\nLis le diagramme et détermine quel élève a lu le plus grand nombre de livres.",
+      "options": [
+        "Léa",
+        "Max",
+        "Sam",
+        "Zoé"
+      ],
+      "correctAnswer": "Sam",
+      "explanation": "Sur un diagramme en barres, la hauteur de la barre correspond à la valeur. Il faut repérer la barre la plus haute. Celle de Sam atteint $12$ livres, celle de Léa $8$, celle de Max $5$ et celle de Zoé $10$. Sam a donc lu le plus de livres.",
+      "points": 1,
+      "figure": {
+        "type": "bar_chart",
+        "caption": "Nombre de livres lus par élève",
+        "bars": [
+          {
+            "label": "Léa",
+            "value": 8,
+            "tone": "blue"
+          },
+          {
+            "label": "Max",
+            "value": 5,
+            "tone": "green"
+          },
+          {
+            "label": "Sam",
+            "value": 12,
+            "tone": "gold"
+          },
+          {
+            "label": "Zoé",
+            "value": 10,
+            "tone": "red"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Un tableau récapitule les ventes de glaces sur quatre jours. Le total des ventes est de $200$ glaces.\\n\\nJour | Ventes\\nLundi | 45\\nMardi | 60\\nMercredi | 55\\nJeudi | ?\\n\\nCombien de glaces ont été vendues le jeudi ?",
+      "options": [
+        "30",
+        "35",
+        "40",
+        "45"
+      ],
+      "correctAnswer": "40",
+      "explanation": "On connaît le total ($200$) et les ventes de trois jours. On additionne les ventes connues : $45 + 60 + 55 = 160$. Pour trouver les ventes du jeudi, on soustrait cette somme du total : $200 - 160 = 40$. L'erreur frequente est d'additionner au lieu de soustraire ou de se tromper dans l'addition des trois premiers jours.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le diagramme circulaire (camembert) ci-dessous montre la répartition des $40$ élèves d'une classe selon leur sport préféré. La part \"Football\" correspond à un angle de $90^{\\circ}$.\\n\\nCombien d'élèves ont choisi le football ?",
+      "options": [
+        "8",
+        "10",
+        "12",
+        "15"
+      ],
+      "correctAnswer": "10",
+      "explanation": "Un diagramme circulaire représente $360^{\\circ}$ pour la totalité ($40$ élèves). L'angle de $90^{\\circ}$ représente la fraction $\\frac{90}{360} = \\frac{1}{4}$ du cercle. Il faut calculer le quart de $40$ : $40 \\div 4 = 10$ élèves. L'erreur classique est de diviser $360$ par $40$ (ce qui donne $9$) ou de mal calculer la proportion.",
+      "points": 1,
+      "figure": {
+        "type": "pie_chart",
+        "caption": "Sports préférés (40 élèves)",
+        "slices": [
+          {
+            "label": "Football",
+            "value": 90,
+            "tone": "blue"
+          },
+          {
+            "label": "Tennis",
+            "value": 90,
+            "tone": "green"
+          },
+          {
+            "label": "Natation",
+            "value": 100,
+            "tone": "red"
+          },
+          {
+            "label": "Judo",
+            "value": 80,
+            "tone": "gold"
+          }
+        ]
+      }
+    },
+    {
+      "text": "Voici un tableau indiquant le nombre de kilomètres parcourus par un cycliste sur quatre jours.\\n\\nJour | Kilomètres\\nLundi | 25\\nMardi | 30\\nMercredi | 20\\nJeudi | 35\\n\\nLaquelle de ces affirmations est exacte ?",
+      "options": [
+        "Le total parcouru est de 100 km.",
+        "La plus grande distance a été faite mardi.",
+        "La différence entre jeudi et mercredi est de 10 km.",
+        "La distance du lundi est supérieure à celle du mercredi."
+      ],
+      "correctAnswer": "La distance du lundi est supérieure à celle du mercredi.",
+      "explanation": "On vérifie chaque affirmation :\\n- Total : $25+30+20+35 = 110$ km (pas $100$).\\n- Max : Jeudi ($35$ km) > Mardi ($30$ km).\\n- Différence Jeudi - Mercredi : $35 - 20 = 15$ km (pas $10$).\\n- Lundi ($25$) > Mercredi ($20$) : c'est la seule affirmation vraie.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

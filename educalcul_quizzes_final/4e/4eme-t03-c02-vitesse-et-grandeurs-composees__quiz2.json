@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 431,
+  "_course_code": "4eme-t03-c02-vitesse-et-grandeurs-composees",
+  "_level": "4e",
+  "_subject": "Proportionnalité, pourcentages et dépendance fonctionnelle",
+  "_subtheme": "Conversions",
+  "title": "Quiz : Conversions d'unités de vitesse",
+  "questions": [
+    {
+      "text": "Convertir une vitesse de $72$ km/h en m/s.",
+      "options": [
+        "$20$ m/s",
+        "$200$ m/s",
+        "$1\\,200$ m/s",
+        "$720$ m/s"
+      ],
+      "correctAnswer": "$20$ m/s",
+      "explanation": "Pour passer de km/h à m/s, on divise par $3,6$ (car $1$ km $= 1\\,000$ m et $1$ h $= 3\\,600$ s). $72 / 3,6 = 20$. L'erreur classique est de multiplier par $3,6$ (donnant $259,2$), de ne convertir que la distance ($72\\,000$ m/h) ou que le temps ($1\\,200$ m/min).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle est la vitesse en km/h équivalente à $15$ m/s ?",
+      "options": [
+        "$54$ km/h",
+        "$5,4$ km/h",
+        "$540$ km/h",
+        "$150$ km/h"
+      ],
+      "correctAnswer": "$54$ km/h",
+      "explanation": "Pour passer de m/s à km/h, on multiplie par $3,6$. $15 \\times 3,6 = 54$. L'option $5,4$ correspond à une division par $10$ (oubli de convertir les secondes en heures). L'option $540$ correspond à une multiplication par $36$ (conversion secondes-heures mais oubli kilomètres-mètres).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Une voiture roule à $54$ km/h. Quelle distance parcourt-elle en $20$ secondes ?",
+      "options": [
+        "$300$ m",
+        "$30$ m",
+        "$3\\,000$ m",
+        "$1\\,080$ m"
+      ],
+      "correctAnswer": "$300$ m",
+      "explanation": "On convertit d'abord la vitesse en m/s : $54 / 3,6 = 15$ m/s. Ensuite, distance $= $ vitesse $\\times$ temps $= 15 \\times 20 = 300$ m. L'option $30$ m correspond à un calcul en km/h $\\times$ secondes sans conversion ($54 \\times 20 / 36$ mal fait). L'option $1\\,080$ m correspond à $54 \\times 20$ (mélange km/h et secondes).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comparer les deux vitesses : $25$ m/s et $80$ km/h.",
+      "options": [
+        "$25$ m/s est plus grande",
+        "$80$ km/h est plus grande",
+        "Elles sont égales",
+        "On ne peut pas les comparer"
+      ],
+      "correctAnswer": "$25$ m/s est plus grande",
+      "explanation": "On convertit l'une dans l'unité de l'autre. $25$ m/s $= 25 \\times 3,6 = 90$ km/h. Or $90 > 80$. Donc $25$ m/s $> 80$ km/h. L'erreur fréquente est de comparer directement les nombres $25$ et $80$ sans conversion.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un cycliste parcourt $12$ km en $40$ minutes. Quelle est sa vitesse moyenne en km/h ?",
+      "options": [
+        "$18$ km/h",
+        "$12$ km/h",
+        "$30$ km/h",
+        "$0,3$ km/h"
+      ],
+      "correctAnswer": "$18$ km/h",
+      "explanation": "La formule est $v = d / t$. Il faut exprimer le temps en heures : $40$ min $= 40/60 = 2/3$ h. Vitesse $= 12 / (2/3) = 12 \\times 3/2 = 18$ km/h. L'option $12$ km/h oublie de convertir les minutes. L'option $30$ km/h fait $12 / 0,4$ (en traitant $40$ min comme $0,4$ h). L'option $0,3$ km/h fait $12 / 40$ (km/min sans conversion).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

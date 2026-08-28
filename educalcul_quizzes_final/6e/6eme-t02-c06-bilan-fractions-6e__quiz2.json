@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 341,
+  "_course_code": "6eme-t02-c06-bilan-fractions-6e",
+  "_level": "6e",
+  "_subject": "Fractions",
+  "_subtheme": "Checklist",
+  "title": "Bilan Fractions 6e - Checklist",
+  "questions": [
+    {
+      "text": "Dans la fraction $\\frac{3}{8}$, quel est le nom et le rôle du nombre 8 ?",
+      "options": [
+        "C'est le numérateur, il indique le nombre de parts prises",
+        "C'est le dénominateur, il indique en combien de parts égales l'unité est divisée",
+        "C'est le quotient, il donne le résultat de la division",
+        "C'est la partie entière de la fraction"
+      ],
+      "correctAnswer": "C'est le dénominateur, il indique en combien de parts égales l'unité est divisée",
+      "explanation": "Dans une fraction $\\frac{a}{b}$, le nombre du haut ($a$) est le numérateur (nombre de parts prises), le nombre du bas ($b$) est le dénominateur (nombre de parts égales dans l'unité). Ici, 8 est bien le dénominateur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle fraction est représentée par la figure ci-dessous ?",
+      "options": [
+        "$\\frac{2}{5}$",
+        "$\\frac{3}{5}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{5}{2}$"
+      ],
+      "correctAnswer": "$\\frac{2}{5}$",
+      "explanation": "La figure montre une barre divisée en 5 parties égales (dénominateur 5), dont 2 sont colorées (numérateur 2). La fraction représentée est donc $\\frac{2}{5}$.",
+      "points": 1,
+      "figure": {
+        "type": "fraction",
+        "numerator": 2,
+        "denominator": 5,
+        "shape": "bar",
+        "caption": "Fraction représentée par une barre divisée en 5, 2 parts colorées"
+      }
+    },
+    {
+      "text": "Laquelle des affirmations suivantes est vraie pour comparer $\\frac{3}{4}$ et $\\frac{5}{6}$ ?",
+      "options": [
+        "$\\frac{3}{4} > \\frac{5}{6}$",
+        "$\\frac{3}{4} = \\frac{5}{6}$",
+        "$\\frac{3}{4} < \\frac{5}{6}$",
+        "On ne peut pas les comparer car les dénominateurs sont différents"
+      ],
+      "correctAnswer": "$\\frac{3}{4} < \\frac{5}{6}$",
+      "explanation": "Pour comparer, on met au même dénominateur (12) : $\\frac{3}{4} = \\frac{9}{12}$ et $\\frac{5}{6} = \\frac{10}{12}$. Comme $9 < 10$, on a $\\frac{9}{12} < \\frac{10}{12}$, donc $\\frac{3}{4} < \\frac{5}{6}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "La fraction $\\frac{18}{24}$ simplifiée au maximum s'écrit :",
+      "options": [
+        "$\\frac{3}{4}$",
+        "$\\frac{9}{12}$",
+        "$\\frac{2}{3}$",
+        "$\\frac{6}{8}$"
+      ],
+      "correctAnswer": "$\\frac{3}{4}$",
+      "explanation": "On divise le numérateur et le dénominateur par leur PGCD (18 et 24 sont divisibles par 6). $\\frac{18 \\div 6}{24 \\div 6} = \\frac{3}{4}$. Les autres options ($\\frac{9}{12}$, $\\frac{6}{8}$) ne sont pas simplifiées au maximum, et $\\frac{2}{3}$ est faux.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le résultat de $\\frac{2}{5}$ de $35$ ?",
+      "options": [
+        "$14$",
+        "$10$",
+        "$7$",
+        "$25$"
+      ],
+      "correctAnswer": "$14$",
+      "explanation": "Calculer une fraction d'un nombre, c'est diviser par le dénominateur puis multiplier par le numérateur : $35 \\div 5 = 7$, puis $7 \\times 2 = 14$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

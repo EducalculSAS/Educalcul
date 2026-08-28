@@ -1,0 +1,42 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 241,
+  "_course_code": "cm1-t05-c01-conversions-de-longueurs",
+  "_level": "cm1",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Tableau de conversion raisonné",
+  "title": "Conversions de longueurs : tableau de conversion raisonné",
+  "blocks": [
+    {
+      "title": "Conversion simple en mètres",
+      "content": "Pour convertir $5$ km en mètres à l'aide d'un tableau de conversion, j'écris le chiffre $5$ dans la colonne des kilomètres. J'ajoute des zéros dans les colonnes suivantes jusqu'à la colonne des mètres. J'obtiens $5$ km = {{1}} m.",
+      "blanks": [
+        "5000"
+      ],
+      "explanation": "Dans le tableau de conversion des longueurs (km, hm, dam, m, dm, cm, mm), pour passer des kilomètres aux mètres, il faut avancer de 3 colonnes vers la droite. On ajoute donc 3 zéros au nombre 5 : 5 000 m.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion décimale en mètres",
+      "content": "Pour convertir $350$ cm en mètres, j'écris le chiffre des unités ($0$) dans la colonne des centimètres. J'écris les autres chiffres ($3$, $5$) dans les colonnes de gauche. Je place la virgule à la colonne des mètres. J'obtiens $350$ cm = {{1}} m.",
+      "blanks": [
+        "3,5|3,50"
+      ],
+      "explanation": "On place le 0 de 350 dans la colonne cm, le 5 dans dm et le 3 dans m. La virgule se place à la colonne des mètres. On lit 3,5 m (ou 3,50 m).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Conversion avec nombre décimal",
+      "content": "Pour convertir $2,4$ dam en centimètres, j'écris $2$ dans la colonne des décamètres et $4$ dans la colonne des mètres. J'ajoute des zéros jusqu'à la colonne des centimètres. J'obtiens $2,4$ dam = {{1}} cm.",
+      "blanks": [
+        "2400"
+      ],
+      "explanation": "Le chiffre 2 est en dam, le 4 est en m. Pour aller jusqu'aux cm, il faut ajouter deux zéros (colonnes dm et cm). Le nombre devient 2 400 cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

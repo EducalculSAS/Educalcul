@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 376,
+  "_course_code": "6eme-t09-c03-conditions",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Application : Conditions",
+  "title": "Quiz - Conditions en algorithmique (6e)",
+  "questions": [
+    {
+      "text": "Dans un algorithme, on teste si une variable $x$ est supérieure à $10$. Quelle instruction permet d'exécuter un bloc seulement si la condition est vraie ?",
+      "options": [
+        "SI $x > 10$ ALORS ... FIN SI",
+        "TANT QUE $x > 10$ FAIRE ... FIN TANT QUE",
+        "REPETER $x > 10$ FOIS ... FIN REPETER",
+        "POUR $x$ DE 1 A 10 FAIRE ... FIN POUR"
+      ],
+      "correctAnswer": "SI $x > 10$ ALORS ... FIN SI",
+      "explanation": "La structure conditionnelle \"SI ... ALORS ... FIN SI\" exécute le bloc uniquement quand la condition est vraie. \"TANT QUE\" crée une boucle, \"REPETER\" n'existe pas avec une condition, et \"POUR\" est une boucle déterminée.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel bloc s'exécute lorsque la condition est fausse dans la structure suivante ?\\nSI $age \\ge 18$ ALORS Afficher \"Majeur\" SINON Afficher \"Mineur\" FIN SI",
+      "options": [
+        "Afficher \"Majeur\"",
+        "Afficher \"Mineur\"",
+        "Les deux",
+        "Aucun"
+      ],
+      "correctAnswer": "Afficher \"Mineur\"",
+      "explanation": "Le mot-clé \"SINON\" introduit le bloc exécuté quand la condition du \"SI\" est fausse. Ici, si $age < 18$, on affiche \"Mineur\".",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut afficher \"Pair\" si $n$ est pair, sinon \"Impair\". Quelle condition tester ?",
+      "options": [
+        "$n \\% 2 = 0$",
+        "$n \\% 2 = 1$",
+        "$n / 2 = 0$",
+        "$n * 2 = 0$"
+      ],
+      "correctAnswer": "$n \\% 2 = 0$",
+      "explanation": "Un nombre est pair exactement quand le reste de sa division par 2 est 0, c'est-à-dire $n \\% 2 = 0$. Les autres expressions ne correspondent pas à cette définition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Pour entrer dans un club, il faut avoir au moins 12 ans ET mesurer plus de 150 cm. Quelle expression booléenne représente cette condition ?",
+      "options": [
+        "$age \\ge 12$ ET $taille > 150$",
+        "$age \\ge 12$ OU $taille > 150$",
+        "$age > 12$ ET $taille \\ge 150$",
+        "$age < 12$ ET $taille < 150$"
+      ],
+      "correctAnswer": "$age \\ge 12$ ET $taille > 150$",
+      "explanation": "La condition demande les deux critères simultanément, donc l'opérateur \"ET\". De plus, \"au moins 12 ans\" se traduit par $age \\ge 12$ et \"plus de 150 cm\" par $taille > 150$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute l'algorithme suivant :\\nx ← 7\\nSI x > 5 ALORS\\n   x ← x + 3\\nSINON\\n   x ← x - 2\\nFIN SI\\nAfficher x\\nQuelle valeur est affichée ?",
+      "options": [
+        "10",
+        "5",
+        "7",
+        "12"
+      ],
+      "correctAnswer": "10",
+      "explanation": "Au début $x = 7$. La condition $x > 5$ est vraie, donc on exécute $x \\leftarrow x + 3$, ce qui donne $x = 10$. Le bloc SINON est ignoré. L'affichage final est donc 10.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

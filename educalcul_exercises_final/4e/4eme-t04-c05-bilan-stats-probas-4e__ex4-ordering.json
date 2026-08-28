@@ -1,0 +1,62 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 439,
+  "_course_code": "4eme-t04-c05-bilan-stats-probas-4e",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Bilan - Stats-probas 4e",
+  "title": "Bilan : Mise en ordre - Statistiques et Probabilités",
+  "blocks": [
+    {
+      "title": "Calcul de la moyenne",
+      "content": "Range les étapes dans l'ordre chronologique pour calculer la moyenne d'une série statistique avec effectifs.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Recenser les valeurs de la série statistique et leur effectif respectif.",
+        "Calculer la somme des produits (valeur × effectif) pour chaque valeur.",
+        "Calculer l'effectif total en additionnant tous les effectifs.",
+        "Diviser la somme des produits par l'effectif total pour obtenir la moyenne."
+      ],
+      "explanation": "Pour calculer la moyenne d'une série avec effectifs, on commence par lister les valeurs et leurs effectifs. Ensuite, on calcule la somme des produits (valeur × effectif). On calcule aussi l'effectif total (somme des effectifs). Enfin, on divise la somme des produits par l'effectif total : moyenne = (somme des produits) / (effectif total).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'une probabilité",
+      "content": "Range les étapes dans l'ordre logique pour calculer la probabilité d'un événement lors d'une expérience aléatoire à issues équiprobables.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Identifier l'ensemble des issues possibles de l'expérience aléatoire.",
+        "Compter le nombre total d'issues possibles.",
+        "Identifier les issues favorables à l'événement étudié.",
+        "Compter le nombre d'issues favorables.",
+        "Écrire la probabilité sous la forme d'une fraction : nombre de cas favorables sur nombre de cas possibles."
+      ],
+      "explanation": "La démarche standard pour une probabilité équiprobable est : 1) Lister toutes les issues possibles (l'univers $\\Omega$). 2) Compter le cardinal de $\\Omega$ (nombre total de cas possibles). 3) Repérer les issues qui vérifient l'événement. 4) Compter le cardinal de cet événement (cas favorables). 5) Appliquer la formule $P(A) = \\frac{\\text{nombre de cas favorables}}{\\text{nombre de cas possibles}}$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Construction d'une boîte à moustaches",
+      "content": "Range les étapes dans l'ordre pour construire une boîte à moustaches (diagramme en boîte) à partir d'une série statistique brute.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "Ordonner les données de la série statistique par ordre croissant.",
+        "Déterminer le minimum, le maximum, la médiane, le premier et le troisième quartile.",
+        "Tracer un axe gradué adapté à l'étendue de la série.",
+        "Construire le rectangle (la boîte) entre le premier et le troisième quartile en marquant la médiane par un trait.",
+        "Tracer les moustaches reliant le minimum au premier quartile et le troisième quartile au maximum."
+      ],
+      "explanation": "La construction suit un ordre logique : il faut d'abord ordonner les données pour pouvoir extraire les 5 nombres caractéristiques (min, Q1, médiane, Q3, max). On trace ensuite l'axe, puis la boîte (de Q1 à Q3 avec la médiane), et enfin les moustaches (de min à Q1 et de Q3 à max).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

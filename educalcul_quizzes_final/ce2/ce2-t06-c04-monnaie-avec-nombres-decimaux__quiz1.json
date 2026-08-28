@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 190,
+  "_course_code": "ce2-t06-c04-monnaie-avec-nombres-decimaux",
+  "_level": "ce2",
+  "_subject": "Grandeurs et mesures",
+  "_subtheme": "Lire prix",
+  "title": "Lire et écrire des prix en euros",
+  "questions": [
+    {
+      "text": "Voici le prix affiché sur une étiquette : $4,50~\\text{€}$. Comment lit-on ce prix correctement ?",
+      "options": [
+        "quatre euros cinquante centimes",
+        "quatre euros cinq centimes",
+        "quarante-cinq euros",
+        "quatre cents cinquante euros"
+      ],
+      "correctAnswer": "quatre euros cinquante centimes",
+      "explanation": "Le nombre avant la virgule correspond aux euros (4 euros). Les deux chiffres après la virgule correspondent aux centimes : 50 centimes. On lit donc « quatre euros cinquante centimes ». L'option « quatre euros cinq centimes » correspondrait à $4,05~\\text{€}$. Les deux dernières options ne respectent pas la séparation euros/centimes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un magazine coûte $8,05~\\text{€}$. Quelle est la bonne lecture de ce prix ?",
+      "options": [
+        "huit euros cinq centimes",
+        "huit euros cinquante centimes",
+        "huit cent cinq euros",
+        "zéro euro huit cent cinq"
+      ],
+      "correctAnswer": "huit euros cinq centimes",
+      "explanation": "Le chiffre des unités d'euros est 8. Après la virgule, le 0 est le chiffre des dixièmes (dizaines de centimes) et le 5 est le chiffre des centièmes (centimes). Comme il y a 0 dizaine de centimes, on dit « cinq centimes » et non « cinquante centimes » (qui serait $8,50~\\text{€}$).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lit sur une pancarte : « douze euros trente centimes ». Quelle est l'écriture en chiffres avec le symbole € ?",
+      "options": [
+        "$12,30~\\text{€}$",
+        "$12,03~\\text{€}$",
+        "$1230~\\text{€}$",
+        "$1,23~\\text{€}$"
+      ],
+      "correctAnswer": "$12,30~\\text{€}$",
+      "explanation": "« Douze euros » s'écrit 12 avant la virgule. « Trente centimes » correspond à 3 dixièmes d'euro (30 centimes), donc le chiffre 3 juste après la virgule, suivi d'un 0 pour les centimes unités. L'écriture $12,03~\\text{€}$ signifie douze euros et trois centimes. L'écriture sans virgule ($1230~\\text{€}$) signifie mille deux cent trente euros.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde le tableau de position ci-dessous. Quel prix représente-t-il ?",
+      "options": [
+        "$20,08~\\text{€}$",
+        "$20,80~\\text{€}$",
+        "$2,08~\\text{€}$",
+        "$2008~\\text{€}$"
+      ],
+      "correctAnswer": "$20,08~\\text{€}$",
+      "explanation": "Sur le tableau, on a 2 dizaines d'euros (20), 0 euro, 0 dixième d'euro (0 centime dix) et 8 centièmes d'euro (8 centimes). Cela forme le nombre 20,08. L'option $20,80~\\text{€}$ aurait un 8 au rang des dixièmes. L'option $2,08~\\text{€}$ n'a qu'un chiffre des unités d'euros.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 20.08,
+        "caption": "Prix d'un jeu de construction"
+      }
+    },
+    {
+      "text": "Le prix d'un cahier est « treize euros cinq centimes ». Parmi ces écritures, laquelle est la bonne ?",
+      "options": [
+        "$13,05~\\text{€}$",
+        "$13,50~\\text{€}$",
+        "$13,5~\\text{€}$",
+        "$1305~\\text{€}$"
+      ],
+      "correctAnswer": "$13,05~\\text{€}$",
+      "explanation": "Treize euros s'écrit 13 avant la virgule. Cinq centimes signifie 0 dizaine de centimes et 5 centimes, donc il faut écrire 05 après la virgule pour garder deux chiffres : $13,05~\\text{€}$. L'écriture $13,50~\\text{€}$ correspond à treize euros cinquante centimes. L'écriture $13,5~\\text{€}$ est une écriture mathématique possible mais on écrit toujours deux chiffres pour les centimes sur les étiquettes de prix. $1305~\\text{€}$ signifie mille trois cent cinq euros.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

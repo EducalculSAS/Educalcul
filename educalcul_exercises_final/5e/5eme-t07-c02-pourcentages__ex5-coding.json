@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 411,
+  "_course_code": "5eme-t07-c02-pourcentages",
+  "_level": "5e",
+  "_subject": "Proportionnalité et premières fonctions",
+  "_subtheme": "Approfondissement : Calculer proportion",
+  "title": "Approfondissement : Calculer proportion - Algorithmes",
+  "blocks": [
+    {
+      "title": "Calculer une partie",
+      "content": "Écrire un algorithme (en pseudo‑code ou syntaxe Python) qui demande à l'utilisateur un total et un pourcentage, puis calcule et affiche la partie correspondante.",
+      "correctAnswer": "Algorithme :\\n1. Lire total\\n2. Lire pourcentage\\n3. Calculer $partie = total * pourcentage / 100$\\n4. Afficher partie",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour trouver la partie correspondant à un pourcentage d'un total, on multiplie le total par le pourcentage et on divise par 100. L'algorithme lit les deux valeurs, effectue le calcul $partie = total * pourcentage / 100$ et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer un pourcentage",
+      "content": "Écrire un algorithme qui, connaissant une partie et le total, calcule et affiche le pourcentage que représente cette partie par rapport au total.",
+      "correctAnswer": "Algorithme :\\n1. Lire partie\\n2. Lire total\\n3. Calculer $pourcentage = partie * 100 / total$\\n4. Afficher pourcentage",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le pourcentage se calcule en divisant la partie par le total puis en multipliant par 100. L'algorithme lit la partie et le total, calcule $pourcentage = partie * 100 / total$ et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer le total",
+      "content": "Écrire un algorithme qui, connaissant une partie et le pourcentage qu'elle représente, calcule et affiche le total.",
+      "correctAnswer": "Algorithme :\\n1. Lire partie\\n2. Lire pourcentage\\n3. Calculer $total = partie * 100 / pourcentage$\\n4. Afficher total",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Si on connaît la partie et le pourcentage, on retrouve le total en multipliant la partie par 100 et en divisant par le pourcentage. L'algorithme lit les deux valeurs, calcule $total = partie * 100 / pourcentage$ et affiche le résultat.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

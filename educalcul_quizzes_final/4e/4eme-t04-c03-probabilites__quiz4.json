@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 437,
+  "_course_code": "4eme-t04-c03-probabilites",
+  "_level": "4e",
+  "_subject": "Statistiques et probabilités",
+  "_subtheme": "Application : Probabilités",
+  "title": "Quiz : Applications des probabilités (4e)",
+  "questions": [
+    {
+      "text": "Un sac contient 3 boules rouges, 5 boules bleues et 2 boules vertes. On tire une boule au hasard. Quelle est la probabilité d'obtenir une boule bleue ?",
+      "options": [
+        "$1/2$",
+        "$5/12$",
+        "$3/10$",
+        "$2/5$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "Le nombre total de boules est $3+5+2 = 10$. Il y a 5 boules bleues, donc la probabilité est $5/10 = 1/2$. Les autres options correspondent à des erreurs de comptage ou de simplification.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à six faces équilibré. Quelle est la probabilité d'obtenir un nombre pair ?",
+      "options": [
+        "$1/2$",
+        "$1/3$",
+        "$2/3$",
+        "$1/6$"
+      ],
+      "correctAnswer": "$1/2$",
+      "explanation": "Les faces paires sont 2, 4 et 6 : 3 issues favorables sur 6 issues possibles, soit $3/6 = 1/2$. Les distracteurs proviennent de confusions entre nombres pairs/impairs ou de comptage erroné.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire une carte au hasard dans un jeu de 52 cartes, puis on lance un dé à six faces. Quelle est la probabilité d'obtenir un cœur et un 4 ?",
+      "options": [
+        "$1/24$",
+        "$1/12$",
+        "$1/8$",
+        "$1/6$"
+      ],
+      "correctAnswer": "$1/24$",
+      "explanation": "Les deux événements sont indépendants. Probabilité de tirer un cœur : $13/52 = 1/4$. Probabilité d'obtenir 4 au dé : $1/6$. Probabilité conjointe : $(1/4) \\times (1/6) = 1/24$. Les autres valeurs correspondent à l'oubli de l'indépendance ou à une simplification incorrecte.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un sac contient 4 boules rouges et 6 boules bleues. On tire une boule au hasard. Quelle est la probabilité de ne pas tirer une boule rouge ?",
+      "options": [
+        "$3/5$",
+        "$2/5$",
+        "$4/5$",
+        "$1/2$"
+      ],
+      "correctAnswer": "$3/5$",
+      "explanation": "Il y a 10 boules au total, 6 sont bleues (non rouges). La probabilité de ne pas tirer une rouge est $6/10 = 3/5$. L'option $2/5$ serait la probabilité de tirer une rouge, $4/5$ et $1/2$ sont des erreurs de calcul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans un jeu, on gagne 5 € avec une probabilité de 0,2 et on perd 2 € avec une probabilité de 0,8. Quel est l'espérance de gain ?",
+      "options": [
+        "$-0,6 \\text{ €}$",
+        "$0,6 \\text{ €}$",
+        "$-1,6 \\text{ €}$",
+        "$1 \\text{ €}$"
+      ],
+      "correctAnswer": "$-0,6 \\text{ €}$",
+      "explanation": "L'espérance se calcule par $5 \\times 0,2 + (-2) \\times 0,8 = 1 - 1,6 = -0,6$. Le signe négatif indique une perte moyenne de 0,6 €. Les distracteurs correspondent à l'oubli du signe moins, à une addition erronée ou à une mauvaise pondération.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 169,
+  "_course_code": "ce2-t04-c01-tables-de-multiplication",
+  "_level": "ce2",
+  "_subject": "Calcul mental et automatismes",
+  "_subtheme": "Approfondissement : Consolider tables travaillées",
+  "title": "Algorithmes et tables de multiplication",
+  "blocks": [
+    {
+      "title": "Afficher une table de multiplication",
+      "content": "Écris un algorithme en langage naturel (style « Début … Fin ») qui affiche la table de multiplication par $4$ de $1$ jusqu'à $10$. L'algorithme doit utiliser une boucle « Pour » et afficher chaque résultat sur la forme « $1 \\times 4 = 4$ », « $2 \\times 4 = 8$ », etc.",
+      "correctAnswer": "Début\\nPour i allant de 1 à 10 faire\\n    Afficher i, \" × 4 = \", i × 4\\nFin pour\\nFin",
+      "explanation": "L'algorithme utilise une variable i qui prend les valeurs de 1 à 10. À chaque tour de boucle, on calcule i × 4 et on affiche l'opération complète. Cela permet de construire toute la table de 4 automatiquement.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calculer un produit par additions successives",
+      "content": "Complète l'algorithme ci-dessous pour qu'il calcule le produit $7 \\times 6$ en utilisant uniquement des additions successives (sans utiliser l'opérateur ×). La variable `produit` doit contenir le résultat final.\\n\\nDébut\\n    produit ← 0\\n    Pour k allant de 1 à 7 faire\\n        …\\n    Fin pour\\n    Afficher produit\\nFin",
+      "correctAnswer": "Début\\n    produit ← 0\\n    Pour k allant de 1 à 7 faire\\n        produit ← produit + 6\\n    Fin pour\\n    Afficher produit\\nFin",
+      "explanation": "Multiplier 7 par 6, c'est ajouter 6 exactement 7 fois. La boucle répète 7 fois l'instruction « produit ← produit + 6 ». Au début produit vaut 0, à la fin il vaut 6 + 6 + 6 + 6 + 6 + 6 + 6 = 42.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver les multiples d'un nombre",
+      "content": "Écris un algorithme qui affiche tous les multiples de $3$ inférieurs à $30$. L'algorithme doit tester les nombres de $1$ à $29$ et afficher seulement ceux qui sont divisibles par $3$ (reste de la division euclidienne égal à $0$). Utilise l'opérateur « modulo » (noté `%` ou `mod`) pour tester le reste.",
+      "correctAnswer": "Début\\nPour n allant de 1 à 29 faire\\n    Si n % 3 = 0 alors\\n        Afficher n\\n    Fin si\\nFin pour\\nFin",
+      "explanation": "On parcourt les entiers de 1 à 29. Le test « n % 3 = 0 » vérifie si le reste de la division de n par 3 est nul, ce qui signifie que n est un multiple de 3. L'algorithme affiche alors : 3, 6, 9, 12, 15, 18, 21, 24, 27.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

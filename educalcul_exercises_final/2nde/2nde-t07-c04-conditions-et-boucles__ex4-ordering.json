@@ -1,0 +1,63 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 537,
+  "_course_code": "2nde-t07-c04-conditions-et-boucles",
+  "_level": "2nde",
+  "_subject": "Logique, ensembles, algorithmique et automatismes",
+  "_subtheme": "Application : Conditions et boucles",
+  "title": "Exercices de mise en ordre : conditions et boucles",
+  "blocks": [
+    {
+      "title": "Somme des premiers entiers",
+      "content": "Replacez les lignes suivantes dans l'ordre pour obtenir un algorithme qui calcule la somme des entiers de 1 à $n$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$somme ← 0$",
+        "pour $i$ de 1 à $n$ faire",
+        "    $somme ← somme + i$",
+        "fin pour",
+        "afficher $somme$"
+      ],
+      "explanation": "L'algorithme initialise la variable $somme$ à 0. Ensuite, la boucle pour fait varier $i$ de 1 à $n$ et ajoute chaque valeur de $i$ à $somme$. Après la boucle, le résultat est affiché.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Maximum d'un tableau",
+      "content": "Replacez les instructions dans l'ordre pour obtenir un algorithme qui détermine le plus grand élément d'un tableau $tab$ de taille $n$.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$max ← tab[0]$",
+        "pour $i$ de 1 à $n-1$ faire",
+        "    si $tab[i] > max$ alors $max ← tab[i]$ fin si",
+        "fin pour",
+        "afficher $max$"
+      ],
+      "explanation": "On commence par supposer que le premier élément $tab[0]$ est le maximum. La boucle parcourt les indices suivants. À chaque itération, si l'élément courant $tab[i]$ est plus grand que $max$, on met à jour $max$. Finalement, on affiche la valeur trouvée.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Factoriel d'un entier",
+      "content": "Replacez les lignes dans l'ordre pour obtenir un algorithme qui calcule $n!$ (factoriel de $n$).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$factoriel ← 1$",
+        "pour $i$ de 2 à $n$ faire",
+        "    $factoriel ← factoriel * i$",
+        "fin pour",
+        "afficher $factoriel$"
+      ],
+      "explanation": "La variable $factoriel$ est initialisée à 1. La boucle fait varier $i$ de 2 jusqu'à $n$ et multiplie $factoriel$ par $i$ à chaque tour. Après la boucle, $factoriel$ vaut $n!$ et on l'affiche.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

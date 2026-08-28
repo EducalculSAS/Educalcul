@@ -1,0 +1,146 @@
+{
+  "_status": "done",
+  "_course_id": 178,
+  "_course_code": "ce2-t05-c01-modeliser-avec-un-schema",
+  "_level": "ce2",
+  "_subject": "Résolution de problèmes",
+  "_subtheme": "Relier schéma et calcul",
+  "title": "Relier un schéma en barres au calcul correspondant",
+  "questions": [
+    {
+      "text": "Le schéma ci-dessous représente deux parts qui forment un tout. La première part vaut 15 et la seconde vaut 28. Quel calcul permet de trouver la valeur du tout ?",
+      "options": [
+        "$15 + 28$",
+        "$28 - 15$",
+        "$15 \\times 28$",
+        "$28 : 15$"
+      ],
+      "correctAnswer": "$15 + 28$",
+      "explanation": "Le schéma montre deux parties distinctes qui se réunissent pour former un total. Pour retrouver le total (le tout) à partir des deux parties, on effectue une addition. L'option $28 - 15$ correspondrait à une recherche de différence ou de partie manquante. La multiplication et la division ne correspondent pas à cette situation de mise ensemble.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Partie 1",
+            "value": 15,
+            "tone": "blue"
+          },
+          {
+            "label": "Partie 2",
+            "value": 28,
+            "tone": "green"
+          }
+        ],
+        "caption": "Deux parts formant un tout"
+      }
+    },
+    {
+      "text": "Un schéma représente un total de 50. Une des deux parties est connue et vaut 30. L'autre partie est inconnue. Quel calcul permet de trouver la valeur de la partie manquante ?",
+      "options": [
+        "$50 + 30$",
+        "$50 - 30$",
+        "$30 - 50$",
+        "$50 \\times 30$"
+      ],
+      "correctAnswer": "$50 - 30$",
+      "explanation": "On connaît le total (50) et une partie (30). Pour trouver l'autre partie, il faut retrancher la partie connue du total, c'est-à-dire faire une soustraction : $50 - 30 = 20$. L'addition donnerait un nombre plus grand que le total. La soustraction $30 - 50$ est impossible en nombres entiers positifs. La multiplication n'a pas de sens ici.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Lucas a 45 billes. Emma en a 28. Le schéma compare leurs nombres de billes. Quel calcul permet de savoir combien de billes Lucas a de plus qu'Emma ?",
+      "options": [
+        "$45 + 28$",
+        "$45 - 28$",
+        "$28 - 45$",
+        "$45 \\times 28$"
+      ],
+      "correctAnswer": "$45 - 28$",
+      "explanation": "Il s'agit d'un problème de comparaison : on cherche la différence entre deux quantités. Lucas a le plus grand nombre (45), Emma le plus petit (28). Pour trouver l'écart, on soustrait le plus petit du plus grand : $45 - 28 = 17$. L'addition donnerait le total des billes, pas la différence. L'ordre de la soustraction est important : on fait grand moins petit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Le schéma ci-dessous montre 4 groupes identiques. Chaque groupe contient 6 objets. Quel calcul permet de trouver le nombre total d'objets ?",
+      "options": [
+        "$6 + 4$",
+        "$6 - 4$",
+        "$4 \\times 6$",
+        "$6 : 4$"
+      ],
+      "correctAnswer": "$4 \\times 6$",
+      "explanation": "Le schéma représente une multiplication : plusieurs groupes (4) de même taille (6). Pour trouver le total, on ajoute 6 quatre fois, ce qui s'écrit $4 \\times 6$ (ou $6 \\times 4$). L'addition $6 + 4$ ne compte qu'un groupe de 6 et un groupe de 4. La soustraction et la division ne correspondent pas à une mise ensemble de groupes égaux.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Groupe 1",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 2",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 3",
+            "value": 6,
+            "tone": "blue"
+          },
+          {
+            "label": "Groupe 4",
+            "value": 6,
+            "tone": "blue"
+          }
+        ],
+        "caption": "4 groupes de 6"
+      }
+    },
+    {
+      "text": "Le schéma représente un partage de 35 objets en 5 parts égales. Quel calcul permet de trouver le nombre d'objets dans chaque part ?",
+      "options": [
+        "$35 + 5$",
+        "$35 - 5$",
+        "$35 \\times 5$",
+        "$35 : 5$"
+      ],
+      "correctAnswer": "$35 : 5$",
+      "explanation": "C'est une situation de division (partage). On connaît le total (35) et le nombre de parts (5). Pour trouver la taille de chaque part, on divise le total par le nombre de parts : $35 : 5 = 7$. L'addition et la multiplication augmenteraient le total. La soustraction $35 - 5$ ne correspond qu'au retrait d'un seul groupe de 5, pas à un partage équitable en 5 groupes.",
+      "points": 1,
+      "figure": {
+        "type": "tape_diagram",
+        "parts": [
+          {
+            "label": "Part 1",
+            "value": 7,
+            "tone": "gold"
+          },
+          {
+            "label": "Part 2",
+            "value": 7,
+            "tone": "gold"
+          },
+          {
+            "label": "Part 3",
+            "value": 7,
+            "tone": "gold"
+          },
+          {
+            "label": "Part 4",
+            "value": 7,
+            "tone": "gold"
+          },
+          {
+            "label": "Part 5",
+            "value": 7,
+            "tone": "gold"
+          }
+        ],
+        "caption": "Partage de 35 en 5 parts égales"
+      }
+    }
+  ]
+}

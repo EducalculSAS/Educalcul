@@ -1,0 +1,399 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.545581+00:00",
+  "id": 660,
+  "code": "terminale-generale-complementaires-t06-c04",
+  "title": "Bilan - Bayes",
+  "description": "Cours structuré Educalcul : Bilan - Bayes.",
+  "subject": "Inférence bayésienne",
+  "level": "terminale",
+  "source_level_label": "Terminale mathématiques complémentaires",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Terminale mathématiques complémentaires",
+    "theme": "Inférence bayésienne",
+    "titre_du_cours": "Bilan - Bayes",
+    "objectif_global": "Bilan - Bayes",
+    "mini_lecons_imposees": [
+      "Calcul et interprétation.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme encore applicable ; le nouveau programme publié en 2026 n’entre en vigueur en Terminale qu’en 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Inférence bayésienne",
+      "lessons": [
+        {
+          "title": "Calcul et interprétation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La formule de Bayes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce bilan sur le théorème de Bayes. Nous allons reprendre ensemble la formule, la décortiquer terme par terme, et surtout voir comment l'interpréter dans des situations concrètes. L'idée directrice est simple : partant d'une croyance initiale, nous mettons à jour cette croyance dès qu'une nouvelle information arrive. C'est exactement ce que fait un médecin quand il reçoit le résultat d'un test, ou un ingénieur quand il affine un modèle grâce à des mesures réelles. Prenons le temps de poser les bases sans nous presser, car chaque concept s'enchaîne naturellement."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité a priori",
+              "definition": "C'est la probabilité qu'on attribue à un événement avant d'observer la nouvelle donnée. Elle reflète notre connaissance initiale, par exemple la prévalence d'une maladie dans une population.",
+              "example": "Si 2 % de la population est malade, la probabilité a priori d'être malade est $P(M)=0,02$."
+            },
+            {
+              "type": "definition",
+              "term": "Vraisemblance",
+              "definition": "C'est la probabilité d'observer la donnée (le test positif par exemple) sachant que l'hypothèse est vraie. Elle mesure la performance de l'instrument de mesure.",
+              "example": "Pour un test de sensibilité 95 %, la vraisemblance est $P(T^+|M)=0,95$."
+            },
+            {
+              "type": "definition",
+              "term": "Probabilité a posteriori",
+              "definition": "C'est la probabilité mise à jour de l'hypothèse après avoir pris en compte la nouvelle observation. C'est la quantité qu'on cherche le plus souvent.",
+              "example": "On veut $P(M|T^+)$, la probabilité d'être malade sachant que le test est positif."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(A|B) = \\frac{P(B|A)\\,P(A)}{P(B)}"
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre des probabilités pour un test médical : branches pour malade/sain puis test positif/négatif.",
+              "branches": [
+                {
+                  "label": "Malade",
+                  "probability": 0.02,
+                  "children": [
+                    {
+                      "label": "Test +",
+                      "probability": 0.95
+                    },
+                    {
+                      "label": "Test -",
+                      "probability": 0.05
+                    }
+                  ]
+                },
+                {
+                  "label": "Sain",
+                  "probability": 0.98,
+                  "children": [
+                    {
+                      "label": "Test +",
+                      "probability": 0.1
+                    },
+                    {
+                      "label": "Test -",
+                      "probability": 0.9
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous venez d'appliquer la formule sur un exemple numérique. Remarquez comment la probabilité a posteriori reste modeste malgré une sensibilité élevée, parce que la maladie est rare. Cette prise de conscience est au cœur de l'interprétation bayésienne. Passons maintenant à un exemple plus détaillé où nous suivrons pas à pas le calcul complet."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Exemple concret : un test de dépistage"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginez un dépistage systématique pour une affection qui touche 3 % des adultes. Le test utilisé a une sensibilité de 92 % (il détecte 92 % des vrais malades) et une spécificité de 88 % (il donne un résultat négatif pour 88 % des personnes saines). Nous voulons savoir quelle est la chance qu'une personne dont le test est positif soit réellement atteinte. Cet exemple typique illustre la force du raisonnement bayésien : on part d'une prévalence faible, on ajoute l'information du test, et on obtient une probabilité révisée qui peut surprendre."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier les probabilités de base",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Notons $M$ l'événement « personne malade » et $T^+$ « test positif ». On a $P(M)=0,03$, $P(\\overline{M})=0,97$, $P(T^+|M)=0,92$ (sensibilité) et $P(T^+|\\overline{M})=1-0,88=0,12$ (taux de faux positifs)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Calculer la probabilité totale d'un test positif",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "D'après la loi des probabilités totales, $P(T^+)=P(T^+|M)P(M)+P(T^+|\\overline{M})P(\\overline{M}) = 0,92\\times0,03 + 0,12\\times0,97 = 0,0276 + 0,1164 = 0,144$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Appliquer la formule de Bayes",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$P(M|T^+) = \\frac{P(T^+|M)P(M)}{P(T^+)} = \\frac{0,92\\times0,03}{0,144} = \\frac{0,0276}{0,144} \\approx 0,1917$. Ainsi, même avec un test positif, la probabilité d'être malade n'est que d'environ 19 %."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "probability_tree",
+              "caption": "Arbre détaillé avec les valeurs numériques de l'exemple de dépistage.",
+              "branches": [
+                {
+                  "label": "Malade (0,03)",
+                  "probability": 0.03,
+                  "children": [
+                    {
+                      "label": "Test + (0,92)",
+                      "probability": 0.92
+                    },
+                    {
+                      "label": "Test - (0,08)",
+                      "probability": 0.08
+                    }
+                  ]
+                },
+                {
+                  "label": "Sain (0,97)",
+                  "probability": 0.97,
+                  "children": [
+                    {
+                      "label": "Test + (0,12)",
+                      "probability": 0.12
+                    },
+                    {
+                      "label": "Test - (0,88)",
+                      "probability": 0.88
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Cet exemple montre que la rareté de la condition pèse lourdement sur le résultat final. Avant de conclure, explorons comment l'interprétation change si la prévalence varie, et pourquoi il est crucial de ne pas confondre sensibilité et valeur prédictive positive. C'est ce que nous allons visualiser avec un graphique comparatif."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Interprétation et pièges"
+            },
+            {
+              "type": "paragraph",
+              "content": "La probabilité a posteriori $P(M|T^+)$ est souvent appelée valeur prédictive positive. Elle dépend de trois ingrédients : la prévalence (a priori), la sensibilité et la spécificité. Si la prévalence chute, la valeur prédictive positive chute aussi, même pour un test très performant. C'est le piège du taux de base : on a tendance à surestimer la fiabilité d'un test positif quand la maladie est rare. À l'inverse, la valeur prédictive négative $P(\\overline{M}|T^-)$ reste généralement très élevée quand la prévalence est faible. Comprendre cette asymétrie aide à communiquer les résultats de manière responsable, par exemple en expliquant à un patient pourquoi un test positif ne signifie pas automatiquement la maladie."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparaison de la valeur prédictive positive pour trois prévalences différentes (sensibilité 92 %, spécificité 88 %).",
+              "bars": [
+                {
+                  "label": "Prévalence 1 %",
+                  "value": 7.2,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Prévalence 3 %",
+                  "value": 19.2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Prévalence 10 %",
+                  "value": 51.1,
+                  "tone": "gold"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons maintenant toutes les clés pour manipuler le théorème de Bayes avec assurance. La prochaine leçon fera le point sous forme de liste de vérification pour ancrer durablement les réflexes."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans une population, 2 % des personnes sont atteintes d'une maladie. Un test détecte la maladie avec une sensibilité de 95 % et une spécificité de 90 %. Quelle est la probabilité qu'une personne soit réellement malade sachant que le test est positif ?",
+              "answer": "$P(M|T^+) \\approx 0,161$ (environ 16,1 %).",
+              "hint": "Calculez $P(T^+)$ avec la loi des probabilités totales puis appliquez la formule de Bayes.",
+              "explanation": "On a $P(M)=0,02$, $P(\\overline{M})=0,98$, $P(T^+|M)=0,95$, $P(T^+|\\overline{M})=0,10$. $P(T^+)=0,95\\times0,02+0,10\\times0,98=0,019+0,098=0,117$. Alors $P(M|T^+)=\\frac{0,95\\times0,02}{0,117}=\\frac{0,019}{0,117}\\approx0,1624$."
+            },
+            {
+              "question": "Une usine produit 5 % de pièces défectueuses. Un contrôleur signale une pièce comme défectueuse avec une probabilité de 98 % si elle l'est vraiment, et 3 % si elle ne l'est pas. Calculer la probabilité qu'une pièce signalée défectueuse le soit réellement.",
+              "answer": "$P(D|S^+) \\approx 0,624$ (environ 62,4 %).",
+              "hint": "Identifiez les événements $D$ (défectueuse) et $S^+$ (signalée défectueuse), puis suivez les trois étapes du calcul.",
+              "explanation": "$P(D)=0,05$, $P(\\overline{D})=0,95$, $P(S^+|D)=0,98$, $P(S^+|\\overline{D})=0,03$. $P(S^+)=0,98\\times0,05+0,03\\times0,95=0,049+0,0285=0,0775$. $P(D|S^+)=\\frac{0,98\\times0,05}{0,0775}=\\frac{0,049}{0,0775}\\approx0,632$."
+            },
+            {
+              "question": "Expliquer pourquoi un test très performant peut donner une probabilité a posteriori faible si la prévalence est très basse.",
+              "answer": "Parce que le nombre de faux positifs (provenant de la grande majorité de personnes saines) domine le nombre de vrais positifs quand la prévalence est faible, ce qui dilue la valeur prédictive positive.",
+              "hint": "Comparez les magnitudes de $P(T^+|M)P(M)$ et $P(T^+|\\overline{M})P(\\overline{M})$ dans le dénominateur de Bayes.",
+              "explanation": "Le dénominateur $P(T^+)$ est la somme des vrais positifs et des faux positifs. Si $P(M)$ est tiny, le terme $P(T^+|\\overline{M})P(\\overline{M})$ devient prépondérant, donc le ratio $P(M|T^+)$ diminue."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Récapitulatif des notions essentielles"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de refermer ce chapitre, reprenons les piliers du raisonnement bayésien avec un vocabulaire légèrement différent pour renforcer la mémorisation. La loi a priori exprime notre état de connaissance avant l'expérience ; elle peut être issue de données historiques, d'expertise ou d'hypothèse non informative. La fonction de vraisemblance quantifie la compatibilité entre l'observation et chaque hypothèse possible. Le produit de ces deux éléments, normalisé par la preuve (la probabilité marginale de l'observation), donne la loi a posteriori, qui devient la nouvelle a priori pour une éventuelle mise à jour ultérieure. Cette boucle itérative est au cœur de l'apprentissage statistique moderne."
+            },
+            {
+              "type": "definition",
+              "term": "Loi a priori",
+              "definition": "Distribution de probabilité qui encode nos croyances sur un paramètre avant d'observer les données. Elle peut être subjective ou objective.",
+              "example": "Pour une proportion inconnue $p$, une loi a priori Beta$(2,2)$ exprime une croyance modérée autour de 0,5."
+            },
+            {
+              "type": "definition",
+              "term": "Fonction de vraisemblance",
+              "definition": "Vue comme fonction du paramètre, elle associe à chaque valeur possible la probabilité d'observer l'échantillon réel. Elle n'est pas une distribution de probabilité sur le paramètre.",
+              "example": "Pour $n$ essais de Bernoulli avec $k$ succès, la vraisemblance est $L(p) = \\binom{n}{k} p^k (1-p)^{n-k}$."
+            },
+            {
+              "type": "display_math",
+              "latex": "p(\\theta|x) = \\frac{p(x|\\theta)\\,p(\\theta)}{\\int p(x|\\theta')\\,p(\\theta')\\,d\\theta'}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Ce résumé formel prépare le terrain pour identifier les écueils classiques. Nous allons maintenant lister les erreurs les plus fréquentes et voir comment les éviter grâce à une routine de vérification simple."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Points de vigilance et erreurs fréquentes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Premier piège : confondre la vraisemblance $P(\\text{donnée}|\\text{hypothèse})$ avec la probabilité a posteriori $P(\\text{hypothèse}|\\text{donnée})$. Ce sont des objets mathématiques distincts ; le premier ne somme pas à 1 sur l'espace des hypothèses. Deuxième piège : négliger la normalisation (la preuve) en pensant que le numérateur suffit. Sans le dénominateur, on n'a pas une distribution de probabilité valide. Troisième piège : utiliser une a priori inadaptée sans vérifier sa sensibilité ; une a priori trop informative peut masquer l'information apportée par les données. Enfin, attention à l'interprétation causale : Bayes met à jour des degrés de croyance, il n'établit pas de relation de cause à effet."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Vérification 1 : Cohérence des probabilités",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Vérifiez que la somme (ou l'intégrale) de la loi a posteriori vaut 1. Si vous travaillez avec des valeurs discrètes, additionnez toutes les $P(H_i|D)$ ; le total doit être 1 (à arrondi près)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérification 2 : Ordre de grandeur",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Comparez l'a priori et l'a posteriori. Si les données sont peu informatives, l'a posteriori doit rester proche de l'a priori. Un saut brutal sans justification signale une erreur de calcul."
+                    }
+                  ]
+                },
+                {
+                  "title": "Vérification 3 : Cas limites",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Testez votre formule sur des cas extrêmes : sensibilité 100 % et spécificité 100 % doivent donner une certitude ; prévalence 0 % doit donner une probabilité a posteriori nulle. Ces tests rapides détectent bien des fautes d'algèbre."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Avec ces garde-fous en tête, nous pouvons maintenant formaliser une procédure de calcul qui servira de modèle pour tout problème bayésien. Nous l'illustrerons avec un fragment de code Python, langage de référence en science des données, pour montrer la traduction algorithmique directe de la formule."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Méthode de vérification pas à pas"
+            },
+            {
+              "type": "paragraph",
+              "content": "La méthode se décompose en quatre phases : (1) énoncer clairement les événements et les probabilités connues, (2) écrire la formule de Bayes avec les symboles adaptés, (3) calculer la probabilité marginale de l'observation par la loi des probabilités totales, (4) obtenir l'a posteriori et effectuer les trois vérifications listées ci-dessus. Cette structure rigoureuse évite les oublis et rend le raisonnement reproductible. Voici une implémentation minimaliste qui suit exactement ces étapes."
+            },
+            {
+              "type": "algo_sandbox",
+              "code": "def bayes_posterior(prior, sens, spec):\\n    \"\"\"Retourne P(Malade | Test+).\\n    prior : P(Malade)\\n    sens  : P(Test+ | Malade)   (sensibilité)\\n    spec  : P(Test- | Sain)     (spécificité)\\n    \"\"\"\\n    false_pos = 1 - spec\\n    p_test_pos = sens * prior + false_pos * (1 - prior)\\n    post = sens * prior / p_test_pos\\n    return post\\n\\n# Exemple d'utilisation\\nprint(bayes_posterior(0.03, 0.92, 0.88))  # ~0.1917",
+              "caption": "Fonction Python calculant la probabilité a posteriori pour un test binaire.",
+              "language": "python"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Vous disposez maintenant d'une boîte à outils complète : la formule, son interprétation, les pièges à éviter, une routine de vérification et même un snippet de code prêt à l'emploi. La liste de contrôle ci-dessous condense ces points en actions concrètes à cocher avant de rendre tout exercice ou rapport bayésien."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "J'ai identifié l'événement d'intérêt et l'observation.",
+                "J'ai noté la probabilité a priori (prévalence, croyance initiale).",
+                "J'ai noté la sensibilité $P(\\text{obs}|\\text{événement})$ et la spécificité $P(\\text{non obs}|\\text{non événement})$.",
+                "J'ai calculé la probabilité marginale de l'observation (loi des probabilités totales).",
+                "J'ai appliqué la formule de Bayes pour obtenir l'a posteriori.",
+                "J'ai vérifié que la somme des a posteriori vaut 1.",
+                "J'ai comparé l'a posteriori à l'a priori pour détecter d'éventuelles incohérences.",
+                "J'ai testé les cas limites (sensibilité/spécificité 100 %, prévalence 0 %).",
+                "J'ai rédigé une phrase d'interprétation claire en langage courant."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Rappeler la formule de Bayes et identifier chaque terme dans l'exemple du test médical (maladie 3 %, sensibilité 92 %, spécificité 88 %).",
+              "answer": "$P(M|T^+) = \\frac{P(T^+|M)P(M)}{P(T^+|M)P(M)+P(T^+|\\overline{M})P(\\overline{M})}$ avec $P(M)=0,03$, $P(T^+|M)=0,92$, $P(T^+|\\overline{M})=0,12$.",
+              "hint": "Écrivez la formule générique puis remplacez chaque symbole par sa valeur numérique.",
+              "explanation": "La formule générique est $P(A|B)=\\frac{P(B|A)P(A)}{P(B)}$. Ici $A=M$, $B=T^+$. Le dénominateur $P(T^+)$ se développe par la loi des probabilités totales."
+            },
+            {
+              "question": "Donner deux erreurs classiques lors de l'application de Bayes et comment les éviter.",
+              "answer": "1) Confondre vraisemblance et a posteriori : éviter en nommant explicitement chaque terme. 2) Oublier la normalisation (le dénominateur) : éviter en calculant systématiquement $P(\\text{observation})$.",
+              "hint": "Repensez aux pièges listés dans la leçon : confusion des conditionnels et omission de la preuve.",
+              "explanation": "La première erreur vient d'une lecture trop rapide de $P(B|A)$ comme $P(A|B)$. La seconde produit une pseudo-probabilité qui ne somme pas à 1."
+            },
+            {
+              "question": "Écrire un court algorithme en Python qui calcule la probabilité a posteriori à partir de la prior, de la sensibilité et de la spécificité.",
+              "answer": "def bayes_posterior(prior, sens, spec):\\n    false_pos = 1 - spec\\n    p_obs = sens * prior + false_pos * (1 - prior)\\n    return sens * prior / p_obs",
+              "hint": "Suivez les quatre phases : paramètres, calcul de la marge, division, retour.",
+              "explanation": "La fonction implémente exactement les étapes : $P(T^+|\\overline{M})=1-\\text{spec}$, $P(T^+)=\\text{sens}\\times\\text{prior}+P(T^+|\\overline{M})\\times(1-\\text{prior})$, puis le ratio."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

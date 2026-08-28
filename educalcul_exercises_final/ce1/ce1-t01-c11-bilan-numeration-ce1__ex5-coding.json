@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 78,
+  "_course_code": "ce1-t01-c11-bilan-numeration-ce1",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Lecture et écriture",
+  "title": "Algorithmes pour lire et écrire les nombres jusqu'à 999",
+  "blocks": [
+    {
+      "title": "Construire un nombre",
+      "content": "Tu as $3$ cartes « centaines », $4$ cartes « dizaines » et $7$ cartes « unités ». Écris l'algorithme (la suite d'étapes) pour trouver le nombre formé et l'écrire en chiffres.",
+      "correctAnswer": "1. Compter les centaines : $3 \\times 100 = 300$.\\n2. Compter les dizaines : $4 \\times 10 = 40$.\\n3. Compter les unités : $7 \\times 1 = 7$.\\n4. Additionner : $300 + 40 + 7 = 347$.\\n5. Écrire le nombre en chiffres : $347$.",
+      "explanation": "L'algorithme consiste à multiplier chaque groupe par sa valeur de position (centaines par 100, dizaines par 10, unités par 1), puis à additionner les résultats pour obtenir le nombre final. Ici, 3 centaines font 300, 4 dizaines font 40, 7 unités font 7. La somme donne 347.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Écrire en lettres sans erreur",
+      "content": "Donne l'algorithme pour écrire en toutes lettres le nombre $280$ en respectant les règles du français (accords de « cent » et « vingt »).",
+      "correctAnswer": "1. Identifier les centaines : $2$ centaines $\\rightarrow$ « deux cents » (prend un s car suivi de zéro).\\n2. Identifier les dizaines : $8$ dizaines $\\rightarrow$ « quatre-vingts » (prend un s car suivi de zéro).\\n3. Identifier les unités : $0$ unités $\\rightarrow$ rien n'est ajouté.\\n4. Assembler : « deux cents quatre-vingts ».",
+      "explanation": "Pour 280, on a 2 centaines (200) et 8 dizaines (80). La règle dit que « cent » et « vingt » prennent un 's' quand ils sont multipliés et non suivis d'un autre nombre. Comme il y a 0 unité, on écrit « deux cents quatre-vingts » avec deux 's'.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Décomposer pour comparer",
+      "content": "Propose un algorithme étape par étape pour comparer les deux nombres $456$ et $465$ et dire lequel est le plus grand.",
+      "correctAnswer": "1. Comparer le chiffre des centaines : $4 = 4$ (égaux).\\n2. Comme les centaines sont égales, comparer le chiffre des dizaines : $5 < 6$.\\n3. Conclure : comme $5$ dizaines est plus petit que $6$ dizaines, $456 < 465$.\\n4. Le plus grand est $465$.",
+      "explanation": "La comparaison algorithmique se fait de gauche à droite (du plus grand poids au plus faible). Les centaines sont identiques (4). On passe aux dizaines : 5 pour 456 contre 6 pour 465. Puisque 6 > 5, 465 est plus grand que 456, peu importe les unités.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

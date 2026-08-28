@@ -1,0 +1,61 @@
+{
+  "_status": "done",
+  "_type": "ordering",
+  "_course_id": 216,
+  "_course_code": "cm1-t01-c06-comparer-et-ranger-des-decimaux",
+  "_level": "cm1",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Application : Comparer et ranger des décimaux",
+  "title": "Comparer et ranger des nombres décimaux",
+  "blocks": [
+    {
+      "title": "Ranger par ordre croissant (1)",
+      "content": "Range les nombres suivants par ordre croissant (du plus petit au plus grand).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$3,15$",
+        "$3,2$",
+        "$3,25$",
+        "$3,3$"
+      ],
+      "explanation": "Pour ranger par ordre croissant, on compare d'abord la partie entière (chiffre des unités) : tous ont $3$ unités. On compare ensuite les dixièmes : $3,15$ a $1$ dixième, $3,2$ et $3,25$ ont $2$ dixièmes, $3,3$ a $3$ dixièmes. $3,15$ est le plus petit. Entre $3,2$ ($3,20$) et $3,25$, on compare les centièmes : $0 < 5$, donc $3,2 < 3,25$. Enfin $3,3$ ($3,30$) est le plus grand. L'ordre est : $3,15 < 3,2 < 3,25 < 3,3$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ranger par ordre décroissant (2)",
+      "content": "Range les nombres suivants par ordre décroissant (du plus grand au plus petit).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$12,4$",
+        "$12,12$",
+        "$12,08$",
+        "$11,9$"
+      ],
+      "explanation": "On compare les parties entières : $11,9$ a $11$ unités, les autres ont $12$ unités. $11,9$ est donc le plus petit. Pour les trois nombres à $12$ unités, on compare les dixièmes : $12,4$ a $4$ dixièmes, $12,12$ a $1$ dixième, $12,08$ a $0$ dixième. L'ordre décroissant est : $12,4 > 12,12 > 12,08 > 11,9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Ranger avec plus de chiffres (3)",
+      "content": "Range les nombres suivants par ordre croissant (du plus petit au plus grand).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [],
+      "items": [
+        "$0,5$",
+        "$0,58$",
+        "$0,6$",
+        "$0,602$",
+        "$0,61$"
+      ],
+      "explanation": "Tous ont $0$ unité. On aligne les virgules et on complète par des zéros pour avoir le même nombre de chiffres après la virgule : $0,500 ; 0,580 ; 0,600 ; 0,602 ; 0,610$. On compare chiffre par chiffre : dixièmes ($5, 5, 6, 6, 6$). Les deux plus petits commencent par $5$ : $0,500 < 0,580$. Les trois suivants commencent par $6$ : on compare les centièmes ($0, 0, 1$) : $0,600 < 0,602 < 0,610$. L'ordre final : $0,5 < 0,58 < 0,6 < 0,602 < 0,61$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

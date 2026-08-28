@@ -1,0 +1,460 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.622198+00:00",
+  "id": 362,
+  "code": "6eme-t06-c06",
+  "title": "Bilan - Géométrie plane 6e",
+  "description": "Cours structuré Educalcul : Bilan - Géométrie plane 6e.",
+  "subject": "Géométrie plane",
+  "level": "6e",
+  "source_level_label": "6e",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "6e",
+    "theme": "Géométrie plane",
+    "titre_du_cours": "Bilan - Géométrie plane 6e",
+    "objectif_global": "Bilan - Géométrie plane 6e",
+    "mini_lecons_imposees": [
+      "Constructions et propriétés.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable en 6e depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie plane",
+      "lessons": [
+        {
+          "title": "Constructions et propriétés.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un triangle avec règle et compas"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu veux dessiner un triangle dont tu connais les trois longueurs : 6 cm, 5 cm et 4 cm. La règle te donne les segments droits, le compas te permet de reporter des distances sans les mesurer à nouveau. C'est une méthode sûre, utilisée par les géomètres depuis l'Antiquité, et elle fonctionne à chaque fois que les trois longueurs respectent l'inégalité triangulaire."
+            },
+            {
+              "type": "compass_tool",
+              "radius": 5,
+              "centerLabel": "O",
+              "caption": "Cercle de centre O et de rayon 5 cm pour tracer les côtés du triangle"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Tracer le premier côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Avec la règle, trace un segment AB de 6 cm. Ce sera la base de ton triangle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Tracer les arcs",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place la pointe du compas sur A, ouvre-le à 5 cm et trace un arc. Puis place la pointe sur B, ouvre-le à 4 cm et trace un second arc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Identifier le sommet",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Les deux arcs se coupent en un point C. Relie C à A et à B : tu obtiens le triangle ABC."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu sais construire un triangle, voyons quelles propriétés le caractérisent, comme la somme de ses angles qui vaut toujours 180 degrés, ou la façon de le classer selon ses côtés."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les propriétés fondamentales du triangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans tout triangle, la somme des trois angles intérieurs est égale à $180^{\\circ}$. Si un triangle a trois côtés de même longueur, il est équilatéral et chaque angle mesure $60^{\\circ}$. S'il a deux côtés égaux, c'est un triangle isocèle ; les angles opposés à ces côtés sont alors égaux. Enfin, si les trois côtés sont différents, le triangle est scalène."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle ABC avec ses trois angles",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "a",
+                "b",
+                "c"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les triangles, les quadrilatères offrent d'autres figures à construire. Un parallélogramme se définit par deux paires de côtés parallèles ; pour le tracer, il suffit de reporter un angle et de reproduire les longueurs opposées."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Construire un parallélogramme"
+            },
+            {
+              "type": "paragraph",
+              "content": "Choisis un segment AB de 7 cm. À l'aide du rapporteur, trace un angle de $60^{\\circ}$ en A. Sur la demi-droite de cet angle, reporte une longueur de 5 cm pour obtenir le point D. Puis, parallèlement à AB, trace une droite passant par D et, parallèlement à AD, une droite passant par B. Leur intersection donne le point C."
+            },
+            {
+              "type": "interactive_protractor",
+              "angleDeg": 60,
+              "caption": "Mesure d'un angle de 60 degrés pour construire un parallélogramme"
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Base et angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace AB, puis l'angle de $60^{\\circ}$ en A."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Côté adjacent",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Reporte 5 cm sur la demi-droite de l'angle pour placer D."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Parallèles",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace les parallèles à AB par D et à AD par B ; leur intersection est C."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Les quadrilatères particuliers se distinguent par leurs angles et leurs côtés. Le rectangle a quatre angles droits, le carré ajoute quatre côtés égaux, le losange a quatre côtés égaux mais pas d'angle droit obligatoire, et le parallélogramme général n'a que les côtés opposés parallèles et égaux."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Propriétés des quadrilatères particuliers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour bien les différencier, observe le tableau ci‑dessous qui résume les caractéristiques principales de chaque figure. Cela t'aidera à reconnaître rapidement le type de quadrilatère devant toi."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Quadrilatère",
+                "Côtés parallèles",
+                "Angles droits",
+                "Côtés égaux"
+              ],
+              "rows": [
+                [
+                  "Parallélogramme",
+                  "Oui (deux paires)",
+                  "Non",
+                  "Opposés égaux"
+                ],
+                [
+                  "Rectangle",
+                  "Oui (deux paires)",
+                  "Oui (quatre)",
+                  "Opposés égaux"
+                ],
+                [
+                  "Carré",
+                  "Oui (deux paires)",
+                  "Oui (quatre)",
+                  "Tous égaux"
+                ],
+                [
+                  "Losange",
+                  "Oui (deux paires)",
+                  "Non",
+                  "Tous égaux"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant une boîte à outils complète : construire un triangle, en connaître la somme des angles, tracer un parallélogramme et identifier les quadrilatères courants. Continue à t'entraîner avec la règle et le compas, la précision viendra naturellement."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la première étape pour construire un triangle quand on connaît ses trois côtés ?",
+              "answer": "Tracer un segment de la longueur d'un côté avec la règle.",
+              "hint": "Pense à la base du triangle.",
+              "explanation": "On commence toujours par poser un côté connu, puis on utilise le compas pour reporter les deux autres longueurs."
+            },
+            {
+              "question": "Quelle est la somme des angles intérieurs d'un triangle ?",
+              "answer": "180°",
+              "hint": "Imagine une ligne droite.",
+              "explanation": "Les trois angles d'un triangle forment ensemble un angle plat, qui mesure $180^{\\circ}$."
+            },
+            {
+              "question": "Combien de paires de côtés parallèles possède un parallélogramme ?",
+              "answer": "Deux paires.",
+              "hint": "Regarde la définition du parallélogramme.",
+              "explanation": "Par définition, un parallélogramme a ses côtés opposés parallèles deux à deux."
+            },
+            {
+              "question": "Lequel de ces quadrilatères a quatre angles droits et quatre côtés égaux ?",
+              "answer": "Le carré.",
+              "hint": "C'est le seul qui cumule les propriétés du rectangle et du losange.",
+              "explanation": "Le carré est un rectangle (quatre angles droits) et un losange (quatre côtés égaux) à la fois."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des constructions de base"
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons sur les gestes essentiels : tracer un segment, reporter une longueur au compas, et utiliser le rapporteur pour un angle donné. Ces trois actions sont les briques de toute construction géométrique au collège."
+            },
+            {
+              "type": "number_line",
+              "caption": "Somme des angles d'un triangle : 180 degrés",
+              "min": 0,
+              "max": 180,
+              "points": [
+                {
+                  "value": 180,
+                  "label": "Somme"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Rappel 1 : Segment",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Trace un segment de la longueur voulue à la règle."
+                    }
+                  ]
+                },
+                {
+                  "title": "Rappel 2 : Compas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Ouvre le compas à la longueur désirée et trace un arc."
+                    }
+                  ]
+                },
+                {
+                  "title": "Rappel 3 : Angle",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Place le rapporteur, marque l'angle et trace la demi-droite."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les triangles se classent selon leurs côtés et leurs angles. Rappelle-toi les trois familles principales et la valeur constante de la somme des angles."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des propriétés du triangle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Un triangle équilatéral a trois côtés égaux et trois angles de $60^{\\circ}$. Un triangle isocèle a deux côtés égaux et les angles opposés à ces côtés sont égaux. Un triangle scalène n'a ni côté ni angle égaux. Dans tous les cas, la somme des angles reste $180^{\\circ}$."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre de côtés égaux selon le type de triangle",
+              "bars": [
+                {
+                  "label": "Équilatéral",
+                  "value": 3,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Isocèle",
+                  "value": 2,
+                  "tone": "green"
+                },
+                {
+                  "label": "Scalène",
+                  "value": 0,
+                  "tone": "gray"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Les quadrilatères particuliers se reconnaissent à leurs parallélismes, leurs angles droits et leurs côtés égaux. Le tableau mental suivant t'aidera à les distinguer rapidement."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Rappel des quadrilatères particuliers"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le parallélogramme a deux paires de côtés parallèles. Le rectangle ajoute quatre angles droits. Le carré cumule les propriétés du rectangle et du losange. Le losange a quatre côtés égaux mais pas d'angle droit obligé."
+            },
+            {
+              "type": "pie_chart",
+              "caption": "Répartition des types de quadrilatères particuliers",
+              "slices": [
+                {
+                  "label": "Parallélogramme",
+                  "value": 1,
+                  "tone": "navy"
+                },
+                {
+                  "label": "Rectangle",
+                  "value": 1,
+                  "tone": "gold"
+                },
+                {
+                  "label": "Carré",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Losange",
+                  "value": 1,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, vérifie que tu sais relier chaque figure à ses propriétés essentielles. Cette synthèse rapide te permettra de valider tes acquis avant de passer aux exercices d'application."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Synthèse et auto‑évaluation"
+            },
+            {
+              "type": "paragraph",
+              "content": "Récapitule : la somme des angles d'un triangle est $180^{\\circ}$, un parallélogramme a deux paires de côtés parallèles, un rectangle a quatre angles droits, un carré a quatre côtés égaux et quatre angles droits, un losange a quatre côtés égaux sans angle droit obligatoire."
+            },
+            {
+              "type": "display_math",
+              "latex": "180^{\\circ}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais construire un triangle connaissant ses trois côtés.",
+                "Je connais la somme des angles d'un triangle ($180^{\\circ}$).",
+                "Je sais tracer un parallélogramme à la règle et au compas.",
+                "Je distingue rectangle, carré, losange et parallélogramme d'après leurs propriétés."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle est la somme des angles d'un triangle ?",
+              "answer": "180°",
+              "hint": "Pense à un angle plat.",
+              "explanation": "Les trois angles intérieurs d'un triangle forment ensemble un angle plat qui mesure $180^{\\circ}$."
+            },
+            {
+              "question": "Comment s'appelle un triangle qui a deux côtés de même longueur ?",
+              "answer": "Isocèle",
+              "hint": "Deux côtés égaux, un côté différent.",
+              "explanation": "Un triangle isocèle possède exactement deux côtés de même longueur ; les angles opposés à ces côtés sont aussi égaux."
+            },
+            {
+              "question": "Un quadrilatère qui a deux paires de côtés parallèles et quatre angles droits est un ?",
+              "answer": "Rectangle",
+              "hint": "Quatre angles droits, côtés opposés parallèles.",
+              "explanation": "Le rectangle est un parallélogramme rectangle : ses angles sont tous droits."
+            },
+            {
+              "question": "Si un losange a tous ses côtés égaux, a-t-il nécessairement des angles droits ?",
+              "answer": "Non, seulement le carré a des angles droits.",
+              "hint": "Le losange n'impose pas d'angle droit.",
+              "explanation": "Un losange a quatre côtés égaux ; ses angles peuvent être aigus et obtus. Seul le carré, cas particulier de losange, a quatre angles droits."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

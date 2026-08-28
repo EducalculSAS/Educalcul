@@ -1,0 +1,80 @@
+{
+  "_status": "done",
+  "_course_id": 86,
+  "_course_code": "ce1-t02-c08-decouvrir-les-centimes-et-l-ecriture-a-virgule-en-monnaie",
+  "_level": "ce1",
+  "_subject": "Fractions simples et premières écritures décimales",
+  "_subtheme": "Lire un prix comme 2,50 €",
+  "title": "Quiz : Lire un prix en euros et centimes",
+  "questions": [
+    {
+      "text": "Comment lit-on correctement le prix $2,50 \\text{ €}$ ?",
+      "options": [
+        "Deux euros et cinquante centimes",
+        "Deux virgule cinquante euros",
+        "Cinquante euros et deux centimes",
+        "Deux cent cinquante euros"
+      ],
+      "correctAnswer": "Deux euros et cinquante centimes",
+      "explanation": "En monnaie, la virgule sépare les euros (à gauche) des centimes (à droite). On lit la partie euros puis la partie centimes. $2,50 \\text{ €}$ signifie 2 euros et 50 centimes. Lire « deux virgule cinquante » est une lecture mathématique, pas monétaire. Les deux autres options inversent les valeurs ou confondent euros et centimes.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le prix $3,20 \\text{ €}$, que représente le chiffre 2 placé après la virgule ?",
+      "options": [
+        "Vingt centimes",
+        "Deux centimes",
+        "Deux euros",
+        "Vingt euros"
+      ],
+      "correctAnswer": "Vingt centimes",
+      "explanation": "Le premier chiffre après la virgule représente les dixièmes d'euro, soit les dizaines de centimes. Le chiffre 2 indique donc 2 dizaines de centimes, c'est-à-dire vingt centimes. Le second chiffre (0) indique les unités de centimes. Confondre avec « deux centimes » serait une erreur de position (ce serait le deuxième chiffre après la virgule).",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Comment écrit-on en chiffres le prix : dix euros et cinq centimes ?",
+      "options": [
+        "$10,05 \\text{ €}$",
+        "$10,5 \\text{ €}$",
+        "$10,50 \\text{ €}$",
+        "$15,00 \\text{ €}$"
+      ],
+      "correctAnswer": "$10,05 \\text{ €}$",
+      "explanation": "Pour écrire un prix, on note les euros avant la virgule et les centimes sur deux chiffres après la virgule. « Cinq centimes » s'écrit 05 (zéro dizaine de centime et cinq unités de centime). L'écriture $10,5 \\text{ €}$ n'est pas conventionnelle en monnaie (il faut deux décimales), elle vaudrait dix euros cinquante centimes. $10,50 \\text{ €}$ correspond à dix euros cinquante. $15,00 \\text{ €}$ correspond à quinze euros.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le tableau de position pour $4,75 \\text{ €}$. Combien y a-t-il de centimes au total ?",
+      "options": [
+        "Soixante-quinze centimes",
+        "Sept centimes",
+        "Quatre centimes",
+        "Septante-cinq centimes"
+      ],
+      "correctAnswer": "Soixante-quinze centimes",
+      "explanation": "Le tableau montre 4 euros, 7 dixièmes d'euro (soit 70 centimes) et 5 centimes. Le total des centimes est 70 + 5 = 75 centimes. En français, 75 se dit « soixante-quinze ». « Septante-cinq » est un régionalisme (Belgique/Suisse) non attendu en France au CE1. Les autres options ne prennent en compte qu'un seul chiffre ou la partie euros.",
+      "points": 1,
+      "figure": {
+        "type": "place_value_chart",
+        "number": 4.75,
+        "caption": "Décomposition de 4,75 €"
+      }
+    },
+    {
+      "text": "Le prix affiché sur une étiquette est $7,00 \\text{ €}$. Quelle est la lecture correcte ?",
+      "options": [
+        "Sept euros",
+        "Sept virgule zéro zéro euros",
+        "Zéro euro et sept centimes",
+        "Sept centimes"
+      ],
+      "correctAnswer": "Sept euros",
+      "explanation": "Lorsque la partie centimes est $00$, on ne lit pas les centimes. On dit simplement « sept euros ». La lecture « sept virgule zéro zéro » est une lecture mathématique du nombre décimal, pas la lecture d'un prix. Les deux dernières options confondent totalement l'ordre des unités (euros/centimes) et la valeur.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "_status": "done",
+  "_course_id": 70,
+  "_course_code": "ce1-t01-c03-lire-et-ecrire-jusqu-a-599",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Stabiliser centaines-dizaines-unités",
+  "title": "Stabiliser les centaines, dizaines et unités jusqu'à 599",
+  "questions": [
+    {
+      "text": "Quelle est la décomposition correcte du nombre $352$ ?",
+      "options": [
+        "$300 + 50 + 2$",
+        "$300 + 5 + 2$",
+        "$30 + 50 + 2$",
+        "$3 + 5 + 2$"
+      ],
+      "correctAnswer": "$300 + 50 + 2$",
+      "explanation": "Le chiffre 3 est au rang des centaines, il vaut 3 centaines soit $300$. Le chiffre 5 est au rang des dizaines, il vaut 5 dizaines soit $50$. Le chiffre 2 est au rang des unités, il vaut 2 unités. La décomposition est donc $300 + 50 + 2$. Les autres propositions oublient la valeur de position (dizaines ou centaines) ou confondent les rangs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Regarde la représentation en matériel de base dix. Quel nombre est représenté ?",
+      "options": [
+        "$247$",
+        "$274$",
+        "$427$",
+        "$2047$"
+      ],
+      "correctAnswer": "$247$",
+      "explanation": "On compte 2 plaques (centaines) soit $200$, 4 barres (dizaines) soit $40$ et 7 cubes (unités) soit $7$. Le nombre est donc $200 + 40 + 7 = 247$. L'erreur $274$ inverse les dizaines et les unités. L'erreur $427$ confond le nombre de centaines et de dizaines. L'erreur $2047$ écrit les chiffres les uns à la suite des autres sans respecter la valeur de position.",
+      "points": 1,
+      "figure": {
+        "type": "base_ten_blocks",
+        "hundreds": 2,
+        "tens": 4,
+        "units": 7,
+        "caption": "Matériel de base dix : 2 centaines, 4 dizaines, 7 unités"
+      }
+    },
+    {
+      "text": "Comment s'écrit en chiffres le nombre \"quatre cent dix-sept\" ?",
+      "options": [
+        "$417$",
+        "$40017$",
+        "$471$",
+        "$407$"
+      ],
+      "correctAnswer": "$417$",
+      "explanation": "Quatre cent s'écrit $400$. Dix-sept s'écrit $17$. En les réunissant, on obtient $417$. L'option $40017$ correspond à l'erreur d'écrire \"quatre cent\" puis \"dix-sept\" sans faire la fusion (zéros parasites). L'option $471$ inverse les dizaines et les unités. L'option $407$ oublie la dizaine du nombre dix-sept.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Combien y a-t-il de dizaines dans le nombre $380$ ?",
+      "options": [
+        "$38$",
+        "$8$",
+        "$3$",
+        "$30$"
+      ],
+      "correctAnswer": "$38$",
+      "explanation": "Le nombre $380$ contient 3 centaines, soit $30$ dizaines ($3 \\times 10$), et 8 dizaines. Au total, cela fait $30 + 8 = 38$ dizaines. L'option $8$ ne compte que les dizaines apparentes (le chiffre des dizaines). L'option $3$ ne compte que les centaines. L'option $30$ ne compte que les dizaines contenues dans les centaines.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel nombre se trouve exactement entre $299$ et $301$ ?",
+      "options": [
+        "$300$",
+        "$299$",
+        "$301$",
+        "$290$"
+      ],
+      "correctAnswer": "$300$",
+      "explanation": "Le nombre qui suit $299$ est $300$ (3 centaines). Le nombre qui précède $301$ est aussi $300$. C'est le passage à la centaine supérieure. $299$ et $301$ sont les bornes de l'intervalle, pas le nombre du milieu. $290$ est bien plus petit que $299$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

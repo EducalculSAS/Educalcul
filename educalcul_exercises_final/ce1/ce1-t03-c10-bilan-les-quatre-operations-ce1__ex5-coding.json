@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 97,
+  "_course_code": "ce1-t03-c10-bilan-les-quatre-operations-ce1",
+  "_level": "ce1",
+  "_subject": "Les quatre opérations",
+  "_subtheme": "Approfondissement : Mélanger sens des opérations",
+  "title": "Algorithmes et résolution de problèmes",
+  "blocks": [
+    {
+      "title": "Choisir l'opération",
+      "content": "Voici un problème : $Léa a 15 billes. Elle en donne 6 à son frère. Combien lui en reste-t-il ?$ Écris les étapes de l'algorithme pour le résoudre en complétant : Étape 1 : Je lis le problème. Étape 2 : Je repère les nombres ($15$ et $6$). Étape 3 : Je choisis l'opération (j'écris $+$ ou $-$). Étape 4 : Je calcule. Étape 5 : J'écris la réponse.",
+      "correctAnswer": "Étape 1 : Je lis le problème. Étape 2 : Je repère les nombres $15$ et $6$. Étape 3 : Je choisis l'opération $-$. Étape 4 : Je calcule $15 - 6 = 9$. Étape 5 : J'écris la réponse : il lui reste $9$ billes.",
+      "explanation": "L'action « donne » signifie qu'on enlève une quantité. On utilise donc la soustraction. On calcule $15 - 6 = 9$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme avec un choix",
+      "content": "Complète cet algorithme qui permet de choisir l'opération : $Si$ le problème parle de $«\\ réunir »$ ou $«\\ ajouter »$ $alors$ j'utilise $l'addition$ ($+$). $Sinon\\ si$ le problème parle de $«\\ enlever »$ ou $«\\ donner »$ $alors$ j'utilise $la\\ soustraction$ ($-$). $Sinon\\ si$ le problème parle de $«\\ fois »$ ou $«\\ groupes\\ de\\ même\\ taille »$ $alors$ j'utilise $la\\ multiplication$ ($\\times$).",
+      "correctAnswer": "Si le problème parle de « réunir » ou « ajouter » alors j'utilise l'addition (+). Sinon si le problème parle de « enlever » ou « donner » alors j'utilise la soustraction (-). Sinon si le problème parle de « fois » ou « groupes de même taille » alors j'utilise la multiplication (×).",
+      "explanation": "Les mots-clés du problème indiquent l'opération : addition pour réunir des quantités, soustraction pour en retirer, multiplication pour répéter des groupes identiques.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme à deux étapes",
+      "content": "Problème : $Dans\\ une\\ classe,\\ il\\ y\\ a\\ 4\\ tables.\\ Sur\\ chaque\\ table,\\ il\\ y\\ a\\ 6\\ cahiers.\\ La\\ maîtresse\\ en\\ rajoute\\ 5\\ sur\\ le\\ bureau.\\ Combien\\ y\\ a-t-il\\ de\\ cahiers\\ au\\ total ?$ Écris l'algorithme de résolution en 4 étapes : Étape 1 : ... Étape 2 : ... Étape 3 : ... Étape 4 : ...",
+      "correctAnswer": "Étape 1 : Je repère les nombres $4$, $6$ et $5$. Étape 2 : Je calcule le nombre de cahiers sur les tables : $4 \\times 6 = 24$. Étape 3 : J'ajoute les cahiers du bureau : $24 + 5 = 29$. Étape 4 : J'écris la réponse : il y a $29$ cahiers au total.",
+      "explanation": "C'est un problème à deux opérations. D'abord, on multiplie car il y a $4$ groupes de $6$ cahiers ($4 \\times 6 = 24$). Ensuite, on additionne les $5$ cahiers ajoutés ($24 + 5 = 29$).",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

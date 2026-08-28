@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 74,
+  "_course_code": "ce1-t01-c07-comparer-et-ranger-jusqu-a-1-000",
+  "_level": "ce1",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Comparer les centaines",
+  "title": "Comparer les centaines - Algorithmes",
+  "blocks": [
+    {
+      "title": "Comparaison simple des centaines",
+      "content": "Écrire un algorithme (en langage naturel ou pseudo-code) qui prend deux nombres entiers entre $0$ et $1000$ et affiche lequel a le plus grand chiffre des centaines. Par exemple pour $345$ et $278$, l'algorithme doit indiquer que $345$ a plus de centaines.",
+      "correctAnswer": "Algorithme :\\n1. Lire les deux nombres A et B.\\n2. Extraire le chiffre des centaines de A : hA = (A // 100) % 10.\\n3. Extraire le chiffre des centaines de B : hB = (B // 100) % 10.\\n4. Si hA > hB alors afficher \"A a plus de centaines\".\\n5. Sinon si hB > hA alors afficher \"B a plus de centaines\".\\n6. Sinon afficher \"Même nombre de centaines\".",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On isole le chiffre des centaines en effectuant une division entière par 100 puis en prenant le reste modulo 10. La comparaison de ces deux chiffres donne le résultat.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Comparer les centaines puis les dizaines",
+      "content": "Compléter l'algorithme suivant pour comparer deux nombres jusqu'à $1000$ : d'abord comparer les centaines, si elles sont égales comparer les dizaines, puis les unités. Écrire les instructions manquantes.",
+      "correctAnswer": "Algorithme complet :\\n1. Lire A et B.\\n2. hA = (A // 100) % 10 ; hB = (B // 100) % 10.\\n3. Si hA > hB -> A plus grand.\\n4. Sinon si hB > hA -> B plus grand.\\n5. Sinon :\\n   tA = (A // 10) % 10 ; tB = (B // 10) % 10.\\n   Si tA > tB -> A plus grand.\\n   Sinon si tB > tA -> B plus grand.\\n   Sinon :\\n     uA = A % 10 ; uB = B % 10.\\n     Si uA > uB -> A plus grand.\\n     Sinon si uB > uA -> B plus grand.\\n     Sinon -> nombres égaux.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "On compare d'abord les centaines, puis en cas d'égalité les dizaines, puis les unités. Chaque chiffre s'obtient par division entière et modulo.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Trouver le maximum d'une liste par centaines",
+      "content": "Écrire une fonction (en pseudo-code ou Python) qui reçoit une liste de nombres entiers entre $0$ et $1000$ et renvoie le plus grand nombre selon l'ordre : centaines, puis dizaines, puis unités. Exemple : pour la liste [$123$, $456$, $789$], la fonction renvoie $789$.",
+      "correctAnswer": "Fonction maximum_liste(liste):\\n    max_nombre = liste[0]\\n    pour chaque nombre dans liste:\\n        si comparer(nombre, max_nombre) > 0:\\n            max_nombre = nombre\\n    retourner max_nombre\\n\\nFonction comparer(a, b):\\n    ha = (a // 100) % 10 ; hb = (b // 100) % 10\\n    si ha > hb: retourner 1\\n    si hb > ha: retourner -1\\n    ta = (a // 10) % 10 ; tb = (b // 10) % 10\\n    si ta > tb: retourner 1\\n    si tb > ta: retourner -1\\n    ua = a % 10 ; ub = b % 10\\n    si ua > ub: retourner 1\\n    si ub > ua: retourner -1\\n    retourner 0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La fonction comparer implémente la comparaison lexicographique des chiffres (centaines, dizaines, unités). La fonction maximum_liste parcourt la liste et garde le plus grand selon ce critère.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

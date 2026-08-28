@@ -1,0 +1,108 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 396,
+  "_course_code": "5eme-t04-c02-triangles",
+  "_level": "5e",
+  "_subject": "Géométrie plane : angles, triangles et parallélogrammes",
+  "_subtheme": "Inégalités / somme des angles selon programme",
+  "title": "Triangles : inégalités et somme des angles",
+  "blocks": [
+    {
+      "title": "Somme des angles d'un triangle",
+      "content": "Relie chaque couple d'angles connus à la valeur du troisième angle du triangle.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$50^\\circ$ et $60^\\circ$",
+          "right": "$70^\\circ$"
+        },
+        {
+          "left": "$30^\\circ$ et $90^\\circ$",
+          "right": "$60^\\circ$"
+        },
+        {
+          "left": "$45^\\circ$ et $45^\\circ$",
+          "right": "$90^\\circ$"
+        },
+        {
+          "left": "$100^\\circ$ et $30^\\circ$",
+          "right": "$50^\\circ$"
+        },
+        {
+          "left": "$20^\\circ$ et $80^\\circ$",
+          "right": "$80^\\circ$"
+        }
+      ],
+      "items": [],
+      "explanation": "Dans tout triangle, la somme des trois angles vaut $180^\\circ$. Pour trouver le troisième angle, on soustrait la somme des deux angles connus à $180^\\circ$. Exemple : $180 - (50 + 60) = 70$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Inégalité triangulaire",
+      "content": "Relie chaque triplet de longueurs à la possibilité de construire un triangle avec ces mesures.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$3\\,\\text{cm}, 4\\,\\text{cm}, 5\\,\\text{cm}$",
+          "right": "Triangle possible"
+        },
+        {
+          "left": "$2\\,\\text{cm}, 3\\,\\text{cm}, 6\\,\\text{cm}$",
+          "right": "Triangle impossible"
+        },
+        {
+          "left": "$5\\,\\text{cm}, 5\\,\\text{cm}, 9\\,\\text{cm}$",
+          "right": "Triangle possible"
+        },
+        {
+          "left": "$4\\,\\text{cm}, 4\\,\\text{cm}, 9\\,\\text{cm}$",
+          "right": "Triangle impossible"
+        },
+        {
+          "left": "$7\\,\\text{cm}, 8\\,\\text{cm}, 10\\,\\text{cm}$",
+          "right": "Triangle possible"
+        }
+      ],
+      "items": [],
+      "explanation": "Dans un triangle, la somme des longueurs de deux côtés quelconques est strictement supérieure à la longueur du troisième côté. Pour $2, 3, 6$ : $2 + 3 = 5 < 6$, impossible. Pour $4, 4, 9$ : $4 + 4 = 8 < 9$, impossible. Les autres vérifient l'inégalité.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Angles et classification du triangle",
+      "content": "Relie chaque triplet de mesures d'angles au type de triangle correspondant.",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "$60^\\circ, 60^\\circ, 60^\\circ$",
+          "right": "Triangle équilatéral"
+        },
+        {
+          "left": "$50^\\circ, 60^\\circ, 70^\\circ$",
+          "right": "Triangle scalène"
+        },
+        {
+          "left": "$45^\\circ, 45^\\circ, 90^\\circ$",
+          "right": "Triangle rectangle isocèle"
+        },
+        {
+          "left": "$30^\\circ, 30^\\circ, 120^\\circ$",
+          "right": "Triangle obtusangle isocèle"
+        },
+        {
+          "left": "$20^\\circ, 70^\\circ, 90^\\circ$",
+          "right": "Triangle rectangle"
+        }
+      ],
+      "items": [],
+      "explanation": "On classe les triangles selon leurs angles : équilatéral (tous angles $60^\\circ$), rectangle (un angle $90^\\circ$), obtusangle (un angle $> 90^\\circ$). On précise 'isocèle' si deux angles sont égaux, 'scalène' si tous sont différents. La somme est toujours $180^\\circ$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

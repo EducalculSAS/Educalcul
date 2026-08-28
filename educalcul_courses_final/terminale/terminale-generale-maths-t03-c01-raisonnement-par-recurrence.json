@@ -1,0 +1,438 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.613834+00:00",
+  "id": 684,
+  "code": "terminale-generale-maths-t03-c01",
+  "title": "Raisonnement par récurrence",
+  "description": "Cours structuré Educalcul : Raisonnement par récurrence.",
+  "subject": "Suites",
+  "level": "terminale",
+  "source_level_label": "Terminale spécialité mathématiques",
+  "status": "draft",
+  "estimated_time": 42,
+  "blueprint": {
+    "niveau": "Terminale spécialité mathématiques",
+    "theme": "Suites",
+    "titre_du_cours": "Raisonnement par récurrence",
+    "objectif_global": "Raisonnement par récurrence",
+    "mini_lecons_imposees": [
+      "Initialisation.",
+      "Hérédité.",
+      "Conclusion."
+    ],
+    "conformite_programme_2026_2027": "Pour 2026-2027, utiliser le programme de Terminale encore applicable ; le nouveau programme publié en 2026 s’appliquera à partir de 2027-2028."
+  },
+  "content_json": [
+    {
+      "title": "Suites",
+      "lessons": [
+        {
+          "title": "Initialisation.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'initialisation : la première marche de l'escalier"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un escalier infini. Pour pouvoir le gravir jusqu'au bout, il faut d'abord poser le pied sur la première marche. En mathématiques, le raisonnement par récurrence fonctionne exactement sur ce principe : avant de prouver qu'une propriété se propage d'un entier au suivant, il faut vérifier qu'elle est vraie au tout départ. C'est ce qu'on appelle l'initialisation. C'est une étape courte, souvent simple, mais absolument indispensable : si la première marche est cassée, l'escalier tout entier s'effondre."
+            },
+            {
+              "type": "paragraph",
+              "content": "Concrètement, on a une propriété $P(n)$ qui dépend d'un entier naturel $n$. L'initialisation consiste à choisir un entier de départ $n_0$ (souvent $0$ ou $1$, mais pas toujours) et à vérifier que $P(n_0)$ est vraie. Prenons l'exemple classique de la somme des $n$ premiers entiers : on veut montrer que pour tout $n \\in \\mathbb{N}^*$, $1+2+\\dots+n = \\frac{n(n+1)}{2}$. Ici, la propriété $P(n)$ est l'égalité $S_n = \\frac{n(n+1)}{2}$. L'initialisation se fait pour $n_0 = 1$ : on calcule $S_1 = 1$ et $\\frac{1\\times(1+1)}{2} = 1$. L'égalité tient, la première marche est solide."
+            },
+            {
+              "type": "display_math",
+              "latex": "P(1) : \\quad 1 = \\frac{1 \\times 2}{2} = 1"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'initialisation ne se fait pas en $1$. Supposons qu'on veuille prouver une inégalité comme $2^n > n^2$ pour $n \\ge 5$. Ici, $P(n)$ est l'inégalité $2^n > n^2$. Si on testait $n=1$, on aurait $2 > 1$ (vrai), mais l'hérédité ne fonctionnerait pas pour les petits $n$. Le programme nous demande alors d'initialiser directement en $n_0 = 5$ : $2^5 = 32$ et $5^2 = 25$, donc $32 > 25$. C'est vrai. On pourrait même devoir vérifier deux valeurs de départ si le raisonnement saute un cran (par exemple pour les suites du type Fibonacci). L'important est de bien identifier le plus petit entier pour lequel la propriété a du sens et pour laquelle l'hérédité pourra s'enclencher."
+            },
+            {
+              "type": "number_line",
+              "caption": "L'initialisation ancre la propriété sur le premier entier pertinent.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "n_0 = 5"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 5,
+                  "end": 10
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons maintenant à une situation où l'initialisation demande un peu plus de calcul. Considérons une suite définie par récurrence : $u_0 = 3$ et $u_{n+1} = 2u_n - 1$. On conjecture que $u_n = 2^n + 1$ pour tout $n \\in \\mathbb{N}$. L'initialisation ici porte sur $n=0$ : $u_0 = 3$ et $2^0 + 1 = 1 + 1 = 2$... Attendez, $3 \\neq 2$ ! La conjecture est fausse dès le départ. Cet exemple montre pourquoi on ne saute jamais l'initialisation : elle permet de détecter une erreur de conjecture avant de perdre du temps sur l'hérédité. Si on avait modifié la conjecture en $u_n = 2^{n+1} + 1$, alors $u_0 = 2^1 + 1 = 3$, ça fonctionne. Vérifiez toujours que la formule proposée colle aux valeurs initiales de la suite."
+            },
+            {
+              "type": "display_math",
+              "latex": "u_0 = 3 \\quad \\text{et} \\quad 2^{0+1}+1 = 3 \\quad \\checkmark"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Un piège fréquent : croire que l'initialisation est une simple formalité qu'on peut bâcler. En terminale, on attend de vous que vous l'écriviez proprement, en précisant l'entier de départ $n_0$ et en montrant le calcul des deux côtés de l'égalité ou de l'inégalité. Ne vous contentez pas d'écrire \"C'est vrai pour $n=1$\". Écrivez : \"Pour $n=1$, le membre de gauche vaut $...$ et le membre de droite vaut $...$, donc l'égalité est vérifiée.\" Cette rigueur dans l'écriture conditionne la suite du raisonnement. De plus, si l'énoncé dit \"Pour tout entier $n \\ge 3$\", votre initialisation doit porter sur $n=3$, pas sur $n=1$. Lisez attentivement le domaine de validité annoncé."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Attention au domaine",
+              "paragraphs": [
+                "L'entier d'initialisation $n_0$ est celui indiqué dans l'énoncé (souvent 0 ou 1, parfois plus). Ne l'inventez pas."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir cette leçon, rappelons qu'une initialisation peut porter sur plusieurs valeurs de départ. C'est le cas quand l'hérédité utilise non pas $P(n) \\Rightarrow P(n+1)$ mais $P(n) \\land P(n+1) \\Rightarrow P(n+2)$ (raisonnement par récurrence forte, ou pour des suites d'ordre 2). Par exemple, pour la suite de Fibonacci $F_0=0, F_1=1, F_{n+2}=F_{n+1}+F_n$, si on veut démontrer une propriété sur $F_n$, il faut souvent initialiser $n=0$ ET $n=1$. L'initialisation devient alors un petit bloc de deux vérifications. C'est un détail technique, mais qui change tout : si vous n'initialisez qu'une seule valeur, l'enchaînement logique ne peut pas démarrer correctement. Dans la prochaine leçon, nous verrons comment construire l'hérédité, ce moteur qui fait grimper la propriété d'une marche à la suivante."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On veut démontrer par récurrence que pour tout entier $n \\ge 1$, $\\sum_{k=1}^n k^2 = \\frac{n(n+1)(2n+1)}{6}$. Quelle est l'initialisation à effectuer ? Écrivez-la complètement.",
+              "answer": "Pour $n=1$ : $\\sum_{k=1}^1 k^2 = 1^2 = 1$ et $\\frac{1 \\times 2 \\times 3}{6} = 1$. L'égalité est vraie pour $n=1$.",
+              "hint": "Remplacez $n$ par $1$ dans les deux membres de l'égalité et calculez.",
+              "explanation": "L'initialisation consiste à vérifier la propriété pour la plus petite valeur de l'entier $n$, ici $n=1$. On calcule la somme (qui ne contient qu'un terme) et la formule fermée, on obtient $1=1$."
+            },
+            {
+              "question": "Soit la propriété $P(n) : \\; 3^n \\ge n^2 + 1$. Pour quel entier $n_0$ faut-il initialiser si l'énoncé précise \"pour tout entier $n \\ge 2$\" ? Effectuez cette initialisation.",
+              "answer": "Il faut initialiser pour $n_0 = 2$. $3^2 = 9$ et $2^2+1 = 5$. Donc $9 \\ge 5$, la propriété $P(2)$ est vraie.",
+              "hint": "L'entier de départ est donné par la condition $n \\ge 2$. Calculez les deux membres pour $n=2$.",
+              "explanation": "L'énoncé restrictif $n \\ge 2$ impose de commencer l'initialisation à $n=2$. On vérifie numériquement l'inégalité pour cette valeur."
+            },
+            {
+              "question": "Une suite est définie par $v_0 = 5$ et $v_{n+1} = 3v_n - 4$. On pense que $v_n = 3^n + 2$. Vérifiez l'initialisation. La conjecture est-elle correcte au départ ?",
+              "answer": "Pour $n=0$ : $v_0 = 5$ et $3^0 + 2 = 1 + 2 = 3$. $5 \\neq 3$, l'initialisation échoue. La conjecture est fausse.",
+              "hint": "Calculez la valeur de la formule conjecturée pour $n=0$ et comparez à $v_0$.",
+              "explanation": "L'initialisation teste la conjecture sur la valeur initiale de la suite. Ici, la formule donne 3 alors que $v_0=5$, donc la conjecture ne tient pas."
+            },
+            {
+              "question": "On souhaite prouver par récurrence forte que tout entier $n \\ge 2$ se décompose en produit de facteurs premiers. Pourquoi faut-il initialiser $n=2$ ET $n=3$ si l'hérédité utilise l'hypothèse pour $k$ et $k-1$ ?",
+              "answer": "Parce que le raisonnement par récurrence forte avec un pas de 2 (utilisation de $P(k)$ et $P(k-1)$ pour montrer $P(k+1)$) nécessite que les deux premières valeurs soient vraies pour que la chaîne logique puisse démarrer sans trou.",
+              "hint": "Pensez à l'analogie de l'escalier : si on saute une marche sur deux, il faut que les deux premières marches soient solides.",
+              "explanation": "Quand l'hérédité fait appel aux deux propriétés précédentes, l'initialisation doit couvrir les deux premiers entiers du domaine pour ne pas laisser de trou dans le raisonnement."
+            }
+          ]
+        },
+        {
+          "title": "Hérédité.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "L'hérédité : le moteur qui propage la vérité"
+            },
+            {
+              "type": "paragraph",
+              "content": "L'initialisation a posé la première pierre. Maintenant, il faut construire l'étage au-dessus, puis celui d'après, et ainsi de suite à l'infini. C'est le rôle de l'hérédité : montrer que si la propriété est vraie pour un certain entier $n$ (c'est l'hypothèse de récurrence), alors elle est obligatoirement vraie pour l'entier suivant $n+1$. C'est une implication logique : $P(n) \\Rightarrow P(n+1)$. On ne prouve pas $P(n)$ (on la suppose), on prouve que $P(n+1)$ en découle. C'est comme dire : \"Si la marche $n$ tient, alors la marche $n+1$ tiendra aussi.\""
+            },
+            {
+              "type": "paragraph",
+              "content": "Reprenons l'exemple de la somme des entiers. Hypothèse de récurrence : on suppose que pour un $n \\ge 1$ fixé, $1+2+\\dots+n = \\frac{n(n+1)}{2}$. But : montrer que $1+2+\\dots+n+(n+1) = \\frac{(n+1)(n+2)}{2}$. La méthode standard consiste à partir du membre de gauche de $P(n+1)$ et à y faire apparaître $P(n)$. Ici, la somme jusqu'à $n+1$ est la somme jusqu'à $n$ plus le terme $n+1$. On utilise alors l'hypothèse de récurrence pour remplacer la somme jusqu'à $n$ par sa formule fermée. C'est une manipulation algébrique classique : factoriser, mettre au même dénominateur, reconnaître la formule attendue."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Écrire $P(n+1)$ à partir de $P(n)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On isole le nouveau terme : $S_{n+1} = S_n + (n+1)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Injecter l'hypothèse de récurrence",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On remplace $S_n$ par $\\frac{n(n+1)}{2}$ : $S_{n+1} = \\frac{n(n+1)}{2} + (n+1)$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Calculer et factoriser",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On met au même dénominateur : $\\frac{n(n+1) + 2(n+1)}{2} = \\frac{(n+1)(n+2)}{2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Conclure",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On a retrouvé exactement la formule de $P(n+1)$. L'hérédité est prouvée."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "L'hérédité ne se limite pas aux égalités. Pour une inégalité comme $2^n > n^2$ (pour $n \\ge 5$), l'hypothèse de récurrence est $2^n > n^2$. On veut montrer $2^{n+1} > (n+1)^2$. On part de $2^{n+1} = 2 \\times 2^n$. Par hypothèse, $2^n > n^2$, donc $2^{n+1} > 2n^2$. Il reste à prouver que $2n^2 \\ge (n+1)^2$ pour $n \\ge 5$. C'est une inégalité purement algébrique : $2n^2 \\ge n^2 + 2n + 1 \\Leftrightarrow n^2 - 2n - 1 \\ge 0$. Le trinôme $n^2-2n-1$ a des racines $1\\pm\\sqrt{2}$, il est positif pour $n \\ge 3$. Donc pour $n \\ge 5$, c'est vrai. On a chaîné les inégalités : $2^{n+1} > 2n^2 \\ge (n+1)^2$. Remarquez qu'on a utilisé la condition $n \\ge 5$ non pas au début de l'hérédité, mais à la fin pour valider l'inégalité intermédiaire. C'est une subtilité importante : l'hérédité peut être valide seulement à partir d'un certain rang, ce qui dicte le choix de $n_0$ à l'initialisation."
+            },
+            {
+              "type": "display_math",
+              "latex": "2^{n+1} = 2 \\times 2^n > 2 n^2 \\ge (n+1)^2 \\quad \\text{pour } n \\ge 5"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, l'hérédité demande un peu d'astuce algébrique. Prenons une suite définie par $u_0 = 1$ et $u_{n+1} = \\frac{u_n}{2} + 1$. On conjecture que $u_n = 2 - \\frac{1}{2^n}$. Hypothèse : $u_n = 2 - \\frac{1}{2^n}$. But : $u_{n+1} = 2 - \\frac{1}{2^{n+1}}$. On calcule $u_{n+1}$ à partir de la récurrence : $u_{n+1} = \\frac{1}{2}\\left(2 - \\frac{1}{2^n}\\right) + 1 = 1 - \\frac{1}{2^{n+1}} + 1 = 2 - \\frac{1}{2^{n+1}}$. C'est direct. Mais si la formule n'était pas si simple, il aurait fallu transformer l'expression pour faire apparaître la forme cible. Un conseil : écrivez toujours clairement l'hypothèse de récurrence en début d'hérédité (\"Supposons $P(n)$ vraie pour un $n \\ge n_0$\") et écrivez explicitement ce que vous devez montrer (\"Montrons $P(n+1)$\"). Cela structure votre devoir et évite de perdre le fil."
+            },
+            {
+              "type": "callout",
+              "variant": "note",
+              "title": "Structure type de l'hérédité",
+              "paragraphs": [
+                "1. Supposons $P(n)$ vraie pour un $n \\ge n_0$ fixé.",
+                "2. Écrivons $P(n+1)$ (le but).",
+                "3. Partons de l'expression de $P(n+1)$ et utilisons $P(n)$ pour la transformer.",
+                "4. Concluons : $P(n) \\Rightarrow P(n+1)$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Il existe une variante puissante : la récurrence forte (ou complète). Au lieu de supposer seulement $P(n)$, on suppose que $P(k)$ est vraie pour TOUS les entiers $k$ tels que $n_0 \\le k \\le n$, et on en déduit $P(n+1)$. C'est utile quand la propriété pour $n+1$ dépend de plusieurs valeurs précédentes, pas seulement de $n$. Par exemple, pour la suite de Fibonacci $F_{n+2} = F_{n+1} + F_n$, montrer une propriété sur $F_{n+2}$ nécessite souvent de connaître la propriété pour $F_{n+1}$ ET $F_n$. L'hypothèse de récurrence forte dit : \"Supposons que la propriété soit vraie pour tous les entiers de $n_0$ jusqu'à $n$.\" La conclusion est la même : $P(n+1)$ est vraie. Logiquement, la récurrence forte et la récurrence simple sont équivalentes, mais la forte offre plus de puissance dans l'hypothèse, ce qui simplifie certaines démonstrations. Dans la prochaine leçon, nous verrons comment assembler initialisation et hérédité pour écrire une conclusion impeccable, et nous aborderons les pièges à éviter pour que votre raisonnement soit irréprochable au bac."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "On veut montrer par récurrence que pour tout $n \\in \\mathbb{N}^*$, $\\sum_{k=1}^n k^3 = \\left(\\frac{n(n+1)}{2}\\right)^2$. En supposant l'égalité vraie pour $n$, écrivez l'égalité à prouver pour $n+1$ et montrez comment faire apparaître l'hypothèse de récurrence.",
+              "answer": "À prouver : $\\sum_{k=1}^{n+1} k^3 = \\left(\\frac{(n+1)(n+2)}{2}\\right)^2$. On écrit $\\sum_{k=1}^{n+1} k^3 = \\sum_{k=1}^n k^3 + (n+1)^3$. Par hypothèse, cela vaut $\\left(\\frac{n(n+1)}{2}\\right)^2 + (n+1)^3$.",
+              "hint": "Séparez le dernier terme de la somme pour faire apparaître la somme jusqu'à $n$.",
+              "explanation": "C'est la première étape de l'hérédité : réécrire $P(n+1)$ en utilisant $P(n)$. On isole le terme $k=n+1$."
+            },
+            {
+              "question": "Pour l'inégalité $2^n \\ge n+1$ ($n \\in \\mathbb{N}$), l'hypothèse de récurrence est $2^n \\ge n+1$. Montrez que $2^{n+1} \\ge n+2$ en détaillant les étapes.",
+              "answer": "$2^{n+1} = 2 \\times 2^n \\ge 2(n+1) = 2n+2$. Or $2n+2 \\ge n+2$ car $n \\ge 0$. Donc $2^{n+1} \\ge n+2$.",
+              "hint": "Multipliez l'hypothèse par 2, puis comparez $2n+2$ à $n+2$.",
+              "explanation": "On utilise $2^{n+1}=2\\times2^n$ et l'hypothèse de récurrence. Comme $n\\ge0$, $2n+2 \\ge n+2$, ce qui permet de chaîner les inégalités."
+            },
+            {
+              "question": "Soit la suite $w_n$ définie par $w_0 = 2$ et $w_{n+1} = \\sqrt{w_n + 2}$. On conjecture $w_n = 2 \\cos\\left(\\frac{\\pi}{2^{n+1}}\\right)$. En supposant la conjecture vraie pour $n$, exprimez $w_{n+1}$ en fonction de $\\cos\\left(\\frac{\\pi}{2^{n+1}}\\right)$.",
+              "answer": "Par hypothèse $w_n = 2\\cos(\\pi/2^{n+1})$. Alors $w_{n+1} = \\sqrt{2\\cos(\\pi/2^{n+1}) + 2} = \\sqrt{2(1+\\cos(\\pi/2^{n+1}))} = \\sqrt{4\\cos^2(\\pi/2^{n+2})} = 2\\cos(\\pi/2^{n+2})$.",
+              "hint": "Utilisez la formule $1+\\cos\\theta = 2\\cos^2(\\theta/2)$.",
+              "explanation": "L'hérédité fait intervenir une identité trigonométrique. On injecte l'hypothèse dans la récurrence, on factorise 2 et on applique la formule du cosinus de l'angle moitié."
+            },
+            {
+              "question": "Expliquez pourquoi, pour démontrer une propriété sur la suite de Fibonacci $F_{n+2}=F_{n+1}+F_n$, il est souvent plus commode d'utiliser la récurrence forte (hypothèse pour tous $k \\le n$) plutôt que la récurrence simple.",
+              "answer": "Parce que $F_{n+2}$ dépend de $F_{n+1}$ ET de $F_n$. Pour prouver $P(n+2)$, on a besoin que $P(n+1)$ et $P(n)$ soient vraies simultanément. La récurrence simple ne donne que $P(n) \\Rightarrow P(n+1)$, ce qui ne suffit pas pour accéder aux deux propriétés précédentes à la fois.",
+              "hint": "Regardez la définition de la suite : elle fait appel à deux termes précédents.",
+              "explanation": "La récurrence forte permet d'assumer la vérité de la propriété pour tous les indices jusqu'à $n$, ce qui donne directement accès à $P(n)$ et $P(n-1)$ (ou $P(n+1)$ et $P(n)$) pour prouver $P(n+1)$ (ou $P(n+2)$)."
+            }
+          ]
+        },
+        {
+          "title": "Conclusion.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "La conclusion : l'infini à portée de main"
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous avons vérifié la première marche (initialisation) et nous avons prouvé que si une marche tient, la suivante tient aussi (hérédité). Il ne reste plus qu'à faire le saut logique final : grâce à ces deux pièces, la propriété est vraie pour **tous** les entiers $n \\ge n_0$. C'est le principe de récurrence, un axiome fondamental des entiers naturels. C'est comme une rangée de dominos : on renverse le premier (initialisation), et on a prouvé que chaque domino renverse le suivant (hérédité). Donc tous tombent, un par un, jusqu'à l'infini. En mathématiques, on écrit cette conclusion de façon formelle : \"Par principe de récurrence, la propriété $P(n)$ est vraie pour tout entier $n \\ge n_0$.\" C'est la phrase qui clôture toute démonstration par récurrence bien rédigée."
+            },
+            {
+              "type": "number_line",
+              "caption": "L'initialisation + l'hérédité = vérité pour tous les entiers suivants.",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "Initialisation"
+                },
+                {
+                  "value": 2,
+                  "label": "Hérédité"
+                },
+                {
+                  "value": 3,
+                  "label": "Hérédité"
+                },
+                {
+                  "value": 4,
+                  "label": "..."
+                }
+              ],
+              "intervals": [
+                {
+                  "start": 1,
+                  "end": 10
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Rédiger une démonstration complète par récurrence, c'est assembler les trois blocs dans l'ordre, avec une écriture soignée. Voici le modèle type attendu en terminale spécialité :\\n1. **Définition de la propriété** : On note $P(n)$ la propriété \"...\" pour $n \\in \\mathbb{N}$ (ou $n \\ge n_0$).\\n2. **Initialisation** : Pour $n=n_0$, on calcule... donc $P(n_0)$ est vraie.\\n3. **Hérédité** : Soit $n \\ge n_0$. On suppose $P(n)$ vraie. On montre $P(n+1)$ en détaillant les calculs.\\n4. **Conclusion** : Par le principe de récurrence, $P(n)$ est vraie pour tout $n \\ge n_0$.\\nNe zappez aucune de ces étapes. Même si l'initialisation vous semble évidente, écrivez-la. Même si l'hérédité est un calcul court, montrez les égalités intermédiaires. Le correcteur du bac cherche cette structure rigoureuse. Une démonstration sans conclusion explicite perd des points, car le raisonnement logique n'est pas formellement clos."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Énoncer $P(n)$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Soit $P(n) : \\; \\sum_{k=1}^n k = \\frac{n(n+1)}{2}$ pour $n \\ge 1$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Initialisation",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "$P(1) : 1 = \\frac{1\\times2}{2} = 1$. Vrai."
+                    }
+                  ]
+                },
+                {
+                  "title": "Hérédité",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Supposons $P(n)$ vraie pour $n\\ge1$. Alors $\\sum_{k=1}^{n+1} k = \\frac{n(n+1)}{2}+(n+1) = \\frac{(n+1)(n+2)}{2}$. Donc $P(n+1)$ vraie."
+                    }
+                  ]
+                },
+                {
+                  "title": "Conclusion",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Par récurrence, $P(n)$ est vraie pour tout $n\\ge1$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Attention aux pièges classiques qui font perdre des points. Piège 1 : confondre l'hypothèse de récurrence et ce qu'on doit prouver. N'écrivez jamais \"On suppose $P(n+1)$\" au début de l'hérédité ! On suppose $P(n)$, on prouve $P(n+1)$. Piège 2 : faire l'initialisation après l'hérédité. L'ordre logique est immuable : initialisation **puis** hérédité. Piège 3 : oublier de préciser le domaine de $n$ dans l'hypothèse de récurrence (\"pour un $n \\ge n_0$ fixé\"). Piège 4 : utiliser la propriété qu'on veut prouver à l'intérieur de l'hérédité (raisonnement circulaire). Par exemple, écrire $\\sum_{k=1}^{n+1} k = \\frac{(n+1)(n+2)}{2}$ dès le début de l'hérédité, c'est supposer la conclusion. Il faut partir du membre de gauche et le transformer pour **arriver** au membre de droite. Piège 5 : traiter le cas $n=0$ alors que la propriété ne commence qu'en $n=1$, ou l'inverse. Relisez toujours l'énoncé pour identifier $n_0$."
+            },
+            {
+              "type": "callout",
+              "variant": "warning",
+              "title": "Erreurs fréquentes à éviter",
+              "paragraphs": [
+                "Supposer $P(n+1)$ au lieu de $P(n)$.",
+                "Inverser l'ordre : hérédité avant initialisation.",
+                "Oublier le quantificateur \"pour tout $n \\ge n_0$\" dans l'hypothèse.",
+                "Raisonnement circulaire : utiliser la conclusion dans la preuve.",
+                "Mauvais entier de départ $n_0$."
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, sachez que le raisonnement par récurrence s'adapte à des situations variées. On peut faire une récurrence **décroissante** (on montre $P(n) \\Rightarrow P(n-1)$ pour descendre jusqu'à un cas de base), une récurrence **sur les entiers pairs/impairs** (pas de 2), ou une récurrence **multiple** (on initialise plusieurs cas de base et l'hérédité saute plusieurs crans). Le schéma logique reste toujours le même : une base solide + un mécanisme de propagation = vérité pour tout l'ensemble visé. C'est un outil d'une puissance extraordinaire qui permet de prouver une infinité de cas en un temps fini. Maîtriser sa rédaction, c'est acquérir une clé majeure pour les mathématiques supérieures. Vous êtes maintenant prêt à construire vos propres tours d'infini, marche après marche, avec rigueur et élégance."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais définir clairement la propriété $P(n)$ et son domaine d'entiers $n \\ge n_0$.",
+                "Je sais effectuer l'initialisation en vérifiant $P(n_0)$ par un calcul explicite des deux membres.",
+                "Je sais écrire l'hypothèse de récurrence : \"Supposons $P(n)$ vraie pour un $n \\ge n_0$ fixé.\"",
+                "Je sais mener l'hérédité en partant de l'expression de $P(n+1)$ et en y injectant $P(n)$.",
+                "Je sais rédiger la conclusion formelle : \"Par principe de récurrence, $P(n)$ est vraie pour tout $n \\ge n_0$.\"",
+                "Je connais les pièges à éviter : raisonnement circulaire, mauvais $n_0$, omission de la conclusion."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Rédigez la conclusion formelle d'une démonstration par récurrence dont l'initialisation a été faite pour $n_0=3$ et l'hérédité montrée pour tout $n \\ge 3$.",
+              "answer": "Par le principe de récurrence, la propriété $P(n)$ est vraie pour tout entier $n \\ge 3$.",
+              "hint": "Reprenez la phrase type en adaptant l'entier de départ.",
+              "explanation": "La conclusion doit mentionner explicitement le principe de récurrence et le domaine de validité exact ($n \\ge 3$ ici)."
+            },
+            {
+              "question": "Voici une ébauche d'hérédité pour montrer $P(n) : 2^n > n$. On suppose $2^n > n$. On écrit $2^{n+1} = 2 \\times 2^n > 2n$. Puis on dit $2n \\ge n+1$ pour $n \\ge 1$, donc $2^{n+1} > n+1$. Où se trouve l'erreur logique ?",
+              "answer": "Il n'y a pas d'erreur logique dans l'enchaînement pour $n \\ge 1$. Mais si l'initialisation a été faite pour $n=0$, l'hérédité ne fonctionne pas pour $n=0$ car $2\\times0 = 0 \\not\\ge 1$. Il faut soit initialiser en $n=1$, soit traiter le cas $n=0 \\to 1$ séparément.",
+              "hint": "Vérifiez si l'inégalité $2n \\ge n+1$ est vraie pour la valeur de $n$ utilisée à l'initialisation.",
+              "explanation": "L'hérédité doit être valide pour **tout** $n \\ge n_0$. Si $n_0=0$, l'étape $n=0$ échoue car $0 \\not\\ge 1$. C'est un problème de cohérence entre initialisation et condition de l'hérédité."
+            },
+            {
+              "question": "On veut prouver que tout entier $n \\ge 2$ est un produit de nombres premiers. Pourquoi une récurrence simple ($P(n) \\Rightarrow P(n+1)$) est-elle maladroite ici, et comment la récurrence forte résout-elle le problème ?",
+              "answer": "Si $n+1$ n'est pas premier, il se factorise en $a \\times b$ avec $2 \\le a,b \\le n$. Pour utiliser la propriété sur $a$ et $b$, il faut qu'elle soit vraie pour **tous** les entiers jusqu'à $n$, pas seulement pour $n$. La récurrence forte suppose $P(k)$ vraie pour tout $k \\in [2,n]$, ce qui permet d'appliquer l'hypothèse aux facteurs $a$ et $b$.",
+              "hint": "Pensez à la factorisation d'un nombre composé : ses facteurs sont strictement inférieurs à lui, mais pas nécessairement égaux à $n$.",
+              "explanation": "La récurrence simple ne donne l'hypothèse que pour $n$. Or les facteurs de $n+1$ peuvent être n'importe quels entiers entre $2$ et $n$. La récurrence forte fournit exactement l'hypothèse nécessaire."
+            },
+            {
+              "question": "Dans une démonstration par récurrence, un élève écrit : \"Supposons que $P(n+1)$ soit vraie. Montrons que $P(n+1)$ est vraie.\" Quel est le défaut majeur de cette phrase ?",
+              "answer": "C'est un raisonnement circulaire (pétition de principe). On suppose ce qu'on doit prouver. L'hypothèse de récurrence doit porter sur $P(n)$, pas sur $P(n+1)$.",
+              "hint": "Relisez la définition de l'hérédité : on part de $P(n)$ pour aller vers $P(n+1)$.",
+              "explanation": "L'hypothèse de récurrence est toujours $P(n)$ (ou $P(k)$ pour $k \\le n$ en récurrence forte). Supposer $P(n+1)$ vide la démonstration de son sens."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

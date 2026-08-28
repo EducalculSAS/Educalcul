@@ -1,0 +1,95 @@
+{
+  "_status": "done",
+  "_course_id": 377,
+  "_course_code": "6eme-t09-c04-programmes-geometriques",
+  "_level": "6e",
+  "_subject": "Algorithmique",
+  "_subtheme": "Application : Programmes géométriques",
+  "title": "Quiz : Programmes géométriques - Construction et figures",
+  "questions": [
+    {
+      "text": "On considère le programme de construction suivant :\\n1. Tracer un segment $[AB]$.\\n2. Tracer le cercle de centre $A$ passant par $B$.\\n3. Tracer le cercle de centre $B$ passant par $A$.\\n4. Nommer $C$ et $D$ les deux points d'intersection de ces cercles.\\n5. Tracer la droite $(CD)$.\\nQuelle figure géométrique obtient-on à l'étape 5 ?",
+      "options": [
+        "La médiatrice du segment $[AB]$",
+        "La médiane issue de $A$ dans le triangle $ABC$",
+        "La hauteur issue de $A$ dans le triangle $ABC$",
+        "La bissectrice de l'angle $\\widehat{CAB}$"
+      ],
+      "correctAnswer": "La médiatrice du segment $[AB]$",
+      "explanation": "Les points $C$ et $D$ sont à égale distance de $A$ et de $B$ (ils appartiennent aux deux cercles de même rayon $AB$). La droite $(CD)$ passant par ces deux points est donc l'ensemble des points équidistants de $A$ et $B$ : c'est la définition de la médiatrice de $[AB]$. Ce n'est pas une médiane, une hauteur ni une bissectrice du triangle $ABC$ car la construction ne dépend pas d'un troisième sommet prédéfini.",
+      "points": 1,
+      "figure": {
+        "type": "compass_tool",
+        "radius": 4,
+        "centerLabel": "A",
+        "caption": "Étape 2 : cercle de centre A passant par B"
+      }
+    },
+    {
+      "text": "Pour tracer une perpendiculaire à une droite $(d)$ passant par un point $A$ situé sur $(d)$, on commence par placer la pointe du compas sur $A$. Quelle est l'instruction correcte pour la première étape au compas ?",
+      "options": [
+        "Tracer un arc de cercle de centre $A$ coupant $(d)$ en deux points $B$ et $C$",
+        "Tracer le cercle de centre $A$ de rayon $AB$ avec $B$ un point quelconque",
+        "Tracer la droite $(AB)$ perpendicular à $(d)$",
+        "Reporter la longueur $AB$ sur l'autre côté de $A$"
+      ],
+      "correctAnswer": "Tracer un arc de cercle de centre $A$ coupant $(d)$ en deux points $B$ et $C$",
+      "explanation": "La construction classique de la perpendiculaire en un point de la droite commence par tracer un arc de cercle (ou un cercle) centré en $A$ qui coupe la droite $(d)$ en deux points $B$ et $C$ symétriques par rapport à $A$. Cela permet ensuite de tracer deux arcs de même rayon centres $B$ et $C$ pour trouver l'intersection qui détermine la perpendiculaire. Les autres options ne correspondent pas à cette première étape standard.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On exécute le programme ci-dessous :\\n1. Tracer un segment $[AB]$ de longueur $5\\text{ cm}$.\\n2. Tracer la droite perpendiculaire à $(AB)$ passant par $A$.\\n3. Sur cette perpendiculaire, repérer le point $C$ tel que $AC = 5\\text{ cm}$.\\n4. Tracer la droite parallèle à $(AB)$ passant par $C$.\\n5. Tracer la droite parallèle à $(AC)$ passant par $B$.\\n6. Nommer $D$ l'intersection des deux droites tracées aux étapes 4 et 5.\\nQuelle est la nature du quadrilatère $ABCD$ ?",
+      "options": [
+        "Un rectangle",
+        "Un carré",
+        "Un losange non carré",
+        "Un parallélogramme quelconque"
+      ],
+      "correctAnswer": "Un carré",
+      "explanation": "Le quadrilatère a ses quatre angles droits (étape 2 et propriétés des parallèles) : c'est un rectangle. De plus, deux côtés consécutifs $[AB]$ et $[AC]$ ont la même longueur ($5\\text{ cm}$ aux étapes 1 et 3). Un rectangle ayant deux côtés consécutifs égaux est un carré. Ce n'est pas seulement un losange (angles droits obligatoires) ni un simple parallélogramme.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici un programme incomplet pour construire un triangle équilatéral de côté $AB$ :\\n1. Tracer un segment $[AB]$.\\n2. Tracer le cercle $\\mathcal{C}_1$ de centre $A$ et de rayon $AB$.\\n3. Tracer le cercle $\\mathcal{C}_2$ de centre $B$ et de rayon $BA$.\\n4. ...\\n5. Tracer les segments $[AC]$ et $[BC]$.\\nQuelle instruction doit-on écrire à l'étape 4 ?",
+      "options": [
+        "Tracer la droite $(AB)$",
+        "Marquer un des points d'intersection des cercles $\\mathcal{C}_1$ et $\\mathcal{C}_2$ et le nommer $C$",
+        "Tracer le cercle de centre $C$ et de rayon $CA$",
+        "Mesurer l'angle $\\widehat{CAB}$ avec le rapporteur"
+      ],
+      "correctAnswer": "Marquer un des points d'intersection des cercles $\\mathcal{C}_1$ et $\\mathcal{C}_2$ et le nommer $C$",
+      "explanation": "Les cercles $\\mathcal{C}_1$ et $\\mathcal{C}_2$ ont le même rayon $AB$. Leurs points d'intersection sont à distance $AB$ de $A$ (sur $\\mathcal{C}_1$) et à distance $BA$ de $B$ (sur $\\mathcal{C}_2$). En choisissant l'un d'eux comme point $C$, on obtient $AC = AB$ et $BC = BA$, donc $AB = AC = BC$ : le triangle $ABC$ est équilatéral. L'étape 4 doit définir le sommet $C$ par cette intersection.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle équilatéral ABC obtenu",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "5 cm",
+          "5 cm",
+          "5 cm"
+        ],
+        "rightAngleAt": -1
+      }
+    },
+    {
+      "text": "On exécute le programme suivant :\\n1. Tracer un segment $[AB]$.\\n2. Tracer le cercle de centre $A$ et de rayon $AB$.\\n3. Tracer le cercle de centre $B$ et de rayon $BA$.\\n4. Nommer $C$ un point d'intersection de ces deux cercles.\\n5. Tracer les segments $[AC]$ et $[BC]$.\\nQuelle propriété garantit que le triangle $ABC$ est équilatéral ?",
+      "options": [
+        "Les deux cercles ont le même centre",
+        "Les segments $[AC]$ et $[BC]$ sont des rayons des cercles donc $AC = AB$ et $BC = AB$",
+        "La droite $(AB)$ est un axe de symétrie de la figure",
+        "L'angle $\\widehat{ACB}$ est un angle droit"
+      ],
+      "correctAnswer": "Les segments $[AC]$ et $[BC]$ sont des rayons des cercles donc $AC = AB$ et $BC = AB$",
+      "explanation": "Par définition d'un cercle, tout point sur le cercle de centre $A$ et de rayon $AB$ est à distance $AB$ de $A$. Comme $C$ est sur ce cercle, $AC = AB$. De même, $C$ est sur le cercle de centre $B$ et de rayon $BA$, donc $BC = BA$. On a donc les trois côtés égaux : $AB = AC = BC$. C'est la définition d'un triangle équilatéral. Les cercles n'ont pas le même centre (A et B sont distincts), la symétrie est une conséquence, et l'angle $\\widehat{ACB}$ vaut $60^\\circ$, pas $90^\\circ$.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

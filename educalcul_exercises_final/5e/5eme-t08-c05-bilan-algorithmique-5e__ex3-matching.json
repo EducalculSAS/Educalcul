@@ -1,0 +1,100 @@
+{
+  "_status": "done",
+  "_type": "matching",
+  "_course_id": 419,
+  "_course_code": "5eme-t08-c05-bilan-algorithmique-5e",
+  "_level": "5e",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Bilan - Algorithmique 5e",
+  "title": "Bilan Algorithmique - Associations",
+  "blocks": [
+    {
+      "title": "Blocs et catégories",
+      "content": "Relie chaque instruction à sa catégorie de blocs (Mouvement, Stylo, Contrôle).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Avancer de 10 pas",
+          "right": "Mouvement"
+        },
+        {
+          "left": "Tourner à droite de 90°",
+          "right": "Mouvement"
+        },
+        {
+          "left": "Effacer tous les traits",
+          "right": "Stylo"
+        },
+        {
+          "left": "Répéter 10 fois",
+          "right": "Contrôle"
+        },
+        {
+          "left": "Si <condition> alors",
+          "right": "Contrôle"
+        }
+      ],
+      "items": [],
+      "explanation": "Les blocs \"Avancer\" et \"Tourner\" déplacent le lutin : ce sont des blocs de **Mouvement** (bleus). \"Effacer\" gère le tracé : c'est un bloc **Stylo** (verts). \"Répéter\" et \"Si...alors\" structurent le programme : ce sont des blocs **Contrôle** (orange).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Suivi de variable",
+      "content": "On exécute l'algorithme ci-dessous. Relie chaque étape à la valeur de la variable $x$ à cet instant.\\nAlgorithme :\\nx ← 4\\nx ← x + 3\\nx ← x × 2\\nx ← x - 5",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Après $x \\leftarrow 4$",
+          "right": "$x = 4$"
+        },
+        {
+          "left": "Après $x \\leftarrow x + 3$",
+          "right": "$x = 7$"
+        },
+        {
+          "left": "Après $x \\leftarrow x \\times 2$",
+          "right": "$x = 14$"
+        },
+        {
+          "left": "Après $x \\leftarrow x - 5$",
+          "right": "$x = 9$"
+        }
+      ],
+      "items": [],
+      "explanation": "On suit les affectations pas à pas : 1. $x$ vaut 4. 2. On ajoute 3 : $4+3=7$. 3. On multiplie par 2 : $7\\times2=14$. 4. On soustrait 5 : $14-5=9$. La valeur finale est 9.",
+      "points": 3,
+      "figure": null
+    },
+    {
+      "title": "Boucles et figures géométriques",
+      "content": "Relie chaque script (boucle \"Répéter\") à la figure géométrique tracée par le lutin (stylo baissé).",
+      "correctAnswer": "",
+      "blanks": [],
+      "pairs": [
+        {
+          "left": "Répéter 3 fois [ Avancer 50 ; Tourner à droite de 120° ]",
+          "right": "Triangle équilatéral"
+        },
+        {
+          "left": "Répéter 4 fois [ Avancer 50 ; Tourner à droite de 90° ]",
+          "right": "Carré"
+        },
+        {
+          "left": "Répéter 5 fois [ Avancer 40 ; Tourner à droite de 72° ]",
+          "right": "Pentagone régulier"
+        },
+        {
+          "left": "Répéter 6 fois [ Avancer 30 ; Tourner à droite de 60° ]",
+          "right": "Hexagone régulier"
+        }
+      ],
+      "items": [],
+      "explanation": "Pour tracer un polygone régulier à $n$ côtés, on répète $n$ fois : avancer, puis tourner de $360/n$ degrés. Triangle : $360/3=120°$. Carré : $360/4=90°$. Pentagone : $360/5=72°$. Hexagone : $360/6=60°$.",
+      "points": 3,
+      "figure": null
+    }
+  ]
+}

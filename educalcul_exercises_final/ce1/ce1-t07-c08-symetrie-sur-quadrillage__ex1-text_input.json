@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 133,
+  "_course_code": "ce1-t07-c08-symetrie-sur-quadrillage",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Repérer axe simple",
+  "title": "Repérer un axe de symétrie simple",
+  "blocks": [
+    {
+      "title": "Axe vertical",
+      "content": "Regarde le rectangle ci-dessous sur le quadrillage. La ligne pointillée verticale au centre est-elle un axe de symétrie ? Réponds par oui ou non.",
+      "correctAnswer": "oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le rectangle possède deux axes de symétrie : un vertical et un horizontal. L'axe vertical passe par le milieu des côtés longs, les deux moitiés se superposent parfaitement par pliage.",
+      "points": 2,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 2,
+        "cols": 6,
+        "highlighted": 12,
+        "caption": "Rectangle de 2 lignes sur 6 colonnes"
+      }
+    },
+    {
+      "title": "Axe horizontal",
+      "content": "Regarde ce rectangle debout sur le quadrillage. La ligne pointillée horizontale au centre est-elle un axe de symétrie ? Réponds par oui ou non.",
+      "correctAnswer": "oui",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "De même, l'axe horizontal passe par le milieu des côtés longs du rectangle vertical. Les deux moitiés haute et basse sont symétriques.",
+      "points": 2,
+      "figure": {
+        "type": "grid_painter",
+        "rows": 6,
+        "cols": 2,
+        "highlighted": 12,
+        "caption": "Rectangle de 6 lignes sur 2 colonnes"
+      }
+    },
+    {
+      "title": "Figure sans axe",
+      "content": "Une figure en forme de L est construite avec 5 cases : 3 cases verticales et 3 cases horizontales qui se rejoignent sur une case commune. Cette figure a-t-elle un axe de symétrie ? Réponds par oui ou non.",
+      "correctAnswer": "non",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "La figure en L n'a aucun axe de symétrie. Aucun pliage ne permet de superposer les deux parties de la figure.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

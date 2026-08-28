@@ -1,0 +1,353 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:42.048969+00:00",
+  "id": 509,
+  "code": "2nde-t02-c07",
+  "title": "Bilan - Calcul algébrique Seconde",
+  "description": "Cours structuré Educalcul : Bilan - Calcul algébrique Seconde.",
+  "subject": "Calcul algébrique",
+  "level": "2nde",
+  "source_level_label": "Seconde",
+  "status": "draft",
+  "estimated_time": 28,
+  "blueprint": {
+    "niveau": "Seconde",
+    "theme": "Calcul algébrique",
+    "titre_du_cours": "Bilan - Calcul algébrique Seconde",
+    "objectif_global": "Bilan - Calcul algébrique Seconde",
+    "mini_lecons_imposees": [
+      "Transformer et résoudre.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de seconde générale et technologique applicable à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Calcul algébrique",
+      "lessons": [
+        {
+          "title": "Transformer et résoudre.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les identités remarquables, vos alliées"
+            },
+            {
+              "type": "paragraph",
+              "content": "Avant de plonger dans la résolution d'équations, rappelons-nous les trois identités remarquables qui reviennent sans cesse en seconde. Elles ne sont pas des formules magiques à apprendre par cœur sans comprendre : ce sont des raccourcis qui transforment un produit en une somme, ou une somme en un produit, et elles fonctionnent pour n'importe quels nombres, variables ou expressions. Imagine que tu dois développer $(x+3)^2$ : au lieu d'écrire $(x+3)(x+3)$ et de multiplier terme à terme, tu sais instantanément que le résultat est $x^2+6x+9$. De même, $(x-5)(x+5)$ devient $x^2-25$ grâce à la différence de deux carrés. Ces identités te font gagner un temps précieux et évitent les erreurs de signe quand tu dois factoriser ou simplifier une expression algébrique."
+            },
+            {
+              "type": "display_math",
+              "latex": "(a+b)^2 = a^2+2ab+b^2"
+            },
+            {
+              "type": "display_math",
+              "latex": "(a-b)^2 = a^2-2ab+b^2"
+            },
+            {
+              "type": "display_math",
+              "latex": "(a-b)(a+b) = a^2-b^2"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que ces identités sont bien ancrées, nous allons voir comment elles deviennent des outils pour résoudre des équations un peu plus élaborées, notamment quand un paramètre se cache dans l'énoncé."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre une équation du premier degré avec un paramètre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une équation du premier degré avec un paramètre, comme $2x + a = 5$, te demande d'exprimer $x$ en fonction de $a$. Le paramètre $a$ est un nombre que l'on ne connaît pas encore, mais qui reste fixe pendant toute la résolution. La méthode est exactement la même que pour une équation numérique : on isole $x$ en faisant les mêmes opérations des deux côtés. La seule différence, c'est qu'à la fin tu obtiens une expression contenant $a$ au lieu d'un nombre concret. C'est une compétence essentielle pour la modélisation, car les paramètres représentent souvent des grandeurs physiques (vitesse, masse, prix) que l'on veut laisser variables."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Identifier l'inconnue et le paramètre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dans $2x + a = 5$, l'inconnue est $x$ et le paramètre est $a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Transférer le paramètre de l'autre côté",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On soustrait $a$ des deux membres : $2x = 5 - a$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Diviser par le coefficient de $x$",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "On divise par $2$ : $x = \\frac{5 - a}{2}$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 4 : Vérifier les cas particuliers",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si le coefficient de $x$ avait été $0$, l'équation n'aurait pas de solution ou en aurait une infinité selon la valeur du paramètre. Ici $2 \\neq 0$, donc la solution est unique pour tout $a$."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après les équations, passons aux inéquations où le signe d'inégalité impose une attention supplémentaire, surtout quand on multiplie ou divise par un nombre négatif."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les inéquations du premier degré"
+            },
+            {
+              "type": "paragraph",
+              "content": "Une inéquation comme $3x - 4 \\le 2$ se résout presque comme une équation, mais la solution n'est plus un nombre unique : c'est tout un intervalle de valeurs. La règle d'or à ne jamais oublier : si tu multiplies ou divises les deux membres par un nombre négatif, le sens de l'inégalité s'inverse. Par exemple, $-2x > 6$ devient $x < -3$ après division par $-2$. Pour visualiser l'ensemble des solutions, la droite graduée est l'outil idéal : elle montre d'un coup d'œil la borne, l'appartenance ou non de la borne (point plein ou vide) et la direction de l'intervalle."
+            },
+            {
+              "type": "number_line",
+              "caption": "Solution de $-2x > 6$",
+              "min": -6,
+              "max": 2,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "-3"
+                }
+              ],
+              "intervals": [
+                {
+                  "start": -6,
+                  "end": -3,
+                  "startOpen": false,
+                  "endOpen": true
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour terminer cette leçon, nous allons voir comment tout ce savoir‑faire s'assemble pour transformer un énoncé concret en un modèle algébrique que l'on sait résoudre."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modéliser un problème de la vie courante"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imaginons qu'un cycliste parcourt une distance $d$ en $t$ heures à une vitesse constante $v$. La relation fondamentale est $v = \\frac{d}{t}$. Si le problème te donne la vitesse et le temps, tu déduis la distance ; s'il te donne la distance et la vitesse, tu trouves le temps. La modélisation consiste à identifier les grandeurs connues, l'inconnue, à écrire l'équation qui les relie, puis à la résoudre en utilisant les techniques vues précédemment. C'est exactement ce que font les ingénieurs, les économistes ou les médecins au quotidien : ils traduisent une situation réelle en langage mathématique, résolvent, puis réinterprètent le résultat."
+            },
+            {
+              "type": "display_math",
+              "latex": "v = \\frac{d}{t}"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant toutes les clés pour transformer, factoriser, résoudre des équations et des inéquations, et même modéliser des situations concrètes. La prochaine leçon fera le point sur ces compétences sous forme de liste de vérification."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Développe et simplifie l'expression $(2x+3)^2 - (2x-3)(2x+3)$.",
+              "answer": "12x",
+              "hint": "Utilise les identités remarquables pour chaque terme, puis regroupe les termes semblables.",
+              "explanation": "On a $(2x+3)^2 = 4x^2+12x+9$ et $(2x-3)(2x+3) = 4x^2-9$. La différence donne $4x^2+12x+9 - (4x^2-9) = 12x+18$. Après simplification, on obtient $12x+18$. Attention : l'énoncé demande de simplifier, donc $12x+18$ est la forme finale."
+            },
+            {
+              "question": "Résous l'équation $5x - 2a = 3a + 4$ en exprimant $x$ en fonction du paramètre $a$.",
+              "answer": "x = a + 4/5",
+              "hint": "Regroupe les termes contenant $a$ d'un côté et les termes en $x$ de l'autre, puis divise par le coefficient de $x$.",
+              "explanation": "On ajoute $2a$ des deux côtés : $5x = 5a + 4$. On divise par $5$ : $x = a + \\frac{4}{5}$. Cette expression donne la solution pour toute valeur réelle de $a$."
+            },
+            {
+              "question": "Résous l'inéquation $-3x + 7 \\ge 1$ et représente l'ensemble des solutions sur une droite graduée.",
+              "answer": "x \\le 2",
+              "hint": "Isole $x$ en soustrayant $7$, puis divise par $-3$ en inversant le signe de l'inégalité.",
+              "explanation": "On soustrait $7$ : $-3x \\ge -6$. On divise par $-3$ (négatif) donc le signe change : $x \\le 2$. Sur la droite, on place un point plein sur $2$ et on hachure vers la gauche."
+            },
+            {
+              "question": "Un train parcourt $300$ km en $t$ heures à vitesse constante $v$. Exprime $t$ en fonction de $v$, puis calcule $t$ pour $v = 120$ km/h.",
+              "answer": "t = 300/v ; pour v=120, t = 2,5 h",
+              "hint": "Utilise la relation $v = d/t$ et isole $t$.",
+              "explanation": "De $v = 300/t$, on multiplie par $t$ : $vt = 300$. On divise par $v$ : $t = 300/v$. En remplaçant $v$ par $120$, on obtient $t = 300/120 = 2,5$ heures, soit $2$ h $30$ min."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 14,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Développer et factoriser : révision rapide"
+            },
+            {
+              "type": "paragraph",
+              "content": "Revenons sur les bases du calcul algébrique. Savoir développer $(x+4)(x-2)$ pour obtenir $x^2+2x-8$ et, à l'inverse, factoriser $x^2+2x-8$ en $(x+4)(x-2)$ est un aller‑retour permanent en seconde. La clé, c'est de repérer les produits de sommes et les différences de carrés. Quand tu vois un trinôme de la forme $x^2+Sx+P$, cherche deux nombres dont la somme est $S$ et le produit $P$. Ici $S=2$, $P=-8$ : les nombres $4$ et $-2$ font l'affaire. Entraîne‑toi à faire ce travail mentalement, cela accélère enormement la résolution d'équations du second degré plus tard."
+            },
+            {
+              "type": "display_math",
+              "latex": "x^2+2x-8 = (x+4)(x-2)"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que le développement et la factorisation sont rafraîchis, concentrons‑nous sur les pièges classiques qui apparaissent lors de la résolution d'équations et d'inéquations."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Résoudre équations et inéquations : les pièges à éviter"
+            },
+            {
+              "type": "paragraph",
+              "content": "Le premier piège est d'oublier de vérifier les solutions dans l'équation d'origine, surtout après avoir élevé au carré ou multiplié par une expression contenant l'inconnue. Le second piège, spécifique aux inéquations, est de ne pas inverser le signe quand on divise par un nombre négatif. Un troisième piège fréquent : croire que $x^2 = 9$ donne seulement $x=3$ alors qu'il y a aussi $x=-3$. Pour t'aider, voici une petite check‑list mentale à appliquer à chaque résolution : 1) Note le domaine de définition si des dénominateurs ou des racines apparaissent. 2) Effectue les opérations en gardant l'égalité ou l'inégalité. 3) Si tu multiplies ou divises par une expression qui peut changer de signe, discute les cas. 4) Vérifie chaque solution dans l'énoncé initial."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Vérification du domaine",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Identifie les valeurs interdites (dénominateur nul, radicande négatif)."
+                    }
+                  ]
+                },
+                {
+                  "title": "Résolution algébrique",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Applique les transformations équivalentes en notant chaque étape."
+                    }
+                  ]
+                },
+                {
+                  "title": "Discussion du signe",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Si tu as multiplié par une expression contenant $x$, sépare les cas selon son signe."
+                    }
+                  ]
+                },
+                {
+                  "title": "Test des solutions",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Remplace chaque candidate dans l'équation ou l'inéquation d'origine."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Après avoir sécurisé la résolution, voyons comment passer d'un énoncé en français à un modèle mathématique complet, avec son domaine de validité."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Modéliser et interpréter : du texte au modèle"
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons l'exemple d'un rectangle dont le périmètre est fixé à $40$ cm. On demande d'exprimer l'aire $A$ en fonction de la longueur $L$. Le périmètre donne $2(L+l)=40$, donc $l = 20-L$. L'aire est $A = L \\times l = L(20-L) = -L^2+20L$. Mais $L$ ne peut pas prendre n'importe quelle valeur : la largeur $l$ doit être positive, donc $20-L > 0$, c'est-à-dire $L < 20$. De plus $L>0$. Le domaine de la fonction aire est donc l'intervalle ouvert $]0,20[$. Cette étape de détermination du domaine est cruciale : elle évite des solutions mathématiques correctes mais physiquement impossibles."
+            },
+            {
+              "type": "interval_builder",
+              "caption": "Domaine de la longueur L",
+              "min": 0,
+              "max": 20,
+              "lowerBound": 0,
+              "upperBound": 20,
+              "lowerOpen": true,
+              "upperOpen": true
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu as maintenant parcouru l'ensemble des compétences clés du calcul algébrique en seconde. La liste ci‑dessous te permet de vérifier point par point ce que tu maîtrises et ce qui mérite un nouvel entraînement."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais développer et factoriser des expressions avec les identités remarquables.",
+                "Je sais résoudre une équation du premier degré avec un paramètre.",
+                "Je sais résoudre une inéquation du premier degré et représenter l'ensemble des solutions.",
+                "Je sais modéliser un problème concret par une équation ou une inéquation et déterminer le domaine des variables.",
+                "Je vérifie systématiquement mes solutions et je respecte les conditions d'application des propriétés utilisées."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Factorise l'expression $x^2 - 5x + 6$.",
+              "answer": "(x-2)(x-3)",
+              "hint": "Cherche deux nombres dont la somme est -5 et le produit 6.",
+              "explanation": "Les nombres -2 et -3 ont pour somme -5 et pour produit 6. Donc $x^2 - 5x + 6 = (x-2)(x-3)$."
+            },
+            {
+              "question": "Résous l'inéquation $4 - 2x > 10$ et donne l'ensemble des solutions sous forme d'intervalle.",
+              "answer": "]-∞, -3[",
+              "hint": "Isole $x$ en soustrayant 4, puis divise par -2 en inversant le signe.",
+              "explanation": "On soustrait 4 : $-2x > 6$. On divise par -2 (négatif) : $x < -3$. L'intervalle est $]-\\infty, -3[$."
+            },
+            {
+              "question": "Un champ rectangulaire a une aire de $200$ m$^2$. Exprime la longueur $L$ en fonction de la largeur $l$, puis détermine le domaine possible pour $l$.",
+              "answer": "L = 200/l ; domaine : ]0, +∞[",
+              "hint": "Utilise la formule de l'aire $A = L \\times l$ et rappelle-toi que les dimensions sont strictement positives.",
+              "explanation": "De $200 = L \\times l$, on tire $L = 200/l$. Comme une largeur ne peut pas être nulle ni négative, $l > 0$, donc le domaine est $]0, +\\infty[$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

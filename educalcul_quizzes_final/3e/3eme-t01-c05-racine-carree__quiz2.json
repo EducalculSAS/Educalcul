@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 459,
+  "_course_code": "3eme-t01-c05-racine-carree",
+  "_level": "3e",
+  "_subject": "Nombres, arithmétique, puissances et racines",
+  "_subtheme": "Simplifier cas simples",
+  "title": "Quiz : Simplification de racines carrées (cas simples)",
+  "questions": [
+    {
+      "text": "Parmi les expressions suivantes, laquelle est la forme simplifiée de $\\sqrt{36}$ ?",
+      "options": [
+        "$6$",
+        "$18$",
+        "$6\\sqrt{2}$",
+        "$\\sqrt{6}$"
+      ],
+      "correctAnswer": "$6$",
+      "explanation": "La racine carrée de $36$ est le nombre positif qui, multiplié par lui-même, donne $36$. Comme $6 \\times 6 = 36$, on a $\\sqrt{36} = 6$. L'option $18$ correspond à $36 \\div 2$, $6\\sqrt{2}$ serait la simplification de $\\sqrt{72}$ et $\\sqrt{6}$ est la racine de $6$, pas de $36$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifie l'expression $\\sqrt{50}$.",
+      "options": [
+        "$5\\sqrt{2}$",
+        "$25\\sqrt{2}$",
+        "$10\\sqrt{5}$",
+        "$5\\sqrt{10}$"
+      ],
+      "correctAnswer": "$5\\sqrt{2}$",
+      "explanation": "On cherche le plus grand carré parfait divisant $50$. $50 = 25 \\times 2$. Donc $\\sqrt{50} = \\sqrt{25 \\times 2} = \\sqrt{25} \\times \\sqrt{2} = 5\\sqrt{2}$. L'erreur $25\\sqrt{2}$ vient d'oublier la racine sur $25$, $10\\sqrt{5}$ correspondrait à $\\sqrt{500}$ et $5\\sqrt{10}$ ne simplifie pas le radicande au maximum.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces égalités est fausse ?",
+      "options": [
+        "$\\sqrt{12} = 2\\sqrt{3}$",
+        "$\\sqrt{27} = 3\\sqrt{3}$",
+        "$\\sqrt{48} = 4\\sqrt{3}$",
+        "$\\sqrt{18} = 2\\sqrt{9}$"
+      ],
+      "correctAnswer": "$\\sqrt{18} = 2\\sqrt{9}$",
+      "explanation": "Vérifions chaque proposition : $\\sqrt{12} = \\sqrt{4 \\times 3} = 2\\sqrt{3}$ (vrai). $\\sqrt{27} = \\sqrt{9 \\times 3} = 3\\sqrt{3}$ (vrai). $\\sqrt{48} = \\sqrt{16 \\times 3} = 4\\sqrt{3}$ (vrai). $\\sqrt{18} = \\sqrt{9 \\times 2} = 3\\sqrt{2}$. L'égalité proposée $\\sqrt{18} = 2\\sqrt{9}$ donne $2 \\times 3 = 6$, or $\\sqrt{18} \\approx 4,24$. De plus, $\\sqrt{9}$ n'est pas simplifiée car elle vaut $3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Après simplification, l'expression $\\sqrt{75} - \\sqrt{12}$ devient :",
+      "options": [
+        "$3\\sqrt{3}$",
+        "$\\sqrt{63}$",
+        "$5\\sqrt{3} - 2\\sqrt{3}$",
+        "$7\\sqrt{3}$"
+      ],
+      "correctAnswer": "$3\\sqrt{3}$",
+      "explanation": "On simplifie chaque racine : $\\sqrt{75} = \\sqrt{25 \\times 3} = 5\\sqrt{3}$ et $\\sqrt{12} = \\sqrt{4 \\times 3} = 2\\sqrt{3}$. La soustraction donne $5\\sqrt{3} - 2\\sqrt{3} = 3\\sqrt{3}$. L'option $\\sqrt{63}$ est l'erreur classique $\\sqrt{a} - \\sqrt{b} = \\sqrt{a-b}$. L'option $5\\sqrt{3} - 2\\sqrt{3}$ est une étape intermédiaire non finalisée. $7\\sqrt{3}$ serait le résultat d'une addition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On considère l'expression $E = \\frac{\\sqrt{98}}{\\sqrt{2}}$. Sa forme simplifiée est :",
+      "options": [
+        "$7$",
+        "$\\sqrt{96}$",
+        "$7\\sqrt{2}$",
+        "$49$"
+      ],
+      "correctAnswer": "$7$",
+      "explanation": "On utilise la propriété $\\frac{\\sqrt{a}}{\\sqrt{b}} = \\sqrt{\\frac{a}{b}}$ pour $a, b > 0$. $E = \\sqrt{\\frac{98}{2}} = \\sqrt{49} = 7$. On peut aussi simplifier le numérateur : $\\sqrt{98} = \\sqrt{49 \\times 2} = 7\\sqrt{2}$, puis $E = \\frac{7\\sqrt{2}}{\\sqrt{2}} = 7$. L'option $\\sqrt{96}$ correspond à l'erreur $\\sqrt{a} - \\sqrt{b}$. $7\\sqrt{2}$ est le numérateur non divisé. $49$ est le radicande intermédiaire sans avoir pris la racine.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

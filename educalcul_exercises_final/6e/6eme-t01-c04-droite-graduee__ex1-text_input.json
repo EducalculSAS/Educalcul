@@ -1,0 +1,93 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 334,
+  "_course_code": "6eme-t01-c04-droite-graduee",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Échelles",
+  "title": "Échelles sur une droite graduée",
+  "blocks": [
+    {
+      "title": "Déterminer l'échelle",
+      "content": "Sur une droite graduée, l'origine correspond à la graduation 0 et la graduation 4 correspond au nombre 12. Quelle est l'échelle de cette droite (valeur d'un pas) ?",
+      "correctAnswer": "3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échelle est la valeur correspondant à une graduation. Puisque la graduation 4 vaut 12, un pas vaut $12 \\div 4 = 3$. Donc l'échelle est $3$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée avec origine 0 et graduation 4 à 12",
+        "min": 0,
+        "max": 12,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 12,
+            "label": "12"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Trouver l'abscisse d'une graduation",
+      "content": "Une droite graduée a pour échelle 5. La graduation 0 est à l'origine. Quelle est l'abscisse du point correspondant à la 7e graduation ?",
+      "correctAnswer": "35",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Chaque graduation vaut 5 unités. La 7e graduation correspond à $7 \\times 5 = 35$. L'abscisse est donc $35$.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée d'échelle 5",
+        "min": 0,
+        "max": 35,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 35,
+            "label": "35"
+          }
+        ],
+        "intervals": []
+      }
+    },
+    {
+      "title": "Trouver le numéro de graduation",
+      "content": "Sur une droite graduée d'échelle 4, quel est le numéro de la graduation qui correspond au nombre 36 ?",
+      "correctAnswer": "9",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le numéro de graduation s'obtient en divisant le nombre par l'échelle : $36 \\div 4 = 9$. La graduation 9 correspond au nombre 36.",
+      "points": 2,
+      "figure": {
+        "type": "number_line",
+        "caption": "Droite graduée d'échelle 4",
+        "min": 0,
+        "max": 36,
+        "points": [
+          {
+            "value": 0,
+            "label": "0"
+          },
+          {
+            "value": 36,
+            "label": "36"
+          }
+        ],
+        "intervals": []
+      }
+    }
+  ]
+}

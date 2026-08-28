@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "text_input",
+  "_course_id": 494,
+  "_course_code": "3eme-t07-c05-problemes-type-dnb",
+  "_level": "3e",
+  "_subject": "Algorithmique et préparation DNB",
+  "_subtheme": "Choisir méthode",
+  "title": "Choisir la méthode adaptée - Préparation DNB",
+  "blocks": [
+    {
+      "title": "Géométrie : triangle rectangle",
+      "content": "Dans un triangle ABC rectangle en A, on donne AB = 6 cm et AC = 8 cm. Quelle méthode faut-il utiliser pour calculer la longueur BC ?",
+      "correctAnswer": "Théorème de Pythagore",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Dans un triangle rectangle, le théorème de Pythagore relie les longueurs des trois côtés : le carré de l'hypoténuse est égal à la somme des carrés des deux autres côtés. Ici, BC est l'hypoténuse, on applique donc $BC^2 = AB^2 + AC^2$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithmique : parcours de nombres",
+      "content": "On souhaite écrire un algorithme qui affiche tous les multiples de 3 inférieurs à 30. Quelle structure de contrôle est la plus appropriée ?",
+      "correctAnswer": "Une boucle « Pour » (ou « Tant que ») avec un pas de 3",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Pour parcourir une suite arithmétique régulière (ici les multiples de 3 : 3, 6, 9...), la boucle « Pour » avec un pas de 3 (ou une boucle « Tant que » incrémentée de 3) est la méthode la plus directe et efficace. Elle évite de tester chaque entier un par un avec un « Si ».",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algèbre : résolution d'équation",
+      "content": "Pour résoudre l'équation $5(x - 2) = 15$, quelle est la première transformation à effectuer ?",
+      "correctAnswer": "Diviser les deux membres par 5",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'équation est de la forme $a \\times (x - 2) = b$. La méthode la plus simple est de diviser les deux membres par 5 pour isoler la parenthèse : $x - 2 = 3$. On ajoute ensuite 2 pour trouver $x = 5$. Développer est possible mais plus long.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 334,
+  "_course_code": "6eme-t01-c04-droite-graduee",
+  "_level": "6e",
+  "_subject": "Nombres entiers et nombres décimaux",
+  "_subtheme": "Approfondissement : Échelles",
+  "title": "Approfondissement : Échelles sur une droite graduée",
+  "blocks": [
+    {
+      "title": "Conversion cm → valeur (échelle 1 cm = 10 unités)",
+      "content": "Sur une droite graduée, l'origine est à $0$ et $1$ cm correspond à $10$ unités. Écris un algorithme (en langage naturel ou sous forme de pseudo‑code) qui permet de déterminer la valeur associée à un point situé à $3,5$ cm de l'origine.",
+      "correctAnswer": "Algorithme :\\n1. Lire la distance en cm (ici $3,5$).\\n2. Multiplier cette distance par le facteur d'échelle $10$.\\n3. Afficher le résultat.\\nRésultat : $35$ unités.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'échelle indique que chaque centimètre représente dix unités. Pour convertir une distance en centimètres en valeur sur la droite, il suffit de multiplier la distance par le facteur d'échelle 10. Ainsi $3,5$ cm × 10 = 35 unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Formule de conversion pour l'échelle 2 cm = 5 unités",
+      "content": "Une droite graduée utilise l'échelle suivante : $2$ cm correspondent à $5$ unités. Écris la formule mathématique qui permet de convertir une distance $d$ en centimètres en la valeur $v$ correspondante sur la droite. Applique ensuite cette formule pour $d = 7$ cm.",
+      "correctAnswer": "Formule : $v = d * 2,5$.\\nApplication : pour $d = 7$ cm, $v = 7 * 2,5 = 17,5$ unités.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le facteur d'échelle est le rapport entre les unités et les centimètres : 5 unités / 2 cm = 2,5 unités par cm. La conversion se fait donc en multipliant la distance en cm par 2,5. Pour 7 cm, on obtient 7 × 2,5 = 17,5 unités.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Fonction Python pour l'échelle 1 cm = 0,25 unité",
+      "content": "Sur une droite graduée, l'échelle est $1$ cm = $0,25$ unité. Écris une fonction en pseudo‑code (style Python) qui prend en entrée une valeur $v$ (en unités) et renvoie la position en centimètres sur la droite. Teste la fonction avec $v = 3$.",
+      "correctAnswer": "def position_cm(v):\\n    return v / 0.25   # ou v * 4\\n\\n# Test\\nprint(position_cm(3))  # affiche 12.0",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Puisque 1 cm correspond à 0,25 unité, 1 unité correspond à 1 / 0,25 = 4 cm. La position en centimètres s'obtient donc en multipliant la valeur en unités par 4 (ou en divisant par 0,25). Pour v = 3, la position est 3 × 4 = 12 cm.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

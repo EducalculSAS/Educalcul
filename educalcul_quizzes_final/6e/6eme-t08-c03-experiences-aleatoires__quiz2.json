@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 370,
+  "_course_code": "6eme-t08-c03-experiences-aleatoires",
+  "_level": "6e",
+  "_subject": "Données, probabilités et proportionnalité",
+  "_subtheme": "Événements simples",
+  "title": "Quiz : Événements simples",
+  "questions": [
+    {
+      "text": "On lance un dé à $6$ faces numérotées de $1$ à $6$. Que représente l'événement \"obtenir un nombre pair\" ?",
+      "options": [
+        "Un unique résultat possible",
+        "Un ensemble de plusieurs résultats possibles",
+        "La probabilité d'obtenir un nombre pair",
+        "L'expérience aléatoire elle-même"
+      ],
+      "correctAnswer": "Un ensemble de plusieurs résultats possibles",
+      "explanation": "Un événement est un sous-ensemble de l'ensemble des issues possibles. \"Obtenir un nombre pair\" correspond aux issues $2$, $4$ et $6$, c'est donc un ensemble de $3$ résultats, pas un seul.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est l'événement impossible lors du lancer d'un dé standard à $6$ faces numérotées de $1$ à $6$ ?",
+      "options": [
+        "Obtenir un $7$",
+        "Obtenir un $1$",
+        "Obtenir un nombre impair",
+        "Obtenir un nombre inférieur à $7$"
+      ],
+      "correctAnswer": "Obtenir un $7$",
+      "explanation": "Un événement impossible ne contient aucune issue possible. Les faces sont $1, 2, 3, 4, 5, 6$. Le $7$ n'est pas une face du dé, cet événement ne peut jamais se réaliser. Obtenir un $1$ est possible, obtenir un nombre impair ($1, 3, 5$) est possible, obtenir un nombre $< 7$ est certain.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi les événements suivants, lequel est certain lors du lancer d'un dé à $6$ faces numérotées de $1$ à $6$ ?",
+      "options": [
+        "Obtenir un nombre strictement supérieur à $0$",
+        "Obtenir un $6$",
+        "Obtenir un nombre pair",
+        "Obtenir un nombre strictement supérieur à $6$"
+      ],
+      "correctAnswer": "Obtenir un nombre strictement supérieur à $0$",
+      "explanation": "Un événement certain contient toutes les issues possibles. Tous les numéros des faces ($1$ à $6$) sont strictement supérieurs à $0$. Obtenir un $6$ n'est pas certain (une chance sur six). Obtenir un nombre pair ($2, 4, 6$) n'est pas certain. Obtenir un nombre $> 6$ est impossible.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On lance un dé à $6$ faces. L'événement A est \"obtenir un nombre supérieur ou égal à $4$\". Quel est l'événement contraire de A ?",
+      "options": [
+        "Obtenir un nombre inférieur à $4$",
+        "Obtenir un nombre inférieur ou égal à $4$",
+        "Obtenir un nombre pair",
+        "Obtenir $4$, $5$ ou $6$"
+      ],
+      "correctAnswer": "Obtenir un nombre inférieur à $4$",
+      "explanation": "L'événement contraire (ou complémentaire) de A est l'événement \"non A\", c'est-à-dire toutes les issues qui ne sont pas dans A. A = {$4, 5, 6$}. Les issues non dans A sont {$1, 2, 3$}, ce qui correspond à \"obtenir un nombre inférieur à $4$\" (ou « inférieur ou égal à $3$ »). L'option « inférieur ou égal à $4$ » inclut le $4$ qui est dans A. L'option « obtenir $4, 5$ ou $6$ » est l'événement A lui-même.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On tire une carte au hasard dans un jeu de $32$ cartes. L'événement \"tirer un roi\" est-il un événement élémentaire ?",
+      "options": [
+        "Oui car il n'y a qu'un seul roi dans le jeu",
+        "Non car il y a $4$ rois dans le jeu",
+        "Oui car c'est un résultat possible",
+        "Non car ce n'est pas un événement certain"
+      ],
+      "correctAnswer": "Non car il y a $4$ rois dans le jeu",
+      "explanation": "Un événement élémentaire ne contient qu'une seule issue possible. Dans un jeu de $32$ cartes, il y a $4$ rois (cœur, carreau, trèfle, pique). L'événement \"tirer un roi\" regroupe ces $4$ issues distinctes, c'est donc un événement composé, pas élémentaire.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 127,
+  "_course_code": "ce1-t07-c02-reconnaitre-les-polygones",
+  "_level": "ce1",
+  "_subject": "Espace et géométrie",
+  "_subtheme": "Figure fermée avec côtés droits",
+  "title": "Quiz : Les polygones - Figures fermées à côtés droits",
+  "questions": [
+    {
+      "text": "Comment appelle-t-on une figure fermée dont tous les côtés sont des segments de droite ?",
+      "options": [
+        "Un polygone",
+        "Un cercle",
+        "Une droite",
+        "Un segment"
+      ],
+      "correctAnswer": "Un polygone",
+      "explanation": "Un polygone est défini comme une figure plane fermée constituée uniquement de segments de droite. Le cercle est une figure courbe, la droite et le segment ne sont pas des figures fermées.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Parmi ces descriptions, laquelle correspond à un polygone ?",
+      "options": [
+        "Une figure ronde sans côté",
+        "Une figure ouverte avec trois côtés",
+        "Une figure fermée avec quatre côtés droits",
+        "Une figure avec des côtés courbes"
+      ],
+      "correctAnswer": "Une figure fermée avec quatre côtés droits",
+      "explanation": "Un polygone doit être fermé et avoir uniquement des côtés droits. La figure ronde a des côtés courbes, la figure ouverte n'est pas close, et la figure à côtés courbes n'est pas un polygone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un triangle est un polygone. Combien a-t-il de côtés et de sommets ?",
+      "options": [
+        "$3$ côtés et $3$ sommets",
+        "$4$ côtés et $4$ sommets",
+        "$3$ côtés et $4$ sommets",
+        "$4$ côtés et $3$ sommets"
+      ],
+      "correctAnswer": "$3$ côtés et $3$ sommets",
+      "explanation": "Le triangle est le polygone le plus simple : il possède exactement $3$ côtés (segments de droite) et $3$ sommets (points de rencontre de deux côtés). Le nombre de côtés est toujours égal au nombre de sommets dans un polygone.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Laquelle de ces figures n'est PAS un polygone ?",
+      "options": [
+        "Un carré",
+        "Un rectangle",
+        "Un cercle",
+        "Un triangle"
+      ],
+      "correctAnswer": "Un cercle",
+      "explanation": "Le carré, le rectangle et le triangle sont des polygones car ils sont fermés et leurs côtés sont des segments de droite. Le cercle est une figure fermée mais sa limite est une courbe, il n'a donc aucun côté droit.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Observe le triangle ci-dessous. Combien de côtés droits a ce polygone ?",
+      "options": [
+        "$2$",
+        "$3$",
+        "$4$",
+        "$5$"
+      ],
+      "correctAnswer": "$3$",
+      "explanation": "Le triangle représenté est un polygone à $3$ côtés. Chaque côté est un segment de droite reliant deux sommets. Compter les côtés donne bien $3$.",
+      "points": 1,
+      "figure": {
+        "type": "triangle_diagram",
+        "caption": "Triangle ABC",
+        "vertexLabels": [
+          "A",
+          "B",
+          "C"
+        ],
+        "sideLabels": [
+          "a",
+          "b",
+          "c"
+        ],
+        "rightAngleAt": -1
+      }
+    }
+  ]
+}

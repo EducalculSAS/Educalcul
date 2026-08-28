@@ -1,0 +1,36 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 146,
+  "_course_code": "ce2-t01-c05-decomposer-et-recomposer",
+  "_level": "ce2",
+  "_subject": "Nombres entiers et numération",
+  "_subtheme": "Approfondissement : Décomposition additive",
+  "title": "Décomposition additive : algorithmes et recomposition",
+  "blocks": [
+    {
+      "title": "Écrire un algorithme de décomposition canonique",
+      "content": "Écris les étapes d'un algorithme qui permet de décomposer un nombre entier à trois chiffres (par exemple $345$) en une somme de centaines, de dizaines et d'unités. Présente ton algorithme sous forme d'une suite d'instructions numérotées.",
+      "correctAnswer": "1. Lire le nombre (exemple : $345$).\\n2. Identifier le chiffre des centaines ($3$) et écrire $3 \\times 100 = 300$.\\n3. Identifier le chiffre des dizaines ($4$) et écrire $4 \\times 10 = 40$.\\n4. Identifier le chiffre des unités ($5$) et écrire $5$.\\n5. Écrire la décomposition additive : $345 = 300 + 40 + 5$.",
+      "explanation": "L'algorithme suit la lecture du nombre dans le tableau de numération : on relève le chiffre de chaque colonne (centaines, dizaines, unités) pour écrire la décomposition canonique.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Modifier l'algorithme pour une décomposition non canonique",
+      "content": "On veut modifier l'algorithme précédent pour obtenir une décomposition différente, par exemple $345 = 200 + 140 + 5$. Quelle instruction faut-il ajouter ou modifier après l'étape des centaines pour \"casser\" une centaine en dizaines ? Écris la nouvelle instruction.",
+      "correctAnswer": "Ajouter une instruction : \"Si on veut plus de dizaines, on transforme $1$ centaine en $10$ dizaines : on retire $100$ aux centaines et on ajoute $10$ aux dizaines.\"",
+      "explanation": "Pour passer de $300 + 40 + 5$ à $200 + 140 + 5$, on échange $1$ centaine ($100$) contre $10$ dizaines ($100$). L'algorithme doit prévoir cet échange (regroupement/échange).",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Algorithme inverse : retrouver le nombre initial",
+      "content": "Voici un algorithme qui donne une décomposition. Complète la dernière instruction pour retrouver le nombre de départ.\\n1. Prendre $2$ centaines.\\n2. Prendre $15$ dizaines.\\n3. Prendre $7$ unités.\\n4. ... (calculer le total)",
+      "correctAnswer": "4. Calculer le total : $(2 \\times 100) + (15 \\times 10) + 7 = 200 + 150 + 7 = 357$. Le nombre initial est $357$.",
+      "explanation": "Il faut recomposer le nombre en effectuant les multiplications puis l'addition. $15$ dizaines valent $150$, donc $200 + 150 + 7 = 357$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

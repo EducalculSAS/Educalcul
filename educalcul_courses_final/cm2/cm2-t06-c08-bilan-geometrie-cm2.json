@@ -1,0 +1,283 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:41.492739+00:00",
+  "id": 317,
+  "code": "cm2-t06-c08",
+  "title": "Bilan - Géométrie CM2",
+  "description": "Cours structuré Educalcul : Bilan - Géométrie CM2.",
+  "subject": "Géométrie et espace",
+  "level": "cm2",
+  "source_level_label": "CM2",
+  "status": "draft",
+  "estimated_time": 24,
+  "blueprint": {
+    "niveau": "CM2",
+    "theme": "Géométrie et espace",
+    "titre_du_cours": "Bilan - Géométrie CM2",
+    "objectif_global": "Bilan - Géométrie CM2",
+    "mini_lecons_imposees": [
+      "Propriétés, constructions, espace.",
+      "Checklist."
+    ],
+    "conformite_programme_2026_2027": "Nouveau programme de cycle 3 applicable au CM2 à la rentrée 2026-2027."
+  },
+  "content_json": [
+    {
+      "title": "Géométrie et espace",
+      "lessons": [
+        {
+          "title": "Propriétés, constructions, espace.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans ce grand bilan de géométrie ! Tu as beaucoup travaillé cette année, et c'est le moment de rassembler toutes tes connaissances comme on range ses outils dans une belle boîte avant un grand chantier. Aujourd'hui, on revoit les figures planes, les solides et les constructions pour que tout soit bien clair dans ta tête."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Les quadrilatères particuliers : reconnais-les au premier coup d'œil"
+            },
+            {
+              "type": "paragraph",
+              "content": "Commençons par les stars du plan : les quadrilatères. Tu en connais déjà quatre très importants. Le carré a $4$ côtés de même longueur et $4$ angles droits. Le rectangle a $4$ angles droits et ses côtés deux à deux égaux. Le losange a $4$ côtés égaux mais ses angles ne sont pas forcément droits. Le parallélogramme a ses côtés parallèles deux à deux. Pour ne pas les confondre, imagine une petite histoire : le carré est le plus exigeant, il veut tout parfait ; le rectangle accepte des côtés différents mais refuse les angles tordus ; le losange veut des côtés égaux mais s'en fiche des angles ; le parallélogramme, lui, est souple, il ne demande que des côtés parallèles."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Un carré : 4 côtés égaux, 4 angles droits",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "sideLabels": [
+                "5 cm",
+                "5 cm",
+                "5 cm",
+                "5 cm"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, penchons-nous sur les triangles. Ils sont les briques de base de la géométrie : solides, rigides, on les retrouve partout dans les constructions, les ponts, les toits. Il y a trois triangles particuliers à connaître sur le bout des doigts. Le triangle rectangle a un angle droit ($90^{\\circ}$) : c'est le plus stable, celui qu'on utilise pour vérifier qu'un mur est bien droit. Le triangle isocèle a deux côtés de même longueur : il a un air symétrique, comme une tente bien tendue. Le triangle équilatéral a trois côtés égaux et trois angles de $60^{\\circ}$ : c'est le plus régulier, celui qu'on retrouve dans les pavages et les motifs décoratifs."
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Triangle rectangle en A, côtés 3-4-5",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "3 cm",
+                "4 cm",
+                "5 cm"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Passons aux constructions ! Tu sais maintenant tracer des figures précises avec ta règle, ton compas et ton équerre. Construire une médiatrice, c'est trouver tous les points équidistants des deux extrémités d'un segment : tu places la pointe du compas sur un bout, tu traces un arc de cercle de chaque côté, tu refais la même chose de l'autre bout, et tu relie les deux intersections. C'est comme tendre un fil exactement au milieu. La bissectrice d'un angle, c'est la droite qui coupe l'angle en deux parties égales : tu traces un arc qui coupe les deux côtés, puis de chaque intersection tu traces un nouvel arc vers l'intérieur, et tu relie le sommet à l'intersection. Ces gestes demandent de la précision, mais avec de l'entraînement, ta main devient sûre."
+            },
+            {
+              "type": "compass_tool",
+              "radius": 4,
+              "centerLabel": "O",
+              "caption": "Tracer un cercle de rayon 4 cm pour une construction"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Terminons par l'espace. Les solides ne sont pas des figures plates : ils ont du volume, on peut les tourner dans ses mains. Le cube a $6$ faces carrées, $12$ arêtes et $8$ sommets. Le pavé droit a $6$ faces rectangulaires. La pyramide a une base polygonale et des faces triangulaires qui se rejoignent en un sommet. Le cône a une base disque et une surface courbe. Pour bien les comprendre, rien ne vaut de les déplier : un patron montre toutes les faces à plat. Regarde ce patron de cube : si tu le découpes et le plies, tu retrouves ton cube. C'est magique de voir le volume naître du plan !"
+            },
+            {
+              "type": "net_folder",
+              "solid": "cube",
+              "width": 4,
+              "height": 4,
+              "depth": 4,
+              "caption": "Patron d'un cube : 6 carrés qui se replient pour former le volume"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Parmi ces quadrilatères, lequel a 4 côtés égaux et 4 angles droits ?",
+              "answer": "Le carré",
+              "hint": "Rappelle-toi l'histoire : le carré est le plus exigeant, il veut tout parfait.",
+              "explanation": "Le carré est le seul quadrilatère qui possède à la fois 4 côtés de même longueur ET 4 angles droits. Le rectangle a 4 angles droits mais pas 4 côtés égaux. Le losange a 4 côtés égaux mais pas 4 angles droits."
+            },
+            {
+              "question": "Un triangle a des côtés de longueurs 5 cm, 5 cm et 8 cm. Comment s'appelle-t-il ?",
+              "answer": "Triangle isocèle",
+              "hint": "Combien de côtés ont la même longueur ?",
+              "explanation": "Ce triangle a deux côtés de même longueur (5 cm et 5 cm) et un troisième côté différent (8 cm). C'est la définition exacte d'un triangle isocèle. S'il avait trois côtés égaux, ce serait un équilatéral. S'il avait un angle droit, ce serait un rectangle."
+            },
+            {
+              "question": "Pour tracer la médiatrice d'un segment [AB], quelle est la première étape avec le compas ?",
+              "answer": "Placer la pointe sur A et tracer un arc de cercle de chaque côté du segment",
+              "hint": "Le compas doit avoir un ouverture supérieure à la moitié de AB.",
+              "explanation": "On commence par placer la pointe du compas sur l'extrémité A du segment. On règle l'ouverture à plus de la moitié de la longueur AB. On trace un arc de cercle de chaque côté du segment. Puis on fait la même chose depuis le point B sans changer l'ouverture. Les intersections des arcs donnent les points par où passe la médiatrice."
+            },
+            {
+              "question": "Combien de faces, d'arêtes et de sommets a un cube ?",
+              "answer": "6 faces, 12 arêtes, 8 sommets",
+              "hint": "Visualise un dé ou une boîte carrée. Compte sur le patron si ça t'aide.",
+              "explanation": "Un cube a 6 faces (toutes carrées), 12 arêtes (les segments où deux faces se rejoignent) et 8 sommets (les pointes où trois arêtes se croisent). Sur le patron, tu vois les 6 carrés qui deviendront les 6 faces. Chaque arête du cube correspond à un côté de carré sur le patron qui sera collé à un autre carré."
+            }
+          ]
+        },
+        {
+          "title": "Checklist.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "paragraph",
+              "content": "Voici la dernière leçon de ce bilan : ta checklist personnelle ! C'est le moment de faire le point, de cocher ce que tu maîtrises déjà et de repérer ce qui demande encore un petit coup de polissage. Pas de stress : cette liste est là pour t'aider à voir tout le chemin parcouru cette année en géométrie."
+            },
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Vocabulaire et propriétés : les mots justes pour bien raisonner"
+            },
+            {
+              "type": "paragraph",
+              "content": "En géométrie, les mots ont un sens très précis. Dire « les côtés sont pareils » ne suffit pas : on dit « les côtés sont de même longueur » ou « congrus ». Un angle droit mesure exactement $90^{\\circ}$, pas « presque droit ». Parallèle veut dire « qui ne se coupent jamais », même si on prolonge les droites indéfiniment. Perpendiculaire veut dire « qui font un angle droit ». Si tu arrives à expliquer avec tes mots pourquoi un carré est un rectangle particulier (parce qu'il a 4 angles droits ET 4 côtés égaux), c'est gagné. Essaie de le dire à quelqu'un qui ne connaît pas : si cette personne comprend, tu as vraiment intégré la notion."
+            },
+            {
+              "type": "definition",
+              "term": "Congru",
+              "definition": "Deux figures sont congrues quand on peut les superposer exactement l'une sur l'autre. Elles ont la même forme et les mêmes dimensions.",
+              "example": "Deux carrés de côté 4 cm sont congrus. Un carré de 4 cm et un rectangle de 4 cm sur 6 cm ne le sont pas."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Les constructions, c'est comme une recette de cuisine : il faut respecter l'ordre des gestes et la précision des mesures. Pour tracer un triangle connaissant ses trois côtés (par exemple $5\\,cm$, $6\\,cm$, $7\\,cm$), on commence par tracer la base de $7\\,cm$ à la règle. Ensuite, compas ouvert à $5\\,cm$, pointe sur un bout de la base, on trace un arc. Compas ouvert à $6\\,cm$, pointe sur l'autre bout, on trace un second arc qui coupe le premier. L'intersection est le troisième sommet. Relie-le aux deux bouts de la base : ton triangle est construit ! Si tu changes l'ordre ou si tu es imprécis au compas, le triangle ne « ferme » pas correctement."
+            },
+            {
+              "type": "display_math",
+              "latex": "AB = 7\\,cm,\\; AC = 5\\,cm,\\; BC = 6\\,cm"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans l'espace, la représentation en perspective cavalière demande un peu d'habitude. Les arêtes qui sont parallèles dans la réalité restent parallèles sur le dessin. Les arêtes qui sont perpendiculaires au plan du dessin sont représentées avec un coefficient de réduction (souvent $0,5$ ou $0,7$) et un angle de $30^{\\circ}$ ou $45^{\\circ}$. Regarde ce pavé droit : les arêtes de profondeur paraissent plus courtes que les arêtes de face, mais dans la vraie vie, elles ont la même longueur. C'est une convention pour faire « voir » le volume sur une feuille plate. Entraîne-toi à redessiner des solides simples vus sous différents angles : c'est un super exercice pour ton cerveau spatial !"
+            },
+            {
+              "type": "triangle_diagram",
+              "caption": "Représentation en perspective d'un pavé droit (coefficients non respectés ici pour la clarté)",
+              "vertexLabels": [
+                "A",
+                "B",
+                "C"
+              ],
+              "sideLabels": [
+                "8 cm",
+                "5 cm",
+                "6 cm"
+              ],
+              "rightAngleAt": 0
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Enfin, n'oublie pas les symétries ! La symétrie axiale : une figure est symétrique par rapport à une droite (l'axe) si en la pliant le long de cette droite, les deux moitiés se superposent parfaitement. La symétrie centrale : un point $O$ est le centre de symétrie si pour tout point $M$ de la figure, le point $M'$ tel que $O$ est le milieu de $[MM']$ appartient aussi à la figure. C'est comme un tour de $180^{\\circ}$ autour de $O$. Le parallélogramme a un centre de symétrie (l'intersection de ses diagonales) mais pas d'axe de symétrie (sauf cas particuliers). Le rectangle a deux axes et un centre. Le carré en a quatre axes et un centre. Le cercle en a une infinité d'axes et son centre comme centre de symétrie !"
+            },
+            {
+              "type": "number_line",
+              "caption": "Symétrie centrale : O est le milieu de [MM']",
+              "min": -5,
+              "max": 5,
+              "points": [
+                {
+                  "value": -3,
+                  "label": "M"
+                },
+                {
+                  "value": 0,
+                  "label": "O"
+                },
+                {
+                  "value": 3,
+                  "label": "M'"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 4
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais reconnaître et nommer les quadrilatères particuliers (carré, rectangle, losange, parallélogramme, trapèze).",
+                "Je connais les propriétés des triangles particuliers (rectangle, isocèle, équilatéral) et je sais les utiliser.",
+                "Je sais construire une médiatrice, une bissectrice, une perpendiculaire, un triangle à la règle et au compas.",
+                "Je sais représenter un solide en perspective cavalière et dessiner son patron.",
+                "Je utilise le vocabulaire précis : congru, parallèle, perpendiculaire, milieu, symétrique.",
+                "Je repère les axes et centres de symétrie des figures usuelles."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle phrase utilise le vocabulaire géométrique précis ?",
+              "answer": "Les deux segments ont la même longueur, ils sont congrus.",
+              "hint": "Évite les mots vagues comme 'pareils' ou 'identiques'.",
+              "explanation": "En géométrie, on dit 'congrus' pour deux segments de même longueur (ou deux figures superposables). 'Parallèles' concerne des droites. 'Égaux' s'utilise pour des mesures (longueurs, angles, aires). La phrase correcte utilise le terme technique exact."
+            },
+            {
+              "question": "Pour construire un triangle de côtés 5 cm, 6 cm et 7 cm, quelle longueur traces-tu en premier à la règle ?",
+              "answer": "7 cm (la plus grande, choisie comme base)",
+              "hint": "On commence toujours par tracer un côté comme base. Lequel est le plus pratique ?",
+              "explanation": "On trace d'abord le plus grand côté (7 cm) comme base. Ensuite, avec le compas, on reporte les deux autres longueurs (5 cm et 6 cm) depuis les extrémités de cette base. Les arcs se coupent en un point qui sera le troisième sommet. Si on commençait par un petit côté, les arcs pourraient ne pas se couper sur la feuille."
+            },
+            {
+              "question": "Dans une perspective cavalière d'un cube, les arêtes de profondeur sont dessinées :",
+              "answer": "Plus courtes que les arêtes de face, avec un angle (souvent 30° ou 45°)",
+              "hint": "Regarde un dessin de cube en 3D sur papier : les arêtes qui 'partent vers le fond' ont l'air plus petites.",
+              "explanation": "C'est la règle de la perspective cavalière : les arêtes parallèles dans la réalité restent parallèles sur le dessin. Les arêtes perpendiculaires au plan du dessin sont représentées avec un coefficient de réduction (0,5 ou 0,7) et un angle conventionnel (30° ou 45°). Elles ont l'air plus courtes mais mesurent la même chose dans la réalité."
+            },
+            {
+              "question": "Lequel de ces quadrilatères a un centre de symétrie mais AUCUN axe de symétrie ?",
+              "answer": "Le parallélogramme (qui n'est ni rectangle, ni losange, ni carré)",
+              "hint": "Teste mentalement : peux-tu plier la figure en deux parties superposables ?",
+              "explanation": "Un parallélogramme 'général' (côtés inégaux, angles non droits) a un centre de symétrie : l'intersection de ses diagonales. Mais il n'a aucun axe de symétrie : aucun pli ne fait coïncider les deux moitiés. Le rectangle a 2 axes + 1 centre. Le losange a 2 axes + 1 centre. Le carré a 4 axes + 1 centre. Le trapèze isocèle a 1 axe mais pas de centre."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

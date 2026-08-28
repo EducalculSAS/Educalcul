@@ -1,0 +1,57 @@
+{
+  "_status": "done",
+  "_type": "fill_in_the_blank",
+  "_course_id": 519,
+  "_course_code": "2nde-t04-c05-bilan-droites-seconde",
+  "_level": "2nde",
+  "_subject": "Droites du plan et géométrie repérée",
+  "_subtheme": "Checklist",
+  "title": "Checklist : Droites du plan - Notions clés",
+  "blocks": [
+    {
+      "title": "Équations de la droite",
+      "content": "Une droite d'équation réduite s'écrit $y = mx + p$. Le nombre $m$ est le {{1}} et $p$ est l'{{2}}. Sous forme cartésienne $ax + by + c = 0$, le coefficient directeur vaut $m = -\\frac{a}{b}$ (si $b \\neq 0$). Une droite passant par l'origine a pour équation $y = {{3}}$.",
+      "correctAnswer": "",
+      "blanks": [
+        "coefficient directeur",
+        "ordonnée à l'origine",
+        "mx"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "L'équation réduite $y = mx + p$ fait apparaître directement le coefficient directeur $m$ (qui mesure la pente) et l'ordonnée à l'origine $p$ (intersection avec l'axe des ordonnées). La forme cartésienne $ax + by + c = 0$ est plus générale (elle inclut les droites verticales $x = k$). Si la droite passe par l'origine $(0,0)$, alors $p=0$ et l'équation se simplifie en $y = mx$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Position relative de deux droites",
+      "content": "Soit deux droites $d_1$ et $d_2$ de coefficients directeurs respectifs $m_1$ et $m_2$ (non verticales). Les droites sont parallèles si et seulement si $m_1 = {{1}}$. Elles sont perpendiculaires si et seulement si $m_1 \\times m_2 = {{2}}$. Si les droites sont sécantes, leur point d'intersection s'obtient en résolvant le {{3}} formé par leurs équations.",
+      "correctAnswer": "",
+      "blanks": [
+        "m_2",
+        "-1",
+        "système"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le parallélisme se traduit par l'égalité des coefficients directeurs. La perpendicularité impose que le produit des coefficients directeurs vaille $-1$ (ou qu'un coefficient soit $0$ et l'autre n'existe pas, cas des droites horizontales/verticales). L'intersection de deux droites non parallèles correspond à la solution unique du système de leurs deux équations.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Coordonnées et distance",
+      "content": "Dans un repère orthonormé, le milieu $I$ du segment $[AB]$ avec $A(x_A ; y_A)$ et $B(x_B ; y_B)$ a pour coordonnées $\\left( {{1}} ; {{2}} \\right)$. La distance $AB$ s'exprime par la formule $AB = \\sqrt{ {{3}} }$.",
+      "correctAnswer": "",
+      "blanks": [
+        "\\frac{x_A + x_B}{2}",
+        "\\frac{y_A + y_B}{2}",
+        "(x_B - x_A)^2 + (y_B - y_A)^2"
+      ],
+      "pairs": [],
+      "items": [],
+      "explanation": "Les coordonnées du milieu sont les moyennes respectives des abscisses et des ordonnées des extrémités. La formule de la distance est une application directe du théorème de Pythagore dans le triangle rectangle construit sur le segment $[AB]$ : le carré de l'hypoténuse (la distance) est la somme des carrés des longueurs des côtés parallèles aux axes (différences d'abscisses et d'ordonnées).",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

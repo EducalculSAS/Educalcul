@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 511,
+  "_course_code": "2nde-t03-c02-somme-de-vecteurs",
+  "_level": "2nde",
+  "_subject": "Vecteurs et géométrie",
+  "_subtheme": "Approfondissement : Relation de Chasles",
+  "title": "Quiz : Relation de Chasles",
+  "questions": [
+    {
+      "text": "Quelle est l'énoncé de la relation de Chasles pour trois points $A$, $B$, $C$ ?",
+      "options": [
+        "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+        "$\\vec{AB} - \\vec{BC} = \\vec{AC}$",
+        "$\\vec{AB} + \\vec{AC} = \\vec{BC}$",
+        "$\\vec{BA} + \\vec{BC} = \\vec{AC}$"
+      ],
+      "correctAnswer": "$\\vec{AB} + \\vec{BC} = \\vec{AC}$",
+      "explanation": "La relation de Chasles affirme que la somme des vecteurs successifs $\\vec{AB}$ et $\\vec{BC}$ donne le vecteur $\\vec{AC}$ reliant le point de départ au point d'arrivée. Les autres options correspondent à des erreurs de signe ou d'ordre des points.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soit $\\vec{u} = \\vec{AB}$ et $\\vec{v} = \\vec{BC}$. Quelle expression donne le vecteur $\\vec{AC}$ ?",
+      "options": [
+        "$\\vec{u} + \\vec{v}$",
+        "$\\vec{u} - \\vec{v}$",
+        "$\\vec{v} - \\vec{u}$",
+        "$2\\vec{u}$"
+      ],
+      "correctAnswer": "$\\vec{u} + \\vec{v}$",
+      "explanation": "D'après la relation de Chasles, $\\vec{AC} = \\vec{AB} + \\vec{BC} = \\vec{u} + \\vec{v}$. Les autres choix inversent l'ordre ou changent le signe, ce qui ne correspond pas à la définition.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Simplifiez la somme $\\vec{AB} + \\vec{BC} + \\vec{CD}$ en utilisant la relation de Chasles.",
+      "options": [
+        "$\\vec{AD}$",
+        "$\\vec{AC}$",
+        "$\\vec{BD}$",
+        "$\\vec{AB}$"
+      ],
+      "correctAnswer": "$\\vec{AD}$",
+      "explanation": "En appliquant deux fois la relation de Chasles : $\\vec{AB} + \\vec{BC} = \\vec{AC}$ puis $\\vec{AC} + \\vec{CD} = \\vec{AD}$. Donc la somme totale vaut $\\vec{AD}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Dans le triangle $ABC$, exprimez le vecteur $\\vec{CA}$ à l'aide de $\\vec{AB}$ et $\\vec{BC}$.",
+      "options": [
+        "$-\\vec{AB} - \\vec{BC}$",
+        "$\\vec{AB} - \\vec{BC}$",
+        "$\\vec{BC} - \\vec{AB}$",
+        "$\\vec{AB} + \\vec{BC}$"
+      ],
+      "correctAnswer": "$-\\vec{AB} - \\vec{BC}$",
+      "explanation": "On a $\\vec{CA} = -\\vec{AC}$. Par Chasles $\\vec{AC} = \\vec{AB} + \\vec{BC}$, donc $\\vec{CA} = -(\\vec{AB} + \\vec{BC}) = -\\vec{AB} - \\vec{BC}$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Soient $\\vec{u} = \\vec{AB}$, $\\vec{v} = \\vec{BC}$, $\\vec{w} = \\vec{CD}$. Quelle expression donne $\\vec{AD}$ ?",
+      "options": [
+        "$\\vec{u} + \\vec{v} + \\vec{w}$",
+        "$\\vec{u} - \\vec{v} + \\vec{w}$",
+        "$\\vec{u} + \\vec{v} - \\vec{w}$",
+        "$\\vec{u} - \\vec{v} - \\vec{w}$"
+      ],
+      "correctAnswer": "$\\vec{u} + \\vec{v} + \\vec{w}$",
+      "explanation": "En chaînant trois fois la relation de Chasles : $\\vec{AD} = \\vec{AB} + \\vec{BC} + \\vec{CD} = \\vec{u} + \\vec{v} + \\vec{w}$. Les autres options introduisent des signes erronés.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

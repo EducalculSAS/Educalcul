@@ -1,0 +1,357 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.648348+00:00",
+  "id": 54,
+  "code": "cp-t06-c08",
+  "title": "Comparer des durées simples",
+  "description": "Cours structuré Educalcul : Comparer des durées simples.",
+  "subject": "Grandeurs et mesures",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Grandeurs et mesures",
+    "titre_du_cours": "Comparer des durées simples",
+    "objectif_global": "Comparer des durées simples",
+    "mini_lecons_imposees": [
+      "Plus long / plus court.",
+      "Avant / après.",
+      "Ordonner de courtes activités."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Grandeurs et mesures",
+      "lessons": [
+        {
+          "title": "Plus long / plus court.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Qu'est-ce qu'une durée ?"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine un sablier : le sable coule, le temps passe. Ce temps qui s'écoule entre le début et la fin d'une action, c'est une $durée$. Parfois, le sablier va très vite, comme quand tu clignes des yeux. Parfois, il semble ne jamais finir, comme quand tu attends ton anniversaire. Aujourd'hui, nous allons apprendre à comparer ces durées sans même avoir besoin de montre."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Comparer se laver les mains et regarder un dessin animé",
+              "bars": [
+                {
+                  "label": "Se laver les mains",
+                  "value": 1,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Dessin animé",
+                  "value": 20,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le graphique : la barre bleue est toute petite, la barre rouge est grande. On dit que la durée pour se laver les mains est $plus\\ courte$ que la durée du dessin animé. À l'inverse, le dessin animé dure $plus\\ longtemps$. Essaye de sentir la différence : compte dans ta tête jusqu'à $10$ pour le lavage des mains, tu as à peine fini de compter que c'est déjà terminé ! Pour le dessin animé, tu as le temps de compter, de rire, de rêver..."
+            },
+            {
+              "type": "number_line",
+              "caption": "Une frise pour voir le temps qui file",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "Mains lavées"
+                },
+                {
+                  "value": 20,
+                  "label": "Dessin animé fini"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Il arrive aussi que deux choses prennent le même temps. Chanter « Joyeux anniversaire » une fois et attacher ses lacets, cela peut durer $aussi\\ longtemps$ l'un que l'autre. On dit alors que les deux durées sont $égales$. C'est comme deux bâtons de même longueur posés côte à côte : ils finissent au même endroit sur la règle."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu sais maintenant dire si une action est plus longue, plus courte ou égale à une autre. Dans la prochaine leçon, nous allons voir comment ranger ces actions dans l'ordre de la journée, comme sur un film dont tu serais le réalisateur."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quelle durée est la plus courte : $manger\\ une\\ pomme$ ou $dormir\\ une\\ nuit$ ?",
+              "answer": "Manger une pomme",
+              "hint": "Pense au temps qu'il faut pour croquer le fruit comparé à une nuit entière.",
+              "explanation": "Manger une pomme prend quelques minutes, dormir une nuit dure des heures. La première durée est donc plus courte."
+            },
+            {
+              "question": "Complète : Faire un câlin dure ___ que lire une histoire le soir.",
+              "answer": "moins longtemps",
+              "hint": "Un câlin est souvent rapide, une histoire prend plusieurs minutes.",
+              "explanation": "Un câlin dure quelques secondes ou minutes, alors qu'une histoire dure plus longtemps. La durée du câlin est plus courte."
+            },
+            {
+              "question": "Parmi ces actions, lesquelles ont à peu près la même durée ? $Compter\\ jusqu\\'à\\ 20$ / $Chanter\\ l\\'alphabet$ / $Faire\\ le\\ tour\\ du\\ jardin$",
+              "answer": "Compter jusqu'à 20 et Chanter l'alphabet",
+              "hint": "Essaie de les faire dans ta tête en même temps, ils ont un rythme proche.",
+              "explanation": "Compter jusqu'à 20 et chanter l'alphabet prennent à peu près le même temps, environ 20 à 30 secondes. Faire le tour du jardin est bien plus long."
+            }
+          ]
+        },
+        {
+          "title": "Avant / après.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Ma journée en ordre"
+            },
+            {
+              "type": "paragraph",
+              "content": "Chaque matin, tu suis un petit rituel : tu ouvres les yeux, tu descends du lit, tu files à la salle de bain, puis tu avales ton bol de chocolat. Il y a un ordre précis : tu ne mets pas tes chaussettes $avant$ d'avoir enfilé ton pantalon, et tu ne pars pas à l'école $après$ avoir rangé ton cartable ! Les mots $avant$ et $après$ sont comme des petites flèches qui nous guident dans le temps."
+            },
+            {
+              "type": "number_line",
+              "caption": "La frise de ma matinée",
+              "min": 0,
+              "max": 5,
+              "points": [
+                {
+                  "value": 1,
+                  "label": "Réveil"
+                },
+                {
+                  "value": 2,
+                  "label": "Toilette"
+                },
+                {
+                  "value": 3,
+                  "label": "Petit-déjeuner"
+                },
+                {
+                  "value": 4,
+                  "label": "Habillage"
+                },
+                {
+                  "value": 5,
+                  "label": "Départ"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Sur la frise, le réveil est placé $avant$ la toilette, car le point 1 est à gauche du point 2. Le départ est $après$ l'habillage, car le point 5 est à droite du point 4. C'est comme une file d'attente : celui qui est devant passe $avant$, celui qui est derrière passe $après$. Essayons de placer « Brossage de dents » : il se met naturellement $après$ le petit-déjeuner et $avant$ l'habillage."
+            },
+            {
+              "type": "table",
+              "caption": "Mon emploi du temps du matin",
+              "headers": [
+                "Ordre",
+                "Action"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "Je me réveille"
+                ],
+                [
+                  "2",
+                  "Je me lave"
+                ],
+                [
+                  "3",
+                  "Je mange"
+                ],
+                [
+                  "4",
+                  "Je m'habille"
+                ],
+                [
+                  "5",
+                  "Je pars"
+                ]
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, deux choses arrivent $en\\ même\\ temps$. Par exemple, tu peux marcher $et$ chanter une chanson. Tes pieds avancent $pendant que$ ta bouche chante. Ce n'est ni avant, ni après : les deux durées se superposent parfaitement, comme deux traits de feutre de la même couleur tracés l'un sur l'autre."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Tu maîtrises maintenant l'ordre des événements : avant, après, en même temps. Pour la dernière leçon, nous allons jouer à ranger plusieurs petites activités du plus rapide au plus lent, comme on range des bâtons par taille."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Sur la frise, l'action « Petit-déjeuner » est-elle avant ou après « Toilette » ?",
+              "answer": "Après",
+              "hint": "Regarde les numéros sur la frise : 2 pour toilette, 3 pour petit-déjeuner.",
+              "explanation": "Le petit-déjeuner (3) arrive après la toilette (2) sur la frise du temps."
+            },
+            {
+              "question": "Complète la phrase : Je mets mes chaussures ___ avoir mis mes chaussettes.",
+              "answer": "après",
+              "hint": "On ne peut pas mettre la chaussure si le pied nu n'est pas déjà dans la chaussette.",
+              "explanation": "L'ordre logique impose d'enfiler les chaussettes en premier, puis les chaussures. On met les chaussures après les chaussettes."
+            },
+            {
+              "question": "Quelles actions se font en même temps ? $Manger\\ /\\ Parler$ , $Dormir\\ /\\ Courir$ , $Lire\\ /\\ Écouter\\ une\\ histoire$",
+              "answer": "Lire / Écouter une histoire",
+              "hint": "Quand quelqu'un lit une histoire, toi tu l'écoutes au même moment.",
+              "explanation": "Écouter une histoire et la lire (ou l'entendre lire) se passent simultanément. Manger et parler est difficile en même temps, dormir et courir est impossible."
+            }
+          ]
+        },
+        {
+          "title": "Ordonner de courtes activités.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Classer trois activités"
+            },
+            {
+              "type": "paragraph",
+              "content": "Voici trois petites missions : $manger\\ une\\ compote$, $faire\\ un\\ dessin$, $dire\\ bonjour\\ à\\ ton\\ chat$. Si on veut les ranger de la plus courte à la plus longue, comment faire ? On ne peut pas tout comparer d'un coup. Le secret, c'est de procéder par paires, comme pour choisir le plus grand entre trois copains : on compare deux, puis on compare le gagnant avec le troisième."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Durées estimées : compote, dessin, bonjour chat",
+              "bars": [
+                {
+                  "label": "Dire bonjour au chat",
+                  "value": 1,
+                  "tone": "green"
+                },
+                {
+                  "label": "Manger une compote",
+                  "value": 5,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Faire un dessin",
+                  "value": 15,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : Comparer les deux premières",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Dire bonjour au chat prend quelques secondes. Manger une compote prend quelques minutes. Dire bonjour est plus court."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : Comparer le plus long avec le troisième",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Manger une compote (5 min) vs Faire un dessin (15 min). Le dessin est plus long que la compote."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : Ranger l'ordre final",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "1. Dire bonjour au chat (le plus court). 2. Manger une compote (au milieu). 3. Faire un dessin (le plus long)."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Cette méthode marche pour tout ! Pour ranger ton sac, mettre ton manteau, attacher tes lacets : compare mettre le manteau et attacher les lacets (les lacets c'est plus long), puis compare le manteau avec ranger le sac. Tu deviens un expert pour organiser ton temps, comme un chef d'orchestre qui sait exactement quand chaque instrument doit commencer."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais dire si une durée est plus longue, plus courte ou égale à une autre.",
+                "J'utilise les mots avant, après et en même temps pour ordonner des événements.",
+                "Je sais ranger trois activités du plus court au plus long en comparant deux par deux."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Range ces activités du plus court au plus long : $Boire\\ un\\ verre\\ d\\'eau$ , $Faire\\ un\\ puzzle\\ de\\ 10\\ pièces$ , $Éternuer$",
+              "answer": "Éternuer, Boire un verre d'eau, Faire un puzzle de 10 pièces",
+              "hint": "Éternuer est un réflexe quasi instantané. Boire prend quelques secondes. Le puzzle demande plusieurs minutes.",
+              "explanation": "L'éternuement dure moins d'une seconde. Boire un verre d'eau prend environ 10 à 20 secondes. Faire un puzzle de 10 pièces demande quelques minutes. L'ordre est donc : éternuer < boire < puzzle."
+            },
+            {
+              "question": "Parmi $Lacer\\ ses\\ chaussures$, $Enfiler\\ son\\ t\\-shirt$, $Fermer\\ la\\ porte$, laquelle est la plus longue ?",
+              "answer": "Lacer ses chaussures",
+              "hint": "Manipuler les lacets, faire les boucles, tirer... demande de la précision et du temps.",
+              "explanation": "Enfiler un t-shirt et fermer une porte sont des gestes rapides (quelques secondes). Lacer ses chaussures demande plus d'étapes et de concentration, c'est donc la durée la plus longue des trois."
+            },
+            {
+              "question": "Tu as 3 minutes avant le bus. Que peux-tu faire ? $Lire\\ un\\ roman$ / $Mettre\\ ton\\ cartable\\ dans\\ le\\ coffre\\ de\\ la\\ voiture$ / $Faire\\ un\\ gâteau$",
+              "answer": "Mettre ton cartable dans le coffre de la voiture",
+              "hint": "3 minutes, c'est court. Choisis l'action qui prend moins de 3 minutes.",
+              "explanation": "Lire un roman ou faire un gâteau prend bien plus de 3 minutes. Ranger son cartable dans le coffre prend environ 30 secondes à 1 minute, cela tient dans le créneau."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

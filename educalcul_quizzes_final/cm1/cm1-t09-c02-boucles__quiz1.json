@@ -1,0 +1,90 @@
+{
+  "_status": "done",
+  "_course_id": 270,
+  "_course_code": "cm1-t09-c02-boucles",
+  "_level": "cm1",
+  "_subject": "Pensée informatique",
+  "_subtheme": "Répéter une action",
+  "title": "Savoir répéter une action",
+  "questions": [
+    {
+      "text": "Dans un programme informatique, comment appelle t on l instruction qui permet de répéter plusieurs fois la même action",
+      "options": [
+        "Un départ",
+        "Une boucle",
+        "Une condition",
+        "Une fin"
+      ],
+      "correctAnswer": "Une boucle",
+      "explanation": "Une boucle est l instruction spécifique qui permet de répéter un bloc d instructions sans avoir à les écrire plusieurs fois.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un robot doit avancer de $1$ case, puis recommencer cette action $4$ fois au total. Combien de cases le robot aura t il parcourues à la fin",
+      "options": [
+        "$3$ cases",
+        "$4$ cases",
+        "$5$ cases",
+        "$8$ cases"
+      ],
+      "correctAnswer": "$4$ cases",
+      "explanation": "Répéter l action d avancer de $1$ case $4$ fois revient à faire le calcul $1 \\times 4 = 4$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On veut dessiner un carré. On répète $4$ fois l action suivante : avancer de $5$ cm, puis tourner à droite de $90$ degrés. Quel est le périmètre total du carré",
+      "options": [
+        "$5$ cm",
+        "$15$ cm",
+        "$20$ cm",
+        "$25$ cm"
+      ],
+      "correctAnswer": "$20$ cm",
+      "explanation": "Le robot avance de $5$ cm durant chaque répétition. Puisqu il y a $4$ répétitions, le calcul est $5 \\times 4 = 20$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Voici une suite d images : cercle, carré, cercle, carré... Si on utilise une boucle pour répéter cette séquence $6$ fois, combien de carrés y aura t il au total",
+      "options": [
+        "$2$ carrés",
+        "$3$ carrés",
+        "$6$ carrés",
+        "$12$ carrés"
+      ],
+      "correctAnswer": "$6$ carrés",
+      "explanation": "Dans une seule séquence, il y a $1$ carré. Si on répète cette séquence $6$ fois, on a $1 \\times 6 = 6$ carrés.",
+      "points": 1,
+      "figure": {
+        "type": "pattern_maker",
+        "sequence": [
+          "cercle",
+          "carre",
+          "cercle",
+          "carre"
+        ],
+        "options": [
+          "cercle",
+          "triangle"
+        ],
+        "answer": "cercle",
+        "caption": "Séquence de formes"
+      }
+    },
+    {
+      "text": "Un programme contient une boucle : Répéter $3$ fois (Avancer de $2$ cases, Tourner à gauche). Combien de fois l action Avancer de $2$ cases est elle exécutée",
+      "options": [
+        "$1$ fois",
+        "$2$ fois",
+        "$3$ fois",
+        "$6$ fois"
+      ],
+      "correctAnswer": "$3$ fois",
+      "explanation": "L instruction de boucle indique de répéter tout le bloc $3$ fois. L action d avancer se trouve à l intérieur du bloc, elle est donc effectuée exactement $3$ fois.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

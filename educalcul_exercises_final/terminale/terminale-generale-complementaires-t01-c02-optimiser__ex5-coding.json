@@ -1,0 +1,45 @@
+{
+  "_status": "done",
+  "_type": "coding",
+  "_course_id": 638,
+  "_course_code": "terminale-generale-complementaires-t01-c02-optimiser",
+  "_level": "terminale",
+  "_subject": "Modèles définis par une fonction",
+  "_subtheme": "Approfondissement : Construire fonction",
+  "title": "Construction de fonctions d'optimisation",
+  "blocks": [
+    {
+      "title": "Modélisation d'un coût",
+      "content": "Une entreprise produit des objets. Le coût fixe est de $500$ euros et le coût de production de chaque objet est de $12$ euros. On souhaite modéliser le coût total $C(x)$ en fonction du nombre d'objets $x$ produits. Écrivez l'algorithme permettant de calculer $C(x)$ pour un nombre $x$ donné.",
+      "correctAnswer": "Définir une fonction C(x) qui retourne $12 \\times x + 500$",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Le coût total est la somme du coût variable, qui est $12$ multiplié par le nombre $x$ d'objets, et du coût fixe de $500$ euros. La fonction est donc $C(x) = 12x + 500$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Calcul d'une surface",
+      "content": "Un jardinier dispose de $40$ mètres de clôture pour entourer un potager rectangulaire dont l'un des côtés est un mur (il n'a pas besoin de clôture le long du mur). Soit $x$ la longueur du côté perpendiculaire au mur. Déterminez l'expression de la fonction $A(x)$ représentant l'aire du potager et écrivez le raisonnement pour coder cette fonction.",
+      "correctAnswer": "Le périmètre de clôture est $2x + L = 40$, donc $L = 40 - 2x$. L'aire est $A(x) = x \\times (40 - 2x)$, ce qui donne $A(x) = 40x - 2x^2$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Si on note $x$ la largeur et $L$ la longueur parallèle au mur, la clôture utilisée est $x + x + L = 40$. On en déduit $L = 40 - 2x$. L'aire d'un rectangle étant longueur fois largeur, on a $A(x) = x \\times (40 - 2x)$.",
+      "points": 2,
+      "figure": null
+    },
+    {
+      "title": "Optimisation du volume",
+      "content": "On souhaite construire une boîte sans couvercle à partir d'une feuille carrée de $20$ centimètres de côté en découpant un carré de côté $x$ dans chaque coin et en relevant les bords. Écrivez l'algorithme ou la formule permettant de calculer le volume $V(x)$ de cette boîte en fonction de $x$.",
+      "correctAnswer": "La base de la boîte est un carré de côté $20 - 2x$ et la hauteur est $x$. Le volume est $V(x) = x \\times (20 - 2x)^2$.",
+      "blanks": [],
+      "pairs": [],
+      "items": [],
+      "explanation": "Après le découpage des carrés de côté $x$ dans les quatre coins, la longueur et la largeur de la base deviennent $20 - 2x$. La hauteur de la boîte une fois les bords relevés est $x$. Le volume est le produit de l'aire de la base par la hauteur, soit $V(x) = x(20 - 2x)^2$.",
+      "points": 2,
+      "figure": null
+    }
+  ]
+}

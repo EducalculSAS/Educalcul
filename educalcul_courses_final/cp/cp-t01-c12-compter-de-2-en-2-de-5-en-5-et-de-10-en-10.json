@@ -1,0 +1,533 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.521751+00:00",
+  "id": 12,
+  "code": "cp-t01-c12",
+  "title": "Compter de 2 en 2, de 5 en 5 et de 10 en 10",
+  "description": "Cours structuré Educalcul : Compter de 2 en 2, de 5 en 5 et de 10 en 10.",
+  "subject": "Les nombres jusqu'à 100",
+  "level": "cp",
+  "source_level_label": "CP",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CP",
+    "theme": "Les nombres jusqu'à 100",
+    "titre_du_cours": "Compter de 2 en 2, de 5 en 5 et de 10 en 10",
+    "objectif_global": "Compter de 2 en 2, de 5 en 5 et de 10 en 10",
+    "mini_lecons_imposees": [
+      "Poursuivre une suite régulière.",
+      "Compter à rebours dans des cas simples.",
+      "Choisir un pas de comptage utile."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024, applicable depuis 2025-2026."
+  },
+  "content_json": [
+    {
+      "title": "Les nombres jusqu'à 100",
+      "lessons": [
+        {
+          "title": "Poursuivre une suite régulière.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Poursuivre une suite régulière"
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine que tu poses des dominos tous les deux centimètres sur une table. Les nombres que tu dis à voix haute forment une suite régulière."
+            },
+            {
+              "type": "definition",
+              "term": "suite régulière",
+              "definition": "Une liste de nombres où l'écart entre deux nombres voisins ne change jamais.",
+              "example": "2, 4, 6, 8 ..."
+            },
+            {
+              "type": "definition",
+              "term": "pas",
+              "definition": "L'écart constant entre deux nombres consécutifs dans une suite régulière.",
+              "example": "Dans 2, 4, 6 le pas est 2."
+            },
+            {
+              "type": "number_line",
+              "caption": "Suite de 2 en 2 de 0 à 10",
+              "min": 0,
+              "max": 10,
+              "points": [
+                {
+                  "value": 0,
+                  "label": "0"
+                },
+                {
+                  "value": 2,
+                  "label": "2"
+                },
+                {
+                  "value": 4,
+                  "label": "4"
+                },
+                {
+                  "value": 6,
+                  "label": "6"
+                },
+                {
+                  "value": 8,
+                  "label": "8"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour continuer la suite, tu regardes le dernier nombre écrit, tu ajoutes le pas, et tu notes le nouveau nombre. C'est comme avancer sur un chemin balisé."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : regarde le dernier nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu observes le dernier nombre écrit dans la suite."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : ajoute le pas",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu ajoutes le pas, ici $2$, à ce nombre."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écris le nouveau nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu notes le résultat et tu peux continuer autant de fois que tu veux."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, changeons le point de départ pour voir si tu as bien compris le principe."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Ordre",
+                "Nombre"
+              ],
+              "rows": [
+                [
+                  "1",
+                  "3"
+                ],
+                [
+                  "2",
+                  "5"
+                ],
+                [
+                  "3",
+                  "7"
+                ],
+                [
+                  "4",
+                  "9"
+                ],
+                [
+                  "5",
+                  "11"
+                ]
+              ],
+              "caption": "Suite commençant à 3 avec un pas de 2"
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce tableau : la première colonne donne l'ordre, la deuxième le nombre obtenu. Tu vois que chaque ligne ajoute deux au nombre précédent."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons encore avec des pièces de deux centimes pour rendre le comptage très concret et facile."
+            },
+            {
+              "type": "coin_purse",
+              "coins": [
+                2,
+                2,
+                2,
+                2,
+                2
+              ],
+              "target": 10,
+              "caption": "Cinq pièces de 2 centimes font 10 centimes"
+            },
+            {
+              "type": "paragraph",
+              "content": "Dans la tirelire, chaque pièce vaut deux centimes. En ajoutant une pièce, le total augmente de deux, exactement comme le pas de la suite."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quels sont les deux nombres qui suivent $8$ dans la suite $2, 4, 6, 8, ...$ ?",
+              "answer": "$10$ et $12$",
+              "hint": "Ajoute le pas $2$ à chaque fois.",
+              "explanation": "On ajoute $2$ à $8$ pour obtenir $10$, puis $2$ à $10$ pour obtenir $12$."
+            },
+            {
+              "question": "Complète la suite : $3, 5, 7, ?, ?$.",
+              "answer": "$9$ et $11$",
+              "hint": "Le pas est toujours $2$.",
+              "explanation": "On ajoute $2$ à $7$ pour obtenir $9$, puis $2$ à $9$ pour obtenir $11$."
+            },
+            {
+              "question": "Si tu as $5$ pièces de $2$ centimes, quel est le total en centimes ?",
+              "answer": "$10$ centimes",
+              "hint": "Compte de $2$ en $2$ cinq fois.",
+              "explanation": "$2+2+2+2+2 = 10$."
+            }
+          ]
+        },
+        {
+          "title": "Compter à rebours dans des cas simples.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Compter à rebours dans des cas simples"
+            },
+            {
+              "type": "paragraph",
+              "content": "Parfois, on doit compter en partant d'un grand nombre et en descendant vers zéro. C'est ce qu'on appelle compter à rebours."
+            },
+            {
+              "type": "definition",
+              "term": "compter à rebours",
+              "definition": "Compter en partant d'un nombre plus grand et en diminuant à chaque fois du même pas.",
+              "example": "20, 18, 16, 14 ..."
+            },
+            {
+              "type": "number_line",
+              "caption": "Compter à rebours de 2 en 2 depuis 20",
+              "min": 0,
+              "max": 20,
+              "points": [
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 18,
+                  "label": "18"
+                },
+                {
+                  "value": 16,
+                  "label": "16"
+                },
+                {
+                  "value": 14,
+                  "label": "14"
+                },
+                {
+                  "value": 12,
+                  "label": "12"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour reculer, tu regardes le nombre actuel, tu retires le pas, et tu notes le nouveau nombre. C'est comme marcher en arrière sur une ligne graduée."
+            },
+            {
+              "type": "steps",
+              "steps": [
+                {
+                  "title": "Étape 1 : observe le nombre de départ",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu regardes le nombre initial, par exemple $20$."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 2 : retire le pas choisi",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu soustrais le pas, ici $2$, au nombre actuel."
+                    }
+                  ]
+                },
+                {
+                  "title": "Étape 3 : écris le nouveau nombre",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "content": "Tu notes le résultat et tu recommences jusqu'à zéro."
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons maintenant avec un pas de cinq, ce qui est très utile pour compter les doigts d'une main."
+            },
+            {
+              "type": "balance_scale",
+              "left": [
+                5,
+                5,
+                5,
+                5,
+                5,
+                5
+              ],
+              "right": [
+                30
+              ],
+              "caption": "Six groupes de 5 équivalent à 30"
+            },
+            {
+              "type": "paragraph",
+              "content": "La balance montre six groupes de cinq à gauche et le total trente à droite. En enlevant un groupe de cinq, le total diminue de cinq, exactement comme quand on compte à rebours de cinq en cinq."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour finir, voyons comme c'est rapide de descendre par dizaines quand le nombre est grand."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Nombre d'étapes pour descendre de 50 à 0 selon le pas",
+              "bars": [
+                {
+                  "label": "Pas 2",
+                  "value": 25,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Pas 5",
+                  "value": 10,
+                  "tone": "green"
+                },
+                {
+                  "label": "Pas 10",
+                  "value": 5,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Le graphique à barres compare trois façons de descendre de 50 à 0. La barre la plus courte correspond au pas de dix, car il faut moins d'étapes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Complète la suite descendante : $18, 16, 14, ?, ?$.",
+              "answer": "$12$ et $10$",
+              "hint": "Retire $2$ à chaque fois.",
+              "explanation": "$18-2=16$, $16-2=14$, $14-2=12$, $12-2=10$."
+            },
+            {
+              "question": "En partant de $30$, quels sont les trois nombres obtenus en comptant à rebours de $5$ en $5$ ?",
+              "answer": "$25, 20, 15$",
+              "hint": "Soustrais $5$ trois fois.",
+              "explanation": "$30-5=25$, $25-5=20$, $20-5=15$."
+            },
+            {
+              "question": "Si tu descends de $50$ à $0$ par pas de $10$, combien d'étapes faut-il ?",
+              "answer": "$5$ étapes",
+              "hint": "Divise $50$ par $10$.",
+              "explanation": "$50÷10=5$, donc $5$ sauts de $10$."
+            }
+          ]
+        },
+        {
+          "title": "Choisir un pas de comptage utile.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Choisir un pas de comptage utile"
+            },
+            {
+              "type": "paragraph",
+              "content": "Quand tu as beaucoup d'objets à compter, choisir le bon pas te fait gagner du temps et évite les erreurs."
+            },
+            {
+              "type": "definition",
+              "term": "pas de comptage",
+              "definition": "L'écart que l'on ajoute ou retire à chaque fois pour compter plus vite.",
+              "example": "Pas de 2 pour les paires, pas de 5 pour les doigts, pas de 10 pour les dizaines."
+            },
+            {
+              "type": "bar_chart",
+              "caption": "Étapes nécessaires pour compter 20 objets selon le pas",
+              "bars": [
+                {
+                  "label": "Pas 2",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "Pas 5",
+                  "value": 4,
+                  "tone": "green"
+                },
+                {
+                  "label": "Pas 10",
+                  "value": 2,
+                  "tone": "red"
+                }
+              ]
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde ce graphique : pour 20 objets, compter de 2 en 2 demande 10 étapes, de 5 en 5 en demande 4, et de 10 en 10 seulement 2. Le pas le plus grand donne le moins d'étapes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, imagine que tu dois compter rapidement les doigts de tes deux mains sans erreur."
+            },
+            {
+              "type": "number_line",
+              "caption": "Compter les doigts par pas de 5 jusqu'à 25",
+              "min": 0,
+              "max": 25,
+              "points": [
+                {
+                  "value": 5,
+                  "label": "5"
+                },
+                {
+                  "value": 10,
+                  "label": "10"
+                },
+                {
+                  "value": 15,
+                  "label": "15"
+                },
+                {
+                  "value": 20,
+                  "label": "20"
+                },
+                {
+                  "value": 25,
+                  "label": "25"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "paragraph",
+              "content": "La droite graduée montre les nombres 5, 10, 15, 20, 25. Chaque saut de cinq correspond à une main complète."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour de très grands nombres, comme 80, le pas de dix est le plus commode."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 8,
+              "units": 0,
+              "caption": "Huit dizaines forment 80"
+            },
+            {
+              "type": "paragraph",
+              "content": "Les réglettes de base dix montrent huit barres de dix. Chaque barre vaut dix, donc huit barres font quatre-vingts sans avoir à compter un par un."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais poursuivre une suite régulière en ajoutant le pas.",
+                "Je sais compter à rebours en retirant le pas.",
+                "Je sais choisir le pas de comptage le plus efficace selon le nombre d'objets."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Tu as $14$ billes. Quel pas de comptage te permet de les compter le plus vite ?",
+              "answer": "Le pas de $5$ (trois étapes)",
+              "hint": "Regarde quel pas divise le total ou s'en approche.",
+              "explanation": "Avec un pas de $5$, on compte $5, 10, 15$ (trois étapes). Le pas de $2$ demanderait sept étapes, le pas de $10$ ne tombe pas juste sur $14$."
+            },
+            {
+              "question": "Combien d'étapes faut-il pour compter $25$ objets en avançant de $5$ en $5$ ?",
+              "answer": "$5$ étapes",
+              "hint": "Divise $25$ par $5$.",
+              "explanation": "$25÷5=5$."
+            },
+            {
+              "question": "Si tu dois compter $80$ crayons, quel pas choisis-tu et combien d'étapes ?",
+              "answer": "Pas de $10$, $8$ étapes",
+              "hint": "Les dizaines sont naturelles pour $80$.",
+              "explanation": "$80÷10=8$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

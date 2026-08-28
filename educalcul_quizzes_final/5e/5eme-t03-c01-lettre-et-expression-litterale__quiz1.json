@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 389,
+  "_course_code": "5eme-t03-c01-lettre-et-expression-litterale",
+  "_level": "5e",
+  "_subject": "Calcul littéral et initiation à l'algèbre",
+  "_subtheme": "Lettre comme nombre",
+  "title": "Quiz : La lettre comme nombre",
+  "questions": [
+    {
+      "text": "Dans l'expression littérale $7x - 4$, que représente la lettre $x$ ?",
+      "options": [
+        "Un nombre que l'on peut choisir librement",
+        "Le signe de la multiplication",
+        "Le résultat final du calcul",
+        "L'unité de mesure (mètres, litres...)"
+      ],
+      "correctAnswer": "Un nombre que l'on peut choisir librement",
+      "explanation": "Dans une expression littérale, une lettre (comme $x$) est une variable : elle représente un nombre que l'on peut choisir, qui n'est pas fixé à l'avance. Ce n'est pas un symbole d'opération, ni un résultat, ni une unité.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Si $x = 6$, quelle est la valeur de l'expression $5x + 3$ ?",
+      "options": [
+        "33",
+        "48",
+        "56",
+        "14"
+      ],
+      "correctAnswer": "33",
+      "explanation": "On remplace la lettre $x$ par la valeur $6$ : $5 \\times 6 + 3 = 30 + 3 = 33$. L'option 48 correspond à $5 \\times (6+3)$ (oubli de la priorité), 56 à une concaténation ($56$ au lieu de $5 \\times 6$) et 14 à $5 + 6 + 3$.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On choisit un nombre, on le triple, puis on ajoute dix. Si on note $n$ le nombre choisi, quelle expression littérale traduit ce programme de calcul ?",
+      "options": [
+        "3n + 10",
+        "3(n + 10)",
+        "n + 3 \\times 10",
+        "3 + n + 10"
+      ],
+      "correctAnswer": "3n + 10",
+      "explanation": "Tripler un nombre $n$ s'écrit $3n$ (ou $3 \\times n$). On ajoute ensuite dix, ce qui donne $3n + 10$. L'option $3(n+10)$ correspond à 'ajouter dix puis tripler le tout'. Les autres options ne respectent pas l'ordre des opérations.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Un rectangle a une longueur de $L$ cm et une largeur de $5$ cm. Quelle expression donne son périmètre en centimètres ?",
+      "options": [
+        "2L + 10",
+        "L + 5",
+        "5L",
+        "2L + 5"
+      ],
+      "correctAnswer": "2L + 10",
+      "explanation": "Le périmètre d'un rectangle est $2 \\times (\\text{longueur} + \\text{largeur})$. Ici : $2 \\times (L + 5) = 2L + 10$. L'option $L+5$ est la demi-périmètre, $5L$ est l'aire, et $2L+5$ oublie de multiplier la largeur par 2.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quelle expression est égale à $4 \\times (x + 3)$ pour tout nombre $x$ ?",
+      "options": [
+        "4x + 12",
+        "4x + 3",
+        "x + 12",
+        "4x + 7"
+      ],
+      "correctAnswer": "4x + 12",
+      "explanation": "Il faut distribuer la multiplication sur l'addition : $4 \\times (x + 3) = 4 \\times x + 4 \\times 3 = 4x + 12$. L'erreur classique est de ne multiplier que le premier terme ($4x+3$) ou d'additionner les coefficients ($x+12$ ou $4x+7$).",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "_type": "structured_course",
+  "_version": "educalcul-perfect-rebuild-2026",
+  "_exported_at": "2026-08-23T10:12:40.942223+00:00",
+  "id": 148,
+  "code": "ce2-t01-c07",
+  "title": "Encadrer et intercaler",
+  "description": "Cours structuré Educalcul : Encadrer et intercaler.",
+  "subject": "Nombres entiers et numération",
+  "level": "ce2",
+  "source_level_label": "CE2",
+  "status": "draft",
+  "estimated_time": 36,
+  "blueprint": {
+    "niveau": "CE2",
+    "theme": "Nombres entiers et numération",
+    "titre_du_cours": "Encadrer et intercaler",
+    "objectif_global": "Encadrer et intercaler",
+    "mini_lecons_imposees": [
+      "Encadrer aux dizaines.",
+      "Encadrer aux centaines.",
+      "Intercaler dans une suite."
+    ],
+    "conformite_programme_2026_2027": "Programme de mathématiques du cycle 2 publié au BO du 31 octobre 2024."
+  },
+  "content_json": [
+    {
+      "title": "Nombres entiers et numération",
+      "lessons": [
+        {
+          "title": "Encadrer aux dizaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Encadrer aux dizaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans cette leçon où nous allons apprendre à encadrer un nombre aux dizaines. C'est une compétence très utile pour situer un nombre sur une ligne de nombres et pour faire des calculs approximatifs. Tu verras, c'est plus simple qu'il n'y paraît."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une dizaine, c'est un groupe de dix unités. Par exemple, $10$, $20$, $30$ sont des dizaines. Quand on regarde un nombre comme $47$, on cherche la dizaine qui est juste avant lui et la dizaine qui est juste après lui."
+            },
+            {
+              "type": "number_line",
+              "caption": "Encadrement de 47 entre 40 et 50",
+              "min": 30,
+              "max": 60,
+              "points": [
+                {
+                  "value": 40,
+                  "label": "40"
+                },
+                {
+                  "value": 47,
+                  "label": "47"
+                },
+                {
+                  "value": 50,
+                  "label": "50"
+                }
+              ],
+              "intervals": []
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant que tu as vu comment trouver les deux dizaines, nous allons faire un petit exercice pour vérifier que tout est clair."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour trouver la dizaine du bas, regarde le chiffre des dizaines de ton nombre. Dans $47$, le chiffre des dizaines est $4$, donc la dizaine du bas est $40$. C'est le multiple de dix le plus grand qui ne dépasse pas ton nombre."
+            },
+            {
+              "type": "paragraph",
+              "content": "La dizaine du haut est simplement la dizaine du bas plus dix. Donc pour $47$, la dizaine du haut est $50$. Ton nombre se trouve donc entre $40$ et $50$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Super ! Passons à un autre exemple pour bien ancrer la méthode."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec un autre nombre, $63$. Le chiffre des dizaines est $6$, donc la dizaine du bas est $60$ et la dizaine du haut est $70$. $63$ est bien encadré par $60$ et $70$."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 0,
+              "tens": 6,
+              "units": 3,
+              "caption": "63 : 6 dizaines et 3 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, tu sais maintenant encadrer n'importe quel nombre aux dizaines. Dans la prochaine leçon, nous irons plus loin avec les centaines."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Quel est l'encadrement aux dizaines du nombre $47$ ?",
+              "answer": "$40$ et $50$",
+              "hint": "Regarde les dizaines juste avant et juste après $47$.",
+              "explanation": "$47$ est plus grand que $40$ et plus petit que $50$, donc il se trouve entre ces deux dizaines."
+            },
+            {
+              "question": "Encadre le nombre $63$ aux dizaines.",
+              "answer": "$60$ et $70$",
+              "hint": "Compte les dizaines jusqu'à $60$ puis la suivante.",
+              "explanation": "$63$ se situe entre $60$ et $70$."
+            },
+            {
+              "question": "Si je te donne $81$, quelles sont les deux dizaines qui l'encadrent ?",
+              "answer": "$80$ et $90$",
+              "hint": "Regarde la dizaine qui finit par $0$ avant $81$.",
+              "explanation": "$81$ est entre $80$ et $90$."
+            }
+          ]
+        },
+        {
+          "title": "Encadrer aux centaines.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Encadrer aux centaines"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue dans la leçon sur l'encadrement aux centaines. Tu as déjà maîtrisé les dizaines, maintenant nous allons voir comment faire la même chose avec des groupes de cent. C'est une étape naturelle qui te sera très utile pour les grands nombres."
+            },
+            {
+              "type": "paragraph",
+              "content": "Une centaine, c'est cent unités, soit dix dizaines. Les centaines se terminent toujours par deux zéros : $100$, $200$, $300$, etc. Quand on a un nombre comme $347$, on cherche la centaine juste en dessous et celle juste au-dessus."
+            },
+            {
+              "type": "base_ten_blocks",
+              "hundreds": 3,
+              "tens": 4,
+              "units": 7,
+              "caption": "347 : 3 centaines, 4 dizaines, 7 unités"
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Nous allons maintenant vérifier ta compréhension avec un premier exercice."
+            },
+            {
+              "type": "paragraph",
+              "content": "Regarde le chiffre des centaines de ton nombre. Pour $347$, le chiffre des centaines est $3$, donc la centaine du bas est $300$. C'est le multiple de cent le plus grand qui ne dépasse pas ton nombre."
+            },
+            {
+              "type": "paragraph",
+              "content": "La centaine du haut est la centaine du bas plus cent. Donc pour $347$, la centaine du haut est $400$. Ton nombre se trouve entre $300$ et $400$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Excellent ! Continuons avec un autre nombre pour bien fixer la méthode."
+            },
+            {
+              "type": "paragraph",
+              "content": "Prenons $512$. Le chiffre des centaines est $5$, donc la centaine du bas est $500$ et la centaine du haut est $600$. $512$ est bien encadré par $500$ et $600$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Félicitations, tu sais encadrer aux centaines. La prochaine leçon te montrera comment intercaler un nombre dans une suite."
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Encadre $347$ aux centaines.",
+              "answer": "$300$ et $400$",
+              "hint": "Trouve la centaine juste avant $347$.",
+              "explanation": "$347$ est plus grand que $300$ et plus petit que $400$."
+            },
+            {
+              "question": "Quel encadrement aux centaines pour $512$ ?",
+              "answer": "$500$ et $600$",
+              "hint": "Regarde les centaines qui se terminent par deux zéros.",
+              "explanation": "$512$ se trouve entre $500$ et $600$."
+            },
+            {
+              "question": "Donne les deux centaines qui encadrent $890$.",
+              "answer": "$800$ et $900$",
+              "hint": "La centaine avant $890$ finit par $00$.",
+              "explanation": "$890$ est entre $800$ et $900$."
+            }
+          ]
+        },
+        {
+          "title": "Intercaler dans une suite.",
+          "duration": 12,
+          "blocks": [
+            {
+              "type": "heading",
+              "level": 3,
+              "content": "Intercaler dans une suite"
+            },
+            {
+              "type": "paragraph",
+              "content": "Bienvenue pour la dernière leçon de ce cours. Nous allons apprendre à intercaler un nombre dans une suite, c'est-à-dire à placer un nombre entre deux nombres qui se suivent. C'est une idée simple qui aide à bien comprendre l'ordre des nombres."
+            },
+            {
+              "type": "paragraph",
+              "content": "Imagine une suite comme $10$, $20$, $30$. Entre $10$ et $20$, il y a beaucoup de nombres possibles : $11$, $12$, $13$… jusqu'à $19$. Choisir un nombre qui se glisse entre les deux s'appelle intercaler."
+            },
+            {
+              "type": "tape_diagram",
+              "caption": "Intervalle entre 10 et 20",
+              "parts": [
+                {
+                  "label": "10",
+                  "value": 10,
+                  "tone": "blue"
+                },
+                {
+                  "label": "20",
+                  "value": 20,
+                  "tone": "green"
+                }
+              ]
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 1
+            },
+            {
+              "type": "paragraph",
+              "content": "Maintenant, à toi de jouer avec un premier exercice pour tester l'idée."
+            },
+            {
+              "type": "paragraph",
+              "content": "Pour intercaler facilement, tu peux prendre le milieu. Le milieu entre $10$ et $20$ est $15$, car $15$ est à égale distance de $10$ et de $20$. Cela marche pour n'importe quel intervalle."
+            },
+            {
+              "type": "paragraph",
+              "content": "Essayons avec $45$ et $55$. Le milieu est $50$. Donc $50$ s'intercale parfaitement entre $45$ et $55$."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 2
+            },
+            {
+              "type": "paragraph",
+              "content": "Très bien ! Continuons avec un autre intervalle pour bien ancrer la notion."
+            },
+            {
+              "type": "paragraph",
+              "content": "Si la suite est $100$, $200$, $300$, le milieu entre $100$ et $200$ est $150$. Tu peux aussi choisir $120$ ou $180$, tant que le nombre reste entre les deux bornes."
+            },
+            {
+              "type": "exercise",
+              "exercise_index": 3
+            },
+            {
+              "type": "paragraph",
+              "content": "Bravo, tu sais maintenant intercaler des nombres dans une suite. Tu as terminé ce cours avec succès."
+            },
+            {
+              "type": "checklist",
+              "items": [
+                "Je sais encadrer un nombre aux dizaines.",
+                "Je sais encadrer un nombre aux centaines.",
+                "Je sais intercaler un nombre dans une suite."
+              ]
+            }
+          ],
+          "exercises": [
+            {
+              "question": "Dans la suite $10$, $20$, $30$, quel nombre peux-tu intercaler entre $10$ et $20$ ?",
+              "answer": "$15$",
+              "hint": "Choisis un nombre plus grand que $10$ et plus petit que $20$.",
+              "explanation": "$15$ se place entre $10$ et $20$."
+            },
+            {
+              "question": "Intercale un nombre entre $45$ et $55$.",
+              "answer": "$50$",
+              "hint": "Le milieu est souvent facile à trouver.",
+              "explanation": "$50$ est exactement au milieu."
+            },
+            {
+              "question": "Si la suite est $100$, $200$, $300$, donne un nombre entre $100$ et $200$.",
+              "answer": "$150$",
+              "hint": "Pense à la moitié de l'intervalle.",
+              "explanation": "$150$ se situe entre $100$ et $200$."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "content_generation_status": "done",
+  "content_generation_note": null
+}

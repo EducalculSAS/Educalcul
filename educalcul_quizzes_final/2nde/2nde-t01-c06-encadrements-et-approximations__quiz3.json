@@ -1,0 +1,76 @@
+{
+  "_status": "done",
+  "_course_id": 501,
+  "_course_code": "2nde-t01-c06-encadrements-et-approximations",
+  "_level": "2nde",
+  "_subject": "Nombres réels et arithmétique",
+  "_subtheme": "Calculatrice",
+  "title": "Quiz Calculatrice - Encadrements et approximations",
+  "questions": [
+    {
+      "text": "Arrondir $3,14159$ à $10^{-3}$ près.",
+      "options": [
+        "$3,141$",
+        "$3,142$",
+        "$3,14$",
+        "$3,1416$"
+      ],
+      "correctAnswer": "$3,142$",
+      "explanation": "L'arrondi à $10^{-3}$ (millième) regarde le chiffre des ten-millionièmes (le 5e chiffre après la virgule). Le chiffre suivant est 5, donc on arrondit au supérieur : $3,14159$ devient $3,142$. Les autres options correspondent à un troncature, un arrondi au centième ou un arrondi à 4 décimales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Tronquer $2,71828$ à $10^{-2}$ près.",
+      "options": [
+        "$2,71$",
+        "$2,72$",
+        "$2,718$",
+        "$2,7183$"
+      ],
+      "correctAnswer": "$2,71$",
+      "explanation": "Tronquer à $10^{-2}$ (centième) consiste à couper après le deuxième chiffre après la virgule sans modifier le dernier conservé. On obtient donc $2,71$. L'option $2,72$ serait un arrondi, les autres conservent trop de décimales.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Quel est le nombre de chiffres significatifs de la mesure $0,004560$ ?",
+      "options": [
+        "$3$",
+        "$4$",
+        "$5$",
+        "$6$"
+      ],
+      "correctAnswer": "$4$",
+      "explanation": "Les zéros à gauche du premier chiffre non nul ne sont pas significatifs. Les chiffres significatifs sont $4$, $5$, $6$ et le zéro final qui indique la précision, soit $4$ chiffres significatifs.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "Sur une calculatrice, on calcule $(1,0001)^{1000}$ et on obtient $2,7181$. Quelle est l'erreur absolue par rapport à la valeur exacte $e \\approx 2,718281828$ ?",
+      "options": [
+        "$0,000181828$",
+        "$0,00018$",
+        "$0,0002$",
+        "$0,0018$"
+      ],
+      "correctAnswer": "$0,000181828$",
+      "explanation": "L'erreur absolue est la différence en valeur absolue entre la valeur exacte et la valeur approchée : $|2,718281828 - 2,7181| = 0,000181828$. Les autres options correspondent à des arrondis de cette erreur.",
+      "points": 1,
+      "figure": null
+    },
+    {
+      "text": "On encadre $\\sqrt{2}$ par $1,4142 \\le \\sqrt{2} \\le 1,4143$. Quelle est l'erreur maximale commise si on remplace $\\sqrt{2}$ par la moyenne de l'encadrement ?",
+      "options": [
+        "$0,00005$",
+        "$0,0001$",
+        "$0,000025$",
+        "$0,0005$"
+      ],
+      "correctAnswer": "$0,00005$",
+      "explanation": "La moyenne de l'encadrement est $ (1,4142+1,4143)/2 = 1,41425 $. L'erreur maximale est la demi-largeur de l'intervalle : $ (1,4143-1,4142)/2 = 0,00005 $.",
+      "points": 1,
+      "figure": null
+    }
+  ]
+}
