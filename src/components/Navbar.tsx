@@ -83,9 +83,20 @@ export default function Navbar() {
     // INITIAL_SESSION (session retrouvée depuis le cookie au chargement) n'est
     // plus ignoré : le getUser() ci-dessus peut en théorie s'exécuter avant que
     // le cookie soit lu par le client, et rien ne corrigeait alors l'état.
+    //
+    // TOKEN_REFRESHED est en revanche bien ignoré : un jeton rafraîchi ne
+    // change ni l'identité ni le rôle, refetch le profil pour rien. Sur
+    // /auth/2fa-verify (avant que l'admin ait saisi son code), getMyProfile()
+    // renvoie 401 par design (pas encore de cookie 2FA) — le filet de
+    // supabaseClient.ts réagit à ce 401 par un refreshSession() silencieux,
+    // qui émet justement un TOKEN_REFRESHED : sans ce filtre, ça rappelait
+    // fetchUserData() en boucle (401 → refresh → TOKEN_REFRESHED → refetch →
+    // 401 → …), jusqu'à épuiser les jetons de rafraîchissement et déconnecter
+    // l'admin pour de vrai (constaté en prod : renvoi en boucle vers /auth/connexion).
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(() => {
+    } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "TOKEN_REFRESHED") return;
       void supabase.auth.getUser().then(({ data: { user: authUser } }) => {
         setUser(authUser || null);
         if (authUser) {
