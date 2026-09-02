@@ -150,6 +150,26 @@ export default function ConnexionClient() {
       }).catch(() => {});
       if (authError) throw authError;
       if (data.user && data.session) {
+        // Restriction d'IP éventuelle (admin_allowed_ips) : vérifiée AVANT
+        // tout — un compte restreint connecté depuis une IP hors liste ne
+        // doit voir ni OTP ni prompt passkey, juste échouer comme un mot de
+        // passe incorrect (aucun indice qu'une restriction existe).
+        try {
+          const ipCheckRes = await fetch("/api/auth/ip-check", {
+            headers: { Authorization: `Bearer ${data.session.access_token}` },
+          });
+          const ipCheckData = await ipCheckRes.json();
+          if (ipCheckRes.ok && ipCheckData.allowed === false) {
+            await supabase.auth.signOut();
+            setError("Email/identifiant ou mot de passe incorrect.");
+            return;
+          }
+        } catch {
+          // Échec réseau du contrôle IP : ne bloque pas la connexion pour un
+          // souci indépendant du compte — getAuthenticatedUser reste le
+          // rempart final sur chaque appel /api/* ensuite.
+        }
+
         const passkeyOk = await verifyPasskeyIfAny(email, data.session.access_token);
         if (!passkeyOk) return;
 

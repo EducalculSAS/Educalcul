@@ -3,6 +3,20 @@ import { hashTwoFactorValue } from "@/lib/twoFactor";
 import { getTwoFactorCookieFromRequest } from "@/lib/twoFactorCookie";
 import { verifySupabaseJwt } from "@/lib/supabaseJwt";
 
+/** IP publique de l'appelant, telle que vue par Vercel (en-tête posé par la
+ * plateforme, pas falsifiable depuis le client malgré le nom "forwarded"). */
+export function getClientIp(req: Request): string {
+  return req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+}
+
+/** True si `allowedIps` est vide/absent (pas de restriction) ou contient
+ * l'IP de la requête — utilisé par getAuthenticatedUser et /api/auth/ip-check
+ * pour les comptes (admin, en pratique) restreints à une liste d'IP. */
+export function isIpAllowed(allowedIps: string[] | null | undefined, req: Request): boolean {
+  if (!allowedIps || allowedIps.length === 0) return true;
+  return allowedIps.includes(getClientIp(req));
+}
+
 export interface AuthenticatedUser {
   authId: string;
   id: number;
@@ -21,7 +35,7 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
 
   const { data: row } = await supabaseAdmin
     .from("users")
-    .select("id, role, parent_id, status, ban_reason, two_factor_enabled, admin_level")
+    .select("id, role, parent_id, status, ban_reason, two_factor_enabled, admin_level, admin_allowed_ips")
     .eq("auth_id", identity.authId)
     .maybeSingle();
 
@@ -32,6 +46,12 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
   // (contournable via un appel direct à l'API). On coupe l'accès ici, au
   // point d'entrée commun à toutes les routes authentifiées.
   if (row.status === "inactive" || row.ban_reason) return null;
+
+  // Restriction d'IP optionnelle (admin_allowed_ips) : couche additionnelle
+  // à la 2FA, pas un remplacement — un jeton/session déjà valides ne servent
+  // plus à rien depuis une IP hors liste, même après une 2FA déjà validée
+  // (pas seulement au login, voir aussi /api/auth/ip-check pour le login).
+  if (!isIpAllowed(row.admin_allowed_ips, req)) return null;
 
   // 2FA optionnelle (opt-in) pour parent/enfant (email). Obligatoire dès la
   // création du compte pour les admins (TOTP) — /totp/setup, /confirm et
