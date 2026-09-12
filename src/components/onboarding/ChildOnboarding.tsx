@@ -21,7 +21,7 @@ const TOUR_STEPS = [
     title: "Mes Cours",
     desc: "Des cours de maths adaptés à ton niveau, avec des formules et des exemples. Lis-les à ton rythme !",
     color: "from-blue-50 to-indigo-50",
-    tip: "Tu peux surligner du texte et demander à Epsi de t'expliquer !",
+    tip: "Tu peux surligner du texte et demander à Calia de t'expliquer !",
   },
   {
     icon: <Calculator className="w-14 h-14 text-orange-500" />,
@@ -46,10 +46,10 @@ const TOUR_STEPS = [
   },
   {
     icon: <MessageSquare className="w-14 h-14 text-teal-600" />,
-    title: "Assistant Epsi & Forum",
-    desc: "Epsi t'aide quand tu bloques. Le forum te permet d'échanger avec d'autres élèves.",
+    title: "Assistant Calia & Forum",
+    desc: "Calia t'aide quand tu bloques. Le forum te permet d'échanger avec d'autres élèves.",
     color: "from-green-50 to-teal-50",
-    tip: "Epsi ne donne jamais la réponse directement — elle te guide !",
+    tip: "Calia ne donne jamais la réponse directement — elle te guide !",
   },
 ];
 
@@ -121,7 +121,7 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
                 Salut {firstName} !
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                Bienvenue sur <strong>Educalcul</strong> ! Je suis <strong>Epsi</strong>, ton assistante. Je vais te faire une petite visite de la plateforme en moins de 2 minutes.
+                Bienvenue sur <strong>Educalcul</strong> ! Je suis <strong>Calia</strong>, ton assistante. Je vais te faire une petite visite de la plateforme en moins de 2 minutes.
               </p>
             </div>
             <div className="bg-blue-50 rounded-2xl p-4 text-sm text-[var(--greek-blue)] font-medium max-w-xs">

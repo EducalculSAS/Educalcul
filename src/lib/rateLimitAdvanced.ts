@@ -90,12 +90,12 @@ export const RATE_LIMITS = {
   'scanner:run': { maxAttempts: 100, windowMs: 60 * 60 * 1000, name: 'Scanner IA' },
   'minigames:play': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'Mini-jeux' },
 
-  // Démo publique (page epsi) - plafond large PAR IP, en complément (pas en
+  // Démo publique (page calia) - plafond large PAR IP, en complément (pas en
   // remplacement) du compteur par cookie qui reste la limite principale de
   // 3 messages. L'IP n'est délibérément pas utilisée comme identifiant
   // principal (NAT partagé, spoofable, change de réseau) — seulement comme
   // garde-fou grossier contre un script qui régénère des cookies en boucle.
-  'epsi:demo': { maxAttempts: 30, windowMs: 60 * 60 * 1000, name: 'EPSI demo' },
+  'calia:demo': { maxAttempts: 30, windowMs: 60 * 60 * 1000, name: 'Calia demo' },
 
   // File upload
   'upload:file': { maxAttempts: 50, windowMs: 60 * 60 * 1000, name: 'File upload' },

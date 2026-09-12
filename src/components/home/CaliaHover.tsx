@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 
-/** Icône EpsiAI + bulle au survol. Isolée en client island : le reste du
+/** Icône Calia + bulle au survol. Isolée en client island : le reste du
  * bloc "Bento" (titres, texte) reste rendu côté serveur. */
-export default function EpsiAIHover() {
+export default function CaliaHover() {
   const [hover, setHover] = useState(false);
 
   return (
@@ -15,7 +15,7 @@ export default function EpsiAIHover() {
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <Image src="/logoAI.png" alt="EpsiAI" width={40} height={40} className="w-10 h-10 object-contain" />
+        <Image src="/logoAI.png" alt="Calia" width={40} height={40} className="w-10 h-10 object-contain" />
       </div>
       <div
         className="absolute pointer-events-none"

@@ -3,7 +3,7 @@ import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
-/** Historique de conversation Epsi (tuteur IA), persisté côté serveur — plus
+/** Historique de conversation Calia (tuteur IA), persisté côté serveur — plus
  * de localStorage (données potentiellement sensibles d'un enfant, sans
  * politique de rétention ni contrôle possible côté serveur auparavant). Une
  * conversation par "contexte" (cours/exercice/quiz/support), comme avant. */

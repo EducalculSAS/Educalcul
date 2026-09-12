@@ -34,7 +34,7 @@ function buildSystemPrompt(ctx: AITutorPageContext): string {
 
   const isCours = ctx.page === "cours_detail";
 
-  return `Tu es Epsi, tuteur IA de mathématiques pour élèves de primaire et collège sur Educalcul.
+  return `Tu es Calia, tuteur IA de mathématiques pour élèves de primaire et collège sur Educalcul.
 
 RÈGLES ABSOLUES:
 - Réponds toujours en français, de façon naturelle et bienveillante, comme un bon professeur particulier.

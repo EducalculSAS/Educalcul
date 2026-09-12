@@ -3,8 +3,8 @@
 export const FEATURE_ROWS: { key: string; label: string; tip?: string }[] = [
   { key: "max_children", label: "Enfants", tip: "Profils enfants actifs simultanément" },
   { key: "access_level_exercises", label: "Niveaux scolaires", tip: "CP à 6ème / CP à 3ème / CP à Terminale" },
-  { key: "ai_access", label: "IA EpsiAI", tip: "Accès à l'assistante pédagogique IA" },
-  { key: "ai_daily_limit", label: "Questions IA / jour", tip: "Nombre de messages envoyés à EpsiAI" },
+  { key: "ai_access", label: "IA Calia", tip: "Accès à l'assistante pédagogique IA" },
+  { key: "ai_daily_limit", label: "Questions IA / jour", tip: "Nombre de messages envoyés à Calia" },
   { key: "quiz_access", label: "Quiz & évaluations", tip: "Accès à tous les quiz" },
   { key: "detailed_reports", label: "Rapports hebdomadaires", tip: "Email récapitulatif chaque semaine" },
   { key: "custom_avatars", label: "Avatars & cosmétiques", tip: "Contours et couleurs de nom exclusifs" },

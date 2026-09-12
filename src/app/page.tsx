@@ -7,8 +7,8 @@ import ScrollArrow from "@/components/home/ScrollArrow";
 import Reveal, { RevealGroup, RevealItem } from "@/components/home/Reveal";
 import FaqAccordionItem from "@/components/tarifs/TarifsFaqItem";
 import HomePricingGrid from "@/components/home/HomePricingGrid";
-import EpsiAIHover from "@/components/home/EpsiAIHover";
-import EpsiChatPreview from "@/components/home/EpsiChatPreview";
+import CaliaHover from "@/components/home/CaliaHover";
+import CaliaChatPreview from "@/components/home/CaliaChatPreview";
 import GlassButton from "@/components/ui/GlassButton";
 import AnimatedStatsCard from "@/components/home/AnimatedStatsCard";
 import StepsSection from "@/components/home/StepsSection";
@@ -205,13 +205,13 @@ export default async function Home() {
             </Reveal>
           </div>
 
-          {/* Rangée B — EpsiAI */}
+          {/* Rangée B — Calia */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <Reveal y={36} scale={0.95} delay={0.1} className="rounded-3xl p-8 relative overflow-visible transition-transform duration-500 hover:-translate-y-1" style={{ background: "var(--greek-blue)", minHeight: 280 }}>
               <div className="relative z-10 h-full flex flex-col justify-center gap-4">
-                <EpsiAIHover />
+                <CaliaHover />
 
-                <EpsiChatPreview />
+                <CaliaChatPreview />
 
                 <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold w-fit" style={{ color: "var(--greek-gold)" }}>
                   <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "var(--greek-gold)" }} />
@@ -227,7 +227,7 @@ export default async function Home() {
                 Un tuteur IA qui pose<br />les bonnes questions
               </h3>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
-                Jamais la réponse toute cuite : EpsiAI repère où ça bloque et guide l'élève jusqu'au déclic, avec la méthode socratique. Disponible 24h/24.
+                Jamais la réponse toute cuite : Calia repère où ça bloque et guide l'élève jusqu'au déclic, avec la méthode socratique. Disponible 24h/24.
               </p>
             </Reveal>
           </div>

@@ -44,7 +44,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
   const [sending, setSending] = useState<number | null>(null);
   const { setPageContext, clearContext } = useAITutor();
 
-  // Bascule le widget Epsi global (bas droite) en "mode support" — plus de
+  // Bascule le widget Calia global (bas droite) en "mode support" — plus de
   // tuteur maths, mêmes limites/textes que le bot support parent — uniquement
   // pendant qu'on est sur cette page.
   useEffect(() => {

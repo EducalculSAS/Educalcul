@@ -230,7 +230,7 @@ export default function ChildReportTabs({
                 Fonctionnalité Premium
               </h3>
               <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                L'analyse IA d'EpsiAI est disponible avec un abonnement actif. Passez à un plan supérieur pour obtenir des rapports personnalisés sur la progression de {childFirstName}.
+                L'analyse IA d'Calia est disponible avec un abonnement actif. Passez à un plan supérieur pour obtenir des rapports personnalisés sur la progression de {childFirstName}.
               </p>
               <GlassButton href="/parent/subscription" variant="navy" size="sm">
                 <Sparkles className="w-4 h-4" />
@@ -270,7 +270,7 @@ export default function ChildReportTabs({
                       <div className="w-12 h-12 rounded-2xl bg-[var(--greek-gold)] flex items-center justify-center animate-pulse">
                         <Star className="w-6 h-6 text-[var(--greek-blue)] fill-current" />
                       </div>
-                      <p className="text-gray-500 text-sm">EpsiAI analyse les données de {childFirstName}…</p>
+                      <p className="text-gray-500 text-sm">Calia analyse les données de {childFirstName}…</p>
                       <p className="text-gray-300 text-xs">Cela peut prendre quelques secondes</p>
                     </div>
                   ) : analysis ? (
@@ -319,7 +319,7 @@ export default function ChildReportTabs({
                     <span className="text-sm font-bold text-[var(--greek-blue)]">À propos de l'analyse</span>
                   </div>
                   <p className="text-xs text-gray-600 leading-relaxed">
-                    L'analyse est générée par EpsiAI, l'IA d'Educalcul. Elle est basée sur les 30 dernières activités de {childFirstName}.
+                    L'analyse est générée par Calia, l'IA d'Educalcul. Elle est basée sur les 30 dernières activités de {childFirstName}.
                   </p>
                 </div>
               </div>

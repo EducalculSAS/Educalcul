@@ -868,7 +868,7 @@ export default function AdminSubscriptionsClient({
                   </div>
                   {/* IA access */}
                   <div>
-                    <label className={labelCls}>Accès IA (EpsiAI)</label>
+                    <label className={labelCls}>Accès IA (Calia)</label>
                     <select value={planForm.feature_ai_access} onChange={e => setPlanForm({...planForm, feature_ai_access: e.target.value as "none" | "limited" | "unlimited"})} className={inputCls}>
                       <option value="none">Aucun accès</option>
                       <option value="limited">Limité (messages/jour)</option>

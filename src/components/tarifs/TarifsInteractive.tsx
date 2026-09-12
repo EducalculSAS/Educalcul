@@ -702,7 +702,7 @@ function Configurator({
               className="text-xs font-bold uppercase tracking-wider"
               style={{ color: "var(--text-muted)" }}
             >
-              IA EpsiAI
+              IA Calia
             </p>
             {cfg.ai !== "none" && (
               <span

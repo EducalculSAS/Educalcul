@@ -43,7 +43,7 @@ function mergeTrailingText(current: string, incoming: string): string {
 
 // Bus partagé (petit, gardé ici plutôt que dans un fichier séparé) : signale
 // au reste de la page qu'un clavier mathématique est ouvert, pour que
-// d'autres éléments flottants (ex: la bulle Epsi/AITutor en bas à droite)
+// d'autres éléments flottants (ex: la bulle Calia/AITutor en bas à droite)
 // s'effacent tant qu'il occupe le bas de l'écran. Compteur, pas un simple
 // booléen : plusieurs champs MathInput peuvent exister sur une page, et le
 // focus peut passer directement de l'un à l'autre sans jamais repasser par
@@ -142,7 +142,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
   const [keyboardConfig, setKeyboardConfig] = useState<MathKeyboardConfig | null>(null);
 
   // Prévient le bus partagé ci-dessus tant que CE champ a son clavier
-  // ouvert, pour que la bulle Epsi/AITutor en bas à droite s'efface le temps
+  // ouvert, pour que la bulle Calia/AITutor en bas à droite s'efface le temps
   // que le clavier occupe le bas de l'écran.
   useEffect(() => {
     if (!keyboardVisible) return;

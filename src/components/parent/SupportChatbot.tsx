@@ -10,7 +10,7 @@ import GlassButton from "@/components/ui/GlassButton";
 
 interface BotMsg { from: "bot" | "user"; text: string }
 
-const BOT_WELCOME: BotMsg = { from: "bot", text: "Bonjour ! Je suis **Epsi**, votre assistante d'aide rapide. Posez-moi votre question ou choisissez un sujet ci-dessous." };
+const BOT_WELCOME: BotMsg = { from: "bot", text: "Bonjour ! Je suis **Calia**, votre assistante d'aide rapide. Posez-moi votre question ou choisissez un sujet ci-dessous." };
 
 /** Chatbot flottant d'aide rapide (IA Mistral) : autonome, sans dépendance
  * aux données de la page. */
@@ -54,11 +54,11 @@ export default function SupportChatbot() {
 
   return (
     <>
-      <button onClick={() => setOpen((v) => !v)} aria-label="Ouvrir Epsi"
+      <button onClick={() => setOpen((v) => !v)} aria-label="Ouvrir Calia"
         className="fixed bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1"
         style={{ background: "#0d1829", border: "1.5px solid rgba(197,161,72,0.45)" }}>
         {open ? <X className="w-6 h-6" style={{ color: "rgba(240,237,232,0.8)" }} /> : (
-          <Image src="/logoAI.png" alt="Epsi" width={30} height={30} className="object-contain" />
+          <Image src="/logoAI.png" alt="Calia" width={30} height={30} className="object-contain" />
         )}
       </button>
 
@@ -66,9 +66,9 @@ export default function SupportChatbot() {
         <div className="fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-sm rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           style={{ height: 440, background: "#0d1829", border: "1px solid rgba(197,161,72,0.25)" }}>
           <div className="flex items-center gap-3 px-4 py-3.5 shrink-0" style={{ borderBottom: "1px solid rgba(197,161,72,0.15)", background: "rgba(255,255,255,0.03)" }}>
-            <Image src="/logoAI.png" alt="Epsi" width={28} height={28} className="object-contain flex-shrink-0" />
+            <Image src="/logoAI.png" alt="Calia" width={28} height={28} className="object-contain flex-shrink-0" />
             <div className="flex-1 min-w-0">
-              <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Epsi</p>
+              <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Calia</p>
               <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Assistante IA</p>
             </div>
             <GlassIconButton icon={RotateCcw} onClick={() => setMessages([BOT_WELCOME])} color="white" size="sm" aria-label="Nouvelle conversation" />

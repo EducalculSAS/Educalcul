@@ -5,7 +5,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
-const DEMO_COOKIE = "epsi_demo_id";
+const DEMO_COOKIE = "calia_demo_id";
 
 // Identifiant de démo stable par navigateur (cookie httpOnly). On ne se base plus
 // sur l'IP : celle-ci change (4G, autre lieu) et est partagée (NAT) ou falsifiable
@@ -27,13 +27,13 @@ function attachDemoId(res: NextResponse, id: string) {
   return res;
 }
 
-const SYSTEM_PROMPT = `Tu es EpsiAI, assistant de mathematiques de la plateforme Educalcul (CP a la Terminale).
+const SYSTEM_PROMPT = `Tu es Calia, assistant de mathematiques de la plateforme Educalcul (CP a la Terminale).
 Tu utilises la methode socratique : tu poses des questions et donnes des indices.
 
 INTERDICTIONS ABSOLUES - si tu violes une seule de ces regles tu echoues :
 - Ne donne JAMAIS la reponse, ni directement, ni entre parentheses, ni "par exemple", ni sous forme de correction, ni entre asterisques
 - Ne revele JAMAIS le resultat final, meme partiellement
-- Ne commence JAMAIS par "Okay", "Bien sur", "Je suis EpsiAI"
+- Ne commence JAMAIS par "Okay", "Bien sur", "Je suis Calia"
 - Pas d'emojis, pas de tirets longs, pas de markdown
 
 REGLES :
@@ -79,7 +79,7 @@ export async function GET(req: NextRequest) {
   let count = 0;
   if (id) {
     const { data } = await supabaseAdmin
-      .from("epsi_demo_usage")
+      .from("calia_demo_usage")
       .select("count")
       .eq("ip", id)
       .maybeSingle();
@@ -95,8 +95,8 @@ export async function POST(req: NextRequest) {
     // Garde-fou grossier par IP : empêche un script d'effacer son cookie en
     // boucle pour contourner indéfiniment la limite de 3 messages/navigateur.
     const ip = req.headers.get("x-forwarded-for") ?? "unknown";
-    const ipConfig = RATE_LIMITS["epsi:demo"];
-    const ipLimit = await rateLimitWithBackoff(`epsi:demo:${ip}`, ipConfig.maxAttempts, ipConfig.windowMs);
+    const ipConfig = RATE_LIMITS["calia:demo"];
+    const ipLimit = await rateLimitWithBackoff(`calia:demo:${ip}`, ipConfig.maxAttempts, ipConfig.windowMs);
     if (!ipLimit.allowed) {
       return NextResponse.json({ error: "demo_limit" }, { status: 429 });
     }
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
 
     // Compteur par navigateur (clé = cookie), enregistré dans Supabase.
     const { data: existing } = await supabaseAdmin
-      .from("epsi_demo_usage")
+      .from("calia_demo_usage")
       .select("count")
       .eq("ip", id)
       .maybeSingle();
@@ -124,14 +124,14 @@ export async function POST(req: NextRequest) {
     const newCount = (existing?.count ?? 0) + 1;
 
     // Upsert : insert ou incrémente le compteur
-    await supabaseAdmin.from("epsi_demo_usage").upsert({ ip: id, count: newCount });
+    await supabaseAdmin.from("calia_demo_usage").upsert({ ip: id, count: newCount });
 
     const limitReached = newCount >= DEMO_LIMIT;
 
     return attachDemoId(NextResponse.json({ reply, limitReached }), id);
   } catch (e) {
     const msg = e instanceof Error ? e.message : String(e);
-    console.error("[epsi-demo]", msg);
+    console.error("[calia-demo]", msg);
     return NextResponse.json({ error: sanitizeErrorMessage(msg) }, { status: 500 });
   }
 }

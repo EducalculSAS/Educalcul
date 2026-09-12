@@ -58,7 +58,7 @@ export interface PlanChooserAdmin {
 const FEATURE_ROWS: { key: string; label: string }[] = [
   { key: "max_children", label: "Enfants" },
   { key: "access_level_exercises", label: "Niveaux scolaires" },
-  { key: "ai_access", label: "IA EpsiAI" },
+  { key: "ai_access", label: "IA Calia" },
   { key: "ai_daily_limit", label: "Questions IA / jour" },
 ];
 
@@ -357,7 +357,7 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
         {/* IA */}
         <div>
           <div className="flex items-center justify-between mb-3">
-            <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>IA EpsiAI</p>
+            <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>IA Calia</p>
             {cfg.ai !== "none" && (
               <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>
                 +{aiActualPrice.toFixed(2)}€

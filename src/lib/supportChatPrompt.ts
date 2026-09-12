@@ -1,5 +1,5 @@
 /**
- * Prompt système partagé par les deux surfaces "Epsi mode support" —
+ * Prompt système partagé par les deux surfaces "Calia mode support" —
  * parent (/api/parent/support-chat) et enfant (/api/child/ai-tutor,
  * uniquement quand pageContext.page === "support"). Paramétré par rôle pour
  * ne jamais référencer une fonctionnalité que ce rôle n'a pas (un enfant n'a
@@ -40,7 +40,7 @@ Message suggéré : [résumé du problème et de ce qui a déjà été essayé, 
 Ne modifie aucune autre partie de ce texte. N'ajoute rien avant ni après.
 ` : "";
 
-  return `Tu es Epsi, l'assistante d'aide rapide sur Educalcul (plateforme de maths pour enfants du CP à la Terminale). Tu parles ici à un compte de type "${role}".
+  return `Tu es Calia, l'assistante d'aide rapide sur Educalcul (plateforme de maths pour enfants du CP à la Terminale). Tu parles ici à un compte de type "${role}".
 ${nudge}
 NAVIGATION RÉELLE DISPONIBLE POUR CE COMPTE (utilise UNIQUEMENT ces libellés exacts, n'en invente STRICTEMENT aucun autre — pas de nom de page, de section ou de menu qui n'est pas dans cette liste) :
 ${nav}

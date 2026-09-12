@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import FadeInSection from "@/components/home/FadeInSection";
-import EpsiChatDemo from "@/components/offres/EpsiChatDemo";
+import CaliaChatDemo from "@/components/offres/CaliaChatDemo";
 import GlassButton from "@/components/ui/GlassButton";
 
 // Page publique statique : ISR pour servir depuis le cache plutôt que de
@@ -158,7 +158,7 @@ export default function Offres() {
                         className="w-4 h-4 object-contain"
                       />
                     ),
-                    text: "EpsiAI — IA pédagogique",
+                    text: "Calia — IA pédagogique",
                   },
                   {
                     icon: <BarChart3 className="w-4 h-4" />,
@@ -197,7 +197,7 @@ export default function Offres() {
           </div>
         </section>
 
-        {/* ── EPSI — EN VEDETTE ── */}
+        {/* ── CALIA — EN VEDETTE ── */}
         <section className="py-24" style={{ background: "var(--greek-cream)" }}>
           <div className="container mx-auto px-6 max-w-5xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -205,7 +205,7 @@ export default function Offres() {
                 <div className="flex items-center gap-3 mb-6">
                   <Image
                     src="/logoAI.png"
-                    alt="EpsiAI"
+                    alt="Calia"
                     width={40}
                     height={40}
                     className="w-10 h-10 object-contain"
@@ -224,7 +224,7 @@ export default function Offres() {
                     color: "var(--greek-blue)",
                   }}
                 >
-                  EpsiAI enseigne —<br />
+                  Calia enseigne —<br />
                   <span style={{ color: "var(--greek-gold)" }}>
                     elle ne donne pas les réponses.
                   </span>
@@ -233,7 +233,7 @@ export default function Offres() {
                   className="text-sm leading-relaxed mb-8"
                   style={{ color: "var(--text-muted)" }}
                 >
-                  EpsiAI utilise la méthode socratique : plutôt que de corriger,
+                  Calia utilise la méthode socratique : plutôt que de corriger,
                   elle questionne. L&apos;élève arrive lui-même à la solution,
                   ce qui ancre vraiment la compréhension.
                 </p>
@@ -264,7 +264,7 @@ export default function Offres() {
                 </ul>
               </FadeInSection>
               <FadeInSection translateX={24} durationMs={600} delayMs={150}>
-                <EpsiChatDemo />
+                <CaliaChatDemo />
               </FadeInSection>
             </div>
           </div>

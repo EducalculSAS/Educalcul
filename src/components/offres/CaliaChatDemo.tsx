@@ -11,13 +11,13 @@ type Msg = { from: "user" | "ai" | "cta"; text: string };
 type ApiMsg = { role: "user" | "assistant"; content: string };
 const INITIAL_MSG: Msg = {
   from: "ai",
-  text: "Bonjour, je suis EpsiAI. Quel exercice te pose problème aujourd'hui ?",
+  text: "Bonjour, je suis Calia. Quel exercice te pose problème aujourd'hui ?",
 };
 
 // Démo publique, anonyme, sans compte — pas de persistance (ni localStorage
 // ni serveur) : la conversation ne vaut que pour la session en cours. Le
-// vrai suivi de quota (`limitReached`) reste côté serveur (/api/epsi-demo).
-function EpsiChat({
+// vrai suivi de quota (`limitReached`) reste côté serveur (/api/calia-demo).
+function CaliaChat({
   onClose,
   inline = false,
 }: {
@@ -29,7 +29,7 @@ function EpsiChat({
   const [typing, setTyping] = useState(false);
   const [limitReached, setLimitReached] = useState(false);
   useEffect(() => {
-    fetch("/api/epsi-demo")
+    fetch("/api/calia-demo")
       .then((r) => r.json())
       .then((data) => {
         if (data.limitReached && !limitReached) {
@@ -67,7 +67,7 @@ function EpsiChat({
     setInput("");
     setTyping(true);
     try {
-      const res = await fetch("/api/epsi-demo", {
+      const res = await fetch("/api/calia-demo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: historyRef.current }),
@@ -129,7 +129,7 @@ function EpsiChat({
       >
         <Image
           src="/logoAI.png"
-          alt="EpsiAI"
+          alt="Calia"
           width={26}
           height={26}
           style={{ width: 26, height: 26 }}
@@ -140,7 +140,7 @@ function EpsiChat({
             className="font-[family-name:var(--font-display)] font-bold text-sm"
             style={{ color: "var(--greek-gold)" }}
           >
-            EpsiAI
+            Calia
           </p>
           <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
             IA pédagogique · Aperçu
@@ -166,7 +166,7 @@ function EpsiChat({
               {msg.from === "ai" && (
                 <Image
                   src="/logoAI.png"
-                  alt="EpsiAI"
+                  alt="Calia"
                   width={20}
                   height={20}
                   style={{ width: 20, height: 20 }}
@@ -236,7 +236,7 @@ function EpsiChat({
             className="text-xs leading-relaxed mb-3"
             style={{ color: "rgba(240,237,232,0.6)" }}
           >
-            Votre enfant veut continuer avec EpsiAI ?<br />
+            Votre enfant veut continuer avec Calia ?<br />
             <span style={{ color: "rgba(240,237,232,0.8)" }}>
               Créez un compte gratuit en 2 minutes.
             </span>
@@ -288,9 +288,9 @@ function EpsiChat({
   );
 }
 
-/** Démo interactive d'EpsiAI (page /offres) : seule partie de la section
- * "EpsiAI en vedette" qui a besoin d'être un client component. */
-export default function EpsiChatDemo() {
+/** Démo interactive d'Calia (page /offres) : seule partie de la section
+ * "Calia en vedette" qui a besoin d'être un client component. */
+export default function CaliaChatDemo() {
   const [open, setOpen] = useState(false);
   return (
     <div
@@ -298,7 +298,7 @@ export default function EpsiChatDemo() {
       style={{ minHeight: 340 }}
     >
       {open ? (
-        <EpsiChat onClose={() => setOpen(false)} inline />
+        <CaliaChat onClose={() => setOpen(false)} inline />
       ) : (
         <div className="flex flex-col items-center gap-5">
           <div
@@ -310,7 +310,7 @@ export default function EpsiChatDemo() {
             }}
           >
             <span style={{ color: "var(--greek-gold)", fontWeight: 600 }}>
-              EpsiAI
+              Calia
             </span>{" "}
             est prête à vous aider.
             <br />
@@ -334,7 +334,7 @@ export default function EpsiChatDemo() {
           >
             <Image
               src="/logoAI.png"
-              alt="EpsiAI"
+              alt="Calia"
               width={44}
               height={44}
               style={{ width: 44, height: 44 }}

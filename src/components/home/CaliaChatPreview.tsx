@@ -3,10 +3,10 @@
 import Image from "next/image";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 
-/** Mockup de conversation EpsiAI pour la home — mêmes styles de bulles et
+/** Mockup de conversation Calia pour la home — mêmes styles de bulles et
  * même rendu LaTeX que le vrai chatbot (src/components/child/AITutor.tsx),
  * pour ne pas montrer une fausse interface qui ne ressemble pas au produit. */
-export default function EpsiChatPreview() {
+export default function CaliaChatPreview() {
   return (
     <div className="flex flex-col gap-2.5">
       <div className="flex justify-end">
