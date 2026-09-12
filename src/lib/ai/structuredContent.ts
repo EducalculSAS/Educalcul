@@ -44,6 +44,53 @@ export type StructuredFigureTone =
 
 export type StructuredFigurePoint = { x: number; y: number };
 
+/** Brique de base composable du bloc "shape" : une forme simple posée sur le
+ * quadrillage, avec ses options (étiquettes de sommets / côtés, marque d'angle
+ * droit, cotes). Combiner plusieurs parts remplace les figures spécifiques
+ * (triangle annoté, Pythagore, schémas d'énoncé...). */
+export type StructuredShapePart = {
+  kind:
+    | "rectangle"
+    | "square"
+    | "right_triangle"
+    | "triangle"
+    | "polygon" // n-gone libre via points
+    | "circle"
+    | "arc" // portion de cercle (startAngle → endAngle)
+    | "angle" // marque d'angle : petit arc entre deux demi-droites issues de (x,y)
+    | "segment"
+    | "line" // droite infinie passant par (x,y) et points[0] (ou pente via w,h)
+    | "point"
+    | "text";
+  // kind "text" : nombre ou courte étiquette libre posée en (x, y).
+  text: string;
+  // Coin bas-gauche de la boîte englobante, en carreaux (y vers le haut).
+  // Pour circle/arc/angle/point : centre / sommet.
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  r: number;
+  // Angles en degrés (convention maths : 0 = est, sens antihoraire).
+  // arc : bornes de l'arc. angle : les deux demi-droites de la marque d'angle.
+  startAngle: number;
+  endAngle: number;
+  // polygon / triangle libre / segment / line : sommets explicites.
+  points: StructuredFigurePoint[];
+  tone: StructuredFigureTone;
+  filled: boolean;
+  dashed: boolean;
+  // "none" | "end" | "both" : pointes de flèche sur segment / line / ray.
+  arrow: "none" | "end" | "both";
+  // Noms des sommets dans l'ordre (A, B, C…). "" pour ne pas étiqueter.
+  vertexLabels: string[];
+  // Longueur / nom de chaque côté, même ordre que les sommets.
+  sideLabels: string[];
+  // Index du sommet portant l'angle droit (marque ⟂), ou null.
+  rightAngleAt: number | null;
+  showDimensions: boolean;
+};
+
 export type StructuredFigureElement =
   | {
       type: "line";
@@ -260,6 +307,20 @@ export type StructuredCourseBlock =
       highlightedAngles: StructuredTrigCircleAngle[];
     }
   | {
+      type: "shape";
+      caption: string;
+      // Canevas en carreaux (origine en bas à gauche, y vers le haut).
+      // Auto-agrandi si une part déborde.
+      width: number;
+      height: number;
+      // Preset facultatif assemblé côté serveur à partir de formes simples :
+      // "pythagoras" = triangle rectangle + les 3 carrés des côtés (a, b = cathètes).
+      preset: "none" | "pythagoras";
+      a: number;
+      b: number;
+      parts: StructuredShapePart[];
+    }
+  | {
       type: "pie_chart";
       caption: string;
       slices: StructuredPieSlice[];
@@ -308,6 +369,12 @@ export type StructuredCourseBlock =
       caption: string;
       left: number[];
       right: number[];
+      // Étiquettes libres (prioritaires sur left/right) : "2x + 3", "m", …
+      leftLabel: string;
+      rightLabel: string;
+      // Inclinaison forcée : "level" (équilibre), "left" / "right" (penché de
+      // ce côté), ou "auto" (déduit de la somme des masses).
+      tilt: "auto" | "level" | "left" | "right";
     }
   | {
       type: "grid_painter";
@@ -379,13 +446,6 @@ export type StructuredCourseBlock =
       type: "area_decomposer";
       caption: string;
       shapes: { width: number; height: number; label: string }[];
-    }
-  | {
-      type: "pythagoras_visualizer";
-      caption: string;
-      a: number;
-      b: number;
-      c: number;
     }
   | {
       type: "scientific_notation_converter";
@@ -477,14 +537,6 @@ export type StructuredCourseBlock =
         both?: string;
         neither?: string;
       };
-    }
-  | {
-      type: "triangle_diagram";
-      caption: string;
-      vertexLabels: [string, string, string];
-      sideLabels?: [string, string, string];
-      angleLabels?: [string, string, string];
-      rightAngleAt?: 0 | 1 | 2;
     }
   | {
       type: "box_plot";
@@ -663,6 +715,9 @@ Le serveur cherche et insère une vraie photo libre de droits correspondant à "
 15. Dizaines/centaines/unités (numération, valeur positionnelle) :
 {"type":"base_ten_blocks","hundreds":0,"tens":5,"units":3,"caption":"53 : 5 dizaines et 3 unités"}
 Bloc OBLIGATOIRE dès que tu représentes visuellement un nombre en dizaines/unités (ou centaines) — n'essaie JAMAIS de dessiner ça toi-même avec le bloc "figure" (lignes/points/polygones à la main) : c'est illisible et peu soigné. hundreds/tens/units sont les chiffres de 0 à 9 de chaque rang.
+16. Formes géométriques sur feuille quadrillée (bloc composable) :
+{"type":"shape","caption":"Triangle ABC rectangle en A","width":9,"height":7,"preset":"none","a":3,"b":4,"parts":[{"kind":"right_triangle","x":1,"y":1,"w":7,"h":5,"r":3,"points":[],"tone":"navy","filled":true,"dashed":false,"vertex_labels":["A","B","C"],"side_labels":["","5 cm","3 cm"],"right_angle_at":0,"show_dimensions":false}]}
+Chaque part est une forme simple posée sur le quadrillage (origine en bas à gauche ; x, y, w, h, r en carreaux). kind ∈ rectangle, square, right_triangle, triangle, circle, segment, point, text. La part "text" pose un nombre / une courte étiquette libre en (x, y) — pour les effectifs d'un Venn, une aire, une valeur. On ajoute des OPTIONS plutôt qu'une figure spéciale : vertex_labels (noms des sommets A, B, C…), side_labels (longueurs des côtés), right_angle_at (index du sommet à angle droit, ou null), show_dimensions (cotes auto). Triangle quelconque : "points" = 3 sommets. Combine plusieurs parts sur le même canevas : un diagramme de Venn = 2-3 cercles qui se chevauchent + des parts text ; une décomposition d'aire = plusieurs rectangles. preset:"pythagoras" (avec a, b) assemble un triangle rectangle et les 3 carrés de ses côtés. PRIVILÉGIE "shape" pour TOUTE figure géométrique ; "figure" ne sert que si aucun assemblage de parts ne convient.
 Ne crée aucun autre type de bloc.`;
 
 const ENTITY_MAP: Record<string, string> = {
@@ -1326,6 +1381,142 @@ function normalizeGraphVector(value: unknown): StructuredGraphVector | null {
   };
 }
 
+const SHAPE_KINDS = [
+  "rectangle",
+  "square",
+  "right_triangle",
+  "triangle",
+  "polygon",
+  "circle",
+  "arc",
+  "angle",
+  "segment",
+  "line",
+  "point",
+  "text",
+] as const;
+
+function normalizeShapePart(value: unknown): StructuredShapePart | null {
+  const raw = asRecord(value);
+  if (!raw) return null;
+  const kindRaw = stringValue(raw.kind).toLowerCase();
+  const kind = (SHAPE_KINDS as readonly string[]).includes(kindRaw)
+    ? (kindRaw as StructuredShapePart["kind"])
+    : "rectangle";
+  const x = clamp(finiteNumber(raw.x, 1), -2, 40);
+  const y = clamp(finiteNumber(raw.y, 1), -2, 40);
+  const w = clamp(finiteNumber(raw.w ?? raw.width, kind === "square" ? 4 : 6), 0.5, 40);
+  const h = clamp(
+    finiteNumber(raw.h ?? raw.height, kind === "square" ? w : 4),
+    0.5,
+    40,
+  );
+  const strList = (input: unknown): string[] =>
+    Array.isArray(input)
+      ? input.map((s) => sanitizeStructuredText(s).slice(0, 18))
+      : [];
+  const ptsRaw = Array.isArray(raw.points) ? raw.points : [];
+  const points = ptsRaw
+    .map((p) => asRecord(p))
+    .filter((p): p is Record<string, unknown> => !!p)
+    .map((p) => ({
+      x: clamp(finiteNumber(p.x, 0), -2, 40),
+      y: clamp(finiteNumber(p.y, 0), -2, 40),
+    }))
+    .slice(0, 12);
+  const raRaw = raw.right_angle_at ?? raw.rightAngleAt;
+  const rightAngleAt =
+    typeof raRaw === "number" && Number.isInteger(raRaw) && raRaw >= 0 && raRaw < 12
+      ? raRaw
+      : kind === "right_triangle"
+        ? 0
+        : null;
+  const arrowRaw = stringValue(raw.arrow).toLowerCase();
+  const arrow = arrowRaw === "end" || arrowRaw === "both" ? arrowRaw : "none";
+  return {
+    kind,
+    text: sanitizeStructuredText(raw.text).slice(0, 24),
+    x,
+    y,
+    w: kind === "square" ? w : w,
+    h: kind === "square" ? w : h,
+    r: clamp(finiteNumber(raw.r ?? raw.radius, 3), 0.5, 20),
+    startAngle: finiteNumber(raw.start_angle ?? raw.startAngle, 0),
+    endAngle: finiteNumber(raw.end_angle ?? raw.endAngle, 90),
+    // segment/line/polygon/triangle : sommets libres (jusqu'à 12).
+    points: points.length >= 2 ? points : [],
+    tone: normalizeFigureTone(raw.tone),
+    filled: raw.filled ?? raw.fill ?? (kind === "arc" || kind === "angle" || kind === "line" || kind === "segment" ? false : true) ? true : false,
+    dashed: raw.dashed ?? raw.dash ?? false ? true : false,
+    arrow,
+    vertexLabels: strList(raw.vertex_labels ?? raw.vertexLabels).slice(0, 6),
+    sideLabels: strList(raw.side_labels ?? raw.sideLabels).slice(0, 6),
+    rightAngleAt,
+    showDimensions: raw.show_dimensions ?? raw.showDimensions ?? true ? true : false,
+  };
+}
+
+export function normalizeShapeBlock(
+  raw: Record<string, unknown>,
+): Extract<StructuredCourseBlock, { type: "shape" }> | null {
+  const preset = raw.preset === "pythagoras" ? "pythagoras" : "none";
+  let parts = Array.isArray(raw.parts)
+    ? raw.parts
+        .map(normalizeShapePart)
+        .filter((p): p is StructuredShapePart => p !== null)
+        .slice(0, 8)
+    : [];
+  // Rétro-compat : un "shape" à l'ancienne (kind/width/height au niveau bloc)
+  // devient une part unique.
+  if (parts.length === 0 && preset === "none" && typeof raw.kind === "string") {
+    const single = normalizeShapePart({
+      kind: raw.kind,
+      x: 1,
+      y: 1,
+      w: raw.width,
+      h: raw.height,
+      r: raw.radius,
+      tone: raw.tone,
+      side_labels: Array.isArray(raw.side_labels) ? raw.side_labels : undefined,
+      show_dimensions: raw.show_dimensions ?? raw.showDimensions,
+    });
+    if (single) parts = [single];
+  }
+  if (preset === "none" && parts.length === 0) {
+    parts = [normalizeShapePart({ kind: "rectangle" }) as StructuredShapePart];
+  }
+  const spanX = Math.max(
+    6,
+    ...parts.map((p) =>
+      p.points.length
+        ? Math.max(...p.points.map((pt) => pt.x))
+        : p.kind === "circle" || p.kind === "point"
+          ? p.x + p.r
+          : p.x + p.w,
+    ),
+  );
+  const spanY = Math.max(
+    5,
+    ...parts.map((p) =>
+      p.points.length
+        ? Math.max(...p.points.map((pt) => pt.y))
+        : p.kind === "circle" || p.kind === "point"
+          ? p.y + p.r
+          : p.y + p.h,
+    ),
+  );
+  return {
+    type: "shape",
+    caption: sanitizeStructuredText(raw.caption),
+    width: clamp(Math.ceil(finiteNumber(raw.width, spanX) + 1), 4, 44),
+    height: clamp(Math.ceil(finiteNumber(raw.height, spanY) + 1), 4, 36),
+    preset,
+    a: clamp(finiteNumber(raw.a, 3), 1, 12),
+    b: clamp(finiteNumber(raw.b, 4), 1, 12),
+    parts,
+  };
+}
+
 function normalizeTrigCircleAngle(value: unknown): StructuredTrigCircleAngle | null {
   const raw = asRecord(value);
   if (!raw) return null;
@@ -1664,15 +1855,52 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
         elements,
       };
     }
+    case "shape":
+      return normalizeShapeBlock(raw);
+    case "triangle_diagram": {
+      // Ancien bloc dédié → devient un "shape" composable (1 triangle annoté).
+      const vl = Array.isArray(raw.vertex_labels ?? raw.vertexLabels)
+        ? (raw.vertex_labels ?? raw.vertexLabels)
+        : ["A", "B", "C"];
+      const slRaw = Array.isArray(raw.side_labels ?? raw.sideLabels)
+        ? (raw.side_labels ?? raw.sideLabels)
+        : [];
+      const rightAt = raw.right_angle_at ?? raw.rightAngleAt;
+      return normalizeShapeBlock({
+        caption: raw.caption,
+        width: 10,
+        height: 8,
+        parts: [
+          {
+            kind: rightAt === 0 || rightAt === 1 || rightAt === 2 ? "right_triangle" : "triangle",
+            x: 1,
+            y: 1,
+            w: 8,
+            h: 6,
+            vertex_labels: vl,
+            side_labels: slRaw,
+            right_angle_at: rightAt,
+            show_dimensions: false,
+            tone: "navy",
+          },
+        ],
+      });
+    }
+    case "pythagoras_visualizer":
+      return normalizeShapeBlock({
+        caption: raw.caption,
+        preset: "pythagoras",
+        a: finiteNumber(raw.a, 3),
+        b: finiteNumber(raw.b, 4),
+      });
     case "trig_circle": {
       const rawAngles = raw.highlighted_angles ?? raw.highlightedAngles;
       const highlightedAngles = Array.isArray(rawAngles)
         ? rawAngles
             .map(normalizeTrigCircleAngle)
             .filter((entry): entry is StructuredTrigCircleAngle => entry !== null)
-            .slice(0, 12)
+            .slice(0, 16)
         : [];
-      if (highlightedAngles.length === 0) return null;
       return {
         type: "trig_circle",
         caption: sanitizeStructuredText(raw.caption),
@@ -1768,16 +1996,24 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
     case "balance_scale": {
       const toNumArray = (v: unknown): number[] =>
         Array.isArray(v)
-          ? v.map((n: unknown) => Math.round(finiteNumber(n, 0))).slice(0, 6)
+          ? v.map((n: unknown) => Math.round(finiteNumber(n, 0))).slice(0, 8)
           : [];
       const left = toNumArray(raw.left);
       const right = toNumArray(raw.right);
-      if (left.length === 0 && right.length === 0) return null;
+      const leftLabel = sanitizeStructuredText(raw.left_label ?? raw.leftLabel).slice(0, 40);
+      const rightLabel = sanitizeStructuredText(raw.right_label ?? raw.rightLabel).slice(0, 40);
+      if (left.length === 0 && right.length === 0 && !leftLabel && !rightLabel) return null;
+      const tRaw = stringValue(raw.tilt).toLowerCase();
+      const tilt =
+        tRaw === "level" || tRaw === "left" || tRaw === "right" ? tRaw : "auto";
       return {
         type: "balance_scale",
         caption: sanitizeStructuredText(raw.caption),
         left,
         right,
+        leftLabel,
+        rightLabel,
+        tilt,
       };
     }
     case "grid_painter": {
@@ -1925,13 +2161,29 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
             .slice(0, 5)
         : [];
       if (shapes.length === 0) return null;
-      return { type: "area_decomposer", caption: sanitizeStructuredText(raw.caption), shapes };
-    }
-    case "pythagoras_visualizer": {
-      const a = Math.max(1, finiteNumber(raw.a, 3));
-      const b = Math.max(1, finiteNumber(raw.b, 4));
-      const c = Math.max(1, finiteNumber(raw.c, Math.sqrt(a * a + b * b)));
-      return { type: "pythagoras_visualizer", caption: sanitizeStructuredText(raw.caption), a, b, c };
+      // Décomposition d'aire = plusieurs rectangles → bloc "shape" composable.
+      let ax = 1;
+      return normalizeShapeBlock({
+        caption: raw.caption,
+        parts: shapes.flatMap((s) => {
+          const p = {
+            kind: "rectangle",
+            x: ax,
+            y: 1,
+            w: s.width,
+            h: s.height,
+            tone: "blue",
+            side_labels: [],
+            vertex_labels: [],
+            show_dimensions: true,
+          };
+          const label = s.label
+            ? [{ kind: "text", x: ax + s.width / 2, y: 1 + s.height / 2, text: s.label, tone: "navy" }]
+            : [];
+          ax += s.width + 1;
+          return [p, ...label];
+        }),
+      });
     }
     case "scientific_notation_converter": {
       return {
@@ -2072,50 +2324,32 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
             .slice(0, 3)
         : [];
       if (sets.length < 2) return null;
-      const regionLabelsRaw = asRecord(raw.region_labels ?? raw.regionLabels);
-      const regionLabels = regionLabelsRaw
-        ? {
-            aOnly: sanitizeDiagramLabel(regionLabelsRaw.a_only) || undefined,
-            bOnly: sanitizeDiagramLabel(regionLabelsRaw.b_only) || undefined,
-            both: sanitizeDiagramLabel(regionLabelsRaw.both) || undefined,
-            neither: sanitizeDiagramLabel(regionLabelsRaw.neither) || undefined,
-          }
-        : undefined;
-      return {
-        type: "venn_diagram",
-        caption: sanitizeStructuredText(raw.caption),
-        sets,
-        regionLabels,
-      };
-    }
-    case "triangle_diagram": {
-      const asUnknownArray = (input: unknown): unknown[] =>
-        Array.isArray(input) ? input : [];
-      const vertexLabelsRaw = asUnknownArray(raw.vertex_labels ?? raw.vertexLabels);
-      const vertexLabels = [0, 1, 2].map((index) =>
-        sanitizeDiagramLabel(vertexLabelsRaw[index]) || ["A", "B", "C"][index],
-      ) as [string, string, string];
-      const sideLabelsRaw = asUnknownArray(raw.side_labels ?? raw.sideLabels);
-      const sideLabels = [0, 1, 2].map((index) =>
-        sanitizeDiagramLabel(sideLabelsRaw[index]),
-      ) as [string, string, string];
-      const angleLabelsRaw = asUnknownArray(raw.angle_labels ?? raw.angleLabels);
-      const angleLabels = [0, 1, 2].map((index) =>
-        sanitizeDiagramLabel(angleLabelsRaw[index]),
-      ) as [string, string, string];
-      const rightAngleRaw = raw.right_angle_at ?? raw.rightAngleAt;
-      const rightAngleAt =
-        rightAngleRaw === 0 || rightAngleRaw === 1 || rightAngleRaw === 2
-          ? rightAngleRaw
-          : undefined;
-      return {
-        type: "triangle_diagram",
-        caption: sanitizeStructuredText(raw.caption),
-        vertexLabels,
-        sideLabels,
-        angleLabels,
-        rightAngleAt,
-      };
+      const rl = asRecord(raw.region_labels ?? raw.regionLabels) ?? {};
+      const g = (k: string) => sanitizeDiagramLabel(rl[k]);
+      // Venn = 2 (ou 3) cercles qui se chevauchent + des nombres → "shape".
+      const three = sets.length >= 3;
+      const parts: Record<string, unknown>[] = three
+        ? [
+            { kind: "circle", x: 5, y: 7, r: 4, tone: sets[0].tone, filled: true, vertex_labels: [sets[0].label] },
+            { kind: "circle", x: 9, y: 7, r: 4, tone: sets[1].tone, filled: true, vertex_labels: [sets[1].label] },
+            { kind: "circle", x: 7, y: 4, r: 4, tone: sets[2].tone, filled: true, vertex_labels: [sets[2].label] },
+          ]
+        : [
+            { kind: "circle", x: 6, y: 5.5, r: 3.8, tone: sets[0].tone, filled: true, vertex_labels: [sets[0].label] },
+            { kind: "circle", x: 10, y: 5.5, r: 3.8, tone: sets[1].tone, filled: true, vertex_labels: [sets[1].label] },
+          ];
+      if (!three) {
+        if (g("a_only")) parts.push({ kind: "text", x: 3.8, y: 5.5, text: g("a_only"), tone: "navy" });
+        if (g("both")) parts.push({ kind: "text", x: 8, y: 5.5, text: g("both"), tone: "navy" });
+        if (g("b_only")) parts.push({ kind: "text", x: 12.2, y: 5.5, text: g("b_only"), tone: "navy" });
+        if (g("neither")) parts.push({ kind: "text", x: 14.5, y: 1.5, text: g("neither"), tone: "gray" });
+      }
+      return normalizeShapeBlock({
+        caption: raw.caption,
+        width: 16,
+        height: three ? 13 : 11,
+        parts,
+      });
     }
     case "box_plot": {
       const min = finiteNumber(raw.min, 0);

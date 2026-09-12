@@ -54,13 +54,14 @@ function wireCompassTool(figure: HTMLElement) {
   const handle = figure.querySelector<SVGCircleElement>(".compass-handle");
   const circle = figure.querySelector<SVGCircleElement>(".compass-circle");
   const radiusLine = figure.querySelector<SVGLineElement>(".compass-radius-line");
-  const radiusLabel = figure.querySelector<SVGTextElement>(".compass-radius-label");
-  if (!svg || !handle || !circle || !radiusLine || !radiusLabel || svg.dataset.wired) return;
+  if (!svg || !handle || !circle || !radiusLine || svg.dataset.wired) return;
   svg.dataset.wired = "1";
 
-  const cx = 90, cy = 90;
-  const scale = parseFloat(svg.dataset.scale || "12");
-  const maxR = parseFloat(svg.dataset.maxR || "70");
+  const vb = svg.viewBox.baseVal;
+  const cx = vb.width / 2;
+  const cy = vb.height / 2;
+  const scale = parseFloat(svg.dataset.scale || "15");
+  const maxR = parseFloat(svg.dataset.maxR || "82");
   let dragging = false;
 
   const apply = (r: number) => {
@@ -68,15 +69,13 @@ function wireCompassTool(figure: HTMLElement) {
     circle.setAttribute("r", clamped.toFixed(1));
     handle.setAttribute("cx", (cx + clamped).toFixed(1));
     radiusLine.setAttribute("x2", (cx + clamped).toFixed(1));
-    radiusLabel.setAttribute("x", (cx + clamped / 2).toFixed(1));
-    radiusLabel.textContent = (clamped / scale).toFixed(1);
   };
 
   const pointToRadius = (clientX: number, clientY: number) => {
     const rect = svg.getBoundingClientRect();
-    const scaleFactor = 180 / rect.width;
-    const x = (clientX - rect.left) * scaleFactor;
-    const y = (clientY - rect.top) * scaleFactor;
+    const x = ((clientX - rect.left) / rect.width) * vb.width;
+    const y = ((clientY - rect.top) / rect.height) * vb.height;
+    void scale;
     return Math.hypot(x - cx, y - cy);
   };
 

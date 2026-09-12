@@ -115,13 +115,13 @@ function blockWordCount(block: StructuredCourseBlock): number {
       );
     case "graph":
     case "figure":
+    case "shape":
     case "trig_circle":
     case "pie_chart":
     case "number_line":
     case "bar_chart":
     case "probability_tree":
     case "venn_diagram":
-    case "triangle_diagram":
     case "box_plot":
     case "clock":
     case "fraction":
@@ -139,7 +139,6 @@ function blockWordCount(block: StructuredCourseBlock): number {
     case "compass_tool":
     case "thermometer_axis":
     case "area_decomposer":
-    case "pythagoras_visualizer":
     case "scientific_notation_converter":
     case "equation_balancer":
     case "slope_triangle":
@@ -190,13 +189,13 @@ function isVisualBlock(block: StructuredCourseBlock): boolean {
     block.type === "variation_table" ||
     block.type === "graph" ||
     block.type === "figure" ||
+    block.type === "shape" ||
     block.type === "trig_circle" ||
     block.type === "pie_chart" ||
     block.type === "number_line" ||
     block.type === "bar_chart" ||
     block.type === "probability_tree" ||
     block.type === "venn_diagram" ||
-    block.type === "triangle_diagram" ||
     block.type === "box_plot" ||
     block.type === "clock" ||
     block.type === "fraction" ||
@@ -214,7 +213,6 @@ function isVisualBlock(block: StructuredCourseBlock): boolean {
     block.type === "compass_tool" ||
     block.type === "thermometer_axis" ||
     block.type === "area_decomposer" ||
-    block.type === "pythagoras_visualizer" ||
     block.type === "scientific_notation_converter" ||
     block.type === "equation_balancer" ||
     block.type === "slope_triangle" ||

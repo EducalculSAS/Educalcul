@@ -671,13 +671,13 @@ export function sanitizeStructuredResources<T>(
   const CAPTION_BLOCK_TYPES = new Set([
     "graph",
     "figure",
+    "shape",
     "trig_circle",
     "pie_chart",
     "number_line",
     "bar_chart",
     "probability_tree",
     "venn_diagram",
-    "triangle_diagram",
     "box_plot",
   ]);
   const repairCaption = (record: Record<string, unknown>) => {

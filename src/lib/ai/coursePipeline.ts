@@ -570,13 +570,13 @@ function blockPlainText(block: StructuredCourseBlock): string {
       ].join(" ");
     case "graph":
     case "figure":
+    case "shape":
     case "trig_circle":
     case "pie_chart":
     case "number_line":
     case "bar_chart":
     case "probability_tree":
     case "venn_diagram":
-    case "triangle_diagram":
     case "box_plot":
     case "clock":
     case "fraction":
@@ -594,7 +594,6 @@ function blockPlainText(block: StructuredCourseBlock): string {
     case "compass_tool":
     case "thermometer_axis":
     case "area_decomposer":
-    case "pythagoras_visualizer":
     case "scientific_notation_converter":
     case "equation_balancer":
     case "slope_triangle":

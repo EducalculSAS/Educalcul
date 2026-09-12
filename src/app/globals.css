@@ -180,15 +180,31 @@ main,
     overflow-wrap: break-word;
   }
 
+  /* Carte « liquid glass » Educalcul : verre translucide, halo doré, ombre
+     douce — identique aux autres composants du site. Le tracé lui-même (SVG)
+     est sur une feuille blanche quadrillée pour rester lisible. */
   .course-figure {
-    @apply my-6 flex flex-col items-center justify-center gap-2 mx-auto;
+    @apply relative my-6 flex flex-col items-center justify-center gap-2 mx-auto;
     counter-increment: educalcul-figure;
-    max-width: 420px;
-    padding: 0.75rem 0.75rem 0.5rem;
-    background: linear-gradient(180deg, #ffffff, var(--greek-cream, #faf7f2));
-    border: 1px solid rgba(197, 161, 72, 0.3);
-    border-radius: 16px;
-    box-shadow: 0 4px 16px rgba(15, 30, 58, 0.06);
+    max-width: 440px;
+    padding: 0.9rem 0.9rem 0.7rem;
+    background: linear-gradient(
+      155deg,
+      rgba(255, 255, 255, 0.68),
+      rgba(255, 255, 255, 0.42)
+    );
+    /* Blur modéré : plusieurs figures par leçon, un blur trop fort sature le
+       compositeur (frames noires observées avec 22px sur 40 cartes). */
+    -webkit-backdrop-filter: blur(10px) saturate(1.4);
+    backdrop-filter: blur(10px) saturate(1.4);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-radius: 22px;
+    box-shadow:
+      0 12px 34px rgba(15, 30, 58, 0.13),
+      0 2px 6px rgba(15, 30, 58, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.85),
+      inset 0 0 0 1px rgba(197, 161, 72, 0.12);
   }
 
   /* Un SVG généré sans width/height explicites s'étirait à la taille du
@@ -199,6 +215,31 @@ main,
     @apply block h-auto w-full;
     max-width: min(100%, 22rem);
     max-height: 18rem;
+    /* Filet de sécurité : tout tracé qui sortirait du viewBox (étiquette trop
+       longue, carré débordant...) est rogné au cadre de la figure au lieu de
+       chevaucher le texte autour. */
+    overflow: hidden;
+  }
+
+  /* Feuille quadrillée : la carte glass fournit déjà l'ombre, le SVG garde
+     juste ses coins arrondis. */
+  .edu-fig-svg {
+    border-radius: 12px;
+  }
+
+  /* Feuille quadrillée pour les figures non-SVG (porte-monnaie, jauges, suites
+     logiques) : même papier à petits carreaux que les autres, en CSS.
+     Les tableaux (signes, variations, numération) restent nus, sans fond. */
+  .course-figure-coin-purse .coin-purse-row,
+  .course-figure-ratio-mixer .ratio-mixer-row,
+  .course-figure-pattern-maker .pattern-row {
+    background-color: #ffffff;
+    background-image:
+      linear-gradient(rgba(15, 30, 58, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 30, 58, 0.06) 1px, transparent 1px);
+    background-size: 18px 18px;
+    border-radius: 12px;
+    padding: 14px 16px;
   }
 
   .course-figure figcaption {
@@ -1476,9 +1517,16 @@ main,
 }
 .base-ten-group {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.35rem;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 4px;
+  max-width: 170px;
+}
+.base-ten-group .base-ten-label {
+  flex-basis: 100%;
+  text-align: center;
+  margin-top: 0.35rem;
 }
 .base-ten-hundred {
   width: 72px;
@@ -1541,13 +1589,20 @@ main,
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
-  margin: 1.25rem auto;
-  max-width: 520px;
-  padding: 0.75rem 0.75rem 0.5rem;
-  background: linear-gradient(180deg, #ffffff, var(--greek-cream, #faf7f2));
-  border: 1px solid rgba(197, 161, 72, 0.3);
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(15, 30, 58, 0.06);
+  margin: 1.5rem auto;
+  max-width: 440px;
+  padding: 0.9rem 0.9rem 0.7rem;
+  background: linear-gradient(155deg, rgba(255,255,255,0.68), rgba(255,255,255,0.42));
+  -webkit-backdrop-filter: blur(10px) saturate(1.4);
+  backdrop-filter: blur(10px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.6);
+  border-top-color: rgba(255,255,255,0.9);
+  border-radius: 22px;
+  box-shadow:
+    0 12px 34px rgba(15,30,58,0.13),
+    0 2px 6px rgba(15,30,58,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.85),
+    inset 0 0 0 1px rgba(197,161,72,0.12);
   /* Partage le compteur avec .course-figure : toutes les figures d'une leçon
      (statiques ou interactives) sont numérotées dans le même ordre séquentiel. */
   counter-increment: educalcul-figure;
@@ -1559,11 +1614,10 @@ main,
 }
 .math-graph .g-frame {
   fill: #ffffff;
-  stroke: rgba(197, 161, 72, 0.25);
-  stroke-width: 1;
+  stroke: none;
 }
 .math-graph .g-grid {
-  stroke: rgba(15, 30, 58, 0.07);
+  stroke: rgba(15, 30, 58, 0.06);
   stroke-width: 1;
 }
 .math-graph .g-tick {
@@ -1571,12 +1625,12 @@ main,
   stroke-width: 1;
 }
 .math-graph .g-axis {
-  stroke: rgba(15, 30, 58, 0.55);
-  stroke-width: 1.5;
+  stroke: rgba(15, 30, 58, 0.5);
+  stroke-width: 1.25;
 }
 .math-graph .g-curve {
   stroke: var(--greek-blue, #0f1e3a);
-  stroke-width: 2.6;
+  stroke-width: 2;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -1586,14 +1640,18 @@ main,
   fill: #6b7280;
   font-family: var(--font-body, "Inter", sans-serif);
 }
+/* Même légende que .course-figure figcaption : italique, sans-serif, bronze. */
 .math-graph .g-caption {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--greek-blue, #0f1e3a);
-  font-family: var(--font-display, serif);
+  font-size: 0.875rem;
+  font-style: italic;
+  color: var(--greek-bronze, #8a6d3b);
+  text-align: center;
 }
 .math-graph .g-caption::before {
   content: "Figure " counter(educalcul-figure) " — ";
+  font-weight: 600;
+  font-style: normal;
+  color: var(--greek-blue, #0f1e3a);
 }
 .math-graph .g-vector {
   stroke-width: 2.4;
@@ -1630,6 +1688,69 @@ main,
   font-family: var(--font-body, "Inter", sans-serif);
 }
 
+/* Les figures d'analyse compilées côté serveur (slope_triangle,
+   tangent_scrubber, integral_riemann_slider, sequence_cobweb...) réutilisent
+   le même SVG que .math-graph mais sont enveloppées dans .course-figure-graph.
+   Sans ces règles, .g-frame n'a aucun remplissage → fond noir. */
+.course-figure-graph .g-frame {
+  fill: #ffffff;
+  stroke: none;
+}
+.course-figure-graph .g-grid {
+  stroke: rgba(15, 30, 58, 0.07);
+  stroke-width: 1;
+}
+.course-figure-graph .g-tick {
+  stroke: rgba(15, 30, 58, 0.35);
+  stroke-width: 1;
+}
+.course-figure-graph .g-axis {
+  stroke: rgba(15, 30, 58, 0.5);
+  stroke-width: 1.25;
+}
+.course-figure-graph .g-curve {
+  stroke: var(--greek-blue, #0f1e3a);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.course-figure-graph .g-axlabel {
+  font-size: 11px;
+  fill: #6b7280;
+}
+.course-figure-graph .g-vector {
+  stroke-width: 2.4;
+  stroke-linecap: round;
+}
+.course-figure-graph .g-vector-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+.course-figure-graph .g-cursor {
+  transition: opacity 0.1s ease;
+  pointer-events: none;
+}
+.course-figure-graph .g-cursor-line {
+  stroke: var(--greek-gold, #c5a148);
+  stroke-width: 1;
+  stroke-dasharray: 4 3;
+}
+.course-figure-graph .g-cursor-dot {
+  fill: var(--greek-gold, #c5a148);
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+.course-figure-graph .g-cursor-bg {
+  fill: var(--greek-blue, #0f1e3a);
+  opacity: 0.92;
+}
+.course-figure-graph .g-cursor-text {
+  fill: #fff;
+  font-size: 11px;
+  font-weight: 600;
+}
+
 /* Curseur de paramètre (graphique interactif) */
 .g-param-control {
   display: flex;
@@ -1654,22 +1775,17 @@ main,
   cursor: pointer;
 }
 
-/* Curseur d'angle (cercle trigonométrique interactif) */
-.tc-controls {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  width: 100%;
-  max-width: 320px;
-  margin-top: 0.2rem;
-  font-size: 0.85rem;
+/* Lecture du cercle trigonométrique interactif */
+.tc-readout {
+  margin-top: 0.3rem;
+  font-size: 0.82rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   color: var(--greek-blue, #0f1e3a);
+  white-space: nowrap;
 }
-.tc-angle-slider {
-  flex: 1;
-  accent-color: var(--greek-gold, #c5a148);
-  cursor: pointer;
+.tc-angle-value {
+  white-space: nowrap;
 }
 
 /* Horloge (cadran statique + aiguilles déplaçables, cf. clockInteractive.ts) */
@@ -1724,7 +1840,29 @@ main,
 .coin-item {
   cursor: pointer;
   border-radius: 999px;
-  transition: transform 0.1s ease;
+  transition: transform 0.12s ease;
+  display: inline-flex;
+}
+.coin-item:hover {
+  transform: translateY(-2px);
+}
+.coin-item svg {
+  width: 3rem !important;
+  height: 3rem !important;
+  max-width: 3rem !important;
+  max-height: 3rem !important;
+}
+.coin-item-bill {
+  border-radius: 6px;
+}
+.coin-item-bill svg {
+  width: 4.6rem !important;
+  height: auto !important;
+  max-width: 4.6rem !important;
+  max-height: 2.6rem !important;
+}
+.coin-item-bill.coin-item-selected {
+  border-radius: 6px;
 }
 .coin-item:hover {
   transform: translateY(-2px);
@@ -1803,6 +1941,12 @@ main,
 
 /* Tableau de numération (cf. renderPlaceValueChart) */
 .course-figure-place-value table { margin: 0 auto; }
+.course-figure-place-value .math-table th,
+.course-figure-place-value .math-table td {
+  padding: 0.35rem 0.5rem;
+  min-width: 0;
+  font-size: 0.82rem;
+}
 
 /* Jauges de proportions (cf. renderRatioMixer) */
 .ratio-mixer-row {
@@ -1889,13 +2033,38 @@ main,
 .protractor-slider { accent-color: var(--greek-gold, #c5a148); }
 
 /* Compas (cf. renderCompassTool) */
-.course-figure-compass svg { max-width: 180px; }
+.course-figure-compass svg { max-width: 240px; }
 
 /* Thermomètre (cf. renderThermometerAxis) */
 .course-figure-thermometer svg { max-width: 160px; }
 
 /* Décomposeur d'aire (cf. renderAreaDecomposer) */
-.course-figure-area-decomposer svg { max-width: 100%; overflow-x: auto; }
+.course-figure-area-decomposer svg { max-width: min(100%, 20rem); }
+
+/* Camembert (cf. renderPieChart) */
+.course-figure-pie-chart svg { max-width: 190px; }
+.pie-legend {
+  list-style: none;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--greek-blue, #0f1e3a);
+}
+.pie-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.pie-legend-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 3px;
+  display: inline-block;
+}
 
 /* Pythagore (cf. renderPythagorasVisualizer) */
 .course-figure-pythagoras svg { max-width: 260px; }

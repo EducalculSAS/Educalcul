@@ -38,33 +38,39 @@ const FETCH_PATCH_KEY = "__api_fetch_patched__";
 if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
   (window as any)[FETCH_PATCH_KEY] = true;
   const originalFetch = window.fetch.bind(window);
-  window.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
-    let url = "";
+
+  const targetUrl = (input: RequestInfo | URL): string => {
     try {
-      url =
-        typeof input === "string"
-          ? input
-          : input instanceof URL
-            ? input.href
-            : input.url;
-      if (url.startsWith("/api/")) {
-        const {
-          data: { session },
-        } = await getPublicClient().auth.getSession();
-        // Le jeton 2FA voyage désormais dans un cookie httpOnly (voir
-        // src/lib/twoFactorCookie.ts) : le navigateur l'attache tout seul aux
-        // requêtes same-origin, plus besoin de le lire/poser à la main ici
-        // (et il n'est de toute façon plus lisible depuis ce JS).
-        if (session?.access_token) {
-          const headers = new Headers(
-            init?.headers ??
-              (input instanceof Request ? input.headers : undefined),
-          );
-          if (!headers.has("Authorization")) {
-            headers.set("Authorization", `Bearer ${session.access_token}`);
-          }
-          init = { ...init, headers };
+      if (typeof input === "string") return input;
+      if (input instanceof URL) return input.href;
+      return (input as Request).url;
+    } catch {
+      return "";
+    }
+  };
+
+  const apiFetch = async (
+    input: RequestInfo | URL,
+    init: RequestInit | undefined,
+    url: string,
+  ): Promise<Response> => {
+    try {
+      const {
+        data: { session },
+      } = await getPublicClient().auth.getSession();
+      // Le jeton 2FA voyage désormais dans un cookie httpOnly (voir
+      // src/lib/twoFactorCookie.ts) : le navigateur l'attache tout seul aux
+      // requêtes same-origin, plus besoin de le lire/poser à la main ici
+      // (et il n'est de toute façon plus lisible depuis ce JS).
+      if (session?.access_token) {
+        const headers = new Headers(
+          init?.headers ??
+            (input instanceof Request ? input.headers : undefined),
+        );
+        if (!headers.has("Authorization")) {
+          headers.set("Authorization", `Bearer ${session.access_token}`);
         }
+        init = { ...init, headers };
       }
     } catch {
       // Never block a request because token retrieval failed.
@@ -105,7 +111,44 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
       getPublicClient().auth.refreshSession().catch(() => {});
     }
     return response;
+  };
+
+  // Seules les requêtes vers nos routes /api/ passent par le wrapper (auth +
+  // gestion des 401). Tout le reste — HMR de Turbopack, préchargement RSC de
+  // Next, appels internes du client Supabase (auth/realtime), images... — est
+  // renvoyé au fetch natif tel quel.
+  window.fetch = ((input: RequestInfo | URL, init?: RequestInit) => {
+    const url = targetUrl(input);
+    if (url.startsWith("/api/")) return apiFetch(input, init, url);
+    return originalFetch(input as any, init);
   }) as typeof fetch;
+
+  // « Failed to fetch » = échec de la COUCHE RÉSEAU (hors-ligne, DNS, CORS,
+  // requête annulée, HMR/serveur dev qui redémarre, rafraîchissement de jeton
+  // Supabase pendant une coupure). Ce n'est jamais une erreur HTTP applicative
+  // (celles-là arrivent avec un vrai Response). Le code qui doit réagir à une
+  // panne réseau a déjà son try/catch ; une rejection *non gérée* de ce type
+  // n'est que du bruit (overlay Next en dev, console.error en prod). On la
+  // neutralise, sans toucher aux erreurs réellement traitées.
+  const isNetworkFailure = (reason: unknown): boolean => {
+    const err = reason as { name?: string; message?: string } | null;
+    return (
+      !!err &&
+      err.name === "TypeError" &&
+      typeof err.message === "string" &&
+      /fetch|network|load failed/i.test(err.message)
+    );
+  };
+  window.addEventListener(
+    "unhandledrejection",
+    (event) => {
+      if (isNetworkFailure(event.reason)) {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+    },
+    true,
+  );
 }
 
 // ─── Admin client (service role) — SERVER ONLY ────────────────────────────

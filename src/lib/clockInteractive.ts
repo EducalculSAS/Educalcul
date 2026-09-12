@@ -70,7 +70,16 @@ function wireClock(figure: HTMLElement) {
     if (!dragging) return;
     const angle = angleFromPointer(svg, event.clientX, event.clientY);
     if (dragging === "minute") {
-      minutes = Math.round(angle / 6) % 60;
+      const next = Math.round(angle / 6) % 60;
+      // Faire un tour complet de la grande aiguille avance (ou recule)
+      // l'heure : sans ça, l'heure lue restait figée quand l'élève tournait
+      // les minutes au-delà de 60.
+      if (minutes >= 45 && next <= 15) {
+        hours = (hours % 12) + 1;
+      } else if (minutes <= 15 && next >= 45) {
+        hours = ((hours + 10) % 12) + 1;
+      }
+      minutes = next;
     } else {
       hours = Math.round(angle / 30) % 12;
       if (hours === 0) hours = 12;

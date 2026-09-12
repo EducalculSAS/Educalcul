@@ -112,11 +112,13 @@ const GRAPH_VECTOR_PALETTE = {
   gray: "#64748b",
 } as const;
 
+// Rendu en LaTeX ($...$) même pour un signe seul : cohérence avec le reste du
+// tableau (les autres cellules sont du KaTeX) — demande explicite.
 function signSymbol(value: string): string {
-  if (value === "positive") return "+";
-  if (value === "negative") return "−";
-  if (value === "zero") return "0";
-  return "∅";
+  if (value === "positive") return "$+$";
+  if (value === "negative") return "$-$";
+  if (value === "zero") return "$0$";
+  return "$\\varnothing$";
 }
 
 function directionSymbol(value: string): string {
@@ -125,25 +127,6 @@ function directionSymbol(value: string): string {
   return "↗";
 }
 
-function simpleHash(value: string): string {
-  let hash = 0;
-  for (let index = 0; index < value.length; index += 1) {
-    hash = (hash * 31 + value.charCodeAt(index)) >>> 0;
-  }
-  return hash.toString(36);
-}
-
-function figureLabel(
-  value: StructuredRichText | undefined,
-  x: number | undefined,
-  y: number | undefined,
-): string {
-  if (!value?.parts.length || x === undefined || y === undefined) return "";
-  const label = structuredRichTextToPlainText(value);
-  return label
-    ? `<text x="${x}" y="${y}" font-size="12" fill="#10213d">${escapeHtml(label)}</text>`
-    : "";
-}
 
 function polarPoint(
   cx: number,
@@ -181,87 +164,165 @@ function trigPoint(
   return { x: cx + radius * Math.cos(radians), y: cy - radius * Math.sin(radians) };
 }
 
-function labelAnchorFor(cosValue: number): "start" | "middle" | "end" {
-  if (cosValue > 0.2) return "start";
-  if (cosValue < -0.2) return "end";
-  return "middle";
+// ── Système de figures Educalcul ────────────────────────────────────────────
+// Toutes les figures partagent : une feuille blanche quadrillée (papier à
+// petits carreaux), un cadre arrondi doré discret, la même palette, les mêmes
+// épaisseurs de trait, des étiquettes avec halo blanc (lisibles par-dessus
+// n'importe quel tracé), et des cotes (traits de mesure) pour donner l'ordre
+// de grandeur. La carte extérieure .course-figure fournit l'effet liquid glass
+// (globals.css). Objectif : cohérence visuelle d'une figure à l'autre.
+
+const FIG = {
+  ink: "#0f1e3a",
+  inkSoft: "rgba(15,30,58,0.5)",
+  paper: "#ffffff",
+  grid: "rgba(15,30,58,0.06)",
+  gridBold: "rgba(15,30,58,0.12)",
+  frame: "rgba(197,161,72,0.4)",
+  accent: "#c89f36",
+} as const;
+
+const FIG_STROKE = 1.75;
+
+/** Motif de fond : feuille quadrillée + gros carreaux tous les 5, cadre doré.
+ * `cell` est le pas de la petite grille en unités du viewBox. */
+function figPaper(width: number, height: number, cell = 20): string {
+  const small = `epaper-s-${cell}`;
+  const big = `epaper-b-${cell}`;
+  const b = cell * 5;
+  return (
+    `<defs>` +
+    `<pattern id="${small}" width="${cell}" height="${cell}" patternUnits="userSpaceOnUse">` +
+    `<path d="M ${cell} 0 L 0 0 0 ${cell}" fill="none" stroke="${FIG.grid}" stroke-width="1"/></pattern>` +
+    `<pattern id="${big}" width="${b}" height="${b}" patternUnits="userSpaceOnUse">` +
+    `<path d="M ${b} 0 L 0 0 0 ${b}" fill="none" stroke="${FIG.gridBold}" stroke-width="1"/></pattern>` +
+    `</defs>` +
+    // Feuille blanche + quadrillage seulement. Pas de cadre : la carte
+    // .course-figure (verre) est le seul cadre — on évite le double contour.
+    `<rect x="0" y="0" width="${num(width)}" height="${num(height)}" fill="${FIG.paper}"/>` +
+    `<rect x="0" y="0" width="${num(width)}" height="${num(height)}" fill="url(#${small})"/>` +
+    `<rect x="0" y="0" width="${num(width)}" height="${num(height)}" fill="url(#${big})"/>`
+  );
 }
 
-function labelDyFor(sinValue: number): string {
-  if (sinValue > 0.2) return "-4";
-  if (sinValue < -0.2) return "10";
-  return "3";
-}
-
-// Coordonnées exactes des angles remarquables du cercle trigonométrique :
-// calculées une fois ici, jamais confiées au modèle (élimine tout risque
-// d'erreur de calcul ou de "racine(3)/2" mal placé/tronqué).
-const UNIT_CIRCLE_COORDS: Record<number, [string, string]> = {
-  0: ["1", "0"],
-  30: ["√3/2", "1/2"],
-  45: ["√2/2", "√2/2"],
-  60: ["1/2", "√3/2"],
-  90: ["0", "1"],
-  120: ["-1/2", "√3/2"],
-  135: ["-√2/2", "√2/2"],
-  150: ["-√3/2", "1/2"],
-  180: ["-1", "0"],
-  210: ["-√3/2", "-1/2"],
-  225: ["-√2/2", "-√2/2"],
-  240: ["-1/2", "-√3/2"],
-  270: ["0", "-1"],
-  300: ["1/2", "-√3/2"],
-  315: ["√2/2", "-√2/2"],
-  330: ["√3/2", "-1/2"],
-};
-
-/** Fond quadrillé (cadre blanc arrondi + grille fine), même style visuel que
- * .math-graph (mathGraph.ts) pour que tous les diagrammes à base de plan
- * coordonné se ressemblent. */
+/** Alias rétro-compat : quadrillage simple. */
 function gridBackground(width: number, height: number, step: number): string {
-  const frame = `<rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="6" fill="#ffffff" stroke="rgba(197,161,72,0.25)" stroke-width="1"/>`;
-  const lines: string[] = [];
-  for (let x = step; x < width; x += step) {
-    lines.push(`<line x1="${x}" y1="1" x2="${x}" y2="${height - 1}" stroke="rgba(15,30,58,0.07)" stroke-width="1"/>`);
-  }
-  for (let y = step; y < height; y += step) {
-    lines.push(`<line x1="1" y1="${y}" x2="${width - 1}" y2="${y}" stroke="rgba(15,30,58,0.07)" stroke-width="1"/>`);
-  }
-  return frame + lines.join("");
+  return figPaper(width, height, step);
 }
 
-function renderTrigCircle(
-  block: Extract<StructuredCourseBlock, { type: "trig_circle" }>,
+/** Marqueurs de flèche partagés (un id fixe : identiques partout). */
+function figArrowDefs(): string {
+  return (
+    `<defs>` +
+    `<marker id="efig-arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto" markerUnits="userSpaceOnUse">` +
+    `<path d="M0,0 L6.5,3 L0,6 Z" fill="${FIG.ink}"/></marker>` +
+    `<marker id="efig-arrow-start" markerWidth="8" markerHeight="8" refX="0.5" refY="3" orient="auto" markerUnits="userSpaceOnUse">` +
+    `<path d="M6.5,0 L0,3 L6.5,6 Z" fill="${FIG.ink}"/></marker>` +
+    `<marker id="efig-tick" markerWidth="6" markerHeight="8" refX="3" refY="4" orient="auto" markerUnits="userSpaceOnUse">` +
+    `<line x1="3" y1="0.5" x2="3" y2="7.5" stroke="${FIG.accent}" stroke-width="1.1"/></marker>` +
+    `</defs>`
+  );
+}
+
+/** Attributs marker-* pour un trait selon l'option `arrow`. */
+function arrowAttrs(arrow: "none" | "end" | "both"): string {
+  if (arrow === "end") return ' marker-end="url(#efig-arrow)"';
+  if (arrow === "both") return ' marker-start="url(#efig-arrow-start)" marker-end="url(#efig-arrow)"';
+  return "";
+}
+
+/** Portion de cercle (arc) : path SVG de startAngle à endAngle (degrés,
+ * convention maths). `flipY` inverse le sens vertical (repères écran). */
+function arcPath(cx: number, cy: number, r: number, startDeg: number, endDeg: number, flipY = 1): string {
+  const a0 = (startDeg * Math.PI) / 180;
+  const a1 = (endDeg * Math.PI) / 180;
+  const x0 = cx + r * Math.cos(a0);
+  const y0 = cy - flipY * r * Math.sin(a0);
+  const x1 = cx + r * Math.cos(a1);
+  const y1 = cy - flipY * r * Math.sin(a1);
+  const large = Math.abs(endDeg - startDeg) % 360 > 180 ? 1 : 0;
+  const sweep = endDeg > startDeg ? (flipY > 0 ? 0 : 1) : flipY > 0 ? 1 : 0;
+  return `M ${num(x0)} ${num(y0)} A ${num(r)} ${num(r)} 0 ${large} ${sweep} ${num(x1)} ${num(y1)}`;
+}
+
+/** Étiquette texte avec halo blanc : toujours lisible, même posée sur un trait
+ * ou un aplat de couleur. À utiliser partout à la place d'un <text> brut. */
+function figText(
+  x: number,
+  y: number,
+  content: string,
+  opts: { size?: number; weight?: number; anchor?: "start" | "middle" | "end"; fill?: string } = {},
 ): string {
-  const cx = 100;
-  const cy = 100;
-  const r = 68;
-  const angles = block.highlightedAngles.slice(0, 8);
-  const grid = gridBackground(200, 200, 20);
-  const axes = `<line x1="${cx - r - 18}" y1="${cy}" x2="${cx + r + 18}" y2="${cy}" stroke="rgba(15,30,58,0.55)" stroke-width="1.5"/><line x1="${cx}" y1="${cy - r - 18}" x2="${cx}" y2="${cy + r + 18}" stroke="rgba(15,30,58,0.55)" stroke-width="1.5"/>`;
-  const circle = `<circle cx="${cx}" cy="${cy}" r="${r}" stroke="#10213d" stroke-width="1.5" fill="none"/>`;
-  const markers = angles
-    .map((angle) => {
-      const normalized = ((Math.round(angle.angleDeg) % 360) + 360) % 360;
-      const exact = UNIT_CIRCLE_COORDS[normalized];
-      const text = exact
-        ? `${escapeHtml(angle.label)} : (${escapeHtml(exact[0])}, ${escapeHtml(exact[1])})`
-        : escapeHtml(angle.label);
-      const point = trigPoint(cx, cy, r, angle.angleDeg);
-      const labelPoint = trigPoint(cx, cy, r + 16, angle.angleDeg);
-      const radians = (angle.angleDeg * Math.PI) / 180;
-      const anchor = labelAnchorFor(Math.cos(radians));
-      const dy = labelDyFor(Math.sin(radians));
-      return `<circle cx="${num(point.x)}" cy="${num(point.y)}" r="3.2" fill="#dc2626"/><text x="${num(labelPoint.x)}" y="${num(labelPoint.y)}" dy="${dy}" font-size="10" text-anchor="${anchor}" fill="#10213d">${text}</text>`;
-    })
+  const size = opts.size ?? 11;
+  const weight = opts.weight ?? 500;
+  const anchor = opts.anchor ?? "middle";
+  const fill = opts.fill ?? FIG.ink;
+  // Halo contrasté : blanc sous un texte foncé, foncé sous un texte clair
+  // (sinon un « 10 € » blanc sur billet devenait un pâté blanc illisible).
+  const light = ["#fff", "#ffffff", "#fefefe"].includes(fill.toLowerCase().trim());
+  const halo = light ? "rgba(15,30,58,0.35)" : "#ffffff";
+  const haloW = light ? 2 : 2.6;
+  return (
+    `<text x="${num(x)}" y="${num(y)}" font-size="${size}" font-weight="${weight}" ` +
+    `text-anchor="${anchor}" fill="${fill}" stroke="${halo}" stroke-width="${haloW}" ` +
+    `stroke-linejoin="round" paint-order="stroke" style="paint-order:stroke">${content}</text>`
+  );
+}
+
+/** Cote (trait de mesure) : petite ligne dorée à double flèche + étiquette,
+ * décalée du segment mesuré. `offset` positif = au-dessus / à gauche. */
+function figDimension(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  label: string,
+  offset = 12,
+): string {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.hypot(dx, dy) || 1;
+  const nx = -dy / len;
+  const ny = dx / len;
+  const ox = nx * offset;
+  const oy = ny * offset;
+  const ax1 = x1 + ox;
+  const ay1 = y1 + oy;
+  const ax2 = x2 + ox;
+  const ay2 = y2 + oy;
+  const mx = (ax1 + ax2) / 2;
+  const my = (ay1 + ay2) / 2;
+  return (
+    `<g class="efig-dim">` +
+    `<line x1="${num(x1)}" y1="${num(y1)}" x2="${num(ax1 + nx * 3)}" y2="${num(ay1 + ny * 3)}" stroke="${FIG.accent}" stroke-width="0.9" stroke-dasharray="2 2"/>` +
+    `<line x1="${num(x2)}" y1="${num(y2)}" x2="${num(ax2 + nx * 3)}" y2="${num(ay2 + ny * 3)}" stroke="${FIG.accent}" stroke-width="0.9" stroke-dasharray="2 2"/>` +
+    `<line x1="${num(ax1)}" y1="${num(ay1)}" x2="${num(ax2)}" y2="${num(ay2)}" stroke="${FIG.accent}" stroke-width="1.1" marker-start="url(#efig-tick)" marker-end="url(#efig-tick)"/>` +
+    figText(mx, my - 2, escapeHtml(label), { size: 9.5, fill: "#8a6d3b", weight: 600 }) +
+    `</g>`
+  );
+}
+
+/** Ouvre une figure Educalcul : cadre + papier quadrillé + defs de flèches.
+ * Le renderer y ajoute son tracé puis referme avec `</svg>`. */
+function figOpen(width: number, height: number, opts: { grid?: boolean; cell?: number } = {}): string {
+  const paper = opts.grid === false
+    ? `<rect x="0" y="0" width="${num(width)}" height="${num(height)}" fill="${FIG.paper}"/>`
+    : figPaper(width, height, opts.cell ?? 20);
+  return `<svg class="edu-fig-svg" viewBox="0 0 ${num(width)} ${num(height)}" xmlns="http://www.w3.org/2000/svg" role="img">${figArrowDefs()}${paper}`;
+}
+
+const SHAPE_FILL_OPACITY = "0.14";
+
+const SUPERSCRIPT: Record<string, string> = {
+  "0": "⁰", "1": "¹", "2": "²", "3": "³", "4": "⁴", "5": "⁵",
+  "6": "⁶", "7": "⁷", "8": "⁸", "9": "⁹", "-": "⁻", "+": "⁺",
+};
+/** Exposant en vrais caractères unicode (10⁻⁶, x², …) pour les <text> SVG. */
+function toSuperscript(value: number | string): string {
+  return String(value)
+    .split("")
+    .map((c) => SUPERSCRIPT[c] ?? c)
     .join("");
-  // Point mobile ajouté/animé côté client par enhanceTrigCircles
-  // (src/lib/trigCircleInteractive.ts) : le curseur fait varier l'angle et
-  // affiche (cos, sin) en direct, sans jamais recalculer le tracé statique
-  // ci-dessus (déjà correct et déterministe).
-  const svg = `<svg class="tc-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img">${grid}${axes}${circle}${markers}<g class="tc-live"></g></svg>`;
-  const controls = `<div class="tc-controls"><input type="range" class="tc-angle-slider" min="0" max="360" step="1" value="45"/><span class="tc-angle-value">45°</span></div>`;
-  return `<figure class="course-figure course-figure-trig-circle">${svg}${controls}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function formatCentimes(centimes: number): string {
@@ -270,22 +331,143 @@ function formatCentimes(centimes: number): string {
   return `${centimes} c`;
 }
 
+/** Couronne de 12 étoiles de l'UE, en arc, pour les billets et les pièces. */
+function euroStars(cx: number, cy: number, radius: number, count: number, size: number, from: number, to: number, color: string): string {
+  const pts: string[] = [];
+  for (let i = 0; i < count; i++) {
+    const ang = ((from + ((to - from) * i) / Math.max(1, count - 1)) * Math.PI) / 180;
+    const x = cx + radius * Math.cos(ang);
+    const y = cy + radius * Math.sin(ang);
+    const star: string[] = [];
+    for (let k = 0; k < 10; k++) {
+      const r = k % 2 === 0 ? size : size * 0.42;
+      const a = (Math.PI / 5) * k - Math.PI / 2;
+      star.push(`${(x + r * Math.cos(a)).toFixed(1)},${(y + r * Math.sin(a)).toFixed(1)}`);
+    }
+    pts.push(`<polygon points="${star.join(" ")}" fill="${color}"/>`);
+  }
+  return pts.join("");
+}
+
+/** Pièce ou billet en euro, dessin stylisé mais reconnaissable (motif « fenêtre
+ * / portail » des billets série 1, couronne d'étoiles, valeur en gros ;
+ * métaux réalistes pour les pièces). value en centimes. */
+function moneySvg(value: number): string {
+  const label = formatCentimes(value);
+  if (value >= 500) {
+    // Couleur dominante officielle de la coupure.
+    const notes: Record<number, [string, string, string]> = {
+      500: ["#7c7f85", "#b9bdc4", "#e7e9ec"],
+      1000: ["#9c3d2c", "#c9705a", "#efc7ba"],
+      2000: ["#2f6aa8", "#5f97c9", "#c3ddef"],
+      5000: ["#c07d2f", "#dda85b", "#f2d9ac"],
+      10000: ["#3f8f5e", "#6fb98a", "#c6e4d1"],
+      20000: ["#6f5aa0", "#9a86c2", "#d8cde8"],
+      50000: ["#b06a90", "#d199b7", "#eccfdd"],
+    };
+    const [dark, mid, light] = notes[value] ?? notes[500];
+    const gid = `note-${value}`;
+    const w = 108;
+    const h = 58;
+    return (
+      `<svg viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">` +
+      `<defs><linearGradient id="${gid}" x1="0" y1="0" x2="0.15" y2="1">` +
+      `<stop offset="0" stop-color="${light}"/><stop offset="0.5" stop-color="${mid}"/><stop offset="1" stop-color="${dark}"/></linearGradient></defs>` +
+      `<rect x="3" y="6" width="${w - 6}" height="${h - 12}" rx="5" fill="url(#${gid})" stroke="${dark}" stroke-width="1.4"/>` +
+      // Portail / fenêtre (motif recto série 1)
+      `<path d="M 12 ${h - 10} L 12 24 Q 12 14 24 14 Q 36 14 36 24 L 36 ${h - 10} Z" fill="#ffffff" fill-opacity="0.22" stroke="#ffffff" stroke-opacity="0.5" stroke-width="1"/>` +
+      `<line x1="24" y1="14" x2="24" y2="${h - 10}" stroke="#ffffff" stroke-opacity="0.4" stroke-width="0.8"/>` +
+      // Bande holographique
+      `<rect x="${w - 20}" y="8" width="9" height="${h - 16}" rx="2" fill="#ffffff" fill-opacity="0.35"/>` +
+      euroStars(w - 15.5, 22, 6.5, 12, 1.1, 0, 359, "#ffffff") +
+      figText(w * 0.56, 30, "EURO", { size: 5.5, weight: 700, fill: "#ffffff" }) +
+      figText(w * 0.56, 44, escapeHtml(label), { size: 17, weight: 800, fill: "#ffffff" }) +
+      `</svg>`
+    );
+  }
+  // Pièce : cuivre (1/2/5 c), or nordique (10/20/50 c), bimétal (1/2 €).
+  const gid = `coin-${value}`;
+  let ring = "#c9a23c";
+  let center = "#e8c964";
+  if (value <= 5) {
+    ring = "#a9622f";
+    center = "#cf8a55";
+  } else if (value >= 100) {
+    ring = value === 200 ? "#e0c057" : "#c3c8d1";
+    center = value === 200 ? "#c3c8d1" : "#e6c964";
+  }
+  const bimetal = value >= 100;
+  const numeral = value >= 100 ? String(value / 100) : String(value);
+  return (
+    `<svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">` +
+    `<defs><radialGradient id="${gid}" cx="0.36" cy="0.3" r="0.8">` +
+    `<stop offset="0" stop-color="#ffffff" stop-opacity="0.75"/>` +
+    `<stop offset="0.4" stop-color="${center}"/>` +
+    `<stop offset="1" stop-color="${ring}"/></radialGradient></defs>` +
+    `<circle cx="30" cy="30" r="27" fill="url(#${gid})" stroke="${ring}" stroke-width="1.5"/>` +
+    (bimetal
+      ? `<circle cx="30" cy="30" r="17" fill="${value === 200 ? "#eef0f3" : "#f3e5b8"}" fill-opacity="0.55" stroke="${ring}" stroke-width="0.8"/>`
+      : `<circle cx="30" cy="30" r="21" fill="none" stroke="${ring}" stroke-width="0.9" stroke-opacity="0.6"/>`) +
+    euroStars(30, 30, 23, 12, 1.05, 0, 359, "rgba(255,255,255,0.5)") +
+    figText(30, 32, escapeHtml(numeral), { size: value >= 100 ? 17 : 14, weight: 800, fill: FIG.ink }) +
+    figText(30, 43, value >= 100 ? "€" : "cent", { size: value >= 100 ? 8 : 5.5, weight: 700, fill: FIG.ink }) +
+    `</svg>`
+  );
+}
+
 function renderCoinPurse(
   block: Extract<StructuredCourseBlock, { type: "coin_purse" }>,
 ): string {
-  const coinWidth = 56;
   const items = block.coins
-    .map((value, i) => {
-      const isBill = value >= 500;
-      const shape = isBill
-        ? `<rect x="4" y="14" width="48" height="28" rx="4" fill="#eef3fb" stroke="#10213d" stroke-width="1.5"/>`
-        : `<circle cx="28" cy="28" r="24" fill="#f6ecd2" stroke="#10213d" stroke-width="1.5"/>`;
-      const label = `<text x="28" y="32" font-size="11" text-anchor="middle" fill="#10213d">${escapeHtml(formatCentimes(value))}</text>`;
-      return `<g class="coin-item" data-value="${value}" role="button" tabindex="0"><svg viewBox="0 0 56 56" width="${coinWidth}" height="${coinWidth}">${shape}${label}</svg></g>`;
-    })
+    .map(
+      (value) =>
+        `<span class="coin-item${value >= 500 ? " coin-item-bill" : ""}" data-value="${value}" role="button" tabindex="0">${moneySvg(value)}</span>`,
+    )
     .join("");
   const purse = `<div class="coin-purse-zone"><div class="coin-purse-total" data-target="${block.target}">Total : <span class="coin-purse-total-value">0 c</span></div><button type="button" class="coin-purse-reset">Réinitialiser</button></div>`;
   return `<figure class="course-figure course-figure-coin-purse"><div class="coin-purse-row">${items}</div>${purse}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+/** Balance de Roberval : deux plateaux plats suspendus au fléau ; chaque
+ * membre est écrit en UNE étiquette ("3 + 2", "2x + 1"…) posée sur son plateau
+ * — jamais de débordement quel que soit le nombre de termes. */
+function balanceScaleSvg(leftLabel: string, rightLabel: string, tiltDeg: number): string {
+  const W = 320;
+  const H = 160;
+  const cx = W / 2;
+  const pivotY = 40;
+  const beamHalf = 96;
+  const rad = (Math.max(-8, Math.min(8, tiltDeg)) * Math.PI) / 180;
+  const ex = (side: 1 | -1) => cx + side * beamHalf * Math.cos(rad);
+  const ey = (side: 1 | -1) => pivotY + side * beamHalf * Math.sin(rad);
+
+  const plate = (bx: number, by: number, label: string, tone: string) => {
+    const text = label || "0";
+    const size = Math.max(9, Math.min(13, 15 - Math.max(0, text.length - 3) * 0.5));
+    const half = Math.min(58, Math.max(30, (text.length * size * 0.6) / 2 + 10));
+    const dy = by + 38;
+    const strings =
+      `<line x1="${num(bx)}" y1="${num(by)}" x2="${num(bx - half * 0.7)}" y2="${num(dy)}" stroke="${FIG.inkSoft}" stroke-width="1"/>` +
+      `<line x1="${num(bx)}" y1="${num(by)}" x2="${num(bx + half * 0.7)}" y2="${num(dy)}" stroke="${FIG.inkSoft}" stroke-width="1"/>`;
+    const tray =
+      `<rect x="${num(bx - half)}" y="${num(dy)}" width="${num(half * 2)}" height="4" rx="2" fill="${FIG.ink}"/>` +
+      `<path d="M ${num(bx - half)} ${num(dy + 2)} Q ${num(bx)} ${num(dy + 9)} ${num(bx + half)} ${num(dy + 2)}" fill="none" stroke="${FIG.inkSoft}" stroke-width="1"/>`;
+    const chip =
+      `<rect x="${num(bx - half + 2)}" y="${num(dy - 20)}" width="${num(half * 2 - 4)}" height="19" rx="5" fill="${tone}" fill-opacity="0.92"/>` +
+      figText(bx, dy - 7, escapeHtml(text), { size, weight: 700, fill: "#ffffff" });
+    return strings + tray + chip;
+  };
+
+  const beam = `<line x1="${num(ex(-1))}" y1="${num(ey(-1))}" x2="${num(ex(1))}" y2="${num(ey(1))}" stroke="${FIG.ink}" stroke-width="3.5" stroke-linecap="round"/>`;
+  const post = `<rect x="${num(cx - 3)}" y="${pivotY}" width="6" height="${H - 22 - pivotY}" rx="2" fill="${FIG.ink}"/>`;
+  const base = `<path d="M ${num(cx - 34)} ${H - 10} L ${num(cx - 13)} ${H - 22} L ${num(cx + 13)} ${H - 22} L ${num(cx + 34)} ${H - 10} Z" fill="#eff3fb" stroke="${FIG.ink}" stroke-width="1.5" stroke-linejoin="round"/>`;
+  const pivot = `<circle cx="${cx}" cy="${pivotY}" r="4" fill="${FIG.accent}" stroke="${FIG.ink}" stroke-width="1.1"/>`;
+  return (
+    `${figOpen(W, H)}${base}${post}${beam}${pivot}` +
+    plate(ex(-1), ey(-1), leftLabel, FIGURE_PALETTE.blue) +
+    plate(ex(1), ey(1), rightLabel, FIGURE_PALETTE.green) +
+    `</svg>`
+  );
 }
 
 function renderBalanceScale(
@@ -293,27 +475,16 @@ function renderBalanceScale(
 ): string {
   const leftSum = block.left.reduce((a, b) => a + b, 0);
   const rightSum = block.right.reduce((a, b) => a + b, 0);
-  const diff = leftSum - rightSum;
-  const maxTilt = 12;
-  const tilt = Math.max(-maxTilt, Math.min(maxTilt, diff * 2));
-  const cx = 100;
-  const pivotY = 60;
-  const beamHalf = 70;
-  const rad = (tilt * Math.PI) / 180;
-  const leftX = cx - beamHalf * Math.cos(rad);
-  const leftY = pivotY - beamHalf * Math.sin(rad);
-  const rightX = cx + beamHalf * Math.cos(rad);
-  const rightY = pivotY + beamHalf * Math.sin(rad);
-  const pan = (x: number, y: number, values: number[]) => {
-    const items = values
-      .map((v, i) => `<text x="${num(x)}" y="${num(y + 24 + i * 14)}" font-size="11" text-anchor="middle" fill="#10213d">${escapeHtml(String(v))}</text>`)
-      .join("");
-    return `<line x1="${num(x)}" y1="${num(y)}" x2="${num(x)}" y2="${num(y + 16)}" stroke="#10213d" stroke-width="1.5"/><rect x="${num(x - 26)}" y="${num(y + 16)}" width="52" height="10" rx="3" fill="#eef3fb" stroke="#10213d" stroke-width="1.5"/>${items}`;
-  };
-  const beam = `<line x1="${num(leftX)}" y1="${num(leftY)}" x2="${num(rightX)}" y2="${num(rightY)}" stroke="#10213d" stroke-width="3"/>`;
-  const pivot = `<polygon points="${cx - 8},${pivotY + 40} ${cx + 8},${pivotY + 40} ${cx},${pivotY}" fill="#c5a148"/>`;
-  const svg = `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img">${pivot}${beam}${pan(leftX, leftY, block.left)}${pan(rightX, rightY, block.right)}</svg>`;
-  return `<figure class="course-figure course-figure-balance"><div class="balance-caption-row">${svg}</div><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+  // tilt > 0 => plateau DROIT plus bas ; < 0 => plateau GAUCHE plus bas.
+  let tilt: number;
+  if (block.tilt === "level") tilt = 0;
+  else if (block.tilt === "left") tilt = -8;
+  else if (block.tilt === "right") tilt = 8;
+  else tilt = Math.max(-8, Math.min(8, (rightSum - leftSum) * 1.6));
+  const leftLabel = block.leftLabel || block.left.join(" + ");
+  const rightLabel = block.rightLabel || block.right.join(" + ");
+  const svg = balanceScaleSvg(leftLabel, rightLabel, tilt);
+  return `<figure class="course-figure course-figure-balance">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function parseGraphMeta(svg: string) {
@@ -357,11 +528,12 @@ function renderGridPainter(
       const index = r * block.cols + c;
       const filled = index < block.highlighted;
       cells.push(
-        `<rect class="grid-cell${filled ? " grid-cell-filled" : ""}" data-index="${index}" x="${c * cell}" y="${r * cell}" width="${cell}" height="${cell}" fill="${filled ? "#2563eb" : "#fff"}" fill-opacity="${filled ? 0.8 : 1}" stroke="#10213d" stroke-width="1"/>`,
+        `<rect class="grid-cell${filled ? " grid-cell-filled" : ""}" data-index="${index}" x="${c * cell}" y="${r * cell}" width="${cell}" height="${cell}" fill="${filled ? FIGURE_PALETTE.blue : "#ffffff"}" fill-opacity="${filled ? 0.82 : 1}" stroke="${FIG.ink}" stroke-width="1"/>`,
       );
     }
   }
-  const svg = `<svg class="grid-painter-svg" viewBox="0 0 ${block.cols * cell} ${block.rows * cell}" xmlns="http://www.w3.org/2000/svg" role="img" data-rows="${block.rows}" data-cols="${block.cols}">${cells.join("")}</svg>`;
+  const gpW = block.cols * cell, gpH = block.rows * cell;
+  const svg = `<svg class="grid-painter-svg edu-fig-svg" viewBox="0 0 ${gpW} ${gpH}" xmlns="http://www.w3.org/2000/svg" role="img" data-rows="${block.rows}" data-cols="${block.cols}">${cells.join("")}</svg>`;
   return `<figure class="course-figure course-figure-grid-painter">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
@@ -394,17 +566,35 @@ function renderPatternMaker(
 function renderRulerMeasurer(
   block: Extract<StructuredCourseBlock, { type: "ruler_measurer" }>,
 ): string {
-  const scale = 18;
-  const width = block.segmentLength * scale + 40;
+  // La règle est dessinée SUR toute la longueur du segment mais bornée à une
+  // largeur d'affichage fixe : l'échelle s'adapte pour qu'un segment de 3 cm
+  // comme de 40 cm tienne dans le cadre sans jamais déborder.
+  const units = Math.max(1, Math.round(block.segmentLength));
+  const PAD = 16;
+  const MAX_INNER = 300;
+  const scale = Math.min(24, MAX_INNER / units);
+  const inner = units * scale;
+  const width = inner + PAD * 2;
+  const bodyTop = 8;
+  const bodyH = 34;
   const ticks: string[] = [];
-  for (let i = 0; i <= block.segmentLength; i++) {
-    const x = 20 + i * scale;
-    const tall = i % 5 === 0;
-    ticks.push(`<line x1="${x}" y1="30" x2="${x}" y2="${tall ? 12 : 20}" stroke="#10213d" stroke-width="1"/>`);
-    if (tall) ticks.push(`<text x="${x}" y="46" font-size="10" text-anchor="middle" fill="#10213d">${i}</text>`);
+  for (let i = 0; i <= units; i++) {
+    const x = PAD + i * scale;
+    ticks.push(
+      `<line x1="${num(x)}" y1="${bodyTop}" x2="${num(x)}" y2="${bodyTop + 13}" stroke="${FIG.ink}" stroke-width="1.1"/>`,
+    );
+    ticks.push(
+      figText(x, bodyTop + 26, String(i), { size: 9 }),
+    );
+    // demi-graduation (5 mm) entre deux centimètres, si la place le permet
+    if (i < units && scale >= 14) {
+      ticks.push(
+        `<line x1="${num(x + scale / 2)}" y1="${bodyTop}" x2="${num(x + scale / 2)}" y2="${bodyTop + 7}" stroke="${FIG.ink}" stroke-width="0.8"/>`,
+      );
+    }
   }
-  const svg = `<svg viewBox="0 0 ${width} 55" xmlns="http://www.w3.org/2000/svg" role="img"><rect x="20" y="24" width="${block.segmentLength * scale}" height="6" fill="#eef3fb" stroke="#10213d" stroke-width="1"/>${ticks.join("")}<line x1="20" y1="10" x2="${20 + block.segmentLength * scale}" y2="10" stroke="#2563eb" stroke-width="2"/></svg>`;
-  return `<figure class="course-figure course-figure-ruler"><div class="ruler-scroll">${svg}</div><figcaption>${escapeHtml(block.caption)} (${block.segmentLength} ${escapeHtml(block.unit)})</figcaption></figure>`;
+  const svg = `${figOpen(width, bodyTop + bodyH + 12, { grid: false })}<rect x="${PAD - 4}" y="${bodyTop}" width="${num(inner + 8)}" height="${bodyH}" rx="4" fill="#fdf6e3" stroke="${FIG.ink}" stroke-width="1.2"/>${ticks.join("")}</svg>`;
+  return `<figure class="course-figure course-figure-ruler">${svg}<figcaption>${escapeHtml(block.caption)} (${block.segmentLength} ${escapeHtml(block.unit)})</figcaption></figure>`;
 }
 
 function renderTapeDiagram(
@@ -416,12 +606,12 @@ function renderTapeDiagram(
   const segments = block.parts
     .map((p) => {
       const w = (p.value / total) * width;
-      const seg = `<rect x="${num(x)}" y="0" width="${num(w)}" height="36" fill="${FIGURE_PALETTE[p.tone]}" fill-opacity="0.75" stroke="#fff" stroke-width="1.5"/><text x="${num(x + w / 2)}" y="22" font-size="10" text-anchor="middle" fill="#fff">${escapeHtml(p.label)}</text>`;
+      const seg = `<rect x="${num(x)}" y="0" width="${num(w)}" height="36" fill="${FIGURE_PALETTE[p.tone]}" fill-opacity="0.85" stroke="#ffffff" stroke-width="1.5"/>` + figText(x + w / 2, 22, escapeHtml(p.label), { size: 10, weight: 700, fill: "#ffffff" });
       x += w;
       return seg;
     })
     .join("");
-  const svg = `<svg viewBox="0 0 ${width} 36" xmlns="http://www.w3.org/2000/svg" role="img">${segments}</svg>`;
+  const svg = `${figOpen(width + 8, 46, { grid: false })}<g transform="translate(4 5)">${segments}</g></svg>`;
   return `<figure class="course-figure course-figure-tape-diagram">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
@@ -434,12 +624,12 @@ function renderFractionStrips(
     .map((f, i) => {
       const cellW = width / f.denominator;
       const cells = Array.from({ length: f.denominator }, (_, c) =>
-        `<rect x="${num(c * cellW)}" y="0" width="${num(cellW)}" height="24" fill="${c < f.numerator ? "#2563eb" : "#fff"}" fill-opacity="${c < f.numerator ? 0.8 : 1}" stroke="#10213d" stroke-width="1"/>`,
+        `<rect x="${num(c * cellW)}" y="0" width="${num(cellW)}" height="24" fill="${c < f.numerator ? FIGURE_PALETTE.blue : "#ffffff"}" fill-opacity="${c < f.numerator ? 0.82 : 1}" stroke="${FIG.ink}" stroke-width="1"/>`,
       ).join("");
-      return `<g transform="translate(0,${i * rowHeight})">${cells}<text x="${width + 8}" y="17" font-size="11" fill="#10213d">${f.numerator}/${f.denominator}</text></g>`;
+      return `<g transform="translate(6,${i * rowHeight + 6})">${cells}` + figText(width + 20, 17, `${f.numerator}/${f.denominator}`, { size: 11, weight: 600 }) + `</g>`;
     })
     .join("");
-  const svg = `<svg viewBox="0 0 ${width + 40} ${block.fractions.length * rowHeight}" xmlns="http://www.w3.org/2000/svg" role="img">${rows}</svg>`;
+  const svg = `${figOpen(width + 46, block.fractions.length * rowHeight + 12, { grid: false })}${rows}</svg>`;
   return `<figure class="course-figure course-figure-fraction-strips">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
@@ -511,17 +701,27 @@ function renderNetFolder(
 function renderInteractiveProtractor(
   block: Extract<StructuredCourseBlock, { type: "interactive_protractor" }>,
 ): string {
-  const cx = 100, cy = 100, r = 80;
+  const cx = 100, cy = 108, r = 84;
   const ticks: string[] = [];
+  const numbers: string[] = [];
   for (let a = 0; a <= 180; a += 10) {
     const outer = trigPoint(cx, cy, r, a);
-    const inner = trigPoint(cx, cy, r - (a % 30 === 0 ? 10 : 5), a);
-    ticks.push(`<line x1="${num(inner.x)}" y1="${num(inner.y)}" x2="${num(outer.x)}" y2="${num(outer.y)}" stroke="#10213d" stroke-width="1"/>`);
+    const big = a % 30 === 0;
+    const inner = trigPoint(cx, cy, r - (big ? 12 : 6), a);
+    ticks.push(`<line x1="${num(inner.x)}" y1="${num(inner.y)}" x2="${num(outer.x)}" y2="${num(outer.y)}" stroke="${FIG.ink}" stroke-width="${big ? 1.3 : 0.8}"/>`);
+    if (big) {
+      // nombre juste sous la graduation, tiré vers l'intérieur ; les deux
+      // extrêmes (0° / 180°) sont remontés pour ne pas coller à la ligne.
+      const rl = a === 0 || a === 180 ? r - 12 : r - 24;
+      const lab = trigPoint(cx, cy, rl, a);
+      const dyExtreme = a === 0 || a === 180 ? -5 : 3;
+      numbers.push(figText(lab.x, lab.y + dyExtreme, String(a), { size: 8, weight: 600, fill: FIG.inkSoft }));
+    }
   }
-  const arm = trigPoint(cx, cy, r - 15, block.angleDeg);
-  const base = `<path d="M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}" fill="none" stroke="#10213d" stroke-width="1.5"/><line x1="${cx - r}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="#10213d" stroke-width="1.5"/>`;
-  const armLine = `<line class="protractor-arm" x1="${cx}" y1="${cy}" x2="${num(arm.x)}" y2="${num(arm.y)}" stroke="#2563eb" stroke-width="2.5"/>`;
-  const svg = `<svg class="protractor-svg" viewBox="0 0 200 110" xmlns="http://www.w3.org/2000/svg" role="img">${ticks.join("")}${base}${armLine}</svg>`;
+  const arm = trigPoint(cx, cy, r - 30, block.angleDeg);
+  const base = `<path d="M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}" fill="none" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/><line x1="${cx - r}" y1="${cy}" x2="${cx + r}" y2="${cy}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>`;
+  const armLine = `<line class="protractor-arm" x1="${cx}" y1="${cy}" x2="${num(arm.x)}" y2="${num(arm.y)}" stroke="${FIGURE_PALETTE.blue}" stroke-width="2.5" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="3" fill="${FIG.ink}"/>`;
+  const svg = `<svg class="protractor-svg edu-fig-svg" viewBox="0 0 200 128" xmlns="http://www.w3.org/2000/svg" role="img">${figPaper(200, 128, 20)}${ticks.join("")}${base}${armLine}${numbers.join("")}</svg>`;
   const controls = `<div class="protractor-controls"><input type="range" class="protractor-slider" min="0" max="180" step="1" value="${block.angleDeg}"/><span class="protractor-value">${block.angleDeg}°</span></div>`;
   return `<figure class="course-figure course-figure-protractor">${svg}${controls}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
@@ -529,72 +729,416 @@ function renderInteractiveProtractor(
 function renderCompassTool(
   block: Extract<StructuredCourseBlock, { type: "compass_tool" }>,
 ): string {
-  const cx = 90, cy = 90, r = Math.min(70, block.radius * 12);
-  const svg = `<svg class="compass-svg" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" role="img" data-scale="${(r / block.radius).toFixed(3)}" data-max-r="70"><circle class="compass-circle" cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#2563eb" stroke-width="1.5"/><circle cx="${cx}" cy="${cy}" r="2.5" fill="#10213d"/><text x="${cx + 4}" y="${cy - 6}" font-size="11" fill="#10213d">${escapeHtml(block.centerLabel)}</text><line class="compass-radius-line" x1="${cx}" y1="${cy}" x2="${num(cx + r)}" y2="${cy}" stroke="#c89f36" stroke-width="1.5" stroke-dasharray="4 3"/><circle class="compass-handle" cx="${num(cx + r)}" cy="${cy}" r="6" fill="#c89f36" role="button" tabindex="0"/><text class="compass-radius-label" x="${num(cx + r / 2)}" y="${cy - 6}" font-size="10" text-anchor="middle" fill="#c89f36">${block.radius}</text></svg>`;
-  return `<figure class="course-figure course-figure-compass">${svg}<figcaption>${escapeHtml(block.caption)} — fais glisser le point doré pour changer le rayon</figcaption></figure>`;
+  const S = 200;
+  const cx = S / 2, cy = S / 2;
+  const maxR = 82;
+  const r = Math.min(maxR, block.radius * 15);
+  const svg =
+    `<svg class="compass-svg edu-fig-svg" viewBox="0 0 ${S} ${S}" xmlns="http://www.w3.org/2000/svg" role="img" data-scale="${(r / block.radius).toFixed(3)}" data-max-r="${maxR}">` +
+    `${figPaper(S, S, 20)}` +
+    `<circle class="compass-circle" cx="${cx}" cy="${cy}" r="${num(r)}" fill="${FIGURE_PALETTE.blue}" fill-opacity="0.06" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>` +
+    `<circle cx="${cx}" cy="${cy}" r="3" fill="${FIG.ink}"/>` +
+    figText(cx - 9, cy + 12, escapeHtml(block.centerLabel), { size: 11, weight: 700 }) +
+    `<line class="compass-radius-line" x1="${cx}" y1="${cy}" x2="${num(cx + r)}" y2="${cy}" stroke="${FIG.accent}" stroke-width="1.5" stroke-dasharray="4 3"/>` +
+    `<circle class="compass-handle" cx="${num(cx + r)}" cy="${cy}" r="6" fill="${FIG.accent}" stroke="#ffffff" stroke-width="1.5" role="button" tabindex="0" style="cursor:grab"/>` +
+    figText(cx + r / 2, cy - 7, `r = ${block.radius}`, { size: 10, fill: "#8a6d3b", weight: 600 }) +
+    `</svg>`;
+  return `<figure class="course-figure course-figure-compass">${svg}<figcaption>${escapeHtml(block.caption)} — fais glisser le point doré</figcaption></figure>`;
 }
 
 function renderThermometerAxis(
   block: Extract<StructuredCourseBlock, { type: "thermometer_axis" }>,
 ): string {
-  const height = 220;
+  const height = 210;
+  const top = 18;
+  const W = 176;
+  const H = height + top * 2 + 14;
+  const bulbY = top + height + 6;
+  const tubeX = 40;
   const clamp = (v: number) => Math.max(block.min, Math.min(block.max, v));
-  const yFor = (v: number) => 20 + (1 - (clamp(v) - block.min) / (block.max - block.min)) * height;
+  const yFor = (v: number) => top + (1 - (clamp(v) - block.min) / (block.max - block.min || 1)) * height;
   const ticks: string[] = [];
   const step = Math.max(1, Math.round((block.max - block.min) / 8));
   for (let v = block.min; v <= block.max; v += step) {
     const y = yFor(v);
-    ticks.push(`<line x1="30" y1="${num(y)}" x2="38" y2="${num(y)}" stroke="#10213d" stroke-width="1"/><text x="24" y="${num(y + 3)}" font-size="9" text-anchor="end" fill="#10213d">${v}</text>`);
+    ticks.push(`<line x1="${tubeX + 7}" y1="${num(y)}" x2="${tubeX + 13}" y2="${num(y)}" stroke="${FIG.ink}" stroke-width="1"/>` + figText(tubeX - 14, y + 3, String(v), { size: 9, anchor: "end", fill: FIG.inkSoft }));
   }
+  // Tube en verre + réservoir + colonne de mercure jusqu'à la valeur la plus haute.
+  const topVal = block.points.length ? Math.max(...block.points.map((p) => p.value)) : block.min;
+  const mercuryTop = yFor(topVal);
+  const glass =
+    `<rect x="${tubeX - 5}" y="${top - 2}" width="10" height="${height + 8}" rx="5" fill="#ffffff" stroke="${FIG.ink}" stroke-width="1.4"/>` +
+    `<circle cx="${tubeX}" cy="${bulbY}" r="9" fill="#ffffff" stroke="${FIG.ink}" stroke-width="1.4"/>`;
+  const mercury =
+    `<circle cx="${tubeX}" cy="${bulbY}" r="6" fill="${FIGURE_PALETTE.red}"/>` +
+    `<rect x="${tubeX - 2.5}" y="${num(mercuryTop)}" width="5" height="${num(bulbY - mercuryTop)}" fill="${FIGURE_PALETTE.red}"/>`;
   const points = block.points
     .map((p) => {
       const y = yFor(p.value);
-      return `<circle cx="38" cy="${num(y)}" r="4" fill="#2563eb"/><text x="46" y="${num(y + 3)}" font-size="10" fill="#10213d">${escapeHtml(p.label)} (${p.value})</text>`;
+      return `<line x1="${tubeX + 6}" y1="${num(y)}" x2="${tubeX + 40}" y2="${num(y)}" stroke="${FIGURE_PALETTE.blue}" stroke-width="1" stroke-dasharray="3 2"/>` + figText(tubeX + 44, y + 3, `${escapeHtml(p.label)} (${p.value})`, { size: 10, anchor: "start" });
     })
     .join("");
   const zeroY = block.min <= 0 && block.max >= 0 ? yFor(0) : null;
-  const zeroLine = zeroY !== null ? `<line x1="30" y1="${num(zeroY)}" x2="120" y2="${num(zeroY)}" stroke="#dc2626" stroke-width="1" stroke-dasharray="3 2"/>` : "";
-  const svg = `<svg viewBox="0 0 160 ${height + 40}" xmlns="http://www.w3.org/2000/svg" role="img"><line x1="34" y1="20" x2="34" y2="${height + 20}" stroke="#10213d" stroke-width="2"/>${ticks.join("")}${zeroLine}${points}</svg>`;
+  const zeroLine = zeroY !== null ? `<line x1="${tubeX + 6}" y1="${num(zeroY)}" x2="${W - 10}" y2="${num(zeroY)}" stroke="${FIG.inkSoft}" stroke-width="1" stroke-dasharray="4 3"/>` : "";
+  const svg = `${figOpen(W, H, { grid: false })}${ticks.join("")}${zeroLine}${glass}${mercury}${points}</svg>`;
   return `<figure class="course-figure course-figure-thermometer">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+type ShapePart = Extract<StructuredCourseBlock, { type: "shape" }>["parts"][number];
+
+/** Un sommet d'une part = polygone : renvoie ses points en carreaux (repère
+ * local, origine bas-gauche, y vers le haut). */
+function shapePartVertices(p: ShapePart): { x: number; y: number }[] {
+  if (p.points.length >= 3) return p.points;
+  if (p.kind === "right_triangle") {
+    return [
+      { x: p.x, y: p.y },
+      { x: p.x, y: p.y + p.h },
+      { x: p.x + p.w, y: p.y },
+    ];
+  }
+  if (p.kind === "triangle") {
+    return [
+      { x: p.x, y: p.y },
+      { x: p.x + p.w, y: p.y },
+      { x: p.x + p.w / 2, y: p.y + p.h },
+    ];
+  }
+  // rectangle / square
+  return [
+    { x: p.x, y: p.y },
+    { x: p.x + p.w, y: p.y },
+    { x: p.x + p.w, y: p.y + p.h },
+    { x: p.x, y: p.y + p.h },
+  ];
+}
+
+/** Boîte englobante d'une part, en carreaux (unités du canevas). */
+function shapePartBounds(p: ShapePart): { minX: number; minY: number; maxX: number; maxY: number } | null {
+  const xs: number[] = [];
+  const ys: number[] = [];
+  if (p.kind === "circle" || p.kind === "arc" || p.kind === "angle") {
+    const r = p.kind === "angle" ? Math.min(1.1, p.r || 1) : p.r || 1;
+    xs.push(p.x - r, p.x + r);
+    ys.push(p.y - r, p.y + r);
+  } else if (p.kind === "point" || p.kind === "text") {
+    xs.push(p.x);
+    ys.push(p.y);
+  } else if (p.kind === "segment" || p.kind === "line") {
+    const a = p.points[0] ?? { x: p.x, y: p.y };
+    const b = p.points[1] ?? { x: p.x + p.w, y: p.y + p.h };
+    xs.push(a.x, b.x);
+    ys.push(a.y, b.y);
+  } else {
+    for (const v of shapePartVertices(p)) {
+      xs.push(v.x);
+      ys.push(v.y);
+    }
+  }
+  if (!xs.length) return null;
+  return { minX: Math.min(...xs), minY: Math.min(...ys), maxX: Math.max(...xs), maxY: Math.max(...ys) };
+}
+
+const TRIG_REMARKABLE = [0, 30, 45, 60, 90, 120, 135, 150, 180, 210, 225, 240, 270, 300, 315, 330];
+const TRIG_LABELS: Record<number, string> = {
+  0: "0", 30: "π/6", 45: "π/4", 60: "π/3", 90: "π/2",
+  120: "2π/3", 135: "3π/4", 150: "5π/6", 180: "π",
+  210: "7π/6", 225: "5π/4", 240: "4π/3", 270: "3π/2",
+  300: "5π/3", 315: "7π/4", 330: "11π/6",
+};
+
+/** Cercle trigonométrique : feuille quadrillée, cercle unité, axes, TOUS les
+ * angles remarquables (les mis en avant par l'IA en gros/rouge + étiquette),
+ * et un point mobile interactif (cf. trigCircleInteractive.ts). */
+function renderTrigCircle(
+  block: Extract<StructuredCourseBlock, { type: "trig_circle" }>,
+): string {
+  const W = 228;
+  const cx = 114;
+  const cy = 114;
+  const r = 84;
+  const norm = (d: number) => ((Math.round(d) % 360) + 360) % 360;
+  const hot = new Map(block.highlightedAngles.map((a) => [norm(a.angleDeg), a.label]));
+  const emphasizeAll = hot.size === 0;
+  const axes =
+    `<line x1="${cx - r - 16}" y1="${cy}" x2="${cx + r + 16}" y2="${cy}" stroke="${FIG.inkSoft}" stroke-width="1.25" marker-end="url(#efig-arrow)"/>` +
+    `<line x1="${cx}" y1="${cy + r + 16}" x2="${cx}" y2="${cy - r - 16}" stroke="${FIG.inkSoft}" stroke-width="1.25" marker-end="url(#efig-arrow)"/>`;
+  const circle = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${FIG.ink}" stroke-width="1.6"/>`;
+  const marks = TRIG_REMARKABLE.map((deg) => {
+    const rad = (deg * Math.PI) / 180;
+    const px = cx + r * Math.cos(rad);
+    const py = cy - r * Math.sin(rad);
+    const isHot = emphasizeAll ? deg <= 90 : hot.has(deg);
+    let out = `<circle cx="${num(px)}" cy="${num(py)}" r="${isHot ? 3.4 : 1.9}" fill="${isHot ? FIGURE_PALETTE.red : FIG.inkSoft}"${isHot ? ' stroke="#ffffff" stroke-width="1"' : ""}/>`;
+    if (isHot) {
+      const lx = Math.min(W - 10, Math.max(10, cx + (r + 17) * Math.cos(rad)));
+      const ly = cy - (r + 17) * Math.sin(rad) + 3.2;
+      const text = hot.get(deg) || TRIG_LABELS[deg] || `${deg}°`;
+      out += figText(lx, ly, escapeHtml(text), { size: 9, weight: 600 });
+    }
+    return out;
+  }).join("");
+  const svg =
+    `<svg class="tc-svg edu-fig-svg" viewBox="0 0 ${W} ${W}" xmlns="http://www.w3.org/2000/svg" role="img" ` +
+    `data-cx="${cx}" data-cy="${cy}" data-r="${r}" data-angle="45">` +
+    `${figArrowDefs()}${figPaper(W, W, 19)}${axes}${circle}${marks}<g class="tc-live"></g></svg>`;
+  const readout = `<div class="tc-readout"><span class="tc-angle-value">45° · cos 0.71 · sin 0.71</span></div>`;
+  return `<figure class="course-figure course-figure-trig-circle">${svg}${readout}<figcaption>${escapeHtml(block.caption)} — fais glisser le point</figcaption></figure>`;
+}
+
+/** Bloc "shape" : canevas quadrillé sur lequel on pose une ou plusieurs formes
+ * simples (rectangle, triangle, cercle, segment, point). Chaque forme porte
+ * ses options (sommets étiquetés, côtés cotés, marque d'angle droit). Combiner
+ * les parts remplace les anciennes figures dédiées (triangle annoté, Pythagore). */
+function renderShape(
+  block: Extract<StructuredCourseBlock, { type: "shape" }>,
+): string {
+  if (block.preset === "pythagoras") return renderPythagorasShape(block);
+
+  // Recadrage automatique : on ignore width/height fournis et on cale le canevas
+  // sur la boîte englobante réelle des parts → figure toujours centrée, pas de
+  // marge morte (ni pour l'IA, ni pour une figure faite main).
+  let minX = Infinity;
+  let minY = Infinity;
+  let maxX = -Infinity;
+  let maxY = -Infinity;
+  for (const p of block.parts) {
+    const b = shapePartBounds(p);
+    if (!b) continue;
+    minX = Math.min(minX, b.minX);
+    minY = Math.min(minY, b.minY);
+    maxX = Math.max(maxX, b.maxX);
+    maxY = Math.max(maxY, b.maxY);
+  }
+  if (!Number.isFinite(minX)) {
+    minX = 0;
+    minY = 0;
+    maxX = block.width;
+    maxY = block.height;
+  }
+  const spanX = Math.max(1, maxX - minX);
+  const spanY = Math.max(1, maxY - minY);
+  const cell = Math.max(11, Math.min(30, Math.floor(Math.min(320 / spanX, 200 / spanY))));
+  // Marge = 2 carreaux pleins (place aux étiquettes extérieures) ; W/H arrondis
+  // au carreau → le quadrillage reste calé sur les formes.
+  const M = cell * 2;
+  const W = M * 2 + Math.ceil(spanX) * cell;
+  const H = M * 2 + Math.ceil(spanY) * cell;
+  const X = (gx: number) => M + (gx - minX) * cell;
+  const Y = (gy: number) => H - M - (gy - minY) * cell;
+
+  const body = block.parts
+    .map((p) => {
+      const color = FIGURE_PALETTE[p.tone];
+      const style = `stroke="${color}" stroke-width="${FIG_STROKE}" stroke-linejoin="round" stroke-linecap="round"${p.dashed ? ' stroke-dasharray="5 4"' : ""}`;
+      const fillStyle = p.filled ? `fill="${color}" fill-opacity="${SHAPE_FILL_OPACITY}"` : 'fill="none"';
+      let out = "";
+
+      if (p.kind === "text") {
+        const t = p.text || p.vertexLabels[0] || "";
+        return t
+          ? figText(X(p.x), Y(p.y) + 4, escapeHtml(t), { size: 12, weight: 700, fill: color === FIGURE_PALETTE.navy ? FIG.ink : color })
+          : "";
+      }
+      if (p.kind === "point") {
+        out += `<circle cx="${num(X(p.x))}" cy="${num(Y(p.y))}" r="4" fill="${color}" stroke="#fff" stroke-width="1.5"/>`;
+        if (p.vertexLabels[0]) out += figText(X(p.x), Y(p.y) - 9, escapeHtml(p.vertexLabels[0]), { size: 11, weight: 600 });
+        return out;
+      }
+      if (p.kind === "segment" || p.kind === "line") {
+        // Extrémités : les 2 premiers "points" si fournis, sinon (x,y)→(x+w,y+h).
+        let ax = X(p.points[0]?.x ?? p.x);
+        let ay = Y(p.points[0]?.y ?? p.y);
+        let bx = X(p.points[1]?.x ?? p.x + p.w);
+        let by = Y(p.points[1]?.y ?? p.y + p.h);
+        if (p.kind === "line") {
+          // Prolonge la droite jusqu'aux bords du canevas.
+          const dx = bx - ax;
+          const dy = by - ay;
+          const len = Math.hypot(dx, dy) || 1;
+          const ext = (W + H) / len;
+          ax -= (dx / len) * ext;
+          ay -= (dy / len) * ext;
+          bx += (dx / len) * ext;
+          by += (dy / len) * ext;
+        }
+        out += `<line x1="${num(ax)}" y1="${num(ay)}" x2="${num(bx)}" y2="${num(by)}" ${style}${arrowAttrs(p.arrow)}/>`;
+        if (p.kind === "segment") {
+          if (p.vertexLabels[0]) out += figText(X(p.points[0]?.x ?? p.x), Y(p.points[0]?.y ?? p.y) + 12, escapeHtml(p.vertexLabels[0]), { size: 11, weight: 600 });
+          if (p.vertexLabels[1]) out += figText(X(p.points[1]?.x ?? p.x + p.w), Y(p.points[1]?.y ?? p.y + p.h) - 8, escapeHtml(p.vertexLabels[1]), { size: 11, weight: 600 });
+          if (p.sideLabels[0]) out += figText((ax + bx) / 2, (ay + by) / 2 - 6, escapeHtml(p.sideLabels[0]), { size: 10, fill: "#8a6d3b", weight: 600 });
+        }
+        return out;
+      }
+      if (p.kind === "arc") {
+        out += `<path d="${arcPath(X(p.x), Y(p.y), p.r * cell, p.startAngle, p.endAngle)}" fill="none" ${style}/>`;
+        if (p.sideLabels[0] || p.text) {
+          const mid = ((p.startAngle + p.endAngle) / 2) * (Math.PI / 180);
+          out += figText(X(p.x) + (p.r * cell + 10) * Math.cos(mid), Y(p.y) - (p.r * cell + 10) * Math.sin(mid) + 3, escapeHtml(p.sideLabels[0] || p.text), { size: 10, weight: 600 });
+        }
+        return out;
+      }
+      if (p.kind === "angle") {
+        // Marque d'angle au sommet (x,y), rayon ~0.9 carreau, entre startAngle
+        // et endAngle. text/sideLabels[0] : la mesure de l'angle.
+        const vr = Math.min(cell * 1.1, p.r * cell || cell);
+        out += `<path d="${arcPath(X(p.x), Y(p.y), vr, p.startAngle, p.endAngle)}" fill="none" stroke="${color}" stroke-width="1.4"/>`;
+        const label = p.text || p.sideLabels[0];
+        if (label) {
+          const mid = ((p.startAngle + p.endAngle) / 2) * (Math.PI / 180);
+          out += figText(X(p.x) + (vr + 12) * Math.cos(mid), Y(p.y) - (vr + 12) * Math.sin(mid) + 3, escapeHtml(label), { size: 9.5, weight: 600, fill: "#8a6d3b" });
+        }
+        return out;
+      }
+      if (p.kind === "circle") {
+        const cxp = X(p.x);
+        const cyp = Y(p.y);
+        const rp = p.r * cell;
+        out += `<circle cx="${num(cxp)}" cy="${num(cyp)}" r="${num(rp)}" ${fillStyle} ${style}/>`;
+        // Rayon (trait + cote) : seulement si demandé explicitement — pas sur
+        // les cercles qui se chevauchent d'un diagramme de Venn.
+        const rLabel = p.sideLabels[0] || (p.showDimensions && !p.vertexLabels[0] ? `r = ${p.r}` : "");
+        if (rLabel) {
+          out += `<circle cx="${num(cxp)}" cy="${num(cyp)}" r="2.5" fill="${color}"/>`;
+          out += `<line x1="${num(cxp)}" y1="${num(cyp)}" x2="${num(cxp + rp)}" y2="${num(cyp)}" stroke="${color}" stroke-width="1.1" stroke-dasharray="4 3"/>`;
+          out += figText(cxp + rp / 2, cyp - 6, escapeHtml(rLabel), { size: 10, fill: "#8a6d3b", weight: 600 });
+        }
+        // Nom du cercle : au-dessus, à l'extérieur (jamais posé sur le tracé).
+        if (p.vertexLabels[0]) {
+          out += figText(cxp, cyp - rp - 6, escapeHtml(p.vertexLabels[0]), { size: 11, weight: 700 });
+        }
+        return out;
+      }
+
+      // Polygones : rectangle / square / triangle / right_triangle / points libres
+      const verts = shapePartVertices(p);
+      const scr = verts.map((v) => ({ x: X(v.x), y: Y(v.y) }));
+      const cxg = scr.reduce((s, v) => s + v.x, 0) / scr.length;
+      const cyg = scr.reduce((s, v) => s + v.y, 0) / scr.length;
+      out += `<polygon points="${scr.map((v) => `${num(v.x)},${num(v.y)}`).join(" ")}" ${fillStyle} ${style}/>`;
+
+      // Marque d'angle droit
+      if (p.rightAngleAt !== null && p.rightAngleAt >= 0 && p.rightAngleAt < scr.length) {
+        const v = scr[p.rightAngleAt];
+        const a = scr[(p.rightAngleAt + 1) % scr.length];
+        const b = scr[(p.rightAngleAt + scr.length - 1) % scr.length];
+        const u1 = normVec(a.x - v.x, a.y - v.y);
+        const u2 = normVec(b.x - v.x, b.y - v.y);
+        const s = 9;
+        out += `<path d="M ${num(v.x + u1.x * s)} ${num(v.y + u1.y * s)} L ${num(v.x + (u1.x + u2.x) * s)} ${num(v.y + (u1.y + u2.y) * s)} L ${num(v.x + u2.x * s)} ${num(v.y + u2.y * s)}" fill="none" stroke="${color}" stroke-width="1.2"/>`;
+      }
+
+      // Étiquettes de sommets (décalées vers l'extérieur)
+      verts.forEach((_, i) => {
+        const label = p.vertexLabels[i];
+        if (!label) return;
+        const s = scr[i];
+        const dx = s.x - cxg;
+        const dy = s.y - cyg;
+        const len = Math.hypot(dx, dy) || 1;
+        out += figText(s.x + (dx / len) * 13, s.y + (dy / len) * 13 + 3, escapeHtml(label), { size: 11, weight: 700 });
+      });
+
+      // Étiquettes de côtés (au milieu de chaque arête, vers l'extérieur)
+      scr.forEach((s, i) => {
+        const label = p.sideLabels[i];
+        if (!label) return;
+        const nx = scr[(i + 1) % scr.length];
+        const mx = (s.x + nx.x) / 2;
+        const my = (s.y + nx.y) / 2;
+        const dx = mx - cxg;
+        const dy = my - cyg;
+        const len = Math.hypot(dx, dy) || 1;
+        out += figText(mx + (dx / len) * 12, my + (dy / len) * 12 + 3, escapeHtml(label), { size: 10, fill: "#8a6d3b", weight: 600 });
+      });
+
+      // Cotes automatiques pour un rectangle sans étiquettes de côté
+      if (p.showDimensions && (p.kind === "rectangle" || p.kind === "square") && p.sideLabels.length === 0) {
+        out +=
+          figDimension(X(p.x), Y(p.y), X(p.x + p.w), Y(p.y), String(p.w), 15) +
+          figDimension(X(p.x), Y(p.y), X(p.x), Y(p.y + p.h), String(p.h), -15);
+      }
+      if (p.showDimensions && (p.kind === "right_triangle") && p.sideLabels.length === 0) {
+        out +=
+          figDimension(X(p.x), Y(p.y), X(p.x + p.w), Y(p.y), String(p.w), 15) +
+          figDimension(X(p.x), Y(p.y), X(p.x), Y(p.y + p.h), String(p.h), -15);
+      }
+      return out;
+    })
+    .join("");
+
+  return `<figure class="course-figure course-figure-shape">${figOpen(W, H, { cell })}${body}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function normVec(x: number, y: number): { x: number; y: number } {
+  const len = Math.hypot(x, y) || 1;
+  return { x: x / len, y: y / len };
+}
+
+/** Preset Pythagore : triangle rectangle + les carrés des 3 côtés, assemblés
+ * à partir de formes simples (aucune coordonnée laissée au modèle). */
+function renderPythagorasShape(
+  block: Extract<StructuredCourseBlock, { type: "shape" }>,
+): string {
+  const a = Math.max(1, block.a);
+  const b = Math.max(1, block.b);
+  const cell = Math.max(11, Math.min(22, Math.floor(132 / Math.max(a, b))));
+  const A = a * cell;
+  const B = b * cell;
+  const PAD = 2 * cell; // multiple du pas → carrés calés + marge pour le carré c²
+  const tx = A + PAD;
+  const ty = a * cell + b * cell + PAD;
+  const W = 2 * A + B + 2 * PAD;
+  const H = A + 2 * B + 2 * PAD;
+  const poly = (pts: string, color: string) =>
+    `<polygon points="${pts}" fill="${color}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="${color}" stroke-width="${FIG_STROKE}" stroke-linejoin="round"/>`;
+  const sqA = poly(`${num(-A)},${num(-A)} 0,${num(-A)} 0,0 ${num(-A)},0`, FIGURE_PALETTE.blue) + figText(-A / 2, -A / 2 + 4, "a²", { weight: 800, size: 15 });
+  const sqB = poly(`0,0 ${num(B)},0 ${num(B)},${num(B)} 0,${num(B)}`, FIGURE_PALETTE.green) + figText(B / 2, B / 2 + 4, "b²", { weight: 800, size: 15 });
+  const h = Math.hypot(A, B);
+  const ndx = A / h;
+  const ndy = -B / h;
+  const sqC =
+    poly(
+      `0,${num(-A)} ${num(B)},0 ${num(B + ndx * h)},${num(ndy * h)} ${num(ndx * h)},${num(-A + ndy * h)}`,
+      FIGURE_PALETTE.red,
+    ) + figText((A + B) / 2, -(A + B) / 2 + 4, "c²", { weight: 800, size: 15 });
+  const tri = poly(`0,0 0,${num(-A)} ${num(B)},0`, FIGURE_PALETTE.navy);
+  const ra = `<path d="M 10 0 L 10 -10 L 0 -10" fill="none" stroke="${FIG.ink}" stroke-width="1.2"/>`;
+  return `<figure class="course-figure course-figure-shape">${figOpen(W, H, { cell })}<g transform="translate(${num(tx)} ${num(ty)})">${sqA}${sqB}${sqC}${tri}${ra}</g></svg><figcaption>${escapeHtml(block.caption)} ($a=${block.a}$, $b=${block.b}$, $c=${Math.hypot(a, b).toFixed(2)}$)</figcaption></figure>`;
 }
 
 function renderAreaDecomposer(
   block: Extract<StructuredCourseBlock, { type: "area_decomposer" }>,
 ): string {
-  const scale = 14;
-  let x = 0;
-  const total = block.shapes.reduce((a, s) => a + s.width * s.height, 0);
-  const shapes = block.shapes
+  const shapes = block.shapes.slice(0, 6);
+  const total = shapes.reduce((a, s) => a + s.width * s.height, 0);
+  const GAPu = 1; // 1 carreau entre deux formes
+  const spanU =
+    shapes.reduce((a, s) => a + s.width, 0) + GAPu * (shapes.length - 1);
+  const maxHu = Math.max(...shapes.map((s) => s.height), 1);
+  // Pas de la grille = 1 unité ; borné pour que la figure reste compacte.
+  const cell = Math.max(9, Math.min(24, Math.floor(Math.min(300 / spanU, 150 / maxHu))));
+  const PAD = cell * Math.ceil(22 / cell); // multiple du pas → formes calées sur les carreaux
+  const baselineY = PAD + maxHu * cell;
+  let ux = 0;
+  const parts = shapes
     .map((s) => {
-      const w = s.width * scale, h = s.height * scale;
-      const rect = `<rect x="${num(x)}" y="0" width="${num(w)}" height="${num(h)}" fill="#eef3fb" stroke="#2563eb" stroke-width="1.5"/><text x="${num(x + w / 2)}" y="${num(h / 2)}" font-size="10" text-anchor="middle" fill="#10213d">${escapeHtml(s.label)}</text><text x="${num(x + w / 2)}" y="${num(h + 14)}" font-size="9" text-anchor="middle" fill="#64748b">${s.width}×${s.height}</text>`;
-      x += w + 10;
-      return rect;
+      const x = PAD + ux * cell;
+      const w = s.width * cell;
+      const h = s.height * cell;
+      const y = baselineY - h;
+      ux += s.width + GAPu;
+      return (
+        `<rect x="${num(x)}" y="${num(y)}" width="${num(w)}" height="${num(h)}" fill="${FIGURE_PALETTE.blue}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="${FIGURE_PALETTE.blue}" stroke-width="${FIG_STROKE}"/>` +
+        figText(x + w / 2, y + h / 2 + 4, escapeHtml(s.label), { size: 12, weight: 700 }) +
+        figDimension(x, baselineY, x + w, baselineY, `${s.width}`, 14) +
+        figDimension(x, y + h, x, y, `${s.height}`, -14)
+      );
     })
     .join("");
-  const maxH = Math.max(...block.shapes.map((s) => s.height)) * scale;
-  const svg = `<svg viewBox="0 0 ${num(x)} ${num(maxH + 24)}" xmlns="http://www.w3.org/2000/svg" role="img">${shapes}</svg>`;
-  return `<figure class="course-figure course-figure-area-decomposer">${svg}<figcaption>${escapeHtml(block.caption)} (aire totale : ${total})</figcaption></figure>`;
-}
-
-function renderPythagorasVisualizer(
-  block: Extract<StructuredCourseBlock, { type: "pythagoras_visualizer" }>,
-): string {
-  const { a, b } = block;
-  const scale = 18;
-  const A = a * scale, B = b * scale;
-  const p1 = { x: 60, y: 60 + A };
-  const p2 = { x: 60, y: 60 };
-  const p3 = { x: 60 + B, y: 60 + A };
-  const triangle = `<polygon points="${p1.x},${p1.y} ${p2.x},${p2.y} ${p3.x},${p3.y}" fill="#eef3fb" stroke="#10213d" stroke-width="1.5"/>`;
-  const squareA = `<rect x="${p1.x - A}" y="${p1.y}" width="${A}" height="${A}" fill="#2563eb" fill-opacity="0.35" stroke="#2563eb"/><text x="${p1.x - A / 2}" y="${p1.y + A / 2}" font-size="11" text-anchor="middle" fill="#10213d">a²</text>`;
-  const squareB = `<rect x="${p2.x}" y="${p2.y - B}" width="${B}" height="${B}" fill="#15803d" fill-opacity="0.35" stroke="#15803d"/><text x="${p2.x + B / 2}" y="${p2.y - B / 2}" font-size="11" text-anchor="middle" fill="#10213d">b²</text>`;
-  const hyp = Math.hypot(B, A);
-  const nx = A / hyp, ny = -B / hyp;
-  const hx1 = p2.x + nx * hyp, hy1 = p2.y + ny * hyp * 0;
-  const squareC = `<polygon points="${p2.x},${p2.y} ${p3.x},${p3.y} ${p3.x + A * (B / hyp) * 0 + nx * hyp},${p3.y + ny * hyp} ${p2.x + nx * hyp},${p2.y + ny * hyp}" fill="#dc2626" fill-opacity="0.3" stroke="#dc2626"/>`;
-  const svg = `<svg viewBox="0 0 ${num(60 + B + A + 20)} ${num(60 + A + B + 20)}" xmlns="http://www.w3.org/2000/svg" role="img">${squareA}${squareB}${squareC}${triangle}</svg>`;
-  return `<figure class="course-figure course-figure-pythagoras">${svg}<figcaption>${escapeHtml(block.caption)} ($a=${a}$, $b=${b}$, $c=${block.c.toFixed(2)}$)</figcaption></figure>`;
+  const W = PAD * 2 + spanU * cell;
+  const H = baselineY + PAD;
+  return `<figure class="course-figure course-figure-area-decomposer">${figOpen(W, H, { cell })}${parts}</svg><figcaption>${escapeHtml(block.caption)} (aire totale : ${total})</figcaption></figure>`;
 }
 
 function renderScientificNotationConverter(
@@ -608,9 +1152,9 @@ function renderScientificNotationConverter(
   const ticks: string[] = [];
   for (let e = minExp; e <= maxExp; e += 2) {
     const tx = 20 + ((e - minExp) / (maxExp - minExp)) * (width - 40);
-    ticks.push(`<line x1="${num(tx)}" y1="30" x2="${num(tx)}" y2="38" stroke="#10213d" stroke-width="1"/><text x="${num(tx)}" y="50" font-size="9" text-anchor="middle" fill="#10213d">10^${e}</text>`);
+    ticks.push(`<line x1="${num(tx)}" y1="30" x2="${num(tx)}" y2="38" stroke="${FIG.inkSoft}" stroke-width="1"/>${figText(tx, 51, `10${toSuperscript(e)}`, { size: 9.5, fill: FIG.inkSoft })}`);
   }
-  const svg = `<svg class="sci-notation-svg" viewBox="0 0 ${width} 55" xmlns="http://www.w3.org/2000/svg" role="img" data-min-exp="${minExp}" data-max-exp="${maxExp}" data-width="${width}"><line x1="20" y1="34" x2="${width - 20}" y2="34" stroke="#10213d" stroke-width="1.5"/>${ticks.join("")}<circle class="sci-notation-handle" cx="${num(x)}" cy="34" r="7" fill="#dc2626" role="button" tabindex="0"/></svg>`;
+  const svg = `<svg class="sci-notation-svg edu-fig-svg" viewBox="0 0 ${width} 60" xmlns="http://www.w3.org/2000/svg" role="img" data-min-exp="${minExp}" data-max-exp="${maxExp}" data-width="${width}">${figArrowDefs()}<rect x="0" y="0" width="${num(width)}" height="60" fill="${FIG.paper}"/><line x1="20" y1="34" x2="${width - 20}" y2="34" stroke="${FIG.ink}" stroke-width="1.5"/>${ticks.join("")}<circle class="sci-notation-handle" cx="${num(x)}" cy="34" r="7" fill="${FIGURE_PALETTE.red}" stroke="#fff" stroke-width="1.5" role="button" tabindex="0"/></svg>`;
   const controls = `<div class="sci-notation-controls">Valeur : <span class="sci-notation-value">${block.value} × 10<sup class="sci-notation-exp">${block.exponent}</sup></span></div>`;
   return `<figure class="course-figure course-figure-sci-notation" data-value="${block.value}">${svg}${controls}<figcaption>${escapeHtml(block.caption)} — fais glisser le point pour changer la puissance de 10</figcaption></figure>`;
 }
@@ -618,16 +1162,14 @@ function renderScientificNotationConverter(
 function renderEquationBalancer(
   block: Extract<StructuredCourseBlock, { type: "equation_balancer" }>,
 ): string {
-  const cx = 100, pivotY = 60, beamHalf = 70;
-  const pan = (x: number, terms: string[]) => {
-    const items = terms
-      .map((t, i) => `<text x="${num(x)}" y="${num(pivotY + 26 + i * 14)}" font-size="11" text-anchor="middle" fill="#10213d">${escapeHtml(t)}</text>`)
-      .join("");
-    return `<line x1="${num(x)}" y1="${pivotY}" x2="${num(x)}" y2="${pivotY + 16}" stroke="#10213d" stroke-width="1.5"/><rect x="${num(x - 30)}" y="${pivotY + 16}" width="60" height="10" rx="3" fill="#eef3fb" stroke="#10213d" stroke-width="1.5"/>${items}`;
-  };
-  const beam = `<line x1="${cx - beamHalf}" y1="${pivotY}" x2="${cx + beamHalf}" y2="${pivotY}" stroke="#10213d" stroke-width="3"/>`;
-  const pivot = `<polygon points="${cx - 8},${pivotY + 40} ${cx + 8},${pivotY + 40} ${cx},${pivotY}" fill="#c5a148"/>`;
-  const svg = `<svg viewBox="0 0 200 170" xmlns="http://www.w3.org/2000/svg" role="img">${pivot}${beam}${pan(cx - beamHalf, block.leftTerms)}${pan(cx + beamHalf, block.rightTerms)}</svg>`;
+  // Les deux membres sont égaux (c'est une équation) → balance à l'équilibre.
+  const join = (terms: string[]) =>
+    terms.reduce((acc, t, i) => {
+      if (i === 0) return t;
+      const neg = /^-/.test(t.trim());
+      return `${acc} ${neg ? "−" : "+"} ${t.trim().replace(/^-/, "")}`;
+    }, "");
+  const svg = balanceScaleSvg(join(block.leftTerms), join(block.rightTerms), 0);
   return `<figure class="course-figure course-figure-equation-balancer">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
@@ -641,7 +1183,11 @@ function renderSlopeTriangle(
   const x2 = x1 + 2;
   const y1 = block.a * x1 + block.b;
   const y2 = block.a * x2 + block.b;
-  const overlay = `<line x1="${num(meta.sx(x1))}" y1="${num(meta.sy(y1))}" x2="${num(meta.sx(x2))}" y2="${num(meta.sy(y1))}" stroke="#c89f36" stroke-width="1.5" stroke-dasharray="4 3"/><line x1="${num(meta.sx(x2))}" y1="${num(meta.sy(y1))}" x2="${num(meta.sx(x2))}" y2="${num(meta.sy(y2))}" stroke="#c89f36" stroke-width="1.5" stroke-dasharray="4 3"/><text x="${num((meta.sx(x1) + meta.sx(x2)) / 2)}" y="${num(meta.sy(y1) + 14)}" font-size="10" fill="#c89f36">1</text><text x="${num(meta.sx(x2) + 6)}" y="${num((meta.sy(y1) + meta.sy(y2)) / 2)}" font-size="10" fill="#c89f36">${block.a}</text>`;
+  const gold = FIG.accent;
+  const overlay =
+    `<polygon points="${num(meta.sx(x1))},${num(meta.sy(y1))} ${num(meta.sx(x2))},${num(meta.sy(y1))} ${num(meta.sx(x2))},${num(meta.sy(y2))}" fill="${gold}" fill-opacity="0.16" stroke="${gold}" stroke-width="1.4"/>` +
+    figText((meta.sx(x1) + meta.sx(x2)) / 2, meta.sy(y1) + 13, "1", { size: 10, weight: 600, fill: "#8a6d3b" }) +
+    figText(meta.sx(x2) + 8, (meta.sy(y1) + meta.sy(y2)) / 2 + 3, String(block.a), { size: 10, weight: 600, fill: "#8a6d3b", anchor: "start" });
   return `<figure class="course-figure course-figure-graph">${injectIntoSvg(svg, overlay)}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
@@ -655,22 +1201,29 @@ function renderVectorAdditionPad(
     { x: block.ux + block.vx, y: block.uy + block.vy, fromX: 0, fromY: 0, label: "u+v", tone: "red" } as never,
   ]);
   if (error) return `<p class="course-figure-error">${escapeHtml(error)}</p>`;
-  return `<figure class="course-figure course-figure-graph">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+  // "0*x" ne sert que de repère : on retire la courbe plate y=0 (grosse ligne
+  // noire parasite), les axes restent.
+  return `<figure class="course-figure course-figure-graph">${stripFlatCurve(svg)}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function stripFlatCurve(svg: string): string {
+  return svg.replace(/<path class="g-curve"[^>]*\/>/g, "");
 }
 
 function renderIntervalBuilder(
   block: Extract<StructuredCourseBlock, { type: "interval_builder" }>,
 ): string {
-  const width = 260;
-  const sx = (v: number) => 20 + ((v - block.min) / (block.max - block.min)) * (width - 40);
+  const width = 264;
+  const H = 56;
+  const y = 34;
+  const sx = (v: number) => 22 + ((v - block.min) / (block.max - block.min || 1)) * (width - 44);
   const x1 = sx(block.lowerBound), x2 = sx(block.upperBound);
-  const line = `<line x1="20" y1="30" x2="${width - 20}" y2="30" stroke="#10213d" stroke-width="1.5"/>`;
-  const highlight = `<line x1="${num(x1)}" y1="30" x2="${num(x2)}" y2="30" stroke="#2563eb" stroke-width="4"/>`;
+  const line = `<line x1="14" y1="${y}" x2="${width - 14}" y2="${y}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}" marker-end="url(#efig-arrow)"/>`;
+  const highlight = `<line x1="${num(x1)}" y1="${y}" x2="${num(x2)}" y2="${y}" stroke="${FIGURE_PALETTE.blue}" stroke-width="4.5" stroke-linecap="round"/>`;
   const endpoint = (x: number, open: boolean) =>
-    `<circle cx="${num(x)}" cy="30" r="5" fill="${open ? "#fff" : "#2563eb"}" stroke="#2563eb" stroke-width="2"/>`;
-  const labels = `<text x="${num(x1)}" y="20" font-size="10" text-anchor="middle" fill="#10213d">${block.lowerBound}</text><text x="${num(x2)}" y="20" font-size="10" text-anchor="middle" fill="#10213d">${block.upperBound}</text>`;
-  const svg = `<svg viewBox="0 0 ${width} 40" xmlns="http://www.w3.org/2000/svg" role="img">${line}${highlight}${endpoint(x1, block.lowerOpen)}${endpoint(x2, block.upperOpen)}${labels}</svg>`;
-  return `<figure class="course-figure course-figure-interval">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+    `<circle cx="${num(x)}" cy="${y}" r="5" fill="${open ? "#fff" : FIGURE_PALETTE.blue}" stroke="${FIGURE_PALETTE.blue}" stroke-width="2"/>`;
+  const labels = figText(x1, y - 11, String(block.lowerBound), { size: 10, weight: 600 }) + figText(x2, y - 11, String(block.upperBound), { size: 10, weight: 600 });
+  return `<figure class="course-figure course-figure-interval">${figOpen(width, H, { grid: false })}${line}${highlight}${endpoint(x1, block.lowerOpen)}${endpoint(x2, block.upperOpen)}${labels}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function renderTangentScrubber(
@@ -742,7 +1295,7 @@ function renderComplexPlanePolar(
   const algebraic = `${block.re}${block.im >= 0 ? " + " : " − "}${Math.abs(block.im)}i`;
   const polar = `${modulus.toFixed(2)} × (cos ${angle.toFixed(1)}° + i·sin ${angle.toFixed(1)}°)`;
   const toggle = `<div class="complex-toggle" data-algebraic="${escapeAttribute(algebraic)}" data-polar="${escapeAttribute(polar)}"><button type="button" class="complex-toggle-btn">Basculer forme algébrique / exponentielle</button><span class="complex-toggle-value">${escapeHtml(algebraic)}</span></div>`;
-  return `<figure class="course-figure course-figure-graph">${svg}${toggle}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+  return `<figure class="course-figure course-figure-graph">${stripFlatCurve(svg)}${toggle}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function renderAlgoSandbox(
@@ -768,20 +1321,18 @@ function renderClock(
     const inner = trigPoint(cx, cy, r - (i % 3 === 0 ? 12 : 6), 90 - angle);
     const label = trigPoint(cx, cy, r - 20, 90 - angle);
     ticks.push(
-      `<line x1="${num(inner.x)}" y1="${num(inner.y)}" x2="${num(outer.x)}" y2="${num(outer.y)}" stroke="#10213d" stroke-width="${i % 3 === 0 ? 2 : 1}"/>`,
+      `<line x1="${num(inner.x)}" y1="${num(inner.y)}" x2="${num(outer.x)}" y2="${num(outer.y)}" stroke="${FIG.ink}" stroke-width="${i % 3 === 0 ? 2 : 1}"/>`,
     );
     const hourNumber = i === 0 ? 12 : i;
-    ticks.push(
-      `<text x="${num(label.x)}" y="${num(label.y)}" dy="4" font-size="${i % 3 === 0 ? 12 : 10}" text-anchor="middle" fill="#10213d">${hourNumber}</text>`,
-    );
+    ticks.push(figText(label.x, label.y + 4, String(hourNumber), { size: i % 3 === 0 ? 12 : 10, weight: 600 }));
   }
   const hourAngle = ((block.hours % 12) + block.minutes / 60) * 30;
   const minuteAngle = block.minutes * 6;
   const hourHand = trigPoint(cx, cy, r * 0.5, 90 - hourAngle);
   const minuteHand = trigPoint(cx, cy, r * 0.78, 90 - minuteAngle);
-  const face = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fff" stroke="#10213d" stroke-width="1.5"/>`;
-  const hands = `<line class="clock-hour-hand" x1="${cx}" y1="${cy}" x2="${num(hourHand.x)}" y2="${num(hourHand.y)}" stroke="#10213d" stroke-width="4" stroke-linecap="round"/><line class="clock-minute-hand" x1="${cx}" y1="${cy}" x2="${num(minuteHand.x)}" y2="${num(minuteHand.y)}" stroke="#2563eb" stroke-width="3" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="4" fill="#10213d"/>`;
-  const svg = `<svg class="clock-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" data-hours="${block.hours}" data-minutes="${block.minutes}">${face}${ticks.join("")}<g class="clock-hands">${hands}</g></svg>`;
+  const face = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#ffffff" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>`;
+  const hands = `<line class="clock-hour-hand" x1="${cx}" y1="${cy}" x2="${num(hourHand.x)}" y2="${num(hourHand.y)}" stroke="${FIG.ink}" stroke-width="4" stroke-linecap="round"/><line class="clock-minute-hand" x1="${cx}" y1="${cy}" x2="${num(minuteHand.x)}" y2="${num(minuteHand.y)}" stroke="${FIGURE_PALETTE.blue}" stroke-width="3" stroke-linecap="round"/><circle cx="${cx}" cy="${cy}" r="4" fill="${FIG.ink}"/>`;
+  const svg = `<svg class="clock-svg edu-fig-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" data-hours="${block.hours}" data-minutes="${block.minutes}">${figPaper(200, 200, 20)}${face}${ticks.join("")}<g class="clock-hands">${hands}</g></svg>`;
   const controls = block.interactive
     ? `<div class="clock-controls"><button type="button" class="clock-drag-hint">Fais glisser les aiguilles</button><span class="clock-reading"></span></div>`
     : "";
@@ -809,25 +1360,24 @@ function renderFraction(
       const end = trigPoint(cx, cy, r, -endAngle);
       const largeArc = step > 180 ? 1 : 0;
       const filled = i < numerator;
-      const color = filled ? "#2563eb" : "#fff";
       slices.push(
-        `<path d="M ${num(cx)} ${num(cy)} L ${num(start.x)} ${num(start.y)} A ${r} ${r} 0 ${largeArc} 1 ${num(end.x)} ${num(end.y)} Z" fill="${color}" fill-opacity="${filled ? 0.85 : 1}" stroke="#10213d" stroke-width="1.5"/>`,
+        `<path d="M ${num(cx)} ${num(cy)} L ${num(start.x)} ${num(start.y)} A ${r} ${r} 0 ${largeArc} 1 ${num(end.x)} ${num(end.y)} Z" fill="${filled ? FIGURE_PALETTE.blue : "#ffffff"}" fill-opacity="${filled ? 0.85 : 1}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>`,
       );
       startAngle = endAngle;
     }
-    svg = `<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img">${slices.join("")}</svg>`;
+    svg = `${figOpen(160, 160, { grid: false })}${slices.join("")}</svg>`;
   } else {
-    const width = 240;
-    const height = 60;
-    const cellWidth = width / denominator;
+    const width = 244;
+    const height = 64;
+    const cellWidth = (width - 8) / denominator;
     const cells: string[] = [];
     for (let i = 0; i < denominator; i++) {
       const filled = i < numerator;
       cells.push(
-        `<rect x="${num(i * cellWidth)}" y="0" width="${num(cellWidth)}" height="${height}" fill="${filled ? "#2563eb" : "#fff"}" fill-opacity="${filled ? 0.85 : 1}" stroke="#10213d" stroke-width="1.5"/>`,
+        `<rect x="${num(4 + i * cellWidth)}" y="4" width="${num(cellWidth)}" height="${height - 8}" fill="${filled ? FIGURE_PALETTE.blue : "#ffffff"}" fill-opacity="${filled ? 0.85 : 1}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>`,
       );
     }
-    svg = `<svg viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img">${cells.join("")}</svg>`;
+    svg = `${figOpen(width, height, { grid: false })}${cells.join("")}</svg>`;
   }
   const label = `<div class="fraction-label">${numerator} / ${denominator}</div>`;
   return `<figure class="course-figure course-figure-fraction">${svg}${label}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
@@ -836,11 +1386,15 @@ function renderFraction(
 function renderPieChart(
   block: Extract<StructuredCourseBlock, { type: "pie_chart" }>,
 ): string {
-  const cx = 95;
+  const cx = 80;
   const cy = 80;
-  const r = 55;
+  const r = 62;
   const total = block.slices.reduce((sum, slice) => sum + slice.value, 0) || 1;
   let startAngle = -90;
+  // Camembert centré + pourcentage court à l'intérieur de la part ; les noms
+  // (souvent longs : « Musique », « Théâtre »...) vont dans une légende HTML
+  // sous la figure au lieu de déborder du cadre SVG.
+  const legendItems: string[] = [];
   const parts = block.slices.map((slice) => {
     const sweep = (slice.value / total) * 360;
     const endAngle = startAngle + sweep;
@@ -848,20 +1402,26 @@ function renderPieChart(
     const end = trigPoint(cx, cy, r, -endAngle);
     const largeArc = sweep > 180 ? 1 : 0;
     const midAngle = -(startAngle + endAngle) / 2;
-    const labelPoint = trigPoint(cx, cy, r + 16, midAngle);
-    const midRadians = (midAngle * Math.PI) / 180;
-    const anchor = labelAnchorFor(Math.cos(midRadians));
+    const inner = trigPoint(cx, cy, r * 0.6, midAngle);
     const percent = Math.round((slice.value / total) * 100);
+    const color = FIGURE_PALETTE[slice.tone];
+    legendItems.push(
+      `<li><span class="pie-legend-dot" style="background:${color}"></span>${escapeHtml(slice.label)} — ${percent}%</li>`,
+    );
     const path =
       sweep >= 359.99
-        ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${FIGURE_PALETTE[slice.tone]}" fill-opacity="0.75" stroke="#fff" stroke-width="1.5"/>`
-        : `<path d="M ${num(cx)} ${num(cy)} L ${num(start.x)} ${num(start.y)} A ${r} ${r} 0 ${largeArc} 1 ${num(end.x)} ${num(end.y)} Z" fill="${FIGURE_PALETTE[slice.tone]}" fill-opacity="0.75" stroke="#fff" stroke-width="1.5"/>`;
-    const label = `<text x="${num(labelPoint.x)}" y="${num(labelPoint.y)}" font-size="10" text-anchor="${anchor}" fill="#10213d">${escapeHtml(slice.label)} (${percent}%)</text>`;
+        ? `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${color}" fill-opacity="0.8" stroke="#fff" stroke-width="1.5"/>`
+        : `<path d="M ${num(cx)} ${num(cy)} L ${num(start.x)} ${num(start.y)} A ${r} ${r} 0 ${largeArc} 1 ${num(end.x)} ${num(end.y)} Z" fill="${color}" fill-opacity="0.8" stroke="#fff" stroke-width="1.5"/>`;
+    const label =
+      percent >= 8
+        ? `<text x="${num(inner.x)}" y="${num(inner.y + 3)}" font-size="10" font-weight="600" text-anchor="middle" fill="#0f1e3a">${percent}%</text>`
+        : "";
     startAngle = endAngle;
     return path + label;
   });
-  const svg = `<svg viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg" role="img">${parts.join("")}</svg>`;
-  return `<figure class="course-figure course-figure-pie-chart">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+  const svg = `<svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" role="img">${parts.join("")}</svg>`;
+  const legend = `<ul class="pie-legend">${legendItems.join("")}</ul>`;
+  return `<figure class="course-figure course-figure-pie-chart">${svg}${legend}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function renderNumberLine(
@@ -870,20 +1430,23 @@ function renderNumberLine(
   const min = Math.min(block.min, block.max);
   const max = Math.max(block.min, block.max);
   const span = max - min || 1;
-  const left = 20;
-  const right = 220;
-  const y = 35;
+  const W = 260;
+  const H = 76;
+  const left = 24;
+  const right = W - 24;
+  const y = 40;
   const toX = (value: number) => left + ((value - min) / span) * (right - left);
-  const showTicks = span <= 14 && Number.isInteger(min) && Number.isInteger(max);
+  const showTicks = span <= 16 && Number.isInteger(min) && Number.isInteger(max);
   const ticks = showTicks
     ? Array.from({ length: Math.round(span) + 1 }, (_, index) => min + index)
         .map(
           (value) =>
-            `<line x1="${num(toX(value))}" y1="${y - 4}" x2="${num(toX(value))}" y2="${y + 4}" stroke="#94a3b8" stroke-width="1"/><text x="${num(toX(value))}" y="${y + 18}" font-size="9" text-anchor="middle" fill="#64748b">${value}</text>`,
+            `<line x1="${num(toX(value))}" y1="${y - 5}" x2="${num(toX(value))}" y2="${y + 5}" stroke="${FIG.inkSoft}" stroke-width="1"/>` +
+            figText(toX(value), y + 18, String(value), { size: 9, fill: FIG.inkSoft }),
         )
         .join("")
     : "";
-  const line = `<line x1="${left - 10}" y1="${y}" x2="${right + 10}" y2="${y}" stroke="#10213d" stroke-width="1.5" marker-end="url(#nl-arrow)" marker-start="url(#nl-arrow-start)"/>`;
+  const line = `<line x1="${left - 12}" y1="${y}" x2="${right + 12}" y2="${y}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}" marker-end="url(#efig-arrow)"/>`;
   const intervals = block.intervals
     .map((interval) => {
       const x1 = toX(Math.max(interval.from, min));
@@ -891,20 +1454,18 @@ function renderNumberLine(
       const color = FIGURE_PALETTE[interval.tone];
       const bracket = (x: number, included: boolean) =>
         included
-          ? `<circle cx="${num(x)}" cy="${y}" r="3.5" fill="${color}"/>`
-          : `<circle cx="${num(x)}" cy="${y}" r="3.5" fill="#fff" stroke="${color}" stroke-width="1.5"/>`;
-      return `<line x1="${num(x1)}" y1="${y}" x2="${num(x2)}" y2="${y}" stroke="${color}" stroke-width="4"/>${bracket(x1, interval.fromIncluded)}${bracket(x2, interval.toIncluded)}`;
+          ? `<circle cx="${num(x)}" cy="${y}" r="4" fill="${color}"/>`
+          : `<circle cx="${num(x)}" cy="${y}" r="4" fill="#fff" stroke="${color}" stroke-width="1.75"/>`;
+      return `<line x1="${num(x1)}" y1="${y}" x2="${num(x2)}" y2="${y}" stroke="${color}" stroke-width="4.5" stroke-linecap="round"/>${bracket(x1, interval.fromIncluded)}${bracket(x2, interval.toIncluded)}`;
     })
     .join("");
   const points = block.points
     .map((point) => {
       const x = toX(clampNumber(point.value, min, max));
-      const fill = point.filled ? "#10213d" : "#fff";
-      return `<circle cx="${num(x)}" cy="${y}" r="4" fill="${fill}" stroke="#10213d" stroke-width="1.5"/><text x="${num(x)}" y="${y - 10}" font-size="10" text-anchor="middle" fill="#10213d">${escapeHtml(point.label)}</text>`;
+      return `<circle cx="${num(x)}" cy="${y}" r="4.5" fill="${point.filled ? FIG.ink : "#fff"}" stroke="${FIG.ink}" stroke-width="1.75"/>${figText(x, y - 11, escapeHtml(point.label), { size: 10, weight: 600 })}`;
     })
     .join("");
-  const svg = `<svg viewBox="0 0 240 70" xmlns="http://www.w3.org/2000/svg" role="img"><defs><marker id="nl-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#10213d"/></marker><marker id="nl-arrow-start" markerWidth="6" markerHeight="6" refX="1" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M6,0 L0,3 L6,6 Z" fill="#10213d"/></marker></defs>${line}${ticks}${intervals}${points}</svg>`;
-  return `<figure class="course-figure course-figure-number-line">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+  return `<figure class="course-figure course-figure-number-line">${figOpen(W, H, { grid: false })}${line}${ticks}${intervals}${points}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function clampNumber(value: number, min: number, max: number): number {
@@ -916,32 +1477,34 @@ function renderBarChart(
 ): string {
   const bars = block.bars;
   const maxValue = Math.max(...bars.map((bar) => bar.value), 1);
-  const chartLeft = 20;
-  const chartRight = 210;
-  const chartTop = 15;
-  const chartBottom = 130;
+  const W = 230;
+  const H = 165;
+  const chartLeft = 22;
+  const chartRight = W - 14;
+  const chartTop = 16;
+  const chartBottom = 132;
   const slotWidth = (chartRight - chartLeft) / bars.length;
-  const barWidth = slotWidth * 0.6;
-  const grid = gridBackground(220, 160, 20);
-  // Lignes horizontales à hauteur des graduations pour lire les valeurs,
-  // même convention qu'un diagramme en barres classique.
+  const barWidth = Math.min(34, slotWidth * 0.58);
   const gridSteps = 4;
-  const valueGrid = Array.from({ length: gridSteps }, (_, index) => {
-    const y = chartTop + ((chartBottom - chartTop) * index) / gridSteps;
-    return `<line x1="${chartLeft}" y1="${num(y)}" x2="${chartRight}" y2="${num(y)}" stroke="rgba(15,30,58,0.07)" stroke-width="1"/>`;
+  const valueGrid = Array.from({ length: gridSteps + 1 }, (_, index) => {
+    const yy = chartTop + ((chartBottom - chartTop) * index) / gridSteps;
+    return `<line x1="${chartLeft}" y1="${num(yy)}" x2="${chartRight}" y2="${num(yy)}" stroke="${FIG.grid}" stroke-width="1"/>`;
   }).join("");
-  const axis = `<line x1="${chartLeft}" y1="${chartBottom}" x2="${chartRight}" y2="${chartBottom}" stroke="#10213d" stroke-width="1.5"/>`;
+  const axis = `<line x1="${chartLeft}" y1="${chartBottom}" x2="${chartRight}" y2="${chartBottom}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>`;
   const parts = bars
     .map((bar, index) => {
       const height = (bar.value / maxValue) * (chartBottom - chartTop);
       const x = chartLeft + index * slotWidth + (slotWidth - barWidth) / 2;
       const yTop = chartBottom - height;
       const color = FIGURE_PALETTE[bar.tone];
-      return `<rect x="${num(x)}" y="${num(yTop)}" width="${num(barWidth)}" height="${num(height)}" fill="${color}" fill-opacity="0.8"/><text x="${num(x + barWidth / 2)}" y="${num(yTop - 5)}" font-size="10" text-anchor="middle" fill="#10213d">${bar.value}</text><text x="${num(x + barWidth / 2)}" y="${chartBottom + 14}" font-size="10" text-anchor="middle" fill="#64748b">${escapeHtml(bar.label)}</text>`;
+      return (
+        `<rect x="${num(x)}" y="${num(yTop)}" width="${num(barWidth)}" height="${num(height)}" rx="2" fill="${color}" fill-opacity="0.85" stroke="${color}" stroke-width="1"/>` +
+        figText(x + barWidth / 2, yTop - 5, String(bar.value), { size: 10, weight: 700 }) +
+        figText(x + barWidth / 2, chartBottom + 14, escapeHtml(bar.label), { size: 9.5, fill: FIG.inkSoft })
+      );
     })
     .join("");
-  const svg = `<svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg" role="img">${grid}${valueGrid}${axis}${parts}</svg>`;
-  return `<figure class="course-figure course-figure-bar-chart">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+  return `<figure class="course-figure course-figure-bar-chart">${figOpen(W, H, { grid: false })}${valueGrid}${axis}${parts}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function renderProbabilityTree(
@@ -950,38 +1513,51 @@ function renderProbabilityTree(
   const branches = block.branches;
   const leafCounts = branches.map((branch) => Math.max(1, branch.children.length));
   const totalLeaves = leafCounts.reduce((sum, count) => sum + count, 0);
-  const rowHeight = 26;
-  const height = Math.max(90, (totalLeaves + branches.length) * rowHeight);
-  const rootX = 15;
-  const branchX = 95;
-  const leafX = 190;
+  const rowHeight = 34;
+  const contentH = totalLeaves * rowHeight;
+  const marginY = 16;
+  const height = contentH + marginY * 2;
+  const W = 300;
+  const rootX = 14;
+  const branchX = 118;
+  const leafX = 234;
   const rootY = height / 2;
-  let cursorY = 10;
+  // Départ centré → l'arbre est symétrique autour de la racine.
+  let cursorY = marginY;
   const segments: string[] = [];
-  branches.forEach((branch, index) => {
+  const along = (x1: number, y1: number, x2: number, y2: number, t: number) => ({
+    x: x1 + (x2 - x1) * t,
+    y: y1 + (y2 - y1) * t,
+  });
+  segments.push(`<circle cx="${rootX}" cy="${num(rootY)}" r="2.5" fill="${FIG.ink}"/>`);
+  branches.forEach((branch) => {
     const leaves = branch.children.length > 0 ? branch.children : [{ label: "", probability: "" }];
     const branchTop = cursorY;
     const branchBottom = cursorY + leaves.length * rowHeight;
     const branchY = (branchTop + branchBottom) / 2;
+    const bp = along(rootX, rootY, branchX, branchY, 0.5);
     segments.push(
-      `<line x1="${rootX}" y1="${num(rootY)}" x2="${branchX}" y2="${num(branchY)}" stroke="#10213d" stroke-width="1.5"/>`,
-      `<text x="${(rootX + branchX) / 2}" y="${num((rootY + branchY) / 2 - 5)}" font-size="9" text-anchor="middle" fill="#64748b">${escapeHtml(branch.probability)}</text>`,
-      `<text x="${branchX + 6}" y="${num(branchY)}" dy="-6" font-size="10" fill="#10213d">${escapeHtml(branch.label)}</text>`,
+      `<line x1="${rootX}" y1="${num(rootY)}" x2="${branchX}" y2="${num(branchY)}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>`,
+      `<circle cx="${branchX}" cy="${num(branchY)}" r="2.5" fill="${FIG.ink}"/>`,
+      figText(bp.x, bp.y + (branchY <= rootY ? -5 : 12), escapeHtml(branch.probability), { size: 9, fill: "#8a6d3b", weight: 600 }),
+      figText(branchX, branchY - (leaves.length > 1 ? 13 : 8), escapeHtml(branch.label), { size: 10, weight: 700, anchor: "middle" }),
     );
     if (branch.children.length > 0) {
       branch.children.forEach((leaf, leafIndex) => {
         const leafY = branchTop + leafIndex * rowHeight + rowHeight / 2;
+        const lp = along(branchX, branchY, leafX, leafY, 0.5);
+        // décalage perpendiculaire vers l'extérieur : symétrique haut/bas
+        const perp = leafY <= branchY ? -5 : 12;
         segments.push(
-          `<line x1="${branchX}" y1="${num(branchY)}" x2="${leafX}" y2="${num(leafY)}" stroke="#10213d" stroke-width="1.5"/>`,
-          `<text x="${(branchX + leafX) / 2}" y="${num((branchY + leafY) / 2 - 5)}" font-size="9" text-anchor="middle" fill="#64748b">${escapeHtml(leaf.probability)}</text>`,
-          `<text x="${leafX + 6}" y="${num(leafY)}" dy="3" font-size="10" fill="#10213d">${escapeHtml(leaf.label)}</text>`,
+          `<line x1="${branchX}" y1="${num(branchY)}" x2="${leafX}" y2="${num(leafY)}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>`,
+          figText(lp.x, lp.y + perp, escapeHtml(leaf.probability), { size: 9, fill: "#8a6d3b", weight: 600 }),
+          figText(leafX + 6, leafY + 3.5, escapeHtml(leaf.label), { size: 10, anchor: "start" }),
         );
       });
     }
     cursorY = branchBottom;
-    void index;
   });
-  const svg = `<svg viewBox="0 0 260 ${num(height)}" xmlns="http://www.w3.org/2000/svg" role="img">${segments.join("")}</svg>`;
+  const svg = `${figOpen(W, height, { grid: false })}${segments.join("")}</svg>`;
   return `<figure class="course-figure course-figure-probability-tree">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
@@ -1034,84 +1610,6 @@ function renderVennDiagram(
     .join("");
   const svg = `<svg viewBox="0 0 170 160" xmlns="http://www.w3.org/2000/svg" role="img">${circles}${setLabels}</svg>`;
   return `<figure class="course-figure course-figure-venn">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
-}
-
-function renderTriangleDiagram(
-  block: Extract<StructuredCourseBlock, { type: "triangle_diagram" }>,
-): string {
-  const isRight = block.rightAngleAt !== undefined;
-  const base: Array<{ x: number; y: number }> = isRight
-    ? block.rightAngleAt === 0
-      ? [{ x: 40, y: 130 }, { x: 160, y: 130 }, { x: 40, y: 30 }]
-      : block.rightAngleAt === 1
-        ? [{ x: 30, y: 30 }, { x: 30, y: 130 }, { x: 160, y: 130 }]
-        : [{ x: 40, y: 130 }, { x: 160, y: 30 }, { x: 40, y: 30 }]
-    : [{ x: 100, y: 25 }, { x: 35, y: 135 }, { x: 165, y: 135 }];
-  const [a, b, c] = base;
-  const centroid = { x: (a.x + b.x + c.x) / 3, y: (a.y + b.y + c.y) / 3 };
-  const labelAt = (point: { x: number; y: number }) => {
-    const dx = point.x - centroid.x;
-    const dy = point.y - centroid.y;
-    const length = Math.hypot(dx, dy) || 1;
-    return { x: point.x + (dx / length) * 14, y: point.y + (dy / length) * 14 };
-  };
-  const vertexLabels = [a, b, c]
-    .map((point, index) => {
-      const label = labelAt(point);
-      return `<text x="${num(label.x)}" y="${num(label.y)}" font-size="11" font-weight="bold" text-anchor="middle" fill="#10213d">${escapeHtml(block.vertexLabels[index])}</text>`;
-    })
-    .join("");
-  const sides: Array<[{ x: number; y: number }, { x: number; y: number }]> = [
-    [b, c],
-    [a, c],
-    [a, b],
-  ];
-  const sideLabels = block.sideLabels
-    ? sides
-        .map(([p1, p2], index) => {
-          const text = block.sideLabels?.[index];
-          if (!text) return "";
-          const mid = { x: (p1.x + p2.x) / 2, y: (p1.y + p2.y) / 2 };
-          const label = labelAt(mid);
-          const midLabel = { x: mid.x + (label.x - mid.x) * 0.6, y: mid.y + (label.y - mid.y) * 0.6 };
-          return `<text x="${num(midLabel.x)}" y="${num(midLabel.y)}" font-size="10" text-anchor="middle" fill="#64748b">${escapeHtml(text)}</text>`;
-        })
-        .join("")
-    : "";
-  const angleLabels = block.angleLabels
-    ? [a, b, c]
-        .map((point, index) => {
-          const text = block.angleLabels?.[index];
-          if (!text) return "";
-          const dx = centroid.x - point.x;
-          const dy = centroid.y - point.y;
-          const length = Math.hypot(dx, dy) || 1;
-          const pos = { x: point.x + (dx / length) * 22, y: point.y + (dy / length) * 22 };
-          return `<text x="${num(pos.x)}" y="${num(pos.y)}" font-size="9" text-anchor="middle" fill="#c89f36">${escapeHtml(text)}</text>`;
-        })
-        .join("")
-    : "";
-  let rightAngleMarker = "";
-  if (block.rightAngleAt !== undefined) {
-    const vertex = base[block.rightAngleAt];
-    const others = base.filter((_, index) => index !== block.rightAngleAt);
-    const toUnit = (p: { x: number; y: number }) => {
-      const dx = p.x - vertex.x;
-      const dy = p.y - vertex.y;
-      const length = Math.hypot(dx, dy) || 1;
-      return { x: dx / length, y: dy / length };
-    };
-    const u1 = toUnit(others[0]);
-    const u2 = toUnit(others[1]);
-    const size = 12;
-    const p1 = { x: vertex.x + u1.x * size, y: vertex.y + u1.y * size };
-    const p2 = { x: vertex.x + u1.x * size + u2.x * size, y: vertex.y + u1.y * size + u2.y * size };
-    const p3 = { x: vertex.x + u2.x * size, y: vertex.y + u2.y * size };
-    rightAngleMarker = `<path d="M ${num(p1.x)} ${num(p1.y)} L ${num(p2.x)} ${num(p2.y)} L ${num(p3.x)} ${num(p3.y)}" fill="none" stroke="#10213d" stroke-width="1.2"/>`;
-  }
-  const triangle = `<polygon points="${a.x},${a.y} ${b.x},${b.y} ${c.x},${c.y}" fill="#10213d" fill-opacity="0.06" stroke="#10213d" stroke-width="1.5"/>`;
-  const svg = `<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img">${triangle}${rightAngleMarker}${vertexLabels}${sideLabels}${angleLabels}</svg>`;
-  return `<figure class="course-figure course-figure-triangle">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 function renderBoxPlot(
@@ -1347,48 +1845,47 @@ export function compileCourseBlock(
       return `<div class="math-graph-placeholder" data-function="${escapeAttribute(block.expression)}" data-xmin="${block.xmin}" data-xmax="${block.xmax}"${parameter}${vectors} data-caption="${escapeAttribute(block.caption)}"></div>`;
     }
     case "figure": {
-      const markerId = `course-arrow-${simpleHash(block.caption)}`;
+      // Feuille quadrillée + tracé cohérent : aplats translucides, traits
+      // d'épaisseur constante, étiquettes avec halo blanc (lisibles sur le
+      // quadrillage et par-dessus les formes). Le quadrillage donne l'échelle.
+      const figLabel = (
+        value: StructuredRichText | undefined,
+        lx: number | undefined,
+        ly: number | undefined,
+      ): string => {
+        if (!value?.parts.length || lx === undefined || ly === undefined) return "";
+        const text = structuredRichTextToPlainText(value);
+        return text ? figText(lx, ly, escapeHtml(text), { size: 11, weight: 600 }) : "";
+      };
       const elements = block.elements
         .map((element) => {
           const color = FIGURE_PALETTE[element.tone];
-          const label = figureLabel(
-            element.label,
-            element.labelX,
-            element.labelY,
-          );
+          const label = figLabel(element.label, element.labelX, element.labelY);
           if (element.type === "line") {
-            return `<line x1="${element.x1}" y1="${element.y1}" x2="${element.x2}" y2="${element.y2}" stroke="${color}" stroke-width="1.5"${element.dashed ? ' stroke-dasharray="5 4"' : ""}${element.arrowEnd ? ` marker-end="url(#${markerId})"` : ""}/>${label}`;
+            return `<line x1="${element.x1}" y1="${element.y1}" x2="${element.x2}" y2="${element.y2}" stroke="${color}" stroke-width="${FIG_STROKE}" stroke-linecap="round"${element.dashed ? ' stroke-dasharray="5 4"' : ""}${element.arrowEnd ? ' marker-end="url(#efig-arrow)"' : ""}/>${label}`;
           }
           if (element.type === "point") {
-            return `<circle cx="${element.x}" cy="${element.y}" r="3.5" fill="${color}"/>${label}`;
+            return `<circle cx="${element.x}" cy="${element.y}" r="4" fill="${color}" stroke="#ffffff" stroke-width="1.5"/>${label}`;
           }
           if (element.type === "circle") {
-            return `<circle cx="${element.cx}" cy="${element.cy}" r="${element.r}" stroke="${color}" stroke-width="1.5" fill="${element.filled ? color : "none"}"${element.filled ? ' fill-opacity="0.18"' : ""}/>${label}`;
+            return `<circle cx="${element.cx}" cy="${element.cy}" r="${element.r}" stroke="${color}" stroke-width="${FIG_STROKE}" fill="${element.filled ? color : "none"}"${element.filled ? ` fill-opacity="${SHAPE_FILL_OPACITY}"` : ""}/>${label}`;
           }
           if (element.type === "polygon") {
             const points = element.points.map((point) => `${point.x},${point.y}`).join(" ");
-            return `<polygon points="${points}" stroke="${color}" stroke-width="1.5" fill="${element.filled ? color : "none"}"${element.filled ? ' fill-opacity="0.16"' : ""}/>${label}`;
+            return `<polygon points="${points}" stroke="${color}" stroke-width="${FIG_STROKE}" stroke-linejoin="round" fill="${element.filled ? color : "none"}"${element.filled ? ` fill-opacity="${SHAPE_FILL_OPACITY}"` : ""}/>${label}`;
           }
-          const start = polarPoint(
-            element.cx,
-            element.cy,
-            element.r,
-            element.startAngle,
-          );
-          const end = polarPoint(
-            element.cx,
-            element.cy,
-            element.r,
-            element.endAngle,
-          );
+          const start = polarPoint(element.cx, element.cy, element.r, element.startAngle);
+          const end = polarPoint(element.cx, element.cy, element.r, element.endAngle);
           const delta = Math.abs(element.endAngle - element.startAngle) % 360;
           const largeArc = delta > 180 ? 1 : 0;
           const sweep = element.endAngle >= element.startAngle ? 1 : 0;
-          return `<path d="M ${start.x.toFixed(2)} ${start.y.toFixed(2)} A ${element.r} ${element.r} 0 ${largeArc} ${sweep} ${end.x.toFixed(2)} ${end.y.toFixed(2)}" stroke="${color}" stroke-width="1.5" fill="none"/>${label}`;
+          return `<path d="M ${start.x.toFixed(2)} ${start.y.toFixed(2)} A ${element.r} ${element.r} 0 ${largeArc} ${sweep} ${end.x.toFixed(2)} ${end.y.toFixed(2)}" stroke="${color}" stroke-width="${FIG_STROKE}" fill="none"/>${label}`;
         })
         .join("");
-      return `<figure class="course-figure"><svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" role="img"><defs><marker id="${markerId}" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L6,3 L0,6 Z" fill="#10213d"/></marker></defs>${elements}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+      return `<figure class="course-figure">${figOpen(200, 160, { cell: 16 })}${elements}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
     }
+    case "shape":
+      return renderShape(block);
     case "trig_circle":
       return renderTrigCircle(block);
     case "pie_chart":
@@ -1429,8 +1926,6 @@ export function compileCourseBlock(
       return renderThermometerAxis(block);
     case "area_decomposer":
       return renderAreaDecomposer(block);
-    case "pythagoras_visualizer":
-      return renderPythagorasVisualizer(block);
     case "scientific_notation_converter":
       return renderScientificNotationConverter(block);
     case "equation_balancer":
@@ -1455,8 +1950,6 @@ export function compileCourseBlock(
       return renderProbabilityTree(block);
     case "venn_diagram":
       return renderVennDiagram(block);
-    case "triangle_diagram":
-      return renderTriangleDiagram(block);
     case "box_plot":
       return renderBoxPlot(block);
     case "exercise": {
