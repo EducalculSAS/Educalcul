@@ -132,6 +132,10 @@ export function compileHandAuthoredCourse(raw: any): CompileResult<any[]> {
               warnings.push(
                 `${lessonLabel} : bloc ${blockIndex + 1} de type "${String(type ?? "?")}" ignoré — champs invalides ou manquants (voir _blocks_catalogue).`,
               );
+            } else if (normalized.type === "exercise" && normalized.exerciseIndex > exerciseIds.length) {
+              warnings.push(
+                `${lessonLabel} : bloc ${blockIndex + 1} référence l'exercice n°${normalized.exerciseIndex}, mais "exercises" n'en a que ${exerciseIds.length} — cet emplacement restera vide.`,
+              );
             }
             return normalized;
           })
