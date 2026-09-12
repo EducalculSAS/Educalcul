@@ -797,6 +797,24 @@ async function main() {
     });
   }
 
+  // Le générateur (gemini/run.ts) réécrit les titres mais conserve l'ancien
+  // dans `_original_title`. On matche donc la ligne existante par l'ancien titre
+  // (1er import) OU par le nouveau (imports suivants) — jamais de doublon.
+  function findExisting(course: CourseJson): { id: number } | undefined {
+    const l = normalizeLevel(course.level);
+    const s = normalizeText(course.subject);
+    const originalTitle = (course as { _original_title?: unknown })._original_title;
+    const keys = [
+      typeof originalTitle === "string" ? [l, s, normalizeText(originalTitle)].join("::") : null,
+      [l, s, normalizeText(course.title)].join("::"),
+    ].filter(Boolean) as string[];
+    for (const k of keys) {
+      const hit = existing.get(k);
+      if (hit) return hit;
+    }
+    return undefined;
+  }
+
   /* ----------------------------------------------------------
      Import
      ---------------------------------------------------------- */
@@ -819,15 +837,9 @@ async function main() {
 
     const course = item.course;
 
-    const key = [
-      normalizeLevel(course.level),
-      normalizeText(course.subject),
-      normalizeText(course.title),
-    ].join("::");
-
     const payload = databasePayload(course, item.folder.id);
 
-    const previous = existing.get(key);
+    const previous = findExisting(course);
 
     let error: { message: string } | null = null;
 

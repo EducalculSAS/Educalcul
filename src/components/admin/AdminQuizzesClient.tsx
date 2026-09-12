@@ -14,6 +14,7 @@ import {
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { QUIZ_JSON_TEMPLATE } from "@/lib/jsonTemplates";
+import { compileHandAuthoredQuiz } from "@/lib/ai/handAuthoredContent";
 import QuizGeneratorModal, { QuizGenParams } from "@/components/admin/QuizGeneratorModal";
 import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import QuizBuilder, { Question } from "@/components/admin/QuizBuilder";
@@ -232,6 +233,17 @@ export default function AdminQuizzesClient({
     try {
       const data = await importFromJSONFile(file);
       if (data._type && data._type !== "quiz") { alert("Ce fichier n'est pas un quiz."); return; }
+      let compiledContent = data.content_json || [];
+      try {
+        const result = compileHandAuthoredQuiz(data);
+        compiledContent = result.content;
+        if (result.warnings.length > 0) {
+          alert(`Importé, mais à vérifier avant d'enregistrer :\n\n- ${result.warnings.join("\n- ")}`);
+        }
+      } catch (compileErr: any) {
+        alert(`Le contenu du fichier n'a pas pu être compilé : ${compileErr.message}`);
+        return;
+      }
       setFormData({
         title: data.title || "",
         description: data.description || "",
@@ -246,7 +258,7 @@ export default function AdminQuizzesClient({
         max_attempts: data.max_attempts || 0,
         status: data.status || "draft",
         thumbnail_filename: "",
-        content_json: data.content_json || [],
+        content_json: compiledContent,
       });
       setQuizEstimatedTime(data.estimated_time ?? 15);
       setEditingQuiz(data.id ? ({ id: data.id } as Quiz) : null);

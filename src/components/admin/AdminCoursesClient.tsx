@@ -48,6 +48,7 @@ import {
 } from "lucide-react";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
+import { compileHandAuthoredCourse } from "@/lib/ai/handAuthoredContent";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
@@ -234,6 +235,21 @@ export default function AdminCoursesClient({
         alert("Ce fichier n'est pas un cours.");
         return;
       }
+      // "_format":"source" (modèle téléchargé, rempli à la main) : les blocs
+      // déclaratifs + texte $...$ sont compilés vers le format affiché par le
+      // site. Sans ce marqueur (ex: export ré-importé), contenu déjà compilé
+      // → inchangé.
+      let compiledContent = data.content_json || [];
+      try {
+        const result = compileHandAuthoredCourse(data);
+        compiledContent = result.content;
+        if (result.warnings.length > 0) {
+          alert(`Importé, mais à vérifier avant d'enregistrer :\n\n- ${result.warnings.join("\n- ")}`);
+        }
+      } catch (compileErr: any) {
+        alert(`Le contenu du fichier n'a pas pu être compilé : ${compileErr.message}`);
+        return;
+      }
       setFormData({
         title: data.title || "",
         description: data.description || "",
@@ -242,7 +258,7 @@ export default function AdminCoursesClient({
         status: data.status || "draft",
         thumbnail_url: data.thumbnail_url || "",
         folder_id: data.folder_id ?? currentFolderId,
-        content_json: data.content_json || [],
+        content_json: compiledContent,
       });
       if (data.id) {
         setCurrentCourse({ id: data.id } as Course);

@@ -206,6 +206,7 @@ type CourseInfo = { id: number; title: string; level: string; subject: string };
 
 async function loadCourseInfoFromFile(generatedFilePath: string, sourceRootDir: string): Promise<{
   title: string;
+  originalTitle: string;
   level: string;
   subject: string;
 } | null> {
@@ -219,7 +220,12 @@ async function loadCourseInfoFromFile(generatedFilePath: string, sourceRootDir: 
   try {
     const raw = JSON.parse(await readFile(courseFile, "utf8"));
     const level = inferLevelFromFile(courseFile, String(raw.level || levelDir));
-    return { title: String(raw.title || ""), level, subject: String(raw.subject || "") };
+    return {
+      title: String(raw.title || ""),
+      originalTitle: String(raw._original_title || raw.title || ""),
+      level,
+      subject: String(raw.subject || ""),
+    };
   } catch {
     return null;
   }
@@ -329,15 +335,18 @@ async function main() {
     if (raw._status !== "done") { exSkipped += 1; continue; }
     const courseInfo = await loadCourseInfoFromFile(file, EXERCISES_SOURCE_DIR);
     if (!courseInfo) { unresolved.add(`fichier cours introuvable pour ${file}`); exFailed += 1; continue; }
-    const key = [normalizeLevel(courseInfo.level), normalizeText(courseInfo.subject), normalizeText(courseInfo.title)].join("::");
-    const course = coursesIndex.get(key);
+    const lvl = normalizeLevel(courseInfo.level);
+    const subj = normalizeText(courseInfo.subject);
+    const course =
+      coursesIndex.get([lvl, subj, normalizeText(courseInfo.title)].join("::")) ??
+      coursesIndex.get([lvl, subj, normalizeText(courseInfo.originalTitle)].join("::"));
     if (!course) { unresolved.add(`cours non trouvé en base : ${courseInfo.level} | ${courseInfo.subject} | ${courseInfo.title}`); exFailed += 1; continue; }
 
     const exTitle = raw.title || `Exercice : ${courseInfo.title}`;
     const dedupeKey = `${course.id}::${normalizeText(String(exTitle))}`;
     if (existingExKeys.has(dedupeKey)) { exDuplicate += 1; continue; }
 
-    const folderId = await resolveCourseFolder("exercise_folders", exerciseFolders, courseInfo.level, courseInfo.title);
+    const folderId = await resolveCourseFolder("exercise_folders", exerciseFolders, courseInfo.level, courseInfo.originalTitle);
     if (!folderId) { unresolved.add(`dossier de niveau introuvable pour exercise_folders : ${courseInfo.level}`); exFailed += 1; continue; }
 
     const blocks = compileExerciseBlocks(raw);
@@ -371,15 +380,18 @@ async function main() {
     if (raw._status !== "done") { qSkipped += 1; continue; }
     const courseInfo = await loadCourseInfoFromFile(file, QUIZZES_SOURCE_DIR);
     if (!courseInfo) { unresolved.add(`fichier cours introuvable pour ${file}`); qFailed += 1; continue; }
-    const key = [normalizeLevel(courseInfo.level), normalizeText(courseInfo.subject), normalizeText(courseInfo.title)].join("::");
-    const course = coursesIndex.get(key);
+    const lvl = normalizeLevel(courseInfo.level);
+    const subj = normalizeText(courseInfo.subject);
+    const course =
+      coursesIndex.get([lvl, subj, normalizeText(courseInfo.title)].join("::")) ??
+      coursesIndex.get([lvl, subj, normalizeText(courseInfo.originalTitle)].join("::"));
     if (!course) { unresolved.add(`cours non trouvé en base : ${courseInfo.level} | ${courseInfo.subject} | ${courseInfo.title}`); qFailed += 1; continue; }
 
     const qTitle = raw.title || `Quiz : ${courseInfo.title}`;
     const qDedupeKey = `${course.id}::${normalizeText(String(qTitle))}`;
     if (existingQKeys.has(qDedupeKey)) { qDuplicate += 1; continue; }
 
-    const folderId = await resolveCourseFolder("quiz_folders", quizFolders, courseInfo.level, courseInfo.title);
+    const folderId = await resolveCourseFolder("quiz_folders", quizFolders, courseInfo.level, courseInfo.originalTitle);
     if (!folderId) { unresolved.add(`dossier de niveau introuvable pour quiz_folders : ${courseInfo.level}`); qFailed += 1; continue; }
 
     const questions = compileQuizQuestions(raw);

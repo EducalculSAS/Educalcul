@@ -63,6 +63,7 @@ import PageLoader from "@/components/PageLoader";
 import { SCHOOL_LEVELS, getLevelLabel, getEffectiveFolderLevel } from "@/lib/constants";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { EXERCISE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
+import { compileHandAuthoredExercise } from "@/lib/ai/handAuthoredContent";
 
 const FOLDER_COLORS = [
   "#3b82f6", // Blue
@@ -283,6 +284,17 @@ export default function AdminExercisesClient({
     try {
       const data = await importFromJSONFile(file);
       if (data._type && data._type !== "exercise") { alert("Ce fichier n'est pas un exercice."); return; }
+      let compiledContent = data.content_json || [];
+      try {
+        const result = compileHandAuthoredExercise(data);
+        compiledContent = result.content;
+        if (result.warnings.length > 0) {
+          alert(`Importé, mais à vérifier avant d'enregistrer :\n\n- ${result.warnings.join("\n- ")}`);
+        }
+      } catch (compileErr: any) {
+        alert(`Le contenu du fichier n'a pas pu être compilé : ${compileErr.message}`);
+        return;
+      }
       setFormData({
         title: data.title || "",
         description: data.description || "",
@@ -298,7 +310,7 @@ export default function AdminExercisesClient({
         time_limit_minutes: data.time_limit_minutes || 0,
         min_score_percent: data.min_score_percent || 0,
         max_attempts: data.max_attempts || 0,
-        content_json: data.content_json || [],
+        content_json: compiledContent,
       });
       setEditingExercise(data.id ? ({ id: data.id } as Exercise) : null);
       setIsModalOpen(true);
