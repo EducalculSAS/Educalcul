@@ -107,8 +107,8 @@ async function handle(req: Request) {
   }
 
   // Modèle gratuit + concurrence réduite : voir bulk-generate-course/route.ts
-  // pour le détail (labs-leanstral-1-5 sature vite en concurrence par défaut).
-  process.env.MISTRAL_MODEL = "labs-leanstral-1-5";
+  // pour le détail (labs-leanstral-1-5-1 sature vite en concurrence par défaut).
+  process.env.MISTRAL_MODEL = "labs-leanstral-1-5-1";
   process.env.AI_COURSE_WRITER_CONCURRENCY = "1";
   process.env.AI_COURSE_REVIEW_CONCURRENCY = "1";
   process.env.AI_COURSE_LESSON_CONCURRENCY = "1";

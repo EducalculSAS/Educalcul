@@ -20,13 +20,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  // Modèle gratuit (labs-leanstral-1-5) — l'abonnement Mistral est sur le
+  // Modèle gratuit (labs-leanstral-1-5-1) — l'abonnement Mistral est sur le
   // plan gratuit et mistral-medium-latest y est saturé (429 permanent),
   // bloquant toute génération de cours tant que le plan n'est pas mis à
   // niveau. Reste actif pour tout le conteneur tant qu'il est chaud.
-  process.env.MISTRAL_MODEL = "labs-leanstral-1-5";
+  process.env.MISTRAL_MODEL = "labs-leanstral-1-5-1";
   // Concurrence par défaut (6 rédacteurs + 6 relecteurs, voir
-  // courseGeneration.ts) sature quand même labs-leanstral-1-5 dès que
+  // courseGeneration.ts) sature quand même labs-leanstral-1-5-1 dès que
   // plusieurs cours tournent en parallèle sur des instances Vercel
   // distinctes — observé en prod : la quasi-totalité des leçons échouait
   // même en tirant seulement 2 cours à 90s d'écart. Ramené au réglage qui a

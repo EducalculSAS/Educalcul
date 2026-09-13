@@ -5,7 +5,7 @@ import type { JsonSchemaContract } from "@/lib/ai/schemas";
  */
 
 const MISTRAL_URL = "https://api.eu.mistral.ai/v1/chat/completions";
-const MISTRAL_MODEL = process.env.MISTRAL_MODEL || "mistral-small-latest";
+const MISTRAL_MODEL = process.env.MISTRAL_MODEL || "labs-leanstral-1-5-1";
 const MISTRAL_KEY = process.env.MISTRAL_API_KEY || "";
 
 type JsonSchemaCapability = "unknown" | "supported" | "unsupported";

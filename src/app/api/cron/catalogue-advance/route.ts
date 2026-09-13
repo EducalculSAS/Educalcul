@@ -122,7 +122,7 @@ async function handle(req: Request) {
     return NextResponse.json({ done: true });
   }
 
-  process.env.MISTRAL_MODEL = "labs-leanstral-1-5";
+  process.env.MISTRAL_MODEL = "labs-leanstral-1-5-1";
 
   after(async () => {
     try {
