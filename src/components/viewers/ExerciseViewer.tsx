@@ -259,6 +259,7 @@ export default function ExerciseViewer({
   const [exerciseCompleted, setExerciseCompleted] = useState(() => (reviewMode ? true : false));
   const [showReview, setShowReview] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
+  const [gradingError, setGradingError] = useState<string | null>(null);
   const [blockModes, setBlockModes] = useState<Record<string, "text" | "draw">>(() => (reviewMode ? initialProgress?.blockModes : undefined) || {});
   const [adminComments] = useState<Record<string, string>>(() => initialProgress?.adminComments || {});
   const [adminEditedAnswers] = useState<Record<string, any>>(() => initialProgress?.adminEditedAnswers || {});
@@ -553,6 +554,7 @@ export default function ExerciseViewer({
 
   const validateAllAnswers = async () => {
     setIsValidating(true);
+    setGradingError(null);
     let totalScore = 0;
     const newResults: Record<string, boolean> = {};
     const newAiFeedback: Record<string, string> = {};
@@ -599,6 +601,15 @@ export default function ExerciseViewer({
             }),
           });
           const data = await res.json();
+          if (data.unavailable) {
+            // Panne d'infra, pas une vraie tentative : on abandonne toute la
+            // validation plutôt que de verrouiller l'exercice sur un verdict
+            // deviné — rien n'a encore été enregistré (setExerciseCompleted/
+            // saveProgress plus bas), l'élève peut resoumettre à l'identique.
+            setIsValidating(false);
+            setGradingError(data.feedback || "Correction indisponible, réessaie.");
+            return;
+          }
           isCorrect = !!data.is_correct;
           if (data.feedback) {
             newAiFeedback[block.id] = data.feedback;
@@ -611,7 +622,9 @@ export default function ExerciseViewer({
           }
         } catch (e) {
           console.error(e);
-          newAiFeedback[block.id] = "Erreur de correction, réessaie.";
+          setIsValidating(false);
+          setGradingError("Correction indisponible, réessaie.");
+          return;
         }
 
         newResults[block.id] = isCorrect;
@@ -1270,6 +1283,19 @@ export default function ExerciseViewer({
           })}
         </div>
       </div>
+
+      {gradingError && (
+        <div
+          className="mx-4 mb-3 p-3 rounded-xl flex items-start gap-2 shrink-0"
+          style={{ background: "#fffbeb", color: "#92400e" }}
+        >
+          <Loader2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+          <p className="text-sm">
+            <span className="font-semibold">Correction indisponible.</span>{" "}
+            {gradingError} Tes réponses sont conservées, tu peux revalider.
+          </p>
+        </div>
+      )}
 
       {/* Footer Navigation */}
       <div className="bg-[var(--greek-cream)] border-t border-[var(--greek-gold)] p-4 flex justify-between shrink-0">

@@ -892,7 +892,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 interface ExerciseState {
   input: string;
   attempts: number;
-  status: "idle" | "correct" | "wrong" | "revealed" | "grading";
+  status: "idle" | "correct" | "wrong" | "revealed" | "grading" | "unavailable";
   showHint: boolean;
   feedback?: string;
   mode: "text" | "draw";
@@ -1091,6 +1091,12 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
         }),
       });
       const result = await resp.json();
+      if (result.unavailable) {
+        // Panne d'infra, pas une vraie réponse fausse : ne pas pénaliser
+        // l'élève (pas d'incrément d'attempts, réponse conservée).
+        updateState(ex.id, { status: "unavailable", feedback: result.feedback });
+        return;
+      }
       if (result.is_correct) {
         updateState(ex.id, { status: "correct", feedback: result.feedback });
       } else {
@@ -1102,9 +1108,8 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
       }
     } catch {
       updateState(ex.id, {
-        status: "wrong",
-        attempts: state.attempts + 1,
-        feedback: "Impossible de corriger pour l'instant.",
+        status: "unavailable",
+        feedback: "Correction indisponible, réessaie.",
       });
     }
   };
@@ -1147,6 +1152,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
           const isWrong = s.status === "wrong";
           const isRevealed = s.status === "revealed";
           const isGrading = s.status === "grading";
+          const isUnavailable = s.status === "unavailable";
           const showCorrection = s.attempts >= 2 && !isCorrect && !isRevealed;
 
           return (
@@ -1270,6 +1276,22 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                       "Vérifier"
                     )}
                   </GlassButton>
+                </div>
+              )}
+
+              {/* Correction indisponible (panne d'infra, pas une vraie erreur) */}
+              {isUnavailable && (
+                <div
+                  className="mt-3 p-3 rounded-xl flex items-start gap-2"
+                  style={{ background: "#fffbeb", color: "#92400e" }}
+                >
+                  <Loader2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <p className="font-semibold text-sm">Correction indisponible</p>
+                    <p className="text-sm mt-1 opacity-90">
+                      {s.feedback || "Réessaie dans quelques secondes."}
+                    </p>
+                  </div>
                 </div>
               )}
 

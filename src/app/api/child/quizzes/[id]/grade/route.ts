@@ -1,6 +1,7 @@
 ﻿import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { gradeAnswer } from "@/lib/llm";
+import { tryDeterministicMathCheck } from "@/lib/mathAnswerCheck";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -57,30 +58,48 @@ export async function POST(
 
     if (targetQuestion.type === "text_input") {
       // --- AI GRADING (IA) ---
-      try {
-        const gradingResult = await gradeAnswer(
-          targetQuestion.text,
-          targetQuestion.correctAnswer,
-          answer,
-          targetQuestion.explanation,
-          level || "6ème",
-          maxPoints
-        );
-        isCorrect = gradingResult.is_correct;
-        score = gradingResult.score;
-        feedback = gradingResult.feedback;
-      } catch (e) {
-        console.error("❌ AI Grading Failed:", e);
-        const answerText = typeof answer === "string" ? answer : JSON.stringify(answer);
-        const expected = typeof targetQuestion.correctAnswer === "string"
-          ? targetQuestion.correctAnswer
-          : JSON.stringify(targetQuestion.correctAnswer);
+      const answerText = typeof answer === "string" ? answer : JSON.stringify(answer);
+      const deterministic =
+        typeof targetQuestion.correctAnswer === "string"
+          ? tryDeterministicMathCheck(targetQuestion.correctAnswer, answerText)
+          : { decided: false as const };
 
-        isCorrect = answerText.toLowerCase().trim() === expected.toLowerCase().trim();
-        score = isCorrect ? maxPoints : 0;
-        feedback = isCorrect
-          ? "Correct (Correction automatique de secours)"
-          : "Incorrect (Correction automatique de secours)";
+      if (deterministic.decided && deterministic.reason === "incomplete") {
+        isCorrect = false;
+        score = 0;
+        feedback = "Réponse incomplète : remplis tous les emplacements avant de valider.";
+      } else {
+        try {
+          const gradingResult = await gradeAnswer(
+            targetQuestion.text,
+            targetQuestion.correctAnswer,
+            answer,
+            targetQuestion.explanation,
+            level || "6ème",
+            maxPoints,
+            deterministic.decided ? deterministic.isCorrect : undefined,
+          );
+          isCorrect = gradingResult.is_correct;
+          score = gradingResult.score;
+          feedback = gradingResult.feedback;
+        } catch (e) {
+          console.error("❌ AI Grading Failed:", e);
+          // Le calcul exact reste fiable même sans l'explication pédagogique
+          // de l'IA — jamais de fallback par égalité de chaînes sur du
+          // LaTeX brut, ça échoue presque toujours pour une vraie réponse.
+          if (deterministic.decided) {
+            isCorrect = deterministic.isCorrect!;
+            score = isCorrect ? maxPoints : 0;
+            feedback = isCorrect
+              ? "Bonne réponse !"
+              : `Ce n'est pas la bonne réponse — la bonne réponse est ${targetQuestion.correctAnswer}.`;
+          } else {
+            return NextResponse.json({
+              unavailable: true,
+              feedback: "Correction indisponible, réessaie.",
+            });
+          }
+        }
       }
     } else if (targetQuestion.type === "multiple_choice") {
       const correct = Array.isArray(targetQuestion.correctAnswer)

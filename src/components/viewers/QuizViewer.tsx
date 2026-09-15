@@ -73,6 +73,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   const [showExplanation, setShowExplanation] = useState(false);
   const [isGrading, setIsGrading] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
+  const [gradingError, setGradingError] = useState<string | null>(null);
   const [questionResults, setQuestionResults] = useState<
     Record<number, boolean>
   >(() => (reviewMode ? initialProgress?.questionResults : undefined) || {});
@@ -291,6 +292,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
 
   const validateAllAnswers = async () => {
     setIsValidating(true);
+    setGradingError(null);
     let totalScore = 0;
     const newResults: Record<number, boolean> = {};
     const newFeedbacks: Record<number, string> = {};
@@ -326,12 +328,22 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
           }),
         });
         const data = await response.json();
+        if (data.unavailable) {
+          // Panne d'infra, pas une vraie tentative : on abandonne toute la
+          // validation plutôt que de verrouiller le quiz sur un verdict
+          // deviné — rien n'a encore été enregistré, l'élève peut revalider.
+          setIsValidating(false);
+          setGradingError(data.feedback || "Correction indisponible, réessaie.");
+          return;
+        }
         isCorrect = !!data.is_correct;
         if (data.feedback) newFeedbacks[i] = data.feedback;
         if (data.reveal) newRevealed[i] = data.reveal;
       } catch (e) {
         console.error("Failed to grade quiz question", e);
-        newFeedbacks[i] = "Erreur de correction, réessaie.";
+        setIsValidating(false);
+        setGradingError("Correction indisponible, réessaie.");
+        return;
       }
 
       newResults[i] = isCorrect;
@@ -690,6 +702,19 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                   adminMode={adminMode}
                 />
               )}
+            </div>
+          )}
+
+          {gradingError && (
+            <div
+              className="p-3 rounded-xl flex items-start gap-2"
+              style={{ background: "#fffbeb", color: "#92400e" }}
+            >
+              <Loader2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+              <p className="text-sm">
+                <span className="font-semibold">Correction indisponible.</span>{" "}
+                {gradingError} Tes réponses sont conservées, tu peux revalider.
+              </p>
             </div>
           )}
 

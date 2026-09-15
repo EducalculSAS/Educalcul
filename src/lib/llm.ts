@@ -521,7 +521,15 @@ Retourne uniquement le JSON valide correspondant à la demande initiale.`;
 
 // ── Exports publics ───────────────────────────────────────────────────────────
 
-/** Corriger une réponse élève */
+/**
+ * Corriger une réponse élève.
+ *
+ * `knownVerdict` : quand une couche déterministe (`mathAnswerCheck.ts`) a
+ * déjà tranché avec certitude (réponse numérique/fraction/pourcentage), on
+ * passe ce verdict ici pour que le modèle ne fasse plus que l'expliquer
+ * pédagogiquement — son propre `is_correct` est alors ignoré par
+ * l'appelant, qui garde toujours le verdict déterministe.
+ */
 export async function gradeAnswer(
   question: string,
   correctAnswer: string,
@@ -529,13 +537,20 @@ export async function gradeAnswer(
   explanation: string | undefined,
   level: string,
   maxPoints: number,
+  knownVerdict?: boolean,
 ): Promise<{ is_correct: boolean; score: number; feedback: string }> {
+  const verdictInstruction =
+    knownVerdict !== undefined
+      ? `\nVERDICT DÉJÀ ÉTABLI PAR CALCUL EXACT : cette réponse est déjà vérifiée comme ${knownVerdict ? "CORRECTE" : "INCORRECTE"}. Ne rejuge pas la correction elle-même (is_correct doit valoir ${knownVerdict}) : explique uniquement la méthode pas à pas, en cohérence avec ce verdict.`
+      : "";
+
   const system = `Tu es un professeur de mathématiques pour le niveau "${level || "6ème"}". Corrige avec soin et pédagogie.
+FORMAT DE LA RÉPONSE ÉLÈVE : elle vient d'un clavier mathématique (MathLive) et arrive en LaTeX brut. \\text{...} enveloppe des caractères tapés au clavier physique (lettres, chiffres, virgule) — lis son contenu comme du texte simple, ce n'est pas de la notation mathématique. Une virgule à l'intérieur d'un nombre (ex: \\text{3,14} ou 3{,}14) est le séparateur décimal français, équivalent à un point. Un \\placeholder{} signale un emplacement du clavier non rempli par l'élève.
 VÉRIFICATION ALGÉBRIQUE (à faire systématiquement, avant de juger) :
 - Redéveloppe/recalcule toi-même, terme à terme, la réponse attendue ET la réponse élève, pour comparer deux expressions réellement simplifiées — ne juge JAMAIS sur une simple ressemblance visuelle des deux chaînes de caractères. Une erreur de signe ou de calcul de ta part change le verdict pour l'élève, sois rigoureux.
 RÈGLES D'ÉQUIVALENCE (très important) :
 - Accepte TOUTE forme mathématiquement équivalente à la réponse attendue, même si elle diffère de la formulation donnée : fraction non simplifiée ou simplifiée (ex: 4/8 = 1/2), nombre décimal vs fraction (ex: 0.5 = 1/2), forme développée vs factorisée, ordre différent des termes/solutions, unités équivalentes, écriture avec ou sans espace/virgule décimale, pourcentage vs décimal (ex: 50% = 0.5), racine simplifiée ou non.
-- Seule l'exactitude mathématique compte, pas la forme exacte du texte.
+- Seule l'exactitude mathématique compte, pas la forme exacte du texte.${verdictInstruction}
 RÈGLES pour le feedback :
 1. Adapte ton vocabulaire et ton niveau de détail au niveau de l'élève.
 2. EXPLIQUE TOUJOURS LA MÉTHODE pas à pas, étape par étape, que la réponse soit correcte ou non — pas seulement le résultat. L'objectif est que l'élève comprenne le raisonnement, pas juste s'il a "bon" ou "faux".
@@ -553,7 +568,7 @@ RÈGLES pour le feedback :
       { role: "system", content: system },
       { role: "user", content: user },
     ],
-    0.2,
+    0,
     800,
     false,
     true,
@@ -563,9 +578,10 @@ RÈGLES pour le feedback :
     score?: number;
     feedback?: string;
   };
+  const is_correct = knownVerdict !== undefined ? knownVerdict : r.is_correct === true;
   return {
-    is_correct: r.is_correct === true,
-    score: r.score || 0,
+    is_correct,
+    score: is_correct ? maxPoints : r.score || 0,
     feedback: r.feedback || "Pas de feedback",
   };
 }

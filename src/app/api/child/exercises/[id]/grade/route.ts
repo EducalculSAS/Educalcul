@@ -2,6 +2,7 @@
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { gradeAnswer, gradeImageAnswer } from "@/lib/llm";
+import { tryDeterministicMathCheck } from "@/lib/mathAnswerCheck";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
@@ -85,6 +86,7 @@ export async function POST(
     let score = 0;
     let isCorrect = false;
     let feedback = "";
+    let ungraded = false;
 
     // 2. Grading Logic
     // Force AI if image OR grading_type is ai OR preview
@@ -105,54 +107,60 @@ export async function POST(
       const questionContent = targetBlock?.content || "Question inconnue";
       const correctAns = targetBlock?.correctAnswer || "Non spécifiée";
       const expl = targetBlock?.explanation || "";
+      const studentAnswerText =
+        typeof answer === "string" ? answer : JSON.stringify(answer);
 
-      try {
-        let gradingResult;
-        if (isImage) {
-          gradingResult = await gradeImageAnswer(
-            questionContent,
-            correctAns,
-            answer,
-            expl,
-            level || exercise?.level || "6ème",
-            maxPoints
-          );
-        } else {
-          const studentAnswerText = typeof answer === "string" ? answer : JSON.stringify(answer);
-          gradingResult = await gradeAnswer(
-            questionContent,
-            correctAns,
-            studentAnswerText,
-            expl,
-            level || exercise?.level || "6ème",
-            maxPoints
-          );
-        }
+      const deterministic =
+        !isImage && typeof correctAns === "string"
+          ? tryDeterministicMathCheck(correctAns, studentAnswerText)
+          : { decided: false as const };
 
-        isCorrect = gradingResult.is_correct;
-        score = gradingResult.score;
-        feedback = gradingResult.feedback;
-      } catch (e) {
-        console.error("❌ AI Grading Failed:", e);
-        // Fallback for text only
-        if (!isImage) {
-          const answerText =
-            typeof answer === "string" ? answer : JSON.stringify(answer);
-          const expected = targetBlock?.correctAnswer;
-          if (expected && typeof expected === "string") {
-            isCorrect =
-              answerText.toLowerCase().trim() === expected.toLowerCase().trim();
+      if (deterministic.decided && deterministic.reason === "incomplete") {
+        isCorrect = false;
+        score = 0;
+        feedback = "Réponse incomplète : remplis tous les emplacements avant de valider.";
+      } else {
+        try {
+          let gradingResult;
+          if (isImage) {
+            gradingResult = await gradeImageAnswer(
+              questionContent,
+              correctAns,
+              answer,
+              expl,
+              level || exercise?.level || "6ème",
+              maxPoints
+            );
+          } else {
+            gradingResult = await gradeAnswer(
+              questionContent,
+              correctAns,
+              studentAnswerText,
+              expl,
+              level || exercise?.level || "6ème",
+              maxPoints,
+              deterministic.decided ? deterministic.isCorrect : undefined,
+            );
+          }
+
+          isCorrect = gradingResult.is_correct;
+          score = gradingResult.score;
+          feedback = gradingResult.feedback;
+        } catch (e) {
+          console.error("❌ AI Grading Failed:", e);
+          // Le calcul exact reste fiable même sans l'explication pédagogique
+          // de l'IA — ne jamais faire retomber une panne réseau sur l'élève
+          // en devinant via une égalité de chaînes sur du LaTeX brut.
+          if (deterministic.decided) {
+            isCorrect = deterministic.isCorrect!;
             score = isCorrect ? maxPoints : 0;
             feedback = isCorrect
-              ? "Correct (Correction automatique de secours)"
-              : "Incorrect (Correction automatique de secours)";
+              ? "Bonne réponse !"
+              : `Ce n'est pas la bonne réponse — la bonne réponse est ${correctAns}.`;
+          } else {
+            ungraded = true;
+            feedback = "Correction indisponible, réessaie.";
           }
-        } else {
-          const errorMessage =
-            e instanceof Error ? e.message : "Erreur inconnue";
-          feedback = `Erreur lors de l'analyse. Détails: ${errorMessage}`;
-          isCorrect = false;
-          score = 0;
         }
       }
     } else if (targetBlock) {
@@ -216,6 +224,12 @@ export async function POST(
       } else {
         feedback = "Incorrect. Essayez encore.";
       }
+    }
+
+    if (ungraded) {
+      // Panne d'infra, pas une vraie tentative : pas de badge-check, pas de
+      // verdict — l'élève doit pouvoir resoumettre sans pénalité.
+      return NextResponse.json({ unavailable: true, feedback });
     }
 
     // Révélation sûre à renvoyer APRÈS correction, pour l'écran de correction —
