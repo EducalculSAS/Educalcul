@@ -5,6 +5,7 @@ import { requireRole } from "@/lib/apiAuth";
 import { validatePassword, isValidEmail } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { SCHOOL_LEVELS } from "@/lib/constants";
+import { hasActiveSubscription } from "@/lib/subscriptionGate";
 
 const GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
 
@@ -13,6 +14,13 @@ export async function POST(request: Request) {
     const requester = await requireRole(request, ["parent", "admin"]);
     if (!requester) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    // Un parent sans abonnement actif ne peut pas créer d'enfant — même s'il
+    // a contourné le verrou côté client (parent/layout.tsx) en appelant cette
+    // route directement. Les admins ne sont pas concernés.
+    if (requester.role === "parent" && !(await hasActiveSubscription(requester.authId))) {
+      return NextResponse.json({ error: "Un abonnement actif est requis pour ajouter un enfant." }, { status: 403 });
     }
 
     const config = RATE_LIMITS["child-account:mutate"];

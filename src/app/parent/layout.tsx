@@ -57,6 +57,23 @@ export default function ParentLayout({
         return;
       }
 
+      // Verrou abonnement : un compte peut exister sans être jamais passé par
+      // Stripe (ex. comptes créés via la liste d'attente educalcul-waitlist,
+      // sans paiement par design) — le dashboard ne doit pas leur faire
+      // confiance par défaut comme il le fait pour le flux d'inscription
+      // normal (où public.users n'existe qu'une fois payé, voir
+      // create-checkout-session/route.ts).
+      if (window.location.pathname !== "/parent/subscription") {
+        const statusRes = await fetch("/api/user/subscription-status", {
+          headers: { Authorization: `Bearer ${session.access_token}` },
+        });
+        const statusData = statusRes.ok ? await statusRes.json() : { status: "none" };
+        if (statusData.status !== "active") {
+          router.push("/parent/subscription");
+          return;
+        }
+      }
+
       setUser(userData);
       setLoading(false);
 
