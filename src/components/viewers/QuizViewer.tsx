@@ -13,6 +13,7 @@ import {
   Type,
   HelpCircle,
   Clock,
+  Eye,
 } from "lucide-react";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
@@ -74,6 +75,94 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   const [isGrading, setIsGrading] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [gradingError, setGradingError] = useState<string | null>(null);
+
+  // Correction immédiate des questions "text_input" (même style que les
+  // mini-exercices de cours) : vérifier tout de suite, réessayer, et
+  // proposer la réponse après 2 échecs plutôt que de laisser retenter à
+  // l'infini. Une fois résolu, la validation finale réutilise ce verdict
+  // au lieu de rappeler l'IA.
+  interface InlineTextState {
+    attempts: number;
+    status: "grading" | "correct" | "wrong" | "revealed" | "unavailable";
+    feedback?: string;
+    resolvedScore?: number;
+    resolvedCorrect?: boolean;
+    revealedAnswer?: string;
+  }
+  const [inlineText, setInlineText] = useState<Record<number, InlineTextState>>({});
+
+  const verifyTextQuestion = async (idx: number) => {
+    const q = questions[idx];
+    const studentAnswer = answers[idx];
+    if (!studentAnswer) return;
+    const current = inlineText[idx];
+    const attemptsSoFar = current?.attempts || 0;
+    setInlineText((prev) => ({ ...prev, [idx]: { attempts: attemptsSoFar, status: "grading" } }));
+    try {
+      const quizId = (quiz as any).id || "preview";
+      const res = await fetch(`/api/child/quizzes/${quizId}/grade`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question_id: q.id,
+          answer: studentAnswer,
+          level: quiz.level || "6eme",
+          question: q.text,
+          correctAnswer: q.correctAnswer,
+          explanation: q.explanation,
+          points: q.points,
+        }),
+      });
+      const data = await res.json();
+      if (data.unavailable) {
+        setInlineText((prev) => ({
+          ...prev,
+          [idx]: { attempts: attemptsSoFar, status: "unavailable", feedback: data.feedback },
+        }));
+        return;
+      }
+      if (data.is_correct) {
+        setInlineText((prev) => ({
+          ...prev,
+          [idx]: {
+            attempts: attemptsSoFar + 1,
+            status: "correct",
+            feedback: data.feedback,
+            resolvedScore: data.score,
+            resolvedCorrect: true,
+          },
+        }));
+      } else {
+        const attempts = attemptsSoFar + 1;
+        if (attempts >= 2) {
+          // La bonne réponse vient de data.reveal (le client n'a jamais
+          // correctAnswer avant d'avoir soumis, comme dans validateAllAnswers).
+          setInlineText((prev) => ({
+            ...prev,
+            [idx]: {
+              attempts,
+              status: "revealed",
+              feedback: data.feedback,
+              resolvedScore: 0,
+              resolvedCorrect: false,
+              revealedAnswer:
+                typeof data.reveal?.correctAnswer === "string" ? data.reveal.correctAnswer : undefined,
+            },
+          }));
+        } else {
+          setInlineText((prev) => ({
+            ...prev,
+            [idx]: { attempts, status: "wrong", feedback: data.feedback },
+          }));
+        }
+      }
+    } catch {
+      setInlineText((prev) => ({
+        ...prev,
+        [idx]: { attempts: attemptsSoFar, status: "unavailable", feedback: "Correction indisponible, réessaie." },
+      }));
+    }
+  };
   const [questionResults, setQuestionResults] = useState<
     Record<number, boolean>
   >(() => (reviewMode ? initialProgress?.questionResults : undefined) || {});
@@ -306,6 +395,19 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
 
       if (!answer) {
         newResults[i] = false;
+        continue;
+      }
+
+      // Déjà vérifié en direct via le bouton "Vérifier" de la question : on
+      // réutilise ce verdict plutôt que de rappeler l'IA une seconde fois.
+      const inlineResult = inlineText[i];
+      if (q.type === "text_input" && inlineResult?.resolvedCorrect !== undefined) {
+        newResults[i] = inlineResult.resolvedCorrect;
+        if (inlineResult.feedback) newFeedbacks[i] = inlineResult.feedback;
+        if (inlineResult.revealedAnswer) {
+          newRevealed[i] = { correctAnswer: inlineResult.revealedAnswer };
+        }
+        if (inlineResult.resolvedCorrect) totalScore += inlineResult.resolvedScore ?? q.points;
         continue;
       }
 
@@ -556,39 +658,153 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
           <div className="mb-8">
             {currentQuestion.type === "text_input" ? (
               <div className="space-y-4">
-                <div className="relative">
-                  <Type className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
-                  <input
-                    type="text"
-                    value={(answers[currentQuestionIndex] as string) || ""}
-                    onChange={(e) =>
-                      !isAnswerSubmitted && setAnswers({ ...answers, [currentQuestionIndex]: e.target.value })
-                    }
-                    disabled={isAnswerSubmitted}
-                    placeholder="Votre réponse..."
-                    className={`w-full p-3 pl-10 border-2 rounded-xl text-lg outline-none transition-colors ${
-                      isAnswerSubmitted
-                        ? questionResults[currentQuestionIndex]
-                          ? "border-green-500 bg-green-50 text-green-800"
-                          : "border-red-500 bg-red-50 text-red-800"
-                        : "border-gray-200 focus:border-[var(--greek-blue)]"
-                    }`}
-                  />
-                </div>
-                {isAnswerSubmitted &&
-                  !questionResults[currentQuestionIndex] && (
-                    <div className="text-sm text-red-600 font-medium">
-                      {questionFeedbacks[currentQuestionIndex] ? (
-                        <div className="mb-1">{questionFeedbacks[currentQuestionIndex]}</div>
-                      ) : null}
-                      {!questionFeedbacks[currentQuestionIndex] && revealed[currentQuestionIndex]?.correctAnswer && (
-                        <span>
-                          Réponse attendue :{" "}
-                          {revealed[currentQuestionIndex]!.correctAnswer as string}
-                        </span>
+                {(() => {
+                  const inline = inlineText[currentQuestionIndex];
+                  const inlineResolved = inline?.status === "correct" || inline?.status === "revealed";
+                  return (
+                    <>
+                      <div className="relative">
+                        <Type className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
+                        <input
+                          type="text"
+                          value={(answers[currentQuestionIndex] as string) || ""}
+                          onChange={(e) =>
+                            !isAnswerSubmitted &&
+                            !inlineResolved &&
+                            setAnswers({ ...answers, [currentQuestionIndex]: e.target.value })
+                          }
+                          disabled={isAnswerSubmitted || inlineResolved}
+                          placeholder="Votre réponse..."
+                          className={`w-full p-3 pl-10 border-2 rounded-xl text-lg outline-none transition-colors ${
+                            isAnswerSubmitted
+                              ? questionResults[currentQuestionIndex]
+                                ? "border-green-500 bg-green-50 text-green-800"
+                                : "border-red-500 bg-red-50 text-red-800"
+                              : inline?.status === "correct"
+                              ? "border-green-500 bg-green-50 text-green-800"
+                              : inline?.status === "wrong" || inline?.status === "revealed"
+                              ? "border-red-500 bg-red-50 text-red-800"
+                              : "border-gray-200 focus:border-[var(--greek-blue)]"
+                          }`}
+                        />
+                      </div>
+                      {isAnswerSubmitted &&
+                        !questionResults[currentQuestionIndex] && (
+                          <div className="text-sm text-red-600 font-medium">
+                            {questionFeedbacks[currentQuestionIndex] ? (
+                              <div className="mb-1">{questionFeedbacks[currentQuestionIndex]}</div>
+                            ) : null}
+                            {!questionFeedbacks[currentQuestionIndex] && revealed[currentQuestionIndex]?.correctAnswer && (
+                              <span>
+                                Réponse attendue :{" "}
+                                {revealed[currentQuestionIndex]!.correctAnswer as string}
+                              </span>
+                            )}
+                          </div>
+                        )}
+
+                      {/* Correction immédiate, même style que les mini-exercices de cours */}
+                      {!isAnswerSubmitted && (
+                        <>
+                          {!inlineResolved && (
+                            <GlassButton
+                              onClick={() => verifyTextQuestion(currentQuestionIndex)}
+                              disabled={!answers[currentQuestionIndex] || inline?.status === "grading"}
+                              variant="navy"
+                              size="sm"
+                              className="min-w-[150px]"
+                            >
+                              {inline?.status === "grading" ? (
+                                <>
+                                  <Loader2 className="w-4 h-4 animate-spin" />
+                                  <span>Correction...</span>
+                                </>
+                              ) : (
+                                "Vérifier"
+                              )}
+                            </GlassButton>
+                          )}
+
+                          {inline?.status === "unavailable" && (
+                            <div
+                              className="p-3 rounded-xl flex items-start gap-2"
+                              style={{ background: "#fffbeb", color: "#92400e" }}
+                            >
+                              <Loader2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                              <div className="flex-1">
+                                <p className="font-semibold text-sm">Correction indisponible</p>
+                                <p className="text-sm mt-1 opacity-90">
+                                  {inline.feedback || "Réessaie dans quelques secondes."}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+
+                          {inline?.status === "wrong" && (
+                            <div
+                              className="p-3 rounded-xl flex items-start gap-2"
+                              style={{ background: "#fef2f2", color: "#991b1b" }}
+                            >
+                              <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                              <div className="flex-1">
+                                <p className="font-semibold text-sm">Pas tout à fait…</p>
+                                {inline.feedback && (
+                                  <div
+                                    className="text-sm mt-1.5 opacity-90 leading-relaxed"
+                                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(inline.feedback) }}
+                                  />
+                                )}
+                                <p className="text-xs mt-0.5 opacity-80">Essaie encore</p>
+                              </div>
+                            </div>
+                          )}
+
+                          {inline?.status === "correct" && (
+                            <div
+                              className="p-4 rounded-xl flex items-start gap-2"
+                              style={{
+                                background: "rgba(197,161,72,0.1)",
+                                color: "var(--greek-blue)",
+                                borderLeft: "3px solid var(--greek-gold)",
+                              }}
+                            >
+                              <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "var(--greek-gold)" }} />
+                              <div className="flex-1">
+                                <p className="font-bold text-sm">Excellent ! ✨</p>
+                                {inline.feedback && (
+                                  <div
+                                    className="text-sm mt-1.5 opacity-90 leading-relaxed"
+                                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(inline.feedback) }}
+                                  />
+                                )}
+                              </div>
+                            </div>
+                          )}
+
+                          {inline?.status === "revealed" && (
+                            <div className="p-4 rounded-xl" style={{ background: "#f9fafb", border: "1px solid #e5e7eb" }}>
+                              <div className="flex items-center gap-2 mb-2">
+                                <Eye className="w-4 h-4" style={{ color: "var(--greek-blue)" }} />
+                                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--greek-blue)" }}>
+                                  Correction
+                                </span>
+                              </div>
+                              <p className="text-sm text-gray-700">
+                                <span className="font-semibold">Réponse :</span>{" "}
+                                <span
+                                  style={{ color: "var(--greek-blue)" }}
+                                  dangerouslySetInnerHTML={{
+                                    __html: renderLatexInHTML(inline?.revealedAnswer || ""),
+                                  }}
+                                />
+                              </p>
+                            </div>
+                          )}
+                        </>
                       )}
-                    </div>
-                  )}
+                    </>
+                  );
+                })()}
               </div>
             ) : (
               <div className="space-y-3">

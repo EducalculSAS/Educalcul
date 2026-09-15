@@ -551,16 +551,15 @@ VÉRIFICATION ALGÉBRIQUE (à faire systématiquement, avant de juger) :
 RÈGLES D'ÉQUIVALENCE (très important) :
 - Accepte TOUTE forme mathématiquement équivalente à la réponse attendue, même si elle diffère de la formulation donnée : fraction non simplifiée ou simplifiée (ex: 4/8 = 1/2), nombre décimal vs fraction (ex: 0.5 = 1/2), forme développée vs factorisée, ordre différent des termes/solutions, unités équivalentes, écriture avec ou sans espace/virgule décimale, pourcentage vs décimal (ex: 50% = 0.5), racine simplifiée ou non.
 - Seule l'exactitude mathématique compte, pas la forme exacte du texte.${verdictInstruction}
-RÈGLES pour le feedback :
-1. Adapte ton vocabulaire et ton niveau de détail au niveau de l'élève.
-2. EXPLIQUE TOUJOURS LA MÉTHODE pas à pas, étape par étape, que la réponse soit correcte ou non — pas seulement le résultat. L'objectif est que l'élève comprenne le raisonnement, pas juste s'il a "bon" ou "faux".
-3. Si correct : confirme la bonne réponse (en précisant si la forme diffère mais reste équivalente), PUIS récapitule brièvement la méthode/le raisonnement qui mène à cette réponse pour consolider la compréhension.
-4. Si incorrect : explique d'abord où se situe l'erreur dans le raisonnement de l'élève si elle est identifiable, donne ensuite la résolution complète étape par étape menant à la réponse correcte, avec les calculs détaillés.
+RÈGLES pour le feedback — SOIS TRÈS BREF, c'est la règle la plus importante :
+1. MAXIMUM 2 phrases courtes. Jamais de liste, jamais de résolution étape par étape, jamais de récapitulatif de méthode : va droit au but.
+2. Adapte ton vocabulaire au niveau de l'élève.
+3. Si correct : confirme en une phrase (précise brièvement si la forme diffère mais reste équivalente).
+4. Si incorrect : dis en une phrase où est l'erreur ou la piste à suivre, sans donner la résolution complète.
 5. Sois encourageant même en cas d'erreur, sans être condescendant.
 6. Réponds UNIQUEMENT en JSON sur une seule ligne, sans texte avant/après.
 7. score = 0 si incorrect, ${maxPoints} si correct.
-8. Le feedback doit être complet mais clair : généralement 3 à 6 phrases, plus si la résolution étape par étape le nécessite. Utilise des sauts de ligne (\\n) entre les étapes pour la lisibilité.
-9. FORMATE TOUTE expression mathématique en LaTeX entre $...$ (ex: $f(x) = x^2 + 6x + 4$, $(x+3)^2 - 5$, $\\frac{1}{2}$). N'écris JAMAIS de caractères Unicode comme ², ³, √, ½ ou × : utilise toujours LaTeX ($x^2$, $\\sqrt{x}$, $\\frac{1}{2}$, $\\times$).`;
+8. FORMATE TOUTE expression mathématique en LaTeX entre $...$ (ex: $f(x) = x^2 + 6x + 4$, $(x+3)^2 - 5$, $\\frac{1}{2}$). N'écris JAMAIS de caractères Unicode comme ², ³, √, ½ ou × : utilise toujours LaTeX ($x^2$, $\\sqrt{x}$, $\\frac{1}{2}$, $\\times$).`;
 
   const user = `Question : ${question}\nRéponse attendue : ${correctAnswer}\nExplication / piste de correction (usage interne, ne pas la recopier telle quelle) : ${explanation || "Aucune"}\nRéponse élève : ${studentAnswer}\n→ {"is_correct":bool,"score":number,"feedback":"..."}`;
   const text = await dispatch(
@@ -569,7 +568,7 @@ RÈGLES pour le feedback :
       { role: "user", content: user },
     ],
     0,
-    800,
+    250,
     false,
     true,
   );

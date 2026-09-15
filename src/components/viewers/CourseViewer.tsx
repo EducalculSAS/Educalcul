@@ -1100,11 +1100,14 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
       if (result.is_correct) {
         updateState(ex.id, { status: "correct", feedback: result.feedback });
       } else {
-        updateState(ex.id, {
-          status: "wrong",
-          attempts: state.attempts + 1,
-          feedback: result.feedback,
-        });
+        const attempts = state.attempts + 1;
+        // 2 échecs d'affilée : on propose directement la réponse plutôt que
+        // de laisser l'élève retenter indéfiniment.
+        if (attempts >= 2) {
+          updateState(ex.id, { status: "revealed", attempts, feedback: result.feedback });
+        } else {
+          updateState(ex.id, { status: "wrong", attempts, feedback: result.feedback });
+        }
       }
     } catch {
       updateState(ex.id, {
@@ -1116,10 +1119,6 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
 
   const handleRetry = (id: string) => {
     updateState(id, { status: "idle", input: "", mode: "text" });
-  };
-
-  const handleReveal = (id: string) => {
-    updateState(id, { status: "revealed" });
   };
 
   const handleToggleHint = (id: string) => {
@@ -1153,7 +1152,6 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
           const isRevealed = s.status === "revealed";
           const isGrading = s.status === "grading";
           const isUnavailable = s.status === "unavailable";
-          const showCorrection = s.attempts >= 2 && !isCorrect && !isRevealed;
 
           return (
             <div
@@ -1312,9 +1310,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                         }}
                       />
                     )}
-                    <p className="text-xs mt-0.5 opacity-80">
-                      Tentative {s.attempts} {s.attempts >= 2 ? "— tu peux voir la correction" : "— essaie encore"}
-                    </p>
+                    <p className="text-xs mt-0.5 opacity-80">Essaie encore</p>
                     <div className="flex gap-2 mt-2">
                       <GlassButton
                         onClick={() => handleRetry(ex.id)}
@@ -1323,16 +1319,6 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                       >
                         Réessayer
                       </GlassButton>
-                      {showCorrection && (
-                        <GlassButton
-                          onClick={() => handleReveal(ex.id)}
-                          variant="navy"
-                          size="sm"
-                        >
-                          <Eye className="w-3.5 h-3.5" />
-                          Voir la correction
-                        </GlassButton>
-                      )}
                     </div>
                   </div>
                 </div>

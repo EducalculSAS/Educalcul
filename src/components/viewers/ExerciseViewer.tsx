@@ -16,6 +16,7 @@ import {
   Keyboard,
   ArrowUp,
   ArrowDown,
+  Eye,
 } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
 import { supabase } from "@/lib/supabaseClient";
@@ -260,6 +261,95 @@ export default function ExerciseViewer({
   const [showReview, setShowReview] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [gradingError, setGradingError] = useState<string | null>(null);
+
+  // Correction immédiate des blocs "text_input" (même style que les
+  // mini-exercices de cours) : vérifier tout de suite, réessayer, et
+  // proposer la réponse après 2 échecs plutôt que de laisser retenter à
+  // l'infini. Une fois résolu (correct ou révélé), la validation finale de
+  // la page réutilise ce verdict au lieu de rappeler l'IA.
+  interface InlineTextState {
+    attempts: number;
+    status: "grading" | "correct" | "wrong" | "revealed" | "unavailable";
+    feedback?: string;
+    resolvedScore?: number;
+    resolvedCorrect?: boolean;
+    revealedAnswer?: string;
+  }
+  const [inlineText, setInlineText] = useState<Record<string, InlineTextState>>({});
+
+  const verifyTextBlock = async (block: any) => {
+    const studentAnswer = answers[block.id];
+    if (!studentAnswer) return;
+    const current = inlineText[block.id];
+    const attemptsSoFar = current?.attempts || 0;
+    setInlineText((prev) => ({ ...prev, [block.id]: { attempts: attemptsSoFar, status: "grading" } }));
+    try {
+      const exerciseId = exercise.id || "preview";
+      const res = await fetch(`/api/child/exercises/${exerciseId}/grade`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          block_id: block.id,
+          answer: studentAnswer,
+          question: block.content,
+          correctAnswer: block.correctAnswer,
+          explanation: block.explanation,
+          level: exercise.level || "6eme",
+          points: block.points,
+        }),
+      });
+      const data = await res.json();
+      if (data.unavailable) {
+        setInlineText((prev) => ({
+          ...prev,
+          [block.id]: { attempts: attemptsSoFar, status: "unavailable", feedback: data.feedback },
+        }));
+        return;
+      }
+      if (data.is_correct) {
+        setInlineText((prev) => ({
+          ...prev,
+          [block.id]: {
+            attempts: attemptsSoFar + 1,
+            status: "correct",
+            feedback: data.feedback,
+            resolvedScore: data.score,
+            resolvedCorrect: true,
+          },
+        }));
+      } else {
+        const attempts = attemptsSoFar + 1;
+        if (attempts >= 2) {
+          // 2 échecs d'affilée : on propose directement la réponse plutôt
+          // que de laisser l'élève retenter indéfiniment. La bonne réponse
+          // vient de data.reveal (le client n'a jamais correctAnswer avant
+          // d'avoir soumis — voir le commentaire dans la route de grading).
+          setInlineText((prev) => ({
+            ...prev,
+            [block.id]: {
+              attempts,
+              status: "revealed",
+              feedback: data.feedback,
+              resolvedScore: 0,
+              resolvedCorrect: false,
+              revealedAnswer:
+                typeof data.reveal?.correctAnswer === "string" ? data.reveal.correctAnswer : undefined,
+            },
+          }));
+        } else {
+          setInlineText((prev) => ({
+            ...prev,
+            [block.id]: { attempts, status: "wrong", feedback: data.feedback },
+          }));
+        }
+      }
+    } catch {
+      setInlineText((prev) => ({
+        ...prev,
+        [block.id]: { attempts: attemptsSoFar, status: "unavailable", feedback: "Correction indisponible, réessaie." },
+      }));
+    }
+  };
   const [blockModes, setBlockModes] = useState<Record<string, "text" | "draw">>(() => (reviewMode ? initialProgress?.blockModes : undefined) || {});
   const [adminComments] = useState<Record<string, string>>(() => initialProgress?.adminComments || {});
   const [adminEditedAnswers] = useState<Record<string, any>>(() => initialProgress?.adminEditedAnswers || {});
@@ -549,6 +639,8 @@ export default function ExerciseViewer({
 
   const handleBlockAnswerChange = (blockId: string, value: any) => {
     if (submittedBlocks.has(blockId)) return;
+    const inlineStatus = inlineText[blockId]?.status;
+    if (inlineStatus === "correct" || inlineStatus === "revealed") return;
     setAnswers((prev) => ({ ...prev, [blockId]: value }));
   };
 
@@ -578,6 +670,21 @@ export default function ExerciseViewer({
         if (answer === undefined || answer === null) {
           newResults[block.id] = false;
           newSubmitted.add(block.id);
+          continue;
+        }
+
+        // Déjà vérifié en direct via le bouton "Vérifier" du bloc
+        // (text_input) : on réutilise ce verdict plutôt que de rappeler
+        // l'IA une seconde fois pour la même réponse.
+        const inlineResult = inlineText[block.id];
+        if (block.type === "text_input" && inlineResult?.resolvedCorrect !== undefined) {
+          newResults[block.id] = inlineResult.resolvedCorrect;
+          newAiFeedback[block.id] = inlineResult.feedback || "";
+          if (inlineResult.revealedAnswer) {
+            newRevealed[block.id] = { correctAnswer: inlineResult.revealedAnswer };
+          }
+          newSubmitted.add(block.id);
+          if (inlineResult.resolvedCorrect) totalScore += inlineResult.resolvedScore ?? points;
           continue;
         }
 
@@ -834,6 +941,8 @@ export default function ExerciseViewer({
           {currentPage.blocks.map((block) => {
             const isSubmitted = reviewMode || submittedBlocks.has(block.id);
             const answer = answers[block.id];
+            const inline = inlineText[block.id];
+            const inlineResolved = inline?.status === "correct" || inline?.status === "revealed";
 
             // Determine correctness for feedback
             const isCorrect = isSubmitted ? results[block.id] ?? false : false;
@@ -911,7 +1020,7 @@ export default function ExerciseViewer({
 
                       {blockModes[block.id] === "draw" ? (
                         <DrawingCanvas
-                          disabled={isSubmitted}
+                          disabled={isSubmitted || inlineResolved}
                           initialData={answer}
                           onChange={(data) =>
                             handleBlockAnswerChange(block.id, data)
@@ -932,7 +1041,7 @@ export default function ExerciseViewer({
                                     mathfieldRefs.current[block.id] = el;
                                   }}
                                   value={currentVal}
-                                  disabled={isSubmitted}
+                                  disabled={isSubmitted || inlineResolved}
                                   onChange={(latex) =>
                                     handleBlockAnswerChange(block.id, latex)
                                   }
@@ -941,6 +1050,10 @@ export default function ExerciseViewer({
                                       ? isCorrect
                                         ? "border-green-500 bg-green-50"
                                         : "border-red-500 bg-red-50"
+                                      : inline?.status === "correct"
+                                      ? "border-green-500 bg-green-50"
+                                      : inline?.status === "wrong" || inline?.status === "revealed"
+                                      ? "border-red-500 bg-red-50"
                                       : "border-gray-300 focus-within:border-[var(--greek-blue)]"
                                   }`}
                                   placeholder="Tapez votre réponse"
@@ -958,6 +1071,106 @@ export default function ExerciseViewer({
                               </div>
                             );
                           })()}
+                        </>
+                      )}
+
+                      {/* Correction immédiate, même style que les mini-exercices de cours */}
+                      {!isSubmitted && (
+                        <>
+                          {!inlineResolved && (
+                            <GlassButton
+                              onClick={() => verifyTextBlock(block)}
+                              disabled={!answer || inline?.status === "grading"}
+                              variant="navy"
+                              size="sm"
+                              className="self-start min-w-[150px]"
+                            >
+                              {inline?.status === "grading" ? (
+                                <>
+                                  <Loader2 className="w-4 h-4 animate-spin" />
+                                  <span>Correction...</span>
+                                </>
+                              ) : (
+                                "Vérifier"
+                              )}
+                            </GlassButton>
+                          )}
+
+                          {inline?.status === "unavailable" && (
+                            <div
+                              className="p-3 rounded-xl flex items-start gap-2"
+                              style={{ background: "#fffbeb", color: "#92400e" }}
+                            >
+                              <Loader2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                              <div className="flex-1">
+                                <p className="font-semibold text-sm">Correction indisponible</p>
+                                <p className="text-sm mt-1 opacity-90">
+                                  {inline.feedback || "Réessaie dans quelques secondes."}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+
+                          {inline?.status === "wrong" && (
+                            <div
+                              className="p-3 rounded-xl flex items-start gap-2"
+                              style={{ background: "#fef2f2", color: "#991b1b" }}
+                            >
+                              <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+                              <div className="flex-1">
+                                <p className="font-semibold text-sm">Pas tout à fait…</p>
+                                {inline.feedback && (
+                                  <div
+                                    className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"
+                                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(inline.feedback) }}
+                                  />
+                                )}
+                                <p className="text-xs mt-0.5 opacity-80">Essaie encore</p>
+                              </div>
+                            </div>
+                          )}
+
+                          {inline?.status === "correct" && (
+                            <div
+                              className="p-4 rounded-xl flex items-start gap-2"
+                              style={{
+                                background: "rgba(197,161,72,0.1)",
+                                color: "var(--greek-blue)",
+                                borderLeft: "3px solid var(--greek-gold)",
+                              }}
+                            >
+                              <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "var(--greek-gold)" }} />
+                              <div className="flex-1">
+                                <p className="font-bold text-sm">Excellent ! ✨</p>
+                                {inline.feedback && (
+                                  <div
+                                    className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"
+                                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(inline.feedback) }}
+                                  />
+                                )}
+                              </div>
+                            </div>
+                          )}
+
+                          {inline?.status === "revealed" && (
+                            <div className="p-4 rounded-xl" style={{ background: "#f9fafb", border: "1px solid #e5e7eb" }}>
+                              <div className="flex items-center gap-2 mb-2">
+                                <Eye className="w-4 h-4" style={{ color: "var(--greek-blue)" }} />
+                                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--greek-blue)" }}>
+                                  Correction
+                                </span>
+                              </div>
+                              <p className="text-sm text-gray-700 latex-content">
+                                <span className="font-semibold">Réponse :</span>{" "}
+                                <span
+                                  style={{ color: "var(--greek-blue)" }}
+                                  dangerouslySetInnerHTML={{
+                                    __html: renderLatexInHTML(inline?.revealedAnswer || ""),
+                                  }}
+                                />
+                              </p>
+                            </div>
+                          )}
                         </>
                       )}
                     </div>
