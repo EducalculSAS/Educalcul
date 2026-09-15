@@ -38,6 +38,7 @@ import DrawingCanvas from "@/components/DrawingCanvas";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import CaliaSceneDemo from "@/components/child/calia-scene/CaliaSceneDemo";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url: string) => {
@@ -617,6 +618,9 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
               dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentLesson?.title || "") }}
             />
           </div>
+
+          {/* Démo Calia P0 (admin uniquement pour l'instant) */}
+          <CaliaSceneDemo contentRef={contentRef} />
 
           {/* Cercle progression SVG */}
           <div className="flex-shrink-0">
