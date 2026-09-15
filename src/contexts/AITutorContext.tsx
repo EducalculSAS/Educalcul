@@ -34,6 +34,11 @@ interface AITutorContextType {
   pageContext: AITutorPageContext;
   setPageContext: (ctx: AITutorPageContext) => void;
   clearContext: () => void;
+  /** Vrai pendant qu'une session "Calia en classe" (CaliaSceneDemo.tsx) est
+   * active — AITutor masque son propre bouton flottant pour éviter d'avoir
+   * deux avatars Calia affichés en même temps. */
+  classeActive: boolean;
+  setClasseActive: (active: boolean) => void;
 }
 
 const defaultContext: AITutorPageContext = { page: "other" };
@@ -42,10 +47,13 @@ const AITutorContext = createContext<AITutorContextType>({
   pageContext: defaultContext,
   setPageContext: () => {},
   clearContext: () => {},
+  classeActive: false,
+  setClasseActive: () => {},
 });
 
 export function AITutorProvider({ children }: { children: React.ReactNode }) {
   const [pageContext, setPageContextState] = useState<AITutorPageContext>(defaultContext);
+  const [classeActive, setClasseActive] = useState(false);
 
   const setPageContext = useCallback((ctx: AITutorPageContext) => {
     setPageContextState(ctx);
@@ -56,7 +64,7 @@ export function AITutorProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <AITutorContext.Provider value={{ pageContext, setPageContext, clearContext }}>
+    <AITutorContext.Provider value={{ pageContext, setPageContext, clearContext, classeActive, setClasseActive }}>
       {children}
     </AITutorContext.Provider>
   );

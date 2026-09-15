@@ -3,20 +3,48 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { Wand2, X, ArrowRight } from "lucide-react";
+import { Wand2, X, Mic, MicOff, Loader2, Send } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
-import GlassButton from "@/components/ui/GlassButton";
 import { getMyProfile } from "@/lib/updateMyProfile";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { compileCourseBlock } from "@/lib/ai/compiler";
-import { CALIA_SCENE_SCRIPT, type SceneBeat } from "./caliaSceneScript";
+import { useAITutor } from "@/contexts/AITutorContext";
 
 const HIGHLIGHT_CLASS = "calia-scene-highlight";
+const OUTLINE_SELECTORS: Record<"heading" | "paragraph" | "figure", string> = {
+  heading: "h3, h4",
+  paragraph: "p",
+  figure: ".course-figure",
+};
 
-function targetElement(root: HTMLElement | null, selector: string, nth = 0): HTMLElement | null {
-  if (!root) return null;
-  const matches = root.querySelectorAll<HTMLElement>(selector);
-  return matches[nth] ?? null;
+type OutlineKind = "heading" | "paragraph" | "figure";
+interface OutlineItem { kind: OutlineKind; index: number; preview: string; el: HTMLElement }
+
+interface TurnAction {
+  kind: "highlight" | "scroll_to" | "point_at" | "board_write";
+  targetKind: OutlineKind | null;
+  targetIndex: number | null;
+  latex: string | null;
+}
+interface TurnResult { say: string; action: TurnAction | null }
+interface HistoryMsg { role: "user" | "assistant"; content: string }
+
+function buildOutline(root: HTMLElement | null): OutlineItem[] {
+  if (!root) return [];
+  const items: OutlineItem[] = [];
+  (Object.keys(OUTLINE_SELECTORS) as OutlineKind[]).forEach((kind) => {
+    const els = root.querySelectorAll<HTMLElement>(OUTLINE_SELECTORS[kind]);
+    els.forEach((el, index) => {
+      const preview = (el.textContent || "").trim().slice(0, 140);
+      if (preview) items.push({ kind, index, preview, el });
+    });
+  });
+  return items;
+}
+
+function pickFrenchVoice(): SpeechSynthesisVoice | null {
+  const voices = window.speechSynthesis?.getVoices() || [];
+  return voices.find((v) => v.lang.toLowerCase().startsWith("fr")) || voices[0] || null;
 }
 
 export default function CaliaSceneDemo({
@@ -24,19 +52,27 @@ export default function CaliaSceneDemo({
 }: {
   contentRef: RefObject<HTMLDivElement | null>;
 }) {
-  // Gate admin-only pour l'instant (P0) — retirer cette condition (et
-  // isAdmin) pour ouvrir la démo à tous une fois le ressenti validé.
+  // Gate admin-only pour l'instant — retirer cette condition (et isAdmin)
+  // pour ouvrir la fonctionnalité à tous une fois le ressenti validé.
   const [isAdmin, setIsAdmin] = useState(false);
+  const { setClasseActive } = useAITutor();
+
   const [isRunning, setIsRunning] = useState(false);
-  const [beatIndex, setBeatIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const [sayText, setSayText] = useState<string | null>(null);
   const [pointerRect, setPointerRect] = useState<DOMRect | null>(null);
   const [boardLines, setBoardLines] = useState<string[]>([]);
-  const [waitingForContinue, setWaitingForContinue] = useState(false);
-  const [mounted, setMounted] = useState(false);
+  const [speaking, setSpeaking] = useState(false);
+  const [listening, setListening] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [interim, setInterim] = useState("");
+  const [speechSupported, setSpeechSupported] = useState(true);
+  const [textFallback, setTextFallback] = useState("");
 
   const highlightedElRef = useRef<HTMLElement | null>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const historyRef = useRef<HistoryMsg[]>([]);
+  const recognitionRef = useRef<any>(null);
 
   useEffect(() => setMounted(true), []);
 
@@ -46,103 +82,152 @@ export default function CaliaSceneDemo({
     });
   }, []);
 
+  useEffect(() => {
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    setSpeechSupported(!!SR);
+  }, []);
+
   const clearHighlight = () => {
     highlightedElRef.current?.classList.remove(HIGHLIGHT_CLASS);
     highlightedElRef.current = null;
   };
 
-  const reset = () => {
-    clearTimeout(timerRef.current);
+  const stop = () => {
+    recognitionRef.current?.abort?.();
+    window.speechSynthesis?.cancel();
     clearHighlight();
     setIsRunning(false);
-    setBeatIndex(0);
+    setClasseActive(false);
     setSayText(null);
     setPointerRect(null);
     setBoardLines([]);
-    setWaitingForContinue(false);
+    setListening(false);
+    setSpeaking(false);
+    setInterim("");
+    setError(null);
+    historyRef.current = [];
+  };
+
+  const speak = (text: string) => {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "fr-FR";
+    const voice = pickFrenchVoice();
+    if (voice) utter.voice = voice;
+    utter.onstart = () => setSpeaking(true);
+    utter.onend = () => setSpeaking(false);
+    utter.onerror = () => setSpeaking(false);
+    window.speechSynthesis.speak(utter);
+  };
+
+  const executeAction = (action: TurnAction | null) => {
+    clearHighlight();
+    setPointerRect(null);
+    if (!action) return;
+
+    if (action.kind === "board_write") {
+      if (!action.latex) return;
+      const html = renderLatexInHTML(compileCourseBlock({ type: "display_math", latex: action.latex }, [], new Set()));
+      setBoardLines((lines) => [...lines, html]);
+      return;
+    }
+
+    if (!action.targetKind || action.targetIndex === null) return;
+    const outline = buildOutline(contentRef.current);
+    const target = outline.find((o) => o.kind === action.targetKind && o.index === action.targetIndex);
+    if (!target) return;
+
+    if (action.kind === "scroll_to") {
+      target.el.scrollIntoView({ behavior: "smooth", block: "center" });
+    } else if (action.kind === "highlight") {
+      target.el.classList.add(HIGHLIGHT_CLASS);
+      highlightedElRef.current = target.el;
+    } else if (action.kind === "point_at") {
+      setPointerRect(target.el.getBoundingClientRect());
+    }
+  };
+
+  const sendTurn = async (studentMessage: string) => {
+    setLoading(true);
+    setError(null);
+    setInterim("");
+    historyRef.current = [...historyRef.current, { role: "user", content: studentMessage }];
+    try {
+      const outline = buildOutline(contentRef.current);
+      const res = await fetch("/api/calia/classe-turn", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          lessonOutline: outline.map(({ kind, index, preview }) => ({ kind, index, preview })),
+          history: historyRef.current,
+          studentMessage,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Erreur du serveur.");
+      const result = data as TurnResult;
+      historyRef.current = [...historyRef.current, { role: "assistant", content: result.say }];
+      setSayText(result.say);
+      executeAction(result.action);
+      speak(result.say);
+    } catch (err: any) {
+      setError(err?.message || "Une erreur est survenue.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const startListening = () => {
+    if (!speechSupported || loading || speaking) return;
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const recognition = new SR();
+    recognition.lang = "fr-FR";
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+    recognition.onstart = () => { setListening(true); setInterim(""); };
+    recognition.onresult = (e: any) => {
+      let finalText = "";
+      let interimText = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const chunk = e.results[i][0].transcript;
+        if (e.results[i].isFinal) finalText += chunk;
+        else interimText += chunk;
+      }
+      setInterim(interimText);
+      if (finalText.trim()) sendTurn(finalText.trim());
+    };
+    recognition.onerror = () => setListening(false);
+    recognition.onend = () => setListening(false);
+    recognitionRef.current = recognition;
+    recognition.start();
+  };
+
+  const stopListening = () => {
+    recognitionRef.current?.stop?.();
+    setListening(false);
   };
 
   const start = () => {
     setIsRunning(true);
-    setBeatIndex(0);
-    setBoardLines([]);
+    setClasseActive(true);
+    historyRef.current = [];
+    sendTurn("(le cours commence, ouvre la séance)");
   };
 
-  // Runner : joue les beats dans l'ordre. S'arrête sur await_continue jusqu'au
-  // clic du bouton "Continuer".
-  useEffect(() => {
-    if (!isRunning) return;
-    if (beatIndex >= CALIA_SCENE_SCRIPT.length) {
-      timerRef.current = setTimeout(() => reset(), 1800);
-      return;
-    }
+  useEffect(() => () => { recognitionRef.current?.abort?.(); window.speechSynthesis?.cancel(); clearHighlight(); }, []);
 
-    const beat: SceneBeat = CALIA_SCENE_SCRIPT[beatIndex];
-    const root = contentRef.current;
-
-    const advance = (delay: number) => {
-      timerRef.current = setTimeout(() => setBeatIndex((i) => i + 1), delay);
-    };
-
-    switch (beat.kind) {
-      case "say":
-        setSayText(beat.text);
-        advance(beat.ms ?? 2000);
-        break;
-
-      case "scroll_to": {
-        const el = targetElement(root, beat.selector, beat.nth);
-        el?.scrollIntoView({ behavior: "smooth", block: "center" });
-        advance(600);
-        break;
-      }
-
-      case "highlight": {
-        clearHighlight();
-        const el = targetElement(root, beat.selector, beat.nth);
-        if (el) {
-          el.classList.add(HIGHLIGHT_CLASS);
-          highlightedElRef.current = el;
-        }
-        advance(200);
-        break;
-      }
-
-      case "point_at": {
-        const el = targetElement(root, beat.selector, beat.nth);
-        setPointerRect(el ? el.getBoundingClientRect() : null);
-        advance(200);
-        break;
-      }
-
-      case "board_write": {
-        const html = renderLatexInHTML(compileCourseBlock(beat.block, [], new Set()));
-        setBoardLines((lines) => [...lines, html]);
-        advance(300);
-        break;
-      }
-
-      case "await_continue":
-        setWaitingForContinue(true);
-        break;
-    }
-
-    return () => clearTimeout(timerRef.current);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isRunning, beatIndex]);
-
-  useEffect(() => () => { clearTimeout(timerRef.current); clearHighlight(); }, []);
-
-  const handleContinue = () => {
-    setWaitingForContinue(false);
-    setBeatIndex((i) => i + 1);
+  const submitTextFallback = () => {
+    const text = textFallback.trim();
+    if (!text || loading) return;
+    setTextFallback("");
+    sendTurn(text);
   };
 
   if (!isAdmin) return null;
 
   return (
     <>
-      {/* Halo de surlignage — scoppé à cette démo, pas une classe globale */}
       <style jsx global>{`
         .${HIGHLIGHT_CLASS} {
           outline: 3px solid var(--greek-gold);
@@ -150,28 +235,26 @@ export default function CaliaSceneDemo({
           border-radius: 6px;
           transition: outline-color 0.3s ease;
         }
+        @keyframes calia-speak-pulse {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.06); }
+        }
       `}</style>
 
-      {/* Bouton de lancement — barre d'outils de la leçon */}
       <GlassIconButton
         icon={Wand2}
         color="gold"
         size="sm"
-        aria-label={isRunning ? "Arrêter la démo Calia" : "Essayer Calia (démo admin)"}
-        onClick={isRunning ? reset : start}
+        aria-label={isRunning ? "Arrêter Calia en classe" : "Lancer Calia en classe (admin)"}
+        onClick={isRunning ? stop : start}
       />
 
       {isRunning && mounted && createPortal(
         <>
-          {/* Rendu via portal directement sur document.body : ce composant est
-              monté profondément dans CourseViewer, lui-même à l'intérieur du
-              conteneur plein écran `fixed z-50` de CourseDetailClient — un
-              `position:fixed` imbriqué reste contraint par le contexte
-              d'empilement de cet ancêtre `position:fixed` malgré un z-index
-              plus élevé. Le portail sort l'overlay de cette arborescence,
-              comme AITutor.tsx qui échappe au même problème en étant monté
-              au niveau du layout plutôt que dans la leçon. */}
-          {/* Bâton / pointeur */}
+          {/* Rendu via portal sur document.body : CourseViewer est monté à
+              l'intérieur du conteneur plein écran `fixed z-50` de
+              CourseDetailClient, qui contraint la pile d'empilement de tout
+              descendant `position:fixed` malgré un z-index plus élevé. */}
           {pointerRect && (
             <div
               className="fixed z-[70] pointer-events-none"
@@ -186,54 +269,84 @@ export default function CaliaSceneDemo({
             </div>
           )}
 
-          {/* Avatar + bulle — bas-gauche pour ne pas empiler avec AITutor (bas-droite) */}
-          <div className="fixed bottom-4 left-4 z-[70] flex items-end gap-3 max-w-[calc(100vw-2rem)]">
-            <div className="relative shrink-0">
+          {/* Avatar + bulle — même emplacement que le bouton AITutor
+              (bas-droite), masqué pendant cette session (AITutorContext). */}
+          <div className="fixed bottom-[88px] right-4 z-[70] flex flex-col items-end gap-3 max-w-[calc(100vw-2rem)]">
+            {(sayText || error) && (
               <div
-                className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
-                style={{ background: "var(--greek-blue)", border: "2px solid var(--greek-gold)" }}
+                className="rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg text-sm max-w-[18rem]"
+                style={error ? { background: "#fef2f2", color: "#b91c1c", border: "1px solid #fecaca" } : { background: "var(--greek-blue)", color: "#fff" }}
               >
-                <Image src="/logoAI.png" alt="Calia" width={30} height={30} className="object-contain" />
+                {error || sayText}
               </div>
-              <button
-                type="button"
-                onClick={reset}
-                aria-label="Fermer la démo Calia"
-                className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center text-white"
-                style={{ background: "var(--greek-blue)" }}
+            )}
+            {interim && (
+              <div className="rounded-2xl px-4 py-2 text-sm italic max-w-[18rem]" style={{ background: "rgba(15,30,58,0.06)", color: "var(--text-muted)" }}>
+                {interim}…
+              </div>
+            )}
+
+            <div className="flex items-center gap-2">
+              <div
+                className="relative shrink-0"
+                style={{
+                  animation: speaking ? "calia-speak-pulse 0.6s ease-in-out infinite" : undefined,
+                  transition: "transform 0.3s ease",
+                }}
               >
-                <X className="w-3 h-3" />
-              </button>
+                <div
+                  className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
+                  style={{ background: "var(--greek-blue)", border: "2px solid var(--greek-gold)" }}
+                >
+                  {loading ? (
+                    <Loader2 className="w-6 h-6 animate-spin" style={{ color: "var(--greek-gold)" }} />
+                  ) : (
+                    <Image src="/logoAI.png" alt="Calia" width={30} height={30} className="object-contain" />
+                  )}
+                </div>
+                <button
+                  type="button"
+                  onClick={stop}
+                  aria-label="Fermer Calia en classe"
+                  className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center text-white"
+                  style={{ background: "var(--greek-blue)" }}
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </div>
+
+              {speechSupported && (
+                <GlassIconButton
+                  icon={listening ? MicOff : Mic}
+                  color={listening ? "red" : "gold"}
+                  aria-label={listening ? "Arrêter d'écouter" : "Parler à Calia"}
+                  onClick={listening ? stopListening : startListening}
+                  disabled={loading || speaking}
+                />
+              )}
             </div>
 
-            {sayText && (
-              <div
-                className="rounded-2xl rounded-bl-sm px-4 py-2.5 shadow-lg text-sm max-w-[18rem]"
-                style={{ background: "var(--greek-blue)", color: "#fff" }}
-              >
-                {sayText}
+            {!speechSupported && (
+              <div className="flex items-center gap-2 rounded-full pl-4 pr-1.5 py-1.5 shadow-lg" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
+                <input
+                  value={textFallback}
+                  onChange={(e) => setTextFallback(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && submitTextFallback()}
+                  placeholder="Ton navigateur ne supporte pas la voix — écris ici"
+                  className="text-sm outline-none bg-transparent w-56"
+                  disabled={loading}
+                />
+                <GlassIconButton icon={Send} color="navy" size="sm" aria-label="Envoyer" onClick={submitTextFallback} disabled={loading} />
               </div>
             )}
           </div>
 
-          {waitingForContinue && (
-            <div className="fixed bottom-24 left-4 z-[70]">
-              <GlassButton onClick={handleContinue} variant="gold" size="sm">
-                Continuer <ArrowRight className="w-3.5 h-3.5" />
-              </GlassButton>
-            </div>
-          )}
-
-          {/* Tableau — panneau à droite sur desktop, en haut sur mobile */}
           {boardLines.length > 0 && (
             <div
               className="fixed z-[65] rounded-xl shadow-2xl overflow-hidden top-16 left-2 right-2 md:top-20 md:right-4 md:left-auto md:w-72"
               style={{ background: "#2a323a", border: "1px solid rgba(238,242,236,0.15)" }}
             >
-              <div
-                className="px-3 py-1.5 text-[10px] uppercase tracking-widest"
-                style={{ color: "#dcb85f", borderBottom: "1px solid rgba(238,242,236,0.1)" }}
-              >
+              <div className="px-3 py-1.5 text-[10px] uppercase tracking-widest" style={{ color: "#dcb85f", borderBottom: "1px solid rgba(238,242,236,0.1)" }}>
                 Tableau
               </div>
               <div className="px-4 py-3 space-y-1.5" style={{ color: "#eef2ec" }}>

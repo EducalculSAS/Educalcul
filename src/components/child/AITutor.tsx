@@ -64,7 +64,7 @@ function renderUserContent(text: string) {
 }
 
 export default function AITutor() {
-  const { pageContext } = useAITutor();
+  const { pageContext, classeActive } = useAITutor();
   const sub = useSubscription();
   const isSupportMode = pageContext.page === "support";
   const WELCOME = isSupportMode ? WELCOME_SUPPORT : WELCOME_DEFAULT;
@@ -281,6 +281,10 @@ export default function AITutor() {
     pageContext.courseTitle ||
     pageContext.exerciseTitle ||
     pageContext.quizTitle;
+
+  // Une session "Calia en classe" est active : elle occupe déjà l'emplacement
+  // bas-droite avec son propre avatar — pas de second Calia à l'écran.
+  if (classeActive) return null;
 
   return (
     <>

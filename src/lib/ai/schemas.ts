@@ -1367,3 +1367,34 @@ export function dailySheetQuestionsSchema(count: number, answerType: "number" | 
     },
   };
 }
+
+/** Un tour de "Calia en classe" (prof vocal) : ce qu'elle dit + au plus une
+ * action de mise en scène (surligner/faire défiler/pointer/écrire au
+ * tableau). Les blocs de leçon compilés n'ont pas d'id stable (voir
+ * compileCourseBlock) — targetIndex référence donc la Nième cible du type
+ * demandé dans lessonOutline, pas un id réel. */
+export function caliaClasseTurnSchema(): JsonSchemaContract {
+  return {
+    name: "educalcul_calia_classe_turn",
+    description: "Réplique de Calia (mode prof vocal) et action de mise en scène optionnelle.",
+    schema: {
+      type: "object",
+      properties: {
+        say: { type: "string", minLength: 1, maxLength: 400 },
+        action: {
+          type: ["object", "null"],
+          properties: {
+            kind: { type: "string", enum: ["highlight", "scroll_to", "point_at", "board_write"] },
+            targetKind: { type: ["string", "null"], enum: ["heading", "paragraph", "figure", null] },
+            targetIndex: { type: ["integer", "null"], minimum: 0 },
+            latex: { type: ["string", "null"], minLength: 1, maxLength: 200 },
+          },
+          required: ["kind", "targetKind", "targetIndex", "latex"],
+          additionalProperties: false,
+        },
+      },
+      required: ["say", "action"],
+      ...noExtra,
+    },
+  };
+}
