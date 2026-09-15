@@ -119,7 +119,7 @@ export async function POST(req: NextRequest) {
       return attachDemoId(NextResponse.json({ error: "Messages requis" }, { status: 400 }), id);
     }
 
-    const raw = await chatWithAI(messages, SYSTEM_PROMPT, 0.7, 200);
+    const raw = await chatWithAI(messages, SYSTEM_PROMPT, 0.7, 1000);
     const reply = cleanReply(raw);
     const newCount = (existing?.count ?? 0) + 1;
 
