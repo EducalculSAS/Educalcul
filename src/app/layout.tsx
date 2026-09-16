@@ -70,13 +70,16 @@ const educationalOrgSchema = {
   url: BASE,
   description: "Plateforme SaaS d'apprentissage des mathématiques du CP à la Terminale, avec IA pédagogique et suivi parental.",
   educationalCredentialAwarded: "Maîtrise des mathématiques du CP à la Terminale",
+  // Prix/noms alignés sur la table `subscription_plans` (plans mensuels actifs) —
+  // à resynchroniser manuellement si les tarifs changent, voir aussi
+  // src/app/tarifs/layout.tsx (offersSchema) qui doit rester identique.
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Plans Educalcul",
     itemListElement: [
       { "@type": "Offer", name: "Plan Gratuit", price: "0", priceCurrency: "EUR" },
-      { "@type": "Offer", name: "Plan Premium", price: "9.99", priceCurrency: "EUR", billingDuration: "P1M" },
-      { "@type": "Offer", name: "Plan Famille", price: "19.99", priceCurrency: "EUR", billingDuration: "P1M" },
+      { "@type": "Offer", name: "Plan Solo", price: "9.99", priceCurrency: "EUR", billingDuration: "P1M" },
+      { "@type": "Offer", name: "Plan Family", price: "16.99", priceCurrency: "EUR", billingDuration: "P1M" },
     ],
   },
 };

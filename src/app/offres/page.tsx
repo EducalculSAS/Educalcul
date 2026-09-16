@@ -13,6 +13,9 @@ import Image from "next/image";
 import FadeInSection from "@/components/home/FadeInSection";
 import CaliaChatDemo from "@/components/offres/CaliaChatDemo";
 import GlassButton from "@/components/ui/GlassButton";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+import { fetchReviewsForHomepage } from "@/lib/manualReviews";
+import { fetchReviewRatingOverride } from "@/lib/reviewRatingOverride";
 
 // Page publique statique : ISR pour servir depuis le cache plutôt que de
 // re-render à chaque visite.
@@ -59,13 +62,18 @@ const PILLARS = [
     items: [
       "Aucune publicité ni contenu inapproprié",
       "Conforme RGPD, données protégées",
-      "Jusqu'à 6 enfants sous un seul compte parent",
+      "Jusqu'à 5 enfants sous un seul compte parent",
       "Accessible sur tous les appareils",
     ],
   },
 ];
 
-export default function Offres() {
+export default async function Offres() {
+  const [tpReviews, ratingOverride] = await Promise.all([
+    fetchReviewsForHomepage(),
+    fetchReviewRatingOverride(),
+  ]);
+
   return (
     <div
       className="flex flex-col min-h-screen"
@@ -166,7 +174,7 @@ export default function Offres() {
                   },
                   {
                     icon: <Users className="w-4 h-4" />,
-                    text: "Jusqu'à 6 enfants par compte",
+                    text: "Jusqu'à 5 enfants par compte",
                   },
                   {
                     icon: <ShieldCheck className="w-4 h-4" />,
@@ -379,7 +387,7 @@ export default function Offres() {
                   className="text-xs mt-0.5"
                   style={{ color: "rgba(255,255,255,0.45)" }}
                 >
-                  Gérez jusqu&apos;à 6 profils enfants depuis un espace parent
+                  Gérez jusqu&apos;à 5 profils enfants depuis un espace parent
                   unique. Chacun à son rythme, son niveau, ses stats.
                 </p>
               </div>
@@ -396,6 +404,55 @@ export default function Offres() {
                 </span>
               </div>
             </FadeInSection>
+          </div>
+        </section>
+
+        {/* ── CONFIANCE / AVIS ── */}
+        <section className="py-24" style={{ background: "var(--greek-cream)" }}>
+          <div className="container mx-auto px-6 max-w-5xl">
+            <div className="text-center mb-12">
+              <h2
+                className="font-[family-name:var(--font-display)] font-bold text-4xl mb-4"
+                style={{ color: "var(--greek-blue)" }}
+              >
+                Ils nous font confiance
+              </h2>
+              <p
+                className="text-sm max-w-lg mx-auto"
+                style={{ color: "rgba(15,30,58,0.5)" }}
+              >
+                Des familles utilisent déjà Educalcul au quotidien — voici ce
+                qu&apos;elles en disent.
+              </p>
+            </div>
+            <FadeInSection>
+              <TestimonialsSection reviews={tpReviews} ratingOverride={ratingOverride} />
+            </FadeInSection>
+
+            {/* Garanties */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10">
+              {[
+                { icon: ShieldCheck, text: "Essai 7 jours, sans carte bancaire" },
+                { icon: Check, text: "Sans engagement, résiliable à tout moment" },
+                { icon: BookOpen, text: "Contenu aligné sur le programme officiel" },
+              ].map((g, i) => (
+                <div
+                  key={i}
+                  className="flex items-center gap-3 p-4 rounded-xl"
+                  style={{ background: "#fff", border: "1px solid var(--greek-border)" }}
+                >
+                  <span
+                    className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ background: "rgba(197,161,72,0.1)", color: "var(--greek-gold)" }}
+                  >
+                    <g.icon className="w-4 h-4" />
+                  </span>
+                  <span className="text-sm font-medium" style={{ color: "var(--greek-blue)" }}>
+                    {g.text}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
