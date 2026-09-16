@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect, useCallback, useLayoutEffect } from "react";
 import { useAITutor } from "@/contexts/AITutorContext";
-import { Send, X, Minus, RotateCcw, Lock, ArrowRight } from "lucide-react";
+import { Send, X, Minus, RotateCcw, Lock, ArrowRight, Mic, MicOff } from "lucide-react";
 import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 import { useSubscription, canUseAI, aiRemaining } from "@/lib/useSubscription";
@@ -11,6 +11,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { subscribeMathKeyboardVisibility } from "@/components/MathInput";
+import { playListeningCue } from "@/lib/audioCues";
 
 interface Message {
   role: "user" | "assistant";
@@ -80,6 +81,19 @@ export default function AITutor() {
   // bas de l'écran par-dessus la bulle : on l'efface le temps qu'il est
   // ouvert plutôt que de la laisser flotter dessus ou à moitié cachée.
   const [mathKeyboardOpen, setMathKeyboardOpen] = useState(false);
+
+  // Dictée vocale (push-to-talk) : transcrit dans le champ texte, ne
+  // valide/envoie jamais toute seule — l'élève relit et clique Envoyer.
+  const [listening, setListening] = useState(false);
+  const [micError, setMicError] = useState<string | null>(null);
+  const [speechSupported, setSpeechSupported] = useState(false);
+  const recognitionRef = useRef<any>(null);
+  const dictationBaseRef = useRef("");
+
+  useEffect(() => {
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    setSpeechSupported(!!SR);
+  }, []);
 
   useEffect(() => subscribeMathKeyboardVisibility(setMathKeyboardOpen), []);
 
@@ -277,6 +291,71 @@ export default function AITutor() {
     }
   };
 
+  const micErrorMessage = (code: string): string => {
+    switch (code) {
+      case "not-allowed":
+      case "service-not-allowed":
+        return "Micro bloqué pour ce site. Autorise-le dans les paramètres du navigateur, puis recharge la page.";
+      case "audio-capture":
+        return "Aucun micro détecté sur cet appareil.";
+      case "network":
+        return "La dictée vocale nécessite une connexion internet.";
+      default:
+        return "La dictée vocale a échoué. Réessaie ou écris ta question.";
+    }
+  };
+
+  const stopListening = () => {
+    recognitionRef.current?.stop?.();
+    setListening(false);
+  };
+
+  const startListening = async () => {
+    if (!speechSupported || listening) return;
+    setMicError(null);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach((t) => t.stop());
+    } catch {
+      setMicError(micErrorMessage("not-allowed"));
+      return;
+    }
+    playListeningCue();
+    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const recognition = new SR();
+    recognition.lang = "fr-FR";
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+    dictationBaseRef.current = input;
+    recognition.onstart = () => setListening(true);
+    recognition.onresult = (e: any) => {
+      let finalText = "";
+      let interimText = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const chunk = e.results[i][0].transcript;
+        if (e.results[i].isFinal) finalText += chunk;
+        else interimText += chunk;
+      }
+      const base = dictationBaseRef.current;
+      const dictated = (finalText + interimText).trim();
+      setInput(dictated ? (base ? `${base} ${dictated}` : dictated) : base);
+      if (finalText.trim()) dictationBaseRef.current = base ? `${base} ${finalText.trim()}` : finalText.trim();
+    };
+    recognition.onerror = (e: any) => {
+      setListening(false);
+      if (e?.error && e.error !== "no-speech" && e.error !== "aborted") setMicError(micErrorMessage(e.error));
+    };
+    recognition.onend = () => setListening(false);
+    recognitionRef.current = recognition;
+    try {
+      recognition.start();
+    } catch {
+      setMicError(micErrorMessage("default"));
+    }
+  };
+
+  useEffect(() => () => { recognitionRef.current?.abort?.(); }, []);
+
   const contextLabel =
     pageContext.courseTitle ||
     pageContext.exerciseTitle ||
@@ -339,6 +418,15 @@ export default function AITutor() {
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Calia</p>
               <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{isSupportMode ? "Assistante IA" : "Tutrice IA · Maths"}</p>
             </div>
+            {speechSupported && (
+              <GlassIconButton
+                icon={listening ? MicOff : Mic}
+                onClick={listening ? stopListening : startListening}
+                color={listening ? "red" : "white"}
+                size="sm"
+                aria-label={listening ? "Arrêter la dictée" : "Dicter ma question"}
+              />
+            )}
             <GlassIconButton
               icon={RotateCcw}
               onClick={() => { setMessages([WELCOME]); deleteServerHistory(); }}
@@ -362,6 +450,12 @@ export default function AITutor() {
 
           {!minimized && (
             <>
+              {micError && (
+                <div className="mx-3 mt-2.5 px-3 py-2 rounded-xl text-xs shrink-0" style={{ background: "rgba(239,68,68,0.1)", color: "#f87171", border: "1px solid rgba(239,68,68,0.25)" }}>
+                  {micError}
+                </div>
+              )}
+
               {/* ── Context chip ── */}
               {contextLabel && (
                 <div className="px-3 pt-2.5 shrink-0">
