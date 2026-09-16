@@ -420,7 +420,7 @@ export default function AITutor() {
             </div>
             {speechSupported && (
               <GlassIconButton
-                icon={listening ? MicOff : Mic}
+                icon={listening ? Mic : MicOff}
                 onClick={listening ? stopListening : startListening}
                 color={listening ? "red" : "white"}
                 size="sm"

@@ -320,6 +320,7 @@ export default function CaliaSceneDemo({
     setIsRunning(true);
     setClasseActive(true);
     historyRef.current = [];
+    startListening();
     sendTurn("(le cours commence, ouvre la séance)");
   };
 
@@ -429,7 +430,7 @@ export default function CaliaSceneDemo({
 
               {speechSupported && (
                 <GlassIconButton
-                  icon={listening ? MicOff : Mic}
+                  icon={listening ? Mic : MicOff}
                   color={listening ? "red" : "gold"}
                   aria-label={listening ? "Arrêter d'écouter" : "Parler à Calia"}
                   onClick={listening ? stopListening : startListening}
