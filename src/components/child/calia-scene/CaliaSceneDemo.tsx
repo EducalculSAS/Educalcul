@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { X, Mic, MicOff, Loader2, Send } from "lucide-react";
+import { X, Mic, MicOff, Send } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { getMyProfile } from "@/lib/updateMyProfile";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -76,6 +76,10 @@ export default function CaliaSceneDemo({
   const recognitionRef = useRef<any>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const shouldListenRef = useRef(false);
+  const sessionActiveRef = useRef(false);
+  const micStreamRef = useRef<MediaStream | null>(null);
+  const volumeAudioCtxRef = useRef<AudioContext | null>(null);
+  const volumeRafRef = useRef<number>(0);
   const clusterRef = useRef<HTMLDivElement | null>(null);
   const [clusterOffset, setClusterOffset] = useState({ x: 0, y: 0 });
 
@@ -97,8 +101,18 @@ export default function CaliaSceneDemo({
     highlightedElRef.current = null;
   };
 
+  const stopVolumeMonitor = () => {
+    cancelAnimationFrame(volumeRafRef.current);
+    micStreamRef.current?.getTracks().forEach((t) => t.stop());
+    micStreamRef.current = null;
+    volumeAudioCtxRef.current?.close().catch(() => {});
+    volumeAudioCtxRef.current = null;
+  };
+
   const stop = () => {
+    sessionActiveRef.current = false;
     shouldListenRef.current = false;
+    stopVolumeMonitor();
     recognitionRef.current?.abort?.();
     window.speechSynthesis?.cancel();
     audioRef.current?.pause();
@@ -218,13 +232,17 @@ export default function CaliaSceneDemo({
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erreur du serveur.");
+      // La session a pu etre fermee (bouton "arreter") pendant l'attente de
+      // la reponse — Calia ne doit pas se mettre a parler toute seule apres
+      // avoir ete coupee.
+      if (!sessionActiveRef.current) return;
       const result = data as TurnResult;
       historyRef.current = [...historyRef.current, { role: "assistant", content: result.say }];
       setSayText(result.say);
       executeAction(result.action);
       speak(result.say);
     } catch (err: any) {
-      setError(err?.message || "Une erreur est survenue.");
+      if (sessionActiveRef.current) setError(err?.message || "Une erreur est survenue.");
     } finally {
       setLoading(false);
     }
@@ -246,16 +264,47 @@ export default function CaliaSceneDemo({
     }
   };
 
+  // Barge-in par volume : coupe la voix de Calia des qu'un son fort arrive
+  // sur le micro, independamment de la reconnaissance vocale (qui a un
+  // temps de latence avant de produire le moindre texte — attendre du texte
+  // rendait l'interruption trop lente/peu fiable).
+  const VOLUME_BARGE_IN_THRESHOLD = 35; // 0-255, a affiner selon retours reels
+  const startVolumeMonitor = (stream: MediaStream) => {
+    const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+    if (!AudioCtx) return;
+    const ctx = new AudioCtx();
+    volumeAudioCtxRef.current = ctx;
+    const source = ctx.createMediaStreamSource(stream);
+    const analyser = ctx.createAnalyser();
+    analyser.fftSize = 512;
+    source.connect(analyser);
+    const data = new Uint8Array(analyser.frequencyBinCount);
+    const tick = () => {
+      analyser.getByteFrequencyData(data);
+      let sum = 0;
+      for (let i = 0; i < data.length; i++) sum += data[i];
+      const avg = sum / data.length;
+      if (avg > VOLUME_BARGE_IN_THRESHOLD && audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+        setSpeaking(false);
+      }
+      volumeRafRef.current = requestAnimationFrame(tick);
+    };
+    tick();
+  };
+
   const startListening = async () => {
     if (!speechSupported || loading || speaking) return;
     setError(null);
+    let stream: MediaStream;
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      stream.getTracks().forEach((t) => t.stop());
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
     } catch {
       setError(speechErrorMessage("not-allowed"));
       return;
     }
+    micStreamRef.current = stream;
+    startVolumeMonitor(stream);
     playListeningCue();
     shouldListenRef.current = true;
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -272,14 +321,6 @@ export default function CaliaSceneDemo({
         const chunk = e.results[i][0].transcript;
         if (e.results[i].isFinal) finalText += chunk;
         else interimText += chunk;
-      }
-      // Barge-in : coupe la voix de Calia des qu'un vrai debut de mot est
-      // reconnu — pas sur n'importe quel bruit (un souffle/toux produit
-      // souvent un onresult avec un texte quasi vide, ce qui coupait Calia
-      // en permanence sans que l'eleve ait dit quoi que ce soit).
-      if ((finalText + interimText).trim().length >= 2 && audioRef.current && !audioRef.current.paused) {
-        audioRef.current.pause();
-        setSpeaking(false);
       }
       setInterim(interimText);
       if (finalText.trim()) sendTurn(finalText.trim());
@@ -313,10 +354,12 @@ export default function CaliaSceneDemo({
   const stopListening = () => {
     shouldListenRef.current = false;
     recognitionRef.current?.stop?.();
+    stopVolumeMonitor();
     setListening(false);
   };
 
   const start = () => {
+    sessionActiveRef.current = true;
     playModeProfCue();
     setIsRunning(true);
     setClasseActive(true);
@@ -325,7 +368,7 @@ export default function CaliaSceneDemo({
     sendTurn("(le cours commence, ouvre la séance)");
   };
 
-  useEffect(() => () => { recognitionRef.current?.abort?.(); window.speechSynthesis?.cancel(); clearHighlight(); }, []);
+  useEffect(() => () => { recognitionRef.current?.abort?.(); window.speechSynthesis?.cancel(); stopVolumeMonitor(); clearHighlight(); }, []);
 
   const submitTextFallback = () => {
     const text = textFallback.trim();
@@ -418,7 +461,11 @@ export default function CaliaSceneDemo({
                   style={{ background: "var(--greek-blue)", border: "2px solid var(--greek-gold)" }}
                 >
                   {loading ? (
-                    <Loader2 className="w-6 h-6 animate-spin" style={{ color: "var(--greek-gold)" }} />
+                    <span className="flex gap-1 items-center">
+                      {[0, 1, 2].map((j) => (
+                        <span key={j} className="w-1.5 h-1.5 rounded-full animate-typing-dot" style={{ background: "var(--greek-gold)", animationDelay: `${j * 150}ms` }} />
+                      ))}
+                    </span>
                   ) : (
                     <Image src="/logoAI.png" alt="Calia" width={30} height={30} className="object-contain" />
                   )}

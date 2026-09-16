@@ -69,13 +69,17 @@ export async function POST(req: Request) {
 
     const prompt = `lessonOutline:\n${outlineText}\n\nHistorique recent:\n${historyText}\n\nL'eleve vient de dire: "${studentMessage.trim()}"\n\nReponds avec le JSON attendu.`;
 
+    // reasoning=false : une reponse socratique courte (1-2 phrases) n'a pas
+    // besoin du mode "reasoning_effort: high" de Mistral (chaine de pensee
+    // interne) — ca ajoutait plusieurs secondes de latence pour rien dans
+    // une conversation vocale ou chaque seconde compte.
     const result = await generateStructuredContentWithSchema<TurnResult>(
       prompt,
       SYSTEM_PROMPT,
       caliaClasseTurnSchema(),
       0.6,
-      4000,
-      true,
+      1000,
+      false,
     );
 
     return NextResponse.json(result);
