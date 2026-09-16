@@ -1,13 +1,17 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { requireRole } from "@/lib/apiAuth";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
-/** Notifications admin non lues du destinataire connecté. Avant : lu depuis le
- * navigateur (`supabase.from("admin_notifications").select()`). */
+/** Notifications admin non lues du destinataire connecté (ban, reactivation,
+ * message envoye par un admin) — le destinataire est n'importe quel role
+ * (parent/enfant/admin), PAS forcement un admin : requireRole(admin) ici
+ * empechait un parent/enfant banni ou contacte de jamais voir le message. La
+ * requete est deja scopee a user_id = me.id, donc ouvrir a tout utilisateur
+ * authentifie reste sur — chacun ne voit que ses propres notifications. */
 export async function GET(req: Request) {
   try {
-    const me = await requireRole(req, ["admin"]);
+    const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     const { data, error } = await supabaseAdmin
@@ -26,7 +30,7 @@ export async function GET(req: Request) {
 /** Marque une notification comme lue (uniquement une des siennes). */
 export async function PATCH(req: Request) {
   try {
-    const me = await requireRole(req, ["admin"]);
+    const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     const { id } = await req.json().catch(() => ({}));

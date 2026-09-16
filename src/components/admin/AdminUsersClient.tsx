@@ -18,6 +18,7 @@ import PlacementQuizPanel from "@/components/admin/PlacementQuizPanel";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import { SCHOOL_LEVELS } from "@/lib/constants";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 
 interface User {
@@ -375,7 +376,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
 
   // Create
   const [showFormModal, setShowFormModal] = useState(false);
-  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "", username: "" });
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: SCHOOL_LEVELS[0].value, username: "" });
   const [showFormPassword, setShowFormPassword] = useState(false);
 
   // Ban
@@ -513,7 +514,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
             <GlassButton
               size="sm"
               variant="navy"
-              onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "", username: "" }); setShowFormModal(true); }}
+              onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: SCHOOL_LEVELS[0].value, username: "" }); setShowFormModal(true); }}
             >
               <Plus size={18} /> <span className="hidden sm:inline">Nouvel Utilisateur</span><span className="sm:hidden">Nouveau</span>
             </GlassButton>
@@ -710,8 +711,15 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
                 </div>
               </div>
               {form.role === "child" && (
-                <div><label className={labelCls}>Nom d'utilisateur (élève)</label>
-                  <input required value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} className={inputCls} placeholder="ex: leo_dupont" />
+                <div className="grid grid-cols-2 gap-4">
+                  <div><label className={labelCls}>Nom d'utilisateur (élève)</label>
+                    <input required value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} className={inputCls} placeholder="ex: leo_dupont" />
+                  </div>
+                  <div><label className={labelCls}>Niveau scolaire</label>
+                    <select required value={form.gradeLevel} onChange={e => setForm({ ...form, gradeLevel: e.target.value })} className={inputCls}>
+                      {SCHOOL_LEVELS.map(l => <option key={l.value} value={l.value}>{l.label}</option>)}
+                    </select>
+                  </div>
                 </div>
               )}
               <div className="flex justify-end gap-3 pt-2">

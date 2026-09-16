@@ -12,6 +12,9 @@ import {
   validateUsername,
 } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { SCHOOL_LEVELS } from "@/lib/constants";
+
+const VALID_GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
 
 export async function GET(request: Request) {
   try {
@@ -139,6 +142,11 @@ export async function POST(request: Request) {
         .maybeSingle();
       if (taken) {
         return NextResponse.json({ error: "Ce nom d'utilisateur est déjà pris." }, { status: 409 });
+      }
+      // Sans niveau scolaire, l'eleve ne voit aucun cours/exercice/quiz (le
+      // catalogue est filtre par grade_level) — a ne jamais laisser vide.
+      if (!VALID_GRADE_LEVELS.has(gradeLevel)) {
+        return NextResponse.json({ error: "Niveau scolaire invalide" }, { status: 400 });
       }
     }
 

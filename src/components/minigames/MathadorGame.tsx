@@ -89,7 +89,12 @@ export default function MathadorGame() {
     }
   };
 
+  // Garde anti double-appel StrictMode (dev) — startGame() decompte une
+  // partie sur le quota quotidien a chaque appel, voir DailyMinigameGame.tsx.
+  const startedRef = useRef(false);
   useEffect(() => {
+    if (startedRef.current) return;
+    startedRef.current = true;
     startGame();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

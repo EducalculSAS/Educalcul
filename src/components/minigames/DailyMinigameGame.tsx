@@ -81,7 +81,14 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
     }
   };
 
+  // startGame() n'est pas idempotent (chaque appel decompte une partie sur
+  // le quota quotidien cote serveur) — sans ce garde, le double montage de
+  // React StrictMode en dev declenche deux POST /start pour une seule partie
+  // reellement jouee, epuisant le quota deux fois plus vite.
+  const startedForRef = useRef<MinigameType | null>(null);
   useEffect(() => {
+    if (startedForRef.current === gameType) return;
+    startedForRef.current = gameType;
     startGame();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameType]);
