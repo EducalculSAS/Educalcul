@@ -75,6 +75,7 @@ export default function CaliaSceneDemo({
   const historyRef = useRef<HistoryMsg[]>([]);
   const recognitionRef = useRef<any>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const shouldListenRef = useRef(false);
   const clusterRef = useRef<HTMLDivElement | null>(null);
   const [clusterOffset, setClusterOffset] = useState({ x: 0, y: 0 });
 
@@ -97,6 +98,7 @@ export default function CaliaSceneDemo({
   };
 
   const stop = () => {
+    shouldListenRef.current = false;
     recognitionRef.current?.abort?.();
     window.speechSynthesis?.cancel();
     audioRef.current?.pause();
@@ -131,14 +133,16 @@ export default function CaliaSceneDemo({
   // directement sur l'URL pour jouer en streaming (demarre avant la fin du
   // telechargement) au lieu d'attendre tout le blob. Retombe sur la synthese
   // du navigateur si le service echoue, pour ne jamais rendre Calia muette.
+  // (console.warn sur le repli : verifiable dans les DevTools si un doute sur
+  // la voix effectivement utilisee.)
   const speak = (text: string) => {
     audioRef.current?.pause();
     const audio = new Audio(`/api/calia/tts?text=${encodeURIComponent(text)}`);
     audioRef.current = audio;
     audio.onplay = () => setSpeaking(true);
     audio.onended = () => setSpeaking(false);
-    audio.onerror = () => { setSpeaking(false); speakBrowserFallback(text); };
-    audio.play().catch(() => speakBrowserFallback(text));
+    audio.onerror = () => { console.warn("[Calia] voix Azure indisponible, repli navigateur."); setSpeaking(false); speakBrowserFallback(text); };
+    audio.play().catch(() => { console.warn("[Calia] lecture audio Azure impossible, repli navigateur."); speakBrowserFallback(text); });
   };
 
   const executeAction = (action: TurnAction | null) => {
@@ -253,13 +257,22 @@ export default function CaliaSceneDemo({
       return;
     }
     playListeningCue();
+    shouldListenRef.current = true;
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     const recognition = new SR();
     recognition.lang = "fr-FR";
+    recognition.continuous = true;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
     recognition.onstart = () => { setListening(true); setInterim(""); };
     recognition.onresult = (e: any) => {
+      // Barge-in : des que l'eleve recommence a parler, on coupe la voix de
+      // Calia en cours — interruptible des le premier mot, pas seulement
+      // entre deux tours.
+      if (audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+        setSpeaking(false);
+      }
       let finalText = "";
       let interimText = "";
       for (let i = e.resultIndex; i < e.results.length; i++) {
@@ -271,10 +284,23 @@ export default function CaliaSceneDemo({
       if (finalText.trim()) sendTurn(finalText.trim());
     };
     recognition.onerror = (e: any) => {
-      setListening(false);
-      if (e?.error && e.error !== "no-speech" && e.error !== "aborted") setError(speechErrorMessage(e.error));
+      const code = e?.error;
+      if (code === "not-allowed" || code === "service-not-allowed" || code === "audio-capture") {
+        shouldListenRef.current = false;
+        setError(speechErrorMessage(code));
+      } else if (code && code !== "no-speech" && code !== "aborted") {
+        setError(speechErrorMessage(code));
+      }
     };
-    recognition.onend = () => setListening(false);
+    // Chrome coupe parfois la reconnaissance meme en `continuous` (silence
+    // prolonge, hoquet reseau) — on la relance automatiquement tant que
+    // l'eleve n'a pas explicitement appuye sur "arreter d'ecouter".
+    recognition.onend = () => {
+      setListening(false);
+      if (shouldListenRef.current) {
+        try { recognition.start(); } catch { /* deja demarree ou instance perimee */ }
+      }
+    };
     recognitionRef.current = recognition;
     try {
       recognition.start();
@@ -284,6 +310,7 @@ export default function CaliaSceneDemo({
   };
 
   const stopListening = () => {
+    shouldListenRef.current = false;
     recognitionRef.current?.stop?.();
     setListening(false);
   };
@@ -406,7 +433,6 @@ export default function CaliaSceneDemo({
                   color={listening ? "red" : "gold"}
                   aria-label={listening ? "Arrêter d'écouter" : "Parler à Calia"}
                   onClick={listening ? stopListening : startListening}
-                  disabled={loading || speaking}
                 />
               )}
             </div>
