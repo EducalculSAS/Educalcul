@@ -5,6 +5,9 @@ import { isValidNumericId, validateString } from "@/lib/validation";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 import { fetchAdminUserDetail } from "@/lib/adminUserDetail";
+import { SCHOOL_LEVELS } from "@/lib/constants";
+
+const VALID_GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
 
 export async function GET(req: Request) {
   try {
@@ -46,6 +49,9 @@ export async function PUT(req: Request) {
     }
 
     const { first_name, last_name, email, role, admin_level, status, grade_level } = await req.json();
+    if (role === "child" && !VALID_GRADE_LEVELS.has(grade_level)) {
+      return NextResponse.json({ error: "Niveau scolaire invalide" }, { status: 400 });
+    }
     const { data, error } = await supabaseAdmin.from("users")
       .update({ first_name, last_name, email, role, admin_level: role === "admin" ? (admin_level || "super") : null, status, grade_level })
       .eq("id", id)
