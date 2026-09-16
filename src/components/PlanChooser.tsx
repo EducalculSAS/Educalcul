@@ -495,7 +495,14 @@ export default function PlanChooser({
   admin?: PlanChooserAdmin;
 }) {
   const [tab, setTab] = useState<"familles" | "custom">("familles");
-  const [billing, setBilling] = useState<string>("month");
+  // Demarre sur la periode de FACTURATION REELLE de l'abonnement en cours
+  // (pas toujours "month") — sinon un abonne trimestriel/semestriel/annuel
+  // voit sa propre formule affichee comme "Essai gratuit"/"S'abonner", la
+  // carte de son vrai plan (autre periode) n'etant simplement pas affichee.
+  const [billing, setBilling] = useState<string>(() => {
+    const current = currentPlanId != null ? plans.find(p => String(p.id) === String(currentPlanId)) : null;
+    return current?.billing_interval || "month";
+  });
   const [draggedId, setDraggedId] = useState<string | number | null>(null);
   const [overId, setOverId] = useState<string | number | null>(null);
   const [overInterval, setOverInterval] = useState<string | null>(null);

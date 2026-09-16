@@ -7,7 +7,7 @@ import Link from "next/link";
 import { getSiteUrl } from "@/lib/siteUrl";
 import { setPendingSignupPassword } from "@/lib/pendingSignupPassword";
 import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
-import { validatePassword } from "@/lib/validation";
+import { validatePassword, isValidEmail } from "@/lib/validation";
 import {
   Mail, Lock, User, AlertCircle, CheckCircle,
   Gift, Loader2, ArrowRight, ArrowLeft, Eye, EyeOff,
@@ -118,6 +118,7 @@ export default function Inscription() {
     }
     if (s === 1) {
       if (!email.trim())          return "Veuillez entrer votre email.";
+      if (!isValidEmail(email.trim())) return "Adresse email invalide.";
       const pwError = validatePassword(password);
       if (pwError) return pwError;
       if (password !== confirmPassword) return "Les mots de passe ne correspondent pas.";

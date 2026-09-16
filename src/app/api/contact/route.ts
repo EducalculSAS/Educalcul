@@ -23,20 +23,20 @@ export async function POST(req: Request) {
     // ✓ HIGH PRIORITY FIX: Validate all inputs with length limits
     const validatedName = validateName(name);
     if (!validatedName) {
-      return NextResponse.json({ error: "Invalid name" }, { status: 400 });
+      return NextResponse.json({ error: "Nom invalide" }, { status: 400 });
     }
 
     if (!validateEmail(email)) {
-      return NextResponse.json({ error: "Invalid email" }, { status: 400 });
+      return NextResponse.json({ error: "Adresse email invalide" }, { status: 400 });
     }
 
     if (!subject || !SUBJECTS.includes(subject)) {
-      return NextResponse.json({ error: "Invalid subject" }, { status: 400 });
+      return NextResponse.json({ error: "Sujet invalide" }, { status: 400 });
     }
 
     const validatedMessage = validateString(message, 10000);
     if (!validatedMessage || validatedMessage.length < 10) {
-      return NextResponse.json({ error: "Message too short or invalid" }, { status: 400 });
+      return NextResponse.json({ error: "Message trop court ou invalide (10 caractères minimum)" }, { status: 400 });
     }
 
     // ✓ HIGH PRIORITY FIX: Add rate limiting
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
     const rl = await rateLimitWithBackoff(`contact:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
-        { error: "Too many submissions. Please try again later." },
+        { error: "Trop d'envois, réessaie plus tard." },
         { status: 429 }
       );
     }
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
 
     if (error) {
       console.error("[contact] Database error:", error);
-      return NextResponse.json({ error: "Could not submit form" }, { status: 500 });
+      return NextResponse.json({ error: "Impossible d'envoyer le message" }, { status: 500 });
     }
 
     // Load email templates and send confirmation (non-blocking)
@@ -115,7 +115,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true, id: data.id }, { status: 201 });
   } catch (err: any) {
     console.error("[contact] Error:", err);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    return NextResponse.json({ error: "Erreur interne" }, { status: 500 });
   }
 }
 

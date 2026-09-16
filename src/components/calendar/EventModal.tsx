@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
 import { EVENT_TYPE_OPTIONS, PARENT_ONLY_EVENT_TYPE_OPTIONS, CalendarEventType } from "@/lib/calendarEventTypes";
-import { CalendarEventItem } from "./CalendarView";
+import { CalendarEventItem, toLocalIso } from "./CalendarView";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
@@ -46,7 +46,7 @@ export default function EventModal({ open, onClose, onSave, onDelete, initialDat
       setTitle("");
       setDescription("");
       setEventType("event");
-      setStartDate(initialDate || new Date().toISOString().slice(0, 10));
+      setStartDate(initialDate || toLocalIso(new Date()));
       setEndDate("");
       setVisibleToChild(true);
     }

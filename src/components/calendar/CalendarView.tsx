@@ -29,8 +29,12 @@ const MONTH_NAMES = [
 ];
 const DAY_NAMES = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
 
-const toIso = (y: number, m: number, d: number) =>
+/** Date ISO (AAAA-MM-JJ) en heure LOCALE — jamais toISOString() ici, qui
+ * convertit en UTC et decale d'un jour en France (UTC+1/+2) pres de minuit. */
+export const toIso = (y: number, m: number, d: number) =>
   `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+
+export const toLocalIso = (date: Date) => toIso(date.getFullYear(), date.getMonth(), date.getDate());
 
 export default function CalendarView({ events, globalEvents = [], onDayClick, onEventClick, compact = false }: CalendarViewProps) {
   const today = new Date();
@@ -54,7 +58,10 @@ export default function CalendarView({ events, globalEvents = [], onDayClick, on
       const endDate = new Date(end + "T00:00:00");
       const cursor = new Date(startDate);
       while (cursor <= endDate) {
-        const iso = cursor.toISOString().slice(0, 10);
+        // toISOString() convertit en UTC : en France (UTC+1/+2), minuit local
+        // recule d'un jour une fois converti, decalant l'evenement a la veille
+        // dans le calendrier. toIso() reste en heure locale, comme todayIso.
+        const iso = toLocalIso(cursor);
         if (!map[iso]) map[iso] = [];
         map[iso].push(ev);
         cursor.setDate(cursor.getDate() + 1);

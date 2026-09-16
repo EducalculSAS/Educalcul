@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { Calendar as CalendarIcon, Plus, ArrowRight } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
-import CalendarView, { CalendarEventItem } from "./CalendarView";
+import CalendarView, { CalendarEventItem, toLocalIso } from "./CalendarView";
 import EventModal from "./EventModal";
 import { getEventTypeMeta } from "@/lib/calendarEventTypes";
 import { supabase } from "@/lib/supabaseClient";
@@ -42,7 +42,7 @@ export default function MiniCalendarWidget({ authId, ownerId, isParent, title = 
   }, [loadEvents]);
 
   const upcoming = events
-    .filter(e => e.start_date >= new Date().toISOString().slice(0, 10))
+    .filter(e => e.start_date >= toLocalIso(new Date()))
     .sort((a, b) => a.start_date.localeCompare(b.start_date))
     .slice(0, 4);
 
@@ -118,7 +118,7 @@ export default function MiniCalendarWidget({ authId, ownerId, isParent, title = 
           <div className="flex items-center justify-between">
             <h3 className="text-sm font-bold text-[var(--greek-bronze)] uppercase tracking-wide">À venir</h3>
             <button
-              onClick={() => { setSelectedEvent(null); setSelectedDate(new Date().toISOString().slice(0, 10)); setModalOpen(true); }}
+              onClick={() => { setSelectedEvent(null); setSelectedDate(toLocalIso(new Date())); setModalOpen(true); }}
               className="flex items-center gap-1 text-xs font-bold text-[var(--greek-blue)] hover:underline"
             >
               <Plus className="w-3.5 h-3.5" /> Ajouter
