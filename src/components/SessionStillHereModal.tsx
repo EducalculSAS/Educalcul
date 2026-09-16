@@ -15,8 +15,8 @@ import GlassButton from "@/components/ui/GlassButton";
  *  - IDLE_LOGOUT_MS : déconnexion + retour à la page de connexion.
  * Toute interaction avant la déconnexion réarme le minuteur et ferme la modale.
  */
-const IDLE_WARN_MS = 9 * 60 * 1000; // 9 min → prévenance
-const IDLE_LOGOUT_MS = 10 * 60 * 1000; // 10 min → déconnexion
+const IDLE_WARN_MS = 14 * 60 * 1000; // 14 min → prévenance
+const IDLE_LOGOUT_MS = 15 * 60 * 1000; // 15 min → déconnexion
 
 export default function SessionStillHereModal() {
   const router = useRouter();
