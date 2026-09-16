@@ -18,15 +18,16 @@ export async function GET(req: Request) {
   return NextResponse.json(data || []);
 }
 
-function validateQuestionBody(body: any): { question: string; options: string[]; correct_index: number; grade_level: string } | null {
+function validateQuestionBody(body: any): { question: string; options: string[]; correct_index: number; grade_level: string; notion: string } | null {
   const question = typeof body.question === "string" ? body.question.trim() : "";
   const options = Array.isArray(body.options) ? body.options.map((o: unknown) => String(o).trim()) : [];
   const correct_index = Number(body.correct_index);
   const grade_level = typeof body.grade_level === "string" ? body.grade_level.trim() : "";
-  if (!question || !grade_level) return null;
+  const notion = typeof body.notion === "string" ? body.notion.trim() : "";
+  if (!question || !grade_level || !notion) return null;
   if (options.length < 2 || options.some((o: string) => !o)) return null;
   if (!Number.isInteger(correct_index) || correct_index < 0 || correct_index >= options.length) return null;
-  return { question, options, correct_index, grade_level };
+  return { question, options, correct_index, grade_level, notion };
 }
 
 export async function POST(req: Request) {
@@ -35,7 +36,7 @@ export async function POST(req: Request) {
 
   const body = await req.json().catch(() => ({}));
   const valid = validateQuestionBody(body);
-  if (!valid) return NextResponse.json({ error: "Question invalide (texte, 2+ options, bonne reponse valide et niveau requis)" }, { status: 400 });
+  if (!valid) return NextResponse.json({ error: "Question invalide (texte, 2+ options, bonne reponse valide, niveau et notion requis)" }, { status: 400 });
 
   const { data: existing } = await supabaseAdmin
     .from("placement_quiz_questions")
@@ -63,7 +64,7 @@ export async function PUT(req: Request) {
   const id = Number(body.id);
   if (!Number.isInteger(id)) return NextResponse.json({ error: "id requis" }, { status: 400 });
   const valid = validateQuestionBody(body);
-  if (!valid) return NextResponse.json({ error: "Question invalide (texte, 2+ options, bonne reponse valide et niveau requis)" }, { status: 400 });
+  if (!valid) return NextResponse.json({ error: "Question invalide (texte, 2+ options, bonne reponse valide, niveau et notion requis)" }, { status: 400 });
 
   const { error } = await supabaseAdmin
     .from("placement_quiz_questions")

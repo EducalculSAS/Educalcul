@@ -12,6 +12,7 @@ interface Question {
   question: string;
   options: string[];
   correct_index: number;
+  notion: string;
   sort_order: number;
 }
 
@@ -55,7 +56,7 @@ export default function PlacementQuizPanel() {
       const res = await fetch("/api/admin/placement-quiz", {
         method: "PUT",
         headers: await authHeaders({ "Content-Type": "application/json" }),
-        body: JSON.stringify({ id: q.id, grade_level: q.grade_level, question: q.question, options: q.options, correct_index: q.correct_index }),
+        body: JSON.stringify({ id: q.id, grade_level: q.grade_level, question: q.question, options: q.options, correct_index: q.correct_index, notion: q.notion }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
@@ -73,7 +74,7 @@ export default function PlacementQuizPanel() {
       const res = await fetch("/api/admin/placement-quiz", {
         method: "POST",
         headers: await authHeaders({ "Content-Type": "application/json" }),
-        body: JSON.stringify({ grade_level: level, question: "Nouvelle question", options: ["Réponse A", "Réponse B", "Réponse C", "Réponse D"], correct_index: 0 }),
+        body: JSON.stringify({ grade_level: level, question: "Nouvelle question", options: ["Réponse A", "Réponse B", "Réponse C", "Réponse D"], correct_index: 0, notion: "notion" }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
@@ -176,6 +177,17 @@ export default function PlacementQuizPanel() {
                         />
                       </label>
                     ))}
+                  </div>
+                  <div className="mb-3">
+                    <label className="block text-xs font-semibold text-gray-500 mb-1">
+                      Notion (utilisée pour la mémoire pédagogique de Calia — courte, ex: "fractions")
+                    </label>
+                    <input
+                      value={q.notion}
+                      onChange={(e) => updateLocal(q.id, { notion: e.target.value })}
+                      className="w-full px-3 py-1.5 border border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                      placeholder="ex: fractions"
+                    />
                   </div>
                   <div className="flex justify-end gap-2">
                     <GlassButton size="sm" variant="ghost" disabled={saving === q.id} onClick={() => deleteQuestion(q.id)}>

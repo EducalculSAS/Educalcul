@@ -49,11 +49,10 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
     }
   };
 
-  const apiFetch = async (
+  const withAuthHeader = async (
     input: RequestInfo | URL,
     init: RequestInit | undefined,
-    url: string,
-  ): Promise<Response> => {
+  ): Promise<RequestInit | undefined> => {
     try {
       const {
         data: { session },
@@ -67,14 +66,22 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
           init?.headers ??
             (input instanceof Request ? input.headers : undefined),
         );
-        if (!headers.has("Authorization")) {
-          headers.set("Authorization", `Bearer ${session.access_token}`);
-        }
-        init = { ...init, headers };
+        headers.set("Authorization", `Bearer ${session.access_token}`);
+        return { ...init, headers };
       }
     } catch {
       // Never block a request because token retrieval failed.
     }
+    return init;
+  };
+
+  const apiFetch = async (
+    input: RequestInfo | URL,
+    init: RequestInit | undefined,
+    url: string,
+    isRetry = false,
+  ): Promise<Response> => {
+    if (!isRetry) init = await withAuthHeader(input, init);
     const response = await originalFetch(input as any, init);
     // Un jeton 2FA expiré/révoqué côté serveur (TTL admin de 4h) laisse
     // AdminShell croire la 2FA validée tant qu'il n'a pas revérifié (voir
@@ -102,13 +109,22 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
       response.status === 401 &&
       url.startsWith("/api/") &&
       !url.startsWith("/api/admin/") &&
-      !window.location.pathname.startsWith("/admin")
+      !window.location.pathname.startsWith("/admin") &&
+      !isRetry
     ) {
       // Espace élève/parent : ne jamais déconnecter de force sur une simple
-      // session vieillissante. On tente un rafraîchissement silencieux du
-      // jeton en arrière-plan (sans interrompre l'action). La déconnexion sur
-      // inactivité réelle est gérée séparément par SessionStillHereModal.
-      getPublicClient().auth.refreshSession().catch(() => {});
+      // session vieillissante. Cas fréquent juste après une connexion
+      // fraîche — le token vient d'être émis pendant qu'un refresh
+      // s'enclenche déjà en arrière-plan côté client Supabase, et cette
+      // requête peut partir avec un jeton pas encore à jour : on rafraîchit
+      // puis on retente UNE fois avec le nouveau jeton avant d'abandonner
+      // (la déconnexion sur inactivité réelle reste gérée par
+      // SessionStillHereModal, pas ici).
+      const { data } = await getPublicClient().auth.refreshSession().catch(() => ({ data: null as any }));
+      if (data?.session?.access_token) {
+        const retryInit = await withAuthHeader(input, init);
+        return apiFetch(input, retryInit, url, true);
+      }
     }
     return response;
   };
