@@ -25,7 +25,7 @@ type OutlineKind = "heading" | "paragraph" | "figure";
 interface OutlineItem { kind: OutlineKind; index: number; preview: string; el: HTMLElement }
 
 interface TurnAction {
-  kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear" | "ask_student_to_write";
+  kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear" | "ask_student_to_write" | "next_lesson";
   targetKind: OutlineKind | null;
   targetIndex: number | null;
   latex: string | null;
@@ -42,7 +42,6 @@ interface CaliaCourseContext {
 const VOICES = [
   { id: "fr-FR-VivienneMultilingualNeural", label: "Vivienne" },
   { id: "fr-FR-DeniseNeural", label: "Denise" },
-  { id: "fr-FR-EloiseNeural", label: "Éloise" },
   { id: "fr-FR-HenriNeural", label: "Henri" },
 ] as const;
 const VOICE_STORAGE_KEY = "calia-classe-voice";
@@ -72,9 +71,14 @@ function pickFrenchVoice(): SpeechSynthesisVoice | null {
 export default function CaliaSceneDemo({
   contentRef,
   courseContext,
+  onAdvanceLesson,
 }: {
   contentRef: RefObject<HTMLDivElement | null>;
   courseContext?: CaliaCourseContext;
+  /** Fait reellement avancer l'affichage a la lecon suivante — sans ca,
+   * Calia peut seulement PARLER de la suite du cours (via courseContext),
+   * jamais y faire passer l'eleve. */
+  onAdvanceLesson?: () => void;
 }) {
   // Gate admin-only pour l'instant — retirer cette condition (et isAdmin)
   // pour ouvrir la fonctionnalité à tous une fois le ressenti validé.
@@ -254,6 +258,11 @@ export default function CaliaSceneDemo({
 
     if (action.kind === "ask_student_to_write") {
       setBoardWriteOpen(true);
+      return;
+    }
+
+    if (action.kind === "next_lesson") {
+      onAdvanceLesson?.();
       return;
     }
 

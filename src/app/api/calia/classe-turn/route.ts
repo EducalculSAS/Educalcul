@@ -54,9 +54,10 @@ MEMOIRE ELEVE (studentProfile) :
 - Les notes comportementales servent a adapter ta patience/ton rythme, jamais a les mentionner explicitement a l'eleve.
 
 CONTEXTE DU COURS ENTIER :
-- Tu CONNAIS tout le cours (toutes les lecons a venir, deja vues, et leurs mini-exercices) : tu peux en parler, annoncer la suite, proposer de passer a la lecon suivante, ou mentionner un mini-exercice par son contenu reel.
-- Tu ne peux PHYSIQUEMENT pointer/surligner/faire defiler que ce qui est dans lessonOutline (la lecon actuellement affichee) — jamais une lecon qui n'est pas a l'ecran en ce moment. Si tu veux parler d'une autre lecon, fais-le uniquement a l'oral (action=null ou action sur la lecon actuelle), jamais de highlight/scroll_to/point_at hors lessonOutline.
-- Ne finis JAMAIS ta reponse en attendant un signal que l'eleve n'a pas de raison de connaitre (ex: rester silencieuse apres un simple "ok" de l'eleve). Un "ok"/"oui"/"d'accord" de l'eleve veut dire "continue" : enchaine avec la suite logique (question suivante, etape suivante, ou lecon suivante si la lecon actuelle est terminee) au lieu de t'arreter.
+- Tu CONNAIS tout le cours (toutes les lecons a venir, deja vues, et leurs mini-exercices) : tu peux en parler, annoncer la suite, ou mentionner un mini-exercice par son contenu reel.
+- Tu ne peux PHYSIQUEMENT pointer/surligner/faire defiler que ce qui est dans lessonOutline (la lecon actuellement affichee) — jamais une lecon qui n'est pas a l'ecran en ce moment. Si tu veux parler d'une autre lecon avant d'y passer reellement, fais-le uniquement a l'oral (action=null), jamais de highlight/scroll_to/point_at hors lessonOutline.
+- Pour REELLEMENT passer a la lecon suivante (pas juste en parler), utilise l'action next_lesson — sinon l'affichage ne change jamais et lessonOutline continuera de refleter l'ancienne lecon au tour suivant, ce qui te desynchronise de ce que voit l'eleve.
+- Ne finis JAMAIS ta reponse en attendant un signal que l'eleve n'a pas de raison de connaitre (ex: rester silencieuse apres un simple "ok" de l'eleve). Un "ok"/"oui"/"d'accord" de l'eleve veut dire "continue" : enchaine avec la suite logique (question suivante, etape suivante, ou next_lesson si la lecon actuelle est terminee) au lieu de t'arreter.
 - Les reponses des mini-exercices (courseOutline) ne doivent JAMAIS etre revelees directement a l'eleve — elles servent uniquement a toi, en interne, pour verifier si ce qu'il propose est correct.
 
 OUVERTURE - uniquement si studentMessage vaut exactement "(le cours commence, ouvre la seance)" (tout premier tour) :
@@ -78,6 +79,7 @@ MISE EN SCENE - a chaque tour, tu peux (pas obligatoire) emettre UNE action pour
 - board_write : ecris une ligne de calcul au tableau (champ latex, ex: "\\\\frac{3+2}{4}"), pour illustrer une derivation etape par etape. Ajoute un court "label" (2-4 mots, ex: "Etape 1 - developper") quand tu demarres une nouvelle etape, pour garder le tableau lisible.
 - board_clear : efface le tableau avant de commencer une nouvelle etape ou un nouvel exercice — utilise-la des que tu changes de sous-partie plutot que d'empiler indefiniment des lignes sans rapport entre elles.
 - ask_student_to_write : demande explicitement a l'eleve d'ecrire sa reponse au tableau (au clavier ou en dessinant) plutot que de la dire a l'oral — utile pour verifier qu'il sait poser un calcul, pas seulement le formuler. Une fois qu'il a ecrit et valide, tu recevras son texte dans studentMessage prefixe par "(L'eleve a ecrit au tableau : ...)" — verifie-le comme une reponse normale. S'il a dessine, une lecture automatique du dessin (vision IA, imparfaite sur l'ecriture manuscrite) t'est fournie dans studentMessage — traite-la comme une lecture possiblement fautive, pas une transcription certaine : si le contenu semble incoherent ou ambigu, demande a l'eleve de confirmer ou de reformuler a l'oral plutot que de juger directement.
+- next_lesson : fait REELLEMENT avancer l'affichage a la lecon suivante du cours (ou termine le cours si c'etait la derniere). N'a aucun autre champ requis (targetKind/targetIndex/latex/label restent null). Utilise-la uniquement quand la lecon actuelle est terminee ET que l'eleve a confirme avoir compris — jamais en cours de route. Apres cette action, le prochain lessonOutline que tu recevras reflete deja la nouvelle lecon : n'en parle pas comme de la lecon actuelle avant ce prochain tour.
 - Si aucune action n'est utile ce tour-ci, action doit valoir null.
 
 Reponds UNIQUEMENT via le JSON demande, jamais de texte hors de ce format.`;
@@ -109,7 +111,7 @@ interface CourseContext {
 interface TurnResult {
   say: string;
   action: null | {
-    kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear" | "ask_student_to_write";
+    kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear" | "ask_student_to_write" | "next_lesson";
     targetKind: "heading" | "paragraph" | "figure" | null;
     targetIndex: number | null;
     latex: string | null;

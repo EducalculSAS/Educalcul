@@ -453,6 +453,18 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     }
   };
 
+  // "Calia en classe" ne peut REELLEMENT faire avancer la lecon que via ce
+  // meme chemin que le bouton "Lecon suivante" — meme garde-fou (checklist
+  // de la derniere lecon non cochee => on ignore la demande, comme le
+  // bouton le ferait en restant desactive).
+  const advanceLessonForCalia = () => {
+    const isFinalLesson =
+      currentChapterIndex === chapters.length - 1 &&
+      currentLessonIndex === (currentChapter?.lessons?.length || 0) - 1;
+    if (isFinalLesson && !reviewMode && !checklistComplete) return;
+    handleNext();
+  };
+
   const selectLesson = (cIndex: number, lIndex: number) => {
     setCurrentChapterIndex(cIndex);
     setCurrentLessonIndex(lIndex);
@@ -638,7 +650,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
           </div>
 
           {/* Démo Calia P0 (admin uniquement pour l'instant) */}
-          <CaliaSceneDemo contentRef={contentRef} courseContext={caliaCourseContext} />
+          <CaliaSceneDemo contentRef={contentRef} courseContext={caliaCourseContext} onAdvanceLesson={advanceLessonForCalia} />
 
           {/* Cercle progression SVG */}
           <div className="flex-shrink-0">

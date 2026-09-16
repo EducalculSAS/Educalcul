@@ -11,7 +11,6 @@ const DEFAULT_VOICE = "fr-FR-VivienneMultilingualNeural";
 const ALLOWED_VOICES: Record<string, "Female" | "Male"> = {
   "fr-FR-VivienneMultilingualNeural": "Female",
   "fr-FR-DeniseNeural": "Female",
-  "fr-FR-EloiseNeural": "Female",
   "fr-FR-HenriNeural": "Male",
 };
 
