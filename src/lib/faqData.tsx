@@ -42,7 +42,7 @@ export const FAQ_DATA: FAQSection[] = [
           </span>
         ),
       },
-      { question: "L'abonnement se renouvelle-t-il automatiquement ?", answer: "Cela dépend de la formule choisie. Tous les détails sont indiqués clairement avant validation, et vous pouvez annuler à tout moment." },
+      { question: "L'abonnement se renouvelle-t-il automatiquement ?", answer: "Oui : les formules Solo et Family se renouvellent automatiquement à la fréquence choisie (mensuelle, trimestrielle, semestrielle ou annuelle) jusqu'à résiliation. Vous pouvez annuler à tout moment depuis votre espace parent, sans engagement." },
     ],
   },
 ];
