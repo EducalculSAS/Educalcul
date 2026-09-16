@@ -6,8 +6,8 @@ import { getStreaksForGames } from "@/lib/minigames/streaks";
 
 const GAMES = [
   { gameType: "mathador", href: "/child/minigames/mathador", icon: Sigma, label: "Mathador", desc: "5 nombres, une cible, trouve le compte juste.", color: "bg-indigo-100 text-indigo-600", available: true },
-  { gameType: "calcul_mental", href: "/child/minigames/calcul-mental", icon: Calculator, label: "Calcul mental", desc: "5 questions par jour, réponds juste pour grimper au classement.", color: "bg-yellow-100 text-[var(--greek-gold)]", available: true },
-  { gameType: "enigmes", href: "/child/minigames/enigmes", icon: PuzzleIcon, label: "Énigmes", desc: "5 énigmes de logique par jour, à toi de déduire.", color: "bg-purple-100 text-purple-600", available: true },
+  { gameType: "calcul_mental", href: "/child/minigames/calcul-mental", icon: Calculator, label: "Calcul mental", desc: "Jusqu'à 5 questions par jour, réponds juste pour grimper au classement.", color: "bg-yellow-100 text-[var(--greek-gold)]", available: true },
+  { gameType: "enigmes", href: "/child/minigames/enigmes", icon: PuzzleIcon, label: "Énigmes", desc: "Jusqu'à 5 énigmes de logique par jour, à toi de déduire.", color: "bg-purple-100 text-purple-600", available: true },
   { gameType: "suites", href: "/child/minigames/suites", icon: TrendingUp, label: "Suites", desc: "Trouve le prochain terme, du collège au lycée.", color: "bg-teal-100 text-teal-600", available: true },
   { gameType: "langues", href: "/child/minigames/langues", icon: Languages, label: "Maths en langues", desc: "Des maths de lycée, en anglais, allemand ou espagnol.", color: "bg-rose-100 text-rose-600", available: true },
   { gameType: "scratch_python", href: null, icon: Code2, label: "Scratch & Python", desc: "Bientôt disponible", color: "bg-gray-100 text-gray-400", available: false },
