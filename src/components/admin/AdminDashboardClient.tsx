@@ -240,7 +240,14 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
               { href: "/admin/reports",        icon: <BarChart2 size={15} />,      label: "Rapports"        },
               { href: "/admin/landing",         icon: <Gift size={15} />,           label: "Landing Page"   },
             ].map(({ href, icon, label }) => (
-              <GlassButton key={href} href={href} variant="ghost" size="sm" rounded="xl" className="justify-start">
+              <GlassButton
+                key={href}
+                href={href}
+                variant="ghost"
+                rounded="xl"
+                fullWidth
+                style={{ justifyContent: "flex-start" }}
+              >
                 {icon} {label}
               </GlassButton>
             ))}
