@@ -8,6 +8,25 @@ import { requireRole } from "@/lib/apiAuth";
 // reserve aux admins pour l'instant, comme le reste de "Calia en classe".
 const VOICE = "fr-FR-VivienneMultilingualNeural";
 
+// Le jeton Azure reste valide ~10 min — le mettre en cache evite un aller-
+// retour reseau complet (auth) avant CHAQUE phrase prononcee, sur l'instance
+// de fonction reutilisee entre appels chauds.
+let cachedToken: { value: string; expiresAt: number } | null = null;
+
+async function getAzureToken(key: string, region: string): Promise<string> {
+  if (cachedToken && cachedToken.expiresAt > Date.now()) return cachedToken.value;
+
+  const tokenRes = await fetch(`https://${region}.api.cognitive.microsoft.com/sts/v1.0/issueToken`, {
+    method: "POST",
+    headers: { "Ocp-Apim-Subscription-Key": key, "Content-Length": "0" },
+    signal: AbortSignal.timeout(8000),
+  });
+  if (!tokenRes.ok) throw new Error(`Authentification vocale echouee (${tokenRes.status})`);
+  const value = await tokenRes.text();
+  cachedToken = { value, expiresAt: Date.now() + 9 * 60 * 1000 };
+  return value;
+}
+
 function escapeSsml(text: string): string {
   return text
     .replace(/&/g, "&amp;")
@@ -17,12 +36,14 @@ function escapeSsml(text: string): string {
     .replace(/'/g, "&apos;");
 }
 
-export async function POST(req: Request) {
+// GET (pas POST) : permet au client de pointer directement un <audio> dessus
+// et de streamer/jouer au fur et a mesure, au lieu d'attendre tout le blob.
+export async function GET(req: Request) {
   try {
     const me = await requireRole(req, ["admin"]);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const { text } = await req.json();
+    const text = new URL(req.url).searchParams.get("text");
     if (typeof text !== "string" || !text.trim()) {
       return NextResponse.json({ error: "text est requis" }, { status: 400 });
     }
@@ -33,15 +54,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Service vocal non configure" }, { status: 503 });
     }
 
-    const tokenRes = await fetch(`https://${region}.api.cognitive.microsoft.com/sts/v1.0/issueToken`, {
-      method: "POST",
-      headers: { "Ocp-Apim-Subscription-Key": key, "Content-Length": "0" },
-      signal: AbortSignal.timeout(8000),
-    });
-    if (!tokenRes.ok) {
-      return NextResponse.json({ error: `Authentification vocale echouee (${tokenRes.status})` }, { status: 502 });
-    }
-    const token = await tokenRes.text();
+    const token = await getAzureToken(key, region);
 
     const ssml = `<speak version='1.0' xml:lang='fr-FR'><voice xml:lang='fr-FR' xml:gender='Female' name='${VOICE}'>${escapeSsml(text.trim().slice(0, 400))}</voice></speak>`;
 
@@ -63,7 +76,7 @@ export async function POST(req: Request) {
 
     return new NextResponse(upstream.body, {
       status: 200,
-      headers: { "Content-Type": "audio/mpeg" },
+      headers: { "Content-Type": "audio/mpeg", "Cache-Control": "no-store" },
     });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);

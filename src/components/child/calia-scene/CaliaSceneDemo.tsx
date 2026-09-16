@@ -127,30 +127,18 @@ export default function CaliaSceneDemo({
     window.speechSynthesis.speak(utter);
   };
 
-  // Voix naturelle open source (Kyutai Pocket-TTS via /api/calia/tts) —
-  // retombe sur la synthese du navigateur si le service est indisponible
-  // (cold start du Space, panne reseau...) pour ne jamais rendre Calia muette.
-  const speak = async (text: string) => {
+  // Voix naturelle (Azure Speech via /api/calia/tts, GET) — l'<audio> pointe
+  // directement sur l'URL pour jouer en streaming (demarre avant la fin du
+  // telechargement) au lieu d'attendre tout le blob. Retombe sur la synthese
+  // du navigateur si le service echoue, pour ne jamais rendre Calia muette.
+  const speak = (text: string) => {
     audioRef.current?.pause();
-    audioRef.current = null;
-    try {
-      const res = await fetch("/api/calia/tts", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text }),
-      });
-      if (!res.ok) throw new Error("tts-failed");
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const audio = new Audio(url);
-      audioRef.current = audio;
-      audio.onplay = () => setSpeaking(true);
-      audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
-      audio.onerror = () => { setSpeaking(false); URL.revokeObjectURL(url); speakBrowserFallback(text); };
-      await audio.play();
-    } catch {
-      speakBrowserFallback(text);
-    }
+    const audio = new Audio(`/api/calia/tts?text=${encodeURIComponent(text)}`);
+    audioRef.current = audio;
+    audio.onplay = () => setSpeaking(true);
+    audio.onended = () => setSpeaking(false);
+    audio.onerror = () => { setSpeaking(false); speakBrowserFallback(text); };
+    audio.play().catch(() => speakBrowserFallback(text));
   };
 
   const executeAction = (action: TurnAction | null) => {
