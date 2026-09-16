@@ -5,7 +5,9 @@ import {
   Users, CreditCard, BookOpen, Calculator, Brain,
   MessageSquare, TicketCheck, AlertTriangle, TrendingUp,
   UserPlus, BarChart2, Shield, Gift, RefreshCw,
-  ChevronRight, Clock,
+  ChevronRight, Clock, Keyboard, Gamepad2, Mail, Scale,
+  GraduationCap, Calendar, Star, History, ScanSearch,
+  ShieldCheck, Flag, User,
 } from "lucide-react";
 import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
@@ -87,14 +89,14 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
       {(counts.open_tickets > 0 || counts.pending_reports > 0) && (
         <div className="flex flex-wrap gap-3">
           {counts.open_tickets > 0 && (
-            <GlassButton href="/admin/support" variant="navy" size="sm" rounded="xl">
+            <GlassButton href="/admin/support" variant="navy" size="sm">
               <TicketCheck size={16} />
               {counts.open_tickets} ticket{counts.open_tickets > 1 ? "s" : ""} ouvert{counts.open_tickets > 1 ? "s" : ""}
               <ChevronRight size={14} />
             </GlassButton>
           )}
           {counts.pending_reports > 0 && (
-            <GlassButton href="/admin/forum" variant="danger" size="sm" rounded="xl">
+            <GlassButton href="/admin/forum" variant="danger" size="sm">
               <AlertTriangle size={16} />
               {counts.pending_reports} signalement{counts.pending_reports > 1 ? "s" : ""} forum
               <ChevronRight size={14} />
@@ -127,7 +129,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
               <UserPlus size={17} className="text-[var(--greek-gold)]" />
               Derniers inscrits
             </h2>
-            <GlassButton href="/admin/users" variant="outline" size="sm" rounded="xl">
+            <GlassButton href="/admin/users" variant="outline" size="sm">
               Voir tout <ChevronRight size={12} />
             </GlassButton>
           </div>
@@ -165,7 +167,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
               <BookOpen size={17} className="text-[var(--greek-gold)]" />
               Cours récents
             </h2>
-            <GlassButton href="/admin/courses" variant="outline" size="sm" rounded="xl">
+            <GlassButton href="/admin/courses" variant="outline" size="sm">
               Gérer <ChevronRight size={12} />
             </GlassButton>
           </div>
@@ -197,7 +199,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
               <MessageSquare size={17} className="text-[var(--greek-gold)]" />
               Forum — posts récents
             </h2>
-            <GlassButton href="/admin/forum" variant="outline" size="sm" rounded="xl">
+            <GlassButton href="/admin/forum" variant="outline" size="sm">
               Modérer <ChevronRight size={12} />
             </GlassButton>
           </div>
@@ -228,26 +230,31 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
             <TrendingUp size={17} className="text-[var(--greek-gold)]" />
             Accès rapide
           </h2>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
             {[
-              { href: "/admin/users",         icon: <Users size={15} />,          label: "Utilisateurs"    },
-              { href: "/admin/subscriptions", icon: <CreditCard size={15} />,     label: "Abonnements"     },
-              { href: "/admin/courses",        icon: <BookOpen size={15} />,       label: "Cours"           },
-              { href: "/admin/exercises",      icon: <Calculator size={15} />,     label: "Exercices"       },
-              { href: "/admin/quizzes",        icon: <Brain size={15} />,          label: "Quiz"            },
-              { href: "/admin/forum",          icon: <MessageSquare size={15} />,  label: "Forum"           },
-              { href: "/admin/support",        icon: <TicketCheck size={15} />,    label: "Support"         },
-              { href: "/admin/reports",        icon: <BarChart2 size={15} />,      label: "Rapports"        },
-              { href: "/admin/landing",         icon: <Gift size={15} />,           label: "Landing Page"   },
+              { href: "/admin/users",         icon: <Users size={15} />,         label: "Utilisateurs"   },
+              { href: "/admin/courses",       icon: <BookOpen size={15} />,      label: "Cours"          },
+              { href: "/admin/exercises",     icon: <Calculator size={15} />,    label: "Exercices"      },
+              { href: "/admin/quizzes",       icon: <Brain size={15} />,         label: "Quiz"           },
+              { href: "/admin/clavier",       icon: <Keyboard size={15} />,      label: "Clavier"        },
+              { href: "/admin/minigames",     icon: <Gamepad2 size={15} />,      label: "Mini-jeux"      },
+              { href: "/admin/reports",       icon: <BarChart2 size={15} />,     label: "Rapports"       },
+              { href: "/admin/forum",         icon: <MessageSquare size={15} />, label: "Forum"          },
+              { href: "/admin/emails",        icon: <Mail size={15} />,          label: "Emails"         },
+              { href: "/admin/support",       icon: <TicketCheck size={15} />,   label: "Support"        },
+              { href: "/admin/subscriptions", icon: <CreditCard size={15} />,    label: "Abonnements"    },
+              { href: "/admin/juridique",     icon: <Scale size={15} />,         label: "Juridique"      },
+              { href: "/admin/programmes",    icon: <GraduationCap size={15} />, label: "Programmes"     },
+              { href: "/admin/calendar",      icon: <Calendar size={15} />,      label: "Calendrier"     },
+              { href: "/admin/reviews",       icon: <Star size={15} />,          label: "Avis clients"   },
+              { href: "/admin/landing",       icon: <Gift size={15} />,          label: "Liste d'attente"},
+              { href: "/admin/audit-log",     icon: <History size={15} />,       label: "Journal d'audit"},
+              { href: "/admin/scanner",       icon: <ScanSearch size={15} />,    label: "Scanner IA"     },
+              { href: "/admin/security",      icon: <ShieldCheck size={15} />,   label: "Sécurité"       },
+              { href: "/admin/feature-flags", icon: <Flag size={15} />,          label: "Fonctionnalités"},
+              { href: "/admin/profile",       icon: <User size={15} />,          label: "Profil"         },
             ].map(({ href, icon, label }) => (
-              <GlassButton
-                key={href}
-                href={href}
-                variant="ghost"
-                rounded="xl"
-                fullWidth
-                style={{ justifyContent: "flex-start" }}
-              >
+              <GlassButton key={href} href={href} variant="ghost" fullWidth>
                 {icon} {label}
               </GlassButton>
             ))}
