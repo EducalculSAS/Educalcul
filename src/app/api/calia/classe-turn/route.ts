@@ -10,6 +10,7 @@ const SYSTEM_PROMPT = `Tu es Calia, professeure de mathematiques vocale d'Educal
 Tu recois :
 - courseOutline : la liste COMPLETE des lecons du cours (dans l'ordre), avec pour chacune ses mini-exercices (question/indice/reponse), et laquelle est actuellement affichee a l'ecran.
 - lessonOutline : uniquement les titres/paragraphes/figures de la lecon AFFICHEE A L'ECRAN EN CE MOMENT, chacun avec un index.
+- liveExerciseDraft (optionnel) : ce que l'eleve est en train de taper EN DIRECT dans un mini-exercice de la lecon (peut etre incomplet, l'eleve n'a pas forcement fini ni valide) — utilise-le pour commenter/encourager en temps reel si pertinent, jamais comme une reponse finale a corriger formellement.
 - l'historique de la conversation.
 
 CONTEXTE DU COURS ENTIER :
@@ -36,6 +37,7 @@ MISE EN SCENE - a chaque tour, tu peux (pas obligatoire) emettre UNE action pour
 - highlight / scroll_to / point_at : cible un element de lessonOutline par targetKind + targetIndex (l'index correspond a la Nieme entree de ce type dans lessonOutline, en commencant a 0). Utilise scroll_to + highlight quand tu abordes une nouvelle partie de la lecon ; point_at pour attirer l'attention sur un element deja visible (formule, figure, paragraphe) des que tu le mentionnes.
 - board_write : ecris une ligne de calcul au tableau (champ latex, ex: "\\\\frac{3+2}{4}"), pour illustrer une derivation etape par etape. Ajoute un court "label" (2-4 mots, ex: "Etape 1 - developper") quand tu demarres une nouvelle etape, pour garder le tableau lisible.
 - board_clear : efface le tableau avant de commencer une nouvelle etape ou un nouvel exercice — utilise-la des que tu changes de sous-partie plutot que d'empiler indefiniment des lignes sans rapport entre elles.
+- ask_student_to_write : demande explicitement a l'eleve d'ecrire sa reponse au tableau (au clavier ou en dessinant) plutot que de la dire a l'oral — utile pour verifier qu'il sait poser un calcul, pas seulement le formuler. Une fois qu'il a ecrit et valide, tu recevras son texte dans studentMessage prefixe par "(L'eleve a ecrit au tableau : ...)" — verifie-le comme une reponse normale. S'il a dessine, tu recevras "(L'eleve a dessine une reponse au tableau, demande-lui de la decrire a l'oral)" car tu ne peux pas voir les dessins.
 - Si aucune action n'est utile ce tour-ci, action doit valoir null.
 
 Reponds UNIQUEMENT via le JSON demande, jamais de texte hors de ce format.`;
@@ -66,7 +68,7 @@ interface CourseContext {
 interface TurnResult {
   say: string;
   action: null | {
-    kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear";
+    kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear" | "ask_student_to_write";
     targetKind: "heading" | "paragraph" | "figure" | null;
     targetIndex: number | null;
     latex: string | null;
@@ -97,7 +99,7 @@ export async function POST(req: Request) {
     const me = await requireRole(req, ["admin"]);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const { lessonOutline, courseContext, history, studentMessage } = await req.json();
+    const { lessonOutline, courseContext, liveExerciseDraft, history, studentMessage } = await req.json();
     if (!Array.isArray(lessonOutline) || typeof studentMessage !== "string" || !studentMessage.trim()) {
       return NextResponse.json({ error: "lessonOutline et studentMessage sont requis" }, { status: 400 });
     }
@@ -108,6 +110,11 @@ export async function POST(req: Request) {
 
     const courseOutlineText = buildCourseOutlineText(courseContext);
 
+    const liveDraftText =
+      liveExerciseDraft && typeof liveExerciseDraft === "object" && liveExerciseDraft.value
+        ? `Question: ${liveExerciseDraft.question}\nCe que l'eleve a tape jusqu'ici: ${liveExerciseDraft.value}`
+        : "(rien pour l'instant)";
+
     const historyText = Array.isArray(history)
       ? (history as { role: string; content: string }[])
           .slice(-8)
@@ -115,7 +122,7 @@ export async function POST(req: Request) {
           .join("\n")
       : "";
 
-    const prompt = `courseOutline:\n${courseOutlineText}\n\nlessonOutline (lecon affichee a l'ecran) :\n${outlineText}\n\nHistorique recent:\n${historyText}\n\nL'eleve vient de dire: "${studentMessage.trim()}"\n\nReponds avec le JSON attendu.`;
+    const prompt = `courseOutline:\n${courseOutlineText}\n\nlessonOutline (lecon affichee a l'ecran) :\n${outlineText}\n\nliveExerciseDraft:\n${liveDraftText}\n\nHistorique recent:\n${historyText}\n\nL'eleve vient de dire: "${studentMessage.trim()}"\n\nReponds avec le JSON attendu.`;
 
     // reasoning=false : une reponse socratique courte (1-2 phrases) n'a pas
     // besoin du mode "reasoning_effort: high" de Mistral (chaine de pensee

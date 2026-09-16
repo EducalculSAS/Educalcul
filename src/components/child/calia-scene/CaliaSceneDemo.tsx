@@ -3,8 +3,11 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { X, Mic, MicOff, Send } from "lucide-react";
+import { X, Mic, MicOff, Send, Pencil, GripVertical, Keyboard, Brush } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+import DrawingCanvas from "@/components/DrawingCanvas";
 import { getMyProfile } from "@/lib/updateMyProfile";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { compileCourseBlock } from "@/lib/ai/compiler";
@@ -22,7 +25,7 @@ type OutlineKind = "heading" | "paragraph" | "figure";
 interface OutlineItem { kind: OutlineKind; index: number; preview: string; el: HTMLElement }
 
 interface TurnAction {
-  kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear";
+  kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear" | "ask_student_to_write";
   targetKind: OutlineKind | null;
   targetIndex: number | null;
   latex: string | null;
@@ -82,6 +85,12 @@ export default function CaliaSceneDemo({
   const [sayText, setSayText] = useState<string | null>(null);
   const [pointerRect, setPointerRect] = useState<DOMRect | null>(null);
   const [boardLines, setBoardLines] = useState<string[]>([]);
+  const [boardOffset, setBoardOffset] = useState({ x: 0, y: 0 });
+  const [boardWriteOpen, setBoardWriteOpen] = useState(false);
+  const [boardInputMode, setBoardInputMode] = useState<"text" | "draw">("text");
+  const [boardDraft, setBoardDraft] = useState("");
+  const [boardDrawing, setBoardDrawing] = useState<string | null>(null);
+  const boardDragRef = useRef<{ startX: number; startY: number; baseX: number; baseY: number } | null>(null);
   const [speaking, setSpeaking] = useState(false);
   const [listening, setListening] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -100,6 +109,21 @@ export default function CaliaSceneDemo({
     setVoice(id);
     window.localStorage.setItem(VOICE_STORAGE_KEY, id);
   };
+
+  // Visibilite live de ce que l'eleve tape dans un mini-exercice de la
+  // lecon (emis par CourseViewer/InlineMiniExercises) — meme convention que
+  // educalcul:ai-question. Stocke seulement le plus recent, envoye avec
+  // chaque tour pour que Calia puisse reagir a un brouillon en cours.
+  const liveExerciseDraftRef = useRef<{ question: string; value: string } | null>(null);
+  useEffect(() => {
+    const onExerciseInput = (e: Event) => {
+      const detail = (e as CustomEvent).detail;
+      if (!detail?.question) return;
+      liveExerciseDraftRef.current = { question: detail.question, value: detail.value || "" };
+    };
+    window.addEventListener("educalcul:exercise-input", onExerciseInput);
+    return () => window.removeEventListener("educalcul:exercise-input", onExerciseInput);
+  }, []);
 
   const highlightedElRef = useRef<HTMLElement | null>(null);
   const historyRef = useRef<HistoryMsg[]>([]);
@@ -153,6 +177,10 @@ export default function CaliaSceneDemo({
     setSayText(null);
     setPointerRect(null);
     setBoardLines([]);
+    setBoardOffset({ x: 0, y: 0 });
+    setBoardWriteOpen(false);
+    setBoardDraft("");
+    setBoardDrawing(null);
     setListening(false);
     setSpeaking(false);
     setInterim("");
@@ -209,6 +237,11 @@ export default function CaliaSceneDemo({
 
     if (action.kind === "board_clear") {
       setBoardLines([]);
+      return;
+    }
+
+    if (action.kind === "ask_student_to_write") {
+      setBoardWriteOpen(true);
       return;
     }
 
@@ -275,6 +308,7 @@ export default function CaliaSceneDemo({
         body: JSON.stringify({
           lessonOutline: outline.map(({ kind, index, preview }) => ({ kind, index, preview })),
           courseContext,
+          liveExerciseDraft: liveExerciseDraftRef.current,
           history: historyRef.current,
           studentMessage,
         }),
@@ -294,6 +328,48 @@ export default function CaliaSceneDemo({
       if (sessionActiveRef.current) setError(err?.message || "Une erreur est survenue.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  // Tableau deplacable : le header sert de poignee (Pointer Events, sur le
+  // meme modele que DrawingCanvas — setPointerCapture + touch-action:none),
+  // applique en `transform` comme le cluster avatar, mais sans retour
+  // automatique a la position d'origine : une fois deplace par l'eleve, le
+  // tableau reste ou il l'a mis.
+  const onBoardHeaderPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    e.currentTarget.setPointerCapture(e.pointerId);
+    boardDragRef.current = { startX: e.clientX, startY: e.clientY, baseX: boardOffset.x, baseY: boardOffset.y };
+  };
+  const onBoardHeaderPointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const drag = boardDragRef.current;
+    if (!drag) return;
+    setBoardOffset({ x: drag.baseX + (e.clientX - drag.startX), y: drag.baseY + (e.clientY - drag.startY) });
+  };
+  const onBoardHeaderPointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    boardDragRef.current = null;
+    e.currentTarget.releasePointerCapture(e.pointerId);
+  };
+
+  // L'eleve ecrit au tableau (clavier ou dessin) — apparait comme sa propre
+  // ligne (stylee differemment de celles de Calia) et part dans le tour
+  // suivant pour qu'elle le verifie. Un dessin ne peut pas etre "lu" par le
+  // modele (texte uniquement, pas de vision) : on le lui dit explicitement
+  // plutot que de pretendre qu'elle l'a vu.
+  const submitBoardWrite = () => {
+    if (boardInputMode === "text") {
+      const text = boardDraft.trim();
+      if (!text) return;
+      const html = renderLatexInHTML(compileCourseBlock({ type: "display_math", latex: text }, [], new Set()));
+      setBoardLines((lines) => [...lines, `<p class="calia-board-label calia-board-label-student">Toi</p><div class="calia-board-student">${html}</div>`]);
+      setBoardDraft("");
+      setBoardWriteOpen(false);
+      sendTurn(`(L'eleve a ecrit au tableau : ${text})`);
+    } else {
+      if (!boardDrawing) return;
+      setBoardLines((lines) => [...lines, `<p class="calia-board-label calia-board-label-student">Toi</p><div class="calia-board-student"><img src="${boardDrawing}" alt="Réponse dessinée" style="max-width:100%;border-radius:8px;background:#fff" /></div>`]);
+      setBoardDrawing(null);
+      setBoardWriteOpen(false);
+      sendTurn("(L'eleve a dessine une reponse au tableau, demande-lui de la decrire a l'oral)");
     }
   };
 
@@ -448,6 +524,14 @@ export default function CaliaSceneDemo({
           color: #dcb85f;
           margin: 4px 0 2px;
         }
+        .calia-board-label-student {
+          color: #7dd3fc;
+        }
+        .calia-board-student {
+          border-left: 3px solid #7dd3fc;
+          padding-left: 8px;
+          margin: 2px 0 8px;
+        }
       `}</style>
 
       {/* Mini variante de l'avatar Calia (meme recette que le cluster bas-
@@ -576,19 +660,73 @@ export default function CaliaSceneDemo({
             )}
           </div>
 
-          {boardLines.length > 0 && (
+          {(boardLines.length > 0 || boardWriteOpen) && (
             <div
-              className="fixed z-[65] rounded-xl shadow-2xl overflow-hidden top-16 left-2 right-2 md:top-20 md:right-4 md:left-auto md:w-72"
-              style={{ background: "#2a323a", border: "1px solid rgba(238,242,236,0.15)" }}
+              className="fixed z-[65] rounded-2xl shadow-2xl overflow-hidden top-16 left-2 right-2 md:top-20 md:right-4 md:left-auto md:w-80"
+              style={{
+                background: "linear-gradient(160deg, #333c48, #20252c)",
+                border: "1px solid rgba(238,242,236,0.15)",
+                boxShadow: "0 12px 32px rgba(0,0,0,0.35)",
+                transform: `translate(${boardOffset.x}px, ${boardOffset.y}px)`,
+              }}
             >
-              <div className="px-3 py-1.5 text-[10px] uppercase tracking-widest" style={{ color: "#dcb85f", borderBottom: "1px solid rgba(238,242,236,0.1)" }}>
-                Tableau
+              <div
+                onPointerDown={onBoardHeaderPointerDown}
+                onPointerMove={onBoardHeaderPointerMove}
+                onPointerUp={onBoardHeaderPointerUp}
+                onPointerCancel={onBoardHeaderPointerUp}
+                className="flex items-center justify-between px-3 py-1.5 select-none"
+                style={{ borderBottom: "1px solid rgba(238,242,236,0.1)", touchAction: "none", cursor: "grab" }}
+              >
+                <div className="flex items-center gap-1.5">
+                  <GripVertical className="w-3.5 h-3.5" style={{ color: "rgba(238,242,236,0.35)" }} />
+                  <span className="text-[10px] uppercase tracking-widest" style={{ color: "#dcb85f" }}>Tableau</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setBoardWriteOpen((v) => !v)}
+                  aria-label={boardWriteOpen ? "Fermer l'écriture" : "Écrire au tableau"}
+                  className="p-1 rounded-lg hover:bg-white/10 transition-colors"
+                  style={{ color: boardWriteOpen ? "var(--greek-gold)" : "rgba(238,242,236,0.5)" }}
+                >
+                  <Pencil className="w-3.5 h-3.5" />
+                </button>
               </div>
-              <div className="px-4 py-3 space-y-1.5 max-h-[50vh] overflow-y-auto" style={{ color: "#eef2ec" }}>
+
+              <div className="px-4 py-3 space-y-1.5 max-h-[40vh] overflow-y-auto" style={{ color: "#eef2ec" }}>
                 {boardLines.map((html, i) => (
                   <div key={i} dangerouslySetInnerHTML={{ __html: html }} />
                 ))}
               </div>
+
+              {boardWriteOpen && (
+                <div className="px-3 pb-3 pt-1 space-y-2" style={{ borderTop: "1px solid rgba(238,242,236,0.08)" }}>
+                  <GlassSegmentedControl
+                    size="sm"
+                    value={boardInputMode}
+                    onChange={(id) => setBoardInputMode(id as "text" | "draw")}
+                    options={[
+                      { id: "text", label: (<span className="flex items-center gap-1"><Keyboard className="w-3 h-3" /> Clavier</span>) },
+                      { id: "draw", label: (<span className="flex items-center gap-1"><Brush className="w-3 h-3" /> Dessin</span>) },
+                    ]}
+                  />
+                  {boardInputMode === "text" ? (
+                    <input
+                      value={boardDraft}
+                      onChange={(e) => setBoardDraft(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && submitBoardWrite()}
+                      placeholder="ex: x^2+3x-2 ou \frac{1}{2}"
+                      className="w-full text-sm rounded-lg px-3 py-2 outline-none"
+                      style={{ background: "rgba(255,255,255,0.08)", color: "#eef2ec" }}
+                    />
+                  ) : (
+                    <DrawingCanvas onChange={setBoardDrawing} disabled={false} />
+                  )}
+                  <GlassButton onClick={submitBoardWrite} variant="gold" size="sm" fullWidth>
+                    Envoyer au tableau
+                  </GlassButton>
+                </div>
+              )}
             </div>
           )}
         </>,

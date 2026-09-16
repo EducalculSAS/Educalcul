@@ -1267,7 +1267,15 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                     <MathInput
                       value={s.input.startsWith("data:image") ? "" : s.input}
                       disabled={isGrading}
-                      onChange={(latex) => updateState(ex.id, { input: latex })}
+                      onChange={(latex) => {
+                        updateState(ex.id, { input: latex });
+                        // Visibilité live pour "Calia en classe" (CaliaSceneDemo) —
+                        // même convention que educalcul:ai-question : un simple
+                        // CustomEvent global, pas de store/contexte partagé.
+                        window.dispatchEvent(new CustomEvent("educalcul:exercise-input", {
+                          detail: { exerciseId: ex.id, question: ex.question, value: latex },
+                        }));
+                      }}
                       placeholder="Ta réponse..."
                       className="w-full min-h-[48px] px-2 border border-gray-200 bg-gray-50 rounded-xl focus-within:ring-2 focus-within:ring-[var(--greek-blue)]/30 focus-within:border-[var(--greek-blue)] transition-all text-gray-800"
                       level={level}
