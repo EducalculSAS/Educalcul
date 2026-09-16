@@ -355,7 +355,7 @@ export default function CaliaSceneDemo({
   // suivant pour qu'elle le verifie. Un dessin ne peut pas etre "lu" par le
   // modele (texte uniquement, pas de vision) : on le lui dit explicitement
   // plutot que de pretendre qu'elle l'a vu.
-  const submitBoardWrite = () => {
+  const submitBoardWrite = async () => {
     if (boardInputMode === "text") {
       const text = boardDraft.trim();
       if (!text) return;
@@ -364,12 +364,30 @@ export default function CaliaSceneDemo({
       setBoardDraft("");
       setBoardWriteOpen(false);
       sendTurn(`(L'eleve a ecrit au tableau : ${text})`);
-    } else {
-      if (!boardDrawing) return;
-      setBoardLines((lines) => [...lines, `<p class="calia-board-label calia-board-label-student">Toi</p><div class="calia-board-student"><img src="${boardDrawing}" alt="Réponse dessinée" style="max-width:100%;border-radius:8px;background:#fff" /></div>`]);
-      setBoardDrawing(null);
-      setBoardWriteOpen(false);
-      sendTurn("(L'eleve a dessine une reponse au tableau, demande-lui de la decrire a l'oral)");
+      return;
+    }
+
+    if (!boardDrawing) return;
+    const drawingSrc = boardDrawing;
+    setBoardLines((lines) => [...lines, `<p class="calia-board-label calia-board-label-student">Toi</p><div class="calia-board-student"><img src="${drawingSrc}" alt="Réponse dessinée" style="max-width:100%;border-radius:8px;background:#fff" /></div>`]);
+    setBoardDrawing(null);
+    setBoardWriteOpen(false);
+    // Lecture automatique du dessin (vision Mistral) avant d'envoyer le tour
+    // — les modeles de vision restent imparfaits sur l'ecriture manuscrite,
+    // on le rappelle explicitement a Calia dans le message plutot que de
+    // presenter la lecture comme certaine.
+    setLoading(true);
+    try {
+      const res = await fetch("/api/calia/read-drawing", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ imageDataUrl: drawingSrc, context: courseContext?.courseTitle || "" }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Lecture du dessin impossible.");
+      sendTurn(`(L'eleve a dessine au tableau. Lecture automatique du dessin, peut contenir des erreurs de transcription : ${data.description})`);
+    } catch {
+      sendTurn("(L'eleve a dessine une reponse au tableau, la lecture automatique a echoue — demande-lui de la decrire a l'oral)");
     }
   };
 

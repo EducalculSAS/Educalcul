@@ -655,6 +655,42 @@ RÈGLES pour le feedback :
   };
 }
 
+/** Transcrit un dessin/écriture manuscrite en texte (pas de notation, juste
+ * une lecture) — utilisé quand "Calia en classe" a besoin de savoir ce que
+ * l'élève a écrit au tableau sans passer par un exercice noté. La vision des
+ * modèles reste imparfaite sur l'écriture manuscrite : le texte retourné doit
+ * être traité comme une lecture possiblement fautive, jamais comme une
+ * transcription certaine. */
+export async function describeDrawing(imageDataUrl: string, context: string): Promise<string> {
+  const system = `Tu transcris ce qu'un eleve a ecrit/dessine sur un tableau, a partir d'une image.
+Contexte de la lecon : ${context || "aucun"}
+- Decris UNIQUEMENT ce que tu vois ecrit (chiffres, lettres, symboles, calcul), en LaTeX entre $...$ pour toute expression mathematique.
+- Si l'ecriture est ambigue ou illisible par endroits, dis-le clairement plutot que d'inventer.
+- 1 a 2 phrases maximum. Pas de correction, pas de jugement sur si c'est juste ou faux — juste une lecture.
+Reponds en texte brut, pas de JSON.`;
+
+  const msgs: Message[] = [
+    { role: "system", content: system },
+    {
+      role: "user",
+      content: [
+        { type: "text", text: "Que vois-tu ecrit sur cette image ?" },
+        { type: "image_url", image_url: imageDataUrl },
+      ],
+    },
+  ];
+
+  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, 0.2, 300, false, false);
+  if (!ok) {
+    console.error(`[llm] vision (describeDrawing) ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 400)}`);
+    throw new Error("Lecture du dessin indisponible.");
+  }
+  const parsed = JSON.parse(text);
+  const content = extractMistralText(parsed?.choices?.[0]?.message?.content) || "";
+  if (!content.trim()) throw new Error("Le modele n'a rien transcrit.");
+  return content.trim();
+}
+
 /** Générer un cours/exercice/quiz structuré → JSON parsé */
 async function forceStructuredJSON(
   prompt: string,
