@@ -9,6 +9,7 @@ import { getMyProfile } from "@/lib/updateMyProfile";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { compileCourseBlock } from "@/lib/ai/compiler";
 import { useAITutor } from "@/contexts/AITutorContext";
+import { playListeningCue, playModeProfCue } from "@/lib/audioCues";
 
 const HIGHLIGHT_CLASS = "calia-scene-highlight";
 const OUTLINE_SELECTORS: Record<"heading" | "paragraph" | "figure", string> = {
@@ -73,6 +74,7 @@ export default function CaliaSceneDemo({
   const highlightedElRef = useRef<HTMLElement | null>(null);
   const historyRef = useRef<HistoryMsg[]>([]);
   const recognitionRef = useRef<any>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => setMounted(true), []);
 
@@ -95,6 +97,8 @@ export default function CaliaSceneDemo({
   const stop = () => {
     recognitionRef.current?.abort?.();
     window.speechSynthesis?.cancel();
+    audioRef.current?.pause();
+    audioRef.current = null;
     clearHighlight();
     setIsRunning(false);
     setClasseActive(false);
@@ -108,7 +112,7 @@ export default function CaliaSceneDemo({
     historyRef.current = [];
   };
 
-  const speak = (text: string) => {
+  const speakBrowserFallback = (text: string) => {
     if (!window.speechSynthesis) return;
     window.speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(text);
@@ -119,6 +123,32 @@ export default function CaliaSceneDemo({
     utter.onend = () => setSpeaking(false);
     utter.onerror = () => setSpeaking(false);
     window.speechSynthesis.speak(utter);
+  };
+
+  // Voix naturelle open source (Kyutai Pocket-TTS via /api/calia/tts) —
+  // retombe sur la synthese du navigateur si le service est indisponible
+  // (cold start du Space, panne reseau...) pour ne jamais rendre Calia muette.
+  const speak = async (text: string) => {
+    audioRef.current?.pause();
+    audioRef.current = null;
+    try {
+      const res = await fetch("/api/calia/tts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      });
+      if (!res.ok) throw new Error("tts-failed");
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      audioRef.current = audio;
+      audio.onplay = () => setSpeaking(true);
+      audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
+      audio.onerror = () => { setSpeaking(false); URL.revokeObjectURL(url); speakBrowserFallback(text); };
+      await audio.play();
+    } catch {
+      speakBrowserFallback(text);
+    }
   };
 
   const executeAction = (action: TurnAction | null) => {
@@ -178,8 +208,33 @@ export default function CaliaSceneDemo({
     }
   };
 
-  const startListening = () => {
+  const speechErrorMessage = (code: string): string => {
+    switch (code) {
+      case "not-allowed":
+      case "service-not-allowed":
+        return "Micro bloqué pour ce site. Clique sur le cadenas à côté de l'URL, autorise le micro, puis recharge la page.";
+      case "audio-capture":
+        return "Aucun micro détecté sur cet appareil.";
+      case "network":
+        return "La reconnaissance vocale nécessite une connexion internet (elle passe par le service du navigateur).";
+      case "no-speech":
+        return "Rien entendu, réessaie.";
+      default:
+        return "La reconnaissance vocale a échoué. Réessaie ou utilise le clavier.";
+    }
+  };
+
+  const startListening = async () => {
     if (!speechSupported || loading || speaking) return;
+    setError(null);
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach((t) => t.stop());
+    } catch {
+      setError(speechErrorMessage("not-allowed"));
+      return;
+    }
+    playListeningCue();
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
     const recognition = new SR();
     recognition.lang = "fr-FR";
@@ -197,10 +252,17 @@ export default function CaliaSceneDemo({
       setInterim(interimText);
       if (finalText.trim()) sendTurn(finalText.trim());
     };
-    recognition.onerror = () => setListening(false);
+    recognition.onerror = (e: any) => {
+      setListening(false);
+      if (e?.error && e.error !== "no-speech" && e.error !== "aborted") setError(speechErrorMessage(e.error));
+    };
     recognition.onend = () => setListening(false);
     recognitionRef.current = recognition;
-    recognition.start();
+    try {
+      recognition.start();
+    } catch {
+      setError(speechErrorMessage("default"));
+    }
   };
 
   const stopListening = () => {
@@ -209,6 +271,7 @@ export default function CaliaSceneDemo({
   };
 
   const start = () => {
+    playModeProfCue();
     setIsRunning(true);
     setClasseActive(true);
     historyRef.current = [];
