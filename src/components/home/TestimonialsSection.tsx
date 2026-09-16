@@ -4,14 +4,24 @@ import type { ReviewRatingOverride } from "@/lib/reviewRatingOverride";
 const TP_GREEN = "#00b67a";
 const TP_GREY = "#dcdce6";
 
-/** Échelle de couleur officielle Trustpilot (TrustScore) : le badge/étoiles
- * changent de teinte selon la note, pas juste vert partout. */
+/** Échelle officielle Trustpilot (TrustScore) : 5 paliers, chacun avec sa
+ * propre couleur ET son propre libellé — jamais juste "Excellent" partout,
+ * sinon un 3,7 (palier "Très bien") s'affiche comme un 4,8 (palier
+ * "Excellent"), ce qui ne correspond plus à la vraie fiche Trustpilot. */
 function ratingColor(rating: number): string {
   if (rating >= 4.5) return "#00b67a"; // Excellent
-  if (rating >= 3.5) return "#73cf11"; // Great
-  if (rating >= 2.5) return "#ffce00"; // Average
-  if (rating >= 1.5) return "#ff8622"; // Poor
-  return "#ff3722"; // Bad
+  if (rating >= 4.0) return "#73cf11"; // Très bien
+  if (rating >= 3.0) return "#ffce00"; // Moyen — ex: 3,7 (vérifié sur la vraie fiche Trustpilot)
+  if (rating >= 2.0) return "#ff8622"; // Médiocre
+  return "#ff3722"; // Mauvais
+}
+
+function ratingLabel(rating: number): string {
+  if (rating >= 4.5) return "Excellent";
+  if (rating >= 4.0) return "Très bien";
+  if (rating >= 3.0) return "Moyen";
+  if (rating >= 2.0) return "Médiocre";
+  return "Mauvais";
 }
 
 function TpStar({ filled, color, size = 28 }: { filled: boolean; color: string; size?: number }) {
@@ -72,21 +82,28 @@ export default function TestimonialsSection({
   const badgeColor = avgRating ? ratingColor(avgRating) : TP_GREEN;
 
   if (compact) {
-    const label = avgRating && avgRating < 3.5 ? "Bien noté" : "Excellent";
+    const label = ratingLabel(avgRating ?? 5);
     return (
+      // Le survol (transform) et le flou (backdrop-blur) doivent rester sur
+      // deux éléments distincts : les combiner sur le même casse le rendu du
+      // flou pendant l'animation (bug WebKit connu, voir GlassButton.tsx).
       <a
         href="https://fr.trustpilot.com/review/educalcul.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex flex-wrap items-center justify-center gap-4 px-9 py-6 rounded-3xl backdrop-blur-[24px] backdrop-saturate-[1.4] transition-all hover:-translate-y-[2px]"
-        style={{ background: "rgba(255,255,255,0.85)", border: "1px solid rgba(197,161,72,0.22)", boxShadow: "0 4px 24px rgba(15,30,58,0.06)" }}
+        className="inline-block transition-transform duration-300 hover:-translate-y-[2px]"
       >
-        <span className="text-lg font-bold" style={{ color: "#191919" }}>{label}</span>
-        <TpStars rating={avgRating ?? 5} size={30} />
-        {avgRating !== null && (
-          <span className="text-base" style={{ color: "#666" }}>{displayCount.toLocaleString("fr-FR")} avis sur</span>
-        )}
-        <TrustpilotLogo size={26} />
+        <span
+          className="inline-flex flex-wrap items-center justify-center gap-4 px-9 py-6 rounded-3xl backdrop-blur-[24px] backdrop-saturate-[1.4]"
+          style={{ background: "rgba(255,255,255,0.85)", border: "1px solid rgba(197,161,72,0.22)", boxShadow: "0 4px 24px rgba(15,30,58,0.06)" }}
+        >
+          <span className="text-lg font-bold" style={{ color: "#191919" }}>{label}</span>
+          <TpStars rating={avgRating ?? 5} size={30} />
+          {avgRating !== null && (
+            <span className="text-base" style={{ color: "#666" }}>{displayCount.toLocaleString("fr-FR")} avis sur</span>
+          )}
+          <TrustpilotLogo size={26} />
+        </span>
       </a>
     );
   }
@@ -118,10 +135,14 @@ export default function TestimonialsSection({
           href="https://fr.trustpilot.com/review/educalcul.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-bold px-5 py-2.5 rounded-full backdrop-blur-[24px] backdrop-saturate-[1.4] transition-all hover:-translate-y-[2px] hover:shadow-md active:scale-[0.98]"
-          style={{ background: "rgba(0,182,122,0.85)", color: "#fff" }}
+          className="inline-block transition-transform duration-300 hover:-translate-y-[2px] active:scale-[0.98]"
         >
-          Laisser un avis
+          <span
+            className="block text-sm font-bold px-5 py-2.5 rounded-full backdrop-blur-[24px] backdrop-saturate-[1.4] transition-shadow hover:shadow-md"
+            style={{ background: "rgba(0,182,122,0.9)", color: "#fff" }}
+          >
+            Laisser un avis
+          </span>
         </a>
       </div>
 
