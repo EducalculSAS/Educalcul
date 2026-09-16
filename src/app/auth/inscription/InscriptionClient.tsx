@@ -414,15 +414,10 @@ export default function Inscription() {
               <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>ou s'inscrire avec</span>
               <div className="flex-1 h-px" style={{ background: "rgba(197,161,72,0.15)" }} />
             </div>
-            <button
-              type="button"
-              onClick={handleGoogleLogin}
-              className="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-xl font-semibold text-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
-              style={{ background: "#fff", border: "1.5px solid #e2e8f0", color: "var(--greek-blue)", boxShadow: "0 2px 8px rgba(0,0,0,0.06)" }}
-            >
+            <GlassButton onClick={handleGoogleLogin} variant="outline" fullWidth>
               <GoogleIcon />
               S'inscrire avec Google
-            </button>
+            </GlassButton>
           </>
         )}
       </div>

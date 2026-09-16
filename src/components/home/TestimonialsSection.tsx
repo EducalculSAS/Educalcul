@@ -78,8 +78,8 @@ export default function TestimonialsSection({
         href="https://fr.trustpilot.com/review/educalcul.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex flex-wrap items-center justify-center gap-4 px-9 py-6 rounded-3xl transition-all hover:-translate-y-[2px]"
-        style={{ background: "#fff", border: "1px solid rgba(197,161,72,0.22)", boxShadow: "0 4px 24px rgba(15,30,58,0.06)" }}
+        className="inline-flex flex-wrap items-center justify-center gap-4 px-9 py-6 rounded-3xl backdrop-blur-[24px] backdrop-saturate-[1.4] transition-all hover:-translate-y-[2px]"
+        style={{ background: "rgba(255,255,255,0.85)", border: "1px solid rgba(197,161,72,0.22)", boxShadow: "0 4px 24px rgba(15,30,58,0.06)" }}
       >
         <span className="text-lg font-bold" style={{ color: "#191919" }}>{label}</span>
         <TpStars rating={avgRating ?? 5} size={30} />
@@ -94,8 +94,8 @@ export default function TestimonialsSection({
   return (
     <div>
       <div
-        className="rounded-2xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-between gap-6"
-        style={{ background: "#fff", border: "1px solid rgba(197,161,72,0.22)", boxShadow: "0 2px 16px rgba(15,30,58,0.05)" }}
+        className="rounded-2xl p-6 mb-8 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-[24px] backdrop-saturate-[1.4]"
+        style={{ background: "rgba(255,255,255,0.85)", border: "1px solid rgba(197,161,72,0.22)", boxShadow: "0 2px 16px rgba(15,30,58,0.05)" }}
       >
         <div className="flex flex-col items-center sm:items-start gap-2">
           <TrustpilotLogo size={26} />
@@ -118,8 +118,8 @@ export default function TestimonialsSection({
           href="https://fr.trustpilot.com/review/educalcul.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-sm font-bold px-5 py-2.5 rounded-full transition-all hover:-translate-y-[2px] hover:shadow-md active:scale-[0.98]"
-          style={{ background: TP_GREEN, color: "#fff" }}
+          className="text-sm font-bold px-5 py-2.5 rounded-full backdrop-blur-[24px] backdrop-saturate-[1.4] transition-all hover:-translate-y-[2px] hover:shadow-md active:scale-[0.98]"
+          style={{ background: "rgba(0,182,122,0.85)", color: "#fff" }}
         >
           Laisser un avis
         </a>

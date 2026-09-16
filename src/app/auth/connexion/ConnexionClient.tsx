@@ -207,19 +207,6 @@ export default function ConnexionClient() {
         className="rounded-3xl p-8"
         style={{ background: "#fff", boxShadow: "0 8px 48px rgba(15,30,58,0.10)", border: "1px solid rgba(197,161,72,0.18)" }}
       >
-        {/* Bouton Google */}
-        <GlassButton onClick={handleGoogleLogin} variant="outline" fullWidth className="mb-6">
-          <GoogleIcon />
-          Continuer avec Google
-        </GlassButton>
-
-        {/* Séparateur */}
-        <div className="flex items-center gap-3 mb-6">
-          <div className="flex-1 h-px" style={{ background: "rgba(197,161,72,0.15)" }} />
-          <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>ou avec email</span>
-          <div className="flex-1 h-px" style={{ background: "rgba(197,161,72,0.15)" }} />
-        </div>
-
         {error && (
           <div className="flex items-start gap-2 px-4 py-3 mb-5 rounded-xl text-sm" style={{ background: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)", color: "#dc2626" }}>
             <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
@@ -296,6 +283,19 @@ export default function ConnexionClient() {
             )}
           </GlassButton>
         </form>
+
+        {/* Séparateur */}
+        <div className="flex items-center gap-3 my-6">
+          <div className="flex-1 h-px" style={{ background: "rgba(197,161,72,0.15)" }} />
+          <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>ou</span>
+          <div className="flex-1 h-px" style={{ background: "rgba(197,161,72,0.15)" }} />
+        </div>
+
+        {/* Bouton Google */}
+        <GlassButton onClick={handleGoogleLogin} variant="outline" fullWidth>
+          <GoogleIcon />
+          Continuer avec Google
+        </GlassButton>
       </div>
 
       {/* Footer */}
