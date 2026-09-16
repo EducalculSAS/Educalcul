@@ -497,7 +497,7 @@ export default function AITutor() {
                     <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0" />
                     <div className="px-3.5 py-2.5 rounded-2xl" style={{ background: "rgba(255,255,255,0.07)" }}>
                       <span className="flex gap-1 items-center h-3.5">
-                        {[0, 1, 2].map(j => <span key={j} className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: "rgba(197,161,72,0.7)", animationDelay: `${j * 150}ms` }} />)}
+                        {[0, 1, 2].map(j => <span key={j} className="w-1.5 h-1.5 rounded-full animate-typing-dot" style={{ background: "rgba(197,161,72,0.7)", animationDelay: `${j * 150}ms` }} />)}
                       </span>
                     </div>
                   </div>

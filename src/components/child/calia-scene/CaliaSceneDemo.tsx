@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { Wand2, X, Mic, MicOff, Loader2, Send } from "lucide-react";
+import { X, Mic, MicOff, Loader2, Send } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { getMyProfile } from "@/lib/updateMyProfile";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -266,19 +266,20 @@ export default function CaliaSceneDemo({
     recognition.maxAlternatives = 1;
     recognition.onstart = () => { setListening(true); setInterim(""); };
     recognition.onresult = (e: any) => {
-      // Barge-in : des que l'eleve recommence a parler, on coupe la voix de
-      // Calia en cours — interruptible des le premier mot, pas seulement
-      // entre deux tours.
-      if (audioRef.current && !audioRef.current.paused) {
-        audioRef.current.pause();
-        setSpeaking(false);
-      }
       let finalText = "";
       let interimText = "";
       for (let i = e.resultIndex; i < e.results.length; i++) {
         const chunk = e.results[i][0].transcript;
         if (e.results[i].isFinal) finalText += chunk;
         else interimText += chunk;
+      }
+      // Barge-in : coupe la voix de Calia des qu'un vrai debut de mot est
+      // reconnu — pas sur n'importe quel bruit (un souffle/toux produit
+      // souvent un onresult avec un texte quasi vide, ce qui coupait Calia
+      // en permanence sans que l'eleve ait dit quoi que ce soit).
+      if ((finalText + interimText).trim().length >= 2 && audioRef.current && !audioRef.current.paused) {
+        audioRef.current.pause();
+        setSpeaking(false);
       }
       setInterim(interimText);
       if (finalText.trim()) sendTurn(finalText.trim());
@@ -350,13 +351,18 @@ export default function CaliaSceneDemo({
         }
       `}</style>
 
-      <GlassIconButton
-        icon={Wand2}
-        color="gold"
-        size="sm"
-        aria-label={isRunning ? "Arrêter Calia en classe" : "Lancer Calia en classe (admin)"}
+      {/* Mini variante de l'avatar Calia (meme recette que le cluster bas-
+          droite : cercle navy + logo + liseré) plutot qu'une icone
+          generique — identifie immediatement "lancer Calia" au survol. */}
+      <button
+        type="button"
         onClick={isRunning ? stop : start}
-      />
+        aria-label={isRunning ? "Arrêter Calia en classe" : "Lancer Calia en classe (admin)"}
+        className="relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0"
+        style={{ background: "var(--greek-blue)", border: `2px solid ${isRunning ? "#ef4444" : "var(--greek-gold)"}` }}
+      >
+        <Image src="/logoAI.png" alt="Calia" width={18} height={18} className="object-contain" />
+      </button>
 
       {isRunning && mounted && createPortal(
         <>

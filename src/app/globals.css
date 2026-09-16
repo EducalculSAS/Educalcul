@@ -585,6 +585,25 @@ main,
   animation: bounce-slow 2s ease-in-out infinite;
 }
 
+/* Indicateur "en train d'écrire" — amplitude réduite et fondu, contrairement
+   au bounce Tailwind par défaut (trop ample pour des points de 6px, donne
+   une impression de "voler" au lieu de taper). */
+@keyframes typing-dot {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  30% {
+    transform: translateY(-3px);
+    opacity: 1;
+  }
+}
+.animate-typing-dot {
+  animation: typing-dot 1.1s ease-in-out infinite;
+}
+
 /* Footer nav — translate-x comme le menu déroulant */
 .footer-nav-link {
   transition:
