@@ -9,6 +9,7 @@ import {
   isValidUUID,
   validateString,
   validatePassword,
+  validateUsername,
 } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
@@ -89,6 +90,7 @@ export async function POST(request: Request) {
       status,
       gradeLevel,
       childAge,
+      username,
     } = body;
 
     // ✓ SECURITY: Input validation
@@ -118,6 +120,28 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid role" }, { status: 400 });
     }
 
+    // ✓ La table "users" a une contrainte CHECK exigeant un child_username
+    // non vide pour tout role="child" — sans ça, l'insertion échoue après
+    // coup (une fois le compte auth déjà créé).
+    let validatedUsername: string | null = null;
+    if (role === "child") {
+      validatedUsername = validateUsername(username);
+      if (!validatedUsername) {
+        return NextResponse.json(
+          { error: "Nom d'utilisateur invalide (3-50 caractères, lettres/chiffres/_/-)" },
+          { status: 400 },
+        );
+      }
+      const { data: taken } = await supabaseAdmin
+        .from("users")
+        .select("id")
+        .eq("child_username", validatedUsername)
+        .maybeSingle();
+      if (taken) {
+        return NextResponse.json({ error: "Ce nom d'utilisateur est déjà pris." }, { status: 409 });
+      }
+    }
+
     // Create auth user
     const { data: authData, error: authError } =
       await supabaseAdmin.auth.admin.createUser({
@@ -135,10 +159,11 @@ export async function POST(request: Request) {
 
     if (authError) {
       console.error("[admin-users-post] Auth error:", authError);
-      return NextResponse.json(
-        { error: "Failed to create user" },
-        { status: 400 },
-      );
+      const message =
+        (authError as any)?.code === "email_exists"
+          ? "Cet email est déjà utilisé par un compte existant."
+          : "Failed to create user";
+      return NextResponse.json({ error: message }, { status: 400 });
     }
 
     if (!authData.user) {
@@ -168,6 +193,7 @@ export async function POST(request: Request) {
           email,
           grade_level: gradeLevel,
           child_age: childAge ? String(childAge) : null,
+          child_username: validatedUsername,
         })
         .eq("auth_id", authId);
 
@@ -182,9 +208,19 @@ export async function POST(request: Request) {
         email,
         grade_level: gradeLevel,
         child_age: childAge ? String(childAge) : null,
+        child_username: validatedUsername,
       });
 
-      if (insertError) throw insertError;
+      if (insertError) {
+        // Le compte auth a été créé mais la ligne "users" a échoué : on
+        // annule la création auth pour ne pas laisser un compte orphelin
+        // qui bloquerait toute nouvelle tentative sur le même email
+        // (AuthApiError "email_exists" sans qu'aucun profil n'existe).
+        await supabaseAdmin.auth.admin.deleteUser(authId).catch((e) =>
+          console.error("[admin-users-post] Rollback auth user failed:", e?.message),
+        );
+        throw insertError;
+      }
     }
 
     // ✓ SECURITY: Log admin action

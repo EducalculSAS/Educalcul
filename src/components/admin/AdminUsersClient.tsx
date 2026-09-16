@@ -374,7 +374,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
 
   // Create
   const [showFormModal, setShowFormModal] = useState(false);
-  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "" });
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "", username: "" });
   const [showFormPassword, setShowFormPassword] = useState(false);
 
   // Ban
@@ -443,6 +443,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
     setSubmitting(true);
     try {
       const body: any = { userId: currentAuthId, firstName: form.firstName, lastName: form.lastName, email: form.email, role: form.role, status: form.status, gradeLevel: form.gradeLevel, password: form.password };
+      if (form.role === "child") body.username = form.username;
       const res = await fetch("/api/admin/users", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       const result = await res.json();
       if (!res.ok) throw new Error(result.error || "Erreur");
@@ -511,7 +512,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
             <GlassButton
               size="sm"
               variant="navy"
-              onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "" }); setShowFormModal(true); }}
+              onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: "", username: "" }); setShowFormModal(true); }}
             >
               <Plus size={18} /> <span className="hidden sm:inline">Nouvel Utilisateur</span><span className="sm:hidden">Nouveau</span>
             </GlassButton>
@@ -706,6 +707,11 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
                   </select>
                 </div>
               </div>
+              {form.role === "child" && (
+                <div><label className={labelCls}>Nom d'utilisateur (élève)</label>
+                  <input required value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} className={inputCls} placeholder="ex: leo_dupont" />
+                </div>
+              )}
               <div className="flex justify-end gap-3 pt-2">
                 <GlassButton size="sm" variant="ghost" onClick={() => setShowFormModal(false)}>Annuler</GlassButton>
                 <GlassButton
