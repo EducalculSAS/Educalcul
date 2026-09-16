@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
-import { X, Mic, MicOff, Send, Pencil, GripVertical, Keyboard, Brush } from "lucide-react";
+import { X, Mic, MicOff, Send, Pencil, GripVertical, Keyboard, Brush, Lock } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import DrawingCanvas from "@/components/DrawingCanvas";
-import { getMyProfile } from "@/lib/updateMyProfile";
+import { useSubscription } from "@/lib/useSubscription";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { compileCourseBlock } from "@/lib/ai/compiler";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -80,9 +80,11 @@ export default function CaliaSceneDemo({
    * jamais y faire passer l'eleve. */
   onAdvanceLesson?: () => void;
 }) {
-  // Gate admin-only pour l'instant — retirer cette condition (et isAdmin)
-  // pour ouvrir la fonctionnalité à tous une fois le ressenti validé.
-  const [isAdmin, setIsAdmin] = useState(false);
+  // "Calia en classe" est un argument de vente du plan Family — reservee
+  // aux comptes (ou enfants d'un parent) dont l'abonnement inclut
+  // calia_classe (voir hasCaliaClasseAccess.ts / subscription_plans.features).
+  const sub = useSubscription();
+  const caliaClasseAllowed = sub.features.calia_classe;
   const { setClasseActive } = useAITutor();
 
   const [isRunning, setIsRunning] = useState(false);
@@ -143,12 +145,6 @@ export default function CaliaSceneDemo({
   const [clusterOffset, setClusterOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    getMyProfile<{ role?: string }>().then((profile) => {
-      if (profile?.role === "admin") setIsAdmin(true);
-    });
-  }, []);
 
   useEffect(() => {
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -541,7 +537,27 @@ export default function CaliaSceneDemo({
     sendTurn(text);
   };
 
-  if (!isAdmin) return null;
+  if (sub.loading) return null;
+
+  if (!caliaClasseAllowed) {
+    return (
+      <a
+        href="/parent/subscription"
+        title="Calia en classe — l'IA qui enseigne à l'oral, réservée au plan Family"
+        aria-label="Calia en classe verrouillée — passer au plan Family"
+        className="relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0"
+        style={{ background: "var(--greek-blue)", border: "2px solid rgba(197,161,72,0.4)", opacity: 0.6 }}
+      >
+        <Image src="/logoAI.png" alt="Calia" width={18} height={18} className="object-contain" />
+        <span
+          className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center"
+          style={{ background: "var(--greek-gold)" }}
+        >
+          <Lock className="w-2.5 h-2.5" style={{ color: "var(--greek-blue)" }} />
+        </span>
+      </a>
+    );
+  }
 
   return (
     <>
@@ -579,7 +595,7 @@ export default function CaliaSceneDemo({
       <button
         type="button"
         onClick={isRunning ? stop : start}
-        aria-label={isRunning ? "Arrêter Calia en classe" : "Lancer Calia en classe (admin)"}
+        aria-label={isRunning ? "Arrêter Calia en classe" : "Lancer Calia en classe"}
         className="relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0"
         style={{ background: "var(--greek-blue)", border: `2px solid ${isRunning ? "#ef4444" : "var(--greek-gold)"}` }}
       >

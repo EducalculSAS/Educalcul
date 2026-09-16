@@ -649,7 +649,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
             />
           </div>
 
-          {/* Démo Calia P0 (admin uniquement pour l'instant) */}
+          {/* Calia en classe — plan Family (verrouillee/upsell sinon, voir CaliaSceneDemo) */}
           <CaliaSceneDemo contentRef={contentRef} courseContext={caliaCourseContext} onAdvanceLesson={advanceLessonForCalia} />
 
           {/* Cercle progression SVG */}

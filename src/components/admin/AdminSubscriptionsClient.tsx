@@ -56,7 +56,7 @@ const defaultPlanForm = {
   duration_months: "", trial_days: "", promo_description: "", is_active: true, sort_order: 0,
   feature_max_children: 1, feature_access_level_exercises: "all",
   feature_detailed_reports: false, feature_priority_support: false,
-  feature_custom_avatars: false,
+  feature_custom_avatars: false, feature_calia_classe: false,
   feature_ai_access: "limited" as "none" | "limited" | "unlimited",
   feature_ai_daily_limit: 10,
   feature_minigames_daily_limit: 3,
@@ -153,6 +153,7 @@ export default function AdminSubscriptionsClient({
         feature_detailed_reports: !!f.detailed_reports,
         feature_priority_support: !!f.priority_support,
         feature_custom_avatars: !!f.custom_avatars,
+        feature_calia_classe: !!f.calia_classe,
         feature_ai_access: (f.ai_access || "limited") as "none" | "limited" | "unlimited",
         feature_ai_daily_limit: f.ai_daily_limit ?? 10,
         feature_minigames_daily_limit: f.minigames_daily_limit ?? 3,
@@ -174,6 +175,7 @@ export default function AdminSubscriptionsClient({
       detailed_reports: planForm.feature_detailed_reports,
       priority_support: planForm.feature_priority_support,
       custom_avatars: planForm.feature_custom_avatars,
+      calia_classe: planForm.feature_calia_classe,
       ai_access: planForm.feature_ai_access,
       ai_daily_limit: planForm.feature_ai_access === "unlimited" ? -1 : Number(planForm.feature_ai_daily_limit),
       minigames_daily_limit: Number(planForm.feature_minigames_daily_limit),
@@ -889,6 +891,7 @@ export default function AdminSubscriptionsClient({
                       { key: "feature_priority_support", label: "Support prioritaire" },
                       { key: "feature_custom_avatars",   label: "Avatars personnalisés" },
                       { key: "feature_minigames_premium_content", label: "Mini-jeux — contenu premium (5 questions au lieu de 2)" },
+                      { key: "feature_calia_classe", label: "Calia en classe (IA vocale qui enseigne à l'oral)" },
                     ].map(({ key, label }) => (
                       <label key={key} className="flex items-center gap-3 p-3 border border-[rgba(197,161,72,0.25)] rounded-xl cursor-pointer hover:border-[var(--greek-blue)] transition-colors">
                         <input type="checkbox" checked={(planForm as Record<string, unknown>)[key] as boolean} onChange={e => setPlanForm({...planForm, [key]: e.target.checked})} className="w-4 h-4 text-[var(--greek-blue)] rounded" />

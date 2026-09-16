@@ -11,6 +11,8 @@ export interface PlanFeatures {
   offline_access: boolean;
   custom_avatars: boolean;
   access_level_exercises: "basic" | "intermediate" | "advanced" | "all";
+  /** IA vocale "Calia en classe" (mode prof) — reservee au plan Family. */
+  calia_classe: boolean;
 }
 
 export interface SubscriptionInfo {
@@ -34,6 +36,7 @@ const FREE_FEATURES: PlanFeatures = {
   offline_access: false,
   custom_avatars: false,
   access_level_exercises: "basic",
+  calia_classe: false,
 };
 
 const DEFAULT_INFO = {

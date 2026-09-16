@@ -18,6 +18,7 @@ const FREE_FEATURES = {
   offline_access: false,
   custom_avatars: false,
   access_level_exercises: "basic",
+  calia_classe: false,
 };
 
 const ADMIN_FEATURES = {
@@ -29,6 +30,7 @@ const ADMIN_FEATURES = {
   offline_access: true,
   custom_avatars: true,
   access_level_exercises: "all",
+  calia_classe: true,
 };
 
 export async function GET(req: Request) {

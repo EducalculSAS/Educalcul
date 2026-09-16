@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import {
   BookOpen, Brain, Trophy, Calculator,
@@ -53,14 +53,7 @@ const TOUR_STEPS = [
   },
 ];
 
-// Placeholder — sera remplacé par les vraies questions selon le niveau
-const QUIZ_PLACEHOLDER: Record<string, { question: string; options: string[]; correct: number }[]> = {
-  default: [
-    { question: "Combien font 3 × 4 ?", options: ["10", "12", "14", "7"], correct: 1 },
-    { question: "Quel est le résultat de 20 ÷ 4 ?", options: ["4", "6", "5", "8"], correct: 2 },
-    { question: "Quelle est la moitié de 18 ?", options: ["8", "10", "9", "7"], correct: 2 },
-  ],
-};
+interface PlacementQuestion { id: number; question: string; options: string[] }
 
 const SCORE_MESSAGES = [
   { min: 0, max: 33, emoji: "", title: "Bon début !", msg: "Pas d'inquiétude, c'est pour ça qu'on est là ! Les cours vont t'aider à progresser rapidement." },
@@ -71,22 +64,51 @@ const SCORE_MESSAGES = [
 export default function ChildOnboarding({ firstName, authId, gradeLevel, onComplete }: Props) {
   const [step, setStep] = useState<"welcome" | "tour" | "quiz" | "result">("welcome");
   const [tourIndex, setTourIndex] = useState(0);
-  const [answers, setAnswers] = useState<number[]>([]);
+  const [questions, setQuestions] = useState<PlacementQuestion[]>([]);
+  const [questionsLoaded, setQuestionsLoaded] = useState(false);
+  const [answers, setAnswers] = useState<{ id: number; answerIndex: number }[]>([]);
   const [quizIndex, setQuizIndex] = useState(0);
+  const [scorePercent, setScorePercent] = useState(0);
+  const [submitting, setSubmitting] = useState(false);
   const [saving, setSaving] = useState(false);
 
-  const questions = QUIZ_PLACEHOLDER["default"];
-  const scorePercent = answers.length > 0
-    ? Math.round((answers.filter((a, i) => a === questions[i]?.correct).length / questions.length) * 100)
-    : 0;
+  useEffect(() => {
+    fetch(`/api/placement-quiz?gradeLevel=${encodeURIComponent(gradeLevel)}`)
+      .then((res) => (res.ok ? res.json() : { questions: [] }))
+      .then((data) => setQuestions(data.questions || []))
+      .catch(() => setQuestions([]))
+      .finally(() => setQuestionsLoaded(true));
+  }, [gradeLevel]);
+
   const scoreMsg = SCORE_MESSAGES.find(m => scorePercent >= m.min && scorePercent <= m.max) ?? SCORE_MESSAGES[0];
 
-  const handleAnswer = (idx: number) => {
-    const newAnswers = [...answers, idx];
+  const startQuizOrSkip = () => {
+    if (questionsLoaded && questions.length === 0) {
+      setScorePercent(0);
+      setStep("result");
+    } else {
+      setStep("quiz");
+    }
+  };
+
+  const handleAnswer = async (idx: number) => {
+    const newAnswers = [...answers, { id: questions[quizIndex].id, answerIndex: idx }];
     setAnswers(newAnswers);
     if (quizIndex < questions.length - 1) {
       setQuizIndex(q => q + 1);
-    } else {
+      return;
+    }
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/placement-quiz", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ answers: newAnswers }),
+      });
+      const data = await res.json().catch(() => ({}));
+      setScorePercent(res.ok ? data.scorePercent : 0);
+    } finally {
+      setSubmitting(false);
       setStep("result");
     }
   };
@@ -172,7 +194,7 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
                   Suivant <ChevronRight className="w-4 h-4" />
                 </button>
               ) : (
-                <GlassButton onClick={() => setStep("quiz")} variant="navy" size="sm">
+                <GlassButton onClick={startQuizOrSkip} variant="navy" size="sm" disabled={!questionsLoaded}>
                   Mini-test ! <ChevronRight className="w-4 h-4" />
                 </GlassButton>
               )}
@@ -203,7 +225,8 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
                   <button
                     key={i}
                     onClick={() => handleAnswer(i)}
-                    className="py-4 px-4 bg-gray-50 border border-[rgba(197,161,72,0.25)] rounded-xl font-semibold text-gray-700 hover:bg-[var(--greek-blue)] hover:text-white hover:border-[var(--greek-blue)] transition-all text-sm shadow-sm"
+                    disabled={submitting}
+                    className="py-4 px-4 bg-gray-50 border border-[rgba(197,161,72,0.25)] rounded-xl font-semibold text-gray-700 hover:bg-[var(--greek-blue)] hover:text-white hover:border-[var(--greek-blue)] transition-all text-sm shadow-sm disabled:opacity-50"
                   >
                     {opt}
                   </button>
@@ -221,13 +244,19 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
         {step === "result" && (
           <div className="flex flex-col items-center justify-center px-8 py-10 text-center gap-5 flex-1">
             <img src="/logo.png" alt="Educalcul" className="w-16 h-16 object-contain mx-auto" />
-            <div>
+            {questions.length > 0 ? (
+              <div>
+                <h3 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-2">
+                  {scoreMsg.title}
+                </h3>
+                <div className="text-3xl font-black text-[var(--greek-gold)] mb-3">{scorePercent}%</div>
+                <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">{scoreMsg.msg}</p>
+              </div>
+            ) : (
               <h3 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-2">
-                {scoreMsg.title}
+                C'est prêt !
               </h3>
-              <div className="text-3xl font-black text-[var(--greek-gold)] mb-3">{scorePercent}%</div>
-              <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">{scoreMsg.msg}</p>
-            </div>
+            )}
             <div className="bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-2xl p-4 max-w-xs text-sm text-gray-700">
               <p className="font-bold text-[var(--greek-blue)] mb-1">Pour commencer</p>
               <p>Va dans <strong>Mes Cours</strong> et commence par la première leçon de ton niveau !</p>

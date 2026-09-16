@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
-import { requireRole } from "@/lib/apiAuth";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { hasCaliaClasseAccess } from "@/lib/checkSubscription";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 // Voix naturelle pour "Calia en classe" — Azure Speech, region France
 // Central (RGPD, DPA), tier gratuit F0 (500k caracteres/mois). Pas open
 // source (contrainte relachee au profit du realisme + zero infra a gerer,
-// decision Ruben) — reserve aux admins pour l'instant, comme le reste de
-// "Calia en classe". Liste blanche (jamais le parametre client tel quel
+// decision Ruben) — reserve au plan Family (calia_classe), voir
+// hasCaliaClasseAccess. Liste blanche (jamais le parametre client tel quel
 // dans le SSML) : evite l'injection XML et les noms de voix invalides.
 const DEFAULT_VOICE = "fr-FR-VivienneMultilingualNeural";
 const ALLOWED_VOICES: Record<string, "Female" | "Male"> = {
@@ -47,8 +48,11 @@ function escapeSsml(text: string): string {
 // et de streamer/jouer au fur et a mesure, au lieu d'attendre tout le blob.
 export async function GET(req: Request) {
   try {
-    const me = await requireRole(req, ["admin"]);
+    const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!(await hasCaliaClasseAccess(me.authId))) {
+      return NextResponse.json({ error: "Calia en classe necessite le plan Family." }, { status: 403 });
+    }
 
     const cfg = RATE_LIMITS["calia:tts"];
     const rl = await rateLimitWithBackoff(`calia:tts:${me.authId}`, cfg.maxAttempts, cfg.windowMs);

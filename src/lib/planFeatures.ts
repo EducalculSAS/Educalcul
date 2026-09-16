@@ -9,6 +9,7 @@ export const FEATURE_ROWS: { key: string; label: string; tip?: string }[] = [
   { key: "detailed_reports", label: "Rapports hebdomadaires", tip: "Email récapitulatif chaque semaine" },
   { key: "custom_avatars", label: "Avatars & cosmétiques", tip: "Contours et couleurs de nom exclusifs" },
   { key: "priority_support", label: "Support prioritaire", tip: "Réponse garantie sous 4h en semaine" },
+  { key: "calia_classe", label: "Calia en classe", tip: "L'IA enseigne à l'oral, comme un vrai prof, directement dans le cours" },
 ];
 
 export function formatVal(key: string, val: boolean | number | string | null): { label: string; included: boolean } {

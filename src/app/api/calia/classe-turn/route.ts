@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { requireRole } from "@/lib/apiAuth";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { hasCaliaClasseAccess } from "@/lib/checkSubscription";
 import { generateStructuredContentWithSchema } from "@/lib/llm";
 import { caliaClasseTurnSchema } from "@/lib/ai/schemas";
 import { SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
@@ -36,8 +37,8 @@ const TONE_GUIDANCE: Record<ToneBucket, string> = {
 - Tu peux etre plus direct/concis, l'eleve n'a pas besoin d'etre menage sur la forme`,
 };
 
-// Réservé aux admins pour l'instant, comme la démo P0 (CaliaSceneDemo.tsx) —
-// à ouvrir aux élèves une fois le ressenti validé.
+// Réservé au plan Family (calia_classe), comme le reste de "Calia en classe"
+// (CaliaSceneDemo.tsx) — voir hasCaliaClasseAccess.
 const SYSTEM_PROMPT = `Tu es Calia, professeure de mathematiques vocale d'Educalcul, en train de faire cours en direct a un eleve sur une lecon precise.
 
 Tu recois :
@@ -142,8 +143,11 @@ function buildCourseOutlineText(courseContext: unknown): string {
 
 export async function POST(req: Request) {
   try {
-    const me = await requireRole(req, ["admin"]);
+    const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (!(await hasCaliaClasseAccess(me.authId))) {
+      return NextResponse.json({ error: "Calia en classe necessite le plan Family." }, { status: 403 });
+    }
 
     const cfg = RATE_LIMITS["calia:classe-turn"];
     const rl = await rateLimitWithBackoff(`calia:classe-turn:${me.authId}`, cfg.maxAttempts, cfg.windowMs);

@@ -14,6 +14,7 @@ import PageLoader from "@/components/PageLoader";
 import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GradePromotionPanel from "@/components/admin/GradePromotionPanel";
+import PlacementQuizPanel from "@/components/admin/PlacementQuizPanel";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
@@ -521,6 +522,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
       />
 
       <GradePromotionPanel />
+      <PlacementQuizPanel />
 
       {/* Map */}
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-4 sm:p-6 relative z-0 overflow-hidden">

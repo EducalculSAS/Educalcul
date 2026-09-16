@@ -13,6 +13,8 @@ interface PlanFeatures {
    * de minigames_daily_limit (le nombre total de PARTIES/jour, tous jeux
    * confondus) : ce flag contrôle le CONTENU d'une partie, pas son nombre. */
   minigames_premium_content: boolean;
+  /** IA vocale "Calia en classe" (mode prof) — reservee au plan Family. */
+  calia_classe: boolean;
   [key: string]: any;
 }
 
@@ -24,6 +26,7 @@ const FREE_FEATURES: PlanFeatures = {
   access_level_exercises: "basic",
   minigames_daily_limit: 3,
   minigames_premium_content: false,
+  calia_classe: false,
 };
 
 export async function getUserFeatures(
@@ -69,6 +72,22 @@ export async function getUserFeatures(
 
   if (!plan) return FREE_FEATURES;
   return { ...FREE_FEATURES, ...plan.features };
+}
+
+/** true si ce compte peut utiliser "Calia en classe" — admin (test/demo) ou
+ * plan (le sien, ou celui de son parent si enfant) incluant calia_classe. */
+export async function hasCaliaClasseAccess(authId: string): Promise<boolean> {
+  const { data: userRow } = await supabaseAdmin
+    .from("users")
+    .select("role, parent_id")
+    .eq("auth_id", authId)
+    .maybeSingle();
+
+  if (!userRow) return false;
+  if (userRow.role === "admin") return true;
+
+  const features = await getUserFeatures(authId, userRow);
+  return !!features.calia_classe;
 }
 
 export async function checkAIAccess(authId: string): Promise<{ allowed: boolean; reason?: string; remaining: number }> {
