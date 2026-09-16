@@ -948,7 +948,10 @@ export default function AdminExercisesClient({
       />
 
       {/* Breadcrumbs */}
-      <div className="flex items-center gap-2 text-sm text-gray-600 bg-white p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto">
+      <div
+        className="flex items-center gap-2 text-sm text-gray-600 backdrop-blur-[20px] backdrop-saturate-[1.2] p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto"
+        style={{ background: "rgba(255,255,255,0.6)" }}
+      >
         <button
           onClick={() => { setCurrentFolderId(null); setSearchQuery(""); }}
           onDragOver={(e) => {
