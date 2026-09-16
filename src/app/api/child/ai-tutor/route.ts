@@ -8,13 +8,14 @@ import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { validateString } from "@/lib/validation";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { buildSupportSystemPrompt } from "@/lib/supportChatPrompt";
+import { getCaliaStudentContext } from "@/lib/calia/studentProfile";
 
 interface Message {
   role: "user" | "assistant";
   content: string;
 }
 
-function buildSystemPrompt(ctx: AITutorPageContext): string {
+function buildSystemPrompt(ctx: AITutorPageContext, studentProfileText: string): string {
   let extra = "";
 
   if (ctx.page === "cours_detail" && ctx.courseContent) {
@@ -44,6 +45,10 @@ RÈGLES ABSOLUES:
 - N'écris JAMAIS de symbole mathématique en caractère Unicode brut (², ³, ≠, ≤, ≥, √, π...) en dehors d'un bloc $...$ : écris $x^2$ (jamais "x²"), $a \\neq 0$ (jamais "a≠0"), $\\sqrt{2}$ (jamais "√2"). Même si le passage cité contient déjà du LaTeX entre $, conserve cette notation telle quelle dans ta réponse, ne la reformule jamais en texte brut.
 - Pas de listes à puces sauf si vraiment nécessaire.
 - Ton registre : direct, clair, chaleureux. Pas de formules creuses comme "Bien sûr !" ou "Excellente question !".
+
+MÉMOIRE ÉLÈVE (partagée avec le mode "Calia en classe") :
+${studentProfileText}
+- Ne ré-explique jamais depuis zéro une notion déjà listée comme maîtrisée. Concentre-toi en priorité sur les points faibles connus. Si une méthode pédagogique marche le mieux avec cet élève, privilégie-la.
 
 CONTEXTE: L'élève travaille sur ${contextLine}.${extra}
 
@@ -113,7 +118,9 @@ export async function POST(req: Request) {
     const trimmed = lastUserMessages.slice(firstUser);
     const userTurnCount = trimmed.filter(m => m.role === "user").length;
 
-    const systemPrompt = isSupportMode ? buildSupportSystemPrompt("child", userTurnCount) : buildSystemPrompt(context);
+    const systemPrompt = isSupportMode
+      ? buildSupportSystemPrompt("child", userTurnCount)
+      : buildSystemPrompt(context, await getCaliaStudentContext(me.id));
 
     try {
       // Mode support : température basse pour un ton factuel/fiable et un

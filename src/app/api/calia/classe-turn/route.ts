@@ -3,6 +3,7 @@ import { requireRole } from "@/lib/apiAuth";
 import { generateStructuredContentWithSchema } from "@/lib/llm";
 import { caliaClasseTurnSchema } from "@/lib/ai/schemas";
 import { SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
+import { getCaliaStudentContext } from "@/lib/calia/studentProfile";
 
 type ToneBucket = "primaire" | "college" | "lycee";
 
@@ -39,10 +40,18 @@ const TONE_GUIDANCE: Record<ToneBucket, string> = {
 const SYSTEM_PROMPT = `Tu es Calia, professeure de mathematiques vocale d'Educalcul, en train de faire cours en direct a un eleve sur une lecon precise.
 
 Tu recois :
+- studentProfile : ce que tu sais deja de cet eleve d'une session precedente (prenom, stats reelles, notions deja maitrisees/fragiles, methode pedagogique qui marche le mieux avec lui, notes comportementales). C'est une memoire PARTAGEE avec le chatbot Calia normal — le meme eleve peut te parler des deux cotes.
 - courseOutline : la liste COMPLETE des lecons du cours (dans l'ordre), avec pour chacune ses mini-exercices (question/indice/reponse), et laquelle est actuellement affichee a l'ecran.
 - lessonOutline : uniquement les titres/paragraphes/figures de la lecon AFFICHEE A L'ECRAN EN CE MOMENT, chacun avec un index.
 - liveExerciseDraft (optionnel) : ce que l'eleve est en train de taper EN DIRECT dans un mini-exercice de la lecon (peut etre incomplet, l'eleve n'a pas forcement fini ni valide) — utilise-le pour commenter/encourager en temps reel si pertinent, jamais comme une reponse finale a corriger formellement.
 - l'historique de la conversation.
+
+MEMOIRE ELEVE (studentProfile) :
+- Appelle l'eleve par son prenom naturellement, sans en abuser.
+- Ne ré-explique JAMAIS depuis zero une notion listee comme deja maitrisee — un rappel rapide suffit si besoin, pas un cours complet.
+- Concentre les nouvelles questions/exercices sur les points faibles connus en priorite.
+- Si une methode pedagogique est indiquee comme celle qui marche le mieux, privilegie-la. Sinon (pas encore de methode identifiee), varie consciemment ton approche d'une session a l'autre (exemples concrets, etape par etape, questions guidees, essai-erreur, analogie) pour aider a identifier ce qui marche.
+- Les notes comportementales servent a adapter ta patience/ton rythme, jamais a les mentionner explicitement a l'eleve.
 
 CONTEXTE DU COURS ENTIER :
 - Tu CONNAIS tout le cours (toutes les lecons a venir, deja vues, et leurs mini-exercices) : tu peux en parler, annoncer la suite, proposer de passer a la lecon suivante, ou mentionner un mini-exercice par son contenu reel.
@@ -141,6 +150,7 @@ export async function POST(req: Request) {
       .join("\n");
 
     const courseOutlineText = buildCourseOutlineText(courseContext);
+    const studentProfileText = await getCaliaStudentContext(me.id);
 
     const levelFromContext =
       courseContext && typeof courseContext === "object" ? (courseContext as CourseContext).level : null;
@@ -159,7 +169,7 @@ export async function POST(req: Request) {
           .join("\n")
       : "";
 
-    const prompt = `courseOutline:\n${courseOutlineText}\n\nlessonOutline (lecon affichee a l'ecran) :\n${outlineText}\n\nliveExerciseDraft:\n${liveDraftText}\n\nHistorique recent:\n${historyText}\n\nL'eleve vient de dire: "${studentMessage.trim()}"\n\nReponds avec le JSON attendu.`;
+    const prompt = `studentProfile:\n${studentProfileText}\n\ncourseOutline:\n${courseOutlineText}\n\nlessonOutline (lecon affichee a l'ecran) :\n${outlineText}\n\nliveExerciseDraft:\n${liveDraftText}\n\nHistorique recent:\n${historyText}\n\nL'eleve vient de dire: "${studentMessage.trim()}"\n\nReponds avec le JSON attendu.`;
 
     // reasoning=false : une reponse socratique courte (1-2 phrases) n'a pas
     // besoin du mode "reasoning_effort: high" de Mistral (chaine de pensee

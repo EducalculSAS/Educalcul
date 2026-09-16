@@ -165,6 +165,17 @@ export default function CaliaSceneDemo({
   };
 
   const stop = () => {
+    // Mini rapport de fin de session (memoire pedagogique partagee avec le
+    // chatbot) — fire-and-forget, un seul appel ici (pas a chaque tour) pour
+    // ne pas retoucher la latence deja optimisee. Ignore les sessions trop
+    // courtes (ex: lancee puis coupee tout de suite, rien a en tirer).
+    if (historyRef.current.length >= 4) {
+      fetch("/api/calia/session-summary", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ history: historyRef.current }),
+      }).catch(() => {});
+    }
     sessionActiveRef.current = false;
     shouldListenRef.current = false;
     stopVolumeMonitor();

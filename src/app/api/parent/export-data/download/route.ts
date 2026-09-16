@@ -36,7 +36,7 @@ export async function GET(req: Request) {
 
     const { data: children } = await supabaseAdmin
       .from("users")
-      .select("first_name, last_name, email, child_username, grade_level, created_at")
+      .select("id, first_name, last_name, email, child_username, grade_level, created_at")
       .eq("parent_id", request.user_id)
       .eq("role", "child");
 
@@ -48,8 +48,22 @@ export async function GET(req: Request) {
           .maybeSingle()
       : { data: null };
 
+    // Profil pedagogique Calia (droit a la portabilite) — une ligne par
+    // enfant, jointe manuellement plutot que via un select imbrique pour
+    // rester simple (peu d'enfants par foyer).
+    const childrenWithProfile = await Promise.all(
+      (children || []).map(async ({ id, ...child }) => {
+        const { data: profile } = await supabaseAdmin
+          .from("calia_student_profile")
+          .select("mastered_notions, weak_notions, preferred_method, behavior_notes, last_summary, updated_at")
+          .eq("user_id", id)
+          .maybeSingle();
+        return { ...child, calia_learning_profile: profile || null };
+      }),
+    );
+
     const { auth_id: _authId, ...parentPublic } = parent || {};
-    const json = JSON.stringify({ exported_at: new Date().toISOString(), parent: parentPublic, children: children || [], subscription: subscription || null }, null, 2);
+    const json = JSON.stringify({ exported_at: new Date().toISOString(), parent: parentPublic, children: childrenWithProfile, subscription: subscription || null }, null, 2);
 
     return new NextResponse(json, {
       headers: {

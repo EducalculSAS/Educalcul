@@ -135,6 +135,26 @@ export default function AITutor() {
     return "default";
   }, [pageContext.exerciseTitle, pageContext.courseTitle, pageContext.quizTitle, isSupportMode]);
 
+  // Mini rapport de fin de session (memoire pedagogique partagee avec "Calia
+  // en classe") — un seul appel a la fermeture/reinitialisation, pas a
+  // chaque message (latence). `summarizedCountRef` evite de renvoyer deux
+  // fois le meme echange si l'eleve ouvre/ferme le chat sans rien dire de
+  // nouveau entre-temps. Jamais en mode support (rien de pedagogique a y
+  // apprendre).
+  const summarizedCountRef = useRef(0);
+  const maybeSendSessionSummary = useCallback(() => {
+    if (isSupportMode) return;
+    const current = messagesRef.current;
+    if (current.length - summarizedCountRef.current < 4) return;
+    const toSummarize = current.slice(summarizedCountRef.current);
+    summarizedCountRef.current = current.length;
+    fetch("/api/calia/session-summary", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ history: toSummarize.map((m) => ({ role: m.role, content: m.content })) }),
+    }).catch(() => {});
+  }, [isSupportMode]);
+
   // Historique persisté côté serveur (voir /api/child/ai-tutor/messages) —
   // plus de localStorage : conversation potentiellement sensible d'un enfant,
   // qui doit pouvoir être gérée/supprimée (RGPD), pas juste traîner sur
@@ -429,7 +449,7 @@ export default function AITutor() {
             )}
             <GlassIconButton
               icon={RotateCcw}
-              onClick={() => { setMessages([WELCOME]); deleteServerHistory(); }}
+              onClick={() => { maybeSendSessionSummary(); summarizedCountRef.current = 0; setMessages([WELCOME]); deleteServerHistory(); }}
               color="white"
               size="sm"
               aria-label="Nouvelle conversation"
@@ -444,7 +464,7 @@ export default function AITutor() {
             <GlassCloseButton
               variant="dark"
               size="sm"
-              onClick={() => { setOpen(false); setMinimized(false); }}
+              onClick={() => { maybeSendSessionSummary(); setOpen(false); setMinimized(false); }}
             />
           </div>
 

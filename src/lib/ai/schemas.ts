@@ -1399,3 +1399,38 @@ export function caliaClasseTurnSchema(): JsonSchemaContract {
     },
   };
 }
+
+/** Resume compact d'une session Calia (vocal ou chat), genere une seule fois
+ * en fin de session — sert a mettre a jour calia_student_profile. Tous les
+ * champs sont bornes en longueur/nombre : le profil ne doit jamais grossir
+ * sans limite (il est relu en entier a chaque tour futur). */
+export function caliaSessionSummarySchema(): JsonSchemaContract {
+  return {
+    name: "educalcul_calia_session_summary",
+    description: "Resume compact d'une session Calia pour mettre a jour le profil pedagogique de l'eleve.",
+    schema: {
+      type: "object",
+      properties: {
+        newMasteredNotions: {
+          type: "array",
+          items: { type: "string", minLength: 1, maxLength: 60 },
+          maxItems: 5,
+        },
+        newWeakNotions: {
+          type: "array",
+          items: { type: "string", minLength: 1, maxLength: 60 },
+          maxItems: 5,
+        },
+        methodUsed: {
+          type: ["string", "null"],
+          enum: ["exemples_concrets", "etape_par_etape", "questions_guidees", "essai_erreur", "analogie", null],
+        },
+        methodWorked: { type: ["boolean", "null"] },
+        behaviorNotes: { type: "string", minLength: 1, maxLength: 300 },
+        summary: { type: "string", minLength: 1, maxLength: 300 },
+      },
+      required: ["newMasteredNotions", "newWeakNotions", "methodUsed", "methodWorked", "behaviorNotes", "summary"],
+      ...noExtra,
+    },
+  };
+}
