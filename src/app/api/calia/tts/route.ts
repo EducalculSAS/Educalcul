@@ -1,9 +1,22 @@
 import { NextResponse } from "next/server";
 import { requireRole } from "@/lib/apiAuth";
 
-// Voix naturelle open source (Kyutai Pocket-TTS, modele francais) hebergee
-// sur un petit service Render (calia-tts-service/) — reserve aux admins pour
-// l'instant, comme le reste de "Calia en classe" (CaliaSceneDemo.tsx).
+// Voix naturelle pour "Calia en classe" — Azure Speech (voix neurale
+// fr-FR-VivienneMultilingualNeural), region France Central (RGPD, DPA),
+// tier gratuit F0 (500k caracteres/mois). Pas open source (contrainte
+// relachee au profit du realisme + zero infra a gerer, decision Ruben) —
+// reserve aux admins pour l'instant, comme le reste de "Calia en classe".
+const VOICE = "fr-FR-VivienneMultilingualNeural";
+
+function escapeSsml(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 export async function POST(req: Request) {
   try {
     const me = await requireRole(req, ["admin"]);
@@ -14,20 +27,34 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "text est requis" }, { status: 400 });
     }
 
-    const ttsUrl = process.env.CALIA_TTS_URL;
-    const secret = process.env.CALIA_TTS_SECRET;
-    if (!ttsUrl || !secret) {
+    const key = process.env.AZURE_SPEECH_KEY;
+    const region = process.env.AZURE_SPEECH_REGION;
+    if (!key || !region) {
       return NextResponse.json({ error: "Service vocal non configure" }, { status: 503 });
     }
 
-    const upstream = await fetch(`${ttsUrl}/speak`, {
+    const tokenRes = await fetch(`https://${region}.api.cognitive.microsoft.com/sts/v1.0/issueToken`, {
+      method: "POST",
+      headers: { "Ocp-Apim-Subscription-Key": key, "Content-Length": "0" },
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!tokenRes.ok) {
+      return NextResponse.json({ error: `Authentification vocale echouee (${tokenRes.status})` }, { status: 502 });
+    }
+    const token = await tokenRes.text();
+
+    const ssml = `<speak version='1.0' xml:lang='fr-FR'><voice xml:lang='fr-FR' xml:gender='Female' name='${VOICE}'>${escapeSsml(text.trim().slice(0, 400))}</voice></speak>`;
+
+    const upstream = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${secret}`,
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/ssml+xml",
+        "X-Microsoft-OutputFormat": "audio-16khz-32kbitrate-mono-mp3",
+        "User-Agent": "educalcul-calia",
       },
-      body: JSON.stringify({ text: text.trim().slice(0, 400) }),
-      signal: AbortSignal.timeout(20000),
+      body: ssml,
+      signal: AbortSignal.timeout(15000),
     });
 
     if (!upstream.ok || !upstream.body) {
@@ -36,7 +63,7 @@ export async function POST(req: Request) {
 
     return new NextResponse(upstream.body, {
       status: 200,
-      headers: { "Content-Type": "audio/wav" },
+      headers: { "Content-Type": "audio/mpeg" },
     });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
