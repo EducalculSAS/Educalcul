@@ -200,9 +200,8 @@ export default function CourseDetailClient({
       <div className="mb-6">
         <GlassButton
           onClick={() => { if (isPreview) window.close(); else router.back(); }}
-          variant="outline"
+          variant="ghost"
           size="sm"
-          rounded="xl"
         >
           <ArrowLeft className="w-4 h-4" />
           Retour
