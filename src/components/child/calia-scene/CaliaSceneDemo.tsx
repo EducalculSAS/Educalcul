@@ -75,6 +75,8 @@ export default function CaliaSceneDemo({
   const historyRef = useRef<HistoryMsg[]>([]);
   const recognitionRef = useRef<any>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const clusterRef = useRef<HTMLDivElement | null>(null);
+  const [clusterOffset, setClusterOffset] = useState({ x: 0, y: 0 });
 
   useEffect(() => setMounted(true), []);
 
@@ -177,6 +179,34 @@ export default function CaliaSceneDemo({
       setPointerRect(target.el.getBoundingClientRect());
     }
   };
+
+  // Fait glisser l'avatar (bulle + Calia + micro) depuis son coin habituel
+  // jusqu'a cote de l'element pointe, puis le fait revenir a sa place des que
+  // point_at n'est plus l'action en cours (executeAction reinitialise
+  // pointerRect a null au debut de chaque tour) — un seul `transform`
+  // anime dans les deux sens, pas de va-et-vient entre proprietes CSS
+  // differentes.
+  useEffect(() => {
+    const el = clusterRef.current;
+    if (!el) return;
+    if (!pointerRect) {
+      setClusterOffset({ x: 0, y: 0 });
+      return;
+    }
+    const w = el.offsetWidth;
+    const h = el.offsetHeight;
+    const restingLeft = window.innerWidth - 16 - w;
+    const restingTop = window.innerHeight - 88 - h;
+
+    let targetLeft = pointerRect.right + 16;
+    if (targetLeft + w > window.innerWidth - 8) targetLeft = pointerRect.left - w - 16;
+    targetLeft = Math.max(8, Math.min(targetLeft, window.innerWidth - w - 8));
+
+    let targetTop = pointerRect.top + pointerRect.height / 2 - h / 2;
+    targetTop = Math.max(8, Math.min(targetTop, window.innerHeight - h - 8));
+
+    setClusterOffset({ x: targetLeft - restingLeft, y: targetTop - restingTop });
+  }, [pointerRect]);
 
   const sendTurn = async (studentMessage: string) => {
     setLoading(true);
@@ -334,7 +364,11 @@ export default function CaliaSceneDemo({
 
           {/* Avatar + bulle — même emplacement que le bouton AITutor
               (bas-droite), masqué pendant cette session (AITutorContext). */}
-          <div className="fixed bottom-[88px] right-4 z-[70] flex flex-col items-end gap-3 max-w-[calc(100vw-2rem)]">
+          <div
+            ref={clusterRef}
+            className="fixed bottom-[88px] right-4 z-[70] flex flex-col items-end gap-3 max-w-[calc(100vw-2rem)]"
+            style={{ transform: `translate(${clusterOffset.x}px, ${clusterOffset.y}px)`, transition: "transform 0.6s ease" }}
+          >
             {(sayText || error) && (
               <div
                 className="rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg text-sm max-w-[18rem]"
