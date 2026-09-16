@@ -634,6 +634,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
 
       <div ref={mainScrollRef} className={`flex-1 overflow-y-auto p-4 md:p-8 bg-white/50 transition-opacity duration-200 ${contentVisible ? "opacity-100" : "opacity-0"}`}>
         <div className="max-w-3xl mx-auto py-4">
+        <div className="bg-[var(--greek-cream)]/30 rounded-2xl overflow-hidden p-6 border border-[var(--greek-gold)]">
           {/* Header */}
           <div className="flex justify-between items-start mb-8">
             <div className="flex items-center gap-3">
@@ -920,6 +921,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
               )}
             </div>
           )}
+        </div>
 
           {gradingError && (
             <div

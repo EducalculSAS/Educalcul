@@ -185,6 +185,71 @@ export default function ExerciseViewer({
   const pages = exercise.content_json || [];
   const { pageContext, setPageContext } = useAITutor();
 
+  // Une page = une question : le contenu est authored/généré avec plusieurs
+  // blocs-question regroupés dans une seule Page (voir compiler.ts), donc on
+  // aplatit tous les blocs et on les redécoupe côté client en un écran par
+  // question, avec la consigne (blocs "text"/"image" en tête) sur son propre
+  // écran — sur deux si elle est longue. Purement présentationnel : la
+  // correction (validateAllAnswers) continue d'itérer `pages`/blocs bruts.
+  const screens = useMemo(() => {
+    const flat = pages.flatMap((p) => p.blocks);
+    const isLeadIn = (b: Block) => b.type === "text" || b.type === "image";
+
+    let i = 0;
+    const introBlocks: Block[] = [];
+    while (i < flat.length && isLeadIn(flat[i])) {
+      introBlocks.push(flat[i]);
+      i++;
+    }
+
+    const questionScreens: { blocks: Block[] }[] = [];
+    for (; i < flat.length; i++) {
+      const block = flat[i];
+      if (isLeadIn(block) && questionScreens.length > 0) {
+        questionScreens[questionScreens.length - 1].blocks.push(block);
+      } else {
+        questionScreens.push({ blocks: [block] });
+      }
+    }
+
+    const introScreens: { blocks: Block[] }[] = [];
+    if (introBlocks.length > 0) {
+      const textBlocks = introBlocks.filter((b) => b.type === "text");
+      const otherBlocks = introBlocks.filter((b) => b.type !== "text");
+      const combinedHtml = textBlocks.map((b) => b.content || "").join("\n");
+      const plainTextLength = combinedHtml.replace(/<[^>]+>/g, "").length;
+      const paragraphs =
+        combinedHtml.match(/<p[^>]*>[\s\S]*?<\/p>/g) || (combinedHtml ? [combinedHtml] : []);
+
+      if (plainTextLength > 700 && paragraphs.length > 1) {
+        // Consigne longue : coupe sur des limites de paragraphe (jamais en
+        // plein milieu d'une balise) en deux moitiés à peu près équilibrées.
+        const lens = paragraphs.map((p) => p.replace(/<[^>]+>/g, "").length);
+        const total = lens.reduce((a, b) => a + b, 0);
+        let acc = 0;
+        let splitAt = paragraphs.length - 1;
+        for (let j = 0; j < paragraphs.length; j++) {
+          acc += lens[j];
+          if (acc >= total / 2) {
+            splitAt = j + 1;
+            break;
+          }
+        }
+        const firstHalf = paragraphs.slice(0, splitAt).join("\n");
+        const secondHalf = paragraphs.slice(splitAt).join("\n");
+        introScreens.push({ blocks: [{ ...textBlocks[0], id: "intro-1", content: firstHalf }] });
+        introScreens.push({
+          blocks: [{ ...textBlocks[0], id: "intro-2", content: secondHalf }, ...otherBlocks],
+        });
+      } else {
+        introScreens.push({ blocks: introBlocks });
+      }
+    }
+
+    return [...introScreens, ...questionScreens];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exercise.id]);
+
   // Affichage mélangé (stable) des blocs "association" (choix de droite) et
   // "mise en ordre" (éléments à réordonner), calculé une fois par exercice.
   // Les valeurs déjà mélangées (matchingOptions/shuffledItems) viennent de
@@ -243,7 +308,7 @@ export default function ExerciseViewer({
   // Position/réponses/score : plus de repli localStorage — tout vient du
   // serveur (effet "Charge la progression..." plus bas), avec un bref flash
   // à l'état vide le temps du premier chargement.
-  const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
 
   const [answers, setAnswers] = useState<Record<string, any>>(() => (reviewMode ? initialProgress?.answers : undefined) || {});
   const mathfieldRefs = useRef<Record<string, MathInputHandle | null>>({});
@@ -387,13 +452,12 @@ export default function ExerciseViewer({
           setBlockModes(p.blockModes || {});
           accumulatedSecondsRef.current = p.timeSpent || 0;
           if (typeof p.currentPageIndex === "number") {
-            const pageCount = (exercise.content_json?.length || 0);
-            setCurrentPageIndex(Math.min(p.currentPageIndex, Math.max(0, pageCount - 1)));
+            setCurrentScreenIndex(Math.min(p.currentPageIndex, Math.max(0, screens.length - 1)));
           }
           if (openCorrection) {
             setExerciseCompleted(false);
             setShowReview(true);
-            setCurrentPageIndex(0);
+            setCurrentScreenIndex(0);
           }
         } else if (data?.status === "completed") {
           // Le statut "completed" a été enregistré (via /api/child/activities) mais le
@@ -437,7 +501,7 @@ export default function ExerciseViewer({
               score,
               exerciseCompleted,
               blockModes,
-              currentPageIndex,
+              currentPageIndex: currentScreenIndex,
               timeSpent: accumulatedSecondsRef.current,
             },
           }),
@@ -458,9 +522,9 @@ export default function ExerciseViewer({
     return () => {
       if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
     };
-  }, [answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, currentPageIndex, exercise.id]);
+  }, [answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, currentScreenIndex, exercise.id]);
 
-  const currentPage = pages[currentPageIndex];
+  const currentScreen = screens[currentScreenIndex];
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
   // Session timer — accumulé en base via progress_json.timeSpent (voir plus
@@ -623,19 +687,19 @@ export default function ExerciseViewer({
     setContentVisible(false);
     const timer = setTimeout(() => setContentVisible(true), 150);
     return () => clearTimeout(timer);
-  }, [currentPageIndex]);
+  }, [currentScreenIndex]);
 
   // Scroll back to top when changing page
   useEffect(() => {
     mainScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
     window.scrollTo({ top: 0, behavior: "auto" });
-  }, [currentPageIndex]);
+  }, [currentScreenIndex]);
 
   // Rend les graphiques interactifs après affichage de la page
   useEffect(() => {
     const t = setTimeout(() => enhanceMathGraphs(document.body), 200);
     return () => clearTimeout(t);
-  }, [currentPageIndex, contentVisible]);
+  }, [currentScreenIndex, contentVisible]);
 
   const handleBlockAnswerChange = (blockId: string, value: any) => {
     if (submittedBlocks.has(blockId)) return;
@@ -778,23 +842,23 @@ export default function ExerciseViewer({
   };
 
   const handleNextPage = () => {
-    if (currentPageIndex < pages.length - 1) {
-      setCurrentPageIndex(currentPageIndex + 1);
+    if (currentScreenIndex < screens.length - 1) {
+      setCurrentScreenIndex(currentScreenIndex + 1);
       const container = document.getElementById("exercise-content-container");
       if (container) container.scrollTop = 0;
     }
   };
 
   const handlePrevPage = () => {
-    if (currentPageIndex > 0) {
-      setCurrentPageIndex(currentPageIndex - 1);
+    if (currentScreenIndex > 0) {
+      setCurrentScreenIndex(currentScreenIndex - 1);
       const container = document.getElementById("exercise-content-container");
       if (container) container.scrollTop = 0;
     }
   };
 
   const handleRestart = () => {
-    setCurrentPageIndex(0);
+    setCurrentScreenIndex(0);
     setAnswers({});
     setSubmittedBlocks(new Set());
     setScore(0);
@@ -881,7 +945,7 @@ export default function ExerciseViewer({
                       onClick={() => {
                         setExerciseCompleted(false);
                         setShowReview(true);
-                        setCurrentPageIndex(0);
+                        setCurrentScreenIndex(0);
                       }}
                       variant="navy"
                       fullWidth
@@ -918,7 +982,7 @@ export default function ExerciseViewer({
           </h3>
         </div>
         <div className="text-sm font-medium text-[var(--greek-blue)] bg-[var(--greek-blue)]/10 border border-[var(--greek-gold)] px-3 py-1 rounded-full">
-          Page {currentPageIndex + 1} / {pages.length}
+          Page {currentScreenIndex + 1} / {screens.length}
         </div>
       </div>
 
@@ -932,13 +996,7 @@ export default function ExerciseViewer({
           className="max-w-3xl mx-auto space-y-8 pb-20 transition-[padding-bottom] duration-200"
           style={mathKeyboardOpen ? { paddingBottom: "380px" } : undefined}
         >
-          {currentPage.title && (
-            <h2 className="text-2xl font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] mb-6 text-center">
-              {currentPage.title}
-            </h2>
-          )}
-
-          {currentPage.blocks.map((block) => {
+          {currentScreen.blocks.map((block) => {
             const isSubmitted = reviewMode || submittedBlocks.has(block.id);
             const answer = answers[block.id];
             const inline = inlineText[block.id];
@@ -950,7 +1008,7 @@ export default function ExerciseViewer({
             return (
               <div
                 key={block.id}
-                className="bg-[var(--greek-cream)]/30 p-6 border border-[var(--greek-gold)]"
+                className="bg-[var(--greek-cream)]/30 rounded-2xl overflow-hidden p-6 border border-[var(--greek-gold)]"
               >
                 <div className="flex justify-between items-start mb-4">
                   <h4 className="font-bold text-lg text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
@@ -1045,7 +1103,7 @@ export default function ExerciseViewer({
                                   onChange={(latex) =>
                                     handleBlockAnswerChange(block.id, latex)
                                   }
-                                  className={`w-full min-h-[60px] border rounded-lg focus-within:ring-2 focus-within:ring-[var(--greek-blue)] text-lg ${
+                                  className={`w-full min-h-[60px] border rounded-xl focus-within:ring-2 focus-within:ring-[var(--greek-blue)] text-lg ${
                                     isSubmitted
                                       ? isCorrect
                                         ? "border-green-500 bg-green-50"
@@ -1202,7 +1260,7 @@ export default function ExerciseViewer({
                             onClick={() =>
                               handleBlockAnswerChange(block.id, option)
                             }
-                            className={`w-full text-left p-3 rounded-lg border-2 transition-all ${btnClass}`}
+                            className={`w-full text-left p-3 rounded-xl border-2 transition-all ${btnClass}`}
                           >
                             <span
                               dangerouslySetInnerHTML={{
@@ -1255,7 +1313,7 @@ export default function ExerciseViewer({
                                 : [...currentSelected, option];
                               handleBlockAnswerChange(block.id, newSelected);
                             }}
-                            className={`w-full text-left p-3 rounded-lg border-2 transition-all ${btnClass}`}
+                            className={`w-full text-left p-3 rounded-xl border-2 transition-all ${btnClass}`}
                           >
                             <span
                               dangerouslySetInnerHTML={{
@@ -1514,9 +1572,9 @@ export default function ExerciseViewer({
       <div className="bg-[var(--greek-cream)] border-t border-[var(--greek-gold)] p-4 flex justify-between shrink-0">
         <GlassButton
           onClick={handlePrevPage}
-          disabled={currentPageIndex === 0}
+          disabled={currentScreenIndex === 0}
           variant="ghost"
-          style={currentPageIndex === 0 ? { opacity: 0 } : undefined}
+          style={currentScreenIndex === 0 ? { opacity: 0 } : undefined}
         >
           <ArrowLeft className="w-4 h-4" /> Précédent
         </GlassButton>
@@ -1524,7 +1582,7 @@ export default function ExerciseViewer({
         {reviewMode ? (
           <GlassButton
             onClick={handleNextPage}
-            disabled={currentPageIndex >= pages.length - 1}
+            disabled={currentScreenIndex >= screens.length - 1}
             variant="navy"
           >
             Suivant <ArrowRight className="w-4 h-4" />
@@ -1533,7 +1591,7 @@ export default function ExerciseViewer({
         <GlassButton
           onClick={
             showReview
-              ? currentPageIndex < pages.length - 1
+              ? currentScreenIndex < screens.length - 1
                 ? handleNextPage
                 : openCorrection
                 ? onBack || (() => {})
@@ -1553,7 +1611,7 @@ export default function ExerciseViewer({
                     const didPass = thr > 0 ? pct >= thr : true;
                     saveProgress('completed', score, pct, didPass);
                   }
-              : currentPageIndex < pages.length - 1
+              : currentScreenIndex < screens.length - 1
               ? handleNextPage
               : validateAllAnswers
           }
@@ -1565,7 +1623,7 @@ export default function ExerciseViewer({
               <Loader2 className="w-4 h-4 animate-spin" /> Validation...
             </>
           ) : showReview ? (
-            currentPageIndex < pages.length - 1 ? (
+            currentScreenIndex < screens.length - 1 ? (
               <>
                 Suivant <ArrowRight className="w-4 h-4" />
               </>
@@ -1574,7 +1632,7 @@ export default function ExerciseViewer({
                 {openCorrection ? "Fermer" : "Terminer l'exercice"} <CheckCircle className="w-4 h-4" />
               </>
             )
-          ) : currentPageIndex < pages.length - 1 ? (
+          ) : currentScreenIndex < screens.length - 1 ? (
             <>
               Suivant <ArrowRight className="w-4 h-4" />
             </>
