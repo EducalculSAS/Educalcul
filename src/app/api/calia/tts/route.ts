@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { requireRole } from "@/lib/apiAuth";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 // Voix naturelle pour "Calia en classe" — Azure Speech, region France
 // Central (RGPD, DPA), tier gratuit F0 (500k caracteres/mois). Pas open
@@ -48,6 +49,10 @@ export async function GET(req: Request) {
   try {
     const me = await requireRole(req, ["admin"]);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    const cfg = RATE_LIMITS["calia:tts"];
+    const rl = await rateLimitWithBackoff(`calia:tts:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
+    if (!rl.allowed) return NextResponse.json({ error: "Trop de demandes vocales, reessaie plus tard." }, { status: 429 });
 
     const params = new URL(req.url).searchParams;
     const text = params.get("text");

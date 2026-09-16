@@ -1,6 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { requireRole } from "@/lib/apiAuth";
+import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import {
   validateEmail,
@@ -216,8 +216,10 @@ export async function POST(request: Request) {
 
 export async function PUT(request: Request) {
   try {
-    // ✓ SECURITY: Require admin authentication
-    const admin = await requireRole(request, ["admin"]);
+    // ✓ SECURITY: peut changer email/mot de passe/role/statut de n'importe
+    // quel utilisateur — reserve au super admin (un admin "support" ne doit
+    // pas pouvoir se promouvoir ni modifier d'autres comptes).
+    const admin = await requireSuperAdmin(request);
     if (!admin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
@@ -337,8 +339,9 @@ export async function PUT(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    // ✓ SECURITY: Require admin authentication
-    const admin = await requireRole(request, ["admin"]);
+    // ✓ SECURITY: suppression definitive d'un compte — reserve au super
+    // admin, comme admin/users/[id] le fait deja pour la meme action.
+    const admin = await requireSuperAdmin(request);
     if (!admin) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }

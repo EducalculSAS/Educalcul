@@ -3,6 +3,7 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { chatWithAIPlain } from "@/lib/llm";
 import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function GET(req: Request) {
   try {
@@ -17,6 +18,10 @@ export async function GET(req: Request) {
     if (!(await canActOnInternalId(me, Number(childId)))) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
+
+    const cfg = RATE_LIMITS["parent:child-analysis"];
+    const rl = await rateLimitWithBackoff(`parent:child-analysis:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
+    if (!rl.allowed) return NextResponse.json({ error: "Trop de demandes, reessaie plus tard." }, { status: 429 });
 
     // Cache serveur (1x/jour, comme avant côté client) — plus de localStorage :
     // l'analyse contient des données sur un enfant, elle doit vivre côté

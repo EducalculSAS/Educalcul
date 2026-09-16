@@ -57,6 +57,7 @@ export const RATE_LIMITS = {
   'auth:forgot-password': { maxAttempts: 5, windowMs: 60 * 60 * 1000, name: 'Password reset' },
   '2fa:send': { maxAttempts: 5, windowMs: 15 * 60 * 1000, name: '2FA code send' },
   '2fa:verify': { maxAttempts: 8, windowMs: 15 * 60 * 1000, name: '2FA code verify' },
+  '2fa:toggle': { maxAttempts: 10, windowMs: 15 * 60 * 1000, name: '2FA toggle' },
   '2fa:totp-setup': { maxAttempts: 5, windowMs: 15 * 60 * 1000, name: 'TOTP setup' },
   '2fa:totp-verify': { maxAttempts: 8, windowMs: 15 * 60 * 1000, name: 'TOTP verify' },
   'webauthn:register': { maxAttempts: 8, windowMs: 15 * 60 * 1000, name: 'Passkey registration' },
@@ -80,6 +81,9 @@ export const RATE_LIMITS = {
   'ai:parent-support': { maxAttempts: 40, windowMs: 60 * 60 * 1000, name: 'Parent support chat' },
   'ai:child-support': { maxAttempts: 40, windowMs: 60 * 60 * 1000, name: 'Child support chat' },
   'ai:edit': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'AI Edit' },
+  // Le cache 1x/jour de child-analysis est contournable via ?force=1 — sans
+  // limite ici, une session parent valide pouvait boucler dessus sans frein.
+  'parent:child-analysis': { maxAttempts: 15, windowMs: 60 * 60 * 1000, name: 'Analyse IA enfant' },
   'ai:generate': { maxAttempts: 15, windowMs: 60 * 60 * 1000, name: 'AI Generate' },
   'ai:grade': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'AI Grading' },
 
@@ -96,6 +100,15 @@ export const RATE_LIMITS = {
   // principal (NAT partagé, spoofable, change de réseau) — seulement comme
   // garde-fou grossier contre un script qui régénère des cookies en boucle.
   'calia:demo': { maxAttempts: 30, windowMs: 60 * 60 * 1000, name: 'Calia demo' },
+
+  // "Calia en classe" (mode prof vocal, admin-only pour l'instant) — chaque
+  // appel touche une API externe payante (Azure Speech, Mistral vision) ou
+  // ecrit en base sur un compte quelconque (session-summary) : jamais sans
+  // limite, meme derriere l'auth.
+  'calia:tts': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'Calia voix (TTS)' },
+  'calia:classe-turn': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'Calia en classe (tour)' },
+  'calia:read-drawing': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'Calia lecture dessin' },
+  'calia:session-summary': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'Calia resume de session' },
 
   // File upload
   'upload:file': { maxAttempts: 50, windowMs: 60 * 60 * 1000, name: 'File upload' },

@@ -1,6 +1,7 @@
 ﻿import { NextRequest, NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sendEmail } from "@/lib/mailer";
 import {
   passwordChangedEmail,
@@ -13,24 +14,19 @@ type EventType = "password_changed" | "email_changed" | "method_linked" | "metho
 
 export async function POST(req: NextRequest) {
   try {
-    const authHeader = req.headers.get("Authorization");
-    if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
-    }
-    const token = authHeader.slice(7);
-    const { data: { user }, error } = await supabaseAdmin.auth.getUser(token);
-    if (error || !user) return NextResponse.json({ error: "Session invalide" }, { status: 401 });
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
 
     const { event, newEmail, method }: { event: EventType; newEmail?: string; method?: string } = await req.json();
 
     const { data: profile } = await supabaseAdmin
       .from("users")
       .select("first_name, email")
-      .eq("auth_id", user.id)
+      .eq("id", me.id)
       .maybeSingle();
 
     const firstName = profile?.first_name || "Utilisateur";
-    const toEmail = profile?.email || user.email || "";
+    const toEmail = profile?.email || "";
     if (!toEmail) return NextResponse.json({ success: false });
 
     let tmpl: { subject: string; textPart: string; htmlPart: string };

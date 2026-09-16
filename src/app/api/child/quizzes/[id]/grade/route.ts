@@ -28,6 +28,7 @@ export async function POST(
 
     let targetQuestion: any = null;
     let maxPoints = 1;
+    let dbLevel: string | null = null;
 
     if (id === "preview") {
       // Prévisualisation admin : les données de la question viennent du corps
@@ -38,7 +39,7 @@ export async function POST(
     } else {
       const { data: quiz, error: qzError } = await supabaseAdmin
         .from("quizzes")
-        .select("content_json")
+        .select("content_json, level")
         .eq("id", id)
         .single();
       if (qzError || !quiz) {
@@ -50,6 +51,7 @@ export async function POST(
         return NextResponse.json({ error: "Question not found" }, { status: 404 });
       }
       maxPoints = targetQuestion.points || 1;
+      dbLevel = quiz.level || null;
     }
 
     let score = 0;
@@ -75,7 +77,10 @@ export async function POST(
             targetQuestion.correctAnswer,
             answer,
             targetQuestion.explanation,
-            level || "6ème",
+            // Niveau BDD prioritaire sur le client pour un vrai quiz (voir
+            // meme correctif sur exercises/[id]/grade) — evite qu'un
+            // parametre client n'influence le verdict via le prompt IA.
+            dbLevel || level || "6ème",
             maxPoints,
             deterministic.decided ? deterministic.isCorrect : undefined,
           );

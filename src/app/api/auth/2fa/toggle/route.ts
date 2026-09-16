@@ -4,11 +4,16 @@ import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { sendEmail } from "@/lib/mailer";
 import { twoFactorToggledEmail } from "@/lib/emailTemplates";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    const cfg = RATE_LIMITS["2fa:toggle"];
+    const rl = await rateLimitWithBackoff(`2fa:toggle:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
+    if (!rl.allowed) return NextResponse.json({ error: "Trop de tentatives, reessaie plus tard." }, { status: 429 });
 
     const { enabled } = await req.json();
     if (typeof enabled !== "boolean") {

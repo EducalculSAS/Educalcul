@@ -128,7 +128,10 @@ export async function POST(
               correctAns,
               answer,
               expl,
-              level || exercise?.level || "6ème",
+              // Le niveau vient de la BDD en priorite (pas du client) : cet
+              // exercice est reel/note, le niveau ne doit pas pouvoir etre
+              // manipule par la requete pour influencer le verdict.
+              exercise?.level || level || "6ème",
               maxPoints
             );
           } else {
@@ -137,7 +140,7 @@ export async function POST(
               correctAns,
               studentAnswerText,
               expl,
-              level || exercise?.level || "6ème",
+              exercise?.level || level || "6ème",
               maxPoints,
               deterministic.decided ? deterministic.isCorrect : undefined,
             );

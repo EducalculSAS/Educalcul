@@ -1,16 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 
 export async function POST(req: NextRequest) {
   try {
-    const authHeader = req.headers.get("Authorization");
-    if (!authHeader?.startsWith("Bearer ")) {
-      return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
-    }
-    const token = authHeader.slice(7);
-    const { data: { user }, error: userErr } = await supabaseAdmin.auth.getUser(token);
-    if (userErr || !user) return NextResponse.json({ error: "Session invalide" }, { status: 401 });
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
 
     const { ticketId, message } = await req.json();
     if (!ticketId || !message?.trim()) {
@@ -24,10 +20,10 @@ export async function POST(req: NextRequest) {
         .from("support_tickets")
         .select("id, user_id, user_name, user_email")
         .eq("id", ticketId)
-        .eq("user_id", user.id)
+        .eq("user_id", me.authId)
         .maybeSingle(),
       supabaseAdmin
-        .from("users").select("first_name, last_name").eq("auth_id", user.id).maybeSingle(),
+        .from("users").select("first_name, last_name").eq("id", me.id).maybeSingle(),
     ]);
 
     if (!ticket) return NextResponse.json({ error: "Ticket introuvable" }, { status: 404 });
