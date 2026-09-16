@@ -2,6 +2,37 @@ import { NextResponse } from "next/server";
 import { requireRole } from "@/lib/apiAuth";
 import { generateStructuredContentWithSchema } from "@/lib/llm";
 import { caliaClasseTurnSchema } from "@/lib/ai/schemas";
+import { SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
+
+type ToneBucket = "primaire" | "college" | "lycee";
+
+function levelToneBucket(level: string | null | undefined): ToneBucket | null {
+  if (!level) return null;
+  const group = SCHOOL_LEVEL_GROUPS.find((g) => g.levels.includes(level));
+  if (!group) return null;
+  if (group.label === "Primaire") return "primaire";
+  if (group.label === "Collège") return "college";
+  return "lycee";
+}
+
+// Meme methode socratique, meme personnalite Calia partout — seuls le ton et
+// les tournures changent selon l'age reel de l'eleve en face.
+const TONE_GUIDANCE: Record<ToneBucket, string> = {
+  primaire: `TON (eleve de primaire, CP a CM2) :
+- Tres chaleureux et enjoue, phrases courtes et simples, un mot difficile a la fois
+- Vocabulaire concret, des exemples avec des objets du quotidien (bonbons, gateaux, billes)
+- Encourage souvent ("Bravo !", "Tu y es presque !", "Super idee !")
+- Jamais de vocabulaire technique non explique (dis "le nombre du dessus" plutot que "numerateur" sans le presenter)`,
+  college: `TON (eleve de college, 6eme a 3eme) :
+- Amical et encourageant, mais un peu plus structure qu'avec un petit
+- Introduis le vocabulaire mathematique correct (numerateur, coefficient, equation...) en le reformulant simplement au besoin
+- Reste patient sur les bases, sans etre infantilisant`,
+  lycee: `TON (eleve de lycee, 2nde a Terminale) :
+- Plus mature et direct, comme avec un jeune adulte capable de rigueur
+- Vocabulaire technique precis sans le re-expliquer a chaque fois (fonction derivee, discriminant, etc.)
+- Moins d'exclamations enfantines ("Bravo !", "Super !") — une confirmation sobre suffit ("C'est ca.", "Exact.")
+- Tu peux etre plus direct/concis, l'eleve n'a pas besoin d'etre menage sur la forme`,
+};
 
 // Réservé aux admins pour l'instant, comme la démo P0 (CaliaSceneDemo.tsx) —
 // à ouvrir aux élèves une fois le ressenti validé.
@@ -62,6 +93,7 @@ interface CourseContextLesson {
 
 interface CourseContext {
   courseTitle: string;
+  level?: string | null;
   lessons: CourseContextLesson[];
 }
 
@@ -110,6 +142,11 @@ export async function POST(req: Request) {
 
     const courseOutlineText = buildCourseOutlineText(courseContext);
 
+    const levelFromContext =
+      courseContext && typeof courseContext === "object" ? (courseContext as CourseContext).level : null;
+    const toneBucket = levelToneBucket(levelFromContext);
+    const systemPrompt = toneBucket ? `${SYSTEM_PROMPT}\n\n${TONE_GUIDANCE[toneBucket]}` : SYSTEM_PROMPT;
+
     const liveDraftText =
       liveExerciseDraft && typeof liveExerciseDraft === "object" && liveExerciseDraft.value
         ? `Question: ${liveExerciseDraft.question}\nCe que l'eleve a tape jusqu'ici: ${liveExerciseDraft.value}`
@@ -130,7 +167,7 @@ export async function POST(req: Request) {
     // une conversation vocale ou chaque seconde compte.
     const result = await generateStructuredContentWithSchema<TurnResult>(
       prompt,
-      SYSTEM_PROMPT,
+      systemPrompt,
       caliaClasseTurnSchema(),
       0.6,
       1000,

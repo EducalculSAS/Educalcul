@@ -80,6 +80,7 @@ interface CourseViewerProps {
     title: string;
     description?: string;
     content_json: Chapter[] | null;
+    level?: string;
   };
   onComplete?: () => void;
   onChapterComplete?: (chapterIndex: number) => void;
@@ -159,6 +160,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   // chargé en un bloc), donc pas de coût réseau supplémentaire ici.
   const caliaCourseContext = useMemo(() => ({
     courseTitle: course.title,
+    level: course.level || null,
     lessons: chapters.flatMap((c, ci) =>
       c.lessons.map((l, li) => ({
         title: l.title,
@@ -166,7 +168,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         exercises: (l.exercises || []).map((e) => ({ question: e.question, hint: e.hint, answer: e.answer })),
       }))
     ),
-  }), [course.title, chapters, currentChapterIndex, currentLessonIndex]);
+  }), [course.title, course.level, chapters, currentChapterIndex, currentLessonIndex]);
 
   const [isRendering, setIsRendering] = useState(false);
 

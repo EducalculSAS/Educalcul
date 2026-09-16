@@ -35,6 +35,7 @@ interface TurnResult { say: string; action: TurnAction | null }
 interface HistoryMsg { role: "user" | "assistant"; content: string }
 interface CaliaCourseContext {
   courseTitle: string;
+  level?: string | null;
   lessons: { title: string; current: boolean; exercises: { question: string; hint?: string | null; answer: string }[] }[];
 }
 
