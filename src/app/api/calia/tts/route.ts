@@ -1,12 +1,19 @@
 import { NextResponse } from "next/server";
 import { requireRole } from "@/lib/apiAuth";
 
-// Voix naturelle pour "Calia en classe" — Azure Speech (voix neurale
-// fr-FR-VivienneMultilingualNeural), region France Central (RGPD, DPA),
-// tier gratuit F0 (500k caracteres/mois). Pas open source (contrainte
-// relachee au profit du realisme + zero infra a gerer, decision Ruben) —
-// reserve aux admins pour l'instant, comme le reste de "Calia en classe".
-const VOICE = "fr-FR-VivienneMultilingualNeural";
+// Voix naturelle pour "Calia en classe" — Azure Speech, region France
+// Central (RGPD, DPA), tier gratuit F0 (500k caracteres/mois). Pas open
+// source (contrainte relachee au profit du realisme + zero infra a gerer,
+// decision Ruben) — reserve aux admins pour l'instant, comme le reste de
+// "Calia en classe". Liste blanche (jamais le parametre client tel quel
+// dans le SSML) : evite l'injection XML et les noms de voix invalides.
+const DEFAULT_VOICE = "fr-FR-VivienneMultilingualNeural";
+const ALLOWED_VOICES: Record<string, "Female" | "Male"> = {
+  "fr-FR-VivienneMultilingualNeural": "Female",
+  "fr-FR-DeniseNeural": "Female",
+  "fr-FR-EloiseNeural": "Female",
+  "fr-FR-HenriNeural": "Male",
+};
 
 // Le jeton Azure reste valide ~10 min — le mettre en cache evite un aller-
 // retour reseau complet (auth) avant CHAQUE phrase prononcee, sur l'instance
@@ -43,10 +50,14 @@ export async function GET(req: Request) {
     const me = await requireRole(req, ["admin"]);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const text = new URL(req.url).searchParams.get("text");
+    const params = new URL(req.url).searchParams;
+    const text = params.get("text");
     if (typeof text !== "string" || !text.trim()) {
       return NextResponse.json({ error: "text est requis" }, { status: 400 });
     }
+    const requestedVoice = params.get("voice") || "";
+    const voiceGender = ALLOWED_VOICES[requestedVoice];
+    const voiceName = voiceGender ? requestedVoice : DEFAULT_VOICE;
 
     const key = process.env.AZURE_SPEECH_KEY;
     const region = process.env.AZURE_SPEECH_REGION;
@@ -56,7 +67,7 @@ export async function GET(req: Request) {
 
     const token = await getAzureToken(key, region);
 
-    const ssml = `<speak version='1.0' xml:lang='fr-FR'><voice xml:lang='fr-FR' xml:gender='Female' name='${VOICE}'>${escapeSsml(text.trim().slice(0, 400))}</voice></speak>`;
+    const ssml = `<speak version='1.0' xml:lang='fr-FR'><voice xml:lang='fr-FR' xml:gender='${voiceGender || "Female"}' name='${voiceName}'>${escapeSsml(text.trim().slice(0, 400))}</voice></speak>`;
 
     const upstream = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`, {
       method: "POST",

@@ -22,13 +22,26 @@ type OutlineKind = "heading" | "paragraph" | "figure";
 interface OutlineItem { kind: OutlineKind; index: number; preview: string; el: HTMLElement }
 
 interface TurnAction {
-  kind: "highlight" | "scroll_to" | "point_at" | "board_write";
+  kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear";
   targetKind: OutlineKind | null;
   targetIndex: number | null;
   latex: string | null;
+  label: string | null;
 }
 interface TurnResult { say: string; action: TurnAction | null }
 interface HistoryMsg { role: "user" | "assistant"; content: string }
+interface CaliaCourseContext {
+  courseTitle: string;
+  lessons: { title: string; current: boolean; exercises: { question: string; hint?: string | null; answer: string }[] }[];
+}
+
+const VOICES = [
+  { id: "fr-FR-VivienneMultilingualNeural", label: "Vivienne" },
+  { id: "fr-FR-DeniseNeural", label: "Denise" },
+  { id: "fr-FR-EloiseNeural", label: "Éloise" },
+  { id: "fr-FR-HenriNeural", label: "Henri" },
+] as const;
+const VOICE_STORAGE_KEY = "calia-classe-voice";
 
 function buildOutline(root: HTMLElement | null): OutlineItem[] {
   if (!root) return [];
@@ -43,6 +56,10 @@ function buildOutline(root: HTMLElement | null): OutlineItem[] {
   return items;
 }
 
+function escapeHtml(text: string): string {
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 function pickFrenchVoice(): SpeechSynthesisVoice | null {
   const voices = window.speechSynthesis?.getVoices() || [];
   return voices.find((v) => v.lang.toLowerCase().startsWith("fr")) || voices[0] || null;
@@ -50,8 +67,10 @@ function pickFrenchVoice(): SpeechSynthesisVoice | null {
 
 export default function CaliaSceneDemo({
   contentRef,
+  courseContext,
 }: {
   contentRef: RefObject<HTMLDivElement | null>;
+  courseContext?: CaliaCourseContext;
 }) {
   // Gate admin-only pour l'instant — retirer cette condition (et isAdmin)
   // pour ouvrir la fonctionnalité à tous une fois le ressenti validé.
@@ -70,6 +89,17 @@ export default function CaliaSceneDemo({
   const [interim, setInterim] = useState("");
   const [speechSupported, setSpeechSupported] = useState(true);
   const [textFallback, setTextFallback] = useState("");
+  const [voice, setVoice] = useState<string>(VOICES[0].id);
+
+  useEffect(() => {
+    const stored = window.localStorage.getItem(VOICE_STORAGE_KEY);
+    if (stored && VOICES.some((v) => v.id === stored)) setVoice(stored);
+  }, []);
+
+  const changeVoice = (id: string) => {
+    setVoice(id);
+    window.localStorage.setItem(VOICE_STORAGE_KEY, id);
+  };
 
   const highlightedElRef = useRef<HTMLElement | null>(null);
   const historyRef = useRef<HistoryMsg[]>([]);
@@ -156,7 +186,7 @@ export default function CaliaSceneDemo({
     audioRef.current?.pause();
     audioRef.current = null;
     try {
-      const res = await fetch(`/api/calia/tts?text=${encodeURIComponent(text)}`);
+      const res = await fetch(`/api/calia/tts?text=${encodeURIComponent(text)}&voice=${encodeURIComponent(voice)}`);
       if (!res.ok) throw new Error(`tts-failed-${res.status}`);
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
@@ -177,10 +207,15 @@ export default function CaliaSceneDemo({
     setPointerRect(null);
     if (!action) return;
 
+    if (action.kind === "board_clear") {
+      setBoardLines([]);
+      return;
+    }
+
     if (action.kind === "board_write") {
       if (!action.latex) return;
       const html = renderLatexInHTML(compileCourseBlock({ type: "display_math", latex: action.latex }, [], new Set()));
-      setBoardLines((lines) => [...lines, html]);
+      setBoardLines((lines) => [...lines, action.label ? `<p class="calia-board-label">${escapeHtml(action.label)}</p>${html}` : html]);
       return;
     }
 
@@ -239,6 +274,7 @@ export default function CaliaSceneDemo({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           lessonOutline: outline.map(({ kind, index, preview }) => ({ kind, index, preview })),
+          courseContext,
           history: historyRef.current,
           studentMessage,
         }),
@@ -405,6 +441,13 @@ export default function CaliaSceneDemo({
           0%, 100% { transform: scale(1); }
           50% { transform: scale(1.06); }
         }
+        .calia-board-label {
+          font-size: 10px;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: #dcb85f;
+          margin: 4px 0 2px;
+        }
       `}</style>
 
       {/* Mini variante de l'avatar Calia (meme recette que le cluster bas-
@@ -419,6 +462,20 @@ export default function CaliaSceneDemo({
       >
         <Image src="/logoAI.png" alt="Calia" width={18} height={18} className="object-contain" />
       </button>
+
+      {!isRunning && (
+        <select
+          value={voice}
+          onChange={(e) => changeVoice(e.target.value)}
+          aria-label="Voix de Calia en classe"
+          className="text-[11px] rounded-lg px-1.5 py-1 border outline-none"
+          style={{ borderColor: "rgba(15,30,58,0.15)", color: "var(--text-muted)" }}
+        >
+          {VOICES.map((v) => (
+            <option key={v.id} value={v.id}>{v.label}</option>
+          ))}
+        </select>
+      )}
 
       {isRunning && mounted && createPortal(
         <>
@@ -452,7 +509,7 @@ export default function CaliaSceneDemo({
                 className="rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg text-sm max-w-[18rem]"
                 style={error ? { background: "#fef2f2", color: "#b91c1c", border: "1px solid #fecaca" } : { background: "var(--greek-blue)", color: "#fff" }}
               >
-                {error || sayText}
+                {error ? error : <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(sayText || "") }} />}
               </div>
             )}
             {interim && (
@@ -527,7 +584,7 @@ export default function CaliaSceneDemo({
               <div className="px-3 py-1.5 text-[10px] uppercase tracking-widest" style={{ color: "#dcb85f", borderBottom: "1px solid rgba(238,242,236,0.1)" }}>
                 Tableau
               </div>
-              <div className="px-4 py-3 space-y-1.5" style={{ color: "#eef2ec" }}>
+              <div className="px-4 py-3 space-y-1.5 max-h-[50vh] overflow-y-auto" style={{ color: "#eef2ec" }}>
                 {boardLines.map((html, i) => (
                   <div key={i} dangerouslySetInnerHTML={{ __html: html }} />
                 ))}

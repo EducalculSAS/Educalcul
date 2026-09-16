@@ -1384,12 +1384,13 @@ export function caliaClasseTurnSchema(): JsonSchemaContract {
         action: {
           type: ["object", "null"],
           properties: {
-            kind: { type: "string", enum: ["highlight", "scroll_to", "point_at", "board_write"] },
+            kind: { type: "string", enum: ["highlight", "scroll_to", "point_at", "board_write", "board_clear"] },
             targetKind: { type: ["string", "null"], enum: ["heading", "paragraph", "figure", null] },
             targetIndex: { type: ["integer", "null"], minimum: 0 },
             latex: { type: ["string", "null"], minLength: 1, maxLength: 200 },
+            label: { type: ["string", "null"], minLength: 1, maxLength: 40 },
           },
-          required: ["kind", "targetKind", "targetIndex", "latex"],
+          required: ["kind", "targetKind", "targetIndex", "latex", "label"],
           additionalProperties: false,
         },
       },

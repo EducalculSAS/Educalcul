@@ -152,6 +152,22 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   const currentChapter = chapters[currentChapterIndex];
   const currentLesson = currentChapter?.lessons[currentLessonIndex];
 
+  // Contexte complet du cours pour "Calia en classe" (CaliaSceneDemo) : elle
+  // ne voit sinon que la leçon actuellement affichée (buildOutline scrute le
+  // DOM), donc perd le fil dès qu'on change de leçon/chapitre et ignore les
+  // mini-exercices. `chapters` est déjà entièrement en mémoire (content_json
+  // chargé en un bloc), donc pas de coût réseau supplémentaire ici.
+  const caliaCourseContext = useMemo(() => ({
+    courseTitle: course.title,
+    lessons: chapters.flatMap((c, ci) =>
+      c.lessons.map((l, li) => ({
+        title: l.title,
+        current: ci === currentChapterIndex && li === currentLessonIndex,
+        exercises: (l.exercises || []).map((e) => ({ question: e.question, hint: e.hint, answer: e.answer })),
+      }))
+    ),
+  }), [course.title, chapters, currentChapterIndex, currentLessonIndex]);
+
   const [isRendering, setIsRendering] = useState(false);
 
   // Initialize AI context with course content
@@ -620,7 +636,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
           </div>
 
           {/* Démo Calia P0 (admin uniquement pour l'instant) */}
-          <CaliaSceneDemo contentRef={contentRef} />
+          <CaliaSceneDemo contentRef={contentRef} courseContext={caliaCourseContext} />
 
           {/* Cercle progression SVG */}
           <div className="flex-shrink-0">
