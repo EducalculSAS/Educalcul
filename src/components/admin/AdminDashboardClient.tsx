@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import Link from "next/link";
 import {
   Users, CreditCard, BookOpen, Calculator, Brain,
   MessageSquare, TicketCheck, AlertTriangle, TrendingUp,
@@ -88,18 +87,18 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
       {(counts.open_tickets > 0 || counts.pending_reports > 0) && (
         <div className="flex flex-wrap gap-3">
           {counts.open_tickets > 0 && (
-            <Link href="/admin/support" className="flex items-center gap-2 px-4 py-2.5 bg-amber-50 border border-amber-200 rounded-xl text-sm font-semibold text-amber-700 hover:bg-amber-100 transition-colors">
+            <GlassButton href="/admin/support" variant="navy" size="sm" rounded="xl">
               <TicketCheck size={16} />
               {counts.open_tickets} ticket{counts.open_tickets > 1 ? "s" : ""} ouvert{counts.open_tickets > 1 ? "s" : ""}
               <ChevronRight size={14} />
-            </Link>
+            </GlassButton>
           )}
           {counts.pending_reports > 0 && (
-            <Link href="/admin/forum" className="flex items-center gap-2 px-4 py-2.5 bg-red-50 border border-red-200 rounded-xl text-sm font-semibold text-red-700 hover:bg-red-100 transition-colors">
+            <GlassButton href="/admin/forum" variant="danger" size="sm" rounded="xl">
               <AlertTriangle size={16} />
               {counts.pending_reports} signalement{counts.pending_reports > 1 ? "s" : ""} forum
               <ChevronRight size={14} />
-            </Link>
+            </GlassButton>
           )}
         </div>
       )}
@@ -166,9 +165,9 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
               <BookOpen size={17} className="text-[var(--greek-gold)]" />
               Cours récents
             </h2>
-            <Link href="/admin/courses" className="text-xs text-[var(--greek-blue)] hover:underline flex items-center gap-1">
+            <GlassButton href="/admin/courses" variant="outline" size="sm" rounded="xl">
               Gérer <ChevronRight size={12} />
-            </Link>
+            </GlassButton>
           </div>
           <div className="divide-y divide-gray-50">
             {recent.courses.length === 0 && (
@@ -198,9 +197,9 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
               <MessageSquare size={17} className="text-[var(--greek-gold)]" />
               Forum — posts récents
             </h2>
-            <Link href="/admin/forum" className="text-xs text-[var(--greek-blue)] hover:underline flex items-center gap-1">
+            <GlassButton href="/admin/forum" variant="outline" size="sm" rounded="xl">
               Modérer <ChevronRight size={12} />
-            </Link>
+            </GlassButton>
           </div>
           <div className="divide-y divide-gray-50">
             {recent.forum_posts.length === 0 && (
@@ -231,23 +230,19 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
           </h2>
           <div className="grid grid-cols-2 gap-2">
             {[
-              { href: "/admin/users",         icon: <Users size={15} />,          label: "Utilisateurs",    color: "hover:bg-blue-50 hover:text-blue-700"   },
-              { href: "/admin/subscriptions", icon: <CreditCard size={15} />,     label: "Abonnements",     color: "hover:bg-green-50 hover:text-green-700"  },
-              { href: "/admin/courses",        icon: <BookOpen size={15} />,       label: "Cours",           color: "hover:bg-orange-50 hover:text-orange-700"},
-              { href: "/admin/exercises",      icon: <Calculator size={15} />,     label: "Exercices",       color: "hover:bg-purple-50 hover:text-purple-700"},
-              { href: "/admin/quizzes",        icon: <Brain size={15} />,          label: "Quiz",            color: "hover:bg-pink-50 hover:text-pink-700"    },
-              { href: "/admin/forum",          icon: <MessageSquare size={15} />,  label: "Forum",           color: "hover:bg-indigo-50 hover:text-indigo-700"},
-              { href: "/admin/support",        icon: <TicketCheck size={15} />,    label: "Support",         color: "hover:bg-amber-50 hover:text-amber-700"  },
-              { href: "/admin/reports",        icon: <BarChart2 size={15} />,      label: "Rapports",        color: "hover:bg-teal-50 hover:text-teal-700"    },
-              { href: "/admin/landing",         icon: <Gift size={15} />,           label: "Landing Page",    color: "hover:bg-rose-50 hover:text-rose-700"   },
-            ].map(({ href, icon, label, color }) => (
-              <Link
-                key={href}
-                href={href}
-                className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border border-gray-100 text-sm font-semibold text-gray-600 transition-colors ${color}`}
-              >
+              { href: "/admin/users",         icon: <Users size={15} />,          label: "Utilisateurs"    },
+              { href: "/admin/subscriptions", icon: <CreditCard size={15} />,     label: "Abonnements"     },
+              { href: "/admin/courses",        icon: <BookOpen size={15} />,       label: "Cours"           },
+              { href: "/admin/exercises",      icon: <Calculator size={15} />,     label: "Exercices"       },
+              { href: "/admin/quizzes",        icon: <Brain size={15} />,          label: "Quiz"            },
+              { href: "/admin/forum",          icon: <MessageSquare size={15} />,  label: "Forum"           },
+              { href: "/admin/support",        icon: <TicketCheck size={15} />,    label: "Support"         },
+              { href: "/admin/reports",        icon: <BarChart2 size={15} />,      label: "Rapports"        },
+              { href: "/admin/landing",         icon: <Gift size={15} />,           label: "Landing Page"   },
+            ].map(({ href, icon, label }) => (
+              <GlassButton key={href} href={href} variant="ghost" size="sm" rounded="xl" className="justify-start">
                 {icon} {label}
-              </Link>
+              </GlassButton>
             ))}
           </div>
         </div>
@@ -262,15 +257,19 @@ function StatCard({ title, value, sub, icon, color, href, alert }: {
   icon: React.ReactNode; color: string; href: string; alert?: boolean;
 }) {
   return (
-    <Link href={href} className="block group">
-      <div className={`bg-white p-5 rounded-2xl shadow-sm border transition-shadow group-hover:shadow-md ${alert ? "border-red-200" : "border-gray-100"}`}>
-        <div className="flex items-start justify-between mb-3">
-          <div className={`p-2 rounded-xl ${color}`}>{icon}</div>
-          <span className="text-2xl font-bold text-[var(--greek-blue)]">{value}</span>
-        </div>
-        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">{title}</p>
-        {sub && <p className="text-xs text-gray-400 mt-0.5">{sub}</p>}
+    <GlassButton
+      href={href}
+      variant={alert ? "danger" : "outline"}
+      rounded="xl"
+      fullWidth
+      style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", padding: "20px", gap: 0 }}
+    >
+      <div className="flex items-center justify-between w-full mb-3">
+        <div className={`p-2 rounded-xl ${color}`}>{icon}</div>
+        <span className="text-2xl font-bold text-[var(--greek-blue)]">{value}</span>
       </div>
-    </Link>
+      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">{title}</p>
+      {sub && <p className="text-xs text-gray-400 mt-0.5">{sub}</p>}
+    </GlassButton>
   );
 }
