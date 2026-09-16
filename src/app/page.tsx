@@ -185,7 +185,7 @@ export default async function Home() {
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
                 <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 01 · Cours & Exercices
               </div>
-              <h3 className="font-[family-name:var(--font-body)] font-extrabold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
+              <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Tout le programme,<br />aucune lacune oubliée
               </h3>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
@@ -223,7 +223,7 @@ export default async function Home() {
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
                 <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 02 · IA Pédagogique
               </div>
-              <h3 className="font-[family-name:var(--font-body)] font-extrabold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
+              <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Un tuteur IA qui pose<br />les bonnes questions
               </h3>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
@@ -238,7 +238,7 @@ export default async function Home() {
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
                 <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 03 · Suivi Parents
               </div>
-              <h3 className="font-[family-name:var(--font-body)] font-extrabold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
+              <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Vous savez enfin<br />où il en est vraiment
               </h3>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
@@ -260,7 +260,7 @@ export default async function Home() {
           <div className="max-w-5xl mx-auto">
             <Reveal className="text-center mb-14" y={20}>
               <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold)" }}>Tarifs</p>
-              <h2 className="font-[family-name:var(--font-body)] font-extrabold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", letterSpacing: "-0.01em" }}>
+              <h2 className="font-[family-name:var(--font-display)] font-bold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", letterSpacing: "-0.01em" }}>
                 Une formule pour chaque famille
               </h2>
             </Reveal>
@@ -295,7 +295,7 @@ export default async function Home() {
         <div className="max-w-3xl mx-auto">
           <Reveal className="text-center mb-10" y={20}>
             <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold)" }}>Questions fréquentes</p>
-            <h2 className="font-[family-name:var(--font-body)] font-extrabold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", letterSpacing: "-0.01em" }}>
+            <h2 className="font-[family-name:var(--font-display)] font-bold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", letterSpacing: "-0.01em" }}>
               Encore quelques doutes ?
             </h2>
           </Reveal>
@@ -307,7 +307,7 @@ export default async function Home() {
             ))}
           </RevealGroup>
           <Reveal y={12} delay={0.15} className="text-center mt-8">
-            <GlassButton href="/faq" variant="outline" size="sm" rounded="xl">
+            <GlassButton href="/faq" variant="outline" size="sm">
               Voir toutes les questions
             </GlassButton>
           </Reveal>
