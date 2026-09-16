@@ -143,20 +143,33 @@ export default function CaliaSceneDemo({
     window.speechSynthesis.speak(utter);
   };
 
-  // Voix naturelle (Azure Speech via /api/calia/tts, GET) — l'<audio> pointe
-  // directement sur l'URL pour jouer en streaming (demarre avant la fin du
-  // telechargement) au lieu d'attendre tout le blob. Retombe sur la synthese
-  // du navigateur si le service echoue, pour ne jamais rendre Calia muette.
-  // (console.warn sur le repli : verifiable dans les DevTools si un doute sur
-  // la voix effectivement utilisee.)
-  const speak = (text: string) => {
+  // Voix naturelle (Azure Speech via /api/calia/tts). Passe par fetch() (pas
+  // un <audio src> direct) : l'auth de ce site attache le Bearer token aux
+  // appels fetch() vers /api/* via un patch de window.fetch
+  // (supabaseClient.ts) — un <audio>/<img> n'a aucun moyen d'envoyer un
+  // header custom, donc pointer l'element directement sur l'URL renvoyait
+  // toujours 401 et retombait en silence sur la voix du navigateur (bug
+  // trouve en re-testant : chaque appel faisait 401 en ~15ms, jamais
+  // atteint Azure). Retombe sur la synthese du navigateur uniquement si
+  // Azure echoue vraiment (console.warn pour verifier facilement).
+  const speak = async (text: string) => {
     audioRef.current?.pause();
-    const audio = new Audio(`/api/calia/tts?text=${encodeURIComponent(text)}`);
-    audioRef.current = audio;
-    audio.onplay = () => setSpeaking(true);
-    audio.onended = () => setSpeaking(false);
-    audio.onerror = () => { console.warn("[Calia] voix Azure indisponible, repli navigateur."); setSpeaking(false); speakBrowserFallback(text); };
-    audio.play().catch(() => { console.warn("[Calia] lecture audio Azure impossible, repli navigateur."); speakBrowserFallback(text); });
+    audioRef.current = null;
+    try {
+      const res = await fetch(`/api/calia/tts?text=${encodeURIComponent(text)}`);
+      if (!res.ok) throw new Error(`tts-failed-${res.status}`);
+      const blob = await res.blob();
+      const url = URL.createObjectURL(blob);
+      const audio = new Audio(url);
+      audioRef.current = audio;
+      audio.onplay = () => setSpeaking(true);
+      audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
+      audio.onerror = () => { setSpeaking(false); URL.revokeObjectURL(url); speakBrowserFallback(text); };
+      await audio.play();
+    } catch (err) {
+      console.warn("[Calia] voix Azure indisponible, repli navigateur.", err);
+      speakBrowserFallback(text);
+    }
   };
 
   const executeAction = (action: TurnAction | null) => {
