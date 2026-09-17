@@ -39,6 +39,23 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: sanitizeErrorMessage(err?.message || String(err)) }, { status: 400 });
   }
 
+  // Stripe garantit une livraison "au moins une fois" — un meme evenement
+  // (meme event.id) peut legitimement arriver deux fois (retry, double
+  // forwarding...). Constate en test : checkout.session.completed livre deux
+  // fois de suite, dupliquant l'entree referral_uses et l'email de bienvenue.
+  // L'insert echoue sur la contrainte PRIMARY KEY si l'event a deja ete traite
+  // — on s'arrete alors immediatement, avant tout effet de bord.
+  const { error: dedupeError } = await supabaseAdmin
+    .from("stripe_processed_events")
+    .insert({ event_id: event.id });
+  if (dedupeError) {
+    if (dedupeError.code === "23505") {
+      return NextResponse.json({ received: true, duplicate: true });
+    }
+    console.error("[webhook] Could not record processed event:", dedupeError.message);
+    // Ne bloque pas le traitement pour une erreur de journalisation seule.
+  }
+
   try {
     switch (event.type) {
 
