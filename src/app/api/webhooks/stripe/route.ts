@@ -160,8 +160,15 @@ export async function POST(req: Request) {
         // Depuis l'API Stripe 2025-07-30 ("basil"), current_period_end n'est
         // plus sur l'objet subscription mais sur chaque item de facturation.
         const rawPeriodEnd = (sub as any).current_period_end ?? sub.items?.data?.[0]?.current_period_end;
+        // "trialing" est un abonnement legitimement actif (periode d'essai en
+        // cours, deja payante en intention) — normalise en "active" comme le
+        // fait deja checkout.session.completed, sinon le premier evenement
+        // update qui arrive pendant l'essai (ex: on programme une annulation)
+        // ecrit le VRAI statut Stripe et fait perdre l'acces avant l'heure :
+        // partout ailleurs dans l'app, seul status === "active" est reconnu.
+        const isEntitled = sub.status === "active" || sub.status === "trialing";
         const update: Record<string, any> = {
-          status: sub.status === "active" ? "active" : sub.status,
+          status: isEntitled ? "active" : sub.status,
           cancel_at_period_end: sub.cancel_at_period_end,
           updated_at: new Date().toISOString(),
         };
