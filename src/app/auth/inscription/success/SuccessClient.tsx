@@ -40,13 +40,21 @@ function SuccessContent() {
           const { data: { session: currentSession } } = await supabase.auth.getSession();
           setMessage("Création de votre compte...");
 
+          // La session active dans ce navigateur n'est le compte qu'on est
+          // en train de creer QUE si son email correspond (cas Google OAuth,
+          // deja authentifie avant cette derniere etape) — sinon c'est une
+          // session sans rapport (ordinateur partage, onglet deja connecte a
+          // un autre compte) qu'il ne faut surtout pas faire passer pour
+          // "le compte existant" aupres de la route de creation.
+          const isSameSignup = currentUser?.email === signupData.email;
+
           const res = await fetch("/api/auth/create-account", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              ...(currentSession ? { Authorization: `Bearer ${currentSession.access_token}` } : {}),
+              ...(isSameSignup && currentSession ? { Authorization: `Bearer ${currentSession.access_token}` } : {}),
             },
-            body: JSON.stringify({ ...signupData, sessionId, existingAuthId: currentUser?.id || null }),
+            body: JSON.stringify({ ...signupData, sessionId, existingAuthId: isSameSignup ? currentUser!.id : null }),
           });
           const result = await res.json();
           if (!res.ok) {
@@ -89,8 +97,16 @@ function SuccessContent() {
           return;
         }
 
+        // Ne pas se fier a la simple PRESENCE d'une session : sur un
+        // ordinateur partage (ou un navigateur qui avait deja une session
+        // active - admin, autre compte...), currentUser peut exister sans
+        // etre le compte qu'on vient de creer/payer. On ne saute la
+        // reconnexion QUE si la session active correspond deja au bon compte.
         const { data: { user: currentUser } } = await supabase.auth.getUser();
-        if (!currentUser && signupData.password) {
+        const isAlreadyCorrectUser = pendingAuthId
+          ? currentUser?.id === pendingAuthId
+          : currentUser?.email === signupData.email;
+        if (!isAlreadyCorrectUser && signupData.password) {
           await supabase.auth.signInWithPassword({ email: signupData.email, password: signupData.password });
         }
 

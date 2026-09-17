@@ -100,8 +100,26 @@ export async function POST(req: Request) {
     } else {
       // Déjà authentifié (ex: inscription via Google, compte Auth déjà créé
       // par l'OAuth callback, mais sans profil public.users tant que non payé).
+      //
+      // ATTENTION : ne JAMAIS faire confiance à cette identité sans vérifier
+      // qu'elle n'a PAS déjà de profil public.users. Sinon, quiconque a une
+      // session active dans ce navigateur au moment de "créer un nouveau
+      // compte" (onglet resté connecté, ordinateur partagé, admin qui teste
+      // le flux d'inscription...) se retrouve avec l'abonnement du nouvel
+      // inscrit attaché à SON PROPRE compte existant à la place — bug réel
+      // constaté en test (un abonnement Family s'est créé sur un compte
+      // admin au lieu du nouveau compte de test).
       const identity = await getAuthIdentityOnly(req);
-      userId = identity?.authId || '';
+      if (identity?.authId) {
+        const { data: existingProfile } = await supabaseAdmin
+          .from('users')
+          .select('id')
+          .eq('auth_id', identity.authId)
+          .maybeSingle();
+        userId = existingProfile ? '' : identity.authId;
+      } else {
+        userId = '';
+      }
     }
 
     let plan: any = null;
