@@ -146,11 +146,23 @@ function SubscriptionPageContent({
               body: JSON.stringify({ ...signupData, sessionId, existingAuthId: isSameSignup ? currentUser!.id : null }),
             });
             if (createUserRes.ok) {
-              if (signupData.password && !isSameSignup) {
-                await supabase.auth.signInWithPassword({ email: signupData.email, password: signupData.password });
-              }
               cleanup();
-              router.replace("/parent/dashboard");
+              // Le mot de passe choisi ne survit jamais a la navigation
+              // window.location.href faite par RecapClient (perte du module
+              // JS pendingSignupPassword, meme en rechargement same-origin) :
+              // signupData.password est donc TOUJOURS undefined ici, pour le
+              // plan gratuit comme pour le paiement reel -- inutile de tenter
+              // signInWithPassword. Seul le cas Google OAuth (isSameSignup)
+              // a deja une session valide et peut aller direct au dashboard ;
+              // sinon on renvoie vers la connexion avec un message clair au
+              // lieu de rediriger vers /parent/dashboard sans session (ce qui
+              // echouait silencieusement sur /auth/connexion).
+              if (isSameSignup) {
+                router.replace("/parent/dashboard");
+              } else {
+                toastSuccess("Compte créé ! Connectez-vous avec le mot de passe choisi à l'inscription.");
+                router.replace("/auth/connexion");
+              }
             } else {
               console.error("Failed to create account:", await createUserRes.json().catch(() => ({})));
             }
