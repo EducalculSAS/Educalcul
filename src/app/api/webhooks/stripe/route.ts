@@ -134,21 +134,20 @@ export async function POST(req: Request) {
           updated_at: new Date().toISOString(),
         }, { onConflict: "user_id" });
 
-        // Apply referral code if used
+        // Enregistre l'usage du code de parrainage, mais NE recompense PAS
+        // encore le parrain ici : cet evenement se declenche aussi pour un
+        // simple debut d'essai (0€ preleve). La recompense (10% pour le
+        // parrain) n'est appliquee qu'au premier VRAI paiement du filleul,
+        // voir invoice.payment_succeeded plus bas (confirmed_paid).
         const referralCode = session.metadata?.referralCode;
         if (referralCode) {
           const [{ data: rc }, { data: userRow }] = await Promise.all([
-            supabaseAdmin.from("referral_codes").select("id, current_uses, owner_user_id").eq("code", referralCode).single(),
+            supabaseAdmin.from("referral_codes").select("id, current_uses").eq("code", referralCode).single(),
             supabaseAdmin.from("users").select("id").eq("auth_id", userId).maybeSingle(),
           ]);
-          if (rc) {
-            if (userRow) {
-              await supabaseAdmin.from("referral_uses").insert({ referral_code_id: rc.id, used_by_user_id: userRow.id });
-              await supabaseAdmin.from("referral_codes").update({ current_uses: rc.current_uses + 1 }).eq("id", rc.id);
-              if (rc.owner_user_id) {
-                await supabaseAdmin.from("users").update({ pending_discount_percent: 10 }).eq("id", rc.owner_user_id);
-              }
-            }
+          if (rc && userRow) {
+            await supabaseAdmin.from("referral_uses").insert({ referral_code_id: rc.id, used_by_user_id: userRow.id });
+            await supabaseAdmin.from("referral_codes").update({ current_uses: rc.current_uses + 1 }).eq("id", rc.id);
           }
         }
         break;
@@ -190,16 +189,64 @@ export async function POST(req: Request) {
       // ── Invoice paid (renewal confirmed) ────────────────────────────────
       case "invoice.payment_succeeded": {
         const invoice = event.data.object as Stripe.Invoice;
-        if ((invoice as any).subscription) {
+        const subId = (invoice as any).subscription as string | undefined;
+        const isRealPayment = (invoice.amount_paid || 0) > 0;
+
+        if (subId) {
           await supabaseAdmin.from("subscriptions").update({
             status: "active",
             updated_at: new Date().toISOString(),
-          }).eq("stripe_subscription_id", (invoice as any).subscription as string);
+          }).eq("stripe_subscription_id", subId);
+
+          // Recompense de parrainage : seulement au tout PREMIER vrai paiement
+          // du filleul (jamais au demarrage d'un essai a 0€, sinon on peut
+          // parrainer quelqu'un qui annule avant d'avoir jamais paye). has_paid
+          // rend ce bloc idempotent (les renouvellements suivants ne repassent
+          // pas dedans).
+          if (isRealPayment) {
+            const { data: subRow } = await supabaseAdmin
+              .from("subscriptions")
+              .select("id, user_id, has_paid")
+              .eq("stripe_subscription_id", subId)
+              .maybeSingle();
+
+            if (subRow && !subRow.has_paid) {
+              await supabaseAdmin.from("subscriptions").update({ has_paid: true }).eq("id", subRow.id);
+
+              const { data: userProfile } = await supabaseAdmin
+                .from("users")
+                .select("id")
+                .eq("auth_id", subRow.user_id)
+                .maybeSingle();
+
+              if (userProfile) {
+                const { data: pendingUse } = await supabaseAdmin
+                  .from("referral_uses")
+                  .select("id, referral_code_id")
+                  .eq("used_by_user_id", userProfile.id)
+                  .eq("confirmed_paid", false)
+                  .maybeSingle();
+
+                if (pendingUse) {
+                  const { data: rc } = await supabaseAdmin
+                    .from("referral_codes")
+                    .select("owner_user_id")
+                    .eq("id", pendingUse.referral_code_id)
+                    .maybeSingle();
+                  if (rc?.owner_user_id) {
+                    await supabaseAdmin.from("users").update({ pending_discount_percent: 10 }).eq("id", rc.owner_user_id);
+                  }
+                  await supabaseAdmin.from("referral_uses").update({ confirmed_paid: true, subscription_id: subRow.id }).eq("id", pendingUse.id);
+                }
+              }
+            }
+          }
         }
 
-        // Email facture + notification
+        // Email facture + notification — seulement pour un vrai montant
+        // preleve (une facture d'essai a 0€ n'a rien a "confirmer").
         const user = await getUserByCustomerId(invoice.customer as string);
-        if (user && invoice.hosted_invoice_url) {
+        if (user && invoice.hosted_invoice_url && isRealPayment) {
           const amount = (invoice.amount_paid / 100).toFixed(2);
           sendEmail({
             toEmail: user.email,

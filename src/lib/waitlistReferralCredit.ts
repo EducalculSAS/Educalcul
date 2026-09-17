@@ -37,10 +37,12 @@ function earlyBonusWeeksFor(position: number): number {
 /**
  * Convertit le parrainage waitlist d'un compte en jours d'essai Stripe, à
  * n'appeler qu'au moment d'un vrai checkout (create-checkout-session) — pas
- * avant. Ne compte que les filleuls dont le compte a lui-même un abonnement
- * `subscriptions.status = 'active'` : un filleul qui ne paie jamais ne
- * rapporte rien au parrain (anti-abus). Retourne 0 si ce compte n'est pas
- * issu de la liste d'attente.
+ * avant. Ne compte que les filleuls dont le compte a REELLEMENT paye au
+ * moins une fois (`subscriptions.has_paid = true`, pose par le webhook au
+ * premier invoice.payment_succeeded a montant non nul) : un filleul qui
+ * demarre un essai gratuit et annule avant d'avoir jamais paye ne rapporte
+ * rien au parrain (anti-abus). Retourne 0 si ce compte n'est pas issu de la
+ * liste d'attente.
  */
 export async function computeWaitlistFreeTrialDays(authId: string): Promise<number> {
   const { data: me } = await supabaseAdmin
@@ -61,7 +63,7 @@ export async function computeWaitlistFreeTrialDays(authId: string): Promise<numb
       .from("subscriptions")
       .select("id")
       .eq("user_id", r.auth_id)
-      .eq("status", "active")
+      .eq("has_paid", true)
       .maybeSingle();
     if (sub) confirmed++;
   }
