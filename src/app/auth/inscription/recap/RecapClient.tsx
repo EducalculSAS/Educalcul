@@ -34,6 +34,7 @@ export default function RecapClient() {
   const [referralCode, setReferralCode] = useState("");
   const [referralStatus, setReferralStatus] = useState<"idle" | "valid" | "invalid">("idle");
   const [referralValidating, setReferralValidating] = useState(false);
+  const [signupMode, setSignupMode] = useState<string>("email");
 
   useEffect(() => {
     (async () => {
@@ -50,6 +51,7 @@ export default function RecapClient() {
         return;
       }
 
+      setSignupMode(s.mode || "email");
       setSignupData(s.data);
       setSelectedPlan(s.selectedPlan);
       if (s.data.referralCode) {
@@ -91,6 +93,60 @@ export default function RecapClient() {
       await patchSignupSession({ data: updatedData });
 
       const email = updatedData.email || (await supabase.auth.getUser()).data.user?.email || "";
+      const isFreePlan = selectedPlan.price === 0 || custom?.price === 0;
+
+      // Plan gratuit + inscription email/mot de passe (pas Google, deja
+      // authentifie autrement) : rien a payer, donc pas besoin de passer par
+      // create-checkout-session. On cree le compte ICI, avec le VRAI mot de
+      // passe encore en memoire (voir pendingSignupPassword.ts) -- le
+      // deleguer a l'etape suivante (redirection puis create-account) le
+      // perdait definitivement (jamais transmis au store cote serveur, et de
+      // toute facon efface par la navigation window.location.href, meme
+      // same-origin), forcant un mot de passe aleatoire inconnu de
+      // l'utilisateur (bug constate en test : compte cree mais impossible a
+      // se connecter dessus ensuite).
+      if (isFreePlan && signupMode === "email") {
+        const pwd = getPendingSignupPassword();
+        const createRes = await fetch("/api/auth/create-account", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            role: "parent",
+            firstName: updatedData.firstName,
+            lastName: updatedData.lastName,
+            email,
+            password: pwd,
+            sessionId: "free",
+            existingAuthId: null,
+          }),
+        });
+        const createData = await createRes.json();
+        if (!createRes.ok) {
+          setError(createData.error || "Erreur lors de la création du compte.");
+          setProcessing(false);
+          return;
+        }
+        if (pwd) {
+          await supabase.auth.signInWithPassword({ email, password: pwd });
+        }
+        clearPendingSignupPassword();
+        // On garde la session d'inscription et on atterrit sur la MEME URL
+        // que l'ancien flux (create-checkout-session -> session_id=free) :
+        // ParentLayout n'autorise /parent/dashboard qu'une fois qu'une ligne
+        // "subscriptions" active existe -- ce qui n'est jamais le cas pour le
+        // plan gratuit (son absence EST la definition du plan gratuit ici).
+        // /parent/subscription?new=true est explicitement exempte de cette
+        // verification ; SubscriptionClient s'y trouve deja avec sa session
+        // (isSameSignup) et termine lui-meme (no-op sur le compte deja cree,
+        // nettoyage de la session, puis navigation CLIENT-SIDE vers le
+        // dashboard qui ne re-declenche pas la verification du layout deja
+        // monte). Naviguer directement vers /parent/dashboard ici forcerait
+        // un premier montage du layout qui bloquerait indefiniment (bug
+        // constate en test : page bloquee en chargement).
+        window.location.href = `${window.location.origin}/parent/subscription?new=true&success=1&session_id=free`;
+        return;
+      }
+
       const body = selectedPlan.custom
         ? { customConfig: { config: selectedPlan.config } }
         : { planId: selectedPlan.id };
