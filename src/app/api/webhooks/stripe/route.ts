@@ -206,7 +206,13 @@ export async function POST(req: Request) {
       // ── Invoice paid (renewal confirmed) ────────────────────────────────
       case "invoice.payment_succeeded": {
         const invoice = event.data.object as Stripe.Invoice;
-        const subId = (invoice as any).subscription as string | undefined;
+        // Depuis l'API Stripe recente ("basil"+), invoice.subscription n'existe
+        // plus a la racine — l'id migre sous invoice.parent.subscription_details.
+        // Sans le fallback, subId etait TOUJOURS undefined et tout ce bloc
+        // (reactivation apres paiement, recompense de parrainage, has_paid)
+        // ne s'executait jamais, silencieusement. Trouve en testant un vrai
+        // paiement de bout en bout (essai termine -> facture reelle payee).
+        const subId = ((invoice as any).subscription || (invoice as any).parent?.subscription_details?.subscription) as string | undefined;
         const isRealPayment = (invoice.amount_paid || 0) > 0;
 
         if (subId) {
@@ -284,11 +290,15 @@ export async function POST(req: Request) {
       // ── Invoice failed ───────────────────────────────────────────────────
       case "invoice.payment_failed": {
         const invoice = event.data.object as Stripe.Invoice;
-        if ((invoice as any).subscription) {
+        // Meme bascule d'API que invoice.payment_succeeded ci-dessus — sans le
+        // fallback, un paiement de renouvellement refuse ne marquait JAMAIS le
+        // compte "past_due", qui gardait donc un acces complet malgre l'echec.
+        const failedSubId = ((invoice as any).subscription || (invoice as any).parent?.subscription_details?.subscription) as string | undefined;
+        if (failedSubId) {
           await supabaseAdmin.from("subscriptions").update({
             status: "past_due",
             updated_at: new Date().toISOString(),
-          }).eq("stripe_subscription_id", (invoice as any).subscription as string);
+          }).eq("stripe_subscription_id", failedSubId);
         }
 
         // Email paiement échoué + notification urgente
