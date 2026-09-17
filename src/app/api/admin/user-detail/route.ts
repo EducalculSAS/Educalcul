@@ -267,7 +267,8 @@ export async function POST(req: Request) {
 
       let newStripeSubId: string | null = null;
       let newPeriodEnd: string | null = null;
-      if (stripeCustomerId && plan && Number(plan.price) > 0) {
+      const isPaidPlan = plan && Number(plan.price) > 0;
+      if (stripeCustomerId && isPaidPlan) {
         const RECURRING: Record<string, { interval: "month" | "year"; interval_count: number }> = {
           month:    { interval: "month", interval_count: 1 },
           quarter:  { interval: "month", interval_count: 3 },
@@ -291,8 +292,25 @@ export async function POST(req: Request) {
           newStripeSubId = newSub.id;
           newPeriodEnd = new Date((newSub as any).current_period_end * 1000).toISOString();
         } catch (e: any) {
-          console.warn("Could not create new Stripe subscription:", e.message);
+          // ✓ SECURITY / INTEGRITE : ne JAMAIS marquer l'abonnement "active"
+          // en base si Stripe n'a pas reellement pu creer la facturation
+          // (ex: carte retiree entre-temps) -- sinon l'admin croit avoir
+          // repare l'abonnement (aucune erreur affichee) alors que le client
+          // garde un acces payant complet sans jamais etre facture (bug
+          // constate en test : stripe_subscription_id reste null, mais
+          // status="active" ecrit quand meme).
+          console.error("Could not create new Stripe subscription:", e.message);
+          return NextResponse.json(
+            { error: `Impossible de créer l'abonnement Stripe : ${e.message}. Le plan n'a pas été modifié.` },
+            { status: 400 }
+          );
         }
+      }
+      if (isPaidPlan && !stripeCustomerId) {
+        return NextResponse.json(
+          { error: "Aucun client Stripe trouvé pour cet utilisateur : impossible de créer un abonnement payant réel." },
+          { status: 400 }
+        );
       }
 
       await supabaseAdmin.from("subscriptions").upsert({
