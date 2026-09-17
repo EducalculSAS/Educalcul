@@ -10,7 +10,7 @@ import GlassButton from "@/components/ui/GlassButton";
 function SuccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [status, setStatus] = useState<"loading" | "email_sent" | "error" | "delayed">("loading");
+  const [status, setStatus] = useState<"loading" | "email_sent" | "error" | "delayed" | "please_login">("loading");
   const [message, setMessage] = useState("Création de votre compte en cours...");
   const [errorMsg, setErrorMsg] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -106,8 +106,21 @@ function SuccessContent() {
         const isAlreadyCorrectUser = pendingAuthId
           ? currentUser?.id === pendingAuthId
           : currentUser?.email === signupData.email;
-        if (!isAlreadyCorrectUser && signupData.password) {
-          await supabase.auth.signInWithPassword({ email: signupData.email, password: signupData.password });
+
+        // Le mot de passe choisi n'est jamais persiste au-dela de la creation
+        // du compte (voir pendingSignupPassword.ts) : apres l'aller-retour
+        // cross-origin vers Stripe Checkout, il est TOUJOURS perdu ici (page
+        // rechargee depuis zero). signupData.password est donc systematiquement
+        // undefined pour une inscription email/mot de passe fraiche -- il n'y
+        // a jamais eu de reconnexion automatique possible dans ce cas, malgre
+        // les apparences du code precedent. Sans session deja valide (cas
+        // Google OAuth, deja connecte), on ne peut QUE demander une connexion
+        // manuelle -- rediriger vers /parent/dashboard sans session ne fait
+        // que faire echouer silencieusement l'utilisateur sur /auth/connexion.
+        if (!isAlreadyCorrectUser) {
+          cleanup();
+          setStatus("please_login");
+          return;
         }
 
         cleanup();
@@ -147,6 +160,31 @@ function SuccessContent() {
           <p className="text-gray-500 text-sm mb-6">
             La finalisation de votre compte prend un peu plus de temps que prévu. Vous allez recevoir un email de confirmation
             dans les prochaines minutes — vous pourrez alors vous connecter avec {userEmail || "votre email"}.
+          </p>
+          <GlassButton onClick={() => router.push("/auth/connexion")} variant="navy" size="sm">
+            Aller à la connexion
+          </GlassButton>
+        </div>
+      </div>
+    );
+  }
+
+  if (status === "please_login") {
+    return (
+      <div className="w-full max-w-md">
+        <div className="bg-white rounded-2xl shadow border border-[rgba(197,161,72,0.25)] p-10 text-center">
+          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
+            <CheckCircle className="w-9 h-9 text-green-500" />
+          </div>
+          <h2 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-3">
+            Paiement confirmé !
+          </h2>
+          <p className="text-gray-600 mb-2">
+            Votre compte est prêt. Connectez-vous avec :
+          </p>
+          <p className="font-bold text-[var(--greek-blue)] mb-6 break-all">{userEmail}</p>
+          <p className="text-gray-500 text-sm leading-relaxed mb-6">
+            et le mot de passe que vous avez choisi lors de l'inscription.
           </p>
           <GlassButton onClick={() => router.push("/auth/connexion")} variant="navy" size="sm">
             Aller à la connexion

@@ -76,7 +76,7 @@ function SubscriptionPageContent({
   const billingHistory = initialBillingHistory;
   const user = isNewSignup || !authId ? null : { id: authId, email: authEmail };
   const [processingPlanId, setProcessingPlanId] = useState<number | null>(null);
-  const { error: toastError } = useToast();
+  const { error: toastError, success: toastSuccess } = useToast();
   const myReferralCode = initialReferralCode;
   const [copied, setCopied] = useState(false);
   const [pendingDiscount] = useState(initialPendingDiscount);
@@ -181,11 +181,22 @@ function SubscriptionPageContent({
             return;
           }
 
+          // Le mot de passe choisi n'est jamais persiste au-dela de la
+          // creation du compte (voir pendingSignupPassword.ts) : apres
+          // l'aller-retour cross-origin vers Stripe Checkout, signupData.password
+          // est TOUJOURS undefined ici pour une inscription email/mot de passe
+          // fraiche -- il n'y a jamais eu de reconnexion automatique possible
+          // dans ce cas. Sans session deja valide, rediriger vers
+          // /parent/dashboard ferait juste echouer silencieusement
+          // l'utilisateur sur /auth/connexion : on l'y envoie directement,
+          // avec un message clair.
           const { data: { user: currentUser } } = await supabase.auth.getUser();
-          if (!currentUser && signupData.password) {
-            await supabase.auth.signInWithPassword({ email: signupData.email, password: signupData.password });
-          }
           cleanup();
+          if (!currentUser) {
+            toastSuccess("Paiement confirmé ! Connectez-vous avec le mot de passe choisi à l'inscription.");
+            router.replace("/auth/connexion");
+            return;
+          }
           router.replace("/parent/dashboard");
           return;
         }
@@ -398,11 +409,17 @@ function SubscriptionPageContent({
                       Se termine le : {new Date(currentPlan.current_period_end).toLocaleDateString("fr-FR")}
                     </p>
                   )}
+                  {currentPlan?.status === "past_due" && (
+                    <p className="text-sm text-red-500 flex items-center mt-1 font-semibold">
+                      <AlertTriangle className="w-4 h-4 mr-1" />
+                      Échec du paiement — mettez à jour votre moyen de paiement
+                    </p>
+                  )}
                 </div>
                 {currentPlan?.stripe_customer_id && (
                   <GlassButton onClick={handleManagePayment} variant="navy" size="sm" className="whitespace-nowrap">
                     <CreditCard className="w-4 h-4" />
-                    Gérer votre abonnement
+                    {currentPlan?.status === "past_due" ? "Mettre à jour mon paiement" : "Gérer votre abonnement"}
                   </GlassButton>
                 )}
               </div>

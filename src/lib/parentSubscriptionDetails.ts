@@ -3,11 +3,16 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function fetchParentSubscriptionDetails(userId: string) {
   // 1. Get subscription from Supabase to find Stripe Customer ID
+  // "past_due" (echec de paiement) reste inclus : le client garde acces a
+  // cette page pour voir le probleme et mettre a jour son moyen de paiement
+  // (bouton "Gerer votre abonnement" plus bas) -- l'exclure ici le faisait
+  // atterrir sur un "Plan actuel : Gratuit" trompeur, sans aucun moyen d'agir
+  // depuis la page (seule la notification in-app + l'email l'informaient).
   let { data: subscription, error: dbError } = await supabaseAdmin
     .from("subscriptions")
     .select("*")
     .eq("user_id", userId)
-    .eq("status", "active")
+    .in("status", ["active", "past_due"])
     .maybeSingle();
 
   // Auto-Healing: If no subscription in DB, check Stripe by email
