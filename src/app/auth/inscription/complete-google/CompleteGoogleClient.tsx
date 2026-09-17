@@ -82,6 +82,17 @@ export default function CompleteGoogleProfile() {
       setSaving(false); return;
     }
 
+    // updateUser({password}) fait tourner le jeton de session cote Supabase
+    // (comportement documente : changer le mot de passe invalide les autres
+    // sessions et peut re-emettre celle en cours). getSession() juste apres
+    // peut donc encore renvoyer l'ANCIEN access_token le temps que le
+    // listener onAuthStateChange du SDK rattrape le changement — provoquant
+    // des 401 en cascade sur TOUT appel authentifie qui suit (security-email,
+    // create-account...) et laissant un compte Google orphelin (Auth cree,
+    // jamais de profil). Constate en test : refreshSession() force la
+    // synchronisation avant de continuer.
+    await supabase.auth.refreshSession();
+
     // Email de sécurité
     const { data: { session } } = await supabase.auth.getSession();
     if (session) {

@@ -131,16 +131,22 @@ function SubscriptionPageContent({
           if (sessionId === "free") {
             const { data: { user: currentUser } } = await supabase.auth.getUser();
             const { data: { session: currentSession } } = await supabase.auth.getSession();
+            // La session active dans ce navigateur n'est le compte qu'on est
+            // en train de creer QUE si son email correspond (cas Google
+            // OAuth, deja authentifie avant cette derniere etape) — sinon
+            // c'est une session sans rapport qu'il ne faut pas faire passer
+            // pour "le compte existant" aupres de la route de creation.
+            const isSameSignup = currentUser?.email === signupData.email;
             const createUserRes = await fetch("/api/auth/create-account", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                ...(currentSession ? { Authorization: `Bearer ${currentSession.access_token}` } : {}),
+                ...(isSameSignup && currentSession ? { Authorization: `Bearer ${currentSession.access_token}` } : {}),
               },
-              body: JSON.stringify({ ...signupData, sessionId, existingAuthId: currentUser?.id || null }),
+              body: JSON.stringify({ ...signupData, sessionId, existingAuthId: isSameSignup ? currentUser!.id : null }),
             });
             if (createUserRes.ok) {
-              if (signupData.password && !currentUser) {
+              if (signupData.password && !isSameSignup) {
                 await supabase.auth.signInWithPassword({ email: signupData.email, password: signupData.password });
               }
               cleanup();

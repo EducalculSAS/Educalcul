@@ -6,7 +6,7 @@ import { validateEmail, validateName, validateString } from "@/lib/validation";
 import { sendEmail } from "@/lib/mailer";
 import { welcomeEmail } from "@/lib/emailTemplates";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { getAuthIdentityOnly } from "@/lib/apiAuth";
 
 export async function POST(req: NextRequest) {
   try {
@@ -81,9 +81,14 @@ export async function POST(req: NextRequest) {
     // écraser son profil (prénom/nom/rôle) par cette route non authentifiée.
     // On n'accepte existingAuthId que s'il correspond à la session réellement
     // authentifiée de l'appelant (token Bearer vérifié côté serveur).
+    // getAuthIdentityOnly (pas getAuthenticatedUser) : ce cas précis est
+    // justement celui d'un utilisateur Google déjà authentifié mais SANS
+    // encore de ligne public.users — getAuthenticatedUser exige cette ligne
+    // et renverrait toujours null ici, 401-isant systématiquement toute
+    // inscription Google + plan gratuit.
     let authUserId: string = "";
     if (existingAuthId) {
-      const me = await getAuthenticatedUser(req);
+      const me = await getAuthIdentityOnly(req);
       if (!me || me.authId !== existingAuthId) {
         return NextResponse.json({ error: "Session invalide." }, { status: 401 });
       }
@@ -127,6 +132,12 @@ export async function POST(req: NextRequest) {
       .eq("auth_id", authUserId)
       .maybeSingle();
 
+    // isNewAccount ne suit QUE cet appel-ci : un double appel concurrent de
+    // cette route (StrictMode, double-clic, retry réseau...) ne doit pas
+    // renvoyer l'email de bienvenue une seconde fois — seul l'appel qui a
+    // réellement inséré la ligne (ni trouvée avant, ni en conflit unique) le
+    // fait.
+    let isNewAccount = !existingRow;
     if (!existingRow) {
       const { error: insertError } = await supabaseAdmin.from("users").insert({
         auth_id: authUserId,
@@ -142,6 +153,7 @@ export async function POST(req: NextRequest) {
         if (!insertError.message.includes("duplicate") && !insertError.message.includes("unique")) {
           return NextResponse.json({ error: "Could not create profile" }, { status: 500 });
         }
+        isNewAccount = false;
       }
     } else {
       // Mettre à jour le profil si la ligne existe déjà
@@ -153,24 +165,25 @@ export async function POST(req: NextRequest) {
       }).eq("auth_id", authUserId);
     }
 
-    // Générer un lien de confirmation
-    let confirmUrl = "https://educalcul.com/parent/dashboard";
-    try {
-      const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
-        type: "magiclink",
-        email: email,
-        options: { redirectTo: "https://educalcul.com/auth/callback" },
-      });
-      if (linkData?.properties?.action_link) {
-        confirmUrl = linkData.properties.action_link;
+    // Email de bienvenue : uniquement à la création réelle du compte, pas à
+    // chaque appel de cette route (voir isNewAccount ci-dessus).
+    if (isNewAccount && email && email.includes("@")) {
+      // Générer un lien de confirmation
+      let confirmUrl = "https://educalcul.com/parent/dashboard";
+      try {
+        const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
+          type: "magiclink",
+          email: email,
+          options: { redirectTo: "https://educalcul.com/auth/callback" },
+        });
+        if (linkData?.properties?.action_link) {
+          confirmUrl = linkData.properties.action_link;
+        }
+      } catch (e) {
+        console.warn("Could not generate magic link");
       }
-    } catch (e) {
-      console.warn("Could not generate magic link");
-    }
 
-    // Email de confirmation (non bloquant)
-    if (email && email.includes("@")) {
-      const tmpl = welcomeEmail(validatedFirstName, confirmUrl);
+      const tmpl = welcomeEmail(validatedFirstName, confirmUrl, false);
       sendEmail({
         toEmail: email,
         toName: `${validatedFirstName} ${validatedLastName || ""}`.trim(),

@@ -370,7 +370,10 @@ export function dataExportRequestEmail(firstName: string, downloadUrl: string) {
   };
 }
 
-export function welcomeEmail(firstName: string, confirmUrl: string) {
+export function welcomeEmail(firstName: string, confirmUrl: string, paid: boolean = true) {
+  const intro = paid
+    ? "Votre inscription et votre paiement ont bien été enregistrés."
+    : "Votre inscription sur l'offre Gratuite a bien été enregistrée.";
   return {
     subject: "Confirmez votre compte Educalcul",
     textPart: `Bonjour ${firstName},\n\nMerci de rejoindre Educalcul ! Confirmez votre email (lien valable 24h) :\n\n${confirmUrl}\n\nL'équipe Educalcul`,
@@ -379,7 +382,7 @@ export function welcomeEmail(firstName: string, confirmUrl: string) {
       preheader: "Confirmez votre compte pour commencer",
       body: `
         <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
-        <p style="margin:0 0 16px;">Votre inscription et votre paiement ont bien été enregistrés.</p>
+        <p style="margin:0 0 16px;">${intro}</p>
         <p style="margin:0 0 24px;">Il ne reste qu'une étape — confirmez votre adresse email pour accéder à votre espace et commencer à suivre la progression de vos enfants.</p>
         <p style="margin:0;font-size:12px;color:#9ca3af;">Ce lien est valable <strong>24 heures</strong>.</p>
       `,
