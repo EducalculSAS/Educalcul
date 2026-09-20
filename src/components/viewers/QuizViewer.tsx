@@ -33,6 +33,7 @@ interface QuizViewerProps {
     time_limit_minutes?: number | null;
     level?: string;
     min_score_percent?: number | null;
+    course_id?: string | number | null;
   };
   onComplete?: (score: number, totalPoints: number, timeSpent: number) => void;
   onBack?: () => void;
@@ -584,10 +585,10 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                     >
                       Voir la correction
                     </GlassButton>
-                    <GlassButton href="/child/exercises" variant="navy" fullWidth className="font-bold text-base">
+                    <GlassButton href={quiz.course_id ? `/child/exercises?course=${quiz.course_id}` : "/child/exercises"} variant="navy" fullWidth className="font-bold text-base">
                       Faire les exercices
                     </GlassButton>
-                    <GlassButton href="/child/quiz" variant="outline" fullWidth className="font-bold text-base">
+                    <GlassButton href={quiz.course_id ? `/child/quiz?course=${quiz.course_id}` : "/child/quiz"} variant="outline" fullWidth className="font-bold text-base">
                       Retour aux quiz
                     </GlassButton>
                   </div>

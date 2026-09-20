@@ -4,10 +4,16 @@ import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ExercisesCatalog from "@/components/child/ExercisesCatalog";
 
-export default async function ChildExercisesPage() {
+export default async function ChildExercisesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ course?: string }>;
+}) {
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "child") redirect("/dashboard");
+
+  const { course: filterCourseId } = await searchParams;
 
   const { data: userData } = await supabaseAdmin
     .from("users")
@@ -23,7 +29,7 @@ export default async function ChildExercisesPage() {
     supabaseAdmin.from("exercises").select(`
       id, title, description, question,
       difficulty_level, thumbnail_url,
-      folder_id,
+      folder_id, course_id,
       courses (title)
     `).eq("status", "published"),
     supabaseAdmin.from("user_exercise_attempts").select("exercise_id, attempts_history").eq("user_id", authUser.id),
@@ -71,6 +77,7 @@ export default async function ChildExercisesPage() {
           allExercises={(allExercises || []) as any}
           levelFolderId={levelFolder?.id ?? null}
           initialProgress={initialProgress}
+          filterCourseId={filterCourseId ?? null}
         />
       </div>
     </div>

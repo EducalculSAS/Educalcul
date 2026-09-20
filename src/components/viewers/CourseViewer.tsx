@@ -543,10 +543,10 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                 <div className="w-full md:w-80 flex-shrink-0">
                   <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[rgba(197,161,72,0.25)] sticky top-24 space-y-3">
                     <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 text-center">Et maintenant ?</h3>
-                    <GlassButton href="/child/exercises" variant="navy" fullWidth className="font-bold text-base">
+                    <GlassButton href={courseId ? `/child/exercises?course=${courseId}` : "/child/exercises"} variant="navy" fullWidth className="font-bold text-base">
                       Faire les exercices
                     </GlassButton>
-                    <GlassButton href="/child/quiz" variant="navy" fullWidth className="font-bold text-base">
+                    <GlassButton href={courseId ? `/child/quiz?course=${courseId}` : "/child/quiz"} variant="navy" fullWidth className="font-bold text-base">
                       Tenter le quiz
                     </GlassButton>
                     <GlassButton href="/child/cours" variant="outline" fullWidth className="font-bold text-base">

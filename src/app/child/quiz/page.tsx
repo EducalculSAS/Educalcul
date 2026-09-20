@@ -4,10 +4,16 @@ import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import QuizCatalog from "@/components/child/QuizCatalog";
 
-export default async function ChildQuizPage() {
+export default async function ChildQuizPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ course?: string }>;
+}) {
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "child") redirect("/dashboard");
+
+  const { course: filterCourseId } = await searchParams;
 
   const { data: userData } = await supabaseAdmin
     .from("users")
@@ -72,6 +78,7 @@ export default async function ChildQuizPage() {
           allQuizzes={(allQuizzes || []) as any}
           levelFolderId={levelFolder?.id ?? null}
           initialProgress={initialProgress}
+          filterCourseId={filterCourseId ?? null}
         />
       </div>
     </div>

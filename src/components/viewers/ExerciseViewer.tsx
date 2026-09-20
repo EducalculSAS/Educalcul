@@ -132,6 +132,7 @@ interface ExerciseViewerProps {
     level?: string;
     type?: string;
     difficulty_level?: string;
+    course_id?: string | number | null;
     courses?: { title?: string; subject?: string; level?: string } | null;
     min_score_percent?: number | null;
     time_limit_minutes?: number | null;
@@ -907,10 +908,10 @@ export default function ExerciseViewer({
                     >
                       Voir la correction
                     </GlassButton>
-                    <GlassButton href="/child/quiz" variant="navy" fullWidth className="font-bold text-base">
+                    <GlassButton href={exercise.course_id ? `/child/quiz?course=${exercise.course_id}` : "/child/quiz"} variant="navy" fullWidth className="font-bold text-base">
                       Aller aux quiz
                     </GlassButton>
-                    <GlassButton href="/child/exercises" variant="outline" fullWidth className="font-bold text-base">
+                    <GlassButton href={exercise.course_id ? `/child/exercises?course=${exercise.course_id}` : "/child/exercises"} variant="outline" fullWidth className="font-bold text-base">
                       Retour aux exercices
                     </GlassButton>
                   </div>
