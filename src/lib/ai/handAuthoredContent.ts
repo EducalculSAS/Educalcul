@@ -53,6 +53,37 @@ function plainTextToHtml(value: unknown): string {
   return `<p>${html}</p>`;
 }
 
+// Les modèles IA respectent presque toujours le fond (la bonne réponse est
+// identifiée) mais parfois pas la forme exacte demandée ("recopie EXACTEMENT
+// une option") : préfixe "A) "/"A. " devant les options mais correctAnswer
+// réduit à la seule lettre, espaces/casse différents, guillemets ajoutés...
+// Un rejet strict sur ces cas perd une réponse par ailleurs correcte — on
+// tente une résolution tolérante avant d'abandonner (jamais l'inverse : une
+// correspondance exacte reste toujours prioritaire et inchangée).
+function resolveOption(options: string[], answer: string): string | null {
+  const exact = options.find((o) => o === answer);
+  if (exact) return exact;
+
+  const normalize = (s: string) => s.trim().toLowerCase().replace(/^["'“]|["'”]$/g, "");
+  const stripPrefix = (s: string) => s.replace(/^[a-d][).:\-]\s*/i, "");
+  const target = normalize(answer);
+
+  // "A" / "A)" en réponse à des options préfixées "A) ...".
+  const letterMatch = /^([a-d])[).:\-]?$/i.exec(answer.trim());
+  if (letterMatch) {
+    const idx = letterMatch[1].toLowerCase().charCodeAt(0) - "a".charCodeAt(0);
+    if (options[idx]) return options[idx];
+  }
+
+  const byNormalized = options.find((o) => normalize(o) === target);
+  if (byNormalized) return byNormalized;
+
+  const byStrippedPrefix = options.find((o) => normalize(stripPrefix(o)) === normalize(stripPrefix(answer)));
+  if (byStrippedPrefix) return byStrippedPrefix;
+
+  return null;
+}
+
 function compileFigure(figure: unknown, where: string, warnings: string[]): string {
   if (figure === undefined || figure === null) return "";
   if (typeof figure !== "object") {
@@ -178,7 +209,7 @@ export function compileHandAuthoredCourse(raw: any): CompileResult<any[]> {
 
 const EXERCISE_BLOCK_TYPES = new Set([
   "text_input", "fill_in_the_blank", "matching", "ordering", "coding",
-  "single_choice", "true_false",
+  "single_choice", "true_false", "qcm", "impossible_search",
 ]);
 
 export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
@@ -225,14 +256,25 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
         return { ...base, items };
       }
       if (type === "single_choice" || type === "true_false") {
-        const options = Array.isArray(block?.options) ? block.options.map((o: unknown) => escapeHtml(o)) : [];
-        const correctAnswer = escapeHtml(block?.correctAnswer);
-        if (!options.includes(correctAnswer)) {
+        const rawOptions = type === "true_false" && !Array.isArray(block?.options)
+          ? ["Vrai", "Faux"]
+          : Array.isArray(block?.options) ? block.options.map(String) : [];
+        const resolved = resolveOption(rawOptions, String(block?.correctAnswer ?? ""));
+        if (!resolved) {
           warnings.push(`${where} : "correctAnswer" ne correspond à aucune valeur de "options" — vérifie l'orthographe exacte.`);
         }
-        return { ...base, options, correctAnswer };
+        return { ...base, options: rawOptions.map(escapeHtml), correctAnswer: escapeHtml(resolved ?? block?.correctAnswer) };
       }
-      // text_input / coding
+      if (type === "qcm") {
+        const rawOptions = Array.isArray(block?.options) ? block.options.map(String) : [];
+        const rawCorrect: unknown[] = Array.isArray(block?.correctAnswer) ? block.correctAnswer : [block?.correctAnswer];
+        const resolved = rawCorrect.map((c) => resolveOption(rawOptions, String(c ?? ""))).filter((v): v is string => !!v);
+        if (resolved.length === 0) {
+          warnings.push(`${where} : aucune valeur de "correctAnswer" ne correspond aux "options".`);
+        }
+        return { ...base, options: rawOptions.map(escapeHtml), correctAnswer: resolved.map(escapeHtml) };
+      }
+      // text_input / coding / impossible_search (réponse ou justification libre, notée par IA)
       if (!String(block?.correctAnswer ?? "").trim()) {
         warnings.push(`${where} : "correctAnswer" est vide.`);
       }
@@ -247,6 +289,8 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
 /*  Quiz                                                               */
 /* ------------------------------------------------------------------ */
 
+const QUIZ_QUESTION_TYPES = new Set(["single_choice", "multiple_choice", "true_false", "text_input", "impossible_search"]);
+
 export function compileHandAuthoredQuiz(raw: any): CompileResult<any[]> {
   const questions = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
@@ -254,28 +298,63 @@ export function compileHandAuthoredQuiz(raw: any): CompileResult<any[]> {
 
   const content = questions.map((q: any, index: number) => {
     const where = `Question ${index + 1}`;
-    const rawOptions = Array.isArray(q?.options) ? q.options : [];
-    if (rawOptions.length !== 4) {
+    const requestedType = String(q?.type ?? "single_choice");
+    // Par défaut "single_choice" (comportement historique, seul type géré
+    // avant) — les nouveaux types (vrai_faux, recherche impossible...) ne
+    // sont acceptés que si explicitement demandés et reconnus.
+    const type = QUIZ_QUESTION_TYPES.has(requestedType) ? requestedType : "single_choice";
+    if (requestedType && type !== requestedType) {
+      warnings.push(`${where} : type "${requestedType}" inconnu, remplacé par "single_choice".`);
+    }
+
+    const base = {
+      id: String(q?.id || `q-${index + 1}`),
+      text: withFigure(plainTextToHtml(q?.text), q?.figure, where, warnings),
+      type,
+      points: typeof q?.points === "number" ? q.points : 1,
+      explanation: plainTextToHtml(q?.explanation),
+      ...(q?.group_id ? { group_id: String(q.group_id) } : {}),
+      ...(q?.group_intro ? { group_intro: plainTextToHtml(q.group_intro) } : {}),
+    };
+
+    // text_input / impossible_search : notées par IA, pas d'options à valider.
+    if (type === "text_input" || type === "impossible_search") {
+      if (!String(q?.correctAnswer ?? "").trim()) {
+        warnings.push(`${where} : "correctAnswer" (réponse ou justification attendue) est vide.`);
+      }
+      return { ...base, correctAnswer: String(q?.correctAnswer ?? "") };
+    }
+
+    if (type === "true_false") {
+      const correct = String(q?.correctAnswer ?? "");
+      if (correct !== "Vrai" && correct !== "Faux" && correct !== "true" && correct !== "false") {
+        warnings.push(`${where} : "correctAnswer" doit valoir "Vrai" ou "Faux".`);
+      }
+      return { ...base, options: ["Vrai", "Faux"], correctAnswer: correct === "true" ? "Vrai" : correct === "false" ? "Faux" : correct };
+    }
+
+    // single_choice / multiple_choice
+    const rawOptions = (Array.isArray(q?.options) ? q.options : []).map(String);
+    if (type === "single_choice" && rawOptions.length !== 4) {
       warnings.push(`${where} : ${rawOptions.length} option(s) au lieu de 4.`);
     }
-    const options = rawOptions.map((o: unknown) => escapeHtml(o));
-    const correctRaw = String(q?.correctAnswer ?? "");
-    const matchIndex = rawOptions.findIndex((o: unknown) => String(o) === correctRaw);
-    if (matchIndex < 0) {
+    const options = rawOptions.map(escapeHtml);
+    if (type === "multiple_choice") {
+      const rawCorrect: unknown[] = Array.isArray(q?.correctAnswer) ? q.correctAnswer : [q?.correctAnswer];
+      const resolved = rawCorrect.map((c) => resolveOption(rawOptions, String(c ?? ""))).filter((v): v is string => !!v);
+      if (resolved.length === 0) {
+        warnings.push(`${where} : aucune valeur de "correctAnswer" ne correspond aux "options".`);
+      }
+      return { ...base, options, correctAnswer: resolved.map(escapeHtml) };
+    }
+    const resolved = resolveOption(rawOptions, String(q?.correctAnswer ?? ""));
+    if (!resolved) {
       warnings.push(
-        `${where} : "correctAnswer" ("${correctRaw}") ne correspond EXACTEMENT à aucune "options" — ` +
+        `${where} : "correctAnswer" ("${String(q?.correctAnswer ?? "")}") ne correspond à aucune "options" — ` +
         `la 1ʳᵉ option a été prise par défaut, vérifie et corrige avant de publier.`,
       );
     }
-    return {
-      id: String(q?.id || `q-${index + 1}`),
-      text: withFigure(plainTextToHtml(q?.text), q?.figure, where, warnings),
-      type: "single_choice" as const,
-      points: typeof q?.points === "number" ? q.points : 1,
-      options,
-      correctAnswer: matchIndex >= 0 ? options[matchIndex] : options[0] || escapeHtml(correctRaw),
-      explanation: plainTextToHtml(q?.explanation),
-    };
+    return { ...base, options, correctAnswer: escapeHtml(resolved ?? rawOptions[0] ?? q?.correctAnswer) };
   });
 
   return { content, warnings };

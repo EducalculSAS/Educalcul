@@ -193,61 +193,14 @@ export default function ExerciseViewer({
   // écran — sur deux si elle est longue. Purement présentationnel : la
   // correction (validateAllAnswers) continue d'itérer `pages`/blocs bruts.
   const screens = useMemo(() => {
-    const flat = pages.flatMap((p) => p.blocks);
-    const isLeadIn = (b: Block) => b.type === "text" || b.type === "image";
-
-    let i = 0;
-    const introBlocks: Block[] = [];
-    while (i < flat.length && isLeadIn(flat[i])) {
-      introBlocks.push(flat[i]);
-      i++;
-    }
-
-    const questionScreens: { blocks: Block[] }[] = [];
-    for (; i < flat.length; i++) {
-      const block = flat[i];
-      if (isLeadIn(block) && questionScreens.length > 0) {
-        questionScreens[questionScreens.length - 1].blocks.push(block);
-      } else {
-        questionScreens.push({ blocks: [block] });
-      }
-    }
-
-    const introScreens: { blocks: Block[] }[] = [];
-    if (introBlocks.length > 0) {
-      const textBlocks = introBlocks.filter((b) => b.type === "text");
-      const otherBlocks = introBlocks.filter((b) => b.type !== "text");
-      const combinedHtml = textBlocks.map((b) => b.content || "").join("\n");
-      const plainTextLength = combinedHtml.replace(/<[^>]+>/g, "").length;
-      const paragraphs =
-        combinedHtml.match(/<p[^>]*>[\s\S]*?<\/p>/g) || (combinedHtml ? [combinedHtml] : []);
-
-      if (plainTextLength > 700 && paragraphs.length > 1) {
-        // Consigne longue : coupe sur des limites de paragraphe (jamais en
-        // plein milieu d'une balise) en deux moitiés à peu près équilibrées.
-        const lens = paragraphs.map((p) => p.replace(/<[^>]+>/g, "").length);
-        const total = lens.reduce((a, b) => a + b, 0);
-        let acc = 0;
-        let splitAt = paragraphs.length - 1;
-        for (let j = 0; j < paragraphs.length; j++) {
-          acc += lens[j];
-          if (acc >= total / 2) {
-            splitAt = j + 1;
-            break;
-          }
-        }
-        const firstHalf = paragraphs.slice(0, splitAt).join("\n");
-        const secondHalf = paragraphs.slice(splitAt).join("\n");
-        introScreens.push({ blocks: [{ ...textBlocks[0], id: "intro-1", content: firstHalf }] });
-        introScreens.push({
-          blocks: [{ ...textBlocks[0], id: "intro-2", content: secondHalf }, ...otherBlocks],
-        });
-      } else {
-        introScreens.push({ blocks: introBlocks });
-      }
-    }
-
-    return [...introScreens, ...questionScreens];
+    // Un écran par PAGE authorée, pas par bloc : une page à un seul bloc est
+    // une question indépendante (un écran) ; une page à plusieurs blocs est
+    // un groupe de "questions liées" sur le même thème, affichées ENSEMBLE
+    // sur le même écran (voir contexte du plan — l'ancien comportement
+    // aplatissait tous les blocs de toutes les pages et en refaisait un écran
+    // par bloc, ce qui séparait les questions liées une par une malgré leur
+    // regroupement en base).
+    return pages.filter((p) => p.blocks.length > 0).map((p) => ({ blocks: p.blocks }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exercise.id]);
 
