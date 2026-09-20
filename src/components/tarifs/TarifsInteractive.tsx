@@ -557,7 +557,7 @@ function configToCompareItem(c: ConfigState, key: string): CompareItem {
     billing_interval: "month",
     features: {
       max_children: n,
-      access_level_exercises: "all",
+      access_level_exercises: "difficile",
       ai_access:
         c.ai === "none" ? "none" : c.ai === "unlim" ? "unlimited" : "limited",
       ai_daily_limit: c.ai === "none" ? 0 : ai.daily,

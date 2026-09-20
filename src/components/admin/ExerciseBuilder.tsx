@@ -24,6 +24,7 @@ import {
   Loader2,
   ArrowUp,
   ArrowDown,
+  AlertTriangle,
 } from "lucide-react";
 
 import AISectionEditModal from "./AISectionEditModal";
@@ -44,7 +45,8 @@ export type BlockType =
   | "fill_in_the_blank"
   | "matching"
   | "ordering"
-  | "coding";
+  | "coding"
+  | "impossible_search";
 
 export interface Block {
   id: string;
@@ -91,6 +93,7 @@ export const BLOCK_TYPE_META: Partial<Record<BlockType, { label: string; icon: t
   matching: { label: "Association", icon: ArrowRightLeft, description: "Relier des éléments entre eux" },
   ordering: { label: "Mise en ordre", icon: ArrowUpDown, description: "Remettre des éléments dans le bon ordre" },
   coding: { label: "Code / Algo", icon: Code2, description: "Écrire un algorithme ou du code, corrigé par IA" },
+  impossible_search: { label: "Recherche impossible", icon: AlertTriangle, description: "L'énoncé n'a pas de solution — l'élève doit le justifier, corrigé par IA" },
 };
 
 // Liste type-safe des types proposés à la création (pickers), dans l'ordre
@@ -139,6 +142,8 @@ function defaultBlockFields(type: BlockType): Partial<Block> {
     case "ordering":
       return { content: "", items: ["Étape 1", "Étape 2", "Étape 3"] };
     case "coding":
+      return { content: "", correctAnswer: "" };
+    case "impossible_search":
       return { content: "", correctAnswer: "" };
     case "image":
       return { content: "" };
@@ -664,6 +669,7 @@ export default function ExerciseBuilder({
                             "matching",
                             "ordering",
                             "coding",
+                            "impossible_search",
                           ].includes(block.type) && (
                             <div className="space-y-1">
                               <label className="text-xs font-medium text-gray-500 uppercase">
@@ -672,6 +678,13 @@ export default function ExerciseBuilder({
                               {block.type === "fill_in_the_blank" && (
                                 <p className="text-xs text-gray-400">
                                   Utilise <code className="bg-gray-100 px-1 rounded">{"{{1}}"}</code>, <code className="bg-gray-100 px-1 rounded">{"{{2}}"}</code>... à la place des mots manquants.
+                                </p>
+                              )}
+                              {block.type === "impossible_search" && (
+                                <p className="text-xs text-gray-400">
+                                  Un énoncé qui semble demander un calcul/une réponse mais n'en a pas
+                                  (données insuffisantes, contradictoires, ou hors du domaine étudié).
+                                  L'élève doit reconnaître et justifier l'impossibilité, pas calculer.
                                 </p>
                               )}
                               <ContentInsertToolbar
@@ -694,6 +707,8 @@ export default function ExerciseBuilder({
                                     ? "Complète : 3 + 5 = {{1}}"
                                     : block.type === "coding"
                                     ? "Décris l'algorithme à écrire..."
+                                    : block.type === "impossible_search"
+                                    ? "Ex : Calcule le troisième côté du triangle sachant qu'il mesure 3cm, 4cm et a un angle droit de 100°..."
                                     : block.type === "matching" || block.type === "ordering"
                                     ? "Consigne (optionnelle)..."
                                     : "Posez votre question ici..."
@@ -930,6 +945,24 @@ export default function ExerciseBuilder({
                                 }
                                 className="w-full h-24 border-[rgba(197,161,72,0.25)] rounded-lg text-sm p-3 font-mono"
                                 placeholder="Algorithme / code attendu, ou description de la démarche correcte..."
+                              />
+                            </div>
+                          )}
+
+                          {block.type === "impossible_search" && (
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-gray-700">
+                                Justification attendue (utilisée par l'IA pour corriger)
+                              </label>
+                              <textarea
+                                value={(block.correctAnswer as string) || ""}
+                                onChange={(e) =>
+                                  updateBlock(page.id, block.id, {
+                                    correctAnswer: e.target.value,
+                                  })
+                                }
+                                className="w-full h-24 border-[rgba(197,161,72,0.25)] rounded-lg text-sm p-3"
+                                placeholder="Ex : Impossible — la somme des angles d'un triangle ne peut pas dépasser 180°..."
                               />
                             </div>
                           )}

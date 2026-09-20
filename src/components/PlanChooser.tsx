@@ -7,6 +7,7 @@ import {
   DEFAULT_CUSTOM_PRICING,
   type CustomPlanConfig, type AIId, type PricingCustomConfig, type PricingOption,
 } from "@/lib/customPlanPricing";
+import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -57,7 +58,7 @@ export interface PlanChooserAdmin {
 /* ─── Feature rows (identiques à /tarifs) ─── */
 const FEATURE_ROWS: { key: string; label: string }[] = [
   { key: "max_children", label: "Enfants" },
-  { key: "access_level_exercises", label: "Niveaux scolaires" },
+  { key: "access_level_exercises", label: "Difficulté des exercices" },
   { key: "ai_access", label: "IA Calia" },
   { key: "ai_daily_limit", label: "Questions IA / jour" },
 ];
@@ -73,10 +74,8 @@ function formatVal(key: string, val: any): { label: string; included: boolean } 
     return { label: "", included: false };
   }
   if (key === "access_level_exercises") {
-    if (val === "all") return { label: "CP → Terminale", included: true };
-    if (val === "college") return { label: "CP → 3ème", included: true };
-    if (val === "basic") return { label: "CP → 6ème", included: true };
-    return { label: String(val), included: true };
+    const level = normalizeDifficulty(String(val));
+    return { label: `Jusqu'à ${DIFFICULTY_LABELS[level]}`, included: true };
   }
   return { label: String(val), included: true };
 }

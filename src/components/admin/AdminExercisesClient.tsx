@@ -12,6 +12,7 @@ import {
   type ContentFolder,
 } from "@/lib/contentFoldersClient";
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
+import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import ExerciseGeneratorModal, { ExerciseGenParams } from "@/components/admin/ExerciseGeneratorModal";
 import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
@@ -871,28 +872,19 @@ export default function AdminExercisesClient({
   };
 
   const getDifficultyBadge = (level: string | null) => {
-    switch (level) {
-      case "easy":
-        return (
-          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-50 text-green-700">
-            Facile
-          </span>
-        );
-      case "medium":
-        return (
-          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-700">
-            Moyen
-          </span>
-        );
-      case "hard":
-        return (
-          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-red-50 text-red-700">
-            Difficile
-          </span>
-        );
-      default:
-        return null;
-    }
+    if (!level) return null;
+    const normalized = normalizeDifficulty(level);
+    const styles: Record<string, string> = {
+      facile: "bg-green-50 text-green-700",
+      moyen: "bg-blue-50 text-blue-700",
+      avance: "bg-orange-50 text-orange-700",
+      difficile: "bg-red-50 text-red-700",
+    };
+    return (
+      <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${styles[normalized]}`}>
+        {DIFFICULTY_LABELS[normalized]}
+      </span>
+    );
   };
 
   const filteredExercises = exercises.filter(

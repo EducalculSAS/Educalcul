@@ -17,7 +17,7 @@ const FREE_FEATURES = {
   priority_support: false,
   offline_access: false,
   custom_avatars: false,
-  access_level_exercises: "basic",
+  access_level_exercises: "facile",
   calia_classe: false,
 };
 
@@ -29,7 +29,7 @@ const ADMIN_FEATURES = {
   priority_support: true,
   offline_access: true,
   custom_avatars: true,
-  access_level_exercises: "all",
+  access_level_exercises: "difficile",
   calia_classe: true,
 };
 

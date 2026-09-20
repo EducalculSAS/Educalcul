@@ -92,7 +92,7 @@ export function configFeatures(c: CustomPlanConfig, pricing: PricingCustomConfig
   const n = Math.max(1, c.children);
   const feats: Record<string, any> = {
     max_children: n,
-    access_level_exercises: "all",
+    access_level_exercises: "difficile",
     ai_access: c.ai === "none" ? "none" : c.ai === "unlim" ? "unlimited" : "limited",
     ai_daily_limit: c.ai === "none" ? 0 : (ai?.daily ?? 0),
   };

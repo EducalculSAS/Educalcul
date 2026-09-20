@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripAnswers, fillEmptyContentJson } from "@/lib/exerciseContent";
+import { checkDifficultyAccess } from "@/lib/checkSubscription";
 import ExerciseDetailClient from "@/components/child/ExerciseDetailClient";
 
 export default async function ExerciseDetailPage({
@@ -74,6 +75,15 @@ export default async function ExerciseDetailPage({
   ]);
 
   const exercise = error || !exerciseData ? null : stripAnswers(fillEmptyContentJson(exerciseData));
+
+  // Verrou de difficulté par plan — appliqué ici (pas seulement dans le
+  // catalogue, contournable par URL directe) : voir contexte du plan sur
+  // access_level_exercises. authId, pas authUser.id (checkDifficultyAccess
+  // résout lui-même l'enfant -> abonnement du parent).
+  if (exercise) {
+    const { allowed } = await checkDifficultyAccess(authUser.authId, exercise.difficulty_level);
+    if (!allowed) redirect("/child/exercises");
+  }
 
   let attemptsHistory: any[] = [];
   let alreadyCompleted = false;

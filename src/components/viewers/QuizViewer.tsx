@@ -14,6 +14,7 @@ import {
   HelpCircle,
   Clock,
   Eye,
+  AlertTriangle,
 } from "lucide-react";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
@@ -401,7 +402,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
       // Déjà vérifié en direct via le bouton "Vérifier" de la question : on
       // réutilise ce verdict plutôt que de rappeler l'IA une seconde fois.
       const inlineResult = inlineText[i];
-      if (q.type === "text_input" && inlineResult?.resolvedCorrect !== undefined) {
+      if ((q.type === "text_input" || q.type === "impossible_search") && inlineResult?.resolvedCorrect !== undefined) {
         newResults[i] = inlineResult.resolvedCorrect;
         if (inlineResult.feedback) newFeedbacks[i] = inlineResult.feedback;
         if (inlineResult.revealedAnswer) {
@@ -650,6 +651,23 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             </div>
           </div>
 
+          {/* Contexte partagé pour un groupe de "questions liées" (voir plan :
+              modèle quiz plat, chaque question reste notée indépendamment —
+              ceci n'est qu'un rappel du contexte commun, pas un chaînage réel) */}
+          {currentQuestion.group_intro &&
+            (currentQuestionIndex === 0 ||
+              questions[currentQuestionIndex - 1]?.group_id !== currentQuestion.group_id) && (
+              <div className="mb-6 rounded-xl border border-[rgba(197,161,72,0.3)] bg-[var(--greek-cream)] p-4">
+                <span className="text-xs font-bold text-[var(--greek-gold)] uppercase tracking-wider block mb-1">
+                  Contexte des questions suivantes
+                </span>
+                <div
+                  className="text-sm text-[var(--greek-bronze)] prose-sm max-w-none"
+                  dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentQuestion.group_intro) }}
+                />
+              </div>
+            )}
+
           {/* Question */}
           <div className="mb-8 prose prose-lg prose-headings:text-[var(--greek-blue)] max-w-none text-gray-900 font-bold">
             <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentQuestion.text || "") }} />
@@ -657,37 +675,71 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
 
           {/* Options or Input */}
           <div className="mb-8">
-            {currentQuestion.type === "text_input" ? (
+            {currentQuestion.type === "text_input" || currentQuestion.type === "impossible_search" ? (
               <div className="space-y-4">
                 {(() => {
                   const inline = inlineText[currentQuestionIndex];
                   const inlineResolved = inline?.status === "correct" || inline?.status === "revealed";
+                  const isImpossible = currentQuestion.type === "impossible_search";
                   return (
                     <>
+                      {isImpossible && (
+                        <div className="flex items-start gap-2 rounded-lg border border-[rgba(197,161,72,0.4)] bg-[var(--greek-cream)] p-3 text-sm text-[var(--greek-bronze)]">
+                          <AlertTriangle className="w-5 h-5 shrink-0 text-[var(--greek-gold)]" />
+                          <span>
+                            Attention : cette question n&apos;a peut-être pas de solution. Justifie ta
+                            réponse plutôt que de deviner un résultat.
+                          </span>
+                        </div>
+                      )}
                       <div className="relative">
                         <Type className="absolute left-3 top-3 text-gray-400 w-5 h-5" />
-                        <input
-                          type="text"
-                          value={(answers[currentQuestionIndex] as string) || ""}
-                          onChange={(e) =>
-                            !isAnswerSubmitted &&
-                            !inlineResolved &&
-                            setAnswers({ ...answers, [currentQuestionIndex]: e.target.value })
-                          }
-                          disabled={isAnswerSubmitted || inlineResolved}
-                          placeholder="Votre réponse..."
-                          className={`w-full p-3 pl-10 border-2 rounded-xl text-lg outline-none transition-colors ${
-                            isAnswerSubmitted
-                              ? questionResults[currentQuestionIndex]
+                        {isImpossible ? (
+                          <textarea
+                            value={(answers[currentQuestionIndex] as string) || ""}
+                            onChange={(e) =>
+                              !isAnswerSubmitted &&
+                              !inlineResolved &&
+                              setAnswers({ ...answers, [currentQuestionIndex]: e.target.value })
+                            }
+                            disabled={isAnswerSubmitted || inlineResolved}
+                            placeholder="Explique pourquoi ce problème n'a pas de solution..."
+                            className={`w-full min-h-[100px] p-3 pl-10 border-2 rounded-xl text-base outline-none transition-colors ${
+                              isAnswerSubmitted
+                                ? questionResults[currentQuestionIndex]
+                                  ? "border-green-500 bg-green-50 text-green-800"
+                                  : "border-red-500 bg-red-50 text-red-800"
+                                : inline?.status === "correct"
                                 ? "border-green-500 bg-green-50 text-green-800"
-                                : "border-red-500 bg-red-50 text-red-800"
-                              : inline?.status === "correct"
-                              ? "border-green-500 bg-green-50 text-green-800"
-                              : inline?.status === "wrong" || inline?.status === "revealed"
-                              ? "border-red-500 bg-red-50 text-red-800"
-                              : "border-gray-200 focus:border-[var(--greek-blue)]"
-                          }`}
-                        />
+                                : inline?.status === "wrong" || inline?.status === "revealed"
+                                ? "border-red-500 bg-red-50 text-red-800"
+                                : "border-gray-200 focus:border-[var(--greek-blue)]"
+                            }`}
+                          />
+                        ) : (
+                          <input
+                            type="text"
+                            value={(answers[currentQuestionIndex] as string) || ""}
+                            onChange={(e) =>
+                              !isAnswerSubmitted &&
+                              !inlineResolved &&
+                              setAnswers({ ...answers, [currentQuestionIndex]: e.target.value })
+                            }
+                            disabled={isAnswerSubmitted || inlineResolved}
+                            placeholder="Votre réponse..."
+                            className={`w-full p-3 pl-10 border-2 rounded-xl text-lg outline-none transition-colors ${
+                              isAnswerSubmitted
+                                ? questionResults[currentQuestionIndex]
+                                  ? "border-green-500 bg-green-50 text-green-800"
+                                  : "border-red-500 bg-red-50 text-red-800"
+                                : inline?.status === "correct"
+                                ? "border-green-500 bg-green-50 text-green-800"
+                                : inline?.status === "wrong" || inline?.status === "revealed"
+                                ? "border-red-500 bg-red-50 text-red-800"
+                                : "border-gray-200 focus:border-[var(--greek-blue)]"
+                            }`}
+                          />
+                        )}
                       </div>
                       {isAnswerSubmitted &&
                         !questionResults[currentQuestionIndex] && (

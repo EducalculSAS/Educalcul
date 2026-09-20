@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
-import { Trophy, Play, CheckCircle, XCircle, ArrowLeft } from "lucide-react";
+import { Trophy, Play, CheckCircle, XCircle, ArrowLeft, Lock } from "lucide-react";
 import Image from "next/image";
 import { getFolderIcon } from "@/lib/folderIcons";
+import { useSubscription } from "@/lib/useSubscription";
+import { isDifficultyAllowed } from "@/lib/difficultyAccess";
+import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import GlassButton from "@/components/ui/GlassButton";
 
 interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string }
@@ -25,6 +28,7 @@ export default function QuizCatalog({
   levelFolderId: number | null;
   initialProgress: QuizProgress;
 }) {
+  const sub = useSubscription();
   const [quizProgress] = useState<QuizProgress>(initialProgress);
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_quiz_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
@@ -110,6 +114,8 @@ export default function QuizCatalog({
           ))}
 
           {currentQuizzes.map((quiz, index) => {
+            const difficulty = normalizeDifficulty(quiz.difficulty_level);
+            const isLocked = !sub.loading && !isDifficultyAllowed(sub.features.access_level_exercises, difficulty);
             const prog = quizProgress[quiz.id];
             const isPassed = prog?.status === "passed";
             const isFailed = prog?.status === "failed";
@@ -117,7 +123,7 @@ export default function QuizCatalog({
             return (
               <div
                 key={quiz.id}
-                className={`group bg-white rounded-[20px] shadow-sm border-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isPassed ? "border-green-400" : isFailed ? "border-red-400" : "border-[rgba(197,161,72,0.25)]"}`}
+                className={`group bg-white rounded-[20px] shadow-sm border-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isLocked ? "opacity-75" : ""} ${isPassed ? "border-green-400" : isFailed ? "border-red-400" : "border-[rgba(197,161,72,0.25)]"}`}
                 style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
               >
                 <div className="relative h-40 bg-[var(--greek-blue)]/10 overflow-hidden flex items-center justify-center">
@@ -136,20 +142,16 @@ export default function QuizCatalog({
                   )}
                   <div
                     className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
-                      quiz.difficulty_level === "easy" || quiz.difficulty_level === "facile"
+                      difficulty === "facile"
                         ? "bg-green-100 text-green-700"
-                        : quiz.difficulty_level === "medium" || quiz.difficulty_level === "moyen"
+                        : difficulty === "moyen"
                         ? "bg-yellow-100 text-yellow-700"
+                        : difficulty === "avance"
+                        ? "bg-orange-100 text-orange-700"
                         : "bg-red-100 text-red-700"
                     }`}
                   >
-                    {quiz.difficulty_level
-                      ? (quiz.difficulty_level === "easy" ? "Facile" :
-                         quiz.difficulty_level === "medium" ? "Moyen" :
-                         quiz.difficulty_level === "hard" ? "Difficile" :
-                         quiz.difficulty_level === "expert" ? "Expert" :
-                         quiz.difficulty_level)
-                      : "Normal"}
+                    {DIFFICULTY_LABELS[difficulty]}
                   </div>
                 </div>
 
@@ -164,13 +166,20 @@ export default function QuizCatalog({
                     {quiz.description || "Relève ce défi pour prouver tes compétences !"}
                   </p>
                   <div className="mt-auto">
-                    <GlassButton
-                      href={`/child/quiz/${quiz.id}`}
-                      variant="navy" fullWidth size="sm"
-                    >
-                      <Play className="w-4 h-4 fill-current" />
-                      {isDone ? "Recommencer" : "Lancer le Quiz"}
-                    </GlassButton>
+                    {isLocked ? (
+                      <GlassButton href="/parent/subscription" variant="ghost" fullWidth size="sm">
+                        <Lock className="w-4 h-4" />
+                        Débloquer — Plan supérieur
+                      </GlassButton>
+                    ) : (
+                      <GlassButton
+                        href={`/child/quiz/${quiz.id}`}
+                        variant="navy" fullWidth size="sm"
+                      >
+                        <Play className="w-4 h-4 fill-current" />
+                        {isDone ? "Recommencer" : "Lancer le Quiz"}
+                      </GlassButton>
+                    )}
                   </div>
                 </div>
               </div>

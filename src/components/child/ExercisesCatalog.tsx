@@ -8,6 +8,8 @@ import {
 import Image from "next/image";
 import { useSubscription } from "@/lib/useSubscription";
 import { getFolderIcon } from "@/lib/folderIcons";
+import { isDifficultyAllowed } from "@/lib/difficultyAccess";
+import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import GlassButton from "@/components/ui/GlassButton";
 
 interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string }
@@ -113,12 +115,8 @@ export default function ExercisesCatalog({
           ))}
 
           {currentExercises.map((exercise, index) => {
-            const accessLevel = sub.features.access_level_exercises;
-            const diff = exercise.difficulty_level;
-            const isLocked = !sub.loading && (
-              (accessLevel === "basic" && diff !== "easy" && diff !== "facile" && diff !== null) ||
-              (accessLevel === "intermediate" && (diff === "hard" || diff === "difficile"))
-            );
+            const difficulty = normalizeDifficulty(exercise.difficulty_level);
+            const isLocked = !sub.loading && !isDifficultyAllowed(sub.features.access_level_exercises, difficulty);
             const prog = exerciseProgress[exercise.id];
             const isPassed = prog?.status === "passed";
             const isFailed = prog?.status === "failed";
@@ -145,14 +143,16 @@ export default function ExercisesCatalog({
                   )}
                   <div
                     className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-bold shadow-sm ${
-                      exercise.difficulty_level === "facile" || exercise.difficulty_level === "easy"
+                      difficulty === "facile"
                         ? "bg-green-100 text-green-700"
-                        : exercise.difficulty_level === "moyen" || exercise.difficulty_level === "medium"
+                        : difficulty === "moyen"
                         ? "bg-yellow-100 text-yellow-700"
+                        : difficulty === "avance"
+                        ? "bg-orange-100 text-orange-700"
                         : "bg-red-100 text-red-700"
                     }`}
                   >
-                    {exercise.difficulty_level === "easy" ? "Facile" : exercise.difficulty_level === "medium" ? "Moyen" : exercise.difficulty_level === "hard" ? "Difficile" : exercise.difficulty_level || "Normal"}
+                    {DIFFICULTY_LABELS[difficulty]}
                   </div>
                 </div>
 

@@ -1,8 +1,10 @@
+import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
+
 /** Partagé entre la page /tarifs (comparateur) et l'aperçu tarifs de la home —
  * même mapping features -> libellés, pour ne jamais diverger entre les deux. */
 export const FEATURE_ROWS: { key: string; label: string; tip?: string }[] = [
   { key: "max_children", label: "Enfants", tip: "Profils enfants actifs simultanément" },
-  { key: "access_level_exercises", label: "Niveaux scolaires", tip: "CP à 6ème / CP à 3ème / CP à Terminale" },
+  { key: "access_level_exercises", label: "Difficulté des exercices", tip: "Facile / Moyen / Avancé / Difficile" },
   { key: "ai_access", label: "IA Calia", tip: "Accès à l'assistante pédagogique IA" },
   { key: "ai_daily_limit", label: "Questions IA / jour", tip: "Nombre de messages envoyés à Calia" },
   { key: "quiz_access", label: "Quiz & évaluations", tip: "Accès à tous les quiz" },
@@ -23,10 +25,8 @@ export function formatVal(key: string, val: boolean | number | string | null): {
     return { label: "", included: false };
   }
   if (key === "access_level_exercises") {
-    if (val === "all") return { label: "CP → Terminale", included: true };
-    if (val === "college") return { label: "CP → 3ème", included: true };
-    if (val === "basic") return { label: "CP → 6ème", included: true };
-    return { label: String(val), included: true };
+    const level = normalizeDifficulty(String(val));
+    return { label: `Jusqu'à ${DIFFICULTY_LABELS[level]}`, included: true };
   }
   if (key === "history") {
     if (val === "unlim" || val === "unlimited") return { label: "Illimité", included: true };

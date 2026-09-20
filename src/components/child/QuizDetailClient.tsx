@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import QuizViewer from "@/components/viewers/QuizViewer";
 import AppLoader from "@/components/AppLoader";
+import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -151,17 +152,7 @@ export default function QuizDetailClient({
     );
   }
 
-  const difficultyLabel = quiz.difficulty_level
-    ? quiz.difficulty_level === "easy"
-      ? "FACILE"
-      : quiz.difficulty_level === "medium"
-      ? "MOYEN"
-      : quiz.difficulty_level === "hard"
-      ? "DIFFICILE"
-      : quiz.difficulty_level === "expert"
-      ? "EXPERT"
-      : quiz.difficulty_level.toUpperCase()
-    : "NORMAL";
+  const difficultyLabel = DIFFICULTY_LABELS[normalizeDifficulty(quiz.difficulty_level)].toUpperCase();
 
   const questionCount = quiz.content_json?.length || 0;
 

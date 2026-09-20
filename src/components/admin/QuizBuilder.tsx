@@ -27,11 +27,18 @@ import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
 export interface Question {
   id: string;
   text: string;
-  type: "single_choice" | "multiple_choice" | "true_false" | "text_input";
+  type: "single_choice" | "multiple_choice" | "true_false" | "text_input" | "impossible_search";
   points: number;
   options?: string[];
   correctAnswer?: string | string[];
   explanation?: string;
+  /** "Questions liées" : regroupe des questions consécutives qui partagent un
+   * même contexte (affiché une fois via group_intro), sans dépendance
+   * mécanique de correction entre elles — chaque question reste notée
+   * indépendamment (voir plan : modèle quiz plat, contrairement aux
+   * exercices qui ont de vraies pages multi-blocs séquentielles). */
+  group_id?: string;
+  group_intro?: string;
 }
 
 interface QuizBuilderProps {
@@ -326,7 +333,7 @@ export default function QuizBuilder({
                           options:
                             e.target.value === "true_false"
                               ? ["Vrai", "Faux"]
-                              : e.target.value === "text_input"
+                              : e.target.value === "text_input" || e.target.value === "impossible_search"
                               ? []
                               : question.options?.length
                               ? question.options
@@ -342,6 +349,7 @@ export default function QuizBuilder({
                       <option value="multiple_choice">Choix Multiple</option>
                       <option value="true_false">Vrai / Faux</option>
                       <option value="text_input">Réponse Libre</option>
+                      <option value="impossible_search">Recherche impossible</option>
                     </select>
 
                     <div className="flex items-center gap-2 bg-white px-3 border border-[rgba(197,161,72,0.25)] rounded-lg">
@@ -363,7 +371,7 @@ export default function QuizBuilder({
                   </div>
 
                   {/* Options Editor */}
-                  {question.type !== "text_input" && (
+                  {question.type !== "text_input" && question.type !== "impossible_search" && (
                     <div className="space-y-2 pl-2">
                       {question.options?.map((option, optIndex) => (
                         <div key={optIndex} className="flex items-center gap-3">
@@ -446,6 +454,31 @@ export default function QuizBuilder({
                           }
                           className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg py-1.5 px-3 text-sm"
                           placeholder="Saisissez la réponse exacte attendue..."
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {question.type === "impossible_search" && (
+                    <div className="pl-2 space-y-1">
+                      <p className="text-xs text-gray-400">
+                        L&apos;énoncé n&apos;a pas de solution (données insuffisantes/contradictoires) —
+                        l&apos;élève doit le justifier, corrigé par IA.
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <span className="text-green-600 font-medium text-sm">
+                          Justification attendue :
+                        </span>
+                        <input
+                          type="text"
+                          value={(question.correctAnswer as string) || ""}
+                          onChange={(e) =>
+                            updateQuestion(question.id, {
+                              correctAnswer: e.target.value,
+                            })
+                          }
+                          className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg py-1.5 px-3 text-sm"
+                          placeholder="Ex : Impossible — la somme des angles d'un triangle ne peut pas dépasser 180°..."
                         />
                       </div>
                     </div>

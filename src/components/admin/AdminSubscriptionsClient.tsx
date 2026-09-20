@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import { BORDER_STYLES, NAME_COLORS } from "@/lib/badgeStyles";
+import { normalizeDifficulty } from "@/lib/difficultyLevels";
 import {
   CreditCard, Plus, Edit, Trash2, CheckCircle, AlertTriangle,
   Clock, X, Power, Users, Tag, Gift,
@@ -54,7 +55,7 @@ interface ReferralCode {
 const defaultPlanForm = {
   name: "", description: "", price: 0, billing_interval: "month",
   duration_months: "", trial_days: "", promo_description: "", is_active: true, sort_order: 0,
-  feature_max_children: 1, feature_access_level_exercises: "all",
+  feature_max_children: 1, feature_access_level_exercises: "difficile",
   feature_detailed_reports: false, feature_priority_support: false,
   feature_custom_avatars: false, feature_calia_classe: false,
   feature_ai_access: "limited" as "none" | "limited" | "unlimited",
@@ -149,7 +150,7 @@ export default function AdminSubscriptionsClient({
         promo_description: plan.promo_description || "",
         is_active: plan.is_active, sort_order: plan.sort_order ?? 0,
         feature_max_children: f.max_children || 1,
-        feature_access_level_exercises: f.access_level_exercises || "all",
+        feature_access_level_exercises: normalizeDifficulty(f.access_level_exercises),
         feature_detailed_reports: !!f.detailed_reports,
         feature_priority_support: !!f.priority_support,
         feature_custom_avatars: !!f.custom_avatars,
@@ -860,12 +861,12 @@ export default function AdminSubscriptionsClient({
                     <input type="number" min="1" value={planForm.feature_max_children} onChange={e => setPlanForm({...planForm, feature_max_children: e.target.value})} className={inputCls} />
                   </div>
                   <div>
-                    <label className={labelCls}>Niveau d'accès</label>
+                    <label className={labelCls}>Difficulté max. des exercices</label>
                     <select value={planForm.feature_access_level_exercises} onChange={e => setPlanForm({...planForm, feature_access_level_exercises: e.target.value})} className={inputCls}>
-                      <option value="basic">Basique</option>
-                      <option value="intermediate">Intermédiaire</option>
-                      <option value="advanced">Avancé</option>
-                      <option value="all">Tout</option>
+                      <option value="facile">Facile</option>
+                      <option value="moyen">Moyen</option>
+                      <option value="avance">Avancé</option>
+                      <option value="difficile">Difficile (tout)</option>
                     </select>
                   </div>
                   {/* IA access */}

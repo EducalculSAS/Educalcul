@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripAnswers } from "@/lib/quizContent";
+import { checkDifficultyAccess } from "@/lib/checkSubscription";
 import QuizDetailClient from "@/components/child/QuizDetailClient";
 
 export default async function QuizDetailPage({
@@ -59,6 +60,13 @@ export default async function QuizDetailPage({
     .maybeSingle();
 
   const quiz = error || !quizData ? null : stripAnswers(quizData);
+
+  // Verrou de difficulté par plan — même règle que pour les exercices (voir
+  // src/app/child/exercises/[id]/page.tsx et contexte du plan).
+  if (quiz) {
+    const { allowed } = await checkDifficultyAccess(authUser.authId, quiz.difficulty_level);
+    if (!allowed) redirect("/child/quiz");
+  }
 
   let attemptsHistory: any[] = [];
   let alreadyCompleted = false;

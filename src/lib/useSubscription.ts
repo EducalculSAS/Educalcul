@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { DifficultyLevel } from "@/lib/difficultyLevels";
 
 export interface PlanFeatures {
   ai_access: "none" | "limited" | "unlimited";
@@ -10,7 +11,9 @@ export interface PlanFeatures {
   priority_support: boolean;
   offline_access: boolean;
   custom_avatars: boolean;
-  access_level_exercises: "basic" | "intermediate" | "advanced" | "all";
+  /** Palier de difficulté maximum accessible sur ce plan — voir
+   * src/lib/difficultyLevels.ts et src/lib/difficultyAccess.ts. */
+  access_level_exercises: DifficultyLevel;
   /** IA vocale "Calia en classe" (mode prof) — reservee au plan Family. */
   calia_classe: boolean;
 }
@@ -35,7 +38,7 @@ const FREE_FEATURES: PlanFeatures = {
   priority_support: false,
   offline_access: false,
   custom_avatars: false,
-  access_level_exercises: "basic",
+  access_level_exercises: "facile",
   calia_classe: false,
 };
 

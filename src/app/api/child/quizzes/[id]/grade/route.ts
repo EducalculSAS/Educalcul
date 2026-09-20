@@ -5,6 +5,7 @@ import { tryDeterministicMathCheck } from "@/lib/mathAnswerCheck";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { checkDifficultyAccess } from "@/lib/checkSubscription";
 
 export async function POST(
   req: Request,
@@ -39,7 +40,7 @@ export async function POST(
     } else {
       const { data: quiz, error: qzError } = await supabaseAdmin
         .from("quizzes")
-        .select("content_json, level")
+        .select("content_json, level, difficulty_level")
         .eq("id", id)
         .single();
       if (qzError || !quiz) {
@@ -52,17 +53,27 @@ export async function POST(
       }
       maxPoints = targetQuestion.points || 1;
       dbLevel = quiz.level || null;
+
+      // Verrou de difficulté par plan — même règle que la page du quiz
+      // (src/app/child/quiz/[id]/page.tsx), refaite ici car cette route est
+      // appelable indépendamment de la page.
+      const { allowed } = await checkDifficultyAccess(me.authId, (quiz as any).difficulty_level);
+      if (!allowed) {
+        return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
+      }
     }
 
     let score = 0;
     let isCorrect = false;
     let feedback = "";
 
-    if (targetQuestion.type === "text_input") {
+    if (targetQuestion.type === "text_input" || targetQuestion.type === "impossible_search") {
       // --- AI GRADING (IA) ---
       const answerText = typeof answer === "string" ? answer : JSON.stringify(answer);
+      // "recherche impossible" : pas de pré-check numérique, la bonne réponse
+      // est une justification (voir même logique dans exercises/[id]/grade).
       const deterministic =
-        typeof targetQuestion.correctAnswer === "string"
+        typeof targetQuestion.correctAnswer === "string" && targetQuestion.type !== "impossible_search"
           ? tryDeterministicMathCheck(targetQuestion.correctAnswer, answerText)
           : { decided: false as const };
 
@@ -83,6 +94,7 @@ export async function POST(
             dbLevel || level || "6ème",
             maxPoints,
             deterministic.decided ? deterministic.isCorrect : undefined,
+            targetQuestion.type === "impossible_search" ? "justification" : "numeric",
           );
           isCorrect = gradingResult.is_correct;
           score = gradingResult.score;

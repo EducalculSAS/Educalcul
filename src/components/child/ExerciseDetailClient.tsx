@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import AppLoader from "@/components/AppLoader";
+import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -366,7 +367,7 @@ export default function ExerciseDetailClient({
                     <span className="flex items-center gap-2">
                       <HelpCircle className="w-4 h-4" /> Difficulté
                     </span>
-                    <span className="font-bold text-[var(--greek-blue)]">{exercise.difficulty ? exercise.difficulty.toUpperCase() : "NORMAL"}</span>
+                    <span className="font-bold text-[var(--greek-blue)]">{DIFFICULTY_LABELS[normalizeDifficulty(exercise.difficulty_level)].toUpperCase()}</span>
                   </div>
                 </div>
 

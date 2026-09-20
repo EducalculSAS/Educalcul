@@ -1,11 +1,17 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { DifficultyLevel, normalizeDifficulty } from "@/lib/difficultyLevels";
+import { isDifficultyAllowed } from "@/lib/difficultyAccess";
 
 interface PlanFeatures {
   ai_access: "none" | "limited" | "unlimited";
   ai_daily_limit: number;
   max_children: number;
   detailed_reports: boolean;
-  access_level_exercises: "basic" | "intermediate" | "advanced" | "all";
+  /** Palier de difficulté MAXIMUM accessible sur ce plan (facile/moyen/avance/
+   * difficile — voir src/lib/difficultyLevels.ts). Remplace l'ancienne
+   * sémantique "niveau scolaire" (basic/intermediate/advanced/all) qui n'était
+   * de toute façon jamais comparée au bon champ (voir checkDifficultyAccess). */
+  access_level_exercises: DifficultyLevel;
   /** Parties de mini-jeux (Mathador, calcul mental...) par jour. -1 = illimité. */
   minigames_daily_limit: number;
   /** Accès aux 5 questions/jour des mini-jeux à paliers (calcul mental,
@@ -23,7 +29,7 @@ const FREE_FEATURES: PlanFeatures = {
   ai_daily_limit: 0,
   max_children: 1,
   detailed_reports: false,
-  access_level_exercises: "basic",
+  access_level_exercises: "facile",
   minigames_daily_limit: 3,
   minigames_premium_content: false,
   calia_classe: false,
@@ -168,4 +174,33 @@ export async function checkMinigamesAccess(authId: string): Promise<{ allowed: b
   }
 
   return { allowed: true, remaining };
+}
+
+/** Même patron que checkAIAccess/checkMinigamesAccess, pour verrouiller un
+ * exercice/quiz par sa difficulté selon le plan de l'utilisateur (ou de son
+ * parent, si enfant — déjà géré par getUserFeatures). C'est le SEUL endroit
+ * qui doit décider l'accès côté serveur (page + route de correction) ; le
+ * catalogue côté client (ExercisesCatalog/QuizCatalog) n'affiche qu'un reflet
+ * cosmétique de la même règle via isDifficultyAllowed, jamais l'inverse. */
+export async function checkDifficultyAccess(
+  authId: string,
+  difficulty: string | null | undefined
+): Promise<{ allowed: boolean; reason?: string }> {
+  const { data: userRow } = await supabaseAdmin
+    .from("users")
+    .select("id, role, parent_id")
+    .eq("auth_id", authId)
+    .maybeSingle();
+
+  if (!userRow) return { allowed: false, reason: "Utilisateur introuvable" };
+  if (userRow.role === "admin") return { allowed: true };
+
+  const features = await getUserFeatures(authId, userRow);
+  const maxAllowed = normalizeDifficulty(features.access_level_exercises);
+  if (isDifficultyAllowed(maxAllowed, difficulty)) return { allowed: true };
+
+  return {
+    allowed: false,
+    reason: "Ce contenu est réservé aux plans payants. Passez à un plan supérieur pour y accéder.",
+  };
 }

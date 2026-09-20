@@ -5,6 +5,7 @@ import { gradeAnswer, gradeImageAnswer } from "@/lib/llm";
 import { tryDeterministicMathCheck } from "@/lib/mathAnswerCheck";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { checkDifficultyAccess } from "@/lib/checkSubscription";
 
 
 export async function POST(
@@ -74,6 +75,14 @@ export async function POST(
       exercise = dbExercise;
       maxPoints = exercise.points_reward || 10;
 
+      // Verrou de difficulté par plan — même règle que la page de l'exercice
+      // (src/app/child/exercises/[id]/page.tsx), refaite ici car cette route
+      // est appelable indépendamment de la page.
+      const { allowed } = await checkDifficultyAccess(me.authId, exercise.difficulty_level);
+      if (!allowed) {
+        return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
+      }
+
       if (block_id && exercise.content_json) {
         const allBlocks = exercise.content_json.flatMap((p: any) => p.blocks);
         targetBlock = allBlocks.find((b: any) => b.id === block_id);
@@ -96,7 +105,7 @@ export async function POST(
     if (
       exercise.grading_type === "ai" ||
       isImage ||
-      (targetBlock && ["text_input", "coding"].includes(targetBlock.type))
+      (targetBlock && ["text_input", "coding", "impossible_search"].includes(targetBlock.type))
     ) {
       // --- AI GRADING (IA) ---
       console.log(
@@ -110,8 +119,10 @@ export async function POST(
       const studentAnswerText =
         typeof answer === "string" ? answer : JSON.stringify(answer);
 
+      // "recherche impossible" se juge sur la qualité d'une justification, pas
+      // sur une égalité numérique — le pré-check déterministe n'a pas de sens ici.
       const deterministic =
-        !isImage && typeof correctAns === "string"
+        !isImage && typeof correctAns === "string" && targetBlock?.type !== "impossible_search"
           ? tryDeterministicMathCheck(correctAns, studentAnswerText)
           : { decided: false as const };
 
@@ -143,6 +154,7 @@ export async function POST(
               exercise?.level || level || "6ème",
               maxPoints,
               deterministic.decided ? deterministic.isCorrect : undefined,
+              targetBlock?.type === "impossible_search" ? "justification" : "numeric",
             );
           }
 
