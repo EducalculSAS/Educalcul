@@ -16,6 +16,7 @@ import {
   Keyboard,
   ArrowUp,
   ArrowDown,
+  GripVertical,
   Eye,
   AlertTriangle,
 } from "lucide-react";
@@ -171,6 +172,129 @@ interface ExerciseViewerProps {
     onEditAnswer: (blockId: string, value: any) => void;
     saving?: boolean;
   };
+}
+
+/** Liste réordonnable par glisser-déposer (souris + tactile via Pointer
+ * Events, pas de dépendance externe) pour le bloc "ordering" — les flèches
+ * restent en repli accessible (clavier, précision). Le drag ne fait QUE
+ * réordonner localement ; le commit vers le parent (onChange) n'a lieu qu'au
+ * relâchement, pour ne pas re-render tout ExerciseViewer à chaque pixel de
+ * déplacement. */
+function OrderingDragList({
+  items, disabled, onChange, getItemClass,
+}: {
+  items: string[];
+  disabled: boolean;
+  onChange: (next: string[]) => void;
+  getItemClass: (item: string, index: number) => string;
+}) {
+  const [state, setState] = useState<{ order: string[]; dragIndex: number | null; offsetY: number; rowHeight: number }>(
+    () => ({ order: items, dragIndex: null, offsetY: 0, rowHeight: 48 })
+  );
+  const startYRef = useRef(0);
+  const isDraggingRef = useRef(false);
+  // Index et ordre au moment du pointerdown, figés pour toute la durée du
+  // drag — le nouvel ordre à chaque pointermove se recalcule TOUJOURS à
+  // partir de cette référence fixe plutôt que de "state.order" courant.
+  // Nécessaire pour rester un updater PUR (voir plus bas) : muter une ref
+  // depuis l'intérieur d'un updater setState casse le double-appel de
+  // vérification de React StrictMode en dev (le second appel voit une ref
+  // déjà mutée par le premier et retombe sur delta=0, donc le state
+  // committé final n'avance jamais) — constaté empiriquement en testant le
+  // drag via PointerEvent simulés.
+  const dragStartIndexRef = useRef(0);
+  const baseOrderRef = useRef<string[]>([]);
+
+  useEffect(() => {
+    if (!isDraggingRef.current) setState((s) => ({ ...s, order: items }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [items]);
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLButtonElement>, index: number) => {
+    if (disabled) return;
+    const row = e.currentTarget.closest("[data-ordering-row]") as HTMLElement | null;
+    isDraggingRef.current = true;
+    startYRef.current = e.clientY;
+    dragStartIndexRef.current = index;
+    baseOrderRef.current = state.order;
+    setState((s) => ({ ...s, dragIndex: index, offsetY: 0, rowHeight: row?.offsetHeight || s.rowHeight }));
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!isDraggingRef.current) return;
+    const deltaY = e.clientY - startYRef.current;
+    setState((s) => {
+      const steps = Math.round(deltaY / s.rowHeight);
+      const startIndex = dragStartIndexRef.current;
+      const targetIndex = Math.min(Math.max(startIndex + steps, 0), baseOrderRef.current.length - 1);
+      const nextOrder = [...baseOrderRef.current];
+      const [moved] = nextOrder.splice(startIndex, 1);
+      nextOrder.splice(targetIndex, 0, moved);
+      const offsetY = deltaY - (targetIndex - startIndex) * s.rowHeight;
+      return { ...s, order: nextOrder, dragIndex: targetIndex, offsetY };
+    });
+  };
+
+  const handlePointerUp = () => {
+    if (!isDraggingRef.current) return;
+    isDraggingRef.current = false;
+    // onChange (setState du parent) est appelé APRÈS setState, jamais depuis
+    // l'intérieur de son updater fonctionnel — React peut ré-invoquer un
+    // updater à des moments imprévisibles (StrictMode, retries concurrents),
+    // ce qui déclenchait "Cannot update a component while rendering a
+    // different component" quand onChange était appelé de là.
+    setState((s) => ({ ...s, dragIndex: null, offsetY: 0 }));
+    onChange(state.order);
+  };
+
+  const moveBy = (index: number, delta: number) => {
+    const target = index + delta;
+    if (target < 0 || target >= state.order.length) return;
+    const next = [...state.order];
+    [next[index], next[target]] = [next[target], next[index]];
+    setState((s) => ({ ...s, order: next }));
+    onChange(next);
+  };
+
+  return (
+    <div className="space-y-2">
+      {state.order.map((item, i) => {
+        const isDragging = state.dragIndex === i;
+        return (
+          <div
+            key={item}
+            data-ordering-row
+            className={`flex items-center gap-2 p-2.5 border-2 rounded-lg ${getItemClass(item, i)} ${isDragging ? "shadow-lg relative z-10" : ""}`}
+            style={isDragging ? { transform: `translateY(${state.offsetY}px)` } : undefined}
+          >
+            <button
+              type="button"
+              disabled={disabled}
+              onPointerDown={(e) => handlePointerDown(e, i)}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              className="shrink-0 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-40 disabled:cursor-not-allowed cursor-grab active:cursor-grabbing"
+              style={{ touchAction: "none" }}
+              aria-label="Glisser pour réordonner"
+            >
+              <GripVertical size={18} />
+            </button>
+            <span className="text-xs font-bold text-gray-400 w-5">{i + 1}.</span>
+            <span
+              className="flex-1 text-sm text-gray-700"
+              dangerouslySetInnerHTML={{ __html: renderLatexInHTML(item) }}
+            />
+            <div className="flex gap-1 shrink-0">
+              <GlassIconButton icon={ArrowUp} disabled={disabled || i === 0} onClick={() => moveBy(i, -1)} color="navy" size="sm" aria-label="Monter" />
+              <GlassIconButton icon={ArrowDown} disabled={disabled || i === state.order.length - 1} onClick={() => moveBy(i, 1)} color="navy" size="sm" aria-label="Descendre" />
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default function ExerciseViewer({
@@ -1372,56 +1496,20 @@ export default function ExerciseViewer({
                   )}
 
                   {block.type === "ordering" && (
-                    <div className="space-y-2">
-                      {(() => {
-                        const current: string[] =
-                          Array.isArray(answer) && answer.length
-                            ? answer
-                            : shuffledOrderingItems[block.id] || block.items || [];
-                        return current.map((item, i) => {
-                          const correctItem = revealed[block.id]?.items?.[i];
-                          let cls = "border-gray-200 bg-white";
-                          if (isSubmitted) {
-                            cls = item === correctItem ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
-                          }
-                          return (
-                            <div key={item + i} className={`flex items-center gap-2 p-2.5 border-2 rounded-lg ${cls}`}>
-                              <span className="text-xs font-bold text-gray-400 w-5">{i + 1}.</span>
-                              <span
-                                className="flex-1 text-sm text-gray-700"
-                                dangerouslySetInnerHTML={{
-                                  __html: renderLatexInHTML(item),
-                                }}
-                              />
-                              <GlassIconButton
-                                icon={ArrowUp}
-                                disabled={isSubmitted || i === 0}
-                                onClick={() => {
-                                  const next = [...current];
-                                  [next[i - 1], next[i]] = [next[i], next[i - 1]];
-                                  handleBlockAnswerChange(block.id, next);
-                                }}
-                                color="navy"
-                                size="sm"
-                                aria-label="Monter"
-                              />
-                              <GlassIconButton
-                                icon={ArrowDown}
-                                disabled={isSubmitted || i === current.length - 1}
-                                onClick={() => {
-                                  const next = [...current];
-                                  [next[i], next[i + 1]] = [next[i + 1], next[i]];
-                                  handleBlockAnswerChange(block.id, next);
-                                }}
-                                color="navy"
-                                size="sm"
-                                aria-label="Descendre"
-                              />
-                            </div>
-                          );
-                        });
-                      })()}
-                    </div>
+                    <OrderingDragList
+                      items={
+                        Array.isArray(answer) && answer.length
+                          ? answer
+                          : shuffledOrderingItems[block.id] || block.items || []
+                      }
+                      disabled={!!isSubmitted}
+                      onChange={(next) => handleBlockAnswerChange(block.id, next)}
+                      getItemClass={(item, i) => {
+                        if (!isSubmitted) return "border-gray-200 bg-white";
+                        const correctItem = revealed[block.id]?.items?.[i];
+                        return item === correctItem ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
+                      }}
+                    />
                   )}
 
                   {block.type === "coding" && (
