@@ -43,6 +43,13 @@ export function stripBlockAnswers(block: any) {
       shuffledItems: seededShuffle(items, block.id || ""),
     };
   }
+  if (block.type === "categorize" && Array.isArray(block.categoryItems)) {
+    const { categoryItems, ...safe } = rest;
+    return {
+      ...safe,
+      categoryItems: categoryItems.map((it: any) => ({ text: it.text })),
+    };
+  }
   return rest;
 }
 

@@ -14,9 +14,6 @@ import {
   Sparkles,
   Pencil,
   Keyboard,
-  ArrowUp,
-  ArrowDown,
-  GripVertical,
   Eye,
   AlertTriangle,
 } from "lucide-react";
@@ -174,125 +171,711 @@ interface ExerciseViewerProps {
   };
 }
 
-/** Liste réordonnable par glisser-déposer (souris + tactile via Pointer
- * Events, pas de dépendance externe) pour le bloc "ordering" — les flèches
- * restent en repli accessible (clavier, précision). Le drag ne fait QUE
- * réordonner localement ; le commit vers le parent (onChange) n'a lieu qu'au
- * relâchement, pour ne pas re-render tout ExerciseViewer à chaque pixel de
- * déplacement. */
+interface OrderingToken { id: number; text: string }
+interface OrderingDragState {
+  bank: number[];
+  slots: (number | null)[];
+}
+interface OrderingPointerDrag {
+  tokenId: number;
+  from: { type: "bank" } | { type: "slot"; index: number };
+  x: number;
+  y: number;
+  startX: number;
+  startY: number;
+  moved: boolean;
+}
+
+/** Banque d'étiquettes en bas + cases à remplir en haut (comme Duolingo) pour
+ * le bloc "ordering" — pas de flèches : cliquer/taper une étiquette la place
+ * dans la première case vide (accessible clavier gratuitement via <button>
+ * + onClick natif), ET on peut aussi la glisser librement (souris/tactile,
+ * Pointer Events, pas de dépendance) vers une case précise ou vers la
+ * banque pour l'y renvoyer. */
 function OrderingDragList({
-  items, disabled, onChange, getItemClass,
+  shuffledItems, savedAnswer, disabled, onChange, getItemClass,
 }: {
-  items: string[];
+  shuffledItems: string[];
+  /** Réponse déjà complète restaurée (rechargement de page) — répartit les
+   * étiquettes dans leurs cases d'origine ; sinon tout part de la banque. */
+  savedAnswer?: string[];
   disabled: boolean;
   onChange: (next: string[]) => void;
   getItemClass: (item: string, index: number) => string;
 }) {
-  const [state, setState] = useState<{ order: string[]; dragIndex: number | null; offsetY: number; rowHeight: number }>(
-    () => ({ order: items, dragIndex: null, offsetY: 0, rowHeight: 48 })
+  const tokens = useMemo<OrderingToken[]>(
+    () => shuffledItems.map((text, id) => ({ id, text })),
+    [shuffledItems]
   );
-  const startYRef = useRef(0);
-  const isDraggingRef = useRef(false);
-  // Index et ordre au moment du pointerdown, figés pour toute la durée du
-  // drag — le nouvel ordre à chaque pointermove se recalcule TOUJOURS à
-  // partir de cette référence fixe plutôt que de "state.order" courant.
-  // Nécessaire pour rester un updater PUR (voir plus bas) : muter une ref
-  // depuis l'intérieur d'un updater setState casse le double-appel de
-  // vérification de React StrictMode en dev (le second appel voit une ref
-  // déjà mutée par le premier et retombe sur delta=0, donc le state
-  // committé final n'avance jamais) — constaté empiriquement en testant le
-  // drag via PointerEvent simulés.
-  const dragStartIndexRef = useRef(0);
-  const baseOrderRef = useRef<string[]>([]);
 
-  useEffect(() => {
-    if (!isDraggingRef.current) setState((s) => ({ ...s, order: items }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [items]);
+  const [state, setState] = useState<OrderingDragState>(() => {
+    if (!savedAnswer) return { bank: tokens.map((t) => t.id), slots: Array(tokens.length).fill(null) };
+    const used = new Set<number>();
+    const slots = savedAnswer.map((text) => {
+      const match = tokens.find((t) => t.text === text && !used.has(t.id));
+      if (!match) return null;
+      used.add(match.id);
+      return match.id;
+    });
+    return { bank: tokens.filter((t) => !used.has(t.id)).map((t) => t.id), slots };
+  });
+  const [drag, setDrag] = useState<OrderingPointerDrag | null>(null);
+  const [hoverSlot, setHoverSlot] = useState<number | null>(null);
+  const slotRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const bankRef = useRef<HTMLDivElement | null>(null);
+  // true juste après un vrai drag (mouvement franchi le seuil) : la plupart
+  // des navigateurs ne synthétisent déjà pas de "click" après un déplacement
+  // significatif du pointeur, mais ce filet de sécurité évite un double
+  // placement si jamais un moteur en émet un quand même.
+  const justDraggedRef = useRef(false);
 
-  const handlePointerDown = (e: React.PointerEvent<HTMLButtonElement>, index: number) => {
+  const commit = (next: OrderingDragState) => {
+    setState(next);
+    onChange(next.slots.map((id) => (id === null ? "" : tokens[id].text)));
+  };
+
+  // Pas de functional updater ici : ces fonctions ne sont appelées que
+  // depuis des handlers d'événements (jamais depuis un rendu), donc l'état
+  // capturé par fermeture au dernier rendu est déjà à jour. Appeler commit
+  // (qui fait setState du PARENT) depuis l'intérieur d'un updater setState
+  // React déclenchait "Cannot update a component while rendering a
+  // different component" (React peut ré-invoquer un updater, ex.
+  // StrictMode en dev, ce qui appelait onChange deux fois pour un seul
+  // geste) — constaté empiriquement en testant le clic/glisser.
+  const placeInSlot = (tokenId: number, slotIndex: number) => {
+    const nextSlots = [...state.slots];
+    const evicted = nextSlots[slotIndex];
+    const fromSlotIndex = nextSlots.indexOf(tokenId);
+    if (fromSlotIndex !== -1) nextSlots[fromSlotIndex] = null;
+    nextSlots[slotIndex] = tokenId;
+    let nextBank = state.bank.filter((id) => id !== tokenId);
+    if (evicted !== null && evicted !== tokenId) nextBank = [...nextBank, evicted];
+    commit({ bank: nextBank, slots: nextSlots });
+  };
+
+  const returnToBank = (tokenId: number) => {
+    const nextSlots = [...state.slots];
+    const idx = nextSlots.indexOf(tokenId);
+    if (idx === -1) return;
+    nextSlots[idx] = null;
+    commit({ bank: state.bank.includes(tokenId) ? state.bank : [...state.bank, tokenId], slots: nextSlots });
+  };
+
+  const hitTestSlot = (x: number, y: number): number | null => {
+    for (let i = 0; i < slotRefs.current.length; i++) {
+      const el = slotRefs.current[i];
+      if (!el) continue;
+      const r = el.getBoundingClientRect();
+      if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return i;
+    }
+    return null;
+  };
+  const hitTestBank = (x: number, y: number): boolean => {
+    const el = bankRef.current;
+    if (!el) return false;
+    const r = el.getBoundingClientRect();
+    return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+  };
+
+  const handlePointerDown = (
+    e: React.PointerEvent<HTMLButtonElement>,
+    tokenId: number,
+    from: OrderingPointerDrag["from"]
+  ) => {
     if (disabled) return;
-    const row = e.currentTarget.closest("[data-ordering-row]") as HTMLElement | null;
-    isDraggingRef.current = true;
-    startYRef.current = e.clientY;
-    dragStartIndexRef.current = index;
-    baseOrderRef.current = state.order;
-    setState((s) => ({ ...s, dragIndex: index, offsetY: 0, rowHeight: row?.offsetHeight || s.rowHeight }));
     e.currentTarget.setPointerCapture(e.pointerId);
+    setDrag({ tokenId, from, x: e.clientX, y: e.clientY, startX: e.clientX, startY: e.clientY, moved: false });
   };
 
   const handlePointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
-    if (!isDraggingRef.current) return;
-    const deltaY = e.clientY - startYRef.current;
-    setState((s) => {
-      const steps = Math.round(deltaY / s.rowHeight);
-      const startIndex = dragStartIndexRef.current;
-      const targetIndex = Math.min(Math.max(startIndex + steps, 0), baseOrderRef.current.length - 1);
-      const nextOrder = [...baseOrderRef.current];
-      const [moved] = nextOrder.splice(startIndex, 1);
-      nextOrder.splice(targetIndex, 0, moved);
-      const offsetY = deltaY - (targetIndex - startIndex) * s.rowHeight;
-      return { ...s, order: nextOrder, dragIndex: targetIndex, offsetY };
-    });
+    if (!drag) return;
+    const dx = e.clientX - drag.startX;
+    const dy = e.clientY - drag.startY;
+    const moved = drag.moved || Math.hypot(dx, dy) > 6;
+    setDrag((d) => (d ? { ...d, x: e.clientX, y: e.clientY, moved } : d));
+    setHoverSlot(moved ? hitTestSlot(e.clientX, e.clientY) : null);
   };
 
-  const handlePointerUp = () => {
-    if (!isDraggingRef.current) return;
-    isDraggingRef.current = false;
-    // onChange (setState du parent) est appelé APRÈS setState, jamais depuis
-    // l'intérieur de son updater fonctionnel — React peut ré-invoquer un
-    // updater à des moments imprévisibles (StrictMode, retries concurrents),
-    // ce qui déclenchait "Cannot update a component while rendering a
-    // different component" quand onChange était appelé de là.
-    setState((s) => ({ ...s, dragIndex: null, offsetY: 0 }));
-    onChange(state.order);
+  const endDrag = (x: number, y: number, moved: boolean, tokenId: number) => {
+    setDrag(null);
+    setHoverSlot(null);
+    if (!moved) return; // pas de mouvement significatif -> laisse le clic natif gérer le placement
+    justDraggedRef.current = true;
+    const slotIndex = hitTestSlot(x, y);
+    if (slotIndex !== null) placeInSlot(tokenId, slotIndex);
+    else if (hitTestBank(x, y)) returnToBank(tokenId);
+    setTimeout(() => { justDraggedRef.current = false; }, 300);
   };
 
-  const moveBy = (index: number, delta: number) => {
-    const target = index + delta;
-    if (target < 0 || target >= state.order.length) return;
-    const next = [...state.order];
-    [next[index], next[target]] = [next[target], next[index]];
-    setState((s) => ({ ...s, order: next }));
-    onChange(next);
+  const handlePointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!drag) return;
+    endDrag(e.clientX, e.clientY, drag.moved, drag.tokenId);
   };
+  const handlePointerCancel = () => {
+    setDrag(null);
+    setHoverSlot(null);
+  };
+
+  const handleClick = (tokenId: number, from: OrderingPointerDrag["from"]) => {
+    if (disabled) return;
+    if (justDraggedRef.current) return;
+    if (from.type === "bank") {
+      const target = state.slots.findIndex((s) => s === null);
+      if (target !== -1) placeInSlot(tokenId, target);
+    } else {
+      returnToBank(tokenId);
+    }
+  };
+
+  const chipClassName =
+    "px-3 py-2 rounded-lg border-2 border-[rgba(197,161,72,0.35)] bg-white text-sm font-medium text-gray-700 cursor-grab active:cursor-grabbing hover:border-[var(--greek-blue)] disabled:opacity-40 disabled:cursor-not-allowed transition-colors";
 
   return (
-    <div className="space-y-2">
-      {state.order.map((item, i) => {
-        const isDragging = state.dragIndex === i;
-        return (
+    <div className="space-y-3">
+      <div className="flex flex-wrap gap-2">
+        {state.slots.map((tokenId, i) => (
           <div
-            key={item}
-            data-ordering-row
-            className={`flex items-center gap-2 p-2.5 border-2 rounded-lg ${getItemClass(item, i)} ${isDragging ? "shadow-lg relative z-10" : ""}`}
-            style={isDragging ? { transform: `translateY(${state.offsetY}px)` } : undefined}
+            key={i}
+            ref={(el) => { slotRefs.current[i] = el; }}
+            className={`min-w-[72px] min-h-[44px] flex items-center justify-center px-2 rounded-lg border-2 ${
+              tokenId === null
+                ? `border-dashed ${hoverSlot === i ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5" : "border-gray-300 bg-gray-50"}`
+                : `border-solid ${getItemClass(tokens[tokenId].text, i)}`
+            }`}
           >
+            {tokenId === null ? (
+              <span className="text-xs font-bold text-gray-300">{i + 1}</span>
+            ) : (
+              <button
+                type="button"
+                disabled={disabled}
+                onPointerDown={(e) => handlePointerDown(e, tokenId, { type: "slot", index: i })}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerCancel}
+                onClick={() => handleClick(tokenId, { type: "slot", index: i })}
+                style={{ touchAction: "none" }}
+                className={`${chipClassName} border-0 bg-transparent hover:border-0`}
+              >
+                <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(tokens[tokenId].text) }} />
+              </button>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div
+        ref={bankRef}
+        className={`flex flex-wrap gap-2 p-3 rounded-lg border-2 border-dashed min-h-[60px] transition-colors ${
+          drag && drag.from.type === "slot" && hoverSlot === null ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5" : "border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]"
+        }`}
+      >
+        {state.bank.length === 0 ? (
+          <span className="text-xs text-gray-400 italic self-center">Tout est placé !</span>
+        ) : (
+          state.bank.map((tokenId) => (
             <button
+              key={tokenId}
               type="button"
               disabled={disabled}
-              onPointerDown={(e) => handlePointerDown(e, i)}
+              onPointerDown={(e) => handlePointerDown(e, tokenId, { type: "bank" })}
               onPointerMove={handlePointerMove}
               onPointerUp={handlePointerUp}
-              onPointerCancel={handlePointerUp}
-              className="shrink-0 text-gray-400 hover:text-[var(--greek-blue)] disabled:opacity-40 disabled:cursor-not-allowed cursor-grab active:cursor-grabbing"
+              onPointerCancel={handlePointerCancel}
+              onClick={() => handleClick(tokenId, { type: "bank" })}
               style={{ touchAction: "none" }}
-              aria-label="Glisser pour réordonner"
+              className={chipClassName}
             >
-              <GripVertical size={18} />
+              <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(tokens[tokenId].text) }} />
             </button>
-            <span className="text-xs font-bold text-gray-400 w-5">{i + 1}.</span>
-            <span
-              className="flex-1 text-sm text-gray-700"
-              dangerouslySetInnerHTML={{ __html: renderLatexInHTML(item) }}
-            />
-            <div className="flex gap-1 shrink-0">
-              <GlassIconButton icon={ArrowUp} disabled={disabled || i === 0} onClick={() => moveBy(i, -1)} color="navy" size="sm" aria-label="Monter" />
-              <GlassIconButton icon={ArrowDown} disabled={disabled || i === state.order.length - 1} onClick={() => moveBy(i, 1)} color="navy" size="sm" aria-label="Descendre" />
+          ))
+        )}
+      </div>
+
+      {drag && drag.moved && (
+        <div
+          style={{ position: "fixed", left: drag.x, top: drag.y, transform: "translate(-50%, -50%)", pointerEvents: "none", zIndex: 60 }}
+          className="px-3 py-2 rounded-lg border-2 border-[var(--greek-blue)] bg-white shadow-xl text-sm font-medium"
+        >
+          <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(tokens[drag.tokenId].text) }} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+interface MatchingPointerDrag { tokenId: number; from: { type: "bank" } | { type: "slot"; index: number }; x: number; y: number; startX: number; startY: number; moved: boolean }
+
+/** Bloc "matching" : mêmes briques que OrderingDragList (banque + clic/glisser,
+ * remplissage de la première case vide) mais les lignes ("left") restent
+ * TOUJOURS à une position fixe — seul le contenu de droite ("right", en
+ * banque au départ) se déplace, contrairement à "ordering" où la liste
+ * entière est réordonnée. */
+function MatchingDragList({
+  lefts, shuffledRights, disabled, savedAnswer, onChange, getItemClass,
+}: {
+  lefts: string[];
+  shuffledRights: string[];
+  disabled: boolean;
+  savedAnswer?: string[];
+  onChange: (next: string[]) => void;
+  getItemClass: (right: string, index: number) => string;
+}) {
+  const tokens = useMemo(() => shuffledRights.map((text, id) => ({ id, text })), [shuffledRights]);
+
+  const [state, setState] = useState<{ bank: number[]; slots: (number | null)[] }>(() => {
+    if (!savedAnswer) return { bank: tokens.map((t) => t.id), slots: Array(lefts.length).fill(null) };
+    const used = new Set<number>();
+    const slots = savedAnswer.map((text) => {
+      const match = tokens.find((t) => t.text === text && !used.has(t.id));
+      if (!match) return null;
+      used.add(match.id);
+      return match.id;
+    });
+    return { bank: tokens.filter((t) => !used.has(t.id)).map((t) => t.id), slots };
+  });
+  const [drag, setDrag] = useState<MatchingPointerDrag | null>(null);
+  const [hoverSlot, setHoverSlot] = useState<number | null>(null);
+  const slotRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const bankRef = useRef<HTMLDivElement | null>(null);
+  const justDraggedRef = useRef(false);
+
+  const commit = (next: { bank: number[]; slots: (number | null)[] }) => {
+    setState(next);
+    onChange(next.slots.map((id) => (id === null ? "" : tokens[id].text)));
+  };
+  // Voir le commentaire équivalent dans OrderingDragList : commit (setState
+  // du parent) doit toujours être appelé HORS de tout updater fonctionnel
+  // setState — ces fonctions ne sont appelées que depuis des handlers
+  // d'événements, "state" capturé par fermeture est donc déjà à jour.
+  const placeInSlot = (tokenId: number, slotIndex: number) => {
+    const nextSlots = [...state.slots];
+    const evicted = nextSlots[slotIndex];
+    const fromSlotIndex = nextSlots.indexOf(tokenId);
+    if (fromSlotIndex !== -1) nextSlots[fromSlotIndex] = null;
+    nextSlots[slotIndex] = tokenId;
+    let nextBank = state.bank.filter((id) => id !== tokenId);
+    if (evicted !== null && evicted !== tokenId) nextBank = [...nextBank, evicted];
+    commit({ bank: nextBank, slots: nextSlots });
+  };
+  const returnToBank = (tokenId: number) => {
+    const nextSlots = [...state.slots];
+    const idx = nextSlots.indexOf(tokenId);
+    if (idx === -1) return;
+    nextSlots[idx] = null;
+    commit({ bank: state.bank.includes(tokenId) ? state.bank : [...state.bank, tokenId], slots: nextSlots });
+  };
+
+  const hitTestSlot = (x: number, y: number): number | null => {
+    for (let i = 0; i < slotRefs.current.length; i++) {
+      const el = slotRefs.current[i];
+      if (!el) continue;
+      const r = el.getBoundingClientRect();
+      if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return i;
+    }
+    return null;
+  };
+  const hitTestBank = (x: number, y: number): boolean => {
+    const el = bankRef.current;
+    if (!el) return false;
+    const r = el.getBoundingClientRect();
+    return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+  };
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLButtonElement>, tokenId: number, from: MatchingPointerDrag["from"]) => {
+    if (disabled) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    setDrag({ tokenId, from, x: e.clientX, y: e.clientY, startX: e.clientX, startY: e.clientY, moved: false });
+  };
+  const handlePointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.startX;
+    const dy = e.clientY - drag.startY;
+    const moved = drag.moved || Math.hypot(dx, dy) > 6;
+    setDrag((d) => (d ? { ...d, x: e.clientX, y: e.clientY, moved } : d));
+    setHoverSlot(moved ? hitTestSlot(e.clientX, e.clientY) : null);
+  };
+  const handlePointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!drag) return;
+    const { tokenId, moved, x, y } = drag;
+    setDrag(null);
+    setHoverSlot(null);
+    if (!moved) return;
+    justDraggedRef.current = true;
+    const slotIndex = hitTestSlot(x, y);
+    if (slotIndex !== null) placeInSlot(tokenId, slotIndex);
+    else if (hitTestBank(x, y)) returnToBank(tokenId);
+    setTimeout(() => { justDraggedRef.current = false; }, 300);
+  };
+  const handlePointerCancel = () => { setDrag(null); setHoverSlot(null); };
+
+  const handleClick = (tokenId: number, from: MatchingPointerDrag["from"]) => {
+    if (disabled || justDraggedRef.current) return;
+    if (from.type === "bank") {
+      const target = state.slots.findIndex((s) => s === null);
+      if (target !== -1) placeInSlot(tokenId, target);
+    } else {
+      returnToBank(tokenId);
+    }
+  };
+
+  const chipClassName =
+    "px-3 py-2 rounded-lg border-2 border-[rgba(197,161,72,0.35)] bg-white text-sm font-medium text-gray-700 cursor-grab active:cursor-grabbing hover:border-[var(--greek-blue)] disabled:opacity-40 disabled:cursor-not-allowed transition-colors";
+
+  return (
+    <div className="space-y-3">
+      <div className="space-y-2">
+        {lefts.map((left, i) => {
+          const tokenId = state.slots[i];
+          return (
+            <div key={i} className="flex items-center gap-3">
+              <span
+                className="flex-1 text-sm font-medium text-gray-700"
+                dangerouslySetInnerHTML={{ __html: renderLatexInHTML(left) }}
+              />
+              <ArrowRight size={14} className="text-gray-300 shrink-0" />
+              <div
+                ref={(el) => { slotRefs.current[i] = el; }}
+                className={`flex-1 min-h-[44px] flex items-center px-1 rounded-lg border-2 ${
+                  tokenId === null
+                    ? `border-dashed ${hoverSlot === i ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5" : "border-gray-300 bg-gray-50"}`
+                    : `border-solid ${getItemClass(tokens[tokenId].text, i)}`
+                }`}
+              >
+                {tokenId !== null && (
+                  <button
+                    type="button"
+                    disabled={disabled}
+                    onPointerDown={(e) => handlePointerDown(e, tokenId, { type: "slot", index: i })}
+                    onPointerMove={handlePointerMove}
+                    onPointerUp={handlePointerUp}
+                    onPointerCancel={handlePointerCancel}
+                    onClick={() => handleClick(tokenId, { type: "slot", index: i })}
+                    style={{ touchAction: "none" }}
+                    className={`${chipClassName} border-0 bg-transparent hover:border-0 w-full text-left`}
+                  >
+                    <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(tokens[tokenId].text) }} />
+                  </button>
+                )}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div
+        ref={bankRef}
+        className={`flex flex-wrap gap-2 p-3 rounded-lg border-2 border-dashed min-h-[60px] transition-colors ${
+          drag && drag.from.type === "slot" && hoverSlot === null ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5" : "border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]"
+        }`}
+      >
+        {state.bank.length === 0 ? (
+          <span className="text-xs text-gray-400 italic self-center">Tout est associé !</span>
+        ) : (
+          state.bank.map((tokenId) => (
+            <button
+              key={tokenId}
+              type="button"
+              disabled={disabled}
+              onPointerDown={(e) => handlePointerDown(e, tokenId, { type: "bank" })}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerCancel}
+              onClick={() => handleClick(tokenId, { type: "bank" })}
+              style={{ touchAction: "none" }}
+              className={chipClassName}
+            >
+              <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(tokens[tokenId].text) }} />
+            </button>
+          ))
+        )}
+      </div>
+
+      {drag && drag.moved && (
+        <div
+          style={{ position: "fixed", left: drag.x, top: drag.y, transform: "translate(-50%, -50%)", pointerEvents: "none", zIndex: 60 }}
+          className="px-3 py-2 rounded-lg border-2 border-[var(--greek-blue)] bg-white shadow-xl text-sm font-medium"
+        >
+          <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(tokens[drag.tokenId].text) }} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+interface CategorizeDisplayItem { originalIndex: number; text: string }
+interface CategorizePointerDrag { originalIndex: number; x: number; y: number; startX: number; startY: number; moved: boolean }
+
+/** Bloc "categorize" : mêmes briques que OrderingDragList (Pointer Events,
+ * clic + glisser, pas de dépendance) mais avec PLUSIEURS bacs de
+ * destination au lieu de cases séquentielles — pas de "première case vide"
+ * déterministe possible, donc le clic fonctionne en 2 temps : sélectionner
+ * une étiquette, puis cliquer le bac visé (le glisser-déposer direct reste
+ * en un seul geste). */
+function CategorizeDragList({
+  displayItems, categories, disabled, savedAnswer, onChange, getItemClass,
+}: {
+  displayItems: CategorizeDisplayItem[];
+  categories: string[];
+  disabled: boolean;
+  /** Par originalIndex, la catégorie déjà choisie (reprise de session) */
+  savedAnswer?: (string | null)[];
+  /** Par originalIndex, la catégorie choisie (ou null si encore en banque) */
+  onChange: (next: (string | null)[]) => void;
+  getItemClass: (originalIndex: number) => string;
+}) {
+  const [assignment, setAssignment] = useState<Record<number, number | null>>(() => {
+    const map: Record<number, number | null> = {};
+    displayItems.forEach(({ originalIndex }) => {
+      const savedCat = savedAnswer?.[originalIndex];
+      map[originalIndex] = savedCat ? categories.indexOf(savedCat) : null;
+    });
+    return map;
+  });
+  const [selected, setSelected] = useState<number | null>(null);
+  const [drag, setDrag] = useState<CategorizePointerDrag | null>(null);
+  const [hoverBin, setHoverBin] = useState<number | null>(null);
+  const binRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const bankRef = useRef<HTMLDivElement | null>(null);
+  const justDraggedRef = useRef(false);
+
+  const commit = (next: Record<number, number | null>) => {
+    setAssignment(next);
+    // Le tableau envoyé au serveur doit être indexé par originalIndex (l'ordre
+    // de "categoryItems" en base), PAS par l'ordre d'affichage mélangé de
+    // "displayItems" — le serveur compare given[i] à categoryItems[i].category
+    // positionnellement. Itérer sur displayItems.map(...) construirait le
+    // tableau dans l'ordre mélangé et désalignerait chaque réponse dès que le
+    // mélange diffère de l'ordre original (donc systématiquement en pratique).
+    const out: (string | null)[] = new Array(displayItems.length).fill(null);
+    displayItems.forEach(({ originalIndex }) => {
+      const catIdx = next[originalIndex];
+      out[originalIndex] = catIdx === null || catIdx === undefined ? null : categories[catIdx];
+    });
+    onChange(out);
+  };
+  const assignTo = (originalIndex: number, catIndex: number | null) => commit({ ...assignment, [originalIndex]: catIndex });
+
+  const hitTestBin = (x: number, y: number): number | null => {
+    for (let i = 0; i < binRefs.current.length; i++) {
+      const el = binRefs.current[i];
+      if (!el) continue;
+      const r = el.getBoundingClientRect();
+      if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return i;
+    }
+    return null;
+  };
+  const hitTestBank = (x: number, y: number): boolean => {
+    const el = bankRef.current;
+    if (!el) return false;
+    const r = el.getBoundingClientRect();
+    return x >= r.left && x <= r.right && y >= r.top && y <= r.bottom;
+  };
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLButtonElement>, originalIndex: number) => {
+    if (disabled) return;
+    e.stopPropagation();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    setDrag({ originalIndex, x: e.clientX, y: e.clientY, startX: e.clientX, startY: e.clientY, moved: false });
+  };
+  const handlePointerMove = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.startX;
+    const dy = e.clientY - drag.startY;
+    const moved = drag.moved || Math.hypot(dx, dy) > 6;
+    setDrag((d) => (d ? { ...d, x: e.clientX, y: e.clientY, moved } : d));
+    setHoverBin(moved ? hitTestBin(e.clientX, e.clientY) : null);
+  };
+  const handlePointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+    if (!drag) return;
+    const { originalIndex, moved, x, y } = drag;
+    setDrag(null);
+    setHoverBin(null);
+    if (!moved) return;
+    justDraggedRef.current = true;
+    const binIdx = hitTestBin(x, y);
+    if (binIdx !== null) assignTo(originalIndex, binIdx);
+    else if (hitTestBank(x, y)) assignTo(originalIndex, null);
+    setTimeout(() => { justDraggedRef.current = false; }, 300);
+  };
+  const handlePointerCancel = () => { setDrag(null); setHoverBin(null); };
+
+  const handleChipClick = (e: React.MouseEvent, originalIndex: number) => {
+    e.stopPropagation();
+    if (disabled || justDraggedRef.current) return;
+    const currentCat = assignment[originalIndex];
+    if (currentCat !== null && currentCat !== undefined) {
+      assignTo(originalIndex, null);
+      setSelected(null);
+      return;
+    }
+    setSelected((s) => (s === originalIndex ? null : originalIndex));
+  };
+  const handleBinClick = (binIndex: number) => {
+    if (disabled || selected === null) return;
+    assignTo(selected, binIndex);
+    setSelected(null);
+  };
+
+  const renderChip = (originalIndex: number, text: string) => (
+    <button
+      key={originalIndex}
+      type="button"
+      disabled={disabled}
+      onPointerDown={(e) => handlePointerDown(e, originalIndex)}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerCancel}
+      onClick={(e) => handleChipClick(e, originalIndex)}
+      style={{ touchAction: "none" }}
+      className={
+        disabled
+          ? `px-3 py-2 rounded-lg border-2 text-sm font-medium ${getItemClass(originalIndex)}`
+          : `px-3 py-2 rounded-lg border-2 text-sm font-medium cursor-grab active:cursor-grabbing transition-colors ${
+              selected === originalIndex
+                ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/10"
+                : "border-[rgba(197,161,72,0.35)] bg-white hover:border-[var(--greek-blue)]"
+            }`
+      }
+    >
+      <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(text) }} />
+    </button>
+  );
+
+  const bankItems = displayItems.filter(
+    ({ originalIndex }) => assignment[originalIndex] === null || assignment[originalIndex] === undefined
+  );
+  const draggedText = drag ? displayItems.find((d) => d.originalIndex === drag.originalIndex)?.text : undefined;
+
+  return (
+    <div className="space-y-3">
+      <div className={`grid gap-3 ${categories.length > 2 ? "grid-cols-2" : "grid-cols-1 sm:grid-cols-2"}`}>
+        {categories.map((cat, catIdx) => (
+          <div
+            key={cat}
+            ref={(el) => { binRefs.current[catIdx] = el; }}
+            onClick={() => handleBinClick(catIdx)}
+            className={`rounded-lg border-2 border-dashed p-3 min-h-[90px] transition-colors ${
+              hoverBin === catIdx ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5" : "border-[rgba(197,161,72,0.3)]"
+            }`}
+          >
+            <div className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-wide text-center mb-2">{cat}</div>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {displayItems
+                .filter(({ originalIndex }) => assignment[originalIndex] === catIdx)
+                .map(({ originalIndex, text }) => renderChip(originalIndex, text))}
             </div>
           </div>
-        );
-      })}
+        ))}
+      </div>
+
+      <div
+        ref={bankRef}
+        className={`flex flex-wrap gap-2 p-3 rounded-lg border-2 border-dashed min-h-[60px] transition-colors ${
+          drag && hoverBin === null ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5" : "border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]"
+        }`}
+      >
+        {bankItems.length === 0 ? (
+          <span className="text-xs text-gray-400 italic self-center">Tout est classé !</span>
+        ) : (
+          bankItems.map(({ originalIndex, text }) => renderChip(originalIndex, text))
+        )}
+      </div>
+
+      {drag && drag.moved && draggedText !== undefined && (
+        <div
+          style={{ position: "fixed", left: drag.x, top: drag.y, transform: "translate(-50%, -50%)", pointerEvents: "none", zIndex: 60 }}
+          className="px-3 py-2 rounded-lg border-2 border-[var(--greek-blue)] bg-white shadow-xl text-sm font-medium"
+        >
+          <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(draggedText) }} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+/** Bloc "number_line_point" : un point à glisser (ou taper directement) le
+ * long d'une droite graduée, calé sur le pas fourni. Simple glisser 1D —
+ * un seul élément "piste" écoute les Pointer Events. */
+function NumberLinePoint({
+  min, max, step, disabled, savedValue, onChange, correctness,
+}: {
+  min: number;
+  max: number;
+  step: number;
+  disabled: boolean;
+  savedValue?: number | null;
+  onChange: (value: number) => void;
+  /** Fourni uniquement après soumission, pour afficher le repère correct. */
+  correctness?: { correct: boolean; correctValue: number } | null;
+}) {
+  const trackRef = useRef<HTMLDivElement | null>(null);
+  const [value, setValue] = useState<number>(savedValue ?? min + (max - min) / 2);
+
+  const clampToStep = (raw: number) => {
+    const snapped = Math.round((raw - min) / step) * step + min;
+    return Math.min(max, Math.max(min, snapped));
+  };
+  const valueFromClientX = (clientX: number): number => {
+    const el = trackRef.current;
+    if (!el) return value;
+    const r = el.getBoundingClientRect();
+    const ratio = Math.min(1, Math.max(0, (clientX - r.left) / r.width));
+    return clampToStep(min + ratio * (max - min));
+  };
+  const commit = (v: number) => { setValue(v); onChange(v); };
+
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (disabled) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    commit(valueFromClientX(e.clientX));
+  };
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (disabled || e.buttons === 0) return;
+    commit(valueFromClientX(e.clientX));
+  };
+
+  const ticks: number[] = [];
+  for (let t = min; t <= max + 1e-9; t += step) ticks.push(Math.round(t / step) * step);
+  const pct = ((value - min) / (max - min)) * 100;
+  const correctPct = correctness ? ((correctness.correctValue - min) / (max - min)) * 100 : null;
+
+  return (
+    <div className="py-6 px-2">
+      <div
+        ref={trackRef}
+        className="relative h-2 bg-gray-200 rounded-full cursor-pointer"
+        style={{ touchAction: "none" }}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={(e) => { try { e.currentTarget.releasePointerCapture(e.pointerId); } catch {} }}
+      >
+        {ticks.map((t) => (
+          <div
+            key={t}
+            className="absolute top-1/2 -translate-y-1/2 w-0.5 h-3 bg-gray-300"
+            style={{ left: `${((t - min) / (max - min)) * 100}%` }}
+          />
+        ))}
+        {correctPct !== null && !correctness!.correct && (
+          <div
+            className="absolute top-1/2 w-4 h-4 rounded-full bg-green-500 border-2 border-white shadow"
+            style={{ left: `${correctPct}%`, transform: "translate(-50%, -50%)" }}
+            title="Bonne réponse"
+          />
+        )}
+        <div
+          className={`absolute top-1/2 w-5 h-5 rounded-full border-2 border-white shadow-lg ${disabled ? "" : "cursor-grab active:cursor-grabbing"} ${
+            correctness ? (correctness.correct ? "bg-green-500" : "bg-red-500") : "bg-[var(--greek-blue)]"
+          }`}
+          style={{ left: `${pct}%`, transform: "translate(-50%, -50%)" }}
+        />
+      </div>
+      <div className="flex justify-between text-xs text-gray-400 mt-1">
+        <span>{min}</span>
+        <span className="font-bold text-[var(--greek-blue)]">{value}</span>
+        <span>{max}</span>
+      </div>
     </div>
   );
 }
@@ -361,6 +944,24 @@ export default function ExerciseViewer({
           } else if (b.shuffledItems) {
             map[b.id] = b.shuffledItems;
           }
+        }
+      })
+    );
+    return map;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exercise.id]);
+
+  const shuffledCategorizeItems = useMemo(() => {
+    const map: Record<string, { originalIndex: number; text: string }[]> = {};
+    pages.forEach((p) =>
+      p.blocks.forEach((b) => {
+        if (b.type === "categorize" && b.categoryItems) {
+          const indices = b.categoryItems.map((_, i) => i);
+          const shuffledIndices = seededShuffle(indices, b.id);
+          map[b.id] = shuffledIndices.map((originalIndex) => ({
+            originalIndex,
+            text: b.categoryItems![originalIndex].text,
+          }));
         }
       })
     );
@@ -801,12 +1402,7 @@ export default function ExerciseViewer({
       for (const block of page.blocks) {
         if (["text", "image"].includes(block.type)) continue;
 
-        // "Mise en ordre" : si l'élève n'a jamais touché aux flèches, son
-        // "answer" implicite est l'ordre mélangé affiché à l'écran — pas
-        // une absence de réponse.
-        const answer =
-          answers[block.id] ??
-          (block.type === "ordering" ? shuffledOrderingItems[block.id] : undefined);
+        const answer = answers[block.id];
         let isCorrect = false;
         let points = block.points || 0;
 
@@ -1456,52 +2052,24 @@ export default function ExerciseViewer({
                   )}
 
                   {block.type === "matching" && (
-                    <div className="space-y-2">
-                      {(block.pairs || []).map((pair, i) => {
-                        const selected: string[] = Array.isArray(answer) ? answer : [];
-                        const val = selected[i] || "";
-                        let cls = "border-gray-300";
-                        if (isSubmitted) {
-                          const correctRight = revealed[block.id]?.pairs?.[i]?.right;
-                          cls = val === correctRight ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
-                        }
-                        return (
-                          <div key={i} className="flex items-center gap-3">
-                            <span
-                              className="flex-1 text-sm font-medium text-gray-700"
-                              dangerouslySetInnerHTML={{
-                                __html: renderLatexInHTML(pair.left),
-                              }}
-                            />
-                            <ArrowRight size={14} className="text-gray-300 shrink-0" />
-                            <select
-                              disabled={isSubmitted}
-                              value={val}
-                              onChange={(e) => {
-                                const next = [...selected];
-                                next[i] = e.target.value;
-                                handleBlockAnswerChange(block.id, next);
-                              }}
-                              className={`flex-1 border-2 rounded-lg text-sm p-2 bg-white focus:outline-none ${cls}`}
-                            >
-                              <option value="">Choisir...</option>
-                              {(shuffledRightOptions[block.id] || []).map((opt, j) => (
-                                <option key={j} value={opt}>{opt}</option>
-                              ))}
-                            </select>
-                          </div>
-                        );
-                      })}
-                    </div>
+                    <MatchingDragList
+                      lefts={(block.pairs || []).map((p) => p.left)}
+                      shuffledRights={shuffledRightOptions[block.id] || []}
+                      savedAnswer={Array.isArray(answer) && answer.length ? answer : undefined}
+                      disabled={!!isSubmitted}
+                      onChange={(next) => handleBlockAnswerChange(block.id, next)}
+                      getItemClass={(right, i) => {
+                        if (!isSubmitted) return "border-gray-200 bg-white";
+                        const correctRight = revealed[block.id]?.pairs?.[i]?.right;
+                        return right === correctRight ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
+                      }}
+                    />
                   )}
 
                   {block.type === "ordering" && (
                     <OrderingDragList
-                      items={
-                        Array.isArray(answer) && answer.length
-                          ? answer
-                          : shuffledOrderingItems[block.id] || block.items || []
-                      }
+                      shuffledItems={shuffledOrderingItems[block.id] || block.items || []}
+                      savedAnswer={Array.isArray(answer) && answer.length ? answer : undefined}
                       disabled={!!isSubmitted}
                       onChange={(next) => handleBlockAnswerChange(block.id, next)}
                       getItemClass={(item, i) => {
@@ -1510,6 +2078,69 @@ export default function ExerciseViewer({
                         return item === correctItem ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
                       }}
                     />
+                  )}
+
+                  {block.type === "categorize" && (
+                    <CategorizeDragList
+                      displayItems={shuffledCategorizeItems[block.id] || (block.categoryItems || []).map((it, i) => ({ originalIndex: i, text: it.text }))}
+                      categories={block.categories || []}
+                      savedAnswer={Array.isArray(answer) && answer.length ? answer : undefined}
+                      disabled={!!isSubmitted}
+                      onChange={(next) => handleBlockAnswerChange(block.id, next)}
+                      getItemClass={(originalIndex) => {
+                        if (!isSubmitted) return "border-gray-200 bg-white";
+                        const correctCategory = revealed[block.id]?.categoryItems?.[originalIndex]?.category;
+                        const given = Array.isArray(answer) ? answer[originalIndex] : undefined;
+                        return given === correctCategory ? "border-green-500 bg-green-50" : "border-red-500 bg-red-50";
+                      }}
+                    />
+                  )}
+
+                  {block.type === "number_line_point" && (
+                    <NumberLinePoint
+                      min={block.numberLineMin ?? 0}
+                      max={block.numberLineMax ?? 10}
+                      step={block.numberLineStep || 1}
+                      disabled={!!isSubmitted}
+                      savedValue={typeof answer === "number" ? answer : undefined}
+                      onChange={(v) => handleBlockAnswerChange(block.id, v)}
+                      correctness={
+                        isSubmitted
+                          ? {
+                              correct: !!results[block.id],
+                              correctValue: parseFloat(String(revealed[block.id]?.correctAnswer ?? answer)),
+                            }
+                          : null
+                      }
+                    />
+                  )}
+
+                  {block.type === "click_error" && (
+                    <div className="space-y-2">
+                      {(block.steps || []).map((step, i) => {
+                        const selected = answer === i;
+                        let cls = selected
+                          ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5"
+                          : "border-gray-200 bg-white hover:border-[var(--greek-blue)]";
+                        if (isSubmitted) {
+                          const correctIdx = parseInt(String(revealed[block.id]?.correctAnswer ?? ""), 10);
+                          if (i === correctIdx) cls = "border-green-500 bg-green-50";
+                          else if (selected) cls = "border-red-500 bg-red-50";
+                          else cls = "border-gray-200 bg-white opacity-60";
+                        }
+                        return (
+                          <button
+                            key={i}
+                            type="button"
+                            disabled={isSubmitted}
+                            onClick={() => handleBlockAnswerChange(block.id, i)}
+                            className={`w-full text-left px-3 py-2.5 rounded-lg border-2 text-sm font-mono transition-colors disabled:cursor-not-allowed ${cls}`}
+                          >
+                            <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(step) }} />
+                          </button>
+                        );
+                      })}
+                    </div>
                   )}
 
                   {block.type === "coding" && (

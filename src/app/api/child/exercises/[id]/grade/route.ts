@@ -214,6 +214,21 @@ export async function POST(
           expected.length > 0 &&
           given.length === expected.length &&
           expected.every((item: string, i: number) => given[i] === item);
+      } else if (type === "categorize") {
+        const given: (string | null)[] = Array.isArray(answer) ? answer : [];
+        const expected: string[] = (targetBlock.categoryItems || []).map((it: any) => it.category);
+        isCorrect =
+          expected.length > 0 &&
+          given.length === expected.length &&
+          expected.every((cat: string, i: number) => given[i] === cat);
+      } else if (type === "number_line_point") {
+        const given = typeof answer === "number" ? answer : parseFloat(answer);
+        const expected = parseFloat(targetBlock.correctAnswer);
+        isCorrect = !Number.isNaN(given) && !Number.isNaN(expected) && Math.abs(given - expected) < 1e-6;
+      } else if (type === "click_error") {
+        const given = typeof answer === "number" ? answer : parseInt(answer, 10);
+        const expected = parseInt(targetBlock.correctAnswer, 10);
+        isCorrect = !Number.isNaN(given) && given === expected;
       } else {
         const expected = targetBlock.correctAnswer;
         if (Array.isArray(expected)) {
@@ -255,6 +270,7 @@ export async function POST(
       if (type === "matching") reveal = { pairs: targetBlock.pairs };
       else if (type === "ordering") reveal = { items: targetBlock.items };
       else if (type === "fill_in_the_blank") reveal = { blanks: targetBlock.blanks };
+      else if (type === "categorize") reveal = { categoryItems: targetBlock.categoryItems };
       else reveal = { correctAnswer: targetBlock.correctAnswer };
     }
 

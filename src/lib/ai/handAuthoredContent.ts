@@ -210,6 +210,7 @@ export function compileHandAuthoredCourse(raw: any): CompileResult<any[]> {
 const EXERCISE_BLOCK_TYPES = new Set([
   "text_input", "fill_in_the_blank", "matching", "ordering", "coding",
   "single_choice", "true_false", "qcm", "impossible_search",
+  "categorize", "number_line_point", "click_error",
 ]);
 
 export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
@@ -254,6 +255,37 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
         const items = Array.isArray(block?.items) ? block.items.map((i: unknown) => escapeHtml(i)) : [];
         if (items.length < 2) warnings.push(`${where} : moins de 2 "items" — rien à remettre en ordre.`);
         return { ...base, items };
+      }
+      if (type === "categorize") {
+        const categories = Array.isArray(block?.categories) ? block.categories.map(String) : [];
+        const categoryItems = Array.isArray(block?.categoryItems)
+          ? block.categoryItems.map((it: any) => ({ text: escapeHtml(it?.text), category: String(it?.category ?? "") }))
+          : [];
+        if (categories.length < 2) warnings.push(`${where} : moins de 2 "categories" — rien à catégoriser.`);
+        if (categoryItems.some((it: any) => !categories.includes(it.category))) {
+          warnings.push(`${where} : un élément de "categoryItems" référence une catégorie absente de "categories".`);
+        }
+        return { ...base, categories, categoryItems };
+      }
+      if (type === "number_line_point") {
+        const min = typeof block?.numberLineMin === "number" ? block.numberLineMin : 0;
+        const max = typeof block?.numberLineMax === "number" ? block.numberLineMax : 10;
+        const step = typeof block?.numberLineStep === "number" && block.numberLineStep > 0 ? block.numberLineStep : 1;
+        const correctAnswer = String(block?.correctAnswer ?? "");
+        if (!correctAnswer.trim() || Number.isNaN(parseFloat(correctAnswer))) {
+          warnings.push(`${where} : "correctAnswer" doit être une valeur numérique pour un point sur une droite graduée.`);
+        }
+        return { ...base, numberLineMin: min, numberLineMax: max, numberLineStep: step, correctAnswer };
+      }
+      if (type === "click_error") {
+        const steps = Array.isArray(block?.steps) ? block.steps.map((s: unknown) => escapeHtml(s)) : [];
+        const errorIndex = String(block?.correctAnswer ?? "");
+        const idx = parseInt(errorIndex, 10);
+        if (steps.length < 2) warnings.push(`${where} : moins de 2 "steps" — rien où repérer une erreur.`);
+        if (Number.isNaN(idx) || idx < 0 || idx >= steps.length) {
+          warnings.push(`${where} : "correctAnswer" doit être l'index (0, 1, 2...) de l'étape fausse dans "steps".`);
+        }
+        return { ...base, steps, correctAnswer: errorIndex };
       }
       if (type === "single_choice" || type === "true_false") {
         const rawOptions = type === "true_false" && !Array.isArray(block?.options)

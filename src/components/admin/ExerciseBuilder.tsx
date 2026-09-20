@@ -25,6 +25,9 @@ import {
   ArrowUp,
   ArrowDown,
   AlertTriangle,
+  LayoutGrid,
+  Ruler,
+  SearchX,
 } from "lucide-react";
 
 import AISectionEditModal from "./AISectionEditModal";
@@ -46,7 +49,10 @@ export type BlockType =
   | "matching"
   | "ordering"
   | "coding"
-  | "impossible_search";
+  | "impossible_search"
+  | "categorize"
+  | "number_line_point"
+  | "click_error";
 
 export interface Block {
   id: string;
@@ -73,6 +79,20 @@ export interface Block {
   // Mise en ordre : éléments dans leur ORDRE CORRECT (mélangés à l'affichage élève)
   items?: string[];
 
+  // Catégoriser : noms des catégories/bacs, puis éléments à y répartir.
+  categories?: string[];
+  categoryItems?: { text: string; category: string }[];
+
+  // Point sur une droite graduée : bornes/pas de la graduation, valeur
+  // correcte dans `correctAnswer` (chaîne numérique, ex: "0.75").
+  numberLineMin?: number;
+  numberLineMax?: number;
+  numberLineStep?: number;
+
+  // Repérage d'erreur : étapes affichées, l'index de l'étape fausse est
+  // dans `correctAnswer` (chaîne, ex: "1").
+  steps?: string[];
+
   // Champs fournis par l'API à la place de `pairs`/`items` quand la réponse
   // correcte a été retirée (lecture non-admin, avant soumission) : liste déjà
   // mélangée, sans révéler la correspondance/l'ordre attendu.
@@ -94,6 +114,9 @@ export const BLOCK_TYPE_META: Partial<Record<BlockType, { label: string; icon: t
   ordering: { label: "Mise en ordre", icon: ArrowUpDown, description: "Remettre des éléments dans le bon ordre" },
   coding: { label: "Code / Algo", icon: Code2, description: "Écrire un algorithme ou du code, corrigé par IA" },
   impossible_search: { label: "Recherche impossible", icon: AlertTriangle, description: "L'énoncé n'a pas de solution — l'élève doit le justifier, corrigé par IA" },
+  categorize: { label: "Catégoriser", icon: LayoutGrid, description: "Trier des éléments dans plusieurs catégories (glisser-déposer)" },
+  number_line_point: { label: "Point sur une droite graduée", icon: Ruler, description: "Placer un point à la bonne valeur sur une droite graduée" },
+  click_error: { label: "Repérer l'erreur", icon: SearchX, description: "Cliquer sur l'étape incorrecte d'un calcul ou d'un raisonnement" },
 };
 
 // Liste type-safe des types proposés à la création (pickers), dans l'ordre
@@ -145,6 +168,19 @@ function defaultBlockFields(type: BlockType): Partial<Block> {
       return { content: "", correctAnswer: "" };
     case "impossible_search":
       return { content: "", correctAnswer: "" };
+    case "categorize":
+      return {
+        content: "",
+        categories: ["Catégorie A", "Catégorie B"],
+        categoryItems: [
+          { text: "Élément 1", category: "Catégorie A" },
+          { text: "Élément 2", category: "Catégorie B" },
+        ],
+      };
+    case "number_line_point":
+      return { content: "", numberLineMin: 0, numberLineMax: 10, numberLineStep: 1, correctAnswer: "5" };
+    case "click_error":
+      return { content: "", steps: ["Étape 1", "Étape 2 (fausse)", "Étape 3"], correctAnswer: "1" };
     case "image":
       return { content: "" };
     default:
@@ -670,6 +706,9 @@ export default function ExerciseBuilder({
                             "ordering",
                             "coding",
                             "impossible_search",
+                            "categorize",
+                            "number_line_point",
+                            "click_error",
                           ].includes(block.type) && (
                             <div className="space-y-1">
                               <label className="text-xs font-medium text-gray-500 uppercase">
@@ -1134,6 +1173,206 @@ export default function ExerciseBuilder({
                               >
                                 <Plus size={14} /> Ajouter un élément
                               </GlassButton>
+                            </div>
+                          )}
+
+                          {block.type === "categorize" && (
+                            <div className="space-y-3">
+                              <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700">Catégories</label>
+                                {(block.categories || []).map((cat, i) => (
+                                  <div key={i} className="flex items-center gap-2">
+                                    <input
+                                      type="text"
+                                      value={cat}
+                                      onChange={(e) => {
+                                        const oldName = cat;
+                                        const nextCats = [...(block.categories || [])];
+                                        nextCats[i] = e.target.value;
+                                        const nextItems = (block.categoryItems || []).map((it) =>
+                                          it.category === oldName ? { ...it, category: e.target.value } : it
+                                        );
+                                        updateBlock(page.id, block.id, { categories: nextCats, categoryItems: nextItems });
+                                      }}
+                                      className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                      placeholder="Nom de la catégorie"
+                                    />
+                                    <GlassIconButton
+                                      icon={Trash2}
+                                      disabled={(block.categories?.length || 0) <= 2}
+                                      onClick={() => {
+                                        const removed = cat;
+                                        const nextCats = (block.categories || []).filter((_, j) => j !== i);
+                                        const nextItems = (block.categoryItems || []).filter((it) => it.category !== removed);
+                                        updateBlock(page.id, block.id, { categories: nextCats, categoryItems: nextItems });
+                                      }}
+                                      color="red"
+                                      size="sm"
+                                      aria-label="Supprimer cette catégorie"
+                                    />
+                                  </div>
+                                ))}
+                                <GlassButton
+                                  size="sm"
+                                  variant="ghost"
+                                  disabled={(block.categories?.length || 0) >= 4}
+                                  onClick={() =>
+                                    updateBlock(page.id, block.id, {
+                                      categories: [...(block.categories || []), `Catégorie ${(block.categories?.length || 0) + 1}`],
+                                    })
+                                  }
+                                >
+                                  <Plus size={14} /> Ajouter une catégorie (max 4)
+                                </GlassButton>
+                              </div>
+                              <div className="space-y-2">
+                                <label className="text-sm font-medium text-gray-700">Éléments à classer</label>
+                                {(block.categoryItems || []).map((item, i) => (
+                                  <div key={i} className="flex items-center gap-2">
+                                    <input
+                                      type="text"
+                                      value={item.text}
+                                      onChange={(e) => {
+                                        const next = [...(block.categoryItems || [])];
+                                        next[i] = { ...next[i], text: e.target.value };
+                                        updateBlock(page.id, block.id, { categoryItems: next });
+                                      }}
+                                      className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                      placeholder="Élément"
+                                    />
+                                    <select
+                                      value={item.category}
+                                      onChange={(e) => {
+                                        const next = [...(block.categoryItems || [])];
+                                        next[i] = { ...next[i], category: e.target.value };
+                                        updateBlock(page.id, block.id, { categoryItems: next });
+                                      }}
+                                      className="border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                    >
+                                      {(block.categories || []).map((cat) => (
+                                        <option key={cat} value={cat}>{cat}</option>
+                                      ))}
+                                    </select>
+                                    <GlassIconButton
+                                      icon={Trash2}
+                                      onClick={() => {
+                                        const next = (block.categoryItems || []).filter((_, j) => j !== i);
+                                        updateBlock(page.id, block.id, { categoryItems: next });
+                                      }}
+                                      color="red"
+                                      size="sm"
+                                      aria-label="Supprimer cet élément"
+                                    />
+                                  </div>
+                                ))}
+                                <GlassButton
+                                  size="sm"
+                                  variant="ghost"
+                                  onClick={() =>
+                                    updateBlock(page.id, block.id, {
+                                      categoryItems: [
+                                        ...(block.categoryItems || []),
+                                        { text: "", category: (block.categories || [])[0] || "" },
+                                      ],
+                                    })
+                                  }
+                                >
+                                  <Plus size={14} /> Ajouter un élément
+                                </GlassButton>
+                              </div>
+                            </div>
+                          )}
+
+                          {block.type === "click_error" && (
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium text-gray-700">
+                                Étapes — coche celle qui est FAUSSE
+                              </label>
+                              {(block.steps || []).map((step, i) => (
+                                <div key={i} className="flex items-center gap-2">
+                                  <input
+                                    type="radio"
+                                    name={`click-error-${block.id}`}
+                                    checked={block.correctAnswer === String(i)}
+                                    onChange={() => updateBlock(page.id, block.id, { correctAnswer: String(i) })}
+                                    className="shrink-0"
+                                    aria-label={`Étape ${i + 1} incorrecte`}
+                                  />
+                                  <input
+                                    type="text"
+                                    value={step}
+                                    onChange={(e) => {
+                                      const next = [...(block.steps || [])];
+                                      next[i] = e.target.value;
+                                      updateBlock(page.id, block.id, { steps: next });
+                                    }}
+                                    className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg text-sm font-mono"
+                                    placeholder="Étape du calcul"
+                                  />
+                                  <GlassIconButton
+                                    icon={Trash2}
+                                    onClick={() => {
+                                      const next = (block.steps || []).filter((_, j) => j !== i);
+                                      updateBlock(page.id, block.id, {
+                                        steps: next,
+                                        correctAnswer: block.correctAnswer === String(i) ? "" : block.correctAnswer,
+                                      });
+                                    }}
+                                    color="red"
+                                    size="sm"
+                                    aria-label="Supprimer cette étape"
+                                  />
+                                </div>
+                              ))}
+                              <GlassButton
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => updateBlock(page.id, block.id, { steps: [...(block.steps || []), ""] })}
+                              >
+                                <Plus size={14} /> Ajouter une étape
+                              </GlassButton>
+                            </div>
+                          )}
+
+                          {block.type === "number_line_point" && (
+                            <div className="grid grid-cols-2 gap-3">
+                              <div>
+                                <label className="text-xs text-gray-500">Minimum</label>
+                                <input
+                                  type="number"
+                                  value={block.numberLineMin ?? 0}
+                                  onChange={(e) => updateBlock(page.id, block.id, { numberLineMin: parseFloat(e.target.value) || 0 })}
+                                  className="w-full border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                />
+                              </div>
+                              <div>
+                                <label className="text-xs text-gray-500">Maximum</label>
+                                <input
+                                  type="number"
+                                  value={block.numberLineMax ?? 10}
+                                  onChange={(e) => updateBlock(page.id, block.id, { numberLineMax: parseFloat(e.target.value) || 0 })}
+                                  className="w-full border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                />
+                              </div>
+                              <div>
+                                <label className="text-xs text-gray-500">Pas de graduation</label>
+                                <input
+                                  type="number"
+                                  value={block.numberLineStep ?? 1}
+                                  onChange={(e) => updateBlock(page.id, block.id, { numberLineStep: parseFloat(e.target.value) || 1 })}
+                                  className="w-full border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                />
+                              </div>
+                              <div>
+                                <label className="text-xs text-gray-500">Valeur correcte</label>
+                                <input
+                                  type="text"
+                                  value={typeof block.correctAnswer === "string" ? block.correctAnswer : ""}
+                                  onChange={(e) => updateBlock(page.id, block.id, { correctAnswer: e.target.value })}
+                                  className="w-full border-[rgba(197,161,72,0.25)] rounded-lg text-sm"
+                                  placeholder="ex: 0.75"
+                                />
+                              </div>
                             </div>
                           )}
 
