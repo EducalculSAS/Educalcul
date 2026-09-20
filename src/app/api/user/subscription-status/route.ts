@@ -83,6 +83,22 @@ export async function GET(req: Request) {
       }
     }
 
+    // Distingue "jamais souscrit -> plan gratuit légitime" de "a déjà eu un
+    // abonnement payant, aujourd'hui résilié/expiré -> doit repasser par
+    // /parent/subscription pour régulariser". Sans ça, ParentLayout ne peut
+    // pas laisser passer les comptes gratuits (qui n'ont jamais de ligne
+    // "subscriptions") sans rouvrir la porte aux comptes payants en défaut.
+    let status: string = sub ? "active" : "none";
+    if (!sub) {
+      const { data: anySub } = await supabaseAdmin
+        .from("subscriptions")
+        .select("id")
+        .eq("user_id", subUserAuthId)
+        .limit(1)
+        .maybeSingle();
+      if (!anySub) status = "free";
+    }
+
     const todayStart = new Date();
     todayStart.setHours(0, 0, 0, 0);
     const { count } = await supabaseAdmin
@@ -95,7 +111,7 @@ export async function GET(req: Request) {
     return NextResponse.json({
       plan_id,
       plan_name,
-      status: sub?.status || "none",
+      status,
       features,
       ai_uses_today: count ?? 0,
     });

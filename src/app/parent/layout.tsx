@@ -68,7 +68,11 @@ export default function ParentLayout({
           headers: { Authorization: `Bearer ${session.access_token}` },
         });
         const statusData = statusRes.ok ? await statusRes.json() : { status: "none" };
-        if (statusData.status !== "active") {
+        // "free" = jamais eu de ligne "subscriptions" -> plan gratuit légitime
+        // (voir subscription-status/route.ts), à laisser passer comme "active".
+        // Seuls "none" (jamais rien complété) et les statuts payants non actifs
+        // (cancelled, past_due...) renvoient vers /parent/subscription.
+        if (statusData.status !== "active" && statusData.status !== "free") {
           router.push("/parent/subscription");
           return;
         }
