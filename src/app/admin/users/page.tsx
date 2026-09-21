@@ -12,5 +12,14 @@ export default async function AdminUsersPage() {
     )
     .order("created_at", { ascending: false });
 
-  return <AdminUsersClient initialUsers={data || []} />;
+  // Plans proposables à la création d'un compte (abonnement offert ou non) —
+  // voir src/lib/adminGrantSubscription.ts.
+  const { data: plans } = await supabaseAdmin
+    .from("subscription_plans")
+    .select("id, name, price, billing_interval")
+    .eq("is_active", true)
+    .order("price")
+    .order("id");
+
+  return <AdminUsersClient initialUsers={data || []} plans={plans || []} />;
 }

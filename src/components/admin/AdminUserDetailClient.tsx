@@ -146,6 +146,10 @@ export default function AdminUserDetailClient({
   const [showTickets, setShowTickets] = useState(false);
   const [plans] = useState<any[]>(initialPlans);
   const [selectedPlanId, setSelectedPlanId] = useState<string>(initialData.subscription?.plan_id?.toString() || "");
+  // "offert" = accès sans facturation (compte de test, partenariat, élève sans
+  // parent payeur) ; "stripe" = facturation réelle exigée, l'action échoue si
+  // Stripe ne peut pas créer l'abonnement (voir adminGrantSubscription.ts).
+  const [planBillingMode, setPlanBillingMode] = useState<"offert" | "stripe">("offert");
   const [savingPlan, setSavingPlan] = useState(false);
   const [freeWeeksOffset, setFreeWeeksOffset] = useState<number>(0);
   const [freeTimeLoading, setFreeTimeLoading] = useState(false);
@@ -260,11 +264,21 @@ export default function AdminUserDetailClient({
       const res = await fetch("/api/admin/user-detail?id=" + id, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action: "set_plan", payload: { plan_id: selectedPlanId } }),
+        body: JSON.stringify({
+          action: "set_plan",
+          payload: { plan_id: selectedPlanId, billing_mode: planBillingMode },
+        }),
       });
       const result = await res.json();
       if (!res.ok) throw new Error(result.error);
-      showToast("success", result.stripeLinked ? "Abonnement mis à jour (Stripe synchronisé)" : "Abonnement mis à jour (sans Stripe — client introuvable ou plan gratuit)");
+      showToast(
+        "success",
+        result.offered
+          ? "Abonnement offert attribué (aucune facturation)"
+          : result.stripeLinked
+            ? "Abonnement mis à jour (Stripe synchronisé)"
+            : "Abonnement mis à jour (sans Stripe — client introuvable ou plan gratuit)",
+      );
       fetchUser();
     } catch (err: any) { showToast("error", err.message || "Erreur"); }
     finally { setSavingPlan(false); }
@@ -402,11 +416,18 @@ export default function AdminUserDetailClient({
           </div>
 
           {/* Subscription — parents only, pas pour les admins */}
-          {!isChild && user.role !== "admin" && (
+          {user.role !== "admin" && (
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2">
                 <CreditCard className="w-4 h-4" />Abonnement
               </h2>
+              {isChild && (
+                <p className="text-xs text-gray-500 mb-3">
+                  {user.parent_id
+                    ? "Cet élève dépend normalement de l'abonnement de son parent : un abonnement attribué ici ne sera pas utilisé tant qu'il a un parent."
+                    : "Élève sans parent : c'est son propre abonnement qui détermine ses accès."}
+                </p>
+              )}
               <div className="space-y-3">
                 <select
                   value={selectedPlanId}
@@ -441,6 +462,30 @@ export default function AdminUserDetailClient({
                     );
                   })}
                 </select>
+                {selectedPlanId && (
+                  <div className="flex flex-col gap-1.5 text-sm text-gray-700">
+                    <label className="flex items-start gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="planBillingMode"
+                        checked={planBillingMode === "offert"}
+                        onChange={() => setPlanBillingMode("offert")}
+                        className="mt-1"
+                      />
+                      <span><strong>Offert</strong> — accès immédiat, aucune facturation.</span>
+                    </label>
+                    <label className="flex items-start gap-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="planBillingMode"
+                        checked={planBillingMode === "stripe"}
+                        onChange={() => setPlanBillingMode("stripe")}
+                        className="mt-1"
+                      />
+                      <span><strong>Facturé</strong> — exige un client Stripe existant, sinon refusé.</span>
+                    </label>
+                  </div>
+                )}
                 <GlassButton
                   size="sm"
                   variant="navy"

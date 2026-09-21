@@ -5,6 +5,7 @@ import { isValidNumericId, validateString } from "@/lib/validation";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 import { fetchAdminUserDetail } from "@/lib/adminUserDetail";
+import { grantOfferedSubscription } from "@/lib/adminGrantSubscription";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 
 const VALID_GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
@@ -224,6 +225,32 @@ export async function POST(req: Request) {
       const planId = payload?.plan_id?.toString();
       if (!planId || !isValidNumericId(planId)) {
         return NextResponse.json({ error: "Invalid plan_id" }, { status: 400 });
+      }
+
+      // Mode "offert" : l'admin attribue volontairement le plan sans aucune
+      // facturation (compte de test, partenariat, élève sans parent payeur).
+      // Distinct du mode par défaut "stripe" ci-dessous, qui exige une vraie
+      // facturation et refuse plutôt que de simuler un abonnement actif.
+      if (payload?.billing_mode === "offert") {
+        const granted = await grantOfferedSubscription({
+          authId: user.auth_id,
+          planId,
+          days: Number(payload?.days) > 0 ? Number(payload.days) : null,
+        });
+        if (!granted.ok) {
+          return NextResponse.json({ error: granted.error }, { status: 400 });
+        }
+
+        await auditLog({
+          action: AuditAction.SUBSCRIPTION_CHANGED,
+          adminId: admin.id,
+          targetUserId: user.id,
+          targetType: "subscription",
+          targetId: planId,
+          details: { planId, planName: granted.planName, billingMode: "offert", stripeLinked: false },
+        }, req);
+
+        return NextResponse.json({ success: true, stripeLinked: false, offered: true });
       }
 
       const { data: plan } = await supabaseAdmin

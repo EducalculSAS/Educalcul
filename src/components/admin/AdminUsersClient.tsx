@@ -353,7 +353,23 @@ function ExportModal({ users, title, onClose }: { users: User[]; title: string; 
  * chargée du serveur ; changer de filtre rôle/statut, le rafraîchissement
  * silencieux toutes les 30s, et toutes les mutations restent des
  * allers-retours client, comme avant. */
-export default function AdminUsersClient({ initialUsers }: { initialUsers: User[] }) {
+type PlanOption = { id: number; name: string; price: string | number; billing_interval: string };
+
+const BILLING_INTERVAL_LABEL: Record<string, string> = {
+  month: "mois",
+  quarter: "trimestre",
+  semester: "semestre",
+  year: "an",
+  one_time: "à vie",
+};
+
+export default function AdminUsersClient({
+  initialUsers,
+  plans = [],
+}: {
+  initialUsers: User[];
+  plans?: PlanOption[];
+}) {
   const router = useRouter();
   const [users, setUsers] = useState<User[]>(initialUsers);
   const [loading, setLoading] = useState(false);
@@ -376,7 +392,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
 
   // Create
   const [showFormModal, setShowFormModal] = useState(false);
-  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: SCHOOL_LEVELS[0].value, username: "" });
+  const [form, setForm] = useState({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: SCHOOL_LEVELS[0].value, username: "", subscriptionPlanId: "", billingMode: "offert" });
   const [showFormPassword, setShowFormPassword] = useState(false);
 
   // Ban
@@ -446,6 +462,10 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
     try {
       const body: any = { userId: currentAuthId, firstName: form.firstName, lastName: form.lastName, email: form.email, role: form.role, status: form.status, gradeLevel: form.gradeLevel, password: form.password };
       if (form.role === "child") body.username = form.username;
+      if (form.subscriptionPlanId) {
+        body.subscriptionPlanId = form.subscriptionPlanId;
+        body.billingMode = form.billingMode;
+      }
       const res = await fetch("/api/admin/users", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
       const result = await res.json();
       if (!res.ok) throw new Error(result.error || "Erreur");
@@ -514,7 +534,7 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
             <GlassButton
               size="sm"
               variant="navy"
-              onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: SCHOOL_LEVELS[0].value, username: "" }); setShowFormModal(true); }}
+              onClick={() => { setForm({ firstName: "", lastName: "", email: "", password: "", role: "parent", status: "active", gradeLevel: SCHOOL_LEVELS[0].value, username: "", subscriptionPlanId: "", billingMode: "offert" }); setShowFormModal(true); }}
             >
               <Plus size={18} /> <span className="hidden sm:inline">Nouvel Utilisateur</span><span className="sm:hidden">Nouveau</span>
             </GlassButton>
@@ -722,6 +742,66 @@ export default function AdminUsersClient({ initialUsers }: { initialUsers: User[
                   </div>
                 </div>
               )}
+
+              {form.role !== "admin" && plans.length > 0 && (
+                <div className="rounded-xl border border-[rgba(197,161,72,0.25)] bg-[rgba(197,161,72,0.06)] p-4 space-y-3">
+                  <div>
+                    <label className={labelCls}>Abonnement</label>
+                    <select
+                      value={form.subscriptionPlanId}
+                      onChange={e => setForm({ ...form, subscriptionPlanId: e.target.value })}
+                      className={inputCls}
+                    >
+                      <option value="">Aucun (plan gratuit)</option>
+                      {plans.map(p => (
+                        <option key={p.id} value={p.id}>
+                          {p.name} — {Number(p.price).toFixed(2)} € / {BILLING_INTERVAL_LABEL[p.billing_interval] || p.billing_interval}
+                        </option>
+                      ))}
+                    </select>
+                    {form.role === "child" && (
+                      <p className="text-xs text-gray-500 mt-1.5">
+                        Un élève sans parent utilise son propre abonnement : ce choix lui donne l'accès directement.
+                      </p>
+                    )}
+                  </div>
+
+                  {form.subscriptionPlanId && (
+                    <div>
+                      <label className={labelCls}>Facturation</label>
+                      <div className="flex flex-col gap-2 mt-1">
+                        <label className="flex items-start gap-2 text-sm text-gray-700 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="billingMode"
+                            value="offert"
+                            checked={form.billingMode === "offert"}
+                            onChange={e => setForm({ ...form, billingMode: e.target.value })}
+                            className="mt-1"
+                          />
+                          <span>
+                            <strong>Offert</strong> — accès immédiat, aucun paiement demandé.
+                          </span>
+                        </label>
+                        <label className="flex items-start gap-2 text-sm text-gray-700 cursor-pointer">
+                          <input
+                            type="radio"
+                            name="billingMode"
+                            value="stripe"
+                            checked={form.billingMode === "stripe"}
+                            onChange={e => setForm({ ...form, billingMode: e.target.value })}
+                            className="mt-1"
+                          />
+                          <span>
+                            <strong>Doit payer</strong> — le compte démarre en gratuit et devra souscrire lui-même.
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
               <div className="flex justify-end gap-3 pt-2">
                 <GlassButton size="sm" variant="ghost" onClick={() => setShowFormModal(false)}>Annuler</GlassButton>
                 <GlassButton

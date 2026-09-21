@@ -10,7 +10,9 @@ import {
   validateString,
   validatePassword,
   validateUsername,
+  isValidNumericId,
 } from "@/lib/validation";
+import { grantOfferedSubscription, isBillingMode } from "@/lib/adminGrantSubscription";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 
@@ -94,7 +96,18 @@ export async function POST(request: Request) {
       gradeLevel,
       childAge,
       username,
+      subscriptionPlanId,
+      billingMode: rawBillingMode,
     } = body;
+
+    // Par défaut "stripe" : aucun accès offert tant que l'admin ne le demande
+    // pas explicitement (voir src/lib/adminGrantSubscription.ts).
+    const billingMode = isBillingMode(rawBillingMode) ? rawBillingMode : "stripe";
+    if (subscriptionPlanId !== undefined && subscriptionPlanId !== null && subscriptionPlanId !== "") {
+      if (!isValidNumericId(String(subscriptionPlanId))) {
+        return NextResponse.json({ error: "Invalid subscriptionPlanId" }, { status: 400 });
+      }
+    }
 
     // ✓ SECURITY: Input validation
     if (!validateEmail(email)) {
@@ -231,6 +244,26 @@ export async function POST(request: Request) {
       }
     }
 
+    // Abonnement attribué directement à la création, si l'admin en a choisi
+    // un. "offert" = accès immédiat sans facturation ; "stripe" = on ne
+    // donne rien ici, la personne paiera par le tunnel normal. Fonctionne
+    // aussi pour un élève sans parent : getUserFeatures() lit l'abonnement du
+    // compte lui-même dès qu'il n'a pas de parent_id.
+    let grantedPlan: string | null = null;
+    if (subscriptionPlanId && billingMode === "offert") {
+      const granted = await grantOfferedSubscription({
+        authId,
+        planId: subscriptionPlanId,
+      });
+      if (!granted.ok) {
+        return NextResponse.json(
+          { error: `Compte créé, mais l'abonnement n'a pas pu être attribué : ${granted.error}` },
+          { status: 400 },
+        );
+      }
+      grantedPlan = granted.planName;
+    }
+
     // ✓ SECURITY: Log admin action
     await auditLog(
       {
@@ -243,12 +276,15 @@ export async function POST(request: Request) {
           role,
           firstName: validatedFirstName,
           lastName: validatedLastName,
+          subscriptionPlanId: subscriptionPlanId || null,
+          billingMode: subscriptionPlanId ? billingMode : null,
+          grantedPlan,
         },
       },
       request,
     );
 
-    return NextResponse.json({ success: true, user: authData.user });
+    return NextResponse.json({ success: true, user: authData.user, grantedPlan });
   } catch (error: any) {
     console.error("[admin-users-post] Error:", error);
     return NextResponse.json(
