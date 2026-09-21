@@ -93,6 +93,18 @@ interface AccentPopupState {
   top: number;
 }
 
+/**
+ * Onglet ouvert par défaut. Les configurations de `math_keyboards` listent
+ * toutes "ABC" en premier (ordre d'affichage voulu), mais une réponse est
+ * numérique dans l'immense majorité des cas : ouvrir sur les lettres oblige
+ * l'élève à changer d'onglet à chaque exercice. On garde donc l'ordre
+ * d'affichage configuré en admin, mais on présélectionne le pavé numérique.
+ */
+function defaultTabId(tabs: MathKeyboardTab[]): string | undefined {
+  const numeric = tabs.find((t) => t.id === "num" || t.label === "123");
+  return (numeric || tabs[0])?.id;
+}
+
 /** Clavier mathématique "liquid glass" façon Apple : flou + saturation
  * derrière, léger surlignage spéculaire en haut, contenu configurable par
  * niveau (voir math_keyboards en base, éditable depuis l'admin). Remplace
@@ -107,7 +119,7 @@ export default function CustomMathKeyboard({
 }: CustomMathKeyboardProps) {
   const style = { ...DEFAULT_STYLE, ...(config.style || {}) };
   const tabs = config.tabs?.length ? config.tabs : [{ id: "num", label: "123", rows: [] }];
-  const [activeTabId, setActiveTabId] = useState(tabs[0]?.id);
+  const [activeTabId, setActiveTabId] = useState(defaultTabId(tabs));
   const [closing, setClosing] = useState(false);
   const [shiftOn, setShiftOn] = useState(false);
   const [accentPopup, setAccentPopup] = useState<AccentPopupState | null>(null);
@@ -122,7 +134,7 @@ export default function CustomMathKeyboard({
   const startXRef = useRef(0);
 
   useEffect(() => {
-    if (!tabs.find((t) => t.id === activeTabId)) setActiveTabId(tabs[0]?.id);
+    if (!tabs.find((t) => t.id === activeTabId)) setActiveTabId(defaultTabId(tabs));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config]);
 
