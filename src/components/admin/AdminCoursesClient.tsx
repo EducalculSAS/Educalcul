@@ -67,7 +67,9 @@ import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import {
   SCHOOL_LEVELS,
+  SCHOOL_CYCLES,
   getLevelLabel,
+  getLevelCycle,
   getEffectiveFolderLevel,
 } from "@/lib/constants";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -194,6 +196,7 @@ export default function AdminCoursesClient({
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
+  const [cycleFilter, setCycleFilter] = useState("all");
   const isFirstContentsFetch = useRef(true);
   // Liste plate de TOUS les dossiers (chargée à chaque fetchContents) — sert au
   // fil d'Ariane et au cycle-check sans requête supplémentaire.
@@ -882,17 +885,25 @@ export default function AdminCoursesClient({
     }
   };
 
-  const filteredFolders = folders.filter((folder) =>
-    folder.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  // Seuls les dossiers racine portent le niveau scolaire : une fois dans un
+  // dossier de niveau, le cycle est deja determine.
+  const filteredFolders = folders.filter(
+    (folder) =>
+      folder.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+      (cycleFilter === "all" ||
+        currentFolderId !== null ||
+        getLevelCycle((folder as any).grade_level) === cycleFilter),
   );
 
   const filteredCourses = courses.filter((course) => {
     const searchLower = searchTerm.toLowerCase();
-    return (
+    const matchesSearch =
       (course.title?.toLowerCase() || "").includes(searchLower) ||
       (course.description?.toLowerCase() || "").includes(searchLower) ||
-      (course.subject?.toLowerCase() || "").includes(searchLower)
-    );
+      (course.subject?.toLowerCase() || "").includes(searchLower);
+    const matchesCycle =
+      cycleFilter === "all" || getLevelCycle((course as any).level) === cycleFilter;
+    return matchesSearch && matchesCycle;
   });
 
   return (
@@ -1015,6 +1026,11 @@ export default function AdminCoursesClient({
               <option value="published">Publié</option>
               <option value="draft">Brouillon</option>
               <option value="archived">Archivé</option>
+            </select>
+
+            <select value={cycleFilter} onChange={(e) => setCycleFilter(e.target.value)} className="min-w-[160px]">
+              <option value="all">Tous les niveaux</option>
+              {SCHOOL_CYCLES.map((c) => (<option key={c.value} value={c.value}>{c.label}</option>))}
             </select>
           </div>
         </div>

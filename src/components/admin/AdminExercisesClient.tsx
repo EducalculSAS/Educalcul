@@ -61,7 +61,7 @@ import {
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import PageLoader from "@/components/PageLoader";
-import { SCHOOL_LEVELS, getLevelLabel, getEffectiveFolderLevel } from "@/lib/constants";
+import { SCHOOL_LEVELS, SCHOOL_CYCLES, getLevelLabel, getLevelCycle, getEffectiveFolderLevel } from "@/lib/constants";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { EXERCISE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import { compileHandAuthoredExercise } from "@/lib/ai/handAuthoredContent";
@@ -248,6 +248,7 @@ export default function AdminExercisesClient({
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [courseFilter, setCourseFilter] = useState<string>("all");
   const [difficultyFilter, setDifficultyFilter] = useState<string>("all");
+  const [cycleFilter, setCycleFilter] = useState<string>("all");
 
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -889,13 +890,21 @@ export default function AdminExercisesClient({
 
   const filteredExercises = exercises.filter(
     (ex) =>
-      ex.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (ex.question &&
-        ex.question.toLowerCase().includes(searchQuery.toLowerCase()))
+      (ex.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (ex.question &&
+          ex.question.toLowerCase().includes(searchQuery.toLowerCase()))) &&
+      (cycleFilter === "all" || getLevelCycle(ex.level) === cycleFilter)
   );
 
-  const filteredFolders = folders.filter((folder) =>
-    folder.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // Les dossiers racine portent le niveau scolaire (`grade_level`) : c'est là
+  // que filtrer par cycle a du sens. Une fois entré dans un dossier de niveau,
+  // le cycle est déjà déterminé, on ne filtre plus les sous-dossiers de cours.
+  const filteredFolders = folders.filter(
+    (folder) =>
+      folder.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (cycleFilter === "all" ||
+        currentFolderId !== null ||
+        getLevelCycle((folder as any).grade_level) === cycleFilter)
   );
 
   return (
@@ -1023,6 +1032,11 @@ export default function AdminExercisesClient({
               <option value="easy">Facile</option>
               <option value="medium">Moyen</option>
               <option value="hard">Difficile</option>
+            </select>
+
+            <select value={cycleFilter} onChange={(e) => setCycleFilter(e.target.value)} className="min-w-[160px]">
+              <option value="all">Tous les niveaux</option>
+              {SCHOOL_CYCLES.map((c) => (<option key={c.value} value={c.value}>{c.label}</option>))}
             </select>
 
             <select value={courseFilter} onChange={(e) => setCourseFilter(e.target.value)} className="w-48 max-w-[12rem]">

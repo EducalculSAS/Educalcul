@@ -64,7 +64,7 @@ import {
 import QuizViewer from "@/components/viewers/QuizViewer";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import PageLoader from "@/components/PageLoader";
-import { SCHOOL_LEVELS, getLevelLabel, getEffectiveFolderLevel } from "@/lib/constants";
+import { SCHOOL_LEVELS, SCHOOL_CYCLES, getLevelLabel, getLevelCycle, getEffectiveFolderLevel } from "@/lib/constants";
 
 const FOLDER_COLORS = [
   "#3b82f6", // Blue
@@ -196,6 +196,7 @@ export default function AdminQuizzesClient({
   const [statusFilter, setStatusFilter] = useState("all");
   const [courseFilter, setCourseFilter] = useState("all");
   const [difficultyFilter, setDifficultyFilter] = useState("all");
+  const [cycleFilter, setCycleFilter] = useState("all");
 
   // Folder navigation state
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("admin_quizzes_folder");
@@ -849,13 +850,20 @@ export default function AdminQuizzesClient({
 
   const filteredQuizzes = quizzes.filter(
     (quiz) =>
-      quiz.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (quiz.description &&
-        quiz.description.toLowerCase().includes(searchQuery.toLowerCase()))
+      (quiz.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (quiz.description &&
+          quiz.description.toLowerCase().includes(searchQuery.toLowerCase()))) &&
+      (cycleFilter === "all" || getLevelCycle((quiz as any).level) === cycleFilter)
   );
 
-  const filteredFolders = folders.filter((folder) =>
-    folder.name.toLowerCase().includes(searchQuery.toLowerCase())
+  // Seuls les dossiers racine portent le niveau scolaire : une fois dans un
+  // dossier de niveau, le cycle est deja determine.
+  const filteredFolders = folders.filter(
+    (folder) =>
+      folder.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+      (cycleFilter === "all" ||
+        currentFolderId !== null ||
+        getLevelCycle((folder as any).grade_level) === cycleFilter)
   );
 
   return (
@@ -1005,6 +1013,11 @@ export default function AdminQuizzesClient({
               <option value="easy">Facile</option>
               <option value="medium">Moyen</option>
               <option value="hard">Difficile</option>
+            </select>
+
+            <select value={cycleFilter} onChange={(e) => setCycleFilter(e.target.value)} className="min-w-[160px]">
+              <option value="all">Tous les niveaux</option>
+              {SCHOOL_CYCLES.map((c) => (<option key={c.value} value={c.value}>{c.label}</option>))}
             </select>
 
             <select value={courseFilter} onChange={(e) => setCourseFilter(e.target.value)} className="w-48 max-w-[12rem]">
