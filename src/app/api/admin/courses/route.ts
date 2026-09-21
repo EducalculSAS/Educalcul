@@ -24,19 +24,31 @@ export async function GET(request: Request) {
     // Liste : pas de content_json (potentiellement volumineux) — chaque
     // carte n'affiche que ces champs ; le contenu complet est rechargé à la
     // demande (édition/aperçu/export) via ?id=.
-    let query = supabaseAdmin
-      .from("courses")
-      .select("id, title, description, subject, level, thumbnail_url, status, folder_id, estimated_time, created_at, updated_at")
-      .order("created_at", { ascending: false });
+    //
+    // Même plafond par défaut de 1000 lignes que /api/admin/exercises (voir
+    // son commentaire) — courses est encore sous ce seuil aujourd'hui, mais
+    // on pagine par précaution.
+    const pageSize = 1000;
+    const data: any[] = [];
+    for (let from = 0; ; from += pageSize) {
+      let query = supabaseAdmin
+        .from("courses")
+        .select("id, title, description, subject, level, thumbnail_url, status, folder_id, estimated_time, created_at, updated_at")
+        .order("created_at", { ascending: false })
+        .range(from, from + pageSize - 1);
 
-    if (status && status !== "all") {
-      query = query.eq("status", status);
-    }
+      if (status && status !== "all") {
+        query = query.eq("status", status);
+      }
 
-    const { data, error } = await query;
+      const { data: page, error } = await query;
 
-    if (error) {
-      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
+      if (error) {
+        return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
+      }
+
+      data.push(...(page ?? []));
+      if (!page || page.length < pageSize) break;
     }
 
     return NextResponse.json(data);

@@ -198,9 +198,11 @@ async function main() {
       if (APPLY) {
         const courseTitle = await getCourseTitle(raw.course_id);
         const folderId = await resolveCourseFolder("exercise_folders", exerciseFolders, raw.level, courseTitle);
+        const exDescription = raw.description || `Exercice du chapitre « ${courseTitle} ».`;
         const { error } = await supabase.from("exercises").insert({
           title: raw.title,
-          question: raw.description || "",
+          question: exDescription,
+          description: exDescription,
           course_id: raw.course_id,
           category: raw.category,
           difficulty_level: raw.difficulty_level,
@@ -228,7 +230,7 @@ async function main() {
         const folderId = await resolveCourseFolder("quiz_folders", quizFolders, raw.level, courseTitle);
         const { error } = await supabase.from("quizzes").insert({
           title: raw.title,
-          description: raw.description || "",
+          description: raw.description || `Quiz du chapitre « ${courseTitle} ».`,
           course_id: raw.course_id,
           status: "draft",
           content_json: content,
