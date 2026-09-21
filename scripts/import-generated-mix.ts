@@ -43,6 +43,119 @@ interface GeneratedQuiz {
   content_json: unknown[];
 }
 
+// Supabase/PostgREST plafonne une simple .select() à 1000 lignes par défaut :
+// au-delà (la table exercises dépasse ce seuil), la vérification "déjà
+// présent" ne voyait qu'une partie des titres existants et réimportait en
+// double tout le reste (bug constaté et corrigé le 2026-09-21 — 5352
+// doublons créés puis nettoyés). Pagination explicite obligatoire ici.
+async function fetchAllTitleKeys(table: "exercises" | "quizzes"): Promise<Set<string>> {
+  const keys = new Set<string>();
+  const pageSize = 1000;
+  let from = 0;
+  for (;;) {
+    const { data, error } = await supabase.from(table).select("title,course_id").range(from, from + pageSize - 1);
+    if (error) throw error;
+    for (const r of data ?? []) keys.add(`${r.course_id}::${String(r.title).toLowerCase().trim()}`);
+    if (!data || data.length < pageSize) break;
+    from += pageSize;
+  }
+  return keys;
+}
+
+// Rangement en dossiers (exercise_folders / quiz_folders) — même logique que
+// scripts/import-exercises-quizzes.ts : un dossier racine par niveau scolaire
+// (déjà existant, jamais créé ici) puis un sous-dossier par cours, nommé
+// d'après le titre du cours. Sans ça, `folder_id` reste NULL et l'exercice/
+// quiz apparaît "à la racine" du catalogue au lieu d'être nichée dans son
+// niveau puis son cours (bug constaté et corrigé le 2026-09-21 : 6854
+// exercices + 757 quiz importés sans folder_id).
+function normalizeText(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .replace(/[’‘`´]/g, "'")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function normalizeLevel(value: string): string {
+  const level = normalizeText(value);
+  const aliases: Record<string, string> = {
+    cp: "cp", ce1: "ce1", ce2: "ce2", cm1: "cm1", cm2: "cm2",
+    "6eme": "6eme", "6e": "6eme",
+    "5eme": "5eme", "5e": "5eme",
+    "4eme": "4eme", "4e": "4eme",
+    "3eme": "3eme", "3e": "3eme",
+    seconde: "2nde", "2nde": "2nde",
+    "premiere-sans-spe-maths": "1ere-generale", "premiere-generale": "1ere-generale", "1ere-generale": "1ere-generale",
+    "premiere-spe-maths": "1ere-generale-maths", "premiere-generale-maths": "1ere-generale-maths", "1ere-generale-maths": "1ere-generale-maths",
+    "terminale-sans-maths": "terminale-generale", "terminale-generale": "terminale-generale",
+    "terminale-maths-complementaires": "terminale-generale-complementaires", "terminale-generale-complementaires": "terminale-generale-complementaires",
+    "terminale-spe-maths": "terminale-generale-maths", "terminale-generale-maths": "terminale-generale-maths",
+    "terminale-maths-expertes": "terminale-generale-expertes", "terminale-generale-expertes": "terminale-generale-expertes",
+  };
+  return aliases[level] ?? level;
+}
+
+type FolderRow = { id: number; name: string; grade_level: string | null; parent_id: number | null };
+
+async function loadFolders(table: "exercise_folders" | "quiz_folders"): Promise<FolderRow[]> {
+  const { data, error } = await supabase.from(table).select("id,name,grade_level,parent_id");
+  if (error) throw new Error(`Impossible de lire ${table} : ${error.message}`);
+  return (data ?? []) as FolderRow[];
+}
+
+function findLevelRoot(folders: FolderRow[], level: string): FolderRow | undefined {
+  const normalizedLevel = normalizeLevel(level);
+  const roots = folders.filter((f) => f.parent_id === null);
+  return roots.find((root) => normalizeLevel(root.grade_level ?? "") === normalizedLevel);
+}
+
+const folderCache = new Map<string, number>();
+
+async function resolveCourseFolder(
+  table: "exercise_folders" | "quiz_folders",
+  folders: FolderRow[],
+  level: string,
+  courseTitle: string,
+): Promise<number | null> {
+  const root = findLevelRoot(folders, level);
+  if (!root) return null;
+  const key = `${table}::${root.id}::${normalizeText(courseTitle)}`;
+  const cached = folderCache.get(key);
+  if (cached) return cached;
+
+  const existing = folders.find((f) => f.parent_id === root.id && normalizeText(f.name) === normalizeText(courseTitle));
+  if (existing) {
+    folderCache.set(key, existing.id);
+    return existing.id;
+  }
+
+  if (!APPLY) return -1;
+
+  const { data, error } = await supabase
+    .from(table)
+    .insert({ name: courseTitle, parent_id: root.id, status: "draft" })
+    .select("id")
+    .single();
+  if (error) throw new Error(`Impossible de créer le dossier "${courseTitle}" dans ${table} : ${error.message}`);
+  folders.push({ id: data.id, name: courseTitle, grade_level: null, parent_id: root.id });
+  folderCache.set(key, data.id);
+  return data.id;
+}
+
+const courseTitleCache = new Map<number, string>();
+
+async function getCourseTitle(courseId: number): Promise<string> {
+  const cached = courseTitleCache.get(courseId);
+  if (cached) return cached;
+  const { data, error } = await supabase.from("courses").select("title").eq("id", courseId).single();
+  if (error || !data) throw new Error(`Cours introuvable pour course_id=${courseId} : ${error?.message ?? "aucune ligne"}`);
+  courseTitleCache.set(courseId, data.title);
+  return data.title;
+}
+
 async function findJsonFiles(dir: string): Promise<string[]> {
   let entries;
   try {
@@ -66,10 +179,10 @@ async function main() {
   const files = await findJsonFiles(SOURCE_DIR);
   console.log(`${files.length} fichier(s) trouvé(s).`);
 
-  const { data: existingEx } = await supabase.from("exercises").select("title,course_id");
-  const existingExKeys = new Set((existingEx ?? []).map((r) => `${r.course_id}::${String(r.title).toLowerCase().trim()}`));
-  const { data: existingQ } = await supabase.from("quizzes").select("title,course_id");
-  const existingQKeys = new Set((existingQ ?? []).map((r) => `${r.course_id}::${String(r.title).toLowerCase().trim()}`));
+  const existingExKeys = await fetchAllTitleKeys("exercises");
+  const existingQKeys = await fetchAllTitleKeys("quizzes");
+  const exerciseFolders = await loadFolders("exercise_folders");
+  const quizFolders = await loadFolders("quiz_folders");
 
   let exOk = 0, exDup = 0, exFail = 0, qOk = 0, qDup = 0, qFail = 0;
 
@@ -83,6 +196,8 @@ async function main() {
       if (warnings.length) console.log(`⚠️  ${path.basename(file)} :`, warnings.join(" | "));
       if (!content.length) { exFail++; continue; }
       if (APPLY) {
+        const courseTitle = await getCourseTitle(raw.course_id);
+        const folderId = await resolveCourseFolder("exercise_folders", exerciseFolders, raw.level, courseTitle);
         const { error } = await supabase.from("exercises").insert({
           title: raw.title,
           question: raw.description || "",
@@ -96,6 +211,7 @@ async function main() {
           content_json: content,
           max_attempts: 3,
           estimated_time: 15,
+          folder_id: folderId,
         });
         if (error) { console.error(`❌ ${path.basename(file)} : ${error.message}`); exFail++; continue; }
         existingExKeys.add(key);
@@ -108,6 +224,8 @@ async function main() {
       if (warnings.length) console.log(`⚠️  ${path.basename(file)} :`, warnings.join(" | "));
       if (!content.length) { qFail++; continue; }
       if (APPLY) {
+        const courseTitle = await getCourseTitle(raw.course_id);
+        const folderId = await resolveCourseFolder("quiz_folders", quizFolders, raw.level, courseTitle);
         const { error } = await supabase.from("quizzes").insert({
           title: raw.title,
           description: raw.description || "",
@@ -120,6 +238,7 @@ async function main() {
           max_attempts: 3,
           grading_type: "auto",
           estimated_time: 15,
+          folder_id: folderId,
         });
         if (error) { console.error(`❌ ${path.basename(file)} : ${error.message}`); qFail++; continue; }
         existingQKeys.add(key);
