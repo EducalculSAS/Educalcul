@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser } from '@/lib/apiAuth';
-import { getSiteUrl } from '@/lib/siteUrl';
+import { getRequestSiteUrl } from '@/lib/siteUrl';
 import { sanitizeErrorMessage } from '@/lib/safeError';
 
 export async function POST(req: Request) {
@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     // Create Customer Portal Session
     const session = await stripe.billingPortal.sessions.create({
       customer: subscription.stripe_customer_id,
-      return_url: `${getSiteUrl()}/parent/subscription`,
+      return_url: `${getRequestSiteUrl(req)}/parent/subscription`,
     });
 
     return NextResponse.json({ url: session.url });

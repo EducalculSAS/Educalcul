@@ -4,7 +4,7 @@ import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser, getAuthIdentityOnly } from '@/lib/apiAuth';
 import { computeCustomPlan } from '@/lib/customPlanPricing';
 import { normalizePricingConfig } from '@/lib/pricingConfig';
-import { getSiteUrl } from '@/lib/siteUrl';
+import { getRequestSiteUrl } from '@/lib/siteUrl';
 import { validateEmail, validateName } from '@/lib/validation';
 import { rateLimitWithBackoff, RATE_LIMITS } from '@/lib/rateLimitAdvanced';
 import { sanitizeErrorMessage } from '@/lib/safeError';
@@ -80,9 +80,10 @@ async function createOrResumePendingSignup(params: {
 
 export async function POST(req: Request) {
   try {
-    // URL de base de confiance (config serveur) — jamais l'en-tête Origin du
-    // client, qui peut être falsifié (open redirect via les URLs Stripe).
-    const baseUrl = getSiteUrl();
+    // URL de base de confiance : le domaine réellement utilisé par la requête
+    // s'il fait partie de la liste blanche de l'app, sinon la config serveur.
+    // Jamais un Origin arbitraire du client (open redirect via Stripe).
+    const baseUrl = getRequestSiteUrl(req);
     let {
       planId, userId, email, referralCode, isNewSignup, customConfig,
       firstName, lastName, password,
