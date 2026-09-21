@@ -46,33 +46,49 @@ export async function GET(request: Request) {
     // Liste : pas de content_json (potentiellement volumineux) — chaque
     // carte n'affiche que ces champs ; le contenu complet est rechargé à la
     // demande (édition/aperçu/export) via ?id=.
-    let query = supabaseAdmin
-      .from("exercises")
-      .select(
+    //
+    // Supabase/PostgREST plafonne un .select() à 1000 lignes par défaut : la
+    // table exercises l'a largement dépassé (~6800 lignes), donc sans
+    // pagination cette route ne renvoyait que les 1000 lignes les plus
+    // récentes et la plupart des dossiers apparaissaient vides ou avec 1
+    // seul exercice dans l'admin (bug constaté et corrigé le 2026-09-21,
+    // voir aussi src/app/admin/exercises/page.tsx pour le même correctif
+    // côté chargement initial de la page).
+    const pageSize = 1000;
+    const data: any[] = [];
+    for (let from = 0; ; from += pageSize) {
+      let query = supabaseAdmin
+        .from("exercises")
+        .select(
+          `
+          id, title, description, question,
+          difficulty_level, type, level, status,
+          folder_id, course_id,
+          points_reward, max_attempts, time_limit,
+          created_at, updated_at,
+          courses (title, subject, level),
+          exercise_folders (name, color)
         `
-        id, title, description, question,
-        difficulty_level, type, level, status,
-        folder_id, course_id,
-        points_reward, max_attempts, time_limit,
-        created_at, updated_at,
-        courses (title, subject, level),
-        exercise_folders (name, color)
-      `
-      )
-      .order("created_at", { ascending: false });
+        )
+        .order("created_at", { ascending: false })
+        .range(from, from + pageSize - 1);
 
-    if (status && status !== "all") {
-      query = query.eq("status", status);
-    }
-    if (courseId && courseId !== "all") {
-      query = query.eq("course_id", courseId);
-    }
+      if (status && status !== "all") {
+        query = query.eq("status", status);
+      }
+      if (courseId && courseId !== "all") {
+        query = query.eq("course_id", courseId);
+      }
 
-    const { data, error } = await query;
+      const { data: page, error } = await query;
 
-    if (error) {
-      console.error("Error fetching exercises:", error);
-      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
+      if (error) {
+        console.error("Error fetching exercises:", error);
+        return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
+      }
+
+      data.push(...(page ?? []));
+      if (!page || page.length < pageSize) break;
     }
 
     // La liste n'inclut plus content_json (voir select ci-dessus) : pas de

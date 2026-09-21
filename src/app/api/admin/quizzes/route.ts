@@ -34,34 +34,47 @@ export async function GET(request: Request) {
     // Liste : pas de content_json (potentiellement volumineux) — chaque
     // carte n'affiche que ces champs ; le contenu complet est rechargé à la
     // demande (édition/aperçu/export) via ?id=.
-    let query = supabaseAdmin
-      .from("quizzes")
-      .select(
+    //
+    // Même plafond par défaut de 1000 lignes que /api/admin/exercises (voir
+    // son commentaire) — quizzes est encore sous ce seuil aujourd'hui, mais
+    // on pagine par précaution pour ne pas reproduire le bug le jour où la
+    // table grossit.
+    const pageSize = 1000;
+    const data: any[] = [];
+    for (let from = 0; ; from += pageSize) {
+      let query = supabaseAdmin
+        .from("quizzes")
+        .select(
+          `
+          id, title, description, course_id, folder_id,
+          time_limit_minutes, min_score_percent, status, type,
+          difficulty_level, level, max_attempts, grading_type,
+          thumbnail_filename, estimated_time, created_at, updated_at,
+          courses (title),
+          quiz_folders (name, color)
         `
-        id, title, description, course_id, folder_id,
-        time_limit_minutes, min_score_percent, status, type,
-        difficulty_level, level, max_attempts, grading_type,
-        thumbnail_filename, estimated_time, created_at, updated_at,
-        courses (title),
-        quiz_folders (name, color)
-      `
-      )
-      .order("created_at", { ascending: false });
+        )
+        .order("created_at", { ascending: false })
+        .range(from, from + pageSize - 1);
 
-    if (status && status !== "all") {
-      query = query.eq("status", status);
-    }
-    if (courseId && courseId !== "all") {
-      query = query.eq("course_id", courseId);
-    }
+      if (status && status !== "all") {
+        query = query.eq("status", status);
+      }
+      if (courseId && courseId !== "all") {
+        query = query.eq("course_id", courseId);
+      }
 
-    const { data, error } = await query;
+      const { data: page, error } = await query;
 
-    if (error) {
-      return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
+      if (error) {
+        return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
+      }
+
+      data.push(...(page ?? []));
+      if (!page || page.length < pageSize) break;
     }
 
-    return NextResponse.json(isAdmin ? data : (data || []).map(stripAnswers));
+    return NextResponse.json(isAdmin ? data : data.map(stripAnswers));
   } catch (error: any) {
     console.error("Error fetching quizzes:", error);
     return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
