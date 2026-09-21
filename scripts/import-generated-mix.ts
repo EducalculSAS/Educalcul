@@ -156,6 +156,20 @@ async function getCourseTitle(courseId: number): Promise<string> {
   return data.title;
 }
 
+
+/**
+ * Durée affichée sur la fiche. Les exercices comptent désormais une dizaine
+ * de questions réparties en plusieurs situations, là où 15 minutes forfaitaires
+ * correspondaient à une question isolée : on compte donc environ 2 minutes par
+ * question, borné pour rester crédible.
+ */
+function estimateMinutes(questionCount: number): number {
+  return Math.min(45, Math.max(5, Math.round(questionCount * 2)));
+}
+
+/** Tentatives autorisées par exercice/quiz (5 depuis le 2026-09-21, 3 avant). */
+const MAX_ATTEMPTS = 5;
+
 async function findJsonFiles(dir: string): Promise<string[]> {
   let entries;
   try {
@@ -211,8 +225,13 @@ async function main() {
           status: "draft",
           is_published: false,
           content_json: content,
-          max_attempts: 3,
-          estimated_time: 15,
+          max_attempts: MAX_ATTEMPTS,
+          estimated_time: estimateMinutes(
+            raw.content_json.reduce(
+              (total: number, page: any) => total + (page?.blocks?.length ?? 0),
+              0,
+            ),
+          ),
           folder_id: folderId,
         });
         if (error) { console.error(`❌ ${path.basename(file)} : ${error.message}`); exFail++; continue; }
@@ -237,9 +256,9 @@ async function main() {
           type: "standard",
           level: raw.level,
           difficulty_level: raw.difficulty_level,
-          max_attempts: 3,
+          max_attempts: MAX_ATTEMPTS,
           grading_type: "auto",
-          estimated_time: 15,
+          estimated_time: estimateMinutes(raw.content_json.length),
           folder_id: folderId,
         });
         if (error) { console.error(`❌ ${path.basename(file)} : ${error.message}`); qFail++; continue; }
