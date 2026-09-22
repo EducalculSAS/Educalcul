@@ -1152,28 +1152,32 @@ function getKatexError(latex: string): string {
 }
 
 /**
- * Ajoute un segment mathématique en sortant les symboles monétaires.
+ * Ajoute un segment mathématique en sortant les caractères qui relèvent du
+ * TEXTE, pas des mathématiques.
  *
- * KaTeX n'a pas de glyphe pour « € » (ni £, ¥…) : il émet « No character
- * metrics for '€' » et le rend avec une largeur approximative, mal espacée.
- * Or une unité monétaire n'a rien à faire dans une formule — « $5 €$ » se lit
- * « 5 » en mathématiques, suivi de « € » en texte. On découpe donc plutôt que
- * de forcer KaTeX sur un caractère qu'il ne connaît pas.
+ * KaTeX n'a de glyphe ni pour « € » (ni £, ¥…) ni pour les guillemets
+ * français : il émet « No character metrics for '€' in style 'Main-Regular' »
+ * et les rend avec une largeur approximative, mal espacée. Or une unité
+ * monétaire ou un guillemet n'a rien à faire dans une formule — « $5 €$ » se
+ * lit « 5 » en mathématiques, suivi de « € » en texte. On découpe donc plutôt
+ * que de forcer KaTeX sur un caractère qu'il ne connaît pas.
  */
-const CURRENCY_IN_MATH = /([€£¥₽₹])/;
+const TEXT_ONLY_IN_MATH = /([€£¥₽₹«»“”])/;
 
 function pushMathPart(parts: StructuredRichTextPart[], rawLatex: string): void {
-  if (!CURRENCY_IN_MATH.test(rawLatex)) {
+  if (!TEXT_ONLY_IN_MATH.test(rawLatex)) {
     const latex = normalizeStructuredLatex(rawLatex);
     if (latex) parts.push({ type: "math", latex });
     return;
   }
 
-  for (const chunk of rawLatex.split(CURRENCY_IN_MATH)) {
+  for (const chunk of rawLatex.split(TEXT_ONLY_IN_MATH)) {
     if (!chunk) continue;
-    if (CURRENCY_IN_MATH.test(chunk)) {
-      // Espace insécable fine avant l'unité, comme le veut l'usage français.
-      parts.push({ type: "text", value: ` ${chunk}` });
+    if (TEXT_ONLY_IN_MATH.test(chunk)) {
+      // Espace insécable fine avant une unité monétaire, comme le veut
+      // l'usage français ; les guillemets se collent à ce qu'ils encadrent.
+      const thin = /[€£¥₽₹]/.test(chunk) ? " " : "";
+      parts.push({ type: "text", value: `${thin}${chunk}` });
       continue;
     }
     const latex = normalizeStructuredLatex(chunk);
