@@ -14,6 +14,9 @@ export interface ContentFolder {
   grade_level: string | null;
   display_order: number | null;
   is_system: boolean | null;
+  /** Nombre d'éléments (cours / exercices / quiz) rangés DIRECTEMENT dans ce
+   * dossier, agrégé côté base par la route de liste. */
+  item_count?: number;
 }
 
 export type ContentFolderType = "course" | "exercise" | "quiz";

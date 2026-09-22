@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import {
   listFolders,
@@ -18,6 +18,7 @@ import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminBreadcrumbs from "@/components/admin/AdminBreadcrumbs";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
@@ -32,8 +33,6 @@ import {
   Clock,
   Folder,
   FolderPlus,
-  ChevronRight,
-  Home,
   ImageIcon,
   XCircle,
   CheckCircle,
@@ -196,40 +195,33 @@ interface ExerciseFormData {
  * dossiers, changer un filtre, et tout le CRUD restent des allers-retours
  * client, comme avant. */
 export default function AdminExercisesClient({
-  initialFolders,
-  initialAllExercises,
-  initialAllFolderCounts,
+  initialFolderId,
+  initialItems,
+  initialAllFolders,
   initialCourses,
 }: {
-  initialFolders: ExerciseFolder[];
-  initialAllExercises: Exercise[];
-  initialAllFolderCounts: { id: number; parent_id: number | null }[];
+  initialFolderId: number | null;
+  initialItems: Exercise[];
+  initialAllFolders: ContentFolder[];
   initialCourses: Course[];
 }) {
   const confirm = useConfirm();
-  const [exercises, setExercises] = useState<Exercise[]>(initialAllExercises.filter((ex: any) => !ex.folder_id));
+  const [exercises, setExercises] = useState<Exercise[]>(initialItems);
   const [courses, setCourses] = useState<Course[]>(initialCourses);
-  const [folders, setFolders] = useState<ExerciseFolder[]>(initialFolders);
-  const [allFolderCounts, setAllFolderCounts] = useState<{ id: number; parent_id: number | null }[]>(initialAllFolderCounts);
-  const [allExercises, setAllExercises] = useState<Exercise[]>(initialAllExercises);
+  const [allFolders, setAllFolders] = useState<ContentFolder[]>(initialAllFolders);
   const [loading, setLoading] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const isFirstContentsFetch = useRef(true);
-  const allFoldersRef = useRef<ContentFolder[]>([]);
 
   // Folder navigation state
-  const [currentFolderId, setCurrentFolderId] = useSessionFolderId("admin_exercises_folder");
-  const [breadcrumbs, setBreadcrumbs] = useState<ExerciseFolder[]>([]);
-  const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
+  const [currentFolderId, setCurrentFolderId] = useSessionFolderId("admin_exercises_folder", initialFolderId);
+
 
   // Drag and drop state
   const [draggedExerciseId, setDraggedExerciseId] = useState<string | null>(
     null
   );
   const [dragOverFolderId, setDragOverFolderId] = useState<number | null>(null);
-  const [dragOverBreadcrumb, setDragOverBreadcrumb] = useState<
-    number | "root" | null
-  >(null);
 
   // Folder creation/edit state
   const [isFolderModalOpen, setIsFolderModalOpen] = useState(false);
@@ -246,6 +238,30 @@ export default function AdminExercisesClient({
 
   // Filters
   const [statusFilter, setStatusFilter] = useState<string>("all");
+  // Dossiers, fil d'Ariane et compteurs DÉRIVÉS de la liste plate des
+  // dossiers, déjà en mémoire : ils s'affichent au clic, sans attendre le
+  // réseau. Avant, le fil d'Ariane n'était mis à jour qu'à la FIN du
+  // chargement du dossier — d'où son décalage visible.
+  const folders = useMemo(
+    () =>
+      allFolders.filter(
+        (f) => (currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId),
+      ) as unknown as ExerciseFolder[],
+    [allFolders, currentFolderId],
+  );
+  const breadcrumbs = useMemo(
+    () =>
+      (currentFolderId === null ? [] : buildBreadcrumbs(allFolders, currentFolderId)) as unknown as ExerciseFolder[],
+    [allFolders, currentFolderId],
+  );
+  const subfolderCounts = useMemo(() => {
+    const counts = new Map<number, number>();
+    for (const f of allFolders) {
+      if (f.parent_id !== null) counts.set(f.parent_id, (counts.get(f.parent_id) ?? 0) + 1);
+    }
+    return counts;
+  }, [allFolders]);
+  const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
   const [courseFilter, setCourseFilter] = useState<string>("all");
   const [difficultyFilter, setDifficultyFilter] = useState<string>("all");
   const [cycleFilter, setCycleFilter] = useState<string>("all");
@@ -347,7 +363,9 @@ export default function AdminExercisesClient({
     // depuis sessionStorage), inutile de refaire cet appel immédiatement.
     if (isFirstContentsFetch.current) {
       isFirstContentsFetch.current = false;
-      if (currentFolderId === null && statusFilter === "all" && courseFilter === "all" && difficultyFilter === "all") {
+      // La page serveur a déjà chargé le dossier affiché (lu dans le même
+      // cookie) : inutile de refaire la même requête au montage.
+      if (statusFilter === "all" && courseFilter === "all" && difficultyFilter === "all") {
         return;
       }
     }
@@ -384,80 +402,40 @@ export default function AdminExercisesClient({
 
   const fetchContents = async (silent = false) => {
     const cacheKey = `exercises:${currentFolderId}:${statusFilter}:${courseFilter}:${difficultyFilter}`;
-    const cached = getAdminCache<{
-      folders: ExerciseFolder[]; exercises: Exercise[]; allExercises: Exercise[]; allFolderCounts: { id: number; parent_id: number | null }[];
-    }>(cacheKey);
+    const cached = getAdminCache<{ items: Exercise[]; allFolders: ContentFolder[] }>(cacheKey);
     if (!silent) {
       if (cached) {
         // Affiche instantanément la dernière version connue — pas d'écran de
         // chargement — pendant qu'une requête fraîche part en arrière-plan.
-        setFolders(cached.folders);
-        setExercises(cached.exercises);
-        setAllExercises(cached.allExercises);
-        setAllFolderCounts(cached.allFolderCounts);
+        setExercises(cached.items);
+        setAllFolders(cached.allFolders);
         setLoading(false);
       } else {
         setLoading(true);
       }
     }
     try {
-      // 1. Fetch Folders — liste plate via l'API, filtrée localement.
-      const allFolders = await listFolders("exercise");
-      allFoldersRef.current = allFolders;
-      const foldersData = allFolders.filter((f) =>
-        currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId,
-      );
-
-      // 2. Fetch Exercises
-      let url = "/api/admin/exercises?";
+      // Seul le contenu du dossier COURANT est demandé (paramètre `folder`,
+      // filtré côté base). Avant, chaque ouverture de dossier — et un
+      // rafraîchissement toutes les 20 s — retéléchargeait TOUT le contenu
+      // pour n'en garder que quelques lignes : c'était le manque de fluidité
+      // dès qu'il y a beaucoup de cours. La liste des dossiers porte déjà le
+      // nombre d'éléments de chacun (agrégé en base). Les deux partent en
+      // parallèle.
+      let url = `/api/admin/exercises?folder=${currentFolderId ?? "root"}`;
       if (statusFilter !== "all") url += `&status=${statusFilter}`;
       if (courseFilter !== "all") url += `&course_id=${courseFilter}`;
-
-      const response = await fetch(url);
+      const [freshFolders, response] = await Promise.all([listFolders("exercise"), fetch(url)]);
       const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Failed to fetch contents");
 
-      if (!response.ok) {
-        throw new Error(data.error || "Failed to fetch exercises");
-      }
-
-      // Client-side filtering
-      let filteredData = data;
-
-      // Filter by current folder
-      if (currentFolderId === null) {
-        filteredData = filteredData.filter((ex: any) => !ex.folder_id);
-      } else {
-        filteredData = filteredData.filter(
-          (ex: any) => ex.folder_id === currentFolderId
-        );
-      }
-
+      let items = data as Exercise[];
       if (difficultyFilter !== "all") {
-        filteredData = filteredData.filter(
-          (ex: any) => ex.difficulty_level === difficultyFilter
-        );
+        items = items.filter((ex: any) => ex.difficulty_level === difficultyFilter);
       }
-
-      setFolders((foldersData as unknown as ExerciseFolder[]) || []);
-      setExercises(filteredData as Exercise[]);
-      setAllExercises(data as Exercise[]);
-
-      const allFoldersData = allFolders.map((f) => ({ id: f.id, parent_id: f.parent_id }));
-      setAllFolderCounts(allFoldersData);
-
-      setAdminCache(cacheKey, {
-        folders: (foldersData as unknown as ExerciseFolder[]) || [],
-        exercises: filteredData as Exercise[],
-        allExercises: data as Exercise[],
-        allFolderCounts: allFoldersData || [],
-      });
-
-      // Update breadcrumbs — à partir de la liste plate déjà chargée.
-      setBreadcrumbs(
-        currentFolderId !== null
-          ? (buildBreadcrumbs(allFolders, currentFolderId) as unknown as ExerciseFolder[])
-          : [],
-      );
+      setAllFolders(freshFolders);
+      setExercises(items);
+      setAdminCache(cacheKey, { items, allFolders: freshFolders });
     } catch (error: any) {
       console.error("Error fetching contents:", error?.message || error);
     } finally {
@@ -512,7 +490,7 @@ export default function AdminExercisesClient({
         if (targetFolderId !== null && Number(folderId) === targetFolderId)
           return;
         // Prevent cycles: target must not be the folder itself or a descendant
-        if (folderIsSelfOrDescendant(allFoldersRef.current, Number(folderId), targetFolderId)) {
+        if (folderIsSelfOrDescendant(allFolders, Number(folderId), targetFolderId)) {
           alert("Impossible de déplacer un dossier dans lui-même ou un de ses sous-dossiers");
           return;
         }
@@ -542,7 +520,6 @@ export default function AdminExercisesClient({
   ) => {
     e.preventDefault();
     e.stopPropagation();
-    setDragOverBreadcrumb(null);
     await moveDroppedItem(e, targetFolderId);
   };
 
@@ -651,7 +628,6 @@ export default function AdminExercisesClient({
     if (!res.ok) return exercise;
     const merge = (e: Exercise) => (e.id === exercise.id ? { ...e, content_json: full.content_json ?? [] } : e);
     setExercises((es) => es.map(merge));
-    setAllExercises((es) => es.map(merge));
     return { ...exercise, content_json: full.content_json ?? [] };
   };
 
@@ -948,59 +924,13 @@ export default function AdminExercisesClient({
         }
       />
 
-      {/* Breadcrumbs */}
-      <div
-        className="flex items-center gap-2 text-sm text-gray-600 backdrop-blur-[20px] backdrop-saturate-[1.2] p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto"
-        style={{ background: "rgba(255,255,255,0.6)" }}
-      >
-        <button
-          onClick={() => { setCurrentFolderId(null); setSearchQuery(""); }}
-          onDragOver={(e) => {
-            e.preventDefault();
-            setDragOverBreadcrumb("root");
-          }}
-          onDragLeave={() => setDragOverBreadcrumb(null)}
-          onDrop={(e) => handleBreadcrumbDrop(e, null)}
-          className={`flex items-center gap-1 px-2 py-1 hover:text-[var(--greek-blue)] transition-colors ${
-            currentFolderId === null ? "font-bold text-[var(--greek-blue)]" : ""
-          } ${
-            dragOverBreadcrumb === "root"
-              ? "bg-[var(--greek-gold)]/20 rounded-lg"
-              : ""
-          }`}
-        >
-          <Home size={16} />
-          Racine
-        </button>
-        {breadcrumbs.map((folder, index) => (
-          <div
-            key={folder.id}
-            className="flex items-center gap-2 whitespace-nowrap"
-          >
-            <ChevronRight size={14} className="text-gray-400" />
-            <button
-              onClick={() => { setCurrentFolderId(folder.id); setSearchQuery(""); }}
-              onDragOver={(e) => {
-                e.preventDefault();
-                setDragOverBreadcrumb(folder.id);
-              }}
-              onDragLeave={() => setDragOverBreadcrumb(null)}
-              onDrop={(e) => handleBreadcrumbDrop(e, folder.id)}
-              className={`px-2 py-1 hover:text-[var(--greek-blue)] transition-colors ${
-                index === breadcrumbs.length - 1
-                  ? "font-bold text-[var(--greek-blue)]"
-                  : ""
-              } ${
-                dragOverBreadcrumb === folder.id
-                  ? "bg-[var(--greek-gold)]/20 rounded-lg"
-                  : ""
-              }`}
-            >
-              {folder.name}
-            </button>
-          </div>
-        ))}
-      </div>
+      {/* Fil d'Ariane — dérivé en mémoire, boutons liquid glass */}
+      <AdminBreadcrumbs
+        crumbs={breadcrumbs}
+        currentFolderId={currentFolderId}
+        onNavigate={(id) => { setCurrentFolderId(id); setSearchQuery(""); }}
+        onDropOnto={handleBreadcrumbDrop}
+      />
 
       {/* Filters */}
       <div className="bg-white p-4 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] space-y-4">
@@ -1130,8 +1060,8 @@ export default function AdminExercisesClient({
                   </p>
                 )}
                 {(() => {
-                  const subCount = currentFolderId === null ? 0 : allFolderCounts.filter((f) => f.parent_id === folder.id).length;
-                  const itemCount = allExercises.filter((ex) => ex.folder_id === folder.id).length;
+                  const subCount = currentFolderId === null ? 0 : (subfolderCounts.get(folder.id) ?? 0);
+                  const itemCount = ((folder as { item_count?: number }).item_count ?? 0);
                   if (subCount === 0 && itemCount === 0) return null;
                   const parts = [];
                   if (subCount > 0) parts.push(`${subCount} dossier${subCount > 1 ? "s" : ""}`);

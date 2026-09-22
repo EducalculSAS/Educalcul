@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { folderTable, pickFolderFields } from "@/lib/contentFolders";
+import { folderTable, loadFoldersWithCounts, pickFolderFields, type FolderType } from "@/lib/contentFolders";
 
 const SELECT = "id, name, parent_id, status, color, icon, grade_level, display_order, is_system";
 
@@ -17,25 +17,9 @@ export async function GET(req: Request, { params }: { params: Promise<{ type: st
     const table = folderTable((await params).type);
     if (!table) return NextResponse.json({ error: "Type inconnu" }, { status: 404 });
 
-    // Plafond par défaut de 1000 lignes Supabase/PostgREST (voir
-    // src/app/admin/exercises/page.tsx) : exercise_folders/quiz_folders
-    // avoisinent déjà les 773 lignes (16 racines + 1 sous-dossier par cours)
-    // suite à l'import de masse — pagination par précaution avant que ça ne
-    // dépasse silencieusement 1000.
-    const pageSize = 1000;
-    const data: any[] = [];
-    for (let from = 0; ; from += pageSize) {
-      const { data: page, error } = await supabaseAdmin
-        .from(table)
-        .select(SELECT)
-        .order("display_order", { ascending: true })
-        .order("name", { ascending: true })
-        .range(from, from + pageSize - 1);
-      if (error) throw error;
-      data.push(...(page ?? []));
-      if (!page || page.length < pageSize) break;
-    }
-    return NextResponse.json(data);
+    // Liste + nombre d'éléments par dossier (agrégé en base) : le client n'a
+    // plus à télécharger TOUT le contenu juste pour afficher les compteurs.
+    return NextResponse.json(await loadFoldersWithCounts((await params).type as FolderType));
   } catch (error: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }

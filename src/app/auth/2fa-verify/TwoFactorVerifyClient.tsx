@@ -20,15 +20,19 @@ function TwoFactorVerifyContent() {
   const [cooldown, setCooldown] = useState(0);
   const sentOnce = useRef(false);
 
-  const sendCode = async () => {
+  const sendCode = async (knownToken?: string) => {
     setSending(true);
     setError(null);
     try {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) { router.push("/auth/connexion"); return; }
+      let token = knownToken;
+      if (!token) {
+        const { data: { session } } = await supabase.auth.getSession();
+        if (!session) { router.push("/auth/connexion"); return; }
+        token = session.access_token;
+      }
       const res = await fetch("/api/auth/2fa/send-code", {
         method: "POST",
-        headers: { Authorization: `Bearer ${session.access_token}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Impossible d'envoyer le code.");
@@ -68,9 +72,13 @@ function TwoFactorVerifyContent() {
         setSent(true); // pas d'envoi réel, mais l'écran reste identique au flux email
       } else {
         setMethod("email");
-        sendCode();
+        // Réutilise le jeton déjà lu : un second getSession() rallongeait
+        // l'attente avant l'envoi de l'email.
+        void sendCode(session.access_token);
       }
     })();
+    // Précharge la page d'arrivée pendant que l'élève lit son code.
+    router.prefetch(redirect);
   }, []);
 
   useEffect(() => {
@@ -101,10 +109,13 @@ function TwoFactorVerifyContent() {
       // 2FA (ex: tentative précédente), et le resservir tel quel sans
       // relire le cookie edu_2fa qu'on vient de poser — l'admin retombait
       // alors en boucle sur cette page malgré un code correct.
-      window.location.href = redirect;
+      //
+      // Le bouton RESTE en chargement jusqu'à l'affichage de la page : le
+      // relâcher dans un `finally` laissait un écran figé et un bouton
+      // inactif pendant le rechargement — c'était le « gel » après la 2FA.
+      window.location.replace(redirect);
     } catch (err: any) {
       setError(err.message || "Une erreur est survenue.");
-    } finally {
       setLoading(false);
     }
   };
@@ -166,7 +177,7 @@ function TwoFactorVerifyContent() {
 
         <button
           type="button"
-          onClick={method === "totp" ? fakeResend : sendCode}
+          onClick={method === "totp" ? fakeResend : () => void sendCode()}
           disabled={sending || cooldown > 0}
           className="w-full flex items-center justify-center gap-2 mt-4 text-xs font-semibold transition-opacity disabled:opacity-40"
           style={{ color: "var(--greek-gold)" }}

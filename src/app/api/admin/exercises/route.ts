@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { applyFolderFilter, parseFolderParam } from "@/lib/adminFolderFilter";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
@@ -9,6 +10,7 @@ export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");
+    const folder = parseFolderParam(searchParams.get("folder"));
     const id = searchParams.get("id");
     const courseId = searchParams.get("course_id");
     const me = await getAuthenticatedUser(request);
@@ -79,6 +81,7 @@ export async function GET(request: Request) {
       if (courseId && courseId !== "all") {
         query = query.eq("course_id", courseId);
       }
+      query = applyFolderFilter(query, folder);
 
       const { data: page, error } = await query;
 

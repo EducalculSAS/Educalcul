@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import {
   listFolders,
@@ -25,8 +25,6 @@ import {
   Eye,
   Folder as FolderIcon,
   FolderPlus,
-  ChevronRight,
-  Home,
   Download,
   Upload,
   CheckCircle,
@@ -51,6 +49,7 @@ import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import { compileHandAuthoredCourse } from "@/lib/ai/handAuthoredContent";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import AdminBreadcrumbs from "@/components/admin/AdminBreadcrumbs";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -169,45 +168,57 @@ const getFolderIcon = (iconName?: string | null) => {
  * changer un filtre, et tout le CRUD restent des allers-retours client,
  * comme avant. */
 export default function AdminCoursesClient({
-  initialFolders,
-  initialAllCourses,
-  initialAllFolderCounts,
+  initialFolderId,
+  initialItems,
+  initialAllFolders,
 }: {
-  initialFolders: Folder[];
-  initialAllCourses: Course[];
-  initialAllFolderCounts: { id: number; parent_id: number | null }[];
+  initialFolderId: number | null;
+  initialItems: Course[];
+  initialAllFolders: ContentFolder[];
 }) {
   const confirm = useConfirm();
   // Navigation State
-  const [currentFolderId, setCurrentFolderId] = useSessionFolderId(
-    "admin_courses_folder",
-  );
-  const [breadcrumbs, setBreadcrumbs] = useState<Folder[]>([]);
-  // Niveau imposé par l'espace de publication courant (dossier de niveau parent)
-  const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
+  const [currentFolderId, setCurrentFolderId] = useSessionFolderId("admin_courses_folder", initialFolderId);
+
 
   // Data State
-  const [courses, setCourses] = useState<Course[]>(initialAllCourses.filter((c: any) => !c.folder_id));
-  const [folders, setFolders] = useState<Folder[]>(initialFolders);
-  const [allFolderCounts, setAllFolderCounts] = useState<
-    { id: number; parent_id: number | null }[]
-  >(initialAllFolderCounts);
-  const [allCourses, setAllCourses] = useState<Course[]>(initialAllCourses);
+  const [courses, setCourses] = useState<Course[]>(initialItems);
+  const [allFolders, setAllFolders] = useState<ContentFolder[]>(initialAllFolders);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
+  // Dossiers, fil d'Ariane et compteurs DÉRIVÉS de la liste plate des
+  // dossiers, déjà en mémoire : ils s'affichent au clic, sans attendre le
+  // réseau. Avant, le fil d'Ariane n'était mis à jour qu'à la FIN du
+  // chargement du dossier — d'où son décalage visible.
+  const folders = useMemo(
+    () =>
+      allFolders.filter(
+        (f) => (currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId)
+          && (statusFilter === "all" || f.status === statusFilter),
+      ) as unknown as Folder[],
+    [allFolders, currentFolderId, statusFilter],
+  );
+  const breadcrumbs = useMemo(
+    () =>
+      (currentFolderId === null ? [] : buildBreadcrumbs(allFolders, currentFolderId)) as unknown as Folder[],
+    [allFolders, currentFolderId],
+  );
+  const subfolderCounts = useMemo(() => {
+    const counts = new Map<number, number>();
+    for (const f of allFolders) {
+      if (f.parent_id !== null) counts.set(f.parent_id, (counts.get(f.parent_id) ?? 0) + 1);
+    }
+    return counts;
+  }, [allFolders]);
+  // Niveau imposé par l'espace de publication courant (dossier de niveau parent)
+  const currentFolderLevel = getEffectiveFolderLevel(breadcrumbs);
   const [cycleFilter, setCycleFilter] = useState("all");
   const isFirstContentsFetch = useRef(true);
-  // Liste plate de TOUS les dossiers (chargée à chaque fetchContents) — sert au
-  // fil d'Ariane et au cycle-check sans requête supplémentaire.
-  const allFoldersRef = useRef<ContentFolder[]>([]);
 
   // Drag and Drop State
   const [draggedCourseId, setDraggedCourseId] = useState<string | null>(null);
   const [dragOverFolderId, setDragOverFolderId] = useState<number | null>(null);
-  const [dragOverBreadcrumb, setDragOverBreadcrumb] = useState<
-    number | "root" | null
-  >(null);
 
   // Modal States
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -319,7 +330,9 @@ export default function AdminCoursesClient({
     // depuis sessionStorage), inutile de refaire cet appel immédiatement.
     if (isFirstContentsFetch.current) {
       isFirstContentsFetch.current = false;
-      if (currentFolderId === null && statusFilter === "all") {
+      // La page serveur a déjà chargé le dossier affiché (lu dans le même
+      // cookie) : inutile de refaire la même requête au montage.
+      if (statusFilter === "all") {
         return;
       }
     }
@@ -382,82 +395,36 @@ export default function AdminCoursesClient({
   // Fetch folders and courses for the current directory
   const fetchContents = async (silent = false) => {
     const cacheKey = `courses:${currentFolderId}:${statusFilter}`;
-    const cached = getAdminCache<{
-      folders: Folder[];
-      courses: Course[];
-      allCourses: Course[];
-      allFolderCounts: { id: number; parent_id: number | null }[];
-    }>(cacheKey);
+    const cached = getAdminCache<{ items: Course[]; allFolders: ContentFolder[] }>(cacheKey);
     if (!silent) {
       if (cached) {
-        setFolders(cached.folders);
-        setCourses(cached.courses);
-        setAllCourses(cached.allCourses);
-        setAllFolderCounts(cached.allFolderCounts);
+        // Affiche instantanément la dernière version connue — pas d'écran de
+        // chargement — pendant qu'une requête fraîche part en arrière-plan.
+        setCourses(cached.items);
+        setAllFolders(cached.allFolders);
         setLoading(false);
       } else {
         setLoading(true);
       }
     }
     try {
-      // 1. Fetch Folders — liste plate via l'API, filtrée localement.
-      const allFolders = await listFolders("course");
-      allFoldersRef.current = allFolders;
-      let foldersData = allFolders.filter((f) =>
-        currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId,
-      );
-      if (statusFilter !== "all") {
-        foldersData = foldersData.filter((f) => f.status === statusFilter);
-      }
+      // Seul le contenu du dossier COURANT est demandé (paramètre `folder`,
+      // filtré côté base). Avant, chaque ouverture de dossier — et un
+      // rafraîchissement toutes les 20 s — retéléchargeait TOUT le contenu
+      // pour n'en garder que quelques lignes : c'était le manque de fluidité
+      // dès qu'il y a beaucoup de cours. La liste des dossiers porte déjà le
+      // nombre d'éléments de chacun (agrégé en base). Les deux partent en
+      // parallèle.
+      let url = `/api/admin/courses?folder=${currentFolderId ?? "root"}`;
+      if (statusFilter !== "all") url += `&status=${statusFilter}`;
+      const [freshFolders, response] = await Promise.all([listFolders("course"), fetch(url)]);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || "Failed to fetch contents");
 
-      // 2. Fetch Courses
-      let coursesUrl = `/api/admin/courses?`;
-      if (statusFilter !== "all") coursesUrl += `&status=${statusFilter}`;
-
-      // We filter by folder_id on the client side for now because the API might not support it perfectly
-      // or we can add it to the URL if the API supports it.
-      // Based on previous code, let's fetch all and filter client-side or modify API.
-      // To be safe and fast, let's fetch all relevant courses.
-      // Actually, for performance, we should filter by folder_id in API.
-      // Assuming API supports filtering, let's try. If not, we filter client side.
-
-      const response = await fetch(coursesUrl);
-      const coursesData = await response.json();
-
-      if (!response.ok)
-        throw new Error(coursesData.error || "Failed to fetch courses");
-
-      let filteredCourses = coursesData as Course[];
-
-      // Filter by current folder
-      if (currentFolderId === null) {
-        filteredCourses = filteredCourses.filter((c) => !c.folder_id);
-      } else {
-        filteredCourses = filteredCourses.filter(
-          (c) => c.folder_id === currentFolderId,
-        );
-      }
-
-      setFolders((foldersData as unknown as Folder[]) || []);
-      setCourses(filteredCourses);
-      setAllCourses(coursesData as Course[]);
-
-      const allFoldersData = allFolders.map((f) => ({ id: f.id, parent_id: f.parent_id }));
-      setAllFolderCounts(allFoldersData);
-
-      setAdminCache(cacheKey, {
-        folders: (foldersData as unknown as Folder[]) || [],
-        courses: filteredCourses,
-        allCourses: coursesData as Course[],
-        allFolderCounts: allFoldersData || [],
-      });
-
-      // Update breadcrumbs — à partir de la liste plate déjà chargée.
-      setBreadcrumbs(
-        currentFolderId !== null
-          ? (buildBreadcrumbs(allFolders, currentFolderId) as unknown as Folder[])
-          : [],
-      );
+      const items = data as Course[];
+      setAllFolders(freshFolders);
+      setCourses(items);
+      setAdminCache(cacheKey, { items, allFolders: freshFolders });
     } catch (error: any) {
       console.error("Error fetching contents:", error?.message || error);
     } finally {
@@ -541,7 +508,6 @@ export default function AdminCoursesClient({
     if (!res.ok) return course;
     const merge = (c: Course) => (c.id === course.id ? { ...c, content_json: full.content_json ?? [] } : c);
     setCourses((cs) => cs.map(merge));
-    setAllCourses((cs) => cs.map(merge));
     return { ...course, content_json: full.content_json ?? [] };
   };
 
@@ -820,7 +786,7 @@ export default function AdminCoursesClient({
         if (targetFolderId !== null && Number(folderId) === targetFolderId)
           return;
         // Prevent cycles: target must not be the folder itself or a descendant
-        if (folderIsSelfOrDescendant(allFoldersRef.current, Number(folderId), targetFolderId)) {
+        if (folderIsSelfOrDescendant(allFolders, Number(folderId), targetFolderId)) {
           alert(
             "Impossible de déplacer un dossier dans lui-même ou un de ses sous-dossiers",
           );
@@ -852,7 +818,6 @@ export default function AdminCoursesClient({
   ) => {
     e.preventDefault();
     e.stopPropagation();
-    setDragOverBreadcrumb(null);
     await moveDroppedItem(e, targetFolderId);
   };
 
@@ -947,65 +912,13 @@ export default function AdminCoursesClient({
         }
       />
 
-      {/* Navigation & Breadcrumbs */}
-      <div
-        className="flex items-center gap-2 text-sm text-gray-600 backdrop-blur-[20px] backdrop-saturate-[1.2] p-3 rounded-xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-x-auto"
-        style={{ background: "rgba(255,255,255,0.6)" }}
-      >
-        <button
-          onClick={() => {
-            setCurrentFolderId(null);
-            setSearchTerm("");
-          }}
-          onDragOver={(e) => {
-            e.preventDefault();
-            setDragOverBreadcrumb("root");
-          }}
-          onDragLeave={() => setDragOverBreadcrumb(null)}
-          onDrop={(e) => handleBreadcrumbDrop(e, null)}
-          className={`flex items-center gap-1 px-2 py-1 hover:text-[var(--greek-blue)] transition-colors ${
-            currentFolderId === null ? "font-bold text-[var(--greek-blue)]" : ""
-          } ${
-            dragOverBreadcrumb === "root"
-              ? "bg-[var(--greek-gold)]/20 rounded-lg"
-              : ""
-          }`}
-        >
-          <Home size={16} />
-          Racine
-        </button>
-        {breadcrumbs.map((folder, index) => (
-          <div
-            key={folder.id}
-            className="flex items-center gap-2 whitespace-nowrap"
-          >
-            <ChevronRight size={14} className="text-gray-400" />
-            <button
-              onClick={() => {
-                setCurrentFolderId(folder.id);
-                setSearchTerm("");
-              }}
-              onDragOver={(e) => {
-                e.preventDefault();
-                setDragOverBreadcrumb(folder.id);
-              }}
-              onDragLeave={() => setDragOverBreadcrumb(null)}
-              onDrop={(e) => handleBreadcrumbDrop(e, folder.id)}
-              className={`px-2 py-1 hover:text-[var(--greek-blue)] transition-colors ${
-                index === breadcrumbs.length - 1
-                  ? "font-bold text-[var(--greek-blue)]"
-                  : ""
-              } ${
-                dragOverBreadcrumb === folder.id
-                  ? "bg-[var(--greek-gold)]/20 rounded-lg"
-                  : ""
-              }`}
-            >
-              {folder.name}
-            </button>
-          </div>
-        ))}
-      </div>
+      {/* Fil d'Ariane — dérivé en mémoire, boutons liquid glass */}
+      <AdminBreadcrumbs
+        crumbs={breadcrumbs}
+        currentFolderId={currentFolderId}
+        onNavigate={(id) => { setCurrentFolderId(id); setSearchTerm(""); }}
+        onDropOnto={handleBreadcrumbDrop}
+      />
 
       {/* Filters & Search */}
       <div className="bg-white p-4 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] space-y-4">
@@ -1150,11 +1063,8 @@ export default function AdminCoursesClient({
                   const subCount =
                     currentFolderId === null
                       ? 0
-                      : allFolderCounts.filter((f) => f.parent_id === folder.id)
-                          .length;
-                  const itemCount = allCourses.filter(
-                    (c) => c.folder_id === folder.id,
-                  ).length;
+                      : (subfolderCounts.get(folder.id) ?? 0);
+                  const itemCount = ((folder as { item_count?: number }).item_count ?? 0);
                   if (subCount === 0 && itemCount === 0) return null;
                   const parts = [];
                   if (subCount > 0)

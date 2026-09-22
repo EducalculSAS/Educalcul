@@ -48,7 +48,14 @@ export default function ConnexionClient() {
   const [loading, setLoading] = useState(false);
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+    // Précharge les écrans qui suivent une connexion réussie pendant que
+    // l'utilisateur tape : la navigation qui suit ne télécharge plus rien.
+    router.prefetch("/auth/2fa-verify");
+    router.prefetch("/child/dashboard");
+    router.prefetch("/parent/dashboard");
+  }, [router]);
 
   // Vérifie la clé d'accès de ce compte APRÈS le mot de passe, AVANT la 2FA
   // — ce n'est plus une alternative au mot de passe (pas de bouton dédié),
@@ -56,15 +63,9 @@ export default function ConnexionClient() {
   // une (voir WebAuthnCard). Ne fait rien si le compte n'en a aucune —
   // la connexion continue alors normalement vers la 2FA / le tableau de
   // bord, exactement comme avant l'ajout des clés d'accès.
-  const verifyPasskeyIfAny = async (email: string, accessToken: string): Promise<boolean> => {
+  const verifyPasskeyIfAny = async (email: string, hasPasskey: boolean): Promise<boolean> => {
     if (typeof window === "undefined" || !window.PublicKeyCredential) return true;
-
-    const statusRes = await fetch("/api/auth/webauthn/status", {
-      headers: { Authorization: `Bearer ${accessToken}` },
-    });
-    if (!statusRes.ok) return true; // en cas de doute, ne bloque pas la connexion
-    const statusData = await statusRes.json();
-    if (!((statusData.credentials || []).length > 0)) return true;
+    if (!hasPasskey) return true;
 
     try {
       const optionsRes = await fetch("/api/auth/webauthn/login/options", {
@@ -150,37 +151,48 @@ export default function ConnexionClient() {
       }).catch(() => {});
       if (authError) throw authError;
       if (data.user && data.session) {
-        // Restriction d'IP éventuelle (admin_allowed_ips) : vérifiée AVANT
-        // tout — un compte restreint connecté depuis une IP hors liste ne
-        // doit voir ni OTP ni prompt passkey, juste échouer comme un mot de
-        // passe incorrect (aucun indice qu'une restriction existe).
-        try {
-          const ipCheckRes = await fetch("/api/auth/ip-check", {
-            headers: { Authorization: `Bearer ${data.session.access_token}` },
-          });
-          const ipCheckData = await ipCheckRes.json();
-          if (ipCheckRes.ok && ipCheckData.allowed === false) {
-            await supabase.auth.signOut();
-            setError("Email/identifiant ou mot de passe incorrect.");
-            return;
-          }
-        } catch {
-          // Échec réseau du contrôle IP : ne bloque pas la connexion pour un
-          // souci indépendant du compte — getAuthenticatedUser reste le
-          // rempart final sur chaque appel /api/* ensuite.
+        // Les trois contrôles post-connexion sont indépendants : ils partent
+        // ENSEMBLE au lieu de s'enchaîner (trois allers-retours réseau en série
+        // formaient le « gel » ressenti entre le mot de passe et la 2FA).
+        const auth = { Authorization: `Bearer ${data.session.access_token}` };
+        const [ipCheck, hasPasskey, dest] = await Promise.all([
+          // Restriction d'IP éventuelle (admin_allowed_ips). Un échec réseau ne
+          // bloque pas : getAuthenticatedUser reste le rempart final sur chaque
+          // appel /api/* ensuite.
+          fetch("/api/auth/ip-check", { headers: auth })
+            .then(async (r) => (r.ok ? ((await r.json()).allowed !== false) : true))
+            .catch(() => true),
+          fetch("/api/auth/webauthn/status", { headers: auth })
+            .then(async (r) => (r.ok ? ((await r.json()).credentials || []).length > 0 : false))
+            .catch(() => false),
+          resolveAuthDestination(data.session.access_token),
+        ]);
+
+        // Un compte restreint connecté depuis une IP hors liste ne doit voir
+        // ni OTP ni prompt passkey, juste échouer comme un mot de passe
+        // incorrect (aucun indice qu'une restriction existe). Vérifié AVANT
+        // d'agir sur quoi que ce soit d'autre.
+        if (!ipCheck) {
+          await supabase.auth.signOut();
+          setError("Email/identifiant ou mot de passe incorrect.");
+          setLoading(false);
+          return;
         }
 
-        const passkeyOk = await verifyPasskeyIfAny(email, data.session.access_token);
-        if (!passkeyOk) return;
+        const passkeyOk = await verifyPasskeyIfAny(email, hasPasskey);
+        if (!passkeyOk) { setLoading(false); return; }
 
-        const dest = await resolveAuthDestination(data.session.access_token);
+        // Le bouton reste en chargement jusqu'à l'affichage de la page
+        // suivante : le relâcher ici laissait un écran figé et un bouton
+        // inactif pendant la navigation.
         if (dest === "banned") { router.push("/auth/banned"); return; }
         if (dest === "no_account" || dest === "incomplete") { router.push("/auth/inscription"); return; }
         router.push(dest);
+        return;
       }
+      setLoading(false);
     } catch (err: any) {
       setError(translateAuthError(err.message));
-    } finally {
       setLoading(false);
     }
   };
