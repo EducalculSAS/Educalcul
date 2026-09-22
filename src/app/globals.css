@@ -134,16 +134,6 @@ main,
 @layer components {
   .course-callout {
     @apply my-6 rounded-2xl border-l-4 px-5 py-4 shadow-sm;
-    /* Les encadrés sont des <blockquote> (compiler.ts) rendus dans un conteneur
-       .prose : la typographie Tailwind décore alors tout blockquote de
-       guillemets ouvrants/fermants, qui n'ont aucun sens sur un encadré
-       « À retenir » ou « Attention » — on ne cite personne. */
-    quotes: none;
-  }
-
-  .course-callout p:first-of-type::before,
-  .course-callout p:last-of-type::after {
-    content: none;
   }
 
   .course-callout-note {
@@ -2244,4 +2234,26 @@ main,
 }
 .g-reset-btn:hover {
   background: rgba(197, 161, 72, 0.12);
+}
+
+/* Encadrés de cours (« Méthode », « À retenir », « Attention »).
+   Ce sont des <blockquote> (compiler.ts) rendus dans un conteneur .prose : la
+   typographie Tailwind leur ajoute des guillemets ouvrants/fermants et passe le
+   texte en italique — on ne cite personne, c'est un encadré.
+   HORS @layer volontairement : en Tailwind v4, le plugin typography émet ses
+   styles dans la couche `utilities`, qui l'emporte sur `components` quelle que
+   soit la spécificité. Un premier correctif placé dans `components` n'avait
+   donc aucun effet. Un style non « layered » passe devant toutes les couches. */
+.course-callout {
+  quotes: none;
+  font-style: normal;
+  font-weight: 400;
+}
+.course-callout p::before,
+.course-callout p::after {
+  content: none !important;
+}
+.course-callout p {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
 }

@@ -803,7 +803,11 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                      </div>
                    ) : (
                      <>
-                       <div ref={contentRef}>
+                       {/* Espacement général entre les segments d'une leçon
+                           (texte, mini-exercices, checklist) : ils étaient
+                           empilés sans marge, la checklist collée au dernier
+                           mini-exo. */}
+                       <div ref={contentRef} className="flex flex-col gap-8">
                          {renderLessonContentWithInlineExercises(
                            currentLesson.content || "",
                            currentLesson.exercises || [],

@@ -13,6 +13,8 @@ import { renderLatexInHTML } from "@/lib/katexLoader";
 import { compileCourseBlock } from "@/lib/ai/compiler";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { playListeningCue, playModeProfCue } from "@/lib/audioCues";
+import { DEFAULT_CALIA_VOICE, isCaliaVoice, type CaliaVoiceId } from "@/lib/caliaVoices";
+import { getMyProfile } from "@/lib/updateMyProfile";
 
 const HIGHLIGHT_CLASS = "calia-scene-highlight";
 const OUTLINE_SELECTORS: Record<"heading" | "paragraph" | "figure", string> = {
@@ -39,12 +41,7 @@ interface CaliaCourseContext {
   lessons: { title: string; current: boolean; exercises: { question: string; hint?: string | null; answer: string }[] }[];
 }
 
-const VOICES = [
-  { id: "fr-FR-VivienneMultilingualNeural", label: "Vivienne" },
-  { id: "fr-FR-DeniseNeural", label: "Denise" },
-  { id: "fr-FR-HenriNeural", label: "Henri" },
-] as const;
-const VOICE_STORAGE_KEY = "calia-classe-voice";
+
 
 function buildOutline(root: HTMLElement | null): OutlineItem[] {
   if (!root) return [];
@@ -105,16 +102,18 @@ export default function CaliaSceneDemo({
   const [interim, setInterim] = useState("");
   const [speechSupported, setSpeechSupported] = useState(true);
   const [textFallback, setTextFallback] = useState("");
-  const [voice, setVoice] = useState<string>(VOICES[0].id);
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem(VOICE_STORAGE_KEY);
-    if (stored && VOICES.some((v) => v.id === stored)) setVoice(stored);
-  }, []);
-
-  const changeVoice = (id: string) => {
-    setVoice(id);
-    window.localStorage.setItem(VOICE_STORAGE_KEY, id);
+  // La voix se règle dans le profil de l'enfant (users.calia_voice) et suit
+  // donc l'enfant d'un appareil à l'autre. Elle n'est lue qu'au lancement de
+  // Calia : aucune requête tant que l'élève ne la démarre pas.
+  // Promesse mémorisée plutôt qu'un simple état : la première phrase de Calia
+  // part souvent avant que le profil ait répondu, et serait sinon prononcée
+  // avec la voix par défaut.
+  const voiceRef = useRef<Promise<CaliaVoiceId> | null>(null);
+  const loadVoice = (): Promise<CaliaVoiceId> => {
+    voiceRef.current ??= getMyProfile<{ calia_voice?: string | null }>().then((profile) =>
+      isCaliaVoice(profile?.calia_voice) ? profile.calia_voice : DEFAULT_CALIA_VOICE,
+    );
+    return voiceRef.current;
   };
 
   // Visibilite live de ce que l'eleve tape dans un mini-exercice de la
@@ -226,6 +225,7 @@ export default function CaliaSceneDemo({
     audioRef.current?.pause();
     audioRef.current = null;
     try {
+      const voice = await loadVoice();
       const res = await fetch(`/api/calia/tts?text=${encodeURIComponent(text)}&voice=${encodeURIComponent(voice)}`);
       if (!res.ok) throw new Error(`tts-failed-${res.status}`);
       const blob = await res.blob();
@@ -519,6 +519,7 @@ export default function CaliaSceneDemo({
   };
 
   const start = () => {
+    void loadVoice();
     sessionActiveRef.current = true;
     playModeProfCue();
     setIsRunning(true);
@@ -602,19 +603,7 @@ export default function CaliaSceneDemo({
         <Image src="/logoAI.png" alt="Calia" width={18} height={18} className="object-contain" />
       </button>
 
-      {!isRunning && (
-        <select
-          value={voice}
-          onChange={(e) => changeVoice(e.target.value)}
-          aria-label="Voix de Calia en classe"
-          className="text-[11px] rounded-lg px-1.5 py-1 border outline-none"
-          style={{ borderColor: "rgba(15,30,58,0.15)", color: "var(--text-muted)" }}
-        >
-          {VOICES.map((v) => (
-            <option key={v.id} value={v.id}>{v.label}</option>
-          ))}
-        </select>
-      )}
+
 
       {isRunning && mounted && createPortal(
         <>

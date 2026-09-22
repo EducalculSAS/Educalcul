@@ -3,6 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
+import { isCaliaVoice } from "@/lib/caliaVoices";
 
 /**
  * Mise à jour des champs de profil que l'utilisateur peut modifier LUI-MÊME
@@ -53,6 +54,8 @@ export async function PATCH(req: Request) {
     for (const [k, v] of Object.entries(body)) {
       if (STRING_FIELDS.has(k) && typeof v === "string" && v.trim().length <= 255) patch[k] = v.trim();
       else if (BOOL_FIELDS.has(k) && typeof v === "boolean") patch[k] = v;
+      // Champ énuméré : seule une voix de la liste blanche est acceptée.
+      else if (k === "calia_voice" && isCaliaVoice(v)) patch[k] = v;
     }
 
     // L'acceptation des CGU n'est horodatée que par le serveur, au moment où

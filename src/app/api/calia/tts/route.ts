@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { hasCaliaClasseAccess } from "@/lib/checkSubscription";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { DEFAULT_CALIA_VOICE, caliaVoiceGender, isCaliaVoice } from "@/lib/caliaVoices";
 
 // Voix naturelle pour "Calia en classe" — Azure Speech, region France
 // Central (RGPD, DPA), tier gratuit F0 (500k caracteres/mois). Pas open
@@ -9,12 +10,7 @@ import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 // decision Ruben) — reserve au plan Family (calia_classe), voir
 // hasCaliaClasseAccess. Liste blanche (jamais le parametre client tel quel
 // dans le SSML) : evite l'injection XML et les noms de voix invalides.
-const DEFAULT_VOICE = "fr-FR-VivienneMultilingualNeural";
-const ALLOWED_VOICES: Record<string, "Female" | "Male"> = {
-  "fr-FR-VivienneMultilingualNeural": "Female",
-  "fr-FR-DeniseNeural": "Female",
-  "fr-FR-HenriNeural": "Male",
-};
+
 
 // Le jeton Azure reste valide ~10 min — le mettre en cache evite un aller-
 // retour reseau complet (auth) avant CHAQUE phrase prononcee, sur l'instance
@@ -63,9 +59,11 @@ export async function GET(req: Request) {
     if (typeof text !== "string" || !text.trim()) {
       return NextResponse.json({ error: "text est requis" }, { status: 400 });
     }
-    const requestedVoice = params.get("voice") || "";
-    const voiceGender = ALLOWED_VOICES[requestedVoice];
-    const voiceName = voiceGender ? requestedVoice : DEFAULT_VOICE;
+    // Liste blanche partagée (caliaVoices.ts) : jamais le paramètre client tel
+    // quel dans le SSML.
+    const requestedVoice = params.get("voice");
+    const voiceName = isCaliaVoice(requestedVoice) ? requestedVoice : DEFAULT_CALIA_VOICE;
+    const voiceGender = caliaVoiceGender(voiceName);
 
     const key = process.env.AZURE_SPEECH_KEY;
     const region = process.env.AZURE_SPEECH_REGION;
@@ -75,7 +73,7 @@ export async function GET(req: Request) {
 
     const token = await getAzureToken(key, region);
 
-    const ssml = `<speak version='1.0' xml:lang='fr-FR'><voice xml:lang='fr-FR' xml:gender='${voiceGender || "Female"}' name='${voiceName}'>${escapeSsml(text.trim().slice(0, 400))}</voice></speak>`;
+    const ssml = `<speak version='1.0' xml:lang='fr-FR'><voice xml:lang='fr-FR' xml:gender='${voiceGender}' name='${voiceName}'>${escapeSsml(text.trim().slice(0, 400))}</voice></speak>`;
 
     const upstream = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`, {
       method: "POST",

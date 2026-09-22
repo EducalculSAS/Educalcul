@@ -5,7 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import {
   User, Trophy, Shield, School, BookOpen, Mail,
   CheckCircle, AlertCircle, Trash2,
-  Camera, Bell, Brain, Gamepad2,
+  Camera, Bell, Brain, Gamepad2, Volume2,
 } from "lucide-react";
 import { getNameColor } from "@/lib/badgeStyles";
 import { updateMyProfile } from "@/lib/updateMyProfile";
@@ -17,6 +17,8 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import UserSessionsList from "@/components/UserSessionsList";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
 import WebAuthnCard from "@/components/WebAuthnCard";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+import { CALIA_VOICES, DEFAULT_CALIA_VOICE, isCaliaVoice, type CaliaVoiceId } from "@/lib/caliaVoices";
 
 const GoogleIcon = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -38,6 +40,7 @@ interface ChildUser {
   grade_level?: string;
   notif_weekly_reports?: boolean;
   notif_offers_news?: boolean;
+  calia_voice?: string | null;
 }
 
 /** Toutes les actions (upload avatar, lier/délier Google, notifications,
@@ -59,6 +62,17 @@ export default function ChildProfileSettings({
     notif_weekly_reports: user.notif_weekly_reports ?? false,
     notif_offers_news: user.notif_offers_news ?? false,
   });
+  const [caliaVoice, setCaliaVoice] = useState<CaliaVoiceId>(
+    isCaliaVoice(user.calia_voice) ? user.calia_voice : DEFAULT_CALIA_VOICE,
+  );
+  const changeCaliaVoice = (id: string) => {
+    if (!isCaliaVoice(id)) return;
+    const previous = caliaVoice;
+    setCaliaVoice(id); // optimiste : le choix s'affiche sans attendre le réseau
+    void updateMyProfile({ calia_voice: id }).then((res) => {
+      if (!res.ok) setCaliaVoice(previous);
+    });
+  };
   const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
 
   const handleLinkGoogle = async () => {
@@ -243,6 +257,22 @@ export default function ChildProfileSettings({
               ))}
             </div>
           </div>
+        </div>
+
+        {/* ── Voix de Calia en classe ── */}
+        <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
+            <Volume2 className="w-5 h-5 text-[var(--greek-gold)]" />
+            Voix de Calia en classe
+          </h2>
+          <p className="text-xs mb-4" style={{ color: "var(--text-muted)" }}>
+            {CALIA_VOICES.find((v) => v.id === caliaVoice)?.description} — la voix qui te lit le cours quand tu lances Calia.
+          </p>
+          <GlassSegmentedControl
+            options={CALIA_VOICES.map((v) => ({ id: v.id, label: v.label }))}
+            value={caliaVoice}
+            onChange={changeCaliaVoice}
+          />
         </div>
 
         <TwoFactorToggle />
