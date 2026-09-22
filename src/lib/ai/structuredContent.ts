@@ -1151,6 +1151,36 @@ function getKatexError(latex: string): string {
   }
 }
 
+/**
+ * Ajoute un segment mathématique en sortant les symboles monétaires.
+ *
+ * KaTeX n'a pas de glyphe pour « € » (ni £, ¥…) : il émet « No character
+ * metrics for '€' » et le rend avec une largeur approximative, mal espacée.
+ * Or une unité monétaire n'a rien à faire dans une formule — « $5 €$ » se lit
+ * « 5 » en mathématiques, suivi de « € » en texte. On découpe donc plutôt que
+ * de forcer KaTeX sur un caractère qu'il ne connaît pas.
+ */
+const CURRENCY_IN_MATH = /([€£¥₽₹])/;
+
+function pushMathPart(parts: StructuredRichTextPart[], rawLatex: string): void {
+  if (!CURRENCY_IN_MATH.test(rawLatex)) {
+    const latex = normalizeStructuredLatex(rawLatex);
+    if (latex) parts.push({ type: "math", latex });
+    return;
+  }
+
+  for (const chunk of rawLatex.split(CURRENCY_IN_MATH)) {
+    if (!chunk) continue;
+    if (CURRENCY_IN_MATH.test(chunk)) {
+      // Espace insécable fine avant l'unité, comme le veut l'usage français.
+      parts.push({ type: "text", value: ` ${chunk}` });
+      continue;
+    }
+    const latex = normalizeStructuredLatex(chunk);
+    if (latex) parts.push({ type: "math", latex });
+  }
+}
+
 function parseLegacyRichText(value: string): StructuredRichTextPart[] {
   const parts: StructuredRichTextPart[] = [];
   const expression = /\$\$([\s\S]*?)\$\$|\$([^$\r\n]*?)\$|\\\(([\s\S]*?)\\\)|\\\[([\s\S]*?)\\\]/g;
@@ -1161,8 +1191,7 @@ function parseLegacyRichText(value: string): StructuredRichTextPart[] {
       const text = sanitizeStructuredText(value.slice(cursor, match.index), true);
       if (text) parts.push({ type: "text", value: text });
     }
-    const latex = normalizeStructuredLatex(match[1] ?? match[2] ?? match[3] ?? match[4] ?? "");
-    if (latex) parts.push({ type: "math", latex });
+    pushMathPart(parts, match[1] ?? match[2] ?? match[3] ?? match[4] ?? "");
     cursor = match.index + match[0].length;
   }
   if (cursor < value.length) {
@@ -1242,8 +1271,7 @@ export function normalizeStructuredRichText(value: unknown): StructuredRichText 
     if (!part) continue;
     const type = stringValue(part.type).toLowerCase();
     if (type === "math" || type === "latex" || type === "formula") {
-      const latex = normalizeStructuredLatex(part.latex ?? part.value ?? part.text);
-      if (latex) parts.push({ type: "math", latex });
+      pushMathPart(parts, stringValue(part.latex ?? part.value ?? part.text));
       continue;
     }
     const text = sanitizeStructuredText(part.value ?? part.text ?? part.content, true);
