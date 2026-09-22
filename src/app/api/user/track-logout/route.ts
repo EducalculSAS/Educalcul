@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { createClient } from "@supabase/supabase-js";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { getIpGeo } from "@/lib/ipGeo";
 import { hashTwoFactorValue } from "@/lib/twoFactor";
 import {
@@ -11,17 +11,13 @@ import {
 
 export const dynamic = "force-dynamic";
 
+// Contrôle d'authentification STANDARD (compte banni, 2FA obligatoire), au lieu
+// d'un appel brut à auth.getUser qui les contournait (relevé à l'audit du
+// 2026-09-16). Ces routes ne sont appelées que par les mises en page parent/élève,
+// donc après la 2FA : aucun risque de casser le suivi d'une connexion en cours.
 async function getUser(request: Request) {
-  const auth = request.headers.get("authorization");
-  if (!auth) return null;
-  const client = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  );
-  const {
-    data: { user },
-  } = await client.auth.getUser(auth.replace("Bearer ", ""));
-  return user;
+  const me = await getAuthenticatedUser(request);
+  return me ? { id: me.authId } : null;
 }
 
 export async function POST(request: Request) {
