@@ -120,6 +120,9 @@ function blockWordCount(block: StructuredCourseBlock): number {
     case "pie_chart":
     case "number_line":
     case "bar_chart":
+    case "line_chart":
+    case "flowchart":
+    case "scatter_plot":
     case "probability_tree":
     case "venn_diagram":
     case "box_plot":

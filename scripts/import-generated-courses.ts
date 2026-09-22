@@ -61,8 +61,12 @@ async function main() {
     const { content, warnings } = compileHandAuthoredCourse(raw);
     for (const w of warnings) {
       totalWarnings++;
-      // On regroupe par nature plutôt que d'imprimer 756 × n lignes.
-      const kind = w.replace(/^.*? : /, "").replace(/"[^"]*"/g, '"…"').slice(0, 90);
+      // On regroupe par nature plutôt que d'imprimer 756 × n lignes — mais en
+      // gardant le TYPE du bloc, seule information qui dit quoi corriger.
+      const type = w.match(/de type "([^"]*)"/)?.[1];
+      const kind = type
+        ? `figure "${type}" ignorée — champs invalides ou manquants`
+        : w.replace(/^.*? : /, "").replace(/"[^"]*"/g, '"…"').slice(0, 90);
       warningsByKind.set(kind, (warningsByKind.get(kind) ?? 0) + 1);
     }
 

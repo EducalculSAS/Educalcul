@@ -1507,6 +1507,195 @@ function renderBarChart(
   return `<figure class="course-figure course-figure-bar-chart">${figOpen(W, H, { grid: false })}${valueGrid}${axis}${parts}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
+/**
+ * Courbe d'évolution : une à quatre séries sur un axe commun.
+ *
+ * Le bar_chart ne rendait pas la continuité d'une évolution, et le graph ne
+ * sait tracer qu'une expression — pas des relevés (températures par mois,
+ * termes d'une suite). Même grammaire visuelle que renderBarChart : grille
+ * horizontale légère, axes sobres, étiquettes en dessous.
+ */
+function renderLineChart(
+  block: Extract<StructuredCourseBlock, { type: "line_chart" }>,
+): string {
+  const W = 250;
+  const H = 175;
+  const left = 30;
+  const right = W - 12;
+  const top = 16;
+  const bottom = 128;
+
+  const all = block.series.flatMap((s) => s.values);
+  const rawMin = Math.min(...all);
+  const rawMax = Math.max(...all);
+  // Un palier plat (toutes les valeurs égales) donnerait une hauteur nulle.
+  const min = rawMin === rawMax ? rawMin - 1 : rawMin;
+  const max = rawMin === rawMax ? rawMax + 1 : rawMax;
+  const count = Math.max(...block.series.map((s) => s.values.length));
+
+  const xAt = (i: number) => left + (count <= 1 ? 0 : ((right - left) * i) / (count - 1));
+  const yAt = (v: number) => bottom - ((v - min) / (max - min)) * (bottom - top);
+
+  const gridSteps = 4;
+  const grid = Array.from({ length: gridSteps + 1 }, (_, i) => {
+    const y = top + ((bottom - top) * i) / gridSteps;
+    const value = max - ((max - min) * i) / gridSteps;
+    return (
+      `<line x1="${left}" y1="${num(y)}" x2="${right}" y2="${num(y)}" stroke="${FIG.grid}" stroke-width="1"/>` +
+      figText(left - 5, y + 3, String(Math.round(value * 10) / 10), { size: 8.5, anchor: "end", fill: FIG.inkSoft })
+    );
+  }).join("");
+
+  const axes =
+    `<line x1="${left}" y1="${bottom}" x2="${right}" y2="${bottom}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>` +
+    `<line x1="${left}" y1="${top}" x2="${left}" y2="${bottom}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>`;
+
+  const curves = block.series
+    .map((serie) => {
+      const color = FIGURE_PALETTE[serie.tone];
+      const path = serie.values.map((v, i) => `${i === 0 ? "M" : "L"} ${num(xAt(i))} ${num(yAt(v))}`).join(" ");
+      const dots = serie.values
+        .map((v, i) => `<circle cx="${num(xAt(i))}" cy="${num(yAt(v))}" r="2.4" fill="${color}"/>`)
+        .join("");
+      return `<path d="${path}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
+    })
+    .join("");
+
+  // Étiquettes d'abscisse : on n'en affiche qu'une sur n pour ne pas les
+  // empiler quand la série est longue (12 mois sur 250 px).
+  const step = Math.ceil(count / 6);
+  const xLabels = block.xValues
+    .map((label, i) => (i % step === 0 ? figText(xAt(i), bottom + 13, escapeHtml(label), { size: 8.5, fill: FIG.inkSoft }) : ""))
+    .join("");
+
+  const legend = block.series
+    .filter((s) => s.name)
+    .map((serie, i) => {
+      const color = FIGURE_PALETTE[serie.tone];
+      const y = H - 20 + i * 0;
+      const x = left + i * 78;
+      return (
+        `<line x1="${num(x)}" y1="${num(y)}" x2="${num(x + 14)}" y2="${num(y)}" stroke="${color}" stroke-width="2"/>` +
+        figText(x + 18, y + 3.5, escapeHtml(serie.name), { size: 9, anchor: "start", fill: FIG.inkSoft })
+      );
+    })
+    .join("");
+
+  const axisTitles =
+    (block.yLabel ? figText(left - 22, top + 4, escapeHtml(block.yLabel), { size: 8.5, anchor: "start", fill: FIG.inkSoft }) : "") +
+    (block.xLabel ? figText((left + right) / 2, bottom + 27, escapeHtml(block.xLabel), { size: 8.5, fill: FIG.inkSoft }) : "");
+
+  return `<figure class="course-figure course-figure-line-chart">${figOpen(W, H, { grid: false })}${grid}${axes}${curves}${xLabels}${axisTitles}${legend}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+/**
+ * Nuage de points. Mêmes axes et même grille que la courbe d'évolution, sans
+ * ligne de liaison : c'est la dispersion qu'on veut donner à voir.
+ */
+function renderScatterPlot(
+  block: Extract<StructuredCourseBlock, { type: "scatter_plot" }>,
+): string {
+  const W = 250;
+  const H = 170;
+  const left = 30;
+  const right = W - 12;
+  const top = 16;
+  const bottom = 130;
+
+  const xs = block.points.map((p) => p.x);
+  const ys = block.points.map((p) => p.y);
+  const span = (values: number[]) => {
+    const lo = Math.min(...values);
+    const hi = Math.max(...values);
+    return lo === hi ? [lo - 1, hi + 1] : [lo, hi];
+  };
+  const [xMin, xMax] = span(xs);
+  const [yMin, yMax] = span(ys);
+
+  const xAt = (v: number) => left + ((v - xMin) / (xMax - xMin)) * (right - left);
+  const yAt = (v: number) => bottom - ((v - yMin) / (yMax - yMin)) * (bottom - top);
+
+  const gridSteps = 4;
+  const grid = Array.from({ length: gridSteps + 1 }, (_, i) => {
+    const y = top + ((bottom - top) * i) / gridSteps;
+    const value = yMax - ((yMax - yMin) * i) / gridSteps;
+    return (
+      `<line x1="${left}" y1="${num(y)}" x2="${right}" y2="${num(y)}" stroke="${FIG.grid}" stroke-width="1"/>` +
+      figText(left - 5, y + 3, String(Math.round(value * 10) / 10), { size: 8.5, anchor: "end", fill: FIG.inkSoft })
+    );
+  }).join("");
+
+  const axes =
+    `<line x1="${left}" y1="${bottom}" x2="${right}" y2="${bottom}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>` +
+    `<line x1="${left}" y1="${top}" x2="${left}" y2="${bottom}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}"/>`;
+
+  const dots = block.points
+    .map((p) => `<circle cx="${num(xAt(p.x))}" cy="${num(yAt(p.y))}" r="3" fill="${FIGURE_PALETTE.blue}" fill-opacity="0.75" stroke="${FIGURE_PALETTE.blue}" stroke-width="1"/>`)
+    .join("");
+
+  const titles =
+    (block.yLabel ? figText(left - 22, top + 4, escapeHtml(block.yLabel), { size: 8.5, anchor: "start", fill: FIG.inkSoft }) : "") +
+    (block.xLabel ? figText((left + right) / 2, bottom + 24, escapeHtml(block.xLabel), { size: 8.5, fill: FIG.inkSoft }) : "") +
+    figText(left, bottom + 13, String(Math.round(xMin * 10) / 10), { size: 8.5, fill: FIG.inkSoft }) +
+    figText(right, bottom + 13, String(Math.round(xMax * 10) / 10), { size: 8.5, fill: FIG.inkSoft });
+
+  return `<figure class="course-figure course-figure-scatter-plot">${figOpen(W, H, { grid: false })}${grid}${axes}${dots}${titles}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+/**
+ * Schéma d'algorithme : étapes empilées, losange pour un test, flèche de
+ * retour pour une boucle. Indispensable aux chapitres d'algorithmique, où le
+ * texte seul décrit mal un enchaînement.
+ */
+function renderFlowchart(
+  block: Extract<StructuredCourseBlock, { type: "flowchart" }>,
+): string {
+  const W = 240;
+  const boxW = 128;
+  const boxH = 26;
+  const gap = 20;
+  const cx = W / 2 + 12;
+  const top = 14;
+  const H = top + block.nodes.length * (boxH + gap) + 6;
+
+  const yOf = (i: number) => top + i * (boxH + gap);
+
+  const shapes = block.nodes
+    .map((node, i) => {
+      const y = yOf(i);
+      const color =
+        node.kind === "condition" ? FIGURE_PALETTE.gold
+        : node.kind === "start" || node.kind === "end" ? FIGURE_PALETTE.green
+        : FIGURE_PALETTE.blue;
+
+      const body =
+        node.kind === "condition"
+          ? `<path d="M ${num(cx)} ${num(y)} L ${num(cx + boxW / 2)} ${num(y + boxH / 2)} L ${num(cx)} ${num(y + boxH)} L ${num(cx - boxW / 2)} ${num(y + boxH / 2)} Z" fill="${color}" fill-opacity="0.14" stroke="${color}" stroke-width="${FIG_STROKE}"/>`
+          : `<rect x="${num(cx - boxW / 2)}" y="${num(y)}" width="${boxW}" height="${boxH}" rx="${node.kind === "start" || node.kind === "end" ? boxH / 2 : 5}" fill="${color}" fill-opacity="0.14" stroke="${color}" stroke-width="${FIG_STROKE}"/>`;
+
+      const arrow =
+        i < block.nodes.length - 1
+          ? `<line x1="${num(cx)}" y1="${num(y + boxH)}" x2="${num(cx)}" y2="${num(yOf(i + 1) - 3)}" stroke="${FIG.ink}" stroke-width="${FIG_STROKE}" marker-end="url(#efig-arrow)"/>`
+          : "";
+
+      return body + figText(cx, y + boxH / 2 + 3.5, escapeHtml(node.label), { size: 9, weight: 600 }) + arrow;
+    })
+    .join("");
+
+  // Flèche de retour : elle contourne la colonne par la gauche.
+  let loop = "";
+  if (block.loopFrom !== null && block.loopTo !== null && block.loopFrom !== block.loopTo) {
+    const yFrom = yOf(block.loopFrom) + boxH / 2;
+    const yTo = yOf(block.loopTo) + boxH / 2;
+    const x = cx - boxW / 2 - 14;
+    loop =
+      `<path d="M ${num(cx - boxW / 2)} ${num(yFrom)} L ${num(x)} ${num(yFrom)} L ${num(x)} ${num(yTo)} L ${num(cx - boxW / 2 - 2)} ${num(yTo)}" ` +
+      `fill="none" stroke="${FIG.accent}" stroke-width="${FIG_STROKE}" stroke-dasharray="4 3" marker-end="url(#efig-arrow)"/>`;
+  }
+
+  return `<figure class="course-figure course-figure-flowchart">${figOpen(W, H, { grid: false })}${loop}${shapes}</svg><figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
 function renderProbabilityTree(
   block: Extract<StructuredCourseBlock, { type: "probability_tree" }>,
 ): string {
@@ -1894,6 +2083,12 @@ export function compileCourseBlock(
       return renderNumberLine(block);
     case "bar_chart":
       return renderBarChart(block);
+    case "line_chart":
+      return renderLineChart(block);
+    case "scatter_plot":
+      return renderScatterPlot(block);
+    case "flowchart":
+      return renderFlowchart(block);
     case "clock":
       return renderClock(block);
     case "fraction":

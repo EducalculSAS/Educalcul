@@ -334,6 +334,37 @@ export type StructuredCourseBlock =
       intervals: StructuredNumberLineInterval[];
     }
   | {
+      // Courbe d'évolution : une ou plusieurs séries partageant le même axe
+      // des abscisses (températures par mois, suite au fil des rangs…). Le
+      // bar_chart ne rendait pas l'idée de continuité, et le graph ne sait
+      // tracer qu'une expression, pas des relevés.
+      type: "line_chart";
+      caption: string;
+      xLabel: string;
+      yLabel: string;
+      xValues: string[];
+      series: { name: string; tone: StructuredFigureTone; values: number[] }[];
+    }
+  | {
+      // Nuage de points : le catalogue l'annonçait déjà, mais aucun bloc de
+      // cours ne l'implémentait — les 16 figures produites étaient rejetées en
+      // silence. Indispensable en statistiques (corrélation, ajustement).
+      type: "scatter_plot";
+      caption: string;
+      xLabel: string;
+      yLabel: string;
+      points: { x: number; y: number }[];
+    }
+  | {
+      // Schéma d'algorithme : suite d'étapes, avec losanges pour les tests et
+      // une flèche de retour possible pour les boucles.
+      type: "flowchart";
+      caption: string;
+      nodes: { label: string; kind: "start" | "end" | "action" | "condition" }[];
+      loopFrom: number | null;
+      loopTo: number | null;
+    }
+  | {
       type: "bar_chart";
       caption: string;
       bars: StructuredBar[];
@@ -1605,6 +1636,43 @@ function normalizeVennSet(value: unknown): StructuredVennSet | null {
   return { label: label.slice(0, 30), tone: normalizeFigureTone(raw.tone) };
 }
 
+/**
+ * Synonymes de types de figures.
+ *
+ * Le modèle nomme volontiers un bloc par son idée plutôt que par son nom de
+ * catalogue : « code_block » pour un encart de code, « tree » pour un arbre
+ * pondéré, « matrix » pour un tableau, « rectangle » ou « segment » pour un
+ * tracé. Ces figures étaient rejetées en silence alors que leur CONTENU était
+ * exploitable — 108 figures perdues sur un corpus de 4 492. On accepte donc le
+ * synonyme et on redirige vers le bloc réel.
+ */
+const FIGURE_TYPE_ALIASES: Record<string, string> = {
+  code_block: "algo_sandbox",
+  code: "algo_sandbox",
+  python: "algo_sandbox",
+  tree: "probability_tree",
+  matrix: "table",
+  truth_table: "table",
+  line_graph: "line_chart",
+  flow_diagram: "flowchart",
+  histogram: "bar_chart",
+  // Tracés libres : tous rendus par « shape », qui porte déjà des « parts ».
+  rectangle: "shape",
+  segment: "shape",
+  line: "shape",
+  point: "shape",
+  angle: "shape",
+  cube: "shape",
+  box: "shape",
+  die: "shape",
+  shape_pythagoras: "shape",
+  function_diagram: "shape",
+  function_definition: "shape",
+  function_machine: "shape",
+  list_representation: "shape",
+  timeline: "shape",
+};
+
 export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCourseBlock | null {
   if (depth > 4) return null;
   const raw = asRecord(value);
@@ -1613,7 +1681,23 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
     return content.parts.length ? { type: "paragraph", content } : null;
   }
 
-  const type = stringValue(raw.type, "paragraph").toLowerCase();
+  let type = FIGURE_TYPE_ALIASES[stringValue(raw.type, "paragraph").toLowerCase()]
+    ?? stringValue(raw.type, "paragraph").toLowerCase();
+
+  // « figure » servant d'enveloppe : {"type":"figure","graph":{...}}. Le bloc
+  // interne n'a pas toujours son propre "type" — on le déduit de la clé.
+  if (type === "figure" && !Array.isArray(raw.elements)) {
+    for (const [key, inner] of Object.entries(raw)) {
+      if (key === "type" || key === "caption") continue;
+      const nested = asRecord(inner);
+      if (!nested) continue;
+      return normalizeCourseBlock(
+        { type: nested.type ?? key, caption: raw.caption, ...nested },
+        depth + 1,
+      );
+    }
+  }
+  void type;
   switch (type) {
     case "heading":
     case "title":
@@ -1942,6 +2026,115 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
         max: finiteNumber(raw.max, 5),
         points,
         intervals,
+      };
+    }
+    // « line_chart » / « line_graph » : le modèle écrit soit des séries
+    // (lines[{name, values[]}]), soit une suite de points ({x, y}). On accepte
+    // les deux plutôt que de perdre la figure sur une question de forme.
+    case "line_chart":
+    case "line_graph": {
+      const rawSeries = Array.isArray(raw.series) ? raw.series : Array.isArray(raw.lines) ? raw.lines : [];
+      let xValues = Array.isArray(raw.x_values)
+        ? raw.x_values.map((v) => sanitizeDiagramLabel(v) ?? "")
+        : [];
+
+      const series = rawSeries
+        .map((entry) => {
+          const row = asRecord(entry);
+          if (!row) return null;
+          const values = (Array.isArray(row.values) ? row.values : [])
+            .map((v) => finiteNumber(v, Number.NaN))
+            .filter((v): v is number => Number.isFinite(v));
+          if (values.length < 2) return null;
+          return {
+            name: sanitizeDiagramLabel(row.name ?? row.label) ?? "",
+            tone: normalizeFigureTone(row.tone),
+            values: values.slice(0, 24),
+          };
+        })
+        .filter((s): s is { name: string; tone: StructuredFigureTone; values: number[] } => s !== null)
+        .slice(0, 4);
+
+      if (series.length === 0 && Array.isArray(raw.points)) {
+        const points = raw.points.map(asRecord).filter((p): p is Record<string, unknown> => p !== null);
+        const values = points.map((p) => finiteNumber(p.y, Number.NaN)).filter((v) => Number.isFinite(v));
+        if (values.length >= 2) {
+          series.push({ name: "", tone: normalizeFigureTone(raw.tone), values: values.slice(0, 24) });
+          if (xValues.length === 0) {
+            xValues = points.map((p) => sanitizeDiagramLabel(p.x) ?? "").slice(0, 24);
+          }
+        }
+      }
+      if (series.length === 0) return null;
+
+      const longest = Math.max(...series.map((s) => s.values.length));
+      return {
+        type: "line_chart",
+        caption: sanitizeStructuredText(raw.caption),
+        xLabel: sanitizeDiagramLabel(raw.x_label) ?? "",
+        yLabel: sanitizeDiagramLabel(raw.y_label) ?? "",
+        xValues: xValues.length === longest ? xValues : [],
+        series,
+      };
+    }
+    case "scatter_plot": {
+      const points = (Array.isArray(raw.points) ? raw.points : [])
+        .map(asRecord)
+        .filter((p): p is Record<string, unknown> => p !== null)
+        .map((p) => ({ x: finiteNumber(p.x, Number.NaN), y: finiteNumber(p.y, Number.NaN) }))
+        .filter((p) => Number.isFinite(p.x) && Number.isFinite(p.y))
+        .slice(0, 40);
+      if (points.length < 2) return null;
+      return {
+        type: "scatter_plot",
+        caption: sanitizeStructuredText(raw.caption),
+        xLabel: sanitizeDiagramLabel(raw.x_label) ?? "",
+        yLabel: sanitizeDiagramLabel(raw.y_label) ?? "",
+        points,
+      };
+    }
+    case "flowchart":
+    case "flow_diagram": {
+      // Deux écritures observées : nodes[{label, type}] et steps[""].
+      const rawNodes = Array.isArray(raw.nodes)
+        ? raw.nodes
+        : Array.isArray(raw.steps)
+          ? raw.steps.map((label) => ({ label }))
+          : [];
+
+      const nodes = rawNodes
+        .map((entry, index, all) => {
+          const row: Record<string, unknown> = asRecord(entry) ?? { label: entry };
+          const label = sanitizeDiagramLabel(row.label ?? row.text);
+          if (!label) return null;
+          const declared = String(row.kind ?? row.type ?? "").toLowerCase();
+          // Une flèche n'est pas une étape : le modèle en glisse parfois entre
+          // deux boîtes, ce qui ferait un rectangle « Oui » dans le schéma.
+          if (declared === "arrow" || declared === "edge") return null;
+          const kind: "start" | "end" | "action" | "condition" =
+            declared === "condition" || declared === "decision" || /\?\s*$/.test(label)
+              ? "condition"
+              : declared === "start" || (index === 0 && /début|debut|start/i.test(label))
+                ? "start"
+                : declared === "end" || declared === "stop" || index === all.length - 1
+                  ? "end"
+                  : "action";
+          return { label: label.slice(0, 48), kind };
+        })
+        .filter((n): n is { label: string; kind: "start" | "end" | "action" | "condition" } => n !== null)
+        .slice(0, 8);
+
+      if (nodes.length < 2) return null;
+
+      const loopFrom = Number.isInteger(raw.loop_from) ? (raw.loop_from as number) : null;
+      const loopTo = Number.isInteger(raw.loop_to) ? (raw.loop_to as number) : null;
+      const valid = (n: number | null) => (n !== null && n >= 0 && n < nodes.length ? n : null);
+      return {
+        type: "flowchart",
+        caption: sanitizeStructuredText(raw.caption),
+        nodes,
+        loopFrom: valid(loopFrom),
+        loopTo: valid(loopTo),
       };
     }
     case "bar_chart": {
@@ -2281,7 +2474,9 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
       };
     }
     case "algo_sandbox": {
-      const code = typeof raw.code === "string" ? raw.code.slice(0, 2000) : "";
+      // Le modèle nomme ce champ « content » ou « source » aussi souvent que « code ».
+      const rawCode = raw.code ?? raw.content ?? raw.source;
+      const code = typeof rawCode === "string" ? rawCode.slice(0, 2000) : "";
       if (!code.trim()) return null;
       return {
         type: "algo_sandbox",
