@@ -134,6 +134,16 @@ main,
 @layer components {
   .course-callout {
     @apply my-6 rounded-2xl border-l-4 px-5 py-4 shadow-sm;
+    /* Les encadrés sont des <blockquote> (compiler.ts) rendus dans un conteneur
+       .prose : la typographie Tailwind décore alors tout blockquote de
+       guillemets ouvrants/fermants, qui n'ont aucun sens sur un encadré
+       « À retenir » ou « Attention » — on ne cite personne. */
+    quotes: none;
+  }
+
+  .course-callout p:first-of-type::before,
+  .course-callout p:last-of-type::after {
+    content: none;
   }
 
   .course-callout-note {
