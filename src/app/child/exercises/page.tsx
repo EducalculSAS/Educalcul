@@ -3,6 +3,7 @@ import { Brain } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ExercisesCatalog from "@/components/child/ExercisesCatalog";
+import { findLevelFolder, loadPublishedCatalog, loadPublishedFolders, subtreeIds, type CatalogFolder } from "@/lib/childCatalog";
 
 export default async function ChildExercisesPage({
   searchParams,
@@ -15,32 +16,26 @@ export default async function ChildExercisesPage({
 
   const { course: filterCourseId } = await searchParams;
 
-  const { data: userData } = await supabaseAdmin
-    .from("users")
-    .select("grade_level")
-    .eq("id", authUser.id)
-    .maybeSingle();
-  const level = userData?.grade_level || null;
-
-  const [{ data: allFolders }, { data: allExercises }, { data: attempts }] = await Promise.all([
-    supabaseAdmin.from("exercise_folders").select("id, parent_id, name, color, icon, grade_level").eq("status", "published").order("name"),
-    // Pas de content_json (volumineux, non utilisé par le catalogue) — le
-    // contenu complet n'est chargé qu'à l'ouverture d'un exercice précis.
-    supabaseAdmin.from("exercises").select(`
-      id, title, description, question,
-      difficulty_level, thumbnail_url,
-      folder_id, course_id,
-      courses (title)
-    `).eq("status", "published"),
+  // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
+  const [{ data: userData }, allFolders, { data: attempts }] = await Promise.all([
+    supabaseAdmin.from("users").select("grade_level").eq("id", authUser.id).maybeSingle(),
+    loadPublishedFolders<CatalogFolder & { grade_level?: string; color?: string; icon?: string }>(
+      "exercise_folders",
+      "id, parent_id, name, color, icon, grade_level",
+    ),
     supabaseAdmin.from("user_exercise_attempts").select("exercise_id, attempts_history").eq("user_id", authUser.id),
   ]);
+  const levelFolder = findLevelFolder(allFolders, userData?.grade_level ?? null);
 
-  const lvl = String(level || "").toLowerCase().trim();
-  const levelFolder = (allFolders || []).find(
-    (f) => f.parent_id == null && lvl && (
-      String(f.grade_level || "").toLowerCase().trim() === lvl ||
-      String(f.name || "").toLowerCase().trim() === lvl
-    )
+  // Seul le sous-arbre du niveau de l'élève, paginé (voir childCatalog.ts).
+  // Pas de content_json : il n'est chargé qu'à l'ouverture d'un exercice.
+  const allExercises = await loadPublishedCatalog(
+    "exercises",
+    `id, title, description, question, difficulty_level, thumbnail_url, folder_id, course_id, courses (title)`,
+    {
+      courseId: filterCourseId ?? null,
+      folderIds: levelFolder ? subtreeIds(allFolders, levelFolder.id) : null,
+    },
   );
 
   const initialProgress: Record<string, { status: string; score: number; attempts: number }> = {};

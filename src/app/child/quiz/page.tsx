@@ -3,6 +3,7 @@ import { Trophy } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import QuizCatalog from "@/components/child/QuizCatalog";
+import { findLevelFolder, loadPublishedCatalog, loadPublishedFolders, subtreeIds, type CatalogFolder } from "@/lib/childCatalog";
 
 export default async function ChildQuizPage({
   searchParams,
@@ -15,33 +16,27 @@ export default async function ChildQuizPage({
 
   const { course: filterCourseId } = await searchParams;
 
-  const { data: userData } = await supabaseAdmin
-    .from("users")
-    .select("grade_level")
-    .eq("id", authUser.id)
-    .maybeSingle();
-  const level = userData?.grade_level || null;
+  // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
+  const [{ data: userData }, allFolders, { data: attempts }] = await Promise.all([
+    supabaseAdmin.from("users").select("grade_level").eq("id", authUser.id).maybeSingle(),
+    loadPublishedFolders<CatalogFolder & Record<string, unknown>>("quiz_folders", "*"),
+    supabaseAdmin.from("user_quiz_attempts").select("quiz_id, attempts_history").eq("user_id", authUser.id),
+  ]);
+  const levelFolder = findLevelFolder(allFolders, userData?.grade_level ?? null);
 
-  const [{ data: allFolders }, { data: allQuizzes }, { data: attempts }] = await Promise.all([
-    supabaseAdmin.from("quiz_folders").select("*").eq("status", "published").order("name"),
-    // Pas de content_json (volumineux, non utilisé par le catalogue) — le
-    // contenu complet n'est chargé qu'à l'ouverture d'un quiz précis.
-    supabaseAdmin.from("quizzes").select(`
-      id, title, description, course_id, folder_id,
+  // Seul le sous-arbre du niveau de l'élève, paginé (voir childCatalog.ts).
+  // Pas de content_json : il n'est chargé qu'à l'ouverture d'un quiz.
+  const allQuizzes = await loadPublishedCatalog(
+    "quizzes",
+    `id, title, description, course_id, folder_id,
       time_limit_minutes, min_score_percent, status, type,
       difficulty_level, level, max_attempts, grading_type,
       estimated_time, created_at, updated_at,
-      courses (title)
-    `).eq("status", "published"),
-    supabaseAdmin.from("user_quiz_attempts").select("quiz_id, attempts_history").eq("user_id", authUser.id),
-  ]);
-
-  const lvl = String(level || "").toLowerCase().trim();
-  const levelFolder = (allFolders || []).find(
-    (f) => f.parent_id == null && lvl && (
-      String(f.grade_level || "").toLowerCase().trim() === lvl ||
-      String(f.name || "").toLowerCase().trim() === lvl
-    )
+      courses (title)`,
+    {
+      courseId: filterCourseId ?? null,
+      folderIds: levelFolder ? subtreeIds(allFolders, levelFolder.id) : null,
+    },
   );
 
   const initialProgress: Record<string, { status: string; score: number; attempts: number }> = {};
@@ -74,8 +69,8 @@ export default async function ChildQuizPage({
       </div>
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <QuizCatalog
-          allFolders={allFolders || []}
-          allQuizzes={(allQuizzes || []) as any}
+          allFolders={allFolders as any}
+          allQuizzes={allQuizzes as any}
           levelFolderId={levelFolder?.id ?? null}
           initialProgress={initialProgress}
           filterCourseId={filterCourseId ?? null}
