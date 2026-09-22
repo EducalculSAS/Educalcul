@@ -98,10 +98,10 @@ function normalizeLevel(value: string): string {
   return aliases[level] ?? level;
 }
 
-type FolderRow = { id: number; name: string; grade_level: string | null; parent_id: number | null };
+type FolderRow = { id: number; name: string; grade_level: string | null; parent_id: number | null; course_id: number | null };
 
 async function loadFolders(table: "exercise_folders" | "quiz_folders"): Promise<FolderRow[]> {
-  const { data, error } = await supabase.from(table).select("id,name,grade_level,parent_id");
+  const { data, error } = await supabase.from(table).select("id,name,grade_level,parent_id,course_id");
   if (error) throw new Error(`Impossible de lire ${table} : ${error.message}`);
   return (data ?? []) as FolderRow[];
 }
@@ -119,14 +119,20 @@ async function resolveCourseFolder(
   folders: FolderRow[],
   level: string,
   courseTitle: string,
+  courseId: number,
 ): Promise<number | null> {
   const root = findLevelRoot(folders, level);
   if (!root) return null;
-  const key = `${table}::${root.id}::${normalizeText(courseTitle)}`;
+  const key = `${table}::${courseId}`;
   const cached = folderCache.get(key);
   if (cached) return cached;
 
-  const existing = folders.find((f) => f.parent_id === root.id && normalizeText(f.name) === normalizeText(courseTitle));
+  // On retrouve le dossier par son cours, pas par son nom : un cours renommé
+  // garde son dossier (le déclencheur courses_sync_folder_names en aligne le
+  // nom), là où une comparaison de titres en aurait créé un second.
+  const existing =
+    folders.find((f) => f.course_id === courseId) ??
+    folders.find((f) => f.parent_id === root.id && normalizeText(f.name) === normalizeText(courseTitle));
   if (existing) {
     folderCache.set(key, existing.id);
     return existing.id;
@@ -134,13 +140,14 @@ async function resolveCourseFolder(
 
   if (!APPLY) return -1;
 
+  // color et grade_level sont hérités du dossier racine par déclencheur.
   const { data, error } = await supabase
     .from(table)
-    .insert({ name: courseTitle, parent_id: root.id, status: "draft" })
+    .insert({ name: courseTitle, parent_id: root.id, status: "draft", course_id: courseId })
     .select("id")
     .single();
   if (error) throw new Error(`Impossible de créer le dossier "${courseTitle}" dans ${table} : ${error.message}`);
-  folders.push({ id: data.id, name: courseTitle, grade_level: null, parent_id: root.id });
+  folders.push({ id: data.id, name: courseTitle, grade_level: null, parent_id: root.id, course_id: courseId });
   folderCache.set(key, data.id);
   return data.id;
 }
@@ -211,7 +218,7 @@ async function main() {
       if (!content.length) { exFail++; continue; }
       if (APPLY) {
         const courseTitle = await getCourseTitle(raw.course_id);
-        const folderId = await resolveCourseFolder("exercise_folders", exerciseFolders, raw.level, courseTitle);
+        const folderId = await resolveCourseFolder("exercise_folders", exerciseFolders, raw.level, courseTitle, raw.course_id);
         const exDescription = raw.description || `Exercice du chapitre « ${courseTitle} ».`;
         const { error } = await supabase.from("exercises").insert({
           title: raw.title,
@@ -246,7 +253,7 @@ async function main() {
       if (!content.length) { qFail++; continue; }
       if (APPLY) {
         const courseTitle = await getCourseTitle(raw.course_id);
-        const folderId = await resolveCourseFolder("quiz_folders", quizFolders, raw.level, courseTitle);
+        const folderId = await resolveCourseFolder("quiz_folders", quizFolders, raw.level, courseTitle, raw.course_id);
         const { error } = await supabase.from("quizzes").insert({
           title: raw.title,
           description: raw.description || `Quiz du chapitre « ${courseTitle} ».`,

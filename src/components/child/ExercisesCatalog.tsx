@@ -10,6 +10,7 @@ import { useSubscription } from "@/lib/useSubscription";
 import { getFolderIcon } from "@/lib/folderIcons";
 import { isDifficultyAllowed } from "@/lib/difficultyAccess";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
+import FolderLevelBadge from "@/components/ui/FolderLevelBadge";
 import GlassButton from "@/components/ui/GlassButton";
 
 interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string }
@@ -218,6 +219,7 @@ export default function ExercisesCatalog({
                 {(() => { const I = getFolderIcon(folder.icon); return <I size={40} fill="currentColor" fillOpacity={0.2} aria-hidden="true" />; })()}
               </div>
               <h3 className="font-bold text-[var(--greek-blue)] text-xl w-full px-2">{folder.name}</h3>
+              <FolderLevelBadge gradeLevel={folder.grade_level} color={folder.color} />
             </div>
           ))}
 
