@@ -5,11 +5,13 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { ShieldCheck, AlertCircle, RotateCcw } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import { safeRedirectPath } from "@/lib/safeRedirect";
 
 function TwoFactorVerifyContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/";
+  // Filtré : jamais une URL externe ni un schéma javascript: (voir safeRedirect.ts).
+  const redirect = safeRedirectPath(searchParams.get("redirect"));
 
   const [method, setMethod] = useState<"email" | "totp" | null>(null);
   const [code, setCode] = useState("");

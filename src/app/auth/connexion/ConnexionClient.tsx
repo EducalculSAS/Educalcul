@@ -121,35 +121,26 @@ export default function ConnexionClient() {
     setError(null);
     setLoading(true);
     try {
-      let email = identifier.trim();
-      if (!email.includes("@")) {
-        try {
-          const r = await fetch("/api/auth/resolve-username", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username: email }),
-          });
-          if (r.ok) {
-            const d = await r.json();
-            if (d.email) email = d.email;
-          } else {
-            email = `${email}@educalcul.user`;
-          }
-        } catch {
-          email = `${email}@educalcul.user`;
-        }
-      }
-      const { data, error: authError } = await supabase.auth.signInWithPassword({ email, password });
-      // Journalise la tentative (réussie ou non) sans bloquer/retarder la
-      // connexion — un échec de mot de passe n'était visible nulle part
-      // avant ce correctif, y compris en cas d'activité suspecte sur un
-      // compte (codes 2FA reçus sans tentative de connexion volontaire).
-      fetch("/api/auth/log-login-attempt", {
+      // Connexion faite CÔTÉ SERVEUR (/api/auth/password-login) : le pseudo
+      // d'un élève y est résolu en e-mail sans que cet e-mail ne revienne
+      // jamais au navigateur (l'ancienne route resolve-username le renvoyait
+      // à n'importe qui), et la tentative y est journalisée avec son résultat
+      // réel. Le serveur ne renvoie une session que si le mot de passe est bon.
+      const email = identifier.trim();
+      const loginRes = await fetch("/api/auth/password-login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, success: !authError }),
-      }).catch(() => {});
-      if (authError) throw authError;
+        body: JSON.stringify({ identifier: email, password }),
+      });
+      const loginData = await loginRes.json().catch(() => ({}));
+      if (!loginRes.ok || !loginData.access_token) {
+        throw new Error(loginData.error || "Email/identifiant ou mot de passe incorrect.");
+      }
+      const { data, error: sessionError } = await supabase.auth.setSession({
+        access_token: loginData.access_token,
+        refresh_token: loginData.refresh_token,
+      });
+      if (sessionError) throw sessionError;
       if (data.user && data.session) {
         // Les trois contrôles post-connexion sont indépendants : ils partent
         // ENSEMBLE au lieu de s'enchaîner (trois allers-retours réseau en série
@@ -179,7 +170,10 @@ export default function ConnexionClient() {
           return;
         }
 
-        const passkeyOk = await verifyPasskeyIfAny(email, hasPasskey);
+        // L'identifiant saisi peut être un pseudo : la vérification par clé
+        // d'accès a besoin de l'e-mail du compte, pris dans la session (celui
+        // de l'utilisateur lui-même, désormais authentifié).
+        const passkeyOk = await verifyPasskeyIfAny(data.user.email ?? email, hasPasskey);
         if (!passkeyOk) { setLoading(false); return; }
 
         // Le bouton reste en chargement jusqu'à l'affichage de la page

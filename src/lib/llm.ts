@@ -1,3 +1,7 @@
+// Garde-fou : ce module manipule une clé secrète. Importé par erreur depuis
+// un composant client, la COMPILATION échoue au lieu d'exposer la clé dans
+// le bundle du navigateur.
+import "server-only";
 import type { JsonSchemaContract } from "@/lib/ai/schemas";
 /**
  * Educalcul — Couche transport IA via l'API Mistral directe (endpoint régional

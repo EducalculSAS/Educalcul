@@ -136,6 +136,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid role" }, { status: 400 });
     }
 
+    // ✓ SECURITY: seul un super admin peut créer un compte ADMIN. Sinon un
+    // admin « support » se fabriquait un compte admin complet — la même
+    // escalade de privilège que celle déjà corrigée sur PUT/DELETE (audit du
+    // 2026-09-16), restée ouverte à la création.
+    if (role === "admin" && admin.adminLevel !== "super") {
+      return NextResponse.json(
+        { error: "Seul un super administrateur peut créer un compte administrateur." },
+        { status: 403 },
+      );
+    }
+
     // ✓ La table "users" a une contrainte CHECK exigeant un child_username
     // non vide pour tout role="child" — sans ça, l'insertion échoue après
     // coup (une fois le compte auth déjà créé).
