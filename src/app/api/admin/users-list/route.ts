@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 
@@ -15,17 +16,16 @@ export async function GET(req: Request) {
   }
 
   try {
-    const { data, error } = await supabaseAdmin
-      .from("users")
-      .select("id, auth_id, email, first_name, last_name, role")
-      .order("first_name");
-    
-    if (error) {
-      console.error("[users-list] Database error:", error);
-      return NextResponse.json({ error: "Internal server error" }, { status: 500 });
-    }
-    
-    return NextResponse.json(data || []);
+    // Paginé : un select plafonne silencieusement à 1000 lignes.
+    const data = await selectAllPages((from, to) =>
+      supabaseAdmin
+        .from("users")
+        .select("id, auth_id, email, first_name, last_name, role")
+        .order("first_name")
+        .order("id")
+        .range(from, to),
+    );
+    return NextResponse.json(data);
   } catch (err: any) {
     console.error("[users-list] Error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });

@@ -1,5 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { selectAllPages } from "@/lib/adminFolderPage";
+import { selectAllPages } from "@/lib/selectAllPages";
 
 /**
  * Chargement des catalogues élève (cours, exercices, quiz).

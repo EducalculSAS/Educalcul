@@ -1,7 +1,8 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import AdminQuizzesClient from "@/components/admin/AdminQuizzesClient";
 import { loadFoldersWithCounts } from "@/lib/contentFolders";
-import { readFolderCookie, selectAllPages } from "@/lib/adminFolderPage";
+import { readFolderCookie } from "@/lib/adminFolderPage";
+import { selectAllPages } from "@/lib/selectAllPages";
 
 const LIST_COLUMNS = `
   id, title, description, course_id, folder_id,

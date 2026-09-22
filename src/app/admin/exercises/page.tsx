@@ -1,7 +1,8 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import AdminExercisesClient from "@/components/admin/AdminExercisesClient";
 import { loadFoldersWithCounts } from "@/lib/contentFolders";
-import { readFolderCookie, selectAllPages } from "@/lib/adminFolderPage";
+import { readFolderCookie } from "@/lib/adminFolderPage";
+import { selectAllPages } from "@/lib/selectAllPages";
 
 // Mêmes colonnes que la liste de /api/admin/exercises : pas de content_json
 // (volumineux), rechargé à la demande via getFullExercise côté client.

@@ -1,9 +1,13 @@
 ﻿import { NextResponse } from "next/server";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { emailTemplate } from "@/lib/emailTemplates";
 import { requireSuperAdmin } from "@/lib/apiAuth";
+
+// Un envoi groupé peut durer : on laisse le maximum autorisé par le plan.
+export const maxDuration = 300;
 
 export async function POST(req: Request) {
   try {
@@ -37,30 +41,40 @@ export async function POST(req: Request) {
       if (!u) return NextResponse.json({ error: "Utilisateur introuvable" }, { status: 404 });
       users = [u];
     } else {
-      let query = supabaseAdmin.from("users").select("email, first_name").eq("role", "parent");
-      if (target === "notif_weekly_reports") query = query.eq("notif_weekly_reports", true);
-      if (target === "notif_offers_news") query = query.eq("notif_offers_news", true);
-      const { data } = await query;
-      users = data || [];
+      // Paginé : PostgREST plafonne un select à 1000 lignes, et au-delà les
+      // parents suivants n'auraient jamais reçu l'e-mail — sans erreur.
+      users = await selectAllPages((from, to) => {
+        let query = supabaseAdmin.from("users").select("email, first_name").eq("role", "parent");
+        if (target === "notif_weekly_reports") query = query.eq("notif_weekly_reports", true);
+        if (target === "notif_offers_news") query = query.eq("notif_offers_news", true);
+        return query.order("id").range(from, to);
+      });
     }
 
     let sent = 0;
     let failed = 0;
 
-    for (const u of users) {
-      if (!u.email) continue;
-      const firstName = u.first_name || "Utilisateur";
-      const personalizedBody = tmpl.body.replace(/\{\{firstName\}\}/g, firstName);
-      const html = emailTemplate({ title: tmpl.subject, body: personalizedBody });
-
-      const result = await sendEmail({
-        toEmail: u.email,
-        toName: firstName,
-        subject: tmpl.subject,
-        textPart: personalizedBody.replace(/<[^>]*>/g, ""),
-        htmlPart: html,
-      });
-      if (result.success) sent++; else failed++;
+    // Envois par lots parallèles (et non un par un) sur le transporteur SMTP
+    // mutualisé : l'envoi séquentiel dépassait la durée maximale d'une
+    // fonction dès quelques centaines de destinataires, et s'arrêtait alors
+    // en silence au milieu de la liste.
+    const BATCH = 5;
+    const recipients = users.filter((u) => u.email);
+    for (let i = 0; i < recipients.length; i += BATCH) {
+      const results = await Promise.all(
+        recipients.slice(i, i + BATCH).map((u) => {
+          const firstName = u.first_name || "Utilisateur";
+          const personalizedBody = tmpl.body.replace(/\{\{firstName\}\}/g, firstName);
+          return sendEmail({
+            toEmail: u.email,
+            toName: firstName,
+            subject: tmpl.subject,
+            textPart: personalizedBody.replace(/<[^>]*>/g, ""),
+            htmlPart: emailTemplate({ title: tmpl.subject, body: personalizedBody }),
+          });
+        }),
+      );
+      for (const r of results) if (r.success) sent++; else failed++;
     }
 
     // Mettre à jour last_sent_at et sent_count

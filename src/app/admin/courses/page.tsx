@@ -1,7 +1,8 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import AdminCoursesClient from "@/components/admin/AdminCoursesClient";
 import { loadFoldersWithCounts } from "@/lib/contentFolders";
-import { readFolderCookie, selectAllPages } from "@/lib/adminFolderPage";
+import { readFolderCookie } from "@/lib/adminFolderPage";
+import { selectAllPages } from "@/lib/selectAllPages";
 
 const LIST_COLUMNS =
   "id, title, description, subject, level, thumbnail_url, status, folder_id, estimated_time, created_at, updated_at";
