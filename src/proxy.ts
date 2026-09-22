@@ -26,12 +26,12 @@ const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE!;
 
-// GET endpoints under /api/admin that regular logged-in users can legitimately read
-const AUTHENTICATED_READ = new Set([
-  "/api/admin/courses",
-  "/api/admin/exercises",
-  "/api/admin/quizzes",
-]);
+// Plus aucune route /api/admin/* n'est lisible par un simple utilisateur
+// connecté. Les lectures de /api/admin/{courses,exercises,quizzes} l'étaient :
+// un élève pouvait y lire TOUT le contenu non publié (brouillons), et ces
+// lectures passaient AVANT les contrôles de liste d'IP et de 2FA admin. Aucun
+// écran non-admin ne les appelle plus — les pages élève chargent leur
+// contenu côté serveur.
 
 // Endpoints reachable without any session (route validates its own output)
 function isPublic(pathname: string, method: string) {
@@ -143,10 +143,9 @@ export async function proxy(req: NextRequest) {
     const user = await getRole(authId);
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    // Published-content reads and avatar uploads: any authenticated, non-banned user
-    const isUserLevel =
-      (method === "GET" && AUTHENTICATED_READ.has(pathname)) ||
-      (method === "POST" && pathname === "/api/admin/upload");
+    // Envoi d'avatar : tout utilisateur connecté non banni (la route force
+    // alors le dossier avatars/).
+    const isUserLevel = method === "POST" && pathname === "/api/admin/upload";
     if (isUserLevel) return NextResponse.next();
 
     if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });

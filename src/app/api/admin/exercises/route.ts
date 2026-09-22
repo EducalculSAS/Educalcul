@@ -15,6 +15,9 @@ export async function GET(request: Request) {
     const courseId = searchParams.get("course_id");
     const me = await getAuthenticatedUser(request);
     const isAdmin = me?.role === "admin";
+    // Défense en profondeur (le proxy l'exige déjà) : lecture réservée aux
+    // admins — sinon un élève lisait tout le contenu non publié.
+    if (!isAdmin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     if (id) {
       let { data, error } = await supabaseAdmin

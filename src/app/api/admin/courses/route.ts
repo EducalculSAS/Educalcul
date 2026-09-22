@@ -7,6 +7,11 @@ import { auditLog, AuditAction } from "@/lib/auditLog";
 
 export async function GET(request: Request) {
   try {
+    // Défense en profondeur (le proxy l'exige déjà) : cette lecture n'avait
+    // AUCUNE vérification propre, et renvoie tout le contenu non publié.
+    if (!(await requireRole(request, ["admin"]))) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
     const { searchParams } = new URL(request.url);
     const status = searchParams.get("status");
     const folder = parseFolderParam(searchParams.get("folder"));
