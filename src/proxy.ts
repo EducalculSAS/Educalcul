@@ -154,9 +154,9 @@ export async function proxy(req: NextRequest) {
       return NextResponse.json({ error: "IP non autorisée" }, { status: 403 });
     }
 
-    // 2FA (TOTP) obligatoire pour tout compte admin, dès sa création (les
-    // routes /api/auth/2fa/totp/* ne sont pas sous /api/admin/*, donc un admin
-    // pas encore configuré peut toujours configurer son TOTP malgré ce blocage).
+    // 2FA obligatoire pour tout compte admin, dès sa création : un admin sans
+    // TOTP passe par le code e-mail, puis configure son TOTP (routes
+    // /api/auth/2fa/totp/*, hors de /api/admin/*).
     if (!(await has2FASession(user.id, req))) {
       return NextResponse.json({ error: "2FA required" }, { status: 401 });
     }
@@ -206,7 +206,48 @@ export async function proxy(req: NextRequest) {
   // bon `redirect=` plutôt qu'un /admin/dashboard fixe qui faisait perdre la
   // page demandée après une re-vérification 2FA.
   req.headers.set("x-pathname", pathname);
-  return await updateSession(req);
+  const { response, authId } = await updateSession(req);
+
+  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+    return guardAdminPage(req, response, authId);
+  }
+  return response;
+}
+
+/**
+ * Garde des PAGES admin, ici et pas seulement dans src/app/admin/layout.tsx.
+ *
+ * Next.js ne ré-exécute pas un layout lors d'une navigation entre pages qui le
+ * partagent : une requête RSC qui prétend venir de /admin/dashboard (en-tête
+ * Next-Router-State-Tree) fait rendre /admin/users SANS le layout. Vérifié :
+ * sans aucune connexion, cette requête renvoyait les données que les pages
+ * admin chargent côté serveur avec la clé de service. Le proxy, lui, voit
+ * passer toutes les requêtes.
+ *
+ * Même exigence que /api/admin/* : rôle admin, compte non banni, session 2FA
+ * valide (y compris pour un admin qui n'a pas encore configuré son TOTP : il
+ * passe d'abord par le code e-mail), liste d'IP.
+ */
+async function guardAdminPage(req: NextRequest, response: NextResponse, authId: string | null): Promise<NextResponse> {
+  // La redirection doit emporter les cookies de session éventuellement
+  // rafraîchis par updateSession, sinon la page suivante verrait un jeton périmé.
+  const redirectTo = (path: string) => {
+    const res = NextResponse.redirect(new URL(path, req.url));
+    response.cookies.getAll().forEach((c) => res.cookies.set(c));
+    return res;
+  };
+
+  if (!authId) return redirectTo("/auth/connexion");
+  const user = await getRole(authId);
+  if (!user) return redirectTo("/auth/connexion");
+  if (user.role !== "admin") return redirectTo(dashboardPathForRole(user.role));
+
+  const [twoFactorOk, ipOk] = await Promise.all([has2FASession(user.id, req), isIpAllowed(req)]);
+  if (!ipOk) return new NextResponse("Accès admin refusé depuis cette adresse IP.", { status: 403 });
+  if (!twoFactorOk) {
+    return redirectTo(`/auth/2fa-verify?redirect=${encodeURIComponent(req.nextUrl.pathname)}`);
+  }
+  return response;
 }
 
 export const config = {

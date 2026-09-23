@@ -4,6 +4,9 @@ import { getNameColor } from "@/lib/badgeStyles";
 import Navbar from "@/components/Navbar";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ProfileHeaderActions from "@/components/profile/ProfileHeaderActions";
+import { redirect } from "next/navigation";
+import { getServerUser } from "@/lib/supabase/server";
+import { safeRedirectPath } from "@/lib/safeRedirect";
 
 const ICON_MAP: Record<string, any> = {
   pencil: Star, zap: Zap, flame: Star, star: Star, crown: Star,
@@ -20,8 +23,15 @@ export default async function PublicProfilePage({
   params: Promise<{ id: string }>;
   searchParams: Promise<{ returnTo?: string }>;
 }) {
-  const { id } = await params;
-  const { returnTo } = await searchParams;
+  const [{ id }, { returnTo }, viewer] = await Promise.all([params, searchParams, getServerUser()]);
+
+  // Réservé aux utilisateurs connectés (on n'y arrive que depuis le forum) :
+  // ouverte à tous, cette page permettait d'énumérer les élèves (identifiants
+  // qui se suivent) avec prénom, nom, niveau et avatar.
+  if (!viewer) redirect("/auth/connexion");
+  if (!/^\d{1,12}$/.test(id)) {
+    return <div className="p-8 text-center text-gray-500">Profil introuvable.</div>;
+  }
 
   const { data: user } = await supabaseAdmin
     .from("user_public_profiles")
@@ -56,7 +66,7 @@ export default async function PublicProfilePage({
       <div className="bg-[var(--greek-blue)] text-white pt-24 pb-16 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
         <div className="container mx-auto max-w-2xl relative z-10">
-          <ProfileHeaderActions userId={user.id} userRole={user.role} returnTo={returnTo ?? null} />
+          <ProfileHeaderActions userId={user.id} userRole={user.role} returnTo={returnTo ? safeRedirectPath(returnTo, "") || null : null} />
           <div className="flex items-center gap-4">
             <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={displayName} size="xl" bgClass="#ffffff30" />
             <div className="mt-1">

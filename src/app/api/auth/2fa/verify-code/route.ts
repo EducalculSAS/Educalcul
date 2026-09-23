@@ -3,8 +3,8 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { generateTwoFactorSessionToken, hashTwoFactorValue, TWO_FACTOR_SESSION_TTL_MS } from "@/lib/twoFactor";
-import { setTwoFactorCookie } from "@/lib/twoFactorCookie";
+import { hashTwoFactorValue } from "@/lib/twoFactor";
+import { issueTwoFactorSession } from "@/lib/twoFactorSession";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 
 export async function POST(req: Request) {
@@ -55,22 +55,11 @@ export async function POST(req: Request) {
 
     await supabaseAdmin.from("two_factor_codes").update({ consumed_at: new Date().toISOString() }).eq("id", pending.id);
 
-    const token = generateTwoFactorSessionToken();
-    const ttl = user.role === "admin" ? TWO_FACTOR_SESSION_TTL_MS.admin : TWO_FACTOR_SESSION_TTL_MS.default;
-    const expiresAt = new Date(Date.now() + ttl).toISOString();
-
-    const { error: sessionError } = await supabaseAdmin.from("two_factor_sessions").insert({
-      user_id: user.id,
-      token_hash: hashTwoFactorValue(token),
-      expires_at: expiresAt,
-      user_agent: req.headers.get("user-agent") || null,
-    });
-    if (sessionError) return NextResponse.json({ error: sanitizeErrorMessage(sessionError.message) }, { status: 500 });
+    const session = await issueTwoFactorSession(user, req);
+    if ("error" in session) return NextResponse.json({ error: sanitizeErrorMessage(session.error) }, { status: 500 });
 
     await auditLog({ action: AuditAction.TWO_FACTOR_VERIFIED, adminId: user.id, details: { method: "email" } }, req);
-
-    await setTwoFactorCookie(token, ttl);
-    return NextResponse.json({ success: true, expiresAt });
+    return NextResponse.json({ success: true, expiresAt: session.expiresAt });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }

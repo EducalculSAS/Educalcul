@@ -2,26 +2,27 @@ import { NextResponse } from "next/server";
 import { generateRegistrationOptions } from "@simplewebauthn/server";
 import { isoUint8Array } from "@simplewebauthn/server/helpers";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { getAuthIdentityOnly } from "@/lib/apiAuth";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { getWebauthnRp } from "@/lib/webauthn";
 
 // Génère les options de la cérémonie d'enregistrement d'une clé d'accès
 // (empreinte/Face ID/clé de sécurité). Ouvert à tous les rôles (admin,
-// parent, enfant) — chacun gère sa propre clé depuis son profil.
+// parent, enfant) — chacun gère sa propre clé depuis son profil. Exige une
+// connexion COMPLÈTE (2FA comprise si le compte en a une) : avec le mot de
+// passe seul, un intrus aurait pu ajouter sa propre clé comme second facteur.
 export async function POST(req: Request) {
   try {
-    const identity = await getAuthIdentityOnly(req);
-    if (!identity) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const me = await getAuthenticatedUser(req);
+    if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { data: user } = await supabaseAdmin
       .from("users")
-      .select("id, role, email, status, ban_reason, child_username")
-      .eq("auth_id", identity.authId)
+      .select("id, email, child_username")
+      .eq("id", me.id)
       .maybeSingle();
     if (!user) return NextResponse.json({ error: "Compte introuvable" }, { status: 404 });
-    if (user.status === "inactive" || user.ban_reason) return NextResponse.json({ error: "Compte suspendu" }, { status: 403 });
 
     const config = RATE_LIMITS["webauthn:register"];
     const rl = await rateLimitWithBackoff(`webauthn:register:${user.id}`, config.maxAttempts, config.windowMs);

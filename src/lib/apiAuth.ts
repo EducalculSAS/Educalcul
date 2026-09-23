@@ -35,7 +35,7 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
 
   const { data: row } = await supabaseAdmin
     .from("users")
-    .select("id, role, parent_id, status, ban_reason, two_factor_enabled, admin_level, admin_allowed_ips")
+    .select("id, role, parent_id, status, ban_reason, two_factor_enabled, has_passkey, admin_level, admin_allowed_ips")
     .eq("auth_id", identity.authId)
     .maybeSingle();
 
@@ -54,11 +54,14 @@ export async function getAuthenticatedUser(req: Request): Promise<AuthenticatedU
   if (!isIpAllowed(row.admin_allowed_ips, req)) return null;
 
   // 2FA optionnelle (opt-in) pour parent/enfant (email). Obligatoire dès la
-  // création du compte pour les admins (TOTP) — /totp/setup, /confirm et
-  // /status utilisent getAuthIdentityOnly (pas ce gate), donc un admin peut
-  // toujours configurer son TOTP même bloqué ici partout ailleurs : pas de
-  // chicken-and-egg, et pas de fenêtre où un admin reste sans 2FA.
-  const requires2FA = row.role === "admin" || row.two_factor_enabled;
+  // création du compte pour les admins : tant que son TOTP n'est pas
+  // configuré, un admin valide un code e-mail, puis /totp/setup et /confirm
+  // (qui passent par CE gate) lui font configurer son application. Ainsi le
+  // mot de passe seul ne permet jamais d'enrôler un TOTP à la place de l'admin.
+  // Une clé d'accès enregistrée est un second facteur au même titre : sans
+  // cette ligne, elle n'était vérifiée que dans le navigateur, et un appel
+  // direct à l'API avec le seul mot de passe passait.
+  const requires2FA = row.role === "admin" || row.two_factor_enabled || row.has_passkey;
   if (requires2FA) {
     const twoFAToken = getTwoFactorCookieFromRequest(req);
     if (!twoFAToken) return null;

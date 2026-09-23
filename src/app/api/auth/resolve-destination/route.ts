@@ -22,7 +22,7 @@ export async function GET(req: Request) {
 
     const { data: user } = await supabaseAdmin
       .from("users")
-      .select("id, role, status, ban_reason, first_name, two_factor_enabled")
+      .select("id, role, status, ban_reason, first_name, two_factor_enabled, has_passkey")
       .eq("auth_id", identity.authId)
       .maybeSingle();
 
@@ -32,15 +32,9 @@ export async function GET(req: Request) {
 
     const dashboard = getDashboardPath(user.role);
 
-    let requires2FA = !!user.two_factor_enabled;
-    if (user.role === "admin") {
-      const { data: totp } = await supabaseAdmin
-        .from("two_factor_totp")
-        .select("confirmed_at")
-        .eq("user_id", user.id)
-        .maybeSingle();
-      requires2FA = !!totp?.confirmed_at;
-    }
+    // Même règle que getAuthenticatedUser : tout admin passe par la 2FA
+    // (code e-mail tant que son TOTP n'est pas configuré).
+    const requires2FA = user.role === "admin" || !!user.two_factor_enabled || !!user.has_passkey;
 
     if (requires2FA) {
       const token = await getTwoFactorCookie();

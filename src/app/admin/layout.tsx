@@ -12,10 +12,9 @@ import AdminShell from "@/components/admin/AdminShell";
 /** Vérifie identité + rôle admin + statut banni côté serveur, avant même que
  * la première page admin ne s'exécute — remplace l'ancien check client (dans
  * AdminLayout) qui laissait toutes les pages admin se monter avant de
- * rediriger. La 2FA d'un admin déjà configuré est également validée ici,
- * côté serveur, avant tout rendu. AdminShell répète ensuite cette vérification
- * côté client en défense en profondeur et gère uniquement le premier setup
- * TOTP lorsqu'aucune configuration n'a encore été confirmée. */
+ * rediriger. La 2FA est également validée ici, côté serveur, avant tout rendu.
+ * AdminShell répète cette vérification côté client en défense en profondeur
+ * et gère le premier setup TOTP lorsqu'aucune configuration n'est confirmée. */
 export default async function AdminLayout({
   children,
 }: {
@@ -73,16 +72,11 @@ export default async function AdminLayout({
     await supabaseAdmin.from("impersonation_sessions").delete().eq("id", impersonationCookie);
   }
 
-  // Une configuration TOTP confirmée exige aussi une session 2FA valide AVANT
-  // de rendre la moindre page admin. AdminShell garde le contrôle client en
-  // défense en profondeur et gère le tout premier setup TOTP.
-  const { data: totp } = await supabaseAdmin
-    .from("two_factor_totp")
-    .select("confirmed_at")
-    .eq("user_id", userData.id)
-    .maybeSingle();
-
-  if (totp?.confirmed_at) {
+  // Session 2FA valide exigée AVANT de rendre la moindre page admin, que le
+  // TOTP soit configuré ou non (sans TOTP : code e-mail, puis AdminShell fait
+  // configurer l'application). Le proxy applique la même règle à chaque
+  // requête, y compris aux navigations qui ne ré-exécutent pas ce layout.
+  {
     const twoFactorToken = await getTwoFactorCookie();
     let validTwoFactorSession = false;
     if (twoFactorToken) {

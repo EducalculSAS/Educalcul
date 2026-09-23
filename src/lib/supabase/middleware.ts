@@ -7,7 +7,9 @@ import { NextResponse, type NextRequest } from "next/server";
  * expiré ne serait jamais renouvelé côté cookie et un Server Component
  * verrait un utilisateur "déconnecté" alors que sa session est valide.
  */
-export async function updateSession(request: NextRequest): Promise<NextResponse> {
+export async function updateSession(
+  request: NextRequest,
+): Promise<{ response: NextResponse; authId: string | null }> {
   let supabaseResponse = NextResponse.next({ request });
 
   const supabase = createServerClient(
@@ -31,7 +33,9 @@ export async function updateSession(request: NextRequest): Promise<NextResponse>
 
   // getUser() (pas getSession()) : contacte le serveur Auth et déclenche le
   // rafraîchissement du token si besoin, ce qui réécrit le cookie via setAll.
-  await supabase.auth.getUser();
+  // L'identité vérifiée est renvoyée au proxy : la garde des pages admin s'en
+  // sert sans refaire d'appel au serveur Auth.
+  const { data } = await supabase.auth.getUser();
 
-  return supabaseResponse;
+  return { response: supabaseResponse, authId: data?.user?.id ?? null };
 }

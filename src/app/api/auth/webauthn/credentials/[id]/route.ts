@@ -1,21 +1,15 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { getAuthIdentityOnly } from "@/lib/apiAuth";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
 // Supprime une clé d'accès enregistrée — uniquement la sienne (filtrée par
-// user_id, jamais juste par id de credential).
+// user_id, jamais juste par id de credential). Connexion complète exigée :
+// retirer un second facteur avec le seul mot de passe l'annulerait.
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    const identity = await getAuthIdentityOnly(req);
-    if (!identity) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-    const { data: user } = await supabaseAdmin
-      .from("users")
-      .select("id")
-      .eq("auth_id", identity.authId)
-      .maybeSingle();
-    if (!user) return NextResponse.json({ error: "Compte introuvable" }, { status: 404 });
+    const user = await getAuthenticatedUser(req);
+    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const { id } = await params;
     const { error } = await supabaseAdmin

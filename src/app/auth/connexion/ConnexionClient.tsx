@@ -57,22 +57,18 @@ export default function ConnexionClient() {
     router.prefetch("/parent/dashboard");
   }, [router]);
 
-  // Vérifie la clé d'accès de ce compte APRÈS le mot de passe, AVANT la 2FA
-  // — ce n'est plus une alternative au mot de passe (pas de bouton dédié),
-  // mais un facteur supplémentaire pour les comptes qui en ont enregistré
-  // une (voir WebAuthnCard). Ne fait rien si le compte n'en a aucune —
-  // la connexion continue alors normalement vers la 2FA / le tableau de
-  // bord, exactement comme avant l'ajout des clés d'accès.
-  const verifyPasskeyIfAny = async (email: string, hasPasskey: boolean): Promise<boolean> => {
+  // Second facteur par clé d'accès, APRÈS le mot de passe, pour les comptes
+  // qui en ont enregistré une (voir WebAuthnCard). Le serveur émet alors la
+  // session 2FA (comme un code e-mail validé) : c'est lui qui l'exige ensuite
+  // sur chaque appel, pas seulement cette page. Sans clé (ou navigateur sans
+  // WebAuthn), la connexion continue vers la 2FA habituelle / le tableau de bord.
+  const verifyPasskeyIfAny = async (accessToken: string, hasPasskey: boolean): Promise<boolean> => {
     if (typeof window === "undefined" || !window.PublicKeyCredential) return true;
     if (!hasPasskey) return true;
 
+    const headers = { "Content-Type": "application/json", Authorization: `Bearer ${accessToken}` };
     try {
-      const optionsRes = await fetch("/api/auth/webauthn/login/options", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+      const optionsRes = await fetch("/api/auth/webauthn/login/options", { method: "POST", headers });
       const options = await optionsRes.json();
       if (!optionsRes.ok) throw new Error(options.error || "Erreur");
 
@@ -80,8 +76,8 @@ export default function ConnexionClient() {
 
       const verifyRes = await fetch("/api/auth/webauthn/login/verify", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, response: assertion }),
+        headers,
+        body: JSON.stringify({ response: assertion }),
       });
       const verifyData = await verifyRes.json();
       if (!verifyRes.ok || !verifyData.verified) throw new Error(verifyData.error || "Vérification échouée.");
@@ -146,7 +142,7 @@ export default function ConnexionClient() {
         // ENSEMBLE au lieu de s'enchaîner (trois allers-retours réseau en série
         // formaient le « gel » ressenti entre le mot de passe et la 2FA).
         const auth = { Authorization: `Bearer ${data.session.access_token}` };
-        const [ipCheck, hasPasskey, dest] = await Promise.all([
+        const [ipCheck, hasPasskey, firstDest] = await Promise.all([
           // Restriction d'IP éventuelle (admin_allowed_ips). Un échec réseau ne
           // bloque pas : getAuthenticatedUser reste le rempart final sur chaque
           // appel /api/* ensuite.
@@ -170,11 +166,13 @@ export default function ConnexionClient() {
           return;
         }
 
-        // L'identifiant saisi peut être un pseudo : la vérification par clé
-        // d'accès a besoin de l'e-mail du compte, pris dans la session (celui
-        // de l'utilisateur lui-même, désormais authentifié).
-        const passkeyOk = await verifyPasskeyIfAny(data.user.email ?? email, hasPasskey);
+        const passkeyOk = await verifyPasskeyIfAny(data.session.access_token, hasPasskey);
         if (!passkeyOk) { setLoading(false); return; }
+        // La clé d'accès vient d'ouvrir la session 2FA : la destination calculée
+        // avant (page de 2FA) n'est plus la bonne.
+        const dest = hasPasskey && window.PublicKeyCredential
+          ? await resolveAuthDestination(data.session.access_token)
+          : firstDest;
 
         // Le bouton reste en chargement jusqu'à l'affichage de la page
         // suivante : le relâcher ici laissait un écran figé et un bouton

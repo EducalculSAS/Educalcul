@@ -1,28 +1,20 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { getAuthIdentityOnly } from "@/lib/apiAuth";
+import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { verifyTotp, generateBackupCodes } from "@/lib/totp";
-import { generateTwoFactorSessionToken, hashTwoFactorValue, TWO_FACTOR_SESSION_TTL_MS } from "@/lib/twoFactor";
-import { setTwoFactorCookie } from "@/lib/twoFactorCookie";
+import { hashTwoFactorValue } from "@/lib/twoFactor";
+import { issueTwoFactorSession } from "@/lib/twoFactorSession";
 
 // Confirme la configuration TOTP en attente (voir /totp/setup) : valide le
-// premier code généré par l'appli d'authentification, puis mint tout de
-// suite une session 2FA pour cet appareil (sinon l'admin se retrouverait
-// bloqué par sa propre configuration à la requête suivante).
+// premier code généré par l'appli d'authentification, puis émet une session
+// 2FA neuve pour cet appareil. Exige, comme /setup, une session 2FA déjà
+// valide (code e-mail) : le mot de passe seul ne suffit jamais.
 export async function POST(req: Request) {
   try {
-    const identity = await getAuthIdentityOnly(req);
-    if (!identity) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-
-    const { data: user } = await supabaseAdmin
-      .from("users")
-      .select("id, role, status, ban_reason")
-      .eq("auth_id", identity.authId)
-      .maybeSingle();
-    if (!user) return NextResponse.json({ error: "Compte introuvable" }, { status: 404 });
-    if (user.status === "inactive" || user.ban_reason) return NextResponse.json({ error: "Compte suspendu" }, { status: 403 });
+    const user = await getAuthenticatedUser(req);
+    if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     if (user.role !== "admin") return NextResponse.json({ error: "Réservé aux administrateurs" }, { status: 403 });
 
     const config = RATE_LIMITS["2fa:totp-verify"];
@@ -52,28 +44,20 @@ export async function POST(req: Request) {
       .eq("user_id", user.id);
     if (confirmError) return NextResponse.json({ error: sanitizeErrorMessage(confirmError.message) }, { status: 500 });
 
-    const token = generateTwoFactorSessionToken();
-    const expiresAt = new Date(Date.now() + TWO_FACTOR_SESSION_TTL_MS.admin).toISOString();
-
     // Codes de secours (usage unique) — affichés une seule fois ici, en cas
-    // de perte de l'appareil d'authentification. Indépendante de la session
-    // ci-dessus, donc lancée en parallèle.
+    // de perte de l'appareil d'authentification. Indépendants de la session,
+    // donc écrits en parallèle.
     const backupCodes = generateBackupCodes();
-    const [{ error: sessionError }] = await Promise.all([
-      supabaseAdmin.from("two_factor_sessions").insert({
-        user_id: user.id,
-        token_hash: hashTwoFactorValue(token),
-        expires_at: expiresAt,
-        user_agent: req.headers.get("user-agent") || null,
-      }),
+    const [session, { error: backupError }] = await Promise.all([
+      issueTwoFactorSession(user, req),
       supabaseAdmin.from("two_factor_backup_codes").insert(
         backupCodes.map(code => ({ user_id: user.id, code_hash: hashTwoFactorValue(code) }))
       ),
     ]);
-    if (sessionError) return NextResponse.json({ error: sanitizeErrorMessage(sessionError.message) }, { status: 500 });
+    if ("error" in session) return NextResponse.json({ error: sanitizeErrorMessage(session.error) }, { status: 500 });
+    if (backupError) return NextResponse.json({ error: sanitizeErrorMessage(backupError.message) }, { status: 500 });
 
-    await setTwoFactorCookie(token, TWO_FACTOR_SESSION_TTL_MS.admin);
-    return NextResponse.json({ success: true, expiresAt, backupCodes });
+    return NextResponse.json({ success: true, expiresAt: session.expiresAt, backupCodes });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
