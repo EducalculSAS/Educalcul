@@ -1,5 +1,6 @@
 "use client";
 
+import { compareDisplayOrder } from "@/lib/contentOrder";
 import { useState, useEffect } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { Trophy, Play, CheckCircle, XCircle, ArrowLeft, Lock } from "lucide-react";
@@ -145,7 +146,7 @@ export default function QuizCatalog({
   };
 
   if (filterCourseId != null) {
-    const courseQuizzes = allQuizzes.filter((q) => String(q.course_id ?? "") === String(filterCourseId));
+    const courseQuizzes = allQuizzes.filter((q) => String(q.course_id ?? "") === String(filterCourseId)).sort(compareDisplayOrder);
     const courseTitle = courseQuizzes[0]?.courses?.title;
     return (
       <div className="space-y-8">
@@ -175,7 +176,7 @@ export default function QuizCatalog({
   }
 
   const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
-  const currentQuizzes = allQuizzes.filter((q) => (q.folder_id ?? null) === displayParentId);
+  const currentQuizzes = allQuizzes.filter((q) => (q.folder_id ?? null) === displayParentId).sort(compareDisplayOrder);
   const currentFolders = allFolders.filter((f) => (displayParentId === null && rootFolderIds ? rootFolderIds.includes(f.id) : f.parent_id === displayParentId));
 
   return (

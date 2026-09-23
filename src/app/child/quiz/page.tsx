@@ -42,7 +42,7 @@ export default async function ChildQuizPage({
     `id, title, description, course_id, folder_id,
       time_limit_minutes, min_score_percent, status, type,
       difficulty_level, level, max_attempts, grading_type,
-      estimated_time, created_at, updated_at,
+      estimated_time, created_at, updated_at, display_order,
       courses (title)`,
     {
       courseId: filterCourseId ?? null,

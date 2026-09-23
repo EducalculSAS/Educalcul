@@ -1,5 +1,6 @@
 "use client";
 
+import { compareDisplayOrder } from "@/lib/contentOrder";
 import { useState, useEffect } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import {
@@ -151,7 +152,7 @@ export default function ExercisesCatalog({
   };
 
   if (filterCourseId != null) {
-    const courseExercises = allExercises.filter((ex) => String(ex.course_id ?? "") === String(filterCourseId));
+    const courseExercises = allExercises.filter((ex) => String(ex.course_id ?? "") === String(filterCourseId)).sort(compareDisplayOrder);
     const courseTitle = courseExercises[0]?.courses?.title;
     return (
       <div className="space-y-8">
@@ -182,7 +183,7 @@ export default function ExercisesCatalog({
 
   const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
   const currentFolders = allFolders.filter((f) => (displayParentId === null && rootFolderIds ? rootFolderIds.includes(f.id) : f.parent_id === displayParentId));
-  const currentExercises = allExercises.filter((ex) => (ex.folder_id ?? null) === displayParentId);
+  const currentExercises = allExercises.filter((ex) => (ex.folder_id ?? null) === displayParentId).sort(compareDisplayOrder);
 
   return (
     <div className="space-y-8">

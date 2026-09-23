@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { applyFolderFilter, parseFolderParam } from "@/lib/adminFolderFilter";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -54,7 +54,7 @@ export async function GET(request: Request) {
           id, title, description, course_id, folder_id,
           time_limit_minutes, min_score_percent, status, type,
           difficulty_level, level, max_attempts, grading_type,
-          thumbnail_filename, estimated_time, created_at, updated_at,
+          thumbnail_filename, estimated_time, created_at, updated_at, display_order,
           courses (title),
           quiz_folders (name, color)
         `

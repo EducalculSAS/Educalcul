@@ -43,7 +43,7 @@ export default async function ChildExercisesPage({
   // Pas de content_json : il n'est chargé qu'à l'ouverture d'un exercice.
   const allExercises = await loadPublishedCatalog(
     "exercises",
-    `id, title, description, question, difficulty_level, thumbnail_url, folder_id, course_id, courses (title)`,
+    `id, title, description, question, difficulty_level, thumbnail_url, folder_id, course_id, display_order, courses (title)`,
     {
       courseId: filterCourseId ?? null,
       folderIds: scope.folderIds,

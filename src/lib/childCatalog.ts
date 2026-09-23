@@ -92,7 +92,8 @@ export async function loadPublishedCatalog<T>(
   scope: { courseId?: string | null; folderIds?: number[] | null },
 ): Promise<T[]> {
   return selectAllPages<T>((from, to) => {
-    let q = supabaseAdmin.from(table).select(columns).eq("status", "published").range(from, to);
+    // Tri par id : sans ordre fixe, la pagination (par 1000) pouvait sauter ou doubler des lignes.
+    let q = supabaseAdmin.from(table).select(columns).eq("status", "published").order("id").range(from, to);
     if (scope.courseId) q = q.eq("course_id", scope.courseId);
     else if (scope.folderIds) q = q.in("folder_id", scope.folderIds);
     return q as unknown as PromiseLike<{ data: T[] | null; error: unknown }>;

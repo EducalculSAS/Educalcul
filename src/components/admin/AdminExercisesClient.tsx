@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { compareDisplayOrder } from "@/lib/contentOrder";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import {
@@ -56,6 +57,8 @@ import {
   Hash,
   Table2,
   Superscript,
+  ArrowUp,
+  ArrowDown,
 } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
@@ -133,6 +136,7 @@ const EXERCISE_TYPES = [
 
 export interface Exercise {
   id: string;
+  display_order?: number | null;
   title: string;
   question: string | null; // Description in UI
   course_id: string | null;
@@ -870,7 +874,28 @@ export default function AdminExercisesClient({
         (ex.question &&
           ex.question.toLowerCase().includes(searchQuery.toLowerCase()))) &&
       (cycleFilter === "all" || getLevelCycle(ex.level) === cycleFilter)
-  );
+  ).sort(compareDisplayOrder);
+
+  // Ordre du dossier, réglé avec les flèches : c'est exactement celui que verra
+  // l'élève. Seulement sans recherche ni filtre (déplacer dans une liste
+  // partielle n'aurait pas de sens). Mise à jour optimiste, annulée en cas d'échec.
+  const canReorder = !searchQuery && cycleFilter === "all" && statusFilter === "all" && courseFilter === "all" && difficultyFilter === "all";
+  const moveItem = async (itemId: string, direction: -1 | 1) => {
+    const ordered = [...exercises].sort(compareDisplayOrder);
+    const index = ordered.findIndex((x) => x.id === itemId);
+    const target = index + direction;
+    if (index < 0 || target < 0 || target >= ordered.length) return;
+    [ordered[index], ordered[target]] = [ordered[target], ordered[index]];
+    const renumbered = ordered.map((x, i) => ({ ...x, display_order: (i + 1) * 10 }));
+    const previous = exercises;
+    setExercises(renumbered);
+    const res = await fetch("/api/admin/exercises/reorder", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orderedIds: renumbered.map((x) => x.id) }),
+    });
+    if (!res.ok) setExercises(previous);
+  };
 
   // Les dossiers racine portent le niveau scolaire (`grade_level`) : c'est là
   // que filtrer par cycle a du sens. Une fois entré dans un dossier de niveau,
@@ -1101,6 +1126,26 @@ export default function AdminExercisesClient({
                   <div className="absolute top-2 right-2">
                     {getStatusBadge(exercise.status)}
                   </div>
+                  {canReorder && filteredExercises.length > 1 && (
+                    <div className="absolute top-2 left-2 flex gap-1">
+                      <GlassIconButton
+                        icon={ArrowUp}
+                        size="sm"
+                        color="navy"
+                        disabled={filteredExercises[0]?.id === exercise.id}
+                        onClick={() => void moveItem(exercise.id, -1)}
+                        aria-label={`Avancer « ${exercise.title} » dans l'ordre du dossier`}
+                      />
+                      <GlassIconButton
+                        icon={ArrowDown}
+                        size="sm"
+                        color="navy"
+                        disabled={filteredExercises[filteredExercises.length - 1]?.id === exercise.id}
+                        onClick={() => void moveItem(exercise.id, 1)}
+                        aria-label={`Reculer « ${exercise.title} » dans l'ordre du dossier`}
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-4">

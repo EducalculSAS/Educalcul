@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { applyFolderFilter, parseFolderParam } from "@/lib/adminFolderFilter";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -68,7 +68,7 @@ export async function GET(request: Request) {
           `
           id, title, description, question,
           difficulty_level, type, level, status,
-          folder_id, course_id,
+          folder_id, course_id, display_order,
           points_reward, max_attempts, time_limit,
           created_at, updated_at,
           courses (title, subject, level),

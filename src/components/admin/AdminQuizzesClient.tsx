@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { compareDisplayOrder } from "@/lib/contentOrder";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import {
@@ -59,6 +60,8 @@ import {
   Hash,
   Table2,
   Superscript,
+  ArrowUp,
+  ArrowDown,
 } from "lucide-react";
 import QuizViewer from "@/components/viewers/QuizViewer";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
@@ -131,6 +134,7 @@ const QUIZ_TYPES = [
 
 export interface Quiz {
   id: string;
+  display_order?: number | null;
   title: string;
   description: string | null;
   course_id: string | null;
@@ -830,7 +834,28 @@ export default function AdminQuizzesClient({
         (quiz.description &&
           quiz.description.toLowerCase().includes(searchQuery.toLowerCase()))) &&
       (cycleFilter === "all" || getLevelCycle((quiz as any).level) === cycleFilter)
-  );
+  ).sort(compareDisplayOrder);
+
+  // Ordre du dossier, réglé avec les flèches : c'est exactement celui que verra
+  // l'élève. Seulement sans recherche ni filtre (déplacer dans une liste
+  // partielle n'aurait pas de sens). Mise à jour optimiste, annulée en cas d'échec.
+  const canReorder = !searchQuery && cycleFilter === "all" && statusFilter === "all" && courseFilter === "all" && difficultyFilter === "all";
+  const moveItem = async (itemId: string, direction: -1 | 1) => {
+    const ordered = [...quizzes].sort(compareDisplayOrder);
+    const index = ordered.findIndex((x) => x.id === itemId);
+    const target = index + direction;
+    if (index < 0 || target < 0 || target >= ordered.length) return;
+    [ordered[index], ordered[target]] = [ordered[target], ordered[index]];
+    const renumbered = ordered.map((x, i) => ({ ...x, display_order: (i + 1) * 10 }));
+    const previous = quizzes;
+    setQuizzes(renumbered);
+    const res = await fetch("/api/admin/quizzes/reorder", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orderedIds: renumbered.map((x) => x.id) }),
+    });
+    if (!res.ok) setQuizzes(previous);
+  };
 
   // Seuls les dossiers racine portent le niveau scolaire : une fois dans un
   // dossier de niveau, le cycle est deja determine.
@@ -1097,6 +1122,26 @@ export default function AdminQuizzesClient({
                   <div className="absolute top-2 right-2">
                     {getStatusBadge(quiz.status)}
                   </div>
+                  {canReorder && filteredQuizzes.length > 1 && (
+                    <div className="absolute top-2 left-2 flex gap-1">
+                      <GlassIconButton
+                        icon={ArrowUp}
+                        size="sm"
+                        color="navy"
+                        disabled={filteredQuizzes[0]?.id === quiz.id}
+                        onClick={() => void moveItem(quiz.id, -1)}
+                        aria-label={`Avancer « ${quiz.title} » dans l'ordre du dossier`}
+                      />
+                      <GlassIconButton
+                        icon={ArrowDown}
+                        size="sm"
+                        color="navy"
+                        disabled={filteredQuizzes[filteredQuizzes.length - 1]?.id === quiz.id}
+                        onClick={() => void moveItem(quiz.id, 1)}
+                        aria-label={`Reculer « ${quiz.title} » dans l'ordre du dossier`}
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-4">
