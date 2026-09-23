@@ -26,7 +26,7 @@ export async function fetchAdminUserDetail(id: string) {
     supabaseAdmin.from("user_badges").select("badge:badges(name, icon)").eq("user_id", id),
     supabaseAdmin.from("forum_posts").select("id, title, content, created_at, is_locked, category:forum_categories!category_id(name)").eq("author_id", id).order("created_at", { ascending: false }).limit(10),
     supabaseAdmin.from("forum_comments").select("id, content, created_at, post:forum_posts!post_id(title)").eq("author_id", id).order("created_at", { ascending: false }).limit(10),
-    supabaseAdmin.from("forum_reports").select("*, reporter:users!reporter_id(first_name, last_name), post:forum_posts!post_id(title), comment:forum_comments!comment_id(content)").eq("reported_user_id", id).order("created_at", { ascending: false }),
+    supabaseAdmin.from("forum_reports").select("*, reporter:users!reporter_id(first_name, last_name), post:forum_posts!post_id(title), comment:forum_comments!comment_id(content)").eq("reported_user_id", id).order("created_at", { ascending: false }).limit(200),
     supabaseAdmin.from("user_login_history").select("*").eq("user_id", id).order("logged_at", { ascending: false }).limit(200),
     supabaseAdmin.from("user_exercise_attempts")
       .select("id, exercise_id, score, total_points, score_percent, passed, status, completed_at, attempted_at, exercises(title)")

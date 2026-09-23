@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
@@ -14,13 +15,10 @@ export async function DELETE(request: Request) {
     // To be safe, we can rely on cascade if configured, but let's try to find IDs first.
 
     // First, find all archived tickets
-    const { data: archivedTickets, error: findError } = await supabaseAdmin
-      .from("support_tickets")
-      .select("id")
-      .eq("is_archived", true);
-
-    if (findError)
-      return NextResponse.json({ error: sanitizeErrorMessage(findError.message) }, { status: 500 });
+    // Paginé : sinon une purge ne traitait que 1000 tickets à la fois.
+    const archivedTickets = await selectAllPages<{ id: number }>((from, to) =>
+      supabaseAdmin.from("support_tickets").select("id").eq("is_archived", true).order("id").range(from, to),
+    );
 
     if (!archivedTickets || archivedTickets.length === 0) {
       return NextResponse.json({ deletedCount: 0 });

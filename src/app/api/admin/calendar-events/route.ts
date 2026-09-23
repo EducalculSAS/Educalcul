@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
@@ -12,11 +13,14 @@ export async function GET(req: Request) {
     const admin = await requireRole(req, ["admin"]);
     if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-    const { data, error } = await supabaseAdmin
-      .from("global_calendar_events")
-      .select("*")
-      .order("start_date", { ascending: true });
-    if (error) throw error;
+    const data = await selectAllPages((from, to) =>
+      supabaseAdmin
+        .from("global_calendar_events")
+        .select("*")
+        .order("start_date", { ascending: true })
+        .order("id")
+        .range(from, to),
+    );
 
     return NextResponse.json({ events: data || [] });
   } catch (error: any) {

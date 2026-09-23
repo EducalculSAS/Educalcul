@@ -19,7 +19,8 @@ export async function GET(req: Request) {
       .select("id, type, title, content, is_read, created_at")
       .eq("user_id", me.id)
       .eq("is_read", false)
-      .order("created_at", { ascending: false });
+      .order("created_at", { ascending: false })
+      .limit(200);
     if (error) throw error;
     return NextResponse.json(data ?? []);
   } catch (error: any) {

@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
 import { BookOpen } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
@@ -12,14 +13,21 @@ export default async function ChildCoursesPage() {
   if (authUser.role !== "child") redirect("/dashboard");
 
   // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
-  const [{ data: userData }, allFolders, { data: progressRows }] = await Promise.all([
+  const [{ data: userData }, allFolders, progressRows] = await Promise.all([
     supabaseAdmin.from("users").select("grade_level").eq("id", authUser.id).maybeSingle(),
     loadPublishedFolders<CatalogFolder & Record<string, unknown>>(
       "course_folders",
       "id, parent_id, name, color, icon, grade_level, display_order",
       { byDisplayOrder: true },
     ),
-    supabaseAdmin.from("user_course_progress").select("course_id, status, progress_json").eq("user_id", authUser.id),
+    selectAllPages<{ course_id: string; status: string | null; progress_json: any }>((from, to) =>
+      supabaseAdmin
+        .from("user_course_progress")
+        .select("course_id, status, progress_json")
+        .eq("user_id", authUser.id)
+        .order("id")
+        .range(from, to),
+    ),
   ]);
   const levelFolder = findLevelFolder(allFolders, userData?.grade_level ?? null);
 

@@ -1,4 +1,5 @@
 import { requireRole } from "@/lib/apiAuth";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { reconcileStaleGenerations } from "@/lib/ai/runtime";
@@ -24,11 +25,15 @@ export async function GET(
   }
   if (!run) return Response.json({ error: "Introuvable" }, { status: 404 });
 
-  const { data: findings } = await supabaseAdmin
-    .from("scan_findings")
-    .select("id, severity, file_path, title, description, suggested_fix, status, created_at")
-    .eq("run_id", id)
-    .order("created_at", { ascending: true });
+  const findings = await selectAllPages((from, to) =>
+    supabaseAdmin
+      .from("scan_findings")
+      .select("id, severity, file_path, title, description, suggested_fix, status, created_at")
+      .eq("run_id", id)
+      .order("created_at", { ascending: true })
+      .order("id")
+      .range(from, to),
+  );
 
   return Response.json({ ...run, findings: findings || [] });
 }

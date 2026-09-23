@@ -76,7 +76,8 @@ export async function POST(req: Request) {
         .from("user_sessions")
         .select("duration_seconds, login_at")
         .eq("user_id", childIdNum)
-        .gte("login_at", thirtyDaysAgo),
+        .gte("login_at", thirtyDaysAgo)
+        .limit(1000), // 30 jours de sessions : largement sous le plafond
     ]);
     const totalSessionMinutes = Math.round(
       (sessions || []).reduce((sum, s) => sum + (s.duration_seconds || 0), 0) / 60

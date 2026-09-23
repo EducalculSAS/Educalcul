@@ -34,13 +34,16 @@ export async function GET(request: Request) {
 
     // Rafraîchissement léger de la présence : comptes actifs depuis 15 min.
     if (searchParams.get("recent") === "1") {
-      const { data, error } = await supabaseAdmin
-        .from("users")
-        .select("id, last_active_at, last_login_city, last_login_country, last_login_ip")
-        .gte("last_active_at", new Date(Date.now() - 15 * 60 * 1000).toISOString())
-        .limit(1000);
-      if (error) return NextResponse.json({ error: "Failed to fetch users" }, { status: 500 });
-      return NextResponse.json(data ?? []);
+      const since = new Date(Date.now() - 15 * 60 * 1000).toISOString();
+      const data = await selectAllPages((from, to) =>
+        supabaseAdmin
+          .from("users")
+          .select("id, last_active_at, last_login_city, last_login_country, last_login_ip")
+          .gte("last_active_at", since)
+          .order("id")
+          .range(from, to),
+      );
+      return NextResponse.json(data);
     }
 
     const validRole = role && role !== "all" && isValidRole(role) ? role : null;

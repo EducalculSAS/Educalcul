@@ -56,9 +56,13 @@ export async function fetchAllAuditLogEntries(action?: string | null) {
   const adminIds = Array.from(new Set(rows.map((d) => d.admin_id).filter(Boolean)));
   const targetIds = Array.from(new Set(rows.map((d) => d.target_user_id).filter(Boolean)));
   const allIds = Array.from(new Set([...adminIds, ...targetIds]));
-  const { data: users } = allIds.length
-    ? await supabaseAdmin.from("users").select("id, first_name, last_name, email").in("id", allIds)
-    : { data: [] as any[] };
+  // Par lots : l'export couvre jusqu'à 20 000 lignes, donc potentiellement des
+  // milliers de comptes — une seule requête serait plafonnée (et son URL trop longue).
+  const users: { id: number; first_name: string | null; last_name: string | null; email: string | null }[] = [];
+  for (let i = 0; i < allIds.length; i += 300) {
+    const { data } = await supabaseAdmin.from("users").select("id, first_name, last_name, email").in("id", allIds.slice(i, i + 300));
+    users.push(...(data ?? []));
+  }
   const usersById = Object.fromEntries((users || []).map((u) => [u.id, u]));
 
   return rows.map((d) => ({

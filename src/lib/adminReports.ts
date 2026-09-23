@@ -40,9 +40,9 @@ export async function fetchAdminReports() {
     safeCount("user_exercise_attempts"),
     safeCount("user_course_progress"),
     safeCount("referral_codes", q => q.not("owner_user_id", "is", null).eq("is_active", true)),
-    supabaseAdmin.from("referral_codes").select("current_uses").then(r =>
-      (r.data || []).reduce((a: number, c: any) => a + (c.current_uses || 0), 0)
-    ),
+    selectAllPages<{ current_uses: number | null }>((from, to) =>
+      supabaseAdmin.from("referral_codes").select("current_uses").order("id").range(from, to),
+    ).then((rows) => rows.reduce((a, c) => a + (c.current_uses || 0), 0)),
   ]);
 
   // ── Trafic / performance ────────────────────────────────────────────────

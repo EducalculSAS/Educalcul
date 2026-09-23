@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ChildCalendarClient from "@/components/child/ChildCalendarClient";
@@ -17,18 +18,26 @@ export default async function ChildCalendarPage() {
 
   const ownerZone = userData.school_zone || "C";
 
-  const [{ data: events }, { data: globalEvents }] = await Promise.all([
-    supabaseAdmin
-      .from("calendar_events")
-      .select("id, title, description, event_type, start_date, end_date, visible_to_child")
-      .eq("owner_id", userData.id)
-      .eq("visible_to_child", true)
-      .order("start_date", { ascending: true }),
-    supabaseAdmin
-      .from("global_calendar_events")
-      .select("id, title, description, event_type, start_date, end_date, visible_to_child")
-      .or(`zone.eq.all,zone.eq.${ownerZone}`)
-      .order("start_date", { ascending: true }),
+  const [events, globalEvents] = await Promise.all([
+    selectAllPages<any>((from, to) =>
+      supabaseAdmin
+        .from("calendar_events")
+        .select("id, title, description, event_type, start_date, end_date, visible_to_child")
+        .eq("owner_id", userData.id)
+        .eq("visible_to_child", true)
+        .order("start_date", { ascending: true })
+        .order("id")
+        .range(from, to),
+    ),
+    selectAllPages<any>((from, to) =>
+      supabaseAdmin
+        .from("global_calendar_events")
+        .select("id, title, description, event_type, start_date, end_date, visible_to_child")
+        .or(`zone.eq.all,zone.eq.${ownerZone}`)
+        .order("start_date", { ascending: true })
+        .order("id")
+        .range(from, to),
+    ),
   ]);
 
   return (

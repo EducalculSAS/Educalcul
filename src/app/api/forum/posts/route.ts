@@ -34,7 +34,11 @@ export async function GET(req: Request) {
       .select(
         `id, title, content, is_pinned, is_locked, solved_comment_id, comment_count, like_count, view_count, created_at, last_activity_at,
          category:forum_categories!category_id!inner(id, name, color, audience),
-         author:user_public_profiles!author_id(${AUTHOR_COLUMNS})`,
+         author:user_public_profiles!author_id(${AUTHOR_COLUMNS})${
+           // « Suivis » : jointure sur les abonnements plutôt qu'une liste
+           // d'identifiants (qui aurait été plafonnée à 1000 sujets).
+           filter === "following" ? ", forum_follows!inner(user_id)" : ""
+         }`,
       )
       .in("category.audience", audiencesFor(me.role));
 
@@ -46,16 +50,7 @@ export async function GET(req: Request) {
     if (filter === "mine") query = query.eq("author_id", me.id);
     if (filter === "unanswered") query = query.eq("comment_count", 0);
     if (filter === "solved") query = query.not("solved_comment_id", "is", null);
-    if (filter === "following") {
-      const { data: follows } = await supabaseAdmin
-        .from("forum_follows")
-        .select("post_id")
-        .eq("user_id", me.id)
-        .limit(1000);
-      const ids = (follows ?? []).map((f) => f.post_id);
-      if (ids.length === 0) return NextResponse.json({ items: [], hasMore: false });
-      query = query.in("id", ids);
-    }
+    if (filter === "following") query = query.eq("forum_follows.user_id", me.id);
 
     // Les sujets épinglés restent en tête, sauf en recherche.
     if (q.length < 2) query = query.order("is_pinned", { ascending: false });

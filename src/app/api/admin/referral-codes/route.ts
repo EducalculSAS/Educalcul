@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireSuperAdmin } from "@/lib/apiAuth";
@@ -15,16 +16,18 @@ export async function GET(req: Request) {
     const admin = await requireSuperAdmin(req);
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    const { data, error } = await supabaseAdmin
-      .from("referral_codes")
-      .select(`
+    const data = await selectAllPages((from, to) =>
+      supabaseAdmin
+        .from("referral_codes")
+        .select(`
         *,
         owner:owner_user_id ( id, first_name, last_name, email ),
         referral_uses ( id, used_at, used_by_user_id )
       `)
-      .order("created_at", { ascending: false });
-
-    if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+        .order("created_at", { ascending: false })
+        .order("id")
+        .range(from, to),
+    );
     return NextResponse.json(data);
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });

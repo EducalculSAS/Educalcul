@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { generateIcs } from "@/lib/ics";
@@ -41,20 +42,22 @@ export async function GET(req: Request) {
     }
     if (!allowed) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-    let query = supabaseAdmin
-      .from("calendar_events")
-      .select("id, title, description, start_date, end_date")
-      .eq("owner_id", ownerId)
-      .order("start_date", { ascending: true });
+    // Paginé : les événements d'une famille s'accumulent au fil des années.
+    const childOnly = requester.role === "child" && requester.id === ownerId;
+    const eventsQuery = selectAllPages<any>((from, to) => {
+      let q = supabaseAdmin
+        .from("calendar_events")
+        .select("id, title, description, start_date, end_date")
+        .eq("owner_id", ownerId);
+      if (childOnly) q = q.eq("visible_to_child", true);
+      return q.order("start_date", { ascending: true }).order("id").range(from, to);
+    });
 
-    if (requester.role === "child" && requester.id === ownerId) {
-      query = query.eq("visible_to_child", true);
-    }
 
     // The events query and the owner's school zone lookup are independent —
     // run them in parallel instead of one after the other.
     const [{ data: events, error }, ownerZoneRes] = await Promise.all([
-      query,
+      eventsQuery.then((data) => ({ data, error: null })),
       ownerId !== requester.id
         ? supabaseAdmin.from("users").select("school_zone").eq("id", ownerId).maybeSingle()
         : Promise.resolve(null),
@@ -63,11 +66,14 @@ export async function GET(req: Request) {
 
     const ownerZone = ownerZoneRes ? ownerZoneRes.data?.school_zone || "C" : requester.school_zone || "C";
 
-    const { data: globalEvents, error: globalError } = await supabaseAdmin
-      .from("global_calendar_events")
-      .select("id, title, description, start_date, end_date")
-      .or(`zone.eq.all,zone.eq.${ownerZone}`);
-    if (globalError) throw globalError;
+    const globalEvents = await selectAllPages<any>((from, to) =>
+      supabaseAdmin
+        .from("global_calendar_events")
+        .select("id, title, description, start_date, end_date")
+        .or(`zone.eq.all,zone.eq.${ownerZone}`)
+        .order("id")
+        .range(from, to),
+    );
 
     const icsEvents = [
       ...(events || []).map((e: any) => ({

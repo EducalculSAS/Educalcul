@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ParentCalendarClient from "@/components/parent/ParentCalendarClient";
@@ -16,23 +17,31 @@ export default async function ParentCalendarPage() {
   if (!userData) redirect("/dashboard");
 
   const ownerZone = userData.school_zone || "C";
-  const [{ data: childrenData }, { data: events }, { data: globalEvents }] = await Promise.all([
+  const [{ data: childrenData }, events, globalEvents] = await Promise.all([
     supabaseAdmin
       .from("users")
       .select("id, first_name")
       .eq("role", "child")
       .eq("parent_id", userData.id)
       .order("first_name"),
-    supabaseAdmin
-      .from("calendar_events")
-      .select("*")
-      .eq("owner_id", userData.id)
-      .order("start_date", { ascending: true }),
-    supabaseAdmin
-      .from("global_calendar_events")
-      .select("*")
-      .or(`zone.eq.all,zone.eq.${ownerZone}`)
-      .order("start_date", { ascending: true }),
+    selectAllPages<any>((from, to) =>
+      supabaseAdmin
+        .from("calendar_events")
+        .select("*")
+        .eq("owner_id", userData.id)
+        .order("start_date", { ascending: true })
+        .order("id")
+        .range(from, to),
+    ),
+    selectAllPages<any>((from, to) =>
+      supabaseAdmin
+        .from("global_calendar_events")
+        .select("*")
+        .or(`zone.eq.all,zone.eq.${ownerZone}`)
+        .order("start_date", { ascending: true })
+        .order("id")
+        .range(from, to),
+    ),
   ]);
 
   return (

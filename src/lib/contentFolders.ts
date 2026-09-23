@@ -53,12 +53,14 @@ export async function loadFoldersWithCounts(type: FolderType) {
 
   const [folders, counts] = await Promise.all([
     loadFolders(),
-    supabaseAdmin.rpc("admin_item_counts_by_folder", { p_kind: type }),
+    // Un seul objet { dossier: nombre } : une fonction qui renvoie des LIGNES
+    // serait plafonnée à 1000 dossiers par PostgREST.
+    supabaseAdmin.rpc("admin_item_counts_by_folder_json", { p_kind: type }),
   ]);
   if (counts.error) throw counts.error;
 
   const itemsByFolder = new Map<number, number>(
-    (counts.data ?? []).map((row: { folder_id: number; items: number }) => [row.folder_id, Number(row.items)]),
+    Object.entries((counts.data ?? {}) as Record<string, number>).map(([id, n]) => [Number(id), Number(n)]),
   );
   return folders.map((folder) => ({ ...folder, item_count: itemsByFolder.get(folder.id) ?? 0 }));
 }

@@ -1,4 +1,5 @@
 import { requireRole } from "@/lib/apiAuth";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getScanCategory } from "@/lib/scanner/categories";
 
@@ -28,11 +29,15 @@ export async function GET(
 
   if (!run) return Response.json({ error: "Introuvable" }, { status: 404 });
 
-  const { data: findings } = await supabaseAdmin
-    .from("scan_findings")
-    .select("severity, file_path, title, description, suggested_fix, status")
-    .eq("run_id", id)
-    .order("created_at", { ascending: true });
+  const findings = await selectAllPages<any>((from, to) =>
+    supabaseAdmin
+      .from("scan_findings")
+      .select("severity, file_path, title, description, suggested_fix, status")
+      .eq("run_id", id)
+      .order("created_at", { ascending: true })
+      .order("id")
+      .range(from, to),
+  );
 
   const category = getScanCategory(run.category);
   const lines: string[] = [];
