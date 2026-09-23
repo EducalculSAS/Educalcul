@@ -118,6 +118,20 @@ export default function CaliaSceneDemo({
   const [isRunning, setIsRunning] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [sayText, setSayText] = useState<string | null>(null);
+  // Transcription mot à mot, calée sur la voix : nombre de « mots » affichés
+  // (null = tout le texte). Une formule $…$ compte pour un seul mot.
+  const [shownWords, setShownWords] = useState<number | null>(null);
+  const revealTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const sayTokensRef = useRef<string[]>([]);
+  const showSay = (text: string) => {
+    sayTokensRef.current = text.match(/\$[^$]*\$\S*\s*|\S+\s*/g) ?? [];
+    setShownWords(0); // rien avant que la voix démarre
+    setSayText(text);
+  };
+  const stopReveal = () => {
+    if (revealTimerRef.current) clearInterval(revealTimerRef.current);
+    revealTimerRef.current = null;
+  };
   const [pointerRect, setPointerRect] = useState<DOMRect | null>(null);
   const [boardLines, setBoardLines] = useState<string[]>([]);
   const [boardOffset, setBoardOffset] = useState({ x: 0, y: 0 });
@@ -216,6 +230,8 @@ export default function CaliaSceneDemo({
     setIsRunning(false);
     setClasseActive(false);
     setSayText(null);
+    stopReveal();
+    setShownWords(null);
     setPointerRect(null);
     setBoardLines([]);
     setBoardOffset({ x: 0, y: 0 });
@@ -268,7 +284,7 @@ export default function CaliaSceneDemo({
     return audioRef.current;
   };
 
-  const playBlob = (blob: Blob, gen: number) =>
+  const playBlob = (blob: Blob, gen: number, onStart?: (durationMs: number) => void) =>
     new Promise<boolean>((resolve) => {
       const player = getPlayer();
       const url = URL.createObjectURL(blob);
@@ -282,6 +298,9 @@ export default function CaliaSceneDemo({
       player.onpause = () => { if (!player.ended) finish(false); };
       player.onerror = () => finish(false);
       player.src = url;
+      // Le texte commence à défiler au lancement de la lecture, soit juste
+      // avant le son, à la vitesse réelle de la phrase.
+      player.onloadedmetadata = () => onStart?.(Number.isFinite(player.duration) ? player.duration * 1000 : 0);
       player.play().catch(() => finish(false));
     });
 
@@ -315,20 +334,42 @@ export default function CaliaSceneDemo({
     // pas remonter en erreur non gérée.
     synth.forEach((p) => p.catch(() => {}));
 
+    const total = sayTokensRef.current.length;
+    const totalLen = chunks.reduce((n, c) => n + c.length, 0) || 1;
+    let cumLen = 0;
     for (let i = 0; i < chunks.length; i++) {
+      const from = Math.round((total * cumLen) / totalLen);
+      cumLen += chunks[i].length;
+      const to = i === chunks.length - 1 ? total : Math.round((total * cumLen) / totalLen);
       let blob: Blob;
       try {
         blob = await synth[i];
       } catch (err) {
         if (gen !== speechGenRef.current) return;
         console.warn("[Calia] voix Azure indisponible, repli navigateur.", err);
+        stopReveal();
+        setShownWords(null);
         speakBrowserFallback(chunks.slice(i).join(" "));
         return;
       }
       if (gen !== speechGenRef.current) return;
-      if (!(await playBlob(blob, gen))) return;
+      const ok = await playBlob(blob, gen, (durationMs) => {
+        stopReveal();
+        const n = Math.max(1, to - from);
+        const step = Math.max(40, (durationMs || n * 300) / n);
+        let shown = from;
+        setShownWords(from);
+        revealTimerRef.current = setInterval(() => {
+          shown += 1;
+          setShownWords(Math.min(shown, to));
+          if (shown >= to) stopReveal();
+        }, step);
+      });
+      stopReveal();
+      if (!ok) { setShownWords(null); return; }
+      setShownWords(to);
     }
-    if (gen === speechGenRef.current) setSpeaking(false);
+    if (gen === speechGenRef.current) { setSpeaking(false); setShownWords(null); }
   };
 
   const executeAction = (action: TurnAction | null) => {
@@ -428,7 +469,7 @@ export default function CaliaSceneDemo({
       if (!sessionActiveRef.current) return;
       const result = data as TurnResult;
       historyRef.current = [...historyRef.current, { role: "assistant", content: result.say }];
-      setSayText(result.say);
+      showSay(result.say);
       executeAction(result.action);
       speak(result.say);
     } catch (err: any) {
@@ -734,7 +775,7 @@ export default function CaliaSceneDemo({
                 className="rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg text-sm max-w-[18rem]"
                 style={error ? { background: "#fef2f2", color: "#b91c1c", border: "1px solid #fecaca" } : { background: "var(--greek-blue)", color: "#fff" }}
               >
-                {error ? error : <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(sayText || "") }} />}
+                {error ? error : <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(shownWords === null ? sayText || "" : sayTokensRef.current.slice(0, shownWords).join("")) }} />}
               </div>
             )}
             {interim && (
