@@ -1,162 +1,45 @@
 "use client";
 
+import { ArrowLeft, Calendar } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import { useState, useCallback } from "react";
-import { ArrowLeft, Plus, Download, Calendar } from "lucide-react";
-import CalendarView, { type CalendarEventItem } from "@/components/calendar/CalendarView";
-import EventModal from "@/components/calendar/EventModal";
-import { getEventTypeMeta, EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
-import { supabase } from "@/lib/supabaseClient";
 import GlassButton from "@/components/ui/GlassButton";
+import CalendarApp from "@/components/calendar/CalendarApp";
+import type { CalendarEventItem } from "@/components/calendar/calendarUtils";
 
-async function authHeaders() {
-  const { data: { session } } = await supabase.auth.getSession();
-  return { Authorization: `Bearer ${session?.access_token || ""}` };
-}
-
-/** Calendrier (CRUD événements) : entièrement mutations + état de modale,
- * isolé en client island. Les événements initiaux arrivent déjà chargés du
- * serveur (plus de spinner au montage). */
+/** Calendrier de l'élève (données initiales chargées par le serveur). */
 export default function ChildCalendarClient({
-  authId, ownerId, initialEvents, initialGlobalEvents,
+  meId, name, initialEvents, initialGlobalEvents, initialZone,
 }: {
-  authId: string;
-  ownerId: number;
+  meId: number;
+  name: string;
   initialEvents: CalendarEventItem[];
   initialGlobalEvents: CalendarEventItem[];
+  initialZone: string;
 }) {
-  const [events, setEvents] = useState<CalendarEventItem[]>(initialEvents);
-  const [globalEvents, setGlobalEvents] = useState<CalendarEventItem[]>(initialGlobalEvents);
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<CalendarEventItem | null>(null);
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [saving, setSaving] = useState(false);
-
-  const loadEvents = useCallback(async () => {
-    const res = await fetch(`/api/calendar/events?userId=${authId}&ownerId=${ownerId}`, { headers: await authHeaders() });
-    const data = await res.json();
-    setEvents(data.events || []);
-    setGlobalEvents(data.globalEvents || []);
-  }, [authId, ownerId]);
-
-  const exportIcs = async () => {
-    try {
-      const res = await fetch(`/api/calendar/export?ownerId=${ownerId}`);
-      if (!res.ok) return;
-      const blob = await res.blob();
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "educalcul-calendrier.ics";
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      URL.revokeObjectURL(url);
-    } catch {
-      /* ignore */
-    }
-  };
-
-  const handleDayClick = (date: string) => {
-    setSelectedEvent(null);
-    setSelectedDate(date);
-    setModalOpen(true);
-  };
-
-  const handleEventClick = (event: CalendarEventItem) => {
-    setSelectedEvent(event);
-    setSelectedDate(null);
-    setModalOpen(true);
-  };
-
-  const handleSave = async (data: any) => {
-    setSaving(true);
-    try {
-      if (selectedEvent && !selectedEvent.isVirtual) {
-        await fetch(`/api/calendar/events/${selectedEvent.id}`, {
-          method: "PATCH",
-          headers: { "Content-Type": "application/json", ...(await authHeaders()) },
-          body: JSON.stringify({ userId: authId, ...data }),
-        });
-      } else {
-        await fetch(`/api/calendar/events`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", ...(await authHeaders()) },
-          body: JSON.stringify({ userId: authId, ownerId, ...data }),
-        });
-      }
-      await loadEvents();
-      setModalOpen(false);
-    } finally {
-      setSaving(false);
-    }
-  };
-
-  const handleDelete = async () => {
-    if (!selectedEvent) return;
-    setSaving(true);
-    try {
-      await fetch(`/api/calendar/events/${selectedEvent.id}?userId=${authId}`, { method: "DELETE", headers: await authHeaders() });
-      await loadEvents();
-      setModalOpen(false);
-    } finally {
-      setSaving(false);
-    }
-  };
-
   return (
-    <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
+    <div className="min-h-screen bg-[var(--greek-cream)] pb-16">
       <PageHero
         icon={Calendar}
         title="Mon calendrier"
         badge="Élève"
-        subtitle="Tes contrôles, devoirs et vacances scolaires."
+        subtitle="Tes contrôles, devoirs, révisions et vacances. Clique sur un jour pour voir ce qui est prévu."
         top={
           <GlassButton href="/child/dashboard" variant="light" size="sm">
             <ArrowLeft className="w-4 h-4" /> Retour au tableau de bord
           </GlassButton>
         }
       />
-
-      <div className="container mx-auto max-w-6xl px-4">
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
-          <div className="flex flex-wrap gap-2">
-            {EVENT_TYPE_OPTIONS.concat([{ value: "vacances" as any, label: "Vacances" }]).map((opt) => {
-              const meta = getEventTypeMeta(opt.value);
-              return (
-                <span key={opt.value} className="flex items-center gap-1.5 text-xs font-medium px-2 py-1 rounded-full" style={{ backgroundColor: meta.color + "20", color: meta.color === "var(--greek-gold)" ? "var(--greek-blue)" : meta.color }}>
-                  <span className="w-2 h-2 rounded-full" style={{ backgroundColor: meta.color }} />
-                  {opt.label}
-                </span>
-              );
-            })}
-          </div>
-          <div className="flex gap-2">
-            <GlassButton onClick={exportIcs} variant="outline" size="sm">
-              <Download className="w-4 h-4" /> Exporter (.ics)
-            </GlassButton>
-            <GlassButton
-              onClick={() => { setSelectedEvent(null); setSelectedDate(new Date().toISOString().slice(0, 10)); setModalOpen(true); }}
-              variant="navy" size="sm"
-            >
-              <Plus className="w-4 h-4" /> Ajouter
-            </GlassButton>
-          </div>
-        </div>
-
-        <CalendarView events={events} globalEvents={globalEvents} onDayClick={handleDayClick} onEventClick={handleEventClick} />
+      <div className="container mx-auto max-w-7xl px-4">
+        <CalendarApp
+          role="child"
+          meId={meId}
+          owners={[{ id: meId, name }]}
+          initialOwnerId={meId}
+          initialEvents={initialEvents}
+          initialGlobalEvents={initialGlobalEvents}
+          initialZone={initialZone}
+        />
       </div>
-
-      <EventModal
-        open={modalOpen}
-        onClose={() => setModalOpen(false)}
-        onSave={handleSave}
-        onDelete={selectedEvent && !selectedEvent.isVirtual ? handleDelete : undefined}
-        initialDate={selectedDate}
-        event={selectedEvent}
-        isParent={false}
-        saving={saving}
-      />
     </div>
   );
 }

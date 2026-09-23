@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
-import { selectAllPages } from "@/lib/selectAllPages";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { loadCalendar } from "@/lib/calendarServer";
 import ParentCalendarClient from "@/components/parent/ParentCalendarClient";
 
 export default async function ParentCalendarPage() {
@@ -11,46 +11,24 @@ export default async function ParentCalendarPage() {
 
   const { data: userData } = await supabaseAdmin
     .from("users")
-    .select("id, school_zone")
+    .select("id, first_name, school_zone")
     .eq("id", authUser.id)
     .maybeSingle();
   if (!userData) redirect("/dashboard");
 
   const ownerZone = userData.school_zone || "C";
-  const [{ data: childrenData }, events, globalEvents] = await Promise.all([
-    supabaseAdmin
-      .from("users")
-      .select("id, first_name")
-      .eq("role", "child")
-      .eq("parent_id", userData.id)
-      .order("first_name"),
-    selectAllPages<any>((from, to) =>
-      supabaseAdmin
-        .from("calendar_events")
-        .select("*")
-        .eq("owner_id", userData.id)
-        .order("start_date", { ascending: true })
-        .order("id")
-        .range(from, to),
-    ),
-    selectAllPages<any>((from, to) =>
-      supabaseAdmin
-        .from("global_calendar_events")
-        .select("*")
-        .or(`zone.eq.all,zone.eq.${ownerZone}`)
-        .order("start_date", { ascending: true })
-        .order("id")
-        .range(from, to),
-    ),
+  const [{ data: childrenData }, { events, globalEvents }] = await Promise.all([
+    supabaseAdmin.from("users").select("id, first_name").eq("role", "child").eq("parent_id", userData.id).order("first_name"),
+    loadCalendar(userData.id, { childView: false, zone: ownerZone }),
   ]);
 
   return (
     <ParentCalendarClient
-      authId={authUser.authId}
       parentId={userData.id}
+      parentName={userData.first_name || "Moi"}
       initialChildren={childrenData || []}
-      initialEvents={events || []}
-      initialGlobalEvents={globalEvents || []}
+      initialEvents={events}
+      initialGlobalEvents={globalEvents}
       initialSchoolZone={ownerZone}
     />
   );

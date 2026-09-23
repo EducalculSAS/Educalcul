@@ -47,7 +47,7 @@ export async function GET(req: Request) {
     const eventsQuery = selectAllPages<any>((from, to) => {
       let q = supabaseAdmin
         .from("calendar_events")
-        .select("id, title, description, start_date, end_date")
+        .select("id, title, description, start_date, end_date, start_time, end_time")
         .eq("owner_id", ownerId);
       if (childOnly) q = q.eq("visible_to_child", true);
       return q.order("start_date", { ascending: true }).order("id").range(from, to);
@@ -82,6 +82,8 @@ export async function GET(req: Request) {
         description: e.description,
         start_date: e.start_date,
         end_date: e.end_date,
+        start_time: e.start_time,
+        end_time: e.end_time,
       })),
       ...(globalEvents || []).map((e: any) => ({
         id: `global-${e.id}`,
