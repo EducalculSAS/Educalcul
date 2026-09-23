@@ -25,6 +25,23 @@ function normalizeWriting(value: string): string {
     .toLowerCase();
 }
 
+/**
+ * Sur une erreur, l'élève peut retenter : le retour ne doit jamais contenir
+ * la réponse attendue (l'IA la glissait parfois malgré la consigne). On retire
+ * les phrases qui la contiennent ; la réponse n'apparaît que dans la
+ * correction finale (« Réponse attendue »), affichée séparément.
+ */
+function withoutAnswer(feedback: string, correct: string): string {
+  const target = normalizeWriting(correct);
+  if (!target) return feedback;
+  const leaks = (sentence: string) => {
+    const n = normalizeWriting(sentence);
+    return target.length >= 2 ? n.includes(target) : n.includes(`=${target}`);
+  };
+  const kept = (feedback.match(/[^.!?]+[.!?]*\s*/g) ?? [feedback]).filter((x) => !leaks(x)).join("").trim();
+  return kept || "Ce n'est pas encore ça : reprends ton calcul étape par étape.";
+}
+
 /** Explication rédigée du contenu, raccourcie pour un retour d'une ligne ou deux. */
 function shortExplanation(explanation: string | null | undefined): string {
   const text = String(explanation ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
@@ -79,12 +96,11 @@ export async function gradeFreeAnswer(opts: {
     const r = isImage
       ? await gradeImageAnswer(question, correct, student, explanation ?? undefined, level, maxPoints)
       : await gradeAnswer(question, correct, student, explanation ?? undefined, level, maxPoints, deterministic.decided ? deterministic.isCorrect : undefined, mode);
-    return { is_correct: r.is_correct, score: r.is_correct ? maxPoints : 0, feedback: r.feedback };
+    return { is_correct: r.is_correct, score: r.is_correct ? maxPoints : 0, feedback: r.is_correct ? r.feedback : withoutAnswer(r.feedback, correct) };
   } catch (e) {
     console.error("[gradeFreeAnswer] IA indisponible:", e instanceof Error ? e.message : e);
     if (deterministic.decided) {
-      const shown = /[\\^_{}]/.test(correct) && !correct.includes("$") ? `$${correct}$` : correct;
-      return { is_correct: false, score: 0, feedback: `Ce n'est pas la bonne réponse. La réponse attendue était ${shown}.` };
+      return { is_correct: false, score: 0, feedback: "Ce n'est pas la bonne réponse : reprends ton calcul étape par étape." };
     }
     return { is_correct: false, score: 0, feedback: "Réessaie dans quelques secondes.", unavailable: true };
   }

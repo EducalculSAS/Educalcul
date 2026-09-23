@@ -581,7 +581,7 @@ RÈGLES pour le feedback — SOIS TRÈS BREF, c'est la règle la plus importante
 1. MAXIMUM 2 phrases courtes, 40 mots au total. Jamais de liste ni de résolution complète : va droit au but.
 2. Adapte ton vocabulaire au niveau de l'élève et parle-lui directement (« tu »).
 3. Si correct : une phrase qui dit POURQUOI c'est juste (la règle ou l'étape clé), pas seulement « bravo ».
-4. Si incorrect : phrase 1 = l'erreur précise que l'élève a faite (ex. « tu as additionné les dénominateurs ») ; phrase 2 = la méthode ou l'étape clé pour y arriver, sans donner le résultat final.
+4. Si incorrect : phrase 1 = l'erreur précise que l'élève a faite (ex. « tu as additionné les dénominateurs ») ; phrase 2 = la méthode ou l'étape clé pour y arriver. N'écris JAMAIS la réponse attendue ni le résultat final : l'élève va retenter.
 5. Sois encourageant même en cas d'erreur, sans être condescendant.
 6. Réponds UNIQUEMENT en JSON sur une seule ligne, sans texte avant/après.
 7. score = 0 si incorrect, ${maxPoints} si correct.
