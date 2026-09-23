@@ -105,6 +105,12 @@ export function AdminAttemptControls({
   );
 }
 
+
+/** Seuil de réussite : celui de l'exercice, sinon 50 %. Sans seuil, tout
+ * résultat comptait comme « réussi » — y compris 0 % (« Félicitations ! »). */
+const DEFAULT_PASS_PERCENT = 50;
+const passThreshold = (min: number | null | undefined) => (min && min > 0 ? min : DEFAULT_PASS_PERCENT);
+
 interface ExerciseViewerProps {
   exercise: {
     id?: string;
@@ -1486,8 +1492,7 @@ export default function ExerciseViewer({
       const correctCount = Object.values(newResults).filter(Boolean).length;
       pct = gradableCount > 0 ? Math.round((correctCount / gradableCount) * 100) : 100;
     }
-    const thr = exercise.min_score_percent || 0;
-    const didPass = thr > 0 ? pct >= thr : true;
+    const didPass = pct >= passThreshold(exercise.min_score_percent);
     saveProgress('completed', totalScore, pct, didPass);
     
     // Legacy onComplete for the parent
@@ -1537,12 +1542,15 @@ export default function ExerciseViewer({
   if (exerciseCompleted && !reviewMode) {
     let totalPoints = 0;
     pages.forEach((p) => p.blocks.forEach((b) => (totalPoints += b.points || 0)));
-    const percentage = totalPoints > 0 ? Math.round((score / totalPoints) * 100) : 100;
+    const gradable = Object.keys(results).length;
+    const percentage = totalPoints > 0
+      ? Math.round((score / totalPoints) * 100)
+      : gradable > 0 ? Math.round((Object.values(results).filter(Boolean).length / gradable) * 100) : 100;
     const timeTotal = getAccumulatedSeconds();
     const mins = Math.floor(timeTotal / 60);
     const isPreview = exercise.id === undefined || exercise.id === "preview";
-    const threshold = exercise.min_score_percent || 0;
-    const passed = threshold > 0 ? percentage >= threshold : true;
+    const threshold = passThreshold(exercise.min_score_percent);
+    const passed = percentage >= threshold;
 
     return (
       <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">
@@ -2304,8 +2312,7 @@ export default function ExerciseViewer({
                       const correctCount = Object.values(results).filter(Boolean).length;
                       pct = gradableCount > 0 ? Math.round((correctCount / gradableCount) * 100) : 100;
                     }
-                    const thr = exercise.min_score_percent || 0;
-                    const didPass = thr > 0 ? pct >= thr : true;
+                    const didPass = pct >= passThreshold(exercise.min_score_percent);
                     saveProgress('completed', score, pct, didPass);
                   }
               : currentScreenIndex < screens.length - 1

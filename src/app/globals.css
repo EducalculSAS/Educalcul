@@ -2264,15 +2264,25 @@ main,
  * discret des blocs en attente. La position finale est transform: none, pour
  * ne pas créer de contexte de positionnement après l'animation (modales en
  * position fixe, flou des boutons glass). */
+/* Entrée de page : fondu d'OPACITÉ seulement. Un transform (même terminé,
+   même « none » interpolé en matrice identité) fait du conteneur de page le
+   repère de tous les éléments position:fixed qu'il contient : les lecteurs
+   plein écran (exercice, cours, quiz) se retrouvaient hauts de 0 px, donc
+   invisibles. L'opacité n'a pas cet effet. */
 @keyframes page-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.page-enter {
+  animation: page-enter 0.32s ease-out backwards;
+}
+@keyframes fade-up {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: none; }
 }
-.page-enter {
-  animation: page-enter 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
+/* « backwards » : rien n'est conservé une fois l'animation finie. */
 .animate-fade-up {
-  animation: page-enter 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 @keyframes appear-late {
@@ -2332,10 +2342,10 @@ main,
   to { opacity: 1; transform: none; }
 }
 .overlay-enter {
-  animation: overlay-enter 0.22s ease both;
+  animation: overlay-enter 0.22s ease backwards;
 }
 .dialog-enter {
-  animation: dialog-enter 0.32s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  animation: dialog-enter 0.32s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
 }
 @media (prefers-reduced-motion: reduce) {
   .overlay-enter,
@@ -2347,10 +2357,10 @@ main,
 /* Toutes les fenêtres modales du site (fond sombre `modal-overlay`) : même
  * entrée que ConfirmDialog, sans toucher à chaque composant. */
 .modal-overlay {
-  animation: overlay-enter 0.22s ease both;
+  animation: overlay-enter 0.22s ease backwards;
 }
 .modal-overlay > :first-child {
-  animation: dialog-enter 0.32s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  animation: dialog-enter 0.32s cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
 }
 @media (prefers-reduced-motion: reduce) {
   .modal-overlay,
