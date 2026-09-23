@@ -3,18 +3,25 @@ import { escapeHtml } from "@/lib/validation";
 // URL de base — utilisée pour les liens et le logo dans les emails envoyés
 export const EMAIL_BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://educalcul.com";
 
-const NAVY = "#1a3a5c";
+// Mêmes couleurs que le site (globals.css : --greek-*)
+const NAVY = "#0f1e3a";
+const NAVY_MID = "#1a3a6e";
 const GOLD = "#c5a148";
-const INK = "#334155";
-const MUTED = "#8b95a5";
+const CREAM = "#faf7f2";
+const BORDER = "#ede0c0";
+const INK = "#1a1008";
+const MUTED = "#6b5e42";
+const SERIF = "'Cinzel',Georgia,serif";
+const SANS = "'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif";
 
 /**
- * Gabarit commun de tous les emails, en « liquid glass » : fond dégradé
- * navy/or, carte de verre translucide, bouton pilule avec reflet.
+ * Gabarit commun de tous les emails, au style du site : héros bleu nuit avec
+ * symboles mathématiques en filigrane et titre Cinzel, carte blanche bordée
+ * d'or sur fond crème, bouton pilule en verre bleu nuit.
  * Les clients mail n'appliquent pas tous le CSS : chaque effet a un repli
- * (fond uni, carte blanche, bouton navy plein). Le flou (backdrop-filter),
- * le reflet animé et le survol ne s'affichent que dans les clients qui les
- * gèrent (Apple Mail, iOS), et jamais si l'utilisateur réduit les animations.
+ * (couleur unie, bouton plein). Le reflet animé du bouton, le survol et
+ * l'apparition de la carte ne jouent que dans les clients qui les gèrent
+ * (Apple Mail, iOS), et jamais si l'utilisateur réduit les animations.
  */
 // Pour la preview dans l'admin (localhost), on passe l'origine du navigateur
 export function buildEmailHtml({
@@ -33,7 +40,7 @@ export function buildEmailHtml({
   const LOGO = `${logoBaseUrl}/logo.png`;
   const BASE = EMAIL_BASE_URL;
   const YEAR = new Date().getFullYear();
-  const link = `color:#5b6b80;text-decoration:none;font-weight:500;`;
+  const link = `color:${MUTED};text-decoration:none;font-weight:500;`;
 
   return `<!DOCTYPE html>
 <html lang="fr" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -55,111 +62,117 @@ export function buildEmailHtml({
     a[x-apple-data-detectors]{color:inherit!important;text-decoration:none!important}
     @media only screen and (max-width:620px){
       .email-container{width:100%!important;margin:auto!important}
-      .body-pad{padding:28px 22px 8px!important}
-      .cta-pad{padding:8px 22px 30px!important}
-      .title-pad{padding:30px 22px 22px!important}
-      .glass-title{font-size:22px!important}
+      .hero-pad{padding:30px 24px 32px!important}
+      .body-pad{padding:28px 24px 8px!important}
+      .cta-pad{padding:8px 24px 30px!important}
+      .hero-title{font-size:25px!important}
+      .glyphs{display:none!important}
     }
   </style>
   <!-- Bloc séparé : si un client rejette ces règles, il ne perd pas les réglages mobiles ci-dessus -->
   <style>
-    /* Verre dépoli, reflet et survol : clients qui les gèrent seulement */
-    .glass-card{-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%)}
     @media screen and (prefers-reduced-motion:no-preference){
-      .glass-card{animation:ec-rise .7s cubic-bezier(.2,.8,.2,1) both}
+      .site-card{animation:ec-rise .7s cubic-bezier(.2,.8,.2,1) both}
       .glass-btn{
-        background-image:linear-gradient(110deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.38) 50%,rgba(255,255,255,0) 62%),linear-gradient(180deg,#2d5a86 0%,${NAVY} 55%,#12304d 100%)!important;
+        background-image:linear-gradient(110deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 62%),linear-gradient(180deg,${NAVY_MID} 0%,${NAVY} 100%)!important;
         background-size:260% 100%,100% 100%!important;
         background-repeat:no-repeat!important;
         animation:ec-sheen 3.6s ease-in-out 1.2s infinite;
         transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease;
       }
-      .glass-btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 14px 30px -8px rgba(26,58,92,.6),0 0 0 4px rgba(197,161,72,.28)!important}
+      .glass-btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 14px 28px -10px rgba(15,30,58,.55),0 0 0 3px rgba(197,161,72,.35)!important}
       .glass-btn:active{transform:scale(.97)}
-      .glass-link{transition:color .2s ease}
-      .glass-link:hover{color:${NAVY}!important}
+      .site-link{transition:color .2s ease}
+      .site-link:hover{color:${NAVY}!important}
     }
-    @keyframes ec-rise{from{transform:translateY(14px) scale(.985)}to{transform:none}}
+    @keyframes ec-rise{from{transform:translateY(14px)}to{transform:none}}
     @keyframes ec-sheen{0%{background-position:160% 0,0 0}55%,100%{background-position:-60% 0,0 0}}
   </style>
 </head>
-<body style="margin:0;padding:0;background-color:#eef1f6;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
+<body style="margin:0;padding:0;background-color:${CREAM};font-family:${SANS};">
   ${preheader ? `<div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">${preheader}&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>` : ""}
 
-  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="#eef1f6" style="background-color:#eef1f6;background-image:radial-gradient(circle at 12% 0%,rgba(26,58,92,.22) 0,rgba(26,58,92,0) 45%),radial-gradient(circle at 92% 38%,rgba(197,161,72,.28) 0,rgba(197,161,72,0) 42%),radial-gradient(circle at 20% 100%,rgba(91,140,201,.20) 0,rgba(91,140,201,0) 45%),linear-gradient(180deg,#e9eef6 0%,#f6f2ea 100%);">
+  <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="${CREAM}" style="background-color:${CREAM};">
     <tr>
-      <td align="center" style="padding:36px 12px 28px;">
+      <td align="center" style="padding:32px 12px 28px;">
         <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="600" style="margin:auto;" class="email-container">
-
-          <!-- Logo -->
-          <tr>
-            <td style="padding:0 0 22px;text-align:center;">
-              <a href="${BASE}" style="text-decoration:none;display:inline-block;">
-                <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" style="background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.9);border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 6px 18px -8px rgba(26,58,92,.35);">
-                  <tr>
-                    <td style="padding:7px 8px 7px 8px;vertical-align:middle;">
-                      <img src="${LOGO}" alt="" width="34" height="34" style="display:block;border-radius:50%;" />
-                    </td>
-                    <td style="padding:7px 18px 7px 2px;vertical-align:middle;">
-                      <span style="font-family:'Cinzel',Georgia,serif;font-size:14px;font-weight:700;color:${NAVY};letter-spacing:2.5px;">EDUCALCUL</span>
-                    </td>
-                  </tr>
-                </table>
-              </a>
-            </td>
-          </tr>
-
-          <!-- Carte de verre -->
           <tr>
             <td>
-              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" bgcolor="#ffffff" class="glass-card" style="background-color:#ffffff;background-color:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.95);border-radius:28px;box-shadow:inset 0 1px 0 rgba(255,255,255,1),0 0 0 1px rgba(26,58,92,.06),0 24px 60px -24px rgba(26,58,92,.38);">
+              <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" class="site-card" style="border-collapse:separate;border-radius:24px;box-shadow:0 18px 50px -22px rgba(15,30,58,.35);">
+
+                <!-- Héros bleu nuit, comme en haut des pages du site -->
                 <tr>
-                  <td class="title-pad" style="padding:38px 44px 26px;text-align:center;border-radius:28px 28px 0 0;background-image:linear-gradient(135deg,rgba(26,58,92,.07) 0%,rgba(197,161,72,.12) 100%);border-bottom:1px solid rgba(26,58,92,.07);">
-                    <h1 class="glass-title" style="margin:0;font-family:'Cinzel',Georgia,serif;font-size:25px;font-weight:700;color:${NAVY};letter-spacing:.3px;line-height:1.3;">${title}</h1>
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center" width="64" style="margin:16px auto 0;">
-                      <tr><td style="height:3px;border-radius:3px;background:${GOLD};background-image:linear-gradient(90deg,rgba(197,161,72,.2),${GOLD},rgba(197,161,72,.2));font-size:0;line-height:0;">&nbsp;</td></tr>
+                  <td class="hero-pad" bgcolor="${NAVY}" style="padding:30px 44px 36px;border-radius:24px 24px 0 0;background-color:${NAVY};background-image:radial-gradient(circle at 85% 0%,rgba(26,58,110,.9) 0,rgba(26,58,110,0) 55%),radial-gradient(circle at 0% 100%,rgba(197,161,72,.14) 0,rgba(197,161,72,0) 45%);">
+                    <!-- Symboles en filigrane dans une cellule (pas de position:absolute, que Gmail supprime) -->
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td style="vertical-align:middle;">
+                          <a href="${BASE}" style="text-decoration:none;display:inline-block;">
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                              <tr>
+                                <td style="padding-right:10px;vertical-align:middle;"><img src="${LOGO}" alt="" width="36" height="36" style="display:block;border-radius:8px;" /></td>
+                                <td style="vertical-align:middle;"><span style="font-family:${SERIF};font-size:14px;font-weight:700;color:#ffffff;letter-spacing:2.5px;">EDUCALCUL</span></td>
+                              </tr>
+                            </table>
+                          </a>
+                        </td>
+                        <td align="right" class="glyphs" aria-hidden="true" style="vertical-align:middle;font-family:Georgia,serif;font-size:40px;line-height:1;color:#253554;color:rgba(255,255,255,.1);letter-spacing:10px;white-space:nowrap;">&Sigma;&pi;&int;</td>
+                      </tr>
                     </table>
+                    <p style="margin:30px 0 8px;font-family:${SANS};font-size:10.5px;font-weight:600;color:${GOLD};letter-spacing:2.5px;text-transform:uppercase;">Votre espace Educalcul</p>
+                    <h1 class="hero-title" style="margin:0;font-family:${SERIF};font-size:29px;font-weight:700;color:#ffffff;letter-spacing:.3px;line-height:1.25;">${title}</h1>
                   </td>
                 </tr>
+
+                <!-- Filet or -->
+                <tr><td style="height:3px;font-size:0;line-height:0;background:${GOLD};background-image:linear-gradient(90deg,${NAVY},${GOLD},${NAVY});">&nbsp;</td></tr>
+
+                <!-- Corps -->
                 <tr>
-                  <td class="body-pad" style="padding:32px 44px 12px;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;line-height:1.75;color:${INK};">
-                    ${body}
+                  <td bgcolor="#ffffff" style="background:#ffffff;border-left:1px solid ${BORDER};border-right:1px solid ${BORDER};${cta ? "" : `border-bottom:1px solid ${BORDER};border-radius:0 0 24px 24px;`}">
+                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                      <tr>
+                        <td class="body-pad" style="padding:34px 44px ${cta ? 12 : 34}px;font-family:${SANS};font-size:15px;line-height:1.75;color:${INK};">
+                          ${body}
+                        </td>
+                      </tr>
+                    </table>
                   </td>
                 </tr>
                 ${cta ? `
                 <tr>
-                  <td class="cta-pad" style="padding:14px 44px 38px;text-align:center;">
+                  <td class="cta-pad" bgcolor="#ffffff" style="background:#ffffff;padding:14px 44px 38px;text-align:center;border:1px solid ${BORDER};border-top:none;border-radius:0 0 24px 24px;">
                     <table role="presentation" cellspacing="0" cellpadding="0" border="0" align="center">
                       <tr>
                         <td style="border-radius:999px;background:${NAVY};">
-                          <a href="${cta.url}" class="glass-btn" style="display:inline-block;padding:15px 34px;border-radius:999px;background-color:${NAVY};background-image:linear-gradient(180deg,#2d5a86 0%,${NAVY} 55%,#12304d 100%);border:1px solid rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 10px 24px -8px rgba(26,58,92,.55),0 0 0 3px rgba(197,161,72,.2);font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:15px;font-weight:600;color:#ffffff;text-decoration:none;letter-spacing:.2px;">${cta.label}&nbsp;&nbsp;&rarr;</a>
+                          <a href="${cta.url}" class="glass-btn" style="display:inline-block;padding:14px 32px;border-radius:999px;background-color:${NAVY};background-image:linear-gradient(180deg,${NAVY_MID} 0%,${NAVY} 100%);border:1px solid rgba(255,255,255,.18);box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 10px 22px -10px rgba(15,30,58,.5);font-family:${SERIF};font-size:13px;font-weight:700;color:#ffffff;text-decoration:none;letter-spacing:1px;">${cta.label}&nbsp;&nbsp;&rarr;</a>
                         </td>
                       </tr>
                     </table>
                     <p style="margin:16px 0 0;font-size:11px;line-height:1.5;color:${MUTED};">
-                      Le bouton ne fonctionne pas ?&nbsp;<a href="${cta.url}" style="color:#3a6ea5;word-break:break-all;">${cta.url}</a>
+                      Le bouton ne fonctionne pas ?&nbsp;<a href="${cta.url}" style="color:${NAVY_MID};word-break:break-all;">${cta.url}</a>
                     </p>
                   </td>
-                </tr>` : `<tr><td style="height:22px;font-size:0;line-height:0;">&nbsp;</td></tr>`}
+                </tr>` : ""}
               </table>
             </td>
           </tr>
 
           <!-- Pied de page -->
           <tr>
-            <td style="padding:26px 24px 8px;text-align:center;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;">
-              <p style="margin:0 0 12px;font-size:12px;line-height:2;color:#5b6b80;">
-                <a href="${BASE}/parent/dashboard" class="glass-link" style="${link}">Mon espace</a>&nbsp;&middot;&nbsp;
-                <a href="${BASE}/faq" class="glass-link" style="${link}">Aide</a>&nbsp;&middot;&nbsp;
-                <a href="${BASE}/contact" class="glass-link" style="${link}">Contact</a>&nbsp;&middot;&nbsp;
-                <a href="${BASE}/cgv" class="glass-link" style="${link}">CGV</a>&nbsp;&middot;&nbsp;
-                <a href="${BASE}/politique-confidentialite" class="glass-link" style="${link}">Confidentialité</a>
+            <td style="padding:26px 24px 8px;text-align:center;font-family:${SANS};">
+              <p style="margin:0 0 12px;font-size:12px;line-height:2;color:${MUTED};">
+                <a href="${BASE}/parent/dashboard" class="site-link" style="${link}">Mon espace</a>&nbsp;&middot;&nbsp;
+                <a href="${BASE}/faq" class="site-link" style="${link}">Aide</a>&nbsp;&middot;&nbsp;
+                <a href="${BASE}/contact" class="site-link" style="${link}">Contact</a>&nbsp;&middot;&nbsp;
+                <a href="${BASE}/cgv" class="site-link" style="${link}">CGV</a>&nbsp;&middot;&nbsp;
+                <a href="${BASE}/politique-confidentialite" class="site-link" style="${link}">Confidentialité</a>
               </p>
-              <p style="margin:0 0 6px;font-size:11px;color:${MUTED};">
-                <a href="${BASE}/parent/profile" class="glass-link" style="color:${MUTED};text-decoration:underline;">Gérer mes préférences email</a>
+              <p style="margin:0 0 6px;font-size:11px;">
+                <a href="${BASE}/parent/profile" class="site-link" style="color:#9a8a66;text-decoration:underline;">Gérer mes préférences email</a>
               </p>
-              <p style="margin:0;font-size:10.5px;line-height:1.6;color:#a3acb9;">
-                © ${YEAR} EDUCALCUL SAS · 11 rue des Chênes, 78110 Le Vésinet<br />Plateforme d'apprentissage des mathématiques
+              <p style="margin:0;font-size:10.5px;line-height:1.6;color:#a8997a;">
+                © ${YEAR} <span style="font-family:${SERIF};letter-spacing:1px;">EDUCALCUL</span> SAS · 11 rue des Chênes, 78110 Le Vésinet<br />Plateforme d'apprentissage des mathématiques
               </p>
             </td>
           </tr>
@@ -183,17 +196,17 @@ export const emailTemplate = ({
 
 type Tone = "info" | "warning" | "danger" | "success";
 const TONES: Record<Tone, { bg: string; border: string; text: string }> = {
-  info: { bg: "rgba(26,58,92,.06)", border: "rgba(26,58,92,.14)", text: NAVY },
-  warning: { bg: "rgba(197,161,72,.12)", border: "rgba(197,161,72,.38)", text: "#7a5a12" },
-  danger: { bg: "rgba(220,38,38,.07)", border: "rgba(220,38,38,.25)", text: "#991b1b" },
-  success: { bg: "rgba(22,163,74,.08)", border: "rgba(22,163,74,.28)", text: "#166534" },
+  info: { bg: "rgba(15,30,58,.04)", border: "rgba(15,30,58,.14)", text: NAVY },
+  warning: { bg: "#fbf6e9", border: "rgba(197,161,72,.45)", text: "#7a5a12" },
+  danger: { bg: "#fef2f2", border: "rgba(220,38,38,.28)", text: "#991b1b" },
+  success: { bg: "#f0fdf4", border: "rgba(22,163,74,.3)", text: "#166534" },
 };
 
-/** Encadré de verre teinté (alerte, info). `html` est inséré tel quel. */
+/** Encadré teinté (alerte, info), bordé comme les cartes du site. `html` est inséré tel quel. */
 export function emailCallout(html: string, tone: Tone = "warning"): string {
   const t = TONES[tone];
   return `<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:20px 0;">
-    <tr><td style="background:${t.bg};border:1px solid ${t.border};border-radius:16px;padding:14px 18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.7);">
+    <tr><td style="background:${t.bg};border:1px solid ${t.border};border-radius:14px;padding:14px 18px;">
       <p style="margin:0;font-size:13.5px;line-height:1.6;color:${t.text};">${html}</p>
     </td></tr>
   </table>`;
@@ -201,22 +214,22 @@ export function emailCallout(html: string, tone: Tone = "warning"): string {
 
 /** Valeur mise en avant (code, nouvelle adresse, méthode…). Texte échappé. */
 export function emailHighlight(label: string, value: string, tone: Tone = "info", mono = false): string {
-  const t = TONES[tone];
+  const t = tone === "info" ? { bg: CREAM, border: BORDER, text: NAVY } : TONES[tone];
   return `<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:0 0 20px;">
-    <tr><td align="center" style="background:${t.bg};border:1px solid ${t.border};border-radius:18px;padding:18px 20px;box-shadow:inset 0 1px 0 rgba(255,255,255,.7);">
-      <p style="margin:0 0 6px;font-size:11px;font-weight:600;color:${MUTED};text-transform:uppercase;letter-spacing:1px;">${escapeHtml(label)}</p>
+    <tr><td align="center" style="background:${t.bg};border:1px solid ${t.border};border-radius:16px;padding:18px 20px;">
+      <p style="margin:0 0 6px;font-size:10.5px;font-weight:600;color:${GOLD};text-transform:uppercase;letter-spacing:2px;">${escapeHtml(label)}</p>
       <p style="margin:0;font-size:${mono ? "32px" : "17px"};font-weight:700;color:${t.text};${mono ? "letter-spacing:8px;font-family:'SF Mono',Menlo,Consolas,monospace;" : ""}">${escapeHtml(value)}</p>
     </td></tr>
   </table>`;
 }
 
-/** Tableau récapitulatif (montant, formule, date…). Valeurs échappées. */
+/** Tableau récapitulatif (montant, formule, date…), en carte crème bordée d'or. Valeurs échappées. */
 export function emailDetails(rows: [string, string][]): string {
   const trs = rows.map(([k, v], i) => `<tr>
-      <td style="padding:11px 18px;font-size:13px;color:${MUTED};${i ? "border-top:1px solid rgba(26,58,92,.07);" : ""}">${escapeHtml(k)}</td>
-      <td align="right" style="padding:11px 18px;font-size:14px;font-weight:600;color:${NAVY};${i ? "border-top:1px solid rgba(26,58,92,.07);" : ""}">${escapeHtml(v)}</td>
+      <td style="padding:12px 18px;font-size:13px;color:${MUTED};${i ? `border-top:1px solid ${BORDER};` : ""}">${escapeHtml(k)}</td>
+      <td align="right" style="padding:12px 18px;font-size:14px;font-weight:700;color:${NAVY};${i ? `border-top:1px solid ${BORDER};` : ""}">${escapeHtml(v)}</td>
     </tr>`).join("");
-  return `<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:20px 0;background:rgba(26,58,92,.035);border:1px solid rgba(26,58,92,.09);border-radius:18px;border-collapse:separate;">${trs}</table>`;
+  return `<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:20px 0;background:${CREAM};border:1px solid ${BORDER};border-radius:16px;border-collapse:separate;">${trs}</table>`;
 }
 
 const hello = (firstName: string) => `<p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>`;
