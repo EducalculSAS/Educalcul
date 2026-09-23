@@ -91,10 +91,6 @@ function escapeHtml(text: string): string {
   return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-function pickFrenchVoice(): SpeechSynthesisVoice | null {
-  const voices = window.speechSynthesis?.getVoices() || [];
-  return voices.find((v) => v.lang.toLowerCase().startsWith("fr")) || voices[0] || null;
-}
 
 export default function CaliaSceneDemo({
   contentRef,
@@ -245,18 +241,6 @@ export default function CaliaSceneDemo({
     historyRef.current = [];
   };
 
-  const speakBrowserFallback = (text: string) => {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = "fr-FR";
-    const voice = pickFrenchVoice();
-    if (voice) utter.voice = voice;
-    utter.onstart = () => setSpeaking(true);
-    utter.onend = () => setSpeaking(false);
-    utter.onerror = () => setSpeaking(false);
-    window.speechSynthesis.speak(utter);
-  };
 
   // Voix naturelle (Azure Speech via /api/calia/tts). Passe par fetch() (pas
   // un <audio src> direct) : l'auth de ce site attache le Bearer token aux
@@ -346,10 +330,11 @@ export default function CaliaSceneDemo({
         blob = await synth[i];
       } catch (err) {
         if (gen !== speechGenRef.current) return;
-        console.warn("[Calia] voix Azure indisponible, repli navigateur.", err);
+        // Pas de voix du navigateur : on s'arrête là, et seul ce qui a
+        // réellement été dit reste affiché.
+        console.warn("[Calia] voix Azure indisponible.", err);
         stopReveal();
-        setShownWords(null);
-        speakBrowserFallback(chunks.slice(i).join(" "));
+        setSpeaking(false);
         return;
       }
       if (gen !== speechGenRef.current) return;
@@ -366,7 +351,8 @@ export default function CaliaSceneDemo({
         }, step);
       });
       stopReveal();
-      if (!ok) { setShownWords(null); return; }
+      // Coupée (l'élève reprend la parole, arrêt) : le texte s'arrête où la voix s'est arrêtée.
+      if (!ok) return;
       setShownWords(to);
     }
     if (gen === speechGenRef.current) { setSpeaking(false); setShownWords(null); }
