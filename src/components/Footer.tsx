@@ -36,6 +36,7 @@ const NAV_COLS = [
       { label: "Mentions légales", href: "/mentions-legales" },
       { label: "Confidentialité", href: "/politique-confidentialite" },
       { label: "CGU", href: "/cgu" },
+      { label: "CGV", href: "/cgv" },
     ],
   },
 ];

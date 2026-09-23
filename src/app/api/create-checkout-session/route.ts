@@ -304,6 +304,14 @@ export async function POST(req: Request) {
       sessionData.subscription_data = { trial_period_days: trialDays };
     }
 
+    // Acceptation des CGV et demande d'accès immédiat (droit de rétractation :
+    // remboursement au prorata), affichées au-dessus du bouton de paiement.
+    (sessionData as any).custom_text = {
+      submit: {
+        message:
+          "En confirmant, vous acceptez les Conditions générales de vente (educalcul.com/cgv) et demandez l'accès immédiat au service. Vous gardez 14 jours pour vous rétracter (remboursement au prorata de la période non utilisée).",
+      },
+    };
     const session = await stripe.checkout.sessions.create(sessionData);
 
     // Record referral code usage and reward referrer

@@ -294,10 +294,13 @@ export default function Inscription() {
           style={{ accentColor: accent }}
         />
         <span className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-          J'accepte les{" "}
-          <a href="/cgu" target="_blank" className="font-semibold hover:underline" style={{ color: accent }}>CGU</a>{" "}
+          J&apos;accepte les{" "}
+          <a href="/cgu" target="_blank" className="font-semibold hover:underline" style={{ color: accent }}>CGU</a>,{" "}
+          les{" "}
+          <a href="/cgv" target="_blank" className="font-semibold hover:underline" style={{ color: accent }}>CGV</a>{" "}
           et la{" "}
           <a href="/politique-confidentialite" target="_blank" className="font-semibold hover:underline" style={{ color: accent }}>Politique de confidentialité</a>
+          . Je certifie être majeur et, pour les enfants que j&apos;inscris, titulaire de l&apos;autorité parentale : je consens au traitement de leurs données tel que décrit dans la Politique de confidentialité.
         </span>
       </label>
     </div>,

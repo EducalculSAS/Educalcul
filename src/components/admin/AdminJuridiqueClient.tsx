@@ -15,6 +15,7 @@ import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 const PAGES = [
   { slug: "mentions-legales", label: "Mentions Légales",         icon: Scale,    href: "/mentions-legales",           color: "blue"   },
   { slug: "cgu",              label: "CGU",                       icon: FileText, href: "/cgu",                        color: "purple" },
+  { slug: "cgv",              label: "CGV",                       icon: FileText, href: "/cgv",                        color: "purple" },
   { slug: "politique-confidentialite", label: "Politique de confidentialité", icon: Lock, href: "/politique-confidentialite", color: "green" },
 ];
 
