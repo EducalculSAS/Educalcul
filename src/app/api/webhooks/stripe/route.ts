@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { stripe } from "@/lib/stripe";
+import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { buildEmailHtml, EMAIL_BASE_URL, welcomeEmail } from "@/lib/emailTemplates";
@@ -123,7 +123,10 @@ export async function POST(req: Request) {
         let periodEnd: string | null = null;
         let stripeSubId: string | null = null;
         if (stripeSub) {
-          periodEnd = new Date((stripeSub as any).current_period_end * 1000).toISOString();
+          // Lecture compatible avec toutes les versions de l'API Stripe (voir
+          // subscriptionPeriodEnd) : l'ancienne lecture directe donnait une
+          // date invalide avec l'API récente et faisait échouer l'événement.
+          periodEnd = subscriptionPeriodEnd(stripeSub);
           stripeSubId = stripeSub.id;
         }
 

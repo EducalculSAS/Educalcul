@@ -3,6 +3,8 @@ import { createServerClient } from "@supabase/ssr";
 import { updateSession } from "@/lib/supabase/middleware";
 import { ipMatchesCidr } from "@/lib/adminIpAllowlist";
 import { getClientIp } from "@/lib/ipGeo";
+import { getDisabledFeatures } from "@/lib/featureFlags";
+import { FEATURE_BY_KEY, MAINTENANCE_KEY, blockingFeature, exemptFromMaintenance } from "@/lib/featureCatalog";
 
 function dashboardPathForRole(role: string): string {
   if (role === "parent") return "/parent/dashboard";
@@ -120,9 +122,61 @@ async function isIpAllowed(req: NextRequest): Promise<boolean> {
   }
 }
 
+/** L'appelant est-il un admin ? (jeton en en-tête pour les API, cookie de
+ * session pour les pages). Appelé seulement quand une fonctionnalité est
+ * coupée : les admins passent toujours, pour pouvoir tester. */
+async function requestIsAdmin(req: NextRequest): Promise<boolean> {
+  let authId: string | null = null;
+  const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "").trim();
+  if (token) authId = await getAuthUserId(token);
+  if (!authId) {
+    const supabase = createServerClient(SUPABASE_URL, ANON_KEY, {
+      cookies: { getAll: () => req.cookies.getAll(), setAll: () => {} },
+    });
+    const { data } = await supabase.auth.getUser();
+    authId = data.user?.id ?? null;
+  }
+  if (!authId) return false;
+  return (await getRole(authId))?.role === "admin";
+}
+
+/**
+ * Fonctionnalités coupées depuis l'admin (voir src/lib/featureCatalog.ts) :
+ * page « indisponible » (ou page de maintenance) à la place de la page
+ * demandée, 503 pour une API. L'URL ne change pas : dès la réactivation, un
+ * simple rechargement rend la vraie page.
+ */
+async function featureGate(req: NextRequest, pathname: string, method: string): Promise<NextResponse | null> {
+  const disabled = await getDisabledFeatures();
+  if (disabled.size === 0) return null;
+
+  const maintenance = disabled.has(MAINTENANCE_KEY) && !exemptFromMaintenance(pathname);
+  const feature = maintenance ? FEATURE_BY_KEY.get(MAINTENANCE_KEY)! : blockingFeature(pathname, method, new Set(disabled.keys()));
+  if (!feature) return null;
+  if (await requestIsAdmin(req)) return null;
+
+  const message = disabled.get(feature.key) ?? disabled.get(feature.parent ?? "") ?? null;
+  if (pathname.startsWith("/api/")) {
+    return NextResponse.json(
+      {
+        error: message || (maintenance ? "Educalcul est en maintenance. Revenez dans quelques instants." : `« ${feature.label} » est momentanément indisponible.`),
+        unavailable: feature.key,
+      },
+      { status: 503, headers: { "Retry-After": "300" } },
+    );
+  }
+  const target = new URL(maintenance ? "/maintenance" : "/indisponible", req.url);
+  target.search = "";
+  if (!maintenance) target.searchParams.set("f", feature.key);
+  return NextResponse.rewrite(target);
+}
+
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const method = req.method.toUpperCase();
+
+  const gated = await featureGate(req, pathname, method);
+  if (gated) return gated;
 
   if (pathname.startsWith("/api/admin")) {
     // Garde spécifique aux API admin (JWT en header + rôle + 2FA) : totalement

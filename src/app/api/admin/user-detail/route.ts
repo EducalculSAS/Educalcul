@@ -1,6 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { stripe } from "@/lib/stripe";
+import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { isValidNumericId, validateString } from "@/lib/validation";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
@@ -317,7 +317,7 @@ export async function POST(req: Request) {
             }],
           });
           newStripeSubId = newSub.id;
-          newPeriodEnd = new Date((newSub as any).current_period_end * 1000).toISOString();
+          newPeriodEnd = subscriptionPeriodEnd(newSub);
         } catch (e: any) {
           // ✓ SECURITY / INTEGRITE : ne JAMAIS marquer l'abonnement "active"
           // en base si Stripe n'a pas reellement pu creer la facturation

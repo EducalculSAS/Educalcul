@@ -1230,7 +1230,7 @@ export default function AdminCoursesClient({
 
       {/* Create Course Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-2 sm:p-4">
+        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-2 sm:p-4 modal-overlay">
           <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl max-h-[94vh] sm:max-h-[90vh] flex flex-col overflow-hidden">
             {/* Header */}
             <div className="px-4 sm:px-8 py-4 sm:py-5 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
@@ -1478,7 +1478,7 @@ export default function AdminCoursesClient({
 
       {/* Create Folder Modal */}
       {isFolderModalOpen && (
-        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+        <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 modal-overlay">
           <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-xl w-full max-w-sm overflow-hidden">
             <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)] flex justify-between items-center bg-gray-50">
               <h3 className="text-lg font-bold text-gray-800">
@@ -1695,7 +1695,7 @@ function NotificationModal({
   const ctaLabel = isSuccess ? "Fermer" : "Réessayer";
 
   return (
-    <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+    <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 modal-overlay">
       <div className="bg-white rounded-2xl shadow-xl border border-gray-200 w-full max-w-md overflow-hidden animate-fade-bounce relative">
         <div className="absolute top-3 right-3 z-10">
           <GlassCloseButton onClick={onClose} />

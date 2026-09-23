@@ -1,4 +1,4 @@
-import { stripe } from "@/lib/stripe";
+import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function fetchParentSubscriptionDetails(userId: string) {
@@ -47,7 +47,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
               plan_id: planId,
               status: "active",
               current_period_start: new Date((activeSub as any).current_period_start * 1000).toISOString(),
-              current_period_end: new Date((activeSub as any).current_period_end * 1000).toISOString(),
+              current_period_end: subscriptionPeriodEnd(activeSub),
               stripe_customer_id: customer.id,
               stripe_subscription_id: activeSub.id,
             }, { onConflict: "user_id" })
@@ -64,7 +64,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
               status: "active",
               stripe_customer_id: customer.id,
               stripe_subscription_id: activeSub.id,
-              current_period_end: new Date((activeSub as any).current_period_end * 1000).toISOString(),
+              current_period_end: subscriptionPeriodEnd(activeSub),
               cancel_at_period_end: activeSub.cancel_at_period_end,
             } as any;
           }
@@ -94,9 +94,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
   }
 
   const stripeCancelAtPeriodEnd = stripeSubscription?.cancel_at_period_end ?? false;
-  const stripePeriodEnd = stripeSubscription
-    ? new Date(stripeSubscription.current_period_end * 1000).toISOString()
-    : subscription.current_period_end;
+  const stripePeriodEnd = subscriptionPeriodEnd(stripeSubscription) ?? subscription.current_period_end;
 
   // Synchroniser cancel_at_period_end en DB si Stripe est différent
   // (l'utilisateur a annulé via le portail Stripe → DB doit refléter ça)

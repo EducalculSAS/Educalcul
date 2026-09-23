@@ -126,7 +126,7 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
     : 100;
 
   return (
-    <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 modal-overlay">
       <div className="bg-white rounded-[24px] shadow-2xl w-full max-w-lg max-h-[90vh] overflow-hidden flex flex-col">
 
         {/* Progress */}

@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { useFeatures } from "@/lib/useFeatures";
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef, type ReactNode } from "react";
@@ -45,6 +46,8 @@ function DropdownLink({
 
 export default function Navbar() {
   const pathname = usePathname();
+  // Liens vers une fonctionnalité coupée par l'admin : masqués.
+  const features = useFeatures();
   const [isOpen, setIsOpen] = useState(false);
   const [user, setUser] = useState<SupabaseUser | null>(null);
   const [userRole, setUserRole] = useState<string | null>(null);
@@ -263,40 +266,60 @@ export default function Navbar() {
                     <DropdownLink href="/parent/children" onClick={() => setIsOpen(false)}>
                       Mes Enfants
                     </DropdownLink>
-                    <DropdownLink href="/parent/subscription" onClick={() => setIsOpen(false)}>
-                      Abonnements
-                    </DropdownLink>
-                    <DropdownLink href="/parent/forum" onClick={() => setIsOpen(false)}>
-                      Forum
-                    </DropdownLink>
-                    <DropdownLink href="/parent/support" onClick={() => setIsOpen(false)}>
-                      Support
-                    </DropdownLink>
+                    {features.isOn("payments") && (
+                      <DropdownLink href="/parent/subscription" onClick={() => setIsOpen(false)}>
+                        Abonnements
+                      </DropdownLink>
+                    )}
+                    {features.isOn("forum") && (
+                      <DropdownLink href="/parent/forum" onClick={() => setIsOpen(false)}>
+                        Forum
+                      </DropdownLink>
+                    )}
+                    {features.isOn("support_tickets") && (
+                      <DropdownLink href="/parent/support" onClick={() => setIsOpen(false)}>
+                        Support
+                      </DropdownLink>
+                    )}
                   </>
                 )}
                 {userRole === "child" && (
                   <>
-                    <DropdownLink href="/child/cours" onClick={() => setIsOpen(false)}>
-                      Mes Cours
-                    </DropdownLink>
-                    <DropdownLink href="/child/exercises" onClick={() => setIsOpen(false)}>
-                      Exercices
-                    </DropdownLink>
-                    <DropdownLink href="/child/quiz" onClick={() => setIsOpen(false)}>
-                      Quiz & Défis
-                    </DropdownLink>
-                    <DropdownLink href="/child/minigames" onClick={() => setIsOpen(false)}>
-                      Mini-jeux
-                    </DropdownLink>
-                    <DropdownLink href="/child/badges" onClick={() => setIsOpen(false)}>
-                      Mes Trophées
-                    </DropdownLink>
-                    <DropdownLink href="/child/forum" onClick={() => setIsOpen(false)}>
-                      Forum
-                    </DropdownLink>
-                    <DropdownLink href="/child/support" onClick={() => setIsOpen(false)}>
-                      Support
-                    </DropdownLink>
+                    {features.isOn("courses") && (
+                      <DropdownLink href="/child/cours" onClick={() => setIsOpen(false)}>
+                        Mes Cours
+                      </DropdownLink>
+                    )}
+                    {features.isOn("exercises") && (
+                      <DropdownLink href="/child/exercises" onClick={() => setIsOpen(false)}>
+                        Exercices
+                      </DropdownLink>
+                    )}
+                    {features.isOn("quizzes") && (
+                      <DropdownLink href="/child/quiz" onClick={() => setIsOpen(false)}>
+                        Quiz & Défis
+                      </DropdownLink>
+                    )}
+                    {features.isOn("minigames") && (
+                      <DropdownLink href="/child/minigames" onClick={() => setIsOpen(false)}>
+                        Mini-jeux
+                      </DropdownLink>
+                    )}
+                    {features.isOn("badges") && (
+                      <DropdownLink href="/child/badges" onClick={() => setIsOpen(false)}>
+                        Mes Trophées
+                      </DropdownLink>
+                    )}
+                    {features.isOn("forum") && (
+                      <DropdownLink href="/child/forum" onClick={() => setIsOpen(false)}>
+                        Forum
+                      </DropdownLink>
+                    )}
+                    {features.isOn("support_tickets") && (
+                      <DropdownLink href="/child/support" onClick={() => setIsOpen(false)}>
+                        Support
+                      </DropdownLink>
+                    )}
                   </>
                 )}
                 {getProfileLink() && (

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { stripe } from "@/lib/stripe";
+import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 
@@ -29,7 +29,7 @@ export async function GET(req: Request) {
     await supabaseAdmin.from("subscriptions").update({
       status: newStatus,
       plan_id: sub.plan_id, // keep existing unless you store price→plan mapping
-      current_period_end: new Date((stripeSub as any).current_period_end * 1000).toISOString(),
+      current_period_end: subscriptionPeriodEnd(stripeSub),
       cancel_at_period_end: stripeSub.cancel_at_period_end,
       updated_at: new Date().toISOString(),
     }).eq("user_id", authId);
@@ -82,7 +82,7 @@ export async function POST(req: Request) {
       stripe_customer_id: session.customer as string,
       stripe_subscription_id: sub?.id ?? null,
       current_period_start: sub ? new Date(sub.current_period_start * 1000).toISOString() : new Date().toISOString(),
-      current_period_end: sub ? new Date(sub.current_period_end * 1000).toISOString() : null,
+      current_period_end: subscriptionPeriodEnd(sub),
       cancel_at_period_end: sub?.cancel_at_period_end ?? false,
       updated_at: new Date().toISOString(),
     }, { onConflict: "user_id" });

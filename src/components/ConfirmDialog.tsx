@@ -37,8 +37,8 @@ export function ConfirmProvider({ children }: { children: React.ReactNode }) {
     <ConfirmContext.Provider value={confirm}>
       {children}
       {state && (
-        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[2000] p-4">
-          <div className="rounded-2xl shadow-2xl w-full max-w-md border border-[rgba(197,161,72,0.3)] overflow-hidden bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4]">
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[2000] p-4 overlay-enter">
+          <div className="rounded-2xl shadow-2xl w-full max-w-md border border-[rgba(197,161,72,0.3)] overflow-hidden bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] dialog-enter">
             <div className="p-6 flex flex-col items-center text-center">
               <div
                 className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 ${

@@ -113,14 +113,14 @@ export function ForumDialog({
 
   return (
     <div
-      className="fixed inset-0 z-[1500] bg-black/50 backdrop-blur-sm flex items-end sm:items-center justify-center sm:p-4"
+      className="fixed inset-0 z-[1500] bg-black/50 backdrop-blur-sm flex items-end sm:items-center justify-center sm:p-4 overlay-enter"
       onMouseDown={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={`w-full ${wide ? "sm:max-w-2xl" : "sm:max-w-lg"} max-h-[92dvh] flex flex-col rounded-t-3xl sm:rounded-3xl border border-[rgba(197,161,72,0.3)] bg-white/95 backdrop-blur-[24px] shadow-2xl`}
+        className={`dialog-enter w-full ${wide ? "sm:max-w-2xl" : "sm:max-w-lg"} max-h-[92dvh] flex flex-col rounded-t-3xl sm:rounded-3xl border border-[rgba(197,161,72,0.3)] bg-white/95 backdrop-blur-[24px] shadow-2xl`}
       >
         <div className="flex items-center justify-between gap-4 px-6 pt-5 pb-3">
           <h2 id={titleId} className="font-[family-name:var(--font-display)] font-bold text-lg text-[var(--greek-blue)]">{title}</h2>

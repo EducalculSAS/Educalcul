@@ -205,7 +205,7 @@ export default function AdminCalendarClient({
       </div>
 
       {modalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 modal-overlay">
           <div className="bg-white rounded-[20px] shadow-xl w-full max-w-md p-6 border border-[rgba(197,161,72,0.25)]">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-bold text-[var(--greek-blue)]">

@@ -6,8 +6,11 @@ import PresenceTracker from "@/components/child/PresenceTracker";
 import AdminMessages from "@/components/AdminMessages";
 import ChildOnboardingWrapper from "@/components/onboarding/ChildOnboardingWrapper";
 import ChildGradeChoiceModal from "@/components/child/ChildGradeChoiceModal";
+import { isFeatureEnabled } from "@/lib/featureFlags";
 
-export default function ChildLayout({ children }: { children: ReactNode }) {
+export default async function ChildLayout({ children }: { children: ReactNode }) {
+  // Bulle Calia masquée si l'admin a coupé l'assistante (cache de 10 s).
+  const caliaOn = await isFeatureEnabled("calia_chat");
   return (
     <AITutorProvider>
       <Navbar />
@@ -18,7 +21,7 @@ export default function ChildLayout({ children }: { children: ReactNode }) {
       <main className="pt-[64px] min-h-screen bg-[var(--greek-cream)]">
         {children}
       </main>
-      <AITutor />
+      {caliaOn && <AITutor />}
     </AITutorProvider>
   );
 }

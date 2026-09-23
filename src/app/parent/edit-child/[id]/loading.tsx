@@ -1,4 +1,4 @@
-import AppLoader from "@/components/AppLoader";
+import PageSkeleton from "@/components/PageSkeleton";
 
 // Squelette affiché pendant le rendu serveur ET utilisé par Next.js comme
 // limite de prefetch : sans ce fichier, survoler/afficher un <Link> vers
@@ -8,5 +8,5 @@ import AppLoader from "@/components/AppLoader";
 // tableau de bord). Avec ce fichier, le prefetch ne récupère que ce
 // squelette statique, jamais les données.
 export default function Loading() {
-  return <AppLoader />;
+  return <PageSkeleton />;
 }

@@ -131,7 +131,7 @@ export default function AIAddContentModal({
     "w-full text-sm border border-[rgba(197,161,72,0.25)] rounded-lg text-gray-700 focus:ring-blue-500 focus:border-blue-500 px-2.5 py-2";
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1060] p-4 backdrop-blur-sm">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-[1060] p-4 backdrop-blur-sm modal-overlay">
       <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden flex flex-col">
         <div className="bg-gradient-to-r from-[var(--greek-blue)] to-blue-600 p-4 flex justify-between items-center text-white">
           <div className="flex items-center gap-2">

@@ -1,5 +1,5 @@
-import AppLoader from "@/components/AppLoader";
+import PageSkeleton from "@/components/PageSkeleton";
 
 export default function ChildLoading() {
-  return <AppLoader />;
+  return <PageSkeleton />;
 }
