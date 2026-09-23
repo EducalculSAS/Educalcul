@@ -81,11 +81,11 @@ function SuccessContent() {
           ? `authId=${encodeURIComponent(pendingAuthId)}`
           : liveUser
           ? `authId=${encodeURIComponent(liveUser.id)}`
-          : `email=${encodeURIComponent(signupData.email)}`;
+          : null; // sans identifiant de compte : pas d'attente (voir /api/auth/signup-status)
 
         const deadline = Date.now() + 20000;
         let ready = false;
-        while (Date.now() < deadline) {
+        while (statusQuery && Date.now() < deadline) {
           const res = await fetch(`/api/auth/signup-status?${statusQuery}`);
           const json = await res.json().catch(() => null);
           if (json?.ready) { ready = true; break; }
