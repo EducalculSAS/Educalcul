@@ -514,7 +514,7 @@ main,
    (déjà opacity:1 / transform:none par défaut ici), sans rien changer
    visuellement au rendu de l'animation elle-même. */
 .animate-fade-bounce {
-  animation: fade-bounce 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  animation: fade-bounce 0.4s cubic-bezier(0.25, 1, 0.5, 1) backwards; /* backwards : invisible pendant son délai, sans rien garder après */
 }
 
 /* ── Test : effet "liquid glass" façon Apple (scope volontairement limité

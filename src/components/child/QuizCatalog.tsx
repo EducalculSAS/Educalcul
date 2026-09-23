@@ -83,7 +83,7 @@ export default function QuizCatalog({
       <div
         key={quiz.id}
         className={`group bg-white rounded-[20px] shadow-sm border-2 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isLocked ? "opacity-75" : ""} ${isPassed ? "border-green-400" : isFailed ? "border-red-400" : "border-[rgba(197,161,72,0.25)]"}`}
-        style={{ animationDelay: `${(indexOffset + index) * 40}ms` }}
+        style={{ animationDelay: `${Math.min(indexOffset + index, 6) * 30}ms` }}
       >
         <div className="relative h-40 bg-[var(--greek-blue)]/10 overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 opacity-10 pattern-grid-lg" />
@@ -212,7 +212,7 @@ export default function QuizCatalog({
                 }
               }}
               className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
-              style={{ animationDelay: `${index * 40}ms` }}
+              style={{ animationDelay: `${Math.min(index, 6) * 30}ms` }}
             >
               <div
                 className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"

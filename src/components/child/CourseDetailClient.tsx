@@ -1,5 +1,6 @@
 "use client";
 
+import { useKatexIn } from "@/lib/useKatexIn";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useState, useEffect, useRef } from "react";
 import { ArrowLeft, Play, Clock, BookOpen, AlertCircle, CheckCircle } from "lucide-react";
@@ -31,7 +32,6 @@ export default function CourseDetailClient({
   const [course, setCourse] = useState<any>(initialCourse);
   const [resumeInfo, setResumeInfo] = useState<{ pct: number; chapterIndex: number; status: string } | null>(null);
   const [started, setStarted] = useState(false);
-  const [isRendering, setIsRendering] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
   // Progression (serveur) + contexte AI tutor.
@@ -72,75 +72,9 @@ export default function CourseDetailClient({
   }, [course]);
 
   // Load KaTeX for Math rendering on the landing page
-  useEffect(() => {
-    if (loading || !course || started) return;
-
-    const loadKatex = async () => {
-      if (!document.getElementById("katex-css")) {
-        const link = document.createElement("link");
-        link.id = "katex-css";
-        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-        link.rel = "stylesheet";
-        link.integrity = "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV";
-        link.crossOrigin = "anonymous";
-        document.head.appendChild(link);
-      }
-
-      const loadScript = (src: string, integrity: string): Promise<void> => {
-        return new Promise((resolve, reject) => {
-          if ((window as any).katex && src.includes("katex.min.js")) return resolve();
-          if ((window as any).renderMathInElement && src.includes("auto-render.min.js")) return resolve();
-
-          const script = document.createElement("script");
-          script.src = src;
-          script.integrity = integrity;
-          script.crossOrigin = "anonymous";
-          script.async = true;
-          script.onload = () => resolve();
-          script.onerror = () => reject(new Error(`Failed to load script ${src}`));
-          document.head.appendChild(script);
-        });
-      };
-
-      try {
-        await loadScript(
-          "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js",
-          "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8"
-        );
-        await loadScript(
-          "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js",
-          "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
-        );
-
-        renderMath();
-      } catch (err) {
-        console.error("KaTeX initialization failed:", err);
-      }
-    };
-
-    const renderMath = () => {
-      if (contentRef.current && (window as any).renderMathInElement) {
-        setIsRendering(true);
-        try {
-          (window as any).renderMathInElement(contentRef.current, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "$", right: "$", display: false },
-              { left: "\\(", right: "\\)", display: false },
-              { left: "\\[", right: "\\]", display: true },
-            ],
-            throwOnError: false,
-          });
-        } catch (e) {
-          console.error("Math rendering error:", e);
-        } finally {
-          setTimeout(() => setIsRendering(false), 50);
-        }
-      }
-    };
-
-    loadKatex();
-  }, [loading, course, started]);
+  // Formules rendues en place, sans masquer la page (avant : opacité 0 puis 1,
+  // la page « clignotait » à chaque mise à jour).
+  useKatexIn(contentRef, [loading, course, started]);
 
   if (loading) {
     return (
@@ -210,7 +144,7 @@ export default function CourseDetailClient({
 
       <div
         ref={contentRef}
-        className={`bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden transition-opacity duration-300 ${isRendering ? "opacity-0" : "opacity-100"}`}
+        className={`bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden`}
       >
         <div className="relative h-64 md:h-80 bg-gray-100">
           {course.thumbnail_url ? (

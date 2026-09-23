@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import {
@@ -75,7 +76,6 @@ import {
   getEffectiveFolderLevel,
 } from "@/lib/constants";
 import { useConfirm } from "@/components/ConfirmDialog";
-import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 
 export interface Course {
@@ -306,7 +306,6 @@ export default function AdminCoursesClient({
 
   // AI States
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
-  const [isRendering, setIsRendering] = useState(false);
   const { startGeneration, onContentCreated } = useContentGenerations();
 
   // Une génération lancée depuis cette page (ou une autre, ou avant un
@@ -363,39 +362,9 @@ export default function AdminCoursesClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentFolderId, statusFilter]);
 
-  // Handle LaTeX rendering for the course grid
-  useEffect(() => {
-    if (loading || courses.length === 0) return;
-
-    const loadKatex = async () => {
-      try {
-        await ensureKatexAutoRenderLoaded();
-        renderMath();
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    const renderMath = () => {
-      if (gridRef.current && (window as any).renderMathInElement) {
-        setIsRendering(true);
-        try {
-          (window as any).renderMathInElement(gridRef.current, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "$", right: "$", display: false },
-            ],
-            throwOnError: false,
-          });
-        } finally {
-          setTimeout(() => setIsRendering(false), 50);
-        }
-      }
-    };
-
-    const timer = setTimeout(loadKatex, 100);
-    return () => clearTimeout(timer);
-  }, [loading, courses, searchTerm]);
+  // Formules des titres/descriptions : rendues en place, sans masquer la
+  // grille (avant, elle passait en opacité 0 à chaque mise à jour : clignotement).
+  useKatexIn(gridRef, [loading, courses, searchTerm, currentFolderId]);
 
   // Fetch folders and courses for the current directory
   const fetchContents = async (silent = false) => {
@@ -409,6 +378,9 @@ export default function AdminCoursesClient({
         setAllFolders(cached.allFolders);
         setLoading(false);
       } else {
+        // Pas encore en cache : on vide la liste de l'ancien dossier (sinon
+        // elle restait affichée) ; les sous-dossiers, déjà connus, restent.
+        setCourses([]);
         setLoading(true);
       }
     }
@@ -979,11 +951,13 @@ export default function AdminCoursesClient({
       {/* Content Grid */}
       <div
         ref={gridRef}
-        className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 transition-opacity duration-300 ${isRendering ? "opacity-0" : "opacity-100"}`}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
       >
         {/* Loading State */}
+        {/* Indicateur seulement si l'attente dure (appear-late : 400 ms) —
+            un dossier qui s'ouvre vite ne doit rien faire clignoter. */}
         {loading && (
-          <div className="col-span-full">
+          <div className="col-span-full appear-late">
             <PageLoader />
           </div>
         )}
@@ -1006,9 +980,8 @@ export default function AdminCoursesClient({
             </div>
           )}
 
-        {/* Folders List */}
-        {!loading &&
-          filteredFolders.map((folder) => {
+        {/* Folders List — déjà connus, affichés même pendant le chargement */}
+        {filteredFolders.map((folder) => {
             const FolderCardIcon = getFolderIcon(folder.icon);
             return (
               <div

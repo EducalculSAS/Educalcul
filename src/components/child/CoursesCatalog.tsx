@@ -1,5 +1,6 @@
 "use client";
 
+import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { BookOpen, Play, CheckCircle, ArrowLeft, Lock } from "lucide-react";
@@ -30,7 +31,6 @@ export default function CoursesCatalog({
   rootFolderIds?: number[] | null;
   courseProgress: CourseProgress;
 }) {
-  const [isRendering, setIsRendering] = useState(false);
   const gridRef = useRef<HTMLDivElement>(null);
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_cours_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
@@ -62,72 +62,16 @@ export default function CoursesCatalog({
     .filter((f) => (displayParentId === null && rootFolderIds ? rootFolderIds.includes(f.id) : f.parent_id === displayParentId))
     .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));
 
-  useEffect(() => {
-    if (currentCourses.length === 0) return;
-
-    const loadKatex = async () => {
-      if (!document.getElementById("katex-css")) {
-        const link = document.createElement("link");
-        link.id = "katex-css";
-        link.href = "https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css";
-        link.rel = "stylesheet";
-        link.integrity = "sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV";
-        link.crossOrigin = "anonymous";
-        document.head.appendChild(link);
-      }
-
-      const loadScript = (src: string, integrity: string): Promise<void> => {
-        return new Promise((resolve, reject) => {
-          if ((window as any).katex && src.includes("katex.min.js")) return resolve();
-          if ((window as any).renderMathInElement && src.includes("auto-render.min.js")) return resolve();
-          const script = document.createElement("script");
-          script.src = src;
-          script.integrity = integrity;
-          script.crossOrigin = "anonymous";
-          script.async = true;
-          script.onload = () => resolve();
-          script.onerror = () => reject(new Error(`Failed to load ${src}`));
-          document.head.appendChild(script);
-        });
-      };
-
-      try {
-        await loadScript("https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js", "sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8");
-        await loadScript("https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js", "sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05");
-        renderMath();
-      } catch (err) { console.error(err); }
-    };
-
-    const renderMath = () => {
-      if (gridRef.current && (window as any).renderMathInElement) {
-        setIsRendering(true);
-        try {
-          (window as any).renderMathInElement(gridRef.current, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "$", right: "$", display: false },
-            ],
-            throwOnError: false,
-          });
-        } finally {
-          setTimeout(() => setIsRendering(false), 50);
-        }
-      }
-    };
-
-    const timer = setTimeout(loadKatex, 100);
-    return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentCourses]);
+  // Formules rendues en place, sans masquer la page (avant : opacité 0 puis 1,
+  // la page « clignotait » à chaque mise à jour).
+  useKatexIn(gridRef, [displayParentId, allCourses]);
 
   const navigateToFolder = (folderId: number, folderName: string) => {
-    setIsRendering(true);
     setBreadcrumbs([...breadcrumbs, { id: folderId, name: folderName }]);
     setCurrentFolderId(folderId);
   };
 
   const navigateToBreadcrumb = (index: number) => {
-    setIsRendering(true);
     if (index === -1) {
       setBreadcrumbs([]);
       setCurrentFolderId(null);
@@ -172,7 +116,7 @@ export default function CoursesCatalog({
                   }
                 }}
                 className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
-                style={{ animationDelay: `${index * 40}ms` }}
+                style={{ animationDelay: `${Math.min(index, 6) * 30}ms` }}
               >
                 <div
                   className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
@@ -205,8 +149,8 @@ export default function CoursesCatalog({
             return (
               <div
                 key={course.id}
-                className={`group bg-white rounded-[20px] shadow-sm border-2 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isRendering ? "opacity-0" : "opacity-100"} ${isLocked ? "opacity-60" : "hover:shadow-xl hover:-translate-y-1"} ${isCompleted ? "border-green-400" : "border-[rgba(197,161,72,0.25)]"}`}
-                style={{ animationDelay: `${(currentFolders.length + index) * 40}ms` }}
+                className={`group bg-white rounded-[20px] shadow-sm border-2 transition-all duration-300 overflow-hidden flex flex-col h-full animate-fade-bounce ${isLocked ? "opacity-60" : "hover:shadow-xl hover:-translate-y-1"} ${isCompleted ? "border-green-400" : "border-[rgba(197,161,72,0.25)]"}`}
+                style={{ animationDelay: `${Math.min(currentFolders.length + index, 6) * 30}ms` }}
               >
                 <div className="relative h-48 bg-gray-100 overflow-hidden">
                   {course.thumbnail_url ? (
