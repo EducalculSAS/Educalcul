@@ -40,7 +40,9 @@ export default function PresenceTracker() {
     const onVisible = () => { if (document.visibilityState === "visible") ping(); };
     document.addEventListener("visibilitychange", onVisible);
     window.addEventListener("focus", onVisible);
-    const interval = setInterval(() => ping(true), 120000);
+    // Filet toutes les 2 min, seulement onglet visible (un onglet oublié
+    // n'est pas « en ligne » et n'a pas à solliciter le serveur).
+    const interval = setInterval(() => { if (document.visibilityState === "visible") ping(true); }, 120000);
 
     return () => {
       clearInterval(interval);

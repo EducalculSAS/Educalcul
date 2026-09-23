@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
-import { getIpGeo } from "@/lib/ipGeo";
+import { getIpGeo, getClientIp } from "@/lib/ipGeo";
 import {
   DEVICE_ID_COOKIE_NAME,
   DEVICE_ID_COOKIE_MAX_AGE,
@@ -29,13 +29,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
 
     const { device_type, user_agent } = await request.json().catch(() => ({}));
-    const geo = await getIpGeo(request);
-
     // Fetch DB user
     const { data: dbUser } = await supabaseAdmin
       .from("users")
       .select(
-        "id, login_count, login_streak, last_login_date, status, ban_reason",
+        "id, login_count, login_streak, last_login_date, last_login_ip, status, ban_reason",
       )
       .eq("auth_id", authUser.id)
       .maybeSingle();
@@ -48,6 +46,15 @@ export async function POST(request: Request) {
       .toISOString()
       .split("T")[0];
     const isNewDay = dbUser.last_login_date !== today;
+
+    // Géolocalisation seulement si l'IP a changé ou au premier passage du jour.
+    // Ce ping part toutes les 2 min par utilisateur connecté : géolocaliser à
+    // chaque fois appelait un service externe (jusqu'à 4 s d'attente, quota
+    // gratuit épuisé en quelques heures à grande échelle).
+    const ipNow = getClientIp(request);
+    const geo = isNewDay || !ipNow || ipNow !== dbUser.last_login_ip
+      ? await getIpGeo(request)
+      : { ip: ipNow, available: false as const };
 
     const updates: Record<string, any> = {
       last_active_at: new Date().toISOString(),

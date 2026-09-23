@@ -1,5 +1,6 @@
 "use client";
 
+import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Bell, Check, MessageSquare, Trophy, CreditCard, AlertCircle, Info } from "lucide-react";
@@ -54,11 +55,9 @@ export default function NotificationBell() {
     setLoading(false);
   };
 
-  useEffect(() => {
-    fetchNotifications();
-    const interval = setInterval(fetchNotifications, 30000); // refresh toutes les 30s
-    return () => clearInterval(interval);
-  }, []);
+  // Toutes les 60 s, et seulement onglet visible (au retour sur l'onglet, un
+  // rafraîchissement part tout de suite).
+  useVisiblePolling(fetchNotifications, 60000, { immediate: true });
 
   // Fermer en cliquant en dehors
   useEffect(() => {

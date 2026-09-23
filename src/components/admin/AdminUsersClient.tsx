@@ -1,7 +1,8 @@
 "use client";
 
+import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -413,10 +414,21 @@ export default function AdminUsersClient({
     } else {
       fetchUsers();
     }
-    const interval = setInterval(() => fetchUsers(true), 30000);
-    return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roleFilter, statusFilter]);
+
+  // Statut « en ligne » : toutes les 60 s (onglet visible), on ne recharge que
+  // les comptes actifs dans les 15 dernières minutes et on les fusionne — avant,
+  // TOUTE la liste était retéléchargée toutes les 30 s.
+  const refreshPresence = useCallback(async () => {
+    const res = await fetch("/api/admin/users?recent=1").catch(() => null);
+    if (!res?.ok) return;
+    const recent = await res.json().catch(() => []);
+    if (!Array.isArray(recent) || recent.length === 0) return;
+    const byId = new Map(recent.map((u: User) => [u.id, u]));
+    setUsers((prev) => prev.map((u) => (byId.has(u.id) ? { ...u, ...byId.get(u.id) } : u)));
+  }, []);
+  useVisiblePolling(refreshPresence, 60000);
 
   useEffect(() => {
     (async () => {

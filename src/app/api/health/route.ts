@@ -13,7 +13,8 @@ export async function GET(req: Request) {
   let db: "ok" | "error" | "skipped" = "skipped";
   if (checkDb) {
     try {
-      const { error } = await supabaseAdmin.from("users").select("id", { head: true, count: "exact" }).limit(1);
+      // Une ligne suffit à prouver que la base répond (un count exact parcourait toute la table).
+      const { error } = await supabaseAdmin.from("users").select("id").limit(1);
       db = error ? "error" : "ok";
     } catch {
       db = "error";

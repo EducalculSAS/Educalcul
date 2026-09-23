@@ -39,7 +39,7 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
   }, []);
 
   useEffect(() => {
-    const auto = setInterval(() => fetchData(), REFRESH_SEC * 1000);
+    const auto = setInterval(() => { if (document.visibilityState === "visible") fetchData(); }, REFRESH_SEC * 1000);
     const tick = setInterval(() => setCountdown(c => c > 1 ? c - 1 : REFRESH_SEC), 1000);
     return () => { clearInterval(auto); clearInterval(tick); };
   }, [fetchData]);
