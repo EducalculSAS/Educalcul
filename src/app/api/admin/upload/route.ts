@@ -1,10 +1,9 @@
 import { NextResponse } from "next/server";
-import { writeFile, mkdir } from "fs/promises";
-import path from "path";
 import { v4 as uuidv4 } from "uuid";
-import { isValidUrlPath, isAllowedFileExtension } from "@/lib/validation";
+import { isValidUrlPath } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
 const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20 MB
 const ALLOWED_EXTENSIONS = new Set([
@@ -81,35 +80,20 @@ export async function POST(request: Request) {
     }
 
     const buffer = Buffer.from(await file.arrayBuffer());
-    const uniqueFilename = `${uuidv4()}_${filename}`;
+    const objectPath = `${folder}/${uuidv4()}_${filename}`.replace(/\/+/g, "/");
 
-    const publicDir = path.join(process.cwd(), "public");
-    const uploadDir = path.join(publicDir, folder);
-
-    // ✓ SECURITY: Defense in depth - verify resolved path stays inside public/
-    const resolvedPath = path.resolve(uploadDir);
-    const resolvedPublicDir = path.resolve(publicDir);
-    if (!resolvedPath.startsWith(resolvedPublicDir + path.sep) && resolvedPath !== resolvedPublicDir) {
-      return NextResponse.json({ error: "Invalid folder" }, { status: 400 });
+    // Stockage Supabase (bucket public « uploads ») : l'ancienne version écrivait
+    // dans public/ du serveur, en lecture seule sur Vercel — les envois
+    // échouaient en production, et un fichier écrit en local disparaissait au
+    // déploiement suivant.
+    const { error: uploadError } = await supabaseAdmin.storage
+      .from("uploads")
+      .upload(objectPath, buffer, { contentType: file.type, upsert: false, cacheControl: "31536000" });
+    if (uploadError) {
+      console.error("[upload] storage error:", uploadError.message);
+      return NextResponse.json({ error: "Upload failed" }, { status: 500 });
     }
-
-    try {
-      await mkdir(uploadDir, { recursive: true });
-    } catch {
-      // Ignore if exists
-    }
-
-    const filePath = path.join(uploadDir, uniqueFilename);
-    
-    // ✓ SECURITY: Final path validation
-    const resolvedFilePath = path.resolve(filePath);
-    if (!resolvedFilePath.startsWith(resolvedPublicDir + path.sep)) {
-      return NextResponse.json({ error: "Invalid file path" }, { status: 400 });
-    }
-    
-    await writeFile(filePath, buffer);
-
-    const url = `/${folder}/${uniqueFilename}`.replace(/\/+/g, "/");
+    const url = supabaseAdmin.storage.from("uploads").getPublicUrl(objectPath).data.publicUrl;
 
     return NextResponse.json({ success: true, url });
   } catch (error: any) {
