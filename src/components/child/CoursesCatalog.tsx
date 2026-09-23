@@ -10,6 +10,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import { compareCourseOrder } from "@/lib/courseOrder";
 import { isFolderInLevelScope } from "@/lib/childCatalog";
 import LevelScopePicker from "@/components/child/LevelScopePicker";
+import FolderLevelBadge from "@/components/ui/FolderLevelBadge";
 
 interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string; display_order?: number }
 interface CourseRow {
@@ -154,6 +155,7 @@ export default function CoursesCatalog({
                   <FolderCardIcon size={40} fill="currentColor" fillOpacity={0.2} />
                 </div>
                 <h3 className="font-bold text-[var(--greek-blue)] text-xl w-full px-2">{folder.name}</h3>
+                <FolderLevelBadge gradeLevel={folder.grade_level} color={folder.color} />
               </div>
             );
           })}
