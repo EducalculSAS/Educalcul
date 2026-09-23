@@ -354,7 +354,7 @@ export default function AdminCoursesClient({
     document.addEventListener("visibilitychange", onVisible);
     const interval = setInterval(() => {
       if (document.visibilityState === "visible") fetchContents(true);
-    }, 20000);
+    }, 60000); // 60 s : assez pour voir un contenu ajouté ailleurs, sans recharger sans arrêt
     return () => {
       document.removeEventListener("visibilitychange", onVisible);
       clearInterval(interval);

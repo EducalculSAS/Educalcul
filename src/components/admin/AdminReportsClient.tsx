@@ -9,7 +9,7 @@ import {
   Wifi, Globe, MapPin, Eye,
 } from "lucide-react";
 
-const REFRESH_SEC = 30;
+const REFRESH_SEC = 60;
 
 /** Rapports & analytics : la première capture arrive déjà chargée du
  * serveur ; l'auto-refresh (30s) et le bouton "Actualiser" restent des
@@ -18,7 +18,6 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
   const [data, setData] = useState<any>(initialData);
   const [refreshing, setRefreshing] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
-  const [countdown, setCountdown] = useState(REFRESH_SEC);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = useCallback(async () => {
@@ -29,7 +28,6 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
       const d = await r.json();
       setData(d);
       setLastUpdated(new Date());
-      setCountdown(REFRESH_SEC);
       setError(null);
     } catch (e) {
       console.error("Failed to refresh reports:", e);
@@ -40,8 +38,9 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
 
   useEffect(() => {
     const auto = setInterval(() => { if (document.visibilityState === "visible") fetchData(); }, REFRESH_SEC * 1000);
-    const tick = setInterval(() => setCountdown(c => c > 1 ? c - 1 : REFRESH_SEC), 1000);
-    return () => { clearInterval(auto); clearInterval(tick); };
+    // (Plus de compte à rebours à la seconde : il redessinait toute la page,
+    // graphiques compris, chaque seconde.)
+    return () => clearInterval(auto);
   }, [fetchData]);
 
   if (!data) return <div className="p-6 text-red-500">Erreur de chargement.</div>;
@@ -74,7 +73,7 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
                   <Clock size={11} />
                   {lastUpdated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
                 </p>
-                <p className="text-xs text-gray-300">actualisation dans {countdown}s</p>
+                <p className="text-xs text-gray-300">actualisation automatique toutes les {REFRESH_SEC} s</p>
               </div>
             )}
             <GlassButton size="sm" variant="outline" disabled={refreshing} onClick={() => fetchData()}>

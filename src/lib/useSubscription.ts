@@ -51,28 +51,42 @@ const DEFAULT_INFO = {
   loading: true,
 };
 
+// Plusieurs composants d'une page lisent l'abonnement (chat Calia,
+// catalogues…) : une seule requête partagée, gardée quelques secondes.
+// refresh() force une nouvelle lecture (ex. après une question à Calia).
+const SUB_TTL_MS = 5_000;
+let sharedSub: { at: number; promise: Promise<any | null> } | null = null;
+function fetchSubscription(force: boolean): Promise<any | null> {
+  if (force || !sharedSub || Date.now() - sharedSub.at > SUB_TTL_MS) {
+    const promise = fetch("/api/user/subscription-status")
+      .then((res) => (res.ok ? res.json() : null))
+      .catch(() => null);
+    sharedSub = { at: Date.now(), promise };
+  }
+  return sharedSub.promise;
+}
+
 export function useSubscription(): SubscriptionInfo {
   const [info, setInfo] = useState(DEFAULT_INFO);
 
-  const load = useCallback(async () => {
-    try {
-      const res = await fetch("/api/user/subscription-status");
-      if (!res.ok) { setInfo(i => ({ ...i, loading: false })); return; }
-      const d = await res.json();
-      setInfo({
-        plan_id: d.plan_id ?? null,
-        plan_name: d.plan_name ?? "Découverte",
-        status: d.status ?? "none",
-        features: { ...FREE_FEATURES, ...(d.features || {}) },
-        ai_uses_today: d.ai_uses_today ?? 0,
-        loading: false,
-      });
-    } catch {
-      setInfo(i => ({ ...i, loading: false }));
-    }
+  const apply = useCallback((d: any | null) => {
+    if (!d) { setInfo(i => ({ ...i, loading: false })); return; }
+    setInfo({
+      plan_id: d.plan_id ?? null,
+      plan_name: d.plan_name ?? "Découverte",
+      status: d.status ?? "none",
+      features: { ...FREE_FEATURES, ...(d.features || {}) },
+      ai_uses_today: d.ai_uses_today ?? 0,
+      loading: false,
+    });
   }, []);
 
-  useEffect(() => { load(); }, [load]);
+  const load = useCallback(() => fetchSubscription(true).then(apply), [apply]);
+  useEffect(() => {
+    let alive = true;
+    fetchSubscription(false).then((d) => { if (alive) apply(d); });
+    return () => { alive = false; };
+  }, [apply]);
 
   return { ...info, refresh: load };
 }
