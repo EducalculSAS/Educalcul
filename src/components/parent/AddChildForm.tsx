@@ -181,7 +181,7 @@ export default function AddChildForm() {
             </div>
 
             <GlassButton
-              onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+              type="submit"
               variant="navy"
               fullWidth
               disabled={loading}

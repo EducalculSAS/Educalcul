@@ -43,7 +43,7 @@ export default function GlassDialog({
       >
         <div className="flex items-center justify-between gap-4 px-6 pt-5 pb-3">
           <h2 id={titleId} className="font-[family-name:var(--font-display)] font-bold text-lg text-[var(--greek-blue)]">{title}</h2>
-          <GlassCloseButton onClick={onClose} variant="dark" size="sm" />
+          <GlassCloseButton onClick={onClose} variant="light" size="sm" />
         </div>
         <div className="px-6 pb-4 overflow-y-auto">{children}</div>
         {footer && <div className="px-6 py-4 border-t border-[rgba(197,161,72,0.2)] flex flex-wrap justify-end gap-2">{footer}</div>}

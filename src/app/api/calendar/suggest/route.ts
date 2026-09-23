@@ -212,7 +212,7 @@ Réponds UNIQUEMENT par un JSON valide :
       return NextResponse.json({ summary: "Pas encore assez de cours au niveau de l'élève pour construire un plan.", sessions: [] });
     }
 
-    const ai = await chatWithAI([{ role: "user", content: lines.join("\n") }], systemPrompt, 0.4, 1800);
+    const ai = await chatWithAI([{ role: "user", content: lines.join("\n") }], systemPrompt, 0.4, 5000);
     let parsed: { summary?: string; sessions?: any[] };
     try {
       const m = ai.match(/\{[\s\S]*\}/);

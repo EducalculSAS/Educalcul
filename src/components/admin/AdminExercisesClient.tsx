@@ -1320,7 +1320,7 @@ export default function AdminExercisesClient({
                   size="sm"
                   variant="navy"
                   disabled={!folderFormData.name.trim()}
-                  onClick={() => handleSaveFolder({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                  type="submit"
                 >
                   {editingFolder ? "Sauvegarder" : "Créer"}
                 </GlassButton>

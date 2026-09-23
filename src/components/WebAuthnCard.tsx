@@ -1,5 +1,6 @@
 "use client";
 
+import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useEffect, useState } from "react";
 import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
@@ -150,22 +151,10 @@ export default function WebAuthnCard() {
           {enabled && <CheckCircle className="w-4 h-4" />}
           {enabled ? "Activée" : "Désactivée"}
         </span>
-        <button
-          type="button"
-          role="switch"
-          aria-checked={enabled}
-          disabled={!supported || registering}
-          onClick={() => toggle(!enabled)}
-          className={`relative w-12 h-7 rounded-full transition-colors disabled:opacity-50 ${enabled ? "bg-[var(--greek-blue)]" : "bg-gray-300"}`}
-        >
-          {registering ? (
-            <Loader2 className="w-4 h-4 animate-spin text-white absolute top-1.5 left-1.5" />
-          ) : (
-            <span
-              className={`absolute top-1 w-5 h-5 rounded-full bg-white shadow transition-transform ${enabled ? "translate-x-6" : "translate-x-1"}`}
-            />
-          )}
-        </button>
+        <span className="flex items-center gap-2">
+          {registering && <Loader2 className="w-4 h-4 animate-spin text-[var(--greek-blue)]" />}
+          <GlassSwitch checked={enabled} disabled={!supported || registering} onChange={(next) => toggle(next)} label="Clé d'accès" />
+        </span>
       </div>
 
       {credentials.length > 0 && (

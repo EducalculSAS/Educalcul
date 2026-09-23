@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "crypto";
-import { chatWithAI } from "@/lib/llm";
+import { chatWithAIPlain } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
@@ -121,7 +121,7 @@ export async function POST(req: NextRequest) {
       return attachDemoId(NextResponse.json({ error: "Messages requis" }, { status: 400 }), id);
     }
 
-    const raw = await chatWithAI(messages, SYSTEM_PROMPT, 0.7, 1000);
+    const raw = await chatWithAIPlain(messages, SYSTEM_PROMPT, 0.6, 1000);
     const reply = cleanReply(raw);
     const newCount = (existing?.count ?? 0) + 1;
 

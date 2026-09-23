@@ -1,5 +1,6 @@
 "use client";
 
+import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
@@ -143,19 +144,7 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
               {mandatory ? "Toujours activée" : "Activée par un parent"}
             </span>
           ) : (
-            <button
-              type="button"
-              onClick={() => startFlow(!enabled)}
-              role="switch"
-              aria-checked={enabled}
-              className="relative w-12 h-6 rounded-full transition-colors bg-gray-300 data-[on=true]:bg-[var(--greek-blue)]"
-              data-on={enabled}
-            >
-              <span
-                className="absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-all"
-                style={{ left: enabled ? "calc(100% - 22px)" : "2px" }}
-              />
-            </button>
+            <GlassSwitch checked={enabled} onChange={(next) => startFlow(next)} label="Double authentification" />
           )}
         </div>
       ) : (
@@ -176,7 +165,7 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
           />
           <div className="flex items-center gap-2">
             <GlassButton
-              onClick={() => confirmCode({ preventDefault: () => {} } as unknown as React.FormEvent)}
+              type="submit"
               variant="navy"
               size="sm"
               fullWidth

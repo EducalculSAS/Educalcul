@@ -91,6 +91,9 @@ interface GlassButtonProps {
    * grisé, ni clic ni navigation ni effets liquid glass. Si `href` est fourni
    * en même temps, la navigation est ignorée tant que `disabled` est vrai. */
   disabled?: boolean;
+  /** "submit" dans un <form> : la touche Entrée d'un champ valide le
+   * formulaire (sinon rien ne se passe, faute de bouton d'envoi). */
+  type?: "button" | "submit";
 }
 
 /** Bouton "verre liquide" universel — même comportement partout sur le site :
@@ -116,6 +119,7 @@ export default function GlassButton({
   rounded = "full",
   size = "md",
   disabled = false,
+  type = "button",
 }: GlassButtonProps) {
   const wrapperRef = useRef<HTMLSpanElement>(null);
   const elRef = useRef<HTMLElement | null>(null);
@@ -338,7 +342,7 @@ export default function GlassButton({
       ) : (
         <button
           ref={elRef as React.Ref<HTMLButtonElement>}
-          type="button"
+          type={type}
           onClick={disabled ? undefined : onClick}
           disabled={disabled}
           aria-disabled={disabled}

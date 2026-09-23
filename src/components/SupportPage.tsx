@@ -166,7 +166,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
               <div className="flex justify-end gap-3 pt-2">
                 <GlassButton onClick={() => setShowForm(false)} variant="ghost" size="sm">Annuler</GlassButton>
                 <GlassButton
-                  onClick={() => submitTicket({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                  type="submit"
                   variant="navy"
                   size="sm"
                   disabled={submitting}

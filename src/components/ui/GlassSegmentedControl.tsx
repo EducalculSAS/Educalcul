@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
 interface Option {
   id: string;
@@ -15,39 +15,43 @@ interface Rect {
 }
 
 const SETTLE_TRANSITION =
-  "left 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)";
+  "left 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.42s cubic-bezier(0.34, 1.56, 0.64, 1), top 0.3s ease, height 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)";
 const PREVIEW_TRANSITION =
-  "left 0.25s cubic-bezier(0.34, 1.2, 0.64, 1), width 0.25s cubic-bezier(0.34, 1.2, 0.64, 1), top 0.2s ease, transform 0.2s ease";
-const DRAG_TRANSITION = "transform 0.12s ease-out"; // left suit le doigt 1:1, pas de easing dessus pendant le drag
+  "left 0.25s cubic-bezier(0.34, 1.2, 0.64, 1), width 0.25s cubic-bezier(0.34, 1.2, 0.64, 1), top 0.2s ease, height 0.2s ease, transform 0.2s ease";
+const DRAG_TRANSITION = "transform 0.12s ease-out"; // left suit le curseur 1:1 pendant le glissé
 const PRESS_SCALE = 0.96;
-const DRAG_THRESHOLD = 4; // px avant de considérer que c'est un drag et pas un clic
+const DRAG_THRESHOLD = 4; // px avant de considérer que c'est un glissé et pas un clic
 
-/** Segmented control "verre liquide" — PAS le même composant que GlassButton
- * (pas d'étirement vers le curseur) mais avec ses propres comportements
- * Apple-style propres à un thumb de sélection :
- *  - survol d'une option → le thumb glisse en PREVIEW dessus (sans
- *    sélectionner) et revient à la vraie sélection si la souris repart sans
- *    clic ;
- *  - appui maintenu → le thumb se tasse légèrement (déformation, comme un
- *    bouton pressé) ;
- *  - glissé (drag) tenu → le thumb suit le doigt/curseur librement entre les
- *    options, et se cale sur l'option la plus proche au relâché. */
+const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
+/** Sélecteur « verre liquide » (pavé bleu qui glisse sous l'option choisie).
+ *
+ * Toujours sur UNE ligne : si les options ne tiennent pas (mobile, fenêtre
+ * étroite), la piste défile horizontalement au lieu de passer à la ligne —
+ * deux lignes donnaient une pilule déformée avec un pavé géant.
+ *
+ * Mesures en offsetLeft/offsetTop (relatives à la piste) et non en
+ * getBoundingClientRect : ces dernières sont faussées par les transformations
+ * CSS (fenêtre qui s'ouvre avec un zoom, page qui entre en fondu), ce qui
+ * décalait le pavé dans les modales. Un ResizeObserver recale le pavé dès que
+ * la piste change de taille (police chargée, onglet devenu visible…).
+ *
+ * Souris : survol = aperçu, appui = tassement, glissé = le pavé suit le
+ * curseur. Tactile : un simple tap sélectionne et le doigt peut faire défiler
+ * la piste (pas de glissé du pavé, qui bloquait le défilement). */
 export default function GlassSegmentedControl({
   options,
   value,
   onChange,
   size = "md",
   className = "",
-  nowrap = false,
 }: {
   options: Option[];
   value: string;
   onChange: (id: string) => void;
   size?: "sm" | "md";
   className?: string;
-  /** Défile horizontalement au lieu de passer à la ligne — utile quand
-   * beaucoup d'options doivent tenir sur une seule piste compacte (ex: les
-   * onglets du clavier mathématique). */
+  /** Conservé pour compatibilité : la piste ne passe plus jamais à la ligne. */
   nowrap?: boolean;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -56,10 +60,8 @@ export default function GlassSegmentedControl({
 
   const [rect, setRect] = useState<Rect | null>(null);
   const [pressed, setPressed] = useState(false);
-  // L'option sous laquelle le thumb se trouve VISUELLEMENT en ce moment —
-  // différent de `value` pendant un survol en preview ou un glissé : le texte
-  // doit rester lisible (blanc) sur le pavé bleu là où il est réellement
-  // affiché, pas seulement sur la vraie sélection logique.
+  // Option sous laquelle le pavé se trouve VISUELLEMENT (aperçu, glissé) :
+  // son texte passe en blanc pour rester lisible sur le bleu.
   const [activeId, setActiveId] = useState(value);
 
   const draggingRef = useRef(false);
@@ -68,60 +70,76 @@ export default function GlassSegmentedControl({
   const startXRef = useRef(0);
   const startLeftRef = useRef(0);
   const dragWidthRef = useRef(0);
+  const valueRef = useRef(value);
+  valueRef.current = value;
 
-  const rectOf = (id: string): Rect | null => {
+  const rectOf = useCallback((id: string): Rect | null => {
     const btn = btnRefs.current[id];
-    const container = containerRef.current;
-    if (!btn || !container) return null;
-    const c = container.getBoundingClientRect();
-    const b = btn.getBoundingClientRect();
-    return { left: b.left - c.left, top: b.top - c.top, width: b.width, height: b.height };
+    if (!btn || btn.offsetWidth === 0) return null;
+    return { left: btn.offsetLeft, top: btn.offsetTop, width: btn.offsetWidth, height: btn.offsetHeight };
+  }, []);
+
+  const setTransition = (t: string) => {
+    if (thumbRef.current) thumbRef.current.style.transition = t;
   };
 
-  const settleToValue = () => {
-    if (thumbRef.current) thumbRef.current.style.transition = SETTLE_TRANSITION;
-    setRect(rectOf(value));
-    setActiveId(value);
-  };
+  const settleToValue = useCallback(() => {
+    if (draggingRef.current) return;
+    setTransition(SETTLE_TRANSITION);
+    const r = rectOf(valueRef.current);
+    if (r) setRect(r);
+    setActiveId(valueRef.current);
+  }, [rectOf]);
+
+  // Amène l'option choisie au centre de la piste (sans faire défiler la page).
+  const revealValue = useCallback((smooth: boolean) => {
+    const c = containerRef.current;
+    const btn = btnRefs.current[valueRef.current];
+    if (!c || !btn || c.scrollWidth <= c.clientWidth) return;
+    const target = btn.offsetLeft - (c.clientWidth - btn.offsetWidth) / 2;
+    c.scrollTo({ left: Math.max(0, target), behavior: smooth ? "smooth" : "auto" });
+  }, []);
+
+  const mountedRef = useRef(false);
+  useIsoLayoutEffect(() => {
+    settleToValue();
+    const first = !mountedRef.current;
+    mountedRef.current = true;
+    const raf = requestAnimationFrame(() => revealValue(!first));
+    return () => cancelAnimationFrame(raf);
+  }, [value, options.length, settleToValue, revealValue]);
 
   useEffect(() => {
-    if (!draggingRef.current) settleToValue();
-    const onResize = () => {
-      if (!draggingRef.current) settleToValue();
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value, options.length]);
+    const container = containerRef.current;
+    if (!container) return;
+    let firstSize = true;
+    const ro = new ResizeObserver(() => {
+      settleToValue();
+      // Première vraie mesure (fenêtre qui finit de s'ouvrir, onglet affiché) :
+      // on recentre l'option choisie une fois.
+      if (firstSize && container.clientWidth > 0) {
+        firstSize = false;
+        revealValue(false);
+      }
+    });
+    ro.observe(container);
+    Object.values(btnRefs.current).forEach((b) => b && ro.observe(b));
+    document.fonts?.ready.then(() => settleToValue()).catch(() => {});
+    return () => ro.disconnect();
+  }, [options.length, settleToValue, revealValue]);
 
-  const handleOptionEnter = (id: string) => {
-    if (draggingRef.current) return;
+  const handleOptionEnter = (id: string) => (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse" || draggingRef.current) return;
     const target = rectOf(id);
     if (!target) return;
-    // Le pavé DOIT toujours matcher la taille réelle de l'option — le texte
-    // passe en blanc dès le survol (lisibilité), donc un pavé figé à l'ancienne
-    // taille ne recouvre plus le texte de l'option survolée si elle a une
-    // largeur différente (texte coupé/débordant). Vu et confirmé buggy : on
-    // redimensionne systématiquement, même en preview.
-    if (thumbRef.current) thumbRef.current.style.transition = PREVIEW_TRANSITION;
+    setTransition(PREVIEW_TRANSITION);
     setRect(target);
     setActiveId(id);
   };
 
-  const handleContainerLeave = () => {
-    if (draggingRef.current) return;
-    settleToValue();
-  };
-
-  /** Le pointerdown part du BOUTON pressé, pas du thumb : le thumb est un
-   * <div> séparé positionné sous le bouton sélectionné, mais les boutons ont
-   * z-10 et le recouvrent visuellement — un vrai clic touche donc toujours le
-   * bouton en premier, jamais le thumb. Un handler posé uniquement sur le
-   * thumb ne se déclenche donc jamais avec une vraie souris (seulement via un
-   * dispatch synthétique direct, ce qui donnait une fausse impression que ça
-   * marchait). En démarrant depuis le bouton : la déformation à l'appui et le
-   * glissé sont atteignables normalement, quelle que soit l'option pressée. */
   const handleOptionPointerDown = (id: string) => (e: React.PointerEvent) => {
+    // Tactile : on laisse le navigateur gérer (tap = clic, glissé = défilement).
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
     const container = containerRef.current;
     const start = rectOf(id);
     if (!container || !start) return;
@@ -132,96 +150,83 @@ export default function GlassSegmentedControl({
     startXRef.current = e.clientX;
     startLeftRef.current = start.left;
     dragWidthRef.current = start.width;
-    if (thumbRef.current) thumbRef.current.style.transition = DRAG_TRANSITION;
+    setTransition(DRAG_TRANSITION);
     setRect(start);
     setActiveId(id);
+
+    const closestTo = (x: number) => {
+      let closest = valueRef.current;
+      let best = Infinity;
+      for (const o of options) {
+        const r = rectOf(o.id);
+        if (!r) continue;
+        const d = Math.abs(r.left + r.width / 2 - x);
+        if (d < best) {
+          best = d;
+          closest = o.id;
+        }
+      }
+      return closest;
+    };
 
     const onMove = (ev: PointerEvent) => {
       const dx = ev.clientX - startXRef.current;
       if (Math.abs(dx) > DRAG_THRESHOLD) movedRef.current = true;
-      const cWidth = container.getBoundingClientRect().width;
-      const maxLeft = Math.max(0, cWidth - dragWidthRef.current);
+      const maxLeft = Math.max(0, container.scrollWidth - dragWidthRef.current);
       const newLeft = Math.max(0, Math.min(maxLeft, startLeftRef.current + dx));
       setRect((prev) => (prev ? { ...prev, left: newLeft } : prev));
-
-      // Le texte doit rester lisible pendant le glissé : on suit l'option la
-      // plus proche du curseur en direct, pas seulement au relâché.
-      const thumbCenter = newLeft + dragWidthRef.current / 2;
-      let closest = id;
-      let closestDist = Infinity;
-      for (const o of options) {
-        const r = rectOf(o.id);
-        if (!r) continue;
-        const dist = Math.abs(r.left + r.width / 2 - thumbCenter);
-        if (dist < closestDist) {
-          closestDist = dist;
-          closest = o.id;
-        }
-      }
-      setActiveId(closest);
+      setActiveId(closestTo(newLeft + dragWidthRef.current / 2));
     };
 
-    const onUp = (ev: PointerEvent) => {
+    const finish = (commit: boolean, ev?: PointerEvent) => {
       window.removeEventListener("pointermove", onMove);
       window.removeEventListener("pointerup", onUp);
+      window.removeEventListener("pointercancel", onCancel);
       draggingRef.current = false;
       setPressed(false);
-      // Le clic natif suivant ce pointerup ne doit jamais re-déclencher
-      // onChange en double : la sélection est décidée ici, dans les deux cas.
-      suppressClickRef.current = true;
-
-      if (!movedRef.current) {
-        if (thumbRef.current) thumbRef.current.style.transition = SETTLE_TRANSITION;
-        setActiveId(id);
-        if (id !== value) onChange(id);
-        else setRect(rectOf(value));
-        return;
-      }
-
-      const cRect = container.getBoundingClientRect();
-      const cursorX = ev.clientX - cRect.left;
-      let closestId = value;
-      let closestDist = Infinity;
-      for (const o of options) {
-        const r = rectOf(o.id);
-        if (!r) continue;
-        const center = r.left + r.width / 2;
-        const dist = Math.abs(center - cursorX);
-        if (dist < closestDist) {
-          closestDist = dist;
-          closestId = o.id;
-        }
-      }
-      if (thumbRef.current) thumbRef.current.style.transition = SETTLE_TRANSITION;
-      setActiveId(closestId);
-      if (closestId !== value) onChange(closestId);
-      else setRect(rectOf(value));
+      // Le clic natif qui suit le relâché ne doit pas redoubler onChange ; s'il
+      // n'arrive pas (relâché hors du bouton), le verrou saute tout de suite.
+      suppressClickRef.current = commit;
+      setTimeout(() => (suppressClickRef.current = false), 0);
+      setTransition(SETTLE_TRANSITION);
+      if (!commit) return settleToValue();
+      const chosen = !movedRef.current || !ev
+        ? id
+        : closestTo(ev.clientX - container.getBoundingClientRect().left + container.scrollLeft);
+      setActiveId(chosen);
+      if (chosen !== valueRef.current) onChange(chosen);
+      else settleToValue();
     };
+    const onUp = (ev: PointerEvent) => finish(true, ev);
+    const onCancel = () => finish(false);
 
     window.addEventListener("pointermove", onMove);
     window.addEventListener("pointerup", onUp);
+    window.addEventListener("pointercancel", onCancel);
   };
 
-  const padding = size === "sm" ? "px-4 py-2 text-xs" : "px-5 py-2.5 text-sm";
+  const padding = size === "sm" ? "px-3.5 py-1.5 text-xs" : "px-5 py-2 text-sm";
 
   return (
     <div
       ref={containerRef}
-      onMouseLeave={handleContainerLeave}
-      className={`relative inline-flex gap-1 rounded-full backdrop-blur-[20px] backdrop-saturate-[1.3] ${
-        nowrap ? "flex-nowrap overflow-x-auto" : "flex-wrap justify-center overflow-hidden"
-      } ${className}`}
+      onPointerLeave={(e) => e.pointerType === "mouse" && settleToValue()}
+      role="tablist"
+      className={`glass-segmented relative inline-flex flex-nowrap w-fit max-w-full gap-1 p-0 rounded-full overflow-x-auto overscroll-x-contain backdrop-blur-[20px] backdrop-saturate-[1.3] ${className}`}
       style={{ background: "rgba(255,255,255,0.65)", border: "1px solid var(--greek-border)" }}
     >
       {rect && (
         <div
           ref={thumbRef}
-          className="absolute inset-y-0 rounded-full pointer-events-none"
+          aria-hidden
+          className="absolute rounded-full pointer-events-none"
           style={{
             left: rect.left,
+            top: rect.top,
             width: rect.width,
+            height: rect.height,
             background: "var(--greek-blue)",
-            boxShadow: "0 4px 14px rgba(15,30,58,0.28)",
+            boxShadow: "0 3px 10px rgba(15,30,58,0.25), inset 0 1px 0 rgba(255,255,255,0.18)",
             transition: SETTLE_TRANSITION,
             transform: pressed ? `scale(${PRESS_SCALE})` : "scale(1)",
           }}
@@ -234,18 +239,25 @@ export default function GlassSegmentedControl({
             btnRefs.current[o.id] = el;
           }}
           type="button"
-          onMouseEnter={() => handleOptionEnter(o.id)}
+          role="tab"
+          aria-selected={value === o.id}
+          onPointerEnter={handleOptionEnter(o.id)}
           onPointerDown={handleOptionPointerDown(o.id)}
+          // Ne vole pas le focus (ex. onglets du clavier mathématique : le champ
+          // de saisie garde le focus), sans bloquer le défilement tactile.
+          onMouseDown={(e) => e.preventDefault()}
           onClick={() => {
             if (suppressClickRef.current) {
               suppressClickRef.current = false;
               return;
             }
-            onChange(o.id);
+            if (o.id !== value) onChange(o.id);
           }}
-          className={`relative z-10 cursor-pointer ${padding} rounded-full font-bold transition-colors duration-300 font-[family-name:var(--font-display)]`}
-          style={{ color: activeId === o.id ? "#fff" : "var(--greek-blue)", touchAction: "none" }}
+          className={`relative z-10 shrink-0 whitespace-nowrap cursor-pointer ${padding} rounded-full font-bold transition-colors duration-300 font-[family-name:var(--font-display)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--greek-gold)]`}
+          style={{ color: (rect ? activeId : value) === o.id ? "#fff" : "var(--greek-blue)", touchAction: "manipulation" }}
         >
+          {/* Avant la première mesure, l'option choisie a son propre fond : jamais de texte blanc sur blanc. */}
+          {!rect && value === o.id && <span aria-hidden className="absolute inset-0 -z-10 rounded-full bg-[var(--greek-blue)]" />}
           {o.label}
         </button>
       ))}

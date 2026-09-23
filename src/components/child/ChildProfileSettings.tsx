@@ -1,5 +1,6 @@
 "use client";
 
+import GlassSwitch from "@/components/ui/GlassSwitch";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -242,15 +243,14 @@ export default function ChildProfileSettings({
                     <p className="text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>{label}</p>
                     <p className="text-xs" style={{ color: "var(--text-muted)" }}>{desc}</p>
                   </div>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input type="checkbox" className="sr-only peer" checked={notifications[key]}
-                      onChange={async () => {
-                        const upd = { ...notifications, [key]: !notifications[key] };
-                        setNotifications(upd);
-                        void updateMyProfile({ [key]: upd[key] });
-                      }} />
-                    <div className="w-11 h-6 bg-gray-200 rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]" />
-                  </label>
+                  <GlassSwitch
+                    checked={notifications[key]}
+                    label={label}
+                    onChange={(next) => {
+                      setNotifications({ ...notifications, [key]: next });
+                      void updateMyProfile({ [key]: next });
+                    }}
+                  />
                 </div>
               ))}
             </div>

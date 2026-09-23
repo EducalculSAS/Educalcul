@@ -274,7 +274,7 @@ export default function ConnexionClient() {
 
           {/* Submit */}
           <GlassButton
-            onClick={() => handleLogin({ preventDefault: () => {} } as unknown as React.FormEvent)}
+            type="submit"
             variant="navy"
             fullWidth
             className="mt-2"

@@ -34,10 +34,10 @@ function DropdownLink({
     <GlassButton
       href={href}
       onClick={onClick}
+      variant="light"
       size="sm"
       fullWidth
       className="font-[family-name:var(--font-display)]"
-      style={{ background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)" }}
     >
       {children}
     </GlassButton>
@@ -327,7 +327,7 @@ export default function Navbar() {
                     Profil
                   </DropdownLink>
                 )}
-                <div className="px-4 pt-2 pb-1">
+                <div className="pt-2">
                   <GlassButton
                     onClick={() => {
                       handleSignOut();

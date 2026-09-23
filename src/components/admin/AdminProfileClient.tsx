@@ -348,7 +348,7 @@ export default function AdminProfileClient({ initialFormData }: {
                   size="sm"
                   variant="navy"
                   disabled={saving}
-                  onClick={() => handleUpdateProfile({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                  type="submit"
                 >
                   <Save size={20} />
                   {saving ? "Enregistrement..." : "Sauvegarder"}

@@ -1,5 +1,6 @@
 "use client";
 
+import GlassSwitch from "@/components/ui/GlassSwitch";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState, useEffect } from "react";
 import Image from "next/image";
@@ -381,13 +382,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                         : "Désactivée — l'enfant peut choisir de l'activer lui-même depuis son propre profil."}
                     </p>
                   </div>
-                  <button
-                    type="button" onClick={startTwoFAFlow} role="switch" aria-checked={twoFAEnabled}
-                    className="relative w-12 h-6 rounded-full transition-colors shrink-0"
-                    style={{ background: twoFAEnabled ? "var(--greek-blue)" : "#d1d5db" }}
-                  >
-                    <span className="absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-all" style={{ left: twoFAEnabled ? "calc(100% - 22px)" : "2px" }} />
-                  </button>
+                  <GlassSwitch checked={twoFAEnabled} onChange={() => startTwoFAFlow()} label="Double authentification" />
                 </div>
               ) : (
                 <div className="space-y-3">
@@ -493,7 +488,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
 
             <div className="pt-4 flex justify-end">
               <GlassButton
-                onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                type="submit"
                 variant="navy"
                 disabled={saving}
               >

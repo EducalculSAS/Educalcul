@@ -1,5 +1,6 @@
 "use client";
 
+import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useState } from "react";
 import { ArrowDown, ArrowUp, Megaphone, Pencil, Plus, Trash2 } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -145,7 +146,7 @@ export default function CategoryManager({
             </div>
           </div>
           <label className="flex items-center gap-3 text-sm cursor-pointer">
-            <input type="checkbox" checked={draft.admin_only} onChange={(e) => setDraft({ ...draft, admin_only: e.target.checked })} className="w-4 h-4 accent-[var(--greek-blue)]" />
+            <GlassSwitch checked={draft.admin_only} onChange={(next) => setDraft({ ...draft, admin_only: next })} label="Réservé à l'équipe" />
             Seule l&apos;équipe peut y publier (annonces) — tout le monde peut répondre
           </label>
         </div>

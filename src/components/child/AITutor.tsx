@@ -1,11 +1,10 @@
 ﻿"use client";
 
-import React, { useState, useRef, useEffect, useCallback, useLayoutEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { Send, X, Minus, RotateCcw, Lock, ArrowRight, Mic, MicOff } from "lucide-react";
 import Image from "next/image";
-import { supabase } from "@/lib/supabaseClient";
-import { useSubscription, canUseAI, aiRemaining } from "@/lib/useSubscription";
+import { useSubscription, aiRemaining } from "@/lib/useSubscription";
 import { renderLatexInHTML, renderUserText } from "@/lib/katexLoader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
@@ -16,6 +15,8 @@ import { playListeningCue } from "@/lib/audioCues";
 interface Message {
   role: "user" | "assistant";
   content: string;
+  /** Message local (erreur, limite atteinte) : affiché, jamais renvoyé à l'IA. */
+  local?: boolean;
 }
 
 const WELCOME_DEFAULT: Message = {
@@ -36,7 +37,7 @@ const DEFAULT_QUICK_SUGGESTIONS = ["Je ne comprends pas", "Donne-moi un indice"]
 function renderContent(text: string) {
   // 1. Convertir les backticks contenant du LaTeX en délimiteurs $...$
   //    ex: `\frac{1}{2}` → $\frac{1}{2}$
-  let processed = text.replace(/`(\\[^`]+)`/g, (_, math) => `$${math}$`);
+  const processed = text.replace(/`(\\[^`]+)`/g, (_, math) => `$${math}$`);
   // 2. Pré-rendre tout le LaTeX
   const withLatex = renderLatexInHTML(processed);
   // 3. Gras markdown
@@ -66,7 +67,6 @@ export default function AITutor() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [hasOpened, setHasOpened] = useState(false);
-  const [authId, setAuthId] = useState<string | null>(null);
   // Le clavier mathématique personnalisé (CustomMathKeyboard) occupe tout le
   // bas de l'écran par-dessus la bulle : on l'efface le temps qu'il est
   // ouvert plutôt que de la laisser flotter dessus ou à moitié cachée.
@@ -86,10 +86,6 @@ export default function AITutor() {
   }, []);
 
   useEffect(() => subscribeMathKeyboardVisibility(setMathKeyboardOpen), []);
-
-  useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => setAuthId(data.user?.id ?? null));
-  }, []);
 
   // Close when clicking outside
   useEffect(() => {
@@ -186,48 +182,60 @@ export default function AITutor() {
 
   // Render math après chaque nouveau message
 
-  // Listen for "explain this passage" requests dispatched by CourseViewer.
-  useEffect(() => {
-    const onAskAI = async (e: Event) => {
-      const message = (e as CustomEvent).detail?.message;
-      if (!message) return;
-
-      // Use refs to read the latest state without re-subscribing the listener.
-      const currentMessages = messagesRef.current;
-      const currentContext = pageContextRef.current;
-      const currentContextKey = getContextKeyRef.current();
-
-      const userMsg: Message = { role: "user", content: message };
-      const newMessages = [...currentMessages, userMsg];
-      setMessages(newMessages);
-
-      setOpen(true);
-      setMinimized(false);
-      setLoading(true);
-
-      try {
-        const res = await fetch("/api/child/ai-tutor", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ messages: newMessages.slice(-10), context: currentContext, contextKey: currentContextKey }),
-        });
-        const data = await res.json();
-        const finalMessages = [
-          ...newMessages,
-          { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
-        ];
-        setMessages(finalMessages as any);
-        sub.refresh();
-      } catch (error) {
-        console.error("Error sending AI message:", error);
-      } finally {
-        setLoading(false);
-      }
+  // Un seul chemin d'envoi, pour la saisie comme pour « Demander à Calia »
+  // (CourseViewer) : mêmes vérifications, mêmes messages d'erreur. Les
+  // messages locaux (erreurs, limites) ne repartent jamais vers l'IA.
+  const loadingRef = useRef(false);
+  const ask = useCallback(async (text: string) => {
+    const content = text.trim();
+    if (!content || loadingRef.current) return;
+    loadingRef.current = true;
+    const history = [...messagesRef.current, { role: "user" as const, content }];
+    messagesRef.current = history;
+    setMessages(history);
+    setOpen(true);
+    setMinimized(false);
+    setLoading(true);
+    const reply = (m: Message) => {
+      const next = [...history, m];
+      messagesRef.current = next;
+      setMessages(next);
     };
+    try {
+      const res = await fetch("/api/child/ai-tutor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: history.filter((m) => !m.local).slice(-10).map(({ role, content }) => ({ role, content })),
+          context: pageContextRef.current,
+          contextKey: getContextKeyRef.current(),
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.message) {
+        reply({ role: "assistant", content: data.message });
+        if (pageContextRef.current.page !== "support") sub.refresh();
+      } else {
+        reply({ role: "assistant", local: true, content: data.reason || data.error || "Calia n'a pas pu répondre. Réessaie." });
+      }
+    } catch {
+      reply({ role: "assistant", local: true, content: "Connexion perdue : vérifie ta connexion internet puis réessaie." });
+    } finally {
+      loadingRef.current = false;
+      setLoading(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
+  // « Demander à Calia » depuis un passage surligné du cours.
+  useEffect(() => {
+    const onAskAI = (e: Event) => {
+      const message = (e as CustomEvent).detail?.message;
+      if (message) void ask(message);
+    };
     window.addEventListener("educalcul:ai-question", onAskAI);
     return () => window.removeEventListener("educalcul:ai-question", onAskAI);
-  }, []);
+  }, [ask]);
 
   useEffect(() => {
     if (open && !minimized) {
@@ -248,51 +256,12 @@ export default function AITutor() {
   }, [open, minimized]);
 
 
-  const sendMessage = useCallback(async () => {
+  const sendMessage = useCallback(() => {
     if (!input.trim() || loading) return;
-
-    const userMsg: Message = { role: "user", content: input.trim() };
-    const history = [...messages, userMsg];
-    setMessages(history);
+    const text = input;
     setInput("");
-    setLoading(true);
-
-    try {
-      const res = await fetch("/api/child/ai-tutor", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", ...(authId ? { "x-user-auth-id": authId } : {}) },
-        body: JSON.stringify({ messages: history.slice(-10), context: pageContext, contextKey: getContextKey() }),
-      });
-
-      const data = await res.json();
-
-      // Blocked by subscription
-      if (res.status === 403 && data.blocked) {
-        const newMessages = [...history, { role: "assistant" as const, content: `${data.reason}` }];
-        setMessages(newMessages);
-        setLoading(false);
-        return;
-      }
-
-      const newMessages = [
-        ...history,
-        { role: "assistant" as const, content: data.message || "Je suis là ! Réessaie." },
-      ];
-      setMessages(newMessages as any);
-      // Rafraîchit le compteur "questions IA / jour" (le message vient d'être
-      // comptabilisé côté serveur).
-      if (!isSupportMode) sub.refresh();
-    } catch (error) {
-      console.error("❌ Fetch error:", error);
-      const newMessages = [
-        ...history,
-        { role: "assistant" as const, content: "Oups, je n'ai pas pu répondre. Essaie encore !" },
-      ];
-      setMessages(newMessages as any);
-    } finally {
-      setLoading(false);
-    }
-  }, [input, loading, messages, pageContext, getContextKey, authId]);
+    void ask(text);
+  }, [input, loading, ask]);
 
   const handleKey = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -490,9 +459,11 @@ export default function AITutor() {
                       <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0 mt-1" />
                     )}
                     <div className="max-w-[82%] px-3.5 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap"
-                      style={msg.role === "assistant"
+                      style={msg.local
+                        ? { background: "rgba(239,68,68,0.12)", color: "#fca5a5", border: "1px solid rgba(239,68,68,0.25)", borderBottomLeftRadius: 4 }
+                        : msg.role === "assistant"
                         ? { background: "rgba(255,255,255,0.07)", color: "rgba(240,237,232,0.85)", borderBottomLeftRadius: 4 }
-                        : { background: "var(--greek-gold)", color: "#fff", borderBottomRightRadius: 4 }}>
+                        : { background: "var(--greek-gold)", color: "var(--greek-blue)", borderBottomRightRadius: 4 }}>
                       {/* Un message élève passe par renderUserContent, qui échappe
                           d'abord le HTML avant de rendre le LaTeX — donc pas de
                           surface XSS, mais un passage cité en $...$ (ex. via
@@ -534,7 +505,7 @@ export default function AITutor() {
                   <div className="rounded-2xl p-4 text-center" style={{ background: "rgba(197,161,72,0.07)", border: "1px solid rgba(197,161,72,0.2)" }}>
                     <Lock className="w-5 h-5 mx-auto mb-2" style={{ color: "var(--greek-gold)" }} />
                     <p className="text-sm font-bold mb-1" style={{ color: "rgba(240,237,232,0.9)" }}>Plan requis</p>
-                    <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.4)" }}>L'IA est disponible à partir du plan Premium.</p>
+                    <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.4)" }}>L&apos;IA est disponible à partir du plan Premium.</p>
                     <GlassButton href="/parent/subscription" variant="gold" size="sm">
                       Voir les abonnements <ArrowRight className="w-3 h-3" />
                     </GlassButton>

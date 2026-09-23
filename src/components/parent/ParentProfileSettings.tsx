@@ -1,5 +1,6 @@
 "use client";
 
+import GlassSwitch from "@/components/ui/GlassSwitch";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
@@ -409,7 +410,7 @@ export default function ParentProfileSettings({
 
               <div className="pt-2 text-right">
                 <GlassButton
-                  onClick={() => handleProfileUpdate({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                  type="submit"
                   variant="navy"
                   size="sm"
                   disabled={saving}
@@ -488,7 +489,7 @@ export default function ParentProfileSettings({
 
               <div className="pt-4 text-right">
                 <GlassButton
-                  onClick={() => handlePasswordUpdate({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                  type="submit"
                   variant="navy"
                   disabled={saving}
                 >
@@ -527,19 +528,14 @@ export default function ParentProfileSettings({
                     <p className="font-medium text-gray-800">{label}</p>
                     <p className="text-sm text-gray-500">{desc}</p>
                   </div>
-                  <label className="relative inline-flex items-center cursor-pointer">
-                    <input
-                      type="checkbox"
-                      className="sr-only peer"
-                      checked={notifications[key]}
-                      onChange={async () => {
-                        const updated = { ...notifications, [key]: !notifications[key] };
-                        setNotifications(updated);
-                        void updateMyProfile({ [key]: updated[key] });
-                      }}
-                    />
-                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-[rgba(197,161,72,0.25)] after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-[var(--greek-blue)]"></div>
-                  </label>
+                  <GlassSwitch
+                    checked={notifications[key]}
+                    label={label}
+                    onChange={(next) => {
+                      setNotifications({ ...notifications, [key]: next });
+                      void updateMyProfile({ [key]: next });
+                    }}
+                  />
                 </div>
               ))}
             </div>

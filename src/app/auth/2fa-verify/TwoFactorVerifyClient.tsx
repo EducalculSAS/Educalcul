@@ -168,7 +168,7 @@ function TwoFactorVerifyContent() {
           </div>
 
           <GlassButton
-            onClick={() => handleVerify({ preventDefault: () => {} } as unknown as React.FormEvent)}
+            type="submit"
             variant="navy"
             fullWidth
             disabled={loading || code.length < 6}

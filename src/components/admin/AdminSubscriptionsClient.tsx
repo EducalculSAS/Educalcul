@@ -1,5 +1,6 @@
 "use client";
 
+import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useState, useRef } from "react";
 import { BORDER_STYLES, NAME_COLORS } from "@/lib/badgeStyles";
 import { normalizeDifficulty } from "@/lib/difficultyLevels";
@@ -895,7 +896,7 @@ export default function AdminSubscriptionsClient({
                       { key: "feature_calia_classe", label: "Calia en classe (IA vocale qui enseigne à l'oral)" },
                     ].map(({ key, label }) => (
                       <label key={key} className="flex items-center gap-3 p-3 border border-[rgba(197,161,72,0.25)] rounded-xl cursor-pointer hover:border-[var(--greek-blue)] transition-colors">
-                        <input type="checkbox" checked={(planForm as Record<string, unknown>)[key] as boolean} onChange={e => setPlanForm({...planForm, [key]: e.target.checked})} className="w-4 h-4 text-[var(--greek-blue)] rounded" />
+                        <GlassSwitch checked={!!(planForm as Record<string, unknown>)[key]} onChange={(next) => setPlanForm({ ...planForm, [key]: next })} label={label} />
                         <span className="text-sm font-medium text-gray-700">{label}</span>
                       </label>
                     ))}
@@ -904,7 +905,7 @@ export default function AdminSubscriptionsClient({
               </div>
 
               <label className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl cursor-pointer border border-[rgba(197,161,72,0.25)] hover:border-green-400 transition-colors">
-                <input type="checkbox" checked={planForm.is_active} onChange={e => setPlanForm({...planForm, is_active: e.target.checked})} className="w-4 h-4 text-green-600 rounded" />
+                <GlassSwitch checked={planForm.is_active} onChange={(next) => setPlanForm({ ...planForm, is_active: next })} label="Plan actif" />
                 <span className="text-sm font-semibold text-gray-700">Plan actif (visible pour les utilisateurs)</span>
               </label>
 
@@ -967,12 +968,12 @@ export default function AdminSubscriptionsClient({
                 </div>
               </div>
               <label className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl cursor-pointer border border-[rgba(197,161,72,0.25)]">
-                <input type="checkbox" checked={refForm.is_active} onChange={e => setRefForm({...refForm, is_active: e.target.checked})} className="w-4 h-4 text-green-600 rounded" />
+                <GlassSwitch checked={refForm.is_active} onChange={(next) => setRefForm({ ...refForm, is_active: next })} label="Code actif" />
                 <span className="text-sm font-semibold text-gray-700">Code actif</span>
               </label>
               <div className="flex justify-end gap-3 pt-2">
                 <GlassButton size="sm" variant="ghost" onClick={() => setShowRefModal(false)}>Annuler</GlassButton>
-                <GlassButton size="sm" variant="navy" onClick={() => saveRef({ preventDefault: () => {} } as unknown as React.FormEvent)}>
+                <GlassButton size="sm" variant="navy" type="submit">
                   {editingCode ? "Mettre à jour" : "Créer le code"}
                 </GlassButton>
               </div>

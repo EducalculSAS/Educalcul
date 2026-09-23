@@ -895,27 +895,26 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
           </GlassButton>
         </div>
 
-        {/* Text Selection Popup — controlled imperatively via ref, never hidden by React */}
+        {/* Bulle « Demander à Calia » sur le texte surligné — pilotée par ref
+           (aucun re-rendu, la sélection reste intacte). Le mousedown est
+           neutralisé sur toute la bulle : cliquer ne doit pas effacer la
+           sélection avant l'envoi. */}
         <div
           ref={popupRef}
-          className="fixed bg-[var(--greek-blue)] text-white rounded-xl shadow-2xl px-4 py-2 z-[100] items-center gap-3 border border-[rgba(197,161,72,0.25)] pointer-events-auto"
-          style={{ display: "none", transform: "translate(-50%, -100%)" }}
+          onMouseDownCapture={(e) => e.preventDefault()}
+          className="fixed z-[100] items-center gap-1 p-1 rounded-full backdrop-blur-[24px] backdrop-saturate-[1.4] pointer-events-auto"
+          style={{
+            display: "none",
+            transform: "translate(-50%, calc(-100% - 6px))",
+            background: "rgba(15,30,58,0.78)",
+            border: "1px solid rgba(255,255,255,0.16)",
+            boxShadow: "0 10px 30px rgba(15,30,58,0.35), inset 0 1px 0 rgba(255,255,255,0.12)",
+          }}
         >
-          <button
-            onMouseDown={e => e.preventDefault()}
-            onClick={handleAskAI}
-            className="flex items-center gap-2 hover:bg-blue-700 px-3 py-1.5 rounded-lg transition-colors font-semibold text-sm whitespace-nowrap"
-          >
-            <Sparkles className="w-4 h-4" />
-            Demander à l'IA
-          </button>
-          <button
-            onMouseDown={e => e.preventDefault()}
-            onClick={hidePopup}
-            className="text-white/60 hover:text-white p-1 rounded-lg hover:bg-blue-700 transition-colors"
-          >
-            <X className="w-4 h-4" />
-          </button>
+          <GlassButton variant="gold" size="sm" onClick={handleAskAI} className="whitespace-nowrap">
+            <Sparkles className="w-4 h-4" /> Demander à Calia
+          </GlassButton>
+          <GlassIconButton icon={X} color="white" size="sm" onClick={hidePopup} aria-label="Fermer" />
         </div>
       </div>
     </div>

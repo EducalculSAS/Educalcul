@@ -96,7 +96,7 @@ export default function ForgotPassword() {
               </div>
 
               <GlassButton
-                onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                type="submit"
                 variant="gold"
                 fullWidth
                 disabled={status === "loading"}

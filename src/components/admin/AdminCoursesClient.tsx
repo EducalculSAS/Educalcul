@@ -1620,7 +1620,7 @@ export default function AdminCoursesClient({
                 <GlassButton
                   size="sm"
                   variant="navy"
-                  onClick={() => handleSaveFolder({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                  type="submit"
                 >
                   {editingFolder ? "Sauvegarder" : "Créer"}
                 </GlassButton>

@@ -1,5 +1,6 @@
 "use client";
 
+import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useState, useCallback } from "react";
 import { Star, Plus, Trash2, Edit, GripVertical, Check } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -178,8 +179,8 @@ export default function AdminReviewsClient({
           </p>
         </div>
 
-        <label className="flex items-center gap-2 text-sm text-gray-700">
-          <input type="checkbox" checked={ratingEnabled} onChange={e => setRatingEnabled(e.target.checked)} />
+        <label className="flex items-center gap-3 text-sm text-gray-700 cursor-pointer w-fit">
+          <GlassSwitch checked={ratingEnabled} onChange={setRatingEnabled} label="Note manuelle" />
           Utiliser une note manuelle au lieu de la moyenne calculée
         </label>
 
@@ -310,8 +311,8 @@ export default function AdminReviewsClient({
                   <input type="number" min={0} value={displayOrder} onChange={e => setDisplayOrder(Number(e.target.value))} className={inputCls} />
                 </div>
               </div>
-              <label className="flex items-center gap-2 text-sm text-gray-700">
-                <input type="checkbox" checked={isVerified} onChange={e => setIsVerified(e.target.checked)} />
+              <label className="flex items-center gap-3 text-sm text-gray-700 cursor-pointer w-fit">
+                <GlassSwitch checked={isVerified} onChange={setIsVerified} label="Avis vérifié" />
                 Avis vérifié (badge « Vérifié »)
               </label>
 
