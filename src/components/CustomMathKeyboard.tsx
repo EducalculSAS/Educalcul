@@ -83,6 +83,9 @@ interface CustomMathKeyboardProps {
    * se coller en bas du vrai viewport (position fixed, comportement normal
    * côté élève). */
   embedded?: boolean;
+  /** Onglet ouvert au départ (ex. "abc" dans le forum, où l'on écrit surtout
+   * du texte). Par défaut : le pavé numérique. */
+  initialTabId?: string;
 }
 
 interface AccentPopupState {
@@ -116,10 +119,12 @@ export default function CustomMathKeyboard({
   onKey,
   onClose,
   embedded,
+  initialTabId,
 }: CustomMathKeyboardProps) {
   const style = { ...DEFAULT_STYLE, ...(config.style || {}) };
   const tabs = config.tabs?.length ? config.tabs : [{ id: "num", label: "123", rows: [] }];
-  const [activeTabId, setActiveTabId] = useState(defaultTabId(tabs));
+  const startTab = () => (initialTabId && tabs.some((t) => t.id === initialTabId) ? initialTabId : defaultTabId(tabs));
+  const [activeTabId, setActiveTabId] = useState(startTab);
   const [closing, setClosing] = useState(false);
   const [shiftOn, setShiftOn] = useState(false);
   const [accentPopup, setAccentPopup] = useState<AccentPopupState | null>(null);
@@ -134,7 +139,7 @@ export default function CustomMathKeyboard({
   const startXRef = useRef(0);
 
   useEffect(() => {
-    if (!tabs.find((t) => t.id === activeTabId)) setActiveTabId(defaultTabId(tabs));
+    if (!tabs.find((t) => t.id === activeTabId)) setActiveTabId(startTab());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [config]);
 

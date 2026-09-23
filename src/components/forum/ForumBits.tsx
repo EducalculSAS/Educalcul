@@ -1,11 +1,13 @@
 "use client";
 
-import { useId, useState, type ReactNode } from "react";
+import { useId, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
-import { Eye, PenLine, Sigma } from "lucide-react";
+import { Eye, Keyboard, PenLine } from "lucide-react";
 import AvatarWithBorder, { type AvatarSize } from "@/components/AvatarWithBorder";
 import BadgeMinis from "@/components/BadgeMinis";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+import GlassIconButton from "@/components/ui/GlassIconButton";
+import ForumKeyboard from "./ForumKeyboard";
 import { getNameColor } from "@/lib/badgeStyles";
 import { relativeTime } from "@/lib/relativeTime";
 import type { ForumAuthor, ForumRole } from "@/lib/forumTypes";
@@ -104,6 +106,8 @@ export function Composer({
   label: string;
 }) {
   const [mode, setMode] = useState<"write" | "preview">("write");
+  const [keyboardOpen, setKeyboardOpen] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
   const id = useId();
   return (
     <div className="rounded-2xl border border-[rgba(197,161,72,0.3)] bg-white overflow-hidden focus-within:ring-2 focus-within:ring-[var(--greek-blue)]/25">
@@ -117,13 +121,29 @@ export function Composer({
             { id: "preview", label: <span className="inline-flex items-center gap-1.5"><Eye className="w-3.5 h-3.5" /> Aperçu</span> },
           ]}
         />
-        <span className={`text-[11px] tabular-nums ${value.length > max * 0.9 ? "text-orange-600" : "text-[var(--text-muted)]"}`}>
-          {value.length}/{max}
-        </span>
+        <div className="flex items-center gap-2">
+          <span className={`text-[11px] tabular-nums ${value.length > max * 0.9 ? "text-orange-600" : "text-[var(--text-muted)]"}`}>
+            {value.length}/{max}
+          </span>
+          <GlassIconButton
+            icon={Keyboard}
+            color={keyboardOpen ? "gold" : "navy"}
+            size="sm"
+            onClick={() => {
+              setMode("write");
+              setKeyboardOpen((v) => !v);
+              requestAnimationFrame(() => textareaRef.current?.focus({ preventScroll: true }));
+            }}
+            aria-label={keyboardOpen ? "Fermer le clavier" : "Ouvrir le clavier (formules et symboles)"}
+          />
+        </div>
       </div>
       {mode === "write" ? (
         <textarea
+          ref={textareaRef}
           id={id}
+          // Clavier du site ouvert : pas de clavier du téléphone par-dessus.
+          inputMode={keyboardOpen ? "none" : undefined}
           aria-label={label}
           value={value}
           onChange={(e) => onChange(e.target.value.slice(0, max))}
@@ -137,10 +157,14 @@ export function Composer({
           {value.trim() ? <ForumText text={value} /> : <p className="text-sm text-gray-400 italic">Rien à prévisualiser.</p>}
         </div>
       )}
-      <p className="px-4 pb-2 text-[11px] text-[var(--text-muted)] flex items-center gap-1.5">
-        <Sigma className="w-3 h-3" aria-hidden="true" />
-        Formules entre $ : <code className="px-1 rounded bg-gray-100">$\frac{"{"}1{"}"}{"{"}2{"}"}$</code> · gras : <code className="px-1 rounded bg-gray-100">**texte**</code>
-      </p>
+      <ForumKeyboard
+        open={keyboardOpen && mode === "write"}
+        onClose={() => setKeyboardOpen(false)}
+        textareaRef={textareaRef}
+        value={value}
+        onChange={onChange}
+        max={max}
+      />
     </div>
   );
 }
