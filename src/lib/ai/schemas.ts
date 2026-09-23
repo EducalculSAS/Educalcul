@@ -1380,21 +1380,28 @@ export function caliaClasseTurnSchema(): JsonSchemaContract {
     schema: {
       type: "object",
       properties: {
-        say: { type: "string", minLength: 1, maxLength: 400 },
-        action: {
-          type: ["object", "null"],
-          properties: {
-            kind: { type: "string", enum: ["highlight", "scroll_to", "point_at", "board_write", "board_clear", "ask_student_to_write", "next_lesson"] },
-            targetKind: { type: ["string", "null"], enum: ["heading", "paragraph", "figure", null] },
-            targetIndex: { type: ["integer", "null"], minimum: 0 },
-            latex: { type: ["string", "null"], minLength: 1, maxLength: 200 },
-            label: { type: ["string", "null"], minLength: 1, maxLength: 40 },
+        say: { type: "string", minLength: 1, maxLength: 900 },
+        // Gestes de la réplique, dans l'ordre : chacun se déclenche pendant la
+        // phrase n° atSentence de `say` (Calia se déplace en parlant).
+        actions: {
+          type: "array",
+          maxItems: 5,
+          items: {
+            type: "object",
+            properties: {
+              atSentence: { type: "integer", minimum: 0 },
+              kind: { type: "string", enum: ["point_at", "highlight", "scroll_to", "board_write", "board_clear", "ask_student_to_write", "next_lesson", "prev_lesson", "goto_lesson"] },
+              targetKind: { type: ["string", "null"], enum: ["heading", "paragraph", "figure", "exercise", null] },
+              targetIndex: { type: ["integer", "null"], minimum: 0 },
+              latex: { type: ["string", "null"], minLength: 1, maxLength: 200 },
+              label: { type: ["string", "null"], minLength: 1, maxLength: 40 },
+            },
+            required: ["atSentence", "kind", "targetKind", "targetIndex", "latex", "label"],
+            additionalProperties: false,
           },
-          required: ["kind", "targetKind", "targetIndex", "latex", "label"],
-          additionalProperties: false,
         },
       },
-      required: ["say", "action"],
+      required: ["say", "actions"],
       ...noExtra,
     },
   };

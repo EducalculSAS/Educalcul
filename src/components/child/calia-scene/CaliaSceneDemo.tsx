@@ -17,28 +17,31 @@ import { DEFAULT_CALIA_VOICE, isCaliaVoice, type CaliaVoiceId } from "@/lib/cali
 import { getMyProfile } from "@/lib/updateMyProfile";
 
 const HIGHLIGHT_CLASS = "calia-scene-highlight";
-const OUTLINE_SELECTORS: Record<"heading" | "paragraph" | "figure", string> = {
+const OUTLINE_SELECTORS: Record<"heading" | "paragraph" | "figure" | "exercise", string> = {
   heading: "h3, h4",
   paragraph: "p",
   figure: ".course-figure",
+  exercise: "[data-mini-exercise]",
 };
 
-type OutlineKind = "heading" | "paragraph" | "figure";
+type OutlineKind = "heading" | "paragraph" | "figure" | "exercise";
 interface OutlineItem { kind: OutlineKind; index: number; preview: string; el: HTMLElement }
 
 interface TurnAction {
-  kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear" | "ask_student_to_write" | "next_lesson";
+  atSentence?: number;
+  kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear" | "ask_student_to_write" | "next_lesson" | "prev_lesson" | "goto_lesson";
   targetKind: OutlineKind | null;
   targetIndex: number | null;
   latex: string | null;
   label: string | null;
 }
-interface TurnResult { say: string; action: TurnAction | null }
+interface TurnResult { say: string; actions?: TurnAction[]; action?: TurnAction | null }
 interface HistoryMsg { role: "user" | "assistant"; content: string }
 interface CaliaCourseContext {
+  courseId?: number | string | null;
   courseTitle: string;
   level?: string | null;
-  lessons: { title: string; current: boolean; exercises: { question: string; hint?: string | null; answer: string }[] }[];
+  lessons: { title: string; current: boolean; summary?: string; exercises: { question: string; hint?: string | null; answer: string }[] }[];
 }
 
 
@@ -80,7 +83,10 @@ function buildOutline(root: HTMLElement | null): OutlineItem[] {
   (Object.keys(OUTLINE_SELECTORS) as OutlineKind[]).forEach((kind) => {
     const els = root.querySelectorAll<HTMLElement>(OUTLINE_SELECTORS[kind]);
     els.forEach((el, index) => {
-      const preview = (el.textContent || "").trim().slice(0, 140);
+      // Élément invisible (masqué, replié, vide) : jamais proposé à Calia —
+      // elle pointait sinon des zones vides.
+      if (!el.offsetParent || el.getBoundingClientRect().height < 4) return;
+      const preview = (el.textContent || "").replace(/\s+/g, " ").trim().slice(0, 500);
       if (preview) items.push({ kind, index, preview, el });
     });
   });
@@ -96,6 +102,8 @@ export default function CaliaSceneDemo({
   contentRef,
   courseContext,
   onAdvanceLesson,
+  onPrevLesson,
+  onGoToLesson,
 }: {
   contentRef: RefObject<HTMLDivElement | null>;
   courseContext?: CaliaCourseContext;
@@ -103,6 +111,9 @@ export default function CaliaSceneDemo({
    * Calia peut seulement PARLER de la suite du cours (via courseContext),
    * jamais y faire passer l'eleve. */
   onAdvanceLesson?: () => void;
+  /** Leçon précédente / leçon n° (1 = première du cours) : Calia « tourne les pages ». */
+  onPrevLesson?: () => void;
+  onGoToLesson?: (lessonNumber: number) => void;
 }) {
   // "Calia en classe" est un argument de vente du plan Family — reservee
   // aux comptes (ou enfants d'un parent) dont l'abonnement inclut
@@ -119,6 +130,12 @@ export default function CaliaSceneDemo({
   const [shownWords, setShownWords] = useState<number | null>(null);
   const revealTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sayTokensRef = useRef<string[]>([]);
+  // Élément que Calia montre : le point et l'avatar le SUIVENT (défilement,
+  // redimensionnement) au lieu de rester figés à l'ancienne position.
+  const [pointerEl, setPointerEl] = useState<HTMLElement | null>(null);
+  // Gestes de la réplique en cours, déclenchés quand la transcription atteint
+  // leur phrase (Calia se déplace en parlant).
+  const pendingActionsRef = useRef<{ at: number; action: TurnAction }[]>([]);
   const showSay = (text: string) => {
     sayTokensRef.current = text.match(/\$[^$]*\$\S*\s*|\S+\s*/g) ?? [];
     setShownWords(0); // rien avant que la voix démarre
@@ -228,6 +245,8 @@ export default function CaliaSceneDemo({
     setSayText(null);
     stopReveal();
     setShownWords(null);
+    pendingActionsRef.current = [];
+    setPointerEl(null);
     setPointerRect(null);
     setBoardLines([]);
     setBoardOffset({ x: 0, y: 0 });
@@ -358,26 +377,33 @@ export default function CaliaSceneDemo({
     if (gen === speechGenRef.current) { setSpeaking(false); setShownWords(null); }
   };
 
-  const executeAction = (action: TurnAction | null) => {
+  const showElement = (el: HTMLElement) => {
     clearHighlight();
-    setPointerRect(null);
+    el.scrollIntoView({ behavior: "smooth", block: "center" });
+    el.classList.add(HIGHLIGHT_CLASS);
+    highlightedElRef.current = el;
+    setPointerEl(el);
+  };
+
+  const executeAction = (action: TurnAction | null) => {
     if (!action) return;
 
     if (action.kind === "board_clear") {
       setBoardLines([]);
       return;
     }
-
     if (action.kind === "ask_student_to_write") {
       setBoardWriteOpen(true);
       return;
     }
-
-    if (action.kind === "next_lesson") {
-      onAdvanceLesson?.();
+    if (action.kind === "next_lesson" || action.kind === "prev_lesson" || action.kind === "goto_lesson") {
+      clearHighlight();
+      setPointerEl(null);
+      if (action.kind === "next_lesson") onAdvanceLesson?.();
+      else if (action.kind === "prev_lesson") onPrevLesson?.();
+      else if (action.targetIndex !== null) onGoToLesson?.(action.targetIndex);
       return;
     }
-
     if (action.kind === "board_write") {
       if (!action.latex) return;
       const html = renderLatexInHTML(compileCourseBlock({ type: "display_math", latex: action.latex }, [], new Set()));
@@ -385,20 +411,47 @@ export default function CaliaSceneDemo({
       return;
     }
 
+    // highlight / scroll_to / point_at : l'élément est toujours MONTRÉ en
+    // entier (défilement, cadre, point et Calia à côté).
     if (!action.targetKind || action.targetIndex === null) return;
-    const outline = buildOutline(contentRef.current);
-    const target = outline.find((o) => o.kind === action.targetKind && o.index === action.targetIndex);
-    if (!target) return;
-
-    if (action.kind === "scroll_to") {
-      target.el.scrollIntoView({ behavior: "smooth", block: "center" });
-    } else if (action.kind === "highlight") {
-      target.el.classList.add(HIGHLIGHT_CLASS);
-      highlightedElRef.current = target.el;
-    } else if (action.kind === "point_at") {
-      setPointerRect(target.el.getBoundingClientRect());
-    }
+    const target = buildOutline(contentRef.current).find((o) => o.kind === action.targetKind && o.index === action.targetIndex);
+    if (target) showElement(target.el);
   };
+
+  /** Déclenche les gestes dont la phrase est atteinte (tous à la fin). */
+  const runDueActions = (reached: number) => {
+    const due = pendingActionsRef.current.filter((p) => p.at <= reached);
+    if (!due.length) return;
+    pendingActionsRef.current = pendingActionsRef.current.filter((p) => p.at > reached);
+    due.forEach((p) => executeAction(p.action));
+  };
+  useEffect(() => {
+    runDueActions(shownWords ?? Number.POSITIVE_INFINITY);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [shownWords]);
+
+  // Le point suit l'élément montré (défilement doux, redimensionnement).
+  useEffect(() => {
+    if (!pointerEl) {
+      setPointerRect(null);
+      return;
+    }
+    let raf = 0;
+    const update = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => setPointerRect(pointerEl.getBoundingClientRect()));
+    };
+    update();
+    window.addEventListener("scroll", update, true);
+    window.addEventListener("resize", update);
+    const tick = setInterval(update, 250); // défilement « smooth » en cours
+    return () => {
+      cancelAnimationFrame(raf);
+      clearInterval(tick);
+      window.removeEventListener("scroll", update, true);
+      window.removeEventListener("resize", update);
+    };
+  }, [pointerEl]);
 
   // Fait glisser l'avatar (bulle + Calia + micro) depuis son coin habituel
   // jusqu'a cote de l'element pointe, puis le fait revenir a sa place des que
@@ -456,7 +509,28 @@ export default function CaliaSceneDemo({
       const result = data as TurnResult;
       historyRef.current = [...historyRef.current, { role: "assistant", content: result.say }];
       showSay(result.say);
-      executeAction(result.action);
+      // Chaque geste attend le début de sa phrase dans la transcription.
+      const tokens = sayTokensRef.current;
+      const sentenceStarts = [0];
+      tokens.forEach((t, i) => { if (/[.!?]\s*$/.test(t) && i + 1 < tokens.length) sentenceStarts.push(i + 1); });
+      const actions = Array.isArray(result.actions) ? result.actions : result.action ? [result.action] : [];
+      clearHighlight();
+      setPointerEl(null);
+      const SHOW = new Set(["point_at", "highlight", "scroll_to"]);
+      const shownAt = new Set<number>();
+      pendingActionsRef.current = actions.slice(0, 5)
+        .map((action) => ({
+          at: sentenceStarts[Math.min(Math.max(0, action.atSentence ?? 0), sentenceStarts.length - 1)],
+          action,
+        }))
+        // Un seul élément montré par phrase (sinon saut instantané de l'un à l'autre).
+        .filter(({ at, action }) => {
+          if (!SHOW.has(action.kind)) return true;
+          if (shownAt.has(at)) return false;
+          shownAt.add(at);
+          return true;
+        });
+      runDueActions(0);
       speak(result.say);
     } catch (err: any) {
       if (sessionActiveRef.current) setError(err?.message || "Une erreur est survenue.");
@@ -689,9 +763,33 @@ export default function CaliaSceneDemo({
       <style jsx global>{`
         .${HIGHLIGHT_CLASS} {
           outline: 3px solid var(--greek-gold);
-          outline-offset: 4px;
-          border-radius: 6px;
-          transition: outline-color 0.3s ease;
+          outline-offset: 6px;
+          border-radius: 10px;
+          background: rgba(197, 161, 72, 0.12);
+          box-shadow: 0 0 0 10px rgba(197, 161, 72, 0.12), 0 8px 30px rgba(197, 161, 72, 0.25);
+          transition: background 0.4s ease, box-shadow 0.4s ease, outline-color 0.4s ease;
+          animation: calia-frame-in 0.45s ease;
+        }
+        @keyframes calia-frame-in {
+          from { outline-color: transparent; box-shadow: 0 0 0 0 rgba(197, 161, 72, 0); }
+        }
+        .calia-word {
+          display: inline;
+          animation: calia-word-in 0.32s ease both;
+        }
+        @keyframes calia-word-in {
+          from { opacity: 0; filter: blur(3px); }
+          to { opacity: 1; filter: blur(0); }
+        }
+        .calia-alive {
+          animation: calia-float 3.2s ease-in-out infinite;
+        }
+        @keyframes calia-float {
+          0%, 100% { translate: 0 0; }
+          50% { translate: 0 -5px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .calia-word, .calia-alive, .${HIGHLIGHT_CLASS} { animation: none; }
         }
         @keyframes calia-speak-pulse {
           0%, 100% { transform: scale(1); }
@@ -739,9 +837,9 @@ export default function CaliaSceneDemo({
             <div
               className="fixed z-[70] pointer-events-none"
               style={{
-                left: pointerRect.left + pointerRect.width / 2 - 8,
-                top: pointerRect.top - 10,
-                transition: "left 0.5s ease, top 0.5s ease",
+                left: pointerRect.left - 22,
+                top: pointerRect.top + Math.min(pointerRect.height / 2, 24) - 8,
+                transition: "left 0.35s ease, top 0.35s ease",
               }}
             >
               <div className="w-4 h-4 rounded-full animate-ping absolute" style={{ background: "var(--greek-gold)", opacity: 0.6 }} />
@@ -754,14 +852,17 @@ export default function CaliaSceneDemo({
           <div
             ref={clusterRef}
             className="fixed bottom-[88px] right-4 z-[70] flex flex-col items-end gap-3 max-w-[calc(100vw-2rem)]"
-            style={{ transform: `translate(${clusterOffset.x}px, ${clusterOffset.y}px)`, transition: "transform 0.6s ease" }}
+            style={{ transform: `translate(${clusterOffset.x}px, ${clusterOffset.y}px)`, transition: "transform 0.9s cubic-bezier(0.34, 1.3, 0.64, 1)" }}
           >
             {(sayText || error) && (
               <div
                 className="rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg text-sm max-w-[18rem]"
                 style={error ? { background: "#fef2f2", color: "#b91c1c", border: "1px solid #fecaca" } : { background: "var(--greek-blue)", color: "#fff" }}
               >
-                {error ? error : <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(shownWords === null ? sayText || "" : sayTokensRef.current.slice(0, shownWords).join("")) }} />}
+                {error ? error : <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(sayText || "") }} style={shownWords === null ? undefined : { display: "none" }} />}
+                {!error && shownWords !== null && sayTokensRef.current.slice(0, shownWords).map((t, i) => (
+                  <span key={i} className="calia-word" dangerouslySetInnerHTML={{ __html: renderLatexInHTML(t) }} />
+                ))}
               </div>
             )}
             {interim && (
@@ -772,7 +873,7 @@ export default function CaliaSceneDemo({
 
             <div className="flex items-center gap-2">
               <div
-                className="relative shrink-0"
+                className="relative shrink-0 calia-alive"
                 style={{
                   animation: speaking ? "calia-speak-pulse 0.6s ease-in-out infinite" : undefined,
                   transition: "transform 0.3s ease",

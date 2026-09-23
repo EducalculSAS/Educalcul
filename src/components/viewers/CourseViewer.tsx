@@ -158,12 +158,16 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   // mini-exercices. `chapters` est déjà entièrement en mémoire (content_json
   // chargé en un bloc), donc pas de coût réseau supplémentaire ici.
   const caliaCourseContext = useMemo(() => ({
+    courseId: (course as { id?: number | string }).id ?? null,
     courseTitle: course.title,
     level: course.level || null,
     lessons: chapters.flatMap((c, ci) =>
       c.lessons.map((l, li) => ({
         title: l.title,
         current: ci === currentChapterIndex && li === currentLessonIndex,
+        // Début du texte de chaque leçon : Calia connaît tout le cours, pas
+        // seulement la leçon affichée.
+        summary: String((l as { content?: string }).content ?? "").replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim().slice(0, 500),
         exercises: (l.exercises || []).map((e) => ({ question: e.question, hint: e.hint, answer: e.answer })),
       }))
     ),
@@ -649,7 +653,21 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
           </div>
 
           {/* Calia en classe — plan Family (verrouillee/upsell sinon, voir CaliaSceneDemo) */}
-          <CaliaSceneDemo contentRef={contentRef} courseContext={caliaCourseContext} onAdvanceLesson={advanceLessonForCalia} />
+          <CaliaSceneDemo
+            contentRef={contentRef}
+            courseContext={caliaCourseContext}
+            onAdvanceLesson={advanceLessonForCalia}
+            onPrevLesson={handlePrev}
+            onGoToLesson={(n) => {
+              // n = numéro de la leçon dans tout le cours (1 = première)
+              let k = n - 1;
+              for (let ci = 0; ci < chapters.length; ci++) {
+                const count = chapters[ci].lessons.length;
+                if (k < count) return selectLesson(ci, Math.max(0, k));
+                k -= count;
+              }
+            }}
+          />
 
           {/* Cercle progression SVG */}
           <div className="flex-shrink-0">
@@ -1188,6 +1206,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
           return (
             <div
               key={ex.id}
+              data-mini-exercise
               className="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm transition-all"
               style={{
                 borderColor: isCorrect

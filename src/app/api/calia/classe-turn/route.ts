@@ -6,6 +6,7 @@ import { caliaClasseTurnSchema } from "@/lib/ai/schemas";
 import { SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 import { getCaliaStudentContext } from "@/lib/calia/studentProfile";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { supabaseAdmin } from "@/lib/supabaseClient";
 
 type ToneBucket = "primaire" | "college" | "lycee";
 
@@ -71,20 +72,25 @@ OUVERTURE - uniquement si studentMessage vaut exactement "(le cours commence, ou
 - Ne pose PAS encore de question de cours a cette etape, ne mets aucune action de mise en scene, rends la main et attends la reponse de l'eleve
 - Exemple : "Salut, comment vas-tu ? On va commencer le cours ensemble, tu as des questions avant qu'on s'y mette ?"
 
-METHODE SOCRATIQUE - regles absolues (des le tour suivant, une fois le cours reellement lance) :
-- Ne donne JAMAIS la reponse finale d'un calcul ou d'un exercice, meme partiellement
-- Pose des questions, donne des indices, verifie toujours si ce que dit l'eleve est mathematiquement correct
-- 1 a 2 phrases maximum par reponse (say)
+ROLE : tu es une professeure, mais aussi une assistante. Tu fais avancer le cours ET tu reponds directement a toute question de l'eleve (definition, rappel, "je comprends pas", "explique encore") en t'appuyant sur ce qui est affiche.
+
+METHODE - des le tour suivant, une fois le cours reellement lance :
+- Pour un exercice ou un calcul a trouver : ne donne JAMAIS la reponse finale, meme partiellement ; pose des questions, donne des indices, verifie toujours si ce que dit l'eleve est mathematiquement correct
+- QUAND TU EXPLIQUES une notion ou un passage du cours : prends le temps, 3 a 6 phrases claires et concretes, avec un exemple si utile, en parcourant les elements affiches
+- Pour une relance, une confirmation ou une question a l'eleve : 1 a 2 phrases
 - Pas d'emojis, pas de markdown, pas de tirets longs
 - Ne commence jamais par "Okay", "Bien sur", "Je suis Calia"
 
-MISE EN SCENE - a chaque tour, tu peux (pas obligatoire) emettre UNE action pour accompagner ta phrase. Utilise-la des que tu references un element concret deja visible, pas seulement si l'eleve le demande :
-- highlight / scroll_to / point_at : cible un element de lessonOutline par targetKind + targetIndex (l'index correspond a la Nieme entree de ce type dans lessonOutline, en commencant a 0). Utilise scroll_to + highlight quand tu abordes une nouvelle partie de la lecon ; point_at pour attirer l'attention sur un element deja visible (formule, figure, paragraphe) des que tu le mentionnes.
+MISE EN SCENE - "actions" est une liste ORDONNEE (0 a 5 gestes). Chaque geste a atSentence = numero (a partir de 0) de la phrase de say pendant laquelle il se declenche : tu montres les choses AU MOMENT ou tu en parles, et tu te deplaces d'un element a l'autre au fil de ton explication.
+- REGLE D'OR : des que tu parles d'un element affiche (titre, paragraphe, formule, figure, mini-exercice), MONTRE-LE avec point_at au moment exact ou tu en parles. Ne decris jamais un passage sans le montrer. Une explication qui parcourt plusieurs elements = plusieurs point_at, un par phrase concernee.
+- point_at : Calia se place a cote de l'element, l'encadre et le pointe (la page defile toute seule jusqu'a lui). Cible un element de lessonOutline par targetKind + targetIndex EXACTEMENT comme ecrits dans lessonOutline ("[kind#index]") — jamais un index qui n'y figure pas. targetKind "exercise" = un mini-exercice de la lecon.
+- highlight / scroll_to : equivalents a point_at (l'element est toujours montre en entier).
 - board_write : ecris une ligne de calcul au tableau (champ latex, ex: "\\\\frac{3+2}{4}"), pour illustrer une derivation etape par etape. Ajoute un court "label" (2-4 mots, ex: "Etape 1 - developper") quand tu demarres une nouvelle etape, pour garder le tableau lisible.
 - board_clear : efface le tableau avant de commencer une nouvelle etape ou un nouvel exercice — utilise-la des que tu changes de sous-partie plutot que d'empiler indefiniment des lignes sans rapport entre elles.
 - ask_student_to_write : demande explicitement a l'eleve d'ecrire sa reponse au tableau (au clavier ou en dessinant) plutot que de la dire a l'oral — utile pour verifier qu'il sait poser un calcul, pas seulement le formuler. Une fois qu'il a ecrit et valide, tu recevras son texte dans studentMessage prefixe par "(L'eleve a ecrit au tableau : ...)" — verifie-le comme une reponse normale. S'il a dessine, une lecture automatique du dessin (vision IA, imparfaite sur l'ecriture manuscrite) t'est fournie dans studentMessage — traite-la comme une lecture possiblement fautive, pas une transcription certaine : si le contenu semble incoherent ou ambigu, demande a l'eleve de confirmer ou de reformuler a l'oral plutot que de juger directement.
+- prev_lesson : revient a la lecon precedente. goto_lesson : va a la lecon numero targetIndex de courseOutline (numerotation de courseOutline, a partir de 1) — pour "passer les pages" quand l'eleve le demande ou pour revoir une notion.
 - next_lesson : fait REELLEMENT avancer l'affichage a la lecon suivante du cours (ou termine le cours si c'etait la derniere). N'a aucun autre champ requis (targetKind/targetIndex/latex/label restent null). Utilise-la uniquement quand la lecon actuelle est terminee ET que l'eleve a confirme avoir compris — jamais en cours de route. Apres cette action, le prochain lessonOutline que tu recevras reflete deja la nouvelle lecon : n'en parle pas comme de la lecon actuelle avant ce prochain tour.
-- Si aucune action n'est utile ce tour-ci, action doit valoir null.
+- Si aucun geste n'est utile ce tour-ci, actions vaut [].
 
 Reponds UNIQUEMENT via le JSON demande, jamais de texte hors de ce format.`;
 
@@ -103,10 +109,12 @@ interface CourseContextExercise {
 interface CourseContextLesson {
   title: string;
   current: boolean;
+  summary?: string;
   exercises: CourseContextExercise[];
 }
 
 interface CourseContext {
+  courseId?: number | string | null;
   courseTitle: string;
   level?: string | null;
   lessons: CourseContextLesson[];
@@ -114,13 +122,27 @@ interface CourseContext {
 
 interface TurnResult {
   say: string;
-  action: null | {
-    kind: "highlight" | "scroll_to" | "point_at" | "board_write" | "board_clear" | "ask_student_to_write" | "next_lesson";
-    targetKind: "heading" | "paragraph" | "figure" | null;
+  actions: {
+    atSentence: number;
+    kind: string;
+    targetKind: string | null;
     targetIndex: number | null;
     latex: string | null;
     label: string | null;
-  };
+  }[];
+}
+
+/** Exercices et quiz publiés rattachés au cours (titres), pour que Calia les connaisse. */
+async function loadCoursePractice(courseId: number): Promise<string> {
+  const [{ data: ex }, { data: qz }] = await Promise.all([
+    supabaseAdmin.from("exercises").select("title, difficulty_level").eq("course_id", courseId).eq("status", "published").limit(20),
+    supabaseAdmin.from("quizzes").select("title").eq("course_id", courseId).eq("status", "published").limit(10),
+  ]);
+  const lines = [
+    ...(ex ?? []).map((e) => `- Exercice : ${e.title}${e.difficulty_level ? ` (${e.difficulty_level})` : ""}`),
+    ...(qz ?? []).map((q) => `- Quiz : ${q.title}`),
+  ];
+  return lines.length ? lines.join("\n") : "(aucun pour l'instant)";
 }
 
 function buildCourseOutlineText(courseContext: unknown): string {
@@ -134,7 +156,8 @@ function buildCourseOutlineText(courseContext: unknown): string {
       const exercisesText = (lesson.exercises || [])
         .map((ex, j) => `    - Mini-exercice ${j + 1}: ${ex.question}${ex.hint ? ` (indice: ${ex.hint})` : ""} [reponse interne, jamais a reveler: ${ex.answer}]`)
         .join("\n");
-      return `  ${i + 1}. ${lesson.title}${marker}${exercisesText ? `\n${exercisesText}` : ""}`;
+      const summary = lesson.summary ? `\n    Contenu : ${String(lesson.summary).slice(0, 500)}` : "";
+      return `  ${i + 1}. ${lesson.title}${marker}${summary}${exercisesText ? `\n${exercisesText}` : ""}`;
     })
     .join("\n");
 
@@ -147,17 +170,20 @@ export async function POST(req: Request) {
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     // Accès, limite et mémoire élève en parallèle (avant : l'un après l'autre).
     const cfg = RATE_LIMITS["calia:classe-turn"];
-    const [access, rl, studentProfileText] = await Promise.all([
+    const body = await req.json();
+    const courseId = Number((body?.courseContext as CourseContext | undefined)?.courseId);
+    const [access, rl, studentProfileText, practiceText] = await Promise.all([
       hasCaliaClasseAccess(me.authId),
       rateLimitWithBackoff(`calia:classe-turn:${me.authId}`, cfg.maxAttempts, cfg.windowMs),
       getCaliaStudentContext(me.id),
+      Number.isInteger(courseId) && courseId > 0 ? loadCoursePractice(courseId) : Promise.resolve("(aucun)"),
     ]);
     if (!access) {
       return NextResponse.json({ error: "Calia en classe necessite le plan Family." }, { status: 403 });
     }
     if (!rl.allowed) return NextResponse.json({ error: "Trop de tours, reessaie plus tard." }, { status: 429 });
 
-    const { lessonOutline, courseContext, liveExerciseDraft, history, studentMessage } = await req.json();
+    const { lessonOutline, courseContext, liveExerciseDraft, history, studentMessage } = body;
     if (!Array.isArray(lessonOutline) || typeof studentMessage !== "string" || !studentMessage.trim()) {
       return NextResponse.json({ error: "lessonOutline et studentMessage sont requis" }, { status: 400 });
     }
@@ -185,7 +211,7 @@ export async function POST(req: Request) {
           .join("\n")
       : "";
 
-    const prompt = `studentProfile:\n${studentProfileText}\n\ncourseOutline:\n${courseOutlineText}\n\nlessonOutline (lecon affichee a l'ecran) :\n${outlineText}\n\nliveExerciseDraft:\n${liveDraftText}\n\nHistorique recent:\n${historyText}\n\nL'eleve vient de dire: "${studentMessage.trim()}"\n\nReponds avec le JSON attendu.`;
+    const prompt = `studentProfile:\n${studentProfileText}\n\ncourseOutline:\n${courseOutlineText}\n\nExercices et quiz du cours (tu peux les citer et y renvoyer l'eleve) :\n${practiceText}\n\nlessonOutline (lecon affichee a l'ecran) :\n${outlineText}\n\nliveExerciseDraft:\n${liveDraftText}\n\nHistorique recent:\n${historyText}\n\nL'eleve vient de dire: "${studentMessage.trim()}"\n\nReponds avec le JSON attendu.`;
 
     // reasoning=false : une reponse socratique courte (1-2 phrases) n'a pas
     // besoin du mode "reasoning_effort: high" de Mistral (chaine de pensee
@@ -194,8 +220,8 @@ export async function POST(req: Request) {
     // Un tour vocal ne doit jamais bloquer l'élève : au-delà de 12 s (modèle
     // saturé), on répond tout de suite qu'il faut redire la question.
     const result = await Promise.race([
-      generateStructuredContentWithSchema<TurnResult>(prompt, systemPrompt, caliaClasseTurnSchema(), 0.6, 500, false),
-      new Promise<null>((resolve) => setTimeout(() => resolve(null), 12_000)),
+      generateStructuredContentWithSchema<TurnResult>(prompt, systemPrompt, caliaClasseTurnSchema(), 0.6, 1100, false),
+      new Promise<null>((resolve) => setTimeout(() => resolve(null), 15_000)),
     ]);
     if (!result || typeof (result as TurnResult).say !== "string") {
       return NextResponse.json({ error: "Calia n'a pas entendu, redis-moi ta question." }, { status: 503 });
