@@ -16,7 +16,9 @@ import {
   Copy,
   CheckCheck,
   Users,
+  Undo2,
 } from "lucide-react";
+import GlassDialog from "@/components/ui/GlassDialog";
 import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/components/Toast";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -85,6 +87,38 @@ function SubscriptionPageContent({
   const [signupData, setSignupData] = useState<any>(null);
   const [customProcessing, setCustomProcessing] = useState(false);
   const [pricingConfig] = useState<PricingConfig>(initialPricingConfig);
+  // Fonction de rétractation (14 jours après la souscription, voir src/lib/withdrawal.ts)
+  const [withdrawal, setWithdrawal] = useState<{ deadline: string; refundCents: number; planName: string } | null>(null);
+  const [withdrawOpen, setWithdrawOpen] = useState(false);
+  const [withdrawing, setWithdrawing] = useState(false);
+
+  useEffect(() => {
+    if (isNewSignup || !initialCurrentPlan?.stripe_subscription_id || initialCurrentPlan?.status === "cancelled") return;
+    let alive = true;
+    fetch("/api/parent/withdrawal")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((q) => { if (alive && q?.eligible) setWithdrawal(q); })
+      .catch(() => {});
+    return () => { alive = false; };
+  }, [isNewSignup, initialCurrentPlan]);
+
+  const confirmWithdrawal = async () => {
+    setWithdrawing(true);
+    try {
+      const res = await fetch("/api/parent/withdrawal", { method: "POST" });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        toastError(data.error || "La rétractation n'a pas pu être enregistrée.");
+        return;
+      }
+      toastSuccess("Rétractation enregistrée. Un accusé de réception vous a été envoyé par email.");
+      setWithdrawOpen(false);
+      setWithdrawal(null);
+      router.refresh();
+    } finally {
+      setWithdrawing(false);
+    }
+  };
 
   useEffect(() => {
     if (isNewSignup) {
@@ -429,7 +463,49 @@ function SubscriptionPageContent({
                 )}
               </div>
             )}
+            {withdrawal && (
+              <div className="mt-5 pt-4 border-t border-[rgba(197,161,72,0.2)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                <p className="text-sm text-[var(--text-muted)]">
+                  Vous pouvez vous rétracter jusqu’au{" "}
+                  <strong className="text-[var(--greek-blue)]">{new Date(withdrawal.deadline).toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}</strong>, sans justification.
+                </p>
+                <GlassButton onClick={() => setWithdrawOpen(true)} variant="outline" size="sm" className="whitespace-nowrap">
+                  <Undo2 className="w-4 h-4" />
+                  Se rétracter du contrat ici
+                </GlassButton>
+              </div>
+            )}
           </div>
+        )}
+
+        {withdrawOpen && withdrawal && (
+          <GlassDialog
+            title="Se rétracter du contrat"
+            onClose={() => !withdrawing && setWithdrawOpen(false)}
+            footer={
+              <>
+                <GlassButton onClick={() => setWithdrawOpen(false)} variant="ghost" size="sm" disabled={withdrawing}>Annuler</GlassButton>
+                <GlassButton onClick={confirmWithdrawal} variant="danger" size="sm" disabled={withdrawing}>
+                  {withdrawing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Undo2 className="w-4 h-4" />}
+                  Confirmer la rétractation
+                </GlassButton>
+              </>
+            }
+          >
+            <div className="space-y-3 text-sm text-[var(--text-dark)]">
+              <p>Vous vous rétractez de votre abonnement <strong>{withdrawal.planName}</strong> ({authEmail}).</p>
+              <ul className="space-y-1.5 text-[var(--text-muted)] list-disc pl-5">
+                <li>L’abonnement est arrêté immédiatement, aucun nouveau prélèvement n’aura lieu.</li>
+                <li>
+                  {withdrawal.refundCents > 0
+                    ? <>Remboursement de <strong className="text-[var(--greek-blue)]">{(withdrawal.refundCents / 100).toFixed(2).replace(".", ",")} €</strong> au prorata de la période non utilisée, sous 5 à 10 jours ouvrés.</>
+                    : "Aucun montant n'a été prélevé : il n'y a rien à rembourser."}
+                </li>
+                <li>Votre compte et la progression de vos enfants sont conservés.</li>
+              </ul>
+              <p className="text-xs text-[var(--text-muted)]">Un accusé de réception vous sera envoyé par email.</p>
+            </div>
+          </GlassDialog>
         )}
 
         {/* Parrainage reward banner (only for normal flow) */}

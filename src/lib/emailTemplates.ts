@@ -490,6 +490,34 @@ export function subscriptionEndedEmail(firstName: string, planName: string) {
   };
 }
 
+/** Accusé de réception de la rétractation, sur support durable (directive (UE) 2023/2673). */
+export function withdrawalConfirmedEmail(firstName: string, planName: string, requestedAt: string, refund: string | null) {
+  const rows: [string, string][] = [["Contrat", `Abonnement ${planName}`], ["Rétractation reçue le", requestedAt], ["Remboursement", refund ?? "Aucun montant prélevé"]];
+  return {
+    subject: "Accusé de réception de votre rétractation",
+    textPart: `Bonjour ${firstName},
+
+Nous avons bien reçu, le ${requestedAt}, votre rétractation du contrat d'abonnement ${planName}. L'abonnement est arrêté et aucun nouveau prélèvement n'aura lieu.${refund ? `
+Remboursement : ${refund}, sur le moyen de paiement utilisé, sous 5 à 10 jours ouvrés.` : ""}
+
+Votre compte et la progression de vos enfants sont conservés.
+
+L'équipe Educalcul`,
+    htmlPart: buildEmailHtml({
+      title: "Rétractation enregistrée",
+      preheader: `Rétractation reçue le ${requestedAt}`,
+      body: `
+        ${hello(firstName)}
+        ${p("Nous avons bien reçu votre rétractation. Votre abonnement est arrêté et aucun nouveau prélèvement n'aura lieu.")}
+        ${emailDetails(rows)}
+        ${refund ? emailCallout(`Le remboursement de <strong>${escapeHtml(refund)}</strong> (au prorata de la période non utilisée, comme prévu par nos CGV) est versé sur le moyen de paiement utilisé, sous 5 à 10 jours ouvrés.`, "success") : ""}
+        ${p("Votre compte et la progression de vos enfants sont conservés : vous pouvez vous réabonner à tout moment.", true)}
+      `,
+      cta: { label: "Mon abonnement", url: SUB_URL },
+    }),
+  };
+}
+
 // ── Rappels légaux (reconduction, inactivité) ───────────────────────────────
 
 /** Rappel avant la reconduction tacite d'un abonnement annuel (Code de la consommation, art. L.215-1). */

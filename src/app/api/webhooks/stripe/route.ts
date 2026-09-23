@@ -262,7 +262,8 @@ export async function POST(req: Request) {
         }).eq("stripe_subscription_id", sub.id).select("id");
         // Aucune ligne : ancien abonnement remplacé par un changement de
         // formule, ou compte supprimé : pas d'email « abonnement terminé ».
-        if (ended?.length) {
+        // Rétractation : son propre email a déjà été envoyé (src/lib/withdrawal.ts).
+        if (ended?.length && sub.metadata?.withdrawn !== "true") {
           const subscriber = await getSubscriber("stripe_subscription_id", sub.id);
           if (subscriber) mail(subscriber, subscriptionEndedEmail(subscriber.firstName, subscriber.planName));
         }
