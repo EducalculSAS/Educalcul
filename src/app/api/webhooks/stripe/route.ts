@@ -2,25 +2,40 @@ import { NextResponse } from "next/server";
 import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
-import { buildEmailHtml, EMAIL_BASE_URL, welcomeEmail } from "@/lib/emailTemplates";
+import {
+  cancellationRevokedEmail, cancellationScheduledEmail, paymentFailedEmail, paymentSucceededEmail,
+  subscriptionEndedEmail, trialStartedEmail, welcomeEmail,
+} from "@/lib/emailTemplates";
 import { notify } from "@/lib/notify";
 import Stripe from "stripe";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
-async function getUserByCustomerId(customerId: string) {
+const frDate = (d: string | number | null | undefined) =>
+  d ? new Date(typeof d === "number" ? d * 1000 : d).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris" }) : null;
+
+/** Le parent derrière un abonnement (par client ou par abonnement Stripe), avec sa formule. */
+async function getSubscriber(column: "stripe_customer_id" | "stripe_subscription_id", value: string) {
   const { data } = await supabaseAdmin
     .from("subscriptions")
-    .select("user_id")
-    .eq("stripe_customer_id", customerId)
+    .select("user_id, plan_id, current_period_end")
+    .eq(column, value)
     .maybeSingle();
   if (!data?.user_id) return null;
-  const { data: profile } = await supabaseAdmin
-    .from("users")
-    .select("first_name, email")
-    .eq("auth_id", data.user_id)
-    .maybeSingle();
-  return profile ? { ...profile, authId: data.user_id } : null;
+  const [{ data: profile }, { data: plan }] = await Promise.all([
+    supabaseAdmin.from("users").select("first_name, email").eq("auth_id", data.user_id).maybeSingle(),
+    supabaseAdmin.from("subscription_plans").select("name").eq("id", data.plan_id ?? -1).maybeSingle(),
+  ]);
+  if (!profile?.email) return null;
+  return {
+    firstName: (profile.first_name as string) || "",
+    email: profile.email as string,
+    authId: data.user_id as string,
+    planName: (plan?.name as string) || "Educalcul",
+  };
 }
+
+const mail = (to: { email: string; firstName: string }, tmpl: { subject: string; textPart: string; htmlPart: string }) =>
+  sendEmail({ toEmail: to.email, toName: to.firstName || "Utilisateur", ...tmpl }).catch(console.error);
 
 export async function POST(req: Request) {
   const body = await req.text();
@@ -154,6 +169,17 @@ export async function POST(req: Request) {
           updated_at: new Date().toISOString(),
         }, { onConflict: "user_id" });
 
+        // Essai gratuit : aucun paiement donc aucun autre email. On annonce
+        // la fin de l'essai et le montant du premier prélèvement.
+        if (stripeSub?.status === "trialing" && stripeSub.trial_end) {
+          const subscriber = await getSubscriber("stripe_subscription_id", stripeSub.id);
+          const price = stripeSub.items?.data?.[0]?.price;
+          if (subscriber && price?.unit_amount != null) {
+            const amount = `${(price.unit_amount / 100).toFixed(2).replace(".", ",")} €${price.recurring?.interval === "year" ? " / an" : " / mois"}`;
+            mail(subscriber, trialStartedEmail(subscriber.firstName, subscriber.planName, frDate(stripeSub.trial_end)!, amount));
+          }
+        }
+
         // Enregistre l'usage du code de parrainage, mais NE recompense PAS
         // encore le parrain ici : cet evenement se declenche aussi pour un
         // simple debut d'essai (0€ preleve). La recompense (10% pour le
@@ -186,23 +212,60 @@ export async function POST(req: Request) {
         // ecrit le VRAI statut Stripe et fait perdre l'acces avant l'heure :
         // partout ailleurs dans l'app, seul status === "active" est reconnu.
         const isEntitled = sub.status === "active" || sub.status === "trialing";
+        // Une résiliation programmée arrive soit en cancel_at_period_end,
+        // soit en date de fin (cancel_at) selon l'endroit où elle est faite.
+        const scheduled = !!sub.cancel_at_period_end || !!sub.cancel_at;
         const update: Record<string, any> = {
           status: isEntitled ? "active" : sub.status,
-          cancel_at_period_end: sub.cancel_at_period_end,
+          cancel_at_period_end: scheduled,
           updated_at: new Date().toISOString(),
         };
         if (rawPeriodEnd) update.current_period_end = new Date(rawPeriodEnd * 1000).toISOString();
         await supabaseAdmin.from("subscriptions").update(update).eq("stripe_subscription_id", sub.id);
+
+        // Confirmation écrite de la résiliation avec sa date d'effet
+        // (Code de la consommation, art. L.215-1-1), ou de son annulation.
+        const prev = (event.data.previous_attributes || {}) as Partial<Stripe.Subscription>;
+        if (isEntitled && ("cancel_at_period_end" in prev || "cancel_at" in prev)) {
+          // Pendant un essai, Stripe remplit aussi cancel_at en même temps que
+          // cancel_at_period_end : une date de fin qui n'apparaît pas dans les
+          // anciennes valeurs en découle, elle n'existait pas avant.
+          const periodEndChanged = "cancel_at_period_end" in prev;
+          const wasScheduled = !!(periodEndChanged ? prev.cancel_at_period_end : sub.cancel_at_period_end)
+            || !!("cancel_at" in prev ? prev.cancel_at : periodEndChanged ? null : sub.cancel_at);
+          if (wasScheduled !== scheduled) {
+            const subscriber = await getSubscriber("stripe_subscription_id", sub.id);
+            const endDate = frDate(sub.cancel_at || rawPeriodEnd);
+            if (subscriber) {
+              mail(subscriber, scheduled
+                ? cancellationScheduledEmail(subscriber.firstName, subscriber.planName, endDate || "la fin de la période en cours")
+                : cancellationRevokedEmail(subscriber.firstName, subscriber.planName, endDate));
+              notify({
+                userId: subscriber.authId,
+                type: "subscription",
+                title: scheduled ? "Résiliation confirmée" : "Abonnement réactivé",
+                body: scheduled ? `Accès jusqu'au ${endDate}` : "Votre abonnement continue",
+                link: "/parent/subscription",
+              });
+            }
+          }
+        }
         break;
       }
 
       // ── Subscription cancelled ──────────────────────────────────────────
       case "customer.subscription.deleted": {
         const sub = event.data.object as Stripe.Subscription;
-        await supabaseAdmin.from("subscriptions").update({
+        const { data: ended } = await supabaseAdmin.from("subscriptions").update({
           status: "cancelled",
           updated_at: new Date().toISOString(),
-        }).eq("stripe_subscription_id", sub.id);
+        }).eq("stripe_subscription_id", sub.id).select("id");
+        // Aucune ligne : ancien abonnement remplacé par un changement de
+        // formule, ou compte supprimé : pas d'email « abonnement terminé ».
+        if (ended?.length) {
+          const subscriber = await getSubscriber("stripe_subscription_id", sub.id);
+          if (subscriber) mail(subscriber, subscriptionEndedEmail(subscriber.firstName, subscriber.planName));
+        }
         break;
       }
 
@@ -271,21 +334,12 @@ export async function POST(req: Request) {
 
         // Email facture + notification — seulement pour un vrai montant
         // preleve (une facture d'essai a 0€ n'a rien a "confirmer").
-        const user = await getUserByCustomerId(invoice.customer as string);
+        const user = await getSubscriber("stripe_customer_id", invoice.customer as string);
         if (user && invoice.hosted_invoice_url && isRealPayment) {
-          const amount = (invoice.amount_paid / 100).toFixed(2);
-          sendEmail({
-            toEmail: user.email,
-            toName: user.first_name || "Utilisateur",
-            subject: "Votre paiement a été confirmé",
-            textPart: `Bonjour ${user.first_name},\n\nVotre paiement de ${amount}€ a bien été enregistré.\n\nL'équipe Educalcul`,
-            htmlPart: buildEmailHtml({
-              title: "Paiement confirmé",
-              body: `<p>Bonjour <strong>${user.first_name}</strong>,</p><p>Votre paiement de <strong>${amount} €</strong> a bien été enregistré. Votre accès est actif.</p>`,
-              cta: { label: "Voir ma facture", url: invoice.hosted_invoice_url },
-            }),
-          }).catch(console.error);
-          notify({ userId: user.authId, type: "payment", title: "Paiement confirmé", body: `${amount} € encaissés`, link: "/parent/subscription" });
+          const amount = `${(invoice.amount_paid / 100).toFixed(2).replace(".", ",")} €`;
+          const nextDate = frDate(invoice.lines?.data?.[0]?.period?.end);
+          mail(user, paymentSucceededEmail(user.firstName, amount, user.planName, nextDate, invoice.hosted_invoice_url));
+          notify({ userId: user.authId, type: "payment", title: "Paiement confirmé", body: `${amount} encaissés`, link: "/parent/subscription" });
         }
         break;
       }
@@ -305,27 +359,9 @@ export async function POST(req: Request) {
         }
 
         // Email paiement échoué + notification urgente
-        const user = await getUserByCustomerId(invoice.customer as string);
+        const user = await getSubscriber("stripe_customer_id", invoice.customer as string);
         if (user) {
-          sendEmail({
-            toEmail: user.email,
-            toName: user.first_name || "Utilisateur",
-            subject: "Problème avec votre paiement Educalcul",
-            textPart: `Bonjour ${user.first_name},\n\nNous n'avons pas pu encaisser votre paiement. Veuillez mettre à jour votre moyen de paiement.\n\nL'équipe Educalcul`,
-            htmlPart: buildEmailHtml({
-              title: "Problème de paiement",
-              body: `
-                <p>Bonjour <strong>${user.first_name}</strong>,</p>
-                <p>Nous n'avons pas pu traiter votre paiement pour votre abonnement Educalcul.</p>
-                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:16px 0;">
-                  <tr><td style="background:#fff3cd;border-left:3px solid #c5a148;padding:14px 18px;border-radius:0 8px 8px 0;">
-                    <p style="margin:0;font-size:13px;color:#92400e;">Mettez à jour votre moyen de paiement pour conserver votre accès à Educalcul.</p>
-                  </td></tr>
-                </table>
-              `,
-              cta: { label: "Mettre à jour mon paiement", url: `${EMAIL_BASE_URL}/parent/subscription` },
-            }),
-          }).catch(console.error);
+          mail(user, paymentFailedEmail(user.firstName));
           notify({ userId: user.authId, type: "payment_failed", title: "Échec du paiement", body: "Mettez à jour votre moyen de paiement", link: "/parent/subscription" });
         }
         break;
