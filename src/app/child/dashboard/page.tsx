@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getServerUser } from "@/lib/supabase/server";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
+import { getCatalogLevelLabel } from "@/lib/constants";
 import {
   BookOpen, BrainCircuit, PenTool, Trophy, ArrowRight,
   Play, MessageSquare, Star, CheckCircle, Zap, Gamepad2, type LucideIcon,
@@ -102,7 +103,7 @@ export default async function ChildDashboard() {
                 Bonjour, {userData.first_name} !
               </h1>
               <p className="text-xl opacity-90 flex items-center gap-2">
-                <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-3 py-1 rounded-full">{level || "Niveau"}</span>
+                <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-3 py-1 rounded-full">{level ? getCatalogLevelLabel(level) : "Niveau"}</span>
                 <span>Prêt à apprendre ?</span>
               </p>
             </div>
