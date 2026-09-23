@@ -45,17 +45,20 @@ export async function GET(req: Request) {
         .from("user_exercise_attempts")
         .select("*, exercises(title)")
         .eq("user_id", internalId)
-        .order("completed_at", { ascending: false }),
+        .order("completed_at", { ascending: false })
+        .limit(200),
       supabaseAdmin
         .from("user_quiz_attempts")
         .select("*, quizzes(title)")
         .eq("user_id", internalId)
-        .order("completed_at", { ascending: false }),
+        .order("completed_at", { ascending: false })
+        .limit(200),
       supabaseAdmin
         .from("user_course_progress")
         .select("*, courses(title)")
         .eq("user_id", internalId)
-        .order("completed_at", { ascending: false }),
+        .order("completed_at", { ascending: false })
+        .limit(200),
     ]);
 
     if (exError || qzError || coError) {

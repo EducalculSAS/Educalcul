@@ -1,16 +1,17 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { selectAllPages } from "@/lib/selectAllPages";
 
 export async function fetchSupportTickets(viewMode: "active" | "archived") {
-  let query = supabaseAdmin.from("support_tickets").select("*");
-
-  if (viewMode === "archived") {
-    query = query.eq("is_archived", true).order("archived_at", { ascending: false });
-  } else {
-    query = query.eq("is_archived", false).order("updated_at", { ascending: false });
-  }
-
-  const { data, error } = await query;
-  if (error) throw error;
+  // Paginé : un simple select s'arrêtait aux 1000 premiers tickets.
+  const data = await selectAllPages<any>((from, to) => {
+    const query = supabaseAdmin.from("support_tickets").select("*");
+    return (viewMode === "archived"
+      ? query.eq("is_archived", true).order("archived_at", { ascending: false })
+      : query.eq("is_archived", false).order("updated_at", { ascending: false })
+    )
+      .order("id")
+      .range(from, to);
+  });
 
   if (viewMode !== "archived" && data) {
     const statusOrder: Record<string, number> = {

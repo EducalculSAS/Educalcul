@@ -1,4 +1,5 @@
 import type { ReviewCardData } from "@/lib/manualReviews";
+import { Check } from "lucide-react";
 import type { ReviewRatingOverride } from "@/lib/reviewRatingOverride";
 
 const TP_GREEN = "#00b67a";
@@ -173,7 +174,7 @@ export default function TestimonialsSection({
                   <p className="text-[10px]" style={{ color: "#999" }}>{r.total_reviews} avis</p>
                 </div>
                 {r.is_verified && (
-                  <span className="ml-auto text-[10px] font-semibold flex-shrink-0" style={{ color: TP_GREEN }}>✓ Vérifié</span>
+                  <span className="ml-auto text-[10px] font-semibold flex-shrink-0" style={{ color: TP_GREEN }}><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Vérifié</span>
                 )}
               </div>
             </div>

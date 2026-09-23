@@ -121,8 +121,7 @@ export default function AdminProfileClient({ initialFormData }: {
           animation:adm-glow 2s ease-in-out infinite, adm-hue 6s linear infinite;
         }
         .border-admin::after {
-          content:"👑"; position:absolute; top:-18px; right:-8px;
-          font-size:20px; animation:adm-crown 2s ease-in-out infinite; z-index:10;
+          content:none;
         }
 
         /* Text class — admin rainbow */
@@ -228,8 +227,8 @@ export default function AdminProfileClient({ initialFormData }: {
                         className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
                         <option value="none">Aucun style</option>
-                        <optgroup label="✦ Admin exclusif">
-                          <option value="text-admin">👑 Admin (arc-en-ciel)</option>
+                        <optgroup label="Admin exclusif">
+                          <option value="text-admin">Admin (arc-en-ciel)</option>
                         </optgroup>
                         <optgroup label="Abonnements">
                           <option value="name-elite">Élite (obsidian violet-cyan)</option>

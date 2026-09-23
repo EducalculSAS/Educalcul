@@ -1,21 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
-import {
-  CheckCircle,
-  XCircle,
-  ArrowRight,
-  ArrowLeft,
-  RotateCcw,
-  Trophy,
-  Loader2,
-  Sparkles,
-  Type,
-  HelpCircle,
-  Clock,
-  Eye,
-  AlertTriangle,
-} from "lucide-react";
+import { CheckCircle, XCircle, ArrowRight, ArrowLeft, RotateCcw, Trophy, Loader2, Sparkles, Type, HelpCircle, Clock, Eye, AlertTriangle } from "lucide-react";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -824,7 +810,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                             >
                               <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "var(--greek-gold)" }} />
                               <div className="flex-1">
-                                <p className="font-bold text-sm">Excellent ! ✨</p>
+                                <p className="font-bold text-sm">Excellent !</p>
                                 {inline.feedback && (
                                   <div
                                     className="text-sm mt-1.5 opacity-90 leading-relaxed"

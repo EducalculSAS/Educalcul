@@ -1,3 +1,4 @@
+import { selectAllPages } from "@/lib/selectAllPages";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
 async function safeCount(table: string, filter?: (q: any) => any): Promise<number> {
@@ -59,38 +60,28 @@ export async function fetchAdminReports() {
     safeCount("users", q => q.eq("status", "inactive")),
   ]);
 
-  // Top pays
+  // Top pays + score moyen des quiz : agrégés par la base (fonction SQL
+  // admin_report_stats) — avant, lignes brutes plafonnées à 1000 et moyenne
+  // calculée sur 200 tentatives prises au hasard.
   let topCountries: { country: string; count: number }[] = [];
-  try {
-    const { data: countryData } = await supabaseAdmin
-      .from("users")
-      .select("last_login_country")
-      .not("last_login_country", "is", null);
-    const map: Record<string, number> = {};
-    (countryData || []).forEach((u: any) => {
-      if (u.last_login_country) map[u.last_login_country] = (map[u.last_login_country] || 0) + 1;
-    });
-    topCountries = Object.entries(map)
-      .map(([country, count]) => ({ country, count }))
-      .sort((a, b) => b.count - a.count)
-      .slice(0, 5);
-  } catch {}
-
-  // ── Avg quiz score ───────────────────────────────────────────────────────
   let avgQuizScore: number | null = null;
   try {
-    const { data: scores } = await supabaseAdmin
-      .from("user_quiz_attempts").select("score").not("score", "is", null).limit(200);
-    if (scores && scores.length > 0) {
-      avgQuizScore = parseFloat((scores.reduce((a: number, c: any) => a + c.score, 0) / scores.length).toFixed(1));
-    }
+    const { data: agg } = await supabaseAdmin.rpc("admin_report_stats");
+    const stats = (agg ?? {}) as { top_countries?: { country: string; count: number }[]; avg_quiz_score?: number | null };
+    topCountries = stats.top_countries ?? [];
+    avgQuizScore = stats.avg_quiz_score != null ? Number(stats.avg_quiz_score) : null;
   } catch {}
 
   // ── Registrations by week (last 8 weeks) ────────────────────────────────
-  const { data: recentUsers } = await supabaseAdmin
-    .from("users")
-    .select("created_at")
-    .gte("created_at", eightWeeksAgo.toISOString());
+  // Paginé : au lancement, plus de 1000 inscriptions en 8 semaines.
+  const recentUsers = await selectAllPages<{ created_at: string }>((from, to) =>
+    supabaseAdmin
+      .from("users")
+      .select("created_at")
+      .gte("created_at", eightWeeksAgo.toISOString())
+      .order("id")
+      .range(from, to),
+  );
 
   const weekCounts: Record<string, number> = {};
   for (let i = 7; i >= 0; i--) {

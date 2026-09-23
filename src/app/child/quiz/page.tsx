@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
 import { Trophy } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
@@ -18,10 +19,17 @@ export default async function ChildQuizPage({
   const { course: filterCourseId } = await searchParams;
 
   // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
-  const [{ data: userData }, allFolders, { data: attempts }] = await Promise.all([
+  const [{ data: userData }, allFolders, attempts] = await Promise.all([
     supabaseAdmin.from("users").select("grade_level").eq("id", authUser.id).maybeSingle(),
     loadPublishedFolders<CatalogFolder & Record<string, unknown>>("quiz_folders", "*"),
-    supabaseAdmin.from("user_quiz_attempts").select("quiz_id, attempts_history").eq("user_id", authUser.id),
+    selectAllPages<{ quiz_id: string; attempts_history: any[] | null }>((from, to) =>
+      supabaseAdmin
+        .from("user_quiz_attempts")
+        .select("quiz_id, attempts_history")
+        .eq("user_id", authUser.id)
+        .order("id")
+        .range(from, to),
+    ),
   ]);
   const levelFolder = findLevelFolder(allFolders, userData?.grade_level ?? null);
 

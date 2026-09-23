@@ -3,7 +3,7 @@
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
 import Image from "next/image";
-import { UserPlus, Save, Loader2, AlertCircle, CheckCircle } from "lucide-react";
+import { UserPlus, Save, Loader2, AlertCircle, CheckCircle, GraduationCap } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { AVATARS, SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 import { validatePassword, isValidEmail } from "@/lib/validation";
@@ -170,7 +170,7 @@ export default function AddChildForm() {
               </select>
               {SPECIALTY_LEVELS.has(formData.gradeLevel) && (
                 <p className="text-xs text-[var(--greek-bronze)] mt-1.5 flex items-center gap-1">
-                  <span>🎓</span> La filière sélectionnée sera utilisée pour adapter les contenus au programme officiel.
+                  <GraduationCap className="w-3.5 h-3.5 shrink-0" aria-hidden="true" /> La filière sélectionnée sera utilisée pour adapter les contenus au programme officiel.
                 </p>
               )}
             </div>

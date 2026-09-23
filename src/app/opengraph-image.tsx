@@ -79,7 +79,7 @@ export default async function OGImage() {
 
           {/* Badges */}
           <div style={{ display: "flex", gap: 16, marginTop: 8 }}>
-            {["Programme officiel ✓", "Essai gratuit", "Toutes filières"].map((label) => (
+            {["Programme officiel", "Essai gratuit", "Toutes filières"].map((label) => (
               <div
                 key={label}
                 style={{

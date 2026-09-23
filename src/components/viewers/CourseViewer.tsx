@@ -1381,7 +1381,7 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                     style={{ color: "var(--greek-gold)" }}
                   />
                   <div className="flex-1">
-                    <p className="font-bold text-sm">Excellent ! ✨</p>
+                    <p className="font-bold text-sm">Excellent !</p>
                     {s.feedback && (
                       <div
                         className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"

@@ -8,10 +8,7 @@ import { getSiteUrl } from "@/lib/siteUrl";
 import { setPendingSignupPassword } from "@/lib/pendingSignupPassword";
 import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
 import { validatePassword, isValidEmail } from "@/lib/validation";
-import {
-  Mail, Lock, User, AlertCircle, CheckCircle,
-  Gift, Loader2, ArrowRight, ArrowLeft, Eye, EyeOff,
-} from "lucide-react";
+import { Mail, Lock, User, AlertCircle, CheckCircle, Gift, Loader2, ArrowRight, ArrowLeft, Eye, EyeOff, Check } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
 /* ── Google SVG ── */
@@ -284,7 +281,7 @@ export default function Inscription() {
             {!referralValidating && referralStatus === "invalid" && <AlertCircle className="w-4 h-4 text-red-400" />}
           </span>
         </div>
-        {referralStatus === "valid"   && <p className="text-xs text-green-600 font-medium mt-1">✓ Code valide — remise appliquée</p>}
+        {referralStatus === "valid"   && <p className="text-xs text-green-600 font-medium mt-1"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Code valide — remise appliquée</p>}
         {referralStatus === "invalid" && <p className="text-xs text-red-400 mt-1">Code invalide ou expiré</p>}
       </div>
 

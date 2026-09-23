@@ -114,7 +114,7 @@ export async function POST(req: Request) {
     // Find first user message index
     const firstUser = lastUserMessages.findIndex((m) => m.role === "user");
     if (firstUser === -1) {
-      return NextResponse.json({ message: "Pose-moi une question ! 💡" });
+      return NextResponse.json({ message: "Pose-moi une question !" });
     }
     const trimmed = lastUserMessages.slice(firstUser);
     const userTurnCount = trimmed.filter(m => m.role === "user").length;

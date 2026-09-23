@@ -2,6 +2,9 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { runGradePromotion } from "@/lib/gradePromotionRun";
 
+// Traitement par lots de tous les élèves : laisser le temps de finir.
+export const maxDuration = 300;
+
 const SETTINGS_KEY = "grade_promotion";
 
 // Vérifié quotidiennement par Vercel Cron (voir vercel.json). Vercel signe la

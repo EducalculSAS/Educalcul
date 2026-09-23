@@ -294,14 +294,14 @@ function CategoryButton({
       onClick={onClick}
       aria-current={active ? "page" : undefined}
       className={`shrink-0 lg:w-full flex items-center gap-2.5 px-3 py-2 rounded-2xl text-sm text-left transition-colors ${
-        active ? "bg-[var(--greek-blue)] text-white shadow-sm" : "text-[var(--greek-blue)] hover:bg-[var(--greek-cream)]"
+        active ? "bg-[var(--greek-cream)] ring-1 ring-[var(--greek-gold)] text-[var(--greek-blue)] font-semibold" : "text-[var(--greek-blue)] hover:bg-[var(--greek-cream)]/70"
       }`}
     >
-      <span className="w-2 h-2 rounded-full shrink-0" style={{ background: color || (active ? "var(--greek-gold)" : "rgba(15,30,58,0.25)") }} />
+      <span className="w-2 h-2 rounded-full shrink-0" style={{ background: color || "var(--greek-gold)" }} />
       <span className="flex-1 font-medium whitespace-nowrap lg:whitespace-normal">{label}</span>
-      {locked && <Megaphone className={`w-3.5 h-3.5 shrink-0 ${active ? "text-white/80" : "text-[var(--greek-bronze)]"}`} aria-label="Publication réservée à l'équipe" />}
-      {audience && <span className={`text-[10px] font-semibold shrink-0 ${active ? "text-white/70" : "text-[var(--text-muted)]"}`}>{audience}</span>}
-      <span className={`text-xs tabular-nums shrink-0 ${active ? "text-white/80" : "text-[var(--text-muted)]"}`}>{count}</span>
+      {locked && <Megaphone className="w-3.5 h-3.5 shrink-0 text-[var(--greek-bronze)]" aria-label="Publication réservée à l'équipe" />}
+      {audience && <span className="text-[10px] font-semibold shrink-0 text-[var(--text-muted)]">{audience}</span>}
+      <span className="text-xs tabular-nums shrink-0 text-[var(--text-muted)]">{count}</span>
     </button>
   );
 }

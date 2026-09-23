@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { getPendingSignupPassword, clearPendingSignupPassword } from "@/lib/pendingSignupPassword";
 import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
-import { AlertCircle, Loader2, Gift, CheckCircle, Pencil, User, Mail, ArrowLeft } from "lucide-react";
+import { AlertCircle, Loader2, Gift, CheckCircle, Pencil, User, Mail, ArrowLeft, Check } from "lucide-react";
 import { computeCustomPlan, DEFAULT_CUSTOM_PRICING } from "@/lib/customPlanPricing";
 import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
 import GlassButton from "@/components/ui/GlassButton";
@@ -292,7 +292,7 @@ export default function RecapClient() {
             </div>
           </div>
           {referralStatus === "valid" && (
-            <p className="text-xs text-green-600 font-medium mt-2">✓ Code valide — remise appliquée lors du paiement</p>
+            <p className="text-xs text-green-600 font-medium mt-2"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Code valide — remise appliquée lors du paiement</p>
           )}
           {referralStatus === "invalid" && (
             <p className="text-xs text-red-500 mt-2">Code invalide ou expiré</p>

@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
-import { ArrowLeft, CheckCircle, XCircle, Clock, Eye } from "lucide-react";
+import { ArrowLeft, CheckCircle, XCircle, Clock, Eye, Brain } from "lucide-react";
+import PageHero from "@/components/PageHero";
 import Link from "next/link";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -14,19 +15,24 @@ export default async function ExerciseHistoryPage() {
     .select("id, exercise_id, passed, score, total_points, score_percent, is_correct, completed_at, exercises(title)")
     .eq("user_id", authUser.id)
     .in("status", ["completed", "attempted"])
-    .order("completed_at", { ascending: false });
+    .order("completed_at", { ascending: false })
+    .limit(200);
 
   return (
-    <div className="container mx-auto px-4 py-8 max-w-3xl">
-      <div className="mb-6">
-        <GlassButton href="/child/exercises" variant="ghost" size="sm">
-          <ArrowLeft className="w-4 h-4" /> Retour aux exercices
-        </GlassButton>
-      </div>
-
-      <h1 className="text-2xl md:text-3xl font-bold text-[var(--greek-blue)] mb-6 font-[family-name:var(--font-display)]">
-        Mes tentatives
-      </h1>
+    <div className="min-h-screen bg-[var(--greek-cream)] pb-16">
+      <PageHero
+        icon={Brain}
+        title="Mes tentatives"
+        badge="Historique"
+        subtitle="Tes 200 dernières tentatives, avec leur correction."
+        width="4xl"
+        top={
+          <GlassButton href="/child/exercises" variant="light" size="sm">
+            <ArrowLeft className="w-4 h-4" /> Retour aux exercices
+          </GlassButton>
+        }
+      />
+      <div className="container mx-auto px-4 max-w-3xl">
 
       {!attempts || attempts.length === 0 ? (
         <div className="text-center text-[var(--text-muted)] py-12">
@@ -75,6 +81,7 @@ export default async function ExerciseHistoryPage() {
           })}
         </div>
       )}
+      </div>
     </div>
   );
 }

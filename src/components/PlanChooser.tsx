@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, type DragEvent } from "react";
-import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save, Plus, Trash2 } from "lucide-react";
+import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save, Plus, Trash2, AlertTriangle } from "lucide-react";
 import {
   childrenCost, aiMultiplier, configPrice,
   DEFAULT_CUSTOM_PRICING,
@@ -220,7 +220,7 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag }:
             {processing ? (
               <><Loader2 className="inline-block w-4 h-4 animate-spin align-[-0.15em] mr-1.5" />Chargement...</>
             ) : isCurrent ? (
-              "Formule actuelle ✓"
+              <>Formule actuelle <Check className="inline-block w-4 h-4 align-[-0.15em]" aria-hidden="true" /></>
             ) : (
               <>{cta} <ArrowRight className="inline-block w-4 h-4 align-[-0.15em]" /></>
             )}
@@ -394,7 +394,7 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
             </div>
           )}
           {!edit && n > 1 && cfg.ai !== "none" && (
-            <p className="text-xs mt-1.5" style={{ color: "rgba(197,161,72,0.8)" }}>⚠ Le prix de l&apos;IA augmente avec le nombre d&apos;enfants</p>
+            <p className="text-xs mt-1.5" style={{ color: "rgba(197,161,72,0.8)" }}><AlertTriangle className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Le prix de l&apos;IA augmente avec le nombre d&apos;enfants</p>
           )}
         </div>
 

@@ -15,8 +15,8 @@ const PERIOD_SINCE: Record<string, () => string | null> = {
 };
 
 
-/** Classement agrégé sur minigame_sessions — pas de table dédiée, une requête
- * groupée sur l'index (game_type, grade_level, score desc) suffit au volume.
+/** Classement agrégé sur minigame_sessions par la fonction SQL
+ * minigame_leaderboard (index partiel sur les parties terminées).
  * Les jeux "à paliers" (calcul mental, énigmes, suites, langues) comparent
  * par PALIER (plusieurs grade_level partagent le même palier de difficulté)
  * — Mathador reste comparé par grade_level exact (pas de notion de palier). */
@@ -37,49 +37,30 @@ export async function GET(request: Request) {
       .maybeSingle();
     if (!me_row) return NextResponse.json({ error: "Compte introuvable" }, { status: 404 });
 
-    let query = supabaseAdmin
-      .from("minigame_sessions")
-      .select("user_id, score, grade_level, duration_seconds")
-      .eq("game_type", gameType)
-      .eq("status", "completed");
-
-    if (isMinigameType(gameType)) {
+    const peerLevels = (() => {
+      if (!isMinigameType(gameType)) return [me_row.grade_level];
       const palierCode = gradeLevelToPalier(me_row.grade_level);
-      const peerLevels = palierCode ? palierToGradeLevels(palierCode) : [me_row.grade_level];
-      query = query.in("grade_level", peerLevels.length ? peerLevels : [me_row.grade_level]);
-    } else {
-      query = query.eq("grade_level", me_row.grade_level);
-    }
-    if (since) query = query.gte("created_at", since);
+      const levels = palierCode ? palierToGradeLevels(palierCode) : [me_row.grade_level];
+      return levels.length ? levels : [me_row.grade_level];
+    })().filter(Boolean) as string[];
 
-    const { data: sessions, error } = await query;
+    // Agrégat fait par la base (voir la fonction SQL minigame_leaderboard) :
+    // avant, toutes les parties étaient téléchargées puis additionnées ici —
+    // plafonnées à 1000 lignes, donc un classement faux dès qu'il y a du monde.
+    const { data: rows, error } = await supabaseAdmin.rpc("minigame_leaderboard", {
+      p_game_type: gameType,
+      p_grade_levels: peerLevels,
+      p_since: since,
+      p_me: me_row.id,
+      p_limit: 20,
+    });
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
-    const totals = new Map<number, number>();
-    const bestDurations = new Map<number, number>();
-    const totalDurations = new Map<number, number>();
-    for (const s of sessions || []) {
-      totals.set(s.user_id, (totals.get(s.user_id) || 0) + (s.score || 0));
-      if (typeof s.duration_seconds === "number") {
-        const prevBest = bestDurations.get(s.user_id);
-        if (prevBest === undefined || s.duration_seconds < prevBest) bestDurations.set(s.user_id, s.duration_seconds);
-        totalDurations.set(s.user_id, (totalDurations.get(s.user_id) || 0) + s.duration_seconds);
-      }
-    }
+    const all = (rows ?? []) as { user_id: number; total: number; best_duration: number | null; total_duration: number | null; rank: number }[];
+    const ranked = all.filter((r) => Number(r.rank) <= 20);
+    const mine = all.find((r) => r.user_id === me_row.id);
 
-    // Score décroissant d'abord, meilleur temps ("bestDurationSeconds") comme
-    // départage à égalité — Infinity pour "pas de temps enregistré" les
-    // classe systématiquement après ceux qui en ont un.
-    const compareEntries = ([userIdA, totalA]: [number, number], [userIdB, totalB]: [number, number]) => {
-      if (totalB !== totalA) return totalB - totalA;
-      const timeA = bestDurations.get(userIdA) ?? Infinity;
-      const timeB = bestDurations.get(userIdB) ?? Infinity;
-      return timeA - timeB;
-    };
-
-    const ranked = [...totals.entries()].sort(compareEntries).slice(0, 20);
-
-    const userIds = ranked.map(([id]) => id);
+    const userIds = ranked.map((r) => r.user_id);
     const { data: users } = userIds.length
       ? await supabaseAdmin
           .from("users")
@@ -88,30 +69,30 @@ export async function GET(request: Request) {
       : { data: [] };
     const usersById = new Map((users || []).map((u) => [u.id, u]));
 
-    const leaderboard = ranked.map(([userId, total], i) => {
-      const u = usersById.get(userId);
+    const leaderboard = ranked.map((r) => {
+      const u = usersById.get(r.user_id);
       return {
-        rank: i + 1,
-        userId,
+        rank: Number(r.rank),
+        userId: r.user_id,
         firstName: u?.first_name || "?",
         avatar: u?.avatar || null,
         equippedBorder: u?.equipped_border || null,
         nameColor: u?.name_color || null,
-        total,
-        bestDurationSeconds: bestDurations.get(userId) ?? null,
-        totalDurationSeconds: totalDurations.get(userId) ?? null,
-        isMe: userId === me_row.id,
+        total: Number(r.total),
+        bestDurationSeconds: r.best_duration ?? null,
+        totalDurationSeconds: r.total_duration != null ? Number(r.total_duration) : null,
+        isMe: r.user_id === me_row.id,
       };
     });
 
-    const myTotal = totals.get(me_row.id) || 0;
-    const myRankIndex = [...totals.entries()].sort(compareEntries).findIndex(([id]) => id === me_row.id);
+    const myTotal = mine ? Number(mine.total) : 0;
+    const myRank = mine ? Number(mine.rank) : null;
 
     return NextResponse.json({
       gameType,
       period,
       leaderboard,
-      me: { total: myTotal, rank: myRankIndex >= 0 ? myRankIndex + 1 : null },
+      me: { total: myTotal, rank: myRank },
     });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });

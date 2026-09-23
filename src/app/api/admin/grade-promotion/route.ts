@@ -6,6 +6,9 @@ import { runGradePromotion, undoLastGradePromotion } from "@/lib/gradePromotionR
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
+// Traitement par lots de tous les élèves : laisser le temps de finir.
+export const maxDuration = 300;
+
 const SETTINGS_KEY = "grade_promotion";
 const DATE_RE = /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/; // MM-DD
 

@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, LogIn, Users, BookOpen, Sparkles, GraduationCap, ShieldCheck } from "lucide-react";
+import { ArrowRight, LogIn, Users, BookOpen, Sparkles, GraduationCap, ShieldCheck, Check } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollArrow from "@/components/home/ScrollArrow";
@@ -327,9 +327,9 @@ export default async function Home() {
             <span className="text-gradient-gold">le meilleur.</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-4 mb-10 text-sm" style={{ color: "rgba(240,237,232,0.42)" }}>
-            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> Méthodologie adaptée</span>
-            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> 7 jours offerts</span>
-            <span className="flex items-center gap-1.5"><span style={{ color: "var(--greek-gold)" }}>✓</span> Annulable à tout moment</span>
+            <span className="flex items-center gap-1.5"><Check className="w-4 h-4" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> Méthodologie adaptée</span>
+            <span className="flex items-center gap-1.5"><Check className="w-4 h-4" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> 7 jours offerts</span>
+            <span className="flex items-center gap-1.5"><Check className="w-4 h-4" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> Annulable à tout moment</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <GlassButton href="/auth/inscription" variant="gold" className="font-bold">

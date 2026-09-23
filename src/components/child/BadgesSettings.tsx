@@ -1,10 +1,10 @@
 "use client";
 
+import PageHero from "@/components/PageHero";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Trophy, Lock, CheckCircle, Star, Zap, BookOpen, Crown, Target, Brain, Sparkles, Flame, Pencil, Map, Loader2 } from "lucide-react";
-import { avatarUrl } from "@/lib/avatarUrl";
-import { BORDER_STYLES, NAME_COLORS, getBorderStyle, getNameColor } from "@/lib/badgeStyles";
+import { BORDER_STYLES, NAME_COLORS, getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -120,27 +120,19 @@ export default function BadgesSettings({
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
       {/* Hero */}
-      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
-        <div className="relative z-10 max-w-6xl mx-auto flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
-              <Trophy className="w-10 h-10 text-[var(--greek-gold)]" />
-              MES TROPHÉES
-            </h1>
-            <p className="text-xl opacity-90 flex items-center gap-3">
-              <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">{earned.length} / {badges.length}</span>
-              <span>Débloquez des badges pour personnaliser votre profil</span>
-            </p>
-          </div>
+      <PageHero
+        icon={Trophy}
+        title="Mes trophées"
+        badge={`${earned.length} / ${badges.length} débloqués`}
+        subtitle="Débloque des badges pour personnaliser ton profil."
+        actions={
           <div className="hidden md:flex flex-col items-center gap-2">
             <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" />
             <span className={`text-sm font-bold ${nameColor.cls}`}>{user.first_name}</span>
-            <span className="text-white/50 text-xs">Aperçu forum</span>
+            <span className="text-white/50 text-xs">Aperçu dans le forum</span>
           </div>
-        </div>
-      </div>
+        }
+      />
 
       <div className="max-w-6xl mx-auto px-4 space-y-8">
         {/* Personnalisation */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { BrainCircuit, Minus, Sparkles, X } from "lucide-react";
+import { BrainCircuit, Minus, Sparkles, X, Check } from "lucide-react";
 import { useContentGenerations, type ContentKind } from "@/contexts/ContentGenerationsContext";
 import { useSmoothPercentByKey } from "./useSmoothPercent";
 import GlassButton from "@/components/ui/GlassButton";
@@ -139,7 +139,7 @@ export default function ContentGenerationFullModal() {
                                 : "bg-gray-200 text-gray-400"
                             }`}
                           >
-                            {doneChapters[idx] ? "✓" : idx + 1}
+                            {doneChapters[idx] ? <Check className="w-3.5 h-3.5" aria-hidden="true" /> : idx + 1}
                           </span>
                           <span className="truncate">{title}</span>
                         </li>

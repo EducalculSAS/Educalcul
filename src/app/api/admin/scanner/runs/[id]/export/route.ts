@@ -53,7 +53,7 @@ export async function GET(
 
   if (open.length === 0) {
     lines.push("");
-    lines.push("Aucun problème détecté. ✓");
+    lines.push("Aucun problème détecté.");
   }
 
   for (const severity of SEVERITY_ORDER) {

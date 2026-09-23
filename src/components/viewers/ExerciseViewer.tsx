@@ -1,22 +1,7 @@
 ﻿"use client";
 
 import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
-import {
-  ArrowRight,
-  ArrowLeft,
-  CheckCircle,
-  XCircle,
-  RotateCcw,
-  Trophy,
-  Brain,
-  Image as ImageIcon,
-  Loader2,
-  Sparkles,
-  Pencil,
-  Keyboard,
-  Eye,
-  AlertTriangle,
-} from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Image as ImageIcon, Loader2, Sparkles, Pencil, Keyboard, Eye, AlertTriangle } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -1877,7 +1862,7 @@ export default function ExerciseViewer({
                             >
                               <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "var(--greek-gold)" }} />
                               <div className="flex-1">
-                                <p className="font-bold text-sm">Excellent ! ✨</p>
+                                <p className="font-bold text-sm">Excellent !</p>
                                 {inline.feedback && (
                                   <div
                                     className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"

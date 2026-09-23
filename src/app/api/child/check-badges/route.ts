@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { selectAllPages } from "@/lib/selectAllPages";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
@@ -190,8 +191,12 @@ export async function POST(req: Request) {
       // Count quizzes that are passed (or completed if no threshold was set)
       supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).or("passed.eq.true,passed.is.null"),
       supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", userId),
-      supabaseAdmin.from("user_quiz_attempts").select("score, total_questions").eq("user_id", userId),
-      supabaseAdmin.from("minigame_sessions").select("score").eq("user_id", userId).eq("game_type", "mathador").eq("status", "completed"),
+      selectAllPages<{ score: number; total_questions: number }>((from, to) =>
+        supabaseAdmin.from("user_quiz_attempts").select("score, total_questions").eq("user_id", userId).order("id").range(from, to),
+      ).then((data) => ({ data })),
+      selectAllPages<{ score: number | null }>((from, to) =>
+        supabaseAdmin.from("minigame_sessions").select("score").eq("user_id", userId).eq("game_type", "mathador").eq("status", "completed").order("id").range(from, to),
+      ).then((data) => ({ data })),
     ]);
     const earnedIds = new Set((earned || []).map(e => e.badge_id));
 

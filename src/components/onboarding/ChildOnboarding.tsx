@@ -235,7 +235,7 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
             </div>
 
             <div className="px-8 pb-6 text-center">
-              <p className="text-xs text-gray-400">Ce test aide à personnaliser ton expérience — pas de mauvaises réponses ! 😊</p>
+              <p className="text-xs text-gray-400">Ce test aide à personnaliser ton expérience — pas de mauvaises réponses !</p>
             </div>
           </div>
         )}

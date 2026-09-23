@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Check, X, Star, ArrowRight, Sparkles, Info } from "lucide-react";
+import { Check, X, Star, ArrowRight, Sparkles, Info, AlertTriangle } from "lucide-react";
 import type { Plan } from "@/lib/plans";
 import { FEATURE_ROWS, formatVal, intervalLabel } from "@/lib/planFeatures";
 import GlassButton from "@/components/ui/GlassButton";
@@ -757,7 +757,7 @@ function Configurator({
               className="text-xs mt-1.5"
               style={{ color: "rgba(197,161,72,0.8)" }}
             >
-              ⚠ Le prix de l&apos;IA augmente avec le nombre d&apos;enfants
+              <AlertTriangle className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Le prix de l&apos;IA augmente avec le nombre d&apos;enfants
             </p>
           )}
         </div>
@@ -857,7 +857,7 @@ function Configurator({
             className="font-[family-name:var(--font-display)] font-bold text-sm"
           >
             <span className="inline-flex items-center gap-2">
-              {alreadyAdded ? "Déjà ajouté ✓" : "Ajouter à la comparaison"}
+              {alreadyAdded ? <>Déjà ajouté <Check className="w-4 h-4" aria-hidden="true" /></> : "Ajouter à la comparaison"}
               {!alreadyAdded && <ArrowRight className="w-4 h-4" />}
             </span>
           </GlassButton>

@@ -1,20 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import {
-  Sparkles,
-  XCircle,
-  BookOpen,
-  BrainCircuit,
-  Target,
-  Settings2,
-  FileText,
-  Layers,
-  GraduationCap,
-  Clock,
-  ListChecks,
-  Sliders,
-} from "lucide-react";
+import { Sparkles, XCircle, BookOpen, BrainCircuit, Target, Settings2, FileText, Layers, GraduationCap, Clock, ListChecks, Sliders, Check } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { useSmoothPercent } from "./useSmoothPercent";
 import GlassButton from "@/components/ui/GlassButton";
@@ -229,7 +216,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
                     {progress.chapters.map((title, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-sm text-gray-700">
                         <span className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs flex-shrink-0">
-                          ✓
+                          <Check className="w-3 h-3" aria-hidden="true" />
                         </span>
                         <span className="truncate">{title}</span>
                       </li>

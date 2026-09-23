@@ -43,20 +43,39 @@ export default async function ChildDashboard() {
 
   const level = userData.grade_level;
 
-  const [
-    { data: courses },
-    { data: exercises },
-    { data: progress },
-    { data: attempts },
-    { data: ubadges },
-    { count: exoCount },
-  ] = await Promise.all([
-    supabaseAdmin.from("courses").select("id, title, subject, level").eq("status", "published").eq("level", level).limit(10),
-    supabaseAdmin.from("exercises").select("id, title, difficulty_level").eq("status", "published").limit(10),
-    supabaseAdmin.from("user_course_progress").select("course_id").eq("user_id", userData.id),
-    supabaseAdmin.from("user_exercise_attempts").select("exercise_id").eq("user_id", userData.id),
+  // Candidats « à continuer » : les premiers cours du niveau DANS L'ORDRE DE
+  // LECTURE, et des exercices du niveau de l'élève (avant : n'importe quel
+  // niveau). La progression n'est ensuite lue QUE pour ces candidats — avant,
+  // toute la progression de l'élève était téléchargée (plafonnée à 1000 lignes).
+  const [{ data: courses }, { data: exercises }, { data: ubadges }, { count: exoCount }] = await Promise.all([
+    supabaseAdmin
+      .from("courses")
+      .select("id, title, subject, level")
+      .eq("status", "published")
+      .eq("level", level)
+      .order("chapter_order", { ascending: true, nullsFirst: false })
+      .order("title")
+      .limit(10),
+    supabaseAdmin
+      .from("exercises")
+      .select("id, title, difficulty_level")
+      .eq("status", "published")
+      .eq("level", level)
+      .order("id")
+      .limit(10),
     supabaseAdmin.from("user_badges").select("badge:badges(id, name, icon, color)").eq("user_id", userData.id).order("earned_at", { ascending: false }).limit(4),
     supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userData.id),
+  ]);
+
+  const courseIds = (courses || []).map((c) => c.id);
+  const exerciseIds = (exercises || []).map((e) => e.id);
+  const [{ data: progress }, { data: attempts }] = await Promise.all([
+    courseIds.length
+      ? supabaseAdmin.from("user_course_progress").select("course_id").eq("user_id", userData.id).in("course_id", courseIds)
+      : Promise.resolve({ data: [] as { course_id: string }[] }),
+    exerciseIds.length
+      ? supabaseAdmin.from("user_exercise_attempts").select("exercise_id").eq("user_id", userData.id).in("exercise_id", exerciseIds)
+      : Promise.resolve({ data: [] as { exercise_id: string }[] }),
   ]);
 
   const doneCoursesIds = new Set((progress || []).map((p) => p.course_id));

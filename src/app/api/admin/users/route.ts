@@ -1,4 +1,6 @@
 ﻿import { NextResponse } from "next/server";
+import { selectAllPages } from "@/lib/selectAllPages";
+import { ADMIN_USER_LIST_COLUMNS } from "@/lib/adminUserColumns";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
@@ -30,34 +32,27 @@ export async function GET(request: Request) {
     const role = searchParams.get("role");
     const status = searchParams.get("status");
 
-    // select(*) exclu volontairement : password_hash n'a rien à faire dans
-    // une réponse JSON, même pour un admin.
-    let query = supabaseAdmin
-      .from("users")
-      .select(
-        "id, auth_id, email, child_username, first_name, last_name, role, parent_id, grade_level, avatar, equipped_border, status, created_at, updated_at, account_type, subscription_plan_id, subscription_expires_at, child_age, last_login_ip, last_login_city, last_login_country, last_active_at, latitude, longitude, avatar_border, name_animation, name_color, equipped_border, featured_badges, login_count, login_streak, last_login_date, ban_reason, ban_until, onboarding_completed, notif_weekly_reports, notif_offers_news, school_zone, two_factor_enabled, needs_grade_choice, graduated_at",
-      )
-      .order("created_at", { ascending: false });
+    const validRole = role && role !== "all" && isValidRole(role) ? role : null;
+    const validStatus = status && status !== "all" && ["active", "inactive", "banned"].includes(status) ? status : null;
 
-    if (role && role !== "all" && isValidRole(role)) {
-      query = query.eq("role", role);
-    }
-    if (
-      status &&
-      status !== "all" &&
-      ["active", "inactive", "banned"].includes(status)
-    ) {
-      query = query.eq("status", status);
-    }
-
-    const { data, error } = await query;
-
-    if (error) {
+    // Paginé (un simple select s'arrêtait à 1000 comptes) ; mêmes colonnes que
+    // la page, sans password_hash ni données inutiles à la liste.
+    let data;
+    try {
+      data = await selectAllPages((from, to) => {
+        let query = supabaseAdmin
+          .from("users")
+          .select(ADMIN_USER_LIST_COLUMNS)
+          .order("created_at", { ascending: false })
+          .order("id")
+          .range(from, to);
+        if (validRole) query = query.eq("role", validRole);
+        if (validStatus) query = query.eq("status", validStatus);
+        return query;
+      });
+    } catch (error) {
       console.error(`[admin-users-get] Supabase error:`, error);
-      return NextResponse.json(
-        { error: "Failed to fetch users" },
-        { status: 500 },
-      );
+      return NextResponse.json({ error: "Failed to fetch users" }, { status: 500 });
     }
 
     return NextResponse.json(data);

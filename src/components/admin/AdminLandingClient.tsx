@@ -237,7 +237,7 @@ export default function AdminLandingClient({
                     {editId === e.id ? (
                       <input type="number" min={0} value={editRefs} onChange={ev => setEditRefs(ev.target.value)} aria-label="Nombre de filleuls" className="w-16 px-2 py-1 border border-gray-200 rounded-lg" />
                     ) : (
-                      <span className="inline-flex items-center gap-1 font-semibold text-[var(--greek-blue)]">{e.referral_count} 👥</span>
+                      <span className="inline-flex items-center gap-1 font-semibold text-[var(--greek-blue)]"><Users className="w-3.5 h-3.5" aria-hidden="true" />{e.referral_count}</span>
                     )}
                   </td>
                   <td className="px-4 py-3 text-gray-500 font-mono text-xs">{e.referred_by || "—"}</td>

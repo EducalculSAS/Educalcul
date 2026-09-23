@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useCallback } from "react";
-import { Star, Plus, Trash2, Edit, GripVertical } from "lucide-react";
+import { Star, Plus, Trash2, Edit, GripVertical, Check } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
@@ -200,7 +200,7 @@ export default function AdminReviewsClient({
           <GlassButton size="sm" variant="navy" onClick={saveRatingOverride} disabled={ratingSaving}>
             {ratingSaving ? "Enregistrement..." : "Enregistrer la note"}
           </GlassButton>
-          {ratingSaved && <span className="text-xs font-semibold text-[#00b67a]">✓ Enregistré</span>}
+          {ratingSaved && <span className="text-xs font-semibold text-[#00b67a]"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Enregistré</span>}
         </div>
       </div>
 
@@ -244,7 +244,7 @@ export default function AdminReviewsClient({
                   </td>
                   <td className="px-4 py-3 text-gray-600 max-w-xs truncate">{r.review_text}</td>
                   <td className="px-4 py-3">
-                    {r.is_verified ? <span className="text-xs font-semibold text-[#00b67a]">✓ Vérifié</span> : <span className="text-xs text-gray-400">—</span>}
+                    {r.is_verified ? <span className="text-xs font-semibold text-[#00b67a]"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Vérifié</span> : <span className="text-xs text-gray-400">—</span>}
                   </td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex justify-end gap-2">
@@ -312,7 +312,7 @@ export default function AdminReviewsClient({
               </div>
               <label className="flex items-center gap-2 text-sm text-gray-700">
                 <input type="checkbox" checked={isVerified} onChange={e => setIsVerified(e.target.checked)} />
-                Avis vérifié (badge "✓ Vérifié")
+                Avis vérifié (badge « Vérifié »)
               </label>
 
               <div className="flex justify-end gap-2 pt-2">
