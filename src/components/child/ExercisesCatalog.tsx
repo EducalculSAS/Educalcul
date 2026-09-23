@@ -13,6 +13,8 @@ import { isDifficultyAllowed } from "@/lib/difficultyAccess";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import FolderLevelBadge from "@/components/ui/FolderLevelBadge";
 import GlassButton from "@/components/ui/GlassButton";
+import { isFolderInLevelScope } from "@/lib/childCatalog";
+import LevelScopePicker from "@/components/child/LevelScopePicker";
 
 interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string }
 interface ExerciseRow {
@@ -46,6 +48,17 @@ export default function ExercisesCatalog({
   const [exerciseProgress, setExerciseProgress] = useState<ExerciseProgress>(initialProgress);
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_exercises_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
+  const [selectedRootId, setSelectedRootId] = useState<number | null>(rootFolderIds?.[0] ?? null);
+  const activeRootId = rootFolderIds?.includes(selectedRootId ?? -1) ? selectedRootId : rootFolderIds?.[0] ?? null;
+  const rootFolderScopeKey = rootFolderIds?.join(",") ?? "";
+  const hasMultipleRoots = (rootFolderIds?.length ?? 0) > 1;
+
+  useEffect(() => {
+    if (hasMultipleRoots) {
+      setCurrentFolderId(null);
+      setBreadcrumbs([]);
+    }
+  }, [rootFolderScopeKey, hasMultipleRoots, setCurrentFolderId]);
 
   const navigateToFolder = (folderId: number, folderName: string) => {
     setBreadcrumbs([...breadcrumbs, { id: folderId, name: folderName }]);
@@ -63,6 +76,10 @@ export default function ExercisesCatalog({
   };
 
   useEffect(() => {
+    if (currentFolderId !== null && !isFolderInLevelScope(allFolders, currentFolderId, { levelFolderId, rootFolderIds: rootFolderIds ?? null })) {
+      setCurrentFolderId(null);
+      return;
+    }
     if (allFolders.length === 0 || currentFolderId === null) {
       setBreadcrumbs([]);
       return;
@@ -76,7 +93,7 @@ export default function ExercisesCatalog({
     }
     setBreadcrumbs(path);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allFolders, currentFolderId, levelFolderId]);
+  }, [allFolders, currentFolderId, levelFolderId, rootFolderIds, setCurrentFolderId]);
 
   const renderExerciseCard = (exercise: ExerciseRow, index: number, indexOffset: number) => {
     const difficulty = normalizeDifficulty(exercise.difficulty_level);
@@ -181,12 +198,24 @@ export default function ExercisesCatalog({
     );
   }
 
-  const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
+  const displayParentId = currentFolderId === null ? (rootFolderIds ? activeRootId : levelFolderId) : currentFolderId;
   const currentFolders = allFolders.filter((f) => (displayParentId === null && rootFolderIds ? rootFolderIds.includes(f.id) : f.parent_id === displayParentId));
   const currentExercises = allExercises.filter((ex) => (ex.folder_id ?? null) === displayParentId).sort(compareDisplayOrder);
 
   return (
     <div className="space-y-8">
+      {rootFolderIds && activeRootId !== null && (
+        <LevelScopePicker
+          folders={allFolders}
+          rootFolderIds={rootFolderIds}
+          value={activeRootId}
+          onChange={(rootId) => {
+            setSelectedRootId(rootId);
+            setCurrentFolderId(null);
+            setBreadcrumbs([]);
+          }}
+        />
+      )}
       {currentFolderId !== null && (
         <GlassButton
           onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}

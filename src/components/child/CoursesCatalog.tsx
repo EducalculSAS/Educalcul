@@ -8,6 +8,8 @@ import Image from "next/image";
 import { getFolderIcon } from "@/lib/folderIcons";
 import GlassButton from "@/components/ui/GlassButton";
 import { compareCourseOrder } from "@/lib/courseOrder";
+import { isFolderInLevelScope } from "@/lib/childCatalog";
+import LevelScopePicker from "@/components/child/LevelScopePicker";
 
 interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string; display_order?: number }
 interface CourseRow {
@@ -34,8 +36,23 @@ export default function CoursesCatalog({
   const gridRef = useRef<HTMLDivElement>(null);
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_cours_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
+  const [selectedRootId, setSelectedRootId] = useState<number | null>(rootFolderIds?.[0] ?? null);
+  const activeRootId = rootFolderIds?.includes(selectedRootId ?? -1) ? selectedRootId : rootFolderIds?.[0] ?? null;
+  const rootFolderScopeKey = rootFolderIds?.join(",") ?? "";
+  const hasMultipleRoots = (rootFolderIds?.length ?? 0) > 1;
 
   useEffect(() => {
+    if (hasMultipleRoots) {
+      setCurrentFolderId(null);
+      setBreadcrumbs([]);
+    }
+  }, [rootFolderScopeKey, hasMultipleRoots, setCurrentFolderId]);
+
+  useEffect(() => {
+    if (currentFolderId !== null && !isFolderInLevelScope(allFolders, currentFolderId, { levelFolderId, rootFolderIds: rootFolderIds ?? null })) {
+      setCurrentFolderId(null);
+      return;
+    }
     if (allFolders.length === 0 || currentFolderId === null) {
       setBreadcrumbs([]);
       return;
@@ -49,9 +66,9 @@ export default function CoursesCatalog({
     }
     setBreadcrumbs(path);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [allFolders, currentFolderId, levelFolderId]);
+  }, [allFolders, currentFolderId, levelFolderId, rootFolderIds, setCurrentFolderId]);
 
-  const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
+  const displayParentId = currentFolderId === null ? (rootFolderIds ? activeRootId : levelFolderId) : currentFolderId;
   // Ordre pédagogique réglé par l'admin (chapter_order, initialisé depuis le
   // programme : thème puis chapitre). Un cours sans ordre va en FIN de liste
   // — `?? 0` le plaçait en tête — et les ex æquo se départagent par titre.
@@ -83,6 +100,18 @@ export default function CoursesCatalog({
 
   return (
     <div className="space-y-8" ref={gridRef}>
+      {rootFolderIds && activeRootId !== null && (
+        <LevelScopePicker
+          folders={allFolders}
+          rootFolderIds={rootFolderIds}
+          value={activeRootId}
+          onChange={(rootId) => {
+            setSelectedRootId(rootId);
+            setCurrentFolderId(null);
+            setBreadcrumbs([]);
+          }}
+        />
+      )}
       {currentFolderId !== null && (
         <GlassButton
           onClick={() => navigateToBreadcrumb(breadcrumbs.length - 2)}

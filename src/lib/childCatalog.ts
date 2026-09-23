@@ -24,14 +24,22 @@ export interface CatalogFolder {
   grade_level?: string;
 }
 
+function normalizeLevelKey(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/\p{Diacritic}/gu, "")
+    .trim()
+    .toLowerCase();
+}
+
 /** Dossier racine correspondant au niveau de l'élève. */
 export function findLevelFolder<F extends CatalogFolder>(folders: F[], level: string | null): F | undefined {
-  const lvl = String(level || "").toLowerCase().trim();
+  const lvl = normalizeLevelKey(String(level || ""));
   if (!lvl) return undefined;
   return folders.find(
     (f) =>
       f.parent_id == null &&
-      (String(f.grade_level || "").toLowerCase().trim() === lvl || String(f.name || "").toLowerCase().trim() === lvl),
+      (normalizeLevelKey(String(f.grade_level || "")) === lvl || normalizeLevelKey(String(f.name || "")) === lvl),
   );
 }
 
@@ -75,6 +83,24 @@ export function subtreeIds(folders: CatalogFolder[], rootId: number): number[] {
     }
   }
   return [...seen];
+}
+
+/** Vérifie qu'un dossier mémorisé appartient encore au périmètre visible. */
+export function isFolderInLevelScope<F extends CatalogFolder>(
+  folders: F[],
+  folderId: number,
+  scope: { levelFolderId: number | null; rootFolderIds: number[] | null },
+): boolean {
+  const rootIds = scope.rootFolderIds ?? (scope.levelFolderId === null ? [] : [scope.levelFolderId]);
+  const byId = new Map(folders.map((folder) => [folder.id, folder]));
+  const seen = new Set<number>();
+  let current = byId.get(folderId);
+  while (current && !seen.has(current.id)) {
+    if (rootIds.includes(current.id)) return true;
+    seen.add(current.id);
+    current = current.parent_id === null ? undefined : byId.get(current.parent_id);
+  }
+  return false;
 }
 
 type CatalogTable = "courses" | "exercises" | "quizzes";
