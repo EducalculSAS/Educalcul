@@ -4,6 +4,7 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { generateIcs } from "@/lib/ics";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
+import { safeZone } from "@/lib/calendarServer";
 
 // GET /api/calendar/export?ownerId=<id>
 // Identité via JWT (header Authorization), comme le reste de l'API : on ne fait
@@ -70,7 +71,7 @@ export async function GET(req: Request) {
       supabaseAdmin
         .from("global_calendar_events")
         .select("id, title, description, start_date, end_date")
-        .or(`zone.eq.all,zone.eq.${ownerZone}`)
+        .or(`zone.eq.all,zone.eq.${safeZone(ownerZone)}`)
         .order("id")
         .range(from, to),
     );

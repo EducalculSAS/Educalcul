@@ -2,6 +2,7 @@ import "server-only";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { EVENT_TYPE_OPTIONS, PARENT_ONLY_EVENT_TYPE_OPTIONS } from "@/lib/calendarEventTypes";
+import { ZONE_OPTIONS } from "@/lib/calendarZones";
 
 /**
  * Règles du calendrier, communes à toutes ses routes :
@@ -98,6 +99,47 @@ export function parseEventInput(body: Record<string, unknown>, role: string): { 
   };
 }
 
+const ZONES = new Set(ZONE_OPTIONS.map((z) => z.value));
+const STUDENT_ZONES = new Set(ZONE_OPTIONS.filter((z) => z.value !== "all").map((z) => z.value));
+
+/** Zone d'un utilisateur, ramenée à une valeur connue avant d'entrer dans un
+ * filtre PostgREST (`.or(...)`) — jamais de texte libre dans la requête. */
+export const safeZone = (zone: unknown): string => (typeof zone === "string" && STUDENT_ZONES.has(zone) ? zone : "C");
+
+const GLOBAL_TYPES = new Set(["vacances", "event", "controle", "devoir", "revision"]);
+
+export interface GlobalEventInput {
+  title: string;
+  description: string | null;
+  event_type: string;
+  start_date: string;
+  end_date: string | null;
+}
+
+/** Événement global (admin) : mêmes règles de saisie que les calendriers. */
+export function parseGlobalEventInput(body: Record<string, unknown>): { error: string } | { value: GlobalEventInput; zones: string[] } {
+  const title = typeof body.title === "string" ? body.title.trim().slice(0, 120) : "";
+  if (!title) return { error: "Donne un titre à l'événement." };
+  if (!isRealDate(body.start_date)) return { error: "Date de début invalide." };
+  const end = body.end_date && isRealDate(body.end_date) ? body.end_date : null;
+  if (end && end < (body.start_date as string)) return { error: "La date de fin précède la date de début." };
+  const rawZones = Array.isArray(body.zones) ? body.zones : [body.zone ?? "all"];
+  const zones = [...new Set(rawZones.filter((z): z is string => typeof z === "string" && ZONES.has(z)))];
+  if (zones.length === 0) return { error: "Choisis au moins une zone." };
+  return {
+    zones: zones.includes("all") ? ["all"] : zones,
+    value: {
+      title,
+      description: typeof body.description === "string" ? body.description.trim().slice(0, 1000) || null : null,
+      event_type: typeof body.event_type === "string" && GLOBAL_TYPES.has(body.event_type) ? body.event_type : "vacances",
+      start_date: body.start_date as string,
+      end_date: end && end !== body.start_date ? end : null,
+    },
+  };
+}
+
+export const GLOBAL_EVENT_COLUMNS = "id, title, description, event_type, start_date, end_date, zone, import_key";
+
 /** Colonnes renvoyées au navigateur. */
 export const EVENT_COLUMNS =
   "id, owner_id, created_by, created_by_role, title, description, event_type, start_date, end_date, start_time, end_time, visible_to_child, completed_at, course_id, source, reason, course:courses(title)";
@@ -115,7 +157,7 @@ export async function loadCalendar(ownerId: number, opts: { childView: boolean; 
       supabaseAdmin
         .from("global_calendar_events")
         .select("id, title, description, event_type, start_date, end_date, zone")
-        .or(`zone.eq.all,zone.eq.${opts.zone}`)
+        .or(`zone.eq.all,zone.eq.${safeZone(opts.zone)}`)
         .order("start_date", { ascending: true })
         .order("id")
         .range(from, to),

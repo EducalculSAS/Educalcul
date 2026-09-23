@@ -1,20 +1,17 @@
-import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { GLOBAL_EVENT_COLUMNS } from "@/lib/calendarServer";
 import AdminCalendarClient from "@/components/admin/AdminCalendarClient";
 
 export default async function AdminCalendarPage() {
-  const supabase = await createSupabaseServerClient();
-  const { data: { user } } = await supabase.auth.getUser();
-
   const events = await selectAllPages((from, to) =>
     supabaseAdmin
       .from("global_calendar_events")
-      .select("*")
+      .select(GLOBAL_EVENT_COLUMNS)
       .order("start_date", { ascending: true })
       .order("id")
       .range(from, to),
   );
 
-  return <AdminCalendarClient authId={user?.id || ""} initialEvents={events || []} />;
+  return <AdminCalendarClient initialEvents={(events as never[]) || []} />;
 }

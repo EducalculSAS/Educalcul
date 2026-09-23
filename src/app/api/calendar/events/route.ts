@@ -4,7 +4,7 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff } from "@/lib/rateLimitAdvanced";
-import { EVENT_COLUMNS, canAccessOwner, parseEventInput, resolveCalendarUser } from "@/lib/calendarServer";
+import { EVENT_COLUMNS, canAccessOwner, parseEventInput, resolveCalendarUser, safeZone } from "@/lib/calendarServer";
 
 const MAX_REPEAT = 20;
 
@@ -48,7 +48,7 @@ export async function GET(req: Request) {
       supabaseAdmin
         .from("global_calendar_events")
         .select("id, title, description, event_type, start_date, end_date, zone")
-        .or(`zone.eq.all,zone.eq.${ownerZone}`)
+        .or(`zone.eq.all,zone.eq.${safeZone(ownerZone)}`)
         .order("start_date", { ascending: true })
         .order("id")
         .range(from, to),

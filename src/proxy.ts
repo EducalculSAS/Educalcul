@@ -62,10 +62,17 @@ async function getAuthUserId(token: string): Promise<string | null> {
 }
 
 // ✓ SECURITY IMPROVEMENT: Reduced scope - only fetch role, no other sensitive data
-async function getRole(authId: string): Promise<{ role: string; id: number } | null> {
+// Un admin « support » (accès restreint) ne voit que ces pages et ces API.
+// Le menu les masquait déjà, mais une URL tapée à la main passait : la
+// restriction est donc appliquée ici, au même endroit que le reste de la garde.
+const SUPPORT_PAGES = ["/admin/dashboard", "/admin/support", "/admin/forum", "/admin/profile"];
+const SUPPORT_APIS = ["/api/admin/stats", "/api/admin/support", "/api/admin/profile", "/api/admin/notifications"];
+const within = (pathname: string, prefixes: string[]) => prefixes.some((p) => pathname === p || pathname.startsWith(`${p}/`));
+
+async function getRole(authId: string): Promise<{ role: string; id: number; adminLevel: string | null } | null> {
   try {
     const res = await fetch(
-      `${SUPABASE_URL}/rest/v1/users?auth_id=eq.${encodeURIComponent(authId)}&select=id,role,status,ban_reason`,
+      `${SUPABASE_URL}/rest/v1/users?auth_id=eq.${encodeURIComponent(authId)}&select=id,role,status,ban_reason,admin_level`,
       { headers: { apikey: SERVICE_KEY, Authorization: `Bearer ${SERVICE_KEY}` } }
     );
     if (!res.ok) return null;
@@ -75,7 +82,7 @@ async function getRole(authId: string): Promise<{ role: string; id: number } | n
     // Même garde qu'apiAuth.ts : un JWT valide ne suffit pas si le compte a
     // été banni depuis son émission.
     if (row.status === "inactive" || row.ban_reason) return null;
-    return row.role ? { role: row.role, id: row.id } : null;
+    return row.role ? { role: row.role, id: row.id, adminLevel: row.admin_level ?? null } : null;
   } catch {
     return null;
   }
@@ -209,6 +216,9 @@ export async function proxy(req: NextRequest) {
     if (!(await has2FASession(user.id, req))) {
       return NextResponse.json({ error: "2FA required" }, { status: 401 });
     }
+    if (user.adminLevel === "support" && !within(pathname, SUPPORT_APIS)) {
+      return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
 
     return NextResponse.next();
   }
@@ -295,6 +305,10 @@ async function guardAdminPage(req: NextRequest, response: NextResponse, authId: 
   if (!ipOk) return new NextResponse("Accès admin refusé depuis cette adresse IP.", { status: 403 });
   if (!twoFactorOk) {
     return redirectTo(`/auth/2fa-verify?redirect=${encodeURIComponent(req.nextUrl.pathname)}`);
+  }
+  const path = req.nextUrl.pathname;
+  if (user.adminLevel === "support" && path !== "/admin" && !within(path, SUPPORT_PAGES)) {
+    return redirectTo("/admin/dashboard");
   }
   return response;
 }
