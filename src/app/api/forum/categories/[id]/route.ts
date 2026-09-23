@@ -1,20 +1,18 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
-
+import { parseCategoryBody, parseId } from "@/lib/forum";
 
 export async function DELETE(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     if (!(await requireRole(req, ["admin"]))) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
-    const { id } = await params;
-    const { error } = await supabaseAdmin
-      .from("forum_categories")
-      .delete()
-      .eq("id", id);
+    const id = parseId((await params).id);
+    if (!id) return NextResponse.json({ error: "Identifiant invalide" }, { status: 400 });
 
+    const { error } = await supabaseAdmin.from("forum_categories").delete().eq("id", id);
     if (error) throw error;
     return NextResponse.json({ success: true });
   } catch (error: any) {
@@ -27,17 +25,20 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     if (!(await requireRole(req, ["admin"]))) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
-    const { id } = await params;
-    const body = await req.json();
-    const { name, description, icon, order_index } = body;
+    const id = parseId((await params).id);
+    if (!id) return NextResponse.json({ error: "Identifiant invalide" }, { status: 400 });
+
+    // Avant, les champs absents du corps étaient écrits à null.
+    const parsed = parseCategoryBody(await req.json().catch(() => ({})));
+    if ("error" in parsed) return NextResponse.json({ error: parsed.error }, { status: 400 });
+    if (Object.keys(parsed.patch).length === 0) return NextResponse.json({ error: "Rien à modifier" }, { status: 400 });
 
     const { data, error } = await supabaseAdmin
       .from("forum_categories")
-      .update({ name, description, icon, order_index })
+      .update(parsed.patch)
       .eq("id", id)
       .select()
       .single();
-
     if (error) throw error;
     return NextResponse.json(data);
   } catch (error: any) {

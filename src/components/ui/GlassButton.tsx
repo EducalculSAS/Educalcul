@@ -32,11 +32,13 @@ export type GlassButtonVariant =
  * registre que "light"/"Se connecter"), juste teinté — le saturate a été
  * réduit (1.2) pour que ça reste cohérent d'une section à l'autre. */
 const VARIANTS: Record<GlassButtonVariant, CSSProperties> = {
-  // Sur fond navy (héros, CTA final) — pilule dorée translucide.
+  // Sur fond navy (héros, CTA final) — pilule dorée. Un doré translucide
+  // (ancienne version, 32 % d'opacité) virait au kaki sur le bleu nuit : le
+  // dégradé reprend le doré du logo, avec un texte navy lisible.
   gold: {
-    background: "rgba(197,161,72,0.32)",
-    color: "#fff",
-    borderColor: "rgba(197,161,72,0.4)",
+    background: "linear-gradient(180deg, rgba(222,188,104,0.92) 0%, rgba(190,152,62,0.92) 100%)",
+    color: "var(--greek-blue)",
+    borderColor: "rgba(240,214,150,0.55)",
   },
   // Sur fond navy — pilule claire secondaire.
   light: {

@@ -118,7 +118,7 @@ export async function fetchAdminReports() {
   // ── Recent activity (multi-source) ───────────────────────────────────────
   const [{ data: recentRegistrations }, { data: recentPosts }, { data: recentAttempts }, { data: recentReports }] = await Promise.all([
     supabaseAdmin.from("users").select("first_name, last_name, role, created_at").order("created_at", { ascending: false }).limit(4),
-    supabaseAdmin.from("forum_posts").select("title, created_at, author:users(first_name, last_name)").order("created_at", { ascending: false }).limit(3),
+    supabaseAdmin.from("forum_posts").select("title, created_at, author:users!author_id(first_name, last_name)").order("created_at", { ascending: false }).limit(3),
     supabaseAdmin.from("user_exercise_attempts").select("created_at, users(first_name, last_name)").order("created_at", { ascending: false }).limit(3),
     supabaseAdmin.from("forum_reports").select("post_id, comment_id, reason, created_at, reporter:users!reporter_id(first_name, last_name), reported:users!reported_user_id(first_name, last_name)").eq("status", "pending").order("created_at", { ascending: false }).limit(4),
   ]);

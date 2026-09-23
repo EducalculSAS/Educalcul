@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ForumApp from "@/components/forum/ForumApp";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 
@@ -7,9 +8,11 @@ export default function AdminForumPage() {
       <AdminPageHeader
         iconName="message-square"
         title="Forum — Modération"
-        subtitle="Gérez les catégories, sujets et commentaires de la communauté."
+        subtitle="Catégories, sujets et réponses de toute la communauté (élèves et parents)."
       />
-      <ForumApp role="admin" />
+      <Suspense fallback={null}>
+        <ForumApp role="admin" />
+      </Suspense>
     </div>
   );
 }

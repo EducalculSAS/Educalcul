@@ -1,123 +1,142 @@
-"use client";
+import { avatarUrl, ADMIN_AVATAR } from "@/lib/avatarUrl";
 
-import { avatarUrl } from "@/lib/avatarUrl";
+/**
+ * LE rendu d'avatar du site — forum, classements, profils, espace parent,
+ * admin : partout le même, pour qu'un utilisateur soit reconnaissable d'un
+ * écran à l'autre.
+ *
+ * - Forme : carré aux coins très arrondis (celle de la fiche utilisateur
+ *   admin), fond navy léger, initiales en navy quand il n'y a pas d'avatar.
+ * - Contour : TOUJOURS présent. Le contour équipé (badge, abonnement, admin)
+ *   s'affiche animé ; sans contour équipé, un fin trait doré.
+ * - Image : vignette WebP de l'avatar préréglé (~4 Ko), jamais le portrait
+ *   d'origine (~850 Ko).
+ *
+ * Composant sans état ni effet : utilisable tel quel dans un Server Component.
+ */
+
+export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+
+const SIZE: Record<AvatarSize, number> = { xs: 28, sm: 36, md: 44, lg: 64, xl: 88, "2xl": 112 };
+
+interface Ring {
+  stroke: string;
+  width: number;
+  /** Classe d'animation du trait (globals.css, `.border-anim-*`). */
+  anim?: string;
+}
+
+/** Contour par clé `equipped_border` (voir BORDER_STYLES dans badgeStyles.ts). */
+const RINGS: Record<string, Ring> = {
+  none:     { stroke: "rgba(197,161,72,0.55)", width: 1.5 },
+  bronze:   { stroke: "#cd7f32", width: 2,   anim: "border-anim-bronze" },
+  silver:   { stroke: "#b0b8c8", width: 2,   anim: "border-anim-silver" },
+  gold:     { stroke: "#ffd700", width: 2.5, anim: "border-anim-gold" },
+  diamond:  { stroke: "#22d3ee", width: 2.5, anim: "border-anim-diamond" },
+  premium:  { stroke: "#a855f7", width: 2.5, anim: "border-anim-premium" },
+  famille:  { stroke: "#14b8a6", width: 2.5 },
+  flamme:   { stroke: "#f97316", width: 3,   anim: "border-anim-flame" },
+  pro:      { stroke: "#f59e0b", width: 2.5, anim: "border-anim-pro" },
+  elite:    { stroke: "#7c3aed", width: 3,   anim: "border-anim-elite" },
+  mathador: { stroke: "#6366f1", width: 2.5, anim: "border-anim-premium" },
+  admin:    { stroke: "#ff6b6b", width: 3,   anim: "border-anim-admin" },
+};
+
+/** "border-admin" (ancien format du profil admin) → "admin". */
+export function normalizeBorderKey(key: string | null | undefined): string {
+  const k = (key || "none").replace(/^border-/, "");
+  return k in RINGS ? k : "none";
+}
+
+function initialsOf(name: string): string {
+  const parts = (name || "").trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  return (parts[0][0] + (parts[1]?.[0] ?? "")).toUpperCase();
+}
 
 interface Props {
   avatar?: string | null;
   equippedBorder?: string | null;
   name: string;
-  size?: "sm" | "md" | "lg" | "xl";
-  bgClass?: string;
+  size?: AvatarSize;
+  /** Pastille verte « en ligne ». */
+  online?: boolean;
   className?: string;
-  circular?: boolean;
+  /** Lisible par les lecteurs d'écran ; vide si le nom est déjà écrit à côté. */
+  label?: string;
 }
-
-// Avatar pixel size
-const AV = { sm: 36, md: 44, lg: 60, xl: 84 };
-
-// Border config — animated outline only, no decorative shapes
-interface Conf {
-  stroke: string;
-  strokeW?: number;
-  rectAnimCls?: string;
-}
-
-const BORDERS: Record<string, Conf> = {
-  none:    { stroke: "none" },
-  bronze:  { stroke: "#cd7f32", strokeW: 2,   rectAnimCls: "border-anim-bronze"  },
-  silver:  { stroke: "#b0b8c8", strokeW: 2,   rectAnimCls: "border-anim-silver"  },
-  gold:    { stroke: "#ffd700", strokeW: 2.5, rectAnimCls: "border-anim-gold"    },
-  diamond: { stroke: "#22d3ee", strokeW: 2.5, rectAnimCls: "border-anim-diamond" },
-  premium: { stroke: "#a855f7", strokeW: 2.5, rectAnimCls: "border-anim-premium" },
-  famille: { stroke: "#14b8a6", strokeW: 2.5 },
-  flamme:  { stroke: "#f97316", strokeW: 3,   rectAnimCls: "border-anim-flame"   },
-  pro:     { stroke: "#f59e0b", strokeW: 2.5, rectAnimCls: "border-anim-pro"     },
-  elite:   { stroke: "#7c3aed", strokeW: 3,   rectAnimCls: "border-anim-elite"   },
-  mathador:{ stroke: "#6366f1", strokeW: 2.5, rectAnimCls: "border-anim-premium" },
-  admin:   { stroke: "#ff6b6b", strokeW: 3,   rectAnimCls: "border-anim-admin"   },
-};
 
 export default function AvatarWithBorder({
-  avatar, equippedBorder, name, size = "sm",
-  bgClass = "", className = "", circular = false,
+  avatar, equippedBorder, name, size = "sm", online = false, className = "", label,
 }: Props) {
-  const key = equippedBorder || "none";
-  const conf = BORDERS[key] ?? BORDERS.none;
+  const av = SIZE[size];
+  const ring = RINGS[normalizeBorderKey(equippedBorder)];
   const url = avatarUrl(avatar);
-  const initial = (name || "?").charAt(0).toUpperCase();
-  const av = AV[size];
-  const sw = conf.strokeW ?? 2;
-  const hasBorder = conf.stroke !== "none";
-  const total = av + (hasBorder ? sw * 2 + 2 : 0);
-  const cx = total / 2;
-  const cy = total / 2;
-  const r = { sm: 8, md: 10, lg: 13, xl: 18 }[size]!;
-  const clipR = circular ? av / 2 : r;
+  const isLogo = url === ADMIN_AVATAR;
+
+  // Espace réservé autour de l'image pour le contour (+ sa lueur animée).
+  const gap = Math.max(2, Math.round(av * 0.05));
+  const total = av + (ring.width + gap) * 2;
+  const radius = Math.round(av * 0.28);
+  const ringInset = ring.width / 2;
+  const ringRadius = radius + gap + ring.width / 2;
 
   return (
-    <div
-      className={`shrink-0 ${className}`}
-      style={{ display: "inline-block", lineHeight: 0 }}
+    <span
+      className={`relative inline-block shrink-0 align-middle ${className}`}
+      style={{ width: total, height: total }}
+      role="img"
+      aria-label={label ?? name ?? "Avatar"}
     >
-      <svg
-        width={total}
-        height={total}
-        viewBox={`0 0 ${total} ${total}`}
-        overflow="visible"
-        role="img"
-        aria-label={name || "Avatar"}
+      <span
+        className="absolute overflow-hidden flex items-center justify-center font-bold select-none"
+        style={{
+          inset: ring.width + gap,
+          borderRadius: radius,
+          background: isLogo ? "#fff" : "rgba(15,30,58,0.08)",
+          color: "var(--greek-blue)",
+          fontSize: Math.round(av * 0.36),
+        }}
       >
-        <defs>
-          <clipPath id={`av-clip-${key}-${size}-${(av)}`}>
-            {circular
-              ? <circle cx={cx} cy={cy} r={av / 2} />
-              : <rect x={cx - av / 2} y={cy - av / 2} width={av} height={av} rx={clipR} ry={clipR} />}
-          </clipPath>
-        </defs>
-
-        {/* Avatar background */}
-        <rect
-          x={cx - av / 2} y={cy - av / 2} width={av} height={av} rx={r}
-          fill={bgClass === "transparent" ? "transparent" : bgClass.includes("#") ? bgClass : "#3a6ea520"}
-        />
-
-        {/* Avatar image or initial */}
         {url ? (
-          <image
-            href={url}
-            x={cx - av / 2} y={cy - av / 2}
-            width={av} height={av}
-            clipPath={`url(#av-clip-${key}-${size}-${av})`}
-            preserveAspectRatio="xMidYMid slice"
+          // eslint-disable-next-line @next/next/no-img-element -- vignette statique de 4 Ko, déjà optimisée
+          <img
+            src={url}
+            alt=""
+            width={av}
+            height={av}
+            loading="lazy"
+            decoding="async"
+            draggable={false}
+            className={isLogo ? "w-full h-full object-contain p-[14%]" : "w-full h-full object-cover"}
           />
         ) : (
-          <text
-            x={cx} y={cy}
-            textAnchor="middle" dominantBaseline="central"
-            fontSize={av * 0.4} fontWeight="bold" fill="white"
-            clipPath={`url(#av-clip-${key}-${size}-${av})`}
-          >
-            {initial}
-          </text>
+          initialsOf(name)
         )}
+      </span>
 
-        {/* Animated outline */}
-        {hasBorder && (circular ? (
-          <circle
-            cx={cx} cy={cy} r={av / 2 + sw / 2 + 1}
-            fill="none" stroke={conf.stroke} strokeWidth={sw}
-            className={conf.rectAnimCls ?? ""}
-          />
-        ) : (
-          <rect
-            x={cx - av / 2 - sw / 2 - 1} y={cy - av / 2 - sw / 2 - 1}
-            width={av + sw + 2} height={av + sw + 2}
-            rx={r + 2} ry={r + 2}
-            fill="none" stroke={conf.stroke} strokeWidth={sw}
-            className={conf.rectAnimCls ?? ""}
-          />
-        ))}
+      <svg className="absolute inset-0 pointer-events-none overflow-visible" width={total} height={total} aria-hidden="true">
+        <rect
+          x={ringInset}
+          y={ringInset}
+          width={total - ring.width}
+          height={total - ring.width}
+          rx={ringRadius}
+          ry={ringRadius}
+          fill="none"
+          stroke={ring.stroke}
+          strokeWidth={ring.width}
+          className={ring.anim}
+        />
       </svg>
-    </div>
+
+      {online && (
+        <span
+          className="absolute rounded-full bg-green-500 border-2 border-white"
+          style={{ width: Math.max(9, av * 0.24), height: Math.max(9, av * 0.24), right: 0, bottom: 0 }}
+          aria-label="En ligne"
+        />
+      )}
+    </span>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useCallback } from "react";
 import {
   Users, CreditCard, BookOpen, Calculator, Brain,
@@ -9,7 +10,6 @@ import {
   GraduationCap, Calendar, Star, History, ScanSearch,
   ShieldCheck, Flag, User,
 } from "lucide-react";
-import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -139,11 +139,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
             )}
             {recent.users.map((u: any) => (
               <div key={u.id} className="flex items-center gap-3 px-6 py-3 hover:bg-gray-50 transition-colors">
-                <img
-                  src={avatarUrl(u.avatar, "/avatars/avatar1.png")!}
-                  alt=""
-                  className="w-8 h-8 rounded-full object-cover border border-gray-200"
-                />
+                <AvatarWithBorder avatar={u.avatar} equippedBorder={u.equipped_border} name={`${u.first_name ?? ""} ${u.last_name ?? ""}`} size="sm" label="" />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-gray-800 truncate">
                     {u.first_name} {u.last_name}

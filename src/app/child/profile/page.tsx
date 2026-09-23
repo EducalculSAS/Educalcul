@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import PageHero from "@/components/PageHero";
 import { User } from "lucide-react";
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -37,17 +38,7 @@ export default async function ChildProfilePage() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero */}
-      <div className="bg-[var(--greek-blue)] text-white pt-20 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-2 flex items-center gap-4">
-            <User className="w-10 h-10 text-[var(--greek-gold)]" />
-            MON PROFIL
-          </h1>
-          <p className="opacity-70 text-sm">Gérez tes informations et ta progression</p>
-        </div>
-      </div>
+      <PageHero icon={User} title="Mon profil" badge="Compte" subtitle="Gère tes informations et suis ta progression." width="4xl" />
 
       <div className="container mx-auto px-4 pb-16 max-w-5xl">
         <ChildProfileSettings

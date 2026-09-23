@@ -135,7 +135,7 @@ export default function BadgesSettings({
             </p>
           </div>
           <div className="hidden md:flex flex-col items-center gap-2">
-            <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" bgClass="#ffffff30" />
+            <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" />
             <span className={`text-sm font-bold ${nameColor.cls}`}>{user.first_name}</span>
             <span className="text-white/50 text-xs">Aperçu forum</span>
           </div>
@@ -161,7 +161,7 @@ export default function BadgesSettings({
                       className={`relative flex flex-col items-center gap-1 pt-2 pb-2 px-2 rounded-2xl transition-all cursor-pointer min-w-[80px]
                         ${active ? "bg-blue-50 ring-2 ring-[var(--greek-blue)]" : unlocked ? "hover:bg-gray-50" : ""}`}
                     >
-                      <AvatarWithBorder avatar={user.avatar} equippedBorder={key} name={user.first_name || "?"} size="md" bgClass={unlocked ? "#3a6ea5" : "#9ca3af"} />
+                      <AvatarWithBorder avatar={user.avatar} equippedBorder={key} name={user.first_name || "?"} size="md" />
                       <span className={`text-[11px] font-semibold mt-1 ${unlocked ? "text-gray-700" : "text-gray-400"}`}>{val.label}</span>
                       {!unlocked && (
                         <div className="absolute top-1 right-1 bg-gray-700/80 rounded-full p-0.5">

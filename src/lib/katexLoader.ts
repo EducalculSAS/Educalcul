@@ -114,6 +114,25 @@ export function renderLatexInHTML(html: string): string {
   return sanitizeHtml(result);
 }
 
+/**
+ * Texte saisi par un utilisateur (forum, messages à Calia) → HTML sûr : tout
+ * est échappé, SAUF les formules `$…$` / `$$…$$` rendues par KaTeX et le gras
+ * `**…**`. Les formules sont repérées AVANT l'échappement : échapper d'abord
+ * casserait celles qui contiennent « < » ou « > » (ex. $a<0$).
+ * Afficher le résultat dans un conteneur `white-space: pre-wrap`.
+ */
+export function renderUserText(text: string): string {
+  const escapeHtml = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return String(text || "")
+    .split(/(\$\$[\s\S]*?\$\$|\$[^$\r\n]+?\$)/g)
+    .map((part) =>
+      /^\$/.test(part)
+        ? renderLatexInHTML(part)
+        : escapeHtml(part).replace(/\*\*([^*\n]+)\*\*/g, "<strong>$1</strong>"),
+    )
+    .join("");
+}
+
 export function ensureKaTeX(): Promise<void> {
   return Promise.resolve();
 }

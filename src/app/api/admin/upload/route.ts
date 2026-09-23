@@ -23,14 +23,11 @@ const ALLOWED_MIME_TYPES = new Set([
 
 export async function POST(request: Request) {
   try {
-    // ✓ SECURITY: proxy.ts autorise ce endpoint a tout utilisateur
-    // authentifie non banni (pour l'upload d'avatar), pas seulement aux
-    // admins — sans ce check, un enfant pouvait ecrire dans n'importe quel
-    // sous-dossier de public/ (ex. ceux utilises par l'admin pour les
-    // vignettes de cours) en passant un `folder` arbitraire. Un non-admin
-    // est desormais force sur le dossier avatars, quoi qu'il envoie.
+    // Réservé aux admins (images de contenu). Les avatars ne s'envoient plus :
+    // chacun choisit parmi ceux proposés par le site (voir AvatarPicker).
     const me = await getAuthenticatedUser(request);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    if (me.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     // ✓ HIGH PRIORITY FIX: Rate limiting on file upload
     const ip = request.headers.get("x-forwarded-for") ?? "unknown";
@@ -45,7 +42,7 @@ export async function POST(request: Request) {
 
     const formData = await request.formData();
     const file = formData.get("file") as File;
-    const rawFolder = me.role === "admin" ? (formData.get("folder") as string) || "uploads" : "avatars";
+    const rawFolder = (formData.get("folder") as string) || "uploads";
 
     if (!file) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });

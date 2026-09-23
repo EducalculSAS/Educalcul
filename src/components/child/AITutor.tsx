@@ -6,7 +6,7 @@ import { Send, X, Minus, RotateCcw, Lock, ArrowRight, Mic, MicOff } from "lucide
 import Image from "next/image";
 import { supabase } from "@/lib/supabaseClient";
 import { useSubscription, canUseAI, aiRemaining } from "@/lib/useSubscription";
-import { renderLatexInHTML } from "@/lib/katexLoader";
+import { renderLatexInHTML, renderUserText } from "@/lib/katexLoader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -47,21 +47,11 @@ function renderContent(text: string) {
   return <span dangerouslySetInnerHTML={{ __html: withBold }} />;
 }
 
-/** Messages élève : même rendu LaTeX que les réponses de l'IA (utile quand
- * l'élève cite un passage du cours via "sélectionner + expliquer", qui
- * contient des $...$), mais sans jamais interpréter le reste du message comme
- * du HTML. On découpe donc le texte en segments $...$/$$...$$ (rendus en
- * KaTeX) et segments de texte brut (échappés) — échapper AVANT de repérer les
- * formules casserait celles contenant "<"/">" (ex. $a<0$), puisque ces
- * caractères font partie de la source LaTeX à faire lire à KaTeX. */
+/** Messages élève : même rendu que le forum (texte échappé, formules $…$
+ * rendues) — utile quand l'élève cite un passage du cours qui contient des
+ * formules. */
 function renderUserContent(text: string) {
-  const escapeHtml = (s: string) =>
-    s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-  const parts = text.split(/(\$\$[\s\S]*?\$\$|\$[^$\r\n]+?\$)/g);
-  const html = parts
-    .map((part) => (/^\$/.test(part) ? renderLatexInHTML(part) : escapeHtml(part)))
-    .join("");
-  return <span dangerouslySetInnerHTML={{ __html: html }} />;
+  return <span dangerouslySetInnerHTML={{ __html: renderUserText(text) }} />;
 }
 
 export default function AITutor() {

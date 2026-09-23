@@ -143,11 +143,6 @@ export async function proxy(req: NextRequest) {
     const user = await getRole(authId);
     if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    // Envoi d'avatar : tout utilisateur connecté non banni (la route force
-    // alors le dossier avatars/).
-    const isUserLevel = method === "POST" && pathname === "/api/admin/upload";
-    if (isUserLevel) return NextResponse.next();
-
     if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     if (!(await isIpAllowed(req))) {

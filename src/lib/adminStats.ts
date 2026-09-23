@@ -25,13 +25,13 @@ export async function fetchAdminStats() {
     supabaseAdmin.from('forum_reports').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
     supabaseAdmin.from('users').select('*', { count: 'exact', head: true }).gte('created_at', sevenDaysAgo),
     supabaseAdmin.from('users')
-      .select('id, first_name, last_name, role, avatar, created_at')
+      .select('id, first_name, last_name, role, avatar, equipped_border, created_at')
       .order('created_at', { ascending: false }).limit(6),
     supabaseAdmin.from('courses')
       .select('id, title, subject, level, status, created_at')
       .order('created_at', { ascending: false }).limit(5),
     supabaseAdmin.from('forum_posts')
-      .select('id, title, created_at, author:users(first_name, last_name, child_username)')
+      .select('id, title, created_at, author:users!author_id(first_name, last_name, child_username)')
       .order('created_at', { ascending: false }).limit(5),
   ]);
 

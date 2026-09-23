@@ -1,5 +1,6 @@
 "use client";
 
+import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
@@ -282,8 +283,8 @@ export default function AdminProfileClient({ initialFormData }: {
                         className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
                         <option value="none">Aucun contour</option>
-                        <optgroup label="✦ Admin exclusif">
-                          <option value="border-admin">👑 Admin (arc-en-ciel)</option>
+                        <optgroup label="Admin exclusif">
+                          <option value="border-admin">Admin (arc-en-ciel)</option>
                         </optgroup>
                         <optgroup label="Abonnements">
                           <option value="border-elite">Élite (obsidian violet)</option>
@@ -375,18 +376,12 @@ export default function AdminProfileClient({ initialFormData }: {
             </div>
             <div className="p-6 text-center">
               <div className="flex justify-center mb-8 relative">
-                {/* outer: border + animation — overflow:visible pour que ::after (couronne) soit visible */}
-                <div className={`w-32 h-32 rounded-full transition-all duration-300 ${formData.avatar_border}`}
-                     style={{ overflow: "visible" }}>
-                  {/* inner: clip circulaire de l'image */}
-                  <div className="w-full h-full rounded-full overflow-hidden bg-white">
-                    <img
-                      src={ADMIN_AVATAR}
-                      alt="Logo admin"
-                      className="w-full h-full object-contain p-2"
-                    />
-                  </div>
-                </div>
+                <AvatarWithBorder
+                  avatar={ADMIN_AVATAR}
+                  equippedBorder={formData.avatar_border}
+                  name={formData.child_username || "Admin"}
+                  size="2xl"
+                />
               </div>
 
               <h4

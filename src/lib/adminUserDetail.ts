@@ -21,12 +21,12 @@ export async function fetchAdminUserDetail(id: string) {
     supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", id),
     supabaseAdmin.from("minigame_sessions").select("*", { count: "exact", head: true }).eq("user_id", id).eq("status", "completed"),
     supabaseAdmin.from("subscriptions").select("*").eq("user_id", user.auth_id).maybeSingle(),
-    supabaseAdmin.from("users").select("id, first_name, last_name, grade_level, avatar").eq("parent_id", id).eq("role", "child"),
+    supabaseAdmin.from("users").select("id, first_name, last_name, grade_level, avatar, equipped_border").eq("parent_id", id).eq("role", "child"),
     supabaseAdmin.from("admin_notifications").select("*").eq("user_id", id).order("created_at", { ascending: false }).limit(20),
     supabaseAdmin.from("user_badges").select("badge:badges(name, icon)").eq("user_id", id),
-    supabaseAdmin.from("forum_posts").select("id, title, content, created_at, is_locked, category:forum_categories(name)").eq("author_id", id).order("created_at", { ascending: false }).limit(10),
-    supabaseAdmin.from("forum_comments").select("id, content, created_at, post:forum_posts(title)").eq("author_id", id).order("created_at", { ascending: false }).limit(10),
-    supabaseAdmin.from("forum_reports").select("*, reporter:users!reporter_id(first_name, last_name), post:forum_posts(title), comment:forum_comments(content)").eq("reported_user_id", id).order("created_at", { ascending: false }),
+    supabaseAdmin.from("forum_posts").select("id, title, content, created_at, is_locked, category:forum_categories!category_id(name)").eq("author_id", id).order("created_at", { ascending: false }).limit(10),
+    supabaseAdmin.from("forum_comments").select("id, content, created_at, post:forum_posts!post_id(title)").eq("author_id", id).order("created_at", { ascending: false }).limit(10),
+    supabaseAdmin.from("forum_reports").select("*, reporter:users!reporter_id(first_name, last_name), post:forum_posts!post_id(title), comment:forum_comments!comment_id(content)").eq("reported_user_id", id).order("created_at", { ascending: false }),
     supabaseAdmin.from("user_login_history").select("*").eq("user_id", id).order("logged_at", { ascending: false }).limit(200),
     supabaseAdmin.from("user_exercise_attempts")
       .select("id, exercise_id, score, total_points, score_percent, passed, status, completed_at, attempted_at, exercises(title)")
@@ -35,7 +35,7 @@ export async function fetchAdminUserDetail(id: string) {
       .select("id, quiz_id, score, total_points, score_percent, passed, status, completed_at, time_spent_seconds, quizzes(title)")
       .eq("user_id", id).order("completed_at", { ascending: false }).limit(20),
     supabaseAdmin.from("user_course_progress")
-      .select("id, course_id, chapter_index, status, completed_at, courses(title, content_json)")
+      .select("id, course_id, chapter_index, status, completed_at, courses(title)")
       .eq("user_id", id).order("completed_at", { ascending: false }).limit(20),
     supabaseAdmin.from("support_tickets")
       .select("id, subject, status, priority, created_at, updated_at")

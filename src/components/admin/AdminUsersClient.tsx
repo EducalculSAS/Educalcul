@@ -1,5 +1,6 @@
 "use client";
 
+import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useEffect, useMemo, useRef } from "react";
 import dynamic from "next/dynamic";
 import { supabase } from "@/lib/supabaseClient";
@@ -11,7 +12,6 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import PageLoader from "@/components/PageLoader";
-import { avatarUrl } from "@/lib/avatarUrl";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GradePromotionPanel from "@/components/admin/GradePromotionPanel";
 import PlacementQuizPanel from "@/components/admin/PlacementQuizPanel";
@@ -33,6 +33,7 @@ interface User {
   grade_level?: string;
   child_age?: number;
   avatar?: string;
+  equipped_border?: string | null;
   last_login_ip?: string;
   last_login_city?: string;
   last_login_country?: string;
@@ -606,18 +607,18 @@ export default function AdminUsersClient({
                 <tr><td colSpan={6} className="py-12 text-center text-gray-400">Aucun utilisateur trouvé</td></tr>
               ) : filteredUsers.map(user => {
                 const online = isOnline(user);
-                const url = avatarUrl(user.avatar);
-                const initials = (user.first_name?.[0] || "") + (user.last_name?.[0] || "");
                 return (
                   <tr key={user.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-5 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="relative shrink-0">
-                          <div className="w-9 h-9 rounded-xl bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] font-bold flex items-center justify-center overflow-hidden text-sm">
-                            {url ? <img src={url} alt="" className="w-full h-full object-cover" /> : initials}
-                          </div>
-                          {online && <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-green-500 rounded-full border-2 border-white" />}
-                        </div>
+                        <AvatarWithBorder
+                          avatar={user.avatar}
+                          equippedBorder={user.equipped_border}
+                          name={`${user.first_name ?? ""} ${user.last_name ?? ""}`}
+                          size="sm"
+                          online={online}
+                          label=""
+                        />
                         <div>
                           <div className="font-semibold text-gray-800">{user.first_name} {user.last_name}</div>
                           {user.last_login_city && <div className="text-xs text-gray-400 flex items-center gap-1"><MapPin className="w-3 h-3" />{user.last_login_city}</div>}

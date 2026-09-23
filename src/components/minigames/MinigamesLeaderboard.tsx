@@ -88,7 +88,7 @@ export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador
               style={{ background: e.isMe ? "rgba(212,175,55,0.12)" : "transparent" }}
             >
               <span className="w-6 text-center font-bold text-[var(--greek-blue)]">{e.rank}</span>
-              <AvatarWithBorder avatar={e.avatar} equippedBorder={e.equippedBorder} name={e.firstName} size="sm" bgClass="#3a6ea520" />
+              <AvatarWithBorder avatar={e.avatar} equippedBorder={e.equippedBorder} name={e.firstName} size="sm" />
               <span className={`flex-1 font-medium ${e.nameColor ? NAME_COLOR_CLS[e.nameColor] || "" : ""}`} style={{ color: !e.nameColor || !NAME_COLOR_CLS[e.nameColor] ? "var(--greek-blue)" : undefined }}>
                 {e.firstName}{e.isMe ? " (toi)" : ""}
               </span>

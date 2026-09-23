@@ -121,6 +121,9 @@ export const RATE_LIMITS = {
   // Forum - moderate
   'forum:post': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'Forum post' },
   'forum:comment': { maxAttempts: 50, windowMs: 60 * 60 * 1000, name: 'Forum comment' },
+  'forum:like': { maxAttempts: 200, windowMs: 60 * 60 * 1000, name: 'Forum like/follow' },
+  // Une vue comptée par personne et par sujet toutes les 6 h.
+  'forum:view': { maxAttempts: 1, windowMs: 6 * 60 * 60 * 1000, name: 'Forum view' },
   
   // Webhooks - very strict
   'webhook:stripe': { maxAttempts: 100, windowMs: 60 * 60 * 1000, name: 'Stripe webhook' },

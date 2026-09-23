@@ -6,7 +6,7 @@ import { selectAllPages } from "@/lib/selectAllPages";
 // pas dans le besoin d'affichage — ici elle existe et n'a rien à faire
 // renvoyée au client, donc exclusion explicite.
 const USER_COLUMNS =
-      "id, auth_id, email, child_username, first_name, last_name, role, parent_id, grade_level, avatar, status, created_at, updated_at, account_type, subscription_plan_id, subscription_expires_at, child_age, last_login_ip, last_login_city, last_login_country, last_active_at, latitude, longitude, avatar_border, name_animation, name_color, equipped_border, featured_badges, login_count, login_streak, last_login_date, ban_reason, ban_until, onboarding_completed, notif_weekly_reports, notif_offers_news, school_zone, two_factor_enabled, needs_grade_choice, graduated_at";
+      "id, auth_id, email, child_username, first_name, last_name, role, parent_id, grade_level, avatar, equipped_border, status, created_at, updated_at, account_type, subscription_plan_id, subscription_expires_at, child_age, last_login_ip, last_login_city, last_login_country, last_active_at, latitude, longitude, avatar_border, name_animation, name_color, equipped_border, featured_badges, login_count, login_streak, last_login_date, ban_reason, ban_until, onboarding_completed, notif_weekly_reports, notif_offers_news, school_zone, two_factor_enabled, needs_grade_choice, graduated_at";
 
 export default async function AdminUsersPage() {
   // Paginé : un simple select plafonne à 1000 lignes — au-delà, les

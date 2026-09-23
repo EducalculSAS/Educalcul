@@ -1,5 +1,7 @@
 "use client";
 
+import AvatarWithBorder from "@/components/AvatarWithBorder";
+import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
@@ -19,8 +21,6 @@ import {
 } from "lucide-react";
 import { validatePassword } from "@/lib/validation";
 import { updateMyProfile } from "@/lib/updateMyProfile";
-import Image from "next/image";
-import { avatarUrl } from "@/lib/avatarUrl";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
 import WebAuthnCard from "@/components/WebAuthnCard";
 import UserSessionsList from "@/components/UserSessionsList";
@@ -33,12 +33,14 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
  * actif, nombre d'enfants) arrivent déjà chargées du serveur. */
 export default function ParentProfileSettings({
   initialFormData,
+  equippedBorder = null,
   initialNotifications,
   initialGoogleLinked,
   initialHasActiveSubscription,
   initialChildrenCount,
 }: {
   initialFormData: { firstName: string; lastName: string; email: string; phone: string; avatar: string };
+  equippedBorder?: string | null;
   initialNotifications: { notif_weekly_reports: boolean; notif_offers_news: boolean };
   initialGoogleLinked: boolean;
   initialHasActiveSubscription: boolean;
@@ -58,6 +60,7 @@ export default function ParentProfileSettings({
   } | null>(null);
 
   const [formData, setFormData] = useState(initialFormData);
+  const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
   const [notifications, setNotifications] = useState(initialNotifications);
 
   const [passwordData, setPasswordData] = useState({
@@ -66,35 +69,14 @@ export default function ParentProfileSettings({
     confirmPassword: "",
   });
 
-  const handleAvatarUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || e.target.files.length === 0) return;
-
-    const file = e.target.files[0];
-
-    setSaving(true);
-    try {
-      const uploadFormData = new FormData();
-      uploadFormData.append("file", file);
-      uploadFormData.append("folder", "uploads/avatars");
-
-      const response = await fetch("/api/admin/upload", {
-        method: "POST",
-        body: uploadFormData,
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) throw new Error(data.error || "Upload failed");
-
-      setFormData({ ...formData, avatar: data.url });
-      await updateMyProfile({ avatar: data.url });
-      setMessage({ type: "success", text: "Photo de profil mise à jour." });
-    } catch (error: any) {
-      console.error("Avatar upload error:", error);
-      setMessage({ type: "error", text: "Erreur lors de l'upload de la photo." });
-    } finally {
-      setSaving(false);
-    }
+  // Uniquement les avatars proposés par le site (plus d'envoi de photo).
+  const handleAvatarChange = async (avatar: string) => {
+    const previous = formData.avatar;
+    setFormData({ ...formData, avatar });
+    setAvatarPickerOpen(false);
+    const r = await updateMyProfile({ avatar });
+    if (!r.ok) setFormData((f) => ({ ...f, avatar: previous }));
+    setMessage(r.ok ? { type: "success", text: "Avatar mis à jour." } : { type: "error", text: r.error || "Échec de la mise à jour." });
   };
 
   const handleDeleteAccount = async () => {
@@ -330,30 +312,29 @@ export default function ParentProfileSettings({
 
             <form onSubmit={handleProfileUpdate} className="space-y-4">
               <div className="flex flex-col items-center mb-6">
-                <div className="relative w-24 h-24 mb-3">
-                  <Image
-                    src={avatarUrl(formData.avatar, "/avatars/avatar1.png")!}
-                    alt="Avatar"
-                    fill
-                    className="rounded-full object-cover border-4 border-white shadow-md"
+                <div className="relative mb-3">
+                  <AvatarWithBorder
+                    avatar={formData.avatar}
+                    equippedBorder={equippedBorder}
+                    name={`${formData.firstName} ${formData.lastName}`}
+                    size="xl"
                   />
-                  <label
-                    htmlFor="avatar-upload"
-                    aria-label="Changer la photo de profil"
-                    className="absolute bottom-0 right-0 bg-[var(--greek-blue)] text-white p-2 rounded-full cursor-pointer shadow-lg hover:bg-blue-600 transition-colors"
-                  >
-                    <Camera className="w-4 h-4" aria-hidden="true" />
-                    <input
-                      id="avatar-upload"
-                      type="file"
-                      accept="image/*"
-                      className="hidden"
-                      onChange={handleAvatarUpload}
-                      disabled={saving}
+                  <span className="absolute -bottom-1 -right-1">
+                    <GlassIconButton
+                      icon={Camera}
+                      color="navy"
+                      onClick={() => setAvatarPickerOpen((v) => !v)}
+                      aria-label="Choisir un avatar"
                     />
-                  </label>
+                  </span>
                 </div>
-                <p className="text-sm text-gray-500">Cliquez sur l'icône pour changer votre photo</p>
+                {avatarPickerOpen ? (
+                  <div className="w-full mt-2">
+                    <AvatarPicker value={formData.avatar} onChange={handleAvatarChange} disabled={saving} columns={4} />
+                  </div>
+                ) : (
+                  <p className="text-sm text-gray-500">Touchez l&apos;icône pour choisir un avatar</p>
+                )}
               </div>
 
               <div className="grid grid-cols-2 gap-4">

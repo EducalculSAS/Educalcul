@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PageHero from "@/components/PageHero";
 import { redirect } from "next/navigation";
 import { Sigma, Calculator, PuzzleIcon, TrendingUp, Languages, Code2, ArrowRight, Lock, Flame, Gamepad2 } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
@@ -23,22 +24,7 @@ export default async function MinigamesPage() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
-      <div className="bg-[var(--greek-blue)] text-white pt-20 pb-12 px-8 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
-        <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
-              <Gamepad2 className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
-              MINI-JEUX
-            </h1>
-            <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
-              <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">JOUE</span>
-              <span>Grimpe au classement, débloque des récompenses !</span>
-            </p>
-          </div>
-        </div>
-      </div>
+      <PageHero icon={Gamepad2} title="Mini-jeux" badge="Joue" subtitle="Grimpe au classement et débloque des récompenses !" />
       <div className="container mx-auto max-w-6xl px-4 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {GAMES.map(({ gameType, href, icon: Icon, label, desc, color, available }) => {

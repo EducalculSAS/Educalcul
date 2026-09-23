@@ -1,5 +1,6 @@
 "use client";
 
+import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
 import Image from "next/image";
 import { UserPlus, Save, Loader2, AlertCircle, CheckCircle } from "lucide-react";
@@ -176,23 +177,7 @@ export default function AddChildForm() {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">Avatar</label>
-              <div className="grid grid-cols-4 sm:grid-cols-8 gap-4">
-                {AVATARS.map((avatar) => (
-                  <div
-                    key={avatar}
-                    onClick={() => setFormData({ ...formData, avatar })}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setFormData({ ...formData, avatar }); } }}
-                    aria-pressed={formData.avatar === avatar}
-                    className={`relative cursor-pointer rounded-full p-1 border-2 transition-all duration-200 ${
-                      formData.avatar === avatar ? "border-[var(--greek-gold)] scale-110 shadow-md" : "border-transparent hover:border-[rgba(197,161,72,0.25)] hover:scale-105"
-                    }`}
-                  >
-                    <Image src={`/avatars/${avatar}`} alt={avatar.replace(".png", "")} width={64} height={64} className="w-full h-full rounded-full" />
-                  </div>
-                ))}
-              </div>
+              <AvatarPicker value={formData.avatar} onChange={(avatar) => setFormData({ ...formData, avatar })} />
             </div>
 
             <GlassButton

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Image from "next/image";
+import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { redirect } from "next/navigation";
 import {
   Users, BookOpen, CheckCircle, TrendingUp,
@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 import ChildReportLink from "@/components/parent/ChildReportLink";
-import { avatarUrl } from "@/lib/avatarUrl";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import GlassButton from "@/components/ui/GlassButton";
@@ -26,6 +25,7 @@ interface ChildRow {
   last_name: string;
   grade_level: string | null;
   avatar?: string;
+  equipped_border?: string | null;
 }
 
 const formatRelativeTime = (d: string) => {
@@ -40,18 +40,18 @@ async function fetchChildStats(childId: string): Promise<ChildStats> {
   const [
     { count: totalEx },
     { count: totalQuiz },
-    { data: correct },
+    { count: correctCount },
     { data: lastQuiz },
     { data: lastEx },
   ] = await Promise.all([
     supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
     supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
-    supabaseAdmin.from("user_exercise_attempts").select("id").eq("user_id", childId).eq("is_correct", true),
+    supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId).eq("is_correct", true),
     supabaseAdmin.from("user_quiz_attempts").select("completed_at, score, total_questions, quizzes(title)").eq("user_id", childId).order("completed_at", { ascending: false }).limit(1).maybeSingle(),
     supabaseAdmin.from("user_exercise_attempts").select("attempted_at, is_correct, exercises(title)").eq("user_id", childId).order("attempted_at", { ascending: false }).limit(1).maybeSingle(),
   ]);
 
-  const successRate = (totalEx || 0) > 0 ? Math.round(((correct?.length || 0) / (totalEx || 1)) * 100) : 0;
+  const successRate = (totalEx || 0) > 0 ? Math.round(((correctCount || 0) / (totalEx || 1)) * 100) : 0;
 
   const activities: { type: string; title: string; date: string }[] = [];
   if (lastQuiz) activities.push({ type: "Quiz", title: (lastQuiz as any).quizzes?.title || "Quiz", date: (lastQuiz as any).completed_at });
@@ -85,7 +85,7 @@ export default async function ParentDashboard() {
 
   const { data: childrenRows } = await supabaseAdmin
     .from("users")
-    .select("id, first_name, last_name, grade_level, avatar")
+    .select("id, first_name, last_name, grade_level, avatar, equipped_border")
     .eq("role", "child")
     .eq("parent_id", userData.id)
     .order("first_name");
@@ -218,18 +218,15 @@ export default async function ParentDashboard() {
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {children.map((child) => {
-              const avatar = avatarUrl(child.avatar, "/avatars/avatar1.png");
               return (
                 <div key={child.id} className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
                   {/* Header */}
                   <div className="p-5 border-b border-[rgba(197,161,72,0.25)]">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-11 h-11 rounded-2xl bg-[var(--greek-blue)]/10 flex items-center justify-center overflow-hidden font-bold text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
-                          {child.avatar && avatar
-                            ? <Image src={avatar} alt={child.first_name} fill sizes="44px" className="object-cover" />
-                            : <span className="text-lg">{child.first_name.charAt(0)}</span>}
-                        </div>
+                        <span className="group-hover:scale-110 transition-transform duration-300">
+                          <AvatarWithBorder avatar={child.avatar} equippedBorder={child.equipped_border} name={child.first_name} size="md" label="" />
+                        </span>
                         <div>
                           <h3 className="font-bold text-[var(--greek-blue)] text-lg leading-tight">{child.first_name} {child.last_name}</h3>
                           <span className="inline-block text-xs font-semibold bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] px-2 py-0.5 rounded-full">{child.grade_level || "Niveau non défini"}</span>

@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Image from "next/image";
+import PageHero from "@/components/PageHero";
+import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { redirect } from "next/navigation";
 import { PlusCircle, Users, Edit } from "lucide-react";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
-import { avatarUrl } from "@/lib/avatarUrl";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import DeleteChildButton from "@/components/parent/DeleteChildButton";
@@ -16,6 +16,7 @@ interface Child {
   grade_level: string;
   child_username: string;
   avatar?: string;
+  equipped_border?: string | null;
 }
 
 export default async function ManageChildrenPage() {
@@ -37,26 +38,18 @@ export default async function ManageChildrenPage() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
-      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
-        <div className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
-              <Users className="w-10 h-10 md:w-14 md:h-14 text-[var(--greek-gold)]" />
-              MES ENFANTS
-            </h1>
-            <p className="text-xl opacity-90 flex items-center gap-3 font-medium">
-              <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-sm">GESTION</span>
-              <span>Gérez les profils et les accès de vos enfants</span>
-            </p>
-          </div>
-          <GlassButton href="/parent/add-child" variant="gold" className="shrink-0">
+      <PageHero
+        icon={Users}
+        title="Mes enfants"
+        badge="Gestion"
+        subtitle="Gérez les profils et les accès de vos enfants."
+        actions={
+          <GlassButton href="/parent/add-child" variant="gold">
             <PlusCircle className="w-5 h-5" />
             Ajouter un enfant
           </GlassButton>
-        </div>
-      </div>
+        }
+      />
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         {children.length === 0 ? (
           <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-12 text-center max-w-2xl mx-auto">
@@ -82,7 +75,6 @@ export default async function ManageChildrenPage() {
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {children.map((child) => {
-              const avatar = avatarUrl(child.avatar, "/avatars/avatar1.png");
               return (
                 <div
                   key={child.id}
@@ -91,13 +83,9 @@ export default async function ManageChildrenPage() {
                   <div className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center">
-                        <div className="relative w-12 h-12 bg-white shadow-sm rounded-full flex items-center justify-center text-[var(--greek-blue)] font-bold text-xl mr-4 group-hover:scale-110 transition-transform overflow-hidden border-2 border-[rgba(197,161,72,0.25)]">
-                          {child.avatar && avatar ? (
-                            <Image src={avatar} alt={child.first_name} fill sizes="48px" className="object-cover" />
-                          ) : (
-                            child.first_name.charAt(0)
-                          )}
-                        </div>
+                        <span className="mr-4 group-hover:scale-110 transition-transform">
+                          <AvatarWithBorder avatar={child.avatar} equippedBorder={child.equipped_border} name={child.first_name} size="md" label="" />
+                        </span>
                         <div>
                           <h3 className="text-lg font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                             {child.first_name} {child.last_name}

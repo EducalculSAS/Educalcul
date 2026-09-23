@@ -1,9 +1,8 @@
 import { redirect } from "next/navigation";
-import Image from "next/image";
+import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { ArrowLeft, Award, BookOpen, CheckCircle, TrendingUp, Gamepad2 } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { avatarUrl } from "@/lib/avatarUrl";
 import ChildReportTabs from "@/components/parent/ChildReportTabs";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -39,7 +38,7 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
 
   const { data: child } = await supabaseAdmin
     .from("users")
-    .select("id, first_name, last_name, grade_level, child_username, avatar, parent_id")
+    .select("id, first_name, last_name, grade_level, child_username, avatar, equipped_border, parent_id")
     .eq("id", childId)
     .maybeSingle();
 
@@ -102,7 +101,6 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
 
   const subjectStats = Object.entries(subjectMap).map(([subject, v]) => ({ subject, ...v })).sort((a, b) => b.total - a.total);
 
-  const avatar = avatarUrl(child.avatar, "/avatars/avatar1.png");
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
@@ -117,11 +115,9 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
             </GlassButton>
           </div>
           <div className="flex items-center gap-5">
-            <div className="relative w-16 h-16 rounded-2xl bg-white/10 border-2 border-white/20 flex items-center justify-center overflow-hidden shrink-0">
-              {child.avatar && avatar
-                ? <Image src={avatar} alt={child.first_name} fill sizes="64px" className="object-cover" />
-                : <span className="text-2xl font-bold text-white">{child.first_name.charAt(0)}</span>}
-            </div>
+            <span className="rounded-[30%] bg-white p-0.5 shadow-lg shrink-0">
+              <AvatarWithBorder avatar={child.avatar} equippedBorder={child.equipped_border} name={child.first_name} size="lg" label="" />
+            </span>
             <div>
               <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-display)] font-bold">
                 {child.first_name} {child.last_name}

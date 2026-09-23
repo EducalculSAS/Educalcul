@@ -1,5 +1,6 @@
 "use client";
 
+import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -10,7 +11,6 @@ import {
   Flag, ChevronDown, ChevronUp, Save, Eye, EyeOff, ShieldCheck, UserCog,
   Gamepad2,
 } from "lucide-react";
-import { avatarUrl } from "@/lib/avatarUrl";
 import { supabase } from "@/lib/supabaseClient";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { validatePassword } from "@/lib/validation";
@@ -315,8 +315,6 @@ export default function AdminUserDetailClient({
   const isChild = user.role === "child";
   const isParent = user.role === "parent";
   const isBanned = user.status === "inactive";
-  const img = avatarUrl(user.avatar);
-  const initials = `${user.first_name?.[0] || ""}${user.last_name?.[0] || ""}`;
 
   const notifColors: any = { ban: "bg-red-50 text-red-700 border-red-100", warning: "bg-orange-50 text-orange-700 border-orange-100", message: "bg-blue-50 text-blue-700 border-blue-100", info: "bg-green-50 text-green-700 border-green-100" };
 
@@ -342,9 +340,7 @@ export default function AdminUserDetailClient({
               />
             </span>
             <div className="relative shrink-0">
-              <div className="w-16 h-16 rounded-2xl bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] font-bold text-2xl flex items-center justify-center overflow-hidden">
-                {img ? <img src={img} alt="" className="w-full h-full object-cover" /> : initials}
-              </div>
+              <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={`${user.first_name ?? ""} ${user.last_name ?? ""}`} size="lg" label="" />
               {isBanned && <div className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center"><Ban className="w-3 h-3 text-white" /></div>}
             </div>
             <div className="min-w-0 flex-1">
@@ -555,9 +551,7 @@ export default function AdminUserDetailClient({
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Enfants ({children.length})</h2>
               {children.length > 0 ? children.map((c: any) => (
                 <button key={c.id} onClick={() => router.push(`/admin/users/detail?id=${c.id}`)} className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors text-left mb-1">
-                  <div className="w-8 h-8 rounded-lg bg-green-100 text-green-700 font-bold text-xs flex items-center justify-center overflow-hidden shrink-0">
-                    {avatarUrl(c.avatar) ? <img src={avatarUrl(c.avatar)!} className="w-full h-full object-cover" alt="" /> : (c.first_name?.[0] || "?")}
-                  </div>
+                  <AvatarWithBorder avatar={c.avatar} equippedBorder={c.equipped_border} name={`${c.first_name ?? ""} ${c.last_name ?? ""}`} size="xs" label="" />
                   <div><p className="text-sm font-semibold text-gray-700">{c.first_name} {c.last_name}</p><p className="text-xs text-gray-400">{c.grade_level}</p></div>
                 </button>
               )) : <p className="text-sm text-gray-400 italic">Aucun enfant lié</p>}

@@ -1,5 +1,6 @@
 "use client";
 
+import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import {
@@ -112,7 +113,7 @@ export default function ChildProfileSettings({
         </div>
         <div className="relative -mt-12 flex flex-col items-center gap-3 px-6 pb-6 text-center">
           <div className="relative">
-            <AvatarWithBorder avatar={avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" bgClass="transparent" circular />
+            <AvatarWithBorder avatar={avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" />
             <button
               type="button"
               onClick={() => setAvatarPickerOpen(v => !v)}
@@ -131,22 +132,19 @@ export default function ChildProfileSettings({
           </div>
 
           {avatarPickerOpen && (
-            <div className="mt-2 flex flex-wrap justify-center gap-2.5 max-w-xs">
-              {AVATARS.map((a) => (
-                <button
-                  key={a}
-                  type="button"
-                  onClick={async () => {
-                    setAvatar(a);
-                    setAvatarPickerOpen(false);
-                    const r = await updateMyProfile({ avatar: a });
-                    setMessage(r.ok ? { type: "success", text: "Avatar mis à jour." } : { type: "error", text: r.error || "Échec." });
-                  }}
-                  className={`w-12 h-12 rounded-full overflow-hidden border-2 transition-all shrink-0 ${(avatar === a || avatar === `/avatars/${a}`) ? "border-[var(--greek-gold)] scale-110" : "border-transparent hover:border-[var(--greek-blue)]/40"}`}
-                >
-                  <Image src={`/avatars/${a}`} alt="" width={48} height={48} className="w-full h-full object-cover" />
-                </button>
-              ))}
+            <div className="mt-2 w-full max-w-sm">
+              <AvatarPicker
+                value={avatar}
+                columns={4}
+                onChange={async (a) => {
+                  const previous = avatar;
+                  setAvatar(a);
+                  setAvatarPickerOpen(false);
+                  const r = await updateMyProfile({ avatar: a });
+                  if (!r.ok) setAvatar(previous);
+                  setMessage(r.ok ? { type: "success", text: "Avatar mis à jour." } : { type: "error", text: r.error || "Échec." });
+                }}
+              />
             </div>
           )}
         </div>
