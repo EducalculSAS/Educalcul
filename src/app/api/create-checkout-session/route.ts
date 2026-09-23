@@ -309,7 +309,7 @@ export async function POST(req: Request) {
     (sessionData as any).custom_text = {
       submit: {
         message:
-          "En confirmant, vous acceptez les Conditions générales de vente (educalcul.com/cgv) et demandez l'accès immédiat au service. Vous gardez 14 jours pour vous rétracter (remboursement au prorata de la période non utilisée).",
+          "En confirmant, vous acceptez les Conditions générales de vente d'Educalcul (page « CGV » du site) et demandez l'accès immédiat au service. Vous gardez 14 jours pour vous rétracter (remboursement au prorata de la période non utilisée).",
       },
     };
     const session = await stripe.checkout.sessions.create(sessionData);
