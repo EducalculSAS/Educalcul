@@ -1,3 +1,4 @@
+import { sanitizeAvatar } from "@/lib/avatarUrl";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -36,7 +37,7 @@ export async function GET(req: Request) {
   }
 }
 
-const STRING_FIELDS = new Set(["avatar", "first_name", "last_name"]);
+const STRING_FIELDS = new Set(["first_name", "last_name"]);
 const BOOL_FIELDS = new Set([
   "notif_weekly_reports",
   "notif_offers_news",
@@ -56,6 +57,12 @@ export async function PATCH(req: Request) {
       else if (BOOL_FIELDS.has(k) && typeof v === "boolean") patch[k] = v;
       // Champ énuméré : seule une voix de la liste blanche est acceptée.
       else if (k === "calia_voice" && isCaliaVoice(v)) patch[k] = v;
+      // Avatar : uniquement une image servie par le site (voir sanitizeAvatar).
+      else if (k === "avatar") {
+        const avatar = sanitizeAvatar(v);
+        if (avatar === null) return NextResponse.json({ error: "Avatar invalide" }, { status: 400 });
+        patch[k] = avatar;
+      }
     }
 
     // L'acceptation des CGU n'est horodatée que par le serveur, au moment où

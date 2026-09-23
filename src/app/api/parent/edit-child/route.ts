@@ -1,3 +1,4 @@
+import { sanitizeAvatar } from "@/lib/avatarUrl";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
@@ -25,8 +26,13 @@ export async function PATCH(req: Request) {
     }
 
     const patch: Record<string, unknown> = {};
-    for (const k of ["first_name", "last_name", "child_username", "avatar"] as const) {
+    for (const k of ["first_name", "last_name", "child_username"] as const) {
       if (typeof body[k] === "string") patch[k] = body[k].trim();
+    }
+    if (body.avatar !== undefined) {
+      const avatar = sanitizeAvatar(body.avatar);
+      if (avatar === null) return NextResponse.json({ error: "Avatar invalide" }, { status: 400 });
+      patch.avatar = avatar;
     }
     if (typeof body.email === "string") {
       if (!isValidEmail(body.email.trim())) {

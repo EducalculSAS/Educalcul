@@ -1,3 +1,4 @@
+import { sanitizeAvatar } from "@/lib/avatarUrl";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -36,7 +37,7 @@ export async function POST(request: Request) {
     const lastName = typeof body.lastName === "string" ? body.lastName.trim() : "";
     const username = typeof body.username === "string" && body.username.trim() ? body.username.trim() : null;
     const gradeLevel = typeof body.gradeLevel === "string" ? body.gradeLevel : "";
-    const avatar = typeof body.avatar === "string" ? body.avatar : "avatar1.png";
+    const avatar = sanitizeAvatar(body.avatar) || "avatar1.png";
 
     if (!email || !password || !firstName) {
       return NextResponse.json({ error: "Prénom, email et mot de passe sont requis." }, { status: 400 });

@@ -1,9 +1,15 @@
 import { cookies } from "next/headers";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { getClientIp } from "@/lib/apiAuth";
+import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 const COOKIE_NAME = "edu_signup_session";
 const MAX_AGE = 60 * 60 * 24; // 24h — le temps de compléter l'inscription (paiement Stripe inclus).
+// Route publique qui écrit en base : taille bornée, sinon n'importe quel script
+// pourrait y stocker des mégaoctets par requête.
+const MAX_KEYS = 40;
+const MAX_BYTES = 16 * 1024;
 
 /** État du flux d'inscription (profil, mode, plan choisi...), stocké
  * côté serveur et référencé par un cookie httpOnly — jamais accessible en JS
@@ -32,7 +38,16 @@ export async function GET() {
 
 export async function PATCH(req: Request) {
   try {
-    const patch = await req.json();
+    const cfg = RATE_LIMITS["auth:signup-session"];
+    const limit = await rateLimitWithBackoff(`auth:signup-session:${getClientIp(req)}`, cfg.maxAttempts, cfg.windowMs);
+    if (!limit.allowed) {
+      return Response.json({ error: "Trop de requêtes. Réessayez dans quelques minutes." }, { status: 429 });
+    }
+
+    const patch = await req.json().catch(() => null);
+    if (!patch || typeof patch !== "object" || Array.isArray(patch)) {
+      return Response.json({ error: "Requête invalide" }, { status: 400 });
+    }
     const store = await cookies();
     let token = store.get(COOKIE_NAME)?.value;
     let current: Record<string, any> = {};
@@ -50,6 +65,9 @@ export async function PATCH(req: Request) {
     for (const [key, value] of Object.entries(patch)) {
       if (value === null) delete current[key];
       else current[key] = value;
+    }
+    if (Object.keys(current).length > MAX_KEYS || JSON.stringify(current).length > MAX_BYTES) {
+      return Response.json({ error: "Session d'inscription trop volumineuse" }, { status: 413 });
     }
 
     if (token) {

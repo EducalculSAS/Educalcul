@@ -51,6 +51,8 @@ export async function rateLimitWithBackoff(
 export const RATE_LIMITS = {
   // Auth endpoints - strict
   'auth:signup': { maxAttempts: 5, windowMs: 60 * 60 * 1000, name: 'Signup' },
+  // Chaque étape du parcours d'inscription enregistre son état : large, mais borné.
+  'auth:signup-session': { maxAttempts: 120, windowMs: 60 * 60 * 1000, name: 'Signup session' },
   'auth:login': { maxAttempts: 10, windowMs: 15 * 60 * 1000, name: 'Login' },
   'auth:validate-email': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'Email validation' },
   'auth:resolve-username': { maxAttempts: 30, windowMs: 60 * 1000, name: 'Username resolution' },

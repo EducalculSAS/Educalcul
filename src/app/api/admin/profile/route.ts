@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { sanitizeAvatar } from "@/lib/avatarUrl";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { validateEmail, validateName, validateString, isValidUUID } from "@/lib/validation";
@@ -74,7 +75,7 @@ export async function PUT(request: Request) {
         last_name: last_name || undefined,
         email: email || undefined,
         child_username: child_username || undefined,
-        avatar: avatar || undefined,
+        avatar: sanitizeAvatar(avatar) || undefined,
         name_animation: name_animation || undefined,
         avatar_border: avatar_border || undefined,
         equipped_border: borderKey,
