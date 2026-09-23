@@ -390,3 +390,53 @@ export function welcomeEmail(firstName: string, confirmUrl: string, paid: boolea
     }),
   };
 }
+
+// ── Rappels légaux (reconduction, inactivité) ───────────────────────────────
+
+/** Rappel avant la reconduction tacite d'un abonnement annuel (Code de la consommation, art. L.215-1). */
+export function renewalReminderEmail(firstName: string, planName: string, renewalDate: string) {
+  return {
+    subject: "Votre abonnement Educalcul sera renouvelé prochainement",
+    textPart: `Bonjour ${firstName},
+
+Votre abonnement ${planName} sera renouvelé automatiquement le ${renewalDate}, pour une nouvelle année.
+
+Vous pouvez le résilier à tout moment avant cette date depuis votre espace Abonnement : ${EMAIL_BASE_URL}/parent/subscription
+
+L'équipe Educalcul`,
+    htmlPart: buildEmailHtml({
+      title: "Renouvellement de votre abonnement",
+      preheader: `Renouvellement automatique le ${renewalDate}`,
+      body: `
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
+        <p style="margin:0 0 16px;">Votre abonnement <strong>${escapeHtml(planName)}</strong> sera renouvelé automatiquement le <strong>${escapeHtml(renewalDate)}</strong>, pour une nouvelle année.</p>
+        <p style="margin:0 0 16px;">Si vous ne souhaitez pas le poursuivre, vous pouvez le résilier en quelques clics depuis votre espace Abonnement avant cette date : aucun prélèvement n'aura alors lieu.</p>
+      `,
+      cta: { label: "Gérer mon abonnement", url: `${EMAIL_BASE_URL}/parent/subscription` },
+    }),
+  };
+}
+
+/** Avertissement avant suppression d'un compte inactif depuis 3 ans (Politique de confidentialité). */
+export function inactivityWarningEmail(firstName: string, deletionDate: string) {
+  return {
+    subject: "Votre compte Educalcul va être supprimé",
+    textPart: `Bonjour ${firstName},
+
+Votre compte Educalcul (et ceux de vos enfants) n'a pas été utilisé depuis plus de 3 ans. Conformément à notre politique de confidentialité, il sera supprimé le ${deletionDate}.
+
+Pour le conserver, il suffit de vous connecter avant cette date : ${EMAIL_BASE_URL}/auth/connexion
+
+L'équipe Educalcul`,
+    htmlPart: buildEmailHtml({
+      title: "Compte inactif",
+      preheader: `Suppression prévue le ${deletionDate}`,
+      body: `
+        <p style="margin:0 0 16px;">Bonjour <strong>${escapeHtml(firstName)}</strong>,</p>
+        <p style="margin:0 0 16px;">Votre compte Educalcul, ainsi que ceux de vos enfants, n'a pas été utilisé depuis plus de 3 ans. Conformément à notre politique de confidentialité, il sera <strong>supprimé le ${escapeHtml(deletionDate)}</strong>, avec les données associées.</p>
+        <p style="margin:0 0 16px;">Pour le conserver, il suffit de vous connecter avant cette date.</p>
+      `,
+      cta: { label: "Me connecter", url: `${EMAIL_BASE_URL}/auth/connexion` },
+    }),
+  };
+}

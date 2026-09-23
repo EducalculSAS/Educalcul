@@ -1,5 +1,7 @@
 {
-  "regions": ["lhr1"],
+  "regions": [
+    "lhr1"
+  ],
   "functions": {
     "src/app/api/**": {
       "maxDuration": 30
@@ -31,6 +33,10 @@
     {
       "path": "/api/cron/catalogue-plan-advance",
       "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/data-retention",
+      "schedule": "30 2 * * *"
     }
   ]
 }

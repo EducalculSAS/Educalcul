@@ -1,9 +1,7 @@
 import { NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabaseClient";
-import { stripe } from "@/lib/stripe";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
-import { deleteAuthUser } from "@/lib/deleteAuthUser";
+import { deleteParentAccount } from "@/lib/deleteParentAccount";
 
 export async function DELETE(req: Request) {
   try {
@@ -22,65 +20,10 @@ export async function DELETE(req: Request) {
       return NextResponse.json({ error: "Seul un parent peut supprimer un compte" }, { status: 403 });
     }
 
-    const parentAuthId = me.authId;
-    console.log("[delete-account] Starting deletion for auth_id:", parentAuthId);
-
-    // Récupérer les auth_ids des enfants AVANT suppression
-    const { data: parentRow } = await supabaseAdmin
-      .from("users").select("id").eq("auth_id", parentAuthId).maybeSingle();
-
-    let childAuthIds: string[] = [];
-    if (parentRow?.id) {
-      const { data: children } = await supabaseAdmin
-        .from("users")
-        .select("auth_id")
-        .eq("parent_id", parentRow.id)
-        .eq("role", "child");
-      childAuthIds = (children || []).map(c => c.auth_id).filter(Boolean);
-      console.log("[delete-account] Children to delete:", childAuthIds);
+    const result = await deleteParentAccount(me.authId);
+    if (!result.ok) {
+      return NextResponse.json({ error: sanitizeErrorMessage(result.error || "Suppression impossible") }, { status: 500 });
     }
-
-    // 1. Annuler l'abonnement Stripe si existant (non-bloquant)
-    try {
-      const { data: sub } = await supabaseAdmin
-        .from("subscriptions")
-        .select("stripe_subscription_id, stripe_customer_id")
-        .eq("user_id", parentAuthId)
-        .maybeSingle();
-
-      if (sub?.stripe_subscription_id) {
-        await stripe.subscriptions.cancel(sub.stripe_subscription_id);
-        console.log("[delete-account] Stripe subscription cancelled:", sub.stripe_subscription_id);
-      }
-    } catch (stripeErr: any) {
-      // Non bloquant : si déjà annulé ou inexistant, on continue
-      console.warn("[delete-account] Stripe cancel warning (non-fatal):", stripeErr?.message);
-    }
-
-    // 2. Supprimer toutes les données public.users (cascade automatique)
-    const { error: rpcError } = await supabaseAdmin.rpc("delete_user_account", {
-      p_auth_id: parentAuthId,
-    });
-    if (rpcError) {
-      console.error("[delete-account] RPC error:", rpcError);
-      return NextResponse.json({ error: sanitizeErrorMessage(rpcError.message) }, { status: 500 });
-    }
-    console.log("[delete-account] public.users deleted via RPC");
-
-    // 3. Supprimer les auth users enfants — avec repli si l'API Admin
-    // échoue (voir deleteAuthUser ci-dessous : même filet que la route admin).
-    for (const childAuthId of childAuthIds) {
-      const ok = await deleteAuthUser(childAuthId, `child ${childAuthId}`);
-      if (!ok) console.error(`[delete-account] Could not delete child auth ${childAuthId} (public.users déjà supprimé)`);
-    }
-
-    // 4. Supprimer le auth user parent
-    const parentOk = await deleteAuthUser(parentAuthId, "parent");
-    if (!parentOk) {
-      return NextResponse.json({ error: "Le compte a été supprimé mais la connexion associée n'a pas pu l'être — contacte le support technique." }, { status: 500 });
-    }
-    console.log("[delete-account] Parent auth deleted successfully");
-
     return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error("[delete-account] Unexpected error:", error);
