@@ -16,7 +16,9 @@ const SANS = "'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-ser
 
 /**
  * Gabarit commun de tous les emails, au style du site : héros bleu nuit avec
- * symboles mathématiques en filigrane et titre Cinzel, carte blanche bordée
+ * les symboles mathématiques dorés de la page d'accueil en filigrane (image
+ * public/email/hero-symbols.png, mêmes positions que SYM dans app/page.tsx :
+ * Gmail supprime position:absolute, une image de fond passe partout), titre Cinzel, carte blanche bordée
  * d'or sur fond crème, bouton pilule en verre bleu nuit.
  * Les clients mail n'appliquent pas tous le CSS : chaque effet a un repli
  * (couleur unie, bouton plein). Le reflet animé du bouton, le survol et
@@ -66,13 +68,13 @@ export function buildEmailHtml({
       .body-pad{padding:28px 24px 8px!important}
       .cta-pad{padding:8px 24px 30px!important}
       .hero-title{font-size:25px!important}
-      .glyphs{display:none!important}
     }
   </style>
   <!-- Bloc séparé : si un client rejette ces règles, il ne perd pas les réglages mobiles ci-dessus -->
   <style>
     @media screen and (prefers-reduced-motion:no-preference){
       .site-card{animation:ec-rise .7s cubic-bezier(.2,.8,.2,1) both}
+      .hero-bg{animation:ec-float 9s ease-in-out infinite}
       .glass-btn{
         background-image:linear-gradient(110deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 62%),linear-gradient(180deg,${NAVY_MID} 0%,${NAVY} 100%)!important;
         background-size:260% 100%,100% 100%!important;
@@ -85,6 +87,7 @@ export function buildEmailHtml({
       .site-link{transition:color .2s ease}
       .site-link:hover{color:${NAVY}!important}
     }
+    @keyframes ec-float{0%,100%{background-position:50% 50%}33%{background-position:50% 44%}66%{background-position:50% 54%}}
     @keyframes ec-rise{from{transform:translateY(14px)}to{transform:none}}
     @keyframes ec-sheen{0%{background-position:160% 0,0 0}55%,100%{background-position:-60% 0,0 0}}
   </style>
@@ -102,25 +105,17 @@ export function buildEmailHtml({
 
                 <!-- Héros bleu nuit, comme en haut des pages du site -->
                 <tr>
-                  <td class="hero-pad" bgcolor="${NAVY}" style="padding:30px 44px 36px;border-radius:24px 24px 0 0;background-color:${NAVY};background-image:radial-gradient(circle at 85% 0%,rgba(26,58,110,.9) 0,rgba(26,58,110,0) 55%),radial-gradient(circle at 0% 100%,rgba(197,161,72,.14) 0,rgba(197,161,72,0) 45%);">
-                    <!-- Symboles en filigrane dans une cellule (pas de position:absolute, que Gmail supprime) -->
-                    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
-                      <tr>
-                        <td style="vertical-align:middle;">
-                          <a href="${BASE}" style="text-decoration:none;display:inline-block;">
-                            <table role="presentation" cellspacing="0" cellpadding="0" border="0">
-                              <tr>
-                                <td style="padding-right:10px;vertical-align:middle;"><img src="${LOGO}" alt="" width="36" height="36" style="display:block;border-radius:8px;" /></td>
-                                <td style="vertical-align:middle;"><span style="font-family:${SERIF};font-size:14px;font-weight:700;color:#ffffff;letter-spacing:2.5px;">EDUCALCUL</span></td>
-                              </tr>
-                            </table>
-                          </a>
-                        </td>
-                        <td align="right" class="glyphs" aria-hidden="true" style="vertical-align:middle;font-family:Georgia,serif;font-size:40px;line-height:1;color:#253554;color:rgba(255,255,255,.1);letter-spacing:10px;white-space:nowrap;">&Sigma;&pi;&int;</td>
-                      </tr>
-                    </table>
-                    <p style="margin:30px 0 8px;font-family:${SANS};font-size:10.5px;font-weight:600;color:${GOLD};letter-spacing:2.5px;text-transform:uppercase;">Votre espace Educalcul</p>
-                    <h1 class="hero-title" style="margin:0;font-family:${SERIF};font-size:29px;font-weight:700;color:#ffffff;letter-spacing:.3px;line-height:1.25;">${title}</h1>
+                  <td class="hero-pad hero-bg" bgcolor="${NAVY}" background="${logoBaseUrl}/email/hero-symbols.png" style="padding:34px 44px 42px;border-radius:24px 24px 0 0;background-color:${NAVY};background-image:url('${logoBaseUrl}/email/hero-symbols.png');background-size:cover;background-position:center;background-repeat:no-repeat;">
+                    <a href="${BASE}" style="text-decoration:none;display:inline-block;">
+                      <table role="presentation" cellspacing="0" cellpadding="0" border="0">
+                        <tr>
+                          <td style="padding-right:10px;vertical-align:middle;"><img src="${LOGO}" alt="" width="36" height="36" style="display:block;border-radius:8px;" /></td>
+                          <td style="vertical-align:middle;"><span style="font-family:${SERIF};font-size:14px;font-weight:700;color:#ffffff;letter-spacing:2.5px;">EDUCALCUL</span></td>
+                        </tr>
+                      </table>
+                    </a>
+                    <p style="margin:34px 0 10px;font-family:${SANS};font-size:10.5px;font-weight:600;color:${GOLD};letter-spacing:2.5px;text-transform:uppercase;">Votre espace Educalcul</p>
+                    <h1 class="hero-title" style="margin:0;font-family:${SERIF};font-size:31px;font-weight:700;color:#ffffff;letter-spacing:.3px;line-height:1.25;">${title}</h1>
                   </td>
                 </tr>
 
