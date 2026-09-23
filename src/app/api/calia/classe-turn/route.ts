@@ -145,12 +145,16 @@ export async function POST(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    if (!(await hasCaliaClasseAccess(me.authId))) {
+    // Accès, limite et mémoire élève en parallèle (avant : l'un après l'autre).
+    const cfg = RATE_LIMITS["calia:classe-turn"];
+    const [access, rl, studentProfileText] = await Promise.all([
+      hasCaliaClasseAccess(me.authId),
+      rateLimitWithBackoff(`calia:classe-turn:${me.authId}`, cfg.maxAttempts, cfg.windowMs),
+      getCaliaStudentContext(me.id),
+    ]);
+    if (!access) {
       return NextResponse.json({ error: "Calia en classe necessite le plan Family." }, { status: 403 });
     }
-
-    const cfg = RATE_LIMITS["calia:classe-turn"];
-    const rl = await rateLimitWithBackoff(`calia:classe-turn:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
     if (!rl.allowed) return NextResponse.json({ error: "Trop de tours, reessaie plus tard." }, { status: 429 });
 
     const { lessonOutline, courseContext, liveExerciseDraft, history, studentMessage } = await req.json();
@@ -163,7 +167,6 @@ export async function POST(req: Request) {
       .join("\n");
 
     const courseOutlineText = buildCourseOutlineText(courseContext);
-    const studentProfileText = await getCaliaStudentContext(me.id);
 
     const levelFromContext =
       courseContext && typeof courseContext === "object" ? (courseContext as CourseContext).level : null;
@@ -178,7 +181,7 @@ export async function POST(req: Request) {
     const historyText = Array.isArray(history)
       ? (history as { role: string; content: string }[])
           .slice(-8)
-          .map((h) => `${h.role === "user" ? "Eleve" : "Calia"}: ${h.content}`)
+          .map((h) => `${h.role === "user" ? "Eleve" : "Calia"}: ${String(h.content).slice(0, 400)}`)
           .join("\n")
       : "";
 
@@ -188,14 +191,15 @@ export async function POST(req: Request) {
     // besoin du mode "reasoning_effort: high" de Mistral (chaine de pensee
     // interne) — ca ajoutait plusieurs secondes de latence pour rien dans
     // une conversation vocale ou chaque seconde compte.
-    const result = await generateStructuredContentWithSchema<TurnResult>(
-      prompt,
-      systemPrompt,
-      caliaClasseTurnSchema(),
-      0.6,
-      1000,
-      false,
-    );
+    // Un tour vocal ne doit jamais bloquer l'élève : au-delà de 12 s (modèle
+    // saturé), on répond tout de suite qu'il faut redire la question.
+    const result = await Promise.race([
+      generateStructuredContentWithSchema<TurnResult>(prompt, systemPrompt, caliaClasseTurnSchema(), 0.6, 500, false),
+      new Promise<null>((resolve) => setTimeout(() => resolve(null), 12_000)),
+    ]);
+    if (!result || typeof (result as TurnResult).say !== "string") {
+      return NextResponse.json({ error: "Calia n'a pas entendu, redis-moi ta question." }, { status: 503 });
+    }
 
     return NextResponse.json(result);
   } catch (err: unknown) {

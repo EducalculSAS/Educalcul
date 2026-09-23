@@ -419,8 +419,9 @@ export default function CaliaSceneDemo({
           studentMessage,
         }),
       });
-      const data = await res.json();
+      const data = await res.json().catch(() => ({}));
       if (!res.ok) throw new Error(data.error || "Erreur du serveur.");
+      if (typeof data?.say !== "string" || !data.say.trim()) throw new Error("Calia n'a pas entendu, redis-moi ta question.");
       // La session a pu etre fermee (bouton "arreter") pendant l'attente de
       // la reponse — Calia ne doit pas se mettre a parler toute seule apres
       // avoir ete coupee.
