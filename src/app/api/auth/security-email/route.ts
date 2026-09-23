@@ -1,8 +1,9 @@
-﻿import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sendEmail } from "@/lib/mailer";
+import { rateLimitWithBackoff } from "@/lib/rateLimitAdvanced";
 import {
   passwordChangedEmail,
   emailChangedEmail,
@@ -17,7 +18,20 @@ export async function POST(req: NextRequest) {
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
 
-    const { event, newEmail, method }: { event: EventType; newEmail?: string; method?: string } = await req.json();
+    // Chaque appel envoie un vrai e-mail : sans plafond, une boucle depuis un
+    // compte connecté suffisait à épuiser le quota d'envoi quotidien du site
+    // (et plus aucun e-mail — codes 2FA, réinitialisations — ne partait).
+    const rl = await rateLimitWithBackoff(`security-email:${me.id}`, 6, 60 * 60 * 1000);
+    if (!rl.allowed) return NextResponse.json({ success: false }, { status: 429 });
+
+    const body = await req.json().catch(() => ({}));
+    const event = body?.event as EventType;
+    // Texte repris dans un e-mail officiel : court, sans balisage, et une
+    // vraie adresse pour « nouvel e-mail ».
+    const clean = (v: unknown, max: number) => (typeof v === "string" ? v.replace(/[<>\s]+/g, " ").trim().slice(0, max) : "");
+    const rawEmail = clean(body?.newEmail, 254);
+    const newEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(rawEmail) ? rawEmail : "";
+    const method = clean(body?.method, 40);
 
     const { data: profile } = await supabaseAdmin
       .from("users")

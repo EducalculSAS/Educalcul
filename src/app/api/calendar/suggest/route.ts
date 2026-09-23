@@ -4,7 +4,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { chatWithAI } from "@/lib/llm";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
-import { canAccessOwner, isRealDate, cleanTime, resolveCalendarUser } from "@/lib/calendarServer";
+import { canAccessOwner, isRealDate, cleanTime, resolveCalendarUser, safeZone } from "@/lib/calendarServer";
 
 /**
  * Plan de révision personnalisé — PROPOSÉ, pas inséré : l'utilisateur voit
@@ -77,7 +77,7 @@ export async function POST(req: Request) {
     const until = addDays(today, horizon);
     const since60 = new Date(Date.now() - 60 * 86400000).toISOString();
     const since30 = new Date(Date.now() - 30 * 86400000).toISOString();
-    const zone = student.school_zone || "C";
+    const zone = safeZone(student.school_zone);
 
     const [
       { data: exAttempts }, { data: quizAttempts }, { data: progress }, { data: profile },
