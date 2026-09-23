@@ -27,7 +27,9 @@ import {
   Gamepad2,
   Keyboard,
 } from "lucide-react";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { Bug } from "lucide-react";
+import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import { supabase } from "@/lib/supabaseClient";
 import { trackLogout } from "@/lib/trackLogout";
 import { useRouter } from "next/navigation";
@@ -44,6 +46,18 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  // Pastille rouge : erreurs du site pas encore traitées (Admin > Erreurs).
+  const [openErrors, setOpenErrors] = useState(0);
+  const refreshErrors = useCallback(async () => {
+    if (adminLevel === "support") return;
+    try {
+      const res = await fetch("/api/admin/errors?count=1");
+      if (res.ok) setOpenErrors((await res.json()).open ?? 0);
+    } catch {
+      /* pastille facultative */
+    }
+  }, [adminLevel]);
+  useVisiblePolling(refreshErrors, 60000, { immediate: true });
 
   const allMenuItems = [
     {
@@ -68,6 +82,7 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
     { name: "Avis clients", href: "/admin/reviews", icon: Star },
     { name: "Liste d'attente", href: "/admin/landing", icon: Trophy },
     { name: "Journal d'audit", href: "/admin/audit-log", icon: History },
+    { name: "Erreurs", href: "/admin/erreurs", icon: Bug },
     { name: "Scanner IA", href: "/admin/scanner", icon: ScanSearch },
     { name: "Sécurité", href: "/admin/security", icon: ShieldCheck },
     { name: "Fonctionnalités", href: "/admin/feature-flags", icon: Flag },
@@ -153,6 +168,11 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
               >
                 <Icon size={18} className="flex-shrink-0" />
                 <span className="truncate">{item.name}</span>
+                {item.href === "/admin/erreurs" && openErrors > 0 && (
+                  <span className="ml-auto min-w-5 h-5 px-1.5 rounded-full bg-red-500 text-white text-[11px] font-bold flex items-center justify-center" aria-label={`${openErrors} erreurs à traiter`}>
+                    {openErrors > 99 ? "99+" : openErrors}
+                  </span>
+                )}
               </GlassButton>
             );
           })}
