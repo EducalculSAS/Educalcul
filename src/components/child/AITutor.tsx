@@ -173,12 +173,15 @@ export default function AITutor() {
     return [WELCOME];
   }, [getContextKey]);
 
-  // Load saved messages when exercise changes
+  // Historique chargé seulement une fois le chat ouvert (puis à chaque
+  // changement de contexte) : avant, deux requêtes partaient sur chaque page,
+  // même si l'élève n'ouvrait jamais Calia.
   useEffect(() => {
+    if (!hasOpened) return;
     let cancelled = false;
-    loadMessages().then((loaded) => { if (!cancelled) setMessages(loaded); });
+    loadMessages().then((loaded) => { if (!cancelled && !loadingRef.current) setMessages(loaded); });
     return () => { cancelled = true; };
-  }, [loadMessages]);
+  }, [loadMessages, hasOpened]);
 
   // Render math après chaque nouveau message
 
