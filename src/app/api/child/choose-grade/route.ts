@@ -29,7 +29,7 @@ export async function POST(req: Request) {
 
     const { error } = await supabaseAdmin
       .from("users")
-      .update({ grade_level: choice, needs_grade_choice: false })
+      .update({ grade_level: choice, needs_grade_choice: false, specialties_chosen_at: new Date().toISOString() })
       .eq("id", user.id);
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 

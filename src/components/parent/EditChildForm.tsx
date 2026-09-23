@@ -11,9 +11,11 @@ import {
 import { useRouter } from "next/navigation";
 import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
-import { AVATARS } from "@/lib/constants";
+import { AVATARS, getLevelLabel } from "@/lib/constants";
+import { EXPERTES_LEVEL, PREMIERE_TRACKS, TERMINALE_TRACKS, hasSpecialtyChoice, isTerminale } from "@/lib/specialties";
 import { isValidEmail } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
+import LevelRequestCard from "@/components/parent/LevelRequestCard";
 
 interface WebauthnCredential {
   id: string;
@@ -30,6 +32,7 @@ interface InitialChild {
   email: string;
   username: string;
   gradeLevel: string;
+  extraLevels: string[];
   avatar: string;
   twoFactorEnabled: boolean;
 }
@@ -68,6 +71,12 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
     gradeLevel: initial.gradeLevel,
     avatar: initial.avatar,
   });
+  // Voie en maths au lycée : la classe principale (spé, sans spé, complémentaires…)
+  // et l'option maths expertes, qui s'ajoute à la spé maths de Terminale.
+  const lycee = hasSpecialtyChoice(initial.gradeLevel);
+  const [track, setTrack] = useState(initial.gradeLevel === EXPERTES_LEVEL ? "terminale-generale-maths" : initial.gradeLevel);
+  const [expertes, setExpertes] = useState(initial.gradeLevel === EXPERTES_LEVEL || initial.extraLevels.includes(EXPERTES_LEVEL));
+  const trackOptions = isTerminale(initial.gradeLevel) ? TERMINALE_TRACKS : PREMIERE_TRACKS;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -92,6 +101,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
           email: formData.email,
           child_username: formData.username,
           avatar: formData.avatar,
+          ...(lycee ? { specialties: { track, expertes: track === "terminale-generale-maths" && expertes } } : {}),
         }),
       });
       if (!res.ok) {
@@ -360,10 +370,36 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Niveau scolaire</label>
-              <input type="text" disabled value={formData.gradeLevel} className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg bg-gray-100 text-gray-500 cursor-not-allowed" />
+              <input type="text" disabled value={getLevelLabel(formData.gradeLevel)} className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg bg-gray-100 text-gray-500 cursor-not-allowed" />
               <p className="text-xs text-gray-500 mt-1">
-                Le niveau scolaire passe automatiquement à la classe supérieure chaque année. En sortie de Seconde, un choix de spécialité est nécessaire et sera fait par un administrateur.
+                La classe passe automatiquement à la suivante chaque année. En sortie de Seconde et à l&apos;entrée en Terminale, votre enfant choisit ses maths à sa connexion.
               </p>
+              {lycee && (
+                <div className="mt-4 space-y-2">
+                  <p className="text-sm font-medium text-gray-700">Maths au lycée</p>
+                  <div className="flex flex-wrap gap-2">
+                    {trackOptions.map((t) => (
+                      <GlassButton
+                        key={t.level}
+                        size="sm"
+                        variant={track === t.level ? "navy" : "outline"}
+                        onClick={() => setTrack(t.level)}
+                      >
+                        {t.label}
+                      </GlassButton>
+                    ))}
+                  </div>
+                  {track === "terminale-generale-maths" && (
+                    <label className="flex items-center justify-between gap-3 rounded-xl border border-[rgba(197,161,72,0.25)] px-4 py-3 cursor-pointer">
+                      <span className="text-sm text-gray-700">Option maths expertes (en plus de la spécialité)</span>
+                      <GlassSwitch checked={expertes} onChange={setExpertes} label="Option maths expertes" />
+                    </label>
+                  )}
+                </div>
+              )}
+              <div className="mt-4">
+                <LevelRequestCard childId={childId} childName={initial.firstName} gradeLevel={initial.gradeLevel} extraLevels={initial.extraLevels} />
+              </div>
             </div>
 
             <div>

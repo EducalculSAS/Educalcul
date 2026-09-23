@@ -28,11 +28,13 @@ type ExerciseProgress = Record<string, { status: string; score: number; attempts
  * session (voir useSessionFolderId.ts).
  */
 export default function ExercisesCatalog({
-  allFolders, allExercises, levelFolderId, initialProgress, filterCourseId,
+  allFolders, allExercises, levelFolderId, rootFolderIds, initialProgress, filterCourseId,
 }: {
   allFolders: FolderRow[];
   allExercises: ExerciseRow[];
   levelFolderId: number | null;
+  /** Plusieurs niveaux visibles : un dossier racine par niveau (voir resolveLevelScope). */
+  rootFolderIds?: number[] | null;
   initialProgress: ExerciseProgress;
   /** Quand présent, affiche uniquement les exercices de ce cours (venant du
    * bouton "Faire les exercices" en fin de cours) au lieu de la navigation
@@ -179,7 +181,7 @@ export default function ExercisesCatalog({
   }
 
   const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
-  const currentFolders = allFolders.filter((f) => f.parent_id === displayParentId);
+  const currentFolders = allFolders.filter((f) => (displayParentId === null && rootFolderIds ? rootFolderIds.includes(f.id) : f.parent_id === displayParentId));
   const currentExercises = allExercises.filter((ex) => (ex.folder_id ?? null) === displayParentId);
 
   return (

@@ -19,7 +19,7 @@ import { isCaliaVoice } from "@/lib/caliaVoices";
  * la liste "safe" partagée (USER_SELECT_COLUMNS, sans les colonnes forensic)
  * + deux flags 2FA/onboarding. Remplace tous les
  * `supabase.from("users").select(...).eq("auth_id", …)` côté client. */
-const READABLE = `${USER_SELECT_COLUMNS}, two_factor_locked_by_parent, needs_grade_choice`;
+const READABLE = `${USER_SELECT_COLUMNS}, two_factor_locked_by_parent, needs_grade_choice, extra_levels, specialties_chosen_at`;
 
 export async function GET(req: Request) {
   try {

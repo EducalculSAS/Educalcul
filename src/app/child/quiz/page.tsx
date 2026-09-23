@@ -5,7 +5,8 @@ import { Trophy } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import QuizCatalog from "@/components/child/QuizCatalog";
-import { findLevelFolder, loadPublishedCatalog, loadPublishedFolders, subtreeIds, type CatalogFolder } from "@/lib/childCatalog";
+import { resolveLevelScope, loadPublishedCatalog, loadPublishedFolders, type CatalogFolder } from "@/lib/childCatalog";
+import { visibleLevels } from "@/lib/specialties";
 
 export default async function ChildQuizPage({
   searchParams,
@@ -20,7 +21,7 @@ export default async function ChildQuizPage({
 
   // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
   const [{ data: userData }, allFolders, attempts] = await Promise.all([
-    supabaseAdmin.from("users").select("grade_level").eq("id", authUser.id).maybeSingle(),
+    supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", authUser.id).maybeSingle(),
     loadPublishedFolders<CatalogFolder & Record<string, unknown>>("quiz_folders", "*"),
     selectAllPages<{ quiz_id: string; attempts_history: any[] | null }>((from, to) =>
       supabaseAdmin
@@ -31,7 +32,8 @@ export default async function ChildQuizPage({
         .range(from, to),
     ),
   ]);
-  const levelFolder = findLevelFolder(allFolders, userData?.grade_level ?? null);
+  // Classe principale + niveaux en plus (maths expertes, niveau attribué par l'admin).
+  const scope = resolveLevelScope(allFolders, visibleLevels(userData?.grade_level, userData?.extra_levels));
 
   // Seul le sous-arbre du niveau de l'élève, paginé (voir childCatalog.ts).
   // Pas de content_json : il n'est chargé qu'à l'ouverture d'un quiz.
@@ -44,7 +46,7 @@ export default async function ChildQuizPage({
       courses (title)`,
     {
       courseId: filterCourseId ?? null,
-      folderIds: levelFolder ? subtreeIds(allFolders, levelFolder.id) : null,
+      folderIds: scope.folderIds,
     },
   );
 
@@ -65,7 +67,8 @@ export default async function ChildQuizPage({
         <QuizCatalog
           allFolders={allFolders as any}
           allQuizzes={allQuizzes as any}
-          levelFolderId={levelFolder?.id ?? null}
+          levelFolderId={scope.levelFolderId}
+          rootFolderIds={scope.rootFolderIds}
           initialProgress={initialProgress}
           filterCourseId={filterCourseId ?? null}
         />

@@ -21,11 +21,13 @@ type CourseProgress = Record<string, { status: string; pct: number }>;
  * (sessionStorage) et le rendu KaTeX des titres/descriptions (chargé depuis
  * un CDN au montage, comme avant). */
 export default function CoursesCatalog({
-  allFolders, allCourses, levelFolderId, courseProgress,
+  allFolders, allCourses, levelFolderId, rootFolderIds, courseProgress,
 }: {
   allFolders: FolderRow[];
   allCourses: CourseRow[];
   levelFolderId: number | null;
+  /** Plusieurs niveaux visibles : un dossier racine par niveau (voir resolveLevelScope). */
+  rootFolderIds?: number[] | null;
   courseProgress: CourseProgress;
 }) {
   const [isRendering, setIsRendering] = useState(false);
@@ -57,7 +59,7 @@ export default function CoursesCatalog({
     .filter((c) => (c.folder_id ?? null) === displayParentId)
     .sort(compareCourseOrder);
   const currentFolders = allFolders
-    .filter((f) => f.parent_id === displayParentId)
+    .filter((f) => (displayParentId === null && rootFolderIds ? rootFolderIds.includes(f.id) : f.parent_id === displayParentId))
     .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));
 
   useEffect(() => {

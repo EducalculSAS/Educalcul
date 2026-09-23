@@ -4,6 +4,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
 import { isValidEmail } from "@/lib/validation";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { applySpecialtyChoice } from "@/lib/specialties";
 
 /** Édite les champs de profil d'un enfant (le changement d'email/mot de passe
  * côté Auth reste géré par /api/update-child-auth). Avant : `supabase.from
@@ -39,6 +40,16 @@ export async function PATCH(req: Request) {
         return NextResponse.json({ error: "Adresse email invalide" }, { status: 400 });
       }
       patch.email = body.email.trim();
+    }
+    // Voie en maths au lycée (Première / Terminale, option maths expertes) :
+    // mêmes règles que le choix fait par l'élève (voir specialties.ts).
+    if (body.specialties && typeof body.specialties === "object") {
+      const { data: child } = await supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", childId).maybeSingle();
+      const result = applySpecialtyChoice(child?.grade_level, child?.extra_levels, body.specialties.track, body.specialties.expertes);
+      if ("error" in result) return NextResponse.json({ error: result.error }, { status: 400 });
+      patch.grade_level = result.gradeLevel;
+      patch.extra_levels = result.extraLevels;
+      patch.specialties_chosen_at = new Date().toISOString();
     }
     if (Object.keys(patch).length === 0) {
       return NextResponse.json({ error: "Rien à mettre à jour" }, { status: 400 });

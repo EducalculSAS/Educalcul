@@ -5,7 +5,8 @@ import { Brain } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ExercisesCatalog from "@/components/child/ExercisesCatalog";
-import { findLevelFolder, loadPublishedCatalog, loadPublishedFolders, subtreeIds, type CatalogFolder } from "@/lib/childCatalog";
+import { resolveLevelScope, loadPublishedCatalog, loadPublishedFolders, type CatalogFolder } from "@/lib/childCatalog";
+import { visibleLevels } from "@/lib/specialties";
 
 export default async function ChildExercisesPage({
   searchParams,
@@ -20,7 +21,7 @@ export default async function ChildExercisesPage({
 
   // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
   const [{ data: userData }, allFolders, attempts] = await Promise.all([
-    supabaseAdmin.from("users").select("grade_level").eq("id", authUser.id).maybeSingle(),
+    supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", authUser.id).maybeSingle(),
     loadPublishedFolders<CatalogFolder & { grade_level?: string; color?: string; icon?: string }>(
       "exercise_folders",
       "id, parent_id, name, color, icon, grade_level",
@@ -35,7 +36,8 @@ export default async function ChildExercisesPage({
         .range(from, to),
     ),
   ]);
-  const levelFolder = findLevelFolder(allFolders, userData?.grade_level ?? null);
+  // Classe principale + niveaux en plus (maths expertes, niveau attribué par l'admin).
+  const scope = resolveLevelScope(allFolders, visibleLevels(userData?.grade_level, userData?.extra_levels));
 
   // Seul le sous-arbre du niveau de l'élève, paginé (voir childCatalog.ts).
   // Pas de content_json : il n'est chargé qu'à l'ouverture d'un exercice.
@@ -44,7 +46,7 @@ export default async function ChildExercisesPage({
     `id, title, description, question, difficulty_level, thumbnail_url, folder_id, course_id, courses (title)`,
     {
       courseId: filterCourseId ?? null,
-      folderIds: levelFolder ? subtreeIds(allFolders, levelFolder.id) : null,
+      folderIds: scope.folderIds,
     },
   );
 
@@ -65,7 +67,8 @@ export default async function ChildExercisesPage({
         <ExercisesCatalog
           allFolders={allFolders || []}
           allExercises={(allExercises || []) as any}
-          levelFolderId={levelFolder?.id ?? null}
+          levelFolderId={scope.levelFolderId}
+          rootFolderIds={scope.rootFolderIds}
           initialProgress={initialProgress}
           filterCourseId={filterCourseId ?? null}
         />

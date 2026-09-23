@@ -12,11 +12,12 @@ import {
   Gamepad2,
 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
-import { SCHOOL_LEVELS } from "@/lib/constants";
+import { SCHOOL_LEVELS, getLevelLabel } from "@/lib/constants";
 import { validatePassword } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import ChildLevelsCard from "@/components/admin/ChildLevelsCard";
 
 const roleBadge = (r: string) => {
   if (r === "admin") return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700"><Shield className="w-3 h-3" />Admin</span>;
@@ -405,11 +406,22 @@ export default function AdminUserDetailClient({
             <div className="space-y-3 text-sm">
               <Row label="Inscrit le" value={new Date(user.created_at).toLocaleDateString("fr-FR")} />
               {user.last_active_at && <Row label="Dernière activité" value={new Date(user.last_active_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })} />}
-              {user.grade_level && <Row label="Niveau" value={user.grade_level} />}
+              {user.grade_level && <Row label="Niveau" value={getLevelLabel(user.grade_level)} />}
               {user.last_login_ip && <Row label="IP" value={user.last_login_ip} mono />}
               {user.last_login_country && <Row label="Localisation" value={`${user.last_login_city || ""} ${user.last_login_country}`} />}
             </div>
           </div>
+
+          {isChild && (
+            <ChildLevelsCard
+              key={user.id}
+              userId={user.id}
+              gradeLevel={user.grade_level ?? null}
+              initialExtras={user.extra_levels ?? []}
+              specialtiesChosenAt={user.specialties_chosen_at ?? null}
+              onDone={showToast}
+            />
+          )}
 
           {/* Subscription — parents only, pas pour les admins */}
           {user.role !== "admin" && (

@@ -12,7 +12,7 @@ export default async function EditChildPage({ params }: { params: Promise<{ id: 
 
   const { data: childData }: { data: any } = await supabaseAdmin
     .from("users")
-    .select(USER_SELECT_COLUMNS)
+    .select(`${USER_SELECT_COLUMNS}, extra_levels`)
     .eq("id", childId)
     .eq("parent_id", authUser.id)
     .maybeSingle();
@@ -37,6 +37,7 @@ export default async function EditChildPage({ params }: { params: Promise<{ id: 
         email: childData.email || "",
         username: childData.child_username,
         gradeLevel: childData.grade_level || "CP",
+        extraLevels: childData.extra_levels || [],
         avatar: childData.avatar || "avatar1.png",
         twoFactorEnabled: !!childData.two_factor_enabled,
       }}

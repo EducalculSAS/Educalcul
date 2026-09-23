@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { isValidNumericId, validateString } from "@/lib/validation";
@@ -7,6 +7,7 @@ import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 import { fetchAdminUserDetail } from "@/lib/adminUserDetail";
 import { grantOfferedSubscription } from "@/lib/adminGrantSubscription";
 import { SCHOOL_LEVELS } from "@/lib/constants";
+import { hasSpecialtyChoice, sanitizeExtraLevels } from "@/lib/specialties";
 
 const VALID_GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
 
@@ -53,8 +54,18 @@ export async function PUT(req: Request) {
     if (role === "child" && !VALID_GRADE_LEVELS.has(grade_level)) {
       return NextResponse.json({ error: "Niveau scolaire invalide" }, { status: 400 });
     }
+    // Classe fixée par l'admin : au lycée, elle vaut choix de spécialités
+    // (l'élève n'est plus sollicité) ; elle sort des niveaux « en plus ».
+    const extra: Record<string, unknown> = {};
+    if (role === "child") {
+      const { data: prev } = await supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", id).maybeSingle();
+      if (prev && prev.grade_level !== grade_level) {
+        extra.extra_levels = sanitizeExtraLevels(grade_level, prev.extra_levels);
+        if (hasSpecialtyChoice(grade_level)) extra.specialties_chosen_at = new Date().toISOString();
+      }
+    }
     const { data, error } = await supabaseAdmin.from("users")
-      .update({ first_name, last_name, email, role, admin_level: role === "admin" ? (admin_level || "super") : null, status, grade_level })
+      .update({ first_name, last_name, email, role, admin_level: role === "admin" ? (admin_level || "super") : null, status, grade_level, ...extra })
       .eq("id", id)
       .select()
       .single();
@@ -77,6 +88,40 @@ export async function PUT(req: Request) {
     return NextResponse.json(data);
   } catch (err: any) {
     console.error("[user-detail-put] Error:", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
+}
+
+/** Niveaux visibles en plus de la classe principale (élève) : ex. un élève de
+ * Terminale qui revoit la Première spé. Attribués ici par l'admin (sur
+ * demande d'un parent) — seule autre source : l'option maths expertes. */
+export async function PATCH(req: Request) {
+  try {
+    const admin = await requireSuperAdmin(req);
+    if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+    const id = new URL(req.url).searchParams.get("id");
+    if (!id || !isValidNumericId(id)) return NextResponse.json({ error: "Invalid user ID" }, { status: 400 });
+
+    const body = await req.json().catch(() => ({}));
+    const { data: user } = await supabaseAdmin.from("users").select("id, role, grade_level").eq("id", id).maybeSingle();
+    if (!user || user.role !== "child") return NextResponse.json({ error: "Réservé aux comptes élève" }, { status: 400 });
+
+    const extra_levels = sanitizeExtraLevels(user.grade_level, body?.extra_levels);
+    const { error } = await supabaseAdmin.from("users").update({ extra_levels }).eq("id", id);
+    if (error) return NextResponse.json({ error: "Failed to update user" }, { status: 500 });
+
+    await auditLog({
+      action: AuditAction.USER_UPDATED,
+      adminId: admin.id,
+      targetUserId: Number(id),
+      targetType: "user",
+      targetId: id,
+      details: { extra_levels },
+    }, req);
+    return NextResponse.json({ extra_levels });
+  } catch (err: any) {
+    console.error("[user-detail-patch] Error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

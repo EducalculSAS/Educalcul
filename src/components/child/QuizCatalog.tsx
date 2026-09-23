@@ -22,11 +22,13 @@ type QuizProgress = Record<string, { status: string; score: number; attempts: nu
  * ExercisesCatalog/CoursesCatalog (données prêtes côté serveur, navigation
  * de dossiers en client island pour rester instantanée). */
 export default function QuizCatalog({
-  allFolders, allQuizzes, levelFolderId, initialProgress, filterCourseId,
+  allFolders, allQuizzes, levelFolderId, rootFolderIds, initialProgress, filterCourseId,
 }: {
   allFolders: FolderRow[];
   allQuizzes: QuizRow[];
   levelFolderId: number | null;
+  /** Plusieurs niveaux visibles : un dossier racine par niveau (voir resolveLevelScope). */
+  rootFolderIds?: number[] | null;
   initialProgress: QuizProgress;
   /** Quand présent, affiche uniquement les quiz de ce cours (venant du
    * bouton "Tenter le quiz" en fin de cours) au lieu de la navigation par
@@ -174,7 +176,7 @@ export default function QuizCatalog({
 
   const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
   const currentQuizzes = allQuizzes.filter((q) => (q.folder_id ?? null) === displayParentId);
-  const currentFolders = allFolders.filter((f) => f.parent_id === displayParentId);
+  const currentFolders = allFolders.filter((f) => (displayParentId === null && rootFolderIds ? rootFolderIds.includes(f.id) : f.parent_id === displayParentId));
 
   return (
     <div className="space-y-8">

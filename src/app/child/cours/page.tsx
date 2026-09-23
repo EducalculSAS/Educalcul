@@ -5,7 +5,8 @@ import { BookOpen } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import CoursesCatalog from "@/components/child/CoursesCatalog";
-import { findLevelFolder, loadPublishedCatalog, loadPublishedFolders, subtreeIds, type CatalogFolder } from "@/lib/childCatalog";
+import { resolveLevelScope, loadPublishedCatalog, loadPublishedFolders, type CatalogFolder } from "@/lib/childCatalog";
+import { visibleLevels } from "@/lib/specialties";
 
 export default async function ChildCoursesPage() {
   const authUser = await getServerUser();
@@ -14,7 +15,7 @@ export default async function ChildCoursesPage() {
 
   // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
   const [{ data: userData }, allFolders, progressRows] = await Promise.all([
-    supabaseAdmin.from("users").select("grade_level").eq("id", authUser.id).maybeSingle(),
+    supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", authUser.id).maybeSingle(),
     loadPublishedFolders<CatalogFolder & Record<string, unknown>>(
       "course_folders",
       "id, parent_id, name, color, icon, grade_level, display_order",
@@ -29,7 +30,8 @@ export default async function ChildCoursesPage() {
         .range(from, to),
     ),
   ]);
-  const levelFolder = findLevelFolder(allFolders, userData?.grade_level ?? null);
+  // Classe principale + niveaux en plus (maths expertes, niveau attribué par l'admin).
+  const scope = resolveLevelScope(allFolders, visibleLevels(userData?.grade_level, userData?.extra_levels));
 
   // `lesson_count` est une colonne générée par Postgres : avant, le
   // content_json COMPLET de chaque cours publié (~23 Mo pour 756 cours)
@@ -38,7 +40,7 @@ export default async function ChildCoursesPage() {
   const allCourses = await loadPublishedCatalog<Record<string, any>>(
     "courses",
     "id, folder_id, title, description, thumbnail_url, subject, chapter_order, is_theme_summary, lesson_count",
-    { folderIds: levelFolder ? subtreeIds(allFolders, levelFolder.id) : null },
+    { folderIds: scope.folderIds },
   );
 
   // Progression indexée une fois (Map) au lieu d'un .find() par cours.
@@ -62,7 +64,8 @@ export default async function ChildCoursesPage() {
         <CoursesCatalog
           allFolders={allFolders as any}
           allCourses={coursesForClient as any}
-          levelFolderId={levelFolder?.id ?? null}
+          levelFolderId={scope.levelFolderId}
+          rootFolderIds={scope.rootFolderIds}
           courseProgress={courseProgress}
         />
       </div>

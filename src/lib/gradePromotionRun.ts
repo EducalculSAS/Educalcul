@@ -45,7 +45,7 @@ function groupIds<T>(rows: T[], key: (r: T) => string, id: (r: T) => number): Ma
   return m;
 }
 
-type ChildRow = { id: number; grade_level: string | null; needs_grade_choice: boolean | null; graduated_at: string | null };
+type ChildRow = { id: number; grade_level: string | null; needs_grade_choice: boolean | null; graduated_at: string | null; specialties_chosen_at: string | null };
 
 /*
  * Tout se fait PAR LOTS : lecture paginée de tous les élèves (un simple
@@ -65,7 +65,7 @@ export async function runGradePromotion(runBy?: number): Promise<GradePromotionR
   const children = await selectAllPages<ChildRow>((from, to) =>
     supabaseAdmin
       .from("users")
-      .select("id, grade_level, needs_grade_choice, graduated_at")
+      .select("id, grade_level, needs_grade_choice, graduated_at, specialties_chosen_at")
       .eq("role", "child")
       .order("id")
       .range(from, to),
@@ -83,6 +83,7 @@ export async function runGradePromotion(runBy?: number): Promise<GradePromotionR
         user_id: c.id,
         previous_grade_level: c.grade_level,
         previous_needs_grade_choice: c.needs_grade_choice,
+        previous_specialties_chosen_at: c.specialties_chosen_at,
       })),
     );
     if (error) throw new Error(error.message);
@@ -91,7 +92,10 @@ export async function runGradePromotion(runBy?: number): Promise<GradePromotionR
   for (const [level, ids] of groupIds(toAdvance, (c) => c.grade_level ?? "", (c) => c.id)) {
     const next = getNextGrade(level)!;
     for (const batch of chunks(ids)) {
-      const { error } = await supabaseAdmin.from("users").update({ grade_level: next }).in("id", batch);
+      // Entrée en Terminale : l'élève re-choisit ses spécialités (spé maths,
+      // expertes, complémentaires…) à sa prochaine connexion.
+      const patch = next.startsWith("terminale") ? { grade_level: next, specialties_chosen_at: null } : { grade_level: next };
+      const { error } = await supabaseAdmin.from("users").update(patch).in("id", batch);
       if (error) throw new Error(error.message);
     }
   }
@@ -112,7 +116,7 @@ export interface UndoResult {
   restored: number;
 }
 
-type SnapshotRow = { user_id: number; previous_grade_level: string | null; previous_needs_grade_choice: boolean | null };
+type SnapshotRow = { user_id: number; previous_grade_level: string | null; previous_needs_grade_choice: boolean | null; previous_specialties_chosen_at: string | null };
 
 /** Annule le dernier passage de classe non encore annulé. */
 export async function undoLastGradePromotion(): Promise<UndoResult> {
@@ -128,7 +132,7 @@ export async function undoLastGradePromotion(): Promise<UndoResult> {
   const snapshots = await selectAllPages<SnapshotRow>((from, to) =>
     supabaseAdmin
       .from("grade_promotion_snapshots")
-      .select("user_id, previous_grade_level, previous_needs_grade_choice")
+      .select("user_id, previous_grade_level, previous_needs_grade_choice, previous_specialties_chosen_at")
       .eq("run_id", lastRun.id)
       .order("user_id")
       .range(from, to),
@@ -148,13 +152,13 @@ export async function undoLastGradePromotion(): Promise<UndoResult> {
 
   const groups = groupIds(
     toRestore,
-    (s) => JSON.stringify([s.previous_grade_level, s.previous_needs_grade_choice]),
+    (s) => JSON.stringify([s.previous_grade_level, s.previous_needs_grade_choice, s.previous_specialties_chosen_at]),
     (s) => s.user_id,
   );
   for (const [key, ids] of groups) {
-    const [grade_level, needs_grade_choice] = JSON.parse(key) as [string | null, boolean | null];
+    const [grade_level, needs_grade_choice, specialties_chosen_at] = JSON.parse(key) as [string | null, boolean | null, string | null];
     for (const batch of chunks(ids)) {
-      const { error } = await supabaseAdmin.from("users").update({ grade_level, needs_grade_choice }).in("id", batch);
+      const { error } = await supabaseAdmin.from("users").update({ grade_level, needs_grade_choice, specialties_chosen_at }).in("id", batch);
       if (error) throw new Error(error.message);
     }
   }

@@ -35,6 +35,25 @@ export function findLevelFolder<F extends CatalogFolder>(folders: F[], level: st
   );
 }
 
+/**
+ * Périmètre du catalogue d'un élève à partir de ses niveaux visibles (classe
+ * principale + niveaux en plus, voir specialties.ts). Un seul niveau : on
+ * ouvre directement son dossier. Plusieurs (ex. spé maths + maths expertes) :
+ * la racine du catalogue montre un dossier par niveau.
+ */
+export function resolveLevelScope<F extends CatalogFolder>(folders: F[], levels: string[]) {
+  const roots: F[] = [];
+  for (const level of levels) {
+    const f = findLevelFolder(folders, level);
+    if (f && !roots.some((r) => r.id === f.id)) roots.push(f);
+  }
+  if (roots.length === 0) return { levelFolderId: null, rootFolderIds: null, folderIds: null };
+  const folderIds = [...new Set(roots.flatMap((r) => subtreeIds(folders, r.id)))];
+  return roots.length === 1
+    ? { levelFolderId: roots[0].id, rootFolderIds: null, folderIds }
+    : { levelFolderId: null, rootFolderIds: roots.map((r) => r.id), folderIds };
+}
+
 /** Ids du dossier et de tous ses descendants (parcours en largeur, sans
  * récursion : protégé contre un éventuel cycle en base). */
 export function subtreeIds(folders: CatalogFolder[], rootId: number): number[] {
