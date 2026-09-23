@@ -87,7 +87,7 @@ export const RATE_LIMITS = {
   // limite ici, une session parent valide pouvait boucler dessus sans frein.
   'parent:child-analysis': { maxAttempts: 15, windowMs: 60 * 60 * 1000, name: 'Analyse IA enfant' },
   'ai:generate': { maxAttempts: 15, windowMs: 60 * 60 * 1000, name: 'AI Generate' },
-  'ai:grade': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'AI Grading' },
+  'ai:grade': { maxAttempts: 150, windowMs: 60 * 60 * 1000, name: 'AI Grading' }, // une copie entière = 1 appel
 
   // Admin AI endpoints - generous (production tool, only reachable by an
   // authenticated admin via proxy.ts). Not meant to throttle normal usage —

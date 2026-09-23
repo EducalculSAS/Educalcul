@@ -1,304 +1,210 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { gradeAnswer, gradeImageAnswer } from "@/lib/llm";
-import { tryDeterministicMathCheck } from "@/lib/mathAnswerCheck";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { checkDifficultyAccess } from "@/lib/checkSubscription";
+import { gradeFreeAnswer } from "@/lib/gradeFreeAnswer";
 
+export const maxDuration = 60;
 
-export async function POST(
-  req: Request,
-  { params }: { params: Promise<{ id: string }> }
-) {
+const FREE_TYPES = new Set(["text_input", "coding", "impossible_search"]);
+const MAX_ITEMS = 60;
+const AI_CONCURRENCY = 4;
+
+interface GradeItem {
+  block_id?: string;
+  answer: unknown;
+}
+
+interface GradeResult {
+  block_id?: string;
+  score: number;
+  max_score: number;
+  is_correct: boolean;
+  feedback: string;
+  reveal?: unknown;
+  unavailable?: boolean;
+}
+
+/** Exécute des tâches avec au plus `limit` en parallèle (appels IA). */
+async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promise<R>): Promise<R[]> {
+  const out: R[] = new Array(items.length);
+  let next = 0;
+  await Promise.all(
+    Array.from({ length: Math.min(limit, items.length) }, async () => {
+      while (next < items.length) {
+        const i = next++;
+        out[i] = await fn(items[i]);
+      }
+    }),
+  );
+  return out;
+}
+
+/** Correction exacte des blocs à choix / à manipuler (pas d'IA). */
+function gradeStructured(block: any, answer: any): boolean {
+  const type = block.type;
+  if (type === "multiple_choice" || type === "qcm") {
+    const correct = Array.isArray(block.correctAnswer) ? block.correctAnswer : [block.correctAnswer];
+    const selected = Array.isArray(answer) ? answer : [answer];
+    return correct.length === selected.length && correct.every((a: any) => selected.includes(a));
+  }
+  if (type === "single_choice" || type === "true_false") return answer === block.correctAnswer;
+  if (type === "fill_in_the_blank") {
+    const given: string[] = Array.isArray(answer) ? answer : [];
+    const expected: string[] = block.blanks || [];
+    return expected.length > 0 && expected.every((exp: string, i: number) => {
+      const alts = exp.split("|").map((s) => s.trim().toLowerCase());
+      return alts.includes(String(given[i] ?? "").trim().toLowerCase());
+    });
+  }
+  if (type === "matching") {
+    const given: string[] = Array.isArray(answer) ? answer : [];
+    const pairs = block.pairs || [];
+    return pairs.length > 0 && pairs.every((p: any, i: number) => given[i] === p.right);
+  }
+  if (type === "ordering") {
+    const given: string[] = Array.isArray(answer) ? answer : [];
+    const expected: string[] = block.items || [];
+    return expected.length > 0 && given.length === expected.length && expected.every((item, i) => given[i] === item);
+  }
+  if (type === "categorize") {
+    const given: (string | null)[] = Array.isArray(answer) ? answer : [];
+    const expected: string[] = (block.categoryItems || []).map((it: any) => it.category);
+    return expected.length > 0 && given.length === expected.length && expected.every((cat, i) => given[i] === cat);
+  }
+  if (type === "number_line_point") {
+    const given = typeof answer === "number" ? answer : parseFloat(answer);
+    const expected = parseFloat(block.correctAnswer);
+    return !Number.isNaN(given) && !Number.isNaN(expected) && Math.abs(given - expected) < 1e-6;
+  }
+  if (type === "click_error") {
+    const given = typeof answer === "number" ? answer : parseInt(answer, 10);
+    return !Number.isNaN(given) && given === parseInt(block.correctAnswer, 10);
+  }
+  const expected = block.correctAnswer;
+  if (Array.isArray(expected)) {
+    const ansArr = Array.isArray(answer) ? answer : [answer];
+    return expected.every((e: any) => ansArr.includes(e)) && ansArr.length === expected.length;
+  }
+  return answer === expected;
+}
+
+/** Révélation renvoyée APRÈS correction (écran de correction), jamais avant. */
+function revealFor(block: any) {
+  if (block.type === "matching") return { pairs: block.pairs };
+  if (block.type === "ordering") return { items: block.items };
+  if (block.type === "fill_in_the_blank") return { blanks: block.blanks };
+  if (block.type === "categorize") return { categoryItems: block.categoryItems };
+  return { correctAnswer: block.correctAnswer };
+}
+
+/**
+ * Correction d'un exercice. Deux formes :
+ * - { block_id, answer } : un bloc (bouton « Vérifier » d'une question) ;
+ * - { items: [{ block_id, answer }, …] } : toute la copie en UNE requête
+ *   (bouton « Valider »). Avant, chaque question partait l'une après l'autre,
+ *   relisait l'exercice, revérifiait l'abonnement et relançait le calcul des
+ *   badges : 10 questions = 10 allers-retours en file.
+ */
+export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
-    // Require a valid session: the AI grader costs money — no anonymous calls.
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-    // Limite anti-abus (la correction IA coûte des crédits)
     const cfg = RATE_LIMITS["ai:grade"];
     const rl = await rateLimitWithBackoff(`ai:grade:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
     if (!rl.allowed) {
-      return NextResponse.json({ error: "Trop de corrections, réessaie plus tard." }, { status: 429 });
+      return NextResponse.json({ error: "Tu as envoyé beaucoup de corrections d'un coup : attends quelques minutes." }, { status: 429 });
     }
 
     const { id } = await params;
-    const body = await req.json();
-    const {
-      user_id,
-      answer,
-      time_spent,
-      block_id,
-      question,
-      correctAnswer,
-      explanation,
-      level,
-      points,
-    } = body;
+    const body = await req.json().catch(() => ({}));
+    const batch = Array.isArray(body.items);
+    const items: GradeItem[] = (batch ? body.items : [{ block_id: body.block_id, answer: body.answer }]).slice(0, MAX_ITEMS);
 
-    let exercise: any = null;
-    let targetBlock: any = null;
-    let maxPoints = 10;
+    let level = "6ème";
+    let blockFor: (blockId?: string) => any;
+    let defaultPoints = 1;
 
-    // 1. Determine Context (Preview vs DB)
     if (id === "preview") {
-      // Preview Mode: Use data passed in body
-      exercise = {
-        title: "Preview Exercise",
-        grading_type: "ai", // Force AI for preview
-        points: points || 1,
-      };
-      targetBlock = {
-        content: question,
-        correctAnswer: correctAnswer,
-        explanation: explanation,
-        type: "text_input", // Assume text input for grading
-        points: points || 1,
-      };
-      maxPoints = points || 1;
+      // Aperçu admin (contenu pas encore enregistré) : l'énoncé vient du corps.
+      const preview = { content: body.question, correctAnswer: body.correctAnswer, explanation: body.explanation, type: "text_input", points: body.points || 1 };
+      level = body.level || level;
+      blockFor = () => preview;
+      defaultPoints = preview.points;
     } else {
-      // DB Mode: Fetch Exercise
-      const { data: dbExercise, error: exError } = await supabaseAdmin
+      const { data: exercise, error } = await supabaseAdmin
         .from("exercises")
-        .select("*")
+        .select("id, level, difficulty_level, grading_type, points_reward, content_json")
         .eq("id", id)
-        .single();
+        .maybeSingle();
+      if (error || !exercise) return NextResponse.json({ error: "Exercise not found" }, { status: 404 });
 
-      if (exError || !dbExercise) {
-        return NextResponse.json(
-          { error: "Exercise not found" },
-          { status: 404 }
-        );
-      }
-      exercise = dbExercise;
-      maxPoints = exercise.points_reward || 10;
-
-      // Verrou de difficulté par plan — même règle que la page de l'exercice
-      // (src/app/child/exercises/[id]/page.tsx), refaite ici car cette route
-      // est appelable indépendamment de la page.
       const { allowed } = await checkDifficultyAccess(me.authId, exercise.difficulty_level);
-      if (!allowed) {
-        return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
-      }
+      if (!allowed) return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
 
-      if (block_id && exercise.content_json) {
-        const allBlocks = exercise.content_json.flatMap((p: any) => p.blocks);
-        targetBlock = allBlocks.find((b: any) => b.id === block_id);
-        if (targetBlock) {
-          maxPoints = targetBlock.points || 1;
-        }
+      // Niveau de la base, jamais du client : il ne doit pas pouvoir influencer le verdict.
+      level = exercise.level || level;
+      const blocks = new Map<string, any>();
+      for (const page of Array.isArray(exercise.content_json) ? exercise.content_json : []) {
+        for (const b of page?.blocks ?? []) if (b?.id) blocks.set(b.id, b);
       }
+      const forceAi = exercise.grading_type === "ai";
+      blockFor = (blockId) => {
+        const b = blockId ? blocks.get(blockId) : undefined;
+        return b && forceAi && !FREE_TYPES.has(b.type) ? { ...b, type: "text_input" } : b;
+      };
+      defaultPoints = exercise.points_reward || 1;
     }
 
-    let score = 0;
-    let isCorrect = false;
-    let feedback = "";
-    let ungraded = false;
-
-    // 2. Grading Logic
-    // Force AI if image OR grading_type is ai OR preview
-    const isImage =
-      typeof answer === "string" && answer.startsWith("data:image");
-
-    if (
-      exercise.grading_type === "ai" ||
-      isImage ||
-      (targetBlock && ["text_input", "coding", "impossible_search"].includes(targetBlock.type))
-    ) {
-      // --- AI GRADING (IA) ---
-      console.log(
-        "🤖 AI Grading requested for:",
-        id === "preview" ? "Preview" : exercise.title
-      );
-
-      const questionContent = targetBlock?.content || "Question inconnue";
-      const correctAns = targetBlock?.correctAnswer || "Non spécifiée";
-      const expl = targetBlock?.explanation || "";
-      const studentAnswerText =
-        typeof answer === "string" ? answer : JSON.stringify(answer);
-
-      // "recherche impossible" se juge sur la qualité d'une justification, pas
-      // sur une égalité numérique — le pré-check déterministe n'a pas de sens ici.
-      const deterministic =
-        !isImage && typeof correctAns === "string" && targetBlock?.type !== "impossible_search"
-          ? tryDeterministicMathCheck(correctAns, studentAnswerText)
-          : { decided: false as const };
-
-      if (deterministic.decided && deterministic.reason === "incomplete") {
-        isCorrect = false;
-        score = 0;
-        feedback = "Réponse incomplète : remplis tous les emplacements avant de valider.";
-      } else {
-        try {
-          let gradingResult;
-          if (isImage) {
-            gradingResult = await gradeImageAnswer(
-              questionContent,
-              correctAns,
-              answer,
-              expl,
-              // Le niveau vient de la BDD en priorite (pas du client) : cet
-              // exercice est reel/note, le niveau ne doit pas pouvoir etre
-              // manipule par la requete pour influencer le verdict.
-              exercise?.level || level || "6ème",
-              maxPoints
-            );
-          } else {
-            gradingResult = await gradeAnswer(
-              questionContent,
-              correctAns,
-              studentAnswerText,
-              expl,
-              exercise?.level || level || "6ème",
-              maxPoints,
-              deterministic.decided ? deterministic.isCorrect : undefined,
-              targetBlock?.type === "impossible_search" ? "justification" : "numeric",
-            );
-          }
-
-          isCorrect = gradingResult.is_correct;
-          score = gradingResult.score;
-          feedback = gradingResult.feedback;
-        } catch (e) {
-          console.error("❌ AI Grading Failed:", e);
-          // Le calcul exact reste fiable même sans l'explication pédagogique
-          // de l'IA — ne jamais faire retomber une panne réseau sur l'élève
-          // en devinant via une égalité de chaînes sur du LaTeX brut.
-          if (deterministic.decided) {
-            isCorrect = deterministic.isCorrect!;
-            score = isCorrect ? maxPoints : 0;
-            feedback = isCorrect
-              ? "Bonne réponse !"
-              : `Ce n'est pas la bonne réponse — la bonne réponse est ${correctAns}.`;
-          } else {
-            ungraded = true;
-            feedback = "Correction indisponible, réessaie.";
-          }
-        }
+    const results = await mapLimit(items, AI_CONCURRENCY, async (item): Promise<GradeResult> => {
+      const block = blockFor(item.block_id);
+      if (!block) {
+        return { block_id: item.block_id, score: 0, max_score: 0, is_correct: false, feedback: "Question introuvable." };
       }
-    } else if (targetBlock) {
-      // Correction manuelle serveur — réplique exactement la logique déjà
-      // affichée côté client, mais évaluée ici à partir des données de la
-      // base (jamais envoyées au navigateur avant la soumission).
-      const type = targetBlock.type;
-      if (type === "multiple_choice" || type === "qcm") {
-        const correct = Array.isArray(targetBlock.correctAnswer)
-          ? targetBlock.correctAnswer
-          : [targetBlock.correctAnswer];
-        const selected = Array.isArray(answer) ? answer : [answer];
-        isCorrect =
-          correct.length === selected.length &&
-          correct.every((a: any) => selected.includes(a));
-      } else if (type === "single_choice" || type === "true_false") {
-        isCorrect = answer === targetBlock.correctAnswer;
-      } else if (type === "fill_in_the_blank") {
-        const given: string[] = Array.isArray(answer) ? answer : [];
-        const expected: string[] = targetBlock.blanks || [];
-        isCorrect =
-          expected.length > 0 &&
-          expected.every((exp: string, i: number) => {
-            const alts = exp.split("|").map((s) => s.trim().toLowerCase());
-            return alts.includes(String(given[i] ?? "").trim().toLowerCase());
-          });
-      } else if (type === "matching") {
-        const given: string[] = Array.isArray(answer) ? answer : [];
-        const pairs = targetBlock.pairs || [];
-        isCorrect =
-          pairs.length > 0 && pairs.every((p: any, i: number) => given[i] === p.right);
-      } else if (type === "ordering") {
-        const given: string[] = Array.isArray(answer) ? answer : [];
-        const expected: string[] = targetBlock.items || [];
-        isCorrect =
-          expected.length > 0 &&
-          given.length === expected.length &&
-          expected.every((item: string, i: number) => given[i] === item);
-      } else if (type === "categorize") {
-        const given: (string | null)[] = Array.isArray(answer) ? answer : [];
-        const expected: string[] = (targetBlock.categoryItems || []).map((it: any) => it.category);
-        isCorrect =
-          expected.length > 0 &&
-          given.length === expected.length &&
-          expected.every((cat: string, i: number) => given[i] === cat);
-      } else if (type === "number_line_point") {
-        const given = typeof answer === "number" ? answer : parseFloat(answer);
-        const expected = parseFloat(targetBlock.correctAnswer);
-        isCorrect = !Number.isNaN(given) && !Number.isNaN(expected) && Math.abs(given - expected) < 1e-6;
-      } else if (type === "click_error") {
-        const given = typeof answer === "number" ? answer : parseInt(answer, 10);
-        const expected = parseInt(targetBlock.correctAnswer, 10);
-        isCorrect = !Number.isNaN(given) && given === expected;
-      } else {
-        const expected = targetBlock.correctAnswer;
-        if (Array.isArray(expected)) {
-          const ansArr = Array.isArray(answer) ? answer : [answer];
-          isCorrect =
-            expected.every((e: any) => ansArr.includes(e)) &&
-            ansArr.length === expected.length;
-        } else {
-          isCorrect = answer === expected;
-        }
+      const maxPoints = block.points || defaultPoints;
+      const isImage = typeof item.answer === "string" && item.answer.startsWith("data:image");
+
+      if (FREE_TYPES.has(block.type) || isImage) {
+        const r = await gradeFreeAnswer({
+          question: block.content || "",
+          correctAnswer: block.correctAnswer ?? "",
+          studentAnswer: item.answer,
+          explanation: block.explanation,
+          level,
+          maxPoints,
+          mode: block.type === "impossible_search" ? "justification" : "numeric",
+        });
+        return { block_id: item.block_id, score: r.score, max_score: maxPoints, is_correct: r.is_correct, feedback: r.feedback, unavailable: r.unavailable, reveal: r.unavailable ? undefined : revealFor(block) };
       }
-      score = isCorrect ? maxPoints : 0;
-      feedback = isCorrect ? "Correct !" : "Incorrect.";
-    } else {
-      const expected = exercise.correct_answer?.trim().toLowerCase();
-      const actual =
-        typeof answer === "string" ? answer.trim().toLowerCase() : "";
 
-      if (expected && actual === expected) {
-        score = exercise.points || 10;
-        isCorrect = true;
-        feedback = "Correct !";
-      } else {
-        feedback = "Incorrect. Essayez encore.";
-      }
-    }
+      const ok = gradeStructured(block, item.answer);
+      return {
+        block_id: item.block_id,
+        score: ok ? maxPoints : 0,
+        max_score: maxPoints,
+        is_correct: ok,
+        feedback: ok ? "Bonne réponse !" : "Ce n'est pas la bonne réponse.",
+        reveal: revealFor(block),
+      };
+    });
 
-    if (ungraded) {
-      // Panne d'infra, pas une vraie tentative : pas de badge-check, pas de
-      // verdict — l'élève doit pouvoir resoumettre sans pénalité.
-      return NextResponse.json({ unavailable: true, feedback });
-    }
-
-    // Révélation sûre à renvoyer APRÈS correction, pour l'écran de correction —
-    // jamais envoyée avant que l'élève ait soumis sa réponse.
-    let reveal: any = undefined;
-    if (targetBlock) {
-      const type = targetBlock.type;
-      if (type === "matching") reveal = { pairs: targetBlock.pairs };
-      else if (type === "ordering") reveal = { items: targetBlock.items };
-      else if (type === "fill_in_the_blank") reveal = { blanks: targetBlock.blanks };
-      else if (type === "categorize") reveal = { categoryItems: targetBlock.categoryItems };
-      else reveal = { correctAnswer: targetBlock.correctAnswer };
-    }
-
-    // 3. Trigger badge check (fire and forget) — la persistance de la tentative
-    // (user_exercise_attempts) est gérée par /api/child/activities et
-    // /api/child/exercises/[id]/progress, qui résolvent correctement l'auth_id
-    // vers l'id interne et utilisent un upsert sur (user_id, exercise_id).
-    if (id !== "preview") {
-      // Origine serveur réelle (et non l'en-tête Origin du client, falsifiable :
-      // on ne veut pas envoyer le jeton de l'utilisateur vers un hôte arbitraire).
+    // Badges : une seule vérification par envoi (en arrière-plan).
+    if (id !== "preview" && results.some((r) => !r.unavailable)) {
       const selfOrigin = new URL(req.url).origin;
       fetch(`${selfOrigin}/api/child/check-badges`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: req.headers.get("authorization") || "",
-        },
+        headers: { "Content-Type": "application/json", Authorization: req.headers.get("authorization") || "" },
         body: JSON.stringify({ authId: me.authId }),
       }).catch(() => {});
     }
 
-    return NextResponse.json({
-      score,
-      max_score: maxPoints,
-      is_correct: isCorrect,
-      feedback,
-      reveal,
-    });
+    if (batch) return NextResponse.json({ results });
+    const r = results[0];
+    if (r.unavailable) return NextResponse.json({ unavailable: true, feedback: r.feedback });
+    return NextResponse.json(r);
   } catch (error: any) {
     console.error("Error grading exercise:", error);
     return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });

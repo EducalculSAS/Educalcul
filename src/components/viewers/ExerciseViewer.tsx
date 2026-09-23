@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
 import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Image as ImageIcon, Loader2, Sparkles, Pencil, Keyboard, Eye, AlertTriangle } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
@@ -1389,13 +1390,14 @@ export default function ExerciseViewer({
     const newSubmitted = new Set<string>();
     const exerciseId = exercise.id || "preview";
 
+    // Toute la copie part en UNE requête (corrigée en parallèle côté
+    // serveur) — avant, chaque question attendait la précédente.
+    const toGrade: { block: (typeof pages)[number]["blocks"][number]; answer: unknown }[] = [];
     for (const page of pages) {
       for (const block of page.blocks) {
         if (["text", "image"].includes(block.type)) continue;
-
         const answer = answers[block.id];
-        let isCorrect = false;
-        let points = block.points || 0;
+        const points = block.points || 0;
 
         if (answer === undefined || answer === null) {
           newResults[block.id] = false;
@@ -1417,58 +1419,61 @@ export default function ExerciseViewer({
           if (inlineResult.resolvedCorrect) totalScore += inlineResult.resolvedScore ?? points;
           continue;
         }
+        toGrade.push({ block, answer });
+      }
+    }
 
-        // La correction se fait toujours côté serveur (à partir des données
-        // enregistrées en base) : le client ne connaît jamais la réponse
-        // correcte avant d'avoir soumis la sienne.
-        try {
-          const res = await fetch(`/api/child/exercises/${exerciseId}/grade`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              block_id: block.id,
-              answer: answer,
-              // Uniquement utilisés en mode "preview" (aperçu admin, contenu
-              // pas encore enregistré) — ignorés par le serveur sinon.
-              question: block.content,
-              correctAnswer: block.correctAnswer,
-              explanation: block.explanation,
-              level: exercise.level || "6eme",
-              points: block.points,
-            }),
-          });
-          const data = await res.json();
-          if (data.unavailable) {
-            // Panne d'infra, pas une vraie tentative : on abandonne toute la
-            // validation plutôt que de verrouiller l'exercice sur un verdict
-            // deviné — rien n'a encore été enregistré (setExerciseCompleted/
-            // saveProgress plus bas), l'élève peut resoumettre à l'identique.
-            setIsValidating(false);
-            setGradingError(data.feedback || "Correction indisponible, réessaie.");
-            return;
-          }
-          isCorrect = !!data.is_correct;
-          if (data.feedback) {
-            newAiFeedback[block.id] = data.feedback;
-          }
-          if (data.reveal) {
-            newRevealed[block.id] = data.reveal;
-          }
-          if (data.score !== undefined) {
-            points = data.score;
-          }
-        } catch (e) {
-          console.error(e);
+    if (toGrade.length > 0) {
+      // La correction se fait toujours côté serveur (à partir des données
+      // enregistrées en base) : le client ne connaît jamais la réponse
+      // correcte avant d'avoir soumis la sienne.
+      try {
+        const preview = exerciseId === "preview";
+        const results = await Promise.all(
+          preview
+            // Aperçu admin : l'énoncé part avec chaque question (pas en base).
+            ? toGrade.map(({ block, answer }) =>
+                fetch(`/api/child/exercises/preview/grade`, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ block_id: block.id, answer, question: block.content, correctAnswer: block.correctAnswer, explanation: block.explanation, level: exercise.level || "6eme", points: block.points }),
+                }).then((r) => r.json()).then((d) => ({ ...d, block_id: block.id })),
+              )
+            : [
+                fetch(`/api/child/exercises/${exerciseId}/grade`, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ items: toGrade.map(({ block, answer }) => ({ block_id: block.id, answer })) }),
+                }).then(async (r) => {
+                  const d = await r.json();
+                  if (!r.ok) throw new Error(d.error || "Correction indisponible, réessaie.");
+                  return d.results as any[];
+                }),
+              ],
+        ).then((out) => (preview ? out : out[0]) as any[]);
+
+        const byBlock = new Map(results.map((r: any) => [r.block_id, r]));
+        if (results.some((r: any) => r?.unavailable)) {
+          // Panne d'infra, pas une vraie tentative : rien n'est enregistré,
+          // l'élève peut resoumettre à l'identique.
           setIsValidating(false);
-          setGradingError("Correction indisponible, réessaie.");
+          setGradingError(results.find((r: any) => r?.unavailable)?.feedback || "Correction indisponible, réessaie.");
           return;
         }
-
-        newResults[block.id] = isCorrect;
-        newSubmitted.add(block.id);
-        if (isCorrect) {
-          totalScore += points;
+        for (const { block } of toGrade) {
+          const data = byBlock.get(block.id) || {};
+          const isCorrect = !!data.is_correct;
+          if (data.feedback) newAiFeedback[block.id] = data.feedback;
+          if (data.reveal) newRevealed[block.id] = data.reveal;
+          newResults[block.id] = isCorrect;
+          newSubmitted.add(block.id);
+          if (isCorrect) totalScore += data.score !== undefined ? data.score : block.points || 0;
         }
+      } catch (e) {
+        console.error(e);
+        setIsValidating(false);
+        setGradingError((e as Error).message || "Correction indisponible, réessaie.");
+        return;
       }
     }
 
@@ -1825,80 +1830,13 @@ export default function ExerciseViewer({
                             </GlassButton>
                           )}
 
-                          {inline?.status === "unavailable" && (
-                            <div
-                              className="p-3 rounded-xl flex items-start gap-2"
-                              style={{ background: "#fffbeb", color: "#92400e" }}
-                            >
-                              <Loader2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                              <div className="flex-1">
-                                <p className="font-semibold text-sm">Correction indisponible</p>
-                                <p className="text-sm mt-1 opacity-90">
-                                  {inline.feedback || "Réessaie dans quelques secondes."}
-                                </p>
-                              </div>
-                            </div>
-                          )}
-
-                          {inline?.status === "wrong" && (
-                            <div
-                              className="p-3 rounded-xl flex items-start gap-2"
-                              style={{ background: "#fef2f2", color: "#991b1b" }}
-                            >
-                              <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                              <div className="flex-1">
-                                <p className="font-semibold text-sm">Pas tout à fait…</p>
-                                {inline.feedback && (
-                                  <div
-                                    className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"
-                                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(inline.feedback) }}
-                                  />
-                                )}
-                                <p className="text-xs mt-0.5 opacity-80">Essaie encore</p>
-                              </div>
-                            </div>
-                          )}
-
-                          {inline?.status === "correct" && (
-                            <div
-                              className="p-4 rounded-xl flex items-start gap-2"
-                              style={{
-                                background: "rgba(197,161,72,0.1)",
-                                color: "var(--greek-blue)",
-                                borderLeft: "3px solid var(--greek-gold)",
-                              }}
-                            >
-                              <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "var(--greek-gold)" }} />
-                              <div className="flex-1">
-                                <p className="font-bold text-sm">Excellent !</p>
-                                {inline.feedback && (
-                                  <div
-                                    className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"
-                                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(inline.feedback) }}
-                                  />
-                                )}
-                              </div>
-                            </div>
-                          )}
-
-                          {inline?.status === "revealed" && (
-                            <div className="p-4 rounded-xl" style={{ background: "#f9fafb", border: "1px solid #e5e7eb" }}>
-                              <div className="flex items-center gap-2 mb-2">
-                                <Eye className="w-4 h-4" style={{ color: "var(--greek-blue)" }} />
-                                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--greek-blue)" }}>
-                                  Correction
-                                </span>
-                              </div>
-                              <p className="text-sm text-gray-700 latex-content">
-                                <span className="font-semibold">Réponse :</span>{" "}
-                                <span
-                                  style={{ color: "var(--greek-blue)" }}
-                                  dangerouslySetInnerHTML={{
-                                    __html: renderLatexInHTML(inline?.revealedAnswer || ""),
-                                  }}
-                                />
-                              </p>
-                            </div>
+                          {inline && ["correct", "wrong", "revealed", "unavailable"].includes(inline.status) && (
+                            <AnswerFeedback
+                              kind={inline.status as "correct" | "wrong" | "revealed" | "unavailable"}
+                              feedback={inline.feedback}
+                              correctAnswer={inline.status === "revealed" ? inline.revealedAnswer : undefined}
+                              tryAgain={inline.status === "wrong"}
+                            />
                           )}
                         </>
                       )}
@@ -2202,34 +2140,12 @@ export default function ExerciseViewer({
                 {/* Feedback after global validation */}
                 {isSubmitted && (
                   <div className="mt-4 pt-4 border-t border-[rgba(197,161,72,0.25)] flex flex-col gap-3">
-                    <div
-                      className={`text-sm font-bold flex items-center gap-2 ${
-                        isCorrect ? "text-green-600" : "text-red-600"
-                      }`}
-                    >
-                      {isCorrect ? (
-                        <>
-                          <CheckCircle className="w-4 h-4" /> Correct ! (+
-                          {block.points} pts)
-                        </>
-                      ) : (
-                        <>
-                          <XCircle className="w-4 h-4" /> Incorrect
-                        </>
-                      )}
-                    </div>
-
-                    {aiFeedback[block.id] && (
-                      <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg text-blue-800 text-sm flex gap-3">
-                        <Sparkles className="w-5 h-5 shrink-0 mt-0.5 text-blue-500" />
-                        <div>
-                          <span className="font-bold text-blue-700 block mb-1">
-                            Feedback IA :
-                          </span>
-                          <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(aiFeedback[block.id]) }} />
-                        </div>
-                      </div>
-                    )}
+                    <AnswerFeedback
+                      kind={isCorrect ? "correct" : "wrong"}
+                      feedback={aiFeedback[block.id]}
+                      points={isCorrect ? block.points : undefined}
+                      correctAnswer={!isCorrect && typeof revealed[block.id]?.correctAnswer === "string" && ["text_input", "impossible_search"].includes(block.type) ? revealed[block.id].correctAnswer : undefined}
+                    />
 
                     {adminEditedAnswers[block.id] !== undefined && (
                       <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg text-purple-800 text-xs">

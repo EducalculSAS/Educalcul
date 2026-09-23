@@ -578,10 +578,10 @@ RÈGLES D'ÉQUIVALENCE (très important) :
 - Accepte TOUTE forme mathématiquement équivalente à la réponse attendue, même si elle diffère de la formulation donnée : fraction non simplifiée ou simplifiée (ex: 4/8 = 1/2), nombre décimal vs fraction (ex: 0.5 = 1/2), forme développée vs factorisée, ordre différent des termes/solutions, unités équivalentes, écriture avec ou sans espace/virgule décimale, pourcentage vs décimal (ex: 50% = 0.5), racine simplifiée ou non.
 - Seule l'exactitude mathématique compte, pas la forme exacte du texte.${verdictInstruction}
 RÈGLES pour le feedback — SOIS TRÈS BREF, c'est la règle la plus importante :
-1. MAXIMUM 2 phrases courtes. Jamais de liste, jamais de résolution étape par étape, jamais de récapitulatif de méthode : va droit au but.
-2. Adapte ton vocabulaire au niveau de l'élève.
-3. Si correct : confirme en une phrase (précise brièvement si la forme diffère mais reste équivalente).
-4. Si incorrect : dis en une phrase où est l'erreur ou la piste à suivre, sans donner la résolution complète.
+1. MAXIMUM 2 phrases courtes, 40 mots au total. Jamais de liste ni de résolution complète : va droit au but.
+2. Adapte ton vocabulaire au niveau de l'élève et parle-lui directement (« tu »).
+3. Si correct : une phrase qui dit POURQUOI c'est juste (la règle ou l'étape clé), pas seulement « bravo ».
+4. Si incorrect : phrase 1 = l'erreur précise que l'élève a faite (ex. « tu as additionné les dénominateurs ») ; phrase 2 = la méthode ou l'étape clé pour y arriver, sans donner le résultat final.
 5. Sois encourageant même en cas d'erreur, sans être condescendant.
 6. Réponds UNIQUEMENT en JSON sur une seule ligne, sans texte avant/après.
 7. score = 0 si incorrect, ${maxPoints} si correct.

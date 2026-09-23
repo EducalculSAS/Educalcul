@@ -1,7 +1,6 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { gradeAnswer } from "@/lib/llm";
-import { tryDeterministicMathCheck } from "@/lib/mathAnswerCheck";
+import { gradeFreeAnswer } from "@/lib/gradeFreeAnswer";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -68,56 +67,21 @@ export async function POST(
     let feedback = "";
 
     if (targetQuestion.type === "text_input" || targetQuestion.type === "impossible_search") {
-      // --- AI GRADING (IA) ---
-      const answerText = typeof answer === "string" ? answer : JSON.stringify(answer);
-      // "recherche impossible" : pas de pré-check numérique, la bonne réponse
-      // est une justification (voir même logique dans exercises/[id]/grade).
-      const deterministic =
-        typeof targetQuestion.correctAnswer === "string" && targetQuestion.type !== "impossible_search"
-          ? tryDeterministicMathCheck(targetQuestion.correctAnswer, answerText)
-          : { decided: false as const };
-
-      if (deterministic.decided && deterministic.reason === "incomplete") {
-        isCorrect = false;
-        score = 0;
-        feedback = "Réponse incomplète : remplis tous les emplacements avant de valider.";
-      } else {
-        try {
-          const gradingResult = await gradeAnswer(
-            targetQuestion.text,
-            targetQuestion.correctAnswer,
-            answer,
-            targetQuestion.explanation,
-            // Niveau BDD prioritaire sur le client pour un vrai quiz (voir
-            // meme correctif sur exercises/[id]/grade) — evite qu'un
-            // parametre client n'influence le verdict via le prompt IA.
-            dbLevel || level || "6ème",
-            maxPoints,
-            deterministic.decided ? deterministic.isCorrect : undefined,
-            targetQuestion.type === "impossible_search" ? "justification" : "numeric",
-          );
-          isCorrect = gradingResult.is_correct;
-          score = gradingResult.score;
-          feedback = gradingResult.feedback;
-        } catch (e) {
-          console.error("❌ AI Grading Failed:", e);
-          // Le calcul exact reste fiable même sans l'explication pédagogique
-          // de l'IA — jamais de fallback par égalité de chaînes sur du
-          // LaTeX brut, ça échoue presque toujours pour une vraie réponse.
-          if (deterministic.decided) {
-            isCorrect = deterministic.isCorrect!;
-            score = isCorrect ? maxPoints : 0;
-            feedback = isCorrect
-              ? "Bonne réponse !"
-              : `Ce n'est pas la bonne réponse — la bonne réponse est ${targetQuestion.correctAnswer}.`;
-          } else {
-            return NextResponse.json({
-              unavailable: true,
-              feedback: "Correction indisponible, réessaie.",
-            });
-          }
-        }
-      }
+      // Même correction que les exercices et les mini-exercices (gradeFreeAnswer).
+      const r = await gradeFreeAnswer({
+        question: targetQuestion.text || "",
+        correctAnswer: targetQuestion.correctAnswer ?? "",
+        studentAnswer: answer,
+        explanation: targetQuestion.explanation,
+        // Niveau BDD prioritaire sur le client pour un vrai quiz.
+        level: dbLevel || level || "6ème",
+        maxPoints,
+        mode: targetQuestion.type === "impossible_search" ? "justification" : "numeric",
+      });
+      if (r.unavailable) return NextResponse.json({ unavailable: true, feedback: r.feedback });
+      isCorrect = r.is_correct;
+      score = r.score;
+      feedback = r.feedback;
     } else if (targetQuestion.type === "multiple_choice") {
       const correct = Array.isArray(targetQuestion.correctAnswer)
         ? targetQuestion.correctAnswer
@@ -125,11 +89,11 @@ export async function POST(
       const selected = Array.isArray(answer) ? answer : [answer];
       isCorrect = correct.length === selected.length && correct.every((a: any) => selected.includes(String(a)));
       score = isCorrect ? maxPoints : 0;
-      feedback = isCorrect ? "Correct !" : "Incorrect.";
+      feedback = isCorrect ? "Bonne réponse !" : "Ce n'est pas la bonne réponse.";
     } else {
       isCorrect = String(answer) === String(targetQuestion.correctAnswer);
       score = isCorrect ? maxPoints : 0;
-      feedback = isCorrect ? "Correct !" : "Incorrect.";
+      feedback = isCorrect ? "Bonne réponse !" : "Ce n'est pas la bonne réponse.";
     }
 
     return NextResponse.json({

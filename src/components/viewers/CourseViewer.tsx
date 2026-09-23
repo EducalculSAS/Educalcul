@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useMemo } from "react";
 import {
   Play,
@@ -14,8 +15,6 @@ import {
   ChevronLeft,
   Sparkles,
   Lightbulb,
-  XCircle as XCircleIcon,
-  Eye,
   PencilLine,
   Loader2,
   Keyboard,
@@ -1318,114 +1317,20 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
                 </div>
               )}
 
-              {/* Correction indisponible (panne d'infra, pas une vraie erreur) */}
-              {isUnavailable && (
-                <div
-                  className="mt-3 p-3 rounded-xl flex items-start gap-2"
-                  style={{ background: "#fffbeb", color: "#92400e" }}
-                >
-                  <Loader2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <div className="flex-1">
-                    <p className="font-semibold text-sm">Correction indisponible</p>
-                    <p className="text-sm mt-1 opacity-90">
-                      {s.feedback || "Réessaie dans quelques secondes."}
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              {/* Wrong feedback */}
-              {isWrong && (
-                <div
-                  className="mt-3 p-3 rounded-xl flex items-start gap-2"
-                  style={{ background: "#fef2f2", color: "#991b1b" }}
-                >
-                  <XCircleIcon className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                  <div className="flex-1">
-                    <p className="font-semibold text-sm">Pas tout à fait…</p>
-                    {s.feedback && (
-                      <div
-                        className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"
-                        dangerouslySetInnerHTML={{
-                          __html: renderLatexInHTML(s.feedback),
-                        }}
-                      />
-                    )}
-                    <p className="text-xs mt-0.5 opacity-80">Essaie encore</p>
-                    <div className="flex gap-2 mt-2">
-                      <GlassButton
-                        onClick={() => handleRetry(ex.id)}
-                        variant="danger"
-                        size="sm"
-                      >
-                        Réessayer
-                      </GlassButton>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {/* Correct feedback */}
-              {isCorrect && (
-                <div
-                  className="mt-3 p-4 rounded-xl flex items-start gap-2"
-                  style={{
-                    background: "rgba(197,161,72,0.1)",
-                    color: "var(--greek-blue)",
-                    borderLeft: "3px solid var(--greek-gold)",
-                  }}
-                >
-                  <CheckCircle
-                    className="w-5 h-5 flex-shrink-0 mt-0.5"
-                    style={{ color: "var(--greek-gold)" }}
+              {/* Retour de correction : même carte que dans les exercices et les quiz */}
+              {(isUnavailable || isWrong || isCorrect || isRevealed) && (
+                <div className="mt-3 space-y-2">
+                  <AnswerFeedback
+                    kind={isCorrect ? "correct" : isWrong ? "wrong" : isRevealed ? "revealed" : "unavailable"}
+                    feedback={s.feedback}
+                    correctAnswer={isRevealed ? ex.answer : undefined}
+                    tryAgain={isWrong}
                   />
-                  <div className="flex-1">
-                    <p className="font-bold text-sm">Excellent !</p>
-                    {s.feedback && (
-                      <div
-                        className="latex-content text-sm mt-1.5 opacity-90 leading-relaxed"
-                        dangerouslySetInnerHTML={{
-                          __html: renderLatexInHTML(s.feedback),
-                        }}
-                      />
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {/* Revealed correction */}
-              {isRevealed && (
-                <div
-                  className="mt-3 p-4 rounded-xl"
-                  style={{
-                    background: "#f9fafb",
-                    border: "1px solid #e5e7eb",
-                  }}
-                >
-                  <div className="flex items-center gap-2 mb-2">
-                    <Eye className="w-4 h-4" style={{ color: "var(--greek-blue)" }} />
-                    <span
-                      className="text-xs font-bold uppercase tracking-wider"
-                      style={{ color: "var(--greek-blue)" }}
-                    >
-                      Correction
-                    </span>
-                  </div>
-                  <p className="text-sm text-gray-700 mb-2 latex-content">
-                    <span className="font-semibold">Réponse :</span>{" "}
-                    <span
-                      style={{ color: "var(--greek-blue)" }}
-                      dangerouslySetInnerHTML={{ __html: renderLatexInHTML(ex.answer || "") }}
-                    />
-                  </p>
-                  <button
-                    type="button"
-                    onClick={() => handleRetry(ex.id)}
-                    className="mt-3 text-xs font-semibold underline"
-                    style={{ color: "var(--greek-blue)" }}
-                  >
-                    Réessayer cet exercice
-                  </button>
+                  {(isWrong || isRevealed) && (
+                    <GlassButton onClick={() => handleRetry(ex.id)} variant={isWrong ? "danger" : "outline"} size="sm">
+                      {isWrong ? "Réessayer" : "Réessayer cet exercice"}
+                    </GlassButton>
+                  )}
                 </div>
               )}
             </div>

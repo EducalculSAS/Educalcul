@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef } from "react";
 import { CheckCircle, XCircle, ArrowRight, ArrowLeft, RotateCcw, Trophy, Loader2, Sparkles, Type, HelpCircle, Clock, Eye, AlertTriangle } from "lucide-react";
 import { Question } from "@/components/admin/QuizBuilder";
@@ -380,69 +381,79 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     const newRevealed: Record<number, any> = {};
     const quizId = (quiz as any).id || "preview";
 
+    // Les questions à corriger partent toutes en même temps (avant : l'une
+    // après l'autre, chaque réponse attendait la précédente).
+    const pending: number[] = [];
     for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
       const answer = answers[i];
-      let isCorrect = false;
-
       if (!answer) {
         newResults[i] = false;
         continue;
       }
-
       // Déjà vérifié en direct via le bouton "Vérifier" de la question : on
       // réutilise ce verdict plutôt que de rappeler l'IA une seconde fois.
       const inlineResult = inlineText[i];
       if ((q.type === "text_input" || q.type === "impossible_search") && inlineResult?.resolvedCorrect !== undefined) {
         newResults[i] = inlineResult.resolvedCorrect;
         if (inlineResult.feedback) newFeedbacks[i] = inlineResult.feedback;
-        if (inlineResult.revealedAnswer) {
-          newRevealed[i] = { correctAnswer: inlineResult.revealedAnswer };
-        }
+        if (inlineResult.revealedAnswer) newRevealed[i] = { correctAnswer: inlineResult.revealedAnswer };
         if (inlineResult.resolvedCorrect) totalScore += inlineResult.resolvedScore ?? q.points;
         continue;
       }
-
-      // La correction se fait toujours côté serveur : le client ne connaît
-      // jamais la réponse correcte avant d'avoir soumis la sienne.
-      try {
-        const response = await fetch(`/api/child/quizzes/${quizId}/grade`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            question_id: q.id,
-            answer,
-            level: quiz.level || "6eme",
-            // Uniquement utilisé en mode "preview" (aperçu admin, contenu pas
-            // encore enregistré) — ignoré par le serveur pour un vrai quiz.
-            question: q.text,
-            correctAnswer: q.correctAnswer,
-            explanation: q.explanation,
-            points: q.points,
-          }),
-        });
-        const data = await response.json();
-        if (data.unavailable) {
-          // Panne d'infra, pas une vraie tentative : on abandonne toute la
-          // validation plutôt que de verrouiller le quiz sur un verdict
-          // deviné — rien n'a encore été enregistré, l'élève peut revalider.
-          setIsValidating(false);
-          setGradingError(data.feedback || "Correction indisponible, réessaie.");
-          return;
-        }
-        isCorrect = !!data.is_correct;
-        if (data.feedback) newFeedbacks[i] = data.feedback;
-        if (data.reveal) newRevealed[i] = data.reveal;
-      } catch (e) {
-        console.error("Failed to grade quiz question", e);
-        setIsValidating(false);
-        setGradingError("Correction indisponible, réessaie.");
-        return;
-      }
-
-      newResults[i] = isCorrect;
-      if (isCorrect) totalScore += q.points;
+      pending.push(i);
     }
+
+    // La correction se fait toujours côté serveur : le client ne connaît
+    // jamais la réponse correcte avant d'avoir soumis la sienne.
+    let graded: any[];
+    try {
+      graded = await Promise.all(
+        pending.map((i) => {
+          const q = questions[i];
+          return fetch(`/api/child/quizzes/${quizId}/grade`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              question_id: q.id,
+              answer: answers[i],
+              level: quiz.level || "6eme",
+              // Uniquement utilisé en mode "preview" (aperçu admin) — ignoré
+              // par le serveur pour un vrai quiz.
+              question: q.text,
+              correctAnswer: q.correctAnswer,
+              explanation: q.explanation,
+              points: q.points,
+            }),
+          }).then(async (r) => {
+            const d = await r.json().catch(() => ({}));
+            if (!r.ok && !d.unavailable) throw new Error(d.error || "Correction indisponible, réessaie.");
+            return d;
+          });
+        }),
+      );
+    } catch (e) {
+      console.error("Failed to grade quiz", e);
+      setIsValidating(false);
+      setGradingError((e as Error).message || "Correction indisponible, réessaie.");
+      return;
+    }
+    const down = graded.find((d) => d?.unavailable);
+    if (down) {
+      // Panne d'infra, pas une vraie tentative : rien n'est enregistré,
+      // l'élève peut revalider à l'identique.
+      setIsValidating(false);
+      setGradingError(down.feedback || "Correction indisponible, réessaie.");
+      return;
+    }
+    pending.forEach((i, k) => {
+      const data = graded[k] || {};
+      const isCorrect = !!data.is_correct;
+      if (data.feedback) newFeedbacks[i] = data.feedback;
+      if (data.reveal) newRevealed[i] = data.reveal;
+      newResults[i] = isCorrect;
+      if (isCorrect) totalScore += questions[i].points;
+    });
 
     setScore(totalScore);
     setQuestionResults(newResults);
@@ -731,20 +742,17 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                           />
                         )}
                       </div>
-                      {isAnswerSubmitted &&
-                        !questionResults[currentQuestionIndex] && (
-                          <div className="text-sm text-red-600 font-medium">
-                            {questionFeedbacks[currentQuestionIndex] ? (
-                              <div className="mb-1">{questionFeedbacks[currentQuestionIndex]}</div>
-                            ) : null}
-                            {!questionFeedbacks[currentQuestionIndex] && revealed[currentQuestionIndex]?.correctAnswer && (
-                              <span>
-                                Réponse attendue :{" "}
-                                {revealed[currentQuestionIndex]!.correctAnswer as string}
-                              </span>
-                            )}
-                          </div>
-                        )}
+                      {isAnswerSubmitted && (
+                        <AnswerFeedback
+                          kind={questionResults[currentQuestionIndex] ? "correct" : "wrong"}
+                          feedback={questionFeedbacks[currentQuestionIndex]}
+                          correctAnswer={
+                            !questionResults[currentQuestionIndex] && typeof revealed[currentQuestionIndex]?.correctAnswer === "string"
+                              ? (revealed[currentQuestionIndex]!.correctAnswer as string)
+                              : undefined
+                          }
+                        />
+                      )}
 
                       {/* Correction immédiate, même style que les mini-exercices de cours */}
                       {!isAnswerSubmitted && (
@@ -768,80 +776,13 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                             </GlassButton>
                           )}
 
-                          {inline?.status === "unavailable" && (
-                            <div
-                              className="p-3 rounded-xl flex items-start gap-2"
-                              style={{ background: "#fffbeb", color: "#92400e" }}
-                            >
-                              <Loader2 className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                              <div className="flex-1">
-                                <p className="font-semibold text-sm">Correction indisponible</p>
-                                <p className="text-sm mt-1 opacity-90">
-                                  {inline.feedback || "Réessaie dans quelques secondes."}
-                                </p>
-                              </div>
-                            </div>
-                          )}
-
-                          {inline?.status === "wrong" && (
-                            <div
-                              className="p-3 rounded-xl flex items-start gap-2"
-                              style={{ background: "#fef2f2", color: "#991b1b" }}
-                            >
-                              <XCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-                              <div className="flex-1">
-                                <p className="font-semibold text-sm">Pas tout à fait…</p>
-                                {inline.feedback && (
-                                  <div
-                                    className="text-sm mt-1.5 opacity-90 leading-relaxed"
-                                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(inline.feedback) }}
-                                  />
-                                )}
-                                <p className="text-xs mt-0.5 opacity-80">Essaie encore</p>
-                              </div>
-                            </div>
-                          )}
-
-                          {inline?.status === "correct" && (
-                            <div
-                              className="p-4 rounded-xl flex items-start gap-2"
-                              style={{
-                                background: "rgba(197,161,72,0.1)",
-                                color: "var(--greek-blue)",
-                                borderLeft: "3px solid var(--greek-gold)",
-                              }}
-                            >
-                              <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" style={{ color: "var(--greek-gold)" }} />
-                              <div className="flex-1">
-                                <p className="font-bold text-sm">Excellent !</p>
-                                {inline.feedback && (
-                                  <div
-                                    className="text-sm mt-1.5 opacity-90 leading-relaxed"
-                                    dangerouslySetInnerHTML={{ __html: renderLatexInHTML(inline.feedback) }}
-                                  />
-                                )}
-                              </div>
-                            </div>
-                          )}
-
-                          {inline?.status === "revealed" && (
-                            <div className="p-4 rounded-xl" style={{ background: "#f9fafb", border: "1px solid #e5e7eb" }}>
-                              <div className="flex items-center gap-2 mb-2">
-                                <Eye className="w-4 h-4" style={{ color: "var(--greek-blue)" }} />
-                                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--greek-blue)" }}>
-                                  Correction
-                                </span>
-                              </div>
-                              <p className="text-sm text-gray-700">
-                                <span className="font-semibold">Réponse :</span>{" "}
-                                <span
-                                  style={{ color: "var(--greek-blue)" }}
-                                  dangerouslySetInnerHTML={{
-                                    __html: renderLatexInHTML(inline?.revealedAnswer || ""),
-                                  }}
-                                />
-                              </p>
-                            </div>
+                          {inline && ["correct", "wrong", "revealed", "unavailable"].includes(inline.status) && (
+                            <AnswerFeedback
+                              kind={inline.status as "correct" | "wrong" | "revealed" | "unavailable"}
+                              feedback={inline.feedback}
+                              correctAnswer={inline.status === "revealed" ? inline.revealedAnswer : undefined}
+                              tryAgain={inline.status === "wrong"}
+                            />
                           )}
                         </>
                       )}
