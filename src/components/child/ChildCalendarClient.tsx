@@ -1,8 +1,7 @@
 "use client";
 
-import { ArrowLeft, Calendar } from "lucide-react";
+import { Calendar } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import GlassButton from "@/components/ui/GlassButton";
 import CalendarApp from "@/components/calendar/CalendarApp";
 import type { CalendarEventItem } from "@/components/calendar/calendarUtils";
 
@@ -23,11 +22,7 @@ export default function ChildCalendarClient({
         title="Mon calendrier"
         badge="Élève"
         subtitle="Tes contrôles, devoirs, révisions et vacances. Clique sur un jour pour voir ce qui est prévu."
-        top={
-          <GlassButton href="/child/dashboard" variant="light" size="sm">
-            <ArrowLeft className="w-4 h-4" /> Retour au tableau de bord
-          </GlassButton>
-        }
+        back={{ href: "/child/dashboard", label: "Tableau de bord" }}
       />
       <div className="container mx-auto max-w-7xl px-4">
         <CalendarApp

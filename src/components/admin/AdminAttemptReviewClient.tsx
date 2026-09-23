@@ -1,5 +1,6 @@
 "use client";
 
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -85,14 +86,13 @@ export default function AdminAttemptReviewClient({
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <div className="flex items-center gap-3 p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
-        <button
-          onClick={() => router.push(`/admin/users/detail?id=${userId}`)}
-          className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
-          title="Retour à la fiche"
-          aria-label="Retour à la fiche"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </button>
+        <GlassIconButton
+            icon={ArrowLeft}
+            onClick={() => router.push(`/admin/users/detail?id=${userId}`)}
+            color="white"
+            className="flex-shrink-0"
+            aria-label="Retour à la fiche"
+          />
         <h1 className="text-lg font-bold truncate flex-1">
           Correction — {item.title} · {childName}
         </h1>

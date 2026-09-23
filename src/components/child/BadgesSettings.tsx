@@ -121,6 +121,7 @@ export default function BadgesSettings({
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
       {/* Hero */}
       <PageHero
+        back={{ href: "/child/dashboard", label: "Tableau de bord" }}
         icon={Trophy}
         title="Mes trophées"
         badge={`${earned.length} / ${badges.length} débloqués`}

@@ -60,9 +60,9 @@ export default function ProfileHeaderActions({
   return (
     <>
       <div className="flex items-start justify-between gap-4 mb-6">
-        <button onClick={handleBack} className="flex items-center gap-2 text-white/70 hover:text-white text-sm transition-colors">
+        <GlassButton onClick={handleBack} variant="light" size="sm">
           <ArrowLeft className="w-4 h-4" /> Retour
-        </button>
+        </GlassButton>
         {userRole !== "admin" && (
           <GlassButton onClick={() => setReportOpen(true)} variant="light" size="sm">
             <Flag className="w-4 h-4" /> Signaler le profil

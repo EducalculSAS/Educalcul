@@ -60,7 +60,7 @@ export default async function ChildExercisesPage({
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
-      <PageHero icon={Brain} title="Exercices" badge="Entraînement" subtitle="Pratique et améliore tes compétences !" />
+      <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={Brain} title="Exercices" badge="Entraînement" subtitle="Pratique et améliore tes compétences !" />
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <ExercisesCatalog
           allFolders={allFolders || []}

@@ -1,5 +1,6 @@
 "use client";
 
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useState, useEffect, useRef } from "react";
 import { ArrowLeft, Play, Clock, BookOpen, AlertCircle, CheckCircle } from "lucide-react";
 import AppLoader from "@/components/AppLoader";
@@ -165,14 +166,13 @@ export default function CourseDetailClient({
     return (
       <div className="fixed inset-x-0 bottom-0 top-[calc(var(--nav-h)+var(--imp-banner-h,0px))] z-50 bg-white flex flex-col overflow-hidden">
         <div className="flex items-center gap-3 p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
-          <button
+          <GlassIconButton
+            icon={ArrowLeft}
             onClick={() => { if (isPreview) { window.close(); } else { setStarted(false); } }}
-            className="p-1.5 hover:bg-white/10 rounded-full transition-colors flex-shrink-0"
-            title="Retour à l'aperçu"
+            color="white"
+            className="flex-shrink-0"
             aria-label="Retour à l'aperçu"
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </button>
+          />
           <h1 className="text-lg font-bold truncate flex-1">{course.title}</h1>
           <GlassCloseButton
             variant="dark"

@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
-import type { LucideIcon } from "lucide-react";
+import { ArrowLeft, type LucideIcon } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 
 /**
  * En-tête bleu nuit des pages élève et parent — une seule définition (il en
@@ -13,6 +14,7 @@ export default function PageHero({
   subtitle,
   actions,
   top,
+  back,
   width = "6xl",
 }: {
   icon?: LucideIcon;
@@ -22,8 +24,10 @@ export default function PageHero({
   subtitle?: ReactNode;
   /** Contenu à droite (bouton d'action, statistiques). */
   actions?: ReactNode;
-  /** Au-dessus du titre (bouton retour). */
+  /** Au-dessus du titre (contenu libre). */
   top?: ReactNode;
+  /** Bouton retour Liquid Glass au-dessus du titre (ex. vers le tableau de bord). */
+  back?: { href: string; label: string };
   width?: "4xl" | "6xl";
 }) {
   return (
@@ -31,7 +35,15 @@ export default function PageHero({
       <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" aria-hidden="true" />
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" aria-hidden="true" />
       <div className={`relative z-10 mx-auto ${width === "4xl" ? "max-w-4xl" : "max-w-6xl"}`}>
-        {top && <div className="mb-6">{top}</div>}
+        {(top || back) && (
+          <div className="mb-6">
+            {top ?? (
+              <GlassButton href={back!.href} variant="light" size="sm">
+                <ArrowLeft className="w-4 h-4" /> {back!.label}
+              </GlassButton>
+            )}
+          </div>
+        )}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="min-w-0">
             {badge && (
