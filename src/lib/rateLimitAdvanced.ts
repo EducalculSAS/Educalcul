@@ -105,7 +105,10 @@ export const RATE_LIMITS = {
   // appel touche une API externe payante (Azure Speech, Mistral vision) ou
   // ecrit en base sur un compte quelconque (session-summary) : jamais sans
   // limite, meme derriere l'auth.
-  'calia:tts': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'Calia voix (TTS)' },
+  // Compté par PHRASE : une réplique est découpée en phrases pour que la voix
+  // démarre dès la première (~0,5 s au lieu de ~4 s). Le volume reste borné
+  // par calia:classe-turn (60 répliques/h, 400 caractères max chacune).
+  'calia:tts': { maxAttempts: 240, windowMs: 60 * 60 * 1000, name: 'Calia voix (TTS)' },
   'calia:classe-turn': { maxAttempts: 60, windowMs: 60 * 60 * 1000, name: 'Calia en classe (tour)' },
   'calia:read-drawing': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'Calia lecture dessin' },
   'calia:session-summary': { maxAttempts: 20, windowMs: 60 * 60 * 1000, name: 'Calia resume de session' },

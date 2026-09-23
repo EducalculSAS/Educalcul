@@ -43,6 +43,37 @@ interface CaliaCourseContext {
 
 
 
+/**
+ * Découpe une réplique de Calia en morceaux à synthétiser séparément.
+ *
+ * Azure ne rend le son qu'une fois la synthèse de TOUT le texte envoyé bien
+ * avancée : une réplique de trois phrases mettait ~1,5 à 2 s, contre ~0,5 s
+ * pour sa première phrase seule. En synthétisant phrase par phrase, la voix
+ * démarre dès la première. Les morceaux trop courts (« Bravo ! ») sont
+ * rattachés au suivant : une phrase isolée de deux mots sonne haché.
+ */
+function splitForSpeech(text: string): string[] {
+  const sentences = text
+    .replace(/\s+/g, " ")
+    .trim()
+    .split(/(?<=[.!?…])\s+(?=\S)/);
+  const chunks: string[] = [];
+  let pending = "";
+  for (const sentence of sentences) {
+    pending = pending ? `${pending} ${sentence}` : sentence;
+    if (pending.length >= 20) {
+      chunks.push(pending);
+      pending = "";
+    }
+  }
+  if (pending) {
+    if (chunks.length) chunks[chunks.length - 1] += ` ${pending}`;
+    else chunks.push(pending);
+  }
+  // La route plafonne chaque synthèse à 400 caractères.
+  return chunks.flatMap((c) => (c.length <= 400 ? [c] : c.match(/.{1,400}(\s|$)/g) ?? [c]));
+}
+
 function buildOutline(root: HTMLElement | null): OutlineItem[] {
   if (!root) return [];
   const items: OutlineItem[] = [];
@@ -180,8 +211,7 @@ export default function CaliaSceneDemo({
     stopVolumeMonitor();
     recognitionRef.current?.abort?.();
     window.speechSynthesis?.cancel();
-    audioRef.current?.pause();
-    audioRef.current = null;
+    cancelSpeech();
     clearHighlight();
     setIsRunning(false);
     setClasseActive(false);
@@ -221,25 +251,84 @@ export default function CaliaSceneDemo({
   // trouve en re-testant : chaque appel faisait 401 en ~15ms, jamais
   // atteint Azure). Retombe sur la synthese du navigateur uniquement si
   // Azure echoue vraiment (console.warn pour verifier facilement).
-  const speak = async (text: string) => {
+  // Chaque nouvelle réplique (ou un arrêt, ou l'élève qui reprend la parole)
+  // incrémente ce compteur : une file de phrases en cours sait ainsi qu'elle
+  // doit s'arrêter.
+  const speechGenRef = useRef(0);
+  const cancelSpeech = () => {
+    speechGenRef.current++;
     audioRef.current?.pause();
-    audioRef.current = null;
-    try {
-      const voice = await loadVoice();
-      const res = await fetch(`/api/calia/tts?text=${encodeURIComponent(text)}&voice=${encodeURIComponent(voice)}`);
-      if (!res.ok) throw new Error(`tts-failed-${res.status}`);
-      const blob = await res.blob();
+  };
+
+  // Un seul lecteur audio, réutilisé pour chaque phrase : sur iPhone, un
+  // lecteur déjà « débloqué » rejoue sans restriction, alors qu'en créer un
+  // nouveau à chaque phrase (hors geste de l'élève) peut être refusé.
+  const getPlayer = () => {
+    audioRef.current ??= new Audio();
+    return audioRef.current;
+  };
+
+  const playBlob = (blob: Blob, gen: number) =>
+    new Promise<boolean>((resolve) => {
+      const player = getPlayer();
       const url = URL.createObjectURL(blob);
-      const audio = new Audio(url);
-      audioRef.current = audio;
-      audio.onplay = () => setSpeaking(true);
-      audio.onended = () => { setSpeaking(false); URL.revokeObjectURL(url); };
-      audio.onerror = () => { setSpeaking(false); URL.revokeObjectURL(url); speakBrowserFallback(text); };
-      await audio.play();
-    } catch (err) {
-      console.warn("[Calia] voix Azure indisponible, repli navigateur.", err);
-      speakBrowserFallback(text);
+      const finish = (ok: boolean) => {
+        player.onended = player.onpause = player.onerror = null;
+        URL.revokeObjectURL(url);
+        resolve(ok && gen === speechGenRef.current);
+      };
+      player.onplay = () => setSpeaking(true);
+      player.onended = () => finish(true);
+      player.onpause = () => { if (!player.ended) finish(false); };
+      player.onerror = () => finish(false);
+      player.src = url;
+      player.play().catch(() => finish(false));
+    });
+
+  // Voix naturelle (Azure Speech via /api/calia/tts), synthétisée PHRASE PAR
+  // PHRASE : toutes les synthèses partent en même temps, la première est jouée
+  // dès qu'elle arrive (~0,5 s) pendant que les suivantes se préparent. Avant,
+  // la réplique entière était synthétisée puis téléchargée en bloc avant le
+  // premier son : ~4 s de silence après l'affichage du texte.
+  //
+  // Passe par fetch() (pas un <audio src> direct) : l'auth de ce site attache
+  // le Bearer token aux appels fetch() vers /api/* via un patch de
+  // window.fetch (supabaseClient.ts) — un <audio> n'a aucun moyen d'envoyer
+  // un header, et chaque appel faisait 401. Retombe sur la synthèse du
+  // navigateur uniquement si Azure échoue vraiment.
+  const speak = async (text: string) => {
+    cancelSpeech();
+    const gen = speechGenRef.current;
+    const chunks = splitForSpeech(text);
+    if (chunks.length === 0) return;
+
+    const voice = await loadVoice().catch(() => DEFAULT_CALIA_VOICE);
+    if (gen !== speechGenRef.current) return;
+
+    const synth = chunks.map((chunk) =>
+      fetch(`/api/calia/tts?text=${encodeURIComponent(chunk)}&voice=${encodeURIComponent(voice)}`).then((res) => {
+        if (!res.ok) throw new Error(`tts-failed-${res.status}`);
+        return res.blob();
+      }),
+    );
+    // Une synthèse qui échoue alors que la file a déjà été annulée ne doit
+    // pas remonter en erreur non gérée.
+    synth.forEach((p) => p.catch(() => {}));
+
+    for (let i = 0; i < chunks.length; i++) {
+      let blob: Blob;
+      try {
+        blob = await synth[i];
+      } catch (err) {
+        if (gen !== speechGenRef.current) return;
+        console.warn("[Calia] voix Azure indisponible, repli navigateur.", err);
+        speakBrowserFallback(chunks.slice(i).join(" "));
+        return;
+      }
+      if (gen !== speechGenRef.current) return;
+      if (!(await playBlob(blob, gen))) return;
     }
+    if (gen === speechGenRef.current) setSpeaking(false);
   };
 
   const executeAction = (action: TurnAction | null) => {
@@ -445,7 +534,9 @@ export default function CaliaSceneDemo({
       for (let i = 0; i < data.length; i++) sum += data[i];
       const avg = sum / data.length;
       if (avg > VOLUME_BARGE_IN_THRESHOLD && audioRef.current && !audioRef.current.paused) {
-        audioRef.current.pause();
+        // L'élève reprend la parole : on coupe la phrase en cours ET celles
+        // qui attendaient leur tour.
+        cancelSpeech();
         setSpeaking(false);
       }
       volumeRafRef.current = requestAnimationFrame(tick);
@@ -520,6 +611,11 @@ export default function CaliaSceneDemo({
 
   const start = () => {
     void loadVoice();
+    // Préchauffe la route vocale (auth + jeton Azure en cache) pendant que
+    // l'élève parle : la première réplique n'a plus à payer ce démarrage.
+    void fetch("/api/calia/tts?warm=1").catch(() => {});
+    // Débloque le lecteur audio pendant le geste de l'élève (iPhone).
+    getPlayer();
     sessionActiveRef.current = true;
     playModeProfCue();
     setIsRunning(true);

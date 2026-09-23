@@ -31,6 +31,20 @@ async function getAzureToken(key: string, region: string): Promise<string> {
   return value;
 }
 
+// Droit d'accès mis en cache 60 s par utilisateur sur l'instance chaude : une
+// réplique de Calia se découpe en plusieurs phrases, donc plusieurs appels
+// consécutifs pour le même élève — inutile de relire l'abonnement à chacun.
+// Une révocation prend effet au plus 60 s plus tard.
+const accessCache = new Map<string, { allowed: boolean; expiresAt: number }>();
+async function hasCaliaClasseAccessCached(authId: string): Promise<boolean> {
+  const hit = accessCache.get(authId);
+  if (hit && hit.expiresAt > Date.now()) return hit.allowed;
+  const allowed = await hasCaliaClasseAccess(authId);
+  accessCache.set(authId, { allowed, expiresAt: Date.now() + 60_000 });
+  if (accessCache.size > 5000) accessCache.clear(); // borne mémoire
+  return allowed;
+}
+
 function escapeSsml(text: string): string {
   return text
     .replace(/&/g, "&amp;")
@@ -46,13 +60,34 @@ export async function GET(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    if (!(await hasCaliaClasseAccess(me.authId))) {
-      return NextResponse.json({ error: "Calia en classe necessite le plan Family." }, { status: 403 });
+
+    const key = process.env.AZURE_SPEECH_KEY;
+    const region = process.env.AZURE_SPEECH_REGION;
+    if (!key || !region) {
+      return NextResponse.json({ error: "Service vocal non configure" }, { status: 503 });
     }
 
+    // Contrôle d'abonnement, limite de débit et jeton Azure sont indépendants :
+    // ils partent ENSEMBLE. En série, ils ajoutaient plusieurs allers-retours
+    // avant même que la synthèse ne commence — une part des ~4 s entre
+    // l'affichage du texte de Calia et sa voix.
     const cfg = RATE_LIMITS["calia:tts"];
-    const rl = await rateLimitWithBackoff(`calia:tts:${me.authId}`, cfg.maxAttempts, cfg.windowMs);
+    const [hasAccess, rl, token] = await Promise.all([
+      hasCaliaClasseAccessCached(me.authId),
+      rateLimitWithBackoff(`calia:tts:${me.authId}`, cfg.maxAttempts, cfg.windowMs),
+      getAzureToken(key, region),
+    ]);
+    if (!hasAccess) {
+      return NextResponse.json({ error: "Calia en classe necessite le plan Family." }, { status: 403 });
+    }
     if (!rl.allowed) return NextResponse.json({ error: "Trop de demandes vocales, reessaie plus tard." }, { status: 429 });
+
+    // Préchauffage (au lancement de Calia) : auth + jeton en cache sur cette
+    // instance, sans rien synthétiser — la première vraie phrase n'a alors
+    // plus à payer ce démarrage à froid.
+    if (new URL(req.url).searchParams.get("warm") === "1") {
+      return new NextResponse(null, { status: 204 });
+    }
 
     const params = new URL(req.url).searchParams;
     const text = params.get("text");
@@ -64,14 +99,6 @@ export async function GET(req: Request) {
     const requestedVoice = params.get("voice");
     const voiceName = isCaliaVoice(requestedVoice) ? requestedVoice : DEFAULT_CALIA_VOICE;
     const voiceGender = caliaVoiceGender(voiceName);
-
-    const key = process.env.AZURE_SPEECH_KEY;
-    const region = process.env.AZURE_SPEECH_REGION;
-    if (!key || !region) {
-      return NextResponse.json({ error: "Service vocal non configure" }, { status: 503 });
-    }
-
-    const token = await getAzureToken(key, region);
 
     const ssml = `<speak version='1.0' xml:lang='fr-FR'><voice xml:lang='fr-FR' xml:gender='${voiceGender}' name='${voiceName}'>${escapeSsml(text.trim().slice(0, 400))}</voice></speak>`;
 
