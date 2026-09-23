@@ -96,6 +96,19 @@ export function getSimpleLevelLabel(value: string): string {
   return getLevelLabel(value);
 }
 
+/** Libellé court et distinct pour les sélecteurs et badges des catalogues. */
+export function getCatalogLevelLabel(value: string): string {
+  if (!value) return value;
+  if (value === "2nde") return "Seconde";
+  if (value === "1ere-generale") return "Première";
+  if (value === "1ere-generale-maths") return "Première · spé maths";
+  if (value === "terminale-generale") return "Terminale";
+  if (value === "terminale-generale-maths") return "Terminale · spé maths";
+  if (value === "terminale-generale-expertes") return "Terminale · maths expertes";
+  if (value === "terminale-generale-complementaires") return "Terminale · maths complémentaires";
+  return getLevelLabel(value);
+}
+
 /**
  * Détermine le niveau "imposé" par l'espace de publication courant : le niveau
  * du dossier le plus proche (en remontant vers la racine) qui a un niveau

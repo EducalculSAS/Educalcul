@@ -1,7 +1,7 @@
 "use client";
 
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
-import { getSimpleLevelLabel } from "@/lib/constants";
+import { getCatalogLevelLabel } from "@/lib/constants";
 
 interface LevelFolder {
   id: number;
@@ -33,7 +33,7 @@ export default function LevelScopePicker({
         onChange={(id) => onChange(Number(id))}
         options={roots.map((root) => ({
           id: String(root.id),
-          label: root.grade_level ? getSimpleLevelLabel(root.grade_level) : root.name,
+          label: root.grade_level ? getCatalogLevelLabel(root.grade_level) : root.name,
         }))}
         size="md"
         className="max-w-full"

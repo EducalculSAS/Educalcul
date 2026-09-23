@@ -1,4 +1,4 @@
-import { getSimpleLevelLabel } from "@/lib/constants";
+import { getCatalogLevelLabel } from "@/lib/constants";
 
 /**
  * Pastille de niveau affichée sur une carte de dossier.
@@ -24,7 +24,7 @@ export default function FolderLevelBadge({
       className="mt-2 rounded-full px-3 py-1 text-xs font-semibold"
       style={{ backgroundColor: `${tone}1f`, color: tone }}
     >
-      {getSimpleLevelLabel(gradeLevel)}
+      {getCatalogLevelLabel(gradeLevel)}
     </span>
   );
 }
