@@ -2,7 +2,7 @@
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import AvatarPicker from "@/components/AvatarPicker";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import {
   User, Trophy, Shield, School, BookOpen, Mail,
@@ -71,9 +71,27 @@ export default function ChildProfileSettings({
     if (!isCaliaVoice(id)) return;
     const previous = caliaVoice;
     setCaliaVoice(id); // optimiste : le choix s'affiche sans attendre le réseau
+    void playVoicePreview(id);
     void updateMyProfile({ calia_voice: id }).then((res) => {
       if (!res.ok) setCaliaVoice(previous);
     });
+  };
+  // Aperçu : une courte phrase dite avec la voix choisie (même synthèse que
+  // Calia en classe). Un nouveau choix coupe l'aperçu précédent.
+  const previewAudioRef = useRef<HTMLAudioElement | null>(null);
+  const playVoicePreview = async (voice: string) => {
+    try {
+      previewAudioRef.current?.pause();
+      const res = await fetch(`/api/calia/tts?text=${encodeURIComponent("Salut ! Je suis Calia, on travaille ensemble ?")}&voice=${encodeURIComponent(voice)}`);
+      if (!res.ok) return;
+      const url = URL.createObjectURL(await res.blob());
+      const audio = (previewAudioRef.current ??= new Audio());
+      audio.onended = () => URL.revokeObjectURL(url);
+      audio.src = url;
+      await audio.play();
+    } catch {
+      /* aperçu facultatif */
+    }
   };
   const [avatarPickerOpen, setAvatarPickerOpen] = useState(false);
 
