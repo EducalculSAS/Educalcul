@@ -230,7 +230,7 @@ export default function CustomMathKeyboard({
 
   return (
     <div
-      className={`${embedded ? "absolute" : "fixed"} inset-x-0 bottom-0 z-[1200] pointer-events-none`}
+      className={embedded ? "relative z-10 pointer-events-none" : "fixed inset-x-0 bottom-0 z-[1200] pointer-events-none"}
     >
       <div
         className="w-full overflow-hidden pointer-events-auto backdrop-blur-[24px] backdrop-saturate-[1.4] border-t relative"

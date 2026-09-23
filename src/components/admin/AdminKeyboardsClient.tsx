@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus, Trash2, Save, Keyboard as KeyboardIcon, Loader2 } from "lucide-react";
+import { Plus, Trash2, Save, Keyboard as KeyboardIcon, Loader2, X } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -150,21 +150,20 @@ export default function AdminKeyboardsClient({ initialKeyboards }: { initialKeyb
 
       <div className="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-6">
         {/* Liste des niveaux */}
-        <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-3 h-fit">
+        <nav aria-label="Niveaux" className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-3 h-fit flex flex-col gap-1.5 md:sticky md:top-[calc(var(--nav-h,64px)+1rem)]">
           {keyboards.map((k) => (
-            <button
+            <GlassButton
               key={k.id}
-              onClick={() => setSelectedId(k.id)}
-              className={`w-full text-left px-3 py-2 rounded-xl text-sm font-semibold transition-colors mb-1 ${
-                selectedId === k.id
-                  ? "bg-[var(--greek-blue)] text-white"
-                  : "text-[var(--greek-blue)] hover:bg-gray-100"
-              }`}
+              onClick={() => { setSelectedId(k.id); setPreviewVisible(true); }}
+              variant={selectedId === k.id ? "navy" : "ghost"}
+              size="sm"
+              fullWidth
+              className={`!justify-start text-left ${selectedId === k.id ? "" : "!text-[var(--greek-blue)]"}`}
             >
               {k.label}
-            </button>
+            </GlassButton>
           ))}
-        </div>
+        </nav>
 
         {/* Éditeur */}
         {selected ? (
@@ -216,35 +215,20 @@ export default function AdminKeyboardsClient({ initialKeyboards }: { initialKeyb
                                 placeholder="latex"
                                 title="LaTeX inséré (laisser vide si c'est une commande)"
                               />
-                              <button
-                                onClick={() => removeKey(tabIndex, rowIndex, keyIndex)}
-                                className="text-gray-400 hover:text-red-500 px-1"
-                                aria-label="Supprimer la touche"
-                              >
-                                ×
-                              </button>
+                              <GlassIconButton icon={X} color="red" size="sm" onClick={() => removeKey(tabIndex, rowIndex, keyIndex)} aria-label="Supprimer la touche" />
                             </div>
                           ))}
-                          <button
-                            onClick={() => addKey(tabIndex, rowIndex)}
-                            className="text-xs text-[var(--greek-blue)] hover:underline px-2 py-1"
-                          >
-                            + Touche
-                          </button>
-                          <button
-                            onClick={() => removeRow(tabIndex, rowIndex)}
-                            className="text-xs text-gray-400 hover:text-red-500 px-2"
-                          >
-                            Suppr. rangée
-                          </button>
+                          <GlassButton size="sm" variant="outline" onClick={() => addKey(tabIndex, rowIndex)}>
+                            <Plus className="w-3.5 h-3.5" /> Touche
+                          </GlassButton>
+                          <GlassButton size="sm" variant="danger" onClick={() => removeRow(tabIndex, rowIndex)}>
+                            <Trash2 className="w-3.5 h-3.5" /> Rangée
+                          </GlassButton>
                         </div>
                       ))}
-                      <button
-                        onClick={() => addRow(tabIndex)}
-                        className="text-xs font-semibold text-[var(--greek-blue)] hover:underline"
-                      >
-                        + Rangée
-                      </button>
+                      <GlassButton size="sm" variant="outline" onClick={() => addRow(tabIndex)}>
+                        <Plus className="w-3.5 h-3.5" /> Rangée
+                      </GlassButton>
                     </div>
                   </div>
                 ))}
@@ -256,9 +240,11 @@ export default function AdminKeyboardsClient({ initialKeyboards }: { initialKeyb
             </div>
 
             {/* Aperçu live — exactement le même composant que côté élève */}
-            <div className="bg-[var(--greek-cream)] rounded-[20px] border border-[rgba(197,161,72,0.25)] p-6 relative min-h-[220px]">
+            <div className="bg-[var(--greek-cream)] rounded-[20px] border border-[rgba(197,161,72,0.25)] p-6">
               <p className="text-xs font-bold text-gray-500 uppercase tracking-wide mb-2">Aperçu</p>
-              <div className="relative h-[260px] bg-white/40 rounded-xl overflow-hidden">
+              {/* Hauteur = celle du clavier (plus de hauteur fixe qui coupait
+                  le haut, donc le sélecteur d'onglets). */}
+              <div className="relative bg-white/40 rounded-xl overflow-hidden min-h-[120px]">
                 <CustomMathKeyboard
                   config={selected.config}
                   visible={previewVisible}
@@ -267,12 +253,11 @@ export default function AdminKeyboardsClient({ initialKeyboards }: { initialKeyb
                   embedded
                 />
                 {!previewVisible && (
-                  <button
-                    onClick={() => setPreviewVisible(true)}
-                    className="absolute inset-0 flex items-center justify-center text-sm text-[var(--greek-blue)] font-semibold"
-                  >
-                    Cliquer pour réafficher l'aperçu
-                  </button>
+                  <div className="absolute inset-0 z-20 flex items-center justify-center">
+                    <GlassButton size="sm" variant="navy" onClick={() => setPreviewVisible(true)}>
+                      <KeyboardIcon className="w-4 h-4" /> Réafficher l&apos;aperçu
+                    </GlassButton>
+                  </div>
                 )}
               </div>
             </div>
