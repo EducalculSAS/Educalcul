@@ -40,7 +40,7 @@ export async function GET(request: Request) {
     for (let from = 0; ; from += pageSize) {
       let query = supabaseAdmin
         .from("courses")
-        .select("id, title, description, subject, level, thumbnail_url, status, folder_id, estimated_time, created_at, updated_at")
+        .select("id, title, description, subject, level, thumbnail_url, status, folder_id, estimated_time, chapter_order, created_at, updated_at")
         .order("created_at", { ascending: false })
         .range(from, from + pageSize - 1);
 

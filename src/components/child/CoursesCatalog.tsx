@@ -6,6 +6,7 @@ import { BookOpen, Play, CheckCircle, ArrowLeft, Lock } from "lucide-react";
 import Image from "next/image";
 import { getFolderIcon } from "@/lib/folderIcons";
 import GlassButton from "@/components/ui/GlassButton";
+import { compareCourseOrder } from "@/lib/courseOrder";
 
 interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string; display_order?: number }
 interface CourseRow {
@@ -49,11 +50,12 @@ export default function CoursesCatalog({
   }, [allFolders, currentFolderId, levelFolderId]);
 
   const displayParentId = currentFolderId === null ? levelFolderId : currentFolderId;
-  // Ordre pédagogique : chapter_order (le bilan a un chapter_order très
-  // grand, donc il arrive naturellement en dernier sans traitement spécial).
+  // Ordre pédagogique réglé par l'admin (chapter_order, initialisé depuis le
+  // programme : thème puis chapitre). Un cours sans ordre va en FIN de liste
+  // — `?? 0` le plaçait en tête — et les ex æquo se départagent par titre.
   const currentCourses = allCourses
     .filter((c) => (c.folder_id ?? null) === displayParentId)
-    .sort((a, b) => (a.chapter_order ?? 0) - (b.chapter_order ?? 0));
+    .sort(compareCourseOrder);
   const currentFolders = allFolders
     .filter((f) => f.parent_id === displayParentId)
     .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));

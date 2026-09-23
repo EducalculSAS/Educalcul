@@ -43,6 +43,8 @@ import {
   Hash,
   Table2,
   Superscript,
+  ArrowUp,
+  ArrowDown,
 } from "lucide-react";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
@@ -53,6 +55,7 @@ import AdminBreadcrumbs from "@/components/admin/AdminBreadcrumbs";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { compareCourseOrder } from "@/lib/courseOrder";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import {
   getAdminCache,
@@ -85,6 +88,8 @@ export interface Course {
   status: "published" | "draft" | "archived";
   folder_id: number | null;
   estimated_time: number | null;
+  /** Rang d'affichage dans le dossier (voir src/lib/courseOrder.ts). */
+  chapter_order?: number | null;
   content_json: Chapter[] | null;
   created_at: string;
 }
@@ -869,7 +874,29 @@ export default function AdminCoursesClient({
     const matchesCycle =
       cycleFilter === "all" || getLevelCycle((course as any).level) === cycleFilter;
     return matchesSearch && matchesCycle;
-  });
+  }).sort(compareCourseOrder);
+
+  // Réordonner les cours d'un dossier : l'ordre affiché ici est exactement
+  // celui que verra l'élève. Mise à jour optimiste, annulée si l'enregistrement
+  // échoue. Désactivé pendant une recherche : déplacer un cours dans une liste
+  // filtrée n'aurait pas de sens.
+  const canReorder = !searchTerm && cycleFilter === "all";
+  const moveCourse = async (courseId: string, direction: -1 | 1) => {
+    const ordered = [...courses].sort(compareCourseOrder);
+    const index = ordered.findIndex((c) => c.id === courseId);
+    const target = index + direction;
+    if (index < 0 || target < 0 || target >= ordered.length) return;
+    [ordered[index], ordered[target]] = [ordered[target], ordered[index]];
+    const renumbered = ordered.map((c, i) => ({ ...c, chapter_order: (i + 1) * 10 }));
+    const previous = courses;
+    setCourses(renumbered);
+    const res = await fetch("/api/admin/courses/reorder", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ orderedIds: renumbered.map((c) => c.id) }),
+    });
+    if (!res.ok) setCourses(previous);
+  };
 
   return (
     <div className="space-y-6">
@@ -1113,6 +1140,26 @@ export default function AdminCoursesClient({
                 <div className="absolute top-2 right-2">
                   {getStatusBadge(course.status)}
                 </div>
+                {canReorder && filteredCourses.length > 1 && (
+                  <div className="absolute top-2 left-2 flex gap-1">
+                    <GlassIconButton
+                      icon={ArrowUp}
+                      size="sm"
+                      color="navy"
+                      disabled={filteredCourses[0]?.id === course.id}
+                      onClick={() => void moveCourse(course.id, -1)}
+                      aria-label={`Avancer « ${course.title} » dans l'ordre du dossier`}
+                    />
+                    <GlassIconButton
+                      icon={ArrowDown}
+                      size="sm"
+                      color="navy"
+                      disabled={filteredCourses[filteredCourses.length - 1]?.id === course.id}
+                      onClick={() => void moveCourse(course.id, 1)}
+                      aria-label={`Reculer « ${course.title} » dans l'ordre du dossier`}
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="p-4 flex-1 flex flex-col">

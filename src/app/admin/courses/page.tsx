@@ -5,7 +5,7 @@ import { readFolderCookie } from "@/lib/adminFolderPage";
 import { selectAllPages } from "@/lib/selectAllPages";
 
 const LIST_COLUMNS =
-  "id, title, description, subject, level, thumbnail_url, status, folder_id, estimated_time, created_at, updated_at";
+  "id, title, description, subject, level, thumbnail_url, status, folder_id, estimated_time, chapter_order, created_at, updated_at";
 
 export default async function AdminCoursesPage() {
   const folderId = await readFolderCookie("admin_courses_folder");
