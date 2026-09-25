@@ -26,7 +26,7 @@ export async function GET(request: Request) {
           id, title, description, question,
           difficulty_level, type, level, status,
           folder_id, course_id, content_json,
-          points_reward, max_attempts, time_limit,
+          points_reward, max_attempts, time_limit, min_score_percent,
           created_at, updated_at,
           courses (title, subject, level),
           exercise_folders (name, color)
@@ -69,7 +69,7 @@ export async function GET(request: Request) {
           id, title, description, question,
           difficulty_level, type, level, status,
           folder_id, course_id, display_order,
-          points_reward, max_attempts, time_limit,
+          points_reward, max_attempts, time_limit, min_score_percent,
           created_at, updated_at,
           courses (title, subject, level),
           exercise_folders (name, color)
@@ -204,6 +204,7 @@ export async function POST(request: Request) {
         thumbnail_url,
         content_json: finalContentJson,
         time_limit: time_limit || null,
+        min_score_percent: body.min_score_percent || null,
         max_attempts: max_attempts || null,
         estimated_time: estimated_time ?? 15,
       })

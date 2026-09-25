@@ -118,6 +118,7 @@ export async function POST(request: Request) {
         description, // or question?
         course_id,
         time_limit_minutes,
+        min_score_percent: body.min_score_percent || null,
         status: status || "draft",
         folder_id: folder_id || null,
         thumbnail_filename,

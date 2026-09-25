@@ -10,7 +10,7 @@ const LIST_COLUMNS = `
   id, title, description, question,
   difficulty_level, type, level, status,
   folder_id, course_id, display_order,
-  points_reward, max_attempts, time_limit,
+  points_reward, max_attempts, time_limit, min_score_percent,
   created_at, updated_at,
   courses (title, subject, level),
   exercise_folders (name, color)
