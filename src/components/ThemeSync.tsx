@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { applyTheme, isTheme, readStoredTheme } from "@/lib/theme";
+import { applyTheme, isTheme, readStoredTheme, syncThemeToPath } from "@/lib/theme";
 
 /**
  * Aligne le thème du navigateur sur la préférence du compte à la connexion
@@ -11,6 +12,10 @@ import { applyTheme, isTheme, readStoredTheme } from "@/lib/theme";
  * sa préférence. Ne fait rien pour un visiteur déconnecté.
  */
 export default function ThemeSync() {
+  const pathname = usePathname();
+  // Navigation sans rechargement : le thème suit la page (sombre seulement en espace connecté).
+  useEffect(() => { syncThemeToPath(pathname); }, [pathname]);
+
   useEffect(() => {
     let alive = true;
     const sync = async () => {
