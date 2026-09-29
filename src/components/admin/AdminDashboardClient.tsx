@@ -85,26 +85,6 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
         }
       />
 
-      {/* Alerts row */}
-      {(counts.open_tickets > 0 || counts.pending_reports > 0) && (
-        <div className="flex flex-wrap gap-3">
-          {counts.open_tickets > 0 && (
-            <GlassButton href="/admin/support" variant="navy" size="sm">
-              <TicketCheck size={16} />
-              {counts.open_tickets} ticket{counts.open_tickets > 1 ? "s" : ""} ouvert{counts.open_tickets > 1 ? "s" : ""}
-              <ChevronRight size={14} />
-            </GlassButton>
-          )}
-          {counts.pending_reports > 0 && (
-            <GlassButton href="/admin/forum" variant="danger" size="sm">
-              <AlertTriangle size={16} />
-              {counts.pending_reports} signalement{counts.pending_reports > 1 ? "s" : ""} forum
-              <ChevronRight size={14} />
-            </GlassButton>
-          )}
-        </div>
-      )}
-
       {/* Stats grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard title="Utilisateurs" value={counts.users} sub={`+${counts.new_users_week} cette semaine`} icon={<Users size={20} />} color="bg-blue-50 text-blue-600" href="/admin/users" />

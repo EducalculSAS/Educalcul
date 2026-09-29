@@ -46,18 +46,24 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
   const pathname = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  // Pastille rouge : erreurs du site pas encore traitées (Admin > Erreurs).
-  const [openErrors, setOpenErrors] = useState(0);
-  const refreshErrors = useCallback(async () => {
-    if (adminLevel === "support") return;
+  // Pastilles rouges : ce qui attend un traitement (tickets, signalements du
+  // forum, erreurs du site, paiements en retard). Voir /api/admin/badge-counts.
+  const [badges, setBadges] = useState<Record<string, number>>({});
+  const refreshBadges = useCallback(async () => {
     try {
-      const res = await fetch("/api/admin/errors?count=1");
-      if (res.ok) setOpenErrors((await res.json()).open ?? 0);
+      const res = await fetch("/api/admin/badge-counts");
+      if (res.ok) setBadges(await res.json());
     } catch {
-      /* pastille facultative */
+      /* pastilles facultatives */
     }
-  }, [adminLevel]);
-  useVisiblePolling(refreshErrors, 60000, { immediate: true });
+  }, []);
+  useVisiblePolling(refreshBadges, 60000, { immediate: true });
+  const badgeFor: Record<string, { count: number; label: string }> = {
+    "/admin/support": { count: badges.tickets ?? 0, label: "tickets ouverts" },
+    "/admin/forum": { count: badges.reports ?? 0, label: "signalements à traiter" },
+    "/admin/erreurs": { count: badges.errors ?? 0, label: "erreurs à traiter" },
+    "/admin/subscriptions": { count: badges.pastDue ?? 0, label: "paiements en retard" },
+  };
 
   const allMenuItems = [
     {
@@ -162,15 +168,19 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
                 className={`text-sm ${isActive ? "font-bold shadow-md" : ""}`}
                 style={
                   isActive
-                    ? { background: "var(--greek-gold)", color: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.5)" }
-                    : { background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)" }
+                    ? { background: "var(--greek-gold)", color: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.5)", position: "relative" }
+                    : { background: "rgba(255,255,255,0.05)", borderColor: "rgba(255,255,255,0.08)", position: "relative" }
                 }
               >
                 <Icon size={18} className="flex-shrink-0" />
                 <span className="truncate">{item.name}</span>
-                {item.href === "/admin/erreurs" && openErrors > 0 && (
-                  <span className="ml-auto min-w-5 h-5 px-1.5 rounded-full bg-red-500 text-white text-[11px] font-bold flex items-center justify-center" aria-label={`${openErrors} erreurs à traiter`}>
-                    {openErrors > 99 ? "99+" : openErrors}
+                {(badgeFor[item.href]?.count ?? 0) > 0 && (
+                  // Posée à droite sans pousser le libellé : il reste centré comme les autres.
+                  <span
+                    className="absolute right-3 top-1/2 -translate-y-1/2 min-w-5 h-5 px-1.5 rounded-full bg-red-500 text-white text-[11px] font-bold flex items-center justify-center"
+                    aria-label={`${badgeFor[item.href].count} ${badgeFor[item.href].label}`}
+                  >
+                    {badgeFor[item.href].count > 99 ? "99+" : badgeFor[item.href].count}
                   </span>
                 )}
               </GlassButton>
