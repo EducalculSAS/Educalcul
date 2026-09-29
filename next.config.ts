@@ -35,7 +35,9 @@ const nextConfig: NextConfig = {
   // importés et un fs.readFile sur une page non importée échouerait en prod
   // (marcherait en local seulement).
   outputFileTracingIncludes: {
-    "/api/admin/scanner/run": ["./src/app/**/*.tsx", "./src/components/**/*.tsx", "./src/lib/**/*.ts"],
+    // Les routes API sont des .ts : sans ./src/app/**/*.ts, le scan Sécurité ne trouvait
+    // AUCUN fichier en production et concluait « aucun problème ».
+    "/api/admin/scanner/run": ["./src/app/**/*.tsx", "./src/app/**/*.ts", "./src/components/**/*.tsx", "./src/lib/**/*.ts"],
   },
 
   // ✓ SECURITY: Restrict image sources to trusted domains

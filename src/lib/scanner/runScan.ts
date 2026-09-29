@@ -140,8 +140,11 @@ export async function runScan(runId: string, categoryKey: string): Promise<void>
 
     const files = category.roots.flatMap((root) => listFiles(root));
     if (files.length === 0) {
+      // Jamais « terminé, 0 problème » quand rien n'a été lu : ce serait un faux « tout va bien ».
       await tracker.updateProgress({ current: 0, total: 0, message: "Aucun fichier à analyser." });
-      await tracker.setStatus("completed", { findings_count: 0 });
+      await tracker.setStatus("failed", {
+        error: "Aucun fichier trouvé à analyser : le scan n'a rien vérifié. Ce n'est pas un résultat « aucun problème ».",
+      });
       return;
     }
 
@@ -209,7 +212,20 @@ export async function runScan(runId: string, categoryKey: string): Promise<void>
       });
     }
 
-    await tracker.setStatus("completed", { findings_count: totalFindings });
+    if (failedBatches === batches.length) {
+      await tracker.setStatus("failed", {
+        findings_count: totalFindings,
+        error: "Tous les lots ont échoué (fournisseur IA indisponible ou limité) : rien n'a été analysé. Relance le scan.",
+      });
+      return;
+    }
+    await tracker.setStatus("completed", {
+      findings_count: totalFindings,
+      // Résultat partiel : visible dans l'interface au lieu d'un « 0 problème » rassurant.
+      error: failedBatches > 0
+        ? `${failedBatches} lot(s) sur ${batches.length} n'ont pas pu être analysés (limite du fournisseur IA) : relance ce scan pour les couvrir.`
+        : null,
+    });
   } catch (err) {
     console.error("[scanner] Échec inattendu:", err);
     await tracker.setStatus("failed", {

@@ -388,7 +388,7 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
                   {selectedRun.progress?.message && ACTIVE_STATUSES.has(selectedRun.status) && (
                     <p className="text-xs text-gray-500 mt-1.5">{selectedRun.progress.message}</p>
                   )}
-                  {selectedRun.error && <p className="text-xs text-red-600 mt-1">{selectedRun.error}</p>}
+                  {selectedRun.error && <p className={`text-xs mt-1 ${selectedRun.status === "failed" ? "text-red-600" : "text-amber-600"}`}>{selectedRun.error}</p>}
                 </div>
                 <div className="flex items-center gap-2">
                   {ACTIVE_STATUSES.has(selectedRun.status) && (
@@ -424,7 +424,7 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
                   </div>
                 ) : (
                   <div className="flex items-center gap-2 text-sm text-green-700 bg-green-50 rounded-lg px-3 py-2">
-                    <CheckCircle2 className="w-4 h-4" /> Aucun problème détecté.
+                    <CheckCircle2 className="w-4 h-4" /> {selectedRun.error ? "Aucun problème dans les lots analysés." : "Aucun problème détecté."}
                   </div>
                 )
               ) : (
