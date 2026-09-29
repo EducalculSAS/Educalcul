@@ -8,6 +8,7 @@ import { User, Save, Eye, Crown, Shield, X } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import AdminTotpCard from "@/components/admin/AdminTotpCard";
 import WebAuthnCard from "@/components/WebAuthnCard";
+import ThemeToggle from "@/components/ThemeToggle";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
@@ -355,6 +356,10 @@ export default function AdminProfileClient({ initialFormData }: {
                 </GlassButton>
               </form>
             </div>
+          </div>
+
+          <div className="mt-6">
+            <ThemeToggle />
           </div>
 
           <div className="mt-6">

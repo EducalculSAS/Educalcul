@@ -336,6 +336,8 @@ export default function GlassButton({
           onClick={onClick}
           className={combinedClassName}
           style={combinedStyle}
+          data-variant={variant}
+          data-custom={style ? "" : undefined}
         >
           {children}
         </Link>
@@ -348,6 +350,8 @@ export default function GlassButton({
           aria-disabled={disabled}
           className={combinedClassName}
           style={combinedStyle}
+          data-variant={variant}
+          data-custom={style ? "" : undefined}
         >
           {children}
         </button>

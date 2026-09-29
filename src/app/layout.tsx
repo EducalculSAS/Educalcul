@@ -18,6 +18,8 @@ import SessionStillHereModal from "@/components/SessionStillHereModal";
 import ImpersonationBanner from "@/components/ImpersonationBanner";
 import JsonLd from "@/components/JsonLd";
 import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
+import ThemeSync from "@/components/ThemeSync";
+import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const BASE = "https://educalcul.com";
 
@@ -170,9 +172,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" dir="ltr" className={cinzel.variable}>
+    <html lang="fr" dir="ltr" className={cinzel.variable} suppressHydrationWarning>
       <head>
         <meta charSet="UTF-8" />
+        {/* Thème sombre mémorisé : appliqué avant le premier rendu (pas de flash clair). */}
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
         {/* Geo meta tags */}
         <meta name="geo.region" content="FR" />
         <meta name="geo.country" content="FR" />
@@ -191,6 +195,7 @@ export default function RootLayout({
             {children}
             <CookieBanner />
             <SessionStillHereModal />
+            <ThemeSync />
           </ConfirmProvider>
         </ToastProvider>
       </body>

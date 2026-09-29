@@ -14,4 +14,4 @@ export const USER_SELECT_COLUMNS =
   "avatar_border, name_animation, pending_discount_percent, name_color, " +
   "equipped_border, featured_badges, login_count, login_streak, last_login_date, " +
   "ban_reason, ban_until, onboarding_completed, cgu_accepted_at, " +
-  "notif_weekly_reports, notif_offers_news, last_logout_at, school_zone, two_factor_enabled, calia_voice";
+  "notif_weekly_reports, notif_offers_news, last_logout_at, school_zone, two_factor_enabled, calia_voice, theme_preference";

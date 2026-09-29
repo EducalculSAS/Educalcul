@@ -57,6 +57,8 @@ export async function PATCH(req: Request) {
       else if (BOOL_FIELDS.has(k) && typeof v === "boolean") patch[k] = v;
       // Champ énuméré : seule une voix de la liste blanche est acceptée.
       else if (k === "calia_voice" && isCaliaVoice(v)) patch[k] = v;
+      // Mode clair / sombre choisi dans le profil (voir src/lib/theme.ts).
+      else if (k === "theme_preference" && (v === "light" || v === "dark")) patch[k] = v;
       // Avatar : uniquement une image servie par le site (voir sanitizeAvatar).
       else if (k === "avatar") {
         const avatar = sanitizeAvatar(v);

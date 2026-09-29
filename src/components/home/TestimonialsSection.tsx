@@ -153,7 +153,7 @@ export default function TestimonialsSection({
             <div
               key={r.id}
               className={`rounded-xl p-5 flex flex-col gap-3${i >= 4 ? " hidden lg:flex" : ""}`}
-              style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}
+              data-keep-light style={{ background: "#fff", border: "1px solid #e8e8e8", boxShadow: "0 2px 8px rgba(0,0,0,0.05)" }}
             >
               <TpStars rating={r.rating} size={22} />
               {r.title && (
