@@ -47,7 +47,7 @@ const SYM = [
 const MINI_FAQ = [
   { q: "Combien coûte l'essai ?", a: "Rien. 7 jours d'accès complet, aucune carte bancaire requise pour commencer." },
   { q: "Puis-je résilier à tout moment ?", a: "Oui, sans engagement ni justification, directement depuis l'espace parent." },
-  { q: "Le contenu suit-il le programme officiel ?", a: "Intégralement — chaque cours et exercice est aligné sur les programmes de l'Éducation Nationale, du CP à la Terminale." },
+  { q: "Le contenu suit-il le programme officiel ?", a: "Intégralement : chaque cours et exercice est aligné sur les programmes de l'Éducation Nationale, du CP à la Terminale." },
 ];
 
 export default async function Home() {
@@ -115,7 +115,8 @@ export default async function Home() {
 
           <p className="text-base leading-relaxed mb-12 max-w-lg hero-rise hero-rise-3" style={{ color: "rgba(240,237,232,0.55)" }}>
             Une IA socratique qui guide sans donner la réponse, un programme complet du CP à la Terminale,
-            et un suivi parental limpide. Educalcul accompagne toute la famille, pas seulement l'élève.
+            et un suivi parental limpide.<br />
+            Educalcul accompagne toute la famille, pas seulement l'élève.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 hero-rise hero-rise-4">
@@ -149,8 +150,8 @@ export default async function Home() {
           </div>
           <div className="w-px h-5 hidden sm:block" style={{ background: "var(--greek-border)" }} />
           <div className="flex items-center gap-3">
-            <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={140} height={140} className="w-auto object-contain" style={{ height: 60 }} unoptimized />
-            <Image src="/eduscol.svg" alt="Eduscol" width={64} height={22} className="h-5 w-auto object-contain" unoptimized />
+            <Image src="/logo-men.svg" alt="Ministère de l'Éducation Nationale" width={200} height={200} className="w-auto object-contain" style={{ height: 88 }} unoptimized />
+            <Image src="/eduscol.svg" alt="Eduscol" width={110} height={38} className="h-8 w-auto object-contain" unoptimized />
           </div>
         </Reveal>
       </section>
@@ -169,7 +170,7 @@ export default async function Home() {
             <span className="text-gradient-gold-dark">Il manque d'une bonne méthode.</span>
           </blockquote>
           <p className="mt-8 text-base leading-relaxed max-w-xl mx-auto" style={{ color: "var(--text-muted)" }}>
-            Educalcul est construit sur un principe simple : chaque élève peut réussir en mathématiques si on lui donne les bons outils, au bon moment, de la bonne façon.
+            Educalcul est construit sur un principe simple : chaque élève peut réussir en mathématiques si on lui donne les bons outils.
           </p>
         </Reveal>
       </section>
@@ -183,13 +184,13 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <Reveal y={36} scale={0.96}>
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
-                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 01 · Cours & Exercices
+                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 1 · Cours & Exercices
               </div>
               <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Tout le programme,<br />aucune lacune oubliée
               </h3>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
-                Cours structurés, exercices progressifs, corrections détaillées — construits chapitre par chapitre sur le programme officiel, du CP à la Terminale.
+                Cours structurés, exercices progressifs, corrections détaillées, construits chapitre par chapitre sur le programme officiel, du CP à la Terminale.
               </p>
             </Reveal>
             <Reveal y={36} scale={0.95} delay={0.1} className="rounded-3xl p-8 transition-transform duration-500 hover:-translate-y-1" style={{ background: "#fff", border: "1px solid var(--greek-border)", minHeight: 280 }}>
@@ -221,13 +222,13 @@ export default async function Home() {
             </Reveal>
             <Reveal y={36} scale={0.95}>
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
-                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 02 · IA Pédagogique
+                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 2 · IA Pédagogique
               </div>
               <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Un tuteur IA qui pose<br />les bonnes questions
               </h3>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
-                Jamais la réponse toute cuite : Calia repère où ça bloque et guide l'élève jusqu'au déclic, avec la méthode socratique. Disponible 24h/24.
+                Jamais la réponse tout de suite : Calia repère où ça bloque et guide l'élève jusqu'au déclic, avec la méthode socratique. Disponible 24h/24.
               </p>
             </Reveal>
           </div>
@@ -236,7 +237,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <Reveal y={36} scale={0.96}>
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
-                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 03 · Suivi Parents
+                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 3 · Suivi Parents
               </div>
               <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Vous savez enfin<br />où il en est vraiment

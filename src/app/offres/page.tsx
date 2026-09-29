@@ -41,7 +41,7 @@ const PILLARS = [
       "Cours structurés par chapitre, alignés sur le programme EN",
       "Exercices progressifs avec corrections détaillées",
       "Quiz pour valider chaque notion avant de passer à la suite",
-      "Contenu mis à jour chaque mois",
+      "Contenu mis à jour chaque année",
     ],
   },
   {
@@ -49,7 +49,7 @@ const PILLARS = [
     title: "Progresser",
     subtitle: "Motivation durable, résultats mesurés",
     items: [
-      "XP, badges et niveaux pour rester motivé",
+      "Badges et niveaux pour rester motivé",
       "Tableau de bord parent en temps réel",
       "Rapport hebdomadaire par email",
       "Alertes sur les chapitres à retravailler",
@@ -60,9 +60,9 @@ const PILLARS = [
     title: "En confiance",
     subtitle: "Sécurisé, sans pub, sans distraction",
     items: [
-      "Aucune publicité ni contenu inapproprié",
+      "Aucune publicité",
       "Conforme RGPD, données protégées",
-      "Jusqu'à 5 enfants sous un seul compte parent",
+      "Jusqu'à 5 enfants avec un seul compte parent",
       "Accessible sur tous les appareils",
     ],
   },
@@ -388,7 +388,7 @@ export default async function Offres() {
                   style={{ color: "rgba(255,255,255,0.45)" }}
                 >
                   Gérez jusqu&apos;à 5 profils enfants depuis un espace parent
-                  unique. Chacun à son rythme, son niveau, ses stats.
+                  unique. Chacun à son rythme, son niveau, ses statistiques.
                 </p>
               </div>
               <div className="flex items-center gap-1.5 flex-shrink-0">

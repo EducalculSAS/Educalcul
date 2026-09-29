@@ -109,7 +109,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard title="Utilisateurs" value={counts.users} sub={`+${counts.new_users_week} cette semaine`} icon={<Users size={20} />} color="bg-blue-50 text-blue-600" href="/admin/users" />
         <StatCard title="Abonnements actifs" value={counts.active_subscriptions} icon={<CreditCard size={20} />} color="bg-green-50 text-green-600" href="/admin/subscriptions" />
-        <StatCard title="Cours publiés" value={counts.published_courses} icon={<BookOpen size={20} />} color="bg-orange-50 text-orange-600" href="/admin/courses" />
+        <StatCard title="Cours" value={counts.published_courses} icon={<BookOpen size={20} />} color="bg-orange-50 text-orange-600" href="/admin/courses" />
         <StatCard title="Exercices" value={counts.exercises} icon={<Calculator size={20} />} color="bg-purple-50 text-purple-600" href="/admin/exercises" />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
