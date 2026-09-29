@@ -401,6 +401,31 @@ export function trialStartedEmail(firstName: string, planName: string, trialEnd:
   };
 }
 
+/** Rappel 3 jours avant la fin de l'essai gratuit (événement Stripe customer.subscription.trial_will_end). */
+export function trialEndingEmail(firstName: string, planName: string, trialEnd: string, price: string) {
+  return {
+    subject: "Votre essai gratuit Educalcul se termine bientôt",
+    textPart: `Bonjour ${firstName},
+
+Votre essai gratuit de la formule ${planName} se termine le ${trialEnd}. Sans résiliation d'ici là, le premier prélèvement de ${price} aura lieu à cette date.
+
+Vous pouvez résilier à tout moment depuis votre espace Abonnement : ${SUB_URL}
+
+L'équipe Educalcul`,
+    htmlPart: buildEmailHtml({
+      title: "Votre essai se termine bientôt",
+      preheader: `Fin de l'essai le ${trialEnd}`,
+      body: `
+        ${hello(firstName)}
+        ${p("Votre essai gratuit touche à sa fin. Nous espérons qu'il vous a plu !")}
+        ${emailDetails([["Formule", planName], ["Fin de l'essai", trialEnd], ["Premier prélèvement", price]])}
+        ${emailCallout("Vous ne souhaitez pas continuer ? Résiliez avant cette date, aucun prélèvement n'aura alors lieu.", "warning")}
+      `,
+      cta: { label: "Gérer mon abonnement", url: SUB_URL },
+    }),
+  };
+}
+
 export function paymentSucceededEmail(firstName: string, amount: string, planName: string, nextDate: string | null, invoiceUrl: string) {
   const rows: [string, string][] = [["Montant", amount], ["Formule", planName]];
   if (nextDate) rows.push(["Prochaine échéance", nextDate]);

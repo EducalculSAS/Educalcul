@@ -4,7 +4,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import {
   cancellationRevokedEmail, cancellationScheduledEmail, paymentFailedEmail, paymentSucceededEmail,
-  subscriptionEndedEmail, trialStartedEmail, welcomeEmail,
+  subscriptionEndedEmail, trialEndingEmail, trialStartedEmail, welcomeEmail,
 } from "@/lib/emailTemplates";
 import { notify } from "@/lib/notify";
 import Stripe from "stripe";
@@ -249,6 +249,21 @@ export async function POST(req: Request) {
               });
             }
           }
+        }
+        break;
+      }
+
+      // ── Trial ends in 3 days → rappel avec le montant du premier prélèvement ──
+      case "customer.subscription.trial_will_end": {
+        const sub = event.data.object as Stripe.Subscription;
+        // Déjà résilié pendant l'essai : rien à rappeler.
+        if (!sub.trial_end || sub.cancel_at_period_end || sub.cancel_at) break;
+        const subscriber = await getSubscriber("stripe_subscription_id", sub.id);
+        const price = sub.items?.data?.[0]?.price;
+        if (subscriber && price?.unit_amount != null) {
+          const amount = `${(price.unit_amount / 100).toFixed(2).replace(".", ",")} €${price.recurring?.interval === "year" ? " / an" : " / mois"}`;
+          mail(subscriber, trialEndingEmail(subscriber.firstName, subscriber.planName, frDate(sub.trial_end)!, amount));
+          notify({ userId: subscriber.authId, type: "subscription", title: "Votre essai se termine bientôt", body: `Fin de l'essai le ${frDate(sub.trial_end)}`, link: "/parent/subscription" });
         }
         break;
       }
