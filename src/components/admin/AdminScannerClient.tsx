@@ -303,10 +303,14 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
                 <h3 className="font-bold text-[var(--greek-blue)]">{cat.label}</h3>
               </div>
               <p className="text-xs text-gray-500 flex-1">{cat.description}</p>
+              {/* Emplacement à hauteur FIXE : le bouton et la barre de progression
+                  prennent la même place. Sinon, lancer un scan agrandissait la carte
+                  et tous les boutons voisins sautaient sous le curseur. */}
+              <div className="h-[52px] flex items-center">
               {active ? (
                 <button
                   onClick={() => setSelectedRunId(active.id)}
-                  className="flex flex-col gap-1.5 text-sm font-medium px-3 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
+                  className="w-full flex flex-col gap-1.5 text-sm font-medium px-3 py-2 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors"
                 >
                   <span className="flex items-center justify-center gap-2">
                     {total ? `${current}/${total} lots` : STATUS_LABEL[active.status]}
@@ -319,6 +323,7 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
                   Lancer le scan
                 </GlassButton>
               )}
+              </div>
             </div>
           );
         })}
