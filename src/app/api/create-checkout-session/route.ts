@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getVatTaxRateId } from "@/lib/stripeVat";
 import { ensurePlanPrice, ensureProduct, RECURRING } from "@/lib/stripeCatalog";
+import { getOrCreateStripeCustomer } from "@/lib/stripeCustomer";
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser, getAuthIdentityOnly } from '@/lib/apiAuth';
@@ -240,7 +241,7 @@ export async function POST(req: Request) {
       !isNewSignup && userId
         ? supabaseAdmin
             .from('users')
-            .select('pending_discount_percent, id')
+            .select('pending_discount_percent, id, first_name, last_name')
             .eq('auth_id', userId)
             .maybeSingle()
         : Promise.resolve({ data: null }),
@@ -287,6 +288,11 @@ export async function POST(req: Request) {
     if (vatRateId) lineItem.tax_rates = [vatRateId];
 
     const origin = baseUrl;
+    const stripeCustomerId = await getOrCreateStripeCustomer({
+      authId: userId,
+      email,
+      name: `${userRow?.first_name || firstName || ''} ${userRow?.last_name || lastName || ''}`.trim() || undefined,
+    });
     const sessionData: any = {
       payment_method_types: ['card'],
       line_items: [lineItem],
@@ -299,7 +305,10 @@ export async function POST(req: Request) {
       cancel_url: isNewSignup
         ? `${origin}/auth/inscription/select-plan`
         : `${origin}/parent/subscription`,
-      customer_email: email,
+      // Le client Stripe est celui du compte (créé une fois, réutilisé ensuite) :
+      // plus de client anonyme en double à chaque paiement (voir stripeCustomer.ts).
+      customer: stripeCustomerId,
+      client_reference_id: userId || undefined,
       metadata: { userId: userId || '', planId: planId.toString(), referralCode: referralCode || '', isNewSignup: isNewSignup ? 'true' : 'false' },
     };
 
@@ -311,9 +320,12 @@ export async function POST(req: Request) {
     // rien à persister ni à "consommer" comme pending_discount_percent.
     const waitlistBonusDays = userId ? await computeWaitlistFreeTrialDays(userId) : 0;
     const trialDays = (plan.trial_days || 0) + waitlistBonusDays;
-    if (trialDays > 0) {
-      sessionData.subscription_data = { trial_period_days: trialDays };
-    }
+    // Métadonnées sur l'abonnement Stripe lui-même (compte et formule) : lisibles
+    // dans le tableau de bord Stripe et présentes sur tous ses événements.
+    sessionData.subscription_data = {
+      metadata: { userId: userId || '', planId: planId.toString() },
+      ...(trialDays > 0 ? { trial_period_days: trialDays } : {}),
+    };
 
     // Acceptation des CGV et demande d'accès immédiat (droit de rétractation :
     // remboursement au prorata), affichées au-dessus du bouton de paiement.
