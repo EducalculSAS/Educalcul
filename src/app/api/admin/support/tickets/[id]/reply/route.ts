@@ -79,7 +79,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       .from("support_tickets").select("user_id").eq("id", id).maybeSingle();
     if (ticketData?.user_id) {
       const link = await supportLinkForAuthId(ticketData.user_id);
-      notify({ userId: ticketData.user_id, type: "support_reply", title: "Réponse à votre message", body: message.slice(0, 80), link });
+      await notify({ userId: ticketData.user_id, type: "support_reply", title: "Réponse à votre message", body: message.slice(0, 80), link });
     }
 
     return NextResponse.json({ success: true });

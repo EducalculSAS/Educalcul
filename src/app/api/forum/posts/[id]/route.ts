@@ -188,7 +188,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
         .eq("id", newSolution.author_id)
         .maybeSingle();
       if (target?.auth_id) {
-        notify({
+        await notify({
           userId: target.auth_id,
           type: "forum_solution",
           title: "Ta réponse a été choisie comme solution",

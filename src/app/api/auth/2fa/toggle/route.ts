@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { runAfterResponse } from "@/lib/background";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
@@ -40,8 +41,10 @@ export async function POST(req: Request) {
     const { data: user } = await supabaseAdmin.from("users").select("first_name, email").eq("id", me.id).maybeSingle();
     if (user?.email) {
       const tmpl = twoFactorToggledEmail(user.first_name || "là", enabled);
-      sendEmail({ toEmail: user.email, toName: user.first_name || "Utilisateur", ...tmpl })
-        .then(undefined, (e) => console.error("[2fa/toggle] email non envoyé:", e?.message));
+      runAfterResponse(
+        sendEmail({ toEmail: user.email, toName: user.first_name || "Utilisateur", ...tmpl })
+          .then(undefined, (e) => console.error("[2fa/toggle] email non envoyé:", e?.message)),
+      );
     }
 
     return NextResponse.json({ success: true });

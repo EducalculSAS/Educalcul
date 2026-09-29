@@ -218,7 +218,7 @@ export async function POST(req: Request) {
     if (toAward.length > 0) {
       await supabaseAdmin.from("user_badges").insert(toAward.map(b => ({ user_id: userId, badge_id: b.id })));
       for (const b of toAward) {
-        notify({ userId: authId, type: "badge", title: `Nouveau badge : ${b.name}`, body: b.description || undefined, link: "/child/badges" });
+        await notify({ userId: authId, type: "badge", title: `Nouveau badge : ${b.name}`, body: b.description || undefined, link: "/child/badges" });
       }
     }
 

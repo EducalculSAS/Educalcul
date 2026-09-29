@@ -73,7 +73,7 @@ export async function POST(req: Request) {
 
     // Notification in-app si l'utilisateur a un compte
     if (userId) {
-      notify({ userId, type: "message", title: subject, body: message.slice(0, 80), link });
+      await notify({ userId, type: "message", title: subject, body: message.slice(0, 80), link });
     }
 
     return NextResponse.json({ success: true, ticketId: ticket.id });

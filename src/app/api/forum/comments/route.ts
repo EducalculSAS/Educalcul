@@ -58,7 +58,7 @@ export async function POST(req: Request) {
     for (const f of followers ?? []) {
       const u = (f as any).user as { id: number; auth_id: string; role: string } | null;
       if (!u?.auth_id) continue;
-      notify({
+      await notify({
         userId: u.auth_id,
         type: "forum_reply",
         title: `${who || "Quelqu'un"} a répondu à « ${String(postRow?.title || "un sujet").slice(0, 60)} »`,

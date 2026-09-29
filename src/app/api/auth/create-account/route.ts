@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { runAfterResponse } from "@/lib/background";
 import { randomBytes } from "crypto";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -184,11 +185,13 @@ export async function POST(req: NextRequest) {
       }
 
       const tmpl = welcomeEmail(validatedFirstName, confirmUrl, false);
-      sendEmail({
-        toEmail: email,
-        toName: `${validatedFirstName} ${validatedLastName || ""}`.trim(),
-        ...tmpl,
-      }).catch(console.error);
+      runAfterResponse(
+        sendEmail({
+          toEmail: email,
+          toName: `${validatedFirstName} ${validatedLastName || ""}`.trim(),
+          ...tmpl,
+        }).catch(console.error),
+      );
     }
 
     return NextResponse.json({ success: true, userId: authUserId, requireEmailConfirm: true });

@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { runAfterResponse } from "@/lib/background";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { validateEmail, validateString, validateName } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -69,11 +70,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Impossible d'envoyer le message" }, { status: 500 });
     }
 
-    // Load email templates and send confirmation (non-blocking)
-    Promise.all([
+    // Load email templates and send confirmation (après la réponse, voir background.ts)
+    runAfterResponse(Promise.all([
       supabaseAdmin.from("email_templates").select("subject,body").eq("key", "contact_user").single(),
       supabaseAdmin.from("email_templates").select("subject,body").eq("key", "contact_admin").single(),
-    ]).then(([tmplUser, tmplAdmin]) => {
+    ]).then(async ([tmplUser, tmplAdmin]) => {
       const safeReplace = (s: string, vars: Record<string, string>) => {
         let result = s;
         for (const [key, value] of Object.entries(vars)) {
@@ -85,7 +86,7 @@ export async function POST(req: Request) {
       const vars = { name: validatedName, email, subject, message: validatedMessage };
 
       if (tmplUser.data) {
-        sendEmail({
+        await sendEmail({
           toEmail: email,
           toName: validatedName,
           subject: safeReplace(tmplUser.data.subject, vars),
@@ -99,7 +100,7 @@ export async function POST(req: Request) {
 
       if (tmplAdmin.data) {
         const adminEmail = process.env.ADMIN_EMAIL_FROM || "support@educalcul.com";
-        sendEmail({
+        await sendEmail({
           toEmail: adminEmail,
           toName: "Educalcul Support",
           subject: safeReplace(tmplAdmin.data.subject, vars),
@@ -110,7 +111,7 @@ export async function POST(req: Request) {
           }),
         }).catch(console.error);
       }
-    }).catch(console.error);
+    }).catch(console.error));
 
     return NextResponse.json({ success: true, id: data.id }, { status: 201 });
   } catch (err: any) {

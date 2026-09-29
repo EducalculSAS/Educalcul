@@ -34,6 +34,8 @@ async function getSubscriber(column: "stripe_customer_id" | "stripe_subscription
   };
 }
 
+// Toujours attendu (await) par les appelants : sur Vercel, un envoi lancé sans être
+// attendu peut être coupé dès que la réponse au webhook est partie.
 const mail = (to: { email: string; firstName: string }, tmpl: { subject: string; textPart: string; htmlPart: string }) =>
   sendEmail({ toEmail: to.email, toName: to.firstName || "Utilisateur", ...tmpl }).catch(console.error);
 
@@ -121,7 +123,7 @@ export async function POST(req: Request) {
                 });
                 const confirmUrl = linkData?.properties?.action_link || "https://educalcul.com/parent/dashboard";
                 const tmpl = welcomeEmail(meta.first_name || "", confirmUrl);
-                sendEmail({ toEmail: profileEmail, toName: `${meta.first_name || ""} ${meta.last_name || ""}`.trim(), ...tmpl }).catch(console.error);
+                await sendEmail({ toEmail: profileEmail, toName: `${meta.first_name || ""} ${meta.last_name || ""}`.trim(), ...tmpl }).catch(console.error);
               } catch (e) {
                 console.warn("[webhook] Could not send welcome email:", e);
               }
@@ -176,7 +178,7 @@ export async function POST(req: Request) {
           const price = stripeSub.items?.data?.[0]?.price;
           if (subscriber && price?.unit_amount != null) {
             const amount = `${(price.unit_amount / 100).toFixed(2).replace(".", ",")} €${price.recurring?.interval === "year" ? " / an" : " / mois"}`;
-            mail(subscriber, trialStartedEmail(subscriber.firstName, subscriber.planName, frDate(stripeSub.trial_end)!, amount));
+            await mail(subscriber, trialStartedEmail(subscriber.firstName, subscriber.planName, frDate(stripeSub.trial_end)!, amount));
           }
         }
 
@@ -237,10 +239,10 @@ export async function POST(req: Request) {
             const subscriber = await getSubscriber("stripe_subscription_id", sub.id);
             const endDate = frDate(sub.cancel_at || rawPeriodEnd);
             if (subscriber) {
-              mail(subscriber, scheduled
+              await mail(subscriber, scheduled
                 ? cancellationScheduledEmail(subscriber.firstName, subscriber.planName, endDate || "la fin de la période en cours")
                 : cancellationRevokedEmail(subscriber.firstName, subscriber.planName, endDate));
-              notify({
+              await notify({
                 userId: subscriber.authId,
                 type: "subscription",
                 title: scheduled ? "Résiliation confirmée" : "Abonnement réactivé",
@@ -262,8 +264,8 @@ export async function POST(req: Request) {
         const price = sub.items?.data?.[0]?.price;
         if (subscriber && price?.unit_amount != null) {
           const amount = `${(price.unit_amount / 100).toFixed(2).replace(".", ",")} €${price.recurring?.interval === "year" ? " / an" : " / mois"}`;
-          mail(subscriber, trialEndingEmail(subscriber.firstName, subscriber.planName, frDate(sub.trial_end)!, amount));
-          notify({ userId: subscriber.authId, type: "subscription", title: "Votre essai se termine bientôt", body: `Fin de l'essai le ${frDate(sub.trial_end)}`, link: "/parent/subscription" });
+          await mail(subscriber, trialEndingEmail(subscriber.firstName, subscriber.planName, frDate(sub.trial_end)!, amount));
+          await notify({ userId: subscriber.authId, type: "subscription", title: "Votre essai se termine bientôt", body: `Fin de l'essai le ${frDate(sub.trial_end)}`, link: "/parent/subscription" });
         }
         break;
       }
@@ -280,7 +282,7 @@ export async function POST(req: Request) {
         // Rétractation : son propre email a déjà été envoyé (src/lib/withdrawal.ts).
         if (ended?.length && sub.metadata?.withdrawn !== "true") {
           const subscriber = await getSubscriber("stripe_subscription_id", sub.id);
-          if (subscriber) mail(subscriber, subscriptionEndedEmail(subscriber.firstName, subscriber.planName));
+          if (subscriber) await mail(subscriber, subscriptionEndedEmail(subscriber.firstName, subscriber.planName));
         }
         break;
       }
@@ -354,8 +356,8 @@ export async function POST(req: Request) {
         if (user && invoice.hosted_invoice_url && isRealPayment) {
           const amount = `${(invoice.amount_paid / 100).toFixed(2).replace(".", ",")} €`;
           const nextDate = frDate(invoice.lines?.data?.[0]?.period?.end);
-          mail(user, paymentSucceededEmail(user.firstName, amount, user.planName, nextDate, invoice.hosted_invoice_url));
-          notify({ userId: user.authId, type: "payment", title: "Paiement confirmé", body: `${amount} encaissés`, link: "/parent/subscription" });
+          await mail(user, paymentSucceededEmail(user.firstName, amount, user.planName, nextDate, invoice.hosted_invoice_url));
+          await notify({ userId: user.authId, type: "payment", title: "Paiement confirmé", body: `${amount} encaissés`, link: "/parent/subscription" });
         }
         break;
       }
@@ -377,8 +379,8 @@ export async function POST(req: Request) {
         // Email paiement échoué + notification urgente
         const user = await getSubscriber("stripe_customer_id", invoice.customer as string);
         if (user) {
-          mail(user, paymentFailedEmail(user.firstName));
-          notify({ userId: user.authId, type: "payment_failed", title: "Échec du paiement", body: "Mettez à jour votre moyen de paiement", link: "/parent/subscription" });
+          await mail(user, paymentFailedEmail(user.firstName));
+          await notify({ userId: user.authId, type: "payment_failed", title: "Échec du paiement", body: "Mettez à jour votre moyen de paiement", link: "/parent/subscription" });
         }
         break;
       }
