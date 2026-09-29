@@ -181,7 +181,7 @@ Mini-description éditoriale : ${item.mini_description || ""}
 ${item.chapter_focus ? `Focus du chapitre : ${item.chapter_focus}` : ""}
 ${item.chapter_description ? `Description du chapitre : ${item.chapter_description}` : ""}
 Le champ "title" du chapitre JSON doit être exactement : "${item.chapter_name || item.theme_name}".
-Le champ "title" de la leçon JSON doit être un titre spécifique et parlant qui reflète précisément CE que cette leçon enseigne concrètement (pas une simple reprise du type "Découvrir —"/"Comprendre —"/"Méthode —" suivi du nom du chapitre, et pas non plus une recopie littérale du sujet éditorial ci-dessus) : un élève doit comprendre en le lisant ce qu'il va apprendre dans CETTE leçon précisément, en quelques mots clairs.`;
+Le champ "title" de la leçon JSON doit être un titre spécifique et parlant qui reflète précisément CE que cette leçon enseigne concrètement (pas une simple reprise du type "Découvrir, "/"Comprendre, "/"Méthode, " suivi du nom du chapitre, et pas non plus une recopie littérale du sujet éditorial ci-dessus) : un élève doit comprendre en le lisant ce qu'il va apprendre dans CETTE leçon précisément, en quelques mots clairs.`;
 
       const contract = courseChapterSchema({
         lessonCount: 1,

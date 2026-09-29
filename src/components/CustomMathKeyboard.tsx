@@ -328,7 +328,7 @@ export default function CustomMathKeyboard({
                       );
                     })}
                     {/* Effacer juste après la dernière lettre, comme Majuscule
-                       juste avant la première — même rangée, même hauteur. */}
+                       juste avant la première, même rangée, même hauteur. */}
                     {i === 2 && (
                       <button
                         type="button"

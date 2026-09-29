@@ -1009,8 +1009,8 @@ export default function AdminExercisesClient({
         {/* Indicateur seulement si l'attente dure (appear-late : 400 ms) ; les
             sous-dossiers, déjà connus, restent affichés pendant ce temps. */}
         {loading && (
-          <div className="col-span-full appear-late">
-            <PageLoader />
+          <div className="col-span-full appear-late order-last">
+            <PageLoader className="h-24" />
           </div>
         )}
         {(
@@ -1459,7 +1459,7 @@ export default function AdminExercisesClient({
                         value={formData.title}
                         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                         className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-gray-50 font-medium"
-                        placeholder="Ex: Maths — Les fractions (CP)"
+                        placeholder="Ex: Maths : Les fractions (CP)"
                       />
                     </div>
                     <div>

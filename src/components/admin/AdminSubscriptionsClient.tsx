@@ -884,7 +884,7 @@ export default function AdminSubscriptionsClient({
                     <input type="number" min="0" value={planForm.feature_ai_daily_limit} disabled={planForm.feature_ai_access !== "limited"} onChange={e => setPlanForm({...planForm, feature_ai_daily_limit: Number(e.target.value)})} className={inputCls + (planForm.feature_ai_access !== "limited" ? " opacity-40" : "")} />
                   </div>
                   <div>
-                    <label className={labelCls}>Mini-jeux — parties / jour (-1 = illimité)</label>
+                    <label className={labelCls}>Mini-jeux, parties / jour (-1 = illimité)</label>
                     <input type="number" min="-1" value={planForm.feature_minigames_daily_limit} onChange={e => setPlanForm({...planForm, feature_minigames_daily_limit: Number(e.target.value)})} className={inputCls} />
                   </div>
                   <div className="col-span-2 grid grid-cols-2 gap-3">
@@ -892,7 +892,7 @@ export default function AdminSubscriptionsClient({
                       { key: "feature_detailed_reports", label: "Rapports détaillés" },
                       { key: "feature_priority_support", label: "Support prioritaire" },
                       { key: "feature_custom_avatars",   label: "Avatars personnalisés" },
-                      { key: "feature_minigames_premium_content", label: "Mini-jeux — contenu premium (5 questions au lieu de 2)" },
+                      { key: "feature_minigames_premium_content", label: "Mini-jeux, contenu premium (5 questions au lieu de 2)" },
                       { key: "feature_calia_classe", label: "Calia en classe (IA vocale qui enseigne à l'oral)" },
                     ].map(({ key, label }) => (
                       <label key={key} className="flex items-center gap-3 p-3 border border-[rgba(197,161,72,0.25)] rounded-xl cursor-pointer hover:border-[var(--greek-blue)] transition-colors">

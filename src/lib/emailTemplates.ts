@@ -257,7 +257,7 @@ export function passwordChangedEmail(firstName: string) {
 
 export function twoFactorCodeEmail(firstName: string, code: string) {
   return {
-    subject: `${code} — votre code de connexion Educalcul`,
+    subject: `${code}, votre code de connexion Educalcul`,
     textPart: `Bonjour ${firstName},\n\nVotre code de vérification est : ${code}\n\nIl expire dans 10 minutes. Si vous n'êtes pas à l'origine de cette tentative de connexion, ignorez cet email et changez votre mot de passe.\n\nL'équipe Educalcul`,
     htmlPart: buildEmailHtml({
       title: "Code de vérification",

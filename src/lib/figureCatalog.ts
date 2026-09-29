@@ -12,7 +12,7 @@
  */
 
 export const FIGURE_CATALOG_COMMENT =
-  "Catalogue de TOUS les blocs disponibles — copie l'entrée qu'il te faut dans \"blocks\" " +
+  "Catalogue de TOUS les blocs disponibles, copie l'entrée qu'il te faut dans \"blocks\" " +
   "(ou pour un quiz/exercice, dans le champ \"figure\" d'une question). Ignoré à l'import.";
 
 export const FIGURE_CATALOG: Record<string, unknown> = {
@@ -26,8 +26,8 @@ export const FIGURE_CATALOG: Record<string, unknown> = {
   steps: {
     type: "steps",
     steps: [
-      { title: "Étape 1 — isoler le terme", blocks: [{ type: "paragraph", content: "On soustrait $5$ des deux côtés." }] },
-      { title: "Étape 2 — diviser", blocks: [{ type: "paragraph", content: "On divise par $2$." }] },
+      { title: "Étape 1, isoler le terme", blocks: [{ type: "paragraph", content: "On soustrait $5$ des deux côtés." }] },
+      { title: "Étape 2, diviser", blocks: [{ type: "paragraph", content: "On divise par $2$." }] },
     ],
   },
   table: { type: "table", headers: ["x", "f(x)"], rows: [["0", "1"], ["1", "2"], ["2", "5"]] },
@@ -151,7 +151,7 @@ export const FIGURE_CATALOG: Record<string, unknown> = {
     left: [3, 4], right: [7],
     left_label: "", right_label: "",
     tilt: "auto",
-    _note: "tilt : auto (déduit des masses) | level | left | right — pour une balance volontairement déséquilibrée.",
+    _note: "tilt : auto (déduit des masses) | level | left | right, pour une balance volontairement déséquilibrée.",
   },
   ruler_measurer: { type: "ruler_measurer", caption: "Mesure le segment", segmentLength: 7, unit: "cm" },
   interactive_protractor: { type: "interactive_protractor", caption: "Mesure l'angle", angleDeg: 45 },
@@ -219,6 +219,6 @@ export const FIGURE_CATALOG: Record<string, unknown> = {
   exercise: {
     type: "exercise",
     exercise_index: 1,
-    _note: "Position dans le tableau \"exercises\" de LA LEÇON (1, 2, 3...) — voir le modèle de cours.",
+    _note: "Position dans le tableau \"exercises\" de LA LEÇON (1, 2, 3...), voir le modèle de cours.",
   },
 };

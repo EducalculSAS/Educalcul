@@ -135,7 +135,7 @@ export default async function Home() {
       </section>
 
       {/* ════════════════════════════════════════════════════════
-          BANDEAU DE PREUVE — faits vérifiables, pas de chiffres inventés
+          BANDEAU DE PREUVE, faits vérifiables, pas de chiffres inventés
       ════════════════════════════════════════════════════════ */}
       <section className="py-6 px-6" style={{ background: "var(--greek-cream)", borderBottom: "1px solid var(--greek-border)" }}>
         <Reveal y={12} className="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-10 gap-y-3">
@@ -176,7 +176,7 @@ export default async function Home() {
       </section>
 
       {/* ════════════════════════════════════════════════════════
-          VITRINE DES FONCTIONNALITÉS — rangées alternées
+          VITRINE DES FONCTIONNALITÉS, rangées alternées
       ════════════════════════════════════════════════════════ */}
       <section className="pb-8 px-6" style={{ background: "var(--greek-cream)" }}>
         <div className="max-w-5xl mx-auto flex flex-col gap-28 md:gap-36">
@@ -276,7 +276,7 @@ export default async function Home() {
       )}
 
       {/* ════════════════════════════════════════════════════════
-          TRUSTPILOT — badge compact uniquement
+          TRUSTPILOT, badge compact uniquement
       ════════════════════════════════════════════════════════ */}
       <section className="pb-24 px-6" style={{ background: "var(--greek-cream)" }}>
         <Reveal y={16} className="max-w-5xl mx-auto flex justify-center">

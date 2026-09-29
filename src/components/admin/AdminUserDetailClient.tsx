@@ -46,7 +46,7 @@ const MINIGAME_STATUS_COLOR: Record<string, string> = {
   abandoned: "bg-gray-100 text-gray-500",
 };
 function formatMinigameDuration(seconds: number | null) {
-  if (seconds === null || seconds === undefined) return "—";
+  if (seconds === null || seconds === undefined) return "-";
   const m = Math.floor(seconds / 60);
   const s = seconds % 60;
   return m > 0 ? `${m}m ${s}s` : `${s}s`;
@@ -278,7 +278,7 @@ export default function AdminUserDetailClient({
           ? "Abonnement offert attribué (aucune facturation)"
           : result.stripeLinked
             ? "Abonnement mis à jour (Stripe synchronisé)"
-            : "Abonnement mis à jour (sans Stripe — client introuvable ou plan gratuit)",
+            : "Abonnement mis à jour (sans Stripe, client introuvable ou plan gratuit)",
       );
       fetchUser();
     } catch (err: any) { showToast("error", err.message || "Erreur"); }
@@ -442,7 +442,7 @@ export default function AdminUserDetailClient({
                   onChange={e => setSelectedPlanId(e.target.value)}
                   className={inputCls}
                 >
-                  <option value="">— Aucun abonnement —</option>
+                  <option value=""> : Aucun abonnement, </option>
                   {Object.entries(
                     plans
                       .filter((p: any) => p.is_active)
@@ -457,7 +457,7 @@ export default function AdminUserDetailClient({
                       <optgroup key={groupName} label={groupName}>
                         {sorted.map((p: any) => (
                           <option key={p.id} value={p.id.toString()}>
-                            {p.price}€ — {
+                            {p.price}€ : {
                               p.billing_interval === "year" ? "Annuel"
                               : p.billing_interval === "semester" ? "Semestriel"
                               : p.billing_interval === "quarter" ? "Trimestriel"
@@ -480,7 +480,7 @@ export default function AdminUserDetailClient({
                         onChange={() => setPlanBillingMode("offert")}
                         className="mt-1"
                       />
-                      <span><strong>Offert</strong> — accès immédiat, aucune facturation.</span>
+                      <span><strong>Offert</strong>, accès immédiat, aucune facturation.</span>
                     </label>
                     <label className="flex items-start gap-2 cursor-pointer">
                       <input
@@ -490,7 +490,7 @@ export default function AdminUserDetailClient({
                         onChange={() => setPlanBillingMode("stripe")}
                         className="mt-1"
                       />
-                      <span><strong>Facturé</strong> — exige un client Stripe existant, sinon refusé.</span>
+                      <span><strong>Facturé</strong>, exige un client Stripe existant, sinon refusé.</span>
                     </label>
                   </div>
                 )}
@@ -1058,7 +1058,7 @@ export default function AdminUserDetailClient({
           <div>
             <label className={labelCls}>Conséquence</label>
             <select value={reportConsequence} onChange={e => setReportConsequence(e.target.value as any)} className={inputCls}>
-              <option value="none">Aucune — juste marquer traité</option>
+              <option value="none">Aucune, juste marquer traité</option>
               <option value="warn">Avertissement (message seul)</option>
               <option value="ban7">Bannir le compte 7 jours</option>
               <option value="ban_perm">Bannir le compte définitivement</option>

@@ -30,7 +30,7 @@ const MINI_FAQ = [
   { q: "Puis-je changer de plan à tout moment ?", a: "Oui, vous pouvez passer à un plan supérieur ou inférieur à n'importe quel moment depuis votre espace parent. Le changement est effectif immédiatement et le montant est ajusté au prorata." },
   { q: "Y a-t-il un engagement de durée ?", a: "Non. Les abonnements sont sans engagement. Vous pouvez annuler à tout moment depuis votre compte, sans frais ni justification." },
   { q: "La période d'essai est-elle vraiment gratuite ?", a: "Oui, aucune carte bancaire n'est requise pour commencer. L'essai gratuit vous donne accès à toutes les fonctionnalités du plan choisi sans limitation." },
-  { q: "Que se passe-t-il si je dépasse le nombre d'enfants autorisé ?", a: "Vous serez invité à passer à un plan supérieur. Aucun enfant ne perd l'accès brutalement — vous avez un délai pour régulariser votre abonnement." },
+  { q: "Que se passe-t-il si je dépasse le nombre d'enfants autorisé ?", a: "Vous serez invité à passer à un plan supérieur. Aucun enfant ne perd l'accès brutalement, vous avez un délai pour régulariser votre abonnement." },
 ];
 
 export default async function Tarifs() {
@@ -66,7 +66,7 @@ export default async function Tarifs() {
                 <div className="rounded-2xl p-6" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
                   <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "rgba(197,161,72,0.6)" }}>Pour commencer</p>
                   <p className="font-[family-name:var(--font-display)] font-bold mt-2" style={{ color: "var(--greek-gold)", fontSize: "2.8rem", lineHeight: 1 }}>0 €</p>
-                  <p className="text-xs mt-2" style={{ color: "rgba(255,255,255,0.35)" }}>Accès immédiat à toutes les fonctionnalités — 7 jours sans frais</p>
+                  <p className="text-xs mt-2" style={{ color: "rgba(255,255,255,0.35)" }}>Accès immédiat à toutes les fonctionnalités : 7 jours sans frais</p>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {["Sans engagement", "Sans carte bancaire", "Annulable à tout moment", "Accès immédiat"].map((item, i) => (

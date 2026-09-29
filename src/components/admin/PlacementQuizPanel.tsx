@@ -145,7 +145,7 @@ export default function PlacementQuizPanel() {
           ) : (
             <div className="space-y-4">
               {levelQuestions.length === 0 && (
-                <p className="text-sm text-gray-400 italic">Aucune question pour ce niveau — les élèves de ce niveau n'auront pas de mini-test.</p>
+                <p className="text-sm text-gray-400 italic">Aucune question pour ce niveau, les élèves de ce niveau n'auront pas de mini-test.</p>
               )}
               {levelQuestions.map((q) => (
                 <div key={q.id} className="border border-[rgba(197,161,72,0.2)] rounded-xl p-4">
@@ -180,7 +180,7 @@ export default function PlacementQuizPanel() {
                   </div>
                   <div className="mb-3">
                     <label className="block text-xs font-semibold text-gray-500 mb-1">
-                      Notion (utilisée pour la mémoire pédagogique de Calia — courte, ex: "fractions")
+                      Notion (utilisée pour la mémoire pédagogique de Calia, courte, ex: "fractions")
                     </label>
                     <input
                       value={q.notion}

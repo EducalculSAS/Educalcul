@@ -143,7 +143,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
             <div>
               <label className={labelCls}>Priorité</label>
               <select value={newForm.priority} onChange={(e) => setNewForm({ ...newForm, priority: e.target.value })} className={inputCls}>
-                <option value="low">Faible — pas urgent</option>
+                <option value="low">Faible, pas urgent</option>
                 <option value="normal">Normal</option>
                 <option value="high">Urgent</option>
               </select>

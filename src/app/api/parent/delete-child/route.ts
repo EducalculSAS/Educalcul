@@ -56,7 +56,7 @@ export async function DELETE(req: Request) {
     let authWarning: string | undefined;
     if (child.auth_id) {
       const ok = await deleteAuthUser(child.auth_id, `child ${child.auth_id}`);
-      if (!ok) authWarning = "Le profil a été supprimé mais la connexion associée n'a pas pu l'être — contacte le support.";
+      if (!ok) authWarning = "Le profil a été supprimé mais la connexion associée n'a pas pu l'être, contacte le support.";
     }
 
     await auditLog({

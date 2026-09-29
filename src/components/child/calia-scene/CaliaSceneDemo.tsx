@@ -595,7 +595,7 @@ export default function CaliaSceneDemo({
       if (!res.ok) throw new Error(data.error || "Lecture du dessin impossible.");
       sendTurn(`(L'eleve a dessine au tableau. Lecture automatique du dessin, peut contenir des erreurs de transcription : ${data.description})`);
     } catch {
-      sendTurn("(L'eleve a dessine une reponse au tableau, la lecture automatique a echoue — demande-lui de la decrire a l'oral)");
+      sendTurn("(L'eleve a dessine une reponse au tableau, la lecture automatique a echoue, demande-lui de la decrire a l'oral)");
     }
   };
 
@@ -742,8 +742,8 @@ export default function CaliaSceneDemo({
     return (
       <a
         href="/parent/subscription"
-        title="Calia en classe — l'IA qui enseigne à l'oral, réservée au plan Family"
-        aria-label="Calia en classe verrouillée — passer au plan Family"
+        title="Calia en classe, l'IA qui enseigne à l'oral, réservée au plan Family"
+        aria-label="Calia en classe verrouillée, passer au plan Family"
         className="relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0"
         style={{ background: "var(--greek-blue)", border: "2px solid rgba(197,161,72,0.4)", opacity: 0.6 }}
       >
@@ -814,7 +814,7 @@ export default function CaliaSceneDemo({
 
       {/* Mini variante de l'avatar Calia (meme recette que le cluster bas-
           droite : cercle navy + logo + liseré) plutot qu'une icone
-          generique — identifie immediatement "lancer Calia" au survol. */}
+          generique, identifie immediatement "lancer Calia" au survol. */}
       <button
         type="button"
         onClick={isRunning ? stop : start}
@@ -920,7 +920,7 @@ export default function CaliaSceneDemo({
                   value={textFallback}
                   onChange={(e) => setTextFallback(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && submitTextFallback()}
-                  placeholder="Ton navigateur ne supporte pas la voix — écris ici"
+                  placeholder="Ton navigateur ne supporte pas la voix, écris ici"
                   className="text-sm outline-none bg-transparent w-56"
                   disabled={loading}
                 />

@@ -138,7 +138,7 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
             { label: "Exercices", value: stats.exercisesDone, icon: <BookOpen className="w-5 h-5" />, color: "bg-orange-50 text-orange-600" },
             { label: "Réussite exos", value: `${stats.successRate}%`, icon: <CheckCircle className="w-5 h-5" />, color: "bg-green-50 text-green-600" },
             { label: "Quiz", value: stats.quizzesTaken, icon: <Award className="w-5 h-5" />, color: "bg-purple-50 text-purple-600" },
-            { label: "Score moyen quiz", value: stats.avgScore > 0 ? `${stats.avgScore}%` : "—", icon: <TrendingUp className="w-5 h-5" />, color: "bg-blue-50 text-blue-600" },
+            { label: "Score moyen quiz", value: stats.avgScore > 0 ? `${stats.avgScore}%` : "-", icon: <TrendingUp className="w-5 h-5" />, color: "bg-blue-50 text-blue-600" },
             { label: "Mini-jeux", value: stats.minigamesPlayed, icon: <Gamepad2 className="w-5 h-5" />, color: "bg-pink-50 text-pink-600" },
           ].map((s) => (
             <div key={s.label} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">

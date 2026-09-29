@@ -73,7 +73,7 @@ export default function AdminTotpCard() {
           {error && <p className="text-xs text-red-600 mb-2">{error}</p>}
           {newCodes ? (
             <div>
-              <p className="text-xs text-gray-500 mb-2">Nouveaux codes de secours — note-les, les anciens ne fonctionnent plus :</p>
+              <p className="text-xs text-gray-500 mb-2">Nouveaux codes de secours, note-les, les anciens ne fonctionnent plus :</p>
               <div className="grid grid-cols-2 gap-2 mb-3 p-3 rounded-lg bg-gray-50 border border-gray-200 font-mono text-xs text-gray-700">
                 {newCodes.map(c => <div key={c}>{c}</div>)}
               </div>

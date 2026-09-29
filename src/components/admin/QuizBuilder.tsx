@@ -462,7 +462,7 @@ export default function QuizBuilder({
                   {question.type === "impossible_search" && (
                     <div className="pl-2 space-y-1">
                       <p className="text-xs text-gray-400">
-                        L&apos;énoncé n&apos;a pas de solution (données insuffisantes/contradictoires) —
+                        L&apos;énoncé n&apos;a pas de solution (données insuffisantes/contradictoires) : 
                         l&apos;élève doit le justifier, corrigé par IA.
                       </p>
                       <div className="flex items-center gap-3">
@@ -478,7 +478,7 @@ export default function QuizBuilder({
                             })
                           }
                           className="flex-1 border-[rgba(197,161,72,0.25)] rounded-lg py-1.5 px-3 text-sm"
-                          placeholder="Ex : Impossible — la somme des angles d'un triangle ne peut pas dépasser 180°..."
+                          placeholder="Ex : Impossible, la somme des angles d'un triangle ne peut pas dépasser 180°..."
                         />
                       </div>
                     </div>

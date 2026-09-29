@@ -42,7 +42,7 @@ export default async function ProgrammesPage() {
             Programmes officiels
           </h1>
           <p className="text-white/55 text-lg max-w-xl mx-auto leading-relaxed mb-10">
-            Du CP à la Terminale — aligné sur l&apos;Éducation Nationale, par niveau et filière.
+            Du CP à la Terminale, aligné sur l&apos;Éducation Nationale, par niveau et filière.
           </p>
 
           <LevelPicker />

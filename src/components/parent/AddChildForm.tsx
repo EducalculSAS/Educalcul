@@ -135,7 +135,7 @@ export default function AddChildForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Nom d'utilisateur (Pseudo) — optionnel</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Nom d'utilisateur (Pseudo), optionnel</label>
               <input type="text" pattern="[a-zA-Z0-9_]+" title="Lettres, chiffres et underscores uniquement" value={formData.username}
                 onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]" />

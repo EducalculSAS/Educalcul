@@ -743,7 +743,7 @@ function renderCompassTool(
     `<circle class="compass-handle" cx="${num(cx + r)}" cy="${cy}" r="6" fill="${FIG.accent}" stroke="#ffffff" stroke-width="1.5" role="button" tabindex="0" style="cursor:grab"/>` +
     figText(cx + r / 2, cy - 7, `r = ${block.radius}`, { size: 10, fill: "#8a6d3b", weight: 600 }) +
     `</svg>`;
-  return `<figure class="course-figure course-figure-compass">${svg}<figcaption>${escapeHtml(block.caption)} — fais glisser le point doré</figcaption></figure>`;
+  return `<figure class="course-figure course-figure-compass">${svg}<figcaption>${escapeHtml(block.caption)}, fais glisser le point doré</figcaption></figure>`;
 }
 
 function renderThermometerAxis(
@@ -883,7 +883,7 @@ function renderTrigCircle(
     `data-cx="${cx}" data-cy="${cy}" data-r="${r}" data-angle="45">` +
     `${figArrowDefs()}${figPaper(W, W, 19)}${axes}${circle}${marks}<g class="tc-live"></g></svg>`;
   const readout = `<div class="tc-readout"><span class="tc-angle-value">45° · cos 0.71 · sin 0.71</span></div>`;
-  return `<figure class="course-figure course-figure-trig-circle">${svg}${readout}<figcaption>${escapeHtml(block.caption)} — fais glisser le point</figcaption></figure>`;
+  return `<figure class="course-figure course-figure-trig-circle">${svg}${readout}<figcaption>${escapeHtml(block.caption)}, fais glisser le point</figcaption></figure>`;
 }
 
 /** Bloc "shape" : canevas quadrillé sur lequel on pose une ou plusieurs formes
@@ -1156,7 +1156,7 @@ function renderScientificNotationConverter(
   }
   const svg = `<svg class="sci-notation-svg edu-fig-svg" viewBox="0 0 ${width} 60" xmlns="http://www.w3.org/2000/svg" role="img" data-min-exp="${minExp}" data-max-exp="${maxExp}" data-width="${width}">${figArrowDefs()}<rect x="0" y="0" width="${num(width)}" height="60" fill="${FIG.paper}"/><line x1="20" y1="34" x2="${width - 20}" y2="34" stroke="${FIG.ink}" stroke-width="1.5"/>${ticks.join("")}<circle class="sci-notation-handle" cx="${num(x)}" cy="34" r="7" fill="${FIGURE_PALETTE.red}" stroke="#fff" stroke-width="1.5" role="button" tabindex="0"/></svg>`;
   const controls = `<div class="sci-notation-controls">Valeur : <span class="sci-notation-value">${block.value} × 10<sup class="sci-notation-exp">${block.exponent}</sup></span></div>`;
-  return `<figure class="course-figure course-figure-sci-notation" data-value="${block.value}">${svg}${controls}<figcaption>${escapeHtml(block.caption)} — fais glisser le point pour changer la puissance de 10</figcaption></figure>`;
+  return `<figure class="course-figure course-figure-sci-notation" data-value="${block.value}">${svg}${controls}<figcaption>${escapeHtml(block.caption)}, fais glisser le point pour changer la puissance de 10</figcaption></figure>`;
 }
 
 function renderEquationBalancer(
@@ -1406,7 +1406,7 @@ function renderPieChart(
     const percent = Math.round((slice.value / total) * 100);
     const color = FIGURE_PALETTE[slice.tone];
     legendItems.push(
-      `<li><span class="pie-legend-dot" style="background:${color}"></span>${escapeHtml(slice.label)} — ${percent}%</li>`,
+      `<li><span class="pie-legend-dot" style="background:${color}"></span>${escapeHtml(slice.label)} : ${percent}%</li>`,
     );
     const path =
       sweep >= 359.99
@@ -1957,7 +1957,7 @@ export function compileCourseBlock(
       // non résolu (aucune image libre trouvée) ne s'affiche pas plutôt que
       // de casser la mise en page avec une image manquante.
       if (!block.url) return "";
-      const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}${block.attribution ? ` <span class="course-image-credit">— ${escapeHtml(block.attribution)}</span>` : ""}</figcaption>` : "";
+      const caption = block.caption ? `<figcaption>${escapeHtml(block.caption)}${block.attribution ? ` <span class="course-image-credit"> : ${escapeHtml(block.attribution)}</span>` : ""}</figcaption>` : "";
       return `<figure class="course-image"><img src="${escapeAttribute(block.url)}" alt="${escapeAttribute(block.caption || "")}" loading="lazy" />${caption}</figure>`;
     }
     case "base_ten_blocks": {

@@ -20,10 +20,10 @@ import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 const FEATURE_CHOICES: { key: string; label: string }[] = [
   { key: "", label: "Aucun effet (prix seul)" },
   // Exercices — niveaux (verrou existant sur difficulty_level, granularité à finir)
-  { key: "exercises_simple", label: "Exercices — niveau simple" },
-  { key: "exercises_intermediaire", label: "Exercices — niveau intermédiaire" },
-  { key: "exercises_avance", label: "Exercices — niveau avancé" },
-  { key: "exercises_all_levels", label: "Exercices — tous les niveaux" },
+  { key: "exercises_simple", label: "Exercices, niveau simple" },
+  { key: "exercises_intermediaire", label: "Exercices, niveau intermédiaire" },
+  { key: "exercises_avance", label: "Exercices, niveau avancé" },
+  { key: "exercises_all_levels", label: "Exercices, tous les niveaux" },
   // Déjà appliqués ailleurs dans l'app (dashboard, quiz, cosmétiques, support)
   { key: "quiz_access", label: "Accès aux quiz" },
   { key: "detailed_reports", label: "Rapports hebdomadaires" },

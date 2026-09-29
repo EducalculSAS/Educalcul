@@ -75,12 +75,12 @@ export default function AdminSecurityClient({ initialEntries }: { initialEntries
       <AdminPageHeader
         icon={ShieldCheck}
         title="Sécurité"
-        subtitle="Liste blanche d'IP pour l'accès admin — vide par défaut (pas de restriction). Dès une entrée ajoutée, seules les IP listées peuvent accéder à l'administration, pour tous les comptes admin."
+        subtitle="Liste blanche d'IP pour l'accès admin, vide par défaut (pas de restriction). Dès une entrée ajoutée, seules les IP listées peuvent accéder à l'administration, pour tous les comptes admin."
       />
 
       {entries.length === 0 && (
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
-          Liste vide — aucune restriction d&apos;IP n&apos;est appliquée actuellement. Dès que tu ajoutes une entrée, l&apos;accès admin sera limité aux IP listées.
+          Liste vide, aucune restriction d&apos;IP n&apos;est appliquée actuellement. Dès que tu ajoutes une entrée, l&apos;accès admin sera limité aux IP listées.
         </div>
       )}
 
@@ -120,7 +120,7 @@ export default function AdminSecurityClient({ initialEntries }: { initialEntries
             {entries.map((e) => (
               <tr key={e.id} className="hover:bg-gray-50">
                 <td className="px-4 py-3 font-mono text-[var(--greek-blue)]">{e.cidr}</td>
-                <td className="px-4 py-3 text-gray-700">{e.label || "—"}</td>
+                <td className="px-4 py-3 text-gray-700">{e.label || "-"}</td>
                 <td className="px-4 py-3 text-gray-500">
                   {new Date(e.created_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
                 </td>
@@ -130,7 +130,7 @@ export default function AdminSecurityClient({ initialEntries }: { initialEntries
               </tr>
             ))}
             {entries.length === 0 && (
-              <tr><td colSpan={4} className="px-4 py-8 text-center text-gray-400">Aucune restriction — accès ouvert à toute IP.</td></tr>
+              <tr><td colSpan={4} className="px-4 py-8 text-center text-gray-400">Aucune restriction, accès ouvert à toute IP.</td></tr>
             )}
           </tbody>
         </table>

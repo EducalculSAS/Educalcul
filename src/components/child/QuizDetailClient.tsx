@@ -265,7 +265,7 @@ export default function QuizDetailClient({
                       {attemptsHistory.slice(-5).reverse().map((a, i) => (
                         <div key={i} className="flex items-center justify-between text-sm bg-[var(--greek-cream)] rounded-lg px-3 py-2 border border-[rgba(197,161,72,0.15)]">
                           <span className="text-gray-500">
-                            {a.completed_at ? new Date(a.completed_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "—"}
+                            {a.completed_at ? new Date(a.completed_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "-"}
                           </span>
                           <span className="flex items-center gap-2">
                             <span className={`font-bold ${a.passed === false ? "text-red-500" : "text-green-600"}`}>

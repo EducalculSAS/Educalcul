@@ -203,7 +203,7 @@ export async function runScan(runId: string, categoryKey: string): Promise<void>
       await tracker.updateProgress({
         current: i + 1,
         total: batches.length,
-        message: `Lot ${i + 1}/${batches.length} analysé — ${totalFindings} problème(s) trouvé(s)${
+        message: `Lot ${i + 1}/${batches.length} analysé : ${totalFindings} problème(s) trouvé(s)${
           failedBatches > 0 ? `, ${failedBatches} lot(s) en échec` : ""
         }.`,
       });

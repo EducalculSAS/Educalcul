@@ -151,7 +151,7 @@ export default function ExercisesCatalog({
             {isLocked ? (
               <GlassButton href="/parent/subscription" variant="ghost" fullWidth size="sm">
                 <Lock className="w-4 h-4" />
-                Débloquer — Plan supérieur
+                Débloquer : Plan supérieur
               </GlassButton>
             ) : (
               <GlassButton
@@ -187,7 +187,7 @@ export default function ExercisesCatalog({
         ) : (
           <>
             <h2 className="text-2xl font-bold text-[var(--greek-blue)]">
-              Exercices {courseTitle ? `— ${courseTitle}` : "de ce cours"}
+              Exercices {courseTitle ? ` : ${courseTitle}` : "de ce cours"}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {courseExercises.map((exercise, index) => renderExerciseCard(exercise, index, 0))}

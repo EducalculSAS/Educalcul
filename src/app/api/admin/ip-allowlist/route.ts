@@ -41,7 +41,7 @@ export async function POST(req: Request) {
       null;
     if (callerIp && !ipMatchesCidr(callerIp, trimmed)) {
       return Response.json(
-        { error: `Cette entrée exclurait votre propre IP (${callerIp}) — ajout refusé pour éviter un verrouillage.` },
+        { error: `Cette entrée exclurait votre propre IP (${callerIp}), ajout refusé pour éviter un verrouillage.` },
         { status: 400 },
       );
     }

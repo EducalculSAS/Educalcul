@@ -712,7 +712,7 @@ export const COURSE_BLOCK_SCHEMA_PROMPT = `Les blocs autorisés dans une leçon 
 5. Encadré :
 {"type":"callout","variant":"note","title":RICH_TEXT,"paragraphs":[RICH_TEXT]}
 variant vaut "note" ou "warning". Réserve les encadrés aux définitions, résultats clés et mises en garde.
-6. Tableau de valeurs ou de comparaison — jamais pour un signe ou une variation :
+6. Tableau de valeurs ou de comparaison, jamais pour un signe ou une variation :
 {"type":"table","variant":"value","headers":[RICH_TEXT,RICH_TEXT],"rows":[[RICH_TEXT,RICH_TEXT]]}
 Toutes les lignes ont exactement autant de cellules que headers.
 7. Tableau de signes structuré :
@@ -725,7 +725,7 @@ points et values ont la même longueur ; directions et derivative_signs ont exac
 {"type":"graph","expression":"exp(x)","xmin":-5,"xmax":5,"caption":"Description courte sans LaTeX","parameter":null,"vectors":[]}
 Pour une famille paramétrée, remplace null par {"name":"a","min":-3,"max":3,"default":1} et utilise a dans expression.
 Pour superposer un vecteur sur le repère, ajoute dans vectors : {"x":2,"y":3,"from_x":0,"from_y":0,"label":"u","tone":"red"}. Les labels sont du texte court, sans LaTeX.
-10. Figure statique structurée — seulement pour géométrie, fractions, aires, schémas d'énoncé ; jamais pour tracer une courbe de fonction :
+10. Figure statique structurée, seulement pour géométrie, fractions, aires, schémas d'énoncé ; jamais pour tracer une courbe de fonction :
 {"type":"figure","caption":"Description courte","elements":[
   {"type":"line","x1":25,"y1":125,"x2":170,"y2":125,"tone":"navy","dashed":false,"arrow_end":false,"label":RICH_TEXT,"label_x":95,"label_y":145},
   {"type":"point","x":25,"y":125,"tone":"gold","label":RICH_TEXT,"label_x":15,"label_y":140}
@@ -745,10 +745,10 @@ Seul bloc autorisé pour un calcul posé en colonnes : jamais de \\begin{array},
 Le serveur cherche et insère une vraie photo libre de droits correspondant à "query" (en français ou anglais, décris précisément ce qu'il faut voir) : jamais d'URL, jamais de balise img, jamais de description d'image qui n'est pas accompagnée de ce bloc. N'écris JAMAIS une phrase du type "regarde cette image" ou "observe ce dessin" sans placer ce bloc juste à côté : si tu mentionnes un visuel, il doit exister sous forme de bloc (image, figure, table...). Si aucune bonne photo n'est probable pour ce concept (notion abstraite, calcul...), décris en mots au lieu de demander une image.
 15. Dizaines/centaines/unités (numération, valeur positionnelle) :
 {"type":"base_ten_blocks","hundreds":0,"tens":5,"units":3,"caption":"53 : 5 dizaines et 3 unités"}
-Bloc OBLIGATOIRE dès que tu représentes visuellement un nombre en dizaines/unités (ou centaines) — n'essaie JAMAIS de dessiner ça toi-même avec le bloc "figure" (lignes/points/polygones à la main) : c'est illisible et peu soigné. hundreds/tens/units sont les chiffres de 0 à 9 de chaque rang.
+Bloc OBLIGATOIRE dès que tu représentes visuellement un nombre en dizaines/unités (ou centaines), n'essaie JAMAIS de dessiner ça toi-même avec le bloc "figure" (lignes/points/polygones à la main) : c'est illisible et peu soigné. hundreds/tens/units sont les chiffres de 0 à 9 de chaque rang.
 16. Formes géométriques sur feuille quadrillée (bloc composable) :
 {"type":"shape","caption":"Triangle ABC rectangle en A","width":9,"height":7,"preset":"none","a":3,"b":4,"parts":[{"kind":"right_triangle","x":1,"y":1,"w":7,"h":5,"r":3,"points":[],"tone":"navy","filled":true,"dashed":false,"vertex_labels":["A","B","C"],"side_labels":["","5 cm","3 cm"],"right_angle_at":0,"show_dimensions":false}]}
-Chaque part est une forme simple posée sur le quadrillage (origine en bas à gauche ; x, y, w, h, r en carreaux). kind ∈ rectangle, square, right_triangle, triangle, circle, segment, point, text. La part "text" pose un nombre / une courte étiquette libre en (x, y) — pour les effectifs d'un Venn, une aire, une valeur. On ajoute des OPTIONS plutôt qu'une figure spéciale : vertex_labels (noms des sommets A, B, C…), side_labels (longueurs des côtés), right_angle_at (index du sommet à angle droit, ou null), show_dimensions (cotes auto). Triangle quelconque : "points" = 3 sommets. Combine plusieurs parts sur le même canevas : un diagramme de Venn = 2-3 cercles qui se chevauchent + des parts text ; une décomposition d'aire = plusieurs rectangles. preset:"pythagoras" (avec a, b) assemble un triangle rectangle et les 3 carrés de ses côtés. PRIVILÉGIE "shape" pour TOUTE figure géométrique ; "figure" ne sert que si aucun assemblage de parts ne convient.
+Chaque part est une forme simple posée sur le quadrillage (origine en bas à gauche ; x, y, w, h, r en carreaux). kind ∈ rectangle, square, right_triangle, triangle, circle, segment, point, text. La part "text" pose un nombre / une courte étiquette libre en (x, y), pour les effectifs d'un Venn, une aire, une valeur. On ajoute des OPTIONS plutôt qu'une figure spéciale : vertex_labels (noms des sommets A, B, C…), side_labels (longueurs des côtés), right_angle_at (index du sommet à angle droit, ou null), show_dimensions (cotes auto). Triangle quelconque : "points" = 3 sommets. Combine plusieurs parts sur le même canevas : un diagramme de Venn = 2-3 cercles qui se chevauchent + des parts text ; une décomposition d'aire = plusieurs rectangles. preset:"pythagoras" (avec a, b) assemble un triangle rectangle et les 3 carrés de ses côtés. PRIVILÉGIE "shape" pour TOUTE figure géométrique ; "figure" ne sert que si aucun assemblage de parts ne convient.
 Ne crée aucun autre type de bloc.`;
 
 const ENTITY_MAP: Record<string, string> = {

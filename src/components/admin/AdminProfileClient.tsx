@@ -340,7 +340,7 @@ export default function AdminProfileClient({ initialFormData }: {
                   <img src={ADMIN_AVATAR} alt="Logo" className="w-12 h-12 rounded-xl object-contain" />
                   <div>
                     <p className="text-sm font-semibold text-gray-700">Photo de profil</p>
-                    <p className="text-xs text-gray-400 mt-0.5">Le logo du site est utilisé comme photo admin — non modifiable.</p>
+                    <p className="text-xs text-gray-400 mt-0.5">Le logo du site est utilisé comme photo admin, non modifiable.</p>
                   </div>
                 </div>
 

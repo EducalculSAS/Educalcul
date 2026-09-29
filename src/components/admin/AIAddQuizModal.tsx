@@ -125,7 +125,7 @@ export default function AIAddQuizModal({
                   <option value="start">Au début</option>
                   <option value="end">À la fin</option>
                   {questions.map((q, i) => (
-                    <option key={q.id} value={q.id}>{`Après la question ${i + 1}${q.text ? ` — ${q.text.slice(0, 40)}` : ""}`}</option>
+                    <option key={q.id} value={q.id}>{`Après la question ${i + 1}${q.text ? ` : ${q.text.slice(0, 40)}` : ""}`}</option>
                   ))}
                 </select>
               </div>

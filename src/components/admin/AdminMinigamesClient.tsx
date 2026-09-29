@@ -22,7 +22,7 @@ export default function AdminMinigamesClient({ stats }: { stats: Stats }) {
   const [dailyGameType, setDailyGameType] = useState<MinigameType>("calcul_mental");
 
   const cards = [
-    { gameType: "mathador", label: "Mathador", icon: Sigma, desc: "Jeu procédural, aucune génération IA nécessaire — vérifié solvable à chaque tirage." },
+    { gameType: "mathador", label: "Mathador", icon: Sigma, desc: "Jeu procédural, aucune génération IA nécessaire, vérifié solvable à chaque tirage." },
     ...listGameTypes().map((g) => ({
       gameType: g.gameType,
       label: g.label,

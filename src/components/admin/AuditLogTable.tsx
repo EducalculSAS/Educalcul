@@ -37,9 +37,9 @@ const ACTION_LABELS: Record<string, string> = {
 };
 
 function userLabel(u: { first_name?: string; last_name?: string; email?: string } | null): string {
-  if (!u) return "—";
+  if (!u) return "-";
   const name = [u.first_name, u.last_name].filter(Boolean).join(" ");
-  return name || u.email || "—";
+  return name || u.email || "-";
 }
 
 /** Table paginée : la page 1 arrive déjà chargée du serveur ; changer de
@@ -130,7 +130,7 @@ export default function AuditLogTable({
                   {e.details?.method && <span className="ml-1 font-normal text-gray-400">({e.details.method})</span>}
                 </td>
                 <td className="px-4 py-3 text-gray-700">{userLabel(e.admin)}</td>
-                <td className="px-4 py-3 text-gray-700">{e.target ? userLabel(e.target) : (e.target_type || "—")}</td>
+                <td className="px-4 py-3 text-gray-700">{e.target ? userLabel(e.target) : (e.target_type || "-")}</td>
                 <td className="px-4 py-3 text-gray-400 font-mono text-xs">{e.ip_address}</td>
               </tr>
             ))}

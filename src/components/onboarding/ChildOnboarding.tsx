@@ -49,7 +49,7 @@ const TOUR_STEPS = [
     title: "Assistant Calia & Forum",
     desc: "Calia t'aide quand tu bloques. Le forum te permet d'échanger avec d'autres élèves.",
     color: "from-green-50 to-teal-50",
-    tip: "Calia ne donne jamais la réponse directement — elle te guide !",
+    tip: "Calia ne donne jamais la réponse directement, elle te guide !",
   },
 ];
 
@@ -235,7 +235,7 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
             </div>
 
             <div className="px-8 pb-6 text-center">
-              <p className="text-xs text-gray-400">Ce test aide à personnaliser ton expérience — pas de mauvaises réponses !</p>
+              <p className="text-xs text-gray-400">Ce test aide à personnaliser ton expérience, pas de mauvaises réponses !</p>
             </div>
           </div>
         )}

@@ -35,7 +35,7 @@ export function getEnigmeRule(code: string): EnigmeRule | null {
 
 export function buildEnigmesSystemPrompt(rule: EnigmeRule, avoidPrompts: string[] = [], theme?: string): string {
   const avoidBlock = avoidPrompts.length
-    ? `\n\nCes énigmes ont déjà été utilisées récemment pour ce palier — ne les reproduis pas, même reformulées :\n${avoidPrompts.map((p) => `- ${p}`).join("\n")}`
+    ? `\n\nCes énigmes ont déjà été utilisées récemment pour ce palier, ne les reproduis pas, même reformulées :\n${avoidPrompts.map((p) => `- ${p}`).join("\n")}`
     : "";
   const themeBlock = theme?.trim()
     ? `\n\nThème à privilégier pour cette fiche : "${theme.trim()}". Habille les énigmes autour de ce thème SANS sacrifier la clarté de l'indice.`

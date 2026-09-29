@@ -55,7 +55,7 @@ export default function ChildLevelsCard({
         <GraduationCap className="w-4 h-4" /> Niveaux visibles
       </h2>
       <p className="text-xs text-gray-500 mb-3">
-        Classe principale : <strong className="text-[var(--greek-blue)]">{gradeLevel ? getLevelLabel(gradeLevel) : "—"}</strong>.
+        Classe principale : <strong className="text-[var(--greek-blue)]">{gradeLevel ? getLevelLabel(gradeLevel) : "-"}</strong>.
         {hasSpecialtyChoice(gradeLevel) && (specialtiesChosenAt ? " Spécialités confirmées." : " Spécialités pas encore choisies (demandées à la prochaine connexion).")}
         {" "}Cochez les niveaux à afficher en plus.
       </p>

@@ -182,7 +182,7 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
             calibré pour un fond clair (opacité 0.12) : sur le navy foncé de
             la sidebar, le survol reste quasi invisible alors que les items
             du dessus (variant light/gold, opacité 0.14-0.32) pulsent bien.
-            Même override manuel que fait déjà l'item actif — juste teinté
+            Même override manuel que fait déjà l'item actif, juste teinté
             rouge à une opacité comparable pour un vrai retour au survol. */}
         <div className="flex-shrink-0 p-3 border-t border-[rgba(197,161,72,0.25)]">
           <GlassButton

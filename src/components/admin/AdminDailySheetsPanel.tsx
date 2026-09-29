@@ -164,7 +164,7 @@ export default function AdminDailySheetsPanel({ gameType }: { gameType: Minigame
     <div className="space-y-4">
       <div className="flex items-center justify-between flex-wrap gap-2">
         <p className="text-sm text-gray-500">
-          Contenu du jour par palier — généré automatiquement chaque nuit, modifiable ici si besoin.
+          Contenu du jour par palier, généré automatiquement chaque nuit, modifiable ici si besoin.
           Les <Lock className="inline w-3 h-3 -mt-0.5" style={{ color: "var(--greek-gold)" }} /> {config.freeQuestionCount + 1}ᵉ à 5ᵉ questions sont réservées au premium.
         </p>
         <input

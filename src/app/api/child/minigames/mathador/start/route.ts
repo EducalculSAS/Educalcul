@@ -51,7 +51,7 @@ export async function POST(req: Request) {
       .gte("created_at", `${today}T00:00:00.000Z`)
       .maybeSingle();
     if (alreadyPlayedToday) {
-      return NextResponse.json({ error: "Tu as déjà fait Mathador aujourd'hui — reviens demain !" }, { status: 400 });
+      return NextResponse.json({ error: "Tu as déjà fait Mathador aujourd'hui, reviens demain !" }, { status: 400 });
     }
 
     // Évite de retirer un tirage déjà joué récemment par ce même enfant —

@@ -90,7 +90,7 @@ export default function ConnexionClient() {
       await supabase.auth.signOut();
       setError(
         err?.name === "NotAllowedError"
-          ? "Vérification par clé d'accès annulée — recommence et confirme avec ton empreinte/Face ID."
+          ? "Vérification par clé d'accès annulée, recommence et confirme avec ton empreinte/Face ID."
           : (err?.message || "Échec de la vérification par clé d'accès.")
       );
       return false;

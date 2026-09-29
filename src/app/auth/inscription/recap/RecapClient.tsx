@@ -197,7 +197,7 @@ export default function RecapClient() {
           <h1 className="font-[family-name:var(--font-display)] text-3xl text-[var(--greek-blue)] font-bold mb-2">
             Vérifiez vos informations
           </h1>
-          <p className="text-gray-600">Dernière étape avant le paiement — corrigez si besoin</p>
+          <p className="text-gray-600">Dernière étape avant le paiement, corrigez si besoin</p>
         </div>
 
         {error && (
@@ -243,7 +243,7 @@ export default function RecapClient() {
                 <p key={o.id}>+ {o.label}</p>
               ))}
               <p className="text-xl font-bold text-[var(--greek-blue)] mt-3">
-                {custom ? custom.price.toFixed(2) : "—"}€<span className="text-sm font-normal">/mois</span>
+                {custom ? custom.price.toFixed(2) : "-"}€<span className="text-sm font-normal">/mois</span>
               </p>
             </div>
           ) : (
@@ -292,7 +292,7 @@ export default function RecapClient() {
             </div>
           </div>
           {referralStatus === "valid" && (
-            <p className="text-xs text-green-600 font-medium mt-2"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Code valide — remise appliquée lors du paiement</p>
+            <p className="text-xs text-green-600 font-medium mt-2"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Code valide, remise appliquée lors du paiement</p>
           )}
           {referralStatus === "invalid" && (
             <p className="text-xs text-red-500 mt-2">Code invalide ou expiré</p>

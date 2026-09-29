@@ -264,7 +264,7 @@ export default function AdminJuridiqueClient({ initialPages }: { initialPages: R
                           <label className={labelCls}>
                             Contenu
                             <span className="ml-2 normal-case font-normal text-gray-400">
-                              — <code className="bg-gray-100 px-1 rounded">## Sous-titre</code>{" "}
+, <code className="bg-gray-100 px-1 rounded">## Sous-titre</code>{" "}
                               <code className="bg-gray-100 px-1 rounded">- Item liste</code>{" "}
                               <code className="bg-gray-100 px-1 rounded">**gras**</code>{" "}
                               <code className="bg-gray-100 px-1 rounded">[info]...[/info]</code>

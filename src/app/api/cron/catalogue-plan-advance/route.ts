@@ -134,14 +134,14 @@ async function handle(req: Request) {
       const sourceLessons = Array.isArray(item.source_lessons) ? item.source_lessons : [];
       const sourceList = sourceLessons
         .map((l: { title?: string; lesson_type?: string; mini_description?: string }, i: number) =>
-          `${i + 1}. [${l.lesson_type || "?"}] ${l.title || ""} — ${l.mini_description || ""}`,
+          `${i + 1}. [${l.lesson_type || "?"}] ${l.title || ""} : ${l.mini_description || ""}`,
         )
         .join("\n");
 
       const systemPrompt = `Tu es un ingénieur pédagogique qui planifie la structure d'un chapitre de mathématiques pour Educalcul (niveau ${item.level_name}, ${item.program_version || "programme 2026-2027"}).
 Philosophie : beaucoup de PETITES micro-leçons ciblées plutôt que peu de leçons longues. Chaque micro-leçon doit rester courte et se concentrer sur UNE seule chose précise.
-Le nombre de leçons à produire pour ce chapitre N'EST PAS fixe : adapte-le à l'importance réelle du sujet pour ce niveau. Un chapitre central et fondateur (ex: les nombres et la numération, l'addition, la soustraction) mérite significativement PLUS de leçons qu'un chapitre secondaire, car il doit être expliqué, démontré, visualisé ET surtout beaucoup exercé — c'est la pratique qui compte le plus.
-Pour chaque chapitre, prévois un vrai parcours complet : au moins une leçon de découverte, plusieurs leçons d'explication/démonstration qui couvrent chaque sous-notion du squelette ci-dessous sans en oublier aucune, au moins une leçon de visualisation concrète si le sujet s'y prête, et SURTOUT plusieurs leçons dédiées uniquement à l'entraînement (role "exercices") — ce sont les leçons les plus importantes du chapitre. RÈGLE STRICTE : au moins un quart des leçons produites (arrondi au supérieur, jamais moins de 2 dès que le chapitre a plus de 4 leçons) doivent avoir le role "exercices" — répartis pour faire pratiquer chaque sous-notion vue dans les leçons d'explication, pas une seule leçon d'entraînement générale en fin de chapitre.
+Le nombre de leçons à produire pour ce chapitre N'EST PAS fixe : adapte-le à l'importance réelle du sujet pour ce niveau. Un chapitre central et fondateur (ex: les nombres et la numération, l'addition, la soustraction) mérite significativement PLUS de leçons qu'un chapitre secondaire, car il doit être expliqué, démontré, visualisé ET surtout beaucoup exercé, c'est la pratique qui compte le plus.
+Pour chaque chapitre, prévois un vrai parcours complet : au moins une leçon de découverte, plusieurs leçons d'explication/démonstration qui couvrent chaque sous-notion du squelette ci-dessous sans en oublier aucune, au moins une leçon de visualisation concrète si le sujet s'y prête, et SURTOUT plusieurs leçons dédiées uniquement à l'entraînement (role "exercices"), ce sont les leçons les plus importantes du chapitre. RÈGLE STRICTE : au moins un quart des leçons produites (arrondi au supérieur, jamais moins de 2 dès que le chapitre a plus de 4 leçons) doivent avoir le role "exercices", répartis pour faire pratiquer chaque sous-notion vue dans les leçons d'explication, pas une seule leçon d'entraînement générale en fin de chapitre.
 Le champ "is_number_intro" doit être true UNIQUEMENT pour une leçon de niveau CP qui apprend explicitement à lire/écrire/reconnaître des chiffres ou des nombres (ex: "Découvrir le chiffre 3"), false sinon.
 Chaque titre doit être spécifique et parlant (jamais générique type "Leçon 1" ou une simple recopie du nom du chapitre).`;
 
@@ -150,7 +150,7 @@ Chapitre : ${item.chapter_name}
 ${item.chapter_description ? `Description du chapitre : ${item.chapter_description}` : ""}
 ${item.chapter_focus ? `Focus du chapitre : ${item.chapter_focus}` : ""}
 
-Squelette de leçons du catalogue d'origine pour ce chapitre (à couvrir intégralement, mais en développant beaucoup plus en détail — n'hésite pas à multiplier les petites leçons si le sujet est important) :
+Squelette de leçons du catalogue d'origine pour ce chapitre (à couvrir intégralement, mais en développant beaucoup plus en détail, n'hésite pas à multiplier les petites leçons si le sujet est important) :
 ${sourceList || "(aucun squelette fourni)"}
 
 Produis le plan de micro-leçons pour ce chapitre.`;

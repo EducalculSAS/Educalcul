@@ -165,7 +165,7 @@ export default function AdminFeatureFlagsClient({ initialStates }: { initialStat
               value={messages[MAINTENANCE_KEY] ?? ""}
               onChange={(v) => setMessages((m) => ({ ...m, [MAINTENANCE_KEY]: v }))}
               onSave={() => save(MAINTENANCE_KEY, isOn(MAINTENANCE_KEY)).then((ok) => ok && toast.success("Message enregistré."))}
-              placeholder="Message affiché pendant la maintenance (facultatif) — ex. « Retour prévu à 14 h »."
+              placeholder="Message affiché pendant la maintenance (facultatif), ex. « Retour prévu à 14 h »."
               saving={busy === MAINTENANCE_KEY}
             />
             {maintenanceOn && (

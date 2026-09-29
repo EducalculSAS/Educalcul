@@ -287,7 +287,7 @@ export default function AdminEmailsClient({
         <div>
           <h2 className="font-[family-name:var(--font-display)] text-lg font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
             <Lock className="w-4 h-4 text-gray-400" /> Emails système
-            <span className="text-sm font-normal text-gray-400">— Envoyés automatiquement, non supprimables</span>
+            <span className="text-sm font-normal text-gray-400"> : Envoyés automatiquement, non supprimables</span>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {systemTemplates.map(t => <TemplateCard key={t.id} tmpl={t} />)}
@@ -298,7 +298,7 @@ export default function AdminEmailsClient({
         <div>
           <h2 className="font-[family-name:var(--font-display)] text-lg font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
             <Send className="w-4 h-4 text-[var(--greek-gold)]" /> Campagnes
-            <span className="text-sm font-normal text-gray-400">— Envois manuels ou planifiés</span>
+            <span className="text-sm font-normal text-gray-400"> : Envois manuels ou planifiés</span>
           </h2>
           {campaignTemplates.length === 0 ? (
             <div className="text-center py-12 text-gray-400 bg-white rounded-xl border border-dashed border-gray-200">
@@ -422,7 +422,7 @@ export default function AdminEmailsClient({
             ) : (
               <div className="flex-1 overflow-auto bg-gray-950 p-5">
                 <div className="flex items-center gap-2 mb-3">
-                  <p className="text-xs text-gray-400">HTML complet généré — modifiez le corps dans l'onglet <strong className="text-gray-300">Contenu</strong> pour changer le rendu</p>
+                  <p className="text-xs text-gray-400">HTML complet généré, modifiez le corps dans l'onglet <strong className="text-gray-300">Contenu</strong> pour changer le rendu</p>
                 </div>
                 <pre className="text-xs text-green-300 font-mono whitespace-pre-wrap break-all leading-relaxed select-all">{fullHtml}</pre>
               </div>
@@ -445,7 +445,7 @@ export default function AdminEmailsClient({
         <div className="fixed inset-0 z-[1060] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 modal-overlay">
           <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-md">
             <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-              <h3 className="font-bold text-[var(--greek-blue)]">Envoyer — {sendTmpl.name}</h3>
+              <h3 className="font-bold text-[var(--greek-blue)]">Envoyer : {sendTmpl.name}</h3>
               <GlassIconButton icon={X} onClick={() => setSendTmpl(null)} color="gray" size="sm" aria-label="Fermer" />
             </div>
             <div className="p-6 space-y-4">

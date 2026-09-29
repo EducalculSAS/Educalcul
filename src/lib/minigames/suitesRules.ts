@@ -30,7 +30,7 @@ export function getSuiteRule(code: string): SuiteRule | null {
 
 export function buildSuitesSystemPrompt(rule: SuiteRule, avoidPrompts: string[] = [], theme?: string): string {
   const avoidBlock = avoidPrompts.length
-    ? `\n\nCes questions ont déjà été utilisées récemment pour ce palier — ne les reproduis pas, même reformulées :\n${avoidPrompts.map((p) => `- ${p}`).join("\n")}`
+    ? `\n\nCes questions ont déjà été utilisées récemment pour ce palier, ne les reproduis pas, même reformulées :\n${avoidPrompts.map((p) => `- ${p}`).join("\n")}`
     : "";
   const themeBlock = theme?.trim()
     ? `\n\nThème à privilégier pour cette fiche : "${theme.trim()}". SANS sortir du cadre de difficulté ci-dessous.`

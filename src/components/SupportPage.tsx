@@ -158,7 +158,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
               <div>
                 <label className={labelCls}>Priorité</label>
                 <select value={form.priority} onChange={e => setForm({ ...form, priority: e.target.value })} className={inputCls}>
-                  <option value="low">Faible — pas urgent</option>
+                  <option value="low">Faible, pas urgent</option>
                   <option value="normal">Normal</option>
                   <option value="high">Urgent</option>
                 </select>

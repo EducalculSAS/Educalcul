@@ -48,7 +48,7 @@ export default function Contact() {
                   Contactez-nous
                 </h1>
                 <p className="text-white/55 text-lg leading-relaxed">
-                  Une équipe française à votre écoute — pour chaque question, grande ou petite.
+                  Une équipe française à votre écoute, pour chaque question, grande ou petite.
                 </p>
               </div>
               <div className="hidden md:flex flex-col gap-3">

@@ -42,7 +42,7 @@ export async function GET(
   const category = getScanCategory(run.category);
   const lines: string[] = [];
 
-  lines.push(`RAPPORT SCANNER IA — ${category?.label || run.category}`);
+  lines.push(`RAPPORT SCANNER IA : ${category?.label || run.category}`);
   lines.push(`Généré le : ${new Date(run.created_at).toLocaleString("fr-FR")}`);
   lines.push(`Statut : ${run.status}`);
   lines.push(`Problèmes détectés : ${(findings || []).length}`);

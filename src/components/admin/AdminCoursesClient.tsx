@@ -957,8 +957,8 @@ export default function AdminCoursesClient({
         {/* Indicateur seulement si l'attente dure (appear-late : 400 ms) —
             un dossier qui s'ouvre vite ne doit rien faire clignoter. */}
         {loading && (
-          <div className="col-span-full appear-late">
-            <PageLoader />
+          <div className="col-span-full appear-late order-last">
+            <PageLoader className="h-24" />
           </div>
         )}
 

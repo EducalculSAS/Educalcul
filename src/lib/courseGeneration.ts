@@ -167,7 +167,7 @@ Chaque exercice respecte exactement :
 }
 Les exercices n'ont aucun id. Dans les blocs, place {"type":"exercise","exercise_index":1}, puis 2 et 3, juste après les notions correspondantes.
 La question ne contient jamais la réponse. answer et la conclusion de explanation donnent exactement le même résultat mathématique. Recalcule chaque activité avant de répondre.
-Varie la formulation d'un exercice à l'autre (l'élève ne doit jamais voir 3 énoncés qui se ressemblent) : mélange par exemple un calcul direct, un "Vrai ou faux ? Justifier.", un "Identifie l'erreur dans ce raisonnement : [raisonnement fautif court]" ou une comparaison de deux valeurs — toujours répondu en texte libre, jamais de choix à cocher.`;
+Varie la formulation d'un exercice à l'autre (l'élève ne doit jamais voir 3 énoncés qui se ressemblent) : mélange par exemple un calcul direct, un "Vrai ou faux ? Justifier.", un "Identifie l'erreur dans ce raisonnement : [raisonnement fautif court]" ou une comparaison de deux valeurs, toujours répondu en texte libre, jamais de choix à cocher.`;
 }
 
 function visualRequirement(focus: CourseVisualFocus): string {
@@ -184,7 +184,7 @@ function visualRequirement(focus: CourseVisualFocus): string {
     return 'Ajoute un bloc "sign_table" cohérent avec les racines et les intervalles.';
   }
   if (focus === "figure") {
-    return 'Ajoute le bloc dédié le plus adapté : "shape" (rectangle, triangle, cercle, Venn, décomposition d\'aire… : formes simples + points + nombres sur quadrillage — préféré pour toute figure géométrique), "trig_circle" (cercle trigonométrique), "pie_chart" (camembert), "number_line" (droite graduée, intervalle), "bar_chart" (effectifs) ou "probability_tree" (arbre pondéré). N\'utilise "figure" que si aucun ne correspond. Jamais une courbe de fonction.';
+    return 'Ajoute le bloc dédié le plus adapté : "shape" (rectangle, triangle, cercle, Venn, décomposition d\'aire… : formes simples + points + nombres sur quadrillage, préféré pour toute figure géométrique), "trig_circle" (cercle trigonométrique), "pie_chart" (camembert), "number_line" (droite graduée, intervalle), "bar_chart" (effectifs) ou "probability_tree" (arbre pondéré). N\'utilise "figure" que si aucun ne correspond. Jamais une courbe de fonction.';
   }
   return 'Ajoute un bloc "table" utile de valeurs, propriétés ou comparaison.';
 }
@@ -214,7 +214,7 @@ Blocs autorisés :
 8. {"type":"variation_table","variable":"$x$","function_name":"$f$","points":["$-\\\\infty$","$0$","$+\\\\infty$"],"values":["$0$","$1$","$+\\\\infty$"],"directions":["up","up"],"derivative_signs":["positive","positive"]}
 9. {"type":"graph","expression":"exp(x)","xmin":-5,"xmax":5,"caption":"Courbe de $f(x)=e^x$, asymptote horizontale $y=0$ en $-\\\\infty$.","parameter":null,"vectors":[]}
 10. {"type":"figure", ...} uniquement pour un schéma géométrique simple non couvert par les blocs 11-17 ci-dessous (jamais une courbe, jamais un cercle trigonométrique).
-11. {"type":"trig_circle","caption":"Angles remarquables du deuxième quadrant","highlighted_angles":[{"angle_deg":90,"label":"π/2"},{"angle_deg":120,"label":"2π/3"},{"angle_deg":135,"label":"3π/4"}]} — le serveur dessine tout le cercle unité, ses axes et ses 16 angles remarquables ; highlighted_angles ne fait que mettre en avant (gros point rouge + étiquette) ceux qui comptent pour la leçon. label = nom court de l'angle.
+11. {"type":"trig_circle","caption":"Angles remarquables du deuxième quadrant","highlighted_angles":[{"angle_deg":90,"label":"π/2"},{"angle_deg":120,"label":"2π/3"},{"angle_deg":135,"label":"3π/4"}]}, le serveur dessine tout le cercle unité, ses axes et ses 16 angles remarquables ; highlighted_angles ne fait que mettre en avant (gros point rouge + étiquette) ceux qui comptent pour la leçon. label = nom court de l'angle.
 12. {"type":"pie_chart","caption":"Répartition des réponses.","slices":[{"label":"Oui","value":60,"tone":"blue"},{"label":"Non","value":40,"tone":"gold"}]}
 13. {"type":"number_line","caption":"Ensemble des solutions.","min":-5,"max":5,"points":[{"value":2,"label":"2","filled":true}],"intervals":[{"from":-2,"to":3,"from_included":false,"to_included":true,"tone":"blue"}]}
 14. {"type":"bar_chart","caption":"Effectifs par catégorie.","bars":[{"label":"A","value":12,"tone":"blue"},{"label":"B","value":7,"tone":"gold"}]}
@@ -225,8 +225,8 @@ Blocs autorisés :
 18. {"type":"box_plot","caption":"Diagramme en boîte des notes.","min":4,"q1":9,"median":12,"q3":15,"max":19,"axis_label":"Notes sur 20"}
 19. {"type":"steps","steps":[{"title":"Étape 1","blocks":[BLOCS]}]}
 20. {"type":"exercise","exercise_index":1}
-21. {"type":"column_operation","operator":"+","operands":["24","15"],"result":"39","carries":[]} — POUR TOUTE opération posée en colonnes (addition, soustraction, multiplication, division), quel que soit le niveau : jamais de \\begin{array}, jamais de tableau Markdown ni de bloc "table" pour représenter un calcul posé, c'est le seul bloc autorisé pour ça. operands : les nombres du haut vers le bas (2 à 4). result : le résultat final. carries : les retenues au-dessus de chaque colonne si besoin (ex ["1"] pour une addition avec une retenue), tableau vide sinon. Exemple soustraction avec emprunt : {"type":"column_operation","operator":"-","operands":["52","27"],"result":"25","carries":[]}.
-Les blocs 11-18 et 21 sont déterministes : ne fournis QUE les données sémantiques demandées (angles, valeurs, labels courts, opérandes), jamais de coordonnées x/y ni de mise en page — le serveur calcule toute la disposition.`;
+21. {"type":"column_operation","operator":"+","operands":["24","15"],"result":"39","carries":[]} : POUR TOUTE opération posée en colonnes (addition, soustraction, multiplication, division), quel que soit le niveau : jamais de \\begin{array}, jamais de tableau Markdown ni de bloc "table" pour représenter un calcul posé, c'est le seul bloc autorisé pour ça. operands : les nombres du haut vers le bas (2 à 4). result : le résultat final. carries : les retenues au-dessus de chaque colonne si besoin (ex ["1"] pour une addition avec une retenue), tableau vide sinon. Exemple soustraction avec emprunt : {"type":"column_operation","operator":"-","operands":["52","27"],"result":"25","carries":[]}.
+Les blocs 11-18 et 21 sont déterministes : ne fournis QUE les données sémantiques demandées (angles, valeurs, labels courts, opérandes), jamais de coordonnées x/y ni de mise en page, le serveur calcule toute la disposition.`;
 
 function formatList(values: string[], fallback: string): string {
   return values.length > 0 ? values.map((value) => `• ${value}`).join("\n") : fallback;
@@ -239,7 +239,7 @@ function coursePlanSummary(blueprint: CourseBlueprint): string {
         `Chapitre ${chapterIndex + 1}. ${chapter.title}\n${chapter.lessons
           .map(
             (lesson, lessonIndex) =>
-              `  ${chapterIndex + 1}.${lessonIndex + 1} ${lesson.title} — ${lesson.coreConcepts.join(" ; ")}`,
+              `  ${chapterIndex + 1}.${lessonIndex + 1} ${lesson.title} : ${lesson.coreConcepts.join(" ; ")}`,
           )
           .join("\n")}`,
     )
@@ -274,7 +274,7 @@ Leçon ${job.lessonIndex + 1}/${job.chapter.lessons.length} : ${job.lesson.title
 Objectif : ${job.lesson.objective}.
 Périmètre strict : ${job.lesson.scope}.
 
-CARTE GLOBALE — chaque notion principale appartient à un seul agent :
+CARTE GLOBALE, chaque notion principale appartient à un seul agent :
 ${coursePlanSummary(blueprint)}
 
 NOTIONS DONT CETTE LEÇON EST PROPRIÉTAIRE :
@@ -283,7 +283,7 @@ ${formatList(job.boundaries.ownedConcepts, "• Les notions indiquées dans le p
 RAPPELS AUTORISÉS, EN UNE PHRASE MAXIMUM CHACUN :
 ${formatList(job.boundaries.allowedRecall, "• Aucun rappel développé.")}
 
-NOTIONS ATTRIBUÉES AUX AUTRES AGENTS — NE PAS LES DÉVELOPPER :
+NOTIONS ATTRIBUÉES AUX AUTRES AGENTS : NE PAS LES DÉVELOPPER :
 ${formatList(job.boundaries.forbiddenDevelopments, "• Aucune.")}
 
 ${options.programmeBlock}
@@ -310,7 +310,7 @@ ${COURSE_MARKDOWN_JSON_PROMPT}
 • ${visualRequirement(job.lesson.visualFocus)}
 • Une courbe de fonction utilise exclusivement "graph". SVG/figure ne trace jamais une courbe, une tangente ou une asymptote.
 • Un cercle trigonométrique utilise le bloc "trig_circle". Un seul nom court par angle (ex : "π/6"), jamais deux angles co-terminaux dans la même étiquette.
-• Un camembert utilise "pie_chart", une droite graduée ou un ensemble de solutions "number_line", un diagramme en barres "bar_chart", un arbre pondéré "probability_tree", une boîte à moustaches "box_plot". Toute figure géométrique — forme(s) simple(s), diagramme de Venn, décomposition d'aire, Pythagore — utilise "shape" (parts circle/rectangle/triangle/segment/point/text sur quadrillage). N'utilise "figure" que si aucun de ces blocs dédiés ne correspond.
+• Un camembert utilise "pie_chart", une droite graduée ou un ensemble de solutions "number_line", un diagramme en barres "bar_chart", un arbre pondéré "probability_tree", une boîte à moustaches "box_plot". Toute figure géométrique, forme(s) simple(s), diagramme de Venn, décomposition d'aire, Pythagore, utilise "shape" (parts circle/rectangle/triangle/segment/point/text sur quadrillage). N'utilise "figure" que si aucun de ces blocs dédiés ne correspond.
 • Vérifie les légendes : une tangente n'est horizontale que si la dérivée au point vaut zéro.
 • Un tableau sur $e^{ax+b}$ ou toute famille paramétrée distingue explicitement les cas nécessaires.
 • Recalcule chaque formule, exemple et exercice. Distingue minimum et infimum, implication et équivalence.

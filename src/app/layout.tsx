@@ -33,7 +33,7 @@ const organizationSchema = {
     width: 192,
     height: 110,
   },
-  description: "Plateforme d'apprentissage des mathématiques du CP à la Terminale — cours, exercices, quiz et IA pédagogique Calia. Aligné sur les programmes officiels de l'Éducation Nationale.",
+  description: "Plateforme d'apprentissage des mathématiques du CP à la Terminale, cours, exercices, quiz et IA pédagogique Calia. Aligné sur les programmes officiels de l'Éducation Nationale.",
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
@@ -94,7 +94,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
-    default: "Educalcul — Cours de maths du CP à la Terminale avec IA",
+    default: "Educalcul : Cours de maths du CP à la Terminale avec IA",
     template: "%s | Educalcul",
   },
   description: "Educalcul accompagne vos enfants du CP à la Terminale avec des cours alignés sur le programme officiel, des exercices corrigés, une IA pédagogique (Calia) et un suivi parental en temps réel. Essai gratuit 7 jours.",
@@ -122,12 +122,12 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Educalcul — Cours de maths du CP à la Terminale avec IA",
+    title: "Educalcul : Cours de maths du CP à la Terminale avec IA",
     description: "Cours, exercices et IA pédagogique pour vos enfants, du CP à la Terminale. Aligné sur le programme officiel de l'Éducation Nationale.",
     url: BASE,
     siteName: "Educalcul",
     images: [
-      { url: "/og-image.png", width: 1200, height: 630, alt: "Educalcul — La plateforme de maths du CP à la Terminale" },
+      { url: "/og-image.png", width: 1200, height: 630, alt: "Educalcul : La plateforme de maths du CP à la Terminale" },
     ],
     locale: "fr_FR",
     alternateLocale: ["fr_BE", "fr_CH", "fr_CA"],
@@ -135,7 +135,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Educalcul — Cours de maths du CP à la Terminale avec IA",
+    title: "Educalcul : Cours de maths du CP à la Terminale avec IA",
     description: "Cours, exercices et IA pédagogique pour vos enfants, du CP à la Terminale.",
     images: ["/og-image.png"],
   },

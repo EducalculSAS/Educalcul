@@ -86,7 +86,7 @@ export default function AiPlanDialog({
 
   return (
     <GlassDialog
-      title={`Plan de révision — ${studentName}`}
+      title={`Plan de révision : ${studentName}`}
       onClose={onClose}
       wide
       footer={

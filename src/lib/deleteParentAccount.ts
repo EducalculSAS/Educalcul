@@ -36,6 +36,6 @@ export async function deleteParentAccount(parentAuthId: string): Promise<{ ok: b
     if (!ok) console.error(`[deleteParentAccount] connexion enfant ${childAuthId} non supprimée`);
   }
   const parentOk = await deleteAuthUser(parentAuthId, "parent");
-  if (!parentOk) return { ok: false, error: "Le compte a été supprimé mais la connexion associée n'a pas pu l'être — contacte le support technique." };
+  if (!parentOk) return { ok: false, error: "Le compte a été supprimé mais la connexion associée n'a pas pu l'être, contacte le support technique." };
   return { ok: true };
 }

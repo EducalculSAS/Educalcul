@@ -94,7 +94,7 @@ export default function AdminAttemptReviewClient({
             aria-label="Retour à la fiche"
           />
         <h1 className="text-lg font-bold truncate flex-1">
-          Correction — {item.title} · {childName}
+          Correction : {item.title} · {childName}
         </h1>
       </div>
 
@@ -111,7 +111,7 @@ export default function AdminAttemptReviewClient({
             </button>
             {history.map((h: any, i: number) => {
               const disabled = !h.detail;
-              const label = `${new Date(h.completed_at).toLocaleDateString("fr-FR")} — ${h.score}/${h.total_points}${disabled ? " (résumé seulement)" : ""}`;
+              const label = `${new Date(h.completed_at).toLocaleDateString("fr-FR")} : ${h.score}/${h.total_points}${disabled ? " (résumé seulement)" : ""}`;
               return (
                 <button
                   key={i}

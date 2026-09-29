@@ -52,7 +52,7 @@ export default function ContentGenerationFullModal() {
                 {(generation.params.subject as string) || `Génération de ${label.noun}`}
               </h3>
               <p className="text-blue-100 text-sm opacity-90">
-                {isFinished ? "Terminé" : "Génération en cours — continue même si tu quittes cette fenêtre"}
+                {isFinished ? "Terminé" : "Génération en cours, continue même si tu quittes cette fenêtre"}
               </p>
             </div>
           </div>
@@ -93,7 +93,7 @@ export default function ContentGenerationFullModal() {
                 {generation.kind === "course" ? "Cours créé !" : generation.kind === "exercise" ? "Exercice créé !" : "Quiz créé !"}
               </h4>
               <p className="text-gray-600 text-center max-w-md">
-                {label.created} — retrouve-le dans la liste.
+                {label.created}, retrouve-le dans la liste.
               </p>
               {generation.error && (
                 <p className="text-amber-600 text-sm text-center max-w-md mt-3">{generation.error}</p>

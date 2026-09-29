@@ -172,7 +172,7 @@ export default function ChildProfileSettings({
       {/* ── Stats rapides ── */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
         {[
-          { icon: School, label: "Niveau", value: user.grade_level ? getSimpleLevelLabel(user.grade_level) : "—", color: "#3b82f6" },
+          { icon: School, label: "Niveau", value: user.grade_level ? getSimpleLevelLabel(user.grade_level) : "-", color: "#3b82f6" },
           { icon: Trophy, label: "Trophées", value: `${activityCounts.badges}`, color: "var(--greek-gold)" },
           { icon: BookOpen, label: "Cours suivis", value: `${activityCounts.courses}`, color: "#a855f7" },
           { icon: Brain, label: "Exercices", value: `${activityCounts.exercises}`, color: "#10b981" },
@@ -282,7 +282,7 @@ export default function ChildProfileSettings({
             Voix de Calia en classe
           </h2>
           <p className="text-xs mb-4" style={{ color: "var(--text-muted)" }}>
-            {CALIA_VOICES.find((v) => v.id === caliaVoice)?.description} — la voix qui te lit le cours quand tu lances Calia.
+            {CALIA_VOICES.find((v) => v.id === caliaVoice)?.description}, la voix qui te lit le cours quand tu lances Calia.
           </p>
           <GlassSegmentedControl
             options={CALIA_VOICES.map((v) => ({ id: v.id, label: v.label }))}

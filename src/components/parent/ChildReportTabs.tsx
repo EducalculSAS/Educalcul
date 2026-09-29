@@ -243,7 +243,7 @@ export default function ChildReportTabs({
                 <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)]/5 to-transparent flex items-center justify-between">
                   <h3 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-2">
                     <Brain className="w-5 h-5 text-[var(--greek-gold)]" />
-                    Analyse IA — {childFirstName}
+                    Analyse IA : {childFirstName}
                   </h3>
                   <div className="flex items-center gap-3">
                     {formattedGeneratedAt && (

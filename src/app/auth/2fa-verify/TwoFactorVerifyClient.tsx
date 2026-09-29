@@ -135,7 +135,7 @@ function TwoFactorVerifyContent() {
           {sent || method === "totp"
             ? "Un code à 6 chiffres a été envoyé par email."
             : error
-            ? "Échec de l'envoi du code — voir le message ci-dessous."
+            ? "Échec de l'envoi du code, voir le message ci-dessous."
             : "Envoi du code en cours…"}
         </p>
       </div>

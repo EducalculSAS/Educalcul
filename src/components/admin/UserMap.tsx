@@ -97,7 +97,7 @@ export default function UserMap({ users }: { users: UserMarker[] }) {
             latitude={user.lat}
             anchor="center"
           >
-            <div title={`${user.name} — ${user.city || ""}`} className="group cursor-pointer relative">
+            <div title={`${user.name} : ${user.city || ""}`} className="group cursor-pointer relative">
               {/* Point animé si online */}
               <span className="relative flex h-3.5 w-3.5">
                 {user.isOnline && (

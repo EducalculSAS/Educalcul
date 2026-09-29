@@ -127,7 +127,7 @@ export default async function Offres() {
                   className="text-base leading-relaxed mb-8"
                   style={{ color: "rgba(255,255,255,0.5)" }}
                 >
-                  Cours, exercices, IA pédagogique et suivi parental — réunis
+                  Cours, exercices, IA pédagogique et suivi parental, réunis
                   dans une seule plateforme, du CP à la Terminale.
                 </p>
                 <div className="flex gap-3 flex-wrap">
@@ -166,7 +166,7 @@ export default async function Offres() {
                         className="w-4 h-4 object-contain"
                       />
                     ),
-                    text: "Calia — IA pédagogique",
+                    text: "Calia : IA pédagogique",
                   },
                   {
                     icon: <BarChart3 className="w-4 h-4" />,
@@ -232,7 +232,7 @@ export default async function Offres() {
                     color: "var(--greek-blue)",
                   }}
                 >
-                  Calia enseigne —<br />
+                  Calia enseigne, <br />
                   <span style={{ color: "var(--greek-gold)" }}>
                     elle ne donne pas les réponses.
                   </span>
@@ -421,7 +421,7 @@ export default async function Offres() {
                 className="text-sm max-w-lg mx-auto"
                 style={{ color: "rgba(15,30,58,0.5)" }}
               >
-                Des familles utilisent déjà Educalcul au quotidien — voici ce
+                Des familles utilisent déjà Educalcul au quotidien, voici ce
                 qu&apos;elles en disent.
               </p>
             </div>

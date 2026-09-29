@@ -98,10 +98,10 @@ export const FEATURES: FeatureDef[] = [
 
   // ── Calia et IA ───────────────────────────────────────────────
   { key: "calia_chat", group: "ai", icon: "MessageCircle", audience: "élèves",
-    label: "Calia — assistante", description: "La bulle d'aide Calia pendant les cours et exercices.",
+    label: "Calia, assistante", description: "La bulle d'aide Calia pendant les cours et exercices.",
     apis: [{ prefix: "/api/child/ai-tutor" }] },
   { key: "calia_classe", group: "ai", icon: "GraduationCap", audience: "élèves",
-    label: "Calia — mode classe", description: "La classe vocale avec Calia (tableau, lecture des dessins, résumé de séance).",
+    label: "Calia, mode classe", description: "La classe vocale avec Calia (tableau, lecture des dessins, résumé de séance).",
     apis: [{ prefix: "/api/calia/classe-turn" }, { prefix: "/api/calia/read-drawing" }, { prefix: "/api/calia/session-summary" }] },
   { key: "calia_voice", group: "ai", icon: "Volume2", audience: "élèves",
     label: "Voix de Calia", description: "Synthèse vocale Azure (sinon la voix du navigateur prend le relais).",

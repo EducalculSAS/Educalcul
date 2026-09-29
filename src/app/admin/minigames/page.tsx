@@ -12,7 +12,7 @@ export default async function AdminMinigamesPage() {
       <AdminPageHeader
         iconName="gamepad-2"
         title="Mini-jeux"
-        subtitle="Mathador et calcul mental — le calcul mental se génère automatiquement chaque nuit, par palier."
+        subtitle="Mathador et calcul mental, le calcul mental se génère automatiquement chaque nuit, par palier."
       />
       <AdminMinigamesClient stats={statsByType} />
     </div>

@@ -15,8 +15,8 @@ export interface LangueRule {
 }
 
 export const LANGUES_RULES: LangueRule[] = [
-  { code: "01", label: "Première", content: "équations du second degré simples, suites arithmétiques/géométriques, trigonométrie de base (valeurs remarquables) — vocabulaire mathématique en langue étrangère" },
-  { code: "00", label: "Terminale", content: "dérivées simples, exponentielle, probabilités simples, produit scalaire — vocabulaire mathématique en langue étrangère" },
+  { code: "01", label: "Première", content: "équations du second degré simples, suites arithmétiques/géométriques, trigonométrie de base (valeurs remarquables), vocabulaire mathématique en langue étrangère" },
+  { code: "00", label: "Terminale", content: "dérivées simples, exponentielle, probabilités simples, produit scalaire, vocabulaire mathématique en langue étrangère" },
 ];
 
 const BY_CODE = new Map(LANGUES_RULES.map((r) => [r.code, r]));
@@ -48,7 +48,7 @@ export function buildLanguesSystemPrompt(
 ): string {
   const languageName = LANGUAGE_NAMES[language];
   const avoidBlock = avoidPrompts.length
-    ? `\n\nCes questions ont déjà été utilisées récemment pour ce palier — ne les reproduis pas, même reformulées :\n${avoidPrompts.map((p) => `- ${p}`).join("\n")}`
+    ? `\n\nCes questions ont déjà été utilisées récemment pour ce palier, ne les reproduis pas, même reformulées :\n${avoidPrompts.map((p) => `- ${p}`).join("\n")}`
     : "";
   const themeBlock = theme?.trim()
     ? `\n\nThème à privilégier pour cette fiche : "${theme.trim()}". SANS sortir du cadre de notions ci-dessous.`
@@ -60,11 +60,11 @@ Notions autorisées pour ce palier (ne dépasse JAMAIS ce cadre) : ${rule.conten
 
 Règles impératives :
 - L'énoncé de chaque question ("prompt") doit être ENTIÈREMENT en ${languageName}, vocabulaire mathématique correct dans cette langue.
-- Chaque question doit avoir une réponse NUMÉRIQUE unique et sans ambiguïté : jamais de fraction non simplifiable, jamais de racine, et jamais un décimal à développement infini (ex. 1/3 = 0,333... est interdit — choisis des valeurs qui donnent un résultat exact ou un décimal qui s'arrête en 1-2 chiffres). La réponse elle-même reste un nombre, même si l'énoncé est en langue étrangère.
+- Chaque question doit avoir une réponse NUMÉRIQUE unique et sans ambiguïté : jamais de fraction non simplifiable, jamais de racine, et jamais un décimal à développement infini (ex. 1/3 = 0,333... est interdit, choisis des valeurs qui donnent un résultat exact ou un décimal qui s'arrête en 1-2 chiffres). La réponse elle-même reste un nombre, même si l'énoncé est en langue étrangère.
 - Les questions doivent être résolubles en quelques dizaines de secondes par un élève de ce niveau qui maîtrise ces notions en français.
 - Varie les types de questions dans le cadre autorisé plutôt que de répéter la même structure.
 - Les 5 questions de la fiche doivent toutes être DIFFÉRENTES les unes des autres.
-- Pour toute notation mathématique nécessitant une mise en forme (équation, puissance, dérivée, trigonométrie), utilise LaTeX entre signes dollar (ex. $x^2 + 3x - 4 = 0$, $f'(x)$, $\\sin(\\theta)$) même si le texte autour est en langue étrangère — seul l'habillage textuel change de langue, la notation mathématique reste universelle.${avoidBlock}`;
+- Pour toute notation mathématique nécessitant une mise en forme (équation, puissance, dérivée, trigonométrie), utilise LaTeX entre signes dollar (ex. $x^2 + 3x - 4 = 0$, $f'(x)$, $\\sin(\\theta)$) même si le texte autour est en langue étrangère, seul l'habillage textuel change de langue, la notation mathématique reste universelle.${avoidBlock}`;
 }
 
 export { LANGUES_RULES as default };

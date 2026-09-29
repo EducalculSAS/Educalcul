@@ -159,7 +159,7 @@ function SuccessContent() {
           <h2 className="text-xl font-bold text-gray-800 mb-2">Paiement bien reçu</h2>
           <p className="text-gray-500 text-sm mb-6">
             La finalisation de votre compte prend un peu plus de temps que prévu. Vous allez recevoir un email de confirmation
-            dans les prochaines minutes — vous pourrez alors vous connecter avec {userEmail || "votre email"}.
+            dans les prochaines minutes, vous pourrez alors vous connecter avec {userEmail || "votre email"}.
           </p>
           <GlassButton onClick={() => router.push("/auth/connexion")} variant="navy" size="sm">
             Aller à la connexion

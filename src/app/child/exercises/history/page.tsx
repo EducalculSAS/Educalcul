@@ -66,7 +66,7 @@ export default async function ExerciseHistoryPage() {
                             month: "long",
                             year: "numeric",
                           })
-                        : "—"}
+                        : "-"}
                     </div>
                   </div>
                 </div>

@@ -499,7 +499,7 @@ function ReportDialog({ target, onClose }: { target: { type: "post" | "comment";
   const send = async () => {
     setSending(true);
     try {
-      await forumApi.report({ type: target.type, targetId: target.id, reason: details.trim() ? `${reason} — ${details.trim()}` : reason });
+      await forumApi.report({ type: target.type, targetId: target.id, reason: details.trim() ? `${reason} : ${details.trim()}` : reason });
       toast.success("Merci, l'équipe va examiner ce signalement.");
       onClose();
     } catch (e) {

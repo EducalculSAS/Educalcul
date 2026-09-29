@@ -468,7 +468,7 @@ export default function AITutor() {
                         ? { background: "rgba(255,255,255,0.07)", color: "rgba(240,237,232,0.85)", borderBottomLeftRadius: 4 }
                         : { background: "var(--greek-gold)", color: "var(--greek-blue)", borderBottomRightRadius: 4 }}>
                       {/* Un message élève passe par renderUserContent, qui échappe
-                          d'abord le HTML avant de rendre le LaTeX — donc pas de
+                          d'abord le HTML avant de rendre le LaTeX, donc pas de
                           surface XSS, mais un passage cité en $...$ (ex. via
                           "sélectionner + expliquer") s'affiche bien en formule. */}
                       {msg.role === "assistant" ? renderContent(msg.content) : renderUserContent(msg.content)}

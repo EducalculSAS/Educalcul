@@ -563,7 +563,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                   {threshold > 0 && (
                     <div className={`mt-4 flex items-center gap-2 text-sm font-bold px-4 py-3 rounded-xl ${passed ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
                       {passed ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
-                      {passed ? `Seuil atteint (${threshold}% requis)` : `Seuil non atteint — ${threshold}% requis, tu as eu ${percentage}%`}
+                      {passed ? `Seuil atteint (${threshold}% requis)` : `Seuil non atteint : ${threshold}% requis, tu as eu ${percentage}%`}
                     </div>
                   )}
                 </div>
@@ -652,7 +652,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
           </div>
 
           {/* Contexte partagé pour un groupe de "questions liées" (voir plan :
-              modèle quiz plat, chaque question reste notée indépendamment —
+              modèle quiz plat, chaque question reste notée indépendamment : 
               ceci n'est qu'un rappel du contexte commun, pas un chaînage réel) */}
           {currentQuestion.group_intro &&
             (currentQuestionIndex === 0 ||

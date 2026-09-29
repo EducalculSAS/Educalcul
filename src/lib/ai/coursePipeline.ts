@@ -248,7 +248,7 @@ export function normalizeCourseBlueprint(
     const rawChapter = asRecord(rawChapters[chapterIndex]);
     const title = cleanPlain(
       rawChapter?.title,
-      `${options.subject} — partie ${chapterIndex + 1}`,
+      `${options.subject}, partie ${chapterIndex + 1}`,
     );
     const scope = cleanPlain(rawChapter?.scope, title);
     const requireGraph = options.chapterRequiresGraph(title, scope);
@@ -259,7 +259,7 @@ export function normalizeCourseBlueprint(
       const rawLesson = asRecord(rawLessons[lessonIndex]);
       const lessonTitle = cleanPlain(
         rawLesson?.title,
-        `${title} — leçon ${lessonIndex + 1}`,
+        `${title}, leçon ${lessonIndex + 1}`,
       );
       const lessonScope = cleanPlain(
         rawLesson?.scope,
@@ -342,7 +342,7 @@ export function normalizeCourseBlueprint(
         let candidate = fallback;
         let suffix = 2;
         while (conceptOwners.has(canonical(candidate))) {
-          candidate = `${fallback} — approfondissement ${suffix}`;
+          candidate = `${fallback}, approfondissement ${suffix}`;
           suffix += 1;
         }
         conceptOwners.add(canonical(candidate));
@@ -719,7 +719,7 @@ export class CourseGenerationTelemetry {
     this.active.delete(label);
     this.durations.set(label, duration);
     console.info(
-      `[course-ai][timing] ${label}: ${(duration / 1_000).toFixed(1)} s${details ? ` — ${details}` : ""}`,
+      `[course-ai][timing] ${label}: ${(duration / 1_000).toFixed(1)} s${details ? ` : ${details}` : ""}`,
     );
     return duration;
   }
@@ -727,7 +727,7 @@ export class CourseGenerationTelemetry {
   total(details = ""): number {
     const duration = Date.now() - this.startedAt;
     console.info(
-      `[course-ai][timing] total: ${(duration / 1_000).toFixed(1)} s${details ? ` — ${details}` : ""}`,
+      `[course-ai][timing] total: ${(duration / 1_000).toFixed(1)} s${details ? ` : ${details}` : ""}`,
     );
     return duration;
   }

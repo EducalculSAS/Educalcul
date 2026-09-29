@@ -990,8 +990,8 @@ export default function AdminQuizzesClient({
         {/* Indicateur seulement si l'attente dure (appear-late : 400 ms) ; les
             sous-dossiers, déjà connus, restent affichés pendant ce temps. */}
         {loading && (
-          <div className="col-span-full appear-late">
-            <PageLoader />
+          <div className="col-span-full appear-late order-last">
+            <PageLoader className="h-24" />
           </div>
         )}
         {(

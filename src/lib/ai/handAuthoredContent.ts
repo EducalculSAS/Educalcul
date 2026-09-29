@@ -93,7 +93,7 @@ function compileFigure(figure: unknown, where: string, warnings: string[]): stri
   const normalized = normalizeCourseBlock(figure);
   if (!normalized) {
     const type = (figure as { type?: unknown }).type;
-    warnings.push(`${where} : figure "${String(type ?? "?")}" ignorée — champs invalides ou manquants (voir _blocks_catalogue).`);
+    warnings.push(`${where} : figure "${String(type ?? "?")}" ignorée, champs invalides ou manquants (voir _blocks_catalogue).`);
     return "";
   }
   try {
@@ -137,7 +137,7 @@ export function compileHandAuthoredCourse(raw: any): CompileResult<any[]> {
         const exerciseIds = rawExercises.map(() => `c${chapterIndex + 1}-ex-${exerciseCounter++}`);
         const compiledExercises = rawExercises.map((ex: any, i: number) => {
           if (isRichTextEmpty(ex?.question)) {
-            warnings.push(`${lessonLabel} : exercice ${i + 1} — "question" vide ou manquante.`);
+            warnings.push(`${lessonLabel} : exercice ${i + 1}, "question" vide ou manquante.`);
           }
           return {
             id: exerciseIds[i],
@@ -161,11 +161,11 @@ export function compileHandAuthoredCourse(raw: any): CompileResult<any[]> {
             if (!normalized) {
               const type = (block as { type?: unknown } | null)?.type;
               warnings.push(
-                `${lessonLabel} : bloc ${blockIndex + 1} de type "${String(type ?? "?")}" ignoré — champs invalides ou manquants (voir _blocks_catalogue).`,
+                `${lessonLabel} : bloc ${blockIndex + 1} de type "${String(type ?? "?")}" ignoré, champs invalides ou manquants (voir _blocks_catalogue).`,
               );
             } else if (normalized.type === "exercise" && normalized.exerciseIndex > exerciseIds.length) {
               warnings.push(
-                `${lessonLabel} : bloc ${blockIndex + 1} référence l'exercice n°${normalized.exerciseIndex}, mais "exercises" n'en a que ${exerciseIds.length} — cet emplacement restera vide.`,
+                `${lessonLabel} : bloc ${blockIndex + 1} référence l'exercice n°${normalized.exerciseIndex}, mais "exercises" n'en a que ${exerciseIds.length}, cet emplacement restera vide.`,
               );
             }
             return normalized;
@@ -179,11 +179,11 @@ export function compileHandAuthoredCourse(raw: any): CompileResult<any[]> {
         exerciseIds.forEach((id: string, i: number) => {
           if (!usedExerciseIndexes.has(i)) {
             content += `\n<div class="lesson-exercise" data-exercise-id="${escapeHtml(id)}"></div>`;
-            warnings.push(`${lessonLabel} : aucun bloc {"type":"exercise","exercise_index":${i + 1}} trouvé — l'exercice a été placé à la fin de la leçon.`);
+            warnings.push(`${lessonLabel} : aucun bloc {"type":"exercise","exercise_index":${i + 1}} trouvé, l'exercice a été placé à la fin de la leçon.`);
           }
         });
         if (!content.trim()) {
-          warnings.push(`${lessonLabel} : aucun bloc valide — la leçon est quasiment vide.`);
+          warnings.push(`${lessonLabel} : aucun bloc valide, la leçon est quasiment vide.`);
           content = `<p>${escapeHtml(lesson?.title)}</p>`;
         }
 
@@ -241,19 +241,19 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
       };
       if (type === "fill_in_the_blank") {
         const blanks = Array.isArray(block?.blanks) ? block.blanks.map(String) : [];
-        if (blanks.length === 0) warnings.push(`${where} : "blanks" est vide — aucun trou à corriger.`);
+        if (blanks.length === 0) warnings.push(`${where} : "blanks" est vide, aucun trou à corriger.`);
         return { ...base, blanks };
       }
       if (type === "matching") {
         const pairs = Array.isArray(block?.pairs)
           ? block.pairs.map((p: any) => ({ left: escapeHtml(p?.left), right: String(p?.right ?? "") }))
           : [];
-        if (pairs.length < 2) warnings.push(`${where} : moins de 2 "pairs" — l'appariement n'a pas de sens.`);
+        if (pairs.length < 2) warnings.push(`${where} : moins de 2 "pairs", l'appariement n'a pas de sens.`);
         return { ...base, pairs };
       }
       if (type === "ordering") {
         const items = Array.isArray(block?.items) ? block.items.map((i: unknown) => escapeHtml(i)) : [];
-        if (items.length < 2) warnings.push(`${where} : moins de 2 "items" — rien à remettre en ordre.`);
+        if (items.length < 2) warnings.push(`${where} : moins de 2 "items", rien à remettre en ordre.`);
         return { ...base, items };
       }
       if (type === "categorize") {
@@ -261,7 +261,7 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
         const categoryItems = Array.isArray(block?.categoryItems)
           ? block.categoryItems.map((it: any) => ({ text: escapeHtml(it?.text), category: String(it?.category ?? "") }))
           : [];
-        if (categories.length < 2) warnings.push(`${where} : moins de 2 "categories" — rien à catégoriser.`);
+        if (categories.length < 2) warnings.push(`${where} : moins de 2 "categories", rien à catégoriser.`);
         if (categoryItems.some((it: any) => !categories.includes(it.category))) {
           warnings.push(`${where} : un élément de "categoryItems" référence une catégorie absente de "categories".`);
         }
@@ -281,7 +281,7 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
         const steps = Array.isArray(block?.steps) ? block.steps.map((s: unknown) => escapeHtml(s)) : [];
         const errorIndex = String(block?.correctAnswer ?? "");
         const idx = parseInt(errorIndex, 10);
-        if (steps.length < 2) warnings.push(`${where} : moins de 2 "steps" — rien où repérer une erreur.`);
+        if (steps.length < 2) warnings.push(`${where} : moins de 2 "steps", rien où repérer une erreur.`);
         if (Number.isNaN(idx) || idx < 0 || idx >= steps.length) {
           warnings.push(`${where} : "correctAnswer" doit être l'index (0, 1, 2...) de l'étape fausse dans "steps".`);
         }
@@ -293,7 +293,7 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
           : Array.isArray(block?.options) ? block.options.map(String) : [];
         const resolved = resolveOption(rawOptions, String(block?.correctAnswer ?? ""));
         if (!resolved) {
-          warnings.push(`${where} : "correctAnswer" ne correspond à aucune valeur de "options" — vérifie l'orthographe exacte.`);
+          warnings.push(`${where} : "correctAnswer" ne correspond à aucune valeur de "options", vérifie l'orthographe exacte.`);
         }
         return { ...base, options: rawOptions.map(escapeHtml), correctAnswer: escapeHtml(resolved ?? block?.correctAnswer) };
       }
@@ -382,7 +382,7 @@ export function compileHandAuthoredQuiz(raw: any): CompileResult<any[]> {
     const resolved = resolveOption(rawOptions, String(q?.correctAnswer ?? ""));
     if (!resolved) {
       warnings.push(
-        `${where} : "correctAnswer" ("${String(q?.correctAnswer ?? "")}") ne correspond à aucune "options" — ` +
+        `${where} : "correctAnswer" ("${String(q?.correctAnswer ?? "")}") ne correspond à aucune "options", ` +
         `la 1ʳᵉ option a été prise par défaut, vérifie et corrige avant de publier.`,
       );
     }

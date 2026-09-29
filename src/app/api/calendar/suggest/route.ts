@@ -195,11 +195,11 @@ Réponds UNIQUEMENT par un JSON valide :
     const lines: string[] = [];
     lines.push(`Aujourd'hui : ${today} (${DAY_NAMES[new Date().getDay()]}).`);
     if (focus) lines.push(`Demande particulière : ${focus}`);
-    lines.push("", "Cours candidats (id — titre — état) :");
+    lines.push("", "Cours candidats (id, titre, état) :");
     for (const s of priority) {
-      lines.push(`- ${s.id} — ${s.title} — ${s.label}${s.avg !== null ? `, ${s.avg}% de réussite sur ${s.attempts} essai(s)` : ""}${s.idle !== null ? `, dernière activité il y a ${s.idle} j` : ""}`);
+      lines.push(`- ${s.id} : ${s.title} : ${s.label}${s.avg !== null ? `, ${s.avg}% de réussite sur ${s.attempts} essai(s)` : ""}${s.idle !== null ? `, dernière activité il y a ${s.idle} j` : ""}`);
     }
-    for (const c of next) lines.push(`- ${c.id} — ${c.title} — pas encore commencé (suite du programme)`);
+    for (const c of next) lines.push(`- ${c.id} : ${c.title}, pas encore commencé (suite du programme)`);
     if (candidates.size === 0) lines.push("(aucun cours disponible)");
     lines.push("", `Contrôles / devoirs à venir : ${tests.length ? tests.map((t) => `${t.start_date} « ${t.title} » (${t.event_type})`).join(" ; ") : "aucun annoncé"}`);
     lines.push(`Révisions déjà prévues les : ${plannedRevisions.length ? plannedRevisions.join(", ") : "aucune"}`);

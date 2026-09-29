@@ -204,7 +204,7 @@ export default function AIAddContentModal({
                   <select value={targetChapterId} onChange={(e) => setTargetChapterId(e.target.value)} className={selectCls}>
                     {chapters.map((c, i) => (
                       <option key={c.id} value={c.id}>
-                        {`Ch. ${i + 1}${c.title ? ` — ${c.title}` : ""}`}
+                        {`Ch. ${i + 1}${c.title ? ` : ${c.title}` : ""}`}
                       </option>
                     ))}
                   </select>
@@ -221,12 +221,12 @@ export default function AIAddContentModal({
                   {kind === "chapter"
                     ? chapters.map((c, i) => (
                         <option key={c.id} value={c.id}>
-                          {`Après le chapitre ${i + 1}${c.title ? ` — ${c.title}` : ""}`}
+                          {`Après le chapitre ${i + 1}${c.title ? ` : ${c.title}` : ""}`}
                         </option>
                       ))
                     : lessonsOfTarget.map((l, i) => (
                         <option key={l.id} value={l.id}>
-                          {`Après la leçon ${i + 1}${l.title ? ` — ${l.title}` : ""}`}
+                          {`Après la leçon ${i + 1}${l.title ? ` : ${l.title}` : ""}`}
                         </option>
                       ))}
                 </select>

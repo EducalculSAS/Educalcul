@@ -511,7 +511,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                                   >
                                     {chapters.map((c, i) => (
                                       <option key={c.id} value={c.id}>
-                                        {`Ch. ${i + 1}${c.title ? ` — ${c.title}` : ""}`}
+                                        {`Ch. ${i + 1}${c.title ? ` : ${c.title}` : ""}`}
                                       </option>
                                     ))}
                                   </select>

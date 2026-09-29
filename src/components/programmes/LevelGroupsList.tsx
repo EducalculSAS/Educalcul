@@ -25,21 +25,21 @@ const LEVEL_GROUPS = [
     levels: ["6eme", "5eme", "4eme", "3eme"],
   },
   {
-    label: "Lycée — 2nde",
+    label: "Lycée : 2nde",
     color: "var(--greek-gold)",
     bg: "rgba(197,161,72,0.08)",
     border: "rgba(197,161,72,0.2)",
     levels: ["2nde"],
   },
   {
-    label: "Lycée — Première",
+    label: "Lycée : Première",
     color: "var(--greek-gold)",
     bg: "rgba(197,161,72,0.08)",
     border: "rgba(197,161,72,0.2)",
     levels: ["1ere-generale", "1ere-generale-maths"],
   },
   {
-    label: "Lycée — Terminale",
+    label: "Lycée : Terminale",
     color: "#f472b6",
     bg: "rgba(244,114,182,0.08)",
     border: "rgba(244,114,182,0.2)",
@@ -58,10 +58,10 @@ const PDF_LINKS: Record<string, { label: string; url: string }[]> = {
   "4eme": [{ label: "Programme Cycle 4 (5e-4e-3e)", url: "https://eduscol.education.gouv.fr/document/17418/download" }],
   "3eme": [{ label: "Programme Cycle 4 (5e-4e-3e)", url: "https://eduscol.education.gouv.fr/document/17418/download" }],
   "2nde": [{ label: "Programme Seconde GT", url: "https://eduscol.education.gouv.fr/document/18358/download" }],
-  "1ere-generale-maths": [{ label: "Programme Première — Mathématiques (spé)", url: "https://eduscol.education.gouv.fr/document/18360/download" }],
+  "1ere-generale-maths": [{ label: "Programme Première : Mathématiques (spé)", url: "https://eduscol.education.gouv.fr/document/18360/download" }],
   "1ere-generale": [{ label: "Programme Première Générale", url: "https://eduscol.education.gouv.fr/document/18360/download" }],
-  "terminale-generale-maths": [{ label: "Programme Terminale — Mathématiques (spé)", url: "https://eduscol.education.gouv.fr/document/18361/download" }],
-  "terminale-generale-expertes": [{ label: "Programme Terminale — Mathématiques expertes", url: "https://eduscol.education.gouv.fr/document/18362/download" }],
+  "terminale-generale-maths": [{ label: "Programme Terminale : Mathématiques (spé)", url: "https://eduscol.education.gouv.fr/document/18361/download" }],
+  "terminale-generale-expertes": [{ label: "Programme Terminale : Mathématiques expertes", url: "https://eduscol.education.gouv.fr/document/18362/download" }],
 };
 
 function renderNotion(text: string): string {

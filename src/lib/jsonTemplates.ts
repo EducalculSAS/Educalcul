@@ -15,7 +15,7 @@ export const COURSE_JSON_TEMPLATE = {
   _version: "2",
   _format: "source",
   _comment:
-    "MODÈLE DE COURS — remplis title/description/subject/level puis content_json. " +
+    "MODÈLE DE COURS, remplis title/description/subject/level puis content_json. " +
     "Chaque leçon a des \"blocks\" (le cours, dans l'ordre) et des \"exercises\" " +
     "(les mini-exercices intégrés : 2 à 3 par leçon, référencés depuis \"blocks\" " +
     "par {\"type\":\"exercise\",\"exercise_index\":N}, N = position dans \"exercises\"). " +
@@ -102,7 +102,7 @@ export const EXERCISE_JSON_TEMPLATE = {
   _version: "2",
   _format: "source",
   _comment:
-    "MODÈLE D'EXERCICE — une \"page\" de \"blocks\", chaque bloc = une question. " +
+    "MODÈLE D'EXERCICE, une \"page\" de \"blocks\", chaque bloc = une question. " +
     "type possible : text_input | fill_in_the_blank | matching | ordering | coding | single_choice | true_false. " +
     "\"figure\" (optionnel, sur n'importe quel bloc) : une entrée du catalogue de src/lib/figureCatalog.ts. " +
     "Texte brut, LaTeX entre $...$.",
@@ -171,7 +171,7 @@ export const QUIZ_JSON_TEMPLATE = {
   _version: "2",
   _format: "source",
   _comment:
-    "MODÈLE DE QUIZ — un tableau de questions à choix unique. " +
+    "MODÈLE DE QUIZ, un tableau de questions à choix unique. " +
     "\"options\" : exactement 4 propositions distinctes. \"correctAnswer\" : recopie EXACTEMENT une des options. " +
     "\"figure\" (optionnel) : une entrée du catalogue de src/lib/figureCatalog.ts. Texte brut, LaTeX entre $...$.",
   title: "Titre du quiz",

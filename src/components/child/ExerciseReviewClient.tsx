@@ -20,7 +20,7 @@ export default function ExerciseReviewClient({ exercise, progress }: { exercise:
             aria-label="Retour"
           />
         <h1 className="text-lg font-bold truncate flex-1">
-          Correction — {exercise.title}
+          Correction : {exercise.title}
         </h1>
         <GlassCloseButton
           variant="dark"

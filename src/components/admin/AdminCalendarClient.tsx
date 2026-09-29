@@ -174,7 +174,7 @@ export default function AdminCalendarClient({ initialEvents }: { authId?: string
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
         <Stat label="Périodes sur l'année" value={String(groups.length)} />
         <Stat label="Zones renseignées" value={`${[...coveredZones].filter((z) => z !== "all").length} / ${ZONE_OPTIONS.length - 1}`} />
-        <Stat label="Prochaines vacances" value={nextHoliday ? nextHoliday.title.replace(/^Vacances (de la |de |d')/i, "") : "—"} hint={nextHoliday ? rangeLabel(nextHoliday.start_date, nextHoliday.end_date) : undefined} />
+        <Stat label="Prochaines vacances" value={nextHoliday ? nextHoliday.title.replace(/^Vacances (de la |de |d')/i, "") : "-"} hint={nextHoliday ? rangeLabel(nextHoliday.start_date, nextHoliday.end_date) : undefined} />
         <Stat label="Importées du ministère" value={String(groups.filter((g) => g.official).length)} />
       </div>
 
@@ -337,7 +337,7 @@ function Timeline({
                         key={ev.id}
                         type="button"
                         onClick={() => onOpen(ev)}
-                        title={`${ev.title} — ${rangeLabel(ev.start_date, ev.end_date)}`}
+                        title={`${ev.title} : ${rangeLabel(ev.start_date, ev.end_date)}`}
                         aria-label={`${ev.title}, ${getZoneLabel(z)}, ${rangeLabel(ev.start_date, ev.end_date)}`}
                         className="absolute top-1 bottom-1 rounded-lg text-[10px] font-semibold text-white px-1.5 truncate text-left hover:brightness-110 hover:shadow-md transition"
                         style={{ left: `${left}%`, width: `${width}%`, background: getEventTypeMeta(ev.event_type).color }}

@@ -20,7 +20,7 @@ export default function QuizReviewClient({ quiz, progress }: { quiz: any; progre
             aria-label="Retour"
           />
         <h1 className="text-lg font-bold truncate flex-1">
-          Correction — {quiz.title}
+          Correction : {quiz.title}
         </h1>
         <GlassCloseButton
           variant="dark"

@@ -148,7 +148,7 @@ export default function AdminLandingClient({
       <div className="mb-8">
         <AdminPageHeader
           icon={Trophy}
-          title="Liste d'attente — Classement"
+          title="Liste d'attente : Classement"
           subtitle="Gérez les inscrits, le parrainage et le classement du site de lancement."
           actions={
             <>
@@ -176,7 +176,7 @@ export default function AdminLandingClient({
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-5 shadow-sm flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center"><Crown className="w-6 h-6 text-[var(--greek-bronze)]" /></div>
           <div>
-            <p className="text-lg font-bold text-[var(--greek-blue)] truncate max-w-[160px]">{stats.topReferrer?.name || "—"}</p>
+            <p className="text-lg font-bold text-[var(--greek-blue)] truncate max-w-[160px]">{stats.topReferrer?.name || "-"}</p>
             <p className="text-sm text-gray-400">Top parrain {stats.topReferrer ? `(${stats.topReferrer.count})` : ""}</p>
           </div>
         </div>
@@ -229,7 +229,7 @@ export default function AdminLandingClient({
                   <td className="px-4 py-3">
                     {editId === e.id ? (
                       <input value={editName} onChange={ev => setEditName(ev.target.value)} aria-label="Nom" className="w-28 px-2 py-1 border border-gray-200 rounded-lg" />
-                    ) : (e.display_name || <span className="text-gray-300">—</span>)}
+                    ) : (e.display_name || <span className="text-gray-300">-</span>)}
                   </td>
                   <td className="px-4 py-3 text-gray-600">{e.email}</td>
                   <td className="px-4 py-3"><span className="px-2 py-0.5 rounded-md bg-[var(--greek-cream)] text-[var(--greek-bronze)] font-mono text-xs font-bold">{e.referral_code}</span></td>
@@ -240,13 +240,13 @@ export default function AdminLandingClient({
                       <span className="inline-flex items-center gap-1 font-semibold text-[var(--greek-blue)]"><Users className="w-3.5 h-3.5" aria-hidden="true" />{e.referral_count}</span>
                     )}
                   </td>
-                  <td className="px-4 py-3 text-gray-500 font-mono text-xs">{e.referred_by || "—"}</td>
+                  <td className="px-4 py-3 text-gray-500 font-mono text-xs">{e.referred_by || "-"}</td>
                   <td className="px-4 py-3 font-mono text-xs">
                     {e.signup_ip ? (
                       <span className={dupIps.has(e.signup_ip) ? "px-1.5 py-0.5 rounded bg-red-50 text-red-600 font-bold" : "text-gray-400"} title={dupIps.has(e.signup_ip) ? "IP partagée par plusieurs comptes" : ""}>
                         {e.signup_ip}
                       </span>
-                    ) : <span className="text-gray-300">—</span>}
+                    ) : <span className="text-gray-300">-</span>}
                   </td>
                   <td className="px-4 py-3 text-gray-500 whitespace-nowrap">{new Date(e.created_at).toLocaleDateString("fr-FR")}</td>
                   <td className="px-4 py-3">

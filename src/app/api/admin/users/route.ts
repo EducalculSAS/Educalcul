@@ -641,9 +641,9 @@ export async function DELETE(request: Request) {
       success: true,
       message: "User deleted successfully",
       warning: dbError
-        ? "Le compte de connexion a été supprimé mais le profil n'a pas pu l'être — contacte le support technique."
+        ? "Le compte de connexion a été supprimé mais le profil n'a pas pu l'être, contacte le support technique."
         : authError
-          ? "Le profil a été supprimé mais le compte de connexion (Supabase Auth) n'a pas pu l'être — contacte le support technique."
+          ? "Le profil a été supprimé mais le compte de connexion (Supabase Auth) n'a pas pu l'être, contacte le support technique."
           : undefined,
     });
   } catch (error: any) {

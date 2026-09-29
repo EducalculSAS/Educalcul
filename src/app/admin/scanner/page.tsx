@@ -14,7 +14,7 @@ export default async function AdminScannerPage() {
       <AdminPageHeader
         iconName="scan-search"
         title="Scanner IA"
-        subtitle="Audits automatisés du code source du site — style, sécurité, performance, accessibilité, SEO."
+        subtitle="Audits automatisés du code source du site, style, sécurité, performance, accessibilité, SEO."
       />
       <AdminScannerClient initialRuns={runs || []} />
     </div>

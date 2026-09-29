@@ -35,7 +35,7 @@ const STATUS_COLOR: Record<string, string> = {
 };
 
 function formatDuration(seconds: number | null) {
-  if (seconds === null || seconds === undefined) return "—";
+  if (seconds === null || seconds === undefined) return "-";
   const m = Math.floor(seconds / 60);
   const s = seconds % 60;
   return m > 0 ? `${m}m ${s}s` : `${s}s`;
@@ -142,7 +142,7 @@ export default function AdminMinigameSessionsPanel() {
                 <td className="px-4 py-2 text-gray-500">{s.grade_level}</td>
                 <td className="px-4 py-2 text-gray-500 font-mono text-xs">
                   {/* Formaté selon le game_type RÉEL de la ligne, pas l'onglet
-                      actif — une ligne mal étiquetée resterait lisible plutôt
+                      actif, une ligne mal étiquetée resterait lisible plutôt
                       que de mentir sous les colonnes du mauvais jeu. */}
                   {s.game_type === "mathador"
                     ? `${(s.content_json?.numbers || []).join(" · ")} → ${s.content_json?.target ?? "?"}`

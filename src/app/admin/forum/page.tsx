@@ -7,7 +7,7 @@ export default function AdminForumPage() {
     <div className="space-y-6">
       <AdminPageHeader
         iconName="message-square"
-        title="Forum — Modération"
+        title="Forum : Modération"
         subtitle="Catégories, sujets et réponses de toute la communauté (élèves et parents)."
       />
       <Suspense fallback={null}>

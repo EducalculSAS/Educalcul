@@ -146,7 +146,7 @@ function esc(v: any): string {
 
 function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): string {
   const NAVY = "#1a3a5c", GOLD = "#c5a148";
-  const d = (v: any) => v ? esc(new Date(v).toLocaleString("fr-FR")) : "—";
+  const d = (v: any) => v ? esc(new Date(v).toLocaleString("fr-FR")) : "-";
   const single = users.length === 1;
   const u = users[0];
 
@@ -161,11 +161,11 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
         ${loginHistory.map((h, i) => `<tr>
           <td style="color:#888">${loginHistory.length - i}</td>
           <td>${d(h.logged_at)}</td>
-          <td style="font-family:monospace;font-size:10px">${esc(h.ip) || "—"}</td>
-          <td>${esc(h.city) || "—"}</td>
-          <td>${esc(h.country) || "—"}</td>
-          <td>${esc(h.device_type) || "—"}</td>
-          <td style="font-size:10px">${h.latitude ? `${h.latitude.toFixed(4)}, ${h.longitude?.toFixed(4)}` : "—"}</td>
+          <td style="font-family:monospace;font-size:10px">${esc(h.ip) || "-"}</td>
+          <td>${esc(h.city) || "-"}</td>
+          <td>${esc(h.country) || "-"}</td>
+          <td>${esc(h.device_type) || "-"}</td>
+          <td style="font-size:10px">${h.latitude ? `${h.latitude.toFixed(4)}, ${h.longitude?.toFixed(4)}` : "-"}</td>
         </tr>`).join("")}
       </tbody>
     </table>` : single && loginHistory?.length === 0 ? `
@@ -179,16 +179,16 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
         ["Email", u.email],
         ["Rôle", u.role],
         ["Statut", u.status],
-        ["Niveau", u.grade_level || "—"],
-        ["Dernière ville connue", u.last_login_city || "—"],
-        ["Dernier pays connu", u.last_login_country || "—"],
-        ["Dernière IP connue", u.last_login_ip || "—"],
-        ["IP déconnexion", u.last_logout_ip || "—"],
+        ["Niveau", u.grade_level || "-"],
+        ["Dernière ville connue", u.last_login_city || "-"],
+        ["Dernier pays connu", u.last_login_country || "-"],
+        ["Dernière IP connue", u.last_login_ip || "-"],
+        ["IP déconnexion", u.last_logout_ip || "-"],
         ["Dernière activité", d(u.last_active_at)],
         ["Inscription", d(u.created_at)],
-        ["Total connexions", loginHistory ? String(loginHistory.length) : "—"],
-        ["Localisation (IP)", u.latitude && u.longitude ? `${u.latitude?.toFixed(5)}, ${u.longitude?.toFixed(5)}` : "—"],
-      ].map(([k, v]) => `<tr><td class="label">${esc(k)}</td><td class="value">${esc(v) || "—"}</td></tr>`).join("")}
+        ["Total connexions", loginHistory ? String(loginHistory.length) : "-"],
+        ["Localisation (IP)", u.latitude && u.longitude ? `${u.latitude?.toFixed(5)}, ${u.longitude?.toFixed(5)}` : "-"],
+      ].map(([k, v]) => `<tr><td class="label">${esc(k)}</td><td class="value">${esc(v) || "-"}</td></tr>`).join("")}
     </table>
     ${historySection}` : `
     <table class="main-table">
@@ -201,7 +201,7 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
           <td>${esc(u.email)}</td>
           <td>${esc(u.role)}</td>
           <td>${esc(u.status)}</td>
-          <td>${esc(u.last_login_city) || "—"}</td>
+          <td>${esc(u.last_login_city) || "-"}</td>
           <td>${d(u.created_at)}</td>
         </tr>`).join("")}
       </tbody>
@@ -240,14 +240,14 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
       <div>
         <div class="brand">EDUCALCUL</div>
         <div class="header-title">${esc(title)}</div>
-        <div class="header-sub">${single ? `${esc(u.first_name)} ${esc(u.last_name)} — ${esc(u.email)}` : `${users.length} utilisateurs — ${new Date().toLocaleDateString("fr-FR")}`}</div>
+        <div class="header-sub">${single ? `${esc(u.first_name)} ${esc(u.last_name)} : ${esc(u.email)}` : `${users.length} utilisateurs : ${new Date().toLocaleDateString("fr-FR")}`}</div>
       </div>
     </div>
     <div class="bar"></div>
     ${tableRows}
     <div class="footer">
       <strong>EDUCALCUL</strong>
-      Généré le ${new Date().toLocaleString("fr-FR")} — Usage interne confidentiel
+      Généré le ${new Date().toLocaleString("fr-FR")} : Usage interne confidentiel
     </div>
   </div>
 </body></html>`;
@@ -768,7 +768,7 @@ export default function AdminUsersClient({
                       <option value="">Aucun (plan gratuit)</option>
                       {plans.map(p => (
                         <option key={p.id} value={p.id}>
-                          {p.name} — {Number(p.price).toFixed(2)} € / {BILLING_INTERVAL_LABEL[p.billing_interval] || p.billing_interval}
+                          {p.name} : {Number(p.price).toFixed(2)} € / {BILLING_INTERVAL_LABEL[p.billing_interval] || p.billing_interval}
                         </option>
                       ))}
                     </select>
@@ -793,7 +793,7 @@ export default function AdminUsersClient({
                             className="mt-1"
                           />
                           <span>
-                            <strong>Offert</strong> — accès immédiat, aucun paiement demandé.
+                            <strong>Offert</strong>, accès immédiat, aucun paiement demandé.
                           </span>
                         </label>
                         <label className="flex items-start gap-2 text-sm text-gray-700 cursor-pointer">
@@ -806,7 +806,7 @@ export default function AdminUsersClient({
                             className="mt-1"
                           />
                           <span>
-                            <strong>Doit payer</strong> — le compte démarre en gratuit et devra souscrire lui-même.
+                            <strong>Doit payer</strong>, le compte démarre en gratuit et devra souscrire lui-même.
                           </span>
                         </label>
                       </div>

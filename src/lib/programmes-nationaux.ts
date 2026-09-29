@@ -240,7 +240,7 @@ export const PROGRAMMES_NATIONAUX: ProgrammeEntry[] = [
     label: "Première Générale (sans spé maths)",
     themes: [
       {
-        titre: "Mathématiques — Tronc commun",
+        titre: "Mathématiques : Tronc commun",
         notions: [
           "Statistiques descriptives avancées",
           "Probabilités (rappel Seconde)",
@@ -385,7 +385,7 @@ export function getProgrammePromptBlock(level: string): string {
   if (!prog) return "";
 
   const lines: string[] = [
-    `═══ PROGRAMME OFFICIEL — ${prog.label.toUpperCase()} ═══`,
+    `═══ PROGRAMME OFFICIEL : ${prog.label.toUpperCase()} ═══`,
     `Le contenu généré DOIT être aligné sur le programme national français pour ce niveau.`,
     `Notions et thèmes à privilégier :`,
   ];

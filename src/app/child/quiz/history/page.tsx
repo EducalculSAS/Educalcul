@@ -66,7 +66,7 @@ export default async function QuizHistoryPage() {
                             month: "long",
                             year: "numeric",
                           })
-                        : "—"}
+                        : "-"}
                     </div>
                   </div>
                 </div>

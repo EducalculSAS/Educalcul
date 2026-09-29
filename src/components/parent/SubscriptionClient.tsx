@@ -224,7 +224,7 @@ function SubscriptionPageContent({
             await new Promise(r => setTimeout(r, 1500));
           }
           if (!ready) {
-            toastError("Paiement reçu — la finalisation prend plus de temps que prévu, vérifiez vos emails dans quelques minutes.");
+            toastError("Paiement reçu, la finalisation prend plus de temps que prévu, vérifiez vos emails dans quelques minutes.");
             return;
           }
 
@@ -451,7 +451,7 @@ function SubscriptionPageContent({
                   {currentPlan?.status === "past_due" && (
                     <p className="text-sm text-red-500 flex items-center mt-1 font-semibold">
                       <AlertTriangle className="w-4 h-4 mr-1" />
-                      Échec du paiement — mettez à jour votre moyen de paiement
+                      Échec du paiement, mettez à jour votre moyen de paiement
                     </p>
                   )}
                 </div>
@@ -635,7 +635,7 @@ function SubscriptionPageContent({
                 <Gift className="w-5 h-5 text-[var(--greek-gold)]" />
                 Mon code de parrainage
               </h2>
-              <p className="text-sm text-gray-500 mb-4">Partagez ce code — vos filleuls ont {myReferralCode?.discount_value ?? 10}% de réduction, et vous gagnez 10% sur votre prochain renouvellement.</p>
+              <p className="text-sm text-gray-500 mb-4">Partagez ce code, vos filleuls ont {myReferralCode?.discount_value ?? 10}% de réduction, et vous gagnez 10% sur votre prochain renouvellement.</p>
               {myReferralCode ? (
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 bg-[var(--greek-cream)] rounded-xl px-3 py-3 sm:px-4 sm:py-4 border border-[rgba(197,161,72,0.25)]">

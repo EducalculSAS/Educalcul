@@ -611,7 +611,7 @@ export function formatStructuredQualityIssues(
     .slice(0, 20)
     .map(
       (issue, index) =>
-        `${index + 1}. [${issue.code}] ${issue.path} — ${issue.message}`,
+        `${index + 1}. [${issue.code}] ${issue.path} : ${issue.message}`,
     )
     .join("\n");
 }

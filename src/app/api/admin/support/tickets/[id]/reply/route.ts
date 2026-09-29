@@ -50,7 +50,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ id:
       // Charger le template depuis la DB
       const { data: tmpl } = await supabaseAdmin.from("email_templates").select("subject,body").eq("key", "support_reply").single();
       const firstName = user_name?.split(" ")[0] || "Utilisateur";
-      const emailSubject = tmpl ? tmpl.subject.replace(/\{\{name\}\}/g, firstName) : `Re: ${subject} — Educalcul Support`;
+      const emailSubject = tmpl ? tmpl.subject.replace(/\{\{name\}\}/g, firstName) : `Re: ${subject} : Educalcul Support`;
       const bodyHtml = tmpl
         ? tmpl.body.replace(/\{\{name\}\}/g, firstName).replace(/\{\{reply\}\}/g, message.replace(/\n/g, "<br>"))
         : `<p>Bonjour ${firstName},</p><blockquote style="border-left:3px solid #c5a148;padding:12px 16px;background:#fffbeb;">${message.replace(/\n/g, "<br>")}</blockquote>`;

@@ -414,8 +414,8 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                     <p className="text-sm font-medium text-gray-700">Authentification à deux facteurs</p>
                     <p className="text-xs text-gray-500 mt-0.5">
                       {twoFAEnabled
-                        ? "Activée et imposée par toi — un code par email est requis à chaque connexion, et l'enfant ne peut pas la désactiver lui-même."
-                        : "Désactivée — l'enfant peut choisir de l'activer lui-même depuis son propre profil."}
+                        ? "Activée et imposée par toi, un code par email est requis à chaque connexion, et l'enfant ne peut pas la désactiver lui-même."
+                        : "Désactivée, l'enfant peut choisir de l'activer lui-même depuis son propre profil."}
                     </p>
                   </div>
                   <GlassSwitch checked={twoFAEnabled} onChange={() => startTwoFAFlow()} label="Double authentification" />

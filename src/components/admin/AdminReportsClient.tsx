@@ -31,7 +31,7 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
       setError(null);
     } catch (e) {
       console.error("Failed to refresh reports:", e);
-      setError("Échec du dernier rafraîchissement — les données affichées peuvent être obsolètes.");
+      setError("Échec du dernier rafraîchissement, les données affichées peuvent être obsolètes.");
     }
     finally { setRefreshing(false); }
   }, []);
@@ -231,7 +231,7 @@ export default function AdminReportsClient({ initialData }: { initialData: any }
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-[rgba(197,161,72,0.25)]">
           <h3 className="text-base font-bold text-[var(--greek-blue)] mb-6 flex items-center gap-2">
             <TrendingUp size={18} className="text-[var(--greek-gold)]" />
-            Inscriptions — 8 dernières semaines
+            Inscriptions : 8 dernières semaines
           </h3>
           <div className="flex items-end gap-2 h-48">
             {charts.registrations.map((item: any, i: number) => {

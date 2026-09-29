@@ -147,7 +147,7 @@ export default function CategoryManager({
           </div>
           <label className="flex items-center gap-3 text-sm cursor-pointer">
             <GlassSwitch checked={draft.admin_only} onChange={(next) => setDraft({ ...draft, admin_only: next })} label="Réservé à l'équipe" />
-            Seule l&apos;équipe peut y publier (annonces) — tout le monde peut répondre
+            Seule l&apos;équipe peut y publier (annonces), tout le monde peut répondre
           </label>
         </div>
       ) : (

@@ -42,7 +42,7 @@ export default function ProfileHeaderActions({
       });
     } catch (e) {
       console.error("[report] network error", e);
-      setReportMessage({ type: "error", text: "Erreur réseau — réessaie." });
+      setReportMessage({ type: "error", text: "Erreur réseau, réessaie." });
       return;
     }
     if (!res.ok) {

@@ -174,7 +174,7 @@ export default function AdminReviewsClient({
           <h2 className="text-sm font-bold text-[var(--greek-blue)] uppercase tracking-wide">Note globale affichée</h2>
           <p className="text-xs text-gray-500 mt-1">
             Par défaut, la note et le nombre d'avis affichés sur la page d'accueil sont calculés à partir des avis ci-dessous
-            (actuellement {computedRating || "—"} / 5). Si ta vraie note Trustpilot est différente (ex. tu as 3,7/5 sur Trustpilot
+            (actuellement {computedRating || "-"} / 5). Si ta vraie note Trustpilot est différente (ex. tu as 3,7/5 sur Trustpilot
             mais un seul avis à 5 étoiles ici), active la note manuelle pour afficher le vrai chiffre.
           </p>
         </div>
@@ -245,7 +245,7 @@ export default function AdminReviewsClient({
                   </td>
                   <td className="px-4 py-3 text-gray-600 max-w-xs truncate">{r.review_text}</td>
                   <td className="px-4 py-3">
-                    {r.is_verified ? <span className="text-xs font-semibold text-[#00b67a]"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Vérifié</span> : <span className="text-xs text-gray-400">—</span>}
+                    {r.is_verified ? <span className="text-xs font-semibold text-[#00b67a]"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Vérifié</span> : <span className="text-xs text-gray-400">-</span>}
                   </td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex justify-end gap-2">

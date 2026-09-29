@@ -1,4 +1,4 @@
-export const CGU_VERSION = "2.0 — Mai 2026";
+export const CGU_VERSION = "2.0 : Mai 2026";
 
 export const CGU_SECTIONS = [
   {

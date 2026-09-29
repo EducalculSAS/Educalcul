@@ -173,7 +173,7 @@ export default function AIAddExerciseModal({
                   </label>
                   <select value={targetPageId} onChange={(e) => setTargetPageId(e.target.value)} className={selectCls}>
                     {pages.map((p, i) => (
-                      <option key={p.id} value={p.id}>{`Page ${i + 1}${p.title ? ` — ${p.title}` : ""}`}</option>
+                      <option key={p.id} value={p.id}>{`Page ${i + 1}${p.title ? ` : ${p.title}` : ""}`}</option>
                     ))}
                   </select>
                 </div>
@@ -186,10 +186,10 @@ export default function AIAddExerciseModal({
                   <option value="end">À la fin</option>
                   {kind === "page"
                     ? pages.map((p, i) => (
-                        <option key={p.id} value={p.id}>{`Après la page ${i + 1}${p.title ? ` — ${p.title}` : ""}`}</option>
+                        <option key={p.id} value={p.id}>{`Après la page ${i + 1}${p.title ? ` : ${p.title}` : ""}`}</option>
                       ))
                     : blocksOfTarget.map((b, i) => (
-                        <option key={b.id} value={b.id}>{`Après le bloc ${i + 1}${b.title ? ` — ${b.title}` : ""}`}</option>
+                        <option key={b.id} value={b.id}>{`Après le bloc ${i + 1}${b.title ? ` : ${b.title}` : ""}`}</option>
                       ))}
                 </select>
               </div>

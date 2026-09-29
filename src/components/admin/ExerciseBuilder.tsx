@@ -113,7 +113,7 @@ export const BLOCK_TYPE_META: Partial<Record<BlockType, { label: string; icon: t
   matching: { label: "Association", icon: ArrowRightLeft, description: "Relier des éléments entre eux" },
   ordering: { label: "Mise en ordre", icon: ArrowUpDown, description: "Remettre des éléments dans le bon ordre" },
   coding: { label: "Code / Algo", icon: Code2, description: "Écrire un algorithme ou du code, corrigé par IA" },
-  impossible_search: { label: "Recherche impossible", icon: AlertTriangle, description: "L'énoncé n'a pas de solution — l'élève doit le justifier, corrigé par IA" },
+  impossible_search: { label: "Recherche impossible", icon: AlertTriangle, description: "L'énoncé n'a pas de solution, l'élève doit le justifier, corrigé par IA" },
   categorize: { label: "Catégoriser", icon: LayoutGrid, description: "Trier des éléments dans plusieurs catégories (glisser-déposer)" },
   number_line_point: { label: "Point sur une droite graduée", icon: Ruler, description: "Placer un point à la bonne valeur sur une droite graduée" },
   click_error: { label: "Repérer l'erreur", icon: SearchX, description: "Cliquer sur l'étape incorrecte d'un calcul ou d'un raisonnement" },
@@ -126,8 +126,8 @@ export const CREATABLE_BLOCK_TYPES = Object.keys(BLOCK_TYPE_META) as BlockType[]
 // Libellés pour les anciens types qui peuvent encore exister en base (contenu
 // déjà publié) mais qu'on ne propose plus à la création.
 const LEGACY_BLOCK_LABELS: Partial<Record<BlockType, string>> = {
-  single_choice: "QCM (ancien format — choix unique)",
-  multiple_choice: "QCM (ancien format — choix multiple)",
+  single_choice: "QCM (ancien format, choix unique)",
+  multiple_choice: "QCM (ancien format, choix multiple)",
 };
 
 // Normalise correctAnswer en tableau, que le bloc soit "qcm" (toujours un
@@ -858,7 +858,7 @@ export default function ExerciseBuilder({
                           {["qcm", "single_choice", "multiple_choice"].includes(block.type) && (
                             <div className="space-y-2">
                               <label className="text-sm font-medium text-gray-700">
-                                Options — coche la/les bonne(s) réponse(s)
+                                Options, coche la/les bonne(s) réponse(s)
                               </label>
                               {block.options?.map((option, optIndex) => {
                                 const correct = correctAnswersArray(block);
@@ -1001,7 +1001,7 @@ export default function ExerciseBuilder({
                                   })
                                 }
                                 className="w-full h-24 border-[rgba(197,161,72,0.25)] rounded-lg text-sm p-3"
-                                placeholder="Ex : Impossible — la somme des angles d'un triangle ne peut pas dépasser 180°..."
+                                placeholder="Ex : Impossible, la somme des angles d'un triangle ne peut pas dépasser 180°..."
                               />
                             </div>
                           )}
@@ -1286,7 +1286,7 @@ export default function ExerciseBuilder({
                           {block.type === "click_error" && (
                             <div className="space-y-2">
                               <label className="text-sm font-medium text-gray-700">
-                                Étapes — coche celle qui est FAUSSE
+                                Étapes, coche celle qui est FAUSSE
                               </label>
                               {(block.steps || []).map((step, i) => (
                                 <div key={i} className="flex items-center gap-2">

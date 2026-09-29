@@ -193,7 +193,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
             <h2 className="font-bold text-[var(--greek-blue)] flex items-center gap-2">
               <MessageSquare size={17} className="text-[var(--greek-gold)]" />
-              Forum — posts récents
+              Forum, posts récents
             </h2>
             <GlassButton href="/admin/forum" variant="outline" size="sm">
               Modérer <ChevronRight size={12} />

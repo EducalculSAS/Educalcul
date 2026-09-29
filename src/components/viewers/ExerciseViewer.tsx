@@ -1602,7 +1602,7 @@ export default function ExerciseViewer({
                   {threshold > 0 && (
                     <div className={`mt-4 flex items-center gap-2 text-sm font-bold px-4 py-3 rounded-xl ${passed ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
                       {passed ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
-                      {passed ? `Seuil atteint (${threshold}% requis)` : `Seuil non atteint — ${threshold}% requis, tu as eu ${percentage}%`}
+                      {passed ? `Seuil atteint (${threshold}% requis)` : `Seuil non atteint : ${threshold}% requis, tu as eu ${percentage}%`}
                     </div>
                   )}
                 </div>
@@ -1653,7 +1653,7 @@ export default function ExerciseViewer({
         </div>
         <div className="text-sm font-medium text-[var(--greek-blue)] bg-[var(--greek-blue)]/10 border border-[var(--greek-gold)] px-3 py-1 rounded-full">
           {/* "questions liées" (voir plan) sont les seules à produire plusieurs
-              écrans de question — "Étape" communique mieux l'enchaînement que
+              écrans de question, "Étape" communique mieux l'enchaînement que
               "Page" dans ce cas, sans rien changer au fonctionnement. */}
           {screens.length > 1 ? "Étape" : "Page"} {currentScreenIndex + 1} / {screens.length}
         </div>

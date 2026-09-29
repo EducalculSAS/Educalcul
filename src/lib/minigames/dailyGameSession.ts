@@ -71,7 +71,7 @@ export async function startDailyGameSession(gameType: MinigameType, req: Request
       .gte("created_at", `${today}T00:00:00.000Z`)
       .maybeSingle();
     if (alreadyPlayed) {
-      return NextResponse.json({ error: "Tu as déjà fait ce mini-jeu aujourd'hui — reviens demain !" }, { status: 400 });
+      return NextResponse.json({ error: "Tu as déjà fait ce mini-jeu aujourd'hui, reviens demain !" }, { status: 400 });
     }
 
     const features = await getUserFeatures(me.authId);

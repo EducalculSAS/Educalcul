@@ -65,7 +65,7 @@ export default function ImpersonationBanner() {
         // /auth/connexion — exactement le "ça me renvoie à connexion"
         // rapporté. On reste sur place et on prévient plutôt que de
         // continuer dans un état cassé.
-        toastError(data?.error || "Impossible de revenir à ta session admin — réessaie.");
+        toastError(data?.error || "Impossible de revenir à ta session admin, réessaie.");
         return;
       }
       const { error: setSessionError } = await supabase.auth.setSession({
@@ -73,7 +73,7 @@ export default function ImpersonationBanner() {
         refresh_token: data.refresh_token,
       });
       if (setSessionError) {
-        toastError("Impossible de restaurer ta session admin — réessaie ou reconnecte-toi.");
+        toastError("Impossible de restaurer ta session admin, réessaie ou reconnecte-toi.");
         return;
       }
       router.push(data.returnTo || state.returnTo || "/admin/users");

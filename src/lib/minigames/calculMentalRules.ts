@@ -22,7 +22,7 @@ export const CALCUL_MENTAL_RULES: CalculMentalRule[] = [
   { code: "04", label: "4ème", operations: "questions mélangeant les 4 opérations, carrés (x²), distributivité simple a(b+c), résolution mentale d'équations du type ax+b=cx+d avec des coefficients simples" },
   { code: "03", label: "3ème", operations: "développement (a±b)(c±d), identités remarquables (a±b)², résolution d'équations ax+b=cx+d" },
   { code: "02", label: "Seconde", operations: "développement (a±b)(c±d), identités remarquables (a±b)², vecteurs colinéaires (calcul mental simple, notation →), droites parallèles (notation ∥)" },
-  { code: "01", label: "Première", operations: "calcul mental du discriminant b²-4ac pour des coefficients simples, raison d'une suite arithmétique/géométrique, valeurs remarquables de sin/cos UNIQUEMENT parmi celles à résultat rationnel exact : sin(0)=0, cos(0)=1, sin(π/2)=1, cos(π/2)=0, sin(π/6)=1/2, cos(π/3)=1/2 (JAMAIS cos(π/6), sin(π/4), cos(π/4), sin(π/3) — leur résultat est irrationnel, √2/2 ou √3/2, impossible à donner comme nombre exact)" },
+  { code: "01", label: "Première", operations: "calcul mental du discriminant b²-4ac pour des coefficients simples, raison d'une suite arithmétique/géométrique, valeurs remarquables de sin/cos UNIQUEMENT parmi celles à résultat rationnel exact : sin(0)=0, cos(0)=1, sin(π/2)=1, cos(π/2)=0, sin(π/6)=1/2, cos(π/3)=1/2 (JAMAIS cos(π/6), sin(π/4), cos(π/4), sin(π/3), leur résultat est irrationnel, √2/2 ou √3/2, impossible à donner comme nombre exact)" },
   { code: "00", label: "Terminale", operations: "dérivées de fonctions usuelles simples (x², x³, 1/x) en un point, puissances simples pour l'exponentielle (e⁰, e¹), probabilités simples (P(A∩B), P(A∪B) avec valeurs données), produit scalaire de vecteurs simples" },
 ];
 
@@ -38,10 +38,10 @@ export function getCalculMentalRule(code: string): CalculMentalRule | null {
 
 export function buildCalculMentalSystemPrompt(rule: CalculMentalRule, avoidPrompts: string[] = [], theme?: string): string {
   const avoidBlock = avoidPrompts.length
-    ? `\n\nCes questions ont déjà été utilisées récemment pour ce palier — ne les reproduis pas, même reformulées, et varie vraiment les nombres et les tournures :\n${avoidPrompts.map((p) => `- ${p}`).join("\n")}`
+    ? `\n\nCes questions ont déjà été utilisées récemment pour ce palier, ne les reproduis pas, même reformulées, et varie vraiment les nombres et les tournures :\n${avoidPrompts.map((p) => `- ${p}`).join("\n")}`
     : "";
   const themeBlock = theme?.trim()
-    ? `\n\nThème à privilégier pour cette fiche : "${theme.trim()}". Habille les questions autour de ce thème quand c'est possible SANS jamais sortir du cadre d'opérations autorisé ci-dessous ni sacrifier la clarté — si le thème ne se prête pas naturellement à une question, reste sur une question de calcul neutre plutôt que de forcer un lien artificiel.`
+    ? `\n\nThème à privilégier pour cette fiche : "${theme.trim()}". Habille les questions autour de ce thème quand c'est possible SANS jamais sortir du cadre d'opérations autorisé ci-dessous ni sacrifier la clarté, si le thème ne se prête pas naturellement à une question, reste sur une question de calcul neutre plutôt que de forcer un lien artificiel.`
     : "";
 
   return `Tu es un professeur de mathématiques français qui prépare une fiche de calcul mental pour des élèves de niveau ${rule.label}.
@@ -49,9 +49,9 @@ export function buildCalculMentalSystemPrompt(rule: CalculMentalRule, avoidPromp
 Opérations et notions autorisées pour ce palier (ne dépasse JAMAIS ce cadre, même si tu penses qu'une question serait "intéressante") : ${rule.operations}.${themeBlock}
 
 Règles impératives :
-- Chaque question doit avoir une réponse numérique UNIQUE et sans ambiguïté : jamais de fraction non simplifiable en décimal, jamais de racine, jamais un décimal à développement infini ou irrationnel (ex. 1/3 = 0,333..., ou √2/2 = 0,7071... pour un sin/cos non remarquable — même approximé, un nombre irrationnel n'est JAMAIS une bonne réponse).
-- Si l'opération choisie doit normalement produire un entier (division, racine, etc. quand le palier les autorise), choisis TOUJOURS des nombres qui donnent un résultat entier exact — jamais une virgule "surprise" (ex. ne demande jamais 7 ÷ 2, choisis 8 ÷ 2). Une réponse décimale n'est acceptable que pour les notions du palier qui le prévoient explicitement ET dont le résultat est un nombre rationnel exact (ex. sin(π/6)=0,5 est acceptable ; cos(π/6)=√3/2 ne l'est jamais).
-- N'utilise JAMAIS de trigonométrie (sin, cos, tan), de racine carrée, de logarithme, d'exponentielle ou toute autre notion de lycée qui ne figure PAS mot pour mot dans les opérations autorisées ci-dessus — même à un palier proche. Un palier qui n'a pas "sin/cos" dans sa liste ne doit jamais en contenir.
+- Chaque question doit avoir une réponse numérique UNIQUE et sans ambiguïté : jamais de fraction non simplifiable en décimal, jamais de racine, jamais un décimal à développement infini ou irrationnel (ex. 1/3 = 0,333..., ou √2/2 = 0,7071... pour un sin/cos non remarquable, même approximé, un nombre irrationnel n'est JAMAIS une bonne réponse).
+- Si l'opération choisie doit normalement produire un entier (division, racine, etc. quand le palier les autorise), choisis TOUJOURS des nombres qui donnent un résultat entier exact, jamais une virgule "surprise" (ex. ne demande jamais 7 ÷ 2, choisis 8 ÷ 2). Une réponse décimale n'est acceptable que pour les notions du palier qui le prévoient explicitement ET dont le résultat est un nombre rationnel exact (ex. sin(π/6)=0,5 est acceptable ; cos(π/6)=√3/2 ne l'est jamais).
+- N'utilise JAMAIS de trigonométrie (sin, cos, tan), de racine carrée, de logarithme, d'exponentielle ou toute autre notion de lycée qui ne figure PAS mot pour mot dans les opérations autorisées ci-dessus, même à un palier proche. Un palier qui n'a pas "sin/cos" dans sa liste ne doit jamais en contenir.
 - Les questions doivent être résolubles de tête en quelques secondes par un élève de ce niveau, sans poser d'opération sur papier.
 - Formule chaque question en une ligne courte, en français, sans habillage narratif ("Calcule 8 × 7", "Résous : 3x + 2 = 2x + 9").
 - Varie les types de questions dans le cadre autorisé plutôt que de répéter la même structure.
