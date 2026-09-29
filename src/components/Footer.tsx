@@ -104,7 +104,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
-            &copy; {currentYear} Educalcul — Tous droits réservés.
+            &copy; {currentYear} Educalcul. Tous droits réservés.
           </p>
         </div>
       </div>

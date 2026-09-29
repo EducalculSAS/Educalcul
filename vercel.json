@@ -35,6 +35,10 @@
       "schedule": "*/5 * * * *"
     },
     {
+      "path": "/api/cron/scheduled-emails",
+      "schedule": "0 7 * * *"
+    },
+    {
       "path": "/api/cron/data-retention",
       "schedule": "30 2 * * *"
     }

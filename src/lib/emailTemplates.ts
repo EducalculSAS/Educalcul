@@ -518,6 +518,63 @@ L'équipe Educalcul`,
   };
 }
 
+// ── Rapport hebdomadaire (tâche /api/cron/scheduled-emails) ─────────────────
+
+export interface WeeklyChildStats {
+  name: string;
+  exercises: number;
+  quizzes: number;
+  /** Moyenne des scores (%) des exercices et quiz terminés, null si aucun. */
+  averageScore: number | null;
+  /** Temps passé sur les quiz, en minutes. */
+  minutes: number;
+  courses: number;
+  badges: string[];
+}
+
+const plural = (n: number, one: string, many: string) => `${n} ${n > 1 ? many : one}`;
+
+export function weeklyReportEmail(firstName: string, children: WeeklyChildStats[], period: string) {
+  const blocks = children.map((c) => {
+    const rows: [string, string][] = [];
+    if (c.exercises) rows.push(["Exercices terminés", String(c.exercises)]);
+    if (c.quizzes) rows.push(["Quiz terminés", String(c.quizzes)]);
+    if (c.averageScore !== null) rows.push(["Score moyen", `${c.averageScore} %`]);
+    if (c.minutes) rows.push(["Temps sur les quiz", `${c.minutes} min`]);
+    if (c.courses) rows.push(["Cours terminés", String(c.courses)]);
+    return `<p style="margin:22px 0 0;font-family:${SERIF};font-size:17px;font-weight:700;color:${NAVY};">${escapeHtml(c.name)}</p>
+      ${rows.length ? emailDetails(rows) : ""}
+      ${c.badges.length ? emailCallout(`<strong>${plural(c.badges.length, "badge gagné", "badges gagnés")} :</strong> ${c.badges.map(escapeHtml).join(", ")}`, "success") : ""}`;
+  }).join("");
+  const text = children.map((c) =>
+    `${c.name} : ${plural(c.exercises, "exercice", "exercices")}, ${plural(c.quizzes, "quiz", "quiz")}${c.averageScore !== null ? `, score moyen ${c.averageScore} %` : ""}${c.courses ? `, ${plural(c.courses, "cours terminé", "cours terminés")}` : ""}${c.badges.length ? `, badges : ${c.badges.join(", ")}` : ""}.`).join("\n");
+  return {
+    subject: "Le rapport de la semaine sur vos enfants",
+    textPart: `Bonjour ${firstName},
+
+Voici les progrès ${period} :
+
+${text}
+
+Détail complet dans votre espace : ${EMAIL_BASE_URL}/parent/dashboard
+
+Vous pouvez désactiver ce rapport dans Profil > Notifications.
+
+L'équipe Educalcul`,
+    htmlPart: buildEmailHtml({
+      title: "Le rapport de la semaine",
+      preheader: `Les progrès de vos enfants ${period}`,
+      body: `
+        ${hello(firstName)}
+        ${p(`Voici les progrès de vos enfants ${escapeHtml(period)}.`, true)}
+        ${blocks}
+        ${p("Bravo à eux : chaque petite séance compte !", true)}
+      `,
+      cta: { label: "Voir le détail dans mon espace", url: `${EMAIL_BASE_URL}/parent/dashboard` },
+    }),
+  };
+}
+
 // ── Rappels légaux (reconduction, inactivité) ───────────────────────────────
 
 /** Rappel avant la reconduction tacite d'un abonnement annuel (Code de la consommation, art. L.215-1). */
