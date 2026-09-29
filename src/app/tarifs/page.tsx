@@ -89,7 +89,6 @@ export default async function Tarifs() {
         <section className="py-14 bg-[var(--greek-cream)] border-t border-gray-100 text-center">
           <div className="container mx-auto px-6 max-w-xl">
             <FadeInSection translateY={20}>
-              <div className="w-8 h-px bg-[var(--greek-gold)] mx-auto mb-5 opacity-60" />
               <h3 className="font-[family-name:var(--font-display)] font-bold text-lg text-[var(--greek-blue)] mb-2">
                 Sans engagement · Annulable à tout moment
               </h3>

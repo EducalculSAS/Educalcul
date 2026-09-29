@@ -184,7 +184,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <Reveal y={36} scale={0.96}>
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
-                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 1 · Cours & Exercices
+                1 · Cours & Exercices
               </div>
               <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Tout le programme,<br />aucune lacune oubliée
@@ -222,7 +222,7 @@ export default async function Home() {
             </Reveal>
             <Reveal y={36} scale={0.95}>
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
-                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 2 · IA Pédagogique
+                2 · IA Pédagogique
               </div>
               <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Un tuteur IA qui pose<br />les bonnes questions
@@ -237,7 +237,7 @@ export default async function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <Reveal y={36} scale={0.96}>
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
-                <span className="w-6 h-px" style={{ background: "var(--greek-gold)" }} /> 3 · Suivi Parents
+                3 · Suivi Parents
               </div>
               <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Vous savez enfin<br />où il en est vraiment

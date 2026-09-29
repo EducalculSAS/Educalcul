@@ -63,7 +63,6 @@ function FaqSection({ section, sIdx, openItem, setOpenItem }: {
     <div ref={ref} className="mb-10">
       <div className="flex items-center gap-4 mb-5"
         style={{ opacity: visible ? 1 : 0, transform: visible ? "translateY(0)" : "translateY(16px)", transition: "opacity 0.4s 0ms, transform 0.4s 0ms" }}>
-        <div className="w-6 h-px opacity-60" style={{ background: "var(--greek-gold)" }} />
         <h2 className="font-[family-name:var(--font-display)] font-bold text-base text-[var(--greek-blue)] uppercase tracking-wider">{section.title}</h2>
         <div className="flex-1 h-px bg-gray-200" />
       </div>

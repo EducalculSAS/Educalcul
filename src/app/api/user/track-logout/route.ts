@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     const twoFAToken = getTwoFactorCookieFromRequest(request);
 
     // Independent writes — run in parallel.
-    await Promise.all([
+    const results = await Promise.all([
       supabaseAdmin
         .from("users")
         .update({
@@ -78,6 +78,14 @@ export async function POST(request: Request) {
             .eq("token_hash", hashTwoFactorValue(twoFAToken))
         : Promise.resolve(),
     ]);
+
+    // Une écriture en échec (ex. colonne manquante) ne doit plus passer
+    // inaperçue : c'est ainsi que l'IP de déconnexion de l'historique n'a
+    // jamais été enregistrée.
+    for (const r of results) {
+      const err = (r as { error?: { message: string } | null } | undefined)?.error;
+      if (err) console.error("[track-logout] écriture échouée :", err.message);
+    }
 
     await clearTwoFactorCookie();
     return NextResponse.json({ ok: true });

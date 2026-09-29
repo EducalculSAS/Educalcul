@@ -34,6 +34,9 @@ function isPrivateIp(ip: string): boolean {
 }
 
 export function getClientIp(request: Request): string | null {
+  // Posé par Vercel lui-même : le navigateur ne peut pas le falsifier.
+  const vercelIp = request.headers.get("x-vercel-forwarded-for");
+  if (vercelIp) return vercelIp.split(",")[0].trim();
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) {
     // X-Forwarded-For can include multiple IPs: client, proxy1, proxy2, ...
@@ -65,78 +68,37 @@ export interface IpGeo {
   country?: string;
 }
 
+/**
+ * Localisation approximative (ville, pays) d'une connexion.
+ *
+ * Elle vient UNIQUEMENT des en-têtes que l'hébergeur (Vercel) ajoute à chaque
+ * requête : aucune adresse IP n'est envoyée à un service tiers (avant, elle
+ * partait vers ipinfo.io / ip-api.com, ce qui ajoutait des sous-traitants et un
+ * transfert de données hors UE). En local, ces en-têtes n'existent pas : la
+ * localisation est alors « indisponible » plutôt qu'inventée.
+ */
 export async function getIpGeo(request: Request): Promise<IpGeo> {
   const h = request.headers;
   const ip = getClientIp(request);
-  const isLocal = !ip || ip === "127.0.0.1" || ip === "::1";
 
-  // 1. IPinfo (plus précis, si un token est configuré)
-  const ipinfoToken = process.env.IPINFO_TOKEN;
-  if (ipinfoToken && !isLocal) {
-    try {
-      const geo = await fetch(
-        `https://ipinfo.io/${ip}/json?token=${ipinfoToken}`,
-        {
-          signal: AbortSignal.timeout(4000),
-          headers: { Accept: "application/json" },
-        },
-      ).then((r) => r.json());
-      if (geo?.loc) {
-        const [lat, lng] = String(geo.loc).split(",").map(Number);
-        if (Number.isFinite(lat) && Number.isFinite(lng)) {
-          return {
-            ip,
-            available: true,
-            latitude: lat,
-            longitude: lng,
-            city: geo.city || undefined,
-            country: (COUNTRY_NAMES[geo.country] ?? geo.country) || undefined,
-          };
-        }
-      }
-    } catch {
-      // tombe sur les sources suivantes
-    }
-  }
+  const lat = parseFloat(h.get("x-vercel-ip-latitude") ?? "");
+  const lng = parseFloat(h.get("x-vercel-ip-longitude") ?? "");
+  const countryCode = h.get("x-vercel-ip-country") ?? "";
+  const cityRaw = h.get("x-vercel-ip-city") ?? "";
+  if (!countryCode && !cityRaw && !Number.isFinite(lat)) return { ip, available: false };
 
-  // 2. Vercel headers (exact, gratuit, prioritaire si dispo)
-  const vercelLat = h.get("x-vercel-ip-latitude");
-  const vercelLng = h.get("x-vercel-ip-longitude");
-  if (vercelLat && vercelLng) {
-    const countryCode = h.get("x-vercel-ip-country") ?? "";
-    const cityRaw = h.get("x-vercel-ip-city") ?? "";
-    return {
-      ip,
-      available: true,
-      latitude: parseFloat(vercelLat),
-      longitude: parseFloat(vercelLng),
-      city: cityRaw ? decodeURIComponent(cityRaw) : undefined,
-      country: (COUNTRY_NAMES[countryCode] ?? countryCode) || undefined,
-    };
-  }
-
-  // 3. IP géoloc côté serveur (OVH, AWS, DigitalOcean, etc.)
-  // Essayer même pour les IPs locales (fallback) en cas de développement
+  let city: string | undefined;
   try {
-    const geoIp = ip && !isLocal ? ip : "8.8.8.8";
-    const geo = await fetch(
-      `http://ip-api.com/json/${geoIp}?fields=status,lat,lon,city,country,countryCode&lang=fr`,
-      { signal: AbortSignal.timeout(4000) },
-    ).then((r) => r.json());
-
-    if (geo.status !== "success") {
-      return { ip, available: false };
-    }
-
-    return {
-      ip,
-      available: true,
-      latitude: geo.lat,
-      longitude: geo.lon,
-      city: geo.city || undefined,
-      country: geo.country || undefined,
-    };
+    city = cityRaw ? decodeURIComponent(cityRaw) : undefined;
   } catch {
-    return { ip, available: false };
+    city = cityRaw || undefined;
   }
+  return {
+    ip,
+    available: true,
+    latitude: Number.isFinite(lat) ? lat : undefined,
+    longitude: Number.isFinite(lng) ? lng : undefined,
+    city,
+    country: (COUNTRY_NAMES[countryCode] ?? countryCode) || undefined,
+  };
 }
