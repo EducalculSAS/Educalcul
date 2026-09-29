@@ -5,6 +5,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { stripAnswers } from "@/lib/quizContent";
+import { parseMinScorePercent } from "@/lib/scorePercent";
 
 export async function GET(request: Request) {
   try {
@@ -99,6 +100,7 @@ export async function POST(request: Request) {
       description,
       course_id,
       time_limit_minutes,
+      min_score_percent,
       status,
       folder_id,
       thumbnail_filename,
@@ -118,7 +120,7 @@ export async function POST(request: Request) {
         description, // or question?
         course_id,
         time_limit_minutes,
-        min_score_percent: body.min_score_percent || null,
+        min_score_percent: parseMinScorePercent(min_score_percent),
         status: status || "draft",
         folder_id: folder_id || null,
         thumbnail_filename,
@@ -191,7 +193,7 @@ export async function PUT(request: Request) {
     if (has("description")) updatePayload.description = description;
     if (has("course_id")) updatePayload.course_id = course_id || null;
     if (has("time_limit_minutes")) updatePayload.time_limit_minutes = time_limit_minutes;
-    if (has("min_score_percent")) updatePayload.min_score_percent = body.min_score_percent || null;
+    if (has("min_score_percent")) updatePayload.min_score_percent = parseMinScorePercent(body.min_score_percent);
     if (has("status")) updatePayload.status = status;
     if (has("folder_id")) updatePayload.folder_id = folder_id || null;
     if (has("thumbnail_filename")) updatePayload.thumbnail_filename = thumbnail_filename;

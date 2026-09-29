@@ -1622,8 +1622,9 @@ export default function AdminExercisesClient({
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Score minimum requis (%)</label>
                       <input
                         type="number" min="0" max="100"
-                        value={formData.min_score_percent}
-                        onChange={(e) => setFormData({ ...formData, min_score_percent: parseInt(e.target.value) || 0 })}
+                        inputMode="numeric"
+                        value={formData.min_score_percent || ""}
+                        onChange={(e) => setFormData({ ...formData, min_score_percent: Math.min(100, parseInt(e.target.value) || 0) })}
                         className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                         placeholder="0 = pas de minimum"
                       />

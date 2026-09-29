@@ -2,6 +2,7 @@
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
+import { passThreshold } from "@/lib/scorePercent";
 
 
 // GET: Fetch all activities for the current user
@@ -144,8 +145,7 @@ export async function POST(req: Request) {
         // le score, on se limite à borner le pourcentage déclaré.
         safeScorePercent = Math.min(100, Math.max(0, Math.round(Number(scorePercent) || 0)));
       }
-      const threshold = item?.min_score_percent || 0;
-      safePassed = threshold > 0 ? safeScorePercent >= threshold : true;
+      safePassed = safeScorePercent >= passThreshold(item?.min_score_percent);
     }
 
     let result;

@@ -10,11 +10,10 @@ import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph"
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { AdminAttemptControls } from "@/components/viewers/ExerciseViewer";
+import { passThreshold } from "@/lib/scorePercent";
 
 
 
-/** Seuil de réussite : celui du quiz, sinon 50 % (sans seuil, 0 % comptait comme réussi). */
-const passThreshold = (min: number | null | undefined) => (min && min > 0 ? min : 50);
 
 interface QuizViewerProps {
   quiz: {
@@ -941,8 +940,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                         setQuizCompleted(true);
                         const tp = questions.reduce((acc, q) => acc + (q.points || 1), 0);
                         const pct = tp > 0 ? Math.round((score / tp) * 100) : 100;
-                        const thr = (quiz as any).min_score_percent || 0;
-                        const didPass = thr > 0 ? pct >= thr : true;
+                        const didPass = pct >= passThreshold((quiz as any).min_score_percent);
                         saveProgress('completed', score, pct, didPass);
                       }
                   : currentQuestionIndex < questions.length - 1

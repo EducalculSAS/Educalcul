@@ -5,6 +5,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { stripAnswers, fillEmptyContentJson } from "@/lib/exerciseContent";
+import { parseMinScorePercent } from "@/lib/scorePercent";
 
 export async function GET(request: Request) {
   try {
@@ -126,6 +127,8 @@ export async function POST(request: Request) {
       thumbnail_url,
       content_json,
       time_limit,
+      time_limit_minutes,
+      min_score_percent,
       max_attempts,
       estimated_time,
     } = body;
@@ -204,7 +207,8 @@ export async function POST(request: Request) {
         thumbnail_url,
         content_json: finalContentJson,
         time_limit: time_limit || null,
-        min_score_percent: body.min_score_percent || null,
+        time_limit_minutes: time_limit_minutes || null,
+        min_score_percent: parseMinScorePercent(min_score_percent),
         max_attempts: max_attempts || null,
         estimated_time: estimated_time ?? 15,
       })
@@ -336,7 +340,7 @@ export async function PUT(request: Request) {
     if (has("time_limit")) updatePayload.time_limit = time_limit || null;
     if (has("time_limit_minutes")) updatePayload.time_limit_minutes = body.time_limit_minutes || null;
     if (has("estimated_time")) updatePayload.estimated_time = body.estimated_time ?? 15;
-    if (has("min_score_percent")) updatePayload.min_score_percent = body.min_score_percent || null;
+    if (has("min_score_percent")) updatePayload.min_score_percent = parseMinScorePercent(body.min_score_percent);
     if (has("max_attempts")) updatePayload.max_attempts = max_attempts || null;
 
     const { data, error } = await supabaseAdmin

@@ -14,6 +14,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import "katex/dist/katex.min.css";
+import { passThreshold } from "@/lib/scorePercent";
 
 // Mélange déterministe (seedé par une chaîne) pour que l'ordre affiché aux
 // élèves (association / mise en ordre) reste stable entre deux rendus tant
@@ -107,10 +108,6 @@ export function AdminAttemptControls({
 }
 
 
-/** Seuil de réussite : celui de l'exercice, sinon 50 %. Sans seuil, tout
- * résultat comptait comme « réussi » — y compris 0 % (« Félicitations ! »). */
-const DEFAULT_PASS_PERCENT = 50;
-const passThreshold = (min: number | null | undefined) => (min && min > 0 ? min : DEFAULT_PASS_PERCENT);
 
 interface ExerciseViewerProps {
   exercise: {
