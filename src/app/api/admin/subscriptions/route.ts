@@ -3,6 +3,7 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireSuperAdmin } from "@/lib/apiAuth";
 import { fetchAdminSubscriptionPlans } from "@/lib/adminSubscriptionPlans";
+import { syncPlanToStripe, removePlanFromStripe } from "@/lib/stripeCatalog";
 
 // GET — list all plans. Subscriber details are attached only for admins;
 // the public signup page only needs the plan fields themselves.
@@ -58,7 +59,9 @@ export async function POST(req: Request) {
       .single();
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
-    return NextResponse.json(data, { status: 201 });
+    // Stripe suit : produit et prix créés/mis à jour (un échec Stripe n'empêche pas l'enregistrement).
+    const stripeSync = await syncPlanToStripe(data.id);
+    return NextResponse.json({ ...data, stripe_sync: stripeSync }, { status: 201 });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
@@ -83,7 +86,8 @@ export async function PUT(req: Request) {
       .single();
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
-    return NextResponse.json(data);
+    const stripeSync = await syncPlanToStripe(data.id);
+    return NextResponse.json({ ...data, stripe_sync: stripeSync });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }
@@ -113,13 +117,15 @@ export async function DELETE(req: Request) {
       );
     }
 
+    const { data: doomed } = await supabaseAdmin.from("subscription_plans").select("name").eq("id", id).maybeSingle();
     const { error } = await supabaseAdmin
       .from("subscription_plans")
       .delete()
       .eq("id", id);
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
-    return NextResponse.json({ success: true });
+    const stripeSync = await removePlanFromStripe(id, doomed?.name);
+    return NextResponse.json({ success: true, stripe_sync: stripeSync });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
   }

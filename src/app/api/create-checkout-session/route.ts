@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getVatTaxRateId } from "@/lib/stripeVat";
+import { ensurePlanPrice, ensureProduct, RECURRING } from "@/lib/stripeCatalog";
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser, getAuthIdentityOnly } from '@/lib/apiAuth';
@@ -258,23 +259,29 @@ export async function POST(req: Request) {
       ? Math.round(priceInCents * (1 - discountPercent / 100))
       : priceInCents;
 
-    const RECURRING: Record<string, { interval: 'month' | 'year'; interval_count: number }> = {
-      month:    { interval: 'month', interval_count: 1 },
-      quarter:  { interval: 'month', interval_count: 3 },
-      semester: { interval: 'month', interval_count: 6 },
-      year:     { interval: 'year',  interval_count: 1 },
-    };
     const recurring = RECURRING[plan.billing_interval] || RECURRING.month;
 
-    const lineItem: any = {
-      price_data: {
-        currency: 'eur',
-        product_data: { name: plan.name },
-        unit_amount: discountedPrice,
-        recurring,
-      },
-      quantity: 1,
-    };
+    // Prix Stripe du catalogue (voir stripeCatalog.ts) : le produit et le prix
+    // sont créés / mis à jour depuis la base. Avec une remise de parrainage
+    // (montant différent), on garde le PRODUIT du catalogue avec un montant à
+    // la volée. Si Stripe ne répond pas au catalogue, on retombe sur l'ancien
+    // fonctionnement (prix en ligne) plutôt que de bloquer le paiement.
+    let lineItem: any;
+    try {
+      const isCustom = !!customConfig;
+      if (isCustom) {
+        const productId = await ensureProduct('Sur mesure', 'Abonnement personnalisé');
+        lineItem = { price_data: { currency: 'eur', product: productId, unit_amount: discountedPrice, recurring }, quantity: 1 };
+      } else {
+        const { productId, priceId } = await ensurePlanPrice(plan);
+        lineItem = discountPercent > 0
+          ? { price_data: { currency: 'eur', product: productId, unit_amount: discountedPrice, recurring }, quantity: 1 }
+          : { price: priceId, quantity: 1 };
+      }
+    } catch (catalogErr) {
+      console.error('[create-checkout-session] catalogue Stripe indisponible, prix en ligne :', (catalogErr as Error).message);
+      lineItem = { price_data: { currency: 'eur', product_data: { name: plan.name }, unit_amount: discountedPrice, recurring }, quantity: 1 };
+    }
     // TVA incluse dans le prix affiché, si le taux existe dans Stripe (voir stripeVat.ts).
     const vatRateId = await getVatTaxRateId();
     if (vatRateId) lineItem.tax_rates = [vatRateId];

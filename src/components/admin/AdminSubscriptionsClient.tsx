@@ -199,7 +199,11 @@ export default function AdminSubscriptionsClient({
     const res = await fetch("/api/admin/subscriptions", { method, headers: { "Content-Type": "application/json" }, body });
     const result = await res.json();
     if (!res.ok) { showToast("error", result.error || "Erreur"); return; }
-    showToast("success", editingPlan ? "Plan modifié" : "Plan créé");
+    if (result.stripe_sync && result.stripe_sync.ok === false) {
+      showToast("error", "Plan enregistré, mais Stripe n'a pas pu être mis à jour : réenregistre le plan pour réessayer.");
+    } else {
+      showToast("success", editingPlan ? "Plan modifié, Stripe mis à jour" : "Plan créé, Stripe mis à jour");
+    }
     setShowPlanModal(false);
     fetchPlans();
   };
