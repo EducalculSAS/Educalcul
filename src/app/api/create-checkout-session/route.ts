@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getVatTaxRateId } from "@/lib/stripeVat";
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser, getAuthIdentityOnly } from '@/lib/apiAuth';
@@ -274,6 +275,9 @@ export async function POST(req: Request) {
       },
       quantity: 1,
     };
+    // TVA incluse dans le prix affiché, si le taux existe dans Stripe (voir stripeVat.ts).
+    const vatRateId = await getVatTaxRateId();
+    if (vatRateId) lineItem.tax_rates = [vatRateId];
 
     const origin = baseUrl;
     const sessionData: any = {
