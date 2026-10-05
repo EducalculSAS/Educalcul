@@ -1165,6 +1165,15 @@ function getKatexError(latex: string): string {
 const TEXT_ONLY_IN_MATH = /([€£¥₽₹«»“”])/;
 
 function pushMathPart(parts: StructuredRichTextPart[], rawLatex: string): void {
+  // « $\text{par visite de classe}$ » ou « $\text{48}$ » : du texte (ou un nombre
+  // nu) enveloppé dans une formule, que le modèle produit souvent. On le range
+  // en texte ordinaire plutôt qu'en mathématiques (police et espacement faux).
+  const wrappedText = /^\s*\\text\{([^{}$\\]*)\}\s*$/.exec(rawLatex);
+  if (wrappedText) {
+    const value = wrappedText[1].trim();
+    if (value) parts.push({ type: "text", value });
+    return;
+  }
   if (!TEXT_ONLY_IN_MATH.test(rawLatex)) {
     const latex = normalizeStructuredLatex(rawLatex);
     if (latex) parts.push({ type: "math", latex });
@@ -1210,6 +1219,8 @@ function needsBoundarySpace(left: string, right: string): boolean {
   if (/\s$/.test(left) || /^\s/.test(right)) return false;
   if (/[('’\[{\/-]$/.test(left)) return false;
   if (/^[,.;:!?%)\]}]/.test(right)) return false;
+  // Fin de phrase collée à la suivante (« visites.Les tarifs ») ou unité collée au mot suivant.
+  if (/[.!?€]$/.test(left) && /^[A-Za-zÀ-ÿ0-9]/.test(right)) return true;
   return /[A-Za-zÀ-ÿ0-9)]$/.test(left) && /^[A-Za-zÀ-ÿ0-9(]/.test(right);
 }
 

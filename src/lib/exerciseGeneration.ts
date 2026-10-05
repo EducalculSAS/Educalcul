@@ -25,6 +25,8 @@ import {
   sanitizeStructuredExerciseDraft,
 } from "@/lib/ai/pedagogy";
 import { runStructuredQualityGuard } from "@/lib/ai/qualityGuard";
+import type { GenerateStructured } from "@/lib/ai/runtime";
+import type { JsonSchemaContract } from "@/lib/ai/schemas";
 
 const BATCH_SIZE = 2;
 
@@ -190,6 +192,8 @@ function buildExerciseSystemPrompt(options: {
   totalQuestions: number;
   firstBatch: boolean;
   programmeBlock: string;
+  /** Exercice inspiré d'une photo : tout le contexte va dans l'introduction, jamais dans les questions. */
+  sourceMode?: boolean;
 }): string {
   return `Tu es un professeur de mathématiques expert pour le niveau ${options.level}.
 Sujet : ${options.subject}.
@@ -222,7 +226,9 @@ RÈGLES :
   ? options.blockType === "fill_in_the_blank"
     ? "Pour un texte à trous, content contient seulement le texte à compléter avec les jetons {{1}}, {{2}}, {{3}} ; prompt contient la consigne courte."
     : 'Pour un exercice simple, content vaut exactement {"parts":[]} : toutes les données utiles sont dans prompt, sans réponse.' 
-  : "Pour un exercice contextuel, content contient uniquement les données ou le support commun nécessaires à la question, jamais la réponse ni la correction."}
+  : options.sourceMode
+    ? 'Pour cet exercice, content vaut exactement {"parts":[]} dans CHAQUE question : toutes les données communes (tarifs, valeurs, tableau) sont dans introduction ; prompt contient uniquement la question posée. Aucun calcul ni résultat dans prompt.'
+    : "Pour un exercice contextuel, content contient uniquement les données ou le support commun nécessaires à la question, jamais la réponse ni la correction."}
 • Chaque question contient resources, tableau de 0 à 2 ressources structurées. Utilise uniquement table, sign_table, variation_table, graph ou figure.
 • Utilise une ressource seulement lorsqu'elle sert réellement la question : lecture de courbe, tableau à interpréter, schéma, diagramme ou données.
 • Une courbe mathématique utilise exclusivement graph/mathGraph. Une figure SVG sert uniquement aux schémas, camemberts, diagrammes, aires, fractions, frises ou processus ; jamais à tracer une courbe.
@@ -231,7 +237,9 @@ RÈGLES :
 • explanation donne une solution propre, cohérente avec answer, sans autocorrection visible.
 • Une question évalue une notion principale et comporte au maximum deux sous-questions, sauf demande explicite de l'enseignant.
 • ${options.firstBatch && options.exerciseType === "contextual"
-  ? "introduction contient 1 à 2 paragraphes RICH_TEXT de mise en situation."
+  ? options.sourceMode
+    ? "introduction contient l'énoncé commun COMPLET avec les NOUVELLES valeurs (1 à 4 paragraphes RICH_TEXT : contexte, tarifs ou données, consigne générale), sans aucune réponse ni calcul."
+    : "introduction contient 1 à 2 paragraphes RICH_TEXT de mise en situation."
   : "introduction est exactement []."}
 • ${options.firstBatch
   ? `title et description décrivent l'exercice complet de ${options.totalQuestions} questions.`
@@ -270,6 +278,113 @@ MISSION : crée un exercice INSPIRÉ de l'exercice source, pas une copie.
 • Répartition des ${o.total} questions de l'exercice (cette partie couvre les questions ${o.from + 1} à ${o.from + o.count}) :
 ${lines.join("\n")}
 • FIGURES : si l'exercice source contient une figure, un graphique ou un tableau, ou si la géométrie, les statistiques ou les fonctions s'y prêtent, ajoute une ressource (figure, graph ou table) à chaque question qui s'appuie dessus, dessinée avec les NOUVELLES valeurs (longueurs, points, données). N'oublie pas les codages de la figure (angles droits, segments égaux).`;
+}
+
+const solutionsSchema: JsonSchemaContract = {
+  name: "educalcul_independent_solutions",
+  description: "Solutions indépendantes de questions de mathématiques.",
+  schema: {
+    type: "object",
+    properties: {
+      solutions: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: { index: { type: "integer" }, final_answer: { type: "string" } },
+          required: ["index", "final_answer"],
+          additionalProperties: false,
+        },
+      },
+    },
+    required: ["solutions"],
+    additionalProperties: false,
+  },
+};
+
+const verdictsSchema: JsonSchemaContract = {
+  name: "educalcul_answer_verdicts",
+  description: "Comparaison de deux réponses à une même question.",
+  schema: {
+    type: "object",
+    properties: {
+      verdicts: {
+        type: "array",
+        items: {
+          type: "object",
+          properties: { index: { type: "integer" }, same: { type: "boolean" } },
+          required: ["index", "same"],
+          additionalProperties: false,
+        },
+      },
+    },
+    required: ["verdicts"],
+    additionalProperties: false,
+  },
+};
+
+/**
+ * Contrôle des réponses d'un exercice généré depuis une photo : les valeurs ont
+ * été changées, donc rien ne garantit que les réponses suivent. Le modèle résout
+ * chaque question de son côté SANS voir la réponse prévue, puis on compare les
+ * deux. Une question dont les réponses divergent est retirée plutôt que
+ * publiée fausse. Les questions qui s'appuient sur une figure ou un tableau ne
+ * sont pas contrôlables ici (le modèle ne voit pas la ressource) : elles restent.
+ * En cas d'échec du contrôle lui-même, le brouillon est conservé tel quel.
+ */
+async function dropQuestionsWithWrongAnswers(
+  draft: StructuredExerciseDraft,
+  generate: GenerateStructured,
+  subject: string,
+  part: number,
+): Promise<StructuredExerciseDraft> {
+  try {
+    const intro = draft.introduction.map((block) => structuredRichTextToPlainText(block)).join("\n");
+    const checkable = draft.questions
+      .map((question, index) => ({ question, index }))
+      .filter(({ question }) => !(question.resources?.length > 0));
+    if (checkable.length === 0) return draft;
+
+    const asked = checkable
+      .map(({ question, index }) => `Question ${index} : ${structuredRichTextToPlainText(question.prompt)}`)
+      .join("\n\n");
+    const solved = await generate<{ solutions?: { index: number; final_answer: string }[] }>(
+      `Énoncé commun :\n${intro || "(aucun)"}\n\n${asked}\n\nRésous chaque question depuis zéro et donne la réponse finale courte (valeur, formule choisie, etc.).`,
+      "Tu es un professeur de mathématiques rigoureux. Tu résous les questions toi-même, en refaisant chaque calcul pas à pas avec les valeurs de l'énoncé. Réponds uniquement avec le JSON demandé.",
+      solutionsSchema,
+      0.05,
+      4_000,
+      false,
+    );
+    const mine = new Map((solved.solutions ?? []).map((s) => [s.index, s.final_answer]));
+
+    const pairs = checkable
+      .filter(({ index }) => mine.has(index))
+      .map(
+        ({ question, index }) =>
+          `Question ${index} : ${structuredRichTextToPlainText(question.prompt)}\nRéponse A : ${structuredRichTextToPlainText(question.answer)}\nRéponse B : ${mine.get(index)}`,
+      )
+      .join("\n\n");
+    if (!pairs) return draft;
+    const judged = await generate<{ verdicts?: { index: number; same: boolean }[] }>(
+      `Pour chaque question, dis si la réponse A et la réponse B sont mathématiquement identiques (même valeur ou forme équivalente, même conclusion). Une valeur ou une conclusion différente donne same=false.\n\n${pairs}`,
+      "Tu compares deux réponses à une même question de mathématiques. Réponds uniquement avec le JSON demandé.",
+      verdictsSchema,
+      0,
+      2_000,
+      false,
+    );
+    const wrong = new Set((judged.verdicts ?? []).filter((v) => v.same === false).map((v) => v.index));
+    if (wrong.size === 0) return draft;
+    console.warn(
+      `[exercise-ai] ${subject}, partie ${part} : ${wrong.size} question(s) retirée(s), réponse prévue différente du recalcul indépendant (${[...wrong].join(", ")}).`,
+    );
+    const kept = draft.questions.filter((_, index) => !wrong.has(index));
+    return kept.length > 0 ? { ...draft, questions: kept } : draft;
+  } catch (error) {
+    if (error instanceof GenerationCancelledError) throw error;
+    console.warn("[exercise-ai] contrôle des réponses indisponible, brouillon conservé :", error);
+    return draft;
+  }
 }
 
 export async function runExerciseGeneration(
@@ -384,6 +499,7 @@ export async function runExerciseGeneration(
           totalQuestions,
           firstBatch,
           programmeBlock,
+          sourceMode: hasSource,
         });
         const sourceBlock = hasSource
           ? buildSourceExercisePrompt({
@@ -474,6 +590,10 @@ ${courseContext}`;
           console.info(
             `[exercise-ai] Partie ${batchIndex + 1}: ${repaired.report.invalidBefore} formule(s) invalides, ${repaired.report.repairedByModel} corrigée(s), ${repaired.report.fallbackCount} repli(s).`,
           );
+        }
+
+        if (hasSource) {
+          draft = await dropQuestionsWithWrongAnswers(draft, generate, subject, batchIndex + 1);
         }
 
         completed += 1;
