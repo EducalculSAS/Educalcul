@@ -533,14 +533,25 @@ ${sourceBlock}
 ${instructions?.trim() ? `Instructions prioritaires de l'enseignant :\n${instructions.trim()}` : ""}
 ${courseContext}`;
 
-        let raw = await generate(
-          userPrompt,
-          systemPrompt,
-          exerciseDraftSchema(count),
-          0.25,
-          hasSource ? 14_000 : 7_000,
-          false,
-        );
+        // Réponse tronquée (max_tokens atteint) : un seul nouvel essai, en exigeant
+        // une rédaction beaucoup plus courte et sans figure détaillée.
+        const draftCall = async (prompt: string, temperature: number) => {
+          try {
+            return await generate(prompt, systemPrompt, exerciseDraftSchema(count), temperature, hasSource ? 14_000 : 7_000, false);
+          } catch (error) {
+            if (!(error instanceof Error) || !error.message.includes("tronquée")) throw error;
+            console.warn(`[exercise-ai] partie ${batchIndex + 1} tronquée, nouvel essai plus concis`);
+            return await generate(
+              `${prompt}\n\nATTENTION : la réponse précédente était trop longue et a été coupée. Sois BEAUCOUP plus concis : explications de 1 à 2 phrases, aucune ressource (figure, graphique, tableau) sauf si la question est impossible sans, jamais de SVG détaillé.`,
+              systemPrompt,
+              exerciseDraftSchema(count),
+              0.1,
+              hasSource ? 14_000 : 7_000,
+              false,
+            );
+          }
+        };
+        let raw = await draftCall(userPrompt, 0.25);
         let draft = sanitizeStructuredExerciseDraft(
           normalizeStructuredExerciseDraft(raw, count),
           { blockType, exerciseType },
@@ -548,13 +559,9 @@ ${courseContext}`;
         const firstScore = exerciseDraftScore(draft, count, blockType);
         const firstComplete = keepCompleteExerciseQuestions(draft, blockType, count);
         if (firstComplete.questions.length < count) {
-          raw = await generate(
+          raw = await draftCall(
             `${userPrompt}\n\nLa réponse précédente était incomplète ou contenait des questions structurellement inutilisables. Renvoie exactement ${count} questions complètes du type ${blockType}, sans HTML, sans $, sans ids, avec toutes les options/réponses/paires/éléments requis par le schéma.`,
-            systemPrompt,
-            exerciseDraftSchema(count),
             0.08,
-            hasSource ? 14_000 : 7_000,
-            false,
           );
           const retry = sanitizeStructuredExerciseDraft(
             normalizeStructuredExerciseDraft(raw, count),
