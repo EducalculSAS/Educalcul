@@ -791,6 +791,32 @@ Reponds en texte brut, pas de JSON.`;
   return content.trim();
 }
 
+/** Décrit en deux phrases une figure de cours (image) pour que Calia sache ce qu'elle montre à l'élève. */
+export async function describeCourseFigure(imageDataUrl: string, caption: string): Promise<string> {
+  const system = `Tu décris une figure d'un cours de mathématiques à une professeure qui va la montrer à un élève.
+Décris UNIQUEMENT ce que tu vois : objets, formes, nombres, étiquettes, couleurs utiles, disposition (tableau, graphique, schéma, cubes, droites...). Une à deux phrases courtes en français, factuelles, sans interprétation du cours ni correction. Si un nombre ou une étiquette est lisible, cite-le. Texte brut, pas de JSON.
+Légende connue de la figure : ${caption || "aucune"}`;
+  const msgs: Message[] = [
+    { role: "system", content: system },
+    {
+      role: "user",
+      content: [
+        { type: "text", text: "Que montre cette figure ?" },
+        { type: "image_url", image_url: imageDataUrl },
+      ],
+    },
+  ];
+  const { ok, text, status } = await callMistralModel(MISTRAL_MODEL, msgs, 0.1, 220, false, false);
+  if (!ok) {
+    console.error(`[llm] vision (describeCourseFigure) ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 300)}`);
+    throw new Error("Description de la figure indisponible.");
+  }
+  const parsed = JSON.parse(text);
+  const content = extractMistralText(parsed?.choices?.[0]?.message?.content) || "";
+  if (!content.trim()) throw new Error("Aucune description.");
+  return content.trim().slice(0, 500);
+}
+
 /** Lecture d'un exercice photographié (manuel, cahier, capture d'écran) : renvoie
  * l'énoncé complet et les questions, transcrits en texte avec les formules en
  * LaTeX, pour servir de base à la génération d'exercices voisins. La vision

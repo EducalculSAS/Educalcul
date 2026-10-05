@@ -88,6 +88,20 @@ METHODE - des le tour suivant, une fois le cours reellement lance :
 - Pas d'emojis, pas de markdown, pas de tirets longs
 - Ne commence jamais par "Okay", "Bien sur", "Je suis Calia"
 
+PAROLE NATURELLE - "say" est DIT A VOIX HAUTE par une voix de synthese, comme une vraie prof devant un tableau :
+- Jamais de crochets, de "#", d'identifiants, de noms de gestes (point_at, highlight...), de "figure 1" ou de numeros d'index dans say : ce sont des codes pour toi, pas des mots. Ecrire "[point_at#1]" ou "figure#2" dans say est une FAUTE GRAVE.
+- Ne decris pas la position a l'ecran ("la deuxieme image en bas", "tout en haut") : le geste de pointage montre deja l'element. Designe-le par ce qu'on y voit ("les cubes empiles", "le triangle", "la formule du milieu").
+- Phrases courtes, naturelles, a l'oral : "Regarde les cubes, on va les compter ensemble.", pas de listes ni de formules de politesse en chaine. Une idee par phrase. Pas de repetition mot pour mot d'une phrase deja dite.
+- Les maths sont dites comme on les prononce, jamais en symboles collés.
+
+VISION - lessonOutline decrit ce qui est REELLEMENT a l'ecran. Une ligne "figure" commence par "Image :" suivie de ce que tu y vois (description visuelle fiable) : appuie-toi dessus pour savoir de quelle figure tu parles et pour choisir la bonne cible.
+- Choisis TOUJOURS la cible dont la description correspond a ce dont tu parles. Si tu envoies l'eleve faire un mini-exercice, la cible est "exercise" (son index), jamais la figure du cours ; si tu parles d'une figure, la cible est cette figure et pas une autre.
+- Ne ré-encadre pas un element que tu as deja montre au tour precedent sauf si tu en reparles vraiment.
+- POSITION : chaque ligne de lessonOutline dit si l'element est "(a l'ecran)" ou "(hors ecran)", et la section ECRAN rappelle ce que tu pointais. Tu sais donc toujours ou tu en es, y compris quand tu reprends apres une pause ou quand l'eleve a fait defiler : si tu veux parler d'un element hors ecran, ramene-le d'abord (point_at ou scroll_to), puis parle.
+- PRECISION : pointe l'element LE PLUS PETIT qui correspond a ce que tu dis : la formule ("formula") plutot que tout le paragraphe, la ligne du tableau ("row") ou l'element de liste ("item") plutot que tout le bloc, un mini-exercice ("exercise") plutot que la figure voisine. Un seul geste par phrase, au moment ou tu en parles.
+
+RYTHME : ne t'attarde pas. Quand un point est compris (ou apres 2 a 3 echanges dessus), passe a la suite : mini-exercice, notion suivante, ou next_lesson si la lecon est terminee. Prends l'initiative de relancer le cours, ne reste pas sur le meme element.
+
 MISE EN SCENE - "actions" est une liste ORDONNEE (0 a 5 gestes). Chaque geste a atSentence = numero (a partir de 0) de la phrase de say pendant laquelle il se declenche : tu montres les choses AU MOMENT ou tu en parles, et tu te deplaces d'un element a l'autre au fil de ton explication.
 - REGLE D'OR : des que tu parles d'un element affiche (titre, paragraphe, formule, figure, mini-exercice), MONTRE-LE avec point_at au moment exact ou tu en parles. Ne decris jamais un passage sans le montrer. Une explication qui parcourt plusieurs elements = plusieurs point_at, un par phrase concernee.
 - point_at : Calia se place a cote de l'element, l'encadre et le pointe (la page defile toute seule jusqu'a lui). Cible un element de lessonOutline par targetKind + targetIndex EXACTEMENT comme ecrits dans lessonOutline ("[kind#index]"), jamais un index qui n'y figure pas. targetKind "exercise" = un mini-exercice de la lecon.
@@ -101,10 +115,27 @@ MISE EN SCENE - "actions" est une liste ORDONNEE (0 a 5 gestes). Chaque geste a 
 
 Reponds UNIQUEMENT via le JSON demande, jamais de texte hors de ce format.`;
 
+/**
+ * Retire de la parole tout ce qui est un code interne : « [point_at#1] »,
+ * « [figure#2] », noms de gestes, markdown. Le modèle les recopie parfois depuis
+ * lessonOutline, et la voix les lisait à haute voix.
+ */
+function cleanSpokenText(text: string): string {
+  return text
+    .replace(/\[[^\]\n]{0,40}#\d+\]/g, " ")
+    .replace(/\b(?:point_at|highlight|scroll_to|board_write|board_clear|next_lesson|prev_lesson|goto_lesson|ask_student_to_write)\b(?:#\d+)?/gi, " ")
+    .replace(/\b(?:heading|paragraph|figure|exercise)#\d+\b/gi, " ")
+    .replace(/[*`]+/g, "")
+    .replace(/\s+([,.;:!?])/g, "$1")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 interface OutlineItem {
-  kind: "heading" | "paragraph" | "figure";
+  kind: "heading" | "paragraph" | "figure" | "exercise" | "formula" | "item" | "row";
   index: number;
   preview: string;
+  visible?: boolean;
 }
 
 interface CourseContextExercise {
@@ -196,8 +227,21 @@ export async function POST(req: Request) {
     }
 
     const outlineText = (lessonOutline as OutlineItem[])
-      .map((o) => `[${o.kind}#${o.index}] ${o.preview}`)
+      .map((o) => `[${o.kind}#${o.index}]${o.visible === true ? " (a l'ecran)" : o.visible === false ? " (hors ecran)" : ""} ${o.preview}`)
       .join("\n");
+
+    // Où elle en est : ce qu'elle pointait au dernier tour, et si c'est encore visible
+    // (l'élève a pu faire défiler, ou la séance reprend après une pause).
+    const screen = body.screen as
+      | { pointingAt?: { kind?: string; index?: number; preview?: string } | null; pointerVisible?: boolean | null }
+      | undefined;
+    const screenText = screen?.pointingAt
+      ? `Tu pointais [${screen.pointingAt.kind}#${screen.pointingAt.index}] : "${String(screen.pointingAt.preview ?? "").slice(0, 160)}". ${
+          screen.pointerVisible === false
+            ? "Cet element n'est plus a l'ecran (l'eleve a fait defiler) : ramene-le avec scroll_to ou point_at avant d'en reparler."
+            : "Il est toujours a l'ecran."
+        }`
+      : "Tu ne pointais rien (pas de cadre affiche).";
 
     const courseOutlineText = buildCourseOutlineText(courseContext);
 
@@ -218,7 +262,7 @@ export async function POST(req: Request) {
           .join("\n")
       : "";
 
-    const prompt = `studentProfile:\n${studentProfileText}\n\ncourseOutline:\n${courseOutlineText}\n\nExercices et quiz du cours (tu peux les citer et y renvoyer l'eleve) :\n${practiceText}\n\nlessonOutline (lecon affichee a l'ecran) :\n${outlineText}\n\nliveExerciseDraft:\n${liveDraftText}\n\nHistorique recent:\n${historyText}\n\nL'eleve vient de dire: "${studentMessage.trim()}"\n\nReponds avec le JSON attendu.`;
+    const prompt = `studentProfile:\n${studentProfileText}\n\ncourseOutline:\n${courseOutlineText}\n\nExercices et quiz du cours (tu peux les citer et y renvoyer l'eleve) :\n${practiceText}\n\nlessonOutline (lecon affichee a l'ecran) :\n${outlineText}\n\nECRAN (ou tu en es) :\n${screenText}\n\nliveExerciseDraft:\n${liveDraftText}\n\nHistorique recent:\n${historyText}\n\nL'eleve vient de dire: "${studentMessage.trim()}"\n\nReponds avec le JSON attendu.`;
 
     // reasoning=false : une reponse socratique courte (1-2 phrases) n'a pas
     // besoin du mode "reasoning_effort: high" de Mistral (chaine de pensee
@@ -236,7 +280,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Calia n'a pas entendu, redis-moi ta question." }, { status: 503 });
     }
 
-    return NextResponse.json(result);
+    return NextResponse.json({ ...result, say: cleanSpokenText(result.say) });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);
     return NextResponse.json({ error: msg }, { status: 500 });

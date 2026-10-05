@@ -20,15 +20,25 @@ const HIGHLIGHT_CLASS = "calia-scene-highlight";
 // Élève silencieux : Calia continue le cours après SILENCE_MS, et la séance se met en pause après MAX_SILENT_TURNS relances sans réponse.
 const SILENCE_MS = 5000;
 const MAX_SILENT_TURNS = 5;
-const OUTLINE_SELECTORS: Record<"heading" | "paragraph" | "figure" | "exercise", string> = {
+const OUTLINE_SELECTORS: Record<OutlineKind, string> = {
   heading: "h3, h4",
   paragraph: "p",
   figure: ".course-figure",
   exercise: "[data-mini-exercise]",
+  // Cibles fines : Calia pointe la formule, la ligne du tableau ou l'élément de
+  // liste dont elle parle plutôt que tout le bloc qui les contient.
+  formula: ".katex-display",
+  item: "li",
+  row: "tr",
+};
+// Plafond par type : le plan de la leçon envoyé à chaque tour reste court.
+const OUTLINE_MAX_PER_KIND = 30;
+const OUTLINE_PREVIEW_CHARS: Record<OutlineKind, number> = {
+  heading: 160, paragraph: 500, figure: 500, exercise: 500, formula: 160, item: 240, row: 200,
 };
 
-type OutlineKind = "heading" | "paragraph" | "figure" | "exercise";
-interface OutlineItem { kind: OutlineKind; index: number; preview: string; el: HTMLElement }
+type OutlineKind = "heading" | "paragraph" | "figure" | "exercise" | "formula" | "item" | "row";
+interface OutlineItem { kind: OutlineKind; index: number; preview: string; el: HTMLElement; visible: boolean }
 
 interface TurnAction {
   atSentence?: number;
@@ -80,20 +90,127 @@ function splitForSpeech(text: string): string[] {
   return chunks.flatMap((c) => (c.length <= 400 ? [c] : c.match(/.{1,400}(\s|$)/g) ?? [c]));
 }
 
-function buildOutline(root: HTMLElement | null): OutlineItem[] {
+/** Signature stable d'une figure (même contenu = même description réutilisée). */
+function figureSignature(el: HTMLElement): string {
+  const html = el.innerHTML;
+  let h = 0;
+  for (let i = 0; i < html.length; i++) h = (Math.imul(31, h) + html.charCodeAt(i)) | 0;
+  return `${html.length}:${h}`;
+}
+
+/** Ce qu'on peut lire d'une figure sans vision : légende, titre/desc du SVG, alt, textes. */
+function figureTextHints(el: HTMLElement): string {
+  const parts = [
+    el.querySelector("figcaption")?.textContent,
+    el.querySelector("svg > title")?.textContent,
+    el.querySelector("svg > desc")?.textContent,
+    el.querySelector("svg")?.getAttribute("aria-label"),
+    el.querySelector("img")?.getAttribute("alt"),
+  ];
+  return parts.map((p) => (p || "").replace(/\s+/g, " ").trim()).filter(Boolean).join(" | ");
+}
+
+function inViewport(el: HTMLElement): boolean {
+  const r = el.getBoundingClientRect();
+  return r.bottom > 80 && r.top < window.innerHeight - 40 && r.right > 0 && r.left < window.innerWidth;
+}
+
+function buildOutline(root: HTMLElement | null, figureDescs?: Map<string, string>): OutlineItem[] {
   if (!root) return [];
   const items: OutlineItem[] = [];
   (Object.keys(OUTLINE_SELECTORS) as OutlineKind[]).forEach((kind) => {
     const els = root.querySelectorAll<HTMLElement>(OUTLINE_SELECTORS[kind]);
+    let kept = 0;
     els.forEach((el, index) => {
       // Élément invisible (masqué, replié, vide) : jamais proposé à Calia —
       // elle pointait sinon des zones vides.
       if (!el.offsetParent || el.getBoundingClientRect().height < 4) return;
-      const preview = (el.textContent || "").replace(/\s+/g, " ").trim().slice(0, 500);
-      if (preview) items.push({ kind, index, preview, el });
+      if (kept >= OUTLINE_MAX_PER_KIND) return;
+      const text = (el.textContent || "").replace(/\s+/g, " ").trim().slice(0, OUTLINE_PREVIEW_CHARS[kind]);
+      let preview = text;
+      if (kind === "figure") {
+        // Vision : description de l'image (modèle de vision) + légende, même sans texte dans la figure.
+        const seen = figureDescs?.get(figureSignature(el));
+        preview = [seen ? `Image : ${seen}` : "", figureTextHints(el), text].filter(Boolean).join(" | ").slice(0, 700)
+          || "Image sans texte (description en cours)";
+      }
+      if (!preview) return;
+      kept += 1;
+      items.push({ kind, index, preview, el, visible: inViewport(el) });
     });
   });
   return items;
+}
+
+/** Retire les codes internes (« [point_at#1] », noms de gestes) que le modèle recopie parfois dans sa parole. */
+function cleanSpokenText(text: string): string {
+  return text
+    .replace(/\[[^\]\n]{0,40}#\d+\]/g, " ")
+    .replace(/\b(?:point_at|highlight|scroll_to|board_write|board_clear|next_lesson|prev_lesson|goto_lesson|ask_student_to_write)\b(?:#\d+)?/gi, " ")
+    .replace(/\b(?:heading|paragraph|figure|exercise|formula|item|row)#\d+\b/gi, " ")
+    .replace(/[*`]+/g, "")
+    .replace(/\s+([,.;:!?])/g, "$1")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
+/**
+ * Convertit une figure du cours en image (JPEG base64) pour le modèle de vision.
+ * SVG : styles calculés recopiés en ligne (les classes CSS du site ne s'appliquent
+ * pas dans une image SVG isolée). <img> de même origine : dessinée telle quelle.
+ * Renvoie null si la figure n'est pas convertible (figure interactive en HTML).
+ */
+async function figureToDataUrl(el: HTMLElement): Promise<string | null> {
+  try {
+    const svg = el.querySelector("svg");
+    const img = el.querySelector("img");
+    const source = svg ?? img;
+    if (!source) return null;
+    const rect = source.getBoundingClientRect();
+    if (rect.width < 8 || rect.height < 8) return null;
+    const width = Math.min(720, Math.max(240, Math.round(rect.width)));
+    const height = Math.max(40, Math.round((rect.height * width) / rect.width));
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return null;
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, width, height);
+
+    let image: HTMLImageElement;
+    if (svg) {
+      const clone = svg.cloneNode(true) as SVGSVGElement;
+      const srcNodes = [svg, ...Array.from(svg.querySelectorAll("*"))];
+      const dstNodes = [clone, ...Array.from(clone.querySelectorAll("*"))];
+      const props = ["fill", "stroke", "stroke-width", "stroke-dasharray", "opacity", "font-size", "font-family", "font-weight", "text-anchor"];
+      srcNodes.forEach((node, i) => {
+        const dst = dstNodes[i] as SVGElement | undefined;
+        if (!dst) return;
+        const cs = getComputedStyle(node);
+        dst.setAttribute("style", `${dst.getAttribute("style") || ""};${props.map((p) => `${p}:${cs.getPropertyValue(p)}`).join(";")}`);
+      });
+      clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+      clone.setAttribute("width", String(width));
+      clone.setAttribute("height", String(height));
+      if (!clone.getAttribute("viewBox")) clone.setAttribute("viewBox", `0 0 ${Math.round(rect.width)} ${Math.round(rect.height)}`);
+      const url = URL.createObjectURL(new Blob([new XMLSerializer().serializeToString(clone)], { type: "image/svg+xml" }));
+      image = new window.Image();
+      await new Promise<void>((resolve, reject) => {
+        image.onload = () => resolve();
+        image.onerror = () => reject(new Error("svg"));
+        image.src = url;
+      }).finally(() => URL.revokeObjectURL(url));
+    } else {
+      image = img as HTMLImageElement;
+      if (!image.complete || !image.naturalWidth) return null;
+    }
+    ctx.drawImage(image, 0, 0, width, height);
+    return canvas.toDataURL("image/jpeg", 0.8);
+  } catch {
+    // Image d'une autre origine (canvas « teinté ») ou SVG illisible : pas de description par vision.
+    return null;
+  }
 }
 
 function escapeHtml(text: string): string {
@@ -134,6 +251,11 @@ export default function CaliaSceneDemo({
   // la réponse du serveur et le premier son ne doit pas compter comme un silence).
   const [voiceBusy, setVoiceBusy] = useState(false);
   const activeSpeaksRef = useRef(0);
+  // Vision : descriptions des figures de la leçon (modèle de vision), et ce que Calia
+  // pointe en ce moment, pour qu'elle sache où elle en est et le retrouve après une pause.
+  const figureDescsRef = useRef(new Map<string, string>());
+  const figurePendingRef = useRef(new Set<string>());
+  const pointingRef = useRef<{ kind: OutlineKind; index: number; preview: string; el: HTMLElement } | null>(null);
   const [mounted, setMounted] = useState(false);
   const [sayText, setSayText] = useState<string | null>(null);
   // Transcription mot à mot, calée sur la voix : nombre de « mots » affichés
@@ -272,6 +394,7 @@ export default function CaliaSceneDemo({
     activeSpeaksRef.current = 0;
     if (!keepHistory) {
       historyRef.current = [];
+      pointingRef.current = null;
       setPaused(false);
     }
   };
@@ -404,6 +527,37 @@ export default function CaliaSceneDemo({
     if (gen === speechGenRef.current) { setSpeaking(false); setShownWords(null); }
   };
 
+  /** Vision : fait décrire chaque figure de la leçon affichée (une seule fois par figure, sans bloquer le tour). */
+  const prefetchFigureDescriptions = () => {
+    const root = contentRef.current;
+    if (!root) return;
+    root.querySelectorAll<HTMLElement>(OUTLINE_SELECTORS.figure).forEach((el) => {
+      const sig = figureSignature(el);
+      if (figureDescsRef.current.has(sig) || figurePendingRef.current.has(sig)) return;
+      figurePendingRef.current.add(sig);
+      void (async () => {
+        try {
+          const imageDataUrl = await figureToDataUrl(el);
+          if (!imageDataUrl) {
+            figureDescsRef.current.set(sig, ""); // figure non convertible : on ne réessaie pas
+            return;
+          }
+          const res = await fetch("/api/calia/describe-figure", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ imageDataUrl, caption: figureTextHints(el) }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (res.ok && typeof data.description === "string") figureDescsRef.current.set(sig, data.description);
+        } catch {
+          /* la description est un plus : sans elle, Calia garde la légende et le texte de la figure */
+        } finally {
+          figurePendingRef.current.delete(sig);
+        }
+      })();
+    });
+  };
+
   const showElement = (el: HTMLElement) => {
     clearHighlight();
     el.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -426,9 +580,12 @@ export default function CaliaSceneDemo({
     if (action.kind === "next_lesson" || action.kind === "prev_lesson" || action.kind === "goto_lesson") {
       clearHighlight();
       setPointerEl(null);
+      pointingRef.current = null;
       if (action.kind === "next_lesson") onAdvanceLesson?.();
       else if (action.kind === "prev_lesson") onPrevLesson?.();
       else if (action.targetIndex !== null) onGoToLesson?.(action.targetIndex);
+      // La nouvelle leçon s'affiche : on fait décrire ses figures dès qu'elles sont là.
+      window.setTimeout(prefetchFigureDescriptions, 1500);
       return;
     }
     if (action.kind === "board_write") {
@@ -441,8 +598,11 @@ export default function CaliaSceneDemo({
     // highlight / scroll_to / point_at : l'élément est toujours MONTRÉ en
     // entier (défilement, cadre, point et Calia à côté).
     if (!action.targetKind || action.targetIndex === null) return;
-    const target = buildOutline(contentRef.current).find((o) => o.kind === action.targetKind && o.index === action.targetIndex);
-    if (target) showElement(target.el);
+    const target = buildOutline(contentRef.current, figureDescsRef.current).find((o) => o.kind === action.targetKind && o.index === action.targetIndex);
+    if (target) {
+      showElement(target.el);
+      pointingRef.current = { kind: target.kind, index: target.index, preview: target.preview, el: target.el };
+    }
   };
 
   /** Déclenche les gestes dont la phrase est atteinte (tous à la fin). */
@@ -516,12 +676,23 @@ export default function CaliaSceneDemo({
     setInterim("");
     historyRef.current = [...historyRef.current, { role: "user", content: studentMessage }];
     try {
-      const outline = buildOutline(contentRef.current);
+      // Vision des figures : lance les descriptions manquantes (sans attendre : elles servent aux tours suivants).
+      prefetchFigureDescriptions();
+      const outline = buildOutline(contentRef.current, figureDescsRef.current);
+      // Où Calia en est : ce qu'elle pointait au dernier tour, et si c'est encore à l'écran
+      // (l'élève a pu faire défiler). Reste vrai après une pause ou un retour.
+      const pointing = pointingRef.current && pointingRef.current.el.isConnected ? pointingRef.current : null;
+      const screen = {
+        pointingAt: pointing ? { kind: pointing.kind, index: pointing.index, preview: pointing.preview.slice(0, 160) } : null,
+        pointerVisible: pointing ? inViewport(pointing.el) : null,
+        scrollY: Math.round(window.scrollY),
+      };
       const res = await fetch("/api/calia/classe-turn", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          lessonOutline: outline.map(({ kind, index, preview }) => ({ kind, index, preview })),
+          screen,
+          lessonOutline: outline.map(({ kind, index, preview, visible }) => ({ kind, index, preview, visible })),
           courseContext,
           liveExerciseDraft: liveExerciseDraftRef.current,
           history: historyRef.current,
@@ -535,7 +706,7 @@ export default function CaliaSceneDemo({
       // la reponse — Calia ne doit pas se mettre a parler toute seule apres
       // avoir ete coupee.
       if (!sessionActiveRef.current) return;
-      const result = data as TurnResult;
+      const result = { ...data, say: cleanSpokenText(data.say) || data.say } as TurnResult;
       historyRef.current = [...historyRef.current, { role: "assistant", content: result.say }];
       showSay(result.say);
       // Chaque geste attend le début de sa phrase dans la transcription.
@@ -750,6 +921,8 @@ export default function CaliaSceneDemo({
 
   const begin = (opening: string, fresh: boolean) => {
     void loadVoice();
+    // Vision : les figures de la leçon sont décrites dès l'ouverture de la séance.
+    prefetchFigureDescriptions();
     // Préchauffe la route vocale (auth + jeton Azure en cache) pendant que
     // l'élève parle : la première réplique n'a plus à payer ce démarrage.
     void fetch("/api/calia/tts?warm=1").catch(() => {});
