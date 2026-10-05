@@ -589,6 +589,8 @@ function blockPlainText(block: StructuredCourseBlock): string {
     case "pattern_maker":
     case "ruler_measurer":
     case "tape_diagram":
+    case "brick_pyramid":
+    case "fill_grid":
     case "fraction_strips":
     case "place_value_chart":
     case "ratio_mixer":

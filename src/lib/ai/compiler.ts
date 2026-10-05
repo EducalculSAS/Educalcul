@@ -615,6 +615,62 @@ function renderTapeDiagram(
   return `<figure class="course-figure course-figure-tape-diagram">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
+/** Pyramide de briques (sommet en premier). Briques remplies en vert, briques vides en pointillés à compléter. */
+function renderBrickPyramid(
+  block: Extract<StructuredCourseBlock, { type: "brick_pyramid" }>,
+): string {
+  const rows = block.levels.length;
+  const brickW = 46;
+  const brickH = 26;
+  const gap = 3;
+  const width = rows * (brickW + gap) + 16;
+  const height = rows * (brickH + gap) + 14;
+  const bricks = block.levels
+    .map((row, r) => {
+      const rowWidth = row.length * (brickW + gap) - gap;
+      const x0 = (width - rowWidth) / 2;
+      const y = 7 + r * (brickH + gap);
+      return row
+        .map((value, c) => {
+          const x = x0 + c * (brickW + gap);
+          if (!value) {
+            return `<rect x="${num(x)}" y="${num(y)}" width="${brickW}" height="${brickH}" rx="3" fill="#ffffff" stroke="${FIG.ink}" stroke-width="1.2" stroke-dasharray="4 3"/>` + figText(x + brickW / 2, y + brickH / 2 + 4, "?", { size: 12, weight: 600, fill: FIG.inkSoft });
+          }
+          return `<rect x="${num(x)}" y="${num(y)}" width="${brickW}" height="${brickH}" rx="3" fill="${FIGURE_PALETTE.green}" fill-opacity="0.5" stroke="${FIG.ink}" stroke-width="1.1"/>` + figText(x + brickW / 2, y + brickH / 2 + 4, escapeHtml(value), { size: 12, weight: 700 });
+        })
+        .join("");
+    })
+    .join("");
+  const svg = `${figOpen(width, height, { grid: false })}${bricks}</svg>`;
+  return `<figure class="course-figure course-figure-brick-pyramid">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+/** Grille à compléter (carré magique, tableau de nombres) : cases données en gras, cases vides en pointillés. */
+function renderFillGrid(
+  block: Extract<StructuredCourseBlock, { type: "fill_grid" }>,
+): string {
+  const cellW = 40;
+  const cellH = 40;
+  const cols = block.cells[0].length;
+  const width = cols * cellW + 16;
+  const height = block.cells.length * cellH + 16;
+  const cells = block.cells
+    .map((row, r) =>
+      row
+        .map((value, c) => {
+          const x = 8 + c * cellW;
+          const y = 8 + r * cellH;
+          return value
+            ? `<rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" fill="#ffffff" stroke="${FIG.ink}" stroke-width="1.3"/>` + figText(x + cellW / 2, y + cellH / 2 + 4, escapeHtml(value), { size: 13, weight: 700 })
+            : `<rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" fill="#fff8e1" stroke="${FIG.ink}" stroke-width="1.3"/>`;
+        })
+        .join(""),
+    )
+    .join("");
+  const svg = `${figOpen(width, height, { grid: false })}${cells}</svg>`;
+  return `<figure class="course-figure course-figure-fill-grid">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
 function renderFractionStrips(
   block: Extract<StructuredCourseBlock, { type: "fraction_strips" }>,
 ): string {
@@ -2105,6 +2161,10 @@ export function compileCourseBlock(
       return renderRulerMeasurer(block);
     case "tape_diagram":
       return renderTapeDiagram(block);
+    case "brick_pyramid":
+      return renderBrickPyramid(block);
+    case "fill_grid":
+      return renderFillGrid(block);
     case "fraction_strips":
       return renderFractionStrips(block);
     case "place_value_chart":

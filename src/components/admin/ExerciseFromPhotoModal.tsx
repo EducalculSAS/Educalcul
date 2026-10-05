@@ -100,7 +100,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
       setParams((p) => ({
         ...p,
         subjectArea: ex.subjectArea,
-        questionCount: Math.min(12, ex.questionCount + 2),
+        questionCount: Math.min(24, ex.questionCount + 2),
       }));
     } catch (e) {
       setExtracted(null);
@@ -271,7 +271,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                   Nombre de questions : {params.questionCount}
                   <span className="font-normal text-gray-500"> (dont {Math.min(sourceCount, params.questionCount)} reprises de l'image, le reste est inventé)</span>
                 </label>
-                <input type="range" min={1} max={12} value={params.questionCount} onChange={(e) => setParams({ ...params, questionCount: parseInt(e.target.value) })} className="w-full accent-[var(--greek-blue)]" />
+                <input type="range" min={1} max={24} value={params.questionCount} onChange={(e) => setParams({ ...params, questionCount: parseInt(e.target.value) })} className="w-full accent-[var(--greek-blue)]" />
               </div>
 
               <div>

@@ -433,6 +433,18 @@ export type StructuredCourseBlock =
       parts: { label: string; value: number; tone: StructuredFigureTone }[];
     }
   | {
+      /** Pyramide de briques : levels du SOMMET vers la base (1, 2, 3... briques), "" = brique vide à compléter. */
+      type: "brick_pyramid";
+      caption: string;
+      levels: string[][];
+    }
+  | {
+      /** Grille à compléter (carré magique, tableau de nombres...) : cells[ligne][colonne], "" = case vide. */
+      type: "fill_grid";
+      caption: string;
+      cells: string[][];
+    }
+  | {
       type: "fraction_strips";
       caption: string;
       fractions: { numerator: number; denominator: number }[];
@@ -2294,6 +2306,31 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
         : [];
       if (parts.length < 2) return null;
       return { type: "tape_diagram", caption: sanitizeStructuredText(raw.caption), parts };
+    }
+    case "brick_pyramid": {
+      const cell = (value: unknown) => String(value ?? "").replace(/\s+/g, " ").trim().slice(0, 9);
+      let levels = Array.isArray(raw.levels)
+        ? raw.levels
+            .map((row: unknown) => (Array.isArray(row) ? row.map(cell) : null))
+            .filter((row: string[] | null): row is string[] => row !== null)
+            .slice(0, 7)
+        : [];
+      // Fournie de la base vers le sommet : on remet le sommet en premier.
+      if (levels.length >= 2 && levels[0].length > levels[levels.length - 1].length) levels = levels.slice().reverse();
+      if (levels.length < 2 || levels.some((row: string[], i: number) => row.length !== i + 1)) return null;
+      return { type: "brick_pyramid", caption: sanitizeStructuredText(raw.caption), levels };
+    }
+    case "fill_grid": {
+      const cell = (value: unknown) => String(value ?? "").replace(/\s+/g, " ").trim().slice(0, 12);
+      const cells = Array.isArray(raw.cells)
+        ? raw.cells
+            .map((row: unknown) => (Array.isArray(row) ? row.map(cell) : null))
+            .filter((row: string[] | null): row is string[] => row !== null)
+            .slice(0, 8)
+        : [];
+      const width = cells[0]?.length ?? 0;
+      if (cells.length < 1 || width < 1 || width > 8 || cells.some((row: string[]) => row.length !== width)) return null;
+      return { type: "fill_grid", caption: sanitizeStructuredText(raw.caption), cells };
     }
     case "fraction_strips": {
       const fractions = Array.isArray(raw.fractions)

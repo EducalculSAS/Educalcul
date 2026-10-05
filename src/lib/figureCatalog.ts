@@ -165,6 +165,8 @@ export const FIGURE_CATALOG: Record<string, unknown> = {
   },
   fraction: { type: "fraction", caption: "Trois quarts", numerator: 3, denominator: 4, shape: "bar" },
   fraction_strips: { type: "fraction_strips", caption: "Comparaison de fractions", fractions: [{ numerator: 1, denominator: 2 }, { numerator: 3, denominator: 4 }] },
+  brick_pyramid: { type: "brick_pyramid", caption: "Complète la pyramide : chaque brique est la différence des deux briques qui la soutiennent", levels: [[""], ["", "(+2)"], ["(-4)", "(+2)", "(-3)"]] },
+  fill_grid: { type: "fill_grid", caption: "Carré magique à compléter", cells: [["-2", "", "-6"], ["", "4", ""], ["", "", "2"]] },
   tape_diagram: { type: "tape_diagram", caption: "Partage en parts", parts: [{ label: "part 1", value: 4, tone: "blue" }, { label: "part 2", value: 6, tone: "green" }] },
   line_chart: {
     type: "line_chart",
