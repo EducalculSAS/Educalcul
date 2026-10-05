@@ -36,7 +36,7 @@ interface Extracted {
   figureDescription: string;
 }
 
-const MAX_SIDE = 1800;
+const MAX_SIDE = 1400;
 
 /** Réduit l'image (photos de téléphone très lourdes) et la renvoie en JPEG base64. */
 async function toDataUrl(file: Blob): Promise<string> {
@@ -50,7 +50,7 @@ async function toDataUrl(file: Blob): Promise<string> {
   ctx.fillStyle = "#fff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  return canvas.toDataURL("image/jpeg", 0.85);
+  return canvas.toDataURL("image/jpeg", 0.8);
 }
 
 const fieldClass =

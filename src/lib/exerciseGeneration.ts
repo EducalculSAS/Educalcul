@@ -257,6 +257,8 @@ function buildSourceExercisePrompt(o: {
   from: number;
   count: number;
   total: number;
+  /** Énoncé commun déjà rédigé par la première partie : à reprendre tel quel. */
+  fixedIntro?: string;
 }): string {
   const lines: string[] = [];
   for (let i = o.from; i < o.from + o.count; i++) {
@@ -271,6 +273,7 @@ function buildSourceExercisePrompt(o: {
 ${o.statement}
 >>>
 ${o.figure ? `Figure de l'exercice source : ${o.figure}\n` : ""}
+${o.fixedIntro ? `ÉNONCÉ COMMUN DÉJÀ FIXÉ (nouvelles valeurs, noms et données à reprendre EXACTEMENT, sans les modifier ni les réécrire) :\n<<<\n${o.fixedIntro}\n>>>\n` : ""}
 MISSION : crée un exercice INSPIRÉ de l'exercice source, pas une copie.
 • Reprends le même type d'énoncé, le même contexte et les mêmes consignes, mais CHANGE toutes les valeurs (nombres, longueurs, mesures, noms de personnages si utile) : aucune valeur de la source ne doit réapparaître telle quelle.
 • Choisis les nouvelles valeurs une seule fois, puis utilise-les partout (introduction et questions). Recalcule chaque réponse et chaque explication avec ces nouvelles valeurs.
@@ -336,9 +339,11 @@ async function dropQuestionsWithWrongAnswers(
   generate: GenerateStructured,
   subject: string,
   part: number,
+  fixedIntro = "",
 ): Promise<StructuredExerciseDraft> {
   try {
-    const intro = draft.introduction.map((block) => structuredRichTextToPlainText(block)).join("\n");
+    const intro =
+      fixedIntro || draft.introduction.map((block) => structuredRichTextToPlainText(block)).join("\n");
     const checkable = draft.questions
       .map((question, index) => ({ question, index }))
       .filter(({ question }) => !(question.resources?.length > 0));
@@ -411,16 +416,23 @@ export async function runExerciseGeneration(
   const sourceQuestionCount = clampCount(params.sourceQuestionCount, 0, 0, 30);
   const sourceFigure = params.sourceFigureDescription?.trim().slice(0, 1500) || "";
   const totalQuestions = clampCount(questionCount, 5, 1, hasSource ? 12 : 30);
-  // Avec un exercice source, les valeurs du contexte sont changées : tout est
-  // rédigé en un seul appel (6 questions au plus par appel) pour que l'énoncé
-  // et les questions partagent les MÊMES nouvelles valeurs.
-  const batches = buildBatches(totalQuestions, hasSource ? 6 : BATCH_SIZE);
+  // Avec un exercice source, les valeurs du contexte sont changées. Un premier
+  // appel court fixe l'énoncé commun avec la question 1, puis le reste des
+  // questions part EN PARALLÈLE sur cet énoncé figé : même résultat qu'un gros
+  // appel unique (mêmes valeurs partout), mais bien plus rapide.
+  const batches = hasSource
+    ? [1, ...buildBatches(totalQuestions - 1, 2)].filter((size) => size > 0)
+    : buildBatches(totalQuestions);
   const configuredInterval = Number(process.env.MISTRAL_MIN_REQUEST_INTERVAL_MS);
   const minInterval =
     Number.isFinite(configuredInterval) && configuredInterval >= 0
       ? configuredInterval
       : DEFAULT_LLM_MIN_START_INTERVAL_MS;
-  const generate = createLlmStartGate(minInterval, () => tracker.isCancelRequested());
+  // Depuis une photo, l'admin attend devant l'écran : démarrages rapprochés.
+  const generate = createLlmStartGate(
+    hasSource ? Math.min(minInterval, 400) : minInterval,
+    () => tracker.isCancelRequested(),
+  );
 
   try {
     await tracker.setStatus("running");
@@ -481,8 +493,7 @@ export async function runExerciseGeneration(
     });
 
     let completed = 0;
-    const results = await Promise.all(
-      batches.map(async (count, batchIndex) => {
+    const runBatch = async (count: number, batchIndex: number, fixedIntro = "") => {
         const firstBatch = batchIndex === 0;
         const assignedAngles = angles.slice(
           offsets[batchIndex],
@@ -509,6 +520,7 @@ export async function runExerciseGeneration(
               from: offsets[batchIndex],
               count,
               total: totalQuestions,
+              fixedIntro,
             })
           : "";
         const anglesBlock = hasSource
@@ -564,7 +576,8 @@ ${courseContext}`;
           label: `exercice ${subject}, partie ${batchIndex + 1}`,
           level,
           subject,
-          semanticAudit: true,
+          // Depuis une photo, le recalcul indépendant (plus bas) remplace cet audit.
+          semanticAudit: !hasSource,
         });
         draft = sanitizeStructuredExerciseDraft(guarded.value, {
           blockType,
@@ -593,7 +606,7 @@ ${courseContext}`;
         }
 
         if (hasSource) {
-          draft = await dropQuestionsWithWrongAnswers(draft, generate, subject, batchIndex + 1);
+          draft = await dropQuestionsWithWrongAnswers(draft, generate, subject, batchIndex + 1, fixedIntro);
         }
 
         completed += 1;
@@ -603,9 +616,22 @@ ${courseContext}`;
           total: batches.length,
           message: `Partie ${batchIndex + 1}/${batches.length} terminée (${draft.questions.length} question(s))`,
         });
-        return { batchIndex, draft };
-      }),
-    );
+        const introText = draft.introduction
+          .map((block) => structuredRichTextToPlainText(block))
+          .join("\n");
+        return { batchIndex, draft, introText };
+    };
+
+    const results =
+      hasSource && batches.length > 1
+        ? await (async () => {
+            const head = await runBatch(batches[0], 0);
+            const tail = await Promise.all(
+              batches.slice(1).map((count, i) => runBatch(count, i + 1, head.introText)),
+            );
+            return [head, ...tail];
+          })()
+        : await Promise.all(batches.map((count, batchIndex) => runBatch(count, batchIndex)));
 
     results.sort((a, b) => a.batchIndex - b.batchIndex);
     const first = results[0]?.draft;
