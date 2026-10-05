@@ -48,6 +48,10 @@ export async function POST(request: Request) {
     subjectArea: data.subjectArea,
     instructions: data.instructions,
     folder_id: data.folder_id ?? null,
+    sourceExercise: typeof data.sourceExercise === "string" ? data.sourceExercise.slice(0, 8000) : undefined,
+    sourceQuestionCount: Number(data.sourceQuestionCount) || undefined,
+    sourceFigureDescription:
+      typeof data.sourceFigureDescription === "string" ? data.sourceFigureDescription.slice(0, 1500) : undefined,
   };
 
   const { data: generation, error } = await supabaseAdmin

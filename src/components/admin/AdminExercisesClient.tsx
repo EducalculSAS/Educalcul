@@ -15,6 +15,7 @@ import {
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import ExerciseGeneratorModal, { ExerciseGenParams } from "@/components/admin/ExerciseGeneratorModal";
+import ExerciseFromPhotoModal, { ExerciseFromPhotoParams } from "@/components/admin/ExerciseFromPhotoModal";
 import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import ExerciseBuilder, { Page } from "@/components/admin/ExerciseBuilder";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -41,6 +42,7 @@ import {
   Zap,
   GraduationCap,
   Sparkles,
+  Camera,
   Loader2,
   Eye, Download, Upload,
   Calculator,
@@ -341,6 +343,7 @@ export default function AdminExercisesClient({
 
   // AI Generation state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
+  const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
   const [aiSuccess, setAiSuccess] = useState<string | null>(null);
@@ -696,6 +699,27 @@ export default function AdminExercisesClient({
     });
   };
 
+  const handlePhotoGenerate = (params: ExerciseFromPhotoParams) => {
+    setIsPhotoModalOpen(false);
+    startGeneration("exercise", {
+      exerciseType: params.exerciseType,
+      blockType: params.blockType,
+      linkedCourseId: null,
+      subject: params.subject,
+      level: currentFolderLevel || params.level || "6eme",
+      difficulty: params.difficulty,
+      questionCount: params.questionCount,
+      subjectArea: params.subjectArea,
+      instructions: params.instructions,
+      folder_id: currentFolderId || null,
+      sourceExercise: params.sourceExercise,
+      sourceQuestionCount: params.sourceQuestionCount,
+      sourceFigureDescription: params.sourceFigureDescription,
+    }).then((id) => {
+      if (!id) setAiError("Impossible de démarrer la génération. Réessaie.");
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -939,6 +963,10 @@ export default function AdminExercisesClient({
             <GlassButton size="sm" variant="navy" onClick={() => setIsAiModalOpen(true)}>
               <Sparkles size={18} />
               Générer avec IA
+            </GlassButton>
+            <GlassButton size="sm" variant="navy" onClick={() => setIsPhotoModalOpen(true)}>
+              <Camera size={18} />
+              Depuis une photo
             </GlassButton>
             <GlassButton size="sm" variant="ghost" onClick={() => setShowImportModal(true)}>
               <Upload size={16} /> JSON
@@ -1421,6 +1449,14 @@ export default function AdminExercisesClient({
         <ExerciseGeneratorModal
           onGenerate={handleAiGenerate}
           onClose={() => setIsAiModalOpen(false)}
+          defaultLevel={currentFolderLevel || undefined}
+        />
+      )}
+
+      {isPhotoModalOpen && (
+        <ExerciseFromPhotoModal
+          onGenerate={handlePhotoGenerate}
+          onClose={() => setIsPhotoModalOpen(false)}
           defaultLevel={currentFolderLevel || undefined}
         />
       )}
