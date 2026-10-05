@@ -38,7 +38,6 @@ import {
   FolderPlus,
   ImageIcon,
   XCircle,
-  CheckCircle,
   FileText,
   BookOpen,
   BrainCircuit,
@@ -314,7 +313,6 @@ export default function AdminQuizzesClient({
   // AI Generation state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
-  const [aiSuccess, setAiSuccess] = useState<string | null>(null);
   const { startGeneration, onContentCreated } = useContentGenerations();
 
   // Une génération lancée depuis cette page (ou une autre, ou avant un
@@ -323,7 +321,6 @@ export default function AdminQuizzesClient({
     return onContentCreated("quiz", () => {
       invalidateAdminCache("quizzes:");
       fetchContents(true);
-      setAiSuccess("Quiz généré et enregistré directement en brouillon.");
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onContentCreated]);
@@ -1378,24 +1375,6 @@ export default function AdminQuizzesClient({
               </div>
             </form>
           </div>
-        </div>
-      )}
-
-      {/* Inline AI success */}
-      {aiSuccess && (
-        <div className="px-4 py-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl text-sm flex items-start gap-2">
-          <CheckCircle size={18} className="flex-shrink-0 mt-0.5" />
-          <div className="flex-1">
-            <p className="font-semibold">Quiz généré</p>
-            <p className="opacity-90">{aiSuccess}</p>
-          </div>
-          <GlassIconButton
-            icon={X}
-            size="sm"
-            color="green"
-            onClick={() => setAiSuccess(null)}
-            aria-label="Fermer"
-          />
         </div>
       )}
 

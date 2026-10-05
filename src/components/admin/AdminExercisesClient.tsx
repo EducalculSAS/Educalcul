@@ -37,7 +37,6 @@ import {
   FolderPlus,
   ImageIcon,
   XCircle,
-  CheckCircle,
   BookOpen,
   Zap,
   GraduationCap,
@@ -346,7 +345,6 @@ export default function AdminExercisesClient({
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
-  const [aiSuccess, setAiSuccess] = useState<string | null>(null);
   const { startGeneration, onContentCreated } = useContentGenerations();
 
   // Une génération lancée depuis cette page (ou une autre, ou avant un
@@ -355,7 +353,6 @@ export default function AdminExercisesClient({
     return onContentCreated("exercise", () => {
       invalidateAdminCache("exercises:");
       fetchContents(true);
-      setAiSuccess("Exercice généré et enregistré directement en brouillon.");
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onContentCreated]);
@@ -1405,24 +1402,6 @@ export default function AdminExercisesClient({
               </div>
             </form>
           </div>
-        </div>
-      )}
-
-      {/* Inline AI success */}
-      {aiSuccess && (
-        <div className="px-4 py-3 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-xl text-sm flex items-start gap-2">
-          <CheckCircle size={18} className="flex-shrink-0 mt-0.5" />
-          <div className="flex-1">
-            <p className="font-semibold">Exercice généré</p>
-            <p className="opacity-90">{aiSuccess}</p>
-          </div>
-          <GlassIconButton
-            icon={X}
-            onClick={() => setAiSuccess(null)}
-            color="green"
-            size="sm"
-            aria-label="Fermer"
-          />
         </div>
       )}
 
