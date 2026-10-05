@@ -204,6 +204,8 @@ REGLES DE CONTENU :
 - ORDRE : ecris "explanation" AVANT "correctAnswer", mene le calcul jusqu'au bout dans l'explication (1 a 3 phrases, la version finale, jamais d'hesitation), puis recopie SON resultat final dans "correctAnswer".
 - "correctAnswer" : la reponse finale seule, courte (ex : "-8,5" ou "A est plus avantageuse"). Pour plusieurs valeurs a trouver, les lister separees par " ; " dans l'ordre demande.
 - Types : "text_input" (reponse ecrite, a privilegier), "qcm" (options = 4 textes, correctAnswer = copie EXACTE d'une option), "true_false" (options ["Vrai","Faux"]), "ordering" (items dans l'ordre correct), "matching" (pairs).
+- "explanation" a la forme impersonnelle ("On calcule...", "On transforme..."), JAMAIS a la premiere personne (pas de "je", "nous").
+- Reprends l'ecriture de la source : memes parentheses, memes signes, memes types de nombres. N'ajoute pas de parentheses superflues (pas de "((-7) + 4)" si la source ecrit "(-5 + 3)").
 - Les valeurs sont COHERENTES : verifie chaque calcul (surtout les signes des nombres relatifs et les virgules) avant de l'ecrire.
 
 FIGURES : si la question s'appuie sur une figure (pyramide, carre magique, tableau, schema), ajoute au bloc un champ "figure" avec la VALEUR d'UNE entree ci-dessous (jamais le nom qui la precede, jamais enveloppee dans une cle portant son nom). La figure montre les donnees de l'enonce et laisse vides les cases a trouver ; elle ne contient jamais la reponse.
@@ -248,7 +250,8 @@ function normalizeBlock(raw: unknown): Block | null {
   if (!raw || typeof raw !== "object") return null;
   const b = raw as Record<string, unknown>;
   const type = ALLOWED_TYPES.has(str(b.type)) ? str(b.type) : "text_input";
-  const content = str(b.content);
+  // « $A = (-8 + 2) - (5 + 3) =$ » : le « = » final est retiré (la réponse se tape dans la case).
+  const content = str(b.content).replace(/\s*=\s*\$(\s*)$/, "$$$1");
   if (!content || /^\s*\|.*\|\s*$/m.test(content) || /<[a-z][^>]*>/i.test(content)) return null;
   const explanation = str(b.explanation);
   // Explication qui se corrige en cours de route : le modele a hesite, la reponse n'est pas fiable.
@@ -458,6 +461,14 @@ async function writeSection(
   }
 }
 
+/** Après les retraits, les titres « Calcul A, Calcul D » reprennent la suite « Calcul A, Calcul B ». */
+function relabelBlocks(blocks: Block[]): Block[] {
+  const lettered = blocks.filter((b) => /^Calcul [A-Z]$/.test(String(b.title)));
+  if (lettered.length < 2) return blocks;
+  let next = 0;
+  return blocks.map((b) => (/^Calcul [A-Z]$/.test(String(b.title)) ? { ...b, title: `Calcul ${String.fromCharCode(65 + next++)}` } : b));
+}
+
 /** Blocs d'une section « pyramide » ou « carré magique » : générés et corrigés par du code (voir deterministicExercises.ts). */
 function deterministicBlocks(section: SourceSection, count: number): Block[] {
   const n = Math.max(1, Math.min(3, count));
@@ -620,6 +631,28 @@ export async function runPhotoExerciseGeneration(
         } else {
           blocks = await writeSection(generate, systemPrompt, section, variants, extra, difficulty, instructions);
           if (blocks.length > 0) blocks = await dropWrongAnswers(blocks, generate, `partie ${index + 1}`);
+          // Des questions ont été retirées (réponse fausse, doublon) : un seul complément pour retrouver le compte.
+          const missing = variants + extra - blocks.length;
+          if (blocks.length > 0 && missing > 0) {
+            try {
+              const already = blocks.map((b) => b.content).join(" || ").slice(0, 900);
+              const more = await writeSectionOnce(
+                generate,
+                systemPrompt,
+                section,
+                0,
+                missing,
+                difficulty,
+                `${instructions}\nQuestions deja ecrites, a ne pas repeter : ${already}`.trim(),
+              );
+              const checked = more.length > 0 ? await dropWrongAnswers(more, generate, `partie ${index + 1} (complement)`) : [];
+              blocks = dropRepeatsAndLeaks([...blocks, ...checked]).slice(0, variants + extra);
+            } catch (error) {
+              if (error instanceof GenerationCancelledError) throw error;
+              console.warn("[photo-exercise] complement impossible :", error instanceof Error ? error.message : error);
+            }
+          }
+          blocks = relabelBlocks(blocks);
         }
         done += 1;
         await tracker.updateProgress({
