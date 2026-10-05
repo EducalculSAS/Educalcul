@@ -2,6 +2,7 @@
 // un composant client, la COMPILATION échoue au lieu d'exposer la clé dans
 // le bundle du navigateur.
 import "server-only";
+import { AsyncLocalStorage } from "node:async_hooks";
 import type { JsonSchemaContract } from "@/lib/ai/schemas";
 /**
  * Educalcul — Couche transport IA via l'API Mistral directe (endpoint régional
@@ -11,6 +12,44 @@ import type { JsonSchemaContract } from "@/lib/ai/schemas";
 const MISTRAL_URL = "https://api.eu.mistral.ai/v1/chat/completions";
 const MISTRAL_MODEL = process.env.MISTRAL_MODEL || "labs-leanstral-1-5-1";
 const MISTRAL_KEY = process.env.MISTRAL_API_KEY || "";
+// Modèle de secours optionnel des échanges en direct (chat, Calia en classe) quand le
+// modèle principal répond 429 malgré les nouvelles tentatives. Désactivé par défaut :
+// avec la clé actuelle, mistral-small-latest répond lui-même 429 (testé le 2026-10-05).
+// À renseigner (MISTRAL_FALLBACK_MODEL) une fois le plan payant activé.
+const MISTRAL_FALLBACK_MODEL = process.env.MISTRAL_FALLBACK_MODEL || "";
+
+// ── Priorité aux échanges en direct ──────────────────────────────────────────
+// Un élève qui parle à Calia ou écrit dans le chat doit avoir sa réponse tout de
+// suite : ces appels sont marqués « interactifs » (runInteractive). Ils réessaient
+// vite sur un 429 puis passent au modèle de secours, et les générations d'arrière-
+// plan de la même instance s'effacent le temps qu'ils finissent (yieldToInteractive).
+const interactiveStore = new AsyncLocalStorage<true>();
+let interactiveInFlight = 0;
+
+export function runInteractive<T>(fn: () => Promise<T>): Promise<T> {
+  return interactiveStore.run(true, async () => {
+    interactiveInFlight += 1;
+    try {
+      return await fn();
+    } finally {
+      interactiveInFlight -= 1;
+    }
+  });
+}
+
+/** Les générations d'arrière-plan attendent (4 s au plus) qu'un échange en direct soit terminé. */
+export async function yieldToInteractive(maxWaitMs = 4_000): Promise<void> {
+  const startedAt = Date.now();
+  while (interactiveInFlight > 0 && Date.now() - startedAt < maxWaitMs) {
+    await new Promise((resolve) => setTimeout(resolve, 100));
+  }
+}
+
+function retryDelayMs(attempt: number, retryAfterHeader: string | null): number {
+  const headerSeconds = Number(retryAfterHeader);
+  const base = Number.isFinite(headerSeconds) && headerSeconds > 0 ? headerSeconds * 1_000 : 250 * 2 ** attempt;
+  return Math.min(1_500, base) + Math.floor(Math.random() * 150);
+}
 
 type JsonSchemaCapability = "unknown" | "supported" | "unsupported";
 const jsonSchemaCapabilityByModel = new Map<string, JsonSchemaCapability>();
@@ -83,6 +122,14 @@ function extractMistralText(content: unknown): string {
   return "";
 }
 
+type MistralResult = { ok: boolean; text: string; status: number; retryAfter?: string | null };
+
+/**
+ * Appel Mistral avec gestion du 429. Appel interactif : jusqu'à 3 nouvelles
+ * tentatives rapprochées (en respectant Retry-After, plafonné à 1,5 s), puis le
+ * modèle de secours. Autre appel : un seul essai ici, les appelants ont leur
+ * propre attente plus longue.
+ */
 async function callMistralModel(
   model: string,
   msgs: Message[],
@@ -92,13 +139,39 @@ async function callMistralModel(
   jsonMode = false,
   abortSignal?: AbortSignal,
   jsonSchema?: JsonSchemaContract,
-): Promise<{ ok: boolean; text: string; status: number }> {
+): Promise<MistralResult> {
+  let result = await callMistralModelOnce(model, msgs, temp, maxTokens, reasoning, jsonMode, abortSignal, jsonSchema);
+  if (result.status !== 429 || !interactiveStore.getStore()) return result;
+
+  for (let attempt = 0; attempt < 3 && result.status === 429; attempt++) {
+    if (abortSignal?.aborted) return result;
+    await new Promise((resolve) => setTimeout(resolve, retryDelayMs(attempt, result.retryAfter ?? null)));
+    result = await callMistralModelOnce(model, msgs, temp, maxTokens, reasoning, jsonMode, abortSignal, jsonSchema);
+  }
+  if (result.status === 429 && MISTRAL_FALLBACK_MODEL && MISTRAL_FALLBACK_MODEL !== model) {
+    console.warn(`[llm] ${model} saturé (429), bascule sur ${MISTRAL_FALLBACK_MODEL} pour un échange en direct`);
+    result = await callMistralModelOnce(MISTRAL_FALLBACK_MODEL, msgs, temp, maxTokens, reasoning, jsonMode, abortSignal, jsonSchema);
+  }
+  return result;
+}
+
+async function callMistralModelOnce(
+  model: string,
+  msgs: Message[],
+  temp: number,
+  maxTokens?: number,
+  reasoning = false,
+  jsonMode = false,
+  abortSignal?: AbortSignal,
+  jsonSchema?: JsonSchemaContract,
+): Promise<MistralResult> {
   const body: Record<string, unknown> = {
     model,
     messages: msgs,
     temperature: temp,
-    reasoning_effort: reasoning ? "high" : "none",
   };
+  // Le paramètre de raisonnement est propre au modèle principal : le modèle de secours ne le connaît peut-être pas.
+  if (model === MISTRAL_MODEL) body.reasoning_effort = reasoning ? "high" : "none";
   if (maxTokens) body.max_tokens = maxTokens;
   // Pour la génération de contenu, le schéma JSON est le contrat unique :
   // le modèle ne peut ni ajouter du HTML ni déplacer les champs
@@ -151,7 +224,7 @@ async function callMistralModel(
   }
 
   const text = await resp.text();
-  return { ok: resp.ok, text, status: resp.status };
+  return { ok: resp.ok, text, status: resp.status, retryAfter: resp.headers.get("retry-after") };
 }
 
 async function callMistral(
@@ -1053,6 +1126,99 @@ export async function chatWithAIPlain(
       false,
     )
   ).trim();
+}
+
+/**
+ * Chat en flux : renvoie les morceaux de texte au fur et à mesure (SSE de
+ * Mistral), au lieu d'attendre la réponse entière. L'élève voit la réponse
+ * démarrer en une fraction de seconde. Les 429 sont gérés avant le premier
+ * morceau (nouvelles tentatives rapides puis modèle de secours) ; `onDone`
+ * reçoit le texte complet une fois le flux terminé.
+ */
+export async function streamChatPlain(
+  messages: Array<{ role: "user" | "assistant"; content: string }>,
+  systemPrompt: string,
+  temperature: number,
+  maxTokens: number,
+  onDone?: (fullText: string) => void | Promise<void>,
+): Promise<ReadableStream<Uint8Array>> {
+  const payload = (model: string) => {
+    const body: Record<string, unknown> = {
+      model,
+      stream: true,
+      temperature,
+      max_tokens: maxTokens,
+      messages: [{ role: "system", content: systemPrompt }, ...messages],
+    };
+    if (model === MISTRAL_MODEL) body.reasoning_effort = "none";
+    return JSON.stringify(body);
+  };
+  const open = (model: string) =>
+    fetch(MISTRAL_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${MISTRAL_KEY}` },
+      body: payload(model),
+    });
+
+  let resp = await open(MISTRAL_MODEL);
+  for (let attempt = 0; attempt < 3 && resp.status === 429; attempt++) {
+    await new Promise((resolve) => setTimeout(resolve, retryDelayMs(attempt, resp.headers.get("retry-after"))));
+    resp = await open(MISTRAL_MODEL);
+  }
+  if (resp.status === 429 && MISTRAL_FALLBACK_MODEL && MISTRAL_FALLBACK_MODEL !== MISTRAL_MODEL) {
+    console.warn(`[llm] ${MISTRAL_MODEL} saturé (429), bascule sur ${MISTRAL_FALLBACK_MODEL} pour le chat`);
+    resp = await open(MISTRAL_FALLBACK_MODEL);
+  }
+  if (!resp.ok || !resp.body) {
+    console.error(`[llm] stream ${MISTRAL_MODEL} error ${resp.status}: ${(await resp.text().catch(() => "")).slice(0, 300)}`);
+    throw new Error("Le modèle IA est indisponible. Réessaie dans quelques secondes.");
+  }
+
+  const upstream = resp.body.getReader();
+  const decoder = new TextDecoder();
+  const encoder = new TextEncoder();
+  let buffer = "";
+  let full = "";
+  return new ReadableStream<Uint8Array>({
+    async pull(controller) {
+      try {
+        // Lit jusqu'à produire au moins un morceau de texte, ou la fin du flux.
+        for (;;) {
+          const { done, value } = await upstream.read();
+          if (done) {
+            // Persistance AVANT la fermeture : après, la fonction serverless peut être coupée.
+            await onDone?.(full.trim());
+            controller.close();
+            return;
+          }
+          buffer += decoder.decode(value, { stream: true });
+          const lines = buffer.split("\n");
+          buffer = lines.pop() ?? "";
+          let out = "";
+          for (const line of lines) {
+            const data = line.startsWith("data:") ? line.slice(5).trim() : "";
+            if (!data || data === "[DONE]") continue;
+            try {
+              const delta = extractMistralText(JSON.parse(data)?.choices?.[0]?.delta?.content);
+              if (delta) out += delta;
+            } catch {
+              /* ligne partielle ou non JSON : ignorée */
+            }
+          }
+          if (out) {
+            full += out;
+            controller.enqueue(encoder.encode(out));
+            return;
+          }
+        }
+      } catch (error) {
+        controller.error(error);
+      }
+    },
+    cancel() {
+      void upstream.cancel();
+    },
+  });
 }
 
 // ── Aliases de compatibilité ───────────────────────────────────────────────────

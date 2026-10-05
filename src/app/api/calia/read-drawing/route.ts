@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { hasCaliaClasseAccess } from "@/lib/checkSubscription";
-import { describeDrawing } from "@/lib/llm";
+import { describeDrawing, runInteractive } from "@/lib/llm";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 // Lecture (pas de notation) d'un dessin fait par l'eleve au tableau de
@@ -23,7 +23,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "imageDataUrl est requis" }, { status: 400 });
     }
 
-    const description = await describeDrawing(imageDataUrl, typeof context === "string" ? context : "");
+    const description = await runInteractive(() => describeDrawing(imageDataUrl, typeof context === "string" ? context : ""));
     return NextResponse.json({ description });
   } catch (err: unknown) {
     const msg = err instanceof Error ? err.message : String(err);

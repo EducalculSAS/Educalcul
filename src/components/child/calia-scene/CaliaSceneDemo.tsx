@@ -17,6 +17,9 @@ import { DEFAULT_CALIA_VOICE, isCaliaVoice, type CaliaVoiceId } from "@/lib/cali
 import { getMyProfile } from "@/lib/updateMyProfile";
 
 const HIGHLIGHT_CLASS = "calia-scene-highlight";
+// Élève silencieux : Calia continue le cours après SILENCE_MS, et la séance se met en pause après MAX_SILENT_TURNS relances sans réponse.
+const SILENCE_MS = 5000;
+const MAX_SILENT_TURNS = 5;
 const OUTLINE_SELECTORS: Record<"heading" | "paragraph" | "figure" | "exercise", string> = {
   heading: "h3, h4",
   paragraph: "p",
@@ -123,6 +126,14 @@ export default function CaliaSceneDemo({
   const { setClasseActive } = useAITutor();
 
   const [isRunning, setIsRunning] = useState(false);
+  // Séance mise en pause faute de réponse : l'historique est conservé, on peut reprendre.
+  const [paused, setPaused] = useState(false);
+  // Nombre de relances automatiques de Calia depuis la dernière parole de l'élève.
+  const silentTurnsRef = useRef(0);
+  // Une synthèse vocale est en cours de préparation ou de lecture (le temps entre
+  // la réponse du serveur et le premier son ne doit pas compter comme un silence).
+  const [voiceBusy, setVoiceBusy] = useState(false);
+  const activeSpeaksRef = useRef(0);
   const [mounted, setMounted] = useState(false);
   const [sayText, setSayText] = useState<string | null>(null);
   // Transcription mot à mot, calée sur la voix : nombre de « mots » affichés
@@ -221,7 +232,7 @@ export default function CaliaSceneDemo({
     volumeAudioCtxRef.current = null;
   };
 
-  const stop = () => {
+  const stop = (keepHistory = false) => {
     // Mini rapport de fin de session (memoire pedagogique partagee avec le
     // chatbot) — fire-and-forget, un seul appel ici (pas a chaque tour) pour
     // ne pas retoucher la latence deja optimisee. Ignore les sessions trop
@@ -257,7 +268,12 @@ export default function CaliaSceneDemo({
     setSpeaking(false);
     setInterim("");
     setError(null);
-    historyRef.current = [];
+    setVoiceBusy(false);
+    activeSpeaksRef.current = 0;
+    if (!keepHistory) {
+      historyRef.current = [];
+      setPaused(false);
+    }
   };
 
 
@@ -319,6 +335,17 @@ export default function CaliaSceneDemo({
   // un header, et chaque appel faisait 401. Retombe sur la synthèse du
   // navigateur uniquement si Azure échoue vraiment.
   const speak = async (text: string) => {
+    activeSpeaksRef.current += 1;
+    setVoiceBusy(true);
+    try {
+      await speakInner(text);
+    } finally {
+      activeSpeaksRef.current = Math.max(0, activeSpeaksRef.current - 1);
+      if (activeSpeaksRef.current === 0) setVoiceBusy(false);
+    }
+  };
+
+  const speakInner = async (text: string) => {
     cancelSpeech();
     const gen = speechGenRef.current;
     const chunks = splitForSpeech(text);
@@ -481,7 +508,9 @@ export default function CaliaSceneDemo({
     setClusterOffset({ x: targetLeft - restingLeft, y: targetTop - restingTop });
   }, [pointerRect]);
 
-  const sendTurn = async (studentMessage: string) => {
+  const sendTurn = async (studentMessage: string, auto = false) => {
+    // `auto` : relance de Calia faute de réponse. Toute parole de l'élève remet le compteur à zéro.
+    silentTurnsRef.current = auto ? silentTurnsRef.current + 1 : 0;
     setLoading(true);
     setError(null);
     setInterim("");
@@ -711,7 +740,15 @@ export default function CaliaSceneDemo({
     setListening(false);
   };
 
-  const start = () => {
+  // Séance mise en pause faute de réponse : tout est arrêté (micro, voix), mais
+  // l'historique de la conversation est gardé pour pouvoir reprendre. Le mini
+  // rapport part quand même, la mémoire de l'élève retient ce qui a été vu.
+  const pauseForInactivity = () => {
+    stop(true);
+    setPaused(true);
+  };
+
+  const begin = (opening: string, fresh: boolean) => {
     void loadVoice();
     // Préchauffe la route vocale (auth + jeton Azure en cache) pendant que
     // l'élève parle : la première réplique n'a plus à payer ce démarrage.
@@ -722,10 +759,33 @@ export default function CaliaSceneDemo({
     playModeProfCue();
     setIsRunning(true);
     setClasseActive(true);
-    historyRef.current = [];
+    if (fresh) historyRef.current = [];
+    silentTurnsRef.current = 0;
+    setPaused(false);
     startListening();
-    sendTurn("(le cours commence, ouvre la séance)");
+    sendTurn(opening);
   };
+  const start = () => begin("(le cours commence, ouvre la séance)", true);
+  const resume = () =>
+    begin("(l'eleve revient apres une pause de la seance : reprends calmement ou vous en etiez, en rappelant en une phrase ce dont vous parliez)", false);
+
+  // Si l'élève ne dit rien, Calia ne reste pas muette : elle continue le cours.
+  // Après MAX_SILENT_TURNS relances sans aucune réponse, la séance se met en pause.
+  useEffect(() => {
+    if (!isRunning || speaking || voiceBusy || loading || interim || error) return;
+    if (boardWriteOpen || boardDraft.trim() || textFallback.trim()) return;
+    if (historyRef.current.length === 0) return;
+    const id = setTimeout(() => {
+      if (!sessionActiveRef.current) return;
+      if (silentTurnsRef.current >= MAX_SILENT_TURNS) {
+        pauseForInactivity();
+        return;
+      }
+      void sendTurn("(l'eleve n'a rien dit depuis un moment : continue le cours sans l'attendre, passe a la suite)", true);
+    }, SILENCE_MS);
+    return () => clearTimeout(id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isRunning, speaking, voiceBusy, loading, interim, error, boardWriteOpen, boardDraft, textFallback]);
 
   useEffect(() => () => { recognitionRef.current?.abort?.(); window.speechSynthesis?.cancel(); stopVolumeMonitor(); clearHighlight(); }, []);
 
@@ -744,7 +804,7 @@ export default function CaliaSceneDemo({
         href="/parent/subscription"
         title="Calia en classe, l'IA qui enseigne à l'oral, réservée au plan Family"
         aria-label="Calia en classe verrouillée, passer au plan Family"
-        className="relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0"
+        className={`relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0`}
         style={{ background: "var(--greek-blue)", border: "2px solid rgba(197,161,72,0.4)", opacity: 0.6 }}
       >
         <Image src="/logoAI.png" alt="Calia" width={18} height={18} className="object-contain" />
@@ -817,9 +877,10 @@ export default function CaliaSceneDemo({
           generique, identifie immediatement "lancer Calia" au survol. */}
       <button
         type="button"
-        onClick={isRunning ? stop : start}
-        aria-label={isRunning ? "Arrêter Calia en classe" : "Lancer Calia en classe"}
-        className="relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0"
+        onClick={isRunning ? () => stop() : paused ? resume : start}
+        aria-label={isRunning ? "Arrêter Calia en classe" : paused ? "Reprendre Calia en classe (séance en pause)" : "Lancer Calia en classe"}
+        title={paused ? "Séance en pause faute de réponse. Clique pour reprendre là où vous en étiez." : undefined}
+        className={`relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0 ${paused ? "animate-pulse" : ""}`}
         style={{ background: "var(--greek-blue)", border: `2px solid ${isRunning ? "#ef4444" : "var(--greek-gold)"}` }}
       >
         <Image src="/logoAI.png" alt="Calia" width={18} height={18} className="object-contain" />
@@ -895,7 +956,7 @@ export default function CaliaSceneDemo({
                 </div>
                 <button
                   type="button"
-                  onClick={stop}
+                  onClick={() => stop()}
                   aria-label="Fermer Calia en classe"
                   className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center text-white"
                   style={{ background: "var(--greek-blue)" }}

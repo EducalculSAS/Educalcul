@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { hasCaliaClasseAccess } from "@/lib/checkSubscription";
-import { generateStructuredContentWithSchema } from "@/lib/llm";
+import { generateStructuredContentWithSchema, runInteractive } from "@/lib/llm";
 import { caliaClasseTurnSchema } from "@/lib/ai/schemas";
 import { SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 import { getCaliaStudentContext } from "@/lib/calia/studentProfile";
@@ -71,6 +71,13 @@ OUVERTURE - uniquement si studentMessage vaut exactement "(le cours commence, ou
 - Demande s'il a des questions avant de commencer
 - Ne pose PAS encore de question de cours a cette etape, ne mets aucune action de mise en scene, rends la main et attends la reponse de l'eleve
 - Exemple : "Salut, comment vas-tu ? On va commencer le cours ensemble, tu as des questions avant qu'on s'y mette ?"
+
+ELEVE SILENCIEUX - si studentMessage commence par "(l'eleve n'a rien dit" :
+- L'eleve n'a ni parle ni pose de question : ne le gronde pas, ne dis pas "tu n'as rien dit", ne demande pas s'il est la. Continue le cours a ton rythme, sans l'attendre : explique la suite, passe a l'etape ou a la lecon suivante (next_lesson si la lecon est terminee), ou pose une question guidee courte.
+- Garde le rythme : 2 a 4 phrases, avec les gestes de mise en scene habituels (point_at, board_write...). Ne repose pas une question a laquelle il n'a pas repondu : donne l'indice ou la reponse partielle de la methode, puis avance.
+
+REPRISE - si studentMessage commence par "(l'eleve revient apres une pause" :
+- La seance avait ete mise en pause faute de reponse. Dis-lui chaleureusement en une phrase ce dont vous parliez (d'apres l'historique et la lecon affichee), puis relance avec une question simple ou la suite du cours. Pas de reproche, pas de nouvel accueil complet.
 
 ROLE : tu es une professeure, mais aussi une assistante. Tu fais avancer le cours ET tu reponds directement a toute question de l'eleve (definition, rappel, "je comprends pas", "explique encore") en t'appuyant sur ce qui est affiche.
 
@@ -220,7 +227,9 @@ export async function POST(req: Request) {
     // Un tour vocal ne doit jamais bloquer l'élève : au-delà de 12 s (modèle
     // saturé), on répond tout de suite qu'il faut redire la question.
     const result = await Promise.race([
-      generateStructuredContentWithSchema<TurnResult>(prompt, systemPrompt, caliaClasseTurnSchema(), 0.6, 1100, false),
+      runInteractive(() =>
+        generateStructuredContentWithSchema<TurnResult>(prompt, systemPrompt, caliaClasseTurnSchema(), 0.6, 1100, false),
+      ),
       new Promise<null>((resolve) => setTimeout(() => resolve(null), 15_000)),
     ]);
     if (!result || typeof (result as TurnResult).say !== "string") {

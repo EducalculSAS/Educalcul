@@ -1,4 +1,4 @@
-import { generateStructuredContentWithSchema } from "@/lib/llm";
+import { generateStructuredContentWithSchema, yieldToInteractive } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import type { JsonSchemaContract } from "@/lib/ai/schemas";
 
@@ -71,6 +71,8 @@ export function createLlmStartGate(
     });
 
     await previous;
+    // Un élève qui parle à Calia ou au chat passe avant une génération de contenu.
+    await yieldToInteractive();
     const elapsed = Date.now() - lastStartAt;
     const waitMs = minIntervalMs > 0 ? Math.max(0, minIntervalMs - elapsed) : 0;
     if (waitMs > 0) await sleep(waitMs);

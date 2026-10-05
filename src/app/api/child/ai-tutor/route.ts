@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { AITutorPageContext } from "@/contexts/AITutorContext";
-import { chatWithAIPlain } from "@/lib/llm";
+import { chatWithAIPlain, runInteractive, streamChatPlain } from "@/lib/llm";
 import { checkAIAccess } from "@/lib/checkSubscription";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -95,7 +95,13 @@ export async function POST(req: Request) {
     // Bucket séparé pour le mode support : une conversation support ne doit
     // jamais entamer le quota du vrai tuteur de maths, ni l'inverse.
     const config = RATE_LIMITS[isSupportMode ? "ai:child-support" : "ai:tutor"];
-    const rl = await rateLimitWithBackoff(`${isSupportMode ? "ai:child-support" : "ai:tutor"}:${me.authId}`, config.maxAttempts, config.windowMs);
+    // Limite, accès à l'abonnement, mémoire de l'élève et niveau : en parallèle (avant, l'un après l'autre).
+    const [rl, access, profileText, studentRes] = await Promise.all([
+      rateLimitWithBackoff(`${isSupportMode ? "ai:child-support" : "ai:tutor"}:${me.authId}`, config.maxAttempts, config.windowMs),
+      isSupportMode ? Promise.resolve(null) : checkAIAccess(me.authId),
+      isSupportMode ? Promise.resolve("") : getCaliaStudentContext(me.id),
+      isSupportMode ? Promise.resolve(null) : supabaseAdmin.from("users").select("grade_level").eq("id", me.id).maybeSingle(),
+    ]);
     if (!rl.allowed) {
       return NextResponse.json(
         { message: null, blocked: true, reason: "Tu as posé beaucoup de questions d'affilée : attends quelques minutes avant de continuer." },
@@ -104,11 +110,8 @@ export async function POST(req: Request) {
     }
 
     // Subscription gate — pas de restriction en mode support.
-    if (!isSupportMode) {
-      const access = await checkAIAccess(me.authId);
-      if (!access.allowed) {
-        return NextResponse.json({ message: null, blocked: true, reason: access.reason }, { status: 403 });
-      }
+    if (access && !access.allowed) {
+      return NextResponse.json({ message: null, blocked: true, reason: access.reason }, { status: 403 });
     }
     supabaseAdmin
       .from("user_ai_interactions")
@@ -127,11 +130,37 @@ export async function POST(req: Request) {
     if (isSupportMode) {
       systemPrompt = buildSupportSystemPrompt("child", userTurnCount);
     } else {
-      const [profileText, { data: student }] = await Promise.all([
-        getCaliaStudentContext(me.id),
-        supabaseAdmin.from("users").select("grade_level").eq("id", me.id).maybeSingle(),
-      ]);
+      const student = studentRes?.data;
       systemPrompt = buildSystemPrompt(context, profileText, student?.grade_level ? getLevelLabel(student.grade_level) : null);
+    }
+
+    const persist = async (answer: string): Promise<void> => {
+      // Persistance serveur de la conversation (voir /api/child/ai-tutor/messages).
+      if (!contextKey || !answer) return;
+      const lastUser = trimmed[trimmed.length - 1];
+      await supabaseAdmin
+        .from("ai_tutor_messages")
+        .insert([
+          { user_id: me.id, context_key: contextKey, role: "user", content: lastUser.content },
+          { user_id: me.id, context_key: contextKey, role: "assistant", content: answer },
+        ])
+        .then(undefined, (e) => console.error("[ai-tutor] message persistence failed:", e?.message));
+    };
+
+    // Réponse en flux : le texte arrive mot après mot, l'élève voit Calia
+    // répondre en une fraction de seconde au lieu d'attendre la réponse entière.
+    if (body.stream === true) {
+      try {
+        const stream = await runInteractive(() =>
+          streamChatPlain(trimmed, systemPrompt, isSupportMode ? 0.3 : 0.55, 1_200, persist),
+        );
+        return new Response(stream, {
+          headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store, no-transform", "X-Accel-Buffering": "no" },
+        });
+      } catch (error: unknown) {
+        console.error("[ai-tutor] stream error:", error instanceof Error ? error.message : String(error));
+        return NextResponse.json({ message: null, error: BUSY }, { status: 503 });
+      }
     }
 
     let message: string;
@@ -139,7 +168,7 @@ export async function POST(req: Request) {
       // Sans mode « raisonnement » : la réflexion interne consommait le
       // plafond de sortie, la réponse arrivait tronquée (ou pas du tout) et
       // bien plus lentement.
-      message = await chatWithAIPlain(trimmed, systemPrompt, isSupportMode ? 0.3 : 0.55, 1_200);
+      message = await runInteractive(() => chatWithAIPlain(trimmed, systemPrompt, isSupportMode ? 0.3 : 0.55, 1_200));
     } catch (error: unknown) {
       console.error("[ai-tutor] model error:", error instanceof Error ? error.message : String(error));
       // Message pour l'élève seulement : jamais enregistré, jamais renvoyé à
@@ -148,17 +177,7 @@ export async function POST(req: Request) {
     }
     if (!message) return NextResponse.json({ message: null, error: BUSY }, { status: 503 });
 
-    // Persistance serveur de la conversation (voir /api/child/ai-tutor/messages).
-    if (contextKey) {
-      const lastUser = trimmed[trimmed.length - 1];
-      supabaseAdmin
-        .from("ai_tutor_messages")
-        .insert([
-          { user_id: me.id, context_key: contextKey, role: "user", content: lastUser.content },
-          { user_id: me.id, context_key: contextKey, role: "assistant", content: message },
-        ])
-        .then(undefined, (e) => console.error("[ai-tutor] message persistence failed:", e?.message));
-    }
+    void persist(message);
 
     return NextResponse.json({ message });
   } catch (err: unknown) {

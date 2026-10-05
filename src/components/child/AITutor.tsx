@@ -212,8 +212,38 @@ export default function AITutor() {
           messages: history.filter((m) => !m.local).slice(-10).map(({ role, content }) => ({ role, content })),
           context: pageContextRef.current,
           contextKey: getContextKeyRef.current(),
+          stream: true,
         }),
       });
+      // Réponse en flux : le texte s'affiche au fur et à mesure (premier mot en une fraction de seconde).
+      if (res.ok && res.body && (res.headers.get("content-type") || "").startsWith("text/plain")) {
+        const reader = res.body.getReader();
+        const decoder = new TextDecoder();
+        let text = "";
+        try {
+          for (;;) {
+            const { done, value } = await reader.read();
+            if (done) break;
+            text += decoder.decode(value, { stream: true });
+            const next = [...history, { role: "assistant" as const, content: text }];
+            messagesRef.current = next;
+            setMessages(next);
+            setLoading(false); // les points d'attente laissent place au texte
+          }
+        } catch {
+          /* flux coupé : on garde ce qui est déjà arrivé */
+        }
+        text += decoder.decode();
+        if (text.trim()) {
+          const next = [...history, { role: "assistant" as const, content: text }];
+          messagesRef.current = next;
+          setMessages(next);
+          if (pageContextRef.current.page !== "support") sub.refresh();
+        } else {
+          reply({ role: "assistant", local: true, content: "Calia n'a pas pu répondre. Réessaie." });
+        }
+        return;
+      }
       const data = await res.json().catch(() => ({}));
       if (res.ok && data.message) {
         reply({ role: "assistant", content: data.message });
