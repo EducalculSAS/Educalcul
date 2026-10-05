@@ -828,6 +828,8 @@ export type ExerciseFromImage = {
   questionCount: number;
   hasFigure: boolean;
   figureDescription: string;
+  /** Niveau scolaire probable (valeur de SCHOOL_LEVELS), d'après la difficulté des nombres et des notions. */
+  level: string;
 };
 
 export async function extractExerciseFromImage(imageDataUrl: string): Promise<ExerciseFromImage> {
@@ -838,9 +840,12 @@ RÈGLES :
 - Si un passage est illisible, écris [illisible] plutôt que d'inventer.
 - IGNORE complètement : les pointillés et lignes de réponse (……… ou ______), les cadres à remplir, l'en-tête (Nom, Date), le pied de page, l'adresse du site, les numéros de page. Ne les recopie jamais et ne répète jamais un caractère.
 - Une fiche avec plusieurs exercices (« Exercice 1 », « Exercice 2 »...) : garde chaque titre d'exercice sur sa ligne, suivi de sa consigne et de ses questions ; un calcul par ligne (A = ..., B = ...).
+- Une fiche dont les parties sont numérotées « 1) Écris les nombres », « 2) Complète la file numérique »... : écris chaque titre sur sa ligne AVEC son numéro et sa parenthèse (« 1) », « 2) »...), jamais sans numéro ni avec un autre signe. Les parties sont des exercices distincts.
+- Des mots écrits en lettres à transformer en chiffres, ou des nombres à écrire en lettres, se recopient tels quels, un par ligne.
 - hasFigure : true s'il y a une figure, un graphique, un tableau ou un schéma ; figureDescription décrit précisément chaque figure en nommant son exercice (formes, nombres lisibles, cases vides, axes) pour qu'on puisse la redessiner, sinon "".
+- level : niveau scolaire probable parmi cp, ce1, ce2, cm1, cm2, 6eme, 5eme, 4eme, 3eme, 2nde, 1ere-generale, terminale-generale, d'apres la difficulte des nombres et des notions (additions de nombres inferieurs a 100 : cp ou ce1 ; tables de multiplication : ce2 ou cm1 ; relatifs : 5eme ; Pythagore : 4eme).
 - title : titre court (6 mots maximum). subjectArea : un seul parmi Algèbre, Géométrie, Statistiques, Arithmétique, Fonctions, Probabilités, Trigonométrie. questionCount : nombre total de questions ou calculs de la fiche.
-Réponds UNIQUEMENT en JSON : {"title":"","statement":"","subjectArea":"","questionCount":0,"hasFigure":false,"figureDescription":""}`;
+Réponds UNIQUEMENT en JSON : {"title":"","statement":"","subjectArea":"","level":"","questionCount":0,"hasFigure":false,"figureDescription":""}`;
 
   const msgs: Message[] = [
     { role: "system", content: system },
@@ -853,14 +858,14 @@ Réponds UNIQUEMENT en JSON : {"title":"","statement":"","subjectArea":"","quest
     },
   ];
 
-  // Réponse coupée (fiche très chargée, pointillés recopiés) : un nouvel essai, plus concis.
-  let content = "";
-  for (let attempt = 0; attempt < 2; attempt++) {
+  // Réponse coupée ou JSON mal fermé (fiche très chargée, pointillés recopiés) : jusqu'à trois essais, de plus en plus concis.
+  let r: Partial<ExerciseFromImage> | null = null;
+  for (let attempt = 0; attempt < 3 && !r; attempt++) {
     const { ok, text, status } = await callMistralModel(
       MISTRAL_MODEL,
-      attempt === 0 ? msgs : [...msgs, { role: "user", content: "Ta transcription précédente était trop longue et a été coupée. Recommence : transcris uniquement les titres, consignes et questions, sans aucun pointillé ni répétition, et décris chaque figure en une phrase." }],
+      attempt === 0 ? msgs : [...msgs, { role: "user", content: "Ta transcription précédente était trop longue ou mal formée. Recommence : JSON valide et COMPACT, transcris uniquement les titres, consignes et questions (un calcul par ligne), sans aucun pointillé ni répétition, et décris chaque figure en une phrase." }],
       attempt === 0 ? 0.1 : 0,
-      5000,
+      attempt === 2 ? 3000 : 5000,
       false,
       true,
     );
@@ -868,12 +873,16 @@ Réponds UNIQUEMENT en JSON : {"title":"","statement":"","subjectArea":"","quest
       console.error(`[llm] vision (extractExerciseFromImage) ${MISTRAL_MODEL} error ${status}: ${text.slice(0, 400)}`);
       throw new Error("La lecture de l'image est indisponible. Réessaie dans quelques secondes.");
     }
-    const parsed = JSON.parse(text);
-    content = extractMistralText(parsed?.choices?.[0]?.message?.content) || "";
-    if (parsed?.choices?.[0]?.finish_reason !== "length") break;
-    console.warn("[llm] lecture de l'image tronquée, nouvel essai plus concis");
+    try {
+      const parsed = JSON.parse(text);
+      if (parsed?.choices?.[0]?.finish_reason === "length") throw new Error("tronquée");
+      const content = extractMistralText(parsed?.choices?.[0]?.message?.content) || "";
+      r = parseJSON(extractJSON(content)) as Partial<ExerciseFromImage>;
+    } catch {
+      console.warn(`[llm] lecture de l'image inexploitable (essai ${attempt + 1}/3)`);
+    }
   }
-  const r = parseJSON(extractJSON(content)) as Partial<ExerciseFromImage>;
+  if (!r) throw new Error("La lecture de l'image a échoué (réponse inexploitable). Réessaie, ou envoie une image plus nette et plus grande.");
   const statement = typeof r.statement === "string" ? r.statement.trim() : "";
   if (!statement) throw new Error("Aucun exercice lisible sur cette image.");
   const areas = ["Algèbre", "Géométrie", "Statistiques", "Arithmétique", "Fonctions", "Probabilités", "Trigonométrie"];
@@ -882,6 +891,7 @@ Réponds UNIQUEMENT en JSON : {"title":"","statement":"","subjectArea":"","quest
     statement: statement.slice(0, 8000),
     subjectArea: areas.includes(String(r.subjectArea)) ? String(r.subjectArea) : "Algèbre",
     questionCount: Math.min(30, Math.max(1, Math.trunc(Number(r.questionCount)) || 4)),
+    level: ["cp", "ce1", "ce2", "cm1", "cm2", "6eme", "5eme", "4eme", "3eme", "2nde", "1ere-generale", "terminale-generale"].includes(String(r.level)) ? String(r.level) : "",
     hasFigure: r.hasFigure === true,
     figureDescription: typeof r.figureDescription === "string" ? r.figureDescription.trim().slice(0, 1500) : "",
   };

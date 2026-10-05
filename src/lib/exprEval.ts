@@ -153,6 +153,8 @@ export function evaluateStatement(content: string): Frac | null {
   const raw = candidates[0];
   const right = raw.includes("=") ? raw.slice(raw.indexOf("=") + 1) : raw;
   if (!right.trim()) return null;
+  // Un nombre seul (« le double de $7$ ») n'est pas un calcul à vérifier : la réponse est une autre valeur.
+  if (!raw.includes("=") && !/[+\-*/()]|\\times|\\div|\\frac|\\cdot/.test(right.replace(/^\s*[+-]/, ""))) return null;
   try {
     return evaluateExpression(right);
   } catch {

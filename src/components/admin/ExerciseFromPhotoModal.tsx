@@ -29,6 +29,7 @@ interface Props {
 
 interface Extracted {
   title: string;
+  level?: string;
   statement: string;
   subjectArea: string;
   questionCount: number;
@@ -105,6 +106,8 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
       setSourceCount(ex.questionCount);
       setParams((p) => ({
         ...p,
+        // Niveau deviné d'après la difficulté (une fiche de CP n'est pas une fiche de 6ème) ; modifiable ci-dessous.
+        level: ex.level && SCHOOL_LEVELS.some((l) => l.value === ex.level) ? ex.level : p.level,
         subjectArea: ex.subjectArea,
         questionCount: Math.min(24, ex.questionCount + 2),
       }));
