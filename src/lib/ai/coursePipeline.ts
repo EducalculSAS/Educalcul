@@ -590,6 +590,9 @@ function blockPlainText(block: StructuredCourseBlock): string {
     case "ruler_measurer":
     case "tape_diagram":
     case "brick_pyramid":
+    case "solid":
+    case "labeled_polygon":
+    case "labeled_circle":
     case "fill_grid":
     case "fraction_strips":
     case "place_value_chart":

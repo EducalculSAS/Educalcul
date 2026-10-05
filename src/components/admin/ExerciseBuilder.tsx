@@ -54,6 +54,11 @@ export type BlockType =
   | "number_line_point"
   | "click_error";
 
+/** Figure à compléter à même ses cases (texte à trous « sur une figure ») : pyramide de briques ou grille. "" = case vide. */
+export type FigureSpec =
+  | { kind: "brick_pyramid"; levels: string[][] }
+  | { kind: "fill_grid"; cells: string[][] };
+
 export interface Block {
   id: string;
   type: BlockType;
@@ -72,6 +77,9 @@ export interface Block {
   // Texte à trous : une réponse attendue par blanc, dans l'ordre d'apparition
   // des jetons {{1}}, {{2}}... dans `content`. Alternatives séparées par "|".
   blanks?: string[];
+  // Texte à trous sur une figure : les cases vides de la figure SONT les trous (dans l'ordre de lecture) ;
+  // `content` est alors un simple énoncé, sans jetons {{1}}.
+  figureSpec?: FigureSpec;
 
   // Association / Relier : paires à relier (le "right" affiché est mélangé côté élève)
   pairs?: { left: string; right: string }[];

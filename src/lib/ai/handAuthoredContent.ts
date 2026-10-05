@@ -242,6 +242,19 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
       if (type === "fill_in_the_blank") {
         const blanks = Array.isArray(block?.blanks) ? block.blanks.map(String) : [];
         if (blanks.length === 0) warnings.push(`${where} : "blanks" est vide, aucun trou à corriger.`);
+        // Texte à trous sur une figure (pyramide, grille) : seules les cases VIDES ("") deviennent des trous.
+        const spec = block?.figureSpec;
+        const figureSpec =
+          spec?.kind === "brick_pyramid" && Array.isArray(spec.levels)
+            ? { kind: "brick_pyramid", levels: spec.levels.map((row: unknown[]) => row.map((c) => String(c ?? ""))) }
+            : spec?.kind === "fill_grid" && Array.isArray(spec.cells)
+              ? { kind: "fill_grid", cells: spec.cells.map((row: unknown[]) => row.map((c) => String(c ?? ""))) }
+              : undefined;
+        if (figureSpec) {
+          const holes = JSON.stringify(figureSpec).split('""').length - 1;
+          if (holes !== blanks.length) warnings.push(`${where} : ${holes} case(s) vide(s) dans la figure mais ${blanks.length} réponse(s) dans "blanks".`);
+          return { ...base, blanks, figureSpec };
+        }
         return { ...base, blanks };
       }
       if (type === "matching") {

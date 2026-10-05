@@ -12,10 +12,21 @@ const pick = (rng: Rng, min: number, max: number) => min + Math.floor(rng() * (m
 const signed = (v: number) => (v > 0 ? `(+${v})` : v < 0 ? `(${v})` : "0");
 const plain = (v: number) => (v > 0 ? `+${v}` : String(v));
 
+/** Réponses acceptées pour une case : « -6 », « (-6) », « −6 » ; « 3 », « +3 », « (+3) », « (3) ». Alternatives séparées par « | ». */
+const blankAlternatives = (v: number): string => {
+  if (v === 0) return "0";
+  const minus = String.fromCharCode(8722);
+  return v > 0 ? [`${v}`, `+${v}`, `(+${v})`, `(${v})`].join("|") : [`${v}`, `(${v})`, `${minus}${-v}`, `(${minus}${-v})`].join("|");
+};
+
 export interface GeneratedFigureExercise {
   title: string;
   content: string;
   figure: Record<string, unknown>;
+  /** Figure à compléter à même ses cases (texte à trous sur une figure). */
+  figureSpec: { kind: "brick_pyramid"; levels: string[][] } | { kind: "fill_grid"; cells: string[][] };
+  /** Une réponse attendue par case vide, dans l'ordre de lecture. */
+  blanks: string[];
   explanation: string;
   correctAnswer: string;
 }
@@ -112,8 +123,10 @@ export function makePyramid(rule: PyramidRule, bottomCount: number, rng: Rng = M
   }
   return {
     title: "La pyramide",
-    content: `Complète la pyramide : ${ruleText}. Écris les nombres des briques vides, de haut en bas puis de gauche à droite, séparés par des points-virgules.`,
+    content: `Complète la pyramide : ${ruleText}. Écris les nombres qui manquent directement dans les briques vides.`,
     figure: { type: "brick_pyramid", caption: "Pyramide à compléter", levels },
+    figureSpec: { kind: "brick_pyramid", levels },
+    blanks: missing.map(blankAlternatives),
     explanation: `On utilise la règle dans les deux sens, en partant des briques connues. Toutes les briques de la pyramide, du bas vers le haut : ${steps.join(" ; ")}. Les briques vides, de haut en bas puis de gauche à droite : ${missing.map(plain).join(" ; ")}.`,
     correctAnswer: missing.map(plain).join(" ; "),
   };
@@ -203,8 +216,10 @@ export function makeMagicSquare(rng: Rng = Math.random): GeneratedFigureExercise
   const sum = 3 * c;
   return {
     title: "Le carré magique",
-    content: "Complète ce carré magique : la somme des nombres de chaque ligne, de chaque colonne et de chaque diagonale est la même. Écris les nombres des cases vides, ligne par ligne, de gauche à droite, séparés par des points-virgules.",
+    content: "Complète ce carré magique : la somme des nombres de chaque ligne, de chaque colonne et de chaque diagonale est la même. Écris les nombres qui manquent directement dans les cases vides.",
     figure: { type: "fill_grid", caption: "Carré magique à compléter", cells: grid },
+    figureSpec: { kind: "fill_grid", cells: grid },
+    blanks: missing.map(blankAlternatives),
     explanation: `La somme magique vaut ${sum} : c'est trois fois le nombre du centre (${c}). On complète chaque ligne, colonne ou diagonale pour que la somme fasse ${sum}. Le carré complet est : ${[0, 1, 2].map((r) => cells.slice(r * 3, r * 3 + 3).join(" ")).join(" / ")}. Les cases vides, ligne par ligne : ${missing.join(" ; ")}.`,
     correctAnswer: missing.join(" ; "),
   };

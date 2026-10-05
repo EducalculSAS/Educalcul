@@ -4,6 +4,7 @@ import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
 import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Image as ImageIcon, Loader2, Sparkles, Pencil, Keyboard, Eye, AlertTriangle } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
+import FigureInputs from "@/components/viewers/FigureInputs";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -1932,7 +1933,23 @@ export default function ExerciseViewer({
                     </div>
                   )}
 
-                  {block.type === "fill_in_the_blank" && (
+                  {block.type === "fill_in_the_blank" && block.figureSpec && (
+                    <div className="text-gray-800">
+                      {block.content && (
+                        <div className="prose max-w-none mb-2" dangerouslySetInnerHTML={{ __html: renderLatexInHTML(block.content) }} />
+                      )}
+                      <FigureInputs
+                        spec={block.figureSpec}
+                        values={Array.isArray(answer) ? answer : []}
+                        disabled={!!isSubmitted}
+                        expected={revealed[block.id]?.blanks}
+                        submitted={!!isSubmitted}
+                        onChange={(next) => handleBlockAnswerChange(block.id, next)}
+                      />
+                    </div>
+                  )}
+
+                  {block.type === "fill_in_the_blank" && !block.figureSpec && (
                     <div className="text-lg leading-loose text-gray-800">
                       {(() => {
                         const parts = (block.content || "").split(/(\{\{\d+\}\})/g);

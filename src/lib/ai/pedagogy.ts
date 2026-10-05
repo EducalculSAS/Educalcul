@@ -135,6 +135,9 @@ function blockWordCount(block: StructuredCourseBlock): number {
     case "ruler_measurer":
     case "tape_diagram":
     case "brick_pyramid":
+    case "solid":
+    case "labeled_polygon":
+    case "labeled_circle":
     case "fill_grid":
     case "fraction_strips":
     case "place_value_chart":
@@ -211,6 +214,9 @@ function isVisualBlock(block: StructuredCourseBlock): boolean {
     block.type === "ruler_measurer" ||
     block.type === "tape_diagram" ||
     block.type === "brick_pyramid" ||
+    block.type === "solid" ||
+    block.type === "labeled_polygon" ||
+    block.type === "labeled_circle" ||
     block.type === "fill_grid" ||
     block.type === "fraction_strips" ||
     block.type === "place_value_chart" ||

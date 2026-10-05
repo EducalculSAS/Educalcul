@@ -41,22 +41,47 @@ type SectionKind = "standard" | "pyramid" | "magic_square";
 type SourceSection = { title: string; instruction: string; items: SourceItem[]; figure: string; kind: SectionKind };
 type Block = Record<string, unknown> & { type: string; content: string };
 
-const ALLOWED_TYPES = new Set(["text_input", "qcm", "true_false", "ordering", "matching"]);
+const ALLOWED_TYPES = new Set(["text_input", "qcm", "true_false", "ordering", "matching", "fill_in_the_blank"]);
 
 const FIGURE_SNIPPET = `{
-  "brick_pyramid": { "type": "brick_pyramid", "caption": "Pyramide de briques", "levels": [[""], ["", "(+2)"], ["", "", "(-3)"], ["(-4)", "(+2)", "(-3)", "(+5)"]],
-    "_note": "levels va du SOMMET vers la BASE (1 brique, puis 2, puis 3...). Une brique vide (a completer) vaut une chaine vide. Les valeurs sont courtes (9 caracteres max)." },
-  "fill_grid": { "type": "fill_grid", "caption": "Carre magique a completer", "cells": [["-2", "", "-6"], ["", "4", ""], ["", "", "2"]],
-    "_note": "Grille rectangulaire (meme nombre de colonnes par ligne). Une case vide vaut une chaine vide. Sert aux carres magiques et aux tableaux de nombres a completer." },
+  "solid": { "type": "solid", "solid": "cylinder", "caption": "Cylindre", "labels": { "radius": "3 cm", "height": "8 cm" },
+    "_note": "solid : cube|box|cylinder|cone|pyramid|triangular_prism|sphere. labels (texte court, unite comprise) : cube = side ; box = length, width, height ; cylinder et cone = radius, height ; pyramid = base, height ; triangular_prism = base, height, length ; sphere = radius." },
+  "labeled_polygon": { "type": "labeled_polygon", "shape": "right_triangle", "caption": "Triangle rectangle en A", "labels": { "a": "3 cm", "b": "4 cm", "c": "5 cm" }, "vertices": ["A", "B", "C"],
+    "_note": "shape : rectangle (labels length, width) | square (side) | right_triangle (a = cote vertical, b = cote horizontal, c = hypotenuse) | triangle (base, height) | parallelogram (base, height, side) | trapezoid (big_base, small_base, height, side). vertices optionnel (lettres des sommets)." },
+  "labeled_circle": { "type": "labeled_circle", "caption": "Cercle", "labels": { "radius": "4 cm" }, "_note": "labels : radius et/ou diameter." },
   "table": { "type": "table", "headers": ["x", "f(x)"], "rows": [["0", "1"], ["1", "2"], ["2", "5"]] },
   "number_line": { "type": "number_line", "caption": "Droite graduee", "min": -5, "max": 5, "points": [{ "value": -2, "label": "A" }] },
-  "shape": { "type": "shape", "caption": "Triangle ABC rectangle en A", "width": 9, "height": 7, "preset": "none",
-    "parts": [{ "kind": "right_triangle", "x": 1, "y": 1, "w": 7, "h": 5, "tone": "navy", "filled": true, "vertex_labels": ["A", "B", "C"], "side_labels": ["", "5 cm", "3 cm"], "right_angle_at": 0 }],
-    "_note": "kind: rectangle|square|right_triangle|triangle|polygon(points[])|circle(x,y,r)|arc|angle|segment|line|point|text." },
   "graph": { "type": "graph", "expression": "x^2 - 2", "xmin": -5, "xmax": 5, "caption": "Parabole" },
   "bar_chart": { "type": "bar_chart", "caption": "Notes", "bars": [{ "label": "Lundi", "value": 5, "tone": "blue" }] },
   "pie_chart": { "type": "pie_chart", "caption": "Repartition", "slices": [{ "label": "Filles", "value": 12, "tone": "blue" }, { "label": "Garcons", "value": 8, "tone": "green" }] }
 }`;
+
+/** Figures acceptées dans les blocs rédigés par le modèle : celles dont le code place tout (jamais de figure « libre » aux positions inventées). */
+const ALLOWED_FIGURES = new Set(["solid", "labeled_polygon", "labeled_circle", "table", "number_line", "graph", "bar_chart", "pie_chart"]);
+
+/**
+ * Le JSON des modèles écrit souvent « \\text » ou « \\frac » avec UN seul antislash : JSON.parse en fait une
+ * tabulation (« \\t »), un saut de page (« \\f »)... et la formule est détruite. On rétablit les commandes LaTeX courantes.
+ */
+function repairLatexEscapes(text: string): string {
+  return text
+    .replace(/\t(?=(?:ext|imes|heta|au\b|an\b|riangle|ilde))/g, "\\t")
+    .replace(/\f(?=(?:rac|orall|lat))/g, "\\f")
+    .replace(/\x08(?=(?:egin|eta|ar\b|inom|oldsymbol|ig))/g, "\\b")
+    .replace(/\r(?=(?:ight|ho\b|ightarrow|ceil))/g, "\\r")
+    .replace(/\n(?=(?:eq\b|abla|otin))/g, "\\n")
+    .replace(/\x07(?=lpha)/g, "\\a")
+    .replace(/\v(?=(?:arepsilon|ec\b|arphi))/g, "\\v");
+}
+
+function deepRepair(value: unknown): unknown {
+  if (typeof value === "string") return repairLatexEscapes(value);
+  if (Array.isArray(value)) return value.map(deepRepair);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value as Record<string, unknown>).map(([k, v]) => [k, deepRepair(v)]));
+  }
+  return value;
+}
 
 const planSchema: JsonSchemaContract = {
   name: "educalcul_photo_plan",
@@ -203,12 +228,12 @@ REGLES DE CONTENU :
 - Deux blocs ne posent jamais la meme question avec les memes nombres.
 - ORDRE : ecris "explanation" AVANT "correctAnswer", mene le calcul jusqu'au bout dans l'explication (1 a 3 phrases, la version finale, jamais d'hesitation), puis recopie SON resultat final dans "correctAnswer".
 - "correctAnswer" : la reponse finale seule, courte (ex : "-8,5" ou "A est plus avantageuse"). Pour plusieurs valeurs a trouver, les lister separees par " ; " dans l'ordre demande.
-- Types : "text_input" (reponse ecrite, a privilegier), "qcm" (options = 4 textes, correctAnswer = copie EXACTE d'une option), "true_false" (options ["Vrai","Faux"]), "ordering" (items dans l'ordre correct), "matching" (pairs).
+- Types : "text_input" (reponse ecrite, a privilegier), "qcm" (options = 4 textes, correctAnswer = copie EXACTE d'une option), "true_false" (options ["Vrai","Faux"]), "ordering" (items dans l'ordre correct), "matching" (pairs), "fill_in_the_blank" (texte a trous : "content" contient les jetons {{1}}, {{2}}... un par trou, et "blanks" liste les mots ou nombres attendus dans l'ordre, alternatives separees par | ; a utiliser quand la source demande de COMPLETER une phrase, une definition ou une lecon).
 - "explanation" a la forme impersonnelle ("On calcule...", "On transforme..."), JAMAIS a la premiere personne (pas de "je", "nous").
 - Reprends l'ecriture de la source : memes parentheses, memes signes, memes types de nombres. N'ajoute pas de parentheses superflues (pas de "((-7) + 4)" si la source ecrit "(-5 + 3)").
 - Les valeurs sont COHERENTES : verifie chaque calcul (surtout les signes des nombres relatifs et les virgules) avant de l'ecrire.
 
-FIGURES : si la question s'appuie sur une figure (pyramide, carre magique, tableau, schema), ajoute au bloc un champ "figure" avec la VALEUR d'UNE entree ci-dessous (jamais le nom qui la precede, jamais enveloppee dans une cle portant son nom). La figure montre les donnees de l'enonce et laisse vides les cases a trouver ; elle ne contient jamais la reponse.
+FIGURES : si la question s'appuie sur un solide, un triangle, un rectangle, un cercle, un tableau ou un graphique, ajoute au bloc un champ "figure" avec la VALEUR d'UNE entree ci-dessous (jamais le nom qui la precede, jamais enveloppee dans une cle portant son nom). Les mesures de la figure et celles de l'enonce sont IDENTIQUES. La figure ne contient jamais la reponse. Ne dessine aucune autre figure que celles de cette liste (pas de pyramide de briques ni de carre magique : ils sont geres a part).
 ${FIGURE_SNIPPET}
 
 FORMAT DE SORTIE :
@@ -226,8 +251,16 @@ export function sectionUserPrompt(
   const list = section.items.map((it, i) => `${i + 1}. [${it.label}] ${it.text}`).join("\n");
   const total = variants + extra;
   const plan: string[] = [];
+  // « Complète la leçon » : le premier bloc est un texte à trous qui reprend la règle ou la formule.
+  const completesLesson =
+    /compl[eé]t|compl[eè]te/i.test(`${section.instruction} ${section.items.map((i) => i.text).join(" ")}`) &&
+    /le[cç]on|phrase|texte|d[eé]finition|formule|r[eè]gle|propri[eé]t[eé]/i.test(`${section.instruction} ${section.items.map((i) => i.text).join(" ")}`);
   for (let i = 0; i < variants; i++) {
-    plan.push(`Bloc ${i + 1} : variante de la question ${i + 1} de la source (meme type de question, meme structure de calcul, valeurs CHANGEES, reponse recalculee).`);
+    plan.push(
+      i === 0 && completesLesson
+        ? `Bloc 1 : un TEXTE A TROUS (type "fill_in_the_blank") qui reprend la lecon ou la formule a completer de la source (trous sur les mots, facteurs ou nombres cles), avec le meme sens que la source.`
+        : `Bloc ${i + 1} : variante de la question ${i + 1} de la source (meme type de question, meme structure de calcul, valeurs CHANGEES, reponse recalculee).`,
+    );
   }
   for (let i = 0; i < extra; i++) {
     plan.push(`Bloc ${variants + i + 1} : question NOUVELLE de la meme famille que les precedentes, un peu plus riche, avec ses propres valeurs.`);
@@ -246,9 +279,26 @@ Reprends le style de la source (meme genre de nombres : relatifs, decimaux, frac
   }${instructions ? `\nInstructions de l'enseignant : ${instructions}` : ""}`;
 }
 
+/** Réponse attendue en texte simple, lisible par l'élève : « 75\pi cm^3 » devient « 75π cm³ », « \frac{350}{3} » devient « 350/3 ». */
+function plainAnswer(text: string): string {
+  return text
+    .replace(/\\(?:d|t)?frac\{([^{}]*)\}\{([^{}]*)\}/g, "$1/$2")
+    .replace(/\\text\{([^{}]*)\}/g, "$1")
+    .replace(/\\pi\b/g, "π")
+    .replace(/\\(?:times|cdot)\b/g, "×")
+    .replace(/\\approx\b/g, "≈")
+    .replace(/\\sqrt\{([^{}]*)\}/g, "√$1")
+    .replace(/\^\{?2\}?/g, "²")
+    .replace(/\^\{?3\}?/g, "³")
+    .replace(/\\[,;! ]/g, " ")
+    .replace(/\\/g, "")
+    .replace(/\s{2,}/g, " ")
+    .trim();
+}
+
 function normalizeBlock(raw: unknown): Block | null {
   if (!raw || typeof raw !== "object") return null;
-  const b = raw as Record<string, unknown>;
+  const b = deepRepair(raw) as Record<string, unknown>;
   const type = ALLOWED_TYPES.has(str(b.type)) ? str(b.type) : "text_input";
   // « $A = (-8 + 2) - (5 + 3) =$ » : le « = » final est retiré (la réponse se tape dans la case).
   const content = str(b.content).replace(/\s*=\s*\$(\s*)$/, "$$$1");
@@ -271,7 +321,7 @@ function normalizeBlock(raw: unknown): Block | null {
       const inner = Object.values(fig).find((v) => v && typeof v === "object" && typeof (v as { type?: unknown }).type === "string");
       if (inner) fig = inner as Record<string, unknown>;
     }
-    if (typeof fig.type === "string") out.figure = fig;
+    if (typeof fig.type === "string" && ALLOWED_FIGURES.has(fig.type)) out.figure = fig;
   }
   // Réponse affichée en texte simple : pas de « $ », virgule décimale ordinaire (« -3{,}3 » devient « -3,3 »).
   const answerRaw = (Array.isArray(b.correctAnswer) ? b.correctAnswer.map(String).join(" ; ") : str(b.correctAnswer))
@@ -280,7 +330,7 @@ function normalizeBlock(raw: unknown): Block | null {
     .trim();
   if (type === "text_input") {
     if (!answerRaw || !explanation) return null;
-    out.correctAnswer = answerRaw;
+    out.correctAnswer = plainAnswer(answerRaw);
     return out;
   }
   if (type === "qcm" || type === "true_false") {
@@ -288,6 +338,13 @@ function normalizeBlock(raw: unknown): Block | null {
     if ((type === "qcm" && options.length < 2) || !answerRaw) return null;
     out.options = options;
     out.correctAnswer = answerRaw;
+    return out;
+  }
+  if (type === "fill_in_the_blank") {
+    const markers = (content.match(/[{][{][0-9]+[}][}]/g) ?? []).length;
+    const blanks = (Array.isArray(b.blanks) ? b.blanks : []).map((x) => str(x)).filter(Boolean);
+    if (markers < 1 || blanks.length !== markers) return null;
+    out.blanks = blanks;
     return out;
   }
   if (type === "ordering") {
@@ -480,15 +537,16 @@ function deterministicBlocks(section: SourceSection, count: number): Block[] {
   for (let i = 0; i < n; i++) {
     const made =
       section.kind === "pyramid" ? makePyramid(rule, Math.max(3, baseSize - (i % 2))) : makeMagicSquare();
+    // Texte à trous SUR la figure : l'élève écrit directement dans les briques ou les cases vides.
     blocks.push({
       id: "",
-      type: "text_input",
+      type: "fill_in_the_blank",
       title: n > 1 ? `${made.title} ${i + 1}` : made.title,
       content: made.content,
       points: 3,
       explanation: made.explanation,
-      correctAnswer: made.correctAnswer,
-      figure: made.figure,
+      blanks: made.blanks,
+      figureSpec: made.figureSpec,
     });
   }
   return blocks;
@@ -514,12 +572,18 @@ function splitIntoExercises(text: string): string[] {
   return starts.map((start, k) => lines.slice(start, starts[k + 1] ?? lines.length).join("\n").trim()).filter(Boolean);
 }
 
+/** Famille d'un exercice : pyramide DE BRIQUES (pas le solide), carré magique, ou autre. */
+function detectKind(text: string): SectionKind {
+  if (/brique/i.test(text) || (/pyramide/i.test(text) && /(somme|diff[eé]rence)\s+des\s+deux/i.test(text))) return "pyramid";
+  if (/carr[eé]s?\s+magiques?/i.test(text)) return "magic_square";
+  return "standard";
+}
+
 /** Section construite sans modèle depuis le texte d'un exercice (le modèle n'a rien renvoyé d'exploitable). */
 function fallbackSection(chunk: string): SourceSection {
   const [heading = "", ...rest] = chunk.split("\n");
   const body = rest.join("\n").trim();
-  const haystack = `${heading} ${body}`;
-  const kind: SectionKind = /pyramide/i.test(haystack) ? "pyramid" : /carr[eé]s?\s+magiques?/i.test(haystack) ? "magic_square" : "standard";
+  const kind = detectKind(`${heading} ${body}`);
   return {
     title: heading.replace(/^\s*(?:exercice|exo)\s*\d+\s*[.:)-]*\s*/i, "").slice(0, 60) || "Questions",
     instruction: (body.split(/(?<=[.!?])\s/)[0] ?? "").slice(0, 200),
@@ -549,15 +613,9 @@ Si une correction figure dans le texte, ne la recopie pas. Reponds uniquement av
   );
   const sections = (plan.sections ?? [])
     .map((s) => {
-      // La famille est aussi reconnue par mots-clés : le modèle l'oublie parfois.
-      const haystack = `${heading} ${str(s.title)} ${str(s.instruction)}`;
-      const kind: SectionKind = /pyramide/i.test(haystack)
-        ? "pyramid"
-        : /carr[eé]s?\s+magiques?/i.test(haystack)
-          ? "magic_square"
-          : s.kind === "pyramid" || s.kind === "magic_square"
-            ? s.kind
-            : "standard";
+      // La famille est reconnue sur le texte de l'exercice, pas sur l'étiquette du modèle (il prenait
+      // la pyramide solide d'un exercice de volumes pour une pyramide de briques).
+      const kind = detectKind(`${chunk}`);
       return {
         title: str(s.title) || heading.replace(/^\s*(?:exercice|exo)\s*\d+\s*[.:)-]*\s*/i, "").slice(0, 60) || "Questions",
         instruction: str(s.instruction),

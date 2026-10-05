@@ -39,7 +39,10 @@ interface Extracted {
 const MAX_SIDE = 1400;
 
 /** Réduit l'image (photos de téléphone très lourdes) et la renvoie en JPEG base64. */
-async function toDataUrl(file: Blob): Promise<string> {
+/** Sous ce côté (en pixels), l'écriture n'est plus lisible : la lecture inventerait. */
+const MIN_SIDE = 700;
+
+async function toDataUrl(file: Blob): Promise<{ dataUrl: string; side: number }> {
   const bitmap = await createImageBitmap(file);
   const ratio = Math.min(1, MAX_SIDE / Math.max(bitmap.width, bitmap.height));
   const canvas = document.createElement("canvas");
@@ -50,7 +53,7 @@ async function toDataUrl(file: Blob): Promise<string> {
   ctx.fillStyle = "#fff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  return canvas.toDataURL("image/jpeg", 0.8);
+  return { dataUrl: canvas.toDataURL("image/jpeg", 0.8), side: Math.max(bitmap.width, bitmap.height) };
 }
 
 const fieldClass =
@@ -82,7 +85,10 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
     setError(null);
     setReading(true);
     try {
-      const dataUrl = await toDataUrl(file);
+      const { dataUrl, side } = await toDataUrl(file);
+      if (side < MIN_SIDE) {
+        throw new Error(`Image trop petite (${side} px de côté) : l'écriture ne serait pas lisible et la lecture inventerait du contenu. Envoie une image d'au moins ${MIN_SIDE} px (photo ou capture en pleine page).`);
+      }
       setImage(dataUrl);
       const res = await fetch("/api/admin/ai/exercise/from-image", {
         method: "POST",

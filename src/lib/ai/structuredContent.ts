@@ -445,6 +445,27 @@ export type StructuredCourseBlock =
       cells: string[][];
     }
   | {
+      /** Solide en perspective, cotes en étiquettes (labels : height, radius, base, length, width, depth, side). */
+      type: "solid";
+      solid: "cube" | "box" | "cylinder" | "cone" | "pyramid" | "triangular_prism" | "sphere";
+      caption: string;
+      labels: Record<string, string>;
+    }
+  | {
+      /** Polygone usuel dessiné par le code, côtés et hauteur étiquetés. */
+      type: "labeled_polygon";
+      shape: "rectangle" | "square" | "right_triangle" | "triangle" | "parallelogram" | "trapezoid";
+      caption: string;
+      labels: Record<string, string>;
+      vertices: string[];
+    }
+  | {
+      /** Cercle avec rayon et/ou diamètre étiquetés. */
+      type: "labeled_circle";
+      caption: string;
+      labels: Record<string, string>;
+    }
+  | {
       type: "fraction_strips";
       caption: string;
       fractions: { numerator: number; denominator: number }[];
@@ -1175,6 +1196,22 @@ function getKatexError(latex: string): string {
  * que de forcer KaTeX sur un caractère qu'il ne connaît pas.
  */
 const TEXT_ONLY_IN_MATH = /([€£¥₽₹«»“”])/;
+
+/** Étiquettes de cotes d'une figure de géométrie : clés connues seulement, valeurs courtes. */
+function geometryLabels(value: unknown): Record<string, string> {
+  const allowed = ["height", "radius", "diameter", "base", "length", "width", "depth", "side", "a", "b", "c", "hypotenuse", "big_base", "small_base"];
+  const rec = asRecord(value);
+  const out: Record<string, string> = {};
+  if (!rec) return out;
+  for (const key of allowed) {
+    const v = rec[key];
+    if (typeof v === "string" || typeof v === "number") {
+      const text = String(v).replace(/\s+/g, " ").trim().slice(0, 16);
+      if (text) out[key] = text;
+    }
+  }
+  return out;
+}
 
 function pushMathPart(parts: StructuredRichTextPart[], rawLatex: string): void {
   // « $\text{par visite de classe}$ » ou « $\text{48}$ » : du texte (ou un nombre
@@ -2306,6 +2343,22 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
         : [];
       if (parts.length < 2) return null;
       return { type: "tape_diagram", caption: sanitizeStructuredText(raw.caption), parts };
+    }
+    case "solid": {
+      const solids = ["cube", "box", "cylinder", "cone", "pyramid", "triangular_prism", "sphere"] as const;
+      const solid = solids.find((s) => s === String(raw.solid ?? raw.kind ?? "").trim());
+      if (!solid) return null;
+      return { type: "solid", solid, caption: sanitizeStructuredText(raw.caption), labels: geometryLabels(raw.labels) };
+    }
+    case "labeled_polygon": {
+      const shapes = ["rectangle", "square", "right_triangle", "triangle", "parallelogram", "trapezoid"] as const;
+      const shape = shapes.find((s) => s === String(raw.shape ?? raw.kind ?? "").trim());
+      if (!shape) return null;
+      const vertices = Array.isArray(raw.vertices) ? raw.vertices.map((v: unknown) => String(v ?? "").trim().slice(0, 3)).slice(0, 6) : [];
+      return { type: "labeled_polygon", shape, caption: sanitizeStructuredText(raw.caption), labels: geometryLabels(raw.labels), vertices };
+    }
+    case "labeled_circle": {
+      return { type: "labeled_circle", caption: sanitizeStructuredText(raw.caption), labels: geometryLabels(raw.labels) };
     }
     case "brick_pyramid": {
       const cell = (value: unknown) => String(value ?? "").replace(/\s+/g, " ").trim().slice(0, 9);
