@@ -68,6 +68,29 @@ export default function ScrollReveal() {
       { threshold: 0.06, rootMargin: "0px 0px -5% 0px" },
     );
 
+    const tagBlock = (el: HTMLElement) => {
+      if (el.classList.contains("reveal-target")) return;
+      el.classList.add("reveal-target", "reveal-pre");
+      io.observe(el);
+    };
+
+    /** Bande pleine largeur avec son propre fond : on ne la masque jamais (le fond du <body> apparaîtrait un instant,
+     * un éclair de bleu sur du blanc). On anime à la place son contenu, une ligne de blocs après l'autre. */
+    const isBand = (el: HTMLElement, rect: DOMRect) => {
+      if (rect.width < window.innerWidth * 0.94) return false;
+      const cs = getComputedStyle(el);
+      return cs.backgroundImage !== "none" || !/rgba?\(\s*\d+,\s*\d+,\s*\d+,\s*0\s*\)|transparent/.test(cs.backgroundColor);
+    };
+    const animatable = (el: HTMLElement) => {
+      if (el.closest(EXCLUDED) || el.classList.contains("reveal-target")) return false;
+      const cls = typeof el.className === "string" ? el.className : "";
+      if (ALREADY_ANIMATED.test(cls)) return false;
+      const r = el.getBoundingClientRect();
+      if (r.height < 28 || r.width < 60) return false;
+      const pos = getComputedStyle(el).position;
+      return pos !== "fixed" && pos !== "absolute" && pos !== "sticky";
+    };
+
     const scan = () => {
       raf = 0;
       try {
@@ -85,8 +108,13 @@ export default function ScrollReveal() {
           if (rect.height < 64 || rect.width < 120) return;
           const pos = getComputedStyle(el).position;
           if (pos === "fixed" || pos === "absolute" || pos === "sticky") return;
-          el.classList.add("reveal-target", "reveal-pre");
-          io.observe(el);
+          if (isBand(el, rect)) {
+            let kids = Array.from(el.children) as HTMLElement[];
+            if (kids.length === 1 && kids[0].children.length > 1) kids = Array.from(kids[0].children) as HTMLElement[]; // conteneur max-w-*
+            kids.filter(animatable).forEach(tagBlock);
+            return;
+          }
+          tagBlock(el);
         });
       } catch {
         /* l'animation est un confort : jamais d'erreur visible */
