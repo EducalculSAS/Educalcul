@@ -1,105 +1,89 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { Bell, Clock, Flame, Target, TrendingUp } from "lucide-react";
+import FamilyCardShell, { type FamilyCardData } from "@/components/parent/FamilyCardShell";
+import GlassButton from "@/components/ui/GlassButton";
+import { FileText } from "lucide-react";
 
-interface Chapter {
-  label: string;
-  pct: number;
-  color: string;
-}
+type Tone = "gold" | "green" | "warn";
 
 interface ChildPreview {
   id: string;
   name: string;
   level: string;
-  trend: string;
-  chapters: Chapter[];
-  today: { done: number; goal: number };
+  color: string;
+  chapters: { label: string; pct: number; color: string }[];
+  today: number;
+  dailyGoal: number;
   streak: number;
-  week: { done: number; target: number };
-  status: { text: string; tone: "good" | "warn" };
-  last: string;
-  alert: string;
-  alertTone: "gold" | "green" | "warn";
+  week: number[]; // 7 derniers jours, du plus ancien à aujourd'hui
+  weeklyTarget: number;
+  exerciseCount: number;
+  successRate: number;
+  status: { text: string; dot: string };
+  last: { type: string; title: string; relativeTime: string };
+  alert: { text: string; tone: Tone };
 }
 
-const GOLD = "var(--greek-gold)";
-const BLUE = "#60a5fa";
-const GREEN = "#34d399";
-const ROSE = "#f0a3a3";
+const GOLD = "#c5a148";
+const BLUE = "#3b82f6";
+const GREEN = "#16a34a";
+const ROSE = "#e11d48";
 
-/** Trois élèves d'une même famille fictive : niveaux, rythmes et situations différents, chacun cohérent. */
+/** Quatre élèves d'une même famille fictive : niveaux, rythmes et situations différents, chacun cohérent. */
 const CHILDREN: ChildPreview[] = [
   {
-    id: "emma",
-    name: "Emma",
-    level: "5ème",
-    trend: "+12 %",
-    chapters: [
-      { label: "Fractions", pct: 87, color: GOLD },
-      { label: "Géométrie", pct: 64, color: BLUE },
-      { label: "Algèbre", pct: 41, color: GREEN },
-    ],
-    today: { done: 2, goal: 2 },
-    streak: 7,
-    week: { done: 6, target: 8 },
-    status: { text: "Actif aujourd'hui", tone: "good" },
-    last: "Quiz Fractions · il y a 2 h",
-    alert: "7 jours de suite : bravo à elle",
-    alertTone: "gold",
+    id: "emma", name: "Emma", level: "5ème", color: "#e8b4b8",
+    chapters: [{ label: "Fractions", pct: 87, color: GOLD }, { label: "Géométrie", pct: 64, color: BLUE }, { label: "Algèbre", pct: 41, color: GREEN }],
+    today: 2, dailyGoal: 2, streak: 7, week: [1, 2, 2, 3, 2, 2, 2], weeklyTarget: 16, exerciseCount: 64, successRate: 82,
+    status: { text: "Active aujourd'hui", dot: "#4ade80" },
+    last: { type: "Quiz", title: "Quiz Fractions", relativeTime: "il y a 2 h" },
+    alert: { text: "7 jours de suite : bravo à elle", tone: "gold" },
   },
   {
-    id: "hugo",
-    name: "Hugo",
-    level: "3ème",
-    trend: "+5 %",
-    chapters: [
-      { label: "Pythagore", pct: 78, color: GOLD },
-      { label: "Probabilités", pct: 62, color: BLUE },
-      { label: "Thalès", pct: 55, color: GREEN },
-      { label: "Fonctions", pct: 33, color: ROSE },
-    ],
-    today: { done: 1, goal: 3 },
-    streak: 3,
-    week: { done: 4, target: 10 },
-    status: { text: "Actif hier", tone: "good" },
-    last: "Exercice Thalès · hier soir",
-    alert: "Brevet dans 62 jours : parcours prêt",
-    alertTone: "green",
+    id: "hugo", name: "Hugo", level: "3ème", color: "#9ec5fe",
+    chapters: [{ label: "Pythagore", pct: 78, color: GOLD }, { label: "Probabilités", pct: 62, color: BLUE }, { label: "Fonctions", pct: 33, color: ROSE }],
+    today: 1, dailyGoal: 3, streak: 3, week: [0, 2, 3, 0, 3, 3, 1], weeklyTarget: 14, exerciseCount: 118, successRate: 71,
+    status: { text: "Actif aujourd'hui", dot: "#4ade80" },
+    last: { type: "Exercice", title: "Exercice Thalès", relativeTime: "il y a 1 h" },
+    alert: { text: "Brevet dans 62 jours : parcours prêt", tone: "green" },
   },
   {
-    id: "ines",
-    name: "Inès",
-    level: "Terminale",
-    trend: "−8 %",
-    chapters: [
-      { label: "Suites", pct: 91, color: GOLD },
-      { label: "Limites", pct: 72, color: BLUE },
-      { label: "Dérivation", pct: 58, color: GREEN },
-    ],
-    today: { done: 0, goal: 2 },
-    streak: 0,
-    week: { done: 1, target: 6 },
-    status: { text: "Inactive depuis 4 jours", tone: "warn" },
-    last: "Cours Limites · il y a 4 jours",
-    alert: "Alerte envoyée : un encouragement peut aider",
-    alertTone: "warn",
+    id: "ines", name: "Inès", level: "Terminale", color: "#c4b5fd",
+    chapters: [{ label: "Suites", pct: 91, color: GOLD }, { label: "Limites", pct: 72, color: BLUE }, { label: "Dérivation", pct: 58, color: GREEN }],
+    today: 0, dailyGoal: 2, streak: 0, week: [2, 3, 1, 0, 0, 0, 0], weeklyTarget: 10, exerciseCount: 203, successRate: 88,
+    status: { text: "Inactive depuis 4 jours", dot: "#f0a3a3" },
+    last: { type: "Cours", title: "Cours Limites", relativeTime: "il y a 4 jours" },
+    alert: { text: "Alerte envoyée : un encouragement peut aider", tone: "warn" },
+  },
+  {
+    id: "lucas", name: "Lucas", level: "CM2", color: "#fcd34d",
+    chapters: [{ label: "Multiplication", pct: 94, color: GOLD }, { label: "Fractions", pct: 52, color: BLUE }, { label: "Mesures", pct: 38, color: GREEN }],
+    today: 3, dailyGoal: 3, streak: 12, week: [3, 3, 2, 3, 3, 3, 3], weeklyTarget: 24, exerciseCount: 142, successRate: 91,
+    status: { text: "Actif aujourd'hui", dot: "#4ade80" },
+    last: { type: "Quiz", title: "Quiz Mesures", relativeTime: "il y a 30 min" },
+    alert: { text: "Objectif atteint 12 jours de suite", tone: "green" },
   },
 ];
 
-const INK = "#f0ede8";
-const MUTED = "rgba(240,237,232,0.45)";
-const FAINT = "rgba(240,237,232,0.3)";
+/** Les 7 derniers jours se terminent aujourd'hui : on construit les dates à l'affichage, côté client. */
+function lastSevenDays(counts: number[]) {
+  const now = new Date();
+  return counts.map((count, i) => {
+    const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - (counts.length - 1 - i), 12);
+    const day = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    return { day, count };
+  });
+}
 
-/** Aperçu du tableau de bord parent (section « Suivi Parents » de l'accueil) : une fiche par enfant, comme dans
- * l'espace parent. Isolé en îlot client pour l'animation des barres et le choix de l'enfant. */
+/** Aperçu du tableau de bord parent (section « Suivi Parents » de l'accueil) : EXACTEMENT la fiche de l'espace parent
+ * (FamilyCardShell), avec quatre enfants fictifs. Îlot client pour le choix de l'enfant et le remplissage des barres. */
 export default function ParentDashboardPreview() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(CHILDREN[0].id);
-  const [bars, setBars] = useState(false);
+  const [ready, setReady] = useState(false);
+  const [week, setWeek] = useState<{ day: string; count: number }[] | null>(null);
 
   useEffect(() => {
     const el = ref.current;
@@ -111,33 +95,57 @@ export default function ParentDashboardPreview() {
           obs.disconnect();
         }
       },
-      { threshold: 0.3 },
+      { threshold: 0.25 },
     );
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
 
+  const child = CHILDREN.find((c) => c.id === selected) ?? CHILDREN[0];
+
   // Les barres repartent de zéro à chaque changement d'enfant puis se remplissent.
   useEffect(() => {
     if (!visible) return;
-    setBars(false);
-    const t = setTimeout(() => setBars(true), 60);
+    setWeek(lastSevenDays(child.week));
+    setReady(false);
+    const t = setTimeout(() => setReady(true), 60);
     return () => clearTimeout(t);
-  }, [selected, visible]);
+  }, [selected, visible, child]);
 
-  const child = CHILDREN.find((c) => c.id === selected) ?? CHILDREN[0];
-  const weekPct = Math.min(100, Math.round((child.week.done / child.week.target) * 100));
-  const alertStyle =
-    child.alertTone === "gold"
-      ? { bg: "rgba(197,161,72,0.14)", fg: "var(--greek-gold)" }
-      : child.alertTone === "green"
-        ? { bg: "rgba(52,211,153,0.12)", fg: GREEN }
-        : { bg: "rgba(240,163,163,0.13)", fg: ROSE };
+  const data: FamilyCardData = {
+    avatar: (
+      <span className="shrink-0 w-12 h-12 rounded-[30%] flex items-center justify-center font-[family-name:var(--font-display)] font-bold text-xl text-[#0f1e3a] bg-white/95 p-0.5 shadow-lg">
+        <span className="w-full h-full rounded-[28%] flex items-center justify-center" style={{ background: child.color }}>{child.name[0]}</span>
+      </span>
+    ),
+    name: child.name,
+    level: child.level,
+    status: child.status,
+    today: ready ? child.today : 0,
+    dailyGoal: child.dailyGoal,
+    streak: child.streak,
+    exerciseCount: child.exerciseCount,
+    successRate: child.successRate,
+    last7: week ?? lastSevenDays(child.week.map(() => 0)),
+    weekTotal: child.week.reduce((a, b) => a + b, 0),
+    weeklyTarget: child.weeklyTarget,
+    chapters: child.chapters,
+    chaptersReady: ready,
+    lastActivity: child.last,
+    alert: child.alert,
+    footer: (
+      <div className="flex items-center gap-2">
+        <p className="flex-1 min-w-0 text-xs text-gray-500">Exemple fictif : le vôtre se met à jour en direct.</p>
+        <GlassButton variant="outline" size="sm" rounded="xl" disabled>
+          <FileText className="w-4 h-4" /> Bulletin
+        </GlassButton>
+      </div>
+    ),
+  };
 
   return (
-    <div ref={ref} className="rounded-2xl p-4 sm:p-5 w-full" style={{ background: "#0d1829", border: "1px solid rgba(197,161,72,0.18)", boxShadow: "0 24px 60px -24px rgba(0,0,0,0.5)" }}>
-      {/* Choix de l'enfant */}
-      <div className="flex gap-2 mb-4 overflow-x-auto -mx-1 px-1 pb-1" role="tablist" aria-label="Enfants de la famille">
+    <div ref={ref} className="w-full">
+      <div className="flex gap-2 mb-3 overflow-x-auto -mx-1 px-1 pb-1" role="tablist" aria-label="Enfants de la famille">
         {CHILDREN.map((c) => {
           const active = c.id === selected;
           return (
@@ -149,102 +157,21 @@ export default function ParentDashboardPreview() {
               onClick={() => setSelected(c.id)}
               className="flex items-center gap-2 pl-1.5 pr-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all"
               style={{
-                background: active ? "rgba(197,161,72,0.2)" : "rgba(255,255,255,0.05)",
-                border: `1px solid ${active ? "rgba(197,161,72,0.55)" : "rgba(255,255,255,0.08)"}`,
-                color: active ? INK : MUTED,
+                background: active ? "rgba(197,161,72,0.22)" : "rgba(255,255,255,0.6)",
+                border: `1px solid ${active ? "rgba(197,161,72,0.7)" : "rgba(15,30,58,0.1)"}`,
+                color: "#0f1e3a",
                 backdropFilter: "blur(8px)",
                 WebkitBackdropFilter: "blur(8px)",
+                boxShadow: active ? "0 6px 16px rgba(197,161,72,0.25)" : "none",
               }}
             >
-              <span className="w-6 h-6 rounded-full flex items-center justify-center text-[11px]" style={{ background: active ? GOLD : "rgba(255,255,255,0.1)", color: active ? "#0d1829" : INK }}>
-                {c.name[0]}
-              </span>
+              <span className="w-6 h-6 rounded-full flex items-center justify-center text-[11px]" style={{ background: c.color, color: "#0f1e3a" }}>{c.name[0]}</span>
               {c.name}
             </button>
           );
         })}
       </div>
-
-      {/* En-tête de la fiche */}
-      <div className="flex items-center justify-between gap-3 mb-4 pb-3 border-b" style={{ borderColor: "rgba(197,161,72,0.12)" }}>
-        <div className="min-w-0">
-          <p className="text-sm font-bold truncate" style={{ color: INK }}>{child.name} · {child.level}</p>
-          <p className="text-xs flex items-center gap-1.5" style={{ color: child.status.tone === "warn" ? ROSE : GREEN }}>
-            <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: child.status.tone === "warn" ? ROSE : GREEN }} />
-            {child.status.text}
-          </p>
-        </div>
-        <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold shrink-0" style={{ background: child.trend.startsWith("−") ? "rgba(240,163,163,0.13)" : "rgba(197,161,72,0.12)", color: child.trend.startsWith("−") ? ROSE : GOLD }}>
-          <TrendingUp className="w-3 h-3" style={{ transform: child.trend.startsWith("−") ? "scaleY(-1)" : undefined }} /> {child.trend}
-        </div>
-      </div>
-
-      {/* Niveau par chapitre */}
-      <p className="text-[10px] font-bold uppercase tracking-widest mb-2.5" style={{ color: FAINT }}>Niveau par chapitre</p>
-      {child.chapters.map((p, i) => (
-        <div key={p.label} className="mb-2.5">
-          <div className="flex justify-between mb-1">
-            <span className="text-xs" style={{ color: MUTED }}>{p.label}</span>
-            <span className="text-xs font-bold tabular-nums" style={{ color: p.color }}>{bars ? p.pct : 0}%</span>
-          </div>
-          <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
-            <div
-              className="h-full rounded-full"
-              style={{ width: bars ? `${p.pct}%` : "0%", background: p.color, opacity: 0.85, transition: bars ? "width 1100ms cubic-bezier(0.16, 1, 0.3, 1)" : "none", transitionDelay: bars ? `${i * 90}ms` : "0ms" }}
-            />
-          </div>
-        </div>
-      ))}
-
-      {/* Aujourd'hui, série, semaine */}
-      <div className="grid grid-cols-3 gap-2 mt-4 pt-3 border-t" style={{ borderColor: "rgba(197,161,72,0.1)" }}>
-        <div className="flex flex-col items-center justify-between rounded-xl py-2.5 px-1 min-h-[68px]" style={{ background: "rgba(255,255,255,0.045)", border: "1px solid rgba(255,255,255,0.05)" }}>
-          <div className="flex items-center gap-1 h-8">
-            <Target className="w-3.5 h-3.5" style={{ color: child.today.done >= child.today.goal ? GREEN : GOLD }} />
-            <span className="font-[family-name:var(--font-display)] font-bold text-base leading-none" style={{ color: child.today.done >= child.today.goal ? GREEN : GOLD }}>{child.today.done}/{child.today.goal}</span>
-          </div>
-          <span className="text-[10px] leading-none" style={{ color: FAINT }}>Aujourd&apos;hui</span>
-        </div>
-
-        <div className="flex flex-col items-center justify-between rounded-xl py-2.5 px-1 min-h-[68px]" style={{ background: "rgba(255,255,255,0.045)", border: "1px solid rgba(255,255,255,0.05)" }}>
-          <div className="h-8 flex items-end justify-center">
-            {child.streak > 0 ? (
-              <div className="relative w-10 h-10" style={{ marginBottom: -4 }}>
-                <Image src="/Streaks.gif" alt="" fill className="object-contain" unoptimized />
-                <span className="absolute inset-0 flex items-center justify-center font-[family-name:var(--font-display)] font-bold z-10" style={{ color: "#fff", fontSize: 11, textShadow: "0 1px 8px rgba(0,0,0,1), 0 0 16px rgba(0,0,0,0.8)", paddingTop: 10 }}>
-                  {child.streak}
-                </span>
-              </div>
-            ) : (
-              <span className="flex items-center gap-1 pb-1">
-                <Flame className="w-4 h-4" style={{ color: "rgba(240,237,232,0.25)" }} />
-                <span className="font-[family-name:var(--font-display)] font-bold text-base leading-none" style={{ color: "rgba(240,237,232,0.35)" }}>0</span>
-              </span>
-            )}
-          </div>
-          <span className="text-[10px] leading-none" style={{ color: FAINT }}>Série</span>
-        </div>
-
-        <div className="flex flex-col items-center justify-between rounded-xl py-2.5 px-2 min-h-[68px]" style={{ background: "rgba(255,255,255,0.045)", border: "1px solid rgba(255,255,255,0.05)" }}>
-          <div className="h-8 w-full flex flex-col items-center justify-center gap-1.5">
-            <span className="font-[family-name:var(--font-display)] font-bold text-base leading-none" style={{ color: GOLD }}>{child.week.done}/{child.week.target}</span>
-            <div className="h-1 w-full rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.08)" }}>
-              <div className="h-full rounded-full" style={{ width: bars ? `${weekPct}%` : "0%", background: GOLD, transition: bars ? "width 1100ms cubic-bezier(0.16, 1, 0.3, 1)" : "none" }} />
-            </div>
-          </div>
-          <span className="text-[10px] leading-none" style={{ color: FAINT }}>Semaine</span>
-        </div>
-      </div>
-
-      {/* Dernière activité et alerte */}
-      <div className="mt-3 space-y-2">
-        <p className="flex items-center gap-1.5 text-xs" style={{ color: MUTED }}>
-          <Clock className="w-3.5 h-3.5 shrink-0" style={{ color: FAINT }} /> {child.last}
-        </p>
-        <p className="flex items-center gap-1.5 text-xs font-semibold rounded-lg px-2.5 py-1.5" style={{ background: alertStyle.bg, color: alertStyle.fg }}>
-          <Bell className="w-3.5 h-3.5 shrink-0" /> {child.alert}
-        </p>
-      </div>
+      <FamilyCardShell d={data} />
     </div>
   );
 }

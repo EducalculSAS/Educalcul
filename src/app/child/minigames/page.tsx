@@ -1,7 +1,8 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import { redirect } from "next/navigation";
-import { Sigma, Calculator, PuzzleIcon, TrendingUp, Languages, Code2, ArrowRight, Lock, Flame, Gamepad2 } from "lucide-react";
+import StreakFlame from "@/components/StreakFlame";
+import { Sigma, Calculator, PuzzleIcon, TrendingUp, Languages, Code2, ArrowRight, Lock, Gamepad2 } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { getStreaksForGames } from "@/lib/minigames/streaks";
 
@@ -50,10 +51,7 @@ export default async function MinigamesPage() {
                     </div>
                   )}
                   {available && (
-                    <div className={`flex items-center gap-1 text-sm font-bold ${streak > 0 ? "text-orange-500" : "text-gray-300"}`}>
-                      <Flame className={`w-4 h-4 ${streak > 0 ? "fill-orange-500" : ""}`} />
-                      {streak}
-                    </div>
+                    <StreakFlame lit={streak > 0} count={streak} size={44} />
                   )}
                 </div>
               </div>

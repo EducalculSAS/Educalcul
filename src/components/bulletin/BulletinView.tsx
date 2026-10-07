@@ -1,4 +1,5 @@
-import { Award, BookOpen, Brain, CheckCircle2, Flame, TrendingUp } from "lucide-react";
+import { Award, BookOpen, Brain, CheckCircle2, TrendingUp } from "lucide-react";
+import StreakFlame from "@/components/StreakFlame";
 import type { Bulletin } from "@/lib/bulletin";
 import { getCatalogLevelLabel } from "@/lib/constants";
 
@@ -35,7 +36,7 @@ function WeeklyChart({ weeks }: { weeks: Bulletin["weeks"] }) {
 export default function BulletinView({ bulletin: b, shared = false }: { bulletin: Bulletin; shared?: boolean }) {
   const kpis = [
     { icon: CheckCircle2, label: "Activités (8 semaines)", value: b.kpis.activities },
-    { icon: Flame, label: "Série en cours", value: `${b.kpis.streak} j` },
+    { icon: StreakFlame, label: "Série en cours", value: `${b.kpis.streak} j` },
     { icon: TrendingUp, label: "Réussite exercices", value: b.kpis.exerciseAvg === null ? "–" : `${b.kpis.exerciseAvg} %` },
     { icon: Brain, label: "Score moyen quiz", value: b.kpis.quizAvg === null ? "–" : `${b.kpis.quizAvg} %` },
     { icon: BookOpen, label: "Cours terminés", value: b.kpis.coursesDone },
@@ -58,7 +59,7 @@ export default function BulletinView({ bulletin: b, shared = false }: { bulletin
       <section className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
         {kpis.map((k) => (
           <div key={k.label} className="rounded-xl border border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream,#faf7f2)]/60 p-4">
-            <k.icon className="w-4 h-4 text-[var(--greek-gold)] mb-1" />
+            {k.icon === StreakFlame ? <StreakFlame lit={b.kpis.streak > 0} count={b.kpis.streak} size={44} className="mb-1" /> : <k.icon className="w-4 h-4 text-[var(--greek-gold)] mb-1" />}
             <div className="text-2xl font-bold text-[var(--greek-blue)]">{k.value}</div>
             <div className="text-[11px] font-semibold uppercase tracking-wide text-gray-500">{k.label}</div>
           </div>

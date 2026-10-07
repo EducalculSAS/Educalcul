@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Flame, Repeat, Target } from "lucide-react";
+import { Repeat, Target } from "lucide-react";
+import StreakFlame from "@/components/StreakFlame";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -69,9 +70,8 @@ export default function GoalCard({ today, dailyGoal, streak, last7, weekTotal, w
 
         <div className="flex flex-col items-center md:items-start gap-2">
           <div className="flex items-center gap-2">
-            <Flame className={`w-7 h-7 ${streak > 0 ? "text-orange-500 fill-orange-400" : "text-gray-300"}`} />
-            <span className="text-2xl font-bold text-[var(--greek-blue)]">{streak}</span>
-            <span className="text-sm text-gray-500">jour{streak > 1 ? "s" : ""} de suite</span>
+            <StreakFlame lit={streak > 0} count={streak} size={64} />
+            <span className="text-sm font-semibold text-gray-500">jour{streak > 1 ? "s" : ""} de suite</span>
           </div>
           <div className="flex gap-1.5" aria-label="Activité des 7 derniers jours">
             {last7.map((d) => (

@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Star, Zap, Trophy, BookOpen, CheckCircle, Crown, Flame } from "lucide-react";
+import { Star, Zap, Trophy, BookOpen, CheckCircle, Crown } from "lucide-react";
+import StreakFlame from "@/components/StreakFlame";
 
 const ICON_MAP: Record<string, any> = {
-  pencil: Star, zap: Zap, flame: Flame, star: Star, crown: Crown,
+  pencil: Star, zap: Zap, flame: StreakFlame, star: Star, crown: Crown,
   check: CheckCircle, trophy: Trophy, brain: Star, sparkles: Star,
   graduation: Star, book: BookOpen, map: Star, library: BookOpen,
   sword: Star, swords: Star, medal: Trophy, gem: Star, crystal: Star,

@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Check, Copy, FileText, Flame, Link2, Moon, Target, Unlink } from "lucide-react";
+import { Check, Copy, FileText, Link2, Moon, Target, Unlink } from "lucide-react";
+import StreakFlame from "@/components/StreakFlame";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -98,7 +99,7 @@ export default function ChildControls({ childId, childName, initialPrefs, summar
           <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 mb-3">En ce moment</p>
           <div className="space-y-3 text-sm">
             <div className="flex items-center gap-2"><Target className="w-4 h-4 text-[var(--greek-gold)]" /> Aujourd&apos;hui : <strong className="text-[var(--greek-blue)]">{summary.today}/{prefs.dailyGoal}</strong> activité{prefs.dailyGoal > 1 ? "s" : ""}</div>
-            <div className="flex items-center gap-2"><Flame className={`w-4 h-4 ${summary.streak > 0 ? "text-orange-500" : "text-gray-300"}`} /> Série : <strong className="text-[var(--greek-blue)]">{summary.streak} jour{summary.streak > 1 ? "s" : ""}</strong></div>
+            <div className="flex items-center gap-2"><StreakFlame lit={summary.streak > 0} count={summary.streak} size={36} /> Série : <strong className="text-[var(--greek-blue)]">{summary.streak} jour{summary.streak > 1 ? "s" : ""}</strong></div>
             <div>
               <div className="flex justify-between text-xs text-gray-500 mb-1"><span>Cette semaine</span><span>{summary.weekTotal}{prefs.weeklyTarget ? ` / ${prefs.weeklyTarget}` : ""}</span></div>
               <div className="h-2 rounded-full bg-gray-100 overflow-hidden"><div className="h-full rounded-full bg-[var(--greek-gold)]" style={{ width: `${prefs.weeklyTarget ? Math.min(100, Math.round((summary.weekTotal / prefs.weeklyTarget) * 100)) : Math.min(100, summary.weekTotal * 10)}%` }} /></div>

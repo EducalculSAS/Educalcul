@@ -2898,3 +2898,44 @@ html[data-theme="dark"] .family-glass {
 }
 html[data-theme="dark"] .family-foot { background: rgba(255, 255, 255, 0.03); }
 
+
+/* ---------- Contour animé : un éclat doré qui tourne autour de la carte (vert quand l'objectif est atteint) ---------- */
+@property --ring-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.glow-ring,
+.family-card {
+  --ring-a: #e0c068;
+  --ring-b: #c5a148;
+}
+.family-card[data-reached="true"] {
+  --ring-a: #4ade80;
+  --ring-b: #16a34a;
+}
+.glow-ring { position: relative; }
+.glow-ring::before,
+.family-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: conic-gradient(from var(--ring-angle), transparent 0deg, transparent 230deg, var(--ring-b) 290deg, var(--ring-a) 335deg, transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+  animation: ring-spin 5.5s linear infinite;
+  filter: drop-shadow(0 0 6px var(--ring-a));
+}
+@keyframes ring-spin {
+  to { --ring-angle: 360deg; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-ring::before,
+  .family-card::before { animation: none; --ring-angle: 300deg; }
+}
