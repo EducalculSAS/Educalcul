@@ -17,6 +17,7 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import "katex/dist/katex.min.css";
 import { passThreshold } from "@/lib/scorePercent";
+import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 
 // Mélange déterministe (seedé par une chaîne) pour que l'ordre affiché aux
 // élèves (association / mise en ordre) reste stable entre deux rendus tant
@@ -882,7 +883,16 @@ export default function ExerciseViewer({
   initialProgress,
   adminMode,
 }: ExerciseViewerProps) {
-  const pages = exercise.content_json || [];
+  // Un point par élément pour les associations / catégories / trous (voir lib/exerciseScoring).
+  const pages = useMemo(
+    () =>
+      (exercise.content_json || []).map((page: any) => ({
+        ...page,
+        blocks: (page.blocks || []).map((b: any) => (itemTotal(b) > 1 ? { ...b, points: blockMaxPoints(b) } : b)),
+      })) as Page[],
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [exercise.content_json],
+  );
   const { pageContext, setPageContext } = useAITutor();
 
   // Une page = une question : le contenu est authored/généré avec plusieurs
@@ -1466,7 +1476,9 @@ export default function ExerciseViewer({
           if (data.reveal) newRevealed[block.id] = data.reveal;
           newResults[block.id] = isCorrect;
           newSubmitted.add(block.id);
-          if (isCorrect) totalScore += data.score !== undefined ? data.score : block.points || 0;
+          // Crédit partiel : une association bien placée sur trois rapporte son point même si le bloc n'est pas parfait.
+          if (data.score !== undefined) totalScore += data.score;
+          else if (isCorrect) totalScore += block.points || 0;
         }
       } catch (e) {
         console.error(e);

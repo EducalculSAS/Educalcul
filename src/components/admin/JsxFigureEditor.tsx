@@ -2,8 +2,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowDown, ArrowUp, Plus, Trash2 } from "lucide-react";
+import { useConfirm } from "@/components/ConfirmDialog";
 import {
-  JSX_PRESETS,
   JSX_TONES,
   buildJsxBoard,
   normalizeJsxSpec,
@@ -11,12 +11,18 @@ import {
   type JsxFigureSpec,
   type JsxKind,
 } from "@/lib/jsxFigure";
+import { JSX_CATALOG as JSX_PRESETS } from "@/lib/jsxCatalog";
 
 /* ------------------------------------------------------------------ */
 /*  Description de chaque type d'élément : ses champs et ses valeurs    */
 /* ------------------------------------------------------------------ */
 
-type FieldKind = "ref" | "refs" | "number" | "expr" | "text" | "bool" | "select" | "range" | "json";
+type FieldKind = "ref" | "refs" | "number" | "expr" | "text" | "bool" | "select" | "range" | "json" | "records" | "matrix" | "list";
+interface Column {
+  key: string;
+  label: string;
+  type: "text" | "number" | "bool" | "color";
+}
 interface Field {
   key: string;
   label: string;
@@ -25,6 +31,10 @@ interface Field {
   count?: number;
   options?: string[];
   hint?: string;
+  /** records : colonnes du tableau à saisir. */
+  columns?: Column[];
+  /** matrix : les cellules sont des nombres. */
+  numeric?: boolean;
 }
 
 interface KindDef {
@@ -37,13 +47,13 @@ interface KindDef {
 const f = (key: string, label: string, kind: FieldKind, extra: Partial<Field> = {}): Field => ({ key, label, kind, ...extra });
 
 const KIND_DEFS: Record<JsxKind, KindDef> = {
-  point: { label: "Point", family: "Points et droites", fields: [f("x", "x", "number"), f("y", "y", "number"), f("label", "Nom affiché", "text", { hint: "ou {{1}} pour une case de réponse" })], make: (id) => ({ x: 0, y: 0, label: id }) },
+  point: { label: "Point", family: "Points et droites", fields: [f("x", "x", "number"), f("y", "y", "number"), f("label", "Nom", "text", { hint: "ou {{1}} pour une case de réponse" })], make: (id) => ({ x: 0, y: 0, label: id }) },
   segment: { label: "Segment", family: "Points et droites", fields: [f("from", "De", "ref"), f("to", "À", "ref")], make: () => ({}) },
   line: { label: "Droite", family: "Points et droites", fields: [f("through", "Passe par", "refs", { count: 2 })], make: () => ({}) },
   ray: { label: "Demi-droite", family: "Points et droites", fields: [f("from", "Origine", "ref"), f("to", "Passe par", "ref")], make: () => ({}) },
   vector: { label: "Vecteur", family: "Points et droites", fields: [f("from", "Origine", "ref"), f("to", "Extrémité", "ref")], make: () => ({}) },
-  midpoint: { label: "Milieu", family: "Points et droites", fields: [f("of", "Milieu de", "refs", { count: 2 }), f("label", "Nom affiché", "text")], make: () => ({ label: "I" }) },
-  intersection: { label: "Intersection", family: "Points et droites", fields: [f("of", "Entre", "refs", { count: 2 }), f("index", "Numéro (0, 1...)", "number"), f("label", "Nom affiché", "text")], make: () => ({ index: 0, label: "M" }) },
+  midpoint: { label: "Milieu", family: "Points et droites", fields: [f("of", "Milieu de", "refs", { count: 2 }), f("label", "Nom", "text")], make: () => ({ label: "I" }) },
+  intersection: { label: "Intersection", family: "Points et droites", fields: [f("of", "Entre", "refs", { count: 2 }), f("index", "Numéro (0, 1...)", "number"), f("label", "Nom", "text")], make: () => ({ index: 0, label: "M" }) },
   circle: { label: "Cercle", family: "Cercles et polygones", fields: [f("center", "Centre", "ref"), f("through", "Passe par", "ref"), f("radius", "ou rayon", "number")], make: () => ({}) },
   arc: { label: "Arc de cercle", family: "Cercles et polygones", fields: [f("center", "Centre", "ref"), f("from", "De", "ref"), f("to", "À", "ref")], make: () => ({}) },
   sector: { label: "Secteur", family: "Cercles et polygones", fields: [f("center", "Centre", "ref"), f("from", "De", "ref"), f("to", "À", "ref")], make: () => ({}) },
@@ -53,10 +63,10 @@ const KIND_DEFS: Record<JsxKind, KindDef> = {
   parallel: { label: "Parallèle", family: "Constructions", fields: [f("line", "À la droite", "ref"), f("through", "Passant par", "ref")], make: () => ({}) },
   bisector: { label: "Bissectrice", family: "Constructions", fields: [f("points", "Points A, sommet, B", "refs", { count: 3 })], make: () => ({}) },
   perpendicular_bisector: { label: "Médiatrice", family: "Constructions", fields: [f("of", "Du segment", "refs", { count: 2 })], make: () => ({}) },
-  reflect: { label: "Symétrique (axiale)", family: "Transformations", fields: [f("of", "Du point", "ref"), f("over", "Par rapport à la droite", "ref"), f("label", "Nom affiché", "text")], make: () => ({ label: "A'" }) },
-  rotate: { label: "Image par rotation", family: "Transformations", fields: [f("of", "Du point", "ref"), f("center", "Centre", "ref"), f("angle", "Angle (degrés)", "number"), f("label", "Nom affiché", "text")], make: () => ({ angle: 90, label: "A'" }) },
-  translate: { label: "Image par translation", family: "Transformations", fields: [f("of", "Du point", "ref"), f("dx", "Vecteur x", "number"), f("dy", "Vecteur y", "number"), f("label", "Nom affiché", "text")], make: () => ({ dx: 3, dy: 1, label: "A'" }) },
-  dilate: { label: "Image par homothétie", family: "Transformations", fields: [f("of", "Du point", "ref"), f("center", "Centre", "ref"), f("ratio", "Rapport", "number"), f("label", "Nom affiché", "text")], make: () => ({ ratio: 2, label: "A'" }) },
+  reflect: { label: "Symétrique (axiale)", family: "Transformations", fields: [f("of", "Du point", "ref"), f("over", "Par rapport à la droite", "ref"), f("label", "Nom", "text")], make: () => ({ label: "A'" }) },
+  rotate: { label: "Image par rotation", family: "Transformations", fields: [f("of", "Du point", "ref"), f("center", "Centre", "ref"), f("angle", "Angle (degrés)", "number"), f("label", "Nom", "text")], make: () => ({ angle: 90, label: "A'" }) },
+  translate: { label: "Image par translation", family: "Transformations", fields: [f("of", "Du point", "ref"), f("dx", "Vecteur x", "number"), f("dy", "Vecteur y", "number"), f("label", "Nom", "text")], make: () => ({ dx: 3, dy: 1, label: "A'" }) },
+  dilate: { label: "Image par homothétie", family: "Transformations", fields: [f("of", "Du point", "ref"), f("center", "Centre", "ref"), f("ratio", "Rapport", "number"), f("label", "Nom", "text")], make: () => ({ ratio: 2, label: "A'" }) },
   function: { label: "Courbe y = f(x)", family: "Fonctions et courbes", fields: [f("expr", "f(x) =", "expr", { hint: "x^2-3*x+1, sin(x), sqrt(x), abs(x)... ; les curseurs (a, b...) sont utilisables" }), f("domain", "Domaine (facultatif)", "range")], make: () => ({ expr: "x^2", color: "blue" }) },
   parametric: { label: "Courbe paramétrée", family: "Fonctions et courbes", fields: [f("x", "x(t) =", "expr"), f("y", "y(t) =", "expr"), f("t", "t de... à...", "range")], make: () => ({ x: "cos(t)", y: "sin(t)", t: [0, 6.2832], color: "blue" }) },
   implicit: { label: "Courbe F(x, y) = 0", family: "Fonctions et courbes", fields: [f("expr", "F(x, y) =", "expr", { hint: "x^2/9+y^2/4-1 (ellipse), y-x^2 (parabole)..." })], make: () => ({ expr: "x^2+y^2-4", color: "blue" }) },
@@ -67,10 +77,36 @@ const KIND_DEFS: Record<JsxKind, KindDef> = {
   vectorfield: { label: "Champ de vecteurs", family: "Fonctions et courbes", fields: [f("fx", "Composante en x", "expr", { hint: "ex. -y" }), f("fy", "Composante en y", "expr", { hint: "ex. x" })], make: () => ({ fx: "-y", fy: "x" }) },
   text: { label: "Texte", family: "Annotations", fields: [f("text", "Texte", "text", { hint: "ou {{1}} pour une case de réponse" }), f("x", "x", "number"), f("y", "y", "number"), f("size", "Taille", "number")], make: () => ({ text: "Texte", x: 0, y: 0, size: 15 }) },
   slider: { label: "Curseur", family: "Annotations", fields: [f("label", "Nom (a, b, t...)", "text"), f("min", "Min", "number"), f("value", "Valeur", "number"), f("max", "Max", "number"), f("step", "Pas", "number"), f("x1", "Position x gauche", "number"), f("y1", "Position y", "number"), f("x2", "Position x droite", "number")], make: (id) => ({ label: id, min: 0, value: 1, max: 5, step: 0.5 }) },
+  rect: { label: "Rectangle (coordonnées)", family: "Formes à coordonnées", fields: [f("x", "x (coin bas gauche)", "number"), f("y", "y", "number"), f("w", "Largeur", "number"), f("h", "Hauteur", "number")], make: () => ({ x: 0, y: 0, w: 3, h: 2 }) },
+  shape: { label: "Polygone ou ligne brisée (coordonnées)", family: "Formes à coordonnées", fields: [f("points", "Points : un par ligne, « x ; y »", "matrix", { numeric: true }), f("closed", "Fermé (polygone)", "bool")], make: () => ({ points: [[0, 0], [3, 0], [1.5, 2.5]] }) },
+  seg: { label: "Segment (coordonnées)", family: "Formes à coordonnées", fields: [f("x1", "x de départ", "number"), f("y1", "y de départ", "number"), f("x2", "x d'arrivée", "number"), f("y2", "y d'arrivée", "number")], make: () => ({ x1: 0, y1: 0, x2: 3, y2: 2 }) },
+  toggle: { label: "Case à cocher (afficher / masquer)", family: "Annotations", fields: [f("label", "Texte de la case", "text"), f("targets", "Éléments concernés (noms séparés par des virgules)", "list"), f("x", "x", "number"), f("y", "y", "number")], make: () => ({ label: "Afficher", targets: [], x: -5, y: 4 }) },
+  bar_chart: { label: "Diagramme en barres", family: "Statistiques", fields: [f("data", "Barres", "records", { columns: [{ key: "label", label: "Nom", type: "text" }, { key: "value", label: "Valeur", type: "number" }, { key: "color", label: "Couleur", type: "color" }] })], make: () => ({ data: [{ label: "A", value: 4 }, { label: "B", value: 7 }] }) },
+  histogram: { label: "Histogramme", family: "Statistiques", fields: [f("bins", "Classes", "records", { columns: [{ key: "from", label: "De", type: "number" }, { key: "to", label: "À", type: "number" }, { key: "count", label: "Effectif", type: "number" }] })], make: () => ({ bins: [{ from: 0, to: 5, count: 3 }, { from: 5, to: 10, count: 6 }] }) },
+  pie_chart: { label: "Camembert", family: "Statistiques", fields: [f("slices", "Parts", "records", { columns: [{ key: "label", label: "Nom", type: "text" }, { key: "value", label: "Valeur", type: "number" }, { key: "color", label: "Couleur", type: "color" }] })], make: () => ({ slices: [{ label: "A", value: 6 }, { label: "B", value: 4 }] }) },
+  box_plot: { label: "Boîte à moustaches", family: "Statistiques", fields: [f("min", "Minimum", "number"), f("q1", "1er quartile", "number"), f("median", "Médiane", "number"), f("q3", "3e quartile", "number"), f("max", "Maximum", "number")], make: () => ({ min: 2, q1: 5, median: 7, q3: 9, max: 12 }) },
+  scatter: { label: "Nuage de points", family: "Statistiques", fields: [f("points", "Points : un par ligne, « x ; y »", "matrix", { numeric: true }), f("regression", "Droite de régression", "bool")], make: () => ({ points: [[1, 2], [2, 3], [3, 5], [4, 6]], regression: true }) },
+  number_line: { label: "Droite graduée", family: "Nombres", fields: [f("min", "Minimum", "number"), f("max", "Maximum", "number"), f("step", "Pas", "number"), f("points", "Points", "records", { columns: [{ key: "value", label: "Valeur", type: "number" }, { key: "label", label: "Nom", type: "text" }, { key: "color", label: "Couleur", type: "color" }] }), f("intervals", "Intervalles", "records", { columns: [{ key: "from", label: "De", type: "number" }, { key: "to", label: "À", type: "number" }, { key: "fromOpen", label: "Ouvert à gauche", type: "bool" }, { key: "toOpen", label: "Ouvert à droite", type: "bool" }] })], make: () => ({ min: -5, max: 5, step: 1, points: [{ value: 2, label: "A" }] }) },
+  fraction_bar: { label: "Fraction : barre", family: "Nombres", fields: [f("parts", "Parts", "number"), f("filled", "Parts colorées", "number")], make: () => ({ parts: 4, filled: 3 }) },
+  fraction_disc: { label: "Fraction : disque", family: "Nombres", fields: [f("parts", "Parts", "number"), f("filled", "Parts colorées", "number")], make: () => ({ parts: 8, filled: 3 }) },
+  grid_paint: { label: "Quadrillage à colorier", family: "Nombres", fields: [f("rows", "Lignes", "number"), f("cols", "Colonnes", "number"), f("painted", "Cases coloriées", "number")], make: () => ({ rows: 3, cols: 4, painted: 5 }) },
+  grid_cells: { label: "Tableau de cases (cases à remplir : {{1}}, {{2}}...)", family: "Nombres", fields: [f("rows", "Lignes : cellules séparées par « ; »", "matrix"), f("cellWidth", "Largeur d'une case", "number")], make: () => ({ rows: [["1", "2"], ["3", "{{1}}"]] }) },
+  pyramid: { label: "Pyramide de briques (cases à remplir)", family: "Nombres", fields: [f("levels", "Étages (haut en premier) : briques séparées par « ; »", "matrix")], make: () => ({ levels: [["{{1}}"], ["3", "4"], ["1", "2", "2"]] }) },
+  prob_tree: { label: "Arbre de probabilités", family: "Probabilités", fields: [f("root", "Départ", "text"), f("branches", "Branches (JSON imbriqué : label, p, children)", "json")], make: () => ({ root: "", branches: [{ label: "A", p: "1/2", children: [{ label: "B", p: "1/2" }] }, { label: "C", p: "1/2" }] }) },
+  venn: { label: "Diagramme de Venn", family: "Probabilités", fields: [f("sets", "Ensembles (2 ou 3)", "records", { columns: [{ key: "label", label: "Nom", type: "text" }, { key: "color", label: "Couleur", type: "color" }] }), f("counts", "Effectifs (JSON : A, B, C, AB, AC, BC, ABC, out)", "json")], make: () => ({ sets: [{ label: "A" }, { label: "B" }], counts: { A: "3", AB: "2", B: "4", out: "1" } }) },
+  regular_polygon: { label: "Polygone régulier", family: "Cercles et polygones", fields: [f("sides", "Nombre de côtés", "number"), f("radius", "Rayon", "number"), f("rotation", "Rotation (degrés)", "number"), f("diagonals", "Diagonales", "bool")], make: () => ({ sides: 6, radius: 3 }) },
+  solid3d: { label: "Solide (cube, pavé, pyramide, cylindre...)", family: "Espace 3D", fields: [f("shape", "Solide", "select", { options: ["cube", "box", "pyramid", "prism", "tetra", "cylinder", "cone", "sphere"] }), f("a", "Arête / largeur", "number"), f("b", "Profondeur (pavé, pyramide)", "number"), f("c", "Hauteur (pavé)", "number"), f("h", "Hauteur (pyramide, prisme, cylindre, cône)", "number"), f("r", "Rayon (cylindre, cône, sphère)", "number"), f("at", "Position [x, y, z]", "json")], make: () => ({ shape: "cube", a: 3, at: [0, 0, 1.5] }) },
+  point3d: { label: "Point", family: "Espace 3D", fields: [f("x", "x", "number"), f("y", "y", "number"), f("z", "z", "number")], make: () => ({ x: 0, y: 0, z: 1 }) },
+  segment3d: { label: "Segment", family: "Espace 3D", fields: [f("from", "De [x, y, z]", "json"), f("to", "À [x, y, z]", "json")], make: () => ({ from: [0, 0, 0], to: [2, 2, 2] }) },
+  polygon3d: { label: "Polygone plan", family: "Espace 3D", fields: [f("points", "Sommets : un par ligne, « x ; y ; z »", "matrix", { numeric: true })], make: () => ({ points: [[0, 0, 0], [2, 0, 0], [1, 2, 1]] }) },
+  plane3d: { label: "Plan", family: "Espace 3D", fields: [f("point", "Point [x, y, z]", "json"), f("dir1", "Direction 1", "json"), f("dir2", "Direction 2", "json")], make: () => ({ point: [0, 0, 1], dir1: [1, 0, 0], dir2: [0, 1, 0] }) },
+  sphere3d: { label: "Sphère (centre, rayon)", family: "Espace 3D", fields: [f("center", "Centre [x, y, z]", "json"), f("radius", "Rayon", "number")], make: () => ({ center: [0, 0, 2], radius: 2 }) },
+  surface3d: { label: "Surface z = f(x, y)", family: "Espace 3D", fields: [f("expr", "f(x, y) =", "expr")], make: () => ({ expr: "(x^2+y^2)/3", color: "blue" }) },
+  curve3d: { label: "Courbe paramétrée", family: "Espace 3D", fields: [f("x", "x(t) =", "expr"), f("y", "y(t) =", "expr"), f("z", "z(t) =", "expr"), f("t", "t de... à...", "range")], make: () => ({ x: "2*cos(t)", y: "2*sin(t)", z: "t/3", t: [0, 12.5] }) },
   raw: { label: "Objet JSXGraph avancé", family: "Avancé", fields: [f("type", "Type JSXGraph", "text", { hint: "ellipse, hyperbola, parabola, conic, locus, curve, grid..." }), f("parents", "Parents (JSON)", "json", { hint: '["@A", "@B", "@C"] : @A désigne l\'élément A ; "=x^2" est une formule' }), f("attributes", "Attributs (JSON)", "json")], make: () => ({ type: "ellipse", parents: [], attributes: {} }) },
 };
 
-const FAMILIES = ["Points et droites", "Cercles et polygones", "Constructions", "Transformations", "Fonctions et courbes", "Annotations", "Avancé"];
+const FAMILIES = ["Points et droites", "Cercles et polygones", "Constructions", "Transformations", "Fonctions et courbes", "Statistiques", "Nombres", "Probabilités", "Formes à coordonnées", "Annotations", "Espace 3D", "Avancé"];
 
 const POINT_NAMES = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const FUNCTION_NAMES = "fghkpqrs";
@@ -170,6 +206,51 @@ function ElementCard({
           </div>
         );
       }
+      case "list":
+        return <input className={inputCls} defaultValue={Array.isArray(value) ? (value as string[]).join(", ") : ""} key={JSON.stringify(value)} onBlur={(e) => set(field.key, e.target.value.split(",").map((t) => t.trim()).filter(Boolean))} placeholder="A, B, f..." />;
+      case "matrix": {
+        const rows = Array.isArray(value) ? (value as unknown[][]) : [];
+        return <textarea className={`${inputCls} font-mono min-h-[70px]`} defaultValue={rows.map((r) => (Array.isArray(r) ? r.join(" ; ") : "")).join("\n")} key={JSON.stringify(value)} onBlur={(e) => {
+          const parsed = e.target.value.split("\n").map((line) => line.split(";").map((c) => c.trim())).filter((r) => r.some(Boolean)).map((r) => (field.numeric ? r.map((c) => Number(c.replace(",", "."))) : r));
+          if (field.numeric && parsed.some((r) => r.some((c) => !Number.isFinite(c as number)))) return;
+          set(field.key, parsed);
+        }} />;
+      }
+      case "records": {
+        const rows = Array.isArray(value) ? (value as Record<string, unknown>[]) : [];
+        const cols = field.columns ?? [];
+        const update = (next: Record<string, unknown>[]) => set(field.key, next);
+        return (
+          <div className="space-y-1">
+            {rows.map((row, ri) => (
+              <div key={ri} className="flex items-center gap-1">
+                {cols.map((col) =>
+                  col.type === "bool" ? (
+                    <label key={col.key} className="flex items-center gap-0.5 text-[10px] text-gray-500" title={col.label}>
+                      <input type="checkbox" checked={row[col.key] === true} onChange={(e) => update(rows.map((r, k) => (k === ri ? { ...r, [col.key]: e.target.checked || undefined } : r)))} />
+                      {col.label.slice(0, 8)}
+                    </label>
+                  ) : col.type === "color" ? (
+                    <select key={col.key} className="border rounded text-xs px-1 py-1 bg-white" value={typeof row[col.key] === "string" ? (row[col.key] as string) : ""} onChange={(e) => update(rows.map((r, k) => (k === ri ? { ...r, [col.key]: e.target.value || undefined } : r)))}>
+                      <option value="">auto</option>
+                      {Object.keys(JSX_TONES).map((t) => <option key={t} value={t}>{t}</option>)}
+                    </select>
+                  ) : (
+                    <input key={col.key + String(row[col.key])} className={inputCls} placeholder={col.label} defaultValue={row[col.key] === undefined ? "" : String(row[col.key])} onBlur={(e) => {
+                      const raw = e.target.value;
+                      const v = col.type === "number" ? (raw === "" ? undefined : Number(raw.replace(",", "."))) : raw;
+                      if (col.type === "number" && v !== undefined && !Number.isFinite(v)) return;
+                      update(rows.map((r, k) => (k === ri ? { ...r, [col.key]: v } : r)));
+                    }} />
+                  ),
+                )}
+                <button type="button" className="p-1 text-red-400 hover:text-red-600" onClick={() => update(rows.filter((_, k) => k !== ri))} aria-label="Retirer la ligne"><Trash2 size={12} /></button>
+              </div>
+            ))}
+            <button type="button" className="text-[11px] px-2 py-0.5 rounded border border-dashed border-[rgba(197,161,72,0.5)]" onClick={() => update([...rows, {}])}>+ Ajouter</button>
+          </div>
+        );
+      }
       case "json":
         return <textarea className={`${inputCls} font-mono min-h-[44px]`} defaultValue={JSON.stringify(value ?? (field.key === "parents" ? [] : {}))} key={JSON.stringify(value)} placeholder={field.hint} onBlur={(e) => {
           try { set(field.key, JSON.parse(e.target.value)); } catch { /* JSON incomplet : on garde l'ancienne valeur */ }
@@ -189,7 +270,7 @@ function ElementCard({
       </div>
       <div className="grid grid-cols-2 gap-x-2 gap-y-1">
         {def.fields.map((field) => (
-          <label key={field.key} className={`text-[11px] text-gray-500 ${["refs", "expr", "json", "range"].includes(field.kind) ? "col-span-2" : ""}`}>
+          <label key={field.key} className={`text-[11px] text-gray-500 ${["refs", "expr", "json", "range", "records", "matrix", "list"].includes(field.kind) ? "col-span-2" : ""}`}>
             {field.label}
             <div className="mt-0.5 text-gray-800">{renderField(field)}</div>
           </label>
@@ -217,9 +298,10 @@ function ElementCard({
 
 export default function JsxFigureEditor({ value, onChange }: { value: Record<string, unknown>; onChange: (spec: Record<string, unknown>) => void }) {
   const spec: JsxFigureSpec = useMemo(
-    () => normalizeJsxSpec(value) ?? { type: "jsx_figure", caption: "", boundingBox: [-6, 5, 6, -5], axes: true, grid: true, keepAspect: true, height: 300, elements: [] },
+    () => normalizeJsxSpec(value) ?? { type: "jsx_figure", caption: "", boundingBox: [-6, 5, 6, -5], axes: true, grid: true, keepAspect: true, showNames: false, height: 300, elements: [] },
     [value],
   );
+  const confirm = useConfirm();
   const boardRef = useRef<HTMLDivElement>(null);
   const skipRebuild = useRef(false);
   const [error, setError] = useState("");
@@ -276,10 +358,10 @@ export default function JsxFigureEditor({ value, onChange }: { value: Record<str
         <select
           className="border border-[rgba(197,161,72,0.3)] rounded-lg text-sm px-2 py-1.5"
           value=""
-          onChange={(e) => {
+          onChange={async (e) => {
             const preset = JSX_PRESETS.find((p) => p.id === e.target.value);
             if (!preset) return;
-            if (spec.elements.length && !window.confirm("Remplacer la figure actuelle par ce modèle ?")) return;
+            if (spec.elements.length && !(await confirm("La figure actuelle sera remplacée par ce modèle.", { title: "Partir de ce modèle ?", confirmLabel: "Remplacer" }))) return;
             emit(JSON.parse(JSON.stringify(preset.spec)));
           }}
         >
@@ -296,7 +378,7 @@ export default function JsxFigureEditor({ value, onChange }: { value: Record<str
           onChange={(e) => e.target.value && addElement(e.target.value as JsxKind)}
         >
           <option value="">+ Ajouter un élément...</option>
-          {FAMILIES.map((family) => (
+          {FAMILIES.filter((family) => (family === "Espace 3D") === (spec.mode === "3d")).map((family) => (
             <optgroup key={family} label={family}>
               {(Object.keys(KIND_DEFS) as JsxKind[]).filter((k) => KIND_DEFS[k].family === family).map((k) => <option key={k} value={k}>{KIND_DEFS[k].label}</option>)}
             </optgroup>
@@ -308,7 +390,13 @@ export default function JsxFigureEditor({ value, onChange }: { value: Record<str
         <label className="col-span-2 sm:col-span-4">Légende
           <input className={inputCls} value={spec.caption} onChange={(e) => emit({ ...spec, caption: e.target.value })} />
         </label>
-        {(["Gauche (x min)", "Haut (y max)", "Droite (x max)", "Bas (y min)"] as const).map((label, i) => (
+        <label className="col-span-2 sm:col-span-4 flex items-center gap-2">Type de figure
+          <select className="border rounded text-xs px-1 py-1 bg-white" value={spec.mode === "3d" ? "3d" : "2d"} onChange={(e) => emit({ ...spec, mode: e.target.value as "2d" | "3d", elements: spec.elements.filter((el) => (KIND_DEFS[el.kind].family === "Espace 3D") === (e.target.value === "3d") || el.kind === "text") })}>
+            <option value="2d">Plane (feuille quadrillée)</option>
+            <option value="3d">Dans l&apos;espace (se tourne à la souris)</option>
+          </select>
+        </label>
+        {spec.mode !== "3d" && (["Gauche (x min)", "Haut (y max)", "Droite (x max)", "Bas (y min)"] as const).map((label, i) => (
           <label key={label}>{label}
             <input className={inputCls} key={spec.boundingBox[i]} defaultValue={spec.boundingBox[i]} onBlur={(e) => {
               const n = Number(e.target.value.replace(",", "."));
@@ -321,11 +409,23 @@ export default function JsxFigureEditor({ value, onChange }: { value: Record<str
         ))}
         <label className="flex items-center gap-1"><input type="checkbox" checked={spec.axes} onChange={(e) => emit({ ...spec, axes: e.target.checked })} /> Axes</label>
         <label className="flex items-center gap-1"><input type="checkbox" checked={spec.grid} onChange={(e) => emit({ ...spec, grid: e.target.checked })} /> Quadrillage</label>
-        <label className="flex items-center gap-1"><input type="checkbox" checked={spec.keepAspect} onChange={(e) => emit({ ...spec, keepAspect: e.target.checked })} /> Repère orthonormé</label>
+        {spec.mode === "3d" && (["x min", "x max", "y min", "y max", "z min", "z max"] as const).map((label, i) => (
+          <label key={label}>{label}
+            <input className={inputCls} key={String(spec.box3d?.[i])} defaultValue={spec.box3d?.[i] ?? 0} onBlur={(e) => {
+              const n = Number(e.target.value.replace(",", "."));
+              if (!Number.isFinite(n)) return;
+              const box = [...(spec.box3d ?? [-3, 3, -3, 3, 0, 5])] as NonNullable<JsxFigureSpec["box3d"]>;
+              box[i] = n;
+              emit({ ...spec, box3d: box });
+            }} />
+          </label>
+        ))}
+        <label className="flex items-center gap-1" title="Les noms (A, B, C...) vont plutôt dans l'énoncé"><input type="checkbox" checked={spec.showNames} onChange={(e) => emit({ ...spec, showNames: e.target.checked })} /> Noms des points</label>
+        {spec.mode !== "3d" && <label className="flex items-center gap-1"><input type="checkbox" checked={spec.keepAspect} onChange={(e) => emit({ ...spec, keepAspect: e.target.checked })} /> Repère orthonormé</label>}
       </div>
 
       <div>
-        <p className="text-[11px] text-gray-500 mb-1">Atelier : déplace les points à la souris, leurs coordonnées se mettent à jour toutes seules.</p>
+        <p className="text-[11px] text-gray-500 mb-1">{spec.mode === "3d" ? "Aperçu : fais tourner la figure à la souris, comme l'élève." : "Atelier : déplace les points à la souris, leurs coordonnées se mettent à jour toutes seules."}</p>
         <div className="course-figure-jsx" style={{ maxWidth: 520, margin: "0 auto" }}>
           <div ref={boardRef} className="jsx-board" />
         </div>

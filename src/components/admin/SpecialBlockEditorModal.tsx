@@ -9,7 +9,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { Upload } from "lucide-react";
 import JsxFigureEditor from "@/components/admin/JsxFigureEditor";
-import { JSX_PRESETS } from "@/lib/jsxFigure";
+import { JSX_CATALOG as JSX_PRESETS } from "@/lib/jsxCatalog";
 
 const TEMPLATES: Record<string, { label: string; group: string; data: Record<string, unknown> }> = {
   image: { label: "Image (lien ou upload)", group: "Texte", data: { url: "", caption: "Légende de l'image" } },
@@ -63,6 +63,15 @@ const TEMPLATES: Record<string, { label: string; group: string; data: Record<str
   algo_sandbox: { label: "Extrait de code (lecture seule)", group: "Lycée", data: { code: "def f(x):\n    return x**2", language: "python", caption: "Algorithme" } },
 };
 
+const GROUP_LABELS: Record<string, string> = {
+  "Figure libre": "Figure (toute figure de maths : un seul système)",
+  "Données": "Anciennes figures de données (modèles fixes)",
+  "Géométrie/Nombres": "Anciennes figures (modèles fixes)",
+  Primaire: "Outils interactifs : primaire",
+  Collège: "Outils interactifs : collège",
+  Lycée: "Outils interactifs : lycée",
+};
+
 const GROUP_ORDER = ["Figure libre", "Texte", "Données", "Géométrie/Nombres", "Primaire", "Collège", "Lycée"];
 
 export default function SpecialBlockEditorModal({
@@ -71,16 +80,19 @@ export default function SpecialBlockEditorModal({
   initialType,
   initialData,
   onInsert,
+  onlyFigure,
 }: {
   isOpen: boolean;
   onClose: () => void;
   initialType?: string;
   initialData?: Record<string, unknown>;
   onInsert: (html: string, specialType: string, specialData: Record<string, unknown>) => void;
+  /** Exercices et quiz : on n'y insère que des figures (système unique de figures). */
+  onlyFigure?: boolean;
 }) {
-  const [selectedType, setSelectedType] = useState(initialType || "definition");
+  const [selectedType, setSelectedType] = useState(onlyFigure ? "jsx_figure" : initialType || "jsx_figure");
   const [jsonText, setJsonText] = useState(() =>
-    JSON.stringify(initialData ?? TEMPLATES[initialType || "definition"]?.data ?? {}, null, 2),
+    JSON.stringify(initialData ?? TEMPLATES[onlyFigure ? "jsx_figure" : initialType || "jsx_figure"]?.data ?? {}, null, 2),
   );
   const [uploading, setUploading] = useState(false);
 
@@ -138,11 +150,11 @@ export default function SpecialBlockEditorModal({
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 modal-overlay">
       <div className="bg-white rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-5 space-y-4">
         <div className="flex items-center justify-between">
-          <h3 className="text-lg font-bold text-gray-800">Bloc spécial (figure, outil interactif...)</h3>
+          <h3 className="text-lg font-bold text-gray-800">{onlyFigure ? "Figure" : "Bloc spécial (figure, outil interactif...)"}</h3>
           <GlassCloseButton onClick={onClose} />
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2" hidden={onlyFigure}>
           <label className="text-xs font-medium text-gray-500 uppercase">Type de bloc</label>
           <select
             value={selectedType}
@@ -150,7 +162,7 @@ export default function SpecialBlockEditorModal({
             className="w-full border-[rgba(197,161,72,0.25)] rounded-lg text-sm px-3 py-2"
           >
             {GROUP_ORDER.map((group) => (
-              <optgroup key={group} label={group}>
+              <optgroup key={group} label={GROUP_LABELS[group] ?? group}>
                 {Object.entries(TEMPLATES)
                   .filter(([, t]) => t.group === group)
                   .map(([key, t]) => (

@@ -1,3 +1,5 @@
+import { expandMacros } from "@/lib/jsxMacros";
+
 /**
  * « Figure libre » : n'importe quelle figure de maths (géométrie, constructions, courbes, tangentes, aires, vecteurs, champs,
  * transformations...) décrite par un petit JSON que l'admin crée et modifie sans coder, dessinée par JSXGraph
@@ -12,7 +14,14 @@ export type JsxKind =
   | "point" | "segment" | "line" | "ray" | "vector" | "circle" | "arc" | "sector" | "polygon" | "angle"
   | "midpoint" | "perpendicular" | "parallel" | "bisector" | "perpendicular_bisector" | "intersection"
   | "function" | "parametric" | "tangent" | "integral" | "riemann" | "inequality" | "vectorfield" | "implicit"
-  | "text" | "slider" | "reflect" | "rotate" | "translate" | "dilate" | "raw";
+  | "text" | "slider" | "toggle" | "reflect" | "rotate" | "translate" | "dilate" | "raw"
+  // primitives à coordonnées (utilisées aussi par les figures toutes faites)
+  | "rect" | "shape" | "seg"
+  // figures toutes faites (développées en primitives par jsxMacros)
+  | "bar_chart" | "histogram" | "pie_chart" | "number_line" | "box_plot" | "scatter" | "venn" | "prob_tree"
+  | "regular_polygon" | "fraction_bar" | "fraction_disc" | "grid_paint" | "grid_cells" | "pyramid"
+  // espace (3D)
+  | "solid3d" | "point3d" | "segment3d" | "polygon3d" | "plane3d" | "sphere3d" | "surface3d" | "curve3d";
 
 export interface JsxElement {
   kind: JsxKind;
@@ -25,6 +34,8 @@ export interface JsxElement {
   dash?: boolean;
   /** Épaisseur du trait. */
   width?: number;
+  /** Afficher le nom de cet élément même si les noms sont masqués. */
+  showLabel?: boolean;
   /** Point : déplaçable à la souris (défaut : fixe). */
   movable?: boolean;
   /** Élément auxiliaire non dessiné (sert de support à d'autres). */
@@ -40,6 +51,12 @@ export interface JsxFigureSpec {
   axes: boolean;
   grid: boolean;
   keepAspect: boolean;
+  /** Afficher le nom des points (A, B, C...) dans la figure : non par défaut, les noms vont dans l'énoncé. */
+  showNames: boolean;
+  /** « 3d » : figure dans l'espace (cubes, solides, surfaces), que l'élève fait tourner à la souris. */
+  mode?: "2d" | "3d";
+  /** Espace 3D : [xmin, xmax, ymin, ymax, zmin, zmax]. */
+  box3d?: [number, number, number, number, number, number];
   /** Hauteur en pixels (180 à 520), ignorée si keepAspect donne le rapport. */
   height: number;
   elements: JsxElement[];
@@ -49,7 +66,11 @@ const KINDS: readonly JsxKind[] = [
   "point", "segment", "line", "ray", "vector", "circle", "arc", "sector", "polygon", "angle",
   "midpoint", "perpendicular", "parallel", "bisector", "perpendicular_bisector", "intersection",
   "function", "parametric", "tangent", "integral", "riemann", "inequality", "vectorfield", "implicit",
-  "text", "slider", "reflect", "rotate", "translate", "dilate", "raw",
+  "text", "slider", "toggle", "reflect", "rotate", "translate", "dilate", "raw",
+  "rect", "shape", "seg",
+  "bar_chart", "histogram", "pie_chart", "number_line", "box_plot", "scatter", "venn", "prob_tree",
+  "regular_polygon", "fraction_bar", "fraction_disc", "grid_paint", "grid_cells", "pyramid",
+  "solid3d", "point3d", "segment3d", "polygon3d", "plane3d", "sphere3d", "surface3d", "curve3d",
 ];
 
 export const JSX_TONES: Record<string, string> = {
@@ -73,7 +94,7 @@ export function normalizeJsxSpec(raw: unknown): JsxFigureSpec | null {
   if (bb[2] <= bb[0] || bb[1] <= bb[3]) return null;
   const elements = (Array.isArray(r.elements) ? r.elements : [])
     .filter((e): e is Record<string, unknown> => !!e && typeof e === "object" && KINDS.includes((e as { kind?: JsxKind }).kind as JsxKind))
-    .slice(0, 80)
+    .slice(0, 200)
     .map((e) => JSON.parse(JSON.stringify(e)) as JsxElement);
   return {
     type: "jsx_figure",
@@ -82,6 +103,9 @@ export function normalizeJsxSpec(raw: unknown): JsxFigureSpec | null {
     axes: r.axes !== false,
     grid: r.grid !== false,
     keepAspect: r.keepAspect !== false,
+    showNames: r.showNames === true,
+    mode: r.mode === "3d" ? "3d" : "2d",
+    box3d: Array.isArray(r.box3d) && r.box3d.length === 6 && r.box3d.every((v) => typeof v === "number" && Number.isFinite(v)) ? (r.box3d as JsxFigureSpec["box3d"]) : [-3, 3, -3, 3, -3, 3],
     height: Math.min(520, Math.max(180, num(r.height, 300))),
     elements,
   };
@@ -120,24 +144,34 @@ export async function buildJsxBoard(
   options: { editable?: boolean } = {},
 ): Promise<JsxBoardHandle> {
   const [{ default: JXG }, math] = await Promise.all([import("jsxgraph") as Promise<Any>, import("mathjs")]);
-  const [xmin, ymax, xmax, ymin] = spec.boundingBox;
+  let boundingBox: [number, number, number, number] = [...spec.boundingBox];
+  const [xmin, ymax, xmax, ymin] = boundingBox;
 
   // Taille : la largeur du conteneur ; la hauteur suit le rapport du repère (repère orthonormé) ou `height`.
   const width = Math.max(220, container.clientWidth || 360);
-  const ratio = (ymax - ymin) / (xmax - xmin);
-  const height = spec.keepAspect ? Math.min(520, Math.max(180, Math.round(width * ratio))) : spec.height;
+  let ratio = (ymax - ymin) / (xmax - xmin);
+  const heightFor = (w: number) => (spec.keepAspect ? Math.min(560, Math.max(180, Math.round(w * ratio))) : spec.height);
+  const height = heightFor(width);
   container.style.width = "100%";
   container.style.minHeight = "0";
   container.style.height = `${height}px`;
   const id = `jsxb-${Math.random().toString(36).slice(2)}`;
   container.id = id;
 
+  if (spec.mode === "3d") {
+    const { buildBoard3d } = await import("@/lib/jsxBoard3d");
+    const three = buildBoard3d(JXG, math, container, spec, id, width);
+    return { board: three.board, readPoints: () => ({}), destroy: three.destroy };
+  }
+
   const board: Any = JXG.JSXGraph.initBoard(id, {
-    boundingbox: spec.boundingBox,
+    boundingbox: boundingBox,
     axis: false,
     grid: false,
     showCopyright: false,
     showNavigation: false,
+    // La taille suit la carte : c'est nous qui la gérons (voir le ResizeObserver), pas la bibliothèque.
+    resize: { enabled: false },
     keepAspectRatio: spec.keepAspect,
     pan: { enabled: false },
     zoom: { enabled: false },
@@ -154,9 +188,32 @@ export async function buildJsxBoard(
   }
 
   const byId = new Map<string, Any>();
+  const hiddenObjects = new Set<Any>();
   const sliders = new Map<string, Any>();
+  // Mesures utilisables dans les formules et les textes « {dist(A,B)} » : elles suivent les points quand on les déplace.
+  const measures: Record<string, (...a: Any[]) => number> = {
+    dist: (a, b) => Math.hypot(a.X() - b.X(), a.Y() - b.Y()),
+    px: (a) => a.X(),
+    py: (a) => a.Y(),
+    slope: (a, b) => (b.Y() - a.Y()) / (b.X() - a.X()),
+    angle: (a, o, b) => {
+      const d = Math.atan2(b.Y() - o.Y(), b.X() - o.X()) - Math.atan2(a.Y() - o.Y(), a.X() - o.X());
+      return Math.abs((((d * 180) / Math.PI) % 360 + 540) % 360 - 180);
+    },
+    area: (...pts) => {
+      let sum = 0;
+      pts.forEach((p, i) => {
+        const q = pts[(i + 1) % pts.length];
+        sum += p.X() * q.Y() - q.X() * p.Y();
+      });
+      return Math.abs(sum) / 2;
+    },
+  };
   const scope = () => {
-    const s: Record<string, number> = {};
+    const s: Record<string, unknown> = { ...measures };
+    byId.forEach((obj, key) => {
+      if (obj?.elementClass === JXG.OBJECT_CLASS_POINT) s[key] = obj;
+    });
     sliders.forEach((sl, key) => (s[key] = sl.Value()));
     return s;
   };
@@ -195,10 +252,14 @@ export async function buildJsxBoard(
     withLabel: false,
   });
 
-  const slotMarks: { n: number; x: number; y: number }[] = [];
+  const names = spec.showNames === true;
+  const showsName = (e: JsxElement) => !!e.label && (names || e.showLabel === true);
+
+  const slotMarks: { n: number; x: number; y: number; w?: number; h?: number }[] = [];
+  const elements = expandMacros(spec.elements);
   const movable: { key: string; el: Any }[] = [];
 
-  for (const e of spec.elements) {
+  for (const e of elements) {
     let created: Any = null;
     try {
       switch (e.kind) {
@@ -209,7 +270,7 @@ export async function buildJsxBoard(
           if (slot) slotMarks.push({ n: Number(slot[1]), x: num(e.x, 0), y: num(e.y, 0) });
           created = board.create("point", [val(e.x), val(e.y)], {
             name: slot ? "" : label,
-            withLabel: !!label && !slot,
+            withLabel: showsName(e) && !slot,
             size: num(e.width, 3),
             strokeColor: "#ffffff",
             fillColor: colorOf(e, JSX_TONES.navy),
@@ -239,13 +300,17 @@ export async function buildJsxBoard(
           created = board.create("arrow", [ref(e.from), ref(e.to)], { ...lineAttrs(e, "blue"), lastArrow: { type: 2, size: 7 } });
           break;
         case "circle": {
-          const center = ref(e.center);
+          let center = ref(e.center);
+          if (!center && typeof e.x === "number" && typeof e.y === "number") {
+            center = board.create("point", [e.x, e.y], { visible: false, fixed: true, withLabel: false });
+          }
           const through = ref(e.through);
+          const opacity = e.filled === false ? 0 : num(e.opacity, e.whiteFill ? 1 : 0.1);
           created = board.create("circle", [center, through ?? val(e.radius, 1)], {
             ...lineAttrs(e),
-            fillColor: colorOf(e, JSX_TONES.navy),
-            fillOpacity: e.filled === false ? 0 : 0.1,
-            highlightFillOpacity: e.filled === false ? 0 : 0.1,
+            fillColor: e.whiteFill ? "#ffffff" : colorOf(e, JSX_TONES.navy),
+            fillOpacity: opacity,
+            highlightFillOpacity: opacity,
           });
           break;
         }
@@ -292,7 +357,7 @@ export async function buildJsxBoard(
           break;
         }
         case "midpoint":
-          created = board.create("midpoint", [ref(arr(e.of)[0]), ref(arr(e.of)[1])], { size: 2.5, strokeColor: "#ffffff", fillColor: colorOf(e, JSX_TONES.navy), name: typeof e.label === "string" ? e.label : "", withLabel: !!e.label, fixed: true, visible: !e.hidden, showInfobox: false });
+          created = board.create("midpoint", [ref(arr(e.of)[0]), ref(arr(e.of)[1])], { size: 2.5, strokeColor: "#ffffff", fillColor: colorOf(e, JSX_TONES.navy), name: typeof e.label === "string" ? e.label : "", withLabel: showsName(e), fixed: true, visible: !e.hidden, showInfobox: false });
           break;
         case "perpendicular":
           created = board.create("perpendicular", [ref(e.line), ref(e.through)], lineAttrs(e, "gold"));
@@ -314,7 +379,7 @@ export async function buildJsxBoard(
           break;
         }
         case "intersection":
-          created = board.create("intersection", [ref(arr(e.of)[0]), ref(arr(e.of)[1]), num(e.index, 0)], { size: 3, strokeColor: "#ffffff", fillColor: colorOf(e, JSX_TONES.red), name: typeof e.label === "string" ? e.label : "", withLabel: !!e.label, fixed: true, visible: !e.hidden, showInfobox: false });
+          created = board.create("intersection", [ref(arr(e.of)[0]), ref(arr(e.of)[1]), num(e.index, 0)], { size: 3, strokeColor: "#ffffff", fillColor: colorOf(e, JSX_TONES.red), name: typeof e.label === "string" ? e.label : "", withLabel: showsName(e), fixed: true, visible: !e.hidden, showInfobox: false });
           break;
         case "function": {
           const f = compile(String(e.expr ?? "x"));
@@ -382,19 +447,94 @@ export async function buildJsxBoard(
           const text = String(e.text ?? "");
           const slot = SLOT_MARK.exec(text.trim());
           if (slot) {
-            slotMarks.push({ n: Number(slot[1]), x: num(e.x, 0), y: num(e.y, 0) });
+            slotMarks.push({ n: Number(slot[1]), x: num(e.x, 0), y: num(e.y, 0), w: typeof e.w === "number" ? e.w : undefined, h: typeof e.h === "number" ? e.h : undefined });
             break;
           }
-          created = board.create("text", [val(e.x), val(e.y), text], {
+          // Texte vivant : « AB = {dist(A,B)} cm » se met à jour quand on déplace les points ou les curseurs.
+          let content: string | (() => string) = text;
+          if (/\{[^{}]+\}/.test(text)) {
+            const parts = text.split(/(\{[^{}]+\})/).map((part) => (part.startsWith("{") && part.endsWith("}") ? compile(part.slice(1, -1)) : part));
+            content = () =>
+              parts
+                .map((part) => {
+                  if (typeof part === "string") return part;
+                  const v = part({});
+                  return Number.isFinite(v) ? String(Math.round(v * 100) / 100).replace(".", ",") : "?";
+                })
+                .join("");
+          }
+          created = board.create("text", [val(e.x), val(e.y), content], {
             fontSize: num(e.size, 15),
             strokeColor: colorOf(e, JSX_TONES.navy),
-            anchorX: "middle",
+            anchorX: e.anchor === "left" || e.anchor === "right" ? e.anchor : "middle",
             anchorY: "middle",
             fixed: true,
             highlight: false,
             display: "internal",
             cssStyle: "font-family: inherit; font-weight: 600;",
           });
+          break;
+        }
+        case "rect": {
+          const x = num(e.x, 0), y = num(e.y, 0), w = num(e.w, 1), h = num(e.h, 1);
+          const corners = [[x, y], [x + w, y], [x + w, y + h], [x, y + h]].map(([px, py]) => board.create("point", [px, py], { visible: false, fixed: true, withLabel: false }));
+          const fill = colorOf(e, JSX_TONES.navy);
+          const opacity = e.filled === false ? 0 : num(e.opacity, 0.14);
+          created = board.create("polygon", corners, {
+            fillColor: fill,
+            fillOpacity: opacity,
+            highlightFillOpacity: opacity,
+            borders: { strokeColor: JSX_TONES[String(e.strokeColor)] ?? fill, strokeWidth: num(e.width, 1.5), highlight: false },
+            vertices: { visible: false },
+            highlight: false,
+            fixed: true,
+            withLabel: false,
+            visible: !e.hidden,
+          });
+          break;
+        }
+        case "shape": {
+          const pts = (Array.isArray(e.points) ? e.points : []).filter((q): q is [number, number] => Array.isArray(q) && q.length === 2 && q.every((v) => typeof v === "number"));
+          if (pts.length < 2) break;
+          const fill = colorOf(e, JSX_TONES.navy);
+          if (e.closed === false) {
+            created = board.create("curve", [pts.map((q) => q[0]), pts.map((q) => q[1])], { ...lineAttrs(e), strokeColor: fill });
+            break;
+          }
+          const verts = pts.map(([px, py]) => board.create("point", [px, py], { visible: false, fixed: true, withLabel: false }));
+          const opacity = e.filled === false ? 0 : num(e.opacity, 0.14);
+          created = board.create("polygon", verts, {
+            fillColor: fill,
+            fillOpacity: opacity,
+            highlightFillOpacity: opacity,
+            borders: { strokeColor: JSX_TONES[String(e.strokeColor)] ?? fill, strokeWidth: num(e.width, 1.5), highlight: false, dash: e.dash ? 2 : 0 },
+            vertices: { visible: false },
+            highlight: false,
+            fixed: true,
+            withLabel: false,
+            visible: !e.hidden,
+          });
+          break;
+        }
+        case "seg": {
+          const a = board.create("point", [num(e.x1, 0), num(e.y1, 0)], { visible: false, fixed: true, withLabel: false });
+          const b = board.create("point", [num(e.x2, 1), num(e.y2, 0)], { visible: false, fixed: true, withLabel: false });
+          created = board.create("segment", [a, b], lineAttrs(e));
+          break;
+        }
+        case "toggle": {
+          created = board.create("checkbox", [num(e.x, xmin + 0.5), num(e.y, ymax - 0.8), String(e.label ?? "Afficher")], { fixed: true });
+          const targets = arr(e.targets).map(String);
+          const apply = () => {
+            const on = !!created.Value();
+            targets.forEach((key) => byId.get(key)?.setAttribute({ visible: on }));
+            board.update();
+          };
+          created.rendNodeCheckbox?.addEventListener("change", apply);
+          if (e.checked === false) {
+            created.rendNodeCheckbox && (created.rendNodeCheckbox.checked = false);
+            apply();
+          }
           break;
         }
         case "slider": {
@@ -414,7 +554,7 @@ export async function buildJsxBoard(
           break;
         }
         case "reflect":
-          created = board.create("reflection", [ref(e.of), ref(e.over)], { size: 3, fillColor: colorOf(e, JSX_TONES.green), strokeColor: "#ffffff", name: typeof e.label === "string" ? e.label : "", withLabel: !!e.label, fixed: true, visible: !e.hidden, showInfobox: false });
+          created = board.create("reflection", [ref(e.of), ref(e.over)], { size: 3, fillColor: colorOf(e, JSX_TONES.green), strokeColor: "#ffffff", name: typeof e.label === "string" ? e.label : "", withLabel: showsName(e), fixed: true, visible: !e.hidden, showInfobox: false });
           break;
         case "rotate":
         case "translate":
@@ -444,7 +584,7 @@ export async function buildJsxBoard(
             fillColor: colorOf(e, JSX_TONES.green),
             strokeColor: "#ffffff",
             name: typeof e.label === "string" ? e.label : "",
-            withLabel: !!e.label,
+            withLabel: showsName(e),
             fixed: true,
             visible: !e.hidden,
             showInfobox: false,
@@ -470,24 +610,57 @@ export async function buildJsxBoard(
     } catch (error) {
       console.warn(`[jsx_figure] élément « ${e.kind} ${e.id ?? ""} » ignoré :`, error instanceof Error ? error.message : error);
     }
+    if (created && e.hidden) hiddenObjects.add(created);
     if (created && e.id) byId.set(e.id, created);
   }
 
+  // Cadrage automatique : si un élément sort du repère, on dézoome (jamais de figure rognée) au lieu d'agrandir.
+  {
+    let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    const grow = (x: number, y: number, r = 0) => {
+      if (!Number.isFinite(x) || !Number.isFinite(y)) return;
+      x0 = Math.min(x0, x - r); x1 = Math.max(x1, x + r); y0 = Math.min(y0, y - r); y1 = Math.max(y1, y + r);
+    };
+    for (const obj of board.objectsList as Any[]) {
+      if (hiddenObjects.has(obj)) continue;
+      try {
+        if (obj.elementClass === JXG.OBJECT_CLASS_POINT) grow(obj.X(), obj.Y());
+        else if (obj.elementClass === JXG.OBJECT_CLASS_CIRCLE) grow(obj.center.X(), obj.center.Y(), obj.Radius());
+        else if (obj.elementClass === JXG.OBJECT_CLASS_TEXT && obj.visProp?.visible !== false) grow(obj.X(), obj.Y());
+      } catch {
+        /* objet sans position : ignoré */
+      }
+    }
+    if (Number.isFinite(x0)) {
+      const padX = Math.max(0.6, (x1 - x0) * 0.12);
+      const padY = Math.max(0.6, (y1 - y0) * 0.12);
+      const next: [number, number, number, number] = [Math.min(boundingBox[0], x0 - padX), Math.max(boundingBox[1], y1 + padY), Math.max(boundingBox[2], x1 + padX), Math.min(boundingBox[3], y0 - padY)];
+      if (next.some((v, i) => v !== boundingBox[i])) {
+        boundingBox = next;
+        ratio = (boundingBox[1] - boundingBox[3]) / (boundingBox[2] - boundingBox[0]);
+        const h = heightFor(container.clientWidth || width);
+        container.style.height = `${h}px`;
+        board.resizeContainer(container.clientWidth || width, h, true, true);
+        board.setBoundingBox(boundingBox, spec.keepAspect);
+        board.update();
+      }
+    }
+  }
+
   // Emplacements de réponse : un rectangle SVG repéré par data-slot (SlotHtml y pose son champ), qui suit le repère.
-  const slotRects: { n: number; x: number; y: number; rect: SVGRectElement }[] = [];
+  const slotRects: { n: number; x: number; y: number; w?: number; h?: number; rect: SVGRectElement }[] = [];
   const svgRoot: SVGElement | undefined = board.renderer?.svgRoot;
   if (svgRoot && slotMarks.length) {
     for (const s of slotMarks) {
       const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
       rect.setAttribute("data-slot", String(s.n));
-      rect.setAttribute("width", "46");
-      rect.setAttribute("height", "26");
+      rect.setAttribute("width", String(s.w ?? 46));
+      rect.setAttribute("height", String(s.h ?? 26));
       rect.setAttribute("rx", "6");
-      rect.setAttribute("fill", "#ffffff");
-      rect.setAttribute("fill-opacity", "0.94");
-      rect.setAttribute("stroke", JSX_TONES.gold);
-      rect.setAttribute("stroke-width", "1.4");
-      rect.setAttribute("stroke-dasharray", "3 2");
+      // Invisible : seul le champ de saisie de l'exercice (SlotHtml) s'affiche à cet endroit, jamais une case vide.
+      rect.setAttribute("fill", "none");
+      rect.setAttribute("stroke", "none");
+      rect.setAttribute("pointer-events", "none");
       svgRoot.appendChild(rect);
       slotRects.push({ ...s, rect });
     }
@@ -495,8 +668,8 @@ export async function buildJsxBoard(
       for (const s of slotRects) {
         const px = board.origin.scrCoords[1] + s.x * board.unitX;
         const py = board.origin.scrCoords[2] - s.y * board.unitY;
-        s.rect.setAttribute("x", String(px - 23));
-        s.rect.setAttribute("y", String(py - 13));
+        s.rect.setAttribute("x", String(px - (s.w ?? 46) / 2));
+        s.rect.setAttribute("y", String(py - (s.h ?? 26) / 2));
       }
     };
     place();
@@ -509,10 +682,10 @@ export async function buildJsxBoard(
     const w = container.clientWidth;
     if (!w || Math.abs(w - lastWidth) < 2) return;
     lastWidth = w;
-    const h = spec.keepAspect ? Math.min(520, Math.max(180, Math.round(w * ratio))) : spec.height;
+    const h = heightFor(w);
     container.style.height = `${h}px`;
     board.resizeContainer(w, h, true, true);
-    board.setBoundingBox(spec.boundingBox, spec.keepAspect);
+    board.setBoundingBox(boundingBox, spec.keepAspect);
     board.update();
   });
   resizer.observe(container);
@@ -535,39 +708,3 @@ export async function buildJsxBoard(
     },
   };
 }
-
-/* ------------------------------------------------------------------ */
-/*  Préréglages : figures usuelles prêtes à modifier                    */
-/* ------------------------------------------------------------------ */
-
-const P = (id: string, x: number | string, y: number | string, label = id, extra: Partial<JsxElement> = {}): JsxElement => ({ kind: "point", id, x, y, label, ...extra });
-const base = (caption: string, bb: [number, number, number, number], elements: JsxElement[], extra: Partial<JsxFigureSpec> = {}): JsxFigureSpec => ({
-  type: "jsx_figure", caption, boundingBox: bb, axes: false, grid: true, keepAspect: true, height: 300, elements, ...extra,
-});
-
-export const JSX_PRESETS: { id: string; label: string; group: string; spec: JsxFigureSpec }[] = [
-  { id: "triangle", label: "Triangle ABC", group: "Géométrie plane", spec: base("Triangle ABC", [-1, 6, 9, -1], [P("A", 1, 1), P("B", 8, 1), P("C", 3, 5), { kind: "polygon", vertices: ["A", "B", "C"] }]) },
-  { id: "right_triangle", label: "Triangle rectangle", group: "Géométrie plane", spec: base("Triangle rectangle en A", [-1, 6, 9, -1], [P("A", 1, 1), P("B", 7, 1), P("C", 1, 5), { kind: "polygon", vertices: ["A", "B", "C"] }, { kind: "angle", points: ["B", "A", "C"], label: "" }]) },
-  { id: "parallelogram", label: "Parallélogramme", group: "Géométrie plane", spec: base("Parallélogramme ABCD", [-1, 6, 10, -1], [P("A", 1, 1), P("B", 6, 1), P("C", 8, 5), P("D", 3, 5), { kind: "polygon", vertices: ["A", "B", "C", "D"] }]) },
-  { id: "circle", label: "Cercle et rayon", group: "Géométrie plane", spec: base("Cercle de centre O", [-5, 5, 5, -5], [P("O", 0, 0), P("M", 3, 0), { kind: "circle", center: "O", through: "M" }, { kind: "segment", from: "O", to: "M", dash: true, color: "gold" }]) },
-  { id: "thales", label: "Théorème de Thalès", group: "Géométrie plane", spec: base("Configuration de Thalès", [-1, 7, 10, -1], [P("A", 1, 1), P("B", 9, 1), P("C", 4, 6), P("M", 3.25, 1), P("N", 2.5, 3.5), { kind: "polygon", vertices: ["A", "B", "C"], filled: false }, { kind: "segment", from: "M", to: "N", color: "red" }]) },
-  { id: "mediatrice", label: "Médiatrice d'un segment", group: "Constructions", spec: base("Médiatrice de [AB]", [-1, 6, 10, -1], [P("A", 2, 3), P("B", 8, 3), { kind: "segment", from: "A", to: "B" }, { kind: "perpendicular_bisector", of: ["A", "B"] }, { kind: "midpoint", of: ["A", "B"], label: "I" }]) },
-  { id: "bisectrice", label: "Bissectrice d'un angle", group: "Constructions", spec: base("Bissectrice de l'angle AOB", [-1, 7, 10, -1], [P("O", 1, 1), P("A", 8, 1), P("B", 5, 6), { kind: "segment", from: "O", to: "A" }, { kind: "segment", from: "O", to: "B" }, { kind: "bisector", points: ["A", "O", "B"] }, { kind: "angle", points: ["A", "O", "B"], label: "" }]) },
-  { id: "tangent_circle", label: "Tangente à un cercle", group: "Constructions", spec: base("Tangente en M", [-5, 5, 5, -5], [P("O", 0, 0), P("M", 3, 0), { kind: "circle", center: "O", through: "M" }, { kind: "segment", from: "O", to: "M", dash: true, color: "gold" }, { kind: "line", id: "OM", through: ["O", "M"], hidden: true }, { kind: "perpendicular", line: "OM", through: "M", color: "red" }]) },
-  { id: "symmetry", label: "Symétrie axiale", group: "Transformations", spec: base("Symétrie par rapport à (d)", [-7, 6, 7, -1], [P("A", -4, 1), P("B", -1, 1), P("C", -3, 4), P("D", 0, -0.5, "", { hidden: true }), P("E", 0, 6, "", { hidden: true }), { kind: "line", id: "d", through: ["D", "E"], color: "gold", dash: true }, { kind: "polygon", vertices: ["A", "B", "C"] }, { kind: "reflect", id: "A2", of: "A", over: "d", label: "A'" }, { kind: "reflect", id: "B2", of: "B", over: "d", label: "B'" }, { kind: "reflect", id: "C2", of: "C", over: "d", label: "C'" }, { kind: "polygon", vertices: ["A2", "B2", "C2"], color: "green" }]) },
-  { id: "translation", label: "Translation", group: "Transformations", spec: base("Translation de vecteur (4 ; 1)", [-1, 7, 12, -1], [P("A", 1, 1), P("B", 3, 1), P("C", 2, 4), { kind: "polygon", vertices: ["A", "B", "C"] }, { kind: "translate", id: "A2", of: "A", dx: 4, dy: 1, label: "A'" }, { kind: "translate", id: "B2", of: "B", dx: 4, dy: 1, label: "B'" }, { kind: "translate", id: "C2", of: "C", dx: 4, dy: 1, label: "C'" }, { kind: "polygon", vertices: ["A2", "B2", "C2"], color: "green" }]) },
-  { id: "rotation", label: "Rotation", group: "Transformations", spec: base("Rotation de centre O et d'angle 90°", [-6, 6, 6, -4], [P("O", 0, 0), P("A", 2, 1), P("B", 4, 1), P("C", 3, 3), { kind: "polygon", vertices: ["A", "B", "C"] }, { kind: "rotate", id: "A2", of: "A", center: "O", angle: 90, label: "A'" }, { kind: "rotate", id: "B2", of: "B", center: "O", angle: 90, label: "B'" }, { kind: "rotate", id: "C2", of: "C", center: "O", angle: 90, label: "C'" }, { kind: "polygon", vertices: ["A2", "B2", "C2"], color: "green" }]) },
-  { id: "homothety", label: "Homothétie", group: "Transformations", spec: base("Homothétie de centre O et de rapport 2", [-1, 9, 12, -1], [P("O", 1, 1), P("A", 2, 1), P("B", 3.5, 1), P("C", 2.5, 2.5), { kind: "polygon", vertices: ["A", "B", "C"] }, { kind: "dilate", id: "A2", of: "A", center: "O", ratio: 2, label: "A'" }, { kind: "dilate", id: "B2", of: "B", center: "O", ratio: 2, label: "B'" }, { kind: "dilate", id: "C2", of: "C", center: "O", ratio: 2, label: "C'" }, { kind: "polygon", vertices: ["A2", "B2", "C2"], color: "green" }]) },
-  { id: "line_graph", label: "Droite y = ax + b", group: "Fonctions", spec: base("Droite d'équation y = ax + b", [-6, 6, 6, -6], [{ kind: "slider", id: "a", label: "a", x1: -5, y1: -4.2, x2: -1.5, y2: -4.2, min: -3, value: 1, max: 3, step: 0.5 }, { kind: "slider", id: "b", label: "b", x1: -5, y1: -5.2, x2: -1.5, y2: -5.2, min: -4, value: 1, max: 4, step: 0.5 }, { kind: "function", expr: "a*x+b", color: "blue" }], { axes: true }) },
-  { id: "parabola", label: "Parabole", group: "Fonctions", spec: base("Parabole d'équation y = x² − 2x − 3", [-5, 8, 6, -6], [{ kind: "function", id: "f", expr: "x^2-2*x-3", color: "blue" }, P("S", 1, -4, "S", { color: "red" })], { axes: true }) },
-  { id: "two_curves", label: "Deux courbes et intersection", group: "Fonctions", spec: base("Résolution graphique", [-4, 6, 5, -3], [{ kind: "function", id: "f", expr: "x^2-1", color: "blue" }, { kind: "function", id: "g", expr: "x+1", color: "red" }, { kind: "intersection", of: ["f", "g"], index: 0, label: "A" }, { kind: "intersection", of: ["f", "g"], index: 1, label: "B" }], { axes: true }) },
-  { id: "tangent_curve", label: "Tangente à une courbe", group: "Fonctions", spec: base("Tangente à la courbe de f", [-4, 7, 5, -2], [{ kind: "function", id: "f", expr: "x^2/2", color: "blue" }, { kind: "tangent", graph: "f", x: 1, color: "red" }], { axes: true }) },
-  { id: "area", label: "Aire sous une courbe", group: "Fonctions", spec: base("Aire sous la courbe", [-1, 5, 6, -1], [{ kind: "function", id: "f", expr: "0.5*x^2", color: "blue", domain: [0, 5.5] }, { kind: "integral", graph: "f", from: 1, to: 4, color: "blue" }], { axes: true }) },
-  { id: "riemann", label: "Rectangles de Riemann", group: "Fonctions", spec: base("Somme de Riemann (n = 8)", [-1, 5, 6, -1], [{ kind: "function", id: "f", expr: "0.5*x^2", color: "blue", domain: [0, 5.5] }, { kind: "riemann", graph: "f", n: 8, type: "left", from: 0, to: 4 }], { axes: true }) },
-  { id: "unit_circle", label: "Cercle trigonométrique", group: "Fonctions", spec: base("Cercle trigonométrique", [-1.7, 1.5, 1.7, -1.5], [P("O", 0, 0), P("I", 1, 0), P("J", 0, 1), { kind: "circle", center: "O", through: "I", filled: false }, { kind: "slider", id: "t", label: "θ", x1: -1.4, y1: -1.25, x2: 0.4, y2: -1.25, min: 0, value: 1, max: 6.28 }, P("M", "cos(t)", "sin(t)", "M", { color: "red" })], { axes: true }) },
-  { id: "vectors", label: "Vecteurs et somme", group: "Vecteurs", spec: base("Somme de deux vecteurs", [-1, 6, 9, -1], [P("O", 1, 1), P("A", 5, 2, "A"), P("B", 3, 4, "B"), P("C", 7, 5, "C"), { kind: "vector", from: "O", to: "A" }, { kind: "vector", from: "O", to: "B", color: "red" }, { kind: "vector", from: "O", to: "C", color: "green" }]) },
-  { id: "field", label: "Champ de vecteurs", group: "Vecteurs", spec: base("Champ de vecteurs (−y ; x)", [-5, 5, 5, -5], [{ kind: "vectorfield", fx: "-y", fy: "x" }], { axes: true }) },
-  { id: "inequality", label: "Inéquation du plan", group: "Fonctions", spec: base("Demi-plan y ≥ x − 1", [-5, 5, 5, -5], [P("A", 0, -1, "", { hidden: true }), P("B", 3, 2, "", { hidden: true }), { kind: "line", id: "d", through: ["A", "B"], color: "navy" }, { kind: "inequality", line: "d", inverse: true }], { axes: true }) },
-  { id: "conic", label: "Conique (ellipse)", group: "Courbes", spec: base("Ellipse x²/9 + y²/4 = 1", [-5, 4, 5, -4], [{ kind: "implicit", expr: "x^2/9+y^2/4-1", color: "blue" }], { axes: true }) },
-  { id: "parametric", label: "Courbe paramétrée", group: "Courbes", spec: base("Cardioïde", [-4, 4, 3, -4], [{ kind: "parametric", x: "2*(1-cos(t))*cos(t)", y: "2*(1-cos(t))*sin(t)", t: [0, 6.2832], color: "red" }], { axes: true }) },
-];

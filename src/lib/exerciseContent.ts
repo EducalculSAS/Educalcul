@@ -1,3 +1,5 @@
+import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
+
 // Extrait de src/app/api/admin/exercises/route.ts pour être réutilisé tel
 // quel côté serveur (page /child/exercises/[id]) sans dupliquer une logique
 // sensible : elle retire les champs qui révèlent la bonne réponse avant
@@ -27,7 +29,10 @@ export function seededShuffle<T>(arr: T[], seed: string): T[] {
 // mélangée côté serveur (matchingOptions / shuffledItems) sans jamais exposer
 // la correspondance/l'ordre correct.
 export function stripBlockAnswers(block: any) {
-  const { correctAnswer, blanks, ...rest } = block;
+  const { correctAnswer, blanks, ...stripped } = block;
+  // Un point par élément pour les associations / catégories / trous : le client ne voit jamais les réponses, mais il
+  // doit connaître le bon total de points.
+  const rest = itemTotal(block) > 1 ? { ...stripped, points: blockMaxPoints(block) } : stripped;
   if (block.type === "matching" && Array.isArray(block.pairs)) {
     const { pairs, ...safe } = rest;
     return {

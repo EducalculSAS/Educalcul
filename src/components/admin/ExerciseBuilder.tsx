@@ -735,6 +735,8 @@ export default function ExerciseBuilder({
                                 </p>
                               )}
                               <ContentInsertToolbar
+                                content={block.content}
+                                onReplace={(next) => updateBlock(page.id, block.id, { content: next })}
                                 onInsert={(html) =>
                                   updateBlock(page.id, block.id, {
                                     content: `${block.content || ""}\n${html}\n`,
@@ -778,6 +780,8 @@ export default function ExerciseBuilder({
                           {block.type === "text" && (
                             <div>
                               <ContentInsertToolbar
+                                content={block.content}
+                                onReplace={(next) => updateBlock(page.id, block.id, { content: next })}
                                 onInsert={(html) =>
                                   updateBlock(page.id, block.id, {
                                     content: `${block.content || ""}\n${html}\n`,

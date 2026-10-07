@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
+import { blockMaxPoints } from "@/lib/exerciseScoring";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 
 type Kind = "exercise" | "quiz";
@@ -88,7 +89,7 @@ function recomputeExerciseScore(contentJson: any, results: Record<string, boolea
   const blocks = allExerciseBlocks(contentJson).filter((b: any) => b.type !== "text");
   let score = 0, total = 0;
   for (const b of blocks) {
-    const pts = b.points || 1;
+    const pts = blockMaxPoints(b, 1);
     total += pts;
     if (results[b.id]) score += pts;
   }

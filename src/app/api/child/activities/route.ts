@@ -1,5 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { blockMaxPoints } from "@/lib/exerciseScoring";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 import { passThreshold } from "@/lib/scorePercent";
@@ -131,7 +132,7 @@ export async function POST(req: Request) {
       let maxPoints = 0;
       if (type === "exercise" && Array.isArray(item?.content_json)) {
         item.content_json.forEach((p: any) =>
-          (p.blocks || []).forEach((b: any) => (maxPoints += b.points || 0))
+          (p.blocks || []).forEach((b: any) => (maxPoints += blockMaxPoints(b)))
         );
       } else if (type === "quiz" && Array.isArray(item?.content_json)) {
         item.content_json.forEach((q: any) => (maxPoints += q.points || 1));

@@ -5,6 +5,7 @@ import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { checkDifficultyAccess } from "@/lib/checkSubscription";
 import { gradeFreeAnswer } from "@/lib/gradeFreeAnswer";
+import { blockMaxPoints, itemsCorrect } from "@/lib/exerciseScoring";
 
 export const maxDuration = 60;
 
@@ -164,7 +165,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       if (!block) {
         return { block_id: item.block_id, score: 0, max_score: 0, is_correct: false, feedback: "Question introuvable." };
       }
-      const maxPoints = block.points || defaultPoints;
+      const maxPoints = blockMaxPoints(block, defaultPoints);
       const isImage = typeof item.answer === "string" && item.answer.startsWith("data:image");
 
       if (FREE_TYPES.has(block.type) || isImage) {
@@ -178,6 +179,22 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
           mode: block.type === "impossible_search" ? "justification" : "numeric",
         });
         return { block_id: item.block_id, score: r.score, max_score: maxPoints, is_correct: r.is_correct, feedback: r.feedback, unavailable: r.unavailable, reveal: r.unavailable ? undefined : revealFor(block) };
+      }
+
+      // Associations, catégories, trous : un point par élément bien placé (pas de « tout ou rien »).
+      const partial = itemsCorrect(block, item.answer);
+      if (partial) {
+        const all = partial.correct === partial.total;
+        const score = Math.round(((maxPoints * partial.correct) / partial.total) * 100) / 100;
+        const unit = block.type === "matching" ? "association" : block.type === "categorize" ? "élément bien classé" : "réponse";
+        return {
+          block_id: item.block_id,
+          score,
+          max_score: maxPoints,
+          is_correct: all,
+          feedback: all ? "Bonne réponse !" : partial.correct === 0 ? "Aucune bonne réponse cette fois." : `${partial.correct} sur ${partial.total} : ${partial.correct} ${unit}${partial.correct > 1 && unit !== "élément bien classé" ? "s" : ""} correct${partial.correct > 1 ? "s" : ""}.`,
+          reveal: revealFor(block),
+        };
       }
 
       const ok = gradeStructured(block, item.answer);

@@ -313,16 +313,33 @@ export default function QuizBuilder({
 
                 <div className="flex-1 space-y-4">
                   <div className="flex gap-4">
-                    <input
-                      type="text"
-                      value={question.text}
-                      onChange={(e) =>
-                        updateQuestion(question.id, { text: e.target.value })
-                      }
-                      className="flex-1 bg-white border border-[rgba(197,161,72,0.25)] rounded-lg p-2 font-medium focus:ring-blue-500 focus:border-blue-500"
-                      placeholder="Énoncé de la question..."
-                      aria-label="Énoncé de la question"
-                    />
+                    <div className="flex-1 space-y-1">
+                      {question.text.includes("<figure") ? (
+                        <textarea
+                          value={question.text}
+                          onChange={(e) => updateQuestion(question.id, { text: e.target.value })}
+                          rows={2}
+                          className="w-full bg-white border border-[rgba(197,161,72,0.25)] rounded-lg p-2 text-xs font-mono"
+                          aria-label="Énoncé de la question"
+                        />
+                      ) : (
+                        <input
+                          type="text"
+                          value={question.text}
+                          onChange={(e) =>
+                            updateQuestion(question.id, { text: e.target.value })
+                          }
+                          className="w-full bg-white border border-[rgba(197,161,72,0.25)] rounded-lg p-2 font-medium focus:ring-blue-500 focus:border-blue-500"
+                          placeholder="Énoncé de la question..."
+                          aria-label="Énoncé de la question"
+                        />
+                      )}
+                      <ContentInsertToolbar
+                        content={question.text}
+                        onReplace={(next) => updateQuestion(question.id, { text: next })}
+                        onInsert={(html) => updateQuestion(question.id, { text: `${question.text || ""}\n${html}\n` })}
+                      />
+                    </div>
 
                     <select
                       value={question.type}
@@ -490,6 +507,8 @@ export default function QuizBuilder({
                       <Lightbulb size={18} className="text-yellow-500 mt-2" />
                       <div className="flex-1 space-y-2">
                         <ContentInsertToolbar
+                          content={question.explanation || ""}
+                          onReplace={(next) => updateQuestion(question.id, { explanation: next })}
                           onInsert={(html) =>
                             updateQuestion(question.id, {
                               explanation: `${question.explanation || ""}\n${html}\n`,
