@@ -4,6 +4,9 @@ import { User } from "lucide-react";
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ParentProfileSettings from "@/components/parent/ParentProfileSettings";
+import ParentAlertSettings from "@/components/parent/ParentAlertSettings";
+import { getUserData } from "@/lib/userData";
+import { DEFAULT_ALERT_PREFS, type ParentAlertPrefs } from "@/lib/parentAlerts";
 
 export default async function ParentProfilePage() {
   const authUser = await getServerUser();
@@ -34,6 +37,7 @@ export default async function ParentProfilePage() {
       .eq("role", "child"),
   ]);
   const hasActiveSubscription = !!sub && sub.status === "active" && !sub.cancel_at_period_end;
+  const alertPrefs = await getUserData<ParentAlertPrefs>(profile.id, "alertprefs", DEFAULT_ALERT_PREFS);
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
@@ -56,6 +60,9 @@ export default async function ParentProfilePage() {
         initialHasActiveSubscription={hasActiveSubscription}
         initialChildrenCount={childrenCount ?? 0}
       />
+      <div className="container mx-auto max-w-4xl px-4 pb-12 -mt-4">
+        <ParentAlertSettings initial={alertPrefs} />
+      </div>
     </div>
   );
 }

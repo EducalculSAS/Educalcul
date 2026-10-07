@@ -5,6 +5,8 @@ import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ChildReportTabs from "@/components/parent/ChildReportTabs";
 import GlassButton from "@/components/ui/GlassButton";
+import ChildControls from "@/components/parent/ChildControls";
+import { getChildPrefs, studentSummary } from "@/lib/studentStats";
 
 interface ActivityItem {
   id: string;
@@ -43,6 +45,8 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
     .maybeSingle();
 
   if (!child || child.parent_id !== authUser.id) redirect("/parent/children");
+
+  const [prefs, summary] = await Promise.all([getChildPrefs(Number(childId)), studentSummary(Number(childId))]);
 
   const [{ data: quizzes }, { data: exercises }, { data: courseProgress }, { data: minigameSessions }] = await Promise.all([
     supabaseAdmin.from("user_quiz_attempts").select("id, completed_at, score, total_questions, quizzes(title)").eq("user_id", childId).order("completed_at", { ascending: false }).limit(30),
@@ -150,6 +154,13 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
             </div>
           ))}
         </div>
+
+        <ChildControls
+          childId={child.id}
+          childName={child.first_name || "votre enfant"}
+          initialPrefs={prefs}
+          summary={{ today: summary.today, dailyGoal: summary.dailyGoal, streak: summary.streak, weekTotal: summary.weekTotal, weeklyTarget: summary.weeklyTarget, daysSinceActive: summary.daysSinceActive }}
+        />
 
         <ChildReportTabs
           childId={childId}

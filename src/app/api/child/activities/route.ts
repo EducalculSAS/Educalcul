@@ -1,9 +1,10 @@
-﻿import { NextResponse } from "next/server";
+﻿import { NextResponse, after } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { blockMaxPoints } from "@/lib/exerciseScoring";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 import { passThreshold } from "@/lib/scorePercent";
+import { afterActivity } from "@/lib/parentAlerts";
 
 
 // GET: Fetch all activities for the current user
@@ -150,6 +151,15 @@ export async function POST(req: Request) {
     }
 
     let result;
+    // Un cours qui passe à « terminé » pour la première fois : le parent en est prévenu (voir parentAlerts).
+    let courseCompletedTitle: string | null = null;
+    if (type === "course" && status === "completed") {
+      const [{ data: before }, { data: course }] = await Promise.all([
+        supabaseAdmin.from("user_course_progress").select("status").eq("user_id", internalId).eq("course_id", itemId).maybeSingle(),
+        supabaseAdmin.from("courses").select("title").eq("id", itemId).maybeSingle(),
+      ]);
+      if (before?.status !== "completed") courseCompletedTitle = course?.title || "Cours";
+    }
     if (type === "exercise") {
       let attemptsHistory: any[] = [];
       if (status === "completed") {
@@ -246,6 +256,11 @@ export async function POST(req: Request) {
     }
 
     if (result?.error) throw result.error;
+
+    // Objectif du jour, série, alertes des parents : calculés après la réponse, sans faire attendre l'élève.
+    if (status === "completed" || type === "course") {
+      after(() => afterActivity(internalId, courseCompletedTitle ? { courseCompleted: { title: courseCompletedTitle } } : {}).catch((e) => console.error("[afterActivity]", e instanceof Error ? e.message : e)));
+    }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {

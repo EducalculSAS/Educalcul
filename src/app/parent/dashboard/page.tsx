@@ -11,6 +11,8 @@ import ChildReportLink from "@/components/parent/ChildReportLink";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import GlassButton from "@/components/ui/GlassButton";
+import { Flame, Target, FileText } from "lucide-react";
+import { studentSummaries } from "@/lib/studentStats";
 
 interface ChildStats {
   exerciseCount: number;
@@ -91,8 +93,11 @@ export default async function ParentDashboard() {
     .order("first_name");
 
   const childrenBase = (childrenRows || []) as ChildRow[];
-  const stats = await Promise.all(childrenBase.map((c) => fetchChildStats(c.id)));
-  const children = childrenBase.map((c, i) => ({ ...c, stats: stats[i] }));
+  const [stats, summaries] = await Promise.all([
+    Promise.all(childrenBase.map((c) => fetchChildStats(c.id))),
+    studentSummaries(childrenBase.map((c) => Number(c.id))),
+  ]);
+  const children = childrenBase.map((c, i) => ({ ...c, stats: stats[i], summary: summaries.get(Number(c.id)) }));
 
   const totalExercises = children.reduce((a, c) => a + (c.stats?.exerciseCount || 0), 0);
 
@@ -250,6 +255,25 @@ export default async function ParentDashboard() {
                           <div className="text-xs text-gray-500">Réussite</div>
                         </div>
                       </div>
+                      {child.summary && (
+                        <div className="rounded-xl border border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]/50 p-3 space-y-2">
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="flex items-center gap-1.5 text-gray-600"><Target className="w-4 h-4 text-[var(--greek-gold)]" /> Aujourd&apos;hui</span>
+                            <strong className={child.summary.goalReached ? "text-green-600" : "text-[var(--greek-blue)]"}>{child.summary.today}/{child.summary.dailyGoal}</strong>
+                          </div>
+                          <div className="flex items-center justify-between text-sm">
+                            <span className="flex items-center gap-1.5 text-gray-600"><Flame className={`w-4 h-4 ${child.summary.streak > 0 ? "text-orange-500" : "text-gray-300"}`} /> Série</span>
+                            <strong className="text-[var(--greek-blue)]">{child.summary.streak} j</strong>
+                          </div>
+                          <div>
+                            <div className="flex justify-between text-xs text-gray-500 mb-1"><span>Cette semaine</span><span>{child.summary.weekTotal}{child.summary.weeklyTarget ? ` / ${child.summary.weeklyTarget}` : ""}</span></div>
+                            <div className="h-1.5 rounded-full bg-gray-200 overflow-hidden"><div className="h-full rounded-full bg-[var(--greek-gold)]" style={{ width: `${child.summary.weeklyTarget ? Math.min(100, Math.round((child.summary.weekTotal / child.summary.weeklyTarget) * 100)) : Math.min(100, child.summary.weekTotal * 10)}%` }} /></div>
+                          </div>
+                          <p className={`text-xs font-semibold ${child.summary.daysSinceActive === null ? "text-gray-400" : child.summary.daysSinceActive >= 4 ? "text-[var(--greek-bronze)]" : "text-green-600"}`}>
+                            {child.summary.daysSinceActive === null ? "Pas encore commencé" : child.summary.daysSinceActive === 0 ? "Actif aujourd'hui" : `Inactif depuis ${child.summary.daysSinceActive} jour${child.summary.daysSinceActive > 1 ? "s" : ""}`}
+                          </p>
+                        </div>
+                      )}
                       {child.stats?.lastActivity && (
                         <div className="pt-3 border-t border-[rgba(197,161,72,0.25)]">
                           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Dernière activité</p>
@@ -269,7 +293,10 @@ export default async function ParentDashboard() {
 
                   {/* Footer */}
                   <div className="p-4 bg-gray-50 border-t border-[rgba(197,161,72,0.25)]">
-                    <ChildReportLink childId={child.id} />
+                    <div className="flex items-center justify-between gap-3">
+                      <ChildReportLink childId={child.id} />
+                      <Link href={`/parent/child/${child.id}/bulletin`} className="text-xs font-bold text-[var(--greek-blue)] hover:underline flex items-center gap-1 whitespace-nowrap"><FileText className="w-3.5 h-3.5" /> Bulletin</Link>
+                    </div>
                   </div>
                 </div>
               );

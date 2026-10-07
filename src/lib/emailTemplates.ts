@@ -650,3 +650,31 @@ L'équipe Educalcul`,
     }),
   };
 }
+
+/** Alerte parent : un enfant n'a plus rien fait depuis plusieurs jours (désactivable dans Profil > Alertes). */
+export function childInactiveEmail(firstName: string, childName: string, days: number) {
+  const subject = `${childName} n'a pas travaillé depuis ${days} jours`;
+  return {
+    subject,
+    textPart: `Bonjour ${firstName},
+
+${childName} n'a rien fait sur Educalcul depuis ${days} jours. Un petit mot d'encouragement, ou un objectif plus léger pour la semaine, peut suffire à relancer la machine.
+
+Voir le suivi : ${EMAIL_BASE_URL}/parent/dashboard
+
+Vous pouvez régler ou couper cette alerte dans Profil > Alertes.
+
+L'équipe Educalcul`,
+    htmlPart: buildEmailHtml({
+      title: "Un petit coup de pouce ?",
+      preheader: `${childName} n'a rien fait depuis ${days} jours`,
+      body: `
+        ${hello(firstName)}
+        ${p(`<strong>${escapeHtml(childName)}</strong> n'a rien fait sur Educalcul depuis <strong>${days} jours</strong>.`)}
+        ${emailCallout("Un petit mot d'encouragement, ou un objectif plus léger pour la semaine (à régler dans le suivi de votre enfant), peut suffire à relancer la machine.", "warning")}
+        ${p("Vous pouvez régler ou couper cette alerte dans Profil &gt; Alertes.", true)}
+      `,
+      cta: { label: "Voir le suivi", url: `${EMAIL_BASE_URL}/parent/dashboard` },
+    }),
+  };
+}

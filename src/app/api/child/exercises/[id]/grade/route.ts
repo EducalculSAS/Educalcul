@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -8,6 +8,7 @@ import { gradeFreeAnswer } from "@/lib/gradeFreeAnswer";
 import { blockMaxPoints, itemsCorrect } from "@/lib/exerciseScoring";
 import { recordResults, type SrsResult } from "@/lib/srs";
 import { loadSources, parseReviewKey } from "@/lib/reviewSession";
+import { afterActivity } from "@/lib/parentAlerts";
 
 export const maxDuration = 60;
 
@@ -233,6 +234,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
         if (key) srsResults.push({ ...key, correct: r.is_correct });
       }
       await recordResults(me.id, srsResults, { review: id === "review" }).catch((e) => console.error("[srs]", e instanceof Error ? e.message : e));
+      // Une séance « à revoir » compte dans l'objectif du jour et la série.
+      if (id === "review" && srsResults.length) after(() => afterActivity(me.id).catch(() => {}));
     }
 
     // Badges : une seule vérification par envoi (en arrière-plan).
