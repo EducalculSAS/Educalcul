@@ -607,10 +607,11 @@ function SubscriptionPageContent({
                         </td>
                         <td className="py-4 text-right">
                           {bill.pdf_url ? (
-                            <a href={bill.pdf_url} target="_blank" rel="noopener noreferrer" className="text-[var(--greek-blue)] hover:underline flex items-center justify-end">
-                              <Download className="w-4 h-4 mr-1" />
-                              PDF
-                            </a>
+                            <div className="flex justify-end">
+                              <GlassButton href={bill.pdf_url} variant="outline" size="sm">
+                                <Download className="w-4 h-4" /> PDF
+                              </GlassButton>
+                            </div>
                           ) : (
                             <span className="text-gray-400 text-sm">Indisponible</span>
                           )}

@@ -880,13 +880,12 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             <>
               {/* En mode révision : toujours visible. Sinon : bouton toggle */}
               {!showReview && (
-                <button
-                  onClick={() => setShowExplanation(v => !v)}
-                  className="mb-4 flex items-center gap-2 text-sm font-semibold text-[var(--greek-blue)] hover:text-blue-800 transition-colors"
-                >
-                  <HelpCircle className="w-4 h-4" />
-                  {showExplanation ? "Masquer l'explication" : "Voir l'explication"}
-                </button>
+                <div className="mb-4">
+                  <GlassButton onClick={() => setShowExplanation(v => !v)} variant="outline" size="sm">
+                    <HelpCircle className="w-4 h-4" />
+                    {showExplanation ? "Masquer l'explication" : "Voir l'explication"}
+                  </GlassButton>
+                </div>
               )}
               {(showReview || showExplanation) && (
                 <div className="mb-8 p-6 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">

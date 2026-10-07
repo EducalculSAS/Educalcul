@@ -24,6 +24,7 @@ import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { A11Y_INIT_SCRIPT } from "@/lib/a11y";
 import "@fontsource/opendyslexic/400.css";
 import "@fontsource/opendyslexic/700.css";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const BASE = "https://educalcul.com";
 
@@ -202,6 +203,7 @@ export default function RootLayout({
             <SessionStillHereModal />
             <ThemeSync />
             <JsxFigureEnhancer />
+            <ScrollReveal />
           </ConfirmProvider>
         </ToastProvider>
       </body>

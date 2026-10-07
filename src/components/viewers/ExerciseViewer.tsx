@@ -80,9 +80,9 @@ export function AdminAttemptControls({
         </GlassButton>
       </div>
       {!editing ? (
-        <button type="button" onClick={() => setEditing(true)} className="text-xs font-semibold text-purple-600 hover:underline">
+        <GlassButton onClick={() => setEditing(true)} variant="outline" size="sm">
           Modifier la réponse enregistrée
-        </button>
+        </GlassButton>
       ) : (
         <div className="space-y-1.5">
           <textarea
@@ -1792,14 +1792,14 @@ export default function ExerciseViewer({
                       </div>
                     ))}
                     {(hintsShown[block.id] ?? 0) < block.hints.length && (
-                      <button
-                        type="button"
+                      <GlassButton
                         onClick={() => setHintsShown((prev) => ({ ...prev, [block.id]: (prev[block.id] ?? 0) + 1 }))}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--greek-blue)] hover:underline"
+                        variant="outline"
+                        size="sm"
                       >
                         <Lightbulb className="w-3.5 h-3.5" />
                         {(hintsShown[block.id] ?? 0) === 0 ? "Un coup de pouce ?" : "Encore un coup de pouce"} ({hintsShown[block.id] ?? 0}/{block.hints.length})
-                      </button>
+                      </GlassButton>
                     )}
                   </div>
                 )}

@@ -177,22 +177,18 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
             </div>
 
             <div className="px-8 py-4 border-t border-gray-100 flex items-center justify-between">
-              <button
-                onClick={() => tourIndex === 0 ? setStep("welcome") : setTourIndex(i => i - 1)}
-                className="flex items-center gap-1 text-gray-400 hover:text-[var(--greek-blue)] transition-colors font-semibold text-sm"
-              >
+              <GlassButton onClick={() => tourIndex === 0 ? setStep("welcome") : setTourIndex(i => i - 1)} variant="ghost" size="sm">
                 <ChevronLeft className="w-4 h-4" /> Retour
-              </button>
+              </GlassButton>
               <div className="flex gap-1.5">
                 {TOUR_STEPS.map((_, i) => (
                   <div key={i} className={`h-1.5 rounded-full transition-all ${i === tourIndex ? "bg-[var(--greek-gold)] w-5" : "bg-gray-200 w-1.5"}`} />
                 ))}
               </div>
               {tourIndex < TOUR_STEPS.length - 1 ? (
-                <button onClick={() => setTourIndex(i => i + 1)}
-                  className="flex items-center gap-1 text-[var(--greek-blue)] font-bold text-sm hover:text-blue-800">
+                <GlassButton onClick={() => setTourIndex(i => i + 1)} variant="navy" size="sm">
                   Suivant <ChevronRight className="w-4 h-4" />
-                </button>
+                </GlassButton>
               ) : (
                 <GlassButton onClick={startQuizOrSkip} variant="navy" size="sm" disabled={!questionsLoaded}>
                   Mini-test ! <ChevronRight className="w-4 h-4" />
@@ -222,14 +218,9 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
               </p>
               <div className="grid grid-cols-2 gap-3">
                 {questions[quizIndex]?.options.map((opt, i) => (
-                  <button
-                    key={i}
-                    onClick={() => handleAnswer(i)}
-                    disabled={submitting}
-                    className="py-4 px-4 bg-gray-50 border border-[rgba(197,161,72,0.25)] rounded-xl font-semibold text-gray-700 hover:bg-[var(--greek-blue)] hover:text-white hover:border-[var(--greek-blue)] transition-all text-sm shadow-sm disabled:opacity-50"
-                  >
+                  <GlassButton key={i} onClick={() => handleAnswer(i)} disabled={submitting} variant="outline" rounded="xl" fullWidth>
                     {opt}
-                  </button>
+                  </GlassButton>
                 ))}
               </div>
             </div>

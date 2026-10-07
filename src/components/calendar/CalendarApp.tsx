@@ -306,14 +306,9 @@ export default function CalendarApp({
                   </button>
                 );
               })}
-              <button
-                type="button"
-                onClick={() => setHideDone((v) => !v)}
-                aria-pressed={hideDone}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border border-[rgba(15,30,58,0.12)] text-[var(--text-muted)] hover:bg-[var(--greek-cream)]"
-              >
+              <GlassButton onClick={() => setHideDone((v) => !v)} variant={hideDone ? "navy" : "ghost"} size="sm">
                 {hideDone ? <EyeOff className="w-3 h-3" /> : <Eye className="w-3 h-3" />} {hideDone ? "Faits masqués" : "Masquer les faits"}
-              </button>
+              </GlassButton>
             </div>
             <div className="flex flex-wrap gap-2">
               {planTarget && (
@@ -543,9 +538,11 @@ function WeekGrid({
                     {ev.ownerName && <span className="block text-[11px] text-[var(--text-muted)]">{ev.ownerName}</span>}
                   </button>
                   {tickable && (
-                    <button type="button" onClick={() => onToggleDone(ev)} className="mt-1 text-[11px] font-semibold text-emerald-700 inline-flex items-center gap-1 hover:underline">
-                      <CheckCircle2 className="w-3.5 h-3.5" /> {ev.completed_at ? "Fait" : "Marquer fait"}
-                    </button>
+                    <div className="mt-1.5">
+                      <GlassButton onClick={() => onToggleDone(ev)} variant="outline" size="sm">
+                        <CheckCircle2 className="w-3.5 h-3.5" /> {ev.completed_at ? "Fait" : "Marquer fait"}
+                      </GlassButton>
+                    </div>
                   )}
                 </div>
               );

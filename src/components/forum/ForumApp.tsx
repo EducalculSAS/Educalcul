@@ -147,13 +147,9 @@ export default function ForumApp({ role }: { role: ForumRole }) {
           <div className="flex items-center justify-between px-2 pt-1 pb-2">
             <p className="text-xs font-bold uppercase tracking-widest text-[var(--greek-bronze)]">Catégories</p>
             {role === "admin" && (
-              <button
-                type="button"
-                onClick={() => setManagerOpen(true)}
-                className="text-xs font-semibold text-[var(--greek-blue)] hover:underline inline-flex items-center gap-1"
-              >
+              <GlassButton onClick={() => setManagerOpen(true)} variant="ghost" size="sm">
                 <Settings2 className="w-3.5 h-3.5" /> Gérer
-              </button>
+              </GlassButton>
             )}
           </div>
           <nav className="flex lg:flex-col gap-1 overflow-x-auto lg:overflow-visible pb-1 lg:pb-0 -mx-1 px-1" aria-label="Catégories du forum">

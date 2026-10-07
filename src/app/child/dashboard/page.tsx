@@ -294,9 +294,9 @@ export default async function ChildDashboard() {
             <div className="text-center py-8 text-gray-400">
               <Trophy className="w-10 h-10 mx-auto mb-2 opacity-20" />
               <p className="text-sm">Complète des exercices pour gagner tes premiers badges !</p>
-              <Link href="/child/badges" className="mt-3 inline-block text-sm text-[var(--greek-blue)] font-bold hover:underline">
-                Voir les objectifs
-              </Link>
+              <div className="mt-3">
+                <GlassButton href="/child/badges" variant="outline" size="sm">Voir les objectifs</GlassButton>
+              </div>
             </div>
           ) : (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

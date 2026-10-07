@@ -177,16 +177,18 @@ function TwoFactorVerifyContent() {
           </GlassButton>
         </form>
 
-        <button
-          type="button"
-          onClick={method === "totp" ? fakeResend : () => void sendCode()}
-          disabled={sending || cooldown > 0}
-          className="w-full flex items-center justify-center gap-2 mt-4 text-xs font-semibold transition-opacity disabled:opacity-40"
-          style={{ color: "var(--greek-gold)" }}
-        >
-          <RotateCcw className="w-3 h-3" />
-          {cooldown > 0 ? `Renvoyer le code (${cooldown}s)` : sending ? "Envoi…" : "Renvoyer le code"}
-        </button>
+        <div className="mt-4">
+          <GlassButton
+            onClick={method === "totp" ? fakeResend : () => void sendCode()}
+            disabled={sending || cooldown > 0}
+            variant="outline"
+            size="sm"
+            fullWidth
+          >
+            <RotateCcw className="w-3 h-3" />
+            {cooldown > 0 ? `Renvoyer le code (${cooldown}s)` : sending ? "Envoi…" : "Renvoyer le code"}
+          </GlassButton>
+        </div>
       </div>
     </div>
   );

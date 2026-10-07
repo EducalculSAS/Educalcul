@@ -6,6 +6,7 @@ import { dueItems, getSrs, SRS_INTERVALS, srsKey } from "@/lib/srs";
 import { loadSources } from "@/lib/reviewSession";
 import { daysBetween, parisDay } from "@/lib/studentStats";
 import ReviewRunner from "@/components/child/ReviewRunner";
+import GlassButton from "@/components/ui/GlassButton";
 
 const snippet = (html: unknown) =>
   String(html ?? "")
@@ -81,7 +82,9 @@ export default async function RevisionsPage() {
             <div className="text-center py-10 text-gray-400">
               <CheckCircle2 className="w-10 h-10 mx-auto mb-2 opacity-30" />
               <p className="text-sm">Aucune erreur à retravailler : continue comme ça !</p>
-              <Link href="/child/exercises" className="mt-3 inline-block text-sm text-[var(--greek-blue)] font-bold hover:underline">Faire un exercice</Link>
+              <div className="mt-3">
+                <GlassButton href="/child/exercises" variant="outline" size="sm">Faire un exercice</GlassButton>
+              </div>
             </div>
           ) : (
             <ul className="divide-y divide-[rgba(197,161,72,0.2)]">
@@ -104,9 +107,9 @@ export default async function RevisionsPage() {
                     </div>
                   </div>
                   {source!.courseId ? (
-                    <Link href={`/child/cours/${source!.courseId}`} className="text-sm font-bold text-[var(--greek-blue)] hover:underline whitespace-nowrap">
+                    <GlassButton href={`/child/cours/${source!.courseId}`} variant="outline" size="sm" className="whitespace-nowrap">
                       Revoir le cours
-                    </Link>
+                    </GlassButton>
                   ) : null}
                 </li>
               ))}

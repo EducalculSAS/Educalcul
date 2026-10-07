@@ -267,9 +267,9 @@ export default function ForumThreadView({
           </p>
           <AuthorLine author={solution.author} date={solution.created_at} viewerRole={role} returnTo={returnTo} size="xs" />
           <ForumText text={solution.content} className="mt-3" />
-          <a href={`#reponse-${solution.id}`} className="inline-block mt-3 text-xs font-semibold text-emerald-700 hover:underline">
-            Voir dans la discussion
-          </a>
+          <div className="mt-3">
+            <GlassButton href={`#reponse-${solution.id}`} variant="outline" size="sm">Voir dans la discussion</GlassButton>
+          </div>
         </div>
       )}
 
@@ -317,7 +317,7 @@ export default function ForumThreadView({
                   <span className="font-semibold text-[var(--greek-blue)]">{quote.author?.displayName ?? "Utilisateur"} : </span>
                   {quote.content}
                 </p>
-                <button type="button" onClick={() => setQuote(null)} className="text-xs font-semibold text-[var(--greek-blue)] hover:underline shrink-0">Retirer</button>
+                <GlassButton onClick={() => setQuote(null)} variant="ghost" size="sm" className="shrink-0">Retirer</GlassButton>
               </div>
             )}
             <Composer label="Ta réponse" value={reply} onChange={setReply} max={COMMENT_MAX} placeholder="Aide, explique, pose une question…" minRows={4} />

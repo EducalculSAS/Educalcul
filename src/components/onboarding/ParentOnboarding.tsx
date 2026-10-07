@@ -187,12 +187,9 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
 
             {/* Nav */}
             <div className="px-8 py-5 border-t border-gray-100 flex items-center justify-between">
-              <button
-                onClick={() => tourIndex === 0 ? setStep("welcome") : setTourIndex(i => i - 1)}
-                className="flex items-center gap-1 text-gray-400 hover:text-[var(--greek-blue)] transition-colors font-semibold text-sm"
-              >
+              <GlassButton onClick={() => tourIndex === 0 ? setStep("welcome") : setTourIndex(i => i - 1)} variant="ghost" size="sm">
                 <ChevronLeft className="w-4 h-4" /> Précédent
-              </button>
+              </GlassButton>
 
               {/* Dots */}
               <div className="flex gap-2">
@@ -205,12 +202,9 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
               </div>
 
               {tourIndex < TOUR_STEPS.length - 1 ? (
-                <button
-                  onClick={() => setTourIndex(i => i + 1)}
-                  className="flex items-center gap-1 text-[var(--greek-blue)] font-bold text-sm hover:text-blue-800 transition-colors"
-                >
+                <GlassButton onClick={() => setTourIndex(i => i + 1)} variant="navy" size="sm">
                   Suivant <ChevronRight className="w-4 h-4" />
-                </button>
+                </GlassButton>
               ) : (
                 <GlassButton onClick={() => setStep("end")} variant="navy" size="sm">
                   Terminer <ChevronRight className="w-4 h-4" />

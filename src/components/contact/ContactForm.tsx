@@ -51,13 +51,9 @@ export default function ContactForm() {
           </div>
           <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-2">Message envoyé</h3>
           <p className="text-[var(--text-muted)] text-sm">Nous vous répondrons dans les plus brefs délais.</p>
-          <button
-            onClick={() => setStatus("idle")}
-            className="mt-6 text-sm font-semibold transition-colors hover:text-[var(--greek-gold)]"
-            style={{ color: "var(--greek-blue)" }}
-          >
-            Envoyer un autre message
-          </button>
+          <div className="mt-6">
+            <GlassButton onClick={() => setStatus("idle")} variant="outline" size="sm">Envoyer un autre message</GlassButton>
+          </div>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">

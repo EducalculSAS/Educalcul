@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Smartphone, Loader2, X } from "lucide-react";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface Session {
   id: string;
@@ -69,15 +70,7 @@ export default function UserSessionsList() {
                 </span>
               </span>
               {!s.is_current && (
-                <button
-                  onClick={() => revoke(s.id)}
-                  disabled={revoking === s.id}
-                  className="text-gray-400 hover:text-red-600 transition-colors shrink-0"
-                  title="Déconnecter cet appareil"
-                  aria-label="Déconnecter cet appareil"
-                >
-                  {revoking === s.id ? <Loader2 className="w-4 h-4 animate-spin" aria-hidden="true" /> : <X className="w-4 h-4" aria-hidden="true" />}
-                </button>
+                <GlassIconButton icon={X} color="red" size="sm" onClick={() => revoke(s.id)} disabled={revoking === s.id} loading={revoking === s.id} aria-label="Déconnecter cet appareil" />
               )}
             </div>
           ))}

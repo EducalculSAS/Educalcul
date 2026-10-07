@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
 import { Fingerprint, Trash2, Loader2, CheckCircle } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface Credential {
   id: string;
@@ -168,25 +170,12 @@ export default function WebAuthnCard() {
                   {c.last_used_at ? ` · utilisée le ${new Date(c.last_used_at).toLocaleDateString("fr-FR")}` : ""}
                 </p>
               </div>
-              <button
-                type="button"
-                onClick={() => remove(c.id)}
-                disabled={removingId === c.id}
-                aria-label="Supprimer cette clé"
-                className="text-gray-400 hover:text-red-600 disabled:opacity-50"
-              >
-                {removingId === c.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
-              </button>
+              <GlassIconButton icon={Trash2} color="red" size="sm" onClick={() => remove(c.id)} disabled={removingId === c.id} loading={removingId === c.id} aria-label="Supprimer cette clé" />
             </div>
           ))}
-          <button
-            type="button"
-            onClick={enable}
-            disabled={registering}
-            className="text-xs font-semibold text-[var(--greek-blue)] hover:underline disabled:opacity-50 mt-2"
-          >
-            + Ajouter un autre appareil
-          </button>
+          <div className="mt-2">
+            <GlassButton onClick={enable} disabled={registering} variant="outline" size="sm">+ Ajouter un autre appareil</GlassButton>
+          </div>
         </div>
       )}
     </div>

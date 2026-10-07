@@ -2939,3 +2939,17 @@ html[data-theme="dark"] .family-foot { background: rgba(255, 255, 255, 0.03); }
   .glow-ring::before,
   .family-card::before { animation: none; --ring-angle: 300deg; }
 }
+
+/* ---------- Apparition progressive façon Apple (ScrollReveal) ---------- */
+@keyframes reveal-apple {
+  from { opacity: 0; transform: translateY(28px) scale(0.975); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .reveal-pre { opacity: 0; transform: translateY(28px) scale(0.975); }
+  .reveal-run { animation: reveal-apple 0.95s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+}
+@media print {
+  .reveal-pre { opacity: 1 !important; transform: none !important; }
+}
+

@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { Bell, Check, MessageSquare, Trophy, CreditCard, AlertCircle, Info } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import GlassButton from "@/components/ui/GlassButton";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface Notification {
   id: number;
@@ -104,18 +106,19 @@ export default function NotificationBell() {
 
   return (
     <div ref={panelRef} className="relative">
-      <button
-        onClick={() => { setOpen(!open); if (!open) fetchNotifications(); }}
-        className="relative p-2 text-[var(--greek-cream)] hover:text-[var(--greek-gold)] transition-colors"
-        aria-label="Notifications"
-      >
-        <Bell className="w-5 h-5" />
+      <span className="relative inline-block">
+        <GlassIconButton
+          icon={Bell}
+          color="white"
+          aria-label={unread > 0 ? `Notifications (${unread} non lues)` : "Notifications"}
+          onClick={() => { setOpen(!open); if (!open) fetchNotifications(); }}
+        />
         {unread > 0 && (
-          <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1 leading-none">
+          <span className="pointer-events-none absolute -top-1 -right-1 z-10 min-w-[18px] h-[18px] bg-red-500 text-white text-[10px] font-bold rounded-full flex items-center justify-center px-1 leading-none shadow-[0_2px_6px_rgba(220,38,38,0.5)]">
             {unread > 9 ? "9+" : unread}
           </span>
         )}
-      </button>
+      </span>
 
       {open && (
         <div className="absolute right-0 top-full mt-2 w-80 rounded-2xl shadow-2xl border border-[rgba(197,161,72,0.25)] z-[9999] overflow-hidden bg-white/85 backdrop-blur-[24px] backdrop-saturate-[1.4]">
@@ -124,9 +127,9 @@ export default function NotificationBell() {
             <h3 className="font-bold text-[var(--greek-blue)] text-sm">Notifications</h3>
             <div className="flex items-center gap-2">
               {unread > 0 && (
-                <button onClick={markAllRead} className="text-xs text-gray-400 hover:text-[var(--greek-blue)] transition-colors flex items-center gap-1">
+                <GlassButton onClick={markAllRead} variant="ghost" size="sm">
                   <Check className="w-3 h-3" /> Tout lire
-                </button>
+                </GlassButton>
               )}
               <GlassCloseButton onClick={() => setOpen(false)} size="sm" aria-label="Fermer le panneau de notifications" />
             </div>

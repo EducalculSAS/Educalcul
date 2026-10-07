@@ -8,6 +8,7 @@ import { User, Mail, Lock, AlertCircle, Loader2, CheckCircle } from "lucide-reac
 import PasswordStrength from "@/components/PasswordStrength";
 import { validatePassword } from "@/lib/validation";
 import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
+import GlassButton from "@/components/ui/GlassButton";
 
 const ROLE = "parent" as const;
 
@@ -218,16 +219,14 @@ export default function CompleteGoogleProfile() {
             </div>
           </div>
 
-          <button
-            type="submit" disabled={saving}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-bold text-sm text-white transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed mt-2"
-            style={{ background: "var(--greek-blue)", boxShadow: "0 4px 16px rgba(15,30,58,0.25)" }}
-          >
-            {saving
-              ? <><Loader2 className="w-4 h-4 animate-spin" /> Chargement…</>
-              : <><CheckCircle className="w-4 h-4" /> Choisir un abonnement</>
-            }
-          </button>
+          <div className="mt-2">
+            <GlassButton type="submit" disabled={saving} variant="navy" rounded="xl" fullWidth>
+              {saving
+                ? <><Loader2 className="w-4 h-4 animate-spin" /> Chargement…</>
+                : <><CheckCircle className="w-4 h-4" /> Choisir un abonnement</>
+              }
+            </GlassButton>
+          </div>
         </form>
       </div>
     </div>

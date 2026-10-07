@@ -63,9 +63,9 @@ export default function ChildFamilyCard({ entry, variant }: { entry: FamilyEntry
               <li className="flex items-center gap-2"><CalendarClock className="w-4 h-4 text-[var(--greek-gold)] shrink-0" /> {child.last_active_at ? `Vu ${relativeTime(child.last_active_at)}` : "Jamais connecté"}</li>
               <li className="flex items-center gap-2"><TrendingUp className="w-4 h-4 text-[var(--greek-gold)] shrink-0" /> {stats.quizCount} quiz terminé{stats.quizCount > 1 ? "s" : ""}</li>
             </ul>
-            <Link href={`/parent/child/${id}`} className="inline-block mt-2.5 text-xs font-bold text-[var(--greek-blue)] hover:text-[var(--greek-gold)] transition-colors">
-              Régler les objectifs et le repos
-            </Link>
+            <div className="mt-3">
+              <GlassButton href={`/parent/child/${id}`} variant="outline" size="sm">Régler les objectifs et le repos</GlassButton>
+            </div>
           </div>
         ) : undefined,
         footer: (

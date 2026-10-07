@@ -12,6 +12,7 @@ import {
 } from "./calendarUtils";
 import DayPanel from "./DayPanel";
 import EventEditor, { type EventDraft } from "./EventEditor";
+import GlassButton from "@/components/ui/GlassButton";
 
 /**
  * Mini-calendrier des tableaux de bord : le mois en pastilles et les trois
@@ -112,9 +113,9 @@ export default function MiniCalendarWidget({
     <div className="bg-white rounded-[20px] p-5 shadow-sm border border-[rgba(197,161,72,0.25)]">
       <div className="flex items-center justify-between mb-3">
         <h3 className="font-bold text-[var(--greek-blue)] flex items-center gap-2"><CalendarDays className="w-5 h-5 text-[var(--greek-gold)]" /> {title}</h3>
-        <Link href={fullCalendarHref} className="text-xs font-semibold text-[var(--greek-blue)] hover:underline inline-flex items-center gap-1">
+        <GlassButton href={fullCalendarHref} variant="outline" size="sm">
           Ouvrir <ArrowRight className="w-3.5 h-3.5" />
-        </Link>
+        </GlassButton>
       </div>
 
       <div className="flex items-center justify-between mb-2">
@@ -135,7 +136,7 @@ export default function MiniCalendarWidget({
               type="button"
               onClick={() => setDayOpen(iso)}
               aria-label={`${iso} : ${list.length} élément(s)`}
-              className={`h-9 rounded-lg flex flex-col items-center justify-center gap-0.5 transition-colors hover:bg-[var(--greek-cream)] ${inMonth ? "" : "opacity-35"} ${isToday ? "bg-[rgba(197,161,72,0.15)] ring-1 ring-[var(--greek-gold)]" : ""}`}
+              className={`h-9 rounded-lg flex flex-col items-center justify-center gap-0.5 transition-all duration-200 hover:bg-[rgba(197,161,72,0.2)] hover:shadow-[0_6px_14px_rgba(197,161,72,0.25)] hover:-translate-y-0.5 hover:scale-105 active:scale-95 ${inMonth ? "" : "opacity-35"} ${isToday ? "bg-[rgba(197,161,72,0.15)] ring-1 ring-[var(--greek-gold)]" : ""}`}
             >
               <span className={`text-[11px] font-semibold ${isToday ? "text-[var(--greek-bronze)]" : "text-[var(--greek-blue)]"}`}>{fromIso(iso).getDate()}</span>
               <span className="flex gap-0.5 h-1.5">
@@ -150,7 +151,7 @@ export default function MiniCalendarWidget({
         {next.length === 0 ? (
           <p className="text-xs text-[var(--text-muted)]">Rien de prévu prochainement.</p>
         ) : next.map((ev) => (
-          <button key={ev.id} type="button" onClick={() => setDayOpen(ev.start_date)} className="w-full text-left flex items-center gap-2 rounded-lg px-1.5 py-1 hover:bg-[var(--greek-cream)]">
+          <button key={ev.id} type="button" onClick={() => setDayOpen(ev.start_date)} className="w-full text-left flex items-center gap-2 rounded-xl px-2 py-1.5 transition-all duration-200 hover:bg-[rgba(197,161,72,0.16)] hover:translate-x-0.5">
             <span className="w-2 h-2 rounded-full shrink-0" style={{ background: getEventTypeMeta(ev.event_type).color }} />
             <span className="text-sm font-medium text-[var(--greek-blue)] truncate flex-1">{ev.title}</span>
             <span className="text-[11px] text-[var(--text-muted)] shrink-0">{relativeDay(ev.start_date)}</span>

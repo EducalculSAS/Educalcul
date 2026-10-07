@@ -97,9 +97,11 @@ export default function DayPanel({
                     {ev.reason && <p className="text-xs text-[var(--greek-bronze)] mt-2 italic">Pourquoi : {ev.reason}</p>}
                     {course && (
                       href ? (
-                        <Link href={href} className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[var(--greek-blue)] hover:underline">
-                          <BookOpen className="w-4 h-4 text-[var(--greek-gold)]" /> Ouvrir le cours : {course}
-                        </Link>
+                        <div className="mt-3">
+                          <GlassButton href={href} variant="outline" size="sm">
+                            <BookOpen className="w-4 h-4" /> Ouvrir le cours : {course}
+                          </GlassButton>
+                        </div>
                       ) : (
                         <p className="mt-3 inline-flex items-center gap-2 text-sm text-[var(--greek-blue)]"><BookOpen className="w-4 h-4 text-[var(--greek-gold)]" /> {course}</p>
                       )

@@ -16,6 +16,7 @@ import { EXPERTES_LEVEL, PREMIERE_TRACKS, TERMINALE_TRACKS, hasSpecialtyChoice, 
 import { isValidEmail } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
 import LevelRequestCard from "@/components/parent/LevelRequestCard";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface WebauthnCredential {
   id: string;
@@ -452,13 +453,10 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                       Annuler
                     </GlassButton>
                   </div>
-                  <button
-                    type="button" onClick={sendTwoFACode} disabled={sendingTwoFACode || twoFACooldown > 0}
-                    className="w-full flex items-center justify-center gap-2 text-xs font-semibold text-[var(--greek-gold)] transition-opacity disabled:opacity-40"
-                  >
+                  <GlassButton onClick={sendTwoFACode} disabled={sendingTwoFACode || twoFACooldown > 0} variant="outline" size="sm" fullWidth>
                     <RotateCcw className="w-3 h-3" />
                     {twoFACooldown > 0 ? `Renvoyer le code (${twoFACooldown}s)` : sendingTwoFACode ? "Envoi…" : "Renvoyer le code"}
-                  </button>
+                  </GlassButton>
                 </div>
               )}
             </div>
@@ -497,28 +495,15 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                             {c.last_used_at ? ` · utilisée le ${new Date(c.last_used_at).toLocaleDateString("fr-FR")}` : ""}
                           </p>
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => removeWebauthn(c.id)}
-                          disabled={webauthnRemovingId === c.id}
-                          aria-label="Supprimer cette clé"
-                          className="text-gray-400 hover:text-red-600 disabled:opacity-50"
-                        >
-                          {webauthnRemovingId === c.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
-                        </button>
+                        <GlassIconButton icon={Trash2} color="red" size="sm" onClick={() => removeWebauthn(c.id)} disabled={webauthnRemovingId === c.id} loading={webauthnRemovingId === c.id} aria-label="Supprimer cette clé" />
                       </div>
                     ))}
                   </div>
                 )}
 
-                <button
-                  type="button"
-                  onClick={enableWebauthn}
-                  disabled={!webauthnSupported || webauthnRegistering}
-                  className="text-xs font-semibold text-[var(--greek-blue)] hover:underline disabled:opacity-50"
-                >
-                  {webauthnRegistering ? <Loader2 className="w-3.5 h-3.5 animate-spin inline" /> : `+ Ajouter ${webauthnCreds.length > 0 ? "un autre appareil" : "une clé d'accès"}`}
-                </button>
+                <GlassButton onClick={enableWebauthn} disabled={!webauthnSupported || webauthnRegistering} variant="outline" size="sm">
+                  {webauthnRegistering ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : `+ Ajouter ${webauthnCreds.length > 0 ? "un autre appareil" : "une clé d'accès"}`}
+                </GlassButton>
               </div>
             )}
 

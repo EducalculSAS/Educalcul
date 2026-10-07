@@ -7,6 +7,7 @@ import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { supabase } from "@/lib/supabaseClient";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface ReviewExercise {
   id: "review";
@@ -62,9 +63,7 @@ export default function ReviewRunner({ dueCount }: { dueCount: number }) {
       {exercise && (
         <div className="fixed inset-x-0 bottom-0 top-[calc(var(--nav-h)+var(--imp-banner-h,0px))] z-50 bg-white flex flex-col overflow-hidden">
           <div className="flex items-center gap-3 p-4 border-b border-[var(--greek-gold)] bg-[var(--greek-blue)] text-white shrink-0">
-            <button type="button" onClick={close} aria-label="Retour" className="p-1 rounded-full hover:bg-white/10">
-              <ArrowLeft className="w-5 h-5" />
-            </button>
+            <GlassIconButton icon={ArrowLeft} color="white" size="sm" onClick={close} aria-label="Retour" />
             <h1 className="text-lg font-bold truncate flex-1">À revoir</h1>
             <GlassCloseButton variant="dark" onClick={close} />
           </div>
