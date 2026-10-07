@@ -37,3 +37,25 @@ export async function getUserDataMany<T>(userIds: (number | string)[], name: str
 export async function deleteUserData(userId: number | string, name: string): Promise<void> {
   await supabaseAdmin.from("app_settings").delete().eq("key", key(userId, name));
 }
+
+/** Efface toutes les données propres à ces utilisateurs (suppression de compte, droit à l'effacement). */
+export async function purgeUserData(userIds: (number | string)[]): Promise<void> {
+  for (const id of userIds) {
+    if (id === null || id === undefined || id === "") continue;
+    await supabaseAdmin.from("app_settings").delete().like("key", `u:${id}:%`);
+  }
+}
+
+/** Toutes les données propres à un utilisateur (droit à la portabilité) : nom -> contenu. */
+export async function exportUserData(userId: number | string): Promise<Record<string, unknown>> {
+  const { data } = await supabaseAdmin.from("app_settings").select("key, value").like("key", `u:${userId}:%`).limit(2000);
+  const out: Record<string, unknown> = {};
+  const prefix = `u:${userId}:`;
+  for (const row of data ?? []) {
+    const name = (row.key as string).slice(prefix.length);
+    // Les liens de partage ne sont pas des données de l'utilisateur (simple numéro de version).
+    if (name === "share") continue;
+    out[name] = row.value;
+  }
+  return out;
+}
