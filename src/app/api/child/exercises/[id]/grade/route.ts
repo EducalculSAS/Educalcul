@@ -6,6 +6,8 @@ import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { checkDifficultyAccess } from "@/lib/checkSubscription";
 import { gradeFreeAnswer } from "@/lib/gradeFreeAnswer";
 import { blockMaxPoints, itemsCorrect } from "@/lib/exerciseScoring";
+import { recordResults, type SrsResult } from "@/lib/srs";
+import { loadSources, parseReviewKey } from "@/lib/reviewSession";
 
 export const maxDuration = 60;
 
@@ -136,6 +138,19 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       level = body.level || level;
       blockFor = () => preview;
       defaultPoints = preview.points;
+    } else if (id === "review") {
+      // Séance « à revoir » : chaque question est retrouvée par sa clé du carnet d'erreurs, dans sa source d'origine.
+      const keys = items.map((i) => parseReviewKey(String(i.block_id ?? ""))).filter((k): k is NonNullable<typeof k> => !!k);
+      const sources = await loadSources(keys);
+      const diffOk = new Map<string, boolean>();
+      const blocks = new Map<string, any>();
+      for (const [key, src] of sources) {
+        const d = src.difficulty ?? "";
+        if (!diffOk.has(d)) diffOk.set(d, (await checkDifficultyAccess(me.authId, src.difficulty)).allowed);
+        if (diffOk.get(d)) blocks.set(key, src.block);
+        if (src.level) level = src.level;
+      }
+      blockFor = (blockId) => (blockId ? blocks.get(blockId) : undefined);
     } else {
       const { data: exercise, error } = await supabaseAdmin
         .from("exercises")
@@ -209,8 +224,19 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       };
     });
 
+    // Carnet d'erreurs : une question ratée y entre, une question revue y avance (une seule écriture par envoi).
+    if (id !== "preview") {
+      const srsResults: SrsResult[] = [];
+      for (const r of results) {
+        if (r.unavailable || !r.block_id || !blockFor(r.block_id)) continue;
+        const key = id === "review" ? parseReviewKey(r.block_id) : { kind: "exercise" as const, ref: id, block: r.block_id };
+        if (key) srsResults.push({ ...key, correct: r.is_correct });
+      }
+      await recordResults(me.id, srsResults, { review: id === "review" }).catch((e) => console.error("[srs]", e instanceof Error ? e.message : e));
+    }
+
     // Badges : une seule vérification par envoi (en arrière-plan).
-    if (id !== "preview" && results.some((r) => !r.unavailable)) {
+    if (id !== "preview" && id !== "review" && results.some((r) => !r.unavailable)) {
       const selfOrigin = new URL(req.url).origin;
       fetch(`${selfOrigin}/api/child/check-badges`, {
         method: "POST",

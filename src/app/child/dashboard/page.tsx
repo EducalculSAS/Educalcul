@@ -6,10 +6,14 @@ import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { getCatalogLevelLabel } from "@/lib/constants";
 import {
   BookOpen, BrainCircuit, PenTool, Trophy, ArrowRight,
-  Play, MessageSquare, Star, CheckCircle, Zap, Gamepad2, type LucideIcon,
+  Play, MessageSquare, Star, Compass, CheckCircle, Zap, Gamepad2, type LucideIcon,
 } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 import GlassButton from "@/components/ui/GlassButton";
+import GoalCard from "@/components/child/GoalCard";
+import { studentSummary } from "@/lib/studentStats";
+import { dueItems, getSrs } from "@/lib/srs";
+import { learningPath } from "@/lib/learningPath";
 
 const ICON_MAP: Record<string, LucideIcon> = {
   pencil: PenTool, zap: Zap, flame: Star, star: Star, crown: Trophy,
@@ -85,6 +89,14 @@ export default async function ChildDashboard() {
   const doneExoIds = new Set((attempts || []).map((a) => a.exercise_id));
   const nextExercise = (exercises || []).find((e) => !doneExoIds.has(e.id)) || (exercises || [])[0] || null;
 
+  // Objectif du jour, série, révisions à faire et parcours recommandé : de quoi savoir quoi faire en arrivant.
+  const [summary, srsState, path] = await Promise.all([
+    studentSummary(userData.id),
+    getSrs(userData.id),
+    learningPath({ id: userData.id, gradeLevel: userData.grade_level || null, placementScore: userData.onboarding_quiz_score ?? null }),
+  ]);
+  const dueReviews = dueItems(srsState, 1000).length;
+
   const earnedBadges = ((ubadges || []) as unknown as { badge: Badge | null }[])
     .map((ub) => ub.badge)
     .filter((b): b is Badge => Boolean(b));
@@ -148,6 +160,41 @@ export default async function ChildDashboard() {
             </Link>
           ))}
         </div>
+
+        <GoalCard
+          today={summary.today}
+          dailyGoal={summary.dailyGoal}
+          streak={summary.streak}
+          last7={summary.last7}
+          weekTotal={summary.weekTotal}
+          weeklyTarget={summary.weeklyTarget}
+          dueReviews={dueReviews}
+        />
+
+        {/* Parcours recommandé */}
+        {path.length > 0 && (
+          <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] mb-8">
+            <div className="flex items-center gap-3 mb-1">
+              <Compass className="w-5 h-5 text-[var(--greek-gold)]" />
+              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Ton parcours</h2>
+            </div>
+            <p className="text-sm text-gray-500 mb-4">Choisi pour toi d&apos;après ton test de départ, tes erreurs et le programme.</p>
+            <ol className="space-y-3">
+              {path.map((step, i) => (
+                <li key={step.courseId} className="flex items-center gap-4 rounded-2xl border border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]/40 p-4">
+                  <span className="w-9 h-9 rounded-full bg-[var(--greek-blue)] text-white font-bold flex items-center justify-center shrink-0">{i + 1}</span>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-bold text-gray-800 text-sm truncate">{step.title}</p>
+                    <p className="text-xs text-gray-500">{step.reason}</p>
+                  </div>
+                  <GlassButton href={`/child/cours/${step.courseId}`} variant="navy" size="sm" className="whitespace-nowrap">
+                    <Play className="w-3 h-3 fill-current" /> {i === 0 ? "Commencer" : "Voir"}
+                  </GlassButton>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
 
         {/* À faire ensuite — données réelles */}
         <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] mb-8">

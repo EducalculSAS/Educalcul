@@ -5,6 +5,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { checkDifficultyAccess } from "@/lib/checkSubscription";
+import { recordResults } from "@/lib/srs";
 
 export async function POST(
   req: Request,
@@ -96,6 +97,11 @@ export async function POST(
       isCorrect = String(answer) === String(targetQuestion.correctAnswer);
       score = isCorrect ? maxPoints : 0;
       feedback = isCorrect ? "Bonne réponse !" : "Ce n'est pas la bonne réponse.";
+    }
+
+    // Carnet d'erreurs : une question de quiz ratée y entre aussi (jamais pour l'aperçu admin).
+    if (id !== "preview" && question_id !== undefined && question_id !== null) {
+      await recordResults(me.id, [{ kind: "quiz", ref: id, block: String(question_id), correct: isCorrect }], { review: false }).catch(() => {});
     }
 
     return NextResponse.json({

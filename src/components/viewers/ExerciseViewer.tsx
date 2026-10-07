@@ -20,6 +20,9 @@ import { passThreshold } from "@/lib/scorePercent";
 import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 import { fetchMiniComment } from "@/lib/miniComment";
 
+/** Aperçu admin ou séance « à revoir » : rien n'est enregistré comme tentative de cet exercice. */
+const isVirtualExercise = (id?: string | null) => !id || id === "preview" || id === "review";
+
 // Mélange déterministe (seedé par une chaîne) pour que l'ordre affiché aux
 // élèves (association / mise en ordre) reste stable entre deux rendus tant
 // que l'exercice n'a pas changé, sans avoir à le persister séparément.
@@ -1118,7 +1121,7 @@ export default function ExerciseViewer({
   const progressLoadedFromDbRef = useRef(false);
   useEffect(() => {
     if (reviewMode) return;
-    if (!exercise.id || exercise.id === "preview") return;
+    if (isVirtualExercise(exercise.id)) return;
     if (forceNewAttempt) {
       // Nouvelle tentative : on ne restaure pas l'état d'une session précédente
       progressLoadedFromDbRef.current = true;
@@ -1171,7 +1174,7 @@ export default function ExerciseViewer({
   const saveProgressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
     if (reviewMode) return;
-    if (!exercise.id || exercise.id === "preview") return;
+    if (isVirtualExercise(exercise.id)) return;
     if (!progressLoadedFromDbRef.current) return; // évite d'écraser avant le chargement initial
     if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
 
@@ -1223,11 +1226,11 @@ export default function ExerciseViewer({
   // haut), plus de localStorage.
   const sessionStartRef = useRef<number>(Date.now());
   const getAccumulatedSeconds = () => {
-    if (!exercise.id || exercise.id === "preview") return 0;
+    if (isVirtualExercise(exercise.id)) return 0;
     return accumulatedSecondsRef.current;
   };
   const saveTimeSpent = () => {
-    if (!exercise.id || exercise.id === "preview") return;
+    if (isVirtualExercise(exercise.id)) return;
     const elapsed = Math.round((Date.now() - sessionStartRef.current) / 1000);
     const total = getAccumulatedSeconds() + elapsed;
     accumulatedSecondsRef.current = total;
@@ -1330,7 +1333,7 @@ export default function ExerciseViewer({
 
   // Dynamic progress tracking
   const saveProgress = async (status: 'in_progress' | 'completed', currentScore: number, scorePercent?: number, passed?: boolean) => {
-    const isPreview = exercise.id === undefined || exercise.id === "preview";
+    const isPreview = isVirtualExercise(exercise.id);
     if (isPreview) return;
 
     const { data: { session } } = await supabase.auth.getSession();
@@ -1583,7 +1586,7 @@ export default function ExerciseViewer({
       : gradable > 0 ? Math.round((Object.values(results).filter(Boolean).length / gradable) * 100) : 100;
     const timeTotal = getAccumulatedSeconds();
     const mins = Math.floor(timeTotal / 60);
-    const isPreview = exercise.id === undefined || exercise.id === "preview";
+    const isPreview = isVirtualExercise(exercise.id);
     const threshold = passThreshold(exercise.min_score_percent);
     const passed = percentage >= threshold;
 
