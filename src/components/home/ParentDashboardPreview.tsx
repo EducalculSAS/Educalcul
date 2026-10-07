@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import FamilyCardShell, { type FamilyCardData } from "@/components/parent/FamilyCardShell";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { FileText } from "lucide-react";
 
 type Tone = "gold" | "green" | "warn";
@@ -145,31 +146,21 @@ export default function ParentDashboardPreview() {
 
   return (
     <div ref={ref} className="w-full">
-      <div className="flex gap-2 mb-3 overflow-x-auto -mx-1 px-1 pb-1" role="tablist" aria-label="Enfants de la famille">
-        {CHILDREN.map((c) => {
-          const active = c.id === selected;
-          return (
-            <button
-              key={c.id}
-              type="button"
-              role="tab"
-              aria-selected={active}
-              onClick={() => setSelected(c.id)}
-              className="flex items-center gap-2 pl-1.5 pr-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap shrink-0 transition-all"
-              style={{
-                background: active ? "rgba(197,161,72,0.22)" : "rgba(255,255,255,0.6)",
-                border: `1px solid ${active ? "rgba(197,161,72,0.7)" : "rgba(15,30,58,0.1)"}`,
-                color: "#0f1e3a",
-                backdropFilter: "blur(8px)",
-                WebkitBackdropFilter: "blur(8px)",
-                boxShadow: active ? "0 6px 16px rgba(197,161,72,0.25)" : "none",
-              }}
-            >
-              <span className="w-6 h-6 rounded-full flex items-center justify-center text-[11px]" style={{ background: c.color, color: "#0f1e3a" }}>{c.name[0]}</span>
-              {c.name}
-            </button>
-          );
-        })}
+      <div className="flex justify-center mb-3">
+        <GlassSegmentedControl
+          size="sm"
+          options={CHILDREN.map((c) => ({
+            id: c.id,
+            label: (
+              <span className="flex items-center gap-2 -ml-1.5">
+                <span className="w-6 h-6 rounded-full flex items-center justify-center text-[11px]" style={{ background: c.color, color: "#0f1e3a" }}>{c.name[0]}</span>
+                {c.name}
+              </span>
+            ),
+          }))}
+          value={selected}
+          onChange={setSelected}
+        />
       </div>
       <FamilyCardShell d={data} />
     </div>

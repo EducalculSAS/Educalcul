@@ -543,34 +543,23 @@ export default function PlanChooser({
 
       {tab === "familles" && (
         <>
-          {/* Onglets de période — style verre liquide (comme GlassSegmentedControl).
-             Composant custom et pas GlassSegmentedControl car ces onglets sont
-             aussi des zones de dépôt drag & drop en mode admin. */}
+          {/* Onglets de période : GlassSegmentedControl (survol, glissé, rebond) ; en mode admin chaque onglet est aussi
+             une zone de dépôt pour changer la période d'une fiche. */}
           <div className="flex justify-center mb-10">
-            <div
-              className="inline-flex flex-wrap justify-center gap-1 rounded-full backdrop-blur-[20px] backdrop-saturate-[1.3] overflow-hidden"
-              style={{ background: "rgba(255,255,255,0.65)", border: "1px solid var(--greek-border)" }}
-            >
-              {intervalTabs.map(it => {
-                const active = billing === it.id;
-                const dropHot = overInterval === it.id;
-                return (
-                  <button key={it.id}
-                    onClick={() => setBilling(it.id)}
-                    onDragOver={admin ? (e) => { e.preventDefault(); setOverInterval(it.id); } : undefined}
-                    onDragLeave={admin ? () => setOverInterval(null) : undefined}
-                    onDrop={admin ? () => { if (draggedId != null) admin.onMoveInterval(draggedId, it.id); setOverInterval(null); setDraggedId(null); } : undefined}
-                    className="relative z-10 cursor-pointer px-5 py-2.5 text-sm rounded-full font-bold transition-all duration-300 font-[family-name:var(--font-display)]"
-                    style={dropHot
-                      ? { background: "var(--greek-gold)", color: "#fff", boxShadow: "0 4px 14px rgba(197,161,72,0.35)" }
-                      : active
-                        ? { background: "var(--greek-blue)", color: "#fff", boxShadow: "0 4px 14px rgba(15,30,58,0.28)" }
-                        : { background: "transparent", color: "var(--greek-blue)" }}>
-                    {it.label}
-                  </button>
-                );
-              })}
-            </div>
+            <GlassSegmentedControl
+              options={intervalTabs.map(it => ({
+                id: it.id,
+                label: it.label,
+                hot: overInterval === it.id,
+                ...(admin ? {
+                  onDragOver: (e: React.DragEvent) => { e.preventDefault(); setOverInterval(it.id); },
+                  onDragLeave: () => setOverInterval(null),
+                  onDrop: () => { if (draggedId != null) admin.onMoveInterval(draggedId, it.id); setOverInterval(null); setDraggedId(null); },
+                } : {}),
+              }))}
+              value={billing}
+              onChange={setBilling}
+            />
           </div>
 
           {list.length === 0 ? (

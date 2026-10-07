@@ -5,6 +5,11 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNo
 interface Option {
   id: string;
   label: ReactNode;
+  /** Zone de dépôt (glisser-déposer) : l'option devient dorée quand `hot` est vrai. */
+  hot?: boolean;
+  onDragOver?: (e: React.DragEvent) => void;
+  onDragLeave?: (e: React.DragEvent) => void;
+  onDrop?: (e: React.DragEvent) => void;
 }
 
 interface Rect {
@@ -242,6 +247,9 @@ export default function GlassSegmentedControl({
           role="tab"
           aria-selected={value === o.id}
           onPointerEnter={handleOptionEnter(o.id)}
+          onDragOver={o.onDragOver}
+          onDragLeave={o.onDragLeave}
+          onDrop={o.onDrop}
           onPointerDown={handleOptionPointerDown(o.id)}
           // Ne vole pas le focus (ex. onglets du clavier mathématique : le champ
           // de saisie garde le focus), sans bloquer le défilement tactile.
@@ -254,8 +262,9 @@ export default function GlassSegmentedControl({
             if (o.id !== value) onChange(o.id);
           }}
           className={`relative z-10 shrink-0 whitespace-nowrap cursor-pointer ${padding} rounded-full font-bold transition-colors duration-300 font-[family-name:var(--font-display)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--greek-gold)]`}
-          style={{ color: (rect ? activeId : value) === o.id ? "#fff" : "var(--greek-blue)", touchAction: "manipulation" }}
+          style={{ color: o.hot || (rect ? activeId : value) === o.id ? "#fff" : "var(--greek-blue)", touchAction: "manipulation" }}
         >
+          {o.hot && <span aria-hidden className="absolute inset-0 -z-10 rounded-full" style={{ background: "var(--greek-gold)", boxShadow: "0 4px 14px rgba(197,161,72,0.35)" }} />}
           {/* Avant la première mesure, l'option choisie a son propre fond : jamais de texte blanc sur blanc. */}
           {!rect && value === o.id && <span aria-hidden className="absolute inset-0 -z-10 rounded-full bg-[var(--greek-blue)]" />}
           {o.label}
