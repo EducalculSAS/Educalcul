@@ -51,6 +51,8 @@ export async function POST(request: Request) {
     sourceExercise: typeof data.sourceExercise === "string" ? data.sourceExercise.slice(0, 8000) : undefined,
     sourceFigureDescription:
       typeof data.sourceFigureDescription === "string" ? data.sourceFigureDescription.slice(0, 1500) : undefined,
+    copyMode: data.copyMode !== false,
+    sourceFigures: Array.isArray(data.sourceFigures) ? data.sourceFigures.slice(0, 12) : undefined,
   };
 
   const { data: generation, error } = await supabaseAdmin

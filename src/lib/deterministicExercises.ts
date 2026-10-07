@@ -224,3 +224,113 @@ export function makeMagicSquare(rng: Rng = Math.random): GeneratedFigureExercise
     correctAnswer: missing.join(" ; "),
   };
 }
+
+/* ------------------------------------------------------------------ */
+/*  Résolution des figures LUES sur une photo (copie fidèle)           */
+/* ------------------------------------------------------------------ */
+
+/** « (+2) », « (-4) », « -3 », « 5 » donnent 2, -4, -3, 5 ; « » ou illisible donne null. */
+export function parseCellNumber(text: string): number | null {
+  const s = text.replace(/\s+/g, "").replace(/[−–]/g, "-").replace(/^\((.*)\)$/, "$1").replace(",", ".");
+  return /^[+-]?\d+(?:\.\d+)?$/.test(s) ? Number(s) : null;
+}
+
+/**
+ * Pyramide lue sur l'image (sommet en premier, "" = brique vide) : renvoie les valeurs des briques vides, dans l'ordre de
+ * lecture, ou null si la pyramide ne se résout pas (nombres mal lus, règle introuvable). La règle (somme ou différence
+ * « gauche moins droite ») est celle de la consigne ; à défaut, celle qui colle aux briques connues.
+ */
+export function solvePyramid(levels: string[][], hint: string): { rule: PyramidRule; missing: number[] } | null {
+  const n = levels.length;
+  const known: (number | null)[][] = levels.map((row) => row.map(parseCellNumber));
+  const rules: PyramidRule[] = /diff[eé]rence/i.test(hint) ? ["difference", "sum"] : /somme/i.test(hint) ? ["sum", "difference"] : ["sum", "difference"];
+  for (const rule of rules) {
+    const values = known.map((row) => row.slice());
+    let changed = true;
+    let consistent = true;
+    while (changed && consistent) {
+      changed = false;
+      for (let k = 0; k < n - 1 && consistent; k++) {
+        for (let i = 0; i <= k; i++) {
+          const p = values[k][i];
+          const l = values[k + 1][i];
+          const r = values[k + 1][i + 1];
+          const count = [p, l, r].filter((v) => v !== null).length;
+          if (count === 3) {
+            if (parentOf(rule, l as number, r as number) !== p) consistent = false;
+          } else if (count === 2) {
+            if (p === null) values[k][i] = parentOf(rule, l as number, r as number);
+            else if (l === null) values[k + 1][i] = rule === "sum" ? (p as number) - (r as number) : (p as number) + (r as number);
+            else values[k + 1][i + 1] = rule === "sum" ? (p as number) - (l as number) : (l as number) - (p as number);
+            changed = true;
+          }
+        }
+      }
+    }
+    if (!consistent || values.some((row) => row.some((v) => v === null))) continue;
+    const missing: number[] = [];
+    known.forEach((row, k) => row.forEach((v, i) => v === null && missing.push(values[k][i] as number)));
+    return { rule, missing };
+  }
+  return null;
+}
+
+/**
+ * Carré magique lu sur l'image ("" = case vide) : toutes les lignes, colonnes et diagonales ont la même somme. Renvoie
+ * les valeurs des cases vides, ligne par ligne, ou null si la solution n'est pas unique ou ne colle pas aux cases lues.
+ */
+export function solveMagic(cells: string[][]): number[] | null {
+  if (cells.length !== 3 || cells.some((r) => r.length !== 3)) return null;
+  const given = cells.flat().map(parseCellNumber);
+  const lines = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8],
+    [0, 3, 6], [1, 4, 7], [2, 5, 8],
+    [0, 4, 8], [2, 4, 6],
+  ];
+  // Inconnues : 9 cases + S ; équations : somme de chaque ligne - S = 0, et chaque case lue = sa valeur.
+  const rows: number[][] = lines.map((line) => {
+    const row = new Array(11).fill(0);
+    line.forEach((c) => (row[c] = 1));
+    row[9] = -1;
+    return row;
+  });
+  given.forEach((v, cell) => {
+    if (v === null) return;
+    const row = new Array(11).fill(0);
+    row[cell] = 1;
+    row[10] = v;
+    rows.push(row);
+  });
+  const m = rows.map((r) => r.slice());
+  const pivotCols: number[] = [];
+  let rank = 0;
+  for (let col = 0; col < 10 && rank < m.length; col++) {
+    let piv = -1;
+    for (let r = rank; r < m.length; r++) if (Math.abs(m[r][col]) > 1e-9) { piv = r; break; }
+    if (piv < 0) continue;
+    [m[rank], m[piv]] = [m[piv], m[rank]];
+    const lead = m[rank][col];
+    for (let c = col; c < 11; c++) m[rank][c] /= lead;
+    for (let r = 0; r < m.length; r++) {
+      if (r === rank) continue;
+      const f = m[r][col];
+      if (Math.abs(f) > 1e-12) for (let c = col; c < 11; c++) m[r][c] -= f * m[rank][c];
+    }
+    pivotCols.push(col);
+    rank++;
+  }
+  // Incohérent (une ligne 0 = non nul) ou non unique (moins de 10 pivots) : on ne devine pas.
+  for (let r = rank; r < m.length; r++) if (Math.abs(m[r][10]) > 1e-6) return null;
+  if (rank < 10) return null;
+  const solution = new Array(10).fill(0);
+  pivotCols.forEach((col, r) => (solution[col] = m[r][10]));
+  const out: number[] = [];
+  for (let cell = 0; cell < 9; cell++) {
+    if (given[cell] !== null) continue;
+    const v = Math.round(solution[cell] * 1000) / 1000;
+    out.push(v);
+  }
+  return out;
+}
+
+export { blankAlternatives };

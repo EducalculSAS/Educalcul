@@ -51,7 +51,7 @@ export function frenchWordAlternatives(n: number): string[] {
 }
 
 const normalizeWords = (s: string) =>
-  s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[-\s]+/g, " ").trim();
+  s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[▢_.…→]/g, " ").replace(/[-\s]+/g, " ").trim();
 
 let wordsIndex: Map<string, number> | null = null;
 
@@ -70,7 +70,7 @@ export function fromFrenchWords(text: string): number | null {
 
 /** Nombre à écrire en lettres : « 25 », « 25 → », « 25 = ____ ». */
 export function parseDigitsItem(text: string): number | null {
-  const m = /^\s*\$?\s*(\d{1,3})\s*\$?\s*(?:→|->|=|:)?\s*[_.…\s]*$/.exec(text);
+  const m = /^\s*\$?\s*(\d{1,3})\s*\$?\s*(?:→|->|=|:)?\s*[_.…▢\s]*$/.exec(text);
   return m ? Number(m[1]) : null;
 }
 
@@ -87,7 +87,7 @@ export interface ArithItem {
 
 /** « 12 + 8 », « $24 \times 6$ », « 15 - 7 = » : un calcul simple entre deux entiers de 3 chiffres au plus. */
 export function parseArithmeticItem(text: string): ArithItem | null {
-  const m = /^\s*\$?\s*(\d{1,3})\s*([+\-−×x*÷:/]|\\times|\\div)\s*(\d{1,3})\s*(?:=\s*[_.…\s]*)?\$?\s*$/i.exec(text);
+  const m = /^\s*\$?\s*(\d{1,3})\s*([+\-−×x*÷:/]|\\times|\\div)\s*(\d{1,3})\s*(?:=\s*[_.…▢\s]*)?\$?\s*$/i.exec(text);
   if (!m) return null;
   const raw = m[2].toLowerCase();
   const op: ArithOp = raw === "+" ? "+" : raw === "-" || raw === "−" ? "-" : raw === "÷" || raw === ":" || raw === "/" || raw === "\\div" ? "÷" : "×";

@@ -1,5 +1,7 @@
 import { getProgrammePromptBlock } from "@/lib/programmes-nationaux";
 import { getLevelLabel } from "@/lib/constants";
+import { copyFigureBlock, copyGenericBlocks, copyListBlocks, copySystemPrompt, reviewCopyAnswers } from "@/lib/exerciseCopy";
+import type { SourceFigure } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import {
@@ -49,6 +51,10 @@ export type PhotoExerciseParams = {
   blockType?: string;
   sourceExercise: string;
   sourceFigureDescription?: string;
+  /** Copie fidèle (défaut) : mêmes énoncés, mêmes nombres, mêmes figures, rien d'inventé. Sinon variante. */
+  copyMode?: boolean;
+  /** Figures à cases lues sur l'image (pyramide, grille) : reproduites telles quelles en copie fidèle. */
+  sourceFigures?: unknown[];
 };
 
 type SourceItem = { label: string; text: string };
@@ -313,7 +319,7 @@ function plainAnswer(text: string): string {
     .trim();
 }
 
-function normalizeBlock(raw: unknown): Block | null {
+function normalizeBlock(raw: unknown, opts: { keepEmptyBlanks?: boolean } = {}): Block | null {
   if (!raw || typeof raw !== "object") return null;
   const b = deepRepair(raw) as Record<string, unknown>;
   const type = ALLOWED_TYPES.has(str(b.type)) ? str(b.type) : "text_input";
@@ -359,7 +365,9 @@ function normalizeBlock(raw: unknown): Block | null {
   }
   if (type === "fill_in_the_blank") {
     const markers = (content.match(/[{][{][0-9]+[}][}]/g) ?? []).length;
-    const blanks = (Array.isArray(b.blanks) ? b.blanks : []).map((x) => str(x)).filter(Boolean);
+    const allBlanks = (Array.isArray(b.blanks) ? b.blanks : []).map((x) => str(x));
+    // Copie fidèle : une réponse de trou que le modèle n'a pas donnée reste vide (à compléter) au lieu de faire perdre la question.
+    const blanks = opts.keepEmptyBlanks ? allBlanks : allBlanks.filter(Boolean);
     if (markers < 1 || blanks.length !== markers) return null;
     out.blanks = blanks;
     return out;
@@ -490,7 +498,7 @@ async function writeSectionOnce(
     }
   };
   const parse = (raw: { blocks?: unknown[] }) =>
-    (Array.isArray(raw.blocks) ? raw.blocks : []).map(normalizeBlock).filter((b): b is Block => b !== null);
+    (Array.isArray(raw.blocks) ? raw.blocks : []).map((b) => normalizeBlock(b)).filter((b): b is Block => b !== null);
 
   let blocks = dropRepeatsAndLeaks(parse(await call(userPrompt, 0.3)));
   if (blocks.length < Math.ceil(want * 0.6)) {
@@ -644,9 +652,11 @@ function deterministicBlocks(section: SourceSection, count: number): Block[] {
 }
 
 /** Retire les pointillés de réponse (« ........ », « …… », « ____ ») que la lecture d'une fiche recopie parfois. */
-function cleanSourceText(text: string): string {
+function cleanSourceText(text: string, keepBlanks = false): string {
   return text
-    .replace(/[.…·_]{4,}/g, " ")
+    // Copie fidèle : chaque vide de la source reste un « ▢ » (sa place compte) ; variante : les vides sont retirés.
+    .replace(/[.…·_]{4,}/g, keepBlanks ? " ▢ " : " ")
+    .replace(/▢/g, keepBlanks ? "▢" : " ")
     // Titres en police scolaire mal lus : « 1) » devient « AI » ou « Al », « 3) » devient « 3I » ou « 3l ».
     // On les ramène à une forme unique : « 3) Titre » pour un numéro lisible, « • Titre » sinon.
     .replace(/^(\d{1,2})\s*[Il|\]]\s+(?=[A-ZÉÈÀ])/gm, "$1) ")
@@ -671,11 +681,17 @@ function splitIntoExercises(text: string): string[] {
   // numéro est illisible) : titres courts, sans « = », avec une majuscule, chacun suivi d'un contenu. Une simple liste de
   // questions d'un exercice (« 1. Ranger... ») n'a pas de contenu sous chaque ligne : elle est écartée par le test final.
   const headings: number[] = [];
+  const numbers: (number | null)[] = [];
   lines.forEach((line, i) => {
-    const m = /^\s*(?:\d{1,2}\s*[).]|•)\s*([A-ZÉÈÀ].{2,70})$/.exec(line);
-    if (m && !m[1].includes("=")) headings.push(i);
+    const m = /^\s*(?:(\d{1,2})\s*[).]|•)\s*([A-ZÉÈÀ].{2,70})$/.exec(line);
+    if (m && !m[2].includes("=")) {
+      headings.push(i);
+      numbers.push(m[1] ? Number(m[1]) : null);
+    }
   });
-  if (headings.length < 3) return [];
+  // Trois titres au moins, ou deux titres numérotés 1 puis 2 (« 1) ... 2) ... ») : une fiche à deux parties.
+  const twoParts = headings.length === 2 && numbers[0] === 1 && numbers[1] === 2;
+  if (headings.length < 3 && !twoParts) return [];
   const chunks = headings.map((start, k) => lines.slice(start, headings[k + 1] ?? lines.length).join("\n").trim());
   const withBody = chunks.filter((chunk) => chunk.split("\n").filter((l) => l.trim()).length >= 2).length;
   return withBody >= Math.ceil(chunks.length / 2) ? chunks : [];
@@ -737,7 +753,14 @@ function fallbackSection(chunk: string): SourceSection {
   const kind = detectKind(`${heading} ${body}`);
   return {
     title: heading.replace(/^\s*(?:•|(?:(?:exercice|exo)\s*)?\d+\s*[.:)-]*)\s*/i, "").slice(0, 60) || "Questions",
-    instruction: (body.split(/(?<=[.!?])\s/)[0] ?? "").slice(0, 200),
+    // Le titre est la consigne quand c'est une phrase (« Complète la leçon puis remplis le tableau. ») ; un titre court
+    // (« Martin-pêcheur ») n'en fait pas une.
+    instruction:
+      /[.:?!]\s*$/.test(heading)
+        ? heading.replace(/^\s*(?:•|(?:(?:exercice|exo)\s*)?\d+\s*[.:)-]*)\s*/i, "").slice(0, 200)
+        : kind !== "standard"
+          ? (body.split(/(?<=[.!?])\s/)[0] ?? "").slice(0, 200) // pyramide, carré magique : la consigne est la première phrase
+          : "",
     items: [{ label: "1", text: (body || heading).slice(0, 600) }],
     figure: "",
     kind,
@@ -796,7 +819,7 @@ function inlineItems(chunk: string): string[] | null {
 }
 
 /** Analyse UN exercice de la source : titre, consigne, questions séparées, figure, famille (pyramide, carré magique, autre). */
-async function planChunk(generate: GenerateStructured, chunk: string, figureText: string): Promise<SourceSection[]> {
+async function planChunk(generate: GenerateStructured, chunk: string, figureText: string, copy = false): Promise<SourceSection[]> {
   // Éléments écrits côte à côte sur une ligne (calculs, flèches, mots-nombres) : plan fait en code.
   const inline = inlineItems(chunk);
   if (inline) {
@@ -839,7 +862,18 @@ Si une correction figure dans le texte, ne la recopie pas. Reponds uniquement av
       };
     })
     .filter((s) => s.items.length > 0 || s.kind !== "standard");
-  return sections.length > 0 ? sections.slice(0, 1) : [fallbackSection(chunk)];
+  if (sections.length === 0) return [fallbackSection(chunk)];
+  if (copy) {
+    // Copie fidèle : un énoncé que le modèle a reformulé n'est pas une copie. On repart alors du texte brut de la source.
+    const flat = squash(chunk.replace(/▢/g, ""));
+    const seen = (text: string) => {
+      const t = squash(text.replace(/▢/g, ""));
+      return t.length === 0 || flat.includes(t);
+    };
+    if (!sections[0].items.every((it) => seen(it.text))) return [fallbackSection(chunk)];
+    if (!seen(sections[0].instruction)) sections[0] = { ...sections[0], instruction: fallbackSection(chunk).instruction };
+  }
+  return sections.slice(0, 1);
 }
 
 export async function runPhotoExerciseGeneration(
@@ -852,6 +886,8 @@ export async function runPhotoExerciseGeneration(
   const difficulty = params.difficulty;
   const instructions = str(params.instructions).slice(0, 600);
   const total = clamp(params.questionCount, 8, 1, 24);
+  // Copie fidèle (défaut) : énoncés, nombres, trous et figures repris de la source, rien d'inventé ; sinon variante.
+  const copy = params.copyMode !== false;
   const configuredInterval = Number(process.env.MISTRAL_MIN_REQUEST_INTERVAL_MS);
   const minInterval =
     Number.isFinite(configuredInterval) && configuredInterval >= 0 ? configuredInterval : DEFAULT_LLM_MIN_START_INTERVAL_MS;
@@ -863,7 +899,7 @@ export async function runPhotoExerciseGeneration(
     await tracker.updateProgress({ step: "outline", current: 0, total: 3, message: "Lecture de la structure de l'exercice..." });
 
     // 1. Plan : une section par « Exercice N » (découpe faite en code), analysée par le modèle, en parallèle.
-    const sourceText = cleanSourceText(str(params.sourceExercise)).slice(0, 8_000);
+    const sourceText = cleanSourceText(str(params.sourceExercise), copy).slice(0, 8_000);
     const figureText = str(params.sourceFigureDescription).slice(0, 1_500);
     let chunks = splitIntoExercises(sourceText);
     if (chunks.length < 2 && sourceText.length > 250) {
@@ -874,7 +910,7 @@ export async function runPhotoExerciseGeneration(
     }
     const planned = await Promise.all(
       (chunks.length >= 2 ? chunks : [sourceText]).map((chunk) =>
-        planChunk(generate, chunk, figureText).catch((error) => {
+        planChunk(generate, chunk, figureText, copy).catch((error) => {
           if (error instanceof GenerationCancelledError) throw error;
           console.warn("[photo-exercise] analyse d'un exercice impossible :", error instanceof Error ? error.message : error);
           return [fallbackSection(chunk)];
@@ -888,7 +924,11 @@ export async function runPhotoExerciseGeneration(
     }
 
     // 2. Une page par section, en parallèle.
-    const shares = allocate(sections, Math.max(total, sections.length));
+    const shares = copy
+      ? sections.map((section) => ({ section: { ...section, items: section.items.slice(0, 30) }, variants: Math.min(30, section.items.length), extra: 0 }))
+      : allocate(sections, Math.max(total, sections.length));
+    const sourceFigures = (Array.isArray(params.sourceFigures) ? params.sourceFigures : []) as SourceFigure[];
+    const usedFigures = new Set<SourceFigure>();
     const programme = getProgrammePromptBlock(level);
     const systemPrompt = pageSystemPrompt(getLevelLabel(level), programme);
     let done = 0;
@@ -901,7 +941,32 @@ export async function runPhotoExerciseGeneration(
     const pages = await Promise.all(
       shares.map(async ({ section, variants, extra }, index) => {
         let blocks: Block[];
-        if (section.kind !== "standard") {
+        if (copy) {
+          if (section.kind !== "standard") {
+            // Figure à cases lue sur l'image (sinon exemple signalé) : reprise telle quelle, valeurs manquantes calculées.
+            const wanted = section.kind === "pyramid" ? "brick_pyramid" : "fill_grid";
+            // Toutes les figures de cet exercice (deux carrés magiques = deux blocs) ; à défaut, la première non utilisée.
+            let mine = sourceFigures.filter((f) => f.kind === wanted && f.section === index + 1 && !usedFigures.has(f));
+            if (mine.length === 0) mine = sourceFigures.filter((f) => f.kind === wanted && !usedFigures.has(f)).slice(0, 1);
+            mine.forEach((f) => usedFigures.add(f));
+            blocks =
+              mine.length > 0
+                ? mine.map((f, k) => {
+                    const block = copyFigureBlock(section, f);
+                    const t = String(block.title);
+                    return mine.length > 1 ? { ...block, title: t.includes(" (exemple") ? t.replace(" (exemple", ` ${k + 1} (exemple`) : `${t} ${k + 1}` } : block;
+                  })
+                : [copyFigureBlock(section, undefined)];
+          } else {
+            const listed = copyListBlocks(section);
+            if (listed && listed.blocks.length > 0) {
+              blocks = listed.blocks as Block[];
+            } else {
+              blocks = (await copyGenericBlocks(generate, section, copySystemPrompt(getLevelLabel(level), FIGURE_SNIPPET), (raw) => normalizeBlock(raw, { keepEmptyBlanks: true }))) as Block[];
+              blocks = (await reviewCopyAnswers(generate, blocks)) as Block[];
+            }
+          }
+        } else if (section.kind !== "standard") {
           // Pyramides et carrés magiques : valeurs et solution calculées en code, sans modèle.
           blocks = deterministicBlocks(section, variants + extra);
         } else {
@@ -968,7 +1033,7 @@ export async function runPhotoExerciseGeneration(
     const contentJson = compiled.content.map((page: { id: string; title: string; blocks: unknown[] }, i: number) => {
       const section = pages[i].section;
       const intro = section.instruction
-        ? [{ id: `intro-${i + 1}`, type: "text", title: section.title, content: `<p>${escapeHtml(section.instruction)}</p>` }]
+        ? [{ id: `intro-${i + 1}`, type: "text", title: section.title, content: `<p>${escapeHtml(section.instruction.replace(/▢/g, "…"))}</p>` }]
         : [];
       return { ...page, blocks: [...intro, ...page.blocks] };
     });
@@ -1005,7 +1070,7 @@ export async function runPhotoExerciseGeneration(
       adminId,
       targetType: "exercise",
       targetId: String(exerciseRow.id),
-      details: { title: exerciseRow.title, source: "ai_photo_source_v1" },
+      details: { title: exerciseRow.title, source: copy ? "ai_photo_copy_v1" : "ai_photo_source_v1" },
     });
     await tracker.setStatus("done", { target_id: exerciseRow.id });
   } catch (error: unknown) {

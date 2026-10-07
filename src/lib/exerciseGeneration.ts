@@ -43,6 +43,9 @@ export type ExerciseGenerationParams = {
   /** Exercice photographié, transcrit puis relu par l'admin : génération dédiée (exerciseFromPhoto.ts). */
   sourceExercise?: string;
   sourceFigureDescription?: string;
+  /** Copie fidèle de la source (défaut) ou variante. */
+  copyMode?: boolean;
+  sourceFigures?: unknown[];
 };
 
 function clampCount(value: unknown, fallback: number, min: number, max: number): number {
@@ -262,6 +265,8 @@ export async function runExerciseGeneration(
         blockType: params.blockType,
         sourceExercise: params.sourceExercise,
         sourceFigureDescription: params.sourceFigureDescription,
+        copyMode: params.copyMode !== false,
+        sourceFigures: params.sourceFigures,
       },
       adminId,
     );

@@ -5,7 +5,7 @@
  * Les nombres sont des fractions exactes (BigInt) : aucun arrondi flottant.
  */
 
-type Frac = { n: bigint; d: bigint };
+export type Frac = { n: bigint; d: bigint };
 
 // Pas de littéraux BigInt (cible TypeScript < ES2020).
 const ZERO = BigInt(0);
@@ -160,4 +160,33 @@ export function evaluateStatement(content: string): Frac | null {
   } catch {
     return null;
   }
+}
+
+/** Valeur exacte écrite comme en classe : « -7 », « 4,5 » (décimale exacte), sinon « 7/3 ». */
+export function formatFrac(value: Frac): string {
+  if (value.d === ONE) return value.n.toString();
+  // Fraction décimale exacte (dénominateur 2^a·5^b) : écriture avec virgule.
+  let d = value.d;
+  let places = 0;
+  while (d % TEN === ZERO) {
+    d /= TEN;
+    places += 1;
+  }
+  let twos = 0;
+  let fives = 0;
+  while (d % BigInt(2) === ZERO) {
+    d /= BigInt(2);
+    twos += 1;
+  }
+  while (d % BigInt(5) === ZERO) {
+    d /= BigInt(5);
+    fives += 1;
+  }
+  if (d !== ONE) return `${value.n}/${value.d}`;
+  const digits = places + Math.max(twos, fives);
+  const scaled = (value.n * pow10(digits)) / value.d;
+  const negative = scaled < ZERO;
+  const abs = (negative ? -scaled : scaled).toString().padStart(digits + 1, "0");
+  const text = `${abs.slice(0, abs.length - digits)},${abs.slice(abs.length - digits)}`;
+  return negative ? `-${text}` : text;
 }

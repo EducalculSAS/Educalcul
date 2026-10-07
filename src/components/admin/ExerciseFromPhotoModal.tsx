@@ -19,6 +19,10 @@ export interface ExerciseFromPhotoParams {
   sourceExercise: string;
   sourceQuestionCount: number;
   sourceFigureDescription: string;
+  /** Copie fidèle de la photo (défaut) ou variante (valeurs changées, questions en plus). */
+  copyMode: boolean;
+  /** Figures à cases lues sur l'image (pyramides, grilles), reproduites telles quelles en copie fidèle. */
+  sourceFigures: unknown[];
 }
 
 interface Props {
@@ -35,6 +39,7 @@ interface Extracted {
   questionCount: number;
   hasFigure: boolean;
   figureDescription: string;
+  figures?: unknown[];
 }
 
 const MAX_SIDE = 1400;
@@ -57,6 +62,25 @@ async function toDataUrl(file: Blob): Promise<{ dataUrl: string; side: number }>
   return { dataUrl: canvas.toDataURL("image/jpeg", 0.8), side: Math.max(bitmap.width, bitmap.height) };
 }
 
+/** Relit les figures corrigées par l'admin ; une figure mal formée est ignorée (un exemple la remplace). */
+function parseFigureTexts(list: { kind: "brick_pyramid" | "fill_grid"; section: number; text: string }[]): unknown[] {
+  const out: unknown[] = [];
+  for (const f of list) {
+    const rows = f.text
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .map((line) => line.split("|").map((c) => (c.trim() === "▢" ? "" : c.trim())));
+    if (rows.length === 0) continue;
+    if (f.kind === "brick_pyramid") {
+      if (rows.length >= 2 && rows.every((r, i) => r.length === i + 1)) out.push({ kind: f.kind, section: f.section, levels: rows });
+    } else if (rows.every((r) => r.length === rows[0].length)) {
+      out.push({ kind: f.kind, section: f.section, cells: rows });
+    }
+  }
+  return out;
+}
+
 const fieldClass =
   "w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white";
 const labelClass = "block text-sm font-semibold text-[var(--greek-blue)] mb-1.5";
@@ -72,6 +96,9 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
   const [figure, setFigure] = useState("");
   const [title, setTitle] = useState("");
   const [sourceCount, setSourceCount] = useState(4);
+  const [copyMode, setCopyMode] = useState(true);
+  // Figures à cases lues sur l'image, éditables : une rangée par ligne, cases séparées par « | », ▢ = case vide.
+  const [figureTexts, setFigureTexts] = useState<{ kind: "brick_pyramid" | "fill_grid"; section: number; text: string }[]>([]);
   const [params, setParams] = useState({
     exerciseType: "contextual" as "simple" | "contextual",
     blockType: "standard" as GenBlockType,
@@ -102,6 +129,13 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
       setExtracted(ex);
       setStatement(ex.statement);
       setFigure(ex.hasFigure ? ex.figureDescription : "");
+      setFigureTexts(
+        (Array.isArray(ex.figures) ? (ex.figures as { kind: "brick_pyramid" | "fill_grid"; section: number; levels?: string[][]; cells?: string[][] }[]) : []).map((f) => ({
+          kind: f.kind,
+          section: f.section,
+          text: (f.kind === "brick_pyramid" ? f.levels ?? [] : f.cells ?? []).map((row) => row.map((c) => c || "▢").join(" | ")).join("\n"),
+        })),
+      );
       setTitle(ex.title);
       setSourceCount(ex.questionCount);
       setParams((p) => ({
@@ -152,6 +186,8 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
       sourceExercise: statement.trim(),
       sourceQuestionCount: sourceCount,
       sourceFigureDescription: figure.trim(),
+      copyMode,
+      sourceFigures: parseFigureTexts(figureTexts),
     });
   };
 
@@ -210,8 +246,8 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                 </button>
               )}
               <p className="text-xs text-gray-500">
-                Cadre bien l'énoncé, les consignes et quelques questions. L'IA en tirera un exercice voisin : mêmes
-                questions avec d'autres valeurs, des questions en plus et des figures.
+                Cadre bien l'énoncé, les consignes et les questions. Par défaut, l'exercice est une copie fidèle (rien
+                n'est inventé) que tu modifies ensuite ; tu peux aussi demander une variante avec d'autres valeurs.
               </p>
               {error && <p className="text-sm text-red-600 font-medium">{error}</p>}
             </div>
@@ -229,9 +265,52 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
               </div>
 
               <div>
-                <label className={labelClass}>Exercice lu sur l'image (corrige si besoin)</label>
+                <label className={labelClass}>Exercice lu sur l'image : c'est ce qui sera copié (corrige-le ici si besoin)</label>
                 <textarea rows={9} className={`${fieldClass} font-mono text-sm`} value={statement} onChange={(e) => setStatement(e.target.value)} />
                 <p className="text-xs text-gray-500 mt-1">Les formules sont en LaTeX entre $...$. Vérifie surtout les nombres : la lecture d'une photo peut se tromper.</p>
+              </div>
+
+              {figureTexts.length > 0 && (
+                <div className="space-y-3">
+                  <label className={labelClass}>Figures à cases lues sur l'image (corrige-les)</label>
+                  <p className="text-xs text-gray-500 -mt-1">Une rangée par ligne, cases séparées par « | », ▢ pour une case vide. Pyramide : du sommet vers la base.</p>
+                  {figureTexts.map((f, i) => (
+                    <div key={i}>
+                      <p className="text-xs font-semibold text-gray-600 mb-1">{f.kind === "brick_pyramid" ? "Pyramide de briques" : "Grille ou carré magique"} (exercice {f.section})</p>
+                      <textarea
+                        rows={Math.min(8, f.text.split("\n").length + 1)}
+                        className={`${fieldClass} font-mono text-sm`}
+                        value={f.text}
+                        onChange={(e) => setFigureTexts((list) => list.map((x, k) => (k === i ? { ...x, text: e.target.value } : x)))}
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div>
+                <label className={labelClass}>Que veux-tu obtenir ?</label>
+                <div className="grid grid-cols-2 gap-2">
+                  {([
+                    [true, "Copie fidèle", "Mêmes énoncés, mêmes nombres, mêmes figures : rien n'est inventé. Tu modifies ensuite."],
+                    [false, "Variante", "Mêmes types de questions mais d'autres valeurs, des questions en plus."],
+                  ] as const).map(([value, label, hint]) => (
+                    <button
+                      key={label}
+                      type="button"
+                      onClick={() => setCopyMode(value)}
+                      style={{
+                        background: copyMode === value ? "var(--greek-blue)" : "#fff",
+                        color: copyMode === value ? "#fff" : "var(--greek-blue)",
+                        borderColor: copyMode === value ? "var(--greek-blue)" : "rgba(197,161,72,0.25)",
+                      }}
+                      className="text-left px-4 py-3 rounded-xl border-2 transition-all"
+                    >
+                      <span className="block text-sm font-bold">{label}</span>
+                      <span className="block text-xs opacity-80 mt-0.5">{hint}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
 
               <div>
@@ -246,12 +325,14 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                     {SCHOOL_LEVELS.map((l) => (<option key={l.value} value={l.value}>{l.label}</option>))}
                   </select>
                 </div>
-                <div>
-                  <label className={labelClass}>Type de question</label>
-                  <select className={fieldClass} value={params.blockType} onChange={(e) => setParams({ ...params, blockType: e.target.value as GenBlockType })}>
-                    {BLOCK_TYPE_OPTIONS.map((o) => (<option key={o.value} value={o.value}>{o.label}</option>))}
-                  </select>
-                </div>
+                {!copyMode && (
+                  <div>
+                    <label className={labelClass}>Type de question</label>
+                    <select className={fieldClass} value={params.blockType} onChange={(e) => setParams({ ...params, blockType: e.target.value as GenBlockType })}>
+                      {BLOCK_TYPE_OPTIONS.map((o) => (<option key={o.value} value={o.value}>{o.label}</option>))}
+                    </select>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -275,6 +356,14 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                 </div>
               </div>
 
+              {copyMode && (
+                <p className="text-xs text-gray-500 -mt-1">
+                  Copie fidèle : toutes les questions de la photo sont reprises (environ {sourceCount}), dans l'ordre, avec leurs
+                  trous et leurs figures. Les réponses sont calculées ; une réponse douteuse est marquée « À vérifier ».
+                </p>
+              )}
+
+              {!copyMode && (
               <div>
                 <label className={labelClass}>
                   Nombre de questions : {params.questionCount}
@@ -282,7 +371,9 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                 </label>
                 <input type="range" min={1} max={24} value={params.questionCount} onChange={(e) => setParams({ ...params, questionCount: parseInt(e.target.value) })} className="w-full accent-[var(--greek-blue)]" />
               </div>
+              )}
 
+              {!copyMode && (
               <div>
                 <label className={labelClass}>Énoncé commun</label>
                 <div className="flex gap-2">
@@ -303,11 +394,14 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                   ))}
                 </div>
               </div>
+              )}
 
+              {!copyMode && (
               <div>
                 <label className={labelClass}>Instructions supplémentaires (optionnel)</label>
                 <textarea rows={2} className={fieldClass} value={params.instructions} onChange={(e) => setParams({ ...params, instructions: e.target.value })} placeholder="Ex: ajoute un tableau de valeurs, termine par une question de synthèse" />
               </div>
+              )}
 
               {error && <p className="text-sm text-red-600 font-medium">{error}</p>}
 

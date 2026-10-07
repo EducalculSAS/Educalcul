@@ -712,6 +712,8 @@ export default function AdminExercisesClient({
       sourceExercise: params.sourceExercise,
       sourceQuestionCount: params.sourceQuestionCount,
       sourceFigureDescription: params.sourceFigureDescription,
+      copyMode: params.copyMode,
+      sourceFigures: params.sourceFigures,
     }).then((id) => {
       if (!id) setAiError("Impossible de démarrer la génération. Réessaie.");
     });
