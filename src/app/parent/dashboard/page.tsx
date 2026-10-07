@@ -1,72 +1,16 @@
 import Link from "next/link";
-import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { redirect } from "next/navigation";
 import {
-  Users, BookOpen, CheckCircle, TrendingUp,
+  Users,
   ArrowRight, Plus, MessageSquare, Crown, UserCircle,
   BarChart2,
 } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
-import ChildReportLink from "@/components/parent/ChildReportLink";
+import ChildFamilyCard from "@/components/parent/ChildFamilyCard";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import GlassButton from "@/components/ui/GlassButton";
-import { Flame, Target, FileText } from "lucide-react";
-import { studentSummaries } from "@/lib/studentStats";
-
-interface ChildStats {
-  exerciseCount: number;
-  quizCount: number;
-  successRate: number;
-  lastActivity: { type: string; title: string; relativeTime: string } | null;
-}
-
-interface ChildRow {
-  id: string;
-  first_name: string;
-  last_name: string;
-  grade_level: string | null;
-  avatar?: string;
-  equipped_border?: string | null;
-}
-
-const formatRelativeTime = (d: string) => {
-  const diff = Math.floor((Date.now() - new Date(d).getTime()) / 1000);
-  if (diff < 60) return "À l'instant";
-  if (diff < 3600) return `Il y a ${Math.floor(diff / 60)} min`;
-  if (diff < 86400) return `Il y a ${Math.floor(diff / 3600)} h`;
-  return `Il y a ${Math.floor(diff / 86400)} j`;
-};
-
-async function fetchChildStats(childId: string): Promise<ChildStats> {
-  const [
-    { count: totalEx },
-    { count: totalQuiz },
-    { count: correctCount },
-    { data: lastQuiz },
-    { data: lastEx },
-  ] = await Promise.all([
-    supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
-    supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId),
-    supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", childId).eq("is_correct", true),
-    supabaseAdmin.from("user_quiz_attempts").select("completed_at, score, total_questions, quizzes(title)").eq("user_id", childId).order("completed_at", { ascending: false }).limit(1).maybeSingle(),
-    supabaseAdmin.from("user_exercise_attempts").select("attempted_at, is_correct, exercises(title)").eq("user_id", childId).order("attempted_at", { ascending: false }).limit(1).maybeSingle(),
-  ]);
-
-  const successRate = (totalEx || 0) > 0 ? Math.round(((correctCount || 0) / (totalEx || 1)) * 100) : 0;
-
-  const activities: { type: string; title: string; date: string }[] = [];
-  if (lastQuiz) activities.push({ type: "Quiz", title: (lastQuiz as any).quizzes?.title || "Quiz", date: (lastQuiz as any).completed_at });
-  if (lastEx) activities.push({ type: "Exercice", title: (lastEx as any).exercises?.title || "Exercice", date: (lastEx as any).attempted_at });
-  activities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-
-  return {
-    exerciseCount: totalEx || 0,
-    quizCount: totalQuiz || 0,
-    successRate,
-    lastActivity: activities[0] ? { ...activities[0], relativeTime: formatRelativeTime(activities[0].date) } : null,
-  };
-}
+import { loadFamily } from "@/lib/familyOverview";
 
 // Toute la page est un affichage de données propres au parent connecté (ses
 // enfants + leurs stats) : la seule chose qui dépend d'un état vraiment
@@ -85,21 +29,9 @@ export default async function ParentDashboard() {
     .maybeSingle();
   if (!userData) redirect("/dashboard");
 
-  const { data: childrenRows } = await supabaseAdmin
-    .from("users")
-    .select("id, first_name, last_name, grade_level, avatar, equipped_border")
-    .eq("role", "child")
-    .eq("parent_id", userData.id)
-    .order("first_name");
+  const children = await loadFamily(userData.id);
 
-  const childrenBase = (childrenRows || []) as ChildRow[];
-  const [stats, summaries] = await Promise.all([
-    Promise.all(childrenBase.map((c) => fetchChildStats(c.id))),
-    studentSummaries(childrenBase.map((c) => Number(c.id))),
-  ]);
-  const children = childrenBase.map((c, i) => ({ ...c, stats: stats[i], summary: summaries.get(Number(c.id)) }));
-
-  const totalExercises = children.reduce((a, c) => a + (c.stats?.exerciseCount || 0), 0);
+  const totalExercises = children.reduce((a, c) => a + c.stats.exerciseCount, 0);
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
@@ -222,85 +154,9 @@ export default async function ParentDashboard() {
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            {children.map((child) => {
-              return (
-                <div key={child.id} className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col group">
-                  {/* Header */}
-                  <div className="p-5 border-b border-[rgba(197,161,72,0.25)]">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <span className="group-hover:scale-110 transition-transform duration-300">
-                          <AvatarWithBorder avatar={child.avatar} equippedBorder={child.equipped_border} name={child.first_name} size="md" label="" />
-                        </span>
-                        <div>
-                          <h3 className="font-bold text-[var(--greek-blue)] text-lg leading-tight">{child.first_name} {child.last_name}</h3>
-                          <span className="inline-block text-xs font-semibold bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] px-2 py-0.5 rounded-full">{child.grade_level || "Niveau non défini"}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Body */}
-                  <div className="p-5 flex-grow">
-                    <div className="space-y-4">
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-center">
-                          <CheckCircle className="w-4 h-4 text-green-500 mx-auto mb-1" />
-                          <div className="text-lg font-bold text-gray-800">{child.stats?.exerciseCount || 0}</div>
-                          <div className="text-xs text-gray-500">Exercices</div>
-                        </div>
-                        <div className="p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-center">
-                          <TrendingUp className="w-4 h-4 text-[var(--greek-gold)] mx-auto mb-1" />
-                          <div className="text-lg font-bold text-gray-800">{child.stats?.successRate || 0}%</div>
-                          <div className="text-xs text-gray-500">Réussite</div>
-                        </div>
-                      </div>
-                      {child.summary && (
-                        <div className="rounded-xl border border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]/50 p-3 space-y-2">
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="flex items-center gap-1.5 text-gray-600"><Target className="w-4 h-4 text-[var(--greek-gold)]" /> Aujourd&apos;hui</span>
-                            <strong className={child.summary.goalReached ? "text-green-600" : "text-[var(--greek-blue)]"}>{child.summary.today}/{child.summary.dailyGoal}</strong>
-                          </div>
-                          <div className="flex items-center justify-between text-sm">
-                            <span className="flex items-center gap-1.5 text-gray-600"><Flame className={`w-4 h-4 ${child.summary.streak > 0 ? "text-orange-500" : "text-gray-300"}`} /> Série</span>
-                            <strong className="text-[var(--greek-blue)]">{child.summary.streak} j</strong>
-                          </div>
-                          <div>
-                            <div className="flex justify-between text-xs text-gray-500 mb-1"><span>Cette semaine</span><span>{child.summary.weekTotal}{child.summary.weeklyTarget ? ` / ${child.summary.weeklyTarget}` : ""}</span></div>
-                            <div className="h-1.5 rounded-full bg-gray-200 overflow-hidden"><div className="h-full rounded-full bg-[var(--greek-gold)]" style={{ width: `${child.summary.weeklyTarget ? Math.min(100, Math.round((child.summary.weekTotal / child.summary.weeklyTarget) * 100)) : Math.min(100, child.summary.weekTotal * 10)}%` }} /></div>
-                          </div>
-                          <p className={`text-xs font-semibold ${child.summary.daysSinceActive === null ? "text-gray-400" : child.summary.daysSinceActive >= 4 ? "text-[var(--greek-bronze)]" : "text-green-600"}`}>
-                            {child.summary.daysSinceActive === null ? "Pas encore commencé" : child.summary.daysSinceActive === 0 ? "Actif aujourd'hui" : `Inactif depuis ${child.summary.daysSinceActive} jour${child.summary.daysSinceActive > 1 ? "s" : ""}`}
-                          </p>
-                        </div>
-                      )}
-                      {child.stats?.lastActivity && (
-                        <div className="pt-3 border-t border-[rgba(197,161,72,0.25)]">
-                          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Dernière activité</p>
-                          <div className="flex items-center gap-2">
-                            <div className={`p-1.5 rounded-lg ${child.stats.lastActivity.type === "Quiz" ? "bg-purple-100 text-purple-600" : "bg-green-100 text-green-600"}`}>
-                              {child.stats.lastActivity.type === "Quiz" ? <CheckCircle className="w-3.5 h-3.5" /> : <BookOpen className="w-3.5 h-3.5" />}
-                            </div>
-                            <div className="min-w-0">
-                              <p className="text-sm font-medium text-gray-800 truncate">{child.stats.lastActivity.title}</p>
-                              <p className="text-xs text-gray-400">{child.stats.lastActivity.relativeTime}</p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Footer */}
-                  <div className="p-4 bg-gray-50 border-t border-[rgba(197,161,72,0.25)]">
-                    <div className="flex items-center justify-between gap-3">
-                      <ChildReportLink childId={child.id} />
-                      <Link href={`/parent/child/${child.id}/bulletin`} className="text-xs font-bold text-[var(--greek-blue)] hover:underline flex items-center gap-1 whitespace-nowrap"><FileText className="w-3.5 h-3.5" /> Bulletin</Link>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {children.map((entry) => (
+              <ChildFamilyCard key={entry.child.id} entry={entry} variant="overview" />
+            ))}
           </div>
         )}
 

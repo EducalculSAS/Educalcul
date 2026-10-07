@@ -10,7 +10,7 @@ import HomePricingGrid from "@/components/home/HomePricingGrid";
 import CaliaHover from "@/components/home/CaliaHover";
 import CaliaChatPreview from "@/components/home/CaliaChatPreview";
 import GlassButton from "@/components/ui/GlassButton";
-import AnimatedStatsCard from "@/components/home/AnimatedStatsCard";
+import ParentDashboardPreview from "@/components/home/ParentDashboardPreview";
 import StepsSection from "@/components/home/StepsSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import { fetchReviewsForHomepage } from "@/lib/manualReviews";
@@ -193,7 +193,7 @@ export default async function Home() {
                 Cours structurés, exercices progressifs, corrections détaillées, construits chapitre par chapitre sur le programme officiel, du CP à la Terminale.
               </p>
             </Reveal>
-            <Reveal y={36} scale={0.95} delay={0.1} className="rounded-3xl p-8 transition-transform duration-500 hover:-translate-y-1" style={{ background: "#fff", border: "1px solid var(--greek-border)", minHeight: 280 }}>
+            <Reveal y={36} scale={0.95} delay={0.1} className="rounded-3xl p-5 sm:p-8 md:min-h-[280px] transition-transform duration-500 hover:-translate-y-1" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
               <div className="h-full flex flex-col justify-center gap-3">
                 {["Fractions et nombres décimaux", "Théorème de Pythagore", "Fonctions affines"].map((t, i) => (
                   <div key={t} className="flex items-center gap-3 p-3 rounded-xl" style={{ background: i === 1 ? "rgba(197,161,72,0.08)" : "transparent", border: i === 1 ? "1px solid rgba(197,161,72,0.25)" : "1px solid transparent" }}>
@@ -208,7 +208,7 @@ export default async function Home() {
 
           {/* Rangée B — Calia */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-            <Reveal y={36} scale={0.95} delay={0.1} className="rounded-3xl p-8 relative overflow-visible transition-transform duration-500 hover:-translate-y-1" style={{ background: "var(--greek-blue)", minHeight: 280 }}>
+            <Reveal y={36} scale={0.95} delay={0.1} className="order-2 md:order-1 rounded-3xl p-5 sm:p-8 md:min-h-[280px] relative overflow-visible transition-transform duration-500 hover:-translate-y-1" style={{ background: "var(--greek-blue)" }}>
               <div className="relative z-10 h-full flex flex-col justify-center gap-4">
                 <CaliaHover />
 
@@ -220,7 +220,7 @@ export default async function Home() {
                 </div>
               </div>
             </Reveal>
-            <Reveal y={36} scale={0.95}>
+            <Reveal y={36} scale={0.95} className="order-1 md:order-2">
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
                 2 · IA Pédagogique
               </div>
@@ -243,11 +243,11 @@ export default async function Home() {
                 Vous savez enfin<br />où il en est vraiment
               </h3>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
-                Progression par chapitre, taux de réussite, temps passé : un tableau de bord clair, pas un bulletin de plus à décoder.
+                Progression par chapitre, objectifs et séries, alerte quand il décroche : un tableau de bord clair pour chaque enfant, pas un bulletin de plus à décoder.
               </p>
             </Reveal>
             <Reveal y={36} scale={0.95} delay={0.1}>
-              <AnimatedStatsCard />
+              <ParentDashboardPreview />
             </Reveal>
           </div>
         </div>

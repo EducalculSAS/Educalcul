@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Square, Volume2 } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
 import { speakableText } from "@/lib/speech";
 
 /** Une seule lecture à la fois sur la page : lancer une nouvelle lecture arrête la précédente. */
@@ -56,15 +57,9 @@ export default function ReadAloudButton({ text, className = "", label = "Écoute
   };
 
   return (
-    <button
-      type="button"
-      onClick={speaking ? stop : start}
-      aria-label={speaking ? "Arrêter la lecture" : `${label} l'énoncé`}
-      title={speaking ? "Arrêter la lecture" : `${label} l'énoncé`}
-      className={`inline-flex items-center gap-1.5 rounded-full border border-[rgba(197,161,72,0.4)] bg-white/70 px-2.5 py-1 text-xs font-semibold text-[var(--greek-blue)] hover:bg-[var(--greek-gold)]/15 transition-colors ${className}`}
-    >
+    <GlassButton onClick={speaking ? stop : start} variant="outline" size="sm" className={className}>
       {speaking ? <Square className="w-3.5 h-3.5 fill-current" /> : <Volume2 className="w-3.5 h-3.5" />}
       {speaking ? "Stop" : label}
-    </button>
+    </GlassButton>
   );
 }

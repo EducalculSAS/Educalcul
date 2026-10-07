@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Flame, Repeat, Target } from "lucide-react";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { supabase } from "@/lib/supabaseClient";
 
 interface Props {
@@ -59,13 +60,9 @@ export default function GoalCard({ today, dailyGoal, streak, last7, weekTotal, w
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-gray-400 flex items-center gap-1.5"><Target className="w-3.5 h-3.5" /> Objectif du jour</p>
             <p className="font-bold text-[var(--greek-blue)] text-lg leading-tight">{reached ? "Objectif atteint, bravo !" : `Encore ${goal - today} activité${goal - today > 1 ? "s" : ""}`}</p>
-            <div className="flex items-center gap-1 mt-2" role="group" aria-label="Changer l'objectif du jour">
-              {GOALS.map((g) => (
-                <button key={g} type="button" disabled={saving} onClick={() => changeGoal(g)} className={`w-7 h-7 rounded-full text-xs font-bold border transition-colors ${g === goal ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "bg-white text-gray-500 border-gray-200 hover:border-[var(--greek-gold)]"}`}>
-                  {g}
-                </button>
-              ))}
-              <span className="text-[11px] text-gray-400 ml-1">par jour</span>
+            <div className="flex items-center gap-2 mt-2" aria-label="Changer l'objectif du jour">
+              <GlassSegmentedControl size="sm" options={GOALS.map((g) => ({ id: String(g), label: String(g) }))} value={String(goal)} onChange={(id) => !saving && changeGoal(Number(id))} />
+              <span className="text-[11px] text-gray-400">par jour</span>
             </div>
           </div>
         </div>

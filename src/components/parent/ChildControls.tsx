@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Check, Copy, FileText, Flame, Link2, Moon, Target, Unlink } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSwitch from "@/components/ui/GlassSwitch";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { supabase } from "@/lib/supabaseClient";
 
 export interface ControlPrefs {
@@ -114,11 +115,7 @@ export default function ChildControls({ childId, childName, initialPrefs, summar
           <div className="space-y-4 text-sm">
             <div>
               <p className="font-medium text-gray-700 mb-1.5">Par jour</p>
-              <div className="flex gap-1.5">
-                {[1, 2, 3, 5].map((g) => (
-                  <button key={g} type="button" onClick={() => patch({ dailyGoal: g }, "Objectif enregistré")} className={`w-9 h-9 rounded-full text-sm font-bold border transition-colors ${g === prefs.dailyGoal ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "bg-white text-gray-500 border-gray-200 hover:border-[var(--greek-gold)]"}`}>{g}</button>
-                ))}
-              </div>
+              <GlassSegmentedControl size="sm" options={[1, 2, 3, 5].map((g) => ({ id: String(g), label: String(g) }))} value={String(prefs.dailyGoal)} onChange={(id) => patch({ dailyGoal: Number(id) }, "Objectif enregistré")} />
             </div>
             <div>
               <label className="font-medium text-gray-700 block mb-1.5" htmlFor={`weekly-${childId}`}>Cible de la semaine (activités)</label>

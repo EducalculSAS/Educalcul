@@ -3,6 +3,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Type } from "lucide-react";
 import GlassSwitch from "@/components/ui/GlassSwitch";
+import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+import GlassIconButton from "@/components/ui/GlassIconButton";
 import { applyA11y, DEFAULT_A11Y, readA11y, saveA11y, type A11yPrefs } from "@/lib/a11y";
 
 /** Réglages de confort de lecture : police pour la dyslexie, taille du texte, espacement. */
@@ -32,19 +34,16 @@ export function A11yControls() {
       </div>
       <div>
         <p className="font-medium text-gray-800 mb-2">Taille du texte</p>
-        <div className="flex gap-2" role="group" aria-label="Taille du texte">
-          {([["Normal", 0], ["Grand", 1], ["Très grand", 2]] as const).map(([label, size]) => (
-            <button
-              key={size}
-              type="button"
-              onClick={() => update({ size })}
-              className={`flex-1 rounded-xl border px-3 py-2 font-semibold transition-colors ${prefs.size === size ? "bg-[var(--greek-blue)] text-white border-[var(--greek-blue)]" : "bg-white text-gray-600 border-gray-200 hover:border-[var(--greek-gold)]"}`}
-              style={{ fontSize: size === 0 ? 14 : size === 1 ? 16 : 18 }}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        <GlassSegmentedControl
+          size="sm"
+          options={[
+            { id: "0", label: "Normal" },
+            { id: "1", label: "Grand" },
+            { id: "2", label: "Très grand" },
+          ]}
+          value={String(prefs.size)}
+          onChange={(id) => update({ size: Number(id) as 0 | 1 | 2 })}
+        />
       </div>
       <p className="text-xs text-gray-400">Ces réglages sont gardés sur cet appareil. Le bouton « Écouter » lit les énoncés à voix haute.</p>
     </div>
@@ -87,15 +86,7 @@ export default function AccessibilityButton() {
           <A11yControls />
         </div>
       )}
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-label="Confort de lecture : police, taille, espacement"
-        aria-expanded={open}
-        className="w-10 h-10 rounded-full bg-white/90 border border-[rgba(197,161,72,0.4)] shadow-md text-[var(--greek-blue)] font-bold text-sm hover:bg-[var(--greek-gold)]/20 transition-colors"
-      >
-        Aa
-      </button>
+      <GlassIconButton icon={Type} onClick={() => setOpen((v) => !v)} color="navy" size="md" aria-label="Confort de lecture : police, taille, espacement" />
     </div>
   );
 }

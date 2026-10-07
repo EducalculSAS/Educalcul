@@ -1,39 +1,18 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
-import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { redirect } from "next/navigation";
-import { PlusCircle, Users, Edit } from "lucide-react";
-import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
+import { PlusCircle, Users } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
-import { supabaseAdmin } from "@/lib/supabaseClient";
-import DeleteChildButton from "@/components/parent/DeleteChildButton";
+import ChildFamilyCard from "@/components/parent/ChildFamilyCard";
+import { loadFamily } from "@/lib/familyOverview";
 import GlassButton from "@/components/ui/GlassButton";
-
-interface Child {
-  id: string;
-  first_name: string;
-  last_name: string;
-  grade_level: string;
-  child_username: string;
-  avatar?: string;
-  equipped_border?: string | null;
-}
 
 export default async function ManageChildrenPage() {
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "parent") redirect("/dashboard");
 
-  // USER_SELECT_COLUMNS est une chaîne dynamique : voir le même commentaire
-  // dans child/dashboard/page.tsx pour le `: any`.
-  const { data }: { data: any } = await supabaseAdmin
-    .from("users")
-    .select(USER_SELECT_COLUMNS)
-    .eq("parent_id", authUser.id)
-    .eq("role", "child")
-    .order("first_name");
-
-  const children = (data || []) as Child[];
+  const children = await loadFamily(authUser.id);
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
@@ -74,54 +53,9 @@ export default async function ManageChildrenPage() {
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {children.map((child) => {
-              return (
-                <div
-                  key={child.id}
-                  className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
-                >
-                  <div className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center">
-                        <span className="mr-4 group-hover:scale-110 transition-transform">
-                          <AvatarWithBorder avatar={child.avatar} equippedBorder={child.equipped_border} name={child.first_name} size="md" label="" />
-                        </span>
-                        <div>
-                          <h3 className="text-lg font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
-                            {child.first_name} {child.last_name}
-                          </h3>
-                          <p className="text-sm text-gray-500">
-                            @{child.child_username}
-                          </p>
-                        </div>
-                      </div>
-                      <span className="px-2 py-1 bg-[var(--greek-blue)]/10 text-[var(--greek-blue)] text-xs rounded-md font-medium border border-[var(--greek-blue)]/20">
-                        {child.grade_level}
-                      </span>
-                    </div>
-
-                    <div className="pt-4 border-t border-[rgba(52,73,94,0.1)] flex justify-between items-center">
-                      <Link
-                        href={`/parent/child/${child.id}`}
-                        className="text-sm font-medium text-[var(--greek-blue)] hover:text-[var(--greek-gold)] transition-colors"
-                      >
-                        Voir le rapport
-                      </Link>
-                      <div className="flex gap-2">
-                        <Link
-                          href={`/parent/edit-child/${child.id}`}
-                          className="p-2 text-gray-400 hover:text-[var(--greek-blue)] hover:bg-[var(--greek-blue)]/10 rounded-lg transition-colors"
-                          title="Modifier"
-                        >
-                          <Edit className="w-4 h-4" />
-                        </Link>
-                        <DeleteChildButton childId={child.id} />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {children.map((entry) => (
+              <ChildFamilyCard key={entry.child.id} entry={entry} variant="manage" />
+            ))}
           </div>
         )}
       </div>
