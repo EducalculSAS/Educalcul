@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
 import { deleteAuthUser } from "@/lib/deleteAuthUser";
-import { purgeUserData } from "@/lib/userData";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { sanitizeErrorMessage } from "@/lib/safeError";
@@ -46,9 +45,6 @@ export async function DELETE(req: Request) {
     if (child.role !== "child") {
       return NextResponse.json({ error: "Ce profil n'est pas un compte enfant" }, { status: 400 });
     }
-
-    // 0. Objectifs, carnet d'erreurs, alertes de l'élève (hors cascade).
-    await purgeUserData([child.id]).catch(() => {});
 
     // 1. Profil + données liées (cascade FK).
     const { error: delError } = await supabaseAdmin.from("users").delete().eq("id", child.id);

@@ -1,6 +1,6 @@
 import "server-only";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { getUserData, getUserDataMany } from "@/lib/userData";
+import { DEFAULT_CHILD_PREFS, getChildPrefs, getChildPrefsMany, getReviewDays, type ChildPrefs } from "@/lib/studentStore";
 
 /**
  * Activité d'un élève, calculée à partir de ce qui existe déjà (tentatives d'exercices et de quiz, progression des cours,
@@ -8,29 +8,7 @@ import { getUserData, getUserDataMany } from "@/lib/userData";
  * séries, aux alertes des parents et au bulletin.
  */
 
-export interface ChildPrefs {
-  /** Objectif du jour, en activités terminées (exercice, quiz, cours, mini-jeu, séance à revoir). */
-  dailyGoal: number;
-  /** Cible de la semaine fixée par le parent (activités), ou null. */
-  weeklyTarget: number | null;
-  /** Plage de repos (accès fermé à l'élève) fixée par le parent. */
-  quiet: { enabled: boolean; start: string; end: string };
-  /** Levée exceptionnelle du repos, jusqu'à cet instant (ISO). */
-  quietOverrideUntil: string | null;
-  /** Date de l'examen visé (brevet, bac), AAAA-MM-JJ. */
-  examDate: string | null;
-}
-
-export const DEFAULT_CHILD_PREFS: ChildPrefs = {
-  dailyGoal: 2,
-  weeklyTarget: null,
-  quiet: { enabled: false, start: "21:00", end: "07:00" },
-  quietOverrideUntil: null,
-  examDate: null,
-};
-
-export const getChildPrefs = (childId: number) => getUserData<ChildPrefs>(childId, "prefs", DEFAULT_CHILD_PREFS);
-export const getChildPrefsMany = (childIds: number[]) => getUserDataMany<ChildPrefs>(childIds, "prefs", DEFAULT_CHILD_PREFS);
+export { DEFAULT_CHILD_PREFS, getChildPrefs, getChildPrefsMany, type ChildPrefs } from "@/lib/studentStore";
 
 /* ------------------------------------------------------------------ */
 /*  Jours (heure de Paris)                                              */
@@ -109,7 +87,7 @@ export async function loadActivityMany(childIds: number[], days = 70): Promise<M
     attemptRows("user_quiz_attempts"),
     supabaseAdmin.from("user_course_progress").select("user_id, completed_at").in("user_id", childIds).gte("completed_at", since).limit(5000),
     supabaseAdmin.from("minigame_sessions").select("user_id, completed_at").in("user_id", childIds).eq("status", "completed").gte("completed_at", since).limit(5000),
-    getUserDataMany<{ reviewDays: Record<string, number> }>(childIds, "srs", { reviewDays: {} }),
+    getReviewDays(childIds, parisDay(since)),
   ]);
 
   for (const row of [...exo, ...quiz]) {
@@ -121,8 +99,8 @@ export async function loadActivityMany(childIds: number[], days = 70): Promise<M
   for (const g of games.data ?? []) bump(g.user_id, g.completed_at);
   for (const id of childIds) {
     const a = result.get(id)!;
-    for (const [day, n] of Object.entries(srsStates.get(String(id))?.reviewDays ?? {})) {
-      if (day >= parisDay(since)) a.perDay[day] = (a.perDay[day] ?? 0) + (Number(n) || 0);
+    for (const [day, n] of Object.entries(srsStates.get(id) ?? {})) {
+      a.perDay[day] = (a.perDay[day] ?? 0) + (Number(n) || 0);
     }
   }
   return result;

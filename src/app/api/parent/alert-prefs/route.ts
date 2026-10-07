@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
-import { getUserData, setUserData } from "@/lib/userData";
-import { DEFAULT_ALERT_PREFS, type ParentAlertPrefs } from "@/lib/parentAlerts";
+import { getAlertPrefs, setAlertPrefs, type ParentAlertPrefs } from "@/lib/studentStore";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
 async function parentOnly(req: Request) {
@@ -14,7 +13,7 @@ async function parentOnly(req: Request) {
 export async function GET(req: Request) {
   const auth = await parentOnly(req);
   if (auth.error) return auth.error;
-  return NextResponse.json(await getUserData<ParentAlertPrefs>(auth.me.id, "alertprefs", DEFAULT_ALERT_PREFS));
+  return NextResponse.json(await getAlertPrefs(auth.me.id));
 }
 
 export async function PATCH(req: Request) {
@@ -22,7 +21,7 @@ export async function PATCH(req: Request) {
     const auth = await parentOnly(req);
     if (auth.error) return auth.error;
     const body = await req.json().catch(() => ({}));
-    const current = await getUserData<ParentAlertPrefs>(auth.me.id, "alertprefs", DEFAULT_ALERT_PREFS);
+    const current = await getAlertPrefs(auth.me.id);
     const next: ParentAlertPrefs = { ...current };
     for (const k of ["inactivity", "chapter", "goals", "email"] as const) if (typeof body[k] === "boolean") next[k] = body[k];
     if (body.inactivityDays !== undefined) {
@@ -30,7 +29,7 @@ export async function PATCH(req: Request) {
       if (!Number.isFinite(d) || d < 2 || d > 30) return NextResponse.json({ error: "Seuil d'inactivité : 2 à 30 jours." }, { status: 400 });
       next.inactivityDays = d;
     }
-    await setUserData(auth.me.id, "alertprefs", next);
+    await setAlertPrefs(auth.me.id, next);
     return NextResponse.json(next);
   } catch (error) {
     return NextResponse.json({ error: sanitizeErrorMessage(error instanceof Error ? error.message : "Erreur interne") }, { status: 500 });

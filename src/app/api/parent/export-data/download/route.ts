@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { createHash } from "crypto";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { exportUserData } from "@/lib/userData";
+import { exportStudentData } from "@/lib/studentStore";
 
 // Endpoint public : la sécurité repose sur le token à usage personnel envoyé
 // par email (voir /api/parent/export-data), pas sur une session connectée —
@@ -59,11 +59,11 @@ export async function GET(req: Request) {
           .select("mastered_notions, weak_notions, preferred_method, behavior_notes, last_summary, updated_at")
           .eq("user_id", id)
           .maybeSingle();
-        return { ...child, calia_learning_profile: profile || null, objectifs_revisions_et_alertes: await exportUserData(id) };
+        return { ...child, calia_learning_profile: profile || null, objectifs_revisions_et_alertes: await exportStudentData(id) };
       }),
     );
 
-    const parentSettings = await exportUserData(request.user_id);
+    const parentSettings = await exportStudentData(request.user_id);
     const { auth_id: _authId, ...parentPublic } = parent || {};
     const json = JSON.stringify({ exported_at: new Date().toISOString(), parent: { ...parentPublic, reglages_alertes: parentSettings }, children: childrenWithProfile, subscription: subscription || null }, null, 2);
 

@@ -1,32 +1,30 @@
 import "server-only";
-import { supabaseAdmin } from "@/lib/supabaseClient";
-import { getUserData, setUserData } from "@/lib/userData";
 import { addDays, parisDay } from "@/lib/studentStats";
+import {
+  bumpMastered,
+  bumpReviewDay,
+  deleteSrsItemsByKeys,
+  getReviewDays,
+  getSrsItems,
+  getSrsItemsByKeys,
+  getStudentMeta,
+  srsKey,
+  upsertSrsItems,
+  type SrsItem,
+  type SrsKind,
+} from "@/lib/studentStore";
 
 /**
  * Cahier d'erreurs et révisions espacées (système de Leitner) : une question ratée entre dans le carnet, revient le
  * lendemain, puis 3, 7, 14 et 30 jours plus tard tant qu'elle est réussie ; ratée à nouveau, elle repart du début.
  * Réussie après le dernier palier, elle est « maîtrisée » et quitte le carnet.
  *
- * Stockage : une ligne par question (`u:<élève>:srs:i:<clé>` dans app_settings) — les corrections d'un quiz arrivent en
- * parallèle, des lignes séparées évitent qu'elles s'écrasent — et une ligne de compteurs (`u:<élève>:srs`).
+ * Les données vivent dans les tables srs_items (une ligne par question, donc les corrections d'un quiz qui arrivent en
+ * parallèle ne s'écrasent pas) et student_review_days ; voir studentStore.ts.
  */
 
-export type SrsKind = "exercise" | "quiz";
-
-export interface SrsItem {
-  kind: SrsKind;
-  /** Identifiant de l'exercice ou du quiz. */
-  ref: string;
-  /** Identifiant du bloc (exercice) ou de la question (quiz). */
-  block: string;
-  /** Palier 0 à 4 (0 = vient d'être raté). */
-  box: number;
-  /** Prochain passage, AAAA-MM-JJ. */
-  due: string;
-  misses: number;
-  last: string;
-}
+export type { SrsItem, SrsKind };
+export { srsKey };
 
 export interface SrsMeta {
   /** Séances de révision par jour (compte dans l'objectif du jour et la série). */
@@ -40,20 +38,12 @@ export interface SrsState extends SrsMeta {
 
 export const SRS_INTERVALS = [1, 3, 7, 14, 30];
 
-export const srsKey = (kind: SrsKind, ref: string, block: string) => `${kind}:${ref}:${block}`;
-
-const itemRowKey = (userId: number, key: string) => `u:${userId}:srs:i:${key}`;
-const EMPTY_META: SrsMeta = { reviewDays: {}, mastered: 0 };
-
 export async function getSrs(userId: number): Promise<SrsState> {
-  const [meta, rows] = await Promise.all([
-    getUserData<SrsMeta>(userId, "srs", EMPTY_META),
-    supabaseAdmin.from("app_settings").select("key, value").like("key", `u:${userId}:srs:i:%`).limit(1000),
-  ]);
-  const prefix = `u:${userId}:srs:i:`;
-  const items: Record<string, SrsItem> = {};
-  for (const r of rows.data ?? []) items[(r.key as string).slice(prefix.length)] = r.value as SrsItem;
-  return { ...meta, items };
+  const today = parisDay();
+  const [items, meta, reviewDays] = await Promise.all([getSrsItems(userId), getStudentMeta(userId), getReviewDays([userId], addDays(today, -70))]);
+  const byKey: Record<string, SrsItem> = {};
+  for (const i of items) byKey[srsKey(i.kind, i.ref, i.block)] = i;
+  return { items: byKey, mastered: meta.srsMastered, reviewDays: reviewDays.get(userId) ?? {} };
 }
 
 export interface SrsResult {
@@ -96,35 +86,28 @@ export function applyResults(state: SrsState, results: SrsResult[], opts: { revi
 /** Enregistre des résultats : n'écrit que les questions touchées (et les compteurs en cas de séance ou de maîtrise). */
 export async function recordResults(userId: number, results: SrsResult[], opts: { review: boolean }): Promise<void> {
   if (!results.length) return;
-  const keys = [...new Set(results.map((r) => srsKey(r.kind, r.ref, r.block)))];
-  const { data } = await supabaseAdmin.from("app_settings").select("key, value").in("key", keys.map((k) => itemRowKey(userId, k)));
+  const today = parisDay();
   const existing: Record<string, SrsItem> = {};
-  for (const r of data ?? []) existing[(r.key as string).slice(`u:${userId}:srs:i:`.length)] = r.value as SrsItem;
+  for (const i of await getSrsItemsByKeys(userId, results)) existing[srsKey(i.kind, i.ref, i.block)] = i;
 
-  const next = applyResults({ items: existing, reviewDays: {}, mastered: 0 }, results, opts);
+  const next = applyResults({ items: existing, reviewDays: {}, mastered: 0 }, results, { ...opts, today });
+  const keys = [...new Set(results.map((r) => srsKey(r.kind, r.ref, r.block)))];
 
-  const upserts = keys
-    .filter((k) => next.items[k] && JSON.stringify(next.items[k]) !== JSON.stringify(existing[k]))
-    .map((k) => ({ key: itemRowKey(userId, k), value: next.items[k], updated_at: new Date().toISOString() }));
-  const removals = keys.filter((k) => existing[k] && !next.items[k]).map((k) => itemRowKey(userId, k));
-  if (upserts.length) {
-    const { error } = await supabaseAdmin.from("app_settings").upsert(upserts, { onConflict: "key" });
-    if (error) throw new Error(error.message);
-  }
-  if (removals.length) await supabaseAdmin.from("app_settings").delete().in("key", removals);
-
-  if (opts.review || next.mastered > 0) {
-    const meta = await getUserData<SrsMeta>(userId, "srs", EMPTY_META);
-    const merged = applyResults({ items: {}, reviewDays: meta.reviewDays, mastered: meta.mastered }, [], { review: false });
-    for (const [day, n] of Object.entries(next.reviewDays)) merged.reviewDays[day] = (merged.reviewDays[day] ?? 0) + n;
-    await setUserData(userId, "srs", { reviewDays: merged.reviewDays, mastered: (meta.mastered ?? 0) + next.mastered });
-  }
+  const changed = keys.filter((k) => next.items[k] && JSON.stringify(next.items[k]) !== JSON.stringify(existing[k])).map((k) => next.items[k]);
+  const removed = keys.filter((k) => existing[k] && !next.items[k]).map((k) => existing[k]);
+  await upsertSrsItems(userId, changed);
+  await deleteSrsItemsByKeys(userId, removed);
+  if (opts.review) await bumpReviewDay(userId, today, next.reviewDays[today] ?? 0);
+  await bumpMastered(userId, next.mastered);
 }
 
 /** Retire des questions du carnet (contenu disparu). */
 export async function deleteSrsItems(userId: number, keys: string[]): Promise<void> {
-  if (!keys.length) return;
-  await supabaseAdmin.from("app_settings").delete().in("key", keys.map((k) => itemRowKey(userId, k)));
+  const parsed = keys
+    .map((k) => /^(exercise|quiz):([^:]+):(.+)$/.exec(k))
+    .filter((m): m is RegExpExecArray => !!m)
+    .map((m) => ({ kind: m[1] as SrsKind, ref: m[2], block: m[3] }));
+  await deleteSrsItemsByKeys(userId, parsed);
 }
 
 /** Questions à revoir aujourd'hui, les plus anciennes d'abord. */

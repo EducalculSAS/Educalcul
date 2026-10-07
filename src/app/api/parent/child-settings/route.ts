@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { canActOnInternalId, getAuthenticatedUser } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { getChildPrefs, parisDay, studentSummary, type ChildPrefs } from "@/lib/studentStats";
-import { setUserData } from "@/lib/userData";
+import { parisDay, studentSummary } from "@/lib/studentStats";
+import { getChildPrefs, setChildPrefs, type ChildPrefs } from "@/lib/studentStore";
 import { isRealDate } from "@/lib/calendarServer";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
@@ -74,7 +74,7 @@ export async function PATCH(req: Request) {
       else return NextResponse.json({ error: "Date d'examen invalide ou passée." }, { status: 400 });
     }
 
-    await setUserData(childId, "prefs", next);
+    await setChildPrefs(childId, next);
     return NextResponse.json({ success: true, prefs: next });
   } catch (error) {
     return NextResponse.json({ error: sanitizeErrorMessage(error instanceof Error ? error.message : "Erreur interne") }, { status: 500 });

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
-import { getChildPrefs, parisDay } from "@/lib/studentStats";
-import { setUserData } from "@/lib/userData";
+import { parisDay } from "@/lib/studentStats";
+import { getChildPrefs, setChildPrefs } from "@/lib/studentStore";
 import { isRealDate } from "@/lib/calendarServer";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
@@ -25,7 +25,7 @@ export async function PATCH(req: Request) {
       else if (isRealDate(body.examDate) && (body.examDate as string) >= parisDay()) next.examDate = body.examDate as string;
       else return NextResponse.json({ error: "Date invalide ou déjà passée." }, { status: 400 });
     }
-    await setUserData(me.id, "prefs", next);
+    await setChildPrefs(me.id, next);
     return NextResponse.json({ success: true, dailyGoal: next.dailyGoal, examDate: next.examDate });
   } catch (error) {
     return NextResponse.json({ error: sanitizeErrorMessage(error instanceof Error ? error.message : "Erreur interne") }, { status: 500 });

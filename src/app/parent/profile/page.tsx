@@ -5,8 +5,7 @@ import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ParentProfileSettings from "@/components/parent/ParentProfileSettings";
 import ParentAlertSettings from "@/components/parent/ParentAlertSettings";
-import { getUserData } from "@/lib/userData";
-import { DEFAULT_ALERT_PREFS, type ParentAlertPrefs } from "@/lib/parentAlerts";
+import { getAlertPrefs } from "@/lib/studentStore";
 
 export default async function ParentProfilePage() {
   const authUser = await getServerUser();
@@ -37,7 +36,7 @@ export default async function ParentProfilePage() {
       .eq("role", "child"),
   ]);
   const hasActiveSubscription = !!sub && sub.status === "active" && !sub.cancel_at_period_end;
-  const alertPrefs = await getUserData<ParentAlertPrefs>(profile.id, "alertprefs", DEFAULT_ALERT_PREFS);
+  const alertPrefs = await getAlertPrefs(profile.id);
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">

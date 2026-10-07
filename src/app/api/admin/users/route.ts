@@ -17,7 +17,6 @@ import {
 import { grantOfferedSubscription, isBillingMode } from "@/lib/adminGrantSubscription";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { SCHOOL_LEVELS } from "@/lib/constants";
-import { purgeUserData } from "@/lib/userData";
 
 const VALID_GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
 
@@ -480,9 +479,6 @@ export async function DELETE(request: Request) {
       console.log(
         `[DELETE USER] Found user ${userData.id} with auth_id ${auth_id}`,
       );
-
-      // Objectifs, carnet d'erreurs, alertes : hors cascade, effacés ici.
-      await purgeUserData([userData.id]).catch(() => {});
 
       // FIRST: Handle self-referencing children (parent_id) BEFORE deleting anything
       // This prevents CASCADE delete of children
