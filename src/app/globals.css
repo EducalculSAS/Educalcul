@@ -2789,3 +2789,31 @@ html[data-theme="dark"] .bg-\[var\(--greek-cream\)\]\/30,
 html[data-theme="dark"] .bg-\[var\(--greek-cream\)\]\/40,
 html[data-theme="dark"] .bg-\[var\(--greek-cream\)\]\/50,
 html[data-theme="dark"] .bg-\[var\(--greek-cream\)\]\/60 { background-color: rgba(255, 255, 255, 0.04); }
+
+/* Figure libre (JSXGraph) : feuille blanche à carreaux, tracé aux couleurs Educalcul. Le plafond de taille des autres
+   figures SVG ne s'applique pas ici : le tableau JSXGraph gère lui-même sa taille. */
+.course-figure-jsx {
+  max-width: 520px;
+}
+.course-figure-jsx .jsx-board {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid rgba(15, 30, 58, 0.1);
+  overflow: hidden;
+  touch-action: manipulation;
+}
+.course-figure-jsx .jsx-board svg {
+  max-width: none;
+  max-height: none;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+}
+.course-figure-jsx .jsx-board text {
+  font-family: inherit;
+}
+.course-figure-jsx .jsx-board:not([data-wired]) {
+  min-height: 220px;
+}

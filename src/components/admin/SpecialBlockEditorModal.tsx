@@ -8,6 +8,8 @@ import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { Upload } from "lucide-react";
+import JsxFigureEditor from "@/components/admin/JsxFigureEditor";
+import { JSX_PRESETS } from "@/lib/jsxFigure";
 
 const TEMPLATES: Record<string, { label: string; group: string; data: Record<string, unknown> }> = {
   image: { label: "Image (lien ou upload)", group: "Texte", data: { url: "", caption: "Légende de l'image" } },
@@ -23,6 +25,7 @@ const TEMPLATES: Record<string, { label: string; group: string; data: Record<str
   pie_chart: { label: "Camembert", group: "Données", data: { caption: "Répartition", slices: [{ label: "A", value: 4, tone: "blue" }, { label: "B", value: 6, tone: "red" }] } },
   box_plot: { label: "Boîte à moustaches", group: "Données", data: { caption: "Boîte", min: 2, q1: 5, median: 7, q3: 9, max: 12 } },
   number_line: { label: "Droite graduée", group: "Géométrie/Nombres", data: { caption: "Droite", min: -5, max: 5, points: [{ value: 2, label: "A" }], intervals: [] } },
+  jsx_figure: { label: "Figure libre (toute figure de maths)", group: "Figure libre", data: { ...JSX_PRESETS[0].spec } as unknown as Record<string, unknown> },
   shape: { label: "Formes libres (quadrillage)", group: "Géométrie/Nombres", data: { caption: "Un carré et un cercle", width: 14, height: 8, preset: "none", a: 3, b: 4, parts: [
     { kind: "square", text: "", x: 1, y: 1, w: 5, h: 5, r: 3, start_angle: 0, end_angle: 90, points: [], tone: "blue", filled: true, dashed: false, arrow: "none", vertex_labels: ["A", "B", "C", "D"], side_labels: [], right_angle_at: null, show_dimensions: true },
     { kind: "circle", text: "", x: 10, y: 4, w: 6, h: 4, r: 3, start_angle: 0, end_angle: 90, points: [], tone: "red", filled: false, dashed: false, arrow: "none", vertex_labels: ["O"], side_labels: [], right_angle_at: null, show_dimensions: true },
@@ -60,7 +63,7 @@ const TEMPLATES: Record<string, { label: string; group: string; data: Record<str
   algo_sandbox: { label: "Extrait de code (lecture seule)", group: "Lycée", data: { code: "def f(x):\n    return x**2", language: "python", caption: "Algorithme" } },
 };
 
-const GROUP_ORDER = ["Texte", "Données", "Géométrie/Nombres", "Primaire", "Collège", "Lycée"];
+const GROUP_ORDER = ["Figure libre", "Texte", "Données", "Géométrie/Nombres", "Primaire", "Collège", "Lycée"];
 
 export default function SpecialBlockEditorModal({
   isOpen,
@@ -171,24 +174,33 @@ export default function SpecialBlockEditorModal({
           </div>
         )}
 
-        <div className="space-y-2">
-          <label className="text-xs font-medium text-gray-500 uppercase">Données (JSON)</label>
+        {selectedType === "jsx_figure" && (
+          <JsxFigureEditor
+            value={(() => {
+              try { return JSON.parse(jsonText) as Record<string, unknown>; } catch { return {}; }
+            })()}
+            onChange={(spec) => setJsonText(JSON.stringify(spec, null, 2))}
+          />
+        )}
+
+        <details className="space-y-2" open={selectedType !== "jsx_figure"}>
+          <summary className="text-xs font-medium text-gray-500 uppercase cursor-pointer">Données (JSON){selectedType === "jsx_figure" ? " : mode avancé" : ""}</summary>
           <textarea
             value={jsonText}
             onChange={(e) => setJsonText(e.target.value)}
-            className="w-full min-h-[160px] p-3 border border-[rgba(197,161,72,0.25)] rounded-lg text-xs font-mono resize-y"
+            className="w-full min-h-[160px] p-3 border border-[rgba(197,161,72,0.25)] rounded-lg text-xs font-mono resize-y mt-2"
             spellCheck={false}
           />
-        </div>
+        </details>
 
-        <div className="space-y-2">
+        <div className="space-y-2" hidden={selectedType === "jsx_figure"}>
           <label className="text-xs font-medium text-gray-500 uppercase">Aperçu</label>
           {error ? (
             <p className="text-sm text-red-600">{error}</p>
           ) : (
             <div
               className="latex-content border border-[rgba(197,161,72,0.15)] rounded-lg p-3 bg-gray-50 overflow-x-auto"
-              dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(html)) }}
+              dangerouslySetInnerHTML={{ __html: selectedType === "jsx_figure" ? "" : renderLatexInHTML(renderMathGraphPlaceholders(html)) }}
             />
           )}
         </div>

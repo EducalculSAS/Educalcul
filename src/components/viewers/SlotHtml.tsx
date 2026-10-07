@@ -59,7 +59,12 @@ export default function SlotHtml({ html, values, disabled, expected, submitted, 
       const r = el.getBoundingClientRect();
       found.push({ n, left: r.left - base.left, top: r.top - base.top, width: r.width, height: r.height, inSvg: el.hasAttribute("data-slot") });
     });
-    setBoxes(found);
+    setBoxes((prev) => {
+      const same =
+        prev.length === found.length &&
+        prev.every((p, i) => p.n === found[i].n && Math.abs(p.left - found[i].left) < 0.5 && Math.abs(p.top - found[i].top) < 0.5 && Math.abs(p.width - found[i].width) < 0.5 && Math.abs(p.height - found[i].height) < 0.5);
+      return same ? prev : found;
+    });
   }, []);
 
   useLayoutEffect(() => {
@@ -73,8 +78,17 @@ export default function SlotHtml({ html, values, disabled, expected, submitted, 
     observer.observe(root);
     window.addEventListener("resize", measure);
     void document.fonts?.ready.then(measure);
+    // Une figure libre (JSXGraph) se dessine après coup : on re-mesure quand de nouveaux emplacements apparaissent.
+    let frame = 0;
+    const mutations = new MutationObserver(() => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(measure);
+    });
+    mutations.observe(root, { childList: true, subtree: true });
     return () => {
       observer.disconnect();
+      mutations.disconnect();
+      cancelAnimationFrame(frame);
       window.removeEventListener("resize", measure);
     };
   }, [measure]);

@@ -12,6 +12,7 @@ import {
   type StructuredLearningResource,
 } from "@/lib/ai/structuredContent";
 import { buildGraphSvg } from "@/lib/mathGraph";
+import { encodeJsxSpec } from "@/lib/jsxFigure";
 import { evaluate as evaluateMathExpr } from "mathjs";
 
 export type CompiledCourseExercise = {
@@ -934,6 +935,11 @@ function renderLabeledPolygon(block: Extract<StructuredCourseBlock, { type: "lab
   }
   const svg = `${figOpen(W, H)}${body}</svg>`;
   return `<figure class="course-figure course-figure-labeled-polygon">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
+}
+
+function renderJsxFigure(block: Extract<StructuredCourseBlock, { type: "jsx_figure" }>): string {
+  const spec = block.spec;
+  return `<figure class="course-figure course-figure-jsx"><div class="jsx-board" data-jsx-spec="${escapeAttribute(encodeJsxSpec(spec))}" style="width:100%"></div><figcaption>${escapeHtml(spec.caption)}</figcaption></figure>`;
 }
 
 function renderLabeledCircle(block: Extract<StructuredCourseBlock, { type: "labeled_circle" }>): string {
@@ -2453,6 +2459,8 @@ export function compileCourseBlock(
       return renderLabeledPolygon(block);
     case "labeled_circle":
       return renderLabeledCircle(block);
+    case "jsx_figure":
+      return renderJsxFigure(block);
     case "fill_grid":
       return renderFillGrid(block);
     case "fraction_strips":

@@ -1,4 +1,5 @@
 import katex from "katex";
+import { normalizeJsxSpec } from "@/lib/jsxFigure";
 import { mathRepairSchema, type JsonSchemaContract } from "@/lib/ai/schemas";
 
 /**
@@ -458,6 +459,12 @@ export type StructuredCourseBlock =
       caption: string;
       labels: Record<string, string>;
       vertices: string[];
+    }
+  | {
+      /** Figure libre JSXGraph : toute figure de maths décrite par un JSON (voir lib/jsxFigure.ts). */
+      type: "jsx_figure";
+      caption: string;
+      spec: import("@/lib/jsxFigure").JsxFigureSpec;
     }
   | {
       /** Cercle avec rayon et/ou diamètre étiquetés. */
@@ -2356,6 +2363,10 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
       if (!shape) return null;
       const vertices = Array.isArray(raw.vertices) ? raw.vertices.map((v: unknown) => String(v ?? "").trim().slice(0, 3)).slice(0, 6) : [];
       return { type: "labeled_polygon", shape, caption: sanitizeStructuredText(raw.caption), labels: geometryLabels(raw.labels), vertices };
+    }
+    case "jsx_figure": {
+      const spec = normalizeJsxSpec(raw.spec ?? raw);
+      return spec ? { type: "jsx_figure", caption: spec.caption, spec } : null;
     }
     case "labeled_circle": {
       return { type: "labeled_circle", caption: sanitizeStructuredText(raw.caption), labels: geometryLabels(raw.labels) };

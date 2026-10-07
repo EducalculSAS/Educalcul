@@ -19,6 +19,7 @@ import ImpersonationBanner from "@/components/ImpersonationBanner";
 import JsonLd from "@/components/JsonLd";
 import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import ThemeSync from "@/components/ThemeSync";
+import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 
 const BASE = "https://educalcul.com";
@@ -196,6 +197,7 @@ export default function RootLayout({
             <CookieBanner />
             <SessionStillHereModal />
             <ThemeSync />
+            <JsxFigureEnhancer />
           </ConfirmProvider>
         </ToastProvider>
       </body>

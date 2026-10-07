@@ -593,6 +593,7 @@ function blockPlainText(block: StructuredCourseBlock): string {
     case "solid":
     case "labeled_polygon":
     case "labeled_circle":
+    case "jsx_figure":
     case "fill_grid":
     case "fraction_strips":
     case "place_value_chart":
