@@ -65,6 +65,7 @@ export async function POST(
     let score = 0;
     let isCorrect = false;
     let feedback = "";
+    let commentToken: string | undefined;
 
     if (targetQuestion.type === "text_input" || targetQuestion.type === "impossible_search") {
       // Même correction que les exercices et les mini-exercices (gradeFreeAnswer).
@@ -82,6 +83,7 @@ export async function POST(
       isCorrect = r.is_correct;
       score = r.score;
       feedback = r.feedback;
+      commentToken = r.comment_token;
     } else if (targetQuestion.type === "multiple_choice") {
       const correct = Array.isArray(targetQuestion.correctAnswer)
         ? targetQuestion.correctAnswer
@@ -101,6 +103,7 @@ export async function POST(
       max_score: maxPoints,
       is_correct: isCorrect,
       feedback,
+      comment_token: commentToken,
       reveal: { correctAnswer: targetQuestion.correctAnswer, explanation: targetQuestion.explanation },
     });
   } catch (error: any) {

@@ -38,6 +38,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import CaliaSceneDemo from "@/components/child/calia-scene/CaliaSceneDemo";
+import { fetchMiniComment } from "@/lib/miniComment";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url: string) => {
@@ -1158,6 +1159,10 @@ function InlineMiniExercises({ lessonId, exercises, level, compact, title, start
         } else {
           updateState(ex.id, { status: "wrong", attempts, feedback: result.feedback });
         }
+        // Verdict et réponse de base déjà affichés : le mini commentaire de l'IA arrive juste après, quand il y en a un.
+        void fetchMiniComment(result.comment_token).then((comment) => {
+          if (comment) setStates((prev) => (prev[ex.id]?.attempts === attempts && prev[ex.id]?.status !== "idle" ? { ...prev, [ex.id]: { ...prev[ex.id], feedback: comment } } : prev));
+        });
       }
     } catch {
       updateState(ex.id, {

@@ -1,5 +1,6 @@
 import "server-only";
-import { gradeAnswer, gradeImageAnswer } from "@/lib/llm";
+import { commentOnMistake, gradeAnswerFast, gradeImageAnswer, runInteractive } from "@/lib/llm";
+import { openComment, sealComment } from "@/lib/commentToken";
 import { tryDeterministicMathCheck } from "@/lib/mathAnswerCheck";
 
 export interface FreeAnswerResult {
@@ -8,7 +9,11 @@ export interface FreeAnswerResult {
   feedback: string;
   /** Panne de l'IA sans verdict fiable : l'élève doit pouvoir resoumettre. */
   unavailable?: boolean;
+  /** Erreur constatée par le calcul : la réponse de base part tout de suite, ce jeton permet de demander le mini commentaire de l'IA. */
+  comment_token?: string;
 }
+
+const BASE_WRONG = "Ce n'est pas la bonne réponse : reprends ton calcul étape par étape.";
 
 /** Écriture comparable : sans espaces, \text{}, \left/\right, espacements LaTeX. */
 function normalizeWriting(value: string): string {
@@ -92,16 +97,41 @@ export async function gradeFreeAnswer(opts: {
     return { is_correct: true, score: maxPoints, feedback: why ? `Bonne réponse ! ${why}` : "Bonne réponse !" };
   }
 
+  // Erreur établie par le calcul exact : verdict et réponse de base instantanés, l'IA commente ensuite (jeton).
+  if (deterministic.decided && !deterministic.isCorrect && !isImage) {
+    return {
+      is_correct: false,
+      score: 0,
+      feedback: BASE_WRONG,
+      comment_token: sealComment({ question, correct, student, explanation: explanation ?? undefined, level }),
+    };
+  }
+
   try {
     const r = isImage
-      ? await gradeImageAnswer(question, correct, student, explanation ?? undefined, level, maxPoints)
-      : await gradeAnswer(question, correct, student, explanation ?? undefined, level, maxPoints, deterministic.decided ? deterministic.isCorrect : undefined, mode);
-    return { is_correct: r.is_correct, score: r.is_correct ? maxPoints : 0, feedback: r.is_correct ? r.feedback : withoutAnswer(r.feedback, correct) };
+      ? await runInteractive(() => gradeImageAnswer(question, correct, student, explanation ?? undefined, level, maxPoints))
+      : await gradeAnswerFast(question, correct, student, explanation ?? undefined, level, maxPoints, mode);
+    if (r.is_correct) return { is_correct: true, score: maxPoints, feedback: r.feedback || "Bonne réponse !" };
+    return { is_correct: false, score: 0, feedback: withoutAnswer(r.feedback || BASE_WRONG, correct) };
   } catch (e) {
     console.error("[gradeFreeAnswer] IA indisponible:", e instanceof Error ? e.message : e);
     if (deterministic.decided) {
       return { is_correct: false, score: 0, feedback: "Ce n'est pas la bonne réponse : reprends ton calcul étape par étape." };
     }
     return { is_correct: false, score: 0, feedback: "Réessaie dans quelques secondes.", unavailable: true };
+  }
+}
+
+/** Mini commentaire de l'IA sur une erreur déjà constatée (jeton remis par la correction) ; chaîne vide si rien d'utile. */
+export async function miniComment(token: string): Promise<string> {
+  const data = openComment(token);
+  if (!data) return "";
+  try {
+    const comment = await commentOnMistake(data.question, data.correct, data.student, data.level);
+    if (!comment) return "";
+    const clean = withoutAnswer(comment, data.correct);
+    return clean === "Ce n'est pas encore ça : reprends ton calcul étape par étape." ? "" : clean;
+  } catch {
+    return "";
   }
 }

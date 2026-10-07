@@ -18,6 +18,7 @@ import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import "katex/dist/katex.min.css";
 import { passThreshold } from "@/lib/scorePercent";
 import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
+import { fetchMiniComment } from "@/lib/miniComment";
 
 // Mélange déterministe (seedé par une chaîne) pour que l'ordre affiché aux
 // élèves (association / mise en ordre) reste stable entre deux rendus tant
@@ -1090,6 +1091,14 @@ export default function ExerciseViewer({
             [block.id]: { attempts, status: "wrong", feedback: data.feedback },
           }));
         }
+        // Verdict et réponse de base déjà affichés : le mini commentaire de l'IA arrive juste après, quand il y en a un.
+        void fetchMiniComment(data.comment_token).then((comment) => {
+          if (!comment) return;
+          setInlineText((prev) => {
+            const cur = prev[block.id];
+            return cur && cur.attempts === attempts && (cur.status === "wrong" || cur.status === "revealed") ? { ...prev, [block.id]: { ...cur, feedback: comment } } : prev;
+          });
+        });
       }
     } catch {
       setInlineText((prev) => ({
@@ -1397,6 +1406,7 @@ export default function ExerciseViewer({
     let totalScore = 0;
     const newResults: Record<string, boolean> = {};
     const newAiFeedback: Record<string, string> = {};
+    const newCommentTokens: Record<string, string> = {};
     const newRevealed: Record<string, any> = {};
     const newSubmitted = new Set<string>();
     const exerciseId = exercise.id || "preview";
@@ -1475,6 +1485,7 @@ export default function ExerciseViewer({
           const data = byBlock.get(block.id) || {};
           const isCorrect = !!data.is_correct;
           if (data.feedback) newAiFeedback[block.id] = data.feedback;
+          if (data.comment_token) newCommentTokens[block.id] = data.comment_token;
           if (data.reveal) newRevealed[block.id] = data.reveal;
           newResults[block.id] = isCorrect;
           newSubmitted.add(block.id);
@@ -1492,6 +1503,12 @@ export default function ExerciseViewer({
 
     setResults(newResults);
     setAiFeedback(newAiFeedback);
+    // Mini commentaires de l'IA sur les erreurs : ils s'ajoutent à la correction dès qu'ils arrivent.
+    Object.entries(newCommentTokens).forEach(([blockId, token]) => {
+      void fetchMiniComment(token).then((comment) => {
+        if (comment) setAiFeedback((prev) => ({ ...prev, [blockId]: comment }));
+      });
+    });
     setRevealed(newRevealed);
     setSubmittedBlocks(newSubmitted);
     setScore(totalScore);

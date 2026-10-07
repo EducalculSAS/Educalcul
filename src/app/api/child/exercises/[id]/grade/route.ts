@@ -26,6 +26,7 @@ interface GradeResult {
   feedback: string;
   reveal?: unknown;
   unavailable?: boolean;
+  comment_token?: string;
 }
 
 /** Exécute des tâches avec au plus `limit` en parallèle (appels IA). */
@@ -178,7 +179,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
           maxPoints,
           mode: block.type === "impossible_search" ? "justification" : "numeric",
         });
-        return { block_id: item.block_id, score: r.score, max_score: maxPoints, is_correct: r.is_correct, feedback: r.feedback, unavailable: r.unavailable, reveal: r.unavailable ? undefined : revealFor(block) };
+        return { block_id: item.block_id, score: r.score, max_score: maxPoints, is_correct: r.is_correct, feedback: r.feedback, comment_token: r.comment_token, unavailable: r.unavailable, reveal: r.unavailable ? undefined : revealFor(block) };
       }
 
       // Associations, catégories, trous : un point par élément bien placé (pas de « tout ou rien »).

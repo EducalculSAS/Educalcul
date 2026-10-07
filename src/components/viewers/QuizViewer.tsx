@@ -11,6 +11,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { AdminAttemptControls } from "@/components/viewers/ExerciseViewer";
 import { passThreshold } from "@/lib/scorePercent";
+import { fetchMiniComment } from "@/lib/miniComment";
 
 
 
@@ -147,6 +148,14 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             [idx]: { attempts, status: "wrong", feedback: data.feedback },
           }));
         }
+        // Verdict et réponse de base déjà affichés : le mini commentaire de l'IA arrive juste après, quand il y en a un.
+        void fetchMiniComment(data.comment_token).then((comment) => {
+          if (!comment) return;
+          setInlineText((prev) => {
+            const cur = prev[idx];
+            return cur && cur.attempts === attempts && (cur.status === "wrong" || cur.status === "revealed") ? { ...prev, [idx]: { ...cur, feedback: comment } } : prev;
+          });
+        });
       }
     } catch {
       setInlineText((prev) => ({
@@ -377,6 +386,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     let totalScore = 0;
     const newResults: Record<number, boolean> = {};
     const newFeedbacks: Record<number, string> = {};
+    const newCommentTokens: Record<number, string> = {};
     const newRevealed: Record<number, any> = {};
     const quizId = (quiz as any).id || "preview";
 
@@ -449,6 +459,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
       const data = graded[k] || {};
       const isCorrect = !!data.is_correct;
       if (data.feedback) newFeedbacks[i] = data.feedback;
+      if (data.comment_token) newCommentTokens[i] = data.comment_token;
       if (data.reveal) newRevealed[i] = data.reveal;
       newResults[i] = isCorrect;
       if (isCorrect) totalScore += questions[i].points;
@@ -457,6 +468,12 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     setScore(totalScore);
     setQuestionResults(newResults);
     setQuestionFeedbacks(newFeedbacks);
+    // Mini commentaires de l'IA sur les erreurs : ils s'ajoutent à la correction dès qu'ils arrivent.
+    Object.entries(newCommentTokens).forEach(([index, token]) => {
+      void fetchMiniComment(token).then((comment) => {
+        if (comment) setQuestionFeedbacks((prev) => ({ ...prev, [Number(index)]: comment }));
+      });
+    });
     setRevealed(newRevealed);
     setIsAnswerSubmitted(true);
     setIsValidating(false);
