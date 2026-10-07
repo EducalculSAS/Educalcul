@@ -8,6 +8,7 @@ import AdminMessages from "@/components/AdminMessages";
 import ChildOnboardingWrapper from "@/components/onboarding/ChildOnboardingWrapper";
 import ChildGradeChoiceModal from "@/components/child/ChildGradeChoiceModal";
 import QuietGuard from "@/components/child/QuietGuard";
+import AccessibilityButton from "@/components/AccessibilityPanel";
 import { isFeatureEnabled } from "@/lib/featureFlags";
 import { getServerUser } from "@/lib/supabase/server";
 import { getChildPrefs, isQuietNow } from "@/lib/studentStats";
@@ -43,6 +44,7 @@ export default async function ChildLayout({ children }: { children: ReactNode })
           <ChildGradeChoiceModal />
           <main className="pt-[64px] min-h-screen bg-[var(--greek-cream)]">{children}</main>
           {caliaOn && <AITutor />}
+          <AccessibilityButton />
         </>
       )}
     </AITutorProvider>

@@ -21,6 +21,9 @@ import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import ThemeSync from "@/components/ThemeSync";
 import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
+import { A11Y_INIT_SCRIPT } from "@/lib/a11y";
+import "@fontsource/opendyslexic/400.css";
+import "@fontsource/opendyslexic/700.css";
 
 const BASE = "https://educalcul.com";
 
@@ -178,6 +181,7 @@ export default function RootLayout({
         <meta charSet="UTF-8" />
         {/* Thème sombre mémorisé : appliqué avant le premier rendu (pas de flash clair). */}
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        <script dangerouslySetInnerHTML={{ __html: A11Y_INIT_SCRIPT }} />
         {/* Geo meta tags */}
         <meta name="geo.region" content="FR" />
         <meta name="geo.country" content="FR" />

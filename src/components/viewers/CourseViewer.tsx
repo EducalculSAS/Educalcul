@@ -39,6 +39,7 @@ import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import CaliaSceneDemo from "@/components/child/calia-scene/CaliaSceneDemo";
 import { fetchMiniComment } from "@/lib/miniComment";
+import ReadAloudButton from "@/components/ReadAloudButton";
 
 // Helper to extract YouTube ID
 const getYouTubeId = (url: string) => {
@@ -707,6 +708,14 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                     className="text-3xl md:text-4xl font-extrabold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-tight"
                     dangerouslySetInnerHTML={{ __html: renderLatexInHTML(currentLesson.title) }}
                   />
+                  {currentLesson.type !== 'video' && currentLesson.type !== 'video_file' && (
+                    <div className="mt-4">
+                      <ReadAloudButton
+                        label="Écouter la leçon"
+                        text={[currentLesson.title, ...(currentLesson.blocks ?? []).filter((b) => b.type === "text").map((b) => b.content || ""), currentLesson.type === "text" ? currentLesson.content || "" : ""].join(". ").slice(0, 8000)}
+                      />
+                    </div>
+                  )}
                 </div>
 
                 {/* Content Body */}

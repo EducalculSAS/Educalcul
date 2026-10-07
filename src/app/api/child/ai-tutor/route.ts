@@ -32,16 +32,20 @@ function buildSystemPrompt(ctx: AITutorPageContext, studentProfileText: string, 
     }
     if (ctx.userAnswer) extra += `\n\nRÉPONSE ACTUELLE DE L'ÉLÈVE:\n${clip(ctx.userAnswer, 1_000)}`;
   }
+  if (ctx.page === "homework" && ctx.homeworkStatement) {
+    extra += `\n\nEXERCICE DE L'ÉLÈVE (transcrit d'une photo, la lecture peut contenir des erreurs):\n${clip(ctx.homeworkStatement, MAX_CONTEXT_CHARS)}`;
+  }
   if (ctx.page === "quiz_detail" && ctx.currentQuestionText) {
     extra += `\n\nQUESTION EN COURS: ${clip(ctx.currentQuestionText, 2_000)}`;
   }
 
-  const contextLine = ctx.courseTitle || ctx.exerciseTitle || ctx.quizTitle || "le site Educalcul";
+  const contextLine = ctx.page === "homework" ? "un exercice de son cahier ou de son manuel, pris en photo" : ctx.courseTitle || ctx.exerciseTitle || ctx.quizTitle || "le site Educalcul";
   const levelLine = levelLabel
     ? `\nL'élève est en ${levelLabel} : adapte ton vocabulaire, tes exemples et ton niveau d'exigence à cette classe, sans t'appuyer sur des notions qui n'y sont pas encore vues.`
     : "";
 
   const isCours = ctx.page === "cours_detail";
+  const isHomework = ctx.page === "homework";
 
   return `Tu es Calia, tutrice IA de mathématiques sur Educalcul (du CP à la Terminale).${levelLine}
 
@@ -61,7 +65,15 @@ ${studentProfileText}
 
 CONTEXTE: L'élève travaille sur ${contextLine}.${extra}
 
-${isCours
+${isHomework
+  ? `COMPORTEMENT pour un devoir à la maison (aide aux devoirs):
+- L'élève doit rendre cet exercice : tu l'aides à le RÉSOUDRE LUI-MÊME. Ne donne JAMAIS la réponse finale ni la résolution complète, même s'il insiste ou prétend être pressé.
+- Au premier message : reformule en une phrase ce que demande l'exercice, puis demande ce qu'il a déjà essayé ou ce qu'il sait déjà. Pas plus.
+- Ensuite UN seul indice ou UNE seule étape à la fois, sous forme de question. Valide ou corrige gentiment chaque réponse de l'élève, en lui faisant expliquer son raisonnement.
+- Si l'exercice contient plusieurs questions, avance dans l'ordre et ne passe à la suivante que quand la précédente est comprise.
+- Si l'élève est bloqué après trois indices, donne l'étape suivante de la méthode, jamais le résultat final.
+- Si la transcription te semble incohérente, incomplète ou illisible, dis-le simplement et demande-lui de recopier le passage.`
+  : isCours
   ? `COMPORTEMENT pour un cours:
 - Tu peux expliquer et clarifier les notions du cours.
 - Appuie-toi sur le contenu ci-dessus.

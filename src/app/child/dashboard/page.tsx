@@ -6,12 +6,13 @@ import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { getCatalogLevelLabel } from "@/lib/constants";
 import {
   BookOpen, BrainCircuit, PenTool, Trophy, ArrowRight,
-  Play, MessageSquare, Star, Compass, CheckCircle, Zap, Gamepad2, type LucideIcon,
+  Play, MessageSquare, Star, Compass, GraduationCap, CheckCircle, Zap, Gamepad2, type LucideIcon,
 } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 import GlassButton from "@/components/ui/GlassButton";
 import GoalCard from "@/components/child/GoalCard";
-import { studentSummary } from "@/lib/studentStats";
+import { daysBetween, getChildPrefs, parisDay, studentSummary } from "@/lib/studentStats";
+import { examInfo } from "@/lib/examPlan";
 import { dueItems, getSrs } from "@/lib/srs";
 import { learningPath } from "@/lib/learningPath";
 
@@ -96,6 +97,10 @@ export default async function ChildDashboard() {
     learningPath({ id: userData.id, gradeLevel: userData.grade_level || null, placementScore: userData.onboarding_quiz_score ?? null }),
   ]);
   const dueReviews = dueItems(srsState, 1000).length;
+  const prefs = await getChildPrefs(userData.id);
+  const exam = examInfo(userData.grade_level);
+  const examDays = prefs.examDate ? daysBetween(parisDay(), prefs.examDate) : null;
+  const showExam = exam.key !== "generic" || (examDays !== null && examDays >= 0);
 
   const earnedBadges = ((ubadges || []) as unknown as { badge: Badge | null }[])
     .map((ub) => ub.badge)
@@ -170,6 +175,21 @@ export default async function ChildDashboard() {
           weeklyTarget={summary.weeklyTarget}
           dueReviews={dueReviews}
         />
+
+        {showExam && (
+          <Link href="/child/examens" className="group block mb-8">
+            <div className="bg-[var(--greek-blue)] text-white rounded-[20px] p-5 shadow-sm flex items-center justify-between gap-4 hover:shadow-xl transition-all">
+              <div className="flex items-center gap-4 min-w-0">
+                <GraduationCap className="w-9 h-9 text-[var(--greek-gold)] shrink-0" />
+                <div className="min-w-0">
+                  <p className="font-bold text-lg leading-tight">{exam.label}</p>
+                  <p className="text-sm opacity-80">{examDays !== null && examDays >= 0 ? `J-${examDays} · ton parcours semaine par semaine` : "Choisis la date et prépare-toi semaine par semaine"}</p>
+                </div>
+              </div>
+              <ArrowRight className="w-5 h-5 shrink-0 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+        )}
 
         {/* Parcours recommandé */}
         {path.length > 0 && (

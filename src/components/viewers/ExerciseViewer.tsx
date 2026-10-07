@@ -19,6 +19,7 @@ import "katex/dist/katex.min.css";
 import { passThreshold } from "@/lib/scorePercent";
 import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 import { fetchMiniComment } from "@/lib/miniComment";
+import ReadAloudButton from "@/components/ReadAloudButton";
 
 /** Aperçu admin ou séance « à revoir » : rien n'est enregistré comme tentative de cet exercice. */
 const isVirtualExercise = (id?: string | null) => !id || id === "preview" || id === "review";
@@ -1749,11 +1750,18 @@ export default function ExerciseViewer({
                   <h4 className="font-bold text-lg text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                     {block.title}
                   </h4>
-                  {block.points && (
-                    <span className="text-xs font-bold bg-[var(--greek-gold)]/20 text-[var(--greek-bronze)] border border-[rgba(197,161,72,0.25)] px-2 py-1 rounded-full">
-                      {block.points} pts
-                    </span>
-                  )}
+                  <div className="flex items-center gap-2 shrink-0">
+                    {block.type !== "image" && (block.content || block.title) && (
+                      <ReadAloudButton
+                        text={`${block.content || block.title || ""}${block.options?.length && block.type !== "fill_in_the_blank" ? `. ${block.options.map((o, i) => `Choix ${i + 1} : ${o}`).join(". ")}` : ""}`}
+                      />
+                    )}
+                    {block.points && (
+                      <span className="text-xs font-bold bg-[var(--greek-gold)]/20 text-[var(--greek-bronze)] border border-[rgba(197,161,72,0.25)] px-2 py-1 rounded-full">
+                        {block.points} pts
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 {block.content && block.type === "image" && (

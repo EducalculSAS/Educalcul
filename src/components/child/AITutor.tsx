@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useAITutor } from "@/contexts/AITutorContext";
-import { Send, X, Minus, RotateCcw, Lock, ArrowRight, Mic, MicOff } from "lucide-react";
+import { Send, X, Minus, RotateCcw, Lock, ArrowRight, Mic, MicOff, Camera, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useSubscription, aiRemaining } from "@/lib/useSubscription";
 import { renderLatexInHTML, renderUserText } from "@/lib/katexLoader";
@@ -71,6 +71,12 @@ export default function AITutor() {
   // bas de l'écran par-dessus la bulle : on l'efface le temps qu'il est
   // ouvert plutôt que de la laisser flotter dessus ou à moitié cachée.
   const [mathKeyboardOpen, setMathKeyboardOpen] = useState(false);
+
+  // Aide aux devoirs : l'élève photographie son exercice, Calia l'aide à le résoudre lui-même (jamais la réponse).
+  const [homework, setHomework] = useState<string | null>(null);
+  const homeworkRef = useRef<string | null>(null);
+  const [photoBusy, setPhotoBusy] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Dictée vocale (push-to-talk) : transcrit dans le champ texte, ne
   // valide/envoie jamais toute seule — l'élève relit et clique Envoyer.
@@ -210,8 +216,8 @@ export default function AITutor() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           messages: history.filter((m) => !m.local).slice(-10).map(({ role, content }) => ({ role, content })),
-          context: pageContextRef.current,
-          contextKey: getContextKeyRef.current(),
+          context: homeworkRef.current ? { ...pageContextRef.current, page: "homework", homeworkStatement: homeworkRef.current } : pageContextRef.current,
+          contextKey: homeworkRef.current ? "homework" : getContextKeyRef.current(),
           stream: true,
         }),
       });
@@ -288,6 +294,65 @@ export default function AITutor() {
     }
   }, [open, minimized]);
 
+
+  /** Réduit la photo (grand côté 1600 px, JPEG) avant l'envoi : plus rapide, et la lecture n'y perd rien. */
+  const shrinkPhoto = (file: File): Promise<string> =>
+    new Promise((resolve, reject) => {
+      const url = URL.createObjectURL(file);
+      const img = new window.Image();
+      img.onload = () => {
+        const scale = Math.min(1, 1600 / Math.max(img.width, img.height));
+        const canvas = document.createElement("canvas");
+        canvas.width = Math.round(img.width * scale);
+        canvas.height = Math.round(img.height * scale);
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return reject(new Error("Photo illisible."));
+        ctx.fillStyle = "#ffffff";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        URL.revokeObjectURL(url);
+        resolve(canvas.toDataURL("image/jpeg", 0.85));
+      };
+      img.onerror = () => {
+        URL.revokeObjectURL(url);
+        reject(new Error("Cette image ne peut pas être lue."));
+      };
+      img.src = url;
+    });
+
+  const handlePhoto = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file || photoBusy || loadingRef.current) return;
+    setOpen(true);
+    setPhotoBusy(true);
+    const localReply = (content: string) => {
+      const next = [...messagesRef.current, { role: "assistant" as const, local: true, content }];
+      messagesRef.current = next;
+      setMessages(next);
+    };
+    try {
+      const image = await shrinkPhoto(file);
+      const res = await fetch("/api/child/homework-photo", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ image }) });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.statement) {
+        localReply(data.error || "Je n'ai pas réussi à lire la photo. Essaie avec plus de lumière, bien à plat et en gros plan.");
+        return;
+      }
+      homeworkRef.current = data.statement;
+      setHomework(data.statement);
+      await ask(`Voici mon exercice, pris en photo :\n${data.statement}\n\nAide-moi à le faire moi-même, sans me donner la réponse.`);
+    } catch (err) {
+      localReply(err instanceof Error ? err.message : "Je n'ai pas réussi à lire la photo.");
+    } finally {
+      setPhotoBusy(false);
+    }
+  };
+
+  const leaveHomework = () => {
+    homeworkRef.current = null;
+    setHomework(null);
+  };
 
   const sendMessage = useCallback(() => {
     if (!input.trim() || loading) return;
@@ -441,7 +506,7 @@ export default function AITutor() {
             )}
             <GlassIconButton
               icon={RotateCcw}
-              onClick={() => { maybeSendSessionSummary(); summarizedCountRef.current = 0; setMessages([WELCOME]); deleteServerHistory(); }}
+              onClick={() => { maybeSendSessionSummary(); summarizedCountRef.current = 0; leaveHomework(); setMessages([WELCOME]); deleteServerHistory(); }}
               color="white"
               size="sm"
               aria-label="Nouvelle conversation"
@@ -545,7 +610,28 @@ export default function AITutor() {
                   </div>
                 </div>
               ) : (
-                <div className="px-3 py-3 shrink-0 flex gap-2" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
+                <div className="px-3 py-3 shrink-0 flex flex-col gap-2" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
+                  {homework && (
+                    <div className="flex items-center justify-between gap-2 rounded-lg px-3 py-1.5 text-[11px]" style={{ background: "rgba(197,161,72,0.12)", color: "rgba(240,237,232,0.85)" }}>
+                      <span className="truncate">Devoir en photo : Calia te guide sans donner la réponse</span>
+                      <button type="button" onClick={leaveHomework} className="shrink-0 underline opacity-80 hover:opacity-100">Quitter</button>
+                    </div>
+                  )}
+                  <div className="flex gap-2">
+                  {!isSupportMode && (
+                    <>
+                      <input ref={fileInputRef} type="file" accept="image/*" capture="environment" className="hidden" onChange={handlePhoto} />
+                      <GlassIconButton
+                        icon={photoBusy ? Loader2 : Camera}
+                        onClick={() => fileInputRef.current?.click()}
+                        disabled={photoBusy || loading}
+                        color="white"
+                        size="md"
+                        className={`self-end ${photoBusy ? "animate-pulse" : ""}`}
+                        aria-label="Photographier mon exercice"
+                      />
+                    </>
+                  )}
                   <textarea
                     ref={inputRef}
                     value={input}
@@ -565,6 +651,7 @@ export default function AITutor() {
                     className="self-end"
                     aria-label="Envoyer le message"
                   />
+                  </div>
                 </div>
               )}
             </>

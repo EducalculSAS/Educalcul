@@ -2,6 +2,7 @@
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import ThemeToggle from "@/components/ThemeToggle";
+import { AccessibilityCard } from "@/components/AccessibilityPanel";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useRef, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -277,6 +278,7 @@ export default function ChildProfileSettings({
         </div>
 
         <ThemeToggle />
+        <AccessibilityCard />
 
         {/* ── Voix de Calia en classe ── */}
         <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">

@@ -12,6 +12,7 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import { AdminAttemptControls } from "@/components/viewers/ExerciseViewer";
 import { passThreshold } from "@/lib/scorePercent";
 import { fetchMiniComment } from "@/lib/miniComment";
+import ReadAloudButton from "@/components/ReadAloudButton";
 
 
 
@@ -666,6 +667,12 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             <div className="px-3 py-1 bg-[var(--greek-cream)] rounded-full text-xs font-bold text-[var(--greek-bronze)] border border-[rgba(197,161,72,0.25)]">
               {currentQuestion.points} Points
             </div>
+          </div>
+
+          <div className="mb-4">
+            <ReadAloudButton
+              text={`${currentQuestion.group_intro && (currentQuestionIndex === 0 || questions[currentQuestionIndex - 1]?.group_id !== currentQuestion.group_id) ? `${currentQuestion.group_intro}. ` : ""}${currentQuestion.text || ""}. ${(currentQuestion.options ?? []).map((o, i) => `Choix ${i + 1} : ${o}`).join(". ")}`}
+            />
           </div>
 
           {/* Contexte partagé pour un groupe de "questions liées" (voir plan :
