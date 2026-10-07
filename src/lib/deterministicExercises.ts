@@ -124,7 +124,7 @@ export function makePyramid(rule: PyramidRule, bottomCount: number, rng: Rng = M
   return {
     title: "La pyramide",
     content: `Complète la pyramide : ${ruleText}. Écris les nombres qui manquent directement dans les briques vides.`,
-    figure: { type: "brick_pyramid", caption: "Pyramide à compléter", levels },
+    figure: { type: "brick_pyramid", caption: "Pyramide à compléter", levels: markSlots(levels) },
     figureSpec: { kind: "brick_pyramid", levels },
     blanks: missing.map(blankAlternatives),
     explanation: `On utilise la règle dans les deux sens, en partant des briques connues. Toutes les briques de la pyramide, du bas vers le haut : ${steps.join(" ; ")}. Les briques vides, de haut en bas puis de gauche à droite : ${missing.map(plain).join(" ; ")}.`,
@@ -217,7 +217,7 @@ export function makeMagicSquare(rng: Rng = Math.random): GeneratedFigureExercise
   return {
     title: "Le carré magique",
     content: "Complète ce carré magique : la somme des nombres de chaque ligne, de chaque colonne et de chaque diagonale est la même. Écris les nombres qui manquent directement dans les cases vides.",
-    figure: { type: "fill_grid", caption: "Carré magique à compléter", cells: grid },
+    figure: { type: "fill_grid", caption: "Carré magique à compléter", cells: markSlots(grid) },
     figureSpec: { kind: "fill_grid", cells: grid },
     blanks: missing.map(blankAlternatives),
     explanation: `La somme magique vaut ${sum} : c'est trois fois le nombre du centre (${c}). On complète chaque ligne, colonne ou diagonale pour que la somme fasse ${sum}. Le carré complet est : ${[0, 1, 2].map((r) => cells.slice(r * 3, r * 3 + 3).join(" ")).join(" / ")}. Les cases vides, ligne par ligne : ${missing.join(" ; ")}.`,
@@ -334,3 +334,9 @@ export function solveMagic(cells: string[][]): number[] | null {
 }
 
 export { blankAlternatives };
+
+/** Remplace chaque case vide ("") par un emplacement de réponse « {{k}} », dans l'ordre de lecture (rangée par rangée). */
+export function markSlots(rows: string[][]): string[][] {
+  let k = 0;
+  return rows.map((row) => row.map((cell) => (cell === "" ? `{{${++k}}}` : cell)));
+}

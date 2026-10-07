@@ -5,6 +5,7 @@ import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
 import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Image as ImageIcon, Loader2, Sparkles, Pencil, Keyboard, Eye, AlertTriangle } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
 import FigureInputs from "@/components/viewers/FigureInputs";
+import SlotHtml, { tokenizeSlots } from "@/components/viewers/SlotHtml";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -1951,48 +1952,15 @@ export default function ExerciseViewer({
 
                   {block.type === "fill_in_the_blank" && !block.figureSpec && (
                     <div className="text-lg leading-loose text-gray-800">
-                      {(() => {
-                        const parts = (block.content || "").split(/(\{\{\d+\}\})/g);
-                        const blankAnswers: string[] = Array.isArray(answer) ? answer : [];
-                        let blankIdx = -1;
-                        return parts.map((part, i) => {
-                          const m = part.match(/^\{\{(\d+)\}\}$/);
-                          if (m) {
-                            blankIdx++;
-                            const idx = blankIdx;
-                            const val = blankAnswers[idx] || "";
-                            const expected = revealed[block.id]?.blanks?.[idx];
-                            let cls = "border-gray-300 focus:border-[var(--greek-blue)]";
-                            if (isSubmitted && expected !== undefined) {
-                              const alts = String(expected).split("|").map((s: string) => s.trim().toLowerCase());
-                              const ok = alts.includes(String(val).trim().toLowerCase());
-                              cls = ok
-                                ? "border-green-500 bg-green-50 text-green-700"
-                                : "border-red-500 bg-red-50 text-red-700";
-                            }
-                            return (
-                              <input
-                                key={i}
-                                type="text"
-                                disabled={isSubmitted}
-                                value={val}
-                                onChange={(e) => {
-                                  const next = [...blankAnswers];
-                                  next[idx] = e.target.value;
-                                  handleBlockAnswerChange(block.id, next);
-                                }}
-                                className={`inline-block mx-1 w-28 text-center border-b-2 bg-transparent focus:outline-none px-1 ${cls}`}
-                              />
-                            );
-                          }
-                          return (
-                            <span
-                              key={i}
-                              dangerouslySetInnerHTML={{ __html: renderLatexInHTML(part) }}
-                            />
-                          );
-                        });
-                      })()}
+                      {/* Chaque trou est un champ posé à sa place : dans la phrase, dans une case de tableau ou DANS la figure. */}
+                      <SlotHtml
+                        html={renderLatexInHTML(tokenizeSlots(block.content || ""))}
+                        values={Array.isArray(answer) ? answer : []}
+                        disabled={!!isSubmitted}
+                        expected={revealed[block.id]?.blanks}
+                        submitted={!!isSubmitted}
+                        onChange={(next) => handleBlockAnswerChange(block.id, next)}
+                      />
                     </div>
                   )}
 

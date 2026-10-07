@@ -47,4 +47,4 @@ export function applyTheme(theme: Theme) {
 
 /** Script inséré dans <head> : applique le thème mémorisé avant le premier rendu. */
 export const THEME_INIT_SCRIPT =
-  `try{var p=location.pathname;if(localStorage.getItem("${THEME_KEY}")==="dark"&&/^\/(parent|child|admin|dashboard)(\/|$)/.test(p))document.documentElement.setAttribute("data-theme","dark")}catch(e){}`;
+  `try{var p=location.pathname;if(localStorage.getItem("${THEME_KEY}")==="dark"&&/^\\/(parent|child|admin|dashboard)(\\/|$)/.test(p))document.documentElement.setAttribute("data-theme","dark")}catch(e){}`;

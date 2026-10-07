@@ -256,7 +256,7 @@ REGLES DE CONTENU :
 - Reprends l'ecriture de la source : memes parentheses, memes signes, memes types de nombres. N'ajoute pas de parentheses superflues (pas de "((-7) + 4)" si la source ecrit "(-5 + 3)").
 - Les valeurs sont COHERENTES : verifie chaque calcul (surtout les signes des nombres relatifs et les virgules) avant de l'ecrire.
 
-FIGURES : si la question s'appuie sur un solide, un triangle, un rectangle, un cercle, un tableau ou un graphique, ajoute au bloc un champ "figure" avec la VALEUR d'UNE entree ci-dessous (jamais le nom qui la precede, jamais enveloppee dans une cle portant son nom). Les mesures de la figure et celles de l'enonce sont IDENTIQUES. La figure ne contient jamais la reponse. Ne dessine aucune autre figure que celles de cette liste (pas de pyramide de briques ni de carre magique : ils sont geres a part).
+FIGURES : si la question s'appuie sur un solide, un triangle, un rectangle, un cercle, un tableau ou un graphique, ajoute au bloc un champ "figure" avec la VALEUR d'UNE entree ci-dessous (jamais le nom qui la precede, jamais enveloppee dans une cle portant son nom). Les mesures de la figure et celles de l'enonce sont IDENTIQUES. La figure ne contient jamais la reponse. Une mesure que l'ELEVE doit trouver sur la figure s'ecrit {{n}} (n = 1, 2, 3...) comme valeur de l'etiquette : l'eleve ecrira sa reponse DANS la figure ; le bloc est alors "fill_in_the_blank" et "blanks" donne la reponse de chaque {{n}}, dans l'ordre. Ne dessine aucune autre figure que celles de cette liste (pas de pyramide de briques ni de carre magique : ils sont geres a part).
 ${FIGURE_SNIPPET}
 
 FORMAT DE SORTIE :
@@ -645,7 +645,7 @@ function deterministicBlocks(section: SourceSection, count: number): Block[] {
       points: 3,
       explanation: made.explanation,
       blanks: made.blanks,
-      figureSpec: made.figureSpec,
+      figure: made.figure,
     });
   }
   return blocks;

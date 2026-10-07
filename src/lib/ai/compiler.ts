@@ -251,7 +251,7 @@ function figText(
   x: number,
   y: number,
   content: string,
-  opts: { size?: number; weight?: number; anchor?: "start" | "middle" | "end"; fill?: string } = {},
+  opts: { size?: number; weight?: number; anchor?: "start" | "middle" | "end"; fill?: string; slotW?: number; slotH?: number } = {},
 ): string {
   const size = opts.size ?? 11;
   const weight = opts.weight ?? 500;
@@ -259,6 +259,16 @@ function figText(
   const fill = opts.fill ?? FIG.ink;
   // Halo contrasté : blanc sous un texte foncé, foncé sous un texte clair
   // (sinon un « 10 € » blanc sur billet devenait un pâté blanc illisible).
+  // Étiquette « {{n}} » : emplacement de réponse. Le lecteur y pose un champ de saisie (voir SlotHtml) ;
+  // n'importe quelle figure (cote, sommet, valeur) devient ainsi dynamique sans type dédié.
+  const slot = /^\{\{(\d+)\}\}$/.exec(content.trim());
+  if (slot) {
+    const w = opts.slotW ?? 44;
+    const h = opts.slotH ?? 24;
+    const cx = anchor === "start" ? x + w / 2 : anchor === "end" ? x - w / 2 : x;
+    const cy = y - size * 0.32;
+    return `<g class="fig-slot" data-slot="${slot[1]}"><rect x="${num(cx - w / 2)}" y="${num(cy - h / 2)}" width="${w}" height="${h}" rx="6" fill="#ffffff" fill-opacity="0.94" stroke="${FIG.accent}" stroke-width="1.4" stroke-dasharray="3 2"/></g>`;
+  }
   const light = ["#fff", "#ffffff", "#fefefe"].includes(fill.toLowerCase().trim());
   const halo = light ? "rgba(15,30,58,0.35)" : "#ffffff";
   const haloW = light ? 2 : 2.6;
@@ -615,98 +625,115 @@ function renderTapeDiagram(
   return `<figure class="course-figure course-figure-tape-diagram">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
-/** Pyramide de briques (sommet en premier). Briques remplies en vert, briques vides en pointillés à compléter. */
+/** Pyramide de briques (sommet en premier), dans le système de figures Educalcul : feuille quadrillée, briques calées sur
+ * les carreaux, aplats translucides + contour plein. Une brique « {{n}} » est un emplacement de réponse (champ dans le
+ * lecteur) ; une brique « » est une brique vide à repérer (« ? »). */
 function renderBrickPyramid(
   block: Extract<StructuredCourseBlock, { type: "brick_pyramid" }>,
 ): string {
   const rows = block.levels.length;
-  const brickW = 46;
-  const brickH = 26;
-  const gap = 3;
-  const width = rows * (brickW + gap) + 16;
-  const height = rows * (brickH + gap) + 14;
+  const bw = 60;
+  const bh = 40;
+  const width = Math.max(260, (rows * bw) + 40);
+  const height = rows * bh + 40;
   const bricks = block.levels
     .map((row, r) => {
-      const rowWidth = row.length * (brickW + gap) - gap;
-      const x0 = (width - rowWidth) / 2;
-      const y = 7 + r * (brickH + gap);
+      const x0 = (width - row.length * bw) / 2;
+      const y = 20 + r * bh;
       return row
         .map((value, c) => {
-          const x = x0 + c * (brickW + gap);
-          if (!value) {
-            return `<rect x="${num(x)}" y="${num(y)}" width="${brickW}" height="${brickH}" rx="3" fill="#ffffff" stroke="${FIG.ink}" stroke-width="1.2" stroke-dasharray="4 3"/>` + figText(x + brickW / 2, y + brickH / 2 + 4, "?", { size: 12, weight: 600, fill: FIG.inkSoft });
+          const x = x0 + c * bw;
+          const slot = /^\{\{\d+\}\}$/.test(value.trim());
+          if (slot || !value) {
+            return (
+              `<rect x="${num(x)}" y="${y}" width="${bw}" height="${bh}" rx="4" fill="#ffffff" fill-opacity="0.9" stroke="${FIG.accent}" stroke-width="${FIG_STROKE}"${slot ? "" : ' stroke-dasharray="5 4"'}/>` +
+              figText(x + bw / 2, y + bh / 2 + 5, slot ? escapeHtml(value.trim()) : "?", { size: 15, weight: 600, fill: FIG.inkSoft, slotW: bw - 12, slotH: bh - 12 })
+            );
           }
-          return `<rect x="${num(x)}" y="${num(y)}" width="${brickW}" height="${brickH}" rx="3" fill="${FIGURE_PALETTE.green}" fill-opacity="0.5" stroke="${FIG.ink}" stroke-width="1.1"/>` + figText(x + brickW / 2, y + brickH / 2 + 4, escapeHtml(value), { size: 12, weight: 700 });
+          return (
+            `<rect x="${num(x)}" y="${y}" width="${bw}" height="${bh}" rx="4" fill="${FIGURE_PALETTE.green}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="${FIGURE_PALETTE.green}" stroke-width="${FIG_STROKE}"/>` +
+            figText(x + bw / 2, y + bh / 2 + 5, escapeHtml(value), { size: 15, weight: 700 })
+          );
         })
         .join("");
     })
     .join("");
-  const svg = `${figOpen(width, height, { grid: false })}${bricks}</svg>`;
+  const svg = `${figOpen(width, height)}${bricks}</svg>`;
   return `<figure class="course-figure course-figure-brick-pyramid">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
-/** Grille à compléter (carré magique, tableau de nombres) : cases données en gras, cases vides en pointillés. */
+/** Grille à compléter (carré magique, tableau de nombres) : cases calées sur les carreaux, cases à remplir en teinte dorée. */
 function renderFillGrid(
   block: Extract<StructuredCourseBlock, { type: "fill_grid" }>,
 ): string {
-  const cellW = 40;
-  const cellH = 40;
+  const cell = 40;
   const cols = block.cells[0].length;
-  const width = cols * cellW + 16;
-  const height = block.cells.length * cellH + 16;
+  const width = Math.max(200, cols * cell + 60);
+  const height = block.cells.length * cell + 40;
+  const x0 = Math.round((width - cols * cell) / 40) * 20;
   const cells = block.cells
     .map((row, r) =>
       row
         .map((value, c) => {
-          const x = 8 + c * cellW;
-          const y = 8 + r * cellH;
-          return value
-            ? `<rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" fill="#ffffff" stroke="${FIG.ink}" stroke-width="1.3"/>` + figText(x + cellW / 2, y + cellH / 2 + 4, escapeHtml(value), { size: 13, weight: 700 })
-            : `<rect x="${x}" y="${y}" width="${cellW}" height="${cellH}" fill="#fff8e1" stroke="${FIG.ink}" stroke-width="1.3"/>`;
+          const x = x0 + c * cell;
+          const y = 20 + r * cell;
+          const slot = /^\{\{\d+\}\}$/.test(value.trim());
+          if (slot || !value) {
+            return (
+              `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="${FIG.accent}" fill-opacity="0.12" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}"/>` +
+              (slot ? figText(x + cell / 2, y + cell / 2 + 5, escapeHtml(value.trim()), { size: 15, slotW: cell - 8, slotH: cell - 10 }) : "")
+            );
+          }
+          return (
+            `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="#ffffff" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}"/>` +
+            figText(x + cell / 2, y + cell / 2 + 5, escapeHtml(value), { size: 16, weight: 700 })
+          );
         })
         .join(""),
     )
     .join("");
-  const svg = `${figOpen(width, height, { grid: false })}${cells}</svg>`;
+  const svg = `${figOpen(width, height)}${cells}</svg>`;
   return `<figure class="course-figure course-figure-fill-grid">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
 /* ------------------------------------------------------------------ */
 /*  Figures de géométrie dessinées par le code (positions calculées)    */
+/*  Même système que `shape` : quadrillage, palette, trait 1,75, aplat   */
+/*  0,14, cotes dorées (figDimension), étiquettes à halo (figText).     */
+/*  Toute étiquette « {{n}} » devient un emplacement de réponse.        */
 /* ------------------------------------------------------------------ */
 
 type Pt = [number, number];
 
-const GEO_FACE = `fill="#2563eb" fill-opacity="0.10"`;
+const geoEdge = (a: Pt, b: Pt, hidden = false): string =>
+  `<line x1="${num(a[0])}" y1="${num(a[1])}" x2="${num(b[0])}" y2="${num(b[1])}" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}" stroke-linecap="round"${hidden ? ` stroke-dasharray="5 4" opacity="0.55"` : ""}/>`;
 
-function geoEdge(a: Pt, b: Pt, hidden = false): string {
-  return `<line x1="${num(a[0])}" y1="${num(a[1])}" x2="${num(b[0])}" y2="${num(b[1])}" stroke="${FIG.ink}" stroke-width="1.6" stroke-linecap="round"${hidden ? ` stroke-dasharray="5 4" opacity="0.65"` : ""}/>`;
-}
+const geoPoly = (points: Pt[], filled = true): string =>
+  `<polygon points="${points.map((p) => `${num(p[0])},${num(p[1])}`).join(" ")}" fill="${filled ? FIGURE_PALETTE.navy : "none"}" fill-opacity="${filled ? SHAPE_FILL_OPACITY : 0}" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}" stroke-linejoin="round"/>`;
 
-function geoPoly(points: Pt[], filled = true): string {
-  return `<polygon points="${points.map((p) => `${num(p[0])},${num(p[1])}`).join(" ")}" ${filled ? GEO_FACE : `fill="none"`} stroke="${FIG.ink}" stroke-width="1.6" stroke-linejoin="round"/>`;
-}
+/** Trait auxiliaire (hauteur, rayon) : pointillé doré. */
+const geoAux = (a: Pt, b: Pt): string =>
+  `<line x1="${num(a[0])}" y1="${num(a[1])}" x2="${num(b[0])}" y2="${num(b[1])}" stroke="${FIG.accent}" stroke-width="1.4" stroke-dasharray="4 3"/>`;
 
-function geoDashed(a: Pt, b: Pt): string {
-  return `<line x1="${num(a[0])}" y1="${num(a[1])}" x2="${num(b[0])}" y2="${num(b[1])}" stroke="${FIG.accent}" stroke-width="1.4" stroke-dasharray="4 3"/>`;
-}
+const geoLabel = (x: number, y: number, text: string, anchor: "start" | "middle" | "end" = "middle"): string =>
+  text ? figText(x, y, escapeHtml(text), { size: 11, weight: 600, fill: "#8a6d3b", anchor }) : "";
 
-const geoLabel = (x: number, y: number, text: string, anchor: "start" | "middle" | "end" = "middle") =>
-  text ? figText(x, y, escapeHtml(text), { size: 11, weight: 700, fill: "#8a6d3b", anchor }) : "";
+const geoDim = (a: Pt, b: Pt, text: string, offset = 17): string =>
+  text ? figDimension(a[0], a[1], b[0], b[1], text, offset) : "";
 
-const geoVertex = (x: number, y: number, text: string) => (text ? figText(x, y, escapeHtml(text), { size: 12, weight: 700 }) : "");
+const geoVertex = (x: number, y: number, text: string): string => (text ? figText(x, y, escapeHtml(text), { size: 12, weight: 700 }) : "");
 
-/** Petit carré d'angle droit dans l'angle `corner`, entre les directions `u` et `v` (vecteurs unitaires). */
-function geoRightAngle(corner: Pt, u: Pt, v: Pt, size = 9): string {
+/** Carré d'angle droit au sommet `corner`, entre les directions unitaires `u` et `v`. */
+function geoRightAngle(corner: Pt, u: Pt, v: Pt, size = 10): string {
   const p1: Pt = [corner[0] + u[0] * size, corner[1] + u[1] * size];
   const p2: Pt = [p1[0] + v[0] * size, p1[1] + v[1] * size];
   const p3: Pt = [corner[0] + v[0] * size, corner[1] + v[1] * size];
-  return `<path d="M ${num(p1[0])} ${num(p1[1])} L ${num(p2[0])} ${num(p2[1])} L ${num(p3[0])} ${num(p3[1])}" fill="none" stroke="${FIG.ink}" stroke-width="1.1"/>`;
+  return `<path d="M ${num(p1[0])} ${num(p1[1])} L ${num(p2[0])} ${num(p2[1])} L ${num(p3[0])} ${num(p3[1])}" fill="none" stroke="${FIGURE_PALETTE.navy}" stroke-width="1.1"/>`;
 }
 
 function renderSolid(block: Extract<StructuredCourseBlock, { type: "solid" }>): string {
   const L = block.labels;
-  const W = 250;
+  const W = 260;
   const H = 200;
   let body = "";
 
@@ -714,12 +741,12 @@ function renderSolid(block: Extract<StructuredCourseBlock, { type: "solid" }>): 
     case "cube":
     case "box": {
       const cube = block.solid === "cube";
-      const x0 = 30;
-      const y0 = 75;
-      const w = cube ? 90 : 120;
-      const h = 90;
-      const dx = cube ? 44 : 50;
-      const dy = cube ? -30 : -32;
+      const x0 = cube ? 60 : 40;
+      const y0 = cube ? 80 : 80;
+      const w = cube ? 80 : 120;
+      const h = 80;
+      const dx = cube ? 40 : 60;
+      const dy = -40;
       const A: Pt = [x0, y0 + h];
       const B: Pt = [x0 + w, y0 + h];
       const C: Pt = [x0 + w, y0];
@@ -728,97 +755,96 @@ function renderSolid(block: Extract<StructuredCourseBlock, { type: "solid" }>): 
       body =
         geoEdge(A, sh(A), true) + geoEdge(sh(A), sh(B), true) + geoEdge(sh(A), sh(D), true) +
         geoPoly([A, B, C, D]) + geoPoly([D, C, sh(C), sh(D)]) + geoPoly([B, sh(B), sh(C), C]) +
-        geoLabel(x0 + w / 2, y0 + h + 17, cube ? L.side ?? L.length ?? "" : L.length ?? "") +
-        geoLabel(x0 - 7, y0 + h / 2 + 4, L.height ?? (cube ? L.side ?? "" : ""), "end") +
-        geoLabel(B[0] + dx / 2 + 10, B[1] + dy / 2 + 14, cube ? "" : L.width ?? L.depth ?? "", "start");
+        geoDim(A, B, cube ? L.side ?? L.length ?? "" : L.length ?? "") +
+        geoDim(D, A, L.height ?? "") +
+        (cube ? "" : geoDim(B, sh(B), L.width ?? L.depth ?? "", 14));
       break;
     }
     case "cylinder": {
       const cx = 120;
-      const rx = 55;
-      const ry = 16;
-      const top = 48;
-      const bot = 158;
+      const rx = 60;
+      const ry = 20;
+      const top = 60;
+      const bot = 160;
       body =
-        `<path d="M ${cx - rx} ${top} L ${cx - rx} ${bot} A ${rx} ${ry} 0 0 0 ${cx + rx} ${bot} L ${cx + rx} ${top} Z" ${GEO_FACE} stroke="none"/>` +
-        `<path d="M ${cx - rx} ${bot} A ${rx} ${ry} 0 0 1 ${cx + rx} ${bot}" fill="none" stroke="${FIG.ink}" stroke-width="1.6" stroke-dasharray="5 4" opacity="0.65"/>` +
-        `<path d="M ${cx - rx} ${bot} A ${rx} ${ry} 0 0 0 ${cx + rx} ${bot}" fill="none" stroke="${FIG.ink}" stroke-width="1.6"/>` +
+        `<path d="M ${cx - rx} ${top} L ${cx - rx} ${bot} A ${rx} ${ry} 0 0 0 ${cx + rx} ${bot} L ${cx + rx} ${top} Z" fill="${FIGURE_PALETTE.navy}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="none"/>` +
+        `<path d="M ${cx - rx} ${bot} A ${rx} ${ry} 0 0 1 ${cx + rx} ${bot}" fill="none" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}" stroke-dasharray="5 4" opacity="0.55"/>` +
+        `<path d="M ${cx - rx} ${bot} A ${rx} ${ry} 0 0 0 ${cx + rx} ${bot}" fill="none" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}"/>` +
         geoEdge([cx - rx, top], [cx - rx, bot]) + geoEdge([cx + rx, top], [cx + rx, bot]) +
-        `<ellipse cx="${cx}" cy="${top}" rx="${rx}" ry="${ry}" ${GEO_FACE} stroke="${FIG.ink}" stroke-width="1.6"/>` +
-        geoDashed([cx, top], [cx + rx, top]) +
-        `<circle cx="${cx}" cy="${top}" r="2" fill="${FIG.ink}"/>` +
-        geoLabel(cx + rx / 2, top - 5, L.radius ?? "") +
-        geoDashed([cx + rx + 14, top], [cx + rx + 14, bot]) +
-        geoLabel(cx + rx + 20, (top + bot) / 2 + 4, L.height ?? "", "start");
+        `<ellipse cx="${cx}" cy="${top}" rx="${rx}" ry="${ry}" fill="${FIGURE_PALETTE.navy}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}"/>` +
+        geoAux([cx, top], [cx + rx, top]) +
+        `<circle cx="${cx}" cy="${top}" r="2.5" fill="${FIGURE_PALETTE.navy}"/>` +
+        geoLabel(cx + rx / 2, top - 6, L.radius ?? "") +
+        geoDim([cx + rx, bot], [cx + rx, top], L.height ?? "", 17);
       break;
     }
     case "cone": {
       const cx = 120;
-      const rx = 62;
-      const ry = 17;
-      const apex: Pt = [cx, 24];
+      const rx = 60;
+      const ry = 20;
+      const apex: Pt = [cx, 20];
       const by = 160;
       body =
-        `<path d="M ${apex[0]} ${apex[1]} L ${cx - rx} ${by} A ${rx} ${ry} 0 0 0 ${cx + rx} ${by} Z" ${GEO_FACE} stroke="none"/>` +
-        `<path d="M ${cx - rx} ${by} A ${rx} ${ry} 0 0 1 ${cx + rx} ${by}" fill="none" stroke="${FIG.ink}" stroke-width="1.6" stroke-dasharray="5 4" opacity="0.65"/>` +
-        `<path d="M ${cx - rx} ${by} A ${rx} ${ry} 0 0 0 ${cx + rx} ${by}" fill="none" stroke="${FIG.ink}" stroke-width="1.6"/>` +
+        `<path d="M ${apex[0]} ${apex[1]} L ${cx - rx} ${by} A ${rx} ${ry} 0 0 0 ${cx + rx} ${by} Z" fill="${FIGURE_PALETTE.navy}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="none"/>` +
+        `<path d="M ${cx - rx} ${by} A ${rx} ${ry} 0 0 1 ${cx + rx} ${by}" fill="none" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}" stroke-dasharray="5 4" opacity="0.55"/>` +
+        `<path d="M ${cx - rx} ${by} A ${rx} ${ry} 0 0 0 ${cx + rx} ${by}" fill="none" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}"/>` +
         geoEdge(apex, [cx - rx, by]) + geoEdge(apex, [cx + rx, by]) +
-        geoDashed(apex, [cx, by]) + geoDashed([cx, by], [cx + rx, by]) +
-        `<circle cx="${cx}" cy="${by}" r="2" fill="${FIG.ink}"/>` +
-        geoLabel(cx - 6, (apex[1] + by) / 2 + 4, L.height ?? "", "end") +
-        geoLabel(cx + rx / 2, by - 5, L.radius ?? "");
+        geoAux(apex, [cx, by]) + geoAux([cx, by], [cx + rx, by]) +
+        `<circle cx="${cx}" cy="${by}" r="2.5" fill="${FIGURE_PALETTE.navy}"/>` +
+        geoLabel(cx - 8, (apex[1] + by) / 2 + 4, L.height ?? "", "end") +
+        geoLabel(cx + rx / 2, by - 6, L.radius ?? "");
       break;
     }
     case "pyramid": {
-      const FL: Pt = [45, 168];
-      const FR: Pt = [160, 168];
-      const BR: Pt = [208, 142];
-      const BL: Pt = [93, 142];
-      const apex: Pt = [126, 26];
-      const foot: Pt = [126, 155];
+      const FL: Pt = [40, 160];
+      const FR: Pt = [160, 160];
+      const BR: Pt = [220, 120];
+      const BL: Pt = [100, 120];
+      const apex: Pt = [130, 20];
+      const foot: Pt = [130, 140];
       body =
         geoPoly([FL, FR, BR, BL], false) +
         geoEdge(FL, BL, true) + geoEdge(BL, BR, true) + geoEdge(apex, BL, true) +
-        `<polygon points="${[apex, FL, FR].map((p) => p.join(",")).join(" ")}" ${GEO_FACE} stroke="none"/>` +
-        `<polygon points="${[apex, FR, BR].map((p) => p.join(",")).join(" ")}" ${GEO_FACE} stroke="none"/>` +
+        `<polygon points="${[apex, FL, FR].map((p) => p.join(",")).join(" ")}" fill="${FIGURE_PALETTE.navy}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="none"/>` +
+        `<polygon points="${[apex, FR, BR].map((p) => p.join(",")).join(" ")}" fill="${FIGURE_PALETTE.navy}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="none"/>` +
         geoEdge(FL, FR) + geoEdge(FR, BR) + geoEdge(apex, FL) + geoEdge(apex, FR) + geoEdge(apex, BR) +
-        geoDashed(apex, foot) +
-        geoLabel(apex[0] - 6, (apex[1] + foot[1]) / 2 + 4, L.height ?? "", "end") +
-        geoLabel((FL[0] + FR[0]) / 2, FL[1] + 17, L.base ?? "");
+        geoAux(apex, foot) +
+        geoLabel(apex[0] - 8, (apex[1] + foot[1]) / 2 + 4, L.height ?? "", "end") +
+        geoDim(FL, FR, L.base ?? "");
       break;
     }
     case "triangular_prism": {
-      const A: Pt = [38, 165];
-      const B: Pt = [140, 165];
-      const C: Pt = [38, 80];
-      const dx = 58;
-      const dy = -36;
+      const A: Pt = [40, 160];
+      const B: Pt = [140, 160];
+      const C: Pt = [40, 80];
+      const dx = 60;
+      const dy = -40;
       const sh = (p: Pt): Pt => [p[0] + dx, p[1] + dy];
       body =
         geoEdge(A, sh(A), true) + geoEdge(sh(A), sh(B), true) + geoEdge(sh(A), sh(C), true) +
         geoPoly([A, B, C]) + geoPoly([B, sh(B), sh(C), C]) +
         geoEdge(C, sh(C)) + geoEdge(sh(B), sh(C)) +
         geoRightAngle(A, [1, 0], [0, -1]) +
-        geoLabel((A[0] + B[0]) / 2, A[1] + 17, L.base ?? "") +
-        geoLabel(A[0] - 7, (A[1] + C[1]) / 2 + 4, L.height ?? "", "end") +
-        geoLabel(B[0] + dx / 2 + 8, B[1] + dy / 2 + 16, L.length ?? L.depth ?? "", "start");
+        geoDim(A, B, L.base ?? "") +
+        geoDim(C, A, L.height ?? "") +
+        geoDim(B, sh(B), L.length ?? L.depth ?? "", 14);
       break;
     }
     case "sphere": {
       const cx = 120;
       const cy = 100;
-      const r = 70;
+      const r = 80;
       body =
-        `<circle cx="${cx}" cy="${cy}" r="${r}" ${GEO_FACE} stroke="${FIG.ink}" stroke-width="1.6"/>` +
-        `<path d="M ${cx - r} ${cy} A ${r} 20 0 0 1 ${cx + r} ${cy}" fill="none" stroke="${FIG.ink}" stroke-width="1.3" stroke-dasharray="5 4" opacity="0.65"/>` +
-        `<path d="M ${cx - r} ${cy} A ${r} 20 0 0 0 ${cx + r} ${cy}" fill="none" stroke="${FIG.ink}" stroke-width="1.3"/>` +
-        geoDashed([cx, cy], [cx + r, cy]) +
-        `<circle cx="${cx}" cy="${cy}" r="2" fill="${FIG.ink}"/>` +
-        geoLabel(cx + r / 2, cy - 6, L.radius ?? "");
+        `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${FIGURE_PALETTE.navy}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}"/>` +
+        `<path d="M ${cx - r} ${cy} A ${r} 24 0 0 1 ${cx + r} ${cy}" fill="none" stroke="${FIGURE_PALETTE.navy}" stroke-width="1.3" stroke-dasharray="5 4" opacity="0.55"/>` +
+        `<path d="M ${cx - r} ${cy} A ${r} 24 0 0 0 ${cx + r} ${cy}" fill="none" stroke="${FIGURE_PALETTE.navy}" stroke-width="1.3"/>` +
+        geoAux([cx, cy], [cx + r, cy]) +
+        `<circle cx="${cx}" cy="${cy}" r="2.5" fill="${FIGURE_PALETTE.navy}"/>` +
+        geoLabel(cx + r / 2, cy - 7, L.radius ?? "");
       break;
     }
   }
-  const svg = `${figOpen(W, H, { grid: false })}${body}</svg>`;
+  const svg = `${figOpen(W, H)}${body}</svg>`;
   return `<figure class="course-figure course-figure-solid">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
@@ -826,7 +852,7 @@ function renderLabeledPolygon(block: Extract<StructuredCourseBlock, { type: "lab
   const L = block.labels;
   const V = block.vertices;
   const W = 260;
-  const H = 190;
+  const H = 180;
   let body = "";
   const letters = (pts: Pt[], offsets: Pt[]) =>
     pts.map((p, i) => geoVertex(p[0] + offsets[i][0], p[1] + offsets[i][1], V[i] ?? "")).join("");
@@ -835,75 +861,78 @@ function renderLabeledPolygon(block: Extract<StructuredCourseBlock, { type: "lab
     case "rectangle":
     case "square": {
       const sq = block.shape === "square";
-      const x = 50;
+      const x = sq ? 60 : 40;
       const y = 40;
       const w = sq ? 100 : 160;
-      const h = sq ? 100 : 100;
-      const pts: Pt[] = [[x, y + h], [x + w, y + h], [x + w, y], [x, y]];
+      const h = 100;
+      const A: Pt = [x, y + h];
+      const B: Pt = [x + w, y + h];
+      const C: Pt = [x + w, y];
+      const D: Pt = [x, y];
       body =
-        geoPoly(pts) +
-        geoRightAngle(pts[0], [1, 0], [0, -1]) + geoRightAngle(pts[1], [-1, 0], [0, -1]) +
-        geoRightAngle(pts[2], [-1, 0], [0, 1]) + geoRightAngle(pts[3], [1, 0], [0, 1]) +
-        geoLabel(x + w / 2, y + h + 18, sq ? L.side ?? L.length ?? "" : L.length ?? "") +
-        geoLabel(x + w + 8, y + h / 2 + 4, sq ? L.side ?? "" : L.width ?? L.height ?? "", "start") +
-        letters(pts, [[-10, 14], [10, 14], [10, -6], [-10, -6]]);
+        geoPoly([A, B, C, D]) +
+        geoRightAngle(A, [1, 0], [0, -1]) + geoRightAngle(B, [-1, 0], [0, -1]) +
+        geoRightAngle(C, [-1, 0], [0, 1]) + geoRightAngle(D, [1, 0], [0, 1]) +
+        geoDim(A, B, sq ? L.side ?? L.length ?? "" : L.length ?? "") +
+        geoDim(B, C, sq ? L.side ?? "" : L.width ?? L.height ?? "") +
+        letters([A, B, C, D], [[-10, 14], [10, 14], [10, -6], [-10, -6]]);
       break;
     }
     case "right_triangle": {
-      const A: Pt = [50, 150];
-      const B: Pt = [210, 150];
-      const C: Pt = [50, 40];
+      const A: Pt = [40, 140];
+      const B: Pt = [200, 140];
+      const C: Pt = [40, 40];
       body =
         geoPoly([A, B, C]) + geoRightAngle(A, [1, 0], [0, -1]) +
-        geoLabel((A[0] + B[0]) / 2, A[1] + 18, L.b ?? L.base ?? "") +
-        geoLabel(A[0] - 8, (A[1] + C[1]) / 2 + 4, L.a ?? L.height ?? "", "end") +
-        geoLabel((B[0] + C[0]) / 2 + 14, (B[1] + C[1]) / 2 - 4, L.c ?? L.hypotenuse ?? "", "start") +
+        geoDim(A, B, L.b ?? L.base ?? "") +
+        geoDim(C, A, L.a ?? L.height ?? "") +
+        geoDim(B, C, L.c ?? L.hypotenuse ?? "") +
         letters([A, B, C], [[-10, 14], [10, 14], [-10, -6]]);
       break;
     }
     case "triangle": {
-      const P1: Pt = [30, 150];
-      const P2: Pt = [220, 150];
+      const P1: Pt = [40, 140];
+      const P2: Pt = [220, 140];
       const apex: Pt = [100, 40];
-      const foot: Pt = [100, 150];
+      const foot: Pt = [100, 140];
       body =
-        geoPoly([P1, P2, apex]) + geoDashed(apex, foot) + geoRightAngle(foot, [-1, 0], [0, -1]) +
-        geoLabel((P1[0] + P2[0]) / 2, P1[1] + 18, L.base ?? "") +
-        geoLabel(foot[0] + 6, (apex[1] + foot[1]) / 2 + 4, L.height ?? "", "start") +
+        geoPoly([P1, P2, apex]) + geoAux(apex, foot) + geoRightAngle(foot, [-1, 0], [0, -1]) +
+        geoDim(P1, P2, L.base ?? "") +
+        geoLabel(foot[0] + 8, (apex[1] + foot[1]) / 2 + 4, L.height ?? "", "start") +
         letters([P1, P2, apex], [[-10, 14], [10, 14], [0, -8]]);
       break;
     }
     case "parallelogram": {
-      const A: Pt = [40, 150];
-      const B: Pt = [175, 150];
-      const C: Pt = [225, 50];
-      const D: Pt = [90, 50];
-      const foot: Pt = [90, 150];
+      const A: Pt = [40, 140];
+      const B: Pt = [160, 140];
+      const C: Pt = [220, 40];
+      const D: Pt = [100, 40];
+      const foot: Pt = [100, 140];
       body =
-        geoPoly([A, B, C, D]) + geoDashed(D, foot) + geoRightAngle(foot, [1, 0], [0, -1]) +
-        geoLabel((A[0] + B[0]) / 2 + 20, A[1] + 18, L.base ?? "") +
-        geoLabel(foot[0] - 6, (D[1] + foot[1]) / 2 + 4, L.height ?? "", "end") +
-        geoLabel((B[0] + C[0]) / 2 + 12, (B[1] + C[1]) / 2 + 4, L.side ?? "", "start") +
+        geoPoly([A, B, C, D]) + geoAux(D, foot) + geoRightAngle(foot, [1, 0], [0, -1]) +
+        geoDim(A, B, L.base ?? "") +
+        geoLabel(foot[0] - 8, (D[1] + foot[1]) / 2 + 4, L.height ?? "", "end") +
+        geoDim(B, C, L.side ?? "") +
         letters([A, B, C, D], [[-10, 14], [10, 14], [10, -6], [-10, -6]]);
       break;
     }
     case "trapezoid": {
-      const A: Pt = [30, 150];
-      const B: Pt = [225, 150];
-      const C: Pt = [180, 50];
-      const D: Pt = [75, 50];
-      const foot: Pt = [75, 150];
+      const A: Pt = [40, 140];
+      const B: Pt = [220, 140];
+      const C: Pt = [180, 40];
+      const D: Pt = [80, 40];
+      const foot: Pt = [80, 140];
       body =
-        geoPoly([A, B, C, D]) + geoDashed(D, foot) + geoRightAngle(foot, [1, 0], [0, -1]) +
-        geoLabel((A[0] + B[0]) / 2, A[1] + 18, L.big_base ?? L.base ?? "") +
-        geoLabel((C[0] + D[0]) / 2, D[1] - 7, L.small_base ?? "") +
-        geoLabel(foot[0] - 6, (D[1] + foot[1]) / 2 + 4, L.height ?? "", "end") +
-        geoLabel((B[0] + C[0]) / 2 + 12, (B[1] + C[1]) / 2 + 4, L.side ?? "", "start") +
+        geoPoly([A, B, C, D]) + geoAux(D, foot) + geoRightAngle(foot, [1, 0], [0, -1]) +
+        geoDim(A, B, L.big_base ?? L.base ?? "") +
+        geoDim(C, D, L.small_base ?? "") +
+        geoLabel(foot[0] - 8, (D[1] + foot[1]) / 2 + 4, L.height ?? "", "end") +
+        geoDim(B, C, L.side ?? "") +
         letters([A, B, C, D], [[-10, 14], [10, 14], [10, -6], [-10, -6]]);
       break;
     }
   }
-  const svg = `${figOpen(W, H, { grid: false })}${body}</svg>`;
+  const svg = `${figOpen(W, H)}${body}</svg>`;
   return `<figure class="course-figure course-figure-labeled-polygon">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 
@@ -911,17 +940,18 @@ function renderLabeledCircle(block: Extract<StructuredCourseBlock, { type: "labe
   const L = block.labels;
   const cx = 120;
   const cy = 100;
-  const r = 70;
+  const r = 60;
   const radius = L.radius !== undefined;
   const diameter = L.diameter !== undefined;
+  const tip: Pt = [cx + r * Math.cos(-0.6), cy + r * Math.sin(-0.6)];
   const body =
-    `<circle cx="${cx}" cy="${cy}" r="${r}" ${GEO_FACE} stroke="${FIG.ink}" stroke-width="1.6"/>` +
-    (diameter ? geoDashed([cx - r, cy], [cx + r, cy]) : "") +
-    (radius && !diameter ? geoDashed([cx, cy], [cx + r * Math.cos(-0.5), cy + r * Math.sin(-0.5)]) : "") +
-    `<circle cx="${cx}" cy="${cy}" r="2.5" fill="${FIG.ink}"/>` + geoVertex(cx - 4, cy + 16, "O") +
-    (diameter ? geoLabel(cx, cy - 7, L.diameter ?? "") : "") +
-    (radius && !diameter ? geoLabel(cx + (r / 2) * Math.cos(-0.5) + 10, cy + (r / 2) * Math.sin(-0.5) - 6, L.radius ?? "") : "");
-  const svg = `${figOpen(240, 200, { grid: false })}${body}</svg>`;
+    `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${FIGURE_PALETTE.navy}" fill-opacity="${SHAPE_FILL_OPACITY}" stroke="${FIGURE_PALETTE.navy}" stroke-width="${FIG_STROKE}"/>` +
+    (diameter ? geoAux([cx - r, cy], [cx + r, cy]) : "") +
+    (radius && !diameter ? geoAux([cx, cy], tip) : "") +
+    `<circle cx="${cx}" cy="${cy}" r="2.5" fill="${FIGURE_PALETTE.navy}"/>` + geoVertex(cx - 6, cy + 16, "O") +
+    (diameter ? geoLabel(cx, cy - 8, L.diameter ?? "") : "") +
+    (radius && !diameter ? geoLabel((cx + tip[0]) / 2 + 10, (cy + tip[1]) / 2 - 6, L.radius ?? "") : "");
+  const svg = `${figOpen(240, 200)}${body}</svg>`;
   return `<figure class="course-figure course-figure-labeled-circle">${svg}<figcaption>${escapeHtml(block.caption)}</figcaption></figure>`;
 }
 

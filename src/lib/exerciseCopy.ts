@@ -1,4 +1,4 @@
-import { blankAlternatives, makeMagicSquare, makePyramid, parseCellNumber, solveMagic, solvePyramid } from "@/lib/deterministicExercises";
+import { blankAlternatives, makeMagicSquare, makePyramid, markSlots, parseCellNumber, solveMagic, solvePyramid } from "@/lib/deterministicExercises";
 import { evaluateStatement, formatFrac } from "@/lib/exprEval";
 import {
   arithmeticExplanation,
@@ -142,7 +142,8 @@ export function copyFigureBlock(section: CopySection, figure: SourceFigure | und
         points: 3,
         explanation: `${solved.rule === "sum" ? "Chaque brique est la somme des deux briques qui la soutiennent" : "Chaque brique est la brique de gauche moins la brique de droite parmi les deux qui la soutiennent"}. Briques vides, de haut en bas puis de gauche à droite : ${solved.missing.join(" ; ")}.`,
         blanks: solved.missing.map(blankAlternatives),
-        figureSpec: { kind: "brick_pyramid", levels: figure.levels },
+        // Les briques vides sont des emplacements de réponse « {{n}} » : le lecteur y pose un champ, dans la figure.
+        figure: { type: "brick_pyramid", caption: "Pyramide à compléter", levels: markSlots(figure.levels) },
       };
     }
   }
@@ -157,7 +158,7 @@ export function copyFigureBlock(section: CopySection, figure: SourceFigure | und
         points: 3,
         explanation: `La somme est la même sur chaque ligne, chaque colonne et chaque diagonale. Cases vides, ligne par ligne : ${solved.join(" ; ")}.`,
         blanks: solved.map(blankAlternatives),
-        figureSpec: { kind: "fill_grid", cells: figure.cells },
+        figure: { type: "fill_grid", caption: "Grille à compléter", cells: markSlots(figure.cells) },
       };
     }
   }
@@ -172,7 +173,7 @@ export function copyFigureBlock(section: CopySection, figure: SourceFigure | und
     points: 3,
     explanation: made.explanation,
     blanks: made.blanks,
-    figureSpec: made.figureSpec,
+    figure: made.figure,
   };
 }
 
@@ -241,7 +242,7 @@ REGLES :
 - "type" : "text_input" (reponse ecrite) ou "fill_in_the_blank" quand la question contient des jetons {{1}}, {{2}}... (alors "blanks" liste, dans l'ordre, la reponse de chaque trou ; alternatives separees par |). "qcm" seulement si l'enonce propose des choix : "options" les recopie, "correctAnswer" en copie EXACTE d'une option.
 - ORDRE : ecris "explanation" AVANT "correctAnswer" : mene le calcul jusqu'au bout (1 a 3 phrases, a l'impersonnel, version finale sans hesitation), puis recopie le resultat final dans "correctAnswer" (courte, sans LaTeX : 5,25 ; 3/4 ; 75π cm³).
 - Nombres decimaux avec la virgule francaise. Mathematiques en LaTeX entre $...$ dans "explanation".
-- FIGURE (optionnel) : si l'enonce renvoie a une figure decrite dans "Figure de la source", ajoute "figure" avec la VALEUR d'UNE entree ci-dessous, avec EXACTEMENT les mesures de la source. Jamais de figure inventee ni de mesure qui n'est pas dans la source.
+- FIGURE (optionnel) : si l'enonce renvoie a une figure decrite dans "Figure de la source", ajoute "figure" avec la VALEUR d'UNE entree ci-dessous, avec EXACTEMENT les mesures de la source. Une mesure que l'eleve doit trouver s'ecrit {{n}} comme valeur de l'etiquette (n apres les trous deja numerotes de l'enonce) : il ecrira sa reponse DANS la figure, et "blanks" la donne. Jamais de figure inventee ni de mesure qui n'est pas dans la source.
 ${figureSnippet}
 
 FORMAT : { "blocks": [ { "index": 1, "type": "text_input", "explanation": "...", "correctAnswer": "...", "figure": { "...optionnel..." } } ] }`;
