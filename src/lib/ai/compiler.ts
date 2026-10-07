@@ -722,7 +722,8 @@ const geoLabel = (x: number, y: number, text: string, anchor: "start" | "middle"
 const geoDim = (a: Pt, b: Pt, text: string, offset = 17): string =>
   text ? figDimension(a[0], a[1], b[0], b[1], text, offset) : "";
 
-const geoVertex = (x: number, y: number, text: string): string => (text ? figText(x, y, escapeHtml(text), { size: 12, weight: 700 }) : "");
+// Les noms des points (A, B, C, O...) ne s'écrivent pas dans la figure : ils vont dans l'énoncé.
+const geoVertex = (_x: number, _y: number, _text: string): string => "";
 
 /** Carré d'angle droit au sommet `corner`, entre les directions unitaires `u` et `v`. */
 function geoRightAngle(corner: Pt, u: Pt, v: Pt, size = 10): string {

@@ -1035,7 +1035,12 @@ export async function runPhotoExerciseGeneration(
       const intro = section.instruction
         ? [{ id: `intro-${i + 1}`, type: "text", title: section.title, content: `<p>${escapeHtml(section.instruction.replace(/▢/g, "…"))}</p>` }]
         : [];
-      return { ...page, blocks: [...intro, ...page.blocks] };
+      // Exercice « complexe » (un contexte, plusieurs questions) : énoncé et figure fixes à côté des questions ;
+      // si les questions s'appuient les unes sur les autres, elles se débloquent une par une.
+      const questions = page.blocks as { content?: string }[];
+      const guided = section.kind === "standard" && section.instruction.length >= 60 && questions.length >= 3;
+      const linked = guided && questions.slice(1).some((q) => /(pr[ée]c[ée]dent|ci-dessus|obtenu|d[ée]dui|donc|[àa] partir de)/i.test(String(q.content ?? "")));
+      return { ...page, ...(guided ? { layout: "problem" } : {}), ...(linked ? { sequential: true } : {}), blocks: [...intro, ...page.blocks] };
     });
     const questionTotal = pages.reduce((sum, p) => sum + p.blocks.length, 0);
     if (questionTotal === 0) throw new Error("Aucune question valide n'a été générée.");

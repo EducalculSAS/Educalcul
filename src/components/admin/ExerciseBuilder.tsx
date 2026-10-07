@@ -73,6 +73,8 @@ export interface Block {
   options?: string[]; // qcm / single_choice / multiple_choice
   correctAnswer?: string | string[]; // qcm : toujours un tableau (une ou plusieurs bonnes réponses)
   explanation?: string;
+  /** Coups de pouce, du plus léger au plus fort : l'élève les demande un par un. */
+  hints?: string[];
 
   // Texte à trous : une réponse attendue par blanc, dans l'ordre d'apparition
   // des jetons {{1}}, {{2}}... dans `content`. Alternatives séparées par "|".
@@ -200,6 +202,10 @@ export interface Page {
   id: string;
   title: string;
   blocks: Block[];
+  /** « problem » : l'énoncé commun (texte, figure) reste affiché à côté des questions, qui se résolvent pas à pas. */
+  layout?: "problem";
+  /** Les questions se débloquent une par une : on répond à la première pour voir la suivante. */
+  sequential?: boolean;
 }
 
 interface ExerciseBuilderProps {
@@ -627,6 +633,24 @@ export default function ExerciseBuilder({
               {/* Page Content (Blocks) */}
               {expandedPages.has(page.id) && (
                 <div className="p-4 bg-gray-50/50">
+                  <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mb-3 text-xs text-gray-600">
+                    <label className="flex items-center gap-1.5" title="Les blocs « Texte » et « Média » du début forment l'énoncé commun, affiché à côté des questions">
+                      <input
+                        type="checkbox"
+                        checked={page.layout === "problem"}
+                        onChange={(e) => updatePage(page.id, { layout: e.target.checked ? "problem" : undefined })}
+                      />
+                      Problème guidé : énoncé et figure fixes à côté des questions
+                    </label>
+                    <label className="flex items-center gap-1.5" title="La question suivante apparaît quand l'élève a répondu à la précédente">
+                      <input
+                        type="checkbox"
+                        checked={page.sequential === true}
+                        onChange={(e) => updatePage(page.id, { sequential: e.target.checked || undefined })}
+                      />
+                      Questions débloquées une par une
+                    </label>
+                  </div>
                   <div className="space-y-4">
                     {page.blocks.map((block, blockIndex) => (
                       <div
@@ -1385,6 +1409,24 @@ export default function ExerciseBuilder({
                                   placeholder="ex: 0.75"
                                 />
                               </div>
+                            </div>
+                          )}
+
+                          {!["text", "image"].includes(block.type) && (
+                            <div className="space-y-1 mt-2">
+                              <label className="text-xs font-medium text-gray-500 uppercase">
+                                Coups de pouce (un par ligne, du plus léger au plus fort)
+                              </label>
+                              <textarea
+                                defaultValue={(block.hints ?? []).join("\n")}
+                                key={`hints-${block.id}`}
+                                onBlur={(e) => {
+                                  const hints = e.target.value.split("\n").map((h) => h.trim()).filter(Boolean);
+                                  updateBlock(page.id, block.id, { hints: hints.length ? hints : undefined });
+                                }}
+                                className="w-full h-16 border-[rgba(197,161,72,0.25)] rounded-lg text-xs p-2"
+                                placeholder="Ex : Pense au théorème de Pythagore.&#10;Dans le triangle ABC rectangle en A, BC² = AB² + AC²."
+                              />
                             </div>
                           )}
 

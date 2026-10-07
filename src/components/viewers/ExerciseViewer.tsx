@@ -2,7 +2,7 @@
 
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
-import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Image as ImageIcon, Loader2, Sparkles, Pencil, Keyboard, Eye, AlertTriangle } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Image as ImageIcon, Loader2, Sparkles, Pencil, Keyboard, Eye, AlertTriangle, Lock, Lightbulb } from "lucide-react";
 import { Page, Block } from "@/components/admin/ExerciseBuilder";
 import FigureInputs from "@/components/viewers/FigureInputs";
 import SlotHtml, { tokenizeSlots } from "@/components/viewers/SlotHtml";
@@ -909,7 +909,7 @@ export default function ExerciseViewer({
     // aplatissait tous les blocs de toutes les pages et en refaisait un écran
     // par bloc, ce qui séparait les questions liées une par une malgré leur
     // regroupement en base).
-    return pages.filter((p) => p.blocks.length > 0).map((p) => ({ blocks: p.blocks }));
+    return pages.filter((p) => p.blocks.length > 0).map((p) => ({ blocks: p.blocks, layout: p.layout, sequential: p.sequential === true }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exercise.id]);
 
@@ -990,6 +990,8 @@ export default function ExerciseViewer({
   // serveur (effet "Charge la progression..." plus bas), avec un bref flash
   // à l'état vide le temps du premier chargement.
   const [currentScreenIndex, setCurrentScreenIndex] = useState(0);
+  // Coups de pouce déjà demandés, par question.
+  const [hintsShown, setHintsShown] = useState<Record<string, number>>({});
 
   const [answers, setAnswers] = useState<Record<string, any>>(() => (reviewMode ? initialProgress?.answers : undefined) || {});
   const mathfieldRefs = useRef<Record<string, MathInputHandle | null>>({});
@@ -1680,10 +1682,36 @@ export default function ExerciseViewer({
         className={`flex-1 overflow-y-auto p-4 md:p-8 bg-white/50 transition-opacity duration-200 ${contentVisible ? "opacity-100" : "opacity-0"}`}
       >
         <div
-          className="max-w-3xl mx-auto space-y-8 pb-20 transition-[padding-bottom] duration-200"
+          className={`${currentScreen.layout === "problem" ? "max-w-6xl" : "max-w-3xl"} mx-auto space-y-8 pb-20 transition-[padding-bottom] duration-200`}
           style={mathKeyboardOpen ? { paddingBottom: "380px" } : undefined}
         >
-          {currentScreen.blocks.map((block) => {
+          {(() => {
+          const isContext = (b: (typeof currentScreen.blocks)[number]) => b.type === "text" || b.type === "image";
+          const questionBlocks = currentScreen.blocks.filter((b) => !isContext(b));
+          const hasAnswer = (b: (typeof currentScreen.blocks)[number]) => {
+            const a = answers[b.id];
+            if (Array.isArray(a)) return a.some((v) => v !== "" && v !== null && v !== undefined);
+            return a !== undefined && a !== null && String(a).trim() !== "";
+          };
+          const renderBlock = (block: (typeof currentScreen.blocks)[number]) => {
+            // Questions débloquées une par une : tant que la précédente n'a pas reçu de réponse, celle-ci reste fermée.
+            const questionIndex = questionBlocks.indexOf(block);
+            const previousQuestion = questionIndex > 0 ? questionBlocks[questionIndex - 1] : undefined;
+            const locked =
+              currentScreen.sequential &&
+              !reviewMode &&
+              previousQuestion !== undefined &&
+              !(submittedBlocks.has(previousQuestion.id) || hasAnswer(previousQuestion) || inlineText[previousQuestion.id]?.status === "correct" || inlineText[previousQuestion.id]?.status === "revealed");
+            if (locked) {
+              return (
+                <div key={block.id} className="rounded-2xl border border-dashed border-[var(--greek-gold)] bg-[var(--greek-cream)]/30 px-5 py-4 flex items-center gap-3 text-sm text-gray-500">
+                  <Lock className="w-4 h-4 text-[var(--greek-gold)] shrink-0" />
+                  <span>
+                    <span className="font-semibold text-[var(--greek-blue)]">{block.title || "Question suivante"}</span> : réponds d&apos;abord à la question précédente.
+                  </span>
+                </div>
+              );
+            }
             const isSubmitted = reviewMode || submittedBlocks.has(block.id);
             const answer = answers[block.id];
             const inline = inlineText[block.id];
@@ -1725,6 +1753,27 @@ export default function ExerciseViewer({
                     className="prose max-w-none mb-6 text-gray-600 prose-headings:text-[var(--greek-blue)] prose-a:text-[var(--greek-blue)]"
                     dangerouslySetInnerHTML={{ __html: renderLatexInHTML(renderMathGraphPlaceholders(block.content || "")) }}
                   />
+                )}
+
+                {block.hints && block.hints.length > 0 && !isSubmitted && (
+                  <div className="mb-4 space-y-2">
+                    {block.hints.slice(0, hintsShown[block.id] ?? 0).map((hint, i) => (
+                      <div key={i} className="flex items-start gap-2 rounded-lg border border-[rgba(197,161,72,0.4)] bg-[var(--greek-cream)] px-3 py-2 text-sm text-[var(--greek-bronze)]">
+                        <Lightbulb className="w-4 h-4 shrink-0 mt-0.5 text-[var(--greek-gold)]" />
+                        <div dangerouslySetInnerHTML={{ __html: renderLatexInHTML(hint) }} />
+                      </div>
+                    ))}
+                    {(hintsShown[block.id] ?? 0) < block.hints.length && (
+                      <button
+                        type="button"
+                        onClick={() => setHintsShown((prev) => ({ ...prev, [block.id]: (prev[block.id] ?? 0) + 1 }))}
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[var(--greek-blue)] hover:underline"
+                      >
+                        <Lightbulb className="w-3.5 h-3.5" />
+                        {(hintsShown[block.id] ?? 0) === 0 ? "Un coup de pouce ?" : "Encore un coup de pouce"} ({hintsShown[block.id] ?? 0}/{block.hints.length})
+                      </button>
+                    )}
+                  </div>
                 )}
 
                 {/* Interactive Elements */}
@@ -2166,7 +2215,18 @@ export default function ExerciseViewer({
                 )}
               </div>
             );
-          })}
+          };
+          if (currentScreen.layout !== "problem") return currentScreen.blocks.map(renderBlock);
+          // Problème guidé : l'énoncé commun (texte, figure) reste visible à côté des questions.
+          const contextBlocks = currentScreen.blocks.filter((b, i) => isContext(b) && currentScreen.blocks.slice(0, i).every(isContext));
+          const stepBlocks = currentScreen.blocks.filter((b) => !contextBlocks.includes(b));
+          return (
+            <div className="grid gap-6 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] items-start">
+              <div className="space-y-6 lg:sticky lg:top-2">{contextBlocks.map(renderBlock)}</div>
+              <div className="space-y-6">{stepBlocks.map(renderBlock)}</div>
+            </div>
+          );
+          })()}
         </div>
       </div>
 
