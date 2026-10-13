@@ -1624,7 +1624,7 @@ export default function ExerciseViewer({
                     Félicitations !
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    Tu as terminé cet exercice. Consulte ta correction{onRestart ? " ou retente-le pour améliorer ton score" : ""} !
+                    Tu as terminé cet exercice. Consulte ta correction{onRestart && !restartBlocked ? " ou retente-le pour améliorer ton score" : ""} !
                   </p>
                   <div className="grid grid-cols-3 gap-3">
                     {[
@@ -1667,24 +1667,18 @@ export default function ExerciseViewer({
                     >
                       Voir la correction
                     </GlassButton>
-                    {onRestart && !isPreview && (
+                    {onRestart && !isPreview && !restartBlocked && (
                       <>
-                        <GlassButton
-                          onClick={onRestart}
-                          disabled={restartBlocked}
-                          variant="navy"
-                          fullWidth
-                          className="font-bold text-base"
-                        >
-                          <RotateCcw className="w-4 h-4" />
-                          {restartBlocked ? "Tentatives épuisées" : "Refaire l'exercice"}
+                        <GlassButton onClick={onRestart} variant="navy" fullWidth className="font-bold text-base">
+                          <RotateCcw className="w-4 h-4" /> Refaire l&apos;exercice
                         </GlassButton>
                         {!!exercise.max_attempts && (
-                          <p className="text-xs text-gray-500 text-center -mt-1">
-                            {restartBlocked ? "Tu as utilisé tous tes essais." : "Un nouvel essai sera compté."}
-                          </p>
+                          <p className="text-xs text-gray-500 text-center -mt-1">Un nouvel essai sera compté.</p>
                         )}
                       </>
+                    )}
+                    {onRestart && !isPreview && restartBlocked && (
+                      <p className="text-xs text-gray-500 text-center">Tu as utilisé tous tes essais pour cet exercice.</p>
                     )}
                     <GlassButton href={exercise.course_id ? `/child/exercises?course=${exercise.course_id}` : "/child/exercises"} variant="outline" fullWidth className="font-bold text-base">
                       Retour aux exercices

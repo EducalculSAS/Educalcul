@@ -121,14 +121,16 @@ export async function POST(req: Request) {
     let safeScore = Math.max(0, Number(score) || 0);
     let safeScorePercent: number | null = null;
     let safePassed: boolean | null = null;
+    let exerciseMaxAttempts: number | null = null;
 
     if ((type === "exercise" || type === "quiz") && status === "completed") {
       const table = type === "exercise" ? "exercises" : "quizzes";
       const { data: item } = await supabaseAdmin
         .from(table)
-        .select("content_json, min_score_percent")
+        .select(type === "exercise" ? "content_json, min_score_percent, max_attempts" : "content_json, min_score_percent")
         .eq("id", itemId)
-        .maybeSingle();
+        .maybeSingle<{ content_json: unknown; min_score_percent: number | null; max_attempts?: number | null }>();
+      if (type === "exercise") exerciseMaxAttempts = Number(item?.max_attempts) > 0 ? Number(item?.max_attempts) : null;
 
       let maxPoints = 0;
       if (type === "exercise" && Array.isArray(item?.content_json)) {
@@ -175,6 +177,11 @@ export async function POST(req: Request) {
         // remplacé, sinon cette tentative ne serait plus jamais consultable
         // en détail une fois la suivante jouée (seul un résumé de score
         // était gardé jusqu'ici, voir plan "revue admin des copies").
+        // La limite d'essais de l'exercice est aussi tenue ici (pas seulement en masquant le bouton) : un essai de plus
+        // que le maximum n'est jamais enregistré, même si le client est contourné.
+        if (exerciseMaxAttempts && (existing?.attempts_history?.length ?? 0) >= exerciseMaxAttempts) {
+          return NextResponse.json({ error: "Tentatives épuisées pour cet exercice.", code: "attempts_exhausted" }, { status: 409 });
+        }
         const prevProgress = existing?.progress_json as { answers?: any; results?: any; revealed?: any; aiFeedback?: any } | undefined;
         attemptsHistory = [...(existing?.attempts_history || []), {
           score: safeScore,

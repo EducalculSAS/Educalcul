@@ -15,6 +15,7 @@ import {
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import AppLoader from "@/components/AppLoader";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
+import { passThreshold } from "@/lib/scorePercent";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -87,18 +88,19 @@ export default function ExerciseDetailClient({
   const [loading] = useState(false);
   const [exercise] = useState<any>(initialExercise);
   const [started, setStarted] = useState(false);
-  const attemptsHistory = isPreview ? [] : initialAttemptsHistory;
+  const savedAttempts = isPreview ? [] : initialAttemptsHistory;
   const alreadyCompleted = isPreview ? false : initialAlreadyCompleted;
   const [attemptKey, setAttemptKey] = useState(0);
   const [forceNewAttempt, setForceNewAttempt] = useState(false);
   const [openCorrection, setOpenCorrection] = useState(false);
   // Parties terminées depuis l'ouverture de la page : elles s'ajoutent aux essais déjà enregistrés
   // (la liste serveur n'est relue qu'au rechargement), pour la limite de tentatives et « Refaire ».
-  const [sessionCompletions, setSessionCompletions] = useState(0);
-  const attemptsUsed = attemptsHistory.length + sessionCompletions;
+  const [sessionAttempts, setSessionAttempts] = useState<{ score_percent: number; passed: boolean; completed_at: string }[]>([]);
+  const attemptsHistory = [...savedAttempts, ...sessionAttempts];
+  const attemptsUsed = attemptsHistory.length;
   const maxAttempts: number | null = exercise?.max_attempts ?? null;
   const limitReached = !!maxAttempts && attemptsUsed >= maxAttempts;
-  const completedBefore = alreadyCompleted || sessionCompletions > 0;
+  const completedBefore = alreadyCompleted || sessionAttempts.length > 0;
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -186,7 +188,10 @@ export default function ExerciseDetailClient({
             restartBlocked={limitReached}
             bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a: any) => a.score_percent ?? 0)) : undefined}
             onBack={() => setStarted(false)}
-            onComplete={() => setSessionCompletions((n) => n + 1)}
+            onComplete={(score: number, total: number) => {
+              const pct = total > 0 ? Math.round((score / total) * 100) : 100;
+              setSessionAttempts((l) => [...l, { score_percent: pct, passed: pct >= passThreshold(exercise.min_score_percent), completed_at: new Date().toISOString() }]);
+            }}
           />
         </div>
       </div>
