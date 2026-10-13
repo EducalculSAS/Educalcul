@@ -92,6 +92,13 @@ export default function ExerciseDetailClient({
   const [attemptKey, setAttemptKey] = useState(0);
   const [forceNewAttempt, setForceNewAttempt] = useState(false);
   const [openCorrection, setOpenCorrection] = useState(false);
+  // Parties terminées depuis l'ouverture de la page : elles s'ajoutent aux essais déjà enregistrés
+  // (la liste serveur n'est relue qu'au rechargement), pour la limite de tentatives et « Refaire ».
+  const [sessionCompletions, setSessionCompletions] = useState(0);
+  const attemptsUsed = attemptsHistory.length + sessionCompletions;
+  const maxAttempts: number | null = exercise?.max_attempts ?? null;
+  const limitReached = !!maxAttempts && attemptsUsed >= maxAttempts;
+  const completedBefore = alreadyCompleted || sessionCompletions > 0;
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -170,11 +177,16 @@ export default function ExerciseDetailClient({
             exercise={exercise}
             forceNewAttempt={forceNewAttempt}
             openCorrection={openCorrection}
+            onRestart={isPreview ? undefined : () => {
+              if (limitReached) return;
+              setOpenCorrection(false);
+              setForceNewAttempt(true);
+              setAttemptKey((k) => k + 1);
+            }}
+            restartBlocked={limitReached}
             bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a: any) => a.score_percent ?? 0)) : undefined}
             onBack={() => setStarted(false)}
-            onComplete={(score: number, total: number) => {
-              console.log(`Exercise completed: ${score}/${total}`);
-            }}
+            onComplete={() => setSessionCompletions((n) => n + 1)}
           />
         </div>
       </div>
@@ -262,15 +274,12 @@ export default function ExerciseDetailClient({
                 </h3>
 
                 {(() => {
-                  const maxAttempts: number | null = exercise.max_attempts ?? null;
-                  const attemptsUsed = attemptsHistory.length;
-                  const limitReached = !!maxAttempts && attemptsUsed >= maxAttempts;
                   return (
                     <GlassButton
                       onClick={() => {
                         if (limitReached) return;
-                        setForceNewAttempt(alreadyCompleted);
-                        if (alreadyCompleted) setAttemptKey((k) => k + 1);
+                        setForceNewAttempt(completedBefore);
+                        if (completedBefore) setAttemptKey((k) => k + 1);
                         setStarted(true);
                       }}
                       variant={limitReached ? "ghost" : "navy"}
@@ -279,13 +288,13 @@ export default function ExerciseDetailClient({
                       style={limitReached ? { opacity: 0.6, pointerEvents: "none" } : undefined}
                     >
                       <Play className="w-6 h-6 fill-current" />
-                      {limitReached ? "Tentatives épuisées" : alreadyCompleted ? "Recommencer l'exercice" : "Commencer l'exercice"}
+                      {limitReached ? "Tentatives épuisées" : completedBefore ? "Recommencer l'exercice" : "Commencer l'exercice"}
                     </GlassButton>
                   );
                 })()}
                 {!!exercise.max_attempts && (
                   <p className="text-xs text-gray-500 text-center mb-4">
-                    {attemptsHistory.length}/{exercise.max_attempts} tentative{exercise.max_attempts > 1 ? "s" : ""} utilisée{attemptsHistory.length > 1 ? "s" : ""}
+                    {attemptsUsed}/{exercise.max_attempts} tentative{exercise.max_attempts > 1 ? "s" : ""} utilisée{attemptsUsed > 1 ? "s" : ""}
                   </p>
                 )}
                 {!exercise.max_attempts && <div className="mb-4" />}

@@ -130,6 +130,7 @@ interface ExerciseViewerProps {
     course_id?: string | number | null;
     courses?: { title?: string; subject?: string; level?: string } | null;
     min_score_percent?: number | null;
+    max_attempts?: number | null;
     time_limit_minutes?: number | null;
   };
   onComplete?: (score: number, totalPoints: number) => void;
@@ -141,6 +142,10 @@ interface ExerciseViewerProps {
   bestScorePercent?: number;
   /** Ouvre directement la correction (revue détaillée) au lieu de l'écran de fin */
   openCorrection?: boolean;
+  /** « Refaire l'exercice » depuis l'écran de fin : repart de zéro, la fin de cette nouvelle partie compte comme un essai de plus. */
+  onRestart?: () => void;
+  /** Plus d'essai disponible (limite de tentatives de l'exercice atteinte) : le bouton « Refaire » est grisé. */
+  restartBlocked?: boolean;
   initialProgress?: {
     answers?: Record<string, any>;
     submittedBlocks?: string[];
@@ -885,6 +890,8 @@ export default function ExerciseViewer({
   forceNewAttempt,
   bestScorePercent,
   openCorrection,
+  onRestart,
+  restartBlocked,
   initialProgress,
   adminMode,
 }: ExerciseViewerProps) {
@@ -1617,7 +1624,7 @@ export default function ExerciseViewer({
                     Félicitations !
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    Tu as terminé cet exercice. Consulte ta correction ci-dessous ou enchaîne avec le quiz !
+                    Tu as terminé cet exercice. Consulte ta correction{onRestart ? " ou retente-le pour améliorer ton score" : ""} !
                   </p>
                   <div className="grid grid-cols-3 gap-3">
                     {[
@@ -1660,9 +1667,25 @@ export default function ExerciseViewer({
                     >
                       Voir la correction
                     </GlassButton>
-                    <GlassButton href={exercise.course_id ? `/child/quiz?course=${exercise.course_id}` : "/child/quiz"} variant="navy" fullWidth className="font-bold text-base">
-                      Aller aux quiz
-                    </GlassButton>
+                    {onRestart && !isPreview && (
+                      <>
+                        <GlassButton
+                          onClick={onRestart}
+                          disabled={restartBlocked}
+                          variant="navy"
+                          fullWidth
+                          className="font-bold text-base"
+                        >
+                          <RotateCcw className="w-4 h-4" />
+                          {restartBlocked ? "Tentatives épuisées" : "Refaire l'exercice"}
+                        </GlassButton>
+                        {!!exercise.max_attempts && (
+                          <p className="text-xs text-gray-500 text-center -mt-1">
+                            {restartBlocked ? "Tu as utilisé tous tes essais." : "Un nouvel essai sera compté."}
+                          </p>
+                        )}
+                      </>
+                    )}
                     <GlassButton href={exercise.course_id ? `/child/exercises?course=${exercise.course_id}` : "/child/exercises"} variant="outline" fullWidth className="font-bold text-base">
                       Retour aux exercices
                     </GlassButton>
