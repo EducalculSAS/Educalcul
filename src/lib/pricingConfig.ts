@@ -4,10 +4,14 @@
 // importable côté client comme côté serveur.
 
 import { DEFAULT_CUSTOM_PRICING, type PricingCustomConfig, type PricingOption, type AIId } from "./customPlanPricing";
+import { DEFAULT_PERIODS, defaultPeriodLabel, isValidPeriodId, monthsOfPeriod, type BillingPeriod } from "./billingPeriods";
 
 export interface PricingLabels {
   tabs: { familles: string; custom: string };
+  /** Libellés des quatre périodes historiques (conservé pour les anciens appelants ; la source est `periods`). */
   intervals: { month: string; quarter: string; semester: string; year: string };
+  /** Périodes proposées aux clients (onglets Mensuel / Trimestriel…), dans l'ordre d'affichage : l'admin en ajoute, retire, renomme. */
+  periods: BillingPeriod[];
 }
 
 export interface PricingConfig extends PricingLabels {
@@ -17,6 +21,7 @@ export interface PricingConfig extends PricingLabels {
 export const DEFAULT_PRICING_CONFIG: PricingConfig = {
   tabs: { familles: "Pour les familles", custom: "Sur mesure" },
   intervals: { month: "Mensuel", quarter: "Trimestriel", semester: "Semestriel", year: "Annuel" },
+  periods: DEFAULT_PERIODS,
   custom: DEFAULT_CUSTOM_PRICING,
 };
 
@@ -59,6 +64,24 @@ function normalizeOptions(raw: any): PricingOption[] {
   return DEFAULT_CUSTOM_PRICING.options;
 }
 
+/** Liste de périodes valide : identifiants connus et uniques, triés par durée ; au moins une période. Sans liste enregistrée,
+ * on part des quatre historiques (avec les anciens libellés personnalisés). */
+function normalizePeriods(raw: any, legacyIntervals: any): BillingPeriod[] {
+  if (!Array.isArray(raw)) {
+    return DEFAULT_PERIODS.map((p) => ({ ...p, label: str(legacyIntervals?.[p.id], p.label) }));
+  }
+  const seen = new Set<string>();
+  const out: BillingPeriod[] = [];
+  for (const p of raw) {
+    const id = String(p?.id ?? "").toLowerCase().replace(/[^a-z0-9_]/g, "");
+    if (!isValidPeriodId(id) || seen.has(id)) continue;
+    seen.add(id);
+    out.push({ id, label: str(p?.label, defaultPeriodLabel(id), 40), months: monthsOfPeriod(id)! });
+  }
+  if (out.length === 0) return DEFAULT_PERIODS.slice(0, 1);
+  return out.sort((a, b) => a.months - b.months);
+}
+
 /** Complète/nettoie une config brute (DB ou formulaire) avec les valeurs par défaut. */
 export function normalizePricingConfig(raw: any): PricingConfig {
   const d = DEFAULT_PRICING_CONFIG;
@@ -87,17 +110,21 @@ export function normalizePricingConfig(raw: any): PricingConfig {
     ? migrateToggles(custom.toggles)
     : DEFAULT_CUSTOM_PRICING.options;
 
+  const periods = normalizePeriods(r.periods, intervals);
+  const labelOf = (id: string, fallback: string) => periods.find((p) => p.id === id)?.label ?? fallback;
+
   return {
     tabs: {
       familles: str(tabs.familles, d.tabs.familles),
       custom: str(tabs.custom, d.tabs.custom),
     },
     intervals: {
-      month: str(intervals.month, d.intervals.month),
-      quarter: str(intervals.quarter, d.intervals.quarter),
-      semester: str(intervals.semester, d.intervals.semester),
-      year: str(intervals.year, d.intervals.year),
+      month: labelOf("month", d.intervals.month),
+      quarter: labelOf("quarter", d.intervals.quarter),
+      semester: labelOf("semester", d.intervals.semester),
+      year: labelOf("year", d.intervals.year),
     },
+    periods,
     custom: {
       base_price: num(custom.base_price, d.custom.base_price),
       max_children: Math.min(999, Math.max(1, Math.floor(Number(custom.max_children) || d.custom.max_children))),

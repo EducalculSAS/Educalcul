@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getVatTaxRateId } from "@/lib/stripeVat";
-import { ensurePlanPrice, ensureProduct, RECURRING } from "@/lib/stripeCatalog";
+import { ensurePlanPrice, ensureProduct, recurringFor } from "@/lib/stripeCatalog";
 import { getOrCreateStripeCustomer } from "@/lib/stripeCustomer";
 import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
@@ -260,7 +260,7 @@ export async function POST(req: Request) {
       ? Math.round(priceInCents * (1 - discountPercent / 100))
       : priceInCents;
 
-    const recurring = RECURRING[plan.billing_interval] || RECURRING.month;
+    const recurring = recurringFor(plan.billing_interval);
 
     // Prix Stripe du catalogue (voir stripeCatalog.ts) : le produit et le prix
     // sont créés / mis à jour depuis la base. Avec une remise de parrainage

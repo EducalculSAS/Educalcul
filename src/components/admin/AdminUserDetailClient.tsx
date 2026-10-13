@@ -18,6 +18,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import ChildLevelsCard from "@/components/admin/ChildLevelsCard";
+import { comparePeriods, defaultPeriodLabel } from "@/lib/billingPeriods";
 
 const roleBadge = (r: string) => {
   if (r === "admin") return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700"><Shield className="w-3 h-3" />Admin</span>;
@@ -451,19 +452,12 @@ export default function AdminUserDetailClient({
                         return groups;
                       }, {})
                   ).map(([groupName, groupPlans]) => {
-                    const order = ["month", "quarter", "semester", "year", "one_time"];
-                    const sorted = [...(groupPlans as any[])].sort((a, b) => order.indexOf(a.billing_interval) - order.indexOf(b.billing_interval));
+                    const sorted = [...(groupPlans as any[])].sort((a, b) => comparePeriods(a.billing_interval, b.billing_interval));
                     return (
                       <optgroup key={groupName} label={groupName}>
                         {sorted.map((p: any) => (
                           <option key={p.id} value={p.id.toString()}>
-                            {p.price}€ : {
-                              p.billing_interval === "year" ? "Annuel"
-                              : p.billing_interval === "semester" ? "Semestriel"
-                              : p.billing_interval === "quarter" ? "Trimestriel"
-                              : p.billing_interval === "one_time" ? "Unique"
-                              : "Mensuel"
-                            }
+                            {p.price}€ : {p.billing_interval === "one_time" ? "Unique" : defaultPeriodLabel(p.billing_interval)}
                           </option>
                         ))}
                       </optgroup>

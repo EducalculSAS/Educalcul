@@ -1,6 +1,7 @@
 import "server-only";
 import { stripe } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { defaultPeriodLabel, recurringFor } from "@/lib/billingPeriods";
 
 /**
  * Catalogue Stripe (Produits et Prix) piloté par la table `subscription_plans`.
@@ -16,16 +17,8 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
  * nouveau tarif.
  */
 
-export const RECURRING: Record<string, { interval: "month" | "year"; interval_count: number }> = {
-  month: { interval: "month", interval_count: 1 },
-  quarter: { interval: "month", interval_count: 3 },
-  semester: { interval: "month", interval_count: 6 },
-  year: { interval: "year", interval_count: 1 },
-};
-
-const INTERVAL_LABEL: Record<string, string> = {
-  month: "Mensuel", quarter: "Trimestriel", semester: "Semestriel", year: "Annuel",
-};
+// Récurrence Stripe d'une période : voir lib/billingPeriods.ts (trimestre = 3 mois, 24 mois = 2 ans, durées libres comprises).
+export { recurringFor };
 
 export interface CatalogPlan {
   id: number | string;
@@ -69,7 +62,7 @@ export async function ensurePlanPrice(plan: CatalogPlan): Promise<{ productId: s
     return { productId: typeof pr.product === "string" ? pr.product : pr.product.id, priceId: pr.id };
   }
   const productId = await ensureProduct(plan.name, plan.description);
-  const recurring = RECURRING[plan.billing_interval] || RECURRING.month;
+  const recurring = recurringFor(plan.billing_interval);
   const created = await stripe.prices.create({
     product: productId,
     currency: "eur",
@@ -77,7 +70,7 @@ export async function ensurePlanPrice(plan: CatalogPlan): Promise<{ productId: s
     recurring,
     lookup_key: lookup,
     transfer_lookup_key: true,
-    nickname: `${plan.name} · ${INTERVAL_LABEL[plan.billing_interval] || plan.billing_interval}`,
+    nickname: `${plan.name} · ${defaultPeriodLabel(plan.billing_interval)}`,
     metadata: { plan_id: String(plan.id) },
   });
   await archiveOtherPlanPrices(productId, String(plan.id), created.id);

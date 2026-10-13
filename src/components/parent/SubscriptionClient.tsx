@@ -27,6 +27,7 @@ import type { CustomPlanConfig } from "@/lib/customPlanPricing";
 import { type PricingConfig } from "@/lib/pricingConfig";
 import GlassButton from "@/components/ui/GlassButton";
 import { getSignupSession, patchSignupSession, clearSignupSession } from "@/lib/signupSession";
+import { periodSuffix } from "@/lib/billingPeriods";
 
 interface SubscriptionPlan {
   id: number;
@@ -528,7 +529,7 @@ function SubscriptionPageContent({
                 {selectedPlan.description && <p className="text-gray-500 mb-6">{selectedPlan.description}</p>}
                 <div className="text-4xl font-bold text-[var(--greek-blue)] mb-6">
                   {selectedPlan.price === 0 ? "Gratuit" : `${selectedPlan.price}€`}
-                  {selectedPlan.price > 0 && <span className="text-sm text-gray-500 font-normal"> /{selectedPlan.billing_interval === "year" ? "an" : "mois"}</span>}
+                  {selectedPlan.price > 0 && <span className="text-sm text-gray-500 font-normal"> {periodSuffix(selectedPlan.billing_interval)}</span>}
                 </div>
                 {selectedPlan.trial_days > 0 && (
                   <p className="text-sm text-green-600 font-medium mb-6 bg-green-50 px-4 py-2 rounded-lg">

@@ -8,6 +8,7 @@ import { fetchAdminUserDetail } from "@/lib/adminUserDetail";
 import { grantOfferedSubscription } from "@/lib/adminGrantSubscription";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { hasSpecialtyChoice, sanitizeExtraLevels } from "@/lib/specialties";
+import { periodDays as periodDaysOf, recurringFor } from "@/lib/billingPeriods";
 
 const VALID_GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
 
@@ -304,10 +305,7 @@ export async function POST(req: Request) {
         .eq("id", planId)
         .maybeSingle();
 
-      const PERIOD_DAYS: Record<string, number> = {
-        month: 30, quarter: 90, semester: 182, year: 365, one_time: 36500,
-      };
-      const periodDays = PERIOD_DAYS[plan?.billing_interval || "month"] || 30;
+      const periodDays = periodDaysOf(plan?.billing_interval);
 
       // Annule l'éventuel abonnement Stripe en cours, puis recrée un abonnement Stripe
       // correspondant au nouveau plan sur le client existant (réparation manuelle d'un
@@ -341,13 +339,7 @@ export async function POST(req: Request) {
       let newPeriodEnd: string | null = null;
       const isPaidPlan = plan && Number(plan.price) > 0;
       if (stripeCustomerId && isPaidPlan) {
-        const RECURRING: Record<string, { interval: "month" | "year"; interval_count: number }> = {
-          month:    { interval: "month", interval_count: 1 },
-          quarter:  { interval: "month", interval_count: 3 },
-          semester: { interval: "month", interval_count: 6 },
-          year:     { interval: "year",  interval_count: 1 },
-        };
-        const recurring = RECURRING[plan.billing_interval] || RECURRING.month;
+        const recurring = recurringFor(plan.billing_interval);
         try {
           const product = await stripe.products.create({ name: plan.name });
           const newSub = await stripe.subscriptions.create({

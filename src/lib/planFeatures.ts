@@ -1,4 +1,5 @@
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
+import { periodSuffix } from "@/lib/billingPeriods";
 
 /** Partagé entre la page /tarifs (comparateur) et l'aperçu tarifs de la home —
  * même mapping features -> libellés, pour ne jamais diverger entre les deux. */
@@ -37,11 +38,4 @@ export function formatVal(key: string, val: boolean | number | string | null): {
   return { label: String(val), included: true };
 }
 
-export const intervalLabel = (i: string) => {
-  switch (i) {
-    case "year": return "/an";
-    case "semester": return "/semestre";
-    case "quarter": return "/trimestre";
-    default: return "/mois";
-  }
-};
+export const intervalLabel = periodSuffix;

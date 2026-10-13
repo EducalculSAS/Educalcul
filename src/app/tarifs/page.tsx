@@ -6,6 +6,8 @@ import TarifsInteractive from "@/components/tarifs/TarifsInteractive";
 import TarifsFaqItem from "@/components/tarifs/TarifsFaqItem";
 import { fetchActivePlans } from "@/lib/plans";
 import GlassButton from "@/components/ui/GlassButton";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import { normalizePricingConfig } from "@/lib/pricingConfig";
 
 // Page publique quasi-statique (plans édités en admin) : ISR au lieu d'un
 // aller-retour Supabase à chaque visite.
@@ -34,7 +36,11 @@ const MINI_FAQ = [
 ];
 
 export default async function Tarifs() {
-  const plans = await fetchActivePlans();
+  const [plans, { data: pricingRow }] = await Promise.all([
+    fetchActivePlans(),
+    supabaseAdmin.from("app_settings").select("value").eq("key", "pricing_config").maybeSingle(),
+  ]);
+  const periods = normalizePricingConfig(pricingRow?.value).periods;
 
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-blue)" }}>
@@ -83,7 +89,7 @@ export default async function Tarifs() {
         </section>
 
         {/* TABS + CONTENT + COMPARATEUR (client island) */}
-        <TarifsInteractive initialPlans={plans} />
+        <TarifsInteractive initialPlans={plans} periods={periods} />
 
         {/* GARANTIE */}
         <section className="py-14 bg-[var(--greek-cream)] border-t border-gray-100 text-center">

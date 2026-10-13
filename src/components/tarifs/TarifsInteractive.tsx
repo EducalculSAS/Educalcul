@@ -7,6 +7,7 @@ import { FEATURE_ROWS, formatVal, intervalLabel } from "@/lib/planFeatures";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import { DEFAULT_PERIODS, type BillingPeriod } from "@/lib/billingPeriods";
 
 /* A row in the comparison: either a real plan or a custom config */
 interface CompareItem {
@@ -17,12 +18,6 @@ interface CompareItem {
   features: Record<string, boolean | number | string | null>;
 }
 
-const INTERVAL_LABELS: { id: string; label: string }[] = [
-  { id: "month", label: "Mensuel" },
-  { id: "quarter", label: "Trimestriel" },
-  { id: "semester", label: "Semestriel" },
-  { id: "year", label: "Annuel" },
-];
 
 /* ─── Plan detail modal ─── */
 function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
@@ -876,12 +871,15 @@ type TabId = "familles" | "abonnement";
  * composant. */
 export default function TarifsInteractive({
   initialPlans,
+  periods = DEFAULT_PERIODS,
 }: {
   initialPlans: Plan[];
+  /** Onglets de périodes proposés (réglés en admin : Abonnements). */
+  periods?: BillingPeriod[];
 }) {
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [tab, setTab] = useState<TabId>("familles");
-  const [interval, setInterval] = useState<string>("month");
+  const [interval, setInterval] = useState<string>(() => (periods.some((p) => p.id === "month") ? "month" : periods[0]?.id ?? "month"));
   const [cardsVisible, setCardsVisible] = useState(false);
   const cardsRef = useRef<HTMLDivElement>(null);
 
@@ -945,7 +943,7 @@ export default function TarifsInteractive({
         <PlanCard
           key={plan.id}
           plan={plan}
-          popular={list.length > 1 && idx === 1}
+          popular={list.some((p) => p.features?.popular === true) ? plan.features?.popular === true : list.length > 1 && idx === 1}
           hideChildren={hideChildren}
           cardsVisible={cardsVisible}
           onOpen={() => setSelectedPlan(plan)}
@@ -976,7 +974,7 @@ export default function TarifsInteractive({
             <>
               <div className="flex justify-center mb-10">
                 <GlassSegmentedControl
-                  options={INTERVAL_LABELS}
+                  options={periods.map((p) => ({ id: p.id, label: p.label }))}
                   value={interval}
                   onChange={setInterval}
                   size="sm"

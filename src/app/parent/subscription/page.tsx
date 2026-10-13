@@ -46,7 +46,7 @@ export default async function SubscriptionPage({
     supabaseAdmin
       .from("subscription_plans")
       .select("*")
-      .order("sort_order", { ascending: true }),
+      .order("sort_order", { ascending: true }).order("id", { ascending: true }),
     supabaseAdmin
       .from("app_settings")
       .select("value")

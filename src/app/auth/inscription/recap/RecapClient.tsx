@@ -9,9 +9,9 @@ import { AlertCircle, Loader2, Gift, CheckCircle, Pencil, User, Mail, ArrowLeft,
 import { computeCustomPlan, DEFAULT_CUSTOM_PRICING } from "@/lib/customPlanPricing";
 import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
 import GlassButton from "@/components/ui/GlassButton";
+import { periodSuffix } from "@/lib/billingPeriods";
 
-const intervalLabel = (i: string) =>
-  i === "year" ? "/an" : i === "semester" ? "/semestre" : i === "quarter" ? "/trimestre" : "/mois";
+const intervalLabel = periodSuffix;
 
 const AI_LABEL: Record<string, string> = {
   none: "Aucune", "15": "15 questions/jour", "30": "30 questions/jour",

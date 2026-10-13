@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireSuperAdmin } from "@/lib/apiAuth";
@@ -39,5 +40,8 @@ export async function PUT(req: Request) {
     .upsert({ key: "pricing_config", value: clean, updated_at: new Date().toISOString() }, { onConflict: "key" });
 
   if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  // Les onglets de périodes de /tarifs viennent de cette config : on invalide la page publique tout de suite.
+  revalidatePath("/tarifs");
+  revalidatePath("/api/pricing-config");
   return NextResponse.json(clean);
 }

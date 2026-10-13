@@ -21,7 +21,8 @@ export async function fetchActivePlans(): Promise<Plan[]> {
     .from("subscription_plans")
     .select("id, name, description, price, billing_interval, trial_days, promo_description, features")
     .eq("is_active", true)
-    .order("sort_order");
+    .order("sort_order")
+    .order("id");
   if (error || !data) return [];
   return data as Plan[];
 }

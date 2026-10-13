@@ -21,6 +21,7 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
+import { periodUnit } from "@/lib/billingPeriods";
 
 interface User {
   id: string;
@@ -357,13 +358,7 @@ function ExportModal({ users, title, onClose }: { users: User[]; title: string; 
  * allers-retours client, comme avant. */
 type PlanOption = { id: number; name: string; price: string | number; billing_interval: string };
 
-const BILLING_INTERVAL_LABEL: Record<string, string> = {
-  month: "mois",
-  quarter: "trimestre",
-  semester: "semestre",
-  year: "an",
-  one_time: "à vie",
-};
+const BILLING_INTERVAL_LABEL = { get: periodUnit };
 
 export default function AdminUsersClient({
   initialUsers,
@@ -768,7 +763,7 @@ export default function AdminUsersClient({
                       <option value="">Aucun (plan gratuit)</option>
                       {plans.map(p => (
                         <option key={p.id} value={p.id}>
-                          {p.name} : {Number(p.price).toFixed(2)} € / {BILLING_INTERVAL_LABEL[p.billing_interval] || p.billing_interval}
+                          {p.name} : {Number(p.price).toFixed(2)} € / {BILLING_INTERVAL_LABEL.get(p.billing_interval)}
                         </option>
                       ))}
                     </select>

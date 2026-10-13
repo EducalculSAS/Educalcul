@@ -1,4 +1,6 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
+import { isValidPeriodId, ONE_TIME } from "@/lib/billingPeriods";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireSuperAdmin } from "@/lib/apiAuth";
@@ -12,7 +14,7 @@ export async function GET(req: Request) {
     const { data: plans, error } = await supabaseAdmin
       .from("subscription_plans")
       .select("*")
-      .order("sort_order", { ascending: true });
+      .order("sort_order", { ascending: true }).order("id", { ascending: true });
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
@@ -36,6 +38,9 @@ export async function POST(req: Request) {
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
+    if (body.billing_interval && body.billing_interval !== ONE_TIME && !isValidPeriodId(String(body.billing_interval))) {
+      return NextResponse.json({ error: "Période de facturation inconnue." }, { status: 400 });
+    }
     const {
       name, description, price, billing_interval,
       duration_months, trial_days, promo_description,
@@ -61,6 +66,7 @@ export async function POST(req: Request) {
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
     // Stripe suit : produit et prix créés/mis à jour (un échec Stripe n'empêche pas l'enregistrement).
     const stripeSync = await syncPlanToStripe(data.id);
+    revalidatePath("/tarifs");
     return NextResponse.json({ ...data, stripe_sync: stripeSync }, { status: 201 });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
@@ -75,8 +81,26 @@ export async function PUT(req: Request) {
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
+
+    // Nouvel ordre d'affichage : une seule requête pour toute la liste, sans toucher à Stripe (l'ordre n'y est pour rien).
+    if (Array.isArray(body.order)) {
+      const rows = (body.order as { id: number | string; sort_order: number }[])
+        .filter((r) => r && r.id != null && Number.isFinite(Number(r.sort_order)))
+        .slice(0, 200);
+      const results = await Promise.all(
+        rows.map((r) => supabaseAdmin.from("subscription_plans").update({ sort_order: Math.round(Number(r.sort_order)) }).eq("id", r.id)),
+      );
+      const failed = results.find((r) => r.error);
+      if (failed?.error) return NextResponse.json({ error: sanitizeErrorMessage(failed.error.message) }, { status: 500 });
+      revalidatePath("/tarifs");
+      return NextResponse.json({ success: true });
+    }
+
     const { id, ...fields } = body;
     if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    if (fields.billing_interval && fields.billing_interval !== ONE_TIME && !isValidPeriodId(String(fields.billing_interval))) {
+      return NextResponse.json({ error: "Période de facturation inconnue." }, { status: 400 });
+    }
 
     const { data, error } = await supabaseAdmin
       .from("subscription_plans")
@@ -87,6 +111,7 @@ export async function PUT(req: Request) {
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
     const stripeSync = await syncPlanToStripe(data.id);
+    revalidatePath("/tarifs");
     return NextResponse.json({ ...data, stripe_sync: stripeSync });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
@@ -125,6 +150,7 @@ export async function DELETE(req: Request) {
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
     const stripeSync = await removePlanFromStripe(id, doomed?.name);
+    revalidatePath("/tarifs");
     return NextResponse.json({ success: true, stripe_sync: stripeSync });
   } catch (err: any) {
     return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });

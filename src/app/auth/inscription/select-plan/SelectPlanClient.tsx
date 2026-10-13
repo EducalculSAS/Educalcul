@@ -9,14 +9,14 @@ import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
 import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
 import GlassButton from "@/components/ui/GlassButton";
+import { periodSuffix } from "@/lib/billingPeriods";
 
 interface Plan extends ChooserPlan {
   is_active: boolean;
   sort_order: number;
 }
 
-const intervalLabel = (i: string) =>
-  i === "year" ? "/an" : i === "semester" ? "/semestre" : i === "quarter" ? "/trimestre" : "/mois";
+const intervalLabel = periodSuffix;
 
 export default function SelectPlan() {
   const router = useRouter();

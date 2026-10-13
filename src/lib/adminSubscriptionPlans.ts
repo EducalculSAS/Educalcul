@@ -12,7 +12,7 @@ type SubUser = { auth_id: string; first_name: string | null; last_name: string |
  */
 export async function fetchAdminSubscriptionPlans() {
   const [{ data: plans, error }, subs] = await Promise.all([
-    supabaseAdmin.from("subscription_plans").select("*").order("sort_order", { ascending: true }),
+    supabaseAdmin.from("subscription_plans").select("*").order("sort_order", { ascending: true }).order("id", { ascending: true }),
     selectAllPages<Sub>((from, to) =>
       supabaseAdmin
         .from("subscriptions")

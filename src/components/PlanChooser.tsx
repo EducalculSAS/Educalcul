@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect, type DragEvent } from "react";
-import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save, Plus, Trash2, AlertTriangle } from "lucide-react";
+import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save, Plus, Trash2, AlertTriangle, ChevronLeft, ChevronRight } from "lucide-react";
+import { useConfirm } from "@/components/ConfirmDialog";
+import { DEFAULT_PERIODS, MAX_PERIOD_MONTHS, defaultPeriodLabel, isValidPeriodId, monthsOfPeriod, periodIdForMonths, periodSuffix, type BillingPeriod } from "@/lib/billingPeriods";
 import {
   childrenCost, aiMultiplier, configPrice,
   DEFAULT_CUSTOM_PRICING,
@@ -46,8 +48,13 @@ export interface ChooserPlan {
 /** Mode admin optionnel : glisser les fiches (réordonner / changer de période)
  * + éditer le forfait sur-mesure inline + bouton Sauvegarder. */
 export interface PlanChooserAdmin {
-  onReorder: (draggedId: string | number, targetId: string | number) => void;
+  /** Nouvel ordre des fiches payantes de la période affichée (identifiants, de gauche à droite). */
+  onReorder: (orderedIds: (string | number)[]) => void;
   onMoveInterval: (draggedId: string | number, interval: string) => void;
+  /** Met la fiche en avant (« Populaire ») ou retire l'étiquette. */
+  onTogglePopular: (id: string | number) => void;
+  /** Périodes proposées aux clients : ajout, retrait, renommage. */
+  onPeriodsChange: (periods: BillingPeriod[]) => void;
   pricing: PricingCustomConfig;
   onPricingChange: (p: PricingCustomConfig) => void;
   dirty: boolean;
@@ -80,12 +87,13 @@ function formatVal(key: string, val: any): { label: string; included: boolean } 
   return { label: String(val), included: true };
 }
 
-const intervalLabel = (i: string) => {
-  switch (i) {
-    case "year": return "/an";
-    case "semester": return "/semestre";
-    case "quarter": return "/trimestre";
-    default: return "/mois";
+const intervalLabel = periodSuffix;
+
+const featuresOf = (plan: ChooserPlan): Record<string, any> => {
+  try {
+    return typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
+  } catch {
+    return {};
   }
 };
 
@@ -119,7 +127,7 @@ function EditableNumber({ value, onChange, className, suffix = "€" }: {
 }
 
 /* ─── Plan card (style /tarifs) ─── */
-function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag }: {
+function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, tools }: {
   plan: ChooserPlan;
   popular: boolean;
   cta: string;
@@ -131,8 +139,11 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag }:
     onDragEnd: () => void;
     onDragOver: (e: DragEvent) => void;
     onDrop: () => void;
-    over: boolean;
+    /** Où la fiche glissée atterrirait par rapport à celle-ci. */
+    over: false | "before" | "after";
   };
+  /** Outils admin de la fiche : flèches de déplacement et étiquette « Populaire ». */
+  tools?: { onLeft?: () => void; onRight?: () => void; popularFlag: boolean; onTogglePopular: () => void };
 }) {
   const features = typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
   const isFree = Number(plan.price) === 0;
@@ -147,12 +158,26 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag }:
     >
       <div className="relative flex flex-col bg-white rounded-2xl h-full"
         style={{
-          border: drag?.over ? "2px dashed var(--greek-gold)" : popular ? "2px solid var(--greek-gold)" : isCurrent ? "2px solid var(--greek-blue)" : "1px solid var(--greek-border)",
+          border: popular ? "2px solid var(--greek-gold)" : isCurrent ? "2px solid var(--greek-blue)" : "1px solid var(--greek-border)",
           boxShadow: popular ? "0 8px 40px rgba(197,161,72,0.18)" : "0 2px 12px rgba(15,30,58,0.05)",
         }}>
+        {drag?.over && (
+          <span
+            aria-hidden
+            className="absolute -top-2 -bottom-2 w-1.5 rounded-full bg-[var(--greek-gold)] shadow-[0_0_14px_rgba(197,161,72,0.8)] pointer-events-none"
+            style={drag.over === "before" ? { left: -18 } : { right: -18 }}
+          />
+        )}
         {drag && (
-          <div className="absolute top-3 left-3 text-gray-300" title="Glisser pour réordonner / changer de période">
+          <div className="absolute top-3 left-3 text-gray-300 cursor-grab" title="Glisser pour réordonner / changer de période">
             <GripVertical className="w-4 h-4" />
+          </div>
+        )}
+        {tools && (
+          <div className="absolute top-2.5 right-2.5 z-20 flex items-center gap-1">
+            <GlassIconButton icon={ChevronLeft} color="gray" size="sm" onClick={tools.onLeft} disabled={!tools.onLeft} aria-label="Déplacer à gauche" />
+            <GlassIconButton icon={ChevronRight} color="gray" size="sm" onClick={tools.onRight} disabled={!tools.onRight} aria-label="Déplacer à droite" />
+            <GlassIconButton icon={Star} color={tools.popularFlag ? "gold" : "gray"} size="sm" onClick={tools.onTogglePopular} aria-label={tools.popularFlag ? "Retirer l'étiquette Populaire" : "Mettre en avant (Populaire)"} />
           </div>
         )}
         {popular && (
@@ -467,6 +492,70 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
   );
 }
 
+/* ─── Périodes de facturation (mode admin) : ajouter, renommer, retirer ─── */
+function PeriodsEditor({ periods, plans, onChange }: {
+  periods: BillingPeriod[];
+  plans: ChooserPlan[];
+  onChange: (p: BillingPeriod[]) => void;
+}) {
+  const confirm = useConfirm();
+  const [months, setMonths] = useState("2");
+  const [label, setLabel] = useState("");
+  const m = Math.round(Number(months));
+  const id = Number.isFinite(m) && m >= 1 && m <= MAX_PERIOD_MONTHS ? periodIdForMonths(m) : null;
+  const exists = !!id && periods.some((p) => p.id === id);
+  const usedBy = (pid: string) => plans.filter((p) => p.billing_interval === pid).length;
+
+  const add = () => {
+    if (!id || exists) return;
+    const next = [...periods, { id, label: label.trim() || defaultPeriodLabel(id), months: monthsOfPeriod(id)! }];
+    onChange(next.sort((a, b) => a.months - b.months));
+    setLabel("");
+  };
+  const remove = async (p: BillingPeriod) => {
+    if (periods.length <= 1) return;
+    const n = usedBy(p.id);
+    const ok = await confirm(
+      n > 0
+        ? `Retirer « ${p.label} » ? ${n} formule${n > 1 ? "s sont" : " est"} sur cette période : ${n > 1 ? "elles ne seront" : "elle ne sera"} plus proposée${n > 1 ? "s" : ""} aux clients tant que la période est masquée (rien n'est supprimé).`
+        : `Retirer la période « ${p.label} » ?`,
+    );
+    if (ok) onChange(periods.filter((x) => x.id !== p.id));
+  };
+
+  return (
+    <div className="mb-10 rounded-2xl border border-[var(--greek-border)] bg-white/70 backdrop-blur p-5 max-w-3xl mx-auto">
+      <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-3">Périodes proposées aux clients</p>
+      <div className="flex flex-wrap gap-2 mb-4">
+        {periods.map((p) => (
+          <div key={p.id} className="flex items-center gap-2 pl-3.5 pr-1.5 py-1.5 rounded-full border border-[var(--greek-border)] bg-white">
+            <EditableText value={p.label} className="text-sm font-semibold text-[var(--greek-blue)]" onChange={(v) => onChange(periods.map((x) => (x.id === p.id ? { ...x, label: v } : x)))} />
+            <span className="text-[11px] text-gray-400">{p.months} mois{usedBy(p.id) > 0 ? ` · ${usedBy(p.id)} formule${usedBy(p.id) > 1 ? "s" : ""}` : ""}</span>
+            <GlassIconButton icon={Trash2} color="red" size="sm" onClick={() => remove(p)} disabled={periods.length <= 1} aria-label={`Retirer la période ${p.label}`} />
+          </div>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-end gap-3">
+        <label className="text-xs text-gray-500">
+          Durée (mois)
+          <input type="number" min={1} max={MAX_PERIOD_MONTHS} value={months} onChange={(e) => setMonths(e.target.value)}
+            className="block mt-1 w-24 px-3 py-2 rounded-xl border border-[var(--greek-border)] bg-white text-sm text-[var(--greek-blue)] outline-none focus:border-[var(--greek-gold)]" />
+        </label>
+        <label className="text-xs text-gray-500">
+          Nom affiché (facultatif)
+          <input value={label} onChange={(e) => setLabel(e.target.value)} placeholder={id ? defaultPeriodLabel(id) : "Ex. Bimestriel"} maxLength={40}
+            className="block mt-1 w-48 px-3 py-2 rounded-xl border border-[var(--greek-border)] bg-white text-sm text-[var(--greek-blue)] outline-none focus:border-[var(--greek-gold)]" />
+        </label>
+        <GlassButton onClick={add} variant="navy" size="sm" disabled={!id || exists}>
+          <Plus className="w-4 h-4" /> Ajouter la période
+        </GlassButton>
+        {exists && <span className="text-xs text-[var(--greek-bronze)]">Cette durée existe déjà.</span>}
+        {!id && <span className="text-xs text-[var(--greek-bronze)]">Entre une durée de 1 à {MAX_PERIOD_MONTHS} mois.</span>}
+      </div>
+    </div>
+  );
+}
+
 /* ─── Composant principal ─── */
 export default function PlanChooser({
   plans,
@@ -508,12 +597,20 @@ export default function PlanChooser({
 
   const effectivePricing = admin ? admin.pricing : customPricing;
 
+  const periods = labels.periods ?? DEFAULT_PERIODS;
+  // La période de l'abonnement en cours reste visible même si l'admin l'a retirée de la liste (sinon sa formule disparaît).
+  const currentInterval = currentPlanId != null ? plans.find(p => String(p.id) === String(currentPlanId))?.billing_interval : undefined;
   const intervalTabs = [
-    { id: "month", label: labels.intervals.month },
-    { id: "quarter", label: labels.intervals.quarter },
-    { id: "semester", label: labels.intervals.semester },
-    { id: "year", label: labels.intervals.year },
+    ...periods.map(p => ({ id: p.id, label: p.label })),
+    ...(currentInterval && isValidPeriodId(currentInterval) && !periods.some(p => p.id === currentInterval)
+      ? [{ id: currentInterval, label: defaultPeriodLabel(currentInterval) }] : []),
   ];
+
+  // Période affichée retirée de la liste : on retombe sur la première.
+  useEffect(() => {
+    if (intervalTabs.length > 0 && !intervalTabs.some(t => t.id === billing)) setBilling(intervalTabs[0].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [intervalTabs.map(t => t.id).join("|")]);
 
   const TABS = [
     { id: "familles" as const, label: labels.tabs.familles },
@@ -523,12 +620,25 @@ export default function PlanChooser({
   const freePlans = plans.filter(p => Number(p.price) === 0);
   const paidForInterval = plans.filter(p => Number(p.price) > 0 && p.billing_interval === billing);
   const list = [...paidForInterval, ...freePlans];
+  // « Populaire » : la fiche marquée par l'admin ; sans marque, la fiche du milieu (comportement historique).
+  const flaggedPopular = paidForInterval.some(p => featuresOf(p).popular === true);
+  const isPopular = (p: ChooserPlan, idx: number) =>
+    Number(p.price) > 0 && (flaggedPopular ? featuresOf(p).popular === true : list.length > 1 && idx === 1);
+  const paidIds = paidForInterval.map(p => p.id);
+  const moveInPaid = (id: string | number, to: number) => {
+    const from = paidIds.findIndex(x => String(x) === String(id));
+    if (from < 0 || to < 0 || to >= paidIds.length || from === to) return;
+    const next = [...paidIds];
+    const [moved] = next.splice(from, 1);
+    next.splice(to, 0, moved);
+    admin?.onReorder(next);
+  };
 
   return (
     <div>
       {admin && (
         <p className="text-xs text-gray-400 mb-4 flex items-center gap-1.5">
-          <GripVertical className="w-3.5 h-3.5" /> Glissez les fiches pour les réordonner, ou déposez-les sur un onglet de période (Mensuel/Annuel…) pour changer leur période. Cliquez une valeur du sur-mesure pour la modifier.
+          <GripVertical className="w-3.5 h-3.5" /> Réordonnez les fiches avec les flèches ou en les glissant (le trait doré montre où elle ira) ; déposez une fiche sur un onglet pour changer sa période ; l&apos;étoile met une fiche en avant. Gérez les périodes juste en dessous.
         </p>
       )}
 
@@ -562,6 +672,8 @@ export default function PlanChooser({
             />
           </div>
 
+          {admin && <PeriodsEditor periods={periods} plans={plans} onChange={admin.onPeriodsChange} />}
+
           {list.length === 0 ? (
             <p className="text-center text-[var(--text-muted)] py-20">Aucun plan dans cette période. Glissez-en un ici depuis une autre période.</p>
           ) : (
@@ -570,17 +682,33 @@ export default function PlanChooser({
                 <PlanCard
                   key={plan.id}
                   plan={plan}
-                  popular={list.length > 1 && idx === 1}
+                  popular={isPopular(plan, idx)}
                   cta={planCta(plan)}
                   onChoose={() => onChoosePlan(plan)}
                   processing={processingKey === plan.id}
                   isCurrent={currentPlanId != null && String(currentPlanId) === String(plan.id)}
-                  drag={admin ? {
+                  drag={admin && Number(plan.price) > 0 ? {
                     onDragStart: () => setDraggedId(plan.id),
                     onDragEnd: () => { setDraggedId(null); setOverId(null); },
-                    onDragOver: (e) => { e.preventDefault(); setOverId(plan.id); },
-                    onDrop: () => { if (draggedId != null && draggedId !== plan.id) admin.onReorder(draggedId, plan.id); setOverId(null); setDraggedId(null); },
-                    over: overId === plan.id && draggedId !== plan.id,
+                    onDragOver: (e) => { e.preventDefault(); if (draggedId != null) setOverId(plan.id); },
+                    onDrop: () => {
+                      if (draggedId != null && String(draggedId) !== String(plan.id)) {
+                        const to = paidIds.findIndex(x => String(x) === String(plan.id));
+                        // Fiche d'une autre période déposée ici : elle rejoint cette période, à cette place.
+                        if (!paidIds.some(x => String(x) === String(draggedId))) admin.onMoveInterval(draggedId, billing);
+                        else moveInPaid(draggedId, to);
+                      }
+                      setOverId(null); setDraggedId(null);
+                    },
+                    over: overId === plan.id && draggedId != null && String(draggedId) !== String(plan.id)
+                      ? (paidIds.findIndex(x => String(x) === String(draggedId)) > paidIds.findIndex(x => String(x) === String(plan.id)) ? "before" : "after")
+                      : false,
+                  } : undefined}
+                  tools={admin && Number(plan.price) > 0 ? {
+                    onLeft: idx > 0 ? () => moveInPaid(plan.id, idx - 1) : undefined,
+                    onRight: idx < paidIds.length - 1 ? () => moveInPaid(plan.id, idx + 1) : undefined,
+                    popularFlag: featuresOf(plan).popular === true,
+                    onTogglePopular: () => admin.onTogglePopular(plan.id),
                   } : undefined}
                 />
               ))}

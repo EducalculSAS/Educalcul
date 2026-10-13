@@ -17,6 +17,7 @@ import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import { type PricingConfig } from "@/lib/pricingConfig";
+import { ONE_TIME, defaultPeriodLabel, isValidPeriodId, monthsOfPeriod, periodIdForMonths, periodSuffix, MAX_PERIOD_MONTHS, type BillingPeriod } from "@/lib/billingPeriods";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 interface Plan {
@@ -53,8 +54,9 @@ interface ReferralCode {
 }
 
 // ── Default form values ────────────────────────────────────────────────────
+const CUSTOM_PERIOD = "__custom";
 const defaultPlanForm = {
-  name: "", description: "", price: 0, billing_interval: "month",
+  name: "", description: "", price: 0, billing_interval: "month", custom_months: "2", custom_label: "",
   duration_months: "", trial_days: "", promo_description: "", is_active: true, sort_order: 0,
   feature_max_children: 1, feature_access_level_exercises: "difficile",
   feature_detailed_reports: false, feature_priority_support: false,
@@ -74,8 +76,12 @@ const defaultRefForm = {
 
 // ── Helpers ───────────────────────────────────────────────────────────────
 function intervalLabel(i: string) {
-  return i === "month" ? "/ mois" : i === "year" ? "/ an" : "unique";
+  return i === ONE_TIME ? "unique" : periodSuffix(i).replace("/", "/ ");
 }
+
+/** Les plans dans l'ordre d'affichage : ordre enregistré, puis identifiant (jamais d'égalité, donc jamais d'ordre « au hasard »). */
+const sortPlans = <T extends { sort_order: number; id: string | number }>(list: T[]) =>
+  [...list].sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0) || Number(a.id) - Number(b.id));
 function discountLabel(type: string, value: number) {
   if (type === "percent") return `−${value}%`;
   if (type === "fixed") return `−${value}€`;
@@ -145,7 +151,7 @@ export default function AdminSubscriptionsClient({
       const f = typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
       setPlanForm({
         name: plan.name, description: plan.description || "",
-        price: plan.price, billing_interval: plan.billing_interval,
+        price: plan.price, billing_interval: plan.billing_interval, custom_months: "2", custom_label: "",
         duration_months: plan.duration_months?.toString() || "",
         trial_days: plan.trial_days?.toString() || "",
         promo_description: plan.promo_description || "",
@@ -171,7 +177,25 @@ export default function AdminSubscriptionsClient({
 
   const savePlan = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Période : une durée libre devient une période proposée aux clients (enregistrée avec la config tarifaire).
+    let billingInterval: string = planForm.billing_interval;
+    if (billingInterval === CUSTOM_PERIOD) {
+      const m = Math.round(Number(planForm.custom_months));
+      if (!Number.isFinite(m) || m < 1 || m > MAX_PERIOD_MONTHS) { showToast("error", `Durée libre : entre 1 et ${MAX_PERIOD_MONTHS} mois.`); return; }
+      billingInterval = periodIdForMonths(m);
+      if (!pricingConfig.periods.some((p) => p.id === billingInterval)) {
+        const periods = [...pricingConfig.periods, { id: billingInterval, label: planForm.custom_label?.trim() || defaultPeriodLabel(billingInterval), months: monthsOfPeriod(billingInterval)! }].sort((a, b) => a.months - b.months);
+        const res = await fetch("/api/admin/pricing-config", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...pricingConfig, periods }) });
+        const data = await res.json();
+        if (!res.ok) { showToast("error", data.error || "Impossible d'ajouter la période."); return; }
+        setPricingConfig(data);
+      }
+    }
+
+    const previousFeatures = editingPlan ? (typeof editingPlan.features === "string" ? JSON.parse(editingPlan.features) : editingPlan.features || {}) : {};
     const features = {
+      ...previousFeatures,
       max_children: Number(planForm.feature_max_children),
       access_level_exercises: planForm.feature_access_level_exercises,
       detailed_reports: planForm.feature_detailed_reports,
@@ -187,7 +211,7 @@ export default function AdminSubscriptionsClient({
     };
     const payload = {
       name: planForm.name, description: planForm.description,
-      price: Number(planForm.price), billing_interval: planForm.billing_interval,
+      price: Number(planForm.price), billing_interval: billingInterval,
       duration_months: planForm.duration_months ? Number(planForm.duration_months) : null,
       trial_days: planForm.trial_days ? Number(planForm.trial_days) : 0,
       promo_description: planForm.promo_description || null,
@@ -218,30 +242,33 @@ export default function AdminSubscriptionsClient({
   };
 
   // ── Drag-and-drop reorder ──────────────────────────────────────────────────
+  /** Enregistre un nouvel ordre COMPLET : chaque plan reçoit 10, 20, 30… (plus d'égalité possible), en une seule requête. */
+  const persistOrder = async (ordered: Plan[]) => {
+    const renumbered = ordered.map((p, i) => ({ ...p, sort_order: (i + 1) * 10 }));
+    const changes = renumbered.filter(p => plans.find(q => q.id === p.id)?.sort_order !== p.sort_order);
+    setPlans(renumbered);
+    if (changes.length === 0) return;
+    const res = await fetch("/api/admin/subscriptions", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ order: changes.map(p => ({ id: p.id, sort_order: p.sort_order })) }),
+    });
+    if (res.ok) showToast("success", "Ordre enregistré");
+    else { showToast("error", "L'ordre n'a pas pu être enregistré."); fetchPlans(); }
+  };
+
   const handleDrop = async (targetId: string) => {
     const fromId = dragId.current;
-    if (!fromId || fromId === targetId) { setDragOver(null); return; }
-
-    const from = plans.find(p => p.id === fromId);
-    const to   = plans.find(p => p.id === targetId);
-    if (!from || !to) { setDragOver(null); return; }
-
-    // Swap sort_order locally
-    const next = plans.map(p => {
-      if (p.id === fromId) return { ...p, sort_order: to.sort_order };
-      if (p.id === targetId) return { ...p, sort_order: from.sort_order };
-      return p;
-    }).sort((a, b) => a.sort_order - b.sort_order);
-
-    setPlans(next);
     setDragOver(null);
-
-    // Persist both
-    await Promise.all([
-      fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: fromId, sort_order: to.sort_order }) }),
-      fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: targetId, sort_order: from.sort_order }) }),
-    ]);
-    showToast("success", "Ordre mis à jour");
+    if (!fromId || fromId === targetId) return;
+    const ordered = sortPlans(plans);
+    const from = ordered.findIndex(p => p.id === fromId);
+    const to = ordered.findIndex(p => p.id === targetId);
+    if (from < 0 || to < 0) return;
+    const next = [...ordered];
+    const [moved] = next.splice(from, 1);
+    next.splice(to, 0, moved);
+    await persistOrder(next);
   };
 
   const togglePlan = async (plan: Plan) => {
@@ -254,29 +281,53 @@ export default function AdminSubscriptionsClient({
   };
 
   // ── Aperçu interactif : config sur-mesure + glisser les fiches ─────────────
-  const previewReorder = async (fromId: string | number, targetId: string | number) => {
-    const from = plans.find(p => String(p.id) === String(fromId));
-    const to = plans.find(p => String(p.id) === String(targetId));
-    if (!from || !to) return;
-    const next = plans.map(p => {
-      if (p.id === from.id) return { ...p, sort_order: to.sort_order };
-      if (p.id === to.id) return { ...p, sort_order: from.sort_order };
-      return p;
-    }).sort((a, b) => a.sort_order - b.sort_order);
-    setPlans(next);
-    await Promise.all([
-      fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: from.id, sort_order: to.sort_order }) }),
-      fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: to.id, sort_order: from.sort_order }) }),
-    ]);
-    showToast("success", "Ordre mis à jour");
+  /** Réordonne les fiches payantes d'une période : elles gardent les places qu'elles occupaient dans l'ordre général, entre elles dans le nouvel ordre. */
+  const previewReorder = async (orderedIds: (string | number)[]) => {
+    const all = sortPlans(plans);
+    const members = new Set(orderedIds.map(String));
+    const slots = all.map((p, i) => (members.has(String(p.id)) ? i : -1)).filter(i => i >= 0);
+    const byId = new Map(all.map(p => [String(p.id), p]));
+    const next = [...all];
+    orderedIds.forEach((id, k) => { const p = byId.get(String(id)); if (p && slots[k] !== undefined) next[slots[k]] = p; });
+    await persistOrder(next);
   };
 
   const previewMoveInterval = async (id: string | number, interval: string) => {
     const plan = plans.find(p => String(p.id) === String(id));
     if (!plan || plan.billing_interval === interval) return;
     setPlans(plans.map(p => p.id === plan.id ? { ...p, billing_interval: interval } : p));
-    await fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: plan.id, billing_interval: interval }) });
-    showToast("success", "Période mise à jour");
+    const res = await fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: plan.id, billing_interval: interval }) });
+    if (res.ok) showToast("success", "Période mise à jour");
+    else { showToast("error", "La période n'a pas pu être changée."); fetchPlans(); }
+  };
+
+  /** « Populaire » : une seule fiche par période (marquer l'une retire l'étiquette des autres). */
+  const previewTogglePopular = async (id: string | number) => {
+    const plan = plans.find(p => String(p.id) === String(id));
+    if (!plan) return;
+    const featuresOf = (p: Plan) => (typeof p.features === "string" ? JSON.parse(p.features) : p.features || {});
+    const turnOn = featuresOf(plan).popular !== true;
+    const touched = plans.filter(p => p.billing_interval === plan.billing_interval && Number(p.price) > 0 && (p.id === plan.id || (turnOn && featuresOf(p).popular === true)));
+    setPlans(plans.map(p => touched.some(t => t.id === p.id) ? { ...p, features: { ...featuresOf(p), popular: p.id === plan.id ? turnOn : false } } : p));
+    const results = await Promise.all(touched.map(p =>
+      fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: p.id, features: { ...featuresOf(p), popular: p.id === plan.id ? turnOn : false } }) }),
+    ));
+    if (results.every(r => r.ok)) showToast("success", turnOn ? "Fiche mise en avant" : "Étiquette retirée");
+    else { showToast("error", "L'étiquette n'a pas pu être modifiée."); fetchPlans(); }
+  };
+
+  const changePeriods = (periods: BillingPeriod[]) => {
+    setPricingConfig(pc => ({
+      ...pc,
+      periods,
+      intervals: {
+        month: periods.find(p => p.id === "month")?.label ?? pc.intervals.month,
+        quarter: periods.find(p => p.id === "quarter")?.label ?? pc.intervals.quarter,
+        semester: periods.find(p => p.id === "semester")?.label ?? pc.intervals.semester,
+        year: periods.find(p => p.id === "year")?.label ?? pc.intervals.year,
+      },
+    }));
+    setPricingDirty(true);
   };
 
   const savePricing = async () => {
@@ -427,7 +478,7 @@ export default function AdminSubscriptionsClient({
               <GripVertical className="w-3.5 h-3.5" /> Glissez les cartes pour réorganiser l&apos;ordre d&apos;affichage sur le site.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-              {plans.map((plan) => {
+              {sortPlans(plans).map((plan) => {
                 const features = typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
                 const featureList = [
                   `${features.max_children || 1} enfant(s)`,
@@ -587,7 +638,7 @@ export default function AdminSubscriptionsClient({
             </div>
             <div className="bg-[var(--greek-cream)] rounded-2xl border border-[rgba(197,161,72,0.25)] p-6">
               <PlanChooser
-                plans={plans.filter(p => p.is_active) as unknown as ChooserPlan[]}
+                plans={sortPlans(plans).filter(p => p.is_active) as unknown as ChooserPlan[]}
                 onChoosePlan={() => {}}
                 onChooseCustom={() => {}}
                 planCta={() => "Choisir"}
@@ -596,6 +647,8 @@ export default function AdminSubscriptionsClient({
                 admin={{
                   onReorder: previewReorder,
                   onMoveInterval: previewMoveInterval,
+                  onTogglePopular: previewTogglePopular,
+                  onPeriodsChange: changePeriods,
                   pricing: pricingConfig.custom,
                   onPricingChange: (custom) => { setPricingConfig(pc => ({ ...pc, custom })); setPricingDirty(true); },
                   dirty: pricingDirty,
@@ -791,10 +844,20 @@ export default function AdminSubscriptionsClient({
                 <div>
                   <label className={labelCls}>Facturation *</label>
                   <select value={planForm.billing_interval} onChange={e => setPlanForm({...planForm, billing_interval: e.target.value})} className={inputCls}>
-                    <option value="month">Mensuel</option>
-                    <option value="year">Annuel</option>
-                    <option value="one_time">Paiement unique</option>
+                    {pricingConfig.periods.map(p => <option key={p.id} value={p.id}>{p.label} ({p.months === 1 ? "tous les mois" : p.months % 12 === 0 ? (p.months === 12 ? "tous les ans" : `tous les ${p.months / 12} ans`) : `tous les ${p.months} mois`})</option>)}
+                    {isValidPeriodId(planForm.billing_interval) && !pricingConfig.periods.some(p => p.id === planForm.billing_interval) && (
+                      <option value={planForm.billing_interval}>{defaultPeriodLabel(planForm.billing_interval)} (période masquée)</option>
+                    )}
+                    <option value={ONE_TIME}>Paiement unique</option>
+                    <option value={CUSTOM_PERIOD}>Autre durée…</option>
                   </select>
+                  {planForm.billing_interval === CUSTOM_PERIOD && (
+                    <div className="mt-2 grid grid-cols-2 gap-2">
+                      <input type="number" min="1" max={MAX_PERIOD_MONTHS} value={planForm.custom_months} onChange={e => setPlanForm({...planForm, custom_months: e.target.value})} className={inputCls} placeholder="Mois" aria-label="Durée en mois" />
+                      <input type="text" maxLength={40} value={planForm.custom_label} onChange={e => setPlanForm({...planForm, custom_label: e.target.value})} className={inputCls} placeholder="Nom (ex. Bimestriel)" aria-label="Nom de la période" />
+                      <p className="col-span-2 text-xs text-gray-400">Facturé tous les {Math.round(Number(planForm.custom_months)) || "…"} mois (1 à {MAX_PERIOD_MONTHS}). La période est ajoutée aux onglets proposés aux clients.</p>
+                    </div>
+                  )}
                 </div>
                 <div className="col-span-2">
                   <label className={labelCls}>Description</label>
@@ -805,15 +868,15 @@ export default function AdminSubscriptionsClient({
                   <input type="number" min="0" value={planForm.trial_days} onChange={e => setPlanForm({...planForm, trial_days: e.target.value})} className={inputCls} placeholder="0" />
                 </div>
                 <div>
-                  <label className={labelCls}>Durée (mois)</label>
-                  <input type="number" min="1" value={planForm.duration_months} onChange={e => setPlanForm({...planForm, duration_months: e.target.value})} className={inputCls} placeholder="Illimité si vide" />
+                  <label className={labelCls}>Engagement (mois)</label>
+                  <input type="number" min="1" value={planForm.duration_months} onChange={e => setPlanForm({...planForm, duration_months: e.target.value})} className={inputCls} placeholder="Sans limite si vide" />
                 </div>
                 <div>
                   <label className={labelCls}>Badge promo</label>
                   <input type="text" value={planForm.promo_description} onChange={e => setPlanForm({...planForm, promo_description: e.target.value})} className={inputCls} placeholder="ex: 2 mois offerts" />
                 </div>
                 <div>
-                  <label className={labelCls}>Ordre d'affichage</label>
+                  <label className={labelCls}>Ordre d&apos;affichage (aussi en glissant)</label>
                   <input type="number" min="0" value={planForm.sort_order} onChange={e => setPlanForm({...planForm, sort_order: e.target.value})} className={inputCls} />
                 </div>
               </div>

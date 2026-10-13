@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { periodDays as periodDaysOf } from "@/lib/billingPeriods";
 
 /**
  * Attribution d'un abonnement par un admin, SANS passer par Stripe.
@@ -14,14 +15,6 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
  * reconnaissable en base : `has_paid = false` et aucun identifiant Stripe, ce
  * qui distingue un abonnement offert d'un abonnement réellement payé.
  */
-
-const PERIOD_DAYS: Record<string, number> = {
-  month: 30,
-  quarter: 90,
-  semester: 182,
-  year: 365,
-  one_time: 36500,
-};
 
 export type BillingMode = "stripe" | "offert";
 
@@ -48,7 +41,7 @@ export async function grantOfferedSubscription(params: {
   const periodDays =
     days && Number.isFinite(days) && days > 0
       ? days
-      : PERIOD_DAYS[plan.billing_interval || "month"] || 30;
+      : periodDaysOf(plan.billing_interval);
 
   const now = new Date();
   const end = new Date(now.getTime() + periodDays * 24 * 60 * 60 * 1000);

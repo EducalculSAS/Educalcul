@@ -12,7 +12,7 @@ export default async function UserDetailPage({
 
   const [detail, { data: plans }] = await Promise.all([
     fetchAdminUserDetail(id),
-    supabaseAdmin.from("subscription_plans").select("*").order("sort_order", { ascending: true }),
+    supabaseAdmin.from("subscription_plans").select("*").order("sort_order", { ascending: true }).order("id", { ascending: true }),
   ]);
 
   if (!detail) return <div className="p-6 text-red-500">Utilisateur introuvable.</div>;
