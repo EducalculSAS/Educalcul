@@ -26,7 +26,6 @@ interface Plan {
   description: string | null;
   price: number;
   billing_interval: string;
-  duration_months: number | null;
   trial_days: number | null;
   promo_description: string | null;
   features: any;
@@ -57,7 +56,7 @@ interface ReferralCode {
 const CUSTOM_PERIOD = "__custom";
 const defaultPlanForm = {
   name: "", description: "", price: 0, billing_interval: "month", custom_months: "2", custom_label: "",
-  duration_months: "", trial_days: "", promo_description: "", is_active: true, sort_order: 0,
+  trial_days: "", promo_description: "", is_active: true, sort_order: 0,
   feature_max_children: 1, feature_access_level_exercises: "difficile",
   feature_detailed_reports: false, feature_priority_support: false,
   feature_custom_avatars: false, feature_calia_classe: false,
@@ -152,7 +151,6 @@ export default function AdminSubscriptionsClient({
       setPlanForm({
         name: plan.name, description: plan.description || "",
         price: plan.price, billing_interval: plan.billing_interval, custom_months: "2", custom_label: "",
-        duration_months: plan.duration_months?.toString() || "",
         trial_days: plan.trial_days?.toString() || "",
         promo_description: plan.promo_description || "",
         is_active: plan.is_active, sort_order: plan.sort_order ?? 0,

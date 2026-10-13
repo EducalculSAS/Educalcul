@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     }
     const {
       name, description, price, billing_interval,
-      duration_months, trial_days, promo_description,
+      trial_days, promo_description,
       features, is_active, sort_order,
     } = body;
 
@@ -53,7 +53,6 @@ export async function POST(req: Request) {
         name, description,
         price: Number(price),
         billing_interval: billing_interval || "month",
-        duration_months: duration_months || null,
         trial_days: trial_days || 0,
         promo_description: promo_description || null,
         features,
@@ -98,6 +97,8 @@ export async function PUT(req: Request) {
 
     const { id, ...fields } = body;
     if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    // Colonne supprimée (elle ne servait à rien) : un ancien onglet d'admin qui l'enverrait encore ne doit pas faire échouer l'enregistrement.
+    delete (fields as Record<string, unknown>).duration_months;
     if (fields.billing_interval && fields.billing_interval !== ONE_TIME && !isValidPeriodId(String(fields.billing_interval))) {
       return NextResponse.json({ error: "Période de facturation inconnue." }, { status: 400 });
     }
