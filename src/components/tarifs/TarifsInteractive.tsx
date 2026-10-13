@@ -8,6 +8,8 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { DEFAULT_PERIODS, type BillingPeriod } from "@/lib/billingPeriods";
+import { DEFAULT_CUSTOM_PRICING, aiMultiplier, childrenCost, configFeatures, configPrice, type CustomPlanConfig, type PricingCustomConfig } from "@/lib/customPlanPricing";
+import { DEFAULT_VISIBILITY, type PricingVisibility } from "@/lib/pricingConfig";
 
 /* A row in the comparison: either a real plan or a custom config */
 interface CompareItem {
@@ -498,70 +500,9 @@ function ComparisonTable({
 
 /* ─── Configurator ─── */
 
-const AI_OPTIONS = [
-  { id: "none", label: "Aucune", daily: 0, basePrice: 0 },
-  { id: "15", label: "15/j", daily: 15, basePrice: 0.99 },
-  { id: "30", label: "30/j", daily: 30, basePrice: 1.99 },
-  { id: "60", label: "60/j", daily: 60, basePrice: 3.49 },
-  { id: "120", label: "120/j", daily: 120, basePrice: 5.99 },
-  { id: "unlim", label: "Illimitée", daily: -1, basePrice: 8.99 },
-] as const;
-type AIId = "none" | "15" | "30" | "60" | "120" | "unlim";
-
-const BASE_PRICE = { famille: 14.99 };
-
-function childrenCost(n: number): number {
-  if (n <= 1) return 0;
-  const x = n - 1;
-  return Math.round((0.5 * x + 0.25 * x * x) * 100) / 100;
-}
-
-function aiMultiplier(n: number): number {
-  return Math.min(1 + (n - 1) * 0.35, 4.0);
-}
-
-interface ConfigState {
-  children: number;
-  ai: AIId;
-  reports: boolean;
-  support: boolean;
-  avatars: boolean;
-  quiz: boolean;
-}
-
-function configPrice(c: ConfigState): number {
-  let p = BASE_PRICE.famille;
-  const n = Math.max(1, c.children);
-  p += childrenCost(n);
-  const aiBase = AI_OPTIONS.find((o) => o.id === c.ai)!.basePrice;
-  p += Math.round(aiBase * aiMultiplier(n) * 100) / 100;
-  if (c.reports) p += 0.99;
-  if (c.support) p += 1.49;
-  if (c.avatars) p += 0.99;
-  if (c.quiz) p += 0.99;
-  return Math.round(p * 100) / 100;
-}
-
-function configToCompareItem(c: ConfigState, key: string): CompareItem {
-  const ai = AI_OPTIONS.find((o) => o.id === c.ai)!;
-  const n = Math.max(1, c.children);
-  return {
-    key,
-    name: "Mon abonnement personnalisé",
-    price: configPrice(c),
-    billing_interval: "month",
-    features: {
-      max_children: n,
-      access_level_exercises: "difficile",
-      ai_access:
-        c.ai === "none" ? "none" : c.ai === "unlim" ? "unlimited" : "limited",
-      ai_daily_limit: c.ai === "none" ? 0 : ai.daily,
-      detailed_reports: c.reports,
-      custom_avatars: c.avatars,
-      priority_support: c.support,
-      quiz_access: c.quiz,
-    },
-  };
+/** Ligne du comparateur pour la formule sur-mesure : prix et fonctionnalités calculés comme au paiement (mêmes réglages). */
+function configToCompareItem(c: CustomPlanConfig, key: string, pricing: PricingCustomConfig, name: string): CompareItem {
+  return { key, name, price: configPrice(c, pricing), billing_interval: "month", features: configFeatures(c, pricing) };
 }
 
 function Toggle({
@@ -624,24 +565,23 @@ function Toggle({
 function Configurator({
   onAdd,
   alreadyAdded,
+  pricing,
+  hideCompare = false,
 }: {
-  onAdd: (c: ConfigState) => void;
+  onAdd: (c: CustomPlanConfig) => void;
   alreadyAdded: boolean;
+  /** Comparateur masqué : le bouton mène à l'inscription au lieu d'ajouter à la comparaison. */
+  hideCompare?: boolean;
+  /** Réglages enregistrés en admin (prix de base, enfants, IA, options) : les mêmes qu'au paiement. */
+  pricing: PricingCustomConfig;
 }) {
-  const [cfg, setCfg] = useState<ConfigState>({
-    children: 1,
-    ai: "none",
-    reports: false,
-    support: false,
-    avatars: false,
-    quiz: false,
-  });
+  const [cfg, setCfg] = useState<CustomPlanConfig>({ children: 1, ai: "none", options: {} });
   const n = Math.max(1, cfg.children);
-  const mult = aiMultiplier(n);
-  const total = configPrice(cfg);
-  const aiOption = AI_OPTIONS.find((o) => o.id === cfg.ai)!;
+  const mult = aiMultiplier(n, pricing);
+  const total = configPrice(cfg, pricing);
+  const aiOption = pricing.ai_options.find((o) => o.id === cfg.ai) ?? pricing.ai_options[0];
   const aiActualPrice = Math.round(aiOption.basePrice * mult * 100) / 100;
-  const aiIdx = AI_OPTIONS.findIndex((o) => o.id === cfg.ai);
+  const aiIdx = Math.max(0, pricing.ai_options.findIndex((o) => o.id === cfg.ai));
 
   return (
     <div className="grid md:grid-cols-5 gap-8 items-start">
@@ -659,7 +599,7 @@ function Configurator({
                 className="text-xs font-semibold"
                 style={{ color: "var(--greek-gold)" }}
               >
-                +{childrenCost(n).toFixed(2)}€
+                +{childrenCost(n, pricing).toFixed(2)}€
               </span>
             )}
           </div>
@@ -667,12 +607,12 @@ function Configurator({
             <input
               type="number"
               min={1}
-              max={999}
+              max={pricing.max_children}
               value={cfg.children}
               onChange={(e) =>
                 setCfg((c) => ({
                   ...c,
-                  children: Math.max(1, parseInt(e.target.value) || 1),
+                  children: Math.min(pricing.max_children, Math.max(1, parseInt(e.target.value) || 1)),
                 }))
               }
               className="w-28 px-4 py-2.5 rounded-xl text-sm font-bold text-center border outline-none focus:border-[var(--greek-blue)]"
@@ -721,7 +661,7 @@ function Configurator({
               className="flex rounded-xl overflow-hidden"
               style={{ border: "1.5px solid var(--greek-border)" }}
             >
-              {AI_OPTIONS.map((o, i) => (
+              {pricing.ai_options.map((o, i) => (
                 <button
                   key={o.id}
                   onClick={() => setCfg((c) => ({ ...c, ai: o.id }))}
@@ -737,7 +677,7 @@ function Configurator({
                     fontSize: "0.7rem",
                     fontWeight: 600,
                     borderRight:
-                      i < AI_OPTIONS.length - 1
+                      i < pricing.ai_options.length - 1
                         ? "1px solid rgba(255,255,255,0.15)"
                         : "none",
                   }}
@@ -758,34 +698,16 @@ function Configurator({
         </div>
 
         <div className="space-y-2.5">
-          <Toggle
-            label="Rapports hebdomadaires"
-            sub="Résumé email chaque semaine"
-            price={0.99}
-            value={cfg.reports}
-            onChange={(v) => setCfg((c) => ({ ...c, reports: v }))}
-          />
-          <Toggle
-            label="Quiz"
-            sub="Accès à tous les quiz et évaluations"
-            price={0.99}
-            value={cfg.quiz}
-            onChange={(v) => setCfg((c) => ({ ...c, quiz: v }))}
-          />
-          <Toggle
-            label="Avatars &amp; cosmétiques"
-            sub="Contours et couleurs de nom exclusifs"
-            price={0.99}
-            value={cfg.avatars}
-            onChange={(v) => setCfg((c) => ({ ...c, avatars: v }))}
-          />
-          <Toggle
-            label="Support prioritaire"
-            sub="Réponse garantie sous 4h en semaine"
-            price={1.49}
-            value={cfg.support}
-            onChange={(v) => setCfg((c) => ({ ...c, support: v }))}
-          />
+          {pricing.options.map((opt) => (
+            <Toggle
+              key={opt.id}
+              label={opt.label}
+              sub={opt.sub}
+              price={opt.price}
+              value={!!cfg.options[opt.id]}
+              onChange={(v) => setCfg((c) => ({ ...c, options: { ...c.options, [opt.id]: v } }))}
+            />
+          ))}
         </div>
       </div>
 
@@ -823,7 +745,7 @@ function Configurator({
               style={{ color: "rgba(255,255,255,0.45)" }}
             >
               <span>Base personnalisée</span>
-              <span>{BASE_PRICE.famille.toFixed(2)}€</span>
+              <span>{pricing.base_price.toFixed(2)}€</span>
             </div>
             {n > 1 && (
               <div
@@ -831,7 +753,7 @@ function Configurator({
                 style={{ color: "rgba(255,255,255,0.45)" }}
               >
                 <span>{n} enfants</span>
-                <span>+{childrenCost(n).toFixed(2)}€</span>
+                <span>+{childrenCost(n, pricing).toFixed(2)}€</span>
               </div>
             )}
             {cfg.ai !== "none" && (
@@ -839,23 +761,29 @@ function Configurator({
                 className="flex justify-between"
                 style={{ color: "rgba(255,255,255,0.45)" }}
               >
-                <span>IA {AI_OPTIONS.find((o) => o.id === cfg.ai)!.label}</span>
+                <span>IA {aiOption.label}</span>
                 <span>+{aiActualPrice.toFixed(2)}€</span>
               </div>
             )}
           </div>
-          <GlassButton
-            onClick={() => onAdd(cfg)}
-            disabled={alreadyAdded}
-            variant="gold"
-            fullWidth
-            className="font-[family-name:var(--font-display)] font-bold text-sm"
-          >
-            <span className="inline-flex items-center gap-2">
-              {alreadyAdded ? <>Déjà ajouté <Check className="w-4 h-4" aria-hidden="true" /></> : "Ajouter à la comparaison"}
-              {!alreadyAdded && <ArrowRight className="w-4 h-4" />}
-            </span>
-          </GlassButton>
+          {hideCompare ? (
+            <GlassButton href="/auth/inscription" variant="gold" fullWidth className="font-[family-name:var(--font-display)] font-bold text-sm">
+              <span className="inline-flex items-center gap-2">Commencer <ArrowRight className="w-4 h-4" /></span>
+            </GlassButton>
+          ) : (
+            <GlassButton
+              onClick={() => onAdd(cfg)}
+              disabled={alreadyAdded}
+              variant="gold"
+              fullWidth
+              className="font-[family-name:var(--font-display)] font-bold text-sm"
+            >
+              <span className="inline-flex items-center gap-2">
+                {alreadyAdded ? <>Déjà ajouté <Check className="w-4 h-4" aria-hidden="true" /></> : "Ajouter à la comparaison"}
+                {!alreadyAdded && <ArrowRight className="w-4 h-4" />}
+              </span>
+            </GlassButton>
+          )}
         </div>
       </div>
     </div>
@@ -863,6 +791,8 @@ function Configurator({
 }
 
 type TabId = "familles" | "abonnement";
+
+const DEFAULT_TABS = { familles: "Pour les familles", custom: "Sur mesure" };
 
 /** Tout ce qui est réellement interactif sur /tarifs : tabs, cartes de plan,
  * configurateur et comparateur. Isolé en client island, reçoit les plans
@@ -872,10 +802,18 @@ type TabId = "familles" | "abonnement";
 export default function TarifsInteractive({
   initialPlans,
   periods = DEFAULT_PERIODS,
+  customPricing = DEFAULT_CUSTOM_PRICING,
+  tabLabels = DEFAULT_TABS,
+  visibility = DEFAULT_VISIBILITY,
 }: {
   initialPlans: Plan[];
   /** Onglets de périodes proposés (réglés en admin : Abonnements). */
   periods?: BillingPeriod[];
+  /** Réglages du sur-mesure (admin) : le même calcul qu'au paiement. */
+  customPricing?: PricingCustomConfig;
+  tabLabels?: { familles: string; custom: string };
+  /** Onglets et blocs que l'admin affiche ou masque. */
+  visibility?: PricingVisibility;
 }) {
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [tab, setTab] = useState<TabId>("familles");
@@ -884,7 +822,7 @@ export default function TarifsInteractive({
   const cardsRef = useRef<HTMLDivElement>(null);
 
   const [comparePlanIds, setComparePlanIds] = useState<Set<number>>(new Set());
-  const [customConfig, setCustomConfig] = useState<ConfigState | null>(null);
+  const [customConfig, setCustomConfig] = useState<CustomPlanConfig | null>(null);
 
   useEffect(() => {
     const t = setTimeout(() => setCardsVisible(true), 80);
@@ -914,7 +852,7 @@ export default function TarifsInteractive({
         billing_interval: p.billing_interval,
         features: p.features,
       })),
-    ...(customConfig ? [configToCompareItem(customConfig, "custom")] : []),
+    ...(customConfig ? [configToCompareItem(customConfig, "custom", customPricing, "Mon abonnement personnalisé")] : []),
   ];
 
   const removeCompare = (key: string) => {
@@ -931,9 +869,11 @@ export default function TarifsInteractive({
   };
 
   const TABS: { id: TabId; label: string }[] = [
-    { id: "familles", label: "Pour les familles" },
-    { id: "abonnement", label: "Mon abonnement" },
+    ...(visibility.familles ? [{ id: "familles" as TabId, label: tabLabels.familles }] : []),
+    ...(visibility.custom ? [{ id: "abonnement" as TabId, label: tabLabels.custom }] : []),
   ];
+  // Onglet masqué : on affiche celui qui reste (jamais une page vide).
+  const activeTab: TabId = TABS.some((t) => t.id === tab) ? tab : TABS[0]?.id ?? "familles";
 
   const renderCards = (list: Plan[], hideChildren: boolean) => (
     <div
@@ -947,6 +887,7 @@ export default function TarifsInteractive({
           hideChildren={hideChildren}
           cardsVisible={cardsVisible}
           onOpen={() => setSelectedPlan(plan)}
+          hideCompare={!visibility.comparator}
           compareChecked={comparePlanIds.has(plan.id)}
           onToggleCompare={() => togglePlanCompare(plan.id)}
         />
@@ -962,15 +903,17 @@ export default function TarifsInteractive({
             @keyframes cardIn { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
           `}</style>
 
-          <div className="flex justify-center mb-12">
-            <GlassSegmentedControl
-              options={TABS}
-              value={tab}
-              onChange={(id) => setTab(id as TabId)}
-            />
-          </div>
+          {TABS.length > 1 && (
+            <div className="flex justify-center mb-12">
+              <GlassSegmentedControl
+                options={TABS}
+                value={activeTab}
+                onChange={(id) => setTab(id as TabId)}
+              />
+            </div>
+          )}
 
-          {tab === "familles" && (
+          {activeTab === "familles" && (
             <>
               <div className="flex justify-center mb-10">
                 <GlassSegmentedControl
@@ -989,7 +932,7 @@ export default function TarifsInteractive({
               )}
             </>
           )}
-          {tab === "abonnement" && (
+          {activeTab === "abonnement" && (
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-10">
                 <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-[var(--greek-blue)] mb-2">
@@ -1002,11 +945,13 @@ export default function TarifsInteractive({
               <Configurator
                 onAdd={(c) => setCustomConfig(c)}
                 alreadyAdded={customConfig !== null}
+                pricing={customPricing}
+                hideCompare={!visibility.comparator}
               />
             </div>
           )}
 
-          {compareItems.length >= 2 && (
+          {visibility.comparator && compareItems.length >= 2 && (
             <div className="mt-16">
               <div className="text-center mb-8">
                 <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl md:text-3xl text-[var(--greek-blue)] mb-3">

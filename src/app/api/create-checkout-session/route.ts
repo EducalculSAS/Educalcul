@@ -138,7 +138,12 @@ export async function POST(req: Request) {
         .select('value')
         .eq('key', 'pricing_config')
         .maybeSingle();
-      const pricing = normalizePricingConfig(cfgRow?.value).custom;
+      const pricingConfig = normalizePricingConfig(cfgRow?.value);
+      // Le sur-mesure masqué en admin n'est plus vendu, même par un appel direct à cette route.
+      if (!pricingConfig.visibility.custom) {
+        return NextResponse.json({ error: "Cette formule n'est plus proposée." }, { status: 403 });
+      }
+      const pricing = pricingConfig.custom;
       const computed = computeCustomPlan(customConfig.config ?? customConfig, pricing);
       if (!computed) {
         return NextResponse.json({ error: 'Invalid custom configuration' }, { status: 400 });

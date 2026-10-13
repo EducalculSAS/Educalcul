@@ -28,9 +28,17 @@ export interface PricingOption {
 export interface PricingCustomConfig {
   base_price: number;
   max_children: number;
+  /** Enfants supplémentaires (le 1er est inclus) : coût = linéaire × x + quadratique × x², x = nombre d'enfants en plus. */
+  child_linear: number;
+  child_quadratic: number;
+  /** Le prix de l'IA est multiplié par (1 + facteur × enfants en plus), plafonné à `ai_max_multiplier`. */
+  ai_child_factor: number;
+  ai_max_multiplier: number;
   ai_options: PricingAiOption[];
   options: PricingOption[];
 }
+
+type ChildPricing = Pick<PricingCustomConfig, "child_linear" | "child_quadratic" | "ai_child_factor" | "ai_max_multiplier">;
 
 // La config choisie par le client : nb d'enfants, palier IA, et l'état de
 // chaque option (par id).
@@ -44,6 +52,10 @@ export interface CustomPlanConfig {
 export const DEFAULT_CUSTOM_PRICING: PricingCustomConfig = {
   base_price: 14.99,
   max_children: 20,
+  child_linear: 0.5,
+  child_quadratic: 0.25,
+  ai_child_factor: 0.35,
+  ai_max_multiplier: 4,
   ai_options: [
     { id: "none",  label: "Aucune",     daily: 0,   basePrice: 0    },
     { id: "15",    label: "15/j",       daily: 15,  basePrice: 0.99 },
@@ -65,22 +77,22 @@ export const AI_OPTIONS = DEFAULT_CUSTOM_PRICING.ai_options;
 export const CUSTOM_BASE_PRICE = DEFAULT_CUSTOM_PRICING.base_price;
 export const MAX_CHILDREN = DEFAULT_CUSTOM_PRICING.max_children;
 
-export function childrenCost(n: number): number {
+export function childrenCost(n: number, pricing: ChildPricing = DEFAULT_CUSTOM_PRICING): number {
   if (n <= 1) return 0;
   const x = n - 1;
-  return Math.round((0.5 * x + 0.25 * x * x) * 100) / 100;
+  return Math.round((pricing.child_linear * x + pricing.child_quadratic * x * x) * 100) / 100;
 }
 
-export function aiMultiplier(n: number): number {
-  return Math.min(1 + (n - 1) * 0.35, 4.0);
+export function aiMultiplier(n: number, pricing: ChildPricing = DEFAULT_CUSTOM_PRICING): number {
+  return Math.min(1 + (Math.max(1, n) - 1) * pricing.ai_child_factor, pricing.ai_max_multiplier);
 }
 
 export function configPrice(c: CustomPlanConfig, pricing: PricingCustomConfig = DEFAULT_CUSTOM_PRICING): number {
   let p = pricing.base_price;
   const n = Math.max(1, c.children);
-  p += childrenCost(n);
+  p += childrenCost(n, pricing);
   const aiBase = pricing.ai_options.find(o => o.id === c.ai)?.basePrice ?? 0;
-  p += Math.round(aiBase * aiMultiplier(n) * 100) / 100;
+  p += Math.round(aiBase * aiMultiplier(n, pricing) * 100) / 100;
   for (const opt of pricing.options) {
     if (c.options?.[opt.id]) p += opt.price;
   }

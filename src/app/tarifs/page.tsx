@@ -40,7 +40,8 @@ export default async function Tarifs() {
     fetchActivePlans(),
     supabaseAdmin.from("app_settings").select("value").eq("key", "pricing_config").maybeSingle(),
   ]);
-  const periods = normalizePricingConfig(pricingRow?.value).periods;
+  // Réglages de la page Tarifs (admin > Abonnements) : périodes, sur-mesure, onglets et blocs affichés ou masqués.
+  const cfg = normalizePricingConfig(pricingRow?.value);
 
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-blue)" }}>
@@ -89,10 +90,11 @@ export default async function Tarifs() {
         </section>
 
         {/* TABS + CONTENT + COMPARATEUR (client island) */}
-        <TarifsInteractive initialPlans={plans} periods={periods} />
+        <TarifsInteractive initialPlans={plans} periods={cfg.periods} customPricing={cfg.custom} tabLabels={cfg.tabs} visibility={cfg.visibility} />
 
         {/* GARANTIE */}
-        <section className="py-14 bg-[var(--greek-cream)] border-t border-gray-100 text-center">
+        {cfg.visibility.guarantee && (
+          <section className="py-14 bg-[var(--greek-cream)] border-t border-gray-100 text-center">
           <div className="container mx-auto px-6 max-w-xl">
             <FadeInSection translateY={20}>
               <h3 className="font-[family-name:var(--font-display)] font-bold text-lg text-[var(--greek-blue)] mb-2">
@@ -104,9 +106,11 @@ export default async function Tarifs() {
             </FadeInSection>
           </div>
         </section>
+        )}
 
         {/* MINI-FAQ */}
-        <section className="py-16 px-6" style={{ background: "var(--greek-cream)" }}>
+        {cfg.visibility.faq && (
+          <section className="py-16 px-6" style={{ background: "var(--greek-cream)" }}>
           <div className="max-w-2xl mx-auto">
             <FadeInSection translateY={20} durationMs={400}>
               <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-center mb-8" style={{ color: "var(--greek-blue)" }}>
@@ -128,6 +132,7 @@ export default async function Tarifs() {
             </p>
           </div>
         </section>
+        )}
       </main>
       <Footer />
     </div>

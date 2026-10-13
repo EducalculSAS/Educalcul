@@ -316,6 +316,27 @@ export default function AdminSubscriptionsClient({
     else { showToast("error", "L'étiquette n'a pas pu être modifiée."); fetchPlans(); }
   };
 
+  /** Masque / affiche une formule aux clients (sans la supprimer) : même effet que le bouton « Activer / Désactiver » de la liste. */
+  const previewToggleVisible = async (id: string | number) => {
+    const plan = plans.find(p => String(p.id) === String(id));
+    if (!plan) return;
+    const next = !plan.is_active;
+    setPlans(plans.map(p => p.id === plan.id ? { ...p, is_active: next } : p));
+    const res = await fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: plan.id, is_active: next }) });
+    if (res.ok) showToast("success", next ? "Formule affichée aux clients" : "Formule masquée aux clients");
+    else { showToast("error", "La visibilité n'a pas pu être modifiée."); fetchPlans(); }
+  };
+
+  const changeVisibility = (visibility: PricingConfig["visibility"]) => {
+    setPricingConfig(pc => ({ ...pc, visibility }));
+    setPricingDirty(true);
+  };
+
+  const changeTabLabels = (tabs: PricingConfig["tabs"]) => {
+    setPricingConfig(pc => ({ ...pc, tabs }));
+    setPricingDirty(true);
+  };
+
   const changePeriods = (periods: BillingPeriod[]) => {
     setPricingConfig(pc => ({
       ...pc,
@@ -335,7 +356,7 @@ export default function AdminSubscriptionsClient({
     try {
       const res = await fetch("/api/admin/pricing-config", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify(pricingConfig) });
       const data = await res.json();
-      if (res.ok) { setPricingConfig(data); setPricingDirty(false); showToast("success", "Forfait sur-mesure enregistré"); }
+      if (res.ok) { setPricingConfig(data); setPricingDirty(false); showToast("success", "Tarifs enregistrés"); }
       else showToast("error", data.error || "Échec de l'enregistrement");
     } catch { showToast("error", "Une erreur est survenue"); }
     finally { setPricingSaving(false); }
@@ -638,7 +659,7 @@ export default function AdminSubscriptionsClient({
             </div>
             <div className="bg-[var(--greek-cream)] rounded-2xl border border-[rgba(197,161,72,0.25)] p-6">
               <PlanChooser
-                plans={sortPlans(plans).filter(p => p.is_active) as unknown as ChooserPlan[]}
+                plans={sortPlans(plans) as unknown as ChooserPlan[]}
                 onChoosePlan={() => {}}
                 onChooseCustom={() => {}}
                 planCta={() => "Choisir"}
@@ -648,6 +669,9 @@ export default function AdminSubscriptionsClient({
                   onReorder: previewReorder,
                   onMoveInterval: previewMoveInterval,
                   onTogglePopular: previewTogglePopular,
+                  onToggleVisible: previewToggleVisible,
+                  onVisibilityChange: changeVisibility,
+                  onTabLabelsChange: changeTabLabels,
                   onPeriodsChange: changePeriods,
                   pricing: pricingConfig.custom,
                   onPricingChange: (custom) => { setPricingConfig(pc => ({ ...pc, custom })); setPricingDirty(true); },

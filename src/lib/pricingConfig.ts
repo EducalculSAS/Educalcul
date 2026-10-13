@@ -6,7 +6,24 @@
 import { DEFAULT_CUSTOM_PRICING, type PricingCustomConfig, type PricingOption, type AIId } from "./customPlanPricing";
 import { DEFAULT_PERIODS, defaultPeriodLabel, isValidPeriodId, monthsOfPeriod, type BillingPeriod } from "./billingPeriods";
 
+/** Ce qui s'affiche aux clients : l'admin masque / affiche chaque bloc sans rien supprimer. */
+export interface PricingVisibility {
+  /** Onglet « Pour les familles » (les formules). */
+  familles: boolean;
+  /** Onglet « Sur mesure ». */
+  custom: boolean;
+  /** Comparateur de formules (page /tarifs). */
+  comparator: boolean;
+  /** Bandeau « garantie » (page /tarifs). */
+  guarantee: boolean;
+  /** Mini-FAQ (page /tarifs). */
+  faq: boolean;
+}
+
+export const DEFAULT_VISIBILITY: PricingVisibility = { familles: true, custom: true, comparator: true, guarantee: true, faq: true };
+
 export interface PricingLabels {
+  visibility: PricingVisibility;
   tabs: { familles: string; custom: string };
   /** Libellés des quatre périodes historiques (conservé pour les anciens appelants ; la source est `periods`). */
   intervals: { month: string; quarter: string; semester: string; year: string };
@@ -19,6 +36,7 @@ export interface PricingConfig extends PricingLabels {
 }
 
 export const DEFAULT_PRICING_CONFIG: PricingConfig = {
+  visibility: DEFAULT_VISIBILITY,
   tabs: { familles: "Pour les familles", custom: "Sur mesure" },
   intervals: { month: "Mensuel", quarter: "Trimestriel", semester: "Semestriel", year: "Annuel" },
   periods: DEFAULT_PERIODS,
@@ -113,7 +131,19 @@ export function normalizePricingConfig(raw: any): PricingConfig {
   const periods = normalizePeriods(r.periods, intervals);
   const labelOf = (id: string, fallback: string) => periods.find((p) => p.id === id)?.label ?? fallback;
 
+  // Visible sauf si l'admin l'a masqué ; au moins un onglet reste affiché (sinon la page de choix serait vide).
+  const vis = r.visibility && typeof r.visibility === "object" ? r.visibility : {};
+  const visibility: PricingVisibility = {
+    familles: vis.familles !== false,
+    custom: vis.custom !== false,
+    comparator: vis.comparator !== false,
+    guarantee: vis.guarantee !== false,
+    faq: vis.faq !== false,
+  };
+  if (!visibility.familles && !visibility.custom) visibility.familles = true;
+
   return {
+    visibility,
     tabs: {
       familles: str(tabs.familles, d.tabs.familles),
       custom: str(tabs.custom, d.tabs.custom),
@@ -128,6 +158,10 @@ export function normalizePricingConfig(raw: any): PricingConfig {
     custom: {
       base_price: num(custom.base_price, d.custom.base_price),
       max_children: Math.min(999, Math.max(1, Math.floor(Number(custom.max_children) || d.custom.max_children))),
+      child_linear: num(custom.child_linear, d.custom.child_linear),
+      child_quadratic: num(custom.child_quadratic, d.custom.child_quadratic),
+      ai_child_factor: num(custom.ai_child_factor, d.custom.ai_child_factor),
+      ai_max_multiplier: Math.max(1, num(custom.ai_max_multiplier, d.custom.ai_max_multiplier)),
       ai_options,
       options,
     },

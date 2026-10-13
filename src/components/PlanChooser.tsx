@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, type DragEvent } from "react";
-import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save, Plus, Trash2, AlertTriangle, ChevronLeft, ChevronRight } from "lucide-react";
+import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save, Plus, Trash2, AlertTriangle, ChevronLeft, ChevronRight, Eye, EyeOff } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { DEFAULT_PERIODS, MAX_PERIOD_MONTHS, defaultPeriodLabel, isValidPeriodId, monthsOfPeriod, periodIdForMonths, periodSuffix, type BillingPeriod } from "@/lib/billingPeriods";
 import {
@@ -13,26 +13,10 @@ import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+import GlassSwitch from "@/components/ui/GlassSwitch";
+import CustomPricingEditor, { FEATURE_CHOICES } from "@/components/admin/CustomPricingEditor";
 
-// Fonctionnalités qu'une option peut déverrouiller (pour le menu admin).
-// Seules des fonctionnalités RÉELLEMENT applicables figurent ici — vérifiées
-// contre le code (un verrou existe déjà, ou est prévu à court terme). Ne pas
-// ajouter d'entrée sans un mécanisme d'application correspondant, sous peine
-// de vendre une restriction qui ne fait rien.
-const FEATURE_CHOICES: { key: string; label: string }[] = [
-  { key: "", label: "Aucun effet (prix seul)" },
-  // Exercices — niveaux (verrou existant sur difficulty_level, granularité à finir)
-  { key: "exercises_simple", label: "Exercices, niveau simple" },
-  { key: "exercises_intermediaire", label: "Exercices, niveau intermédiaire" },
-  { key: "exercises_avance", label: "Exercices, niveau avancé" },
-  { key: "exercises_all_levels", label: "Exercices, tous les niveaux" },
-  // Déjà appliqués ailleurs dans l'app (dashboard, quiz, cosmétiques, support)
-  { key: "quiz_access", label: "Accès aux quiz" },
-  { key: "detailed_reports", label: "Rapports hebdomadaires" },
-  { key: "custom_avatars", label: "Avatars & cosmétiques" },
-  { key: "priority_support", label: "Support prioritaire" },
-];
-import { DEFAULT_PRICING_CONFIG, type PricingLabels } from "@/lib/pricingConfig";
+import { DEFAULT_PRICING_CONFIG, DEFAULT_VISIBILITY, type PricingLabels, type PricingVisibility } from "@/lib/pricingConfig";
 
 export interface ChooserPlan {
   id: number | string;
@@ -43,6 +27,8 @@ export interface ChooserPlan {
   trial_days: number;
   promo_description: string | null;
   features: Record<string, any>;
+  /** Faux = formule masquée aux clients (visible, estompée, dans l'aperçu admin). */
+  is_active?: boolean;
 }
 
 /** Mode admin optionnel : glisser les fiches (réordonner / changer de période)
@@ -53,6 +39,12 @@ export interface PlanChooserAdmin {
   onMoveInterval: (draggedId: string | number, interval: string) => void;
   /** Met la fiche en avant (« Populaire ») ou retire l'étiquette. */
   onTogglePopular: (id: string | number) => void;
+  /** Masque / affiche une formule aux clients (sans la supprimer). */
+  onToggleVisible: (id: string | number) => void;
+  /** Masque / affiche un onglet ou un bloc de la page de tarifs. */
+  onVisibilityChange: (v: PricingVisibility) => void;
+  /** Renomme les deux onglets (« Pour les familles », « Sur mesure »). */
+  onTabLabelsChange: (tabs: { familles: string; custom: string }) => void;
   /** Périodes proposées aux clients : ajout, retrait, renommage. */
   onPeriodsChange: (periods: BillingPeriod[]) => void;
   pricing: PricingCustomConfig;
@@ -142,14 +134,14 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, t
     /** Où la fiche glissée atterrirait par rapport à celle-ci. */
     over: false | "before" | "after";
   };
-  /** Outils admin de la fiche : flèches de déplacement et étiquette « Populaire ». */
-  tools?: { onLeft?: () => void; onRight?: () => void; popularFlag: boolean; onTogglePopular: () => void };
+  /** Outils admin de la fiche : afficher / masquer, et (formules payantes) flèches de déplacement + étiquette « Populaire ». */
+  tools?: { visible: boolean; onToggleVisible: () => void; reorder?: { onLeft?: () => void; onRight?: () => void; popularFlag: boolean; onTogglePopular: () => void } };
 }) {
   const features = typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
   const isFree = Number(plan.price) === 0;
   return (
     <div
-      style={{ position: "relative", zIndex: popular ? 10 : 1, transform: popular ? "scale(1.04)" : undefined }}
+      style={{ position: "relative", zIndex: popular ? 10 : 1, transform: popular ? "scale(1.04)" : undefined, opacity: plan.is_active === false ? 0.55 : undefined }}
       draggable={!!drag}
       onDragStart={drag?.onDragStart}
       onDragEnd={drag?.onDragEnd}
@@ -175,10 +167,18 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, t
         )}
         {tools && (
           <div className="absolute top-2.5 right-2.5 z-20 flex items-center gap-1">
-            <GlassIconButton icon={ChevronLeft} color="gray" size="sm" onClick={tools.onLeft} disabled={!tools.onLeft} aria-label="Déplacer à gauche" />
-            <GlassIconButton icon={ChevronRight} color="gray" size="sm" onClick={tools.onRight} disabled={!tools.onRight} aria-label="Déplacer à droite" />
-            <GlassIconButton icon={Star} color={tools.popularFlag ? "gold" : "gray"} size="sm" onClick={tools.onTogglePopular} aria-label={tools.popularFlag ? "Retirer l'étiquette Populaire" : "Mettre en avant (Populaire)"} />
+            {tools.reorder && (
+              <>
+                <GlassIconButton icon={ChevronLeft} color="gray" size="sm" onClick={tools.reorder.onLeft} disabled={!tools.reorder.onLeft} aria-label="Déplacer à gauche" />
+                <GlassIconButton icon={ChevronRight} color="gray" size="sm" onClick={tools.reorder.onRight} disabled={!tools.reorder.onRight} aria-label="Déplacer à droite" />
+                <GlassIconButton icon={Star} color={tools.reorder.popularFlag ? "gold" : "gray"} size="sm" onClick={tools.reorder.onTogglePopular} aria-label={tools.reorder.popularFlag ? "Retirer l'étiquette Populaire" : "Mettre en avant (Populaire)"} />
+              </>
+            )}
+            <GlassIconButton icon={tools.visible ? Eye : EyeOff} color={tools.visible ? "gray" : "orange"} size="sm" onClick={tools.onToggleVisible} aria-label={tools.visible ? "Masquer cette formule aux clients" : "Afficher cette formule aux clients"} />
           </div>
+        )}
+        {plan.is_active === false && (
+          <div className="absolute top-12 right-3 z-20 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-orange-100 text-orange-700 border border-orange-200">Masquée aux clients</div>
         )}
         {popular && (
           <div className="absolute -top-4 left-1/2 -translate-x-1/2">
@@ -334,7 +334,7 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
 }) {
   const [cfg, setCfg] = useState<CustomPlanConfig>({ children: 1, ai: "none", options: {} });
   const n = Math.max(1, cfg.children);
-  const mult = aiMultiplier(n);
+  const mult = aiMultiplier(n, pricing);
   const total = configPrice(cfg, pricing);
   const aiOption = pricing.ai_options.find(o => o.id === cfg.ai) ?? pricing.ai_options[0];
   const aiActualPrice = Math.round(aiOption.basePrice * mult * 100) / 100;
@@ -360,7 +360,7 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
         <div>
           <div className="flex items-center justify-between mb-2">
             <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>Nombre d&apos;enfants</p>
-            {n > 1 && <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>+{childrenCost(n).toFixed(2)}€</span>}
+            {n > 1 && <span className="text-xs font-semibold" style={{ color: "var(--greek-gold)" }}>+{childrenCost(n, pricing).toFixed(2)}€</span>}
           </div>
           <div className="flex items-center gap-3">
             <input type="number" min={1} max={pricing.max_children} value={cfg.children}
@@ -463,7 +463,7 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
             </div>
             {n > 1 && (
               <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
-                <span>{n} enfants</span><span>+{childrenCost(n).toFixed(2)}€</span>
+                <span>{n} enfants</span><span>+{childrenCost(n, pricing).toFixed(2)}€</span>
               </div>
             )}
             {cfg.ai !== "none" && (
@@ -487,6 +487,53 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
             </GlassButton>
           )}
         </div>
+      </div>
+    </div>
+  );
+}
+
+/* ─── Affichage (mode admin) : masquer / afficher les onglets et blocs de la page de tarifs ─── */
+function SectionsEditor({ visibility, tabs, showCustom, onVisibilityChange, onTabLabelsChange }: {
+  visibility: PricingVisibility;
+  tabs: { familles: string; custom: string };
+  showCustom: boolean;
+  onVisibilityChange: (v: PricingVisibility) => void;
+  onTabLabelsChange: (t: { familles: string; custom: string }) => void;
+}) {
+  const rows: { key: keyof PricingVisibility; title: string; hint: string; rename?: "familles" | "custom" }[] = [
+    { key: "familles", title: "Onglet des formules", hint: "Les fiches Solo, Family…", rename: "familles" },
+    ...(showCustom ? [{ key: "custom" as const, title: "Onglet sur-mesure", hint: "Le configurateur à la carte", rename: "custom" as const }] : []),
+    { key: "comparator", title: "Comparateur", hint: "Tableau comparatif (page Tarifs)" },
+    { key: "guarantee", title: "Bandeau garantie", hint: "Page Tarifs" },
+    { key: "faq", title: "Mini-FAQ", hint: "Page Tarifs" },
+  ];
+  const set = (key: keyof PricingVisibility, v: boolean) => {
+    const next = { ...visibility, [key]: v };
+    // Il faut garder au moins un onglet visible, sinon les clients n'auraient plus rien à choisir.
+    if (!next.familles && !(showCustom && next.custom)) next[key === "familles" ? "custom" : "familles"] = true;
+    onVisibilityChange(next);
+  };
+  return (
+    <div className="mb-8 rounded-2xl border border-[var(--greek-border)] bg-white/70 backdrop-blur p-5 max-w-3xl mx-auto">
+      <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-1">Affichage pour les clients</p>
+      <p className="text-xs text-gray-400 mb-4">Masquer ne supprime rien : le contenu reste modifiable ici et réapparaît dès que tu le réaffiches. N&apos;oublie pas « Sauvegarder ».</p>
+      <div className="divide-y divide-[var(--greek-border)]">
+        {rows.map((r) => (
+          <div key={r.key} className="flex items-center gap-4 py-2.5">
+            <div className="min-w-0 flex-1">
+              <p className="text-sm font-semibold text-[var(--greek-blue)]">{r.title}</p>
+              <p className="text-xs text-gray-400">{r.hint}</p>
+            </div>
+            {r.rename && (
+              <input
+                value={tabs[r.rename]} maxLength={40} aria-label={`Nom de l'onglet « ${r.title} »`}
+                onChange={(e) => onTabLabelsChange({ ...tabs, [r.rename!]: e.target.value })}
+                className="w-44 px-3 py-1.5 rounded-xl border border-[var(--greek-border)] bg-white text-sm text-[var(--greek-blue)] outline-none focus:border-[var(--greek-gold)]"
+              />
+            )}
+            <GlassSwitch checked={visibility[r.key]} onChange={(v) => set(r.key, v)} label={`${visibility[r.key] ? "Masquer" : "Afficher"} : ${r.title}`} />
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -612,10 +659,18 @@ export default function PlanChooser({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [intervalTabs.map(t => t.id).join("|")]);
 
-  const TABS = [
-    { id: "familles" as const, label: labels.tabs.familles },
-    ...(showCustom ? [{ id: "custom" as const, label: labels.tabs.custom }] : []),
+  // Onglets : ceux que l'admin a masqués disparaissent chez les clients ; l'admin les voit tous (marqués « masqué »).
+  const vis = labels.visibility ?? DEFAULT_VISIBILITY;
+  const tabDefs = [
+    { id: "familles" as const, label: labels.tabs.familles, visible: vis.familles },
+    ...(showCustom ? [{ id: "custom" as const, label: labels.tabs.custom, visible: vis.custom }] : []),
   ];
+  const shownTabs = admin ? tabDefs : tabDefs.filter(t => t.visible);
+  const TABS = (shownTabs.length > 0 ? shownTabs : tabDefs.slice(0, 1)).map(t => ({ id: t.id, label: admin && !t.visible ? `${t.label} (masqué)` : t.label }));
+  useEffect(() => {
+    if (!TABS.some(t => t.id === tab)) setTab(TABS[0].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [TABS.map(t => t.id).join("|")]);
 
   const freePlans = plans.filter(p => Number(p.price) === 0);
   const paidForInterval = plans.filter(p => Number(p.price) > 0 && p.billing_interval === billing);
@@ -642,14 +697,18 @@ export default function PlanChooser({
         </p>
       )}
 
-      {/* Onglets principaux */}
-      <div className="flex justify-center mb-12">
-        <GlassSegmentedControl
-          options={TABS.map(t => ({ id: t.id, label: t.label }))}
-          value={tab}
-          onChange={(id) => setTab(id as "familles" | "custom")}
-        />
-      </div>
+      {admin && <SectionsEditor visibility={vis} tabs={labels.tabs} showCustom={showCustom} onVisibilityChange={admin.onVisibilityChange} onTabLabelsChange={admin.onTabLabelsChange} />}
+
+      {/* Onglets principaux (inutiles s'il n'en reste qu'un) */}
+      {TABS.length > 1 && (
+        <div className="flex justify-center mb-12">
+          <GlassSegmentedControl
+            options={TABS.map(t => ({ id: t.id, label: t.label }))}
+            value={tab}
+            onChange={(id) => setTab(id as "familles" | "custom")}
+          />
+        </div>
+      )}
 
       {tab === "familles" && (
         <>
@@ -704,11 +763,15 @@ export default function PlanChooser({
                       ? (paidIds.findIndex(x => String(x) === String(draggedId)) > paidIds.findIndex(x => String(x) === String(plan.id)) ? "before" : "after")
                       : false,
                   } : undefined}
-                  tools={admin && Number(plan.price) > 0 ? {
-                    onLeft: idx > 0 ? () => moveInPaid(plan.id, idx - 1) : undefined,
-                    onRight: idx < paidIds.length - 1 ? () => moveInPaid(plan.id, idx + 1) : undefined,
-                    popularFlag: featuresOf(plan).popular === true,
-                    onTogglePopular: () => admin.onTogglePopular(plan.id),
+                  tools={admin ? {
+                    visible: plan.is_active !== false,
+                    onToggleVisible: () => admin.onToggleVisible(plan.id),
+                    reorder: Number(plan.price) > 0 ? {
+                      onLeft: idx > 0 ? () => moveInPaid(plan.id, idx - 1) : undefined,
+                      onRight: idx < paidIds.length - 1 ? () => moveInPaid(plan.id, idx + 1) : undefined,
+                      popularFlag: featuresOf(plan).popular === true,
+                      onTogglePopular: () => admin.onTogglePopular(plan.id),
+                    } : undefined,
                   } : undefined}
                 />
               ))}
@@ -732,6 +795,7 @@ export default function PlanChooser({
             pricing={effectivePricing}
             edit={admin ? { onPricingChange: admin.onPricingChange } : undefined}
           />
+          {admin && <CustomPricingEditor pricing={effectivePricing} onChange={admin.onPricingChange} />}
         </div>
       )}
 
