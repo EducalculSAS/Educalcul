@@ -90,7 +90,7 @@ export default async function Tarifs() {
         </section>
 
         {/* TABS + CONTENT + COMPARATEUR (client island) */}
-        <TarifsInteractive initialPlans={plans} periods={cfg.periods} customPricing={cfg.custom} tabLabels={cfg.tabs} visibility={cfg.visibility} />
+        <TarifsInteractive initialPlans={plans} periods={cfg.periods} customPricing={cfg.custom} tabLabels={cfg.tabs} visibility={cfg.visibility} layout={cfg.layout} popularAuto={cfg.popularAuto} />
 
         {/* GARANTIE */}
         {cfg.visibility.guarantee && (

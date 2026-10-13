@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Check, X, Star, ArrowRight, Sparkles, Info, AlertTriangle } from "lucide-react";
 import type { Plan } from "@/lib/plans";
 import { FEATURE_ROWS, formatVal, intervalLabel } from "@/lib/planFeatures";
@@ -9,7 +9,9 @@ import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { DEFAULT_PERIODS, type BillingPeriod } from "@/lib/billingPeriods";
 import { DEFAULT_CUSTOM_PRICING, aiMultiplier, childrenCost, configFeatures, configPrice, type CustomPlanConfig, type PricingCustomConfig } from "@/lib/customPlanPricing";
-import { DEFAULT_VISIBILITY, type PricingVisibility } from "@/lib/pricingConfig";
+import { DEFAULT_VISIBILITY, type PricingLayout, type PricingVisibility } from "@/lib/pricingConfig";
+import PeriodChips from "@/components/PeriodChips";
+import { groupPlans, type PlanGroup } from "@/lib/planGroups";
 
 /* A row in the comparison: either a real plan or a custom config */
 interface CompareItem {
@@ -178,6 +180,35 @@ function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
   );
 }
 
+/* ─── Fiche d'une formule avec le choix de la durée dedans (présentation « par formule ») ─── */
+function PlanGroupCard({ group, autoPopular, hideCompare, cardsVisible, onOpen, comparePlanIds, onToggleCompare }: {
+  group: PlanGroup<Plan>;
+  autoPopular: boolean;
+  hideCompare: boolean;
+  cardsVisible: boolean;
+  onOpen: (p: Plan) => void;
+  comparePlanIds: Set<number>;
+  onToggleCompare: (id: number) => void;
+}) {
+  const initial = () => group.plans.find((p) => p.features?.popular === true) ?? group.plans[0];
+  const [sel, setSel] = useState<string>(() => String(initial().id));
+  const plan = group.plans.find((p) => String(p.id) === sel) ?? initial();
+  return (
+    <PlanCard
+      plan={plan}
+      displayName={group.name}
+      popular={Number(plan.price) > 0 && (plan.features?.popular === true || autoPopular)}
+      hideChildren={false}
+      cardsVisible={cardsVisible}
+      onOpen={() => onOpen(plan)}
+      hideCompare={hideCompare}
+      compareChecked={comparePlanIds.has(plan.id)}
+      onToggleCompare={() => onToggleCompare(plan.id)}
+      chips={<PeriodChips plans={group.plans} value={plan.id} onChange={setSel} />}
+    />
+  );
+}
+
 /* ─── Plan card (used in both Familles and Lycéens tabs) ─── */
 export function PlanCard({
   plan,
@@ -188,8 +219,14 @@ export function PlanCard({
   compareChecked,
   onToggleCompare,
   hideCompare = false,
+  displayName,
+  chips,
 }: {
   plan: Plan;
+  /** « Solo » au lieu de « Solo - 1 mois » (présentation par formule). */
+  displayName?: string;
+  /** Choix de la durée sous le nom (présentation par formule). */
+  chips?: ReactNode;
   popular: boolean;
   hideChildren: boolean;
   cardsVisible: boolean;
@@ -247,7 +284,7 @@ export function PlanCard({
             )}
           </div>
           <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-1">
-            {plan.name}
+            {displayName ?? plan.name}
           </h3>
           {plan.description && (
             <p className="text-sm text-[var(--text-muted)]">
@@ -255,6 +292,8 @@ export function PlanCard({
             </p>
           )}
         </div>
+
+        {chips}
 
         <div className="px-7 py-6 text-center border-b border-[var(--greek-border)]">
           <div className="flex items-end justify-center gap-1">
@@ -805,7 +844,13 @@ export default function TarifsInteractive({
   customPricing = DEFAULT_CUSTOM_PRICING,
   tabLabels = DEFAULT_TABS,
   visibility = DEFAULT_VISIBILITY,
+  layout = "byPeriod",
+  popularAuto = true,
 }: {
+  /** Un onglet par période, ou une fiche par formule avec le choix de la durée dedans. */
+  layout?: PricingLayout;
+  /** Étiquette « Populaire » automatique sur la fiche du milieu quand aucune n'est marquée. */
+  popularAuto?: boolean;
   initialPlans: Plan[];
   /** Onglets de périodes proposés (réglés en admin : Abonnements). */
   periods?: BillingPeriod[];
@@ -868,6 +913,14 @@ export default function TarifsInteractive({
     });
   };
 
+  // Présentation « une fiche par formule » : « Solo - 1 mois », « Solo - 1 an »… se regroupent sous « Solo ».
+  const groupedAll = layout === "byPlan"
+    ? groupPlans(initialPlans.filter((p) => Number(p.price) === 0 || periods.some((x) => x.id === p.billing_interval)))
+    : [];
+  const paidGroups = groupedAll.filter((g) => Number(g.plans[0].price) > 0);
+  const groups = [...paidGroups, ...groupedAll.filter((g) => Number(g.plans[0].price) === 0)];
+  const anyGroupFlagged = paidGroups.some((g) => g.plans.some((p) => p.features?.popular === true));
+
   const TABS: { id: TabId; label: string }[] = [
     ...(visibility.familles ? [{ id: "familles" as TabId, label: tabLabels.familles }] : []),
     ...(visibility.custom ? [{ id: "abonnement" as TabId, label: tabLabels.custom }] : []),
@@ -883,7 +936,7 @@ export default function TarifsInteractive({
         <PlanCard
           key={plan.id}
           plan={plan}
-          popular={list.some((p) => p.features?.popular === true) ? plan.features?.popular === true : list.length > 1 && idx === 1}
+          popular={list.some((p) => p.features?.popular === true) ? plan.features?.popular === true : popularAuto && list.length > 1 && idx === 1}
           hideChildren={hideChildren}
           cardsVisible={cardsVisible}
           onOpen={() => setSelectedPlan(plan)}
@@ -915,15 +968,36 @@ export default function TarifsInteractive({
 
           {activeTab === "familles" && (
             <>
-              <div className="flex justify-center mb-10">
-                <GlassSegmentedControl
-                  options={periods.map((p) => ({ id: p.id, label: p.label }))}
-                  value={interval}
-                  onChange={setInterval}
-                  size="sm"
-                />
-              </div>
-              {famillePlans.length === 0 ? (
+              {layout === "byPeriod" && (
+                <div className="flex justify-center mb-10">
+                  <GlassSegmentedControl
+                    options={periods.map((p) => ({ id: p.id, label: p.label }))}
+                    value={interval}
+                    onChange={setInterval}
+                    size="sm"
+                  />
+                </div>
+              )}
+              {layout === "byPlan" ? (
+                groups.length === 0 ? (
+                  <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>
+                ) : (
+                  <div className={`grid grid-cols-1 gap-8 ${groups.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : groups.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>
+                    {groups.map((g, idx) => (
+                      <PlanGroupCard
+                        key={g.key}
+                        group={g}
+                        autoPopular={popularAuto && !anyGroupFlagged && paidGroups.length > 1 && idx === 1 && Number(g.plans[0].price) > 0}
+                        hideCompare={!visibility.comparator}
+                        cardsVisible={cardsVisible}
+                        onOpen={setSelectedPlan}
+                        comparePlanIds={comparePlanIds}
+                        onToggleCompare={togglePlanCompare}
+                      />
+                    ))}
+                  </div>
+                )
+              ) : famillePlans.length === 0 ? (
                 <p className="text-center text-[var(--text-muted)] py-20">
                   Aucun plan disponible pour le moment.
                 </p>

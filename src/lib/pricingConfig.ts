@@ -22,7 +22,13 @@ export interface PricingVisibility {
 
 export const DEFAULT_VISIBILITY: PricingVisibility = { familles: true, custom: true, comparator: true, guarantee: true, faq: true };
 
+/** Présentation des formules : un onglet par période (Mensuel / Trimestriel…) ou une fiche par formule (Solo, Family…) avec le choix de la durée dedans. */
+export type PricingLayout = "byPeriod" | "byPlan";
+
 export interface PricingLabels {
+  layout: PricingLayout;
+  /** Étiquette « Populaire » automatique sur la fiche du milieu quand l'admin n'en a marqué aucune. */
+  popularAuto: boolean;
   visibility: PricingVisibility;
   tabs: { familles: string; custom: string };
   /** Libellés des quatre périodes historiques (conservé pour les anciens appelants ; la source est `periods`). */
@@ -36,6 +42,8 @@ export interface PricingConfig extends PricingLabels {
 }
 
 export const DEFAULT_PRICING_CONFIG: PricingConfig = {
+  layout: "byPeriod",
+  popularAuto: true,
   visibility: DEFAULT_VISIBILITY,
   tabs: { familles: "Pour les familles", custom: "Sur mesure" },
   intervals: { month: "Mensuel", quarter: "Trimestriel", semester: "Semestriel", year: "Annuel" },
@@ -143,6 +151,8 @@ export function normalizePricingConfig(raw: any): PricingConfig {
   if (!visibility.familles && !visibility.custom) visibility.familles = true;
 
   return {
+    layout: r.layout === "byPlan" ? "byPlan" : "byPeriod",
+    popularAuto: r.popularAuto !== false,
     visibility,
     tabs: {
       familles: str(tabs.familles, d.tabs.familles),

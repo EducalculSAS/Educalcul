@@ -212,7 +212,6 @@ export default function AdminSubscriptionsClient({
     const payload = {
       name: planForm.name, description: planForm.description,
       price: Number(planForm.price), billing_interval: billingInterval,
-      duration_months: planForm.duration_months ? Number(planForm.duration_months) : null,
       trial_days: planForm.trial_days ? Number(planForm.trial_days) : 0,
       promo_description: planForm.promo_description || null,
       is_active: planForm.is_active, sort_order: Number(planForm.sort_order),
@@ -301,13 +300,15 @@ export default function AdminSubscriptionsClient({
     else { showToast("error", "La période n'a pas pu être changée."); fetchPlans(); }
   };
 
-  /** « Populaire » : une seule fiche par période (marquer l'une retire l'étiquette des autres). */
+  /** « Populaire » : en présentation par période, une seule fiche par période (marquer l'une retire l'étiquette des autres) ;
+   * en présentation par formule, chaque durée se marque librement (ex. le « 3 mois » de Solo ET de Family). */
   const previewTogglePopular = async (id: string | number) => {
     const plan = plans.find(p => String(p.id) === String(id));
     if (!plan) return;
     const featuresOf = (p: Plan) => (typeof p.features === "string" ? JSON.parse(p.features) : p.features || {});
     const turnOn = featuresOf(plan).popular !== true;
-    const touched = plans.filter(p => p.billing_interval === plan.billing_interval && Number(p.price) > 0 && (p.id === plan.id || (turnOn && featuresOf(p).popular === true)));
+    const exclusive = pricingConfig.layout !== "byPlan";
+    const touched = plans.filter(p => p.id === plan.id || (exclusive && turnOn && p.billing_interval === plan.billing_interval && Number(p.price) > 0 && featuresOf(p).popular === true));
     setPlans(plans.map(p => touched.some(t => t.id === p.id) ? { ...p, features: { ...featuresOf(p), popular: p.id === plan.id ? turnOn : false } } : p));
     const results = await Promise.all(touched.map(p =>
       fetch("/api/admin/subscriptions", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id: p.id, features: { ...featuresOf(p), popular: p.id === plan.id ? turnOn : false } }) }),
@@ -329,6 +330,16 @@ export default function AdminSubscriptionsClient({
 
   const changeVisibility = (visibility: PricingConfig["visibility"]) => {
     setPricingConfig(pc => ({ ...pc, visibility }));
+    setPricingDirty(true);
+  };
+
+  const changeLayout = (layout: PricingConfig["layout"]) => {
+    setPricingConfig(pc => ({ ...pc, layout }));
+    setPricingDirty(true);
+  };
+
+  const changePopularAuto = (popularAuto: boolean) => {
+    setPricingConfig(pc => ({ ...pc, popularAuto }));
     setPricingDirty(true);
   };
 
@@ -672,6 +683,8 @@ export default function AdminSubscriptionsClient({
                   onToggleVisible: previewToggleVisible,
                   onVisibilityChange: changeVisibility,
                   onTabLabelsChange: changeTabLabels,
+                  onLayoutChange: changeLayout,
+                  onPopularAutoChange: changePopularAuto,
                   onPeriodsChange: changePeriods,
                   pricing: pricingConfig.custom,
                   onPricingChange: (custom) => { setPricingConfig(pc => ({ ...pc, custom })); setPricingDirty(true); },
@@ -890,10 +903,6 @@ export default function AdminSubscriptionsClient({
                 <div>
                   <label className={labelCls}>Essai gratuit (jours)</label>
                   <input type="number" min="0" value={planForm.trial_days} onChange={e => setPlanForm({...planForm, trial_days: e.target.value})} className={inputCls} placeholder="0" />
-                </div>
-                <div>
-                  <label className={labelCls}>Engagement (mois)</label>
-                  <input type="number" min="1" value={planForm.duration_months} onChange={e => setPlanForm({...planForm, duration_months: e.target.value})} className={inputCls} placeholder="Sans limite si vide" />
                 </div>
                 <div>
                   <label className={labelCls}>Badge promo</label>

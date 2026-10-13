@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, type DragEvent } from "react";
+import { useState, useEffect, type DragEvent, type ReactNode } from "react";
 import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save, Plus, Trash2, AlertTriangle, ChevronLeft, ChevronRight, Eye, EyeOff } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { DEFAULT_PERIODS, MAX_PERIOD_MONTHS, defaultPeriodLabel, isValidPeriodId, monthsOfPeriod, periodIdForMonths, periodSuffix, type BillingPeriod } from "@/lib/billingPeriods";
@@ -16,7 +16,9 @@ import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import CustomPricingEditor, { FEATURE_CHOICES } from "@/components/admin/CustomPricingEditor";
 
-import { DEFAULT_PRICING_CONFIG, DEFAULT_VISIBILITY, type PricingLabels, type PricingVisibility } from "@/lib/pricingConfig";
+import { DEFAULT_PRICING_CONFIG, DEFAULT_VISIBILITY, type PricingLabels, type PricingLayout, type PricingVisibility } from "@/lib/pricingConfig";
+import PeriodChips from "@/components/PeriodChips";
+import { groupPlans, type PlanGroup } from "@/lib/planGroups";
 
 export interface ChooserPlan {
   id: number | string;
@@ -45,6 +47,10 @@ export interface PlanChooserAdmin {
   onVisibilityChange: (v: PricingVisibility) => void;
   /** Renomme les deux onglets (« Pour les familles », « Sur mesure »). */
   onTabLabelsChange: (tabs: { familles: string; custom: string }) => void;
+  /** Un onglet par période, ou une fiche par formule avec le choix de la durée dedans. */
+  onLayoutChange: (layout: PricingLayout) => void;
+  /** Étiquette « Populaire » automatique sur la fiche du milieu (quand aucune n'est marquée). */
+  onPopularAutoChange: (on: boolean) => void;
   /** Périodes proposées aux clients : ajout, retrait, renommage. */
   onPeriodsChange: (periods: BillingPeriod[]) => void;
   pricing: PricingCustomConfig;
@@ -119,8 +125,12 @@ function EditableNumber({ value, onChange, className, suffix = "€" }: {
 }
 
 /* ─── Plan card (style /tarifs) ─── */
-function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, tools }: {
+function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, tools, displayName, chips }: {
   plan: ChooserPlan;
+  /** Nom affiché si différent de celui de la ligne en base (« Solo » au lieu de « Solo - 1 mois »). */
+  displayName?: string;
+  /** Choix de la durée affiché sous le nom (présentation « une fiche par formule »). */
+  chips?: ReactNode;
   popular: boolean;
   cta: string;
   onChoose: () => void;
@@ -206,9 +216,11 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, t
               {plan.trial_days} jours d&apos;essai gratuit
             </div>
           )}
-          <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-1">{plan.name}</h3>
+          <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-1">{displayName ?? plan.name}</h3>
           {plan.description && <p className="text-sm text-[var(--text-muted)]">{plan.description}</p>}
         </div>
+
+        {chips}
 
         <div className="px-7 py-6 text-center border-b border-[var(--greek-border)]">
           <div className="flex items-end justify-center gap-1">
@@ -492,8 +504,55 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
   );
 }
 
+/* ─── Fiche d'une formule avec le choix de la durée dedans (« 1 mois · 3 mois · 1 an ») ─── */
+function PlanGroupCard({ group, autoPopular, cta, onChoose, processingKey, currentPlanId, tools }: {
+  group: PlanGroup<ChooserPlan>;
+  autoPopular: boolean;
+  cta: (p: ChooserPlan) => string;
+  onChoose: (p: ChooserPlan) => void;
+  processingKey: string | number | null;
+  currentPlanId?: string | number | null;
+  tools?: { onLeft?: () => void; onRight?: () => void; onTogglePopular: (p: ChooserPlan) => void; onToggleVisible: (p: ChooserPlan) => void };
+}) {
+  // Durée présélectionnée : celle de l'abonnement en cours, sinon la mise en avant, sinon la plus courte affichée.
+  const initial = () =>
+    group.plans.find(p => currentPlanId != null && String(p.id) === String(currentPlanId))
+    ?? group.plans.find(p => featuresOf(p).popular === true && p.is_active !== false)
+    ?? group.plans.find(p => p.is_active !== false)
+    ?? group.plans[0];
+  const [sel, setSel] = useState<string>(() => String(initial().id));
+  const plan = group.plans.find(p => String(p.id) === sel) ?? initial();
+  const paid = Number(plan.price) > 0;
+  return (
+    <PlanCard
+      plan={plan}
+      displayName={group.name}
+      popular={paid && (featuresOf(plan).popular === true || autoPopular)}
+      cta={cta(plan)}
+      onChoose={() => onChoose(plan)}
+      processing={processingKey === plan.id}
+      isCurrent={currentPlanId != null && String(currentPlanId) === String(plan.id)}
+      chips={<PeriodChips plans={group.plans} value={plan.id} onChange={setSel} />}
+      tools={tools ? {
+        visible: plan.is_active !== false,
+        onToggleVisible: () => tools.onToggleVisible(plan),
+        reorder: paid ? {
+          onLeft: tools.onLeft,
+          onRight: tools.onRight,
+          popularFlag: featuresOf(plan).popular === true,
+          onTogglePopular: () => tools.onTogglePopular(plan),
+        } : undefined,
+      } : undefined}
+    />
+  );
+}
+
 /* ─── Affichage (mode admin) : masquer / afficher les onglets et blocs de la page de tarifs ─── */
-function SectionsEditor({ visibility, tabs, showCustom, onVisibilityChange, onTabLabelsChange }: {
+function SectionsEditor({ visibility, tabs, showCustom, onVisibilityChange, onTabLabelsChange, layout, popularAuto, onLayoutChange, onPopularAutoChange }: {
+  layout: PricingLayout;
+  popularAuto: boolean;
+  onLayoutChange: (l: PricingLayout) => void;
+  onPopularAutoChange: (on: boolean) => void;
   visibility: PricingVisibility;
   tabs: { familles: string; custom: string };
   showCustom: boolean;
@@ -517,6 +576,25 @@ function SectionsEditor({ visibility, tabs, showCustom, onVisibilityChange, onTa
     <div className="mb-8 rounded-2xl border border-[var(--greek-border)] bg-white/70 backdrop-blur p-5 max-w-3xl mx-auto">
       <p className="text-xs font-bold uppercase tracking-wider text-[var(--text-muted)] mb-1">Affichage pour les clients</p>
       <p className="text-xs text-gray-400 mb-4">Masquer ne supprime rien : le contenu reste modifiable ici et réapparaît dès que tu le réaffiches. N&apos;oublie pas « Sauvegarder ».</p>
+      <div className="flex flex-wrap items-center gap-4 pb-4 mb-1 border-b border-[var(--greek-border)]">
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-semibold text-[var(--greek-blue)]">Présentation des formules</p>
+          <p className="text-xs text-gray-400">Par période : un onglet Mensuel / Trimestriel / Annuel. Par formule : une fiche Solo, une fiche Family, avec « 1 mois · 3 mois · 1 an » dedans.</p>
+        </div>
+        <GlassSegmentedControl
+          size="sm"
+          value={layout}
+          onChange={(id) => onLayoutChange(id as PricingLayout)}
+          options={[{ id: "byPeriod", label: "Par période" }, { id: "byPlan", label: "Par formule" }]}
+        />
+      </div>
+      <div className="flex items-center gap-4 py-3 border-b border-[var(--greek-border)]">
+        <div className="min-w-0 flex-1">
+          <p className="text-sm font-semibold text-[var(--greek-blue)]">« Populaire » automatique</p>
+          <p className="text-xs text-gray-400">Activé : la fiche du milieu porte l&apos;étiquette tant que tu n&apos;en as marqué aucune. Désactivé : seules les fiches avec une étoile (⭐ sur la fiche ou sur sa durée) l&apos;ont.</p>
+        </div>
+        <GlassSwitch checked={popularAuto} onChange={onPopularAutoChange} label={popularAuto ? "Désactiver le Populaire automatique" : "Activer le Populaire automatique"} />
+      </div>
       <div className="divide-y divide-[var(--greek-border)]">
         {rows.map((r) => (
           <div key={r.key} className="flex items-center gap-4 py-2.5">
@@ -676,9 +754,25 @@ export default function PlanChooser({
   const paidForInterval = plans.filter(p => Number(p.price) > 0 && p.billing_interval === billing);
   const list = [...paidForInterval, ...freePlans];
   // « Populaire » : la fiche marquée par l'admin ; sans marque, la fiche du milieu (comportement historique).
+  const layout: PricingLayout = labels.layout ?? "byPeriod";
+  const popularAuto = labels.popularAuto !== false;
   const flaggedPopular = paidForInterval.some(p => featuresOf(p).popular === true);
   const isPopular = (p: ChooserPlan, idx: number) =>
-    Number(p.price) > 0 && (flaggedPopular ? featuresOf(p).popular === true : list.length > 1 && idx === 1);
+    Number(p.price) > 0 && (flaggedPopular ? featuresOf(p).popular === true : popularAuto && list.length > 1 && idx === 1);
+
+  // Présentation « une fiche par formule » : les lignes « Solo - 1 mois », « Solo - 1 an »… se regroupent sous « Solo ».
+  const shownIntervals = new Set(intervalTabs.map(t => t.id));
+  const grouped = layout === "byPlan" ? groupPlans(plans.filter(p => Number(p.price) === 0 || shownIntervals.has(p.billing_interval))) : [];
+  const paidGroups = grouped.filter(g => Number(g.plans[0].price) > 0);
+  const groups = [...paidGroups, ...grouped.filter(g => Number(g.plans[0].price) === 0)];
+  const anyGroupFlagged = paidGroups.some(g => g.plans.some(p => featuresOf(p).popular === true));
+  const moveGroup = (idx: number, to: number) => {
+    if (to < 0 || to >= paidGroups.length || to === idx) return;
+    const next = [...paidGroups];
+    const [moved] = next.splice(idx, 1);
+    next.splice(to, 0, moved);
+    admin?.onReorder(next.flatMap(g => g.plans.map(p => p.id)));
+  };
   const paidIds = paidForInterval.map(p => p.id);
   const moveInPaid = (id: string | number, to: number) => {
     const from = paidIds.findIndex(x => String(x) === String(id));
@@ -693,11 +787,11 @@ export default function PlanChooser({
     <div>
       {admin && (
         <p className="text-xs text-gray-400 mb-4 flex items-center gap-1.5">
-          <GripVertical className="w-3.5 h-3.5" /> Réordonnez les fiches avec les flèches ou en les glissant (le trait doré montre où elle ira) ; déposez une fiche sur un onglet pour changer sa période ; l&apos;étoile met une fiche en avant. Gérez les périodes juste en dessous.
+          <GripVertical className="w-3.5 h-3.5" /> Réordonnez les fiches avec les flèches (ou en les glissant en présentation par période) ; l&apos;étoile met en avant la fiche, ou la durée choisie dans la fiche ; l&apos;œil la masque aux clients. Gérez les périodes juste en dessous.
         </p>
       )}
 
-      {admin && <SectionsEditor visibility={vis} tabs={labels.tabs} showCustom={showCustom} onVisibilityChange={admin.onVisibilityChange} onTabLabelsChange={admin.onTabLabelsChange} />}
+      {admin && <SectionsEditor visibility={vis} tabs={labels.tabs} showCustom={showCustom} onVisibilityChange={admin.onVisibilityChange} onTabLabelsChange={admin.onTabLabelsChange} layout={layout} popularAuto={popularAuto} onLayoutChange={admin.onLayoutChange} onPopularAutoChange={admin.onPopularAutoChange} />}
 
       {/* Onglets principaux (inutiles s'il n'en reste qu'un) */}
       {TABS.length > 1 && (
@@ -714,7 +808,7 @@ export default function PlanChooser({
         <>
           {/* Onglets de période : GlassSegmentedControl (survol, glissé, rebond) ; en mode admin chaque onglet est aussi
              une zone de dépôt pour changer la période d'une fiche. */}
-          <div className="flex justify-center mb-10">
+          {layout === "byPeriod" && <div className="flex justify-center mb-10">
             <GlassSegmentedControl
               options={intervalTabs.map(it => ({
                 id: it.id,
@@ -729,11 +823,35 @@ export default function PlanChooser({
               value={billing}
               onChange={setBilling}
             />
-          </div>
+          </div>}
 
           {admin && <PeriodsEditor periods={periods} plans={plans} onChange={admin.onPeriodsChange} />}
 
-          {list.length === 0 ? (
+          {layout === "byPlan" ? (
+            groups.length === 0 ? (
+              <p className="text-center text-[var(--text-muted)] py-20">Aucune formule à afficher.</p>
+            ) : (
+              <div className={`grid grid-cols-1 gap-8 ${groups.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : groups.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>
+                {groups.map((g, idx) => (
+                  <PlanGroupCard
+                    key={g.key}
+                    group={g}
+                    autoPopular={popularAuto && !anyGroupFlagged && paidGroups.length > 1 && idx === 1 && Number(g.plans[0].price) > 0}
+                    cta={planCta}
+                    onChoose={onChoosePlan}
+                    processingKey={processingKey}
+                    currentPlanId={currentPlanId}
+                    tools={admin ? {
+                      onLeft: idx > 0 && idx < paidGroups.length ? () => moveGroup(idx, idx - 1) : undefined,
+                      onRight: idx < paidGroups.length - 1 ? () => moveGroup(idx, idx + 1) : undefined,
+                      onTogglePopular: (p) => admin.onTogglePopular(p.id),
+                      onToggleVisible: (p) => admin.onToggleVisible(p.id),
+                    } : undefined}
+                  />
+                ))}
+              </div>
+            )
+          ) : list.length === 0 ? (
             <p className="text-center text-[var(--text-muted)] py-20">Aucun plan dans cette période. Glissez-en un ici depuis une autre période.</p>
           ) : (
             <div className={`grid grid-cols-1 gap-8 ${list.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : list.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>

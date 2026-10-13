@@ -58,6 +58,15 @@ export function defaultPeriodLabel(id: string): string {
   return n ? `${n} mois` : id;
 }
 
+/** Nom court d'une durée, pour les choix dans une fiche : « 1 mois », « 3 mois », « 1 an », « 2 ans », « 18 mois ». */
+export function shortPeriodLabel(id: string | null | undefined): string {
+  if (id === ONE_TIME) return "Une fois";
+  const m = monthsOfPeriod(id);
+  if (!m) return String(id ?? "");
+  if (m % 12 === 0) return m === 12 ? "1 an" : `${m / 12} ans`;
+  return `${m} mois`;
+}
+
 /** Suffixe affiché après un prix : « /mois », « /trimestre », « /2 mois »… */
 export function periodSuffix(id: string | null | undefined): string {
   if (!id) return "/mois";
