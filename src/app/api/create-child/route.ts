@@ -7,6 +7,7 @@ import { validatePassword, isValidEmail } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { hasActiveSubscription } from "@/lib/subscriptionGate";
+import { getChildLimit, childLimitMessage } from "@/lib/childLimit";
 
 const GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
 
@@ -22,6 +23,12 @@ export async function POST(request: Request) {
     // route directement. Les admins ne sont pas concernés.
     if (requester.role === "parent" && !(await hasActiveSubscription(requester.authId))) {
       return NextResponse.json({ error: "Un abonnement actif est requis pour ajouter un enfant." }, { status: 403 });
+    }
+
+    // Nombre d'enfants inclus dans la formule (les admins ne sont pas concernés).
+    if (requester.role === "parent") {
+      const limit = await getChildLimit(requester);
+      if (!limit.canAdd) return NextResponse.json({ error: childLimitMessage(limit), code: "child_limit" }, { status: 403 });
     }
 
     const config = RATE_LIMITS["child-account:mutate"];

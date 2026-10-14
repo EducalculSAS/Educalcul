@@ -175,7 +175,9 @@ export async function submitDailyGameSession(gameType: MinigameType, sessionId: 
     const questions = allQuestions.slice(0, questionCount);
 
     let correct = 0;
-    const detail = answers.map((a) => {
+    // Une seule réponse par question : sans ça, renvoyer plusieurs fois la même question comptait plusieurs points.
+    const seen = new Set<number>();
+    const detail = answers.filter((a) => Number.isInteger(a?.index) && a.index >= 0 && a.index < questions.length && !seen.has(a.index) && seen.add(a.index)).map((a) => {
       const expected = questions[a.index]?.answer;
       let isCorrect = false;
       if (gameConfig.answerType === "number") {

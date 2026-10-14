@@ -6,13 +6,14 @@ import { getServerUser } from "@/lib/supabase/server";
 import ChildFamilyCard from "@/components/parent/ChildFamilyCard";
 import { loadFamily } from "@/lib/familyOverview";
 import GlassButton from "@/components/ui/GlassButton";
+import { getChildLimit } from "@/lib/childLimit";
 
 export default async function ManageChildrenPage() {
   const authUser = await getServerUser();
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "parent") redirect("/dashboard");
 
-  const children = await loadFamily(authUser.id);
+  const [children, limit] = await Promise.all([loadFamily(authUser.id), getChildLimit(authUser)]);
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
@@ -23,10 +24,16 @@ export default async function ManageChildrenPage() {
         badge="Gestion"
         subtitle="Gérez les profils et les accès de vos enfants."
         actions={
-          <GlassButton href="/parent/add-child" variant="gold">
-            <PlusCircle className="w-5 h-5" />
-            Ajouter un enfant
-          </GlassButton>
+          limit.canAdd ? (
+            <GlassButton href="/parent/add-child" variant="gold">
+              <PlusCircle className="w-5 h-5" />
+              Ajouter un enfant
+            </GlassButton>
+          ) : (
+            <GlassButton href="/parent/subscription" variant="gold">
+              Plus d'enfants ? Voir les formules
+            </GlassButton>
+          )
         }
       />
       <div className="container mx-auto px-4 pb-12 max-w-6xl">

@@ -81,6 +81,8 @@ export default async function ExerciseDetailPage({
   // catalogue, contournable par URL directe) : voir contexte du plan sur
   // access_level_exercises. authId, pas authUser.id (checkDifficultyAccess
   // résout lui-même l'enfant -> abonnement du parent).
+  // Un brouillon n'existe pas pour un élève : le catalogue ne le montre pas, et l'adresse directe non plus.
+  if (exercise && authUser.role !== "admin" && exercise.status !== "published") redirect("/child/exercises");
   if (exercise) {
     const { allowed } = await checkDifficultyAccess(authUser.authId, exercise.difficulty_level);
     if (!allowed) redirect("/child/exercises");

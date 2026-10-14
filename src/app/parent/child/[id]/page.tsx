@@ -3,7 +3,7 @@ import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { ArrowLeft, Award, BookOpen, CheckCircle, TrendingUp, Gamepad2 } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { getLiveSubscription } from "@/lib/subscriptionLive";
+import { getUserFeatures } from "@/lib/checkSubscription";
 import ChildReportTabs from "@/components/parent/ChildReportTabs";
 import GlassButton from "@/components/ui/GlassButton";
 import ChildControls from "@/components/parent/ChildControls";
@@ -32,7 +32,8 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "parent") redirect("/dashboard");
 
-  const hasSub = !!(await getLiveSubscription(authUser.authId));
+  // Même règle que le contrôle serveur de /api/parent/child-analysis : la formule doit inclure les rapports détaillés.
+  const hasSub = !!(await getUserFeatures(authUser.authId, { id: authUser.id, role: "parent", parent_id: null })).detailed_reports;
 
   const { data: child } = await supabaseAdmin
     .from("users")

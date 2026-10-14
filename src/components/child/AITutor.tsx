@@ -9,7 +9,7 @@ import { renderLatexInHTML, renderUserText } from "@/lib/katexLoader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
-import { subscribeMathKeyboardVisibility } from "@/components/MathInput";
+import { subscribeMathKeyboardVisibility } from "@/lib/mathKeyboardVisibility";
 import { playListeningCue } from "@/lib/audioCues";
 
 interface Message {

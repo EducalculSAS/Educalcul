@@ -63,6 +63,8 @@ export default async function QuizDetailPage({
 
   // Verrou de difficulté par plan — même règle que pour les exercices (voir
   // src/app/child/exercises/[id]/page.tsx et contexte du plan).
+  // Un brouillon n'existe pas pour un élève : le catalogue ne le montre pas, et l'adresse directe non plus.
+  if (quiz && authUser.role !== "admin" && quiz.status !== "published") redirect("/child/quiz");
   if (quiz) {
     const { allowed } = await checkDifficultyAccess(authUser.authId, quiz.difficulty_level);
     if (!allowed) redirect("/child/quiz");

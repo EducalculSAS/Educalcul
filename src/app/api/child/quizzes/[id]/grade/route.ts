@@ -6,6 +6,7 @@ import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { checkDifficultyAccess } from "@/lib/checkSubscription";
 import { recordResults } from "@/lib/srs";
+import { recordGrades } from "@/lib/gradedAnswers";
 
 export async function POST(
   req: Request,
@@ -40,10 +41,13 @@ export async function POST(
     } else {
       const { data: quiz, error: qzError } = await supabaseAdmin
         .from("quizzes")
-        .select("content_json, level, difficulty_level")
+        .select("content_json, level, difficulty_level, status")
         .eq("id", id)
         .single();
       if (qzError || !quiz) {
+        return NextResponse.json({ error: "Quiz not found" }, { status: 404 });
+      }
+      if (me.role !== "admin" && (quiz as any).status !== "published") {
         return NextResponse.json({ error: "Quiz not found" }, { status: 404 });
       }
       const questions: any[] = Array.isArray(quiz.content_json) ? quiz.content_json : [];
@@ -97,6 +101,11 @@ export async function POST(
       isCorrect = String(answer) === String(targetQuestion.correctAnswer);
       score = isCorrect ? maxPoints : 0;
       feedback = isCorrect ? "Bonne réponse !" : "Ce n'est pas la bonne réponse.";
+    }
+
+    // Verdict gardé côté serveur : la note de la tentative en est la somme (voir /api/child/activities).
+    if (id !== "preview" && question_id !== undefined && question_id !== null) {
+      await recordGrades(me.id, "quiz", id, [{ blockId: String(question_id), score, maxScore: maxPoints, isCorrect }]);
     }
 
     // Carnet d'erreurs : une question de quiz ratée y entre aussi (jamais pour l'aperçu admin).

@@ -4,6 +4,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { chatWithAIPlain } from "@/lib/llm";
 import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { getUserFeatures } from "@/lib/checkSubscription";
 
 export async function GET(req: Request) {
   try {
@@ -17,6 +18,14 @@ export async function GET(req: Request) {
     // The caller must own this child (or be admin).
     if (!(await canActOnInternalId(me, Number(childId)))) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+    }
+
+    // L'analyse IA est une fonction de formule (rapports détaillés) : contrôle serveur, pas seulement le cadenas de la page.
+    if (me.role !== "admin") {
+      const features = await getUserFeatures(me.authId, { id: me.id, role: me.role, parent_id: me.parent_id });
+      if (!features.detailed_reports) {
+        return NextResponse.json({ error: "L'analyse IA est réservée aux formules avec rapports détaillés." }, { status: 403 });
+      }
     }
 
     const cfg = RATE_LIMITS["parent:child-analysis"];

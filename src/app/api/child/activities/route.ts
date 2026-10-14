@@ -5,6 +5,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 import { passThreshold } from "@/lib/scorePercent";
 import { afterActivity } from "@/lib/parentAlerts";
+import { serverScore, clearGrades } from "@/lib/gradedAnswers";
 
 
 // GET: Fetch all activities for the current user
@@ -122,15 +123,18 @@ export async function POST(req: Request) {
     let safeScorePercent: number | null = null;
     let safePassed: boolean | null = null;
     let exerciseMaxAttempts: number | null = null;
+    let quizMaxAttempts: number | null = null;
     let manualGrading = false;
+    let gradedFromServer = false;
 
     if ((type === "exercise" || type === "quiz") && status === "completed") {
       const table = type === "exercise" ? "exercises" : "quizzes";
       const { data: item } = await supabaseAdmin
         .from(table)
-        .select(type === "exercise" ? "content_json, min_score_percent, max_attempts, grading_type" : "content_json, min_score_percent")
+        .select(type === "exercise" ? "content_json, min_score_percent, max_attempts, grading_type" : "content_json, min_score_percent, max_attempts")
         .eq("id", itemId)
         .maybeSingle<{ content_json: unknown; min_score_percent: number | null; max_attempts?: number | null; grading_type?: string | null }>();
+      if (type === "quiz") quizMaxAttempts = Number(item?.max_attempts) > 0 ? Number(item?.max_attempts) : null;
       if (type === "exercise") {
         exerciseMaxAttempts = Number(item?.max_attempts) > 0 ? Number(item?.max_attempts) : null;
         manualGrading = item?.grading_type === "manual";
@@ -143,6 +147,17 @@ export async function POST(req: Request) {
         );
       } else if (type === "quiz" && Array.isArray(item?.content_json)) {
         item.content_json.forEach((q: any) => (maxPoints += q.points || 1));
+      }
+
+      // L'élève qui joue pour lui-même ne déclare plus sa note : elle vient des verdicts enregistrés par la correction.
+      // (Parent et admin, qui peuvent agir pour un élève, gardent la note bornée du client.)
+      const fromServer = me.role === "child" && me.id === internalId && !manualGrading && maxPoints > 0;
+      if (fromServer) {
+        const ids = new Set<string>();
+        if (type === "exercise") (item?.content_json as any[] | undefined)?.forEach((p: any) => (p.blocks || []).forEach((b: any) => b?.id && ids.add(String(b.id))));
+        else (item?.content_json as any[] | undefined)?.forEach((q: any) => q?.id !== undefined && ids.add(String(q.id)));
+        safeScore = await serverScore(internalId, type, itemId, ids, maxPoints);
+        gradedFromServer = true;
       }
 
       if (maxPoints > 0) {
@@ -228,6 +243,10 @@ export async function POST(req: Request) {
           .eq("user_id", internalId)
           .eq("quiz_id", itemId)
           .maybeSingle();
+        // Même règle que pour les exercices : un essai de plus que le maximum n'est jamais enregistré, même si le client est contourné.
+        if (quizMaxAttempts && (existing?.attempts_history?.length ?? 0) >= quizMaxAttempts) {
+          return NextResponse.json({ error: "Tentatives épuisées pour ce quiz.", code: "attempts_exhausted" }, { status: 409 });
+        }
         const prevProgress = existing?.progress_json as { answers?: any; questionResults?: any; revealed?: any; questionFeedbacks?: any } | undefined;
         attemptsHistory = [...(existing?.attempts_history || []), {
           score: safeScore,
@@ -274,6 +293,9 @@ export async function POST(req: Request) {
     }
 
     if (result?.error) throw result.error;
+
+    // Tentative terminée : les verdicts sont consommés, la suivante (« refaire ») repart de zéro.
+    if (gradedFromServer) await clearGrades(internalId, type, itemId);
 
     // Objectif du jour, série, alertes des parents : calculés après la réponse, sans faire attendre l'élève.
     if (status === "completed" || type === "course") {

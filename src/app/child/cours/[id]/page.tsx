@@ -38,10 +38,12 @@ export default async function CourseDetailPage({
 
   const { data: courseData, error } = await supabaseAdmin
     .from("courses")
-    .select("id, title, description, content_json, subject, level, thumbnail_url")
+    .select("id, title, description, content_json, subject, level, thumbnail_url, status")
     .eq("id", courseId)
     .maybeSingle();
 
+  // Un brouillon n'existe pas pour un élève : le catalogue ne le montre pas, et l'adresse directe non plus.
+  if (courseData && authUser.role !== "admin" && courseData.status !== "published") redirect("/child/cours");
   const course = error || !courseData ? null : courseData;
 
   return <CourseDetailClient courseId={courseId} initialCourse={course} />;

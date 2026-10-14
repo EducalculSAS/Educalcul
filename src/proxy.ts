@@ -178,9 +178,34 @@ async function featureGate(req: NextRequest, pathname: string, method: string): 
   return NextResponse.rewrite(target);
 }
 
+/**
+ * Corps JSON illisible sur une API : réponse 400 claire, au lieu d'un 500 levé par chaque route au moment de
+ * `await request.json()` (une centaine de routes, aucune ne le traitait comme une erreur du client). Le corps
+ * est lu sur une copie : la route le reçoit intact. En cas de doute (corps trop gros, lecture impossible),
+ * la requête passe, c'est la route qui tranche.
+ */
+async function rejectMalformedJson(req: NextRequest, pathname: string, method: string): Promise<NextResponse | null> {
+  if (!pathname.startsWith("/api/") || pathname.startsWith("/api/webhooks/")) return null;
+  if (method !== "POST" && method !== "PUT" && method !== "PATCH") return null;
+  if (!(req.headers.get("content-type") ?? "").toLowerCase().includes("application/json")) return null;
+  const length = Number(req.headers.get("content-length") ?? "0");
+  if (length > 1_000_000) return null;
+  try {
+    const text = await req.clone().text();
+    if (text.trim()) JSON.parse(text);
+    return null;
+  } catch (err) {
+    if (err instanceof SyntaxError) return NextResponse.json({ error: "Corps de requête invalide (JSON attendu)." }, { status: 400 });
+    return null;
+  }
+}
+
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const method = req.method.toUpperCase();
+
+  const malformed = await rejectMalformedJson(req, pathname, method);
+  if (malformed) return malformed;
 
   const gated = await featureGate(req, pathname, method);
   if (gated) return gated;
@@ -195,6 +220,8 @@ export async function proxy(req: NextRequest) {
     const token = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "").trim();
     if (!token) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
+    // La liste d'IP ne dépend pas de l'identité : elle part en même temps que la vérification du jeton.
+    const ipCheck = isIpAllowed(req);
     const authId = await getAuthUserId(token);
     if (!authId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
@@ -206,7 +233,7 @@ export async function proxy(req: NextRequest) {
 
     if (user.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-    if (!(await isIpAllowed(req))) {
+    if (!(await ipCheck)) {
       return NextResponse.json({ error: "IP non autorisée" }, { status: 403 });
     }
 

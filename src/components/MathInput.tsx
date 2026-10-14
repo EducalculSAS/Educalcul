@@ -3,6 +3,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import "mathlive";
 import type { MathfieldElement } from "mathlive";
+import { incrementMathKeyboardOpen, decrementMathKeyboardOpen, subscribeMathKeyboardVisibility } from "@/lib/mathKeyboardVisibility";
 import CustomMathKeyboard, {
   type MathKeyboardConfig,
   type MathKeyboardKey,
@@ -41,33 +42,7 @@ function mergeTrailingText(current: string, incoming: string): string {
     : current + incoming;
 }
 
-// Bus partagé (petit, gardé ici plutôt que dans un fichier séparé) : signale
-// au reste de la page qu'un clavier mathématique est ouvert, pour que
-// d'autres éléments flottants (ex: la bulle Calia/AITutor en bas à droite)
-// s'effacent tant qu'il occupe le bas de l'écran. Compteur, pas un simple
-// booléen : plusieurs champs MathInput peuvent exister sur une page, et le
-// focus peut passer directement de l'un à l'autre sans jamais repasser par
-// "aucun clavier ouvert" entre les deux.
-type MathKeyboardVisibilityListener = (visible: boolean) => void;
-const mathKeyboardListeners = new Set<MathKeyboardVisibilityListener>();
-let mathKeyboardOpenCount = 0;
-function incrementMathKeyboardOpen() {
-  mathKeyboardOpenCount += 1;
-  mathKeyboardListeners.forEach((l) => l(mathKeyboardOpenCount > 0));
-}
-function decrementMathKeyboardOpen() {
-  mathKeyboardOpenCount = Math.max(0, mathKeyboardOpenCount - 1);
-  mathKeyboardListeners.forEach((l) => l(mathKeyboardOpenCount > 0));
-}
-/** À utiliser hors de ce fichier (ex: AITutor.tsx) pour savoir si un clavier
- * mathématique est actuellement ouvert quelque part sur la page. */
-export function subscribeMathKeyboardVisibility(listener: MathKeyboardVisibilityListener): () => void {
-  mathKeyboardListeners.add(listener);
-  listener(mathKeyboardOpenCount > 0);
-  return () => {
-    mathKeyboardListeners.delete(listener);
-  };
-}
+export { subscribeMathKeyboardVisibility };
 
 const DEFAULT_LEVEL = "6eme";
 

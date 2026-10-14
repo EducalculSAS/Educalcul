@@ -24,7 +24,7 @@ export async function GET(request: Request) {
     if (!isAdmin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     if (id) {
-      let { data, error } = await supabaseAdmin
+      const { data, error } = await supabaseAdmin
         .from("exercises")
         .select(`
           id, title, description, question,

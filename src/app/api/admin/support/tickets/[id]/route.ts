@@ -47,7 +47,7 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
     const body = await request.json();
     const { action, status, assigned_to } = body;
 
-    let updates: any = { updated_at: new Date().toISOString() };
+    const updates: any = { updated_at: new Date().toISOString() };
 
     if (action === 'change_status') {
       if (!['Ouvert', 'En cours', 'Répondu', 'Résolu'].includes(status)) {

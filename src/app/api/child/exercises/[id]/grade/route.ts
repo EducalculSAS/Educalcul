@@ -9,6 +9,7 @@ import { blockMaxPoints, itemsCorrect } from "@/lib/exerciseScoring";
 import { recordResults, type SrsResult } from "@/lib/srs";
 import { loadSources, parseReviewKey } from "@/lib/reviewSession";
 import { afterActivity } from "@/lib/parentAlerts";
+import { recordGrades } from "@/lib/gradedAnswers";
 
 export const maxDuration = 60;
 
@@ -176,10 +177,11 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     } else {
       const { data: exercise, error } = await supabaseAdmin
         .from("exercises")
-        .select("id, level, difficulty_level, grading_type, points_reward, content_json")
+        .select("id, level, difficulty_level, grading_type, points_reward, content_json, status")
         .eq("id", id)
         .maybeSingle();
       if (error || !exercise) return NextResponse.json({ error: "Exercise not found" }, { status: 404 });
+      if (me.role !== "admin" && exercise.status !== "published") return NextResponse.json({ error: "Exercise not found" }, { status: 404 });
 
       const { allowed } = await checkDifficultyAccess(me.authId, exercise.difficulty_level);
       if (!allowed) return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
@@ -251,6 +253,11 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
         reveal: revealFor(block),
       };
     });
+
+    // Verdicts gardés côté serveur : la note de la tentative en est la somme (voir /api/child/activities).
+    if (id !== "preview" && id !== "review" && !manual) {
+      await recordGrades(me.id, "exercise", id, results.filter((r) => r.block_id && !r.unavailable && !r.pending).map((r) => ({ blockId: String(r.block_id), score: r.score, maxScore: r.max_score, isCorrect: r.is_correct })));
+    }
 
     // Carnet d'erreurs : une question ratée y entre, une question revue y avance (une seule écriture par envoi).
     if (id !== "preview" && !manual) {
