@@ -4,7 +4,9 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
-import { stripAnswers, fillEmptyContentJson } from "@/lib/exerciseContent";
+import { stripAnswers, fillEmptyContentJson, dedupeBlockIds } from "@/lib/exerciseContent";
+
+const GRADING_TYPES = ["auto", "ai", "manual"];
 import { parseMinScorePercent } from "@/lib/scorePercent";
 
 export async function GET(request: Request) {
@@ -27,7 +29,8 @@ export async function GET(request: Request) {
           id, title, description, question,
           difficulty_level, type, level, status,
           folder_id, course_id, content_json,
-          points_reward, max_attempts, time_limit, min_score_percent,
+          points_reward, max_attempts, time_limit, time_limit_minutes, min_score_percent,
+          estimated_time, grading_type,
           created_at, updated_at,
           courses (title, subject, level),
           exercise_folders (name, color)
@@ -70,7 +73,8 @@ export async function GET(request: Request) {
           id, title, description, question,
           difficulty_level, type, level, status,
           folder_id, course_id, display_order,
-          points_reward, max_attempts, time_limit, min_score_percent,
+          points_reward, max_attempts, time_limit, time_limit_minutes, min_score_percent,
+          estimated_time, grading_type,
           created_at, updated_at,
           courses (title, subject, level),
           exercise_folders (name, color)
@@ -131,6 +135,7 @@ export async function POST(request: Request) {
       min_score_percent,
       max_attempts,
       estimated_time,
+      grading_type,
     } = body;
 
     // If content_json is empty or not provided, create a sensible default based on exercise type
@@ -205,7 +210,8 @@ export async function POST(request: Request) {
         is_published: status === "published" || status === "active",
         folder_id: folder_id || null,
         thumbnail_url,
-        content_json: finalContentJson,
+        content_json: dedupeBlockIds(finalContentJson),
+        grading_type: GRADING_TYPES.includes(grading_type) ? grading_type : "auto",
         time_limit: time_limit || null,
         time_limit_minutes: time_limit_minutes || null,
         min_score_percent: parseMinScorePercent(min_score_percent),
@@ -336,7 +342,10 @@ export async function PUT(request: Request) {
     }
     if (has("folder_id")) updatePayload.folder_id = folder_id || null;
     if (has("thumbnail_url")) updatePayload.thumbnail_url = thumbnail_url;
-    if (hasContentKey) updatePayload.content_json = finalContentJson;
+    // Correction : automatique, IA ou manuelle. Avant, ce réglage n'était ni lu ni écrit ici : il revenait toujours à « automatique ».
+    if (has("grading_type") && GRADING_TYPES.includes(body.grading_type)) updatePayload.grading_type = body.grading_type;
+    // Chaque question doit avoir un identifiant unique dans TOUT l'exercice (la correction retrouve la question par cet identifiant).
+    if (hasContentKey) updatePayload.content_json = dedupeBlockIds(finalContentJson);
     if (has("time_limit")) updatePayload.time_limit = time_limit || null;
     if (has("time_limit_minutes")) updatePayload.time_limit_minutes = body.time_limit_minutes || null;
     if (has("estimated_time")) updatePayload.estimated_time = body.estimated_time ?? 15;

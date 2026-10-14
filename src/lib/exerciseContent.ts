@@ -1,4 +1,26 @@
+import { randomUUID } from "crypto";
 import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
+
+/** Identifiants de question uniques dans TOUT l'exercice (pages comprises). La correction retrouve chaque question par
+ * son identifiant : deux questions au même identifiant (cas d'une page régénérée par l'IA, qui réutilise « block-1 »,
+ * « block-2 »…) et la seconde écrasait la première, donc la correction se faisait sur l'ancienne question. */
+export function dedupeBlockIds<T>(pages: T): T {
+  if (!Array.isArray(pages)) return pages;
+  const seen = new Set<string>();
+  return pages.map((page: any) => {
+    if (!page || !Array.isArray(page.blocks)) return page;
+    return {
+      ...page,
+      blocks: page.blocks.map((b: any) => {
+        if (!b || typeof b !== "object") return b;
+        let id = typeof b.id === "string" && b.id ? b.id : "";
+        if (!id || seen.has(id)) id = `block-${randomUUID()}`;
+        seen.add(id);
+        return id === b.id ? b : { ...b, id };
+      }),
+    };
+  }) as unknown as T;
+}
 
 // Extrait de src/app/api/admin/exercises/route.ts pour être réutilisé tel
 // quel côté serveur (page /child/exercises/[id]) sans dupliquer une logique

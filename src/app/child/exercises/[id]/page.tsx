@@ -60,7 +60,8 @@ export default async function ExerciseDetailPage({
         id, title, description, question,
         difficulty_level, type, level, status,
         folder_id, course_id, content_json,
-        points_reward, max_attempts, time_limit, min_score_percent,
+        points_reward, max_attempts, time_limit, time_limit_minutes, min_score_percent,
+        estimated_time, grading_type,
         courses (title, subject, level),
         exercise_folders (name, color)
       `)

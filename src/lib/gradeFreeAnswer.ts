@@ -25,6 +25,10 @@ function normalizeWriting(value: string): string {
     .replace(/\\[dt]frac/g, "\\frac")
     .replace(/\\cdot|\\times/g, "*")
     .replace(/\{,\}/g, ",")
+    // Tous les tirets typographiques (moins « − », demi-cadratin, trait d'union insécable…) valent « - ».
+    .replace(/[\u2212\u2013\u2014\u2010\u2011\u2012\u207B\uFE63\uFF0D]/g, "-")
+    // Exposant / indice d'un seul caractère : x^{2} = x^2, u_{n} = u_n (MathLive écrit parfois les accolades, parfois non).
+    .replace(/([\^_])\{(\w)\}/g, "$1$2")
     .replace(/\s+/g, "")
     .replace(/\.$/, "")
     .toLowerCase();

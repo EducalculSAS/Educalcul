@@ -10,7 +10,8 @@ const LIST_COLUMNS = `
   id, title, description, question,
   difficulty_level, type, level, status,
   folder_id, course_id, display_order,
-  points_reward, max_attempts, time_limit, min_score_percent,
+  points_reward, max_attempts, time_limit, time_limit_minutes, min_score_percent,
+  estimated_time, grading_type,
   created_at, updated_at,
   courses (title, subject, level),
   exercise_folders (name, color)
@@ -26,7 +27,7 @@ export default async function AdminExercisesPage() {
       return folderId === null ? q.is("folder_id", null) : q.eq("folder_id", folderId);
     }),
     loadFoldersWithCounts("exercise"),
-    selectAllPages((from, to) => supabaseAdmin.from("courses").select("id, title").order("title").range(from, to)),
+    selectAllPages((from, to) => supabaseAdmin.from("courses").select("id, title, level").order("title").range(from, to)),
   ]);
 
   return (

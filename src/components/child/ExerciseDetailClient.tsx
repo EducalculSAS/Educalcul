@@ -95,7 +95,7 @@ export default function ExerciseDetailClient({
   const [openCorrection, setOpenCorrection] = useState(false);
   // Parties terminées depuis l'ouverture de la page : elles s'ajoutent aux essais déjà enregistrés
   // (la liste serveur n'est relue qu'au rechargement), pour la limite de tentatives et « Refaire ».
-  const [sessionAttempts, setSessionAttempts] = useState<{ score_percent: number; passed: boolean; completed_at: string }[]>([]);
+  const [sessionAttempts, setSessionAttempts] = useState<{ score_percent: number | null; passed: boolean | null; pending?: boolean; completed_at: string }[]>([]);
   const attemptsHistory = [...savedAttempts, ...sessionAttempts];
   const attemptsUsed = attemptsHistory.length;
   const maxAttempts: number | null = exercise?.max_attempts ?? null;
@@ -189,6 +189,11 @@ export default function ExerciseDetailClient({
             bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a: any) => a.score_percent ?? 0)) : undefined}
             onBack={() => setStarted(false)}
             onComplete={(score: number, total: number) => {
+              // Correction manuelle : pas de note tant que l'enseignant n'a pas corrigé.
+              if (exercise.grading_type === "manual") {
+                setSessionAttempts((l) => [...l, { score_percent: null, passed: null, pending: true, completed_at: new Date().toISOString() }]);
+                return;
+              }
               const pct = total > 0 ? Math.round((score / total) * 100) : 100;
               setSessionAttempts((l) => [...l, { score_percent: pct, passed: pct >= passThreshold(exercise.min_score_percent), completed_at: new Date().toISOString() }]);
             }}
@@ -329,8 +334,8 @@ export default function ExerciseDetailClient({
                             {a.completed_at ? new Date(a.completed_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }) : "-"}
                           </span>
                           <span className="flex items-center gap-2">
-                            <span className={`font-bold ${a.passed === false ? "text-red-500" : "text-green-600"}`}>
-                              {a.score_percent ?? 0}%
+                            <span className={`font-bold ${a.pending ? "text-gray-400" : a.passed === false ? "text-red-500" : "text-green-600"}`}>
+                              {a.pending ? "En attente" : `${a.score_percent ?? 0}%`}
                             </span>
                             {i === 0 && (
                               <GlassIconButton

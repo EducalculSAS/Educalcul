@@ -122,15 +122,19 @@ export async function POST(req: Request) {
     let safeScorePercent: number | null = null;
     let safePassed: boolean | null = null;
     let exerciseMaxAttempts: number | null = null;
+    let manualGrading = false;
 
     if ((type === "exercise" || type === "quiz") && status === "completed") {
       const table = type === "exercise" ? "exercises" : "quizzes";
       const { data: item } = await supabaseAdmin
         .from(table)
-        .select(type === "exercise" ? "content_json, min_score_percent, max_attempts" : "content_json, min_score_percent")
+        .select(type === "exercise" ? "content_json, min_score_percent, max_attempts, grading_type" : "content_json, min_score_percent")
         .eq("id", itemId)
-        .maybeSingle<{ content_json: unknown; min_score_percent: number | null; max_attempts?: number | null }>();
-      if (type === "exercise") exerciseMaxAttempts = Number(item?.max_attempts) > 0 ? Number(item?.max_attempts) : null;
+        .maybeSingle<{ content_json: unknown; min_score_percent: number | null; max_attempts?: number | null; grading_type?: string | null }>();
+      if (type === "exercise") {
+        exerciseMaxAttempts = Number(item?.max_attempts) > 0 ? Number(item?.max_attempts) : null;
+        manualGrading = item?.grading_type === "manual";
+      }
 
       let maxPoints = 0;
       if (type === "exercise" && Array.isArray(item?.content_json)) {
@@ -150,6 +154,12 @@ export async function POST(req: Request) {
         safeScorePercent = Math.min(100, Math.max(0, Math.round(Number(scorePercent) || 0)));
       }
       safePassed = safeScorePercent >= passThreshold(item?.min_score_percent);
+      // Correction manuelle : ni note ni réussite tant que l'enseignant n'a pas corrigé (voir la revue des copies).
+      if (manualGrading) {
+        safeScore = 0;
+        safeScorePercent = null;
+        safePassed = null;
+      }
     }
 
     let result;
@@ -188,6 +198,7 @@ export async function POST(req: Request) {
           total_points: totalPoints || 0,
           score_percent: safeScorePercent,
           passed: safePassed,
+          ...(manualGrading ? { pending: true } : {}),
           completed_at: new Date().toISOString(),
           detail: prevProgress ? {
             answers: prevProgress.answers || {},

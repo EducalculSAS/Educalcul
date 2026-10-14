@@ -3,6 +3,7 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { blockMaxPoints } from "@/lib/exerciseScoring";
+import { passThreshold } from "@/lib/scorePercent";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 
 type Kind = "exercise" | "quiz";
@@ -148,14 +149,16 @@ export async function PATCH(req: Request) {
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
-    const { kind, userId, itemId, attemptRef, key, comment, editedAnswer } = body as {
+    const { kind, userId, itemId, attemptRef, key, comment, editedAnswer, verdict } = body as {
       kind: Kind; userId: number; itemId: string; attemptRef: "latest" | number; key: string;
       comment?: string; editedAnswer?: any;
+      /** Correction manuelle d'une question d'exercice : true = juste, false = fausse. */
+      verdict?: boolean;
     };
     if (!kind || !["exercise", "quiz"].includes(kind) || !userId || !itemId || attemptRef === undefined || key === undefined) {
       return NextResponse.json({ error: "Paramètres manquants" }, { status: 400 });
     }
-    if (comment === undefined && editedAnswer === undefined) {
+    if (comment === undefined && editedAnswer === undefined && verdict === undefined) {
       return NextResponse.json({ error: "Rien à enregistrer" }, { status: 400 });
     }
 
@@ -166,7 +169,7 @@ export async function PATCH(req: Request) {
         .eq("user_id", userId)
         .eq(ITEM_COLUMN[kind], itemId)
         .maybeSingle(),
-      supabaseAdmin.from(CONTENT_TABLE[kind]).select("id, content_json").eq("id", itemId).maybeSingle(),
+      supabaseAdmin.from(CONTENT_TABLE[kind]).select("id, content_json, min_score_percent").eq("id", itemId).maybeSingle(),
     ]);
     if (!attempt) return NextResponse.json({ error: "Tentative introuvable" }, { status: 404 });
     if (!item) return NextResponse.json({ error: "Contenu introuvable" }, { status: 404 });
@@ -191,6 +194,16 @@ export async function PATCH(req: Request) {
 
     let newScore: number | undefined;
     let newTotal: number | undefined;
+    // Correction manuelle : une note n'est « définitive » (plus en attente) que quand CHAQUE question a reçu un verdict.
+    let stillPending: boolean | undefined;
+    if (verdict !== undefined && kind === "exercise") {
+      detailHolder.results = { ...(detailHolder.results || {}), [key]: !!verdict };
+      detailHolder.manualVerdicts = { ...(detailHolder.manualVerdicts || {}), [key]: true };
+      const { score, total } = recomputeExerciseScore(item.content_json, detailHolder.results);
+      newScore = score; newTotal = total;
+      const gradable = allExerciseBlocks(item.content_json).filter((b: any) => b.type !== "text" && b.type !== "image");
+      stillPending = !gradable.every((b: any) => detailHolder.manualVerdicts[b.id]);
+    }
     if (editedAnswer !== undefined) {
       detailHolder.adminEditedAnswers[key] = editedAnswer;
 
@@ -210,12 +223,28 @@ export async function PATCH(req: Request) {
       }
     }
 
+    const pctOf = (s: number, t: number) => (t ? Math.round((s / t) * 100) : 0);
+    const passedOf = (pct: number) => pct >= passThreshold((item as { min_score_percent?: number | null }).min_score_percent);
     if (isLatest) {
       const update: Record<string, any> = { progress_json: target };
       if (newScore !== undefined) {
         update.score = newScore;
         update.total_points = newTotal;
-        update.score_percent = newTotal ? Math.round((newScore / newTotal) * 100) : 0;
+        update.score_percent = pctOf(newScore, newTotal!);
+        if (stillPending === false) update.passed = passedOf(update.score_percent);
+        // La dernière entrée de l'historique est cette même tentative : elle reste alignée sur la note.
+        const last = history.length - 1;
+        if (stillPending !== undefined && last >= 0) {
+          history[last] = {
+            ...history[last],
+            score: newScore,
+            total_points: newTotal,
+            score_percent: update.score_percent,
+            pending: stillPending,
+            ...(stillPending === false ? { passed: update.passed } : {}),
+          };
+          update.attempts_history = history;
+        }
       }
       const { error } = await supabaseAdmin.from(TABLE[kind]).update(update).eq("id", attempt.id);
       if (error) throw error;
@@ -228,6 +257,8 @@ export async function PATCH(req: Request) {
           score: newScore,
           total_points: newTotal,
           score_percent: newTotal ? Math.round((newScore / newTotal) * 100) : 0,
+          ...(stillPending !== undefined ? { pending: stillPending } : {}),
+          ...(stillPending === false ? { passed: passedOf(pctOf(newScore, newTotal!)) } : {}),
         } : {}),
       };
       const { error } = await supabaseAdmin.from(TABLE[kind]).update({ attempts_history: history }).eq("id", attempt.id);
@@ -252,7 +283,7 @@ export async function PATCH(req: Request) {
       targetUserId: userId,
       targetType: kind,
       targetId: String(itemId),
-      details: { attemptRef, key, hasComment: comment !== undefined, hasEditedAnswer: editedAnswer !== undefined },
+      details: { attemptRef, key, hasComment: comment !== undefined, hasEditedAnswer: editedAnswer !== undefined, verdict },
     }, req);
 
     return NextResponse.json({ ok: true });

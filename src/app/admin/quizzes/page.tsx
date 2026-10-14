@@ -22,7 +22,7 @@ export default async function AdminQuizzesPage() {
       return folderId === null ? q.is("folder_id", null) : q.eq("folder_id", folderId);
     }),
     loadFoldersWithCounts("quiz"),
-    selectAllPages((from, to) => supabaseAdmin.from("courses").select("id, title").order("title").range(from, to)),
+    selectAllPages((from, to) => supabaseAdmin.from("courses").select("id, title, level").order("title").range(from, to)),
   ]);
 
   return (

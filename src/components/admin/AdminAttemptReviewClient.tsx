@@ -62,7 +62,7 @@ export default function AdminAttemptReviewClient({
     }
   };
 
-  const save = async (key: string, extra: { comment?: string; editedAnswer?: any }) => {
+  const save = async (key: string, extra: { comment?: string; editedAnswer?: any; verdict?: boolean }) => {
     setSaving(true);
     try {
       const headers = await authHeaders();
@@ -80,6 +80,7 @@ export default function AdminAttemptReviewClient({
   const adminMode = {
     onComment: (key: string, text: string) => save(key, { comment: text }),
     onEditAnswer: (key: string, value: any) => save(key, { editedAnswer: value }),
+    ...(kind === "exercise" ? { onVerdict: (key: string, correct: boolean) => save(key, { verdict: correct }) } : {}),
     saving,
   };
 

@@ -72,13 +72,34 @@ export default function AISectionEditModal({
       if (!res.ok) throw new Error(data.error || "Erreur de modification");
       if (!data.item) throw new Error("Réponse IA invalide");
 
-      // On fusionne avec la section existante : tout champ non renvoyé par l'IA
-      // est conservé, et on garde l'id d'origine.
-      let updated = { ...section, ...data.item, id: section.id };
+      let updated: any;
+      if (scope === "block" && section.type === "text") {
+        // Bloc de texte (énoncé, données) : il reste un bloc de texte, seul son contenu change.
+        updated = { ...section, content: data.item.content ?? section.content, id: section.id };
+      } else if (scope === "block" || scope === "question") {
+        // Une question modifiée REMPLACE l'ancienne en entier (on ne garde que son identifiant et ses points) : fusionner
+        // laissait traîner l'ancienne réponse attendue, l'ancienne explication, les anciens indices… et la correction
+        // automatique continuait donc de comparer à la question d'origine.
+        updated = { ...data.item, id: section.id };
+        if (updated.points === undefined && section.points !== undefined) updated.points = section.points;
+      } else if (scope === "page") {
+        // Page : les questions renvoyées par l'IA remplacent celles de la page, avec des identifiants neufs. L'IA numérote
+        // « block-1 », « block-2 »… : réutiliser ces noms ou ré-ajouter les anciennes questions créait des doublons
+        // d'identifiant, et la correction retrouvait alors l'ANCIENNE question à la place de la nouvelle.
+        updated = {
+          ...section,
+          ...data.item,
+          id: section.id,
+          blocks: (Array.isArray(data.item.blocks) ? data.item.blocks : []).map((b: any) => ({ ...b, id: crypto.randomUUID() })),
+        };
+      } else {
+        // On fusionne avec la section existante : tout champ non renvoyé par l'IA est conservé, et on garde l'id d'origine.
+        updated = { ...section, ...data.item, id: section.id };
+      }
 
-      // Filet de sécurité pour un élément parent (chapitre→leçons, page→blocs) :
+      // Filet de sécurité pour un élément parent (chapitre→leçons) :
       // si l'IA a oublié des enfants existants, on les ré-ajoute.
-      const childKey = CHILD_KEY[scope];
+      const childKey = scope === "page" ? undefined : CHILD_KEY[scope];
       if (childKey && Array.isArray(section[childKey]) && Array.isArray(updated[childKey])) {
         const returned = new Set(updated[childKey].map((c: any) => c?.id));
         const missing = section[childKey].filter((c: any) => !returned.has(c?.id));

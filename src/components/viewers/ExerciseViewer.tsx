@@ -57,7 +57,7 @@ export function AdminAttemptControls({
   currentAnswer: any;
   existingComment?: string;
   existingEditedAnswer?: any;
-  adminMode: { onComment: (key: string, text: string) => void; onEditAnswer: (key: string, value: any) => void; saving?: boolean };
+  adminMode: { onComment: (key: string, text: string) => void; onEditAnswer: (key: string, value: any) => void; onVerdict?: (key: string, correct: boolean) => void; saving?: boolean };
 }) {
   const [comment, setComment] = useState(existingComment || "");
   const [editing, setEditing] = useState(false);
@@ -79,6 +79,17 @@ export function AdminAttemptControls({
           Enregistrer
         </GlassButton>
       </div>
+      {adminMode.onVerdict && (
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-semibold text-purple-700">Correction manuelle :</span>
+          <GlassButton size="sm" variant="outline" onClick={() => adminMode.onVerdict?.(itemKey, true)} disabled={adminMode.saving}>
+            <CheckCircle className="w-3.5 h-3.5 text-green-600" /> Compter juste
+          </GlassButton>
+          <GlassButton size="sm" variant="outline" onClick={() => adminMode.onVerdict?.(itemKey, false)} disabled={adminMode.saving}>
+            <XCircle className="w-3.5 h-3.5 text-red-600" /> Compter fausse
+          </GlassButton>
+        </div>
+      )}
       {!editing ? (
         <GlassButton onClick={() => setEditing(true)} variant="outline" size="sm">
           Modifier la réponse enregistrée
@@ -169,6 +180,8 @@ interface ExerciseViewerProps {
   adminMode?: {
     onComment: (blockId: string, text: string) => void;
     onEditAnswer: (blockId: string, value: any) => void;
+    /** Correction manuelle : compter la réponse juste ou fausse (exercices). */
+    onVerdict?: (blockId: string, correct: boolean) => void;
     saving?: boolean;
   };
 }
@@ -1050,6 +1063,8 @@ export default function ExerciseViewer({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           block_id: block.id,
+          block,
+          grading_type: exercise.grading_type,
           answer: studentAnswer,
           question: block.content,
           correctAnswer: block.correctAnswer,
@@ -1455,6 +1470,14 @@ export default function ExerciseViewer({
       }
     }
 
+    // Correction manuelle : aucune note automatique, les réponses sont simplement enregistrées (l'enseignant les corrige ensuite).
+    if (exercise.grading_type === "manual") {
+      toGrade.splice(0).forEach(({ block }) => {
+        newResults[block.id] = false;
+        newSubmitted.add(block.id);
+      });
+    }
+
     if (toGrade.length > 0) {
       // La correction se fait toujours côté serveur (à partir des données
       // enregistrées en base) : le client ne connaît jamais la réponse
@@ -1468,7 +1491,7 @@ export default function ExerciseViewer({
                 fetch(`/api/child/exercises/preview/grade`, {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
-                  body: JSON.stringify({ block_id: block.id, answer, question: block.content, correctAnswer: block.correctAnswer, explanation: block.explanation, level: exercise.level || "6eme", points: block.points }),
+                  body: JSON.stringify({ block_id: block.id, block, grading_type: exercise.grading_type, answer, question: block.content, correctAnswer: block.correctAnswer, explanation: block.explanation, level: exercise.level || "6eme", points: block.points }),
                 }).then((r) => r.json()).then((d) => ({ ...d, block_id: block.id })),
               )
             : [
@@ -1596,7 +1619,9 @@ export default function ExerciseViewer({
     const mins = Math.floor(timeTotal / 60);
     const isPreview = isVirtualExercise(exercise.id);
     const threshold = passThreshold(exercise.min_score_percent);
-    const passed = percentage >= threshold;
+    const manual = exercise.grading_type === "manual";
+    const passed = manual || percentage >= threshold;
+    const answeredCount = submittedBlocks.size || Object.keys(results).length;
 
     return (
       <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">
@@ -1608,7 +1633,7 @@ export default function ExerciseViewer({
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-8 text-white w-full">
                   <div className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold rounded-full mb-3 shadow-md ${passed ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]" : "bg-red-500 text-white"}`}>
-                    {passed ? <><Trophy className="w-3.5 h-3.5" /> Exercice réussi !</> : <><XCircle className="w-3.5 h-3.5" /> Score insuffisant</>}
+                    {manual ? <><CheckCircle className="w-3.5 h-3.5" /> Copie envoyée</> : passed ? <><Trophy className="w-3.5 h-3.5" /> Exercice réussi !</> : <><XCircle className="w-3.5 h-3.5" /> Score insuffisant</>}
                   </div>
                   <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2">{exercise.title}</h1>
                 </div>
@@ -1621,29 +1646,37 @@ export default function ExerciseViewer({
                 <div className="flex-grow">
                   <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
                     <Trophy className="w-6 h-6 text-[var(--greek-gold)]" />
-                    Félicitations !
+                    {manual ? "Merci !" : "Félicitations !"}
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    Tu as terminé cet exercice. Consulte ta correction{onRestart && !restartBlocked ? " ou retente-le pour améliorer ton score" : ""} !
+                    {manual
+                      ? "Tes réponses sont enregistrées. Ton professeur va les corriger : tu verras ta note dès que ce sera fait."
+                      : <>Tu as terminé cet exercice. Consulte ta correction{onRestart && !restartBlocked ? " ou retente-le pour améliorer ton score" : ""} !</>}
                   </p>
-                  <div className="grid grid-cols-3 gap-3">
-                    {[
-                      { value: `${score}/${totalPoints}`, sub: "points obtenus" },
-                      { value: mins > 0 ? `${mins} min` : "< 1 min", sub: "temps passé" },
-                      { value: `${percentage}%`, sub: "réussite" },
-                    ].map((s, i) => (
+                  <div className={`grid gap-3 ${manual ? "grid-cols-2" : "grid-cols-3"}`}>
+                    {(manual
+                      ? [
+                          { value: `${answeredCount}`, sub: "questions envoyées" },
+                          { value: mins > 0 ? `${mins} min` : "< 1 min", sub: "temps passé" },
+                        ]
+                      : [
+                          { value: `${score}/${totalPoints}`, sub: "points obtenus" },
+                          { value: mins > 0 ? `${mins} min` : "< 1 min", sub: "temps passé" },
+                          { value: `${percentage}%`, sub: "réussite" },
+                        ]
+                    ).map((s, i) => (
                       <div key={s.sub} className={`rounded-xl p-4 text-center border ${i === 2 ? (passed ? "bg-green-50 border-green-300" : "bg-red-50 border-red-300") : "bg-[var(--greek-cream)] border-[rgba(197,161,72,0.25)]"}`}>
                         <p className={`text-xl font-bold font-[family-name:var(--font-display)] ${i === 2 ? (passed ? "text-green-600" : "text-red-600") : "text-[var(--greek-blue)]"}`}>{s.value}</p>
                         <p className="text-xs text-gray-400 mt-0.5">{s.sub}</p>
                       </div>
                     ))}
                   </div>
-                  {typeof bestScorePercent === "number" && bestScorePercent > percentage && (
+                  {!manual && typeof bestScorePercent === "number" && bestScorePercent > percentage && (
                     <p className="mt-3 text-sm text-[var(--greek-blue)] font-bold">
                       Ton meilleur score reste {bestScorePercent}%
                     </p>
                   )}
-                  {threshold > 0 && (
+                  {!manual && threshold > 0 && (
                     <div className={`mt-4 flex items-center gap-2 text-sm font-bold px-4 py-3 rounded-xl ${passed ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
                       {passed ? <CheckCircle className="w-4 h-4" /> : <XCircle className="w-4 h-4" />}
                       {passed ? `Seuil atteint (${threshold}% requis)` : `Seuil non atteint : ${threshold}% requis, tu as eu ${percentage}%`}
@@ -1655,18 +1688,20 @@ export default function ExerciseViewer({
                 <div className="w-full md:w-80 flex-shrink-0">
                   <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[rgba(197,161,72,0.25)] sticky top-24 space-y-3">
                     <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 text-center">Et maintenant ?</h3>
-                    <GlassButton
-                      onClick={() => {
-                        setExerciseCompleted(false);
-                        setShowReview(true);
-                        setCurrentScreenIndex(0);
-                      }}
-                      variant="navy"
-                      fullWidth
-                      className="font-bold text-base"
-                    >
-                      Voir la correction
-                    </GlassButton>
+                    {!manual && (
+                      <GlassButton
+                        onClick={() => {
+                          setExerciseCompleted(false);
+                          setShowReview(true);
+                          setCurrentScreenIndex(0);
+                        }}
+                        variant="navy"
+                        fullWidth
+                        className="font-bold text-base"
+                      >
+                        Voir la correction
+                      </GlassButton>
+                    )}
                     {onRestart && !isPreview && !restartBlocked && (
                       <>
                         <GlassButton onClick={onRestart} variant="navy" fullWidth className="font-bold text-base">

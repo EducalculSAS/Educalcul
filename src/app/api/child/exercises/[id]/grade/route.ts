@@ -19,6 +19,8 @@ const AI_CONCURRENCY = 4;
 interface GradeItem {
   block_id?: string;
   answer: unknown;
+  /** Aperçu admin uniquement : la question complète (le contenu n'est pas encore enregistré). */
+  block?: any;
 }
 
 interface GradeResult {
@@ -30,6 +32,8 @@ interface GradeResult {
   reveal?: unknown;
   unavailable?: boolean;
   comment_token?: string;
+  /** Correction manuelle : la réponse est enregistrée, aucun verdict automatique. */
+  pending?: boolean;
 }
 
 /** Exécute des tâches avec au plus `limit` en parallèle (appels IA). */
@@ -127,18 +131,35 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     const { id } = await params;
     const body = await req.json().catch(() => ({}));
     const batch = Array.isArray(body.items);
-    const items: GradeItem[] = (batch ? body.items : [{ block_id: body.block_id, answer: body.answer }]).slice(0, MAX_ITEMS);
+    const items: GradeItem[] = (batch ? body.items : [{ block_id: body.block_id, answer: body.answer, block: body.block }]).slice(0, MAX_ITEMS);
 
     let level = "6ème";
     let blockFor: (blockId?: string) => any;
     let defaultPoints = 1;
+    let manual = false;
 
     if (id === "preview") {
-      // Aperçu admin (contenu pas encore enregistré) : l'énoncé vient du corps.
-      const preview = { content: body.question, correctAnswer: body.correctAnswer, explanation: body.explanation, type: "text_input", points: body.points || 1 };
+      // Aperçu admin (contenu pas encore enregistré) : réservé aux admins, la question vient du corps.
+      if (me.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
       level = body.level || level;
-      blockFor = () => preview;
-      defaultPoints = preview.points;
+      manual = body.grading_type === "manual";
+      const forceAiPreview = body.grading_type === "ai";
+      // Chaque question part avec son bloc COMPLET : elle est corrigée comme dans l'exercice enregistré (association,
+      // catégories, QCM… ). Avant, tout était traité comme une réponse libre, donc une question « catégoriser » ou
+      // « relier » ne pouvait jamais être juste dans l'aperçu.
+      const previewBlocks = new Map<string, any>();
+      for (const it of items) {
+        const b = it.block && typeof it.block === "object" ? it.block : null;
+        const bid = String(it.block_id ?? b?.id ?? "");
+        if (b && bid) previewBlocks.set(bid, b);
+      }
+      const legacy = { content: body.question, correctAnswer: body.correctAnswer, explanation: body.explanation, type: "text_input", points: body.points || 1 };
+      blockFor = (blockId) => {
+        const b = blockId ? previewBlocks.get(String(blockId)) : undefined;
+        if (!b) return legacy;
+        return forceAiPreview && !FREE_TYPES.has(b.type) ? { ...b, type: "text_input" } : b;
+      };
+      defaultPoints = legacy.points;
     } else if (id === "review") {
       // Séance « à revoir » : chaque question est retrouvée par sa clé du carnet d'erreurs, dans sa source d'origine.
       const keys = items.map((i) => parseReviewKey(String(i.block_id ?? ""))).filter((k): k is NonNullable<typeof k> => !!k);
@@ -170,6 +191,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
         for (const b of page?.blocks ?? []) if (b?.id) blocks.set(b.id, b);
       }
       const forceAi = exercise.grading_type === "ai";
+      manual = exercise.grading_type === "manual";
       blockFor = (blockId) => {
         const b = blockId ? blocks.get(blockId) : undefined;
         return b && forceAi && !FREE_TYPES.has(b.type) ? { ...b, type: "text_input" } : b;
@@ -184,6 +206,11 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       }
       const maxPoints = blockMaxPoints(block, defaultPoints);
       const isImage = typeof item.answer === "string" && item.answer.startsWith("data:image");
+
+      // Correction manuelle : la réponse est conservée telle quelle, sans verdict ni révélation de la solution.
+      if (manual) {
+        return { block_id: item.block_id, score: 0, max_score: maxPoints, is_correct: false, pending: true, feedback: "Réponse enregistrée : elle sera corrigée par ton professeur." };
+      }
 
       if (FREE_TYPES.has(block.type) || isImage) {
         const r = await gradeFreeAnswer({
@@ -226,7 +253,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     });
 
     // Carnet d'erreurs : une question ratée y entre, une question revue y avance (une seule écriture par envoi).
-    if (id !== "preview") {
+    if (id !== "preview" && !manual) {
       const srsResults: SrsResult[] = [];
       for (const r of results) {
         if (r.unavailable || !r.block_id || !blockFor(r.block_id)) continue;
@@ -239,7 +266,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     }
 
     // Badges : une seule vérification par envoi (en arrière-plan).
-    if (id !== "preview" && id !== "review" && results.some((r) => !r.unavailable)) {
+    if (id !== "preview" && id !== "review" && !manual && results.some((r) => !r.unavailable)) {
       const selfOrigin = new URL(req.url).origin;
       fetch(`${selfOrigin}/api/child/check-badges`, {
         method: "POST",

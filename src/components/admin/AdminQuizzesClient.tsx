@@ -66,6 +66,7 @@ import QuizViewer from "@/components/viewers/QuizViewer";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import PageLoader from "@/components/PageLoader";
 import { SCHOOL_LEVELS, SCHOOL_CYCLES, getLevelLabel, getLevelCycle, getEffectiveFolderLevel } from "@/lib/constants";
+import CourseSelect from "@/components/admin/CourseSelect";
 
 const FOLDER_COLORS = [
   "#3b82f6", // Blue
@@ -157,6 +158,7 @@ export interface Quiz {
 export interface Course {
   id: string;
   title: string;
+  level?: string | null;
 }
 
 export interface QuizFolder {
@@ -795,6 +797,7 @@ export default function AdminQuizzesClient({
         content_json: [],
       });
     }
+    fetchInitialData();
     setIsModalOpen(true);
   };
 
@@ -920,6 +923,7 @@ export default function AdminQuizzesClient({
                   thumbnail_filename: "",
                   content_json: [],
                 });
+                fetchInitialData();
                 setIsModalOpen(true);
               }}
             >
@@ -1442,14 +1446,7 @@ export default function AdminQuizzesClient({
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-1.5">Cours associé</label>
-                        <select
-                          value={formData.course_id}
-                          onChange={(e) => setFormData({ ...formData, course_id: e.target.value })}
-                          className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
-                        >
-                          <option value="">Aucun</option>
-                          {courses.map((c) => (<option key={c.id} value={c.id}>{c.title}</option>))}
-                        </select>
+                        <CourseSelect value={formData.course_id} onChange={(id) => setFormData({ ...formData, course_id: id })} courses={courses} />
                       </div>
                       <div>
                         <label className="block text-sm font-semibold text-gray-700 mb-1.5">Dossier</label>

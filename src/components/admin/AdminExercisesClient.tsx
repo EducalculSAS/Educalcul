@@ -68,6 +68,7 @@ import { SCHOOL_LEVELS, SCHOOL_CYCLES, getLevelLabel, getLevelCycle, getEffectiv
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { EXERCISE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import { compileHandAuthoredExercise } from "@/lib/ai/handAuthoredContent";
+import CourseSelect from "@/components/admin/CourseSelect";
 
 const FOLDER_COLORS = [
   "#3b82f6", // Blue
@@ -163,6 +164,7 @@ export interface Exercise {
 export interface Course {
   id: string;
   title: string;
+  level?: string | null;
 }
 
 export interface ExerciseFolder {
@@ -826,6 +828,7 @@ export default function AdminExercisesClient({
   };
 
   const openEditModal = (exercise: Exercise) => {
+    fetchInitialData();
     setEditingExercise(exercise);
     setFormData({
       title: exercise.title,
@@ -970,7 +973,7 @@ export default function AdminExercisesClient({
             <GlassButton size="sm" variant="ghost" onClick={() => setShowImportModal(true)}>
               <Upload size={16} /> JSON
             </GlassButton>
-            <GlassButton size="sm" variant="navy" onClick={() => { resetForm(); setIsModalOpen(true); }}>
+            <GlassButton size="sm" variant="navy" onClick={() => { fetchInitialData(); resetForm(); setIsModalOpen(true); }}>
               <Plus size={18} />
               Nouvel Exercice
             </GlassButton>
@@ -1493,14 +1496,7 @@ export default function AdminExercisesClient({
                       <div className="grid grid-cols-2 gap-3">
                         <div>
                           <label className="block text-sm font-semibold text-gray-700 mb-1.5">Cours associé</label>
-                          <select
-                            value={formData.course_id}
-                            onChange={(e) => setFormData({ ...formData, course_id: e.target.value })}
-                            className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
-                          >
-                            <option value="">Aucun</option>
-                            {courses.map((c) => (<option key={c.id} value={c.id}>{c.title}</option>))}
-                          </select>
+                          <CourseSelect value={formData.course_id} onChange={(id) => setFormData({ ...formData, course_id: id })} courses={courses} />
                         </div>
                         <div>
                           <label className="block text-sm font-semibold text-gray-700 mb-1.5">Dossier</label>
@@ -1578,15 +1574,19 @@ export default function AdminExercisesClient({
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Durée estimée</label>
-                      <select
-                        value={formData.estimated_time ?? 15}
-                        onChange={(e) => setFormData({ ...formData, estimated_time: parseInt(e.target.value) })}
-                        className="w-full px-4 py-2.5 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
-                      >
-                        {[5, 10, 15, 20, 30, 45, 60, 90].map((m) => (
-                          <option key={m} value={m}>{m} min</option>
-                        ))}
-                      </select>
+                      <div className="relative">
+                        <input
+                          type="number" min={1} max={600}
+                          value={formData.estimated_time ?? ""}
+                          onChange={(e) => {
+                            const n = parseInt(e.target.value, 10);
+                            setFormData({ ...formData, estimated_time: Number.isFinite(n) ? Math.min(600, Math.max(1, n)) : undefined });
+                          }}
+                          aria-label="Durée estimée en minutes"
+                          className="w-full px-4 py-2.5 pr-14 border-2 border-[var(--greek-blue)]/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white font-semibold"
+                        />
+                        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-sm text-gray-400 pointer-events-none">min</span>
+                      </div>
                     </div>
                     <div>
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Statut</label>

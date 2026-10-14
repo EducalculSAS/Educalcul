@@ -51,6 +51,9 @@ function unwrapText(input: string): string {
 function cleanLatex(raw: string): string {
   let s = raw;
   s = s.replace(/\{,\}/g, ","); // virgule décimale MathLive native (ex: "3{,}14")
+  // Tirets typographiques (moins « − », demi-cadratin « – », cadratin « — », traits d'union insécables) : tous valent « - ».
+  // Un « − » collé ou tapé depuis un autre clavier faisait lire « −3 » comme du texte, donc une réponse juste refusée.
+  s = s.replace(/[\u2212\u2013\u2014\u2010\u2011\u2012\u207B\uFE63\uFF0D]/g, "-");
   s = unwrapText(s);
   s = s.replace(/\\left|\\right/g, "");
   s = s.replace(/\\[,;!]/g, "");
@@ -61,6 +64,13 @@ function cleanLatex(raw: string): string {
   // (résidu possible après le déballage de \text{...}).
   const wrapped = s.match(/^\{([^{}]*)\}$/);
   if (wrapped) s = wrapped[1];
+  // Parenthèses qui enveloppent TOUTE la réponse : « (-3) » vaut « -3 », « (3) » vaut « 3 » (un nombre négatif se met
+  // souvent entre parenthèses) ; un « + » de tête ne change rien non plus.
+  for (let i = 0; i < 2; i++) {
+    const paren = s.match(/^\(([^()]*)\)$/);
+    if (paren) s = paren[1];
+  }
+  if (/^\+\d/.test(s)) s = s.slice(1);
   return s;
 }
 

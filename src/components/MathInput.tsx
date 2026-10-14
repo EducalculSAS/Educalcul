@@ -262,9 +262,16 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     // 123 personnalisé (voir NUM_ROWS dans seed-math-keyboards.ts). Les
     // opérateurs (+ - × ÷ =) ne sont PAS interceptés : ils restent de vrais
     // symboles maths, y compris tapés au clavier physique.
+    //
+    // Exceptions, pour que le texte ne casse pas les structures : les CHIFFRES et la virgule restent toujours de vraies
+    // saisies maths à l'endroit du curseur (sinon ils tombaient après une fraction, des parenthèses ou une racine au lieu
+    // d'y entrer), et une lettre tapée À L'INTÉRIEUR d'une structure (curseur avant la fin du champ) est saisie
+    // normalement elle aussi.
     const letterKeydownHandler = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       if (!/^[a-zA-Z0-9À-ÿ,]$/.test(e.key)) return;
+      if (/^[0-9,]$/.test(e.key)) return;
+      if (mf.position < mf.lastOffset) return;
       e.preventDefault();
       e.stopPropagation();
       mf.value = mergeTrailingText(mf.value, `\\text{${e.key}}`);
@@ -426,6 +433,18 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     const mf = mfRef.current;
     if (!mf) return;
     if (key.text !== undefined) {
+      // Chiffres et virgule : insérés À L'ENDROIT DU CURSEUR, comme des maths. En « texte » ils s'ajoutaient toujours à la
+      // toute fin du champ : impossible alors de remplir le haut ou le bas d'une fraction, l'intérieur de parenthèses
+      // ou d'une racine (les chiffres tombaient après la structure).
+      if (/^[0-9]$/.test(key.text) || key.text === ",") {
+        mf.insert(key.text === "," ? "{,}" : key.text, { focus: true, format: "latex", selectionMode: "after" } as any);
+        return;
+      }
+      // Une lettre tapée dans une structure (fraction, parenthèses…) s'y insère ; ailleurs elle s'ajoute en texte à la fin.
+      if (/^[a-zA-ZÀ-ÿ]$/.test(key.text) && mf.position < mf.lastOffset) {
+        mf.insert(key.text, { focus: true, format: "latex", selectionMode: "after" } as any);
+        return;
+      }
       appendText(`\\text{${key.text}}`);
       return;
     }
@@ -460,7 +479,8 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
         return;
       }
       const hasPlaceholder = key.latex.includes("\\placeholder");
-      mf.insert(key.latex, {
+      // Virgule décimale : « {,} » (sans l'espace que LaTeX met après une virgule), comme sur une calculatrice.
+      mf.insert(key.latex === "," ? "{,}" : key.latex, {
         focus: true,
         format: "latex",
         selectionMode: hasPlaceholder ? "placeholder" : "after",
