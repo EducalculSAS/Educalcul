@@ -4,7 +4,7 @@ import { isoUint8Array, isoBase64URL } from "@simplewebauthn/server/helpers";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { getWebauthnRp } from "@/lib/webauthn";
 
 /** Permet à un parent d'enregistrer/lister/supprimer une clé d'accès
@@ -43,8 +43,8 @@ export async function GET(req: Request) {
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
     return NextResponse.json({ credentials: data || [] });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -134,9 +134,9 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ error: "Action inconnue" }, { status: 400 });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[parent/child-webauthn POST] failed:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -158,7 +158,7 @@ export async function DELETE(req: Request) {
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
     return NextResponse.json({ deleted: true });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

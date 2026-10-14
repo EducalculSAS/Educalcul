@@ -157,7 +157,6 @@ function ScrollRevealGroup({ children, className }: { children: (visible: boolea
     const el = ref.current;
     if (!el) return;
     if (el.getBoundingClientRect().top < window.innerHeight) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true);
       return;
     }

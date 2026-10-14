@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sendEmail } from "@/lib/mailer";
@@ -64,8 +64,8 @@ export async function POST(req: NextRequest) {
 
     await sendEmail({ toEmail, toName: firstName, ...tmpl });
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 

@@ -532,7 +532,7 @@ export async function buildJsxBoard(
           };
           created.rendNodeCheckbox?.addEventListener("change", apply);
           if (e.checked === false) {
-            created.rendNodeCheckbox && (created.rendNodeCheckbox.checked = false);
+            if (created.rendNodeCheckbox) created.rendNodeCheckbox.checked = false;
             apply();
           }
           break;

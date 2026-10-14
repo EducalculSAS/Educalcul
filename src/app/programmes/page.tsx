@@ -64,7 +64,7 @@ export default async function ProgrammesPage() {
                 Programmes 100 % conformes aux référentiels officiels
               </p>
               <p className="text-sm mt-1.5 leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                Tous les contenus d'Educalcul sont élaborés en stricte conformité avec les programmes publiés par le Ministère de l'Éducation Nationale et référencés sur Éduscol.
+                Tous les contenus d&apos;Educalcul sont élaborés en stricte conformité avec les programmes publiés par le Ministère de l&apos;Éducation Nationale et référencés sur Éduscol.
               </p>
             </div>
           </FadeInSection>

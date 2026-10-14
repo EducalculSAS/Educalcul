@@ -40,6 +40,5 @@ export function useKatexIn(ref: RefObject<HTMLElement | null>, deps: DependencyL
     };
     if ((window as unknown as { renderMathInElement?: AutoRender }).renderMathInElement) render();
     else ensureKatexAutoRenderLoaded().then(render).catch(() => {});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps);
 }

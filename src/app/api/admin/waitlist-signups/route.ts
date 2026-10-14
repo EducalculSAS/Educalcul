@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { requireRole } from "@/lib/apiAuth";
 import { fetchWaitlistSignups } from "@/lib/waitlistQuery";
 
@@ -13,7 +13,7 @@ export async function GET(req: Request) {
     if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     return NextResponse.json(await fetchWaitlistSignups());
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

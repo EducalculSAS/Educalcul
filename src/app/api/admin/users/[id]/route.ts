@@ -1,5 +1,5 @@
 ﻿import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 
@@ -102,9 +102,9 @@ export async function GET(
       notifications: notifs ?? [],
       badges: bdg ?? [],
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
-      { error: sanitizeErrorMessage(err.message) },
+      { error: sanitizeErrorMessage(errMessage(err)) },
       { status: 500 },
     );
   }
@@ -133,9 +133,9 @@ export async function PUT(
         { status: 500 },
       );
     return NextResponse.json(data);
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
-      { error: sanitizeErrorMessage(err.message) },
+      { error: sanitizeErrorMessage(errMessage(err)) },
       { status: 500 },
     );
   }
@@ -230,9 +230,9 @@ export async function POST(
       return NextResponse.json({ success: true });
     }
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
-      { error: sanitizeErrorMessage(err.message) },
+      { error: sanitizeErrorMessage(errMessage(err)) },
       { status: 500 },
     );
   }

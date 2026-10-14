@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       discount_value: data.discount_value,
       description: data.description,
     });
-  } catch (err: any) {
-    return NextResponse.json({ valid: false, error: sanitizeErrorMessage(err.message) });
+  } catch (err: unknown) {
+    return NextResponse.json({ valid: false, error: sanitizeErrorMessage(errMessage(err)) });
   }
 }

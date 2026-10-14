@@ -12,6 +12,7 @@ import CustomMathKeyboard, {
   type MathKeyboardKey,
   type MathKeyboardTab,
 } from "@/components/CustomMathKeyboard";
+import { errMessage } from "@/lib/safeError";
 
 interface KeyboardRow {
   id: number;
@@ -202,8 +203,8 @@ export default function AdminKeyboardsClient({ initialKeyboards }: { initialKeyb
       });
       if (!res.ok) throw new Error((await res.json().catch(() => ({}))).error || "Échec");
       setNotice("Clavier enregistré.");
-    } catch (e: any) {
-      setNotice(`Erreur : ${e.message || e}`);
+    } catch (e: unknown) {
+      setNotice(`Erreur : ${errMessage(e) || e}`);
     } finally {
       setSaving(false);
       setTimeout(() => setNotice(null), 3000);

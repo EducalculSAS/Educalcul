@@ -64,12 +64,12 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
     })();
   }, []);
 
-  const fetchTickets = async (userId: string) => {
+  async function fetchTickets(userId: string) {
     setLoading(true);
     const res = await fetch(`/api/support?userId=${userId}`);
     if (res.ok) setTickets(await res.json());
     setLoading(false);
-  };
+  }
 
   const submitTicket = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -198,7 +198,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
                 const replies = ticket.replies || [];
                 return (
                   <div key={ticket.id} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
-                    <button onClick={() => setExpanded(prev => { const next = new Set(prev); isExpanded ? next.delete(ticket.id) : next.add(ticket.id); return next; })}
+                    <button onClick={() => setExpanded(prev => { const next = new Set(prev); if (isExpanded) next.delete(ticket.id); else next.add(ticket.id); return next; })}
                       className="w-full p-5 flex items-start justify-between gap-4 text-left hover:bg-gray-50 transition-colors">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1 flex-wrap">

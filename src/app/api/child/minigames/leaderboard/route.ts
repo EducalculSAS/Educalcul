@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { gradeLevelToPalier, palierToGradeLevels } from "@/lib/minigames/levels";
@@ -94,7 +94,7 @@ export async function GET(request: Request) {
       leaderboard,
       me: { total: myTotal, rank: myRank },
     });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

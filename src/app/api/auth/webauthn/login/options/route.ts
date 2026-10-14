@@ -3,7 +3,7 @@ import { generateAuthenticationOptions } from "@simplewebauthn/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { getWebauthnRp } from "@/lib/webauthn";
 
 // Options de la vérification par clé d'accès, SECOND facteur après le mot de
@@ -53,8 +53,8 @@ export async function POST(req: Request) {
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
     return NextResponse.json(options);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[webauthn/login/options] failed:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

@@ -87,7 +87,8 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
   const toggleTicket = (id: number) => {
     setOpenTicketIds((prev) => {
       const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
       return next;
     });
   };
@@ -167,7 +168,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-12 text-center shadow-sm">
           <Mail className="w-12 h-12 text-gray-300 mx-auto mb-4" aria-hidden="true" />
           <p className="text-gray-400 font-medium">Aucun message pour le moment</p>
-          <p className="text-gray-300 text-sm mt-1">L'équipe Educalcul vous contactera ici si besoin</p>
+          <p className="text-gray-300 text-sm mt-1">L&apos;équipe Educalcul vous contactera ici si besoin</p>
         </div>
       ) : (
         <div className="space-y-4">

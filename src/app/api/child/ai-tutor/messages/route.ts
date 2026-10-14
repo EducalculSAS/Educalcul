@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 /** Historique de conversation Calia (tuteur IA), persisté côté serveur — plus
  * de localStorage (données potentiellement sensibles d'un enfant, sans
@@ -26,8 +26,8 @@ export async function GET(req: Request) {
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
     return NextResponse.json({ messages: data || [] });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -49,7 +49,7 @@ export async function DELETE(req: Request) {
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

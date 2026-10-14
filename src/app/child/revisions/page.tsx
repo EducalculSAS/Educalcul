@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { redirect } from "next/navigation";
 import { BookOpen, BrainCircuit, CheckCircle2, Repeat, RotateCcw } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";

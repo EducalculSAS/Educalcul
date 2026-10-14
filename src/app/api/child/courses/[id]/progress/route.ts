@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 
@@ -46,7 +46,7 @@ export async function GET(
       chapterIndex: data?.chapter_index ?? null,
       status: data?.status || null,
     });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

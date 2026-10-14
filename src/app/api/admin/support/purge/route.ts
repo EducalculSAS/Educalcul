@@ -1,6 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { selectAllPages } from "@/lib/selectAllPages";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 
@@ -48,7 +48,7 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(deleteError.message) }, { status: 500 });
 
     return NextResponse.json({ deletedCount: count });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

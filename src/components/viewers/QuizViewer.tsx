@@ -2,7 +2,7 @@
 
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef } from "react";
-import { CheckCircle, XCircle, ArrowRight, ArrowLeft, RotateCcw, Trophy, Loader2, Sparkles, Type, HelpCircle, Clock, Eye, AlertTriangle } from "lucide-react";
+import { CheckCircle, XCircle, ArrowRight, ArrowLeft, Trophy, Loader2, Type, HelpCircle, Clock, AlertTriangle } from "lucide-react";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -66,7 +66,6 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [showReview, setShowReview] = useState(!!reviewMode);
   const [showExplanation, setShowExplanation] = useState(false);
-  const [isGrading, setIsGrading] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [gradingError, setGradingError] = useState<string | null>(null);
 
@@ -176,14 +175,15 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   const [revealed, setRevealed] = useState<
     Record<number, { correctAnswer?: string | string[]; explanation?: string }>
   >(() => (reviewMode ? initialProgress?.revealed : undefined) || {});
-  const contentRef = useRef<HTMLDivElement>(null);
   const mainScrollRef = useRef<HTMLDivElement>(null);
 
   // Timer
   const timeLimitSeconds = quiz.time_limit_minutes ? quiz.time_limit_minutes * 60 : null;
   const [elapsed, setElapsed] = useState(0); // seconds elapsed
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const startTimeRef = useRef<number>(Date.now());
+  const startTimeRef = useRef<number>(0);
+  // Le chrono démarre au montage ; cet effet précède celui du minuteur, qui lit startTimeRef.
+  useEffect(() => { startTimeRef.current = Date.now(); }, []);
 
   useEffect(() => {
     if (reviewMode || quizCompleted) {
@@ -200,6 +200,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
       }
     }, 1000);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, [quizCompleted]);
 
   const formatTime = (s: number) => {
@@ -250,6 +251,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   useEffect(() => {
     if (reviewMode) return;
     saveProgress('in_progress', 0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, []);
 
   // Sauvegarde la progression détaillée (réponses, résultats, feedback) en base
@@ -381,7 +383,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     }
   };
 
-  const validateAllAnswers = async () => {
+  async function validateAllAnswers() {
     setIsValidating(true);
     setGradingError(null);
     let totalScore = 0;
@@ -483,7 +485,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     // Save completed progress with pass/fail
     const tp = questions.reduce((acc, q) => acc + (q.points || 1), 0);
     const pct = tp > 0 ? Math.round((totalScore / tp) * 100) : 100;
-    const didPass = pct >= passThreshold((quiz as any).min_score_percent);
+    const didPass = pct >= passThreshold(quiz.min_score_percent);
     saveProgress('completed', totalScore, pct, didPass);
     saveDetailedProgress('completed', { results: newResults, feedbacks: newFeedbacks, revealed: newRevealed, finalScore: totalScore });
 
@@ -491,7 +493,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
       const totalPoints = questions.reduce((acc, q) => acc + (q.points || 1), 0);
       onComplete(totalScore, totalPoints, elapsed);
     }
-  };
+  }
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
@@ -504,16 +506,6 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex(currentQuestionIndex - 1);
     }
-  };
-
-  const handleRestart = () => {
-    setCurrentQuestionIndex(0);
-    setAnswers({});
-    setIsAnswerSubmitted(false);
-    setScore(0);
-    setQuizCompleted(false);
-    setShowReview(false);
-    setShowExplanation(false);
   };
 
   if (!questions.length) {
@@ -529,8 +521,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     const totalPoints = questions.reduce((acc, q) => acc + q.points, 0);
     const percentage = Math.round((score / totalPoints) * 100);
     const mins = Math.floor(elapsed / 60);
-    const isPreview = (quiz as any).id === undefined || (quiz as any).id === "preview";
-    const threshold = passThreshold((quiz as any).min_score_percent);
+    const threshold = passThreshold(quiz.min_score_percent);
     const passed = percentage >= threshold;
 
     return (
@@ -559,7 +550,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                     Félicitations !
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    Tu as terminé ce quiz. Consulte ta correction ou retourne t'exercer !
+                    Tu as terminé ce quiz. Consulte ta correction ou retourne t&apos;exercer !
                   </p>
                   <div className="grid grid-cols-3 gap-3">
                     {[
@@ -905,13 +896,13 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             <div className="mb-6 space-y-2">
               {adminEditedAnswers[String(currentQuestionIndex)] !== undefined && (
                 <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg text-purple-800 text-xs">
-                  <span className="font-bold block mb-0.5">Réponse corrigée par l'admin :</span>
+                  <span className="font-bold block mb-0.5">Réponse corrigée par l&apos;admin :</span>
                   {typeof adminEditedAnswers[String(currentQuestionIndex)] === "string" ? adminEditedAnswers[String(currentQuestionIndex)] : JSON.stringify(adminEditedAnswers[String(currentQuestionIndex)])}
                 </div>
               )}
               {adminComments[String(currentQuestionIndex)] && (
                 <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg text-purple-800 text-xs">
-                  <span className="font-bold block mb-0.5">Commentaire de l'admin :</span>
+                  <span className="font-bold block mb-0.5">Commentaire de l&apos;admin :</span>
                   {adminComments[String(currentQuestionIndex)]}
                 </div>
               )}
@@ -963,7 +954,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                         setQuizCompleted(true);
                         const tp = questions.reduce((acc, q) => acc + (q.points || 1), 0);
                         const pct = tp > 0 ? Math.round((score / tp) * 100) : 100;
-                        const didPass = pct >= passThreshold((quiz as any).min_score_percent);
+                        const didPass = pct >= passThreshold(quiz.min_score_percent);
                         saveProgress('completed', score, pct, didPass);
                       }
                   : currentQuestionIndex < questions.length - 1

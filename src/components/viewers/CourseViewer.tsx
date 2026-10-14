@@ -1,27 +1,11 @@
 ﻿"use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import Image from "next/image";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useMemo } from "react";
-import {
-  Play,
-  CheckCircle,
-  Circle,
-  ChevronRight,
-  Menu,
-  X,
-  FileText,
-  Video,
-  HelpCircle,
-  ChevronLeft,
-  Sparkles,
-  Lightbulb,
-  PencilLine,
-  Loader2,
-  Keyboard,
-  Pencil,
-  Image as ImageIcon,
-} from "lucide-react";
-import { Chapter, Lesson, Exercise } from "@/components/admin/CourseBuilder";
+import { Play, CheckCircle, ChevronRight, Menu, X, FileText, Video, ChevronLeft, Sparkles, Lightbulb, PencilLine, Loader2, Keyboard, Pencil, Image as ImageIcon } from "lucide-react";
+import { Chapter, Exercise } from "@/components/admin/CourseBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -90,7 +74,7 @@ interface CourseViewerProps {
 }
 
 export default function CourseViewer({ course, onComplete, onChapterComplete, onBack, reviewMode }: CourseViewerProps) {
-  const { setPageContext, pageContext } = useAITutor();
+  const { setPageContext } = useAITutor();
   
   const chapters = useMemo(
     () => (course.content_json || []).map((c) => ({ ...c, lessons: c.lessons || [] })),
@@ -115,14 +99,13 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   // bloquer "Terminer le cours" sur la dernière leçon (bilan) tant que
   // l'élève n'a pas coché toute sa checklist "Je sais faire".
   const [checklistComplete, setChecklistComplete] = useState(true);
-  const [selectedText, setSelectedText] = useState("");
-  const [selectionPosition, setSelectionPosition] = useState({ x: 0, y: 0 });
+  const [, setSelectedText] = useState("");
   const contentRef = useRef<HTMLDivElement>(null);
   const mainScrollRef = useRef<HTMLDivElement>(null);
   const popupRef = useRef<HTMLDivElement>(null);
   const selectedTextRef = useRef("");
   const rangeRef = useRef<Range | null>(null);
-  const sessionStartRef = useRef<number>(Date.now());
+  const sessionStartRef = useRef<number>(0); // posé au montage (voir l'effet plus bas)
   // Rempli par l'effet de chargement serveur ci-dessous (progress_json.timeSpent).
   const accumulatedSecondsRef = useRef(0);
   // Tant qu'un clavier mathématique est ouvert (mini-exo dans la leçon), on
@@ -149,7 +132,14 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   useEffect(() => {
     sessionStartRef.current = Date.now();
     return () => { saveTimeSpent(); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, []);
+  // Durée affichée sur l'écran de fin : figée au moment où le cours se termine (l'affichage ne lit pas de ref).
+  const [timeTotal, setTimeTotal] = useState(0);
+  useEffect(() => {
+    if (courseCompleted) setTimeTotal(getAccumulatedSeconds());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- seule la fin du cours déclenche la mesure
+  }, [courseCompleted]);
 
   const currentChapter = chapters[currentChapterIndex];
   const currentLesson = currentChapter?.lessons[currentLessonIndex];
@@ -173,9 +163,10 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         exercises: (l.exercises || []).map((e) => ({ question: e.question, hint: e.hint, answer: e.answer })),
       }))
     ),
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- seuls les champs listés comptent ; l'objet entier change d'identité sans que le contenu change
   }), [course.title, course.level, chapters, currentChapterIndex, currentLessonIndex]);
 
-  const [isRendering, setIsRendering] = useState(false);
+  const [isRendering] = useState(false);
 
   // Initialize AI context with course content
   useEffect(() => {
@@ -214,6 +205,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
       lessonTitle: currentLesson.title,
       contentLength: lessonContent.length,
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- seuls les champs listés comptent ; l'objet entier change d'identité sans que le contenu change
   }, [course.title, currentChapterIndex, currentLessonIndex, setPageContext, chapters]);
 
   // KaTeX pré-rendu via renderLatexInHTML — pas besoin de useLayoutEffect
@@ -232,19 +224,6 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     }, 120);
     return () => clearTimeout(t);
   }, [currentChapterIndex, currentLessonIndex]);
-
-  // Remove existing highlights
-  const clearHighlights = () => {
-    if (!contentRef.current) return;
-    contentRef.current.querySelectorAll("mark.athena-highlight").forEach(mark => {
-      const parent = mark.parentNode;
-      if (parent) {
-        while (mark.firstChild) parent.insertBefore(mark.firstChild, mark);
-        parent.removeChild(mark);
-        parent.normalize();
-      }
-    });
-  };
 
   // Detect text selection — apply persistent <mark> highlight
   useEffect(() => {
@@ -391,6 +370,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   useEffect(() => {
     if (!progressLoadedFromDbRef.current || reviewMode) return;
     saveProgress('in_progress', currentChapterIndex);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, [currentChapterIndex]);
 
 
@@ -490,7 +470,6 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
   if (courseCompleted) {
     const totalLessons = chapters.reduce((acc, c) => acc + (c.lessons?.length || 0), 0);
-    const timeTotal = getAccumulatedSeconds();
     const mins = Math.floor(timeTotal / 60);
     const courseFull = course as any;
 
@@ -504,7 +483,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                 <img src={courseFull.thumbnail_url} alt={course.title} className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/10">
-                  <img src="/logo.png" alt="Educalcul" className="w-24 h-24 object-contain opacity-20" />
+                  <Image src="/logo.png" alt="Educalcul" width={96} height={96} className="w-24 h-24 object-contain opacity-20" />
                 </div>
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -526,7 +505,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                     Félicitations !
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    Tu as terminé ce cours avec succès. Maintenant que tu maîtrises ces notions, mets tes connaissances à l'épreuve !
+                    Tu as terminé ce cours avec succès. Maintenant que tu maîtrises ces notions, mets tes connaissances à l&apos;épreuve !
                   </p>
 
                   {/* Stats grid */}
@@ -784,7 +763,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                        <InlineMiniExercises
                          lessonId={currentLesson.id}
                          exercises={currentLesson.exercises}
-                         level={(course as any).level}
+                         level={course.level}
                          title={currentLesson.type === 'quiz' ? 'Quiz' : 'Mini-exercices'}
                        />
                      ) : (
@@ -819,7 +798,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                                key={block.id}
                                lessonId={currentLesson.id}
                                exercises={[block.exercise]}
-                               level={(course as any).level}
+                               level={course.level}
                                compact
                                startNumber={exerciseCount}
                              />
@@ -839,7 +818,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                            currentLesson.content || "",
                            currentLesson.exercises || [],
                            currentLesson.id,
-                           (course as any).level,
+                           course.level,
                            setChecklistComplete
                          )}
                        </div>
@@ -865,7 +844,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                     <InlineMiniExercises
                       lessonId={currentLesson.id}
                       exercises={remaining}
-                      level={(course as any).level}
+                      level={course.level}
                       startNumber={inlineIds.size + 1}
                     />
                   );

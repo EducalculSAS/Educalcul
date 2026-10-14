@@ -62,7 +62,7 @@ export default async function SubscriptionPage({
       return { subscription: null, invoices: [] as any[] };
     }),
   ]);
-  const plans = (plansData || []).filter((p: any) => p.is_active);
+  const plans = (plansData || []).filter((p) => p.is_active);
   const pricingConfig = pricingRow?.value ? normalizePricingConfig(pricingRow.value) : DEFAULT_PRICING_CONFIG;
 
   let referralCode: any = null;

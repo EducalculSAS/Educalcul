@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 const DEFAULT_LEVEL = "6eme";
 
@@ -56,7 +56,7 @@ export async function GET(req: Request) {
       { config: data?.config ?? null },
       { headers: { "Cache-Control": "public, max-age=300, stale-while-revalidate=3600" } },
     );
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || "Erreur interne") }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || "Erreur interne") }, { status: 500 });
   }
 }

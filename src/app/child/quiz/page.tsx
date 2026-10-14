@@ -23,7 +23,7 @@ export default async function ChildQuizPage({
   const [{ data: userData }, allFolders, attempts] = await Promise.all([
     supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", authUser.id).maybeSingle(),
     loadPublishedFolders<CatalogFolder & Record<string, unknown>>("quiz_folders", "*"),
-    selectAllPages<{ quiz_id: string; attempts_history: any[] | null }>((from, to) =>
+    selectAllPages<{ quiz_id: string; attempts_history: unknown[] | null }>((from, to) =>
       supabaseAdmin
         .from("user_quiz_attempts")
         .select("quiz_id, attempts_history")

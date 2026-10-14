@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ShieldCheck, CheckCircle, KeyRound, Loader2 } from "lucide-react";
 import TwoFactorSessions from "@/components/TwoFactorSessions";
+import { errMessage } from "@/lib/safeError";
 
 /** Carte "Authentification à deux facteurs" du profil admin. */
 export default function AdminTotpCard() {
@@ -40,8 +41,8 @@ export default function AdminTotpCard() {
       if (!res.ok) throw new Error(data.error || "Erreur");
       setNewCodes(data.backupCodes);
       setRemaining(data.backupCodes.length);
-    } catch (err: any) {
-      setError(err.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      setError(errMessage(err) || "Une erreur est survenue.");
     } finally {
       setRegenerating(false);
     }
@@ -77,7 +78,7 @@ export default function AdminTotpCard() {
               <div className="grid grid-cols-2 gap-2 mb-3 p-3 rounded-lg bg-gray-50 border border-gray-200 font-mono text-xs text-gray-700">
                 {newCodes.map(c => <div key={c}>{c}</div>)}
               </div>
-              <button onClick={() => setNewCodes(null)} className="text-xs font-semibold text-[var(--greek-gold)]">J'ai noté les codes</button>
+              <button onClick={() => setNewCodes(null)} className="text-xs font-semibold text-[var(--greek-gold)]">J&apos;ai noté les codes</button>
             </div>
           ) : (
             <div className="flex items-center justify-between">

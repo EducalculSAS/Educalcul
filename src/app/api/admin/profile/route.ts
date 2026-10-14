@@ -115,7 +115,7 @@ export async function PUT(request: Request) {
     }, request);
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[admin-profile-put] Error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }

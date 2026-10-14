@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { ChevronDown, ChevronUp, Brain, Loader2, Plus, Trash2, Save, CheckCircle, AlertCircle } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { SCHOOL_LEVELS } from "@/lib/constants";
+import { errMessage } from "@/lib/safeError";
 
 interface Question {
   id: number;
@@ -37,6 +38,7 @@ export default function PlacementQuizPanel() {
     setLoading(false);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- chargement déclenché par ce seul changement (load est recréée à chaque rendu)
   useEffect(() => { if (open) load(); }, [open]);
 
   const flash = (type: "success" | "error", text: string) => {
@@ -61,8 +63,8 @@ export default function PlacementQuizPanel() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       flash("success", "Question enregistrée.");
-    } catch (err: any) {
-      flash("error", err.message || "Erreur.");
+    } catch (err: unknown) {
+      flash("error", errMessage(err) || "Erreur.");
     } finally {
       setSaving(null);
     }
@@ -79,8 +81,8 @@ export default function PlacementQuizPanel() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setQuestions((qs) => [...qs, data]);
-    } catch (err: any) {
-      flash("error", err.message || "Erreur.");
+    } catch (err: unknown) {
+      flash("error", errMessage(err) || "Erreur.");
     } finally {
       setSaving(null);
     }
@@ -93,8 +95,8 @@ export default function PlacementQuizPanel() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setQuestions((qs) => qs.filter((q) => q.id !== id));
-    } catch (err: any) {
-      flash("error", err.message || "Erreur.");
+    } catch (err: unknown) {
+      flash("error", errMessage(err) || "Erreur.");
     } finally {
       setSaving(null);
     }
@@ -117,7 +119,7 @@ export default function PlacementQuizPanel() {
       {open && (
         <div className="px-5 pb-5 border-t border-[rgba(197,161,72,0.15)] pt-4">
           <p className="text-sm text-gray-600 mb-4">
-            Ces questions sont posées à chaque élève lors de sa toute première connexion (mini-test de niveau), pour adapter le message affiché en fin d'onboarding. 3 questions par niveau minimum recommandé.
+            Ces questions sont posées à chaque élève lors de sa toute première connexion (mini-test de niveau), pour adapter le message affiché en fin d&apos;onboarding. 3 questions par niveau minimum recommandé.
           </p>
 
           {message && (
@@ -145,7 +147,7 @@ export default function PlacementQuizPanel() {
           ) : (
             <div className="space-y-4">
               {levelQuestions.length === 0 && (
-                <p className="text-sm text-gray-400 italic">Aucune question pour ce niveau, les élèves de ce niveau n'auront pas de mini-test.</p>
+                <p className="text-sm text-gray-400 italic">Aucune question pour ce niveau, les élèves de ce niveau n&apos;auront pas de mini-test.</p>
               )}
               {levelQuestions.map((q) => (
                 <div key={q.id} className="border border-[rgba(197,161,72,0.2)] rounded-xl p-4">
@@ -180,7 +182,7 @@ export default function PlacementQuizPanel() {
                   </div>
                   <div className="mb-3">
                     <label className="block text-xs font-semibold text-gray-500 mb-1">
-                      Notion (utilisée pour la mémoire pédagogique de Calia, courte, ex: "fractions")
+                      Notion (utilisée pour la mémoire pédagogique de Calia, courte, ex: &quot;fractions&quot;)
                     </label>
                     <input
                       value={q.notion}

@@ -1,10 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import {
-  Award, BookOpen, CheckCircle, TrendingUp, Activity, Brain, Sparkles,
-  RotateCcw, Star, Lock, CalendarClock, Gamepad2,
-} from "lucide-react";
+import { Award, BookOpen, TrendingUp, Activity, Brain, Sparkles, RotateCcw, Star, Lock, CalendarClock, Gamepad2 } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 
@@ -150,7 +147,7 @@ export default function ChildReportTabs({
           <div className="lg:col-span-2 bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
             <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)]">
               <h3 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
-                Historique d'activité ({activities.length})
+                Historique d&apos;activité ({activities.length})
               </h3>
             </div>
             <div className="divide-y divide-[var(--greek-gold)]/10 max-h-[600px] overflow-y-auto">
@@ -230,7 +227,7 @@ export default function ChildReportTabs({
                 Fonctionnalité Premium
               </h3>
               <p className="text-sm text-gray-500 mb-6 leading-relaxed">
-                L'analyse IA d'Calia est disponible avec un abonnement actif. Passez à un plan supérieur pour obtenir des rapports personnalisés sur la progression de {childFirstName}.
+                L&apos;analyse IA d&apos;Calia est disponible avec un abonnement actif. Passez à un plan supérieur pour obtenir des rapports personnalisés sur la progression de {childFirstName}.
               </p>
               <GlassButton href="/parent/subscription" variant="navy" size="sm">
                 <Sparkles className="w-4 h-4" />
@@ -278,7 +275,7 @@ export default function ChildReportTabs({
                   ) : (
                     <div className="text-center py-12">
                       <Brain className="w-12 h-12 text-gray-200 mx-auto mb-3" />
-                      <p className="text-gray-500 text-sm mb-4">Lancez l'analyse pour obtenir des conseils personnalisés.</p>
+                      <p className="text-gray-500 text-sm mb-4">Lancez l&apos;analyse pour obtenir des conseils personnalisés.</p>
                       <GlassButton onClick={() => loadAnalysis()} variant="navy" size="sm" className="mx-auto">
                         <Sparkles className="w-4 h-4" /> Analyser maintenant
                       </GlassButton>
@@ -316,10 +313,10 @@ export default function ChildReportTabs({
                 <div className="bg-[var(--greek-blue)]/5 rounded-2xl border border-[var(--greek-blue)]/10 p-5">
                   <div className="flex items-center gap-2 mb-2">
                     <Sparkles className="w-4 h-4 text-[var(--greek-gold)]" />
-                    <span className="text-sm font-bold text-[var(--greek-blue)]">À propos de l'analyse</span>
+                    <span className="text-sm font-bold text-[var(--greek-blue)]">À propos de l&apos;analyse</span>
                   </div>
                   <p className="text-xs text-gray-600 leading-relaxed">
-                    L'analyse est générée par Calia, l'IA d'Educalcul. Elle est basée sur les 30 dernières activités de {childFirstName}.
+                    L&apos;analyse est générée par Calia, l&apos;IA d&apos;Educalcul. Elle est basée sur les 30 dernières activités de {childFirstName}.
                   </p>
                 </div>
               </div>

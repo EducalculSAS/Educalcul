@@ -6,7 +6,7 @@ const CHOICE_TYPES = ["qcm", "multiple_choice", "single_choice"];
 const FREE_TYPES = ["text_input", "coding", "impossible_search"];
 
 function optionKeys(options: unknown): string[] {
-  return (Array.isArray(options) ? options : []).map((o) => (typeof o === "string" ? o : String((o as any)?.id ?? (o as any)?.text ?? "")));
+  return (Array.isArray(options) ? options : []).map((o) => (typeof o === "string" ? o : String(o?.id ?? o?.text ?? "")));
 }
 
 function choiceProblems(label: string, options: unknown, correct: unknown, out: string[]) {
@@ -24,7 +24,7 @@ export function exerciseBlockingProblems(contentJson: unknown): string[] {
   const pages = Array.isArray(contentJson) ? contentJson : [];
   let n = 0;
   for (const page of pages) {
-    for (const b of (page as any)?.blocks ?? []) {
+    for (const b of page?.blocks ?? []) {
       if (!b || typeof b !== "object" || b.type === "text" || b.type === "image") continue;
       n++;
       const label = `Question ${n}${b.title ? ` (${plain(b.title)})` : ""}`;
@@ -45,7 +45,7 @@ export function exerciseBlockingProblems(contentJson: unknown): string[] {
 export function quizBlockingProblems(contentJson: unknown): string[] {
   const out: string[] = [];
   const qs = Array.isArray(contentJson) ? contentJson : [];
-  qs.forEach((q: any, i: number) => {
+  qs.forEach((q, i: number) => {
     const label = `Question ${i + 1}`;
     if (CHOICE_TYPES.includes(q?.type) || (Array.isArray(q?.options) && q.options.length > 0)) choiceProblems(label, q.options, q.correctAnswer, out);
     else if (q?.type === "text_input" && !plain(q.correctAnswer)) out.push(`${label} : pas de réponse attendue`);

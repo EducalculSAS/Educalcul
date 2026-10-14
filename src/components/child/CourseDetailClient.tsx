@@ -1,5 +1,7 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import Image from "next/image";
 import { useKatexIn } from "@/lib/useKatexIn";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useState, useEffect, useRef } from "react";
@@ -28,8 +30,8 @@ export default function CourseDetailClient({
   const { setPageContext, clearContext } = useAITutor();
   const isPreview = courseId === "preview";
 
-  const [loading, setLoading] = useState(false);
-  const [course, setCourse] = useState<any>(initialCourse);
+  const [loading] = useState(false);
+  const [course] = useState<any>(initialCourse);
   const [resumeInfo, setResumeInfo] = useState<{ pct: number; chapterIndex: number; status: string } | null>(null);
   const [started, setStarted] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -155,7 +157,7 @@ export default function CourseDetailClient({
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/10">
-              <img src="/logo.png" alt="Miniature par défaut du cours" className="w-24 h-24 object-contain opacity-20" />
+              <Image src="/logo.png" alt="Miniature par défaut du cours" width={96} height={96} className="w-24 h-24 object-contain opacity-20" />
             </div>
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
@@ -187,7 +189,7 @@ export default function CourseDetailClient({
                 </h3>
                 <ul className="list-disc list-inside text-gray-600 space-y-2">
                   <li>Comprendre les concepts clés</li>
-                  <li>S'exercer avec des exemples pratiques</li>
+                  <li>S&apos;exercer avec des exemples pratiques</li>
                   <li>Valider ses connaissances avec un quiz</li>
                 </ul>
               </div>

@@ -169,7 +169,7 @@ export default function BannedPage() {
         {/* Contact Support Info */}
         <div className="mt-8 text-center text-gray-600">
           <p className="text-sm">
-            Besoin d'aide ? <a href="/contact" className="text-[var(--greek-blue)] font-bold hover:underline">Contactez-nous</a>
+            Besoin d&apos;aide ? <a href="/contact" className="text-[var(--greek-blue)] font-bold hover:underline">Contactez-nous</a>
           </p>
         </div>
       </div>

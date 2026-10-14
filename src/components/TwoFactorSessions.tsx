@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { Smartphone, Loader2, X } from "lucide-react";
+import { Smartphone, X } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface Session {

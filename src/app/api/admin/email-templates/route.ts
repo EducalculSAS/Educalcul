@@ -1,8 +1,6 @@
 ﻿import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sendEmail } from "@/lib/mailer";
-import { emailTemplate } from "@/lib/emailTemplates";
 import { requireRole } from "@/lib/apiAuth";
 
 // GET — list all templates

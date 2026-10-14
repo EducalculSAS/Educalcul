@@ -51,7 +51,7 @@ export default function Reveal({
       style={style}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: margin as any }}
+      viewport={{ once, margin: margin }}
       variants={variants}
     >
       {children}
@@ -81,7 +81,7 @@ export function RevealGroup({
       style={style}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once, margin: margin as any }}
+      viewport={{ once, margin: margin }}
       variants={{ visible: { transition: { staggerChildren: stagger } } }}
     >
       {children}

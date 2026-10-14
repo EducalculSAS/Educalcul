@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { getClientIp } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
@@ -31,8 +31,8 @@ export async function GET() {
       .maybeSingle();
 
     return Response.json(data?.data || {});
-  } catch (err: any) {
-    return Response.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return Response.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -50,7 +50,7 @@ export async function PATCH(req: Request) {
     }
     const store = await cookies();
     let token = store.get(COOKIE_NAME)?.value;
-    let current: Record<string, any> = {};
+    let current: Record<string, unknown> = {};
 
     if (token) {
       const { data } = await supabaseAdmin
@@ -99,8 +99,8 @@ export async function PATCH(req: Request) {
     }
 
     return Response.json(current);
-  } catch (err: any) {
-    return Response.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return Response.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -113,7 +113,7 @@ export async function DELETE() {
       store.delete(COOKIE_NAME);
     }
     return Response.json({ success: true });
-  } catch (err: any) {
-    return Response.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return Response.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

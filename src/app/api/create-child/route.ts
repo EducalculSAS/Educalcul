@@ -105,7 +105,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true, user: { id: created.user.id } }, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[create-child] server error:", error);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }

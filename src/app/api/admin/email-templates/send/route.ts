@@ -1,5 +1,5 @@
 ﻿import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { resolveParentRecipients, sendTemplate } from "@/lib/emailCampaign";
 import { requireSuperAdmin } from "@/lib/apiAuth";
@@ -46,8 +46,8 @@ export async function POST(req: Request) {
     const { sent, failed } = await sendTemplate(tmpl, users);
 
     return NextResponse.json({ success: true, sent, failed, total: users.length });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 

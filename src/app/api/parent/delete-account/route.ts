@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { deleteParentAccount } from "@/lib/deleteParentAccount";
 
@@ -25,8 +25,8 @@ export async function DELETE(req: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(result.error || "Suppression impossible") }, { status: 500 });
     }
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[delete-account] Unexpected error:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error?.message || "Erreur interne") }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error) || "Erreur interne") }, { status: 500 });
   }
 }

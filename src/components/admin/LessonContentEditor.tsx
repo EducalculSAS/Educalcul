@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { useEffect, useState } from "react";
 import {
@@ -17,7 +18,7 @@ import {
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
 import { migrateLessonToBlocks, deriveLegacyFields, LessonBlock } from "@/lib/lessonBlocks";
-import type { Lesson, Exercise } from "./CourseBuilder";
+import type { Lesson } from "./CourseBuilder";
 import TableEditorModal from "./TableEditorModal";
 import GraphEditorModal from "./GraphEditorModal";
 import SpecialBlockEditorModal from "./SpecialBlockEditorModal";

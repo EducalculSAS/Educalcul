@@ -23,14 +23,14 @@ export default function ReadAloudButton({ text, className = "", label = "Écoute
     return () => stopRef.current();
   }, []);
 
-  if (!supported) return null;
-
   const stop = () => {
     window.speechSynthesis.cancel();
     setSpeaking(false);
     if (stopCurrent === stopRef.current) stopCurrent = null;
   };
-  stopRef.current = stop;
+  useEffect(() => { stopRef.current = stop; });
+
+  if (!supported) return null;
 
   const start = () => {
     const spoken = speakableText(text);

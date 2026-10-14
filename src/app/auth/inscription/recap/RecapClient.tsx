@@ -143,6 +143,7 @@ export default function RecapClient() {
         // monte). Naviguer directement vers /parent/dashboard ici forcerait
         // un premier montage du layout qui bloquerait indefiniment (bug
         // constate en test : page bloquee en chargement).
+        // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- rechargement complet voulu (voir le commentaire ci-dessus)
         window.location.href = `${window.location.origin}/parent/subscription?new=true&success=1&session_id=free`;
         return;
       }
@@ -251,7 +252,7 @@ export default function RecapClient() {
               <p className="font-bold text-[var(--greek-blue)] text-base mb-2">{selectedPlan.name}</p>
               {selectedPlan.description && <p>{selectedPlan.description}</p>}
               {selectedPlan.trial_days > 0 && (
-                <p className="text-green-600 font-medium">{selectedPlan.trial_days} jours d'essai gratuit</p>
+                <p className="text-green-600 font-medium">{selectedPlan.trial_days} jours d&apos;essai gratuit</p>
               )}
               <p className="text-xl font-bold text-[var(--greek-blue)] mt-3">
                 {selectedPlan.price === 0 ? "Gratuit" : <>{selectedPlan.price}€<span className="text-sm font-normal">{intervalLabel(selectedPlan.billing_interval)}</span></>}

@@ -28,6 +28,7 @@ import WebAuthnCard from "@/components/WebAuthnCard";
 import UserSessionsList from "@/components/UserSessionsList";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { errMessage } from "@/lib/safeError";
 
 /** Réglages du profil parent : informations, sécurité, notifications, comptes
  * liés, export RGPD et suppression de compte — toutes des mutations, donc
@@ -100,9 +101,9 @@ export default function ParentProfileSettings({
       sessionStorage.clear();
       localStorage.clear();
       router.push("/");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Delete account error:", error);
-      setMessage({ type: "error", text: error.message || "Erreur lors de la suppression." });
+      setMessage({ type: "error", text: errMessage(error) || "Erreur lors de la suppression." });
       setSaving(false);
     }
   };
@@ -185,7 +186,7 @@ export default function ParentProfileSettings({
 
       if (!user) throw new Error("Non connecté");
 
-      const identity = user.identities?.find((id: any) => id.provider === "google");
+      const identity = user.identities?.find((id) => id.provider === "google");
 
       if (!identity) {
         throw new Error("Aucun compte Google lié trouvé.");
@@ -619,8 +620,8 @@ export default function ParentProfileSettings({
                     const data = await res.json();
                     if (!res.ok) throw new Error(data.error);
                     setMessage({ type: "success", text: "Un email avec le lien de téléchargement vient de t'être envoyé." });
-                  } catch (err: any) {
-                    setMessage({ type: "error", text: err.message || "Erreur lors de l'envoi." });
+                  } catch (err: unknown) {
+                    setMessage({ type: "error", text: errMessage(err) || "Erreur lors de l'envoi." });
                   } finally {
                     setExportingData(false);
                   }
@@ -668,7 +669,7 @@ export default function ParentProfileSettings({
                     Vous avez un abonnement actif.
                   </p>
                   <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 text-sm text-amber-800">
-                    Vous devez d'abord <strong>annuler votre abonnement</strong> depuis la page Abonnement avant de pouvoir supprimer votre compte.
+                    Vous devez d&apos;abord <strong>annuler votre abonnement</strong> depuis la page Abonnement avant de pouvoir supprimer votre compte.
                   </div>
                 </div>
                 <div className="px-6 pb-6 flex gap-3 justify-end">
@@ -676,7 +677,7 @@ export default function ParentProfileSettings({
                     Fermer
                   </GlassButton>
                   <GlassButton href="/parent/subscription" variant="navy" size="sm">
-                    Gérer l'abonnement
+                    Gérer l&apos;abonnement
                   </GlassButton>
                 </div>
               </>
@@ -714,7 +715,7 @@ export default function ParentProfileSettings({
                         </div>
                       )}
                       <p className="text-sm text-gray-500">
-                        Il n'y a aucun moyen de récupérer vos données après la suppression.
+                        Il n&apos;y a aucun moyen de récupérer vos données après la suppression.
                       </p>
                     </>
                   )}

@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Camera, Sparkles, Loader2, Upload, RefreshCw } from "lucide-react";
@@ -226,7 +227,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                 <div className="flex flex-col items-center justify-center gap-4 py-12">
                   {image && <img src={image} alt="Exercice" className="max-h-48 rounded-xl border border-[rgba(197,161,72,0.25)]" />}
                   <Loader2 className="animate-spin text-[var(--greek-blue)]" size={36} />
-                  <p className="text-sm text-gray-600">Lecture de l'exercice en cours...</p>
+                  <p className="text-sm text-gray-600">Lecture de l&apos;exercice en cours...</p>
                 </div>
               ) : (
                 <button
@@ -242,12 +243,12 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                 >
                   <Upload className="text-[var(--greek-blue)]" size={32} />
                   <span className="font-bold text-[var(--greek-blue)]">Choisir une photo ou déposer une image</span>
-                  <span className="text-sm text-gray-500">Tu peux aussi coller une capture d'écran avec Ctrl+V</span>
+                  <span className="text-sm text-gray-500">Tu peux aussi coller une capture d&apos;écran avec Ctrl+V</span>
                 </button>
               )}
               <p className="text-xs text-gray-500">
-                Cadre bien l'énoncé, les consignes et les questions. Par défaut, l'exercice est une copie fidèle (rien
-                n'est inventé) que tu modifies ensuite ; tu peux aussi demander une variante avec d'autres valeurs.
+                Cadre bien l&apos;énoncé, les consignes et les questions. Par défaut, l&apos;exercice est une copie fidèle (rien
+                n&apos;est inventé) que tu modifies ensuite ; tu peux aussi demander une variante avec d&apos;autres valeurs.
               </p>
               {error && <p className="text-sm text-red-600 font-medium">{error}</p>}
             </div>
@@ -265,14 +266,14 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
               </div>
 
               <div>
-                <label className={labelClass}>Exercice lu sur l'image : c'est ce qui sera copié (corrige-le ici si besoin)</label>
+                <label className={labelClass}>Exercice lu sur l&apos;image : c&apos;est ce qui sera copié (corrige-le ici si besoin)</label>
                 <textarea rows={9} className={`${fieldClass} font-mono text-sm`} value={statement} onChange={(e) => setStatement(e.target.value)} />
-                <p className="text-xs text-gray-500 mt-1">Les formules sont en LaTeX entre $...$. Vérifie surtout les nombres : la lecture d'une photo peut se tromper.</p>
+                <p className="text-xs text-gray-500 mt-1">Les formules sont en LaTeX entre $...$. Vérifie surtout les nombres : la lecture d&apos;une photo peut se tromper.</p>
               </div>
 
               {figureTexts.length > 0 && (
                 <div className="space-y-3">
-                  <label className={labelClass}>Figures à cases lues sur l'image (corrige-les)</label>
+                  <label className={labelClass}>Figures à cases lues sur l&apos;image (corrige-les)</label>
                   <p className="text-xs text-gray-500 -mt-1">Une rangée par ligne, cases séparées par « | », ▢ pour une case vide. Pyramide : du sommet vers la base.</p>
                   {figureTexts.map((f, i) => (
                     <div key={i}>
@@ -314,7 +315,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
               </div>
 
               <div>
-                <label className={labelClass}>Figure de l'exercice (décris-la pour qu'elle soit redessinée, optionnel)</label>
+                <label className={labelClass}>Figure de l&apos;exercice (décris-la pour qu&apos;elle soit redessinée, optionnel)</label>
                 <textarea rows={3} className={fieldClass} value={figure} onChange={(e) => setFigure(e.target.value)} placeholder="Ex: triangle ABC rectangle en A, AB = 6 cm, AC = 8 cm, point M milieu de [BC]" />
               </div>
 
@@ -358,7 +359,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
 
               {copyMode && (
                 <p className="text-xs text-gray-500 -mt-1">
-                  Copie fidèle : toutes les questions de la photo sont reprises (environ {sourceCount}), dans l'ordre, avec leurs
+                  Copie fidèle : toutes les questions de la photo sont reprises (environ {sourceCount}), dans l&apos;ordre, avec leurs
                   trous et leurs figures. Les réponses sont calculées ; une réponse douteuse est marquée « À vérifier ».
                 </p>
               )}
@@ -367,7 +368,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
               <div>
                 <label className={labelClass}>
                   Nombre de questions : {params.questionCount}
-                  <span className="font-normal text-gray-500"> (dont {Math.min(sourceCount, params.questionCount)} reprises de l'image, le reste est inventé)</span>
+                  <span className="font-normal text-gray-500"> (dont {Math.min(sourceCount, params.questionCount)} reprises de l&apos;image, le reste est inventé)</span>
                 </label>
                 <input type="range" min={1} max={24} value={params.questionCount} onChange={(e) => setParams({ ...params, questionCount: parseInt(e.target.value) })} className="w-full accent-[var(--greek-blue)]" />
               </div>
@@ -408,7 +409,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
               <div className="flex justify-end gap-2 pt-2">
                 <GlassButton type="button" variant="ghost" onClick={onClose}>Annuler</GlassButton>
                 <GlassButton type="submit" variant="navy">
-                  <Sparkles size={16} /> Générer l'exercice
+                  <Sparkles size={16} /> Générer l&apos;exercice
                 </GlassButton>
               </div>
             </form>

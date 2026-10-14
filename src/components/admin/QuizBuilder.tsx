@@ -3,19 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
-import {
-  Plus,
-  Trash2,
-  GripVertical,
-  CheckCircle2,
-  Circle,
-  AlignLeft,
-  Type,
-  HelpCircle,
-  Lightbulb,
-  Sparkles,
-  Loader2,
-} from "lucide-react";
+import { Plus, Trash2, GripVertical, CheckCircle2, Circle, Lightbulb, Sparkles } from "lucide-react";
 
 import AISectionEditModal from "./AISectionEditModal";
 import AIAddQuizModal from "./AIAddQuizModal";
@@ -52,7 +40,6 @@ interface QuizBuilderProps {
 export default function QuizBuilder({
   initialQuestions,
   onChange,
-  onMetadataChange,
   level,
 }: QuizBuilderProps) {
   const confirm = useConfirm();
@@ -138,10 +125,12 @@ export default function QuizBuilder({
     ) {
       setQuestions(initialQuestions);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- resynchronisation quand le contenu initial change, pas à chaque modification locale
   }, [initialQuestions]);
 
   useEffect(() => {
     onChange(questions);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- onChange change d'identité à chaque rendu du parent : l'inclure relancerait l'effet en boucle
   }, [questions]);
 
   const addQuestion = () => {
@@ -250,7 +239,7 @@ export default function QuizBuilder({
         <div className="flex gap-2">
           <GlassButton size="sm" variant="navy" onClick={() => setIsAiAddModalOpen(true)}>
             <Sparkles size={16} />
-            Ajouter avec l'IA
+            Ajouter avec l&apos;IA
           </GlassButton>
           <GlassButton size="sm" variant="navy" onClick={addQuestion}>
             <Plus size={16} />

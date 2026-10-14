@@ -47,7 +47,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ valid: true });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[validate-signup] Error:", err);
     return NextResponse.json({ valid: false, error: "Internal server error" });
   }

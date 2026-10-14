@@ -66,7 +66,6 @@ export default function CoursesCatalog({
       f = parentId ? allFolders.find((x) => x.id === parentId) : undefined;
     }
     setBreadcrumbs(path);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allFolders, currentFolderId, levelFolderId, rootFolderIds, setCurrentFolderId]);
 
   const displayParentId = currentFolderId === null ? (rootFolderIds ? activeRootId : levelFolderId) : currentFolderId;

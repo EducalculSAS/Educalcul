@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { getIpGeo } from "@/lib/ipGeo";
@@ -89,9 +89,9 @@ export async function POST(request: Request) {
 
     await clearTwoFactorCookie();
     return NextResponse.json({ ok: true });
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
-      { error: sanitizeErrorMessage(err.message) },
+      { error: sanitizeErrorMessage(errMessage(err)) },
       { status: 500 },
     );
   }

@@ -3,7 +3,7 @@ import { stripe } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser } from '@/lib/apiAuth';
 import { getRequestSiteUrl } from '@/lib/siteUrl';
-import { sanitizeErrorMessage } from '@/lib/safeError';
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 export async function POST(req: Request) {
   try {
@@ -48,10 +48,10 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ url: session.url });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Stripe Portal error:', error);
     return NextResponse.json(
-      { error: sanitizeErrorMessage(error?.message || String(error)) },
+      { error: sanitizeErrorMessage(errMessage(error) || String(error)) },
       { status: 500 }
     );
   }

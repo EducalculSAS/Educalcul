@@ -1,4 +1,5 @@
 ﻿"use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { useState, useEffect } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -8,22 +9,10 @@ import AIAddContentModal from "./AIAddContentModal";
 import LessonContentEditor from "./LessonContentEditor";
 import SingleBlockEditor from "./SingleBlockEditor";
 import { deriveLegacyFields } from "@/lib/lessonBlocks";
-import {
-  Plus,
-  Trash2,
-  GripVertical,
-  ChevronUp,
-  ChevronDown,
-  ChevronRight,
-  FileText,
-  Video,
-  Link as LinkIcon,
-  Sparkles,
-  Upload,
-  XCircle,
-} from "lucide-react";
+import { Plus, Trash2, GripVertical, ChevronUp, ChevronDown, ChevronRight, FileText, Video, Sparkles, Upload, XCircle } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { errMessage } from "@/lib/safeError";
 
 export interface Exercise {
   id: string;
@@ -155,8 +144,8 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
       const result = await response.json();
       if (!response.ok) throw new Error(result.error || "Upload failed");
       updateLesson(chapterId, lessonId, { [field]: result.url });
-    } catch (err: any) {
-      alert("Erreur upload: " + err.message);
+    } catch (err: unknown) {
+      alert("Erreur upload: " + errMessage(err));
     } finally {
       setUploadingLesson(null);
     }
@@ -186,8 +175,8 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
         blocks: newBlocks,
         ...deriveLegacyFields(newBlocks),
       });
-    } catch (err: any) {
-      alert("Erreur upload: " + err.message);
+    } catch (err: unknown) {
+      alert("Erreur upload: " + errMessage(err));
     } finally {
       setUploadingLesson(null);
     }
@@ -196,6 +185,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
   // Update parent when local state changes
   useEffect(() => {
     onChange(chapters);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- onChange change d'identité à chaque rendu du parent : l'inclure relancerait l'effet en boucle
   }, [chapters]);
 
   const addChapter = () => {
@@ -319,7 +309,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
         <div className="flex items-center gap-2">
           <GlassButton size="sm" variant="navy" onClick={() => setIsAiAddModalOpen(true)}>
             <Sparkles size={16} />
-            Ajouter avec l'IA
+            Ajouter avec l&apos;IA
           </GlassButton>
           <GlassButton size="sm" variant="navy" onClick={addChapter}>
             <Plus size={16} />

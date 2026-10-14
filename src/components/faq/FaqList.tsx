@@ -11,7 +11,6 @@ function useScrollVisible() {
     if (!el) return;
     const rect = el.getBoundingClientRect();
     if (rect.top < window.innerHeight) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true);
       return;
     }

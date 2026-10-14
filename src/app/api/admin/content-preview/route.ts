@@ -1,6 +1,6 @@
 import { requireRole } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 /** Aperçu admin (cours/exercice/quiz non encore enregistré) — transmis à
  * l'onglet ouvert par window.open via une ligne DB temporaire au lieu de
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
 
     if (error) return Response.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
     return Response.json({ id: data.id });
-  } catch (err: any) {
-    return Response.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return Response.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

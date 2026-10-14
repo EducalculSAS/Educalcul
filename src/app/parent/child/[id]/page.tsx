@@ -87,7 +87,7 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
 
   allActivities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
-  const correctEx = (exercises || []).filter((e: any) => e.is_correct).length;
+  const correctEx = (exercises || []).filter((e) => e.is_correct).length;
   const totalEx = exercises?.length || 0;
 
   const stats = {

@@ -10,6 +10,7 @@ import { resolveAuthDestination } from "@/lib/authRedirect";
 import { patchSignupSession } from "@/lib/signupSession";
 import { LogIn, Lock, AlertCircle, User, Eye, EyeOff } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import { errMessage } from "@/lib/safeError";
 
 /** Supabase Auth renvoie ses messages d'erreur en anglais quel que soit le
  * paramétrage — le reste de l'interface est en français, donc on traduit
@@ -82,16 +83,16 @@ export default function ConnexionClient() {
       const verifyData = await verifyRes.json();
       if (!verifyRes.ok || !verifyData.verified) throw new Error(verifyData.error || "Vérification échouée.");
       return true;
-    } catch (err: any) {
+    } catch (err: unknown) {
       // Le compte A une clé d'accès enregistrée : elle devient obligatoire à
       // chaque connexion (comme un second facteur), on ne laisse donc pas
       // passer même en cas d'annulation — on déconnecte pour éviter qu'une
       // session mot-de-passe reste active sans avoir passé ce contrôle.
       await supabase.auth.signOut();
       setError(
-        err?.name === "NotAllowedError"
+        (err instanceof Error ? err.name : "") === "NotAllowedError"
           ? "Vérification par clé d'accès annulée, recommence et confirme avec ton empreinte/Face ID."
-          : (err?.message || "Échec de la vérification par clé d'accès.")
+          : (errMessage(err) || "Échec de la vérification par clé d'accès.")
       );
       return false;
     }
@@ -183,8 +184,8 @@ export default function ConnexionClient() {
         return;
       }
       setLoading(false);
-    } catch (err: any) {
-      setError(translateAuthError(err.message));
+    } catch (err: unknown) {
+      setError(translateAuthError(errMessage(err)));
       setLoading(false);
     }
   };

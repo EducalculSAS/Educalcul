@@ -14,6 +14,13 @@ interface ImportJsonModalProps {
   templateFilename?: string;
 }
 
+const SectionTitle = ({ n, children }: { n: number; children: React.ReactNode }) => (
+  <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-3 flex items-center gap-2">
+    <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">{n}</span>
+    {children}
+  </h4>
+);
+
 export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichier", template, templateFilename }: ImportJsonModalProps) {
   const [dragging, setDragging] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -33,13 +40,6 @@ export default function ImportJsonModal({ onClose, onFileLoaded, label = "fichie
     const file = e.dataTransfer.files[0];
     if (file) handleFile(file);
   }, [handleFile]);
-
-  const SectionTitle = ({ n, children }: { n: number; children: React.ReactNode }) => (
-    <h4 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-3 flex items-center gap-2">
-      <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">{n}</span>
-      {children}
-    </h4>
-  );
 
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center z-[1060] p-4 modal-overlay" onClick={onClose}>

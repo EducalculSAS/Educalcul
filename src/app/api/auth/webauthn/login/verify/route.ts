@@ -3,7 +3,7 @@ import { verifyAuthenticationResponse } from "@simplewebauthn/server";
 import { isoBase64URL } from "@simplewebauthn/server/helpers";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { getWebauthnRp } from "@/lib/webauthn";
 import { issueTwoFactorSession } from "@/lib/twoFactorSession";
 import { auditLog, AuditAction } from "@/lib/auditLog";
@@ -86,8 +86,8 @@ export async function POST(req: Request) {
 
     await auditLog({ action: AuditAction.TWO_FACTOR_VERIFIED, adminId: user.id, details: { method: "passkey" } }, req).catch(() => {});
     return NextResponse.json({ verified: true, expiresAt: session.expiresAt });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[webauthn/login/verify] failed:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

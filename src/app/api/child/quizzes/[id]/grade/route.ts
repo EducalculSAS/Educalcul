@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { gradeFreeAnswer } from "@/lib/gradeFreeAnswer";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -47,7 +47,7 @@ export async function POST(
       if (qzError || !quiz) {
         return NextResponse.json({ error: "Quiz not found" }, { status: 404 });
       }
-      if (me.role !== "admin" && (quiz as any).status !== "published") {
+      if (me.role !== "admin" && quiz.status !== "published") {
         return NextResponse.json({ error: "Quiz not found" }, { status: 404 });
       }
       const questions: any[] = Array.isArray(quiz.content_json) ? quiz.content_json : [];
@@ -61,7 +61,7 @@ export async function POST(
       // Verrou de difficulté par plan — même règle que la page du quiz
       // (src/app/child/quiz/[id]/page.tsx), refaite ici car cette route est
       // appelable indépendamment de la page.
-      const { allowed } = await checkDifficultyAccess(me.authId, (quiz as any).difficulty_level);
+      const { allowed } = await checkDifficultyAccess(me.authId, quiz.difficulty_level);
       if (!allowed) {
         return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
       }
@@ -121,8 +121,8 @@ export async function POST(
       comment_token: commentToken,
       reveal: { correctAnswer: targetQuestion.correctAnswer, explanation: targetQuestion.explanation },
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error grading quiz question:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

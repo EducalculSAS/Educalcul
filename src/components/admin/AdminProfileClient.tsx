@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState } from "react";
@@ -11,6 +12,7 @@ import WebAuthnCard from "@/components/WebAuthnCard";
 import ThemeToggle from "@/components/ThemeToggle";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { errMessage } from "@/lib/safeError";
 
 const ADMIN_AVATAR = "/logo.png";
 
@@ -78,10 +80,10 @@ export default function AdminProfileClient({ initialFormData }: {
 
       setMessage({ text: "Profil public mis à jour avec succès !", type: "success" });
       refetchProfile();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error updating profile:", error);
       setMessage({
-        text: error.message || "Erreur lors de la mise à jour.",
+        text: errMessage(error) || "Erreur lors de la mise à jour.",
         type: "error",
       });
     } finally {
@@ -269,7 +271,7 @@ export default function AdminProfileClient({ initialFormData }: {
                   </div>
                   <div>
                     <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Contour de l'Avatar
+                      Contour de l&apos;Avatar
                     </label>
                     <div className="relative">
                       <select

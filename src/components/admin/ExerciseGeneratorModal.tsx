@@ -91,8 +91,8 @@ export default function ExerciseGeneratorModal({
       if (Array.isArray(data)) {
         setCourses(
           [...data]
-            .map((c: any) => ({ id: c.id, title: c.title }))
-            .sort((a, b) => a.title.localeCompare(b.title)) as any,
+            .map((c) => ({ id: c.id, title: c.title }))
+            .sort((a, b) => a.title.localeCompare(b.title)),
         );
       }
     })();
@@ -140,7 +140,7 @@ export default function ExerciseGeneratorModal({
             </div>
             <div>
               <h2 className="text-xl font-bold font-[family-name:var(--font-display)]">
-                Générer un exercice avec l'IA
+                Générer un exercice avec l&apos;IA
               </h2>
               <p className="text-xs text-white/70 mt-0.5">
                 {step === 1
@@ -207,7 +207,7 @@ export default function ExerciseGeneratorModal({
           ) : step === 1 ? (
             <div className="p-8 space-y-4">
               <p className="text-sm text-gray-600 mb-2">
-                Quel type d'exercice veux-tu créer ?
+                Quel type d&apos;exercice veux-tu créer ?
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <button

@@ -26,7 +26,7 @@ export async function GET(req: Request) {
         .range(from, to),
     );
     return NextResponse.json(data);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[users-list] Error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }

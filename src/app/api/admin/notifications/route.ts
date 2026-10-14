@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 /** Notifications admin non lues du destinataire connecté (ban, reactivation,
  * message envoye par un admin) — le destinataire est n'importe quel role
@@ -23,8 +23,8 @@ export async function GET(req: Request) {
       .limit(200);
     if (error) throw error;
     return NextResponse.json(data ?? []);
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -46,7 +46,7 @@ export async function PATCH(req: Request) {
       .eq("user_id", me.id);
     if (error) throw error;
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

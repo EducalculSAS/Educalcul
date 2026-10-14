@@ -12,7 +12,7 @@ export default function Error({ reset }: { reset: () => void }) {
           Une erreur est survenue
         </h1>
         <p className="text-gray-500 mb-8">
-          Quelque chose s'est mal passé. Essayez de recharger la page ou revenez à l'accueil.
+          Quelque chose s&apos;est mal passé. Essayez de recharger la page ou revenez à l&apos;accueil.
         </p>
         <div className="flex gap-4 justify-center">
           <GlassButton onClick={reset} variant="navy" size="sm">

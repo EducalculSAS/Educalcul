@@ -186,7 +186,7 @@ export default function ExerciseDetailClient({
               setAttemptKey((k) => k + 1);
             }}
             restartBlocked={limitReached}
-            bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a: any) => a.score_percent ?? 0)) : undefined}
+            bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a) => a.score_percent ?? 0)) : undefined}
             onBack={() => setStarted(false)}
             onComplete={(score: number, total: number) => {
               // Correction manuelle : pas de note tant que l'enseignant n'a pas corrigé.
@@ -246,7 +246,7 @@ export default function ExerciseDetailClient({
             <div className="flex-grow">
               <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
                 <Brain className="w-6 h-6 text-[var(--greek-gold)]" />
-                Objectifs de l'exercice
+                Objectifs de l&apos;exercice
               </h2>
               <div className="prose max-w-none text-gray-600 leading-relaxed mb-6">
                 {exercise.description || "Entraîne-toi sur ce sujet pour maîtriser tes compétences !"}
@@ -280,7 +280,7 @@ export default function ExerciseDetailClient({
             <div className="w-full md:w-80 flex-shrink-0">
               <div className="bg-[var(--greek-cream)] rounded-xl p-6 border border-[rgba(197,161,72,0.25)] sticky top-24">
                 <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-4 text-center">
-                  Prêt à t'entraîner ?
+                  Prêt à t&apos;entraîner ?
                 </h3>
 
                 {(() => {

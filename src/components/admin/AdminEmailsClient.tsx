@@ -383,7 +383,7 @@ export default function AdminEmailsClient({
                     className="w-full px-3 py-2 border border-gray-300 rounded-xl text-sm focus:outline-none focus:border-[var(--greek-blue)]" />
                 </div>
                 <div>
-                  <label className="block text-sm font-bold text-[var(--greek-blue)] mb-1">Sujet de l'email</label>
+                  <label className="block text-sm font-bold text-[var(--greek-blue)] mb-1">Sujet de l&apos;email</label>
                   <input value={editForm.subject} onChange={e => setEditForm({ ...editForm, subject: e.target.value })}
                     className="w-full px-3 py-2 border border-gray-300 rounded-xl text-sm focus:outline-none focus:border-[var(--greek-blue)]" />
                 </div>
@@ -422,7 +422,7 @@ export default function AdminEmailsClient({
             ) : (
               <div className="flex-1 overflow-auto bg-gray-950 p-5">
                 <div className="flex items-center gap-2 mb-3">
-                  <p className="text-xs text-gray-400">HTML complet généré, modifiez le corps dans l'onglet <strong className="text-gray-300">Contenu</strong> pour changer le rendu</p>
+                  <p className="text-xs text-gray-400">HTML complet généré, modifiez le corps dans l&apos;onglet <strong className="text-gray-300">Contenu</strong> pour changer le rendu</p>
                 </div>
                 <pre className="text-xs text-green-300 font-mono whitespace-pre-wrap break-all leading-relaxed select-all">{fullHtml}</pre>
               </div>

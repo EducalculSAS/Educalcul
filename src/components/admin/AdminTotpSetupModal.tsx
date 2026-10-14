@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { useState, useEffect } from "react";
 import QRCode from "qrcode";
@@ -6,6 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { ShieldCheck, Loader2, AlertCircle, Copy, Check, KeyRound } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { errMessage } from "@/lib/safeError";
 
 /**
  * Popup obligatoire forçant tout admin sans TOTP configuré à en configurer
@@ -55,8 +57,8 @@ export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () =>
       setSecret(data.secret);
       const dataUrl = await QRCode.toDataURL(data.otpauthUrl, { width: 220, margin: 1 });
       setQrDataUrl(dataUrl);
-    } catch (err: any) {
-      setError(err.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      setError(errMessage(err) || "Une erreur est survenue.");
     } finally {
       setLoadingSecret(false);
     }
@@ -81,8 +83,8 @@ export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () =>
       if (!res.ok) throw new Error(data.error || "Code incorrect.");
       // Jeton posé par le serveur via cookie httpOnly (Set-Cookie), rien à stocker ici.
       setBackupCodes(data.backupCodes || null);
-    } catch (err: any) {
-      setError(err.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      setError(errMessage(err) || "Une erreur est survenue.");
     } finally {
       setConfirming(false);
     }
@@ -108,14 +110,14 @@ export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () =>
             <h2 className="text-xl font-bold text-[var(--greek-blue)]">Codes de secours</h2>
           </div>
           <p className="text-sm text-gray-600 mb-4">
-            Note ces codes dans un endroit sûr. Chacun ne peut être utilisé qu'une fois, pour te connecter si tu perds l'accès à ton appareil.
+            Note ces codes dans un endroit sûr. Chacun ne peut être utilisé qu&apos;une fois, pour te connecter si tu perds l&apos;accès à ton appareil.
           </p>
           <div className="grid grid-cols-2 gap-2 mb-5 p-4 rounded-lg bg-gray-50 border border-gray-200 font-mono text-sm text-gray-700">
             {backupCodes.map(c => <div key={c}>{c}</div>)}
           </div>
           <label className="flex items-center gap-2 mb-4 text-sm text-gray-600">
             <input type="checkbox" checked={savedBackupCodes} onChange={e => setSavedBackupCodes(e.target.checked)} />
-            J'ai noté ces codes dans un endroit sûr.
+            J&apos;ai noté ces codes dans un endroit sûr.
           </label>
           <GlassButton
             fullWidth
@@ -141,7 +143,7 @@ export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () =>
           <h2 className="text-xl font-bold text-[var(--greek-blue)]">Configure la 2FA</h2>
         </div>
         <p className="text-sm text-gray-600 mb-5">
-          Les comptes administrateur doivent utiliser une application d'authentification (Google Authenticator, Authy…) pour se connecter.
+          Les comptes administrateur doivent utiliser une application d&apos;authentification (Google Authenticator, Authy…) pour se connecter.
         </p>
 
         {error && (

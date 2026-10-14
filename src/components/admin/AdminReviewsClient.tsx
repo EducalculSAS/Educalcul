@@ -173,7 +173,7 @@ export default function AdminReviewsClient({
         <div>
           <h2 className="text-sm font-bold text-[var(--greek-blue)] uppercase tracking-wide">Note globale affichée</h2>
           <p className="text-xs text-gray-500 mt-1">
-            Par défaut, la note et le nombre d'avis affichés sur la page d'accueil sont calculés à partir des avis ci-dessous
+            Par défaut, la note et le nombre d&apos;avis affichés sur la page d&apos;accueil sont calculés à partir des avis ci-dessous
             (actuellement {computedRating || "-"} / 5). Si ta vraie note Trustpilot est différente (ex. tu as 3,7/5 sur Trustpilot
             mais un seul avis à 5 étoiles ici), active la note manuelle pour afficher le vrai chiffre.
           </p>
@@ -191,7 +191,7 @@ export default function AdminReviewsClient({
               <input type="number" min={0} max={5} step={0.1} value={ratingValue} onChange={e => setRatingValue(Number(e.target.value))} className={inputCls} />
             </div>
             <div>
-              <label className={labelCls}>Nombre d'avis total</label>
+              <label className={labelCls}>Nombre d&apos;avis total</label>
               <input type="number" min={0} value={ratingCount} onChange={e => setRatingCount(Number(e.target.value))} className={inputCls} />
             </div>
           </div>
@@ -286,7 +286,7 @@ export default function AdminReviewsClient({
                 <input type="text" value={title} onChange={e => setTitle(e.target.value)} className={inputCls} placeholder="Ex : Super plateforme !" />
               </div>
               <div>
-                <label className={labelCls}>Texte de l'avis</label>
+                <label className={labelCls}>Texte de l&apos;avis</label>
                 <textarea value={reviewText} onChange={e => setReviewText(e.target.value)} rows={4} className={inputCls} placeholder="Copiez le texte exact de l'avis..." />
               </div>
               <div className="grid grid-cols-2 gap-3">
@@ -303,11 +303,11 @@ export default function AdminReviewsClient({
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className={labelCls}>Nb d'avis du client (Trustpilot)</label>
+                  <label className={labelCls}>Nb d&apos;avis du client (Trustpilot)</label>
                   <input type="number" min={1} value={totalReviews} onChange={e => setTotalReviews(Number(e.target.value))} className={inputCls} />
                 </div>
                 <div>
-                  <label className={labelCls}>Ordre d'affichage</label>
+                  <label className={labelCls}>Ordre d&apos;affichage</label>
                   <input type="number" min={0} value={displayOrder} onChange={e => setDisplayOrder(Number(e.target.value))} className={inputCls} />
                 </div>
               </div>

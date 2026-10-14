@@ -6,6 +6,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import PageLoader from "@/components/PageLoader";
 import { useSmoothPercent } from "./useSmoothPercent";
 import type { Chapter, Lesson } from "./CourseBuilder";
+import { errMessage } from "@/lib/safeError";
 
 /**
  * Modale "Ajouter du contenu avec l'IA" : demande QUOI créer (chapitre ou
@@ -109,9 +110,9 @@ export default function AIAddContentModal({
         onAddLesson(ls, targetChapterId, position);
       }
       onClose();
-    } catch (e: any) {
-      if (e?.name === "AbortError") return;
-      setError(e.message || "Erreur de génération");
+    } catch (e: unknown) {
+      if ((e instanceof Error ? e.name : "") === "AbortError") return;
+      setError(errMessage(e) || "Erreur de génération");
     } finally {
       setLoading(false);
       abortRef.current = null;
@@ -136,7 +137,7 @@ export default function AIAddContentModal({
         <div className="bg-gradient-to-r from-[var(--greek-blue)] to-blue-600 p-4 flex justify-between items-center text-white">
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-amber-300" />
-            <h3 className="font-bold text-lg">Ajouter du contenu avec l'IA</h3>
+            <h3 className="font-bold text-lg">Ajouter du contenu avec l&apos;IA</h3>
           </div>
           <button onClick={handleClose} className="group text-white/80 hover:text-white transition-colors">
             <X size={20} className="transition-transform group-hover:scale-125" />

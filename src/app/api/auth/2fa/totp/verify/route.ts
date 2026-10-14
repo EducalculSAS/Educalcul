@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { verifyTotp, looksLikeBackupCode } from "@/lib/totp";
 import { hashTwoFactorValue } from "@/lib/twoFactor";
 import { issueTwoFactorSession } from "@/lib/twoFactorSession";
@@ -67,7 +67,7 @@ export async function POST(req: Request) {
     );
 
     return NextResponse.json({ success: true, expiresAt: session.expiresAt, usedBackupCode });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

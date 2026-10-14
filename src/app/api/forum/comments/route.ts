@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { notify } from "@/lib/notify";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -68,7 +68,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ id: data.id });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

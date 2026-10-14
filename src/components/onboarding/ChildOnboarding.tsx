@@ -1,11 +1,9 @@
 ﻿"use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { updateMyProfile } from "@/lib/updateMyProfile";
-import {
-  BookOpen, Brain, Trophy, Calculator,
-  ChevronRight, ChevronLeft, CheckCircle, MessageSquare,
-} from "lucide-react";
+import { BookOpen, Brain, Trophy, Calculator, ChevronRight, ChevronLeft, MessageSquare } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
 interface Props {
@@ -61,7 +59,7 @@ const SCORE_MESSAGES = [
   { min: 67, max: 100, emoji: "", title: "Excellent !", msg: "Impressionnant ! Tu as déjà de solides connaissances. Les défis avancés t'attendent !" },
 ];
 
-export default function ChildOnboarding({ firstName, authId, gradeLevel, onComplete }: Props) {
+export default function ChildOnboarding({ firstName, gradeLevel, onComplete }: Props) {
   const [step, setStep] = useState<"welcome" | "tour" | "quiz" | "result">("welcome");
   const [tourIndex, setTourIndex] = useState(0);
   const [questions, setQuestions] = useState<PlacementQuestion[]>([]);
@@ -137,7 +135,7 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
         {/* ── WELCOME ── */}
         {step === "welcome" && (
           <div className="flex flex-col items-center justify-center px-8 py-12 text-center gap-5 flex-1">
-            <img src="/logo.png" alt="Educalcul" className="w-20 h-20 object-contain" />
+            <Image src="/logo.png" alt="Educalcul" width={80} height={80} className="w-20 h-20 object-contain" />
             <div>
               <h2 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-3">
                 Salut {firstName} !
@@ -147,10 +145,10 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
               </p>
             </div>
             <div className="bg-blue-50 rounded-2xl p-4 text-sm text-[var(--greek-blue)] font-medium max-w-xs">
-              Des cours, des exercices, des quiz et des badges t'attendent !
+              Des cours, des exercices, des quiz et des badges t&apos;attendent !
             </div>
             <GlassButton onClick={() => setStep("tour")} variant="navy">
-              C'est parti ! <ChevronRight className="w-5 h-5" />
+              C&apos;est parti ! <ChevronRight className="w-5 h-5" />
             </GlassButton>
           </div>
         )}
@@ -234,7 +232,7 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
         {/* ── RESULT ── */}
         {step === "result" && (
           <div className="flex flex-col items-center justify-center px-8 py-10 text-center gap-5 flex-1">
-            <img src="/logo.png" alt="Educalcul" className="w-16 h-16 object-contain mx-auto" />
+            <Image src="/logo.png" alt="Educalcul" width={64} height={64} className="w-16 h-16 object-contain mx-auto" />
             {questions.length > 0 ? (
               <div>
                 <h3 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-2">
@@ -245,7 +243,7 @@ export default function ChildOnboarding({ firstName, authId, gradeLevel, onCompl
               </div>
             ) : (
               <h3 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-2">
-                C'est prêt !
+                C&apos;est prêt !
               </h3>
             )}
             <div className="bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-2xl p-4 max-w-xs text-sm text-gray-700">

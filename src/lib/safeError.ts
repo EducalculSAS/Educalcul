@@ -24,7 +24,6 @@ export function handleError(
 
   // Log full error server-side
   if (logError) {
-    const errorMessage = error instanceof Error ? error.message : String(error);
     console.error(`[${context}] Error:`, error);
   }
 
@@ -103,4 +102,12 @@ export function sanitizeErrorMessage(message: string): string {
 
   // Return generic message for any other database error
   return "Operation failed";
+}
+
+/** Message lisible d'une erreur interceptée (`catch (e: unknown)`) : `Error.message`, sinon le texte, sinon `fallback`. */
+export function errMessage(e: unknown, fallback = ""): string {
+  if (e instanceof Error) return e.message;
+  if (typeof e === "string") return e;
+  if (e && typeof e === "object" && "message" in e && typeof (e as { message: unknown }).message === "string") return (e as { message: string }).message;
+  return fallback;
 }

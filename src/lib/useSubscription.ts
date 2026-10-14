@@ -55,8 +55,8 @@ const DEFAULT_INFO = {
 // catalogues…) : une seule requête partagée, gardée quelques secondes.
 // refresh() force une nouvelle lecture (ex. après une question à Calia).
 const SUB_TTL_MS = 5_000;
-let sharedSub: { at: number; promise: Promise<any | null> } | null = null;
-function fetchSubscription(force: boolean): Promise<any | null> {
+let sharedSub: { at: number; promise: Promise<unknown | null> } | null = null;
+function fetchSubscription(force: boolean): Promise<unknown | null> {
   if (force || !sharedSub || Date.now() - sharedSub.at > SUB_TTL_MS) {
     const promise = fetch("/api/user/subscription-status")
       .then((res) => (res.ok ? res.json() : null))

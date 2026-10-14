@@ -124,6 +124,7 @@ export default function Navbar() {
     localStorage.clear();
     setUser(null);
     setUserRole(null);
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- déconnexion : rechargement complet pour repartir d'un état vide
     window.location.href = "/";
   };
 

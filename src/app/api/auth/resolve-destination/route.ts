@@ -4,7 +4,7 @@ import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { hashTwoFactorValue } from "@/lib/twoFactor";
 import { getTwoFactorCookie } from "@/lib/twoFactorCookie";
 import { getDashboardPath } from "@/lib/authRedirect";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 /**
  * Destination post-authentification, résolue ENTIÈREMENT côté serveur (ban +
@@ -54,7 +54,7 @@ export async function GET(req: Request) {
     }
 
     return NextResponse.json({ dest: dashboard });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || "Erreur interne") }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || "Erreur interne") }, { status: 500 });
   }
 }

@@ -1,9 +1,10 @@
 ﻿"use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
-import { useState, useEffect, useRef, useLayoutEffect, useMemo } from "react";
-import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Image as ImageIcon, Loader2, Sparkles, Pencil, Keyboard, Eye, AlertTriangle, Lock, Lightbulb } from "lucide-react";
-import { Page, Block } from "@/components/admin/ExerciseBuilder";
+import { useState, useEffect, useRef, useMemo } from "react";
+import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Loader2, Sparkles, Pencil, Keyboard, AlertTriangle, Lock, Lightbulb } from "lucide-react";
+import { Page } from "@/components/admin/ExerciseBuilder";
 import FigureInputs from "@/components/viewers/FigureInputs";
 import SlotHtml, { tokenizeSlots } from "@/components/viewers/SlotHtml";
 import { supabase } from "@/lib/supabaseClient";
@@ -510,7 +511,7 @@ function MatchingDragList({
     setDrag((d) => (d ? { ...d, x: e.clientX, y: e.clientY, moved } : d));
     setHoverSlot(moved ? hitTestSlot(e.clientX, e.clientY) : null);
   };
-  const handlePointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+  const handlePointerUp = (_e: React.PointerEvent<HTMLButtonElement>) => {
     if (!drag) return;
     const { tokenId, moved, x, y } = drag;
     setDrag(null);
@@ -701,7 +702,7 @@ function CategorizeDragList({
     setDrag((d) => (d ? { ...d, x: e.clientX, y: e.clientY, moved } : d));
     setHoverBin(moved ? hitTestBin(e.clientX, e.clientY) : null);
   };
-  const handlePointerUp = (e: React.PointerEvent<HTMLButtonElement>) => {
+  const handlePointerUp = (_e: React.PointerEvent<HTMLButtonElement>) => {
     if (!drag) return;
     const { originalIndex, moved, x, y } = drag;
     setDrag(null);
@@ -911,11 +912,10 @@ export default function ExerciseViewer({
   // Un point par élément pour les associations / catégories / trous (voir lib/exerciseScoring).
   const pages = useMemo(
     () =>
-      (exercise.content_json || []).map((page: any) => ({
+      (exercise.content_json || []).map((page) => ({
         ...page,
-        blocks: (page.blocks || []).map((b: any) => (itemTotal(b) > 1 ? { ...b, points: blockMaxPoints(b) } : b)),
+        blocks: (page.blocks || []).map((b) => (itemTotal(b) > 1 ? { ...b, points: blockMaxPoints(b) } : b)),
       })) as Page[],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [exercise.content_json],
   );
   const { pageContext, setPageContext } = useAITutor();
@@ -995,22 +995,6 @@ export default function ExerciseViewer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exercise.id]);
 
-  // Nouvelle tentative : rien à effacer localement (plus de localStorage) —
-  // le prochain chargement serveur ne trouvera simplement pas de progression
-  // pour cette tentative.
-  useEffect(() => {
-    if (!forceNewAttempt) return;
-    setExerciseCompleted(false);
-    setAnswers({});
-    setSubmittedBlocks(new Set());
-    setResults({});
-    setAiFeedback({});
-    setRevealed({});
-    setScore(0);
-    setBlockModes({});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   // Position/réponses/score : plus de repli localStorage — tout vient du
   // serveur (effet "Charge la progression..." plus bas), avec un bref flash
   // à l'état vide le temps du premier chargement.
@@ -1023,7 +1007,6 @@ export default function ExerciseViewer({
   const [submittedBlocks, setSubmittedBlocks] = useState<Set<string>>(
     () => new Set((reviewMode ? initialProgress?.submittedBlocks : undefined) || [])
   );
-  const [loadingBlocks, setLoadingBlocks] = useState<Set<string>>(new Set());
   const [results, setResults] = useState<Record<string, boolean>>(() => (reviewMode ? initialProgress?.results : undefined) || {});
   const [aiFeedback, setAiFeedback] = useState<Record<string, string>>(() => (reviewMode ? initialProgress?.aiFeedback : undefined) || {});
   // Réponse correcte, révélée par le serveur uniquement après soumission de
@@ -1034,6 +1017,7 @@ export default function ExerciseViewer({
   const [showReview, setShowReview] = useState(false);
   const [isValidating, setIsValidating] = useState(false);
   const [gradingError, setGradingError] = useState<string | null>(null);
+
 
   // Correction immédiate des blocs "text_input" (même style que les
   // mini-exercices de cours) : vérifier tout de suite, réessayer, et
@@ -1134,6 +1118,22 @@ export default function ExerciseViewer({
     }
   };
   const [blockModes, setBlockModes] = useState<Record<string, "text" | "draw">>(() => (reviewMode ? initialProgress?.blockModes : undefined) || {});
+
+  // Nouvelle tentative : rien à effacer localement (plus de localStorage) —
+  // le prochain chargement serveur ne trouvera simplement pas de progression
+  // pour cette tentative.
+  useEffect(() => {
+    if (!forceNewAttempt) return;
+    setExerciseCompleted(false);
+    setAnswers({});
+    setSubmittedBlocks(new Set());
+    setResults({});
+    setAiFeedback({});
+    setRevealed({});
+    setScore(0);
+    setBlockModes({});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const [adminComments] = useState<Record<string, string>>(() => initialProgress?.adminComments || {});
   const [adminEditedAnswers] = useState<Record<string, any>>(() => initialProgress?.adminEditedAnswers || {});
   // Rempli par l'effet de chargement serveur ci-dessous.
@@ -1240,6 +1240,7 @@ export default function ExerciseViewer({
     return () => {
       if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, [answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, currentScreenIndex, exercise.id]);
 
   const currentScreen = screens[currentScreenIndex];
@@ -1247,7 +1248,7 @@ export default function ExerciseViewer({
 
   // Session timer — accumulé en base via progress_json.timeSpent (voir plus
   // haut), plus de localStorage.
-  const sessionStartRef = useRef<number>(Date.now());
+  const sessionStartRef = useRef<number>(0); // posé au montage (voir l'effet plus bas)
   const getAccumulatedSeconds = () => {
     if (isVirtualExercise(exercise.id)) return 0;
     return accumulatedSecondsRef.current;
@@ -1263,7 +1264,14 @@ export default function ExerciseViewer({
   useEffect(() => {
     sessionStartRef.current = Date.now();
     return () => { saveTimeSpent(); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, []);
+  // Durée affichée sur l'écran de fin : figée au moment où l'exercice se termine (l'affichage ne lit pas de ref).
+  const [timeTotal, setTimeTotal] = useState(0);
+  useEffect(() => {
+    if (exerciseCompleted) setTimeTotal(getAccumulatedSeconds());
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- seule la fin de l'exercice déclenche la mesure
+  }, [exerciseCompleted]);
 
   // Initialize AI Tutor context when viewer mounts
   useEffect(() => {
@@ -1330,12 +1338,13 @@ export default function ExerciseViewer({
     };
 
     setPageContext(newContext as any);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, [exercise.id, exercise.title, setPageContext]);
 
   // Update AI Tutor context with current student answers
   useEffect(() => {
     const answerSummary = Object.entries(answers)
-      .map(([blockId, answer]) => {
+      .map(([, answer]) => {
         if (typeof answer === "string" && answer.length > 0) {
           return answer;
         } else if (Array.isArray(answer) && answer.length > 0) {
@@ -1352,6 +1361,7 @@ export default function ExerciseViewer({
         userAnswer: answerSummary.slice(0, 500), // Limit to 500 chars for API
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, [answers, setPageContext]);
 
   // Dynamic progress tracking
@@ -1388,6 +1398,7 @@ export default function ExerciseViewer({
   // Track initial start
   useEffect(() => {
     saveProgress('in_progress', 0);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, []);
 
 
@@ -1507,12 +1518,12 @@ export default function ExerciseViewer({
               ],
         ).then((out) => (preview ? out : out[0]) as any[]);
 
-        const byBlock = new Map(results.map((r: any) => [r.block_id, r]));
-        if (results.some((r: any) => r?.unavailable)) {
+        const byBlock = new Map(results.map((r) => [r.block_id, r]));
+        if (results.some((r) => r?.unavailable)) {
           // Panne d'infra, pas une vraie tentative : rien n'est enregistré,
           // l'élève peut resoumettre à l'identique.
           setIsValidating(false);
-          setGradingError(results.find((r: any) => r?.unavailable)?.feedback || "Correction indisponible, réessaie.");
+          setGradingError(results.find((r) => r?.unavailable)?.feedback || "Correction indisponible, réessaie.");
           return;
         }
         for (const { block } of toGrade) {
@@ -1591,15 +1602,6 @@ export default function ExerciseViewer({
     }
   };
 
-  const handleRestart = () => {
-    setCurrentScreenIndex(0);
-    setAnswers({});
-    setSubmittedBlocks(new Set());
-    setScore(0);
-    setExerciseCompleted(false);
-    setShowReview(false);
-  };
-
   if (!pages.length) {
     return (
       <div className="flex flex-col items-center justify-center h-64 text-gray-500">
@@ -1615,7 +1617,6 @@ export default function ExerciseViewer({
     const percentage = totalPoints > 0
       ? Math.round((score / totalPoints) * 100)
       : gradable > 0 ? Math.round((Object.values(results).filter(Boolean).length / gradable) * 100) : 100;
-    const timeTotal = getAccumulatedSeconds();
     const mins = Math.floor(timeTotal / 60);
     const isPreview = isVirtualExercise(exercise.id);
     const threshold = passThreshold(exercise.min_score_percent);
@@ -2272,13 +2273,13 @@ export default function ExerciseViewer({
 
                     {adminEditedAnswers[block.id] !== undefined && (
                       <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg text-purple-800 text-xs">
-                        <span className="font-bold block mb-0.5">Réponse corrigée par l'admin :</span>
+                        <span className="font-bold block mb-0.5">Réponse corrigée par l&apos;admin :</span>
                         {typeof adminEditedAnswers[block.id] === "string" ? adminEditedAnswers[block.id] : JSON.stringify(adminEditedAnswers[block.id])}
                       </div>
                     )}
                     {adminComments[block.id] && (
                       <div className="bg-purple-50 border border-purple-200 p-3 rounded-lg text-purple-800 text-xs">
-                        <span className="font-bold block mb-0.5">Commentaire de l'admin :</span>
+                        <span className="font-bold block mb-0.5">Commentaire de l&apos;admin :</span>
                         {adminComments[block.id]}
                       </div>
                     )}

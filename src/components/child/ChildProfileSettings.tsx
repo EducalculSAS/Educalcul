@@ -14,8 +14,7 @@ import {
 import { getNameColor } from "@/lib/badgeStyles";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
-import { getSimpleLevelLabel, AVATARS } from "@/lib/constants";
-import Image from "next/image";
+import { getSimpleLevelLabel } from "@/lib/constants";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import UserSessionsList from "@/components/UserSessionsList";
@@ -23,6 +22,7 @@ import TwoFactorToggle from "@/components/TwoFactorToggle";
 import WebAuthnCard from "@/components/WebAuthnCard";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { CALIA_VOICES, DEFAULT_CALIA_VOICE, isCaliaVoice, type CaliaVoiceId } from "@/lib/caliaVoices";
+import { errMessage } from "@/lib/safeError";
 
 const GoogleIcon = () => (
   <svg className="w-6 h-6" viewBox="0 0 24 24">
@@ -58,7 +58,6 @@ export default function ChildProfileSettings({
   googleLinked: boolean;
   activityCounts: { courses: number; exercises: number; badges: number; minigames: number };
 }) {
-  const [saving, setSaving] = useState(false);
   const [avatar, setAvatar] = useState(user.avatar || "/avatars/avatar1.png");
   const [googleLinked, setGoogleLinked] = useState(initialGoogleLinked);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -101,19 +100,19 @@ export default function ChildProfileSettings({
     try {
       const { error } = await supabase.auth.linkIdentity({ provider: "google", options: { redirectTo: `${window.location.origin}/auth/callback` } });
       if (error) throw error;
-    } catch (err: any) { setMessage({ type: "error", text: err.message }); }
+    } catch (err: unknown) { setMessage({ type: "error", text: errMessage(err) }); }
   };
 
   const handleUnlinkGoogle = async () => {
     try {
       const { data: { user: au } } = await supabase.auth.getUser();
-      const identity = au?.identities?.find((id: any) => id.provider === "google");
+      const identity = au?.identities?.find((id) => id.provider === "google");
       if (!identity) throw new Error("Aucun compte Google lié.");
       const { error } = await supabase.auth.unlinkIdentity(identity);
       if (error) throw error;
       setGoogleLinked(false);
       setMessage({ type: "success", text: "Compte Google délié." });
-    } catch (err: any) { setMessage({ type: "error", text: err.message }); }
+    } catch (err: unknown) { setMessage({ type: "error", text: errMessage(err) }); }
   };
 
 

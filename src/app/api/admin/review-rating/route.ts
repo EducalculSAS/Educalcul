@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { requireRole } from "@/lib/apiAuth";
 import { fetchReviewRatingOverride, saveReviewRatingOverride } from "@/lib/reviewRatingOverride";
 
@@ -9,8 +9,8 @@ export async function GET(req: Request) {
 
   try {
     return NextResponse.json(await fetchReviewRatingOverride());
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -21,7 +21,7 @@ export async function PUT(req: Request) {
   try {
     const body = await req.json();
     return NextResponse.json(await saveReviewRatingOverride(body));
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

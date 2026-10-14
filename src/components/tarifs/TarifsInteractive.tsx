@@ -40,10 +40,10 @@ function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleClose = () => {
+  function handleClose() {
     setVisible(false);
     setTimeout(onClose, 260);
-  };
+  }
 
   return (
     <div

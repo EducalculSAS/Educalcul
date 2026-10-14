@@ -7,7 +7,7 @@ declare module "katex/contrib/auto-render" {
   interface Options {
     delimiters?: Delimiter[];
     throwOnError?: boolean;
-    [key: string]: any;
+    [key: string]: unknown;
   }
   function renderMathInElement(elem: HTMLElement, options?: Options): void;
   export default renderMathInElement;

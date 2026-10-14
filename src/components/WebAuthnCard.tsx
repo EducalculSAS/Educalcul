@@ -7,6 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { Fingerprint, Trash2, Loader2, CheckCircle } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { errMessage } from "@/lib/safeError";
 
 interface Credential {
   id: string;
@@ -79,11 +80,11 @@ export default function WebAuthnCard() {
       if (!verifyRes.ok || !verifyData.verified) throw new Error(verifyData.error || "Vérification échouée");
 
       await refetch();
-    } catch (err: any) {
+    } catch (err: unknown) {
       // Fermer la boîte de dialogue système est un choix, pas une erreur —
       // voir le même commentaire dans ConnexionClient.tsx.
-      if (err?.name !== "NotAllowedError") {
-        setError(err?.message || "Une erreur est survenue.");
+      if ((err instanceof Error ? err.name : "") !== "NotAllowedError") {
+        setError(errMessage(err) || "Une erreur est survenue.");
       }
     } finally {
       setRegistering(false);
@@ -100,8 +101,8 @@ export default function WebAuthnCard() {
       });
       if (!res.ok) throw new Error((await res.json()).error || "Erreur");
       setCredentials((prev) => prev.filter((c) => c.id !== id));
-    } catch (err: any) {
-      setError(err?.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      setError(errMessage(err) || "Une erreur est survenue.");
     } finally {
       setRemovingId(null);
     }

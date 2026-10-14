@@ -45,7 +45,7 @@ export default function ExercisesCatalog({
   filterCourseId?: string | number | null;
 }) {
   const sub = useSubscription();
-  const [exerciseProgress, setExerciseProgress] = useState<ExerciseProgress>(initialProgress);
+  const [exerciseProgress] = useState<ExerciseProgress>(initialProgress);
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_exercises_folder");
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
   const [selectedRootId, setSelectedRootId] = useState<number | null>(rootFolderIds?.[0] ?? null);
@@ -92,7 +92,6 @@ export default function ExercisesCatalog({
       f = parentId ? allFolders.find((x) => x.id === parentId) : undefined;
     }
     setBreadcrumbs(path);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allFolders, currentFolderId, levelFolderId, rootFolderIds, setCurrentFolderId]);
 
   const renderExerciseCard = (exercise: ExerciseRow, index: number, indexOffset: number) => {
@@ -181,8 +180,8 @@ export default function ExercisesCatalog({
         {courseExercises.length === 0 ? (
           <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
             <Calculator className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Pas encore d'exercices</h3>
-            <p className="text-gray-500">Ce cours n'a pas encore d'exercices associés.</p>
+            <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Pas encore d&apos;exercices</h3>
+            <p className="text-gray-500">Ce cours n&apos;a pas encore d&apos;exercices associés.</p>
           </div>
         ) : (
           <>
@@ -230,7 +229,7 @@ export default function ExercisesCatalog({
         <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
           <Calculator className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
           <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Dossier vide</h3>
-          <p className="text-gray-500">Il n'y a pas d'exercices ici pour le moment.</p>
+          <p className="text-gray-500">Il n&apos;y a pas d&apos;exercices ici pour le moment.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

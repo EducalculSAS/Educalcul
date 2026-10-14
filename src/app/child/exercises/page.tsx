@@ -27,7 +27,7 @@ export default async function ChildExercisesPage({
       "id, parent_id, name, color, icon, grade_level",
     ),
     // Paginé : une ligne par exercice tenté, un élève assidu dépasse les 1000.
-    selectAllPages<{ exercise_id: string; attempts_history: any[] | null }>((from, to) =>
+    selectAllPages<{ exercise_id: string; attempts_history: unknown[] | null }>((from, to) =>
       supabaseAdmin
         .from("user_exercise_attempts")
         .select("exercise_id, attempts_history")

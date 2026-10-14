@@ -79,7 +79,7 @@ export default async function PublicProfilePage({
               </div>
               {badges.length > 0 && (
                 <div className="flex gap-2 mt-3">
-                  {badges.map((b: any) => {
+                  {badges.map((b) => {
                     const Icon = ICON_MAP[b.icon] || Star;
                     return (
                       <div key={b.id} title={b.name} className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-lg border border-white/20">
@@ -116,7 +116,7 @@ export default async function PublicProfilePage({
               Badges obtenus ({allBadges.length})
             </h2>
             <div className="flex flex-wrap gap-2">
-              {allBadges.map((b: any) => {
+              {allBadges.map((b) => {
                 const Icon = ICON_MAP[b.icon] || Star;
                 return (
                   <div key={b.id} title={b.name} className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-semibold"

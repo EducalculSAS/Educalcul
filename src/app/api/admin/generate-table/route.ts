@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { generateStructuredContent } from "@/lib/llm";
 import { requireRole } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(req: NextRequest) {
@@ -45,8 +45,8 @@ Chaque sous-tableau de "rows" doit avoir le même nombre de colonnes que "header
       throw new Error("Réponse IA invalide");
     }
     return Response.json({ headers, rows });
-  } catch (e: any) {
+  } catch (e: unknown) {
     console.error("❌ Erreur génération tableau IA:", e);
-    return Response.json({ error: sanitizeErrorMessage(e?.message || "Erreur de génération") }, { status: 500 });
+    return Response.json({ error: sanitizeErrorMessage(errMessage(e) || "Erreur de génération") }, { status: 500 });
   }
 }

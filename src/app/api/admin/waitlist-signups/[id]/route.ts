@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 
@@ -17,7 +17,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
     if (!Number.isInteger(pid)) return NextResponse.json({ error: "Invalid id" }, { status: 400 });
 
     const body = await req.json();
-    const updates: Record<string, any> = {};
+    const updates: Record<string, unknown> = {};
     if (typeof body.display_name === "string") updates.display_name = body.display_name.trim().slice(0, 60);
     if (body.referral_count !== undefined) {
       const n = Number(body.referral_count);
@@ -36,8 +36,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       .single();
     if (error) throw error;
     return NextResponse.json({ entry: data });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -55,7 +55,7 @@ export async function DELETE(_req: Request, { params }: { params: Promise<{ id: 
     const { error } = await supabaseAdmin.from("waitlist_signups").delete().eq("id", pid);
     if (error) throw error;
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

@@ -4,7 +4,7 @@ import { isoBase64URL } from "@simplewebauthn/server/helpers";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { issueTwoFactorSession } from "@/lib/twoFactorSession";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { getWebauthnRp } from "@/lib/webauthn";
 
 // Vérifie la réponse du navigateur à la cérémonie d'enregistrement et
@@ -67,8 +67,8 @@ export async function POST(req: Request) {
     if ("error" in session) console.error("[webauthn/register/verify] 2FA session failed:", session.error);
 
     return NextResponse.json({ verified: true });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[webauthn/register/verify] failed:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

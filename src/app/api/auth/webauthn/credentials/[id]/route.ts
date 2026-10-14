@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 // Supprime une clé d'accès enregistrée — uniquement la sienne (filtrée par
 // user_id, jamais juste par id de credential). Connexion complète exigée :
@@ -23,8 +23,8 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
     }
 
     return NextResponse.json({ deleted: true });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[webauthn/credentials/DELETE] failed:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

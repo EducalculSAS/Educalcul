@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { requireRole } from "@/lib/apiAuth";
 import { isValidUUID } from "@/lib/validation";
 import { GLOBAL_EVENT_COLUMNS, parseGlobalEventInput } from "@/lib/calendarServer";
@@ -30,8 +30,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
     await auditLog({ action: AuditAction.CONTENT_UPDATED, adminId: admin.id, targetType: "global_calendar_event", targetId: id, details: { title: parsed.value.title } }, req);
     return NextResponse.json({ event: data });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error?.message || String(error)) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error) || String(error)) }, { status: 500 });
   }
 }
 
@@ -48,7 +48,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
 
     await auditLog({ action: AuditAction.CONTENT_DELETED, adminId: admin.id, targetType: "global_calendar_event", targetId: id }, req);
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error?.message || String(error)) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error) || String(error)) }, { status: 500 });
   }
 }

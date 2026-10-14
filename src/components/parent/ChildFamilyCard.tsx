@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { CalendarClock, FileText, GraduationCap, Moon, Target, TrendingUp } from "lucide-react";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import ChildReportLink from "@/components/parent/ChildReportLink";

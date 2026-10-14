@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { blockMaxPoints } from "@/lib/exerciseScoring";
@@ -138,8 +138,8 @@ export async function GET(req: Request) {
     if (!attempt) return NextResponse.json({ error: "Aucune tentative pour cet élève" }, { status: 404 });
 
     return NextResponse.json({ item, attempt });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -201,14 +201,14 @@ export async function PATCH(req: Request) {
       detailHolder.manualVerdicts = { ...(detailHolder.manualVerdicts || {}), [key]: true };
       const { score, total } = recomputeExerciseScore(item.content_json, detailHolder.results);
       newScore = score; newTotal = total;
-      const gradable = allExerciseBlocks(item.content_json).filter((b: any) => b.type !== "text" && b.type !== "image");
-      stillPending = !gradable.every((b: any) => detailHolder.manualVerdicts[b.id]);
+      const gradable = allExerciseBlocks(item.content_json).filter((b) => b.type !== "text" && b.type !== "image");
+      stillPending = !gradable.every((b) => detailHolder.manualVerdicts[b.id]);
     }
     if (editedAnswer !== undefined) {
       detailHolder.adminEditedAnswers[key] = editedAnswer;
 
       if (kind === "exercise") {
-        const block = allExerciseBlocks(item.content_json).find((b: any) => b.id === key);
+        const block = allExerciseBlocks(item.content_json).find((b) => b.id === key);
         const isCorrect = gradeExerciseBlock(block, editedAnswer);
         detailHolder.results = { ...(detailHolder.results || {}), [key]: isCorrect };
         const { score, total } = recomputeExerciseScore(item.content_json, detailHolder.results);
@@ -287,7 +287,7 @@ export async function PATCH(req: Request) {
     }, req);
 
     return NextResponse.json({ ok: true });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

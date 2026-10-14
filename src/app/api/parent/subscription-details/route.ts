@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getAuthenticatedUser } from '@/lib/apiAuth';
-import { sanitizeErrorMessage } from '@/lib/safeError';
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { fetchParentSubscriptionDetails } from '@/lib/parentSubscriptionDetails';
 
 export async function GET(req: Request) {
@@ -11,10 +11,10 @@ export async function GET(req: Request) {
 
     const result = await fetchParentSubscriptionDetails(me.authId);
     return NextResponse.json(result);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('API error:', error);
     return NextResponse.json(
-      { error: sanitizeErrorMessage(error?.message || String(error)) },
+      { error: sanitizeErrorMessage(errMessage(error) || String(error)) },
       { status: 500 }
     );
   }

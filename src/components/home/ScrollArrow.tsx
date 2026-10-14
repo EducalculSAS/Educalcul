@@ -13,7 +13,6 @@ export default function ScrollArrow() {
     // ancre/restauration de scroll) : `window` n'existe pas côté serveur, ce
     // check ne peut donc pas se faire dans l'initialiseur de useState sans
     // provoquer un mismatch d'hydratation.
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setScrolled(window.scrollY > 80);
     const onScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener("scroll", onScroll, { passive: true });

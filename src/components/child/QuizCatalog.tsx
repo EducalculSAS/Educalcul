@@ -86,7 +86,6 @@ export default function QuizCatalog({
       f = parentId ? allFolders.find((x) => x.id === parentId) : undefined;
     }
     setBreadcrumbs(path);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allFolders, currentFolderId, levelFolderId, rootFolderIds, setCurrentFolderId]);
 
   const renderQuizCard = (quiz: QuizRow, index: number, indexOffset: number) => {
@@ -176,7 +175,7 @@ export default function QuizCatalog({
           <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
             <Trophy className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Pas encore de quiz</h3>
-            <p className="text-gray-500">Ce cours n'a pas encore de quiz associé.</p>
+            <p className="text-gray-500">Ce cours n&apos;a pas encore de quiz associé.</p>
           </div>
         ) : (
           <>

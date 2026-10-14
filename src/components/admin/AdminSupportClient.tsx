@@ -22,6 +22,7 @@ import {
 import { useConfirm } from "@/components/ConfirmDialog";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+import { errMessage } from "@/lib/safeError";
 
 type Ticket = {
   id: number;
@@ -67,13 +68,8 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
   } | null>(null);
   const isFirstRender = useRef(true);
 
-  useEffect(() => {
-    if (isFirstRender.current) { isFirstRender.current = false; return; }
-    fetchTickets();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [viewMode]);
 
-  const fetchTickets = async () => {
+  async function fetchTickets() {
     setLoading(true);
     try {
       const res = await fetch(
@@ -90,7 +86,13 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
     } finally {
       setLoading(false);
     }
-  };
+  }
+
+  useEffect(() => {
+    if (isFirstRender.current) { isFirstRender.current = false; return; }
+    fetchTickets();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [viewMode]);
 
   const fetchTicketDetails = async (id: number) => {
     setLoading(true);
@@ -120,10 +122,10 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
     fetchTickets(); // Refresh list to update statuses
   };
 
-  const showNotification = (type: "success" | "error", message: string) => {
+  function showNotification(type: "success" | "error", message: string) {
     setNotification({ type, message });
     setTimeout(() => setNotification(null), 5000);
-  };
+  }
 
   const handlePurge = async () => {
     if (
@@ -250,8 +252,8 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
       } else {
         fetchTicketDetails(selectedTicket.id);
       }
-    } catch (error: any) {
-      showNotification("error", error.message);
+    } catch (error: unknown) {
+      showNotification("error", errMessage(error));
     } finally {
       setActionLoading(false);
     }
@@ -277,8 +279,8 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
 
       showNotification("success", "Ticket supprimé définitivement");
       handleBackToList();
-    } catch (error: any) {
-      showNotification("error", error.message);
+    } catch (error: unknown) {
+      showNotification("error", errMessage(error));
     } finally {
       setActionLoading(false);
     }
@@ -506,7 +508,7 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                           Note:
                         </span>
                         Une réponse marquera automatiquement le ticket comme
-                        "Répondu".
+                        &quot;Répondu&quot;.
                       </div>
                       <GlassButton
                         size="sm"

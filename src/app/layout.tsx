@@ -17,7 +17,6 @@ import CookieBanner from "@/components/CookieBanner";
 import SessionStillHereModal from "@/components/SessionStillHereModal";
 import ImpersonationBanner from "@/components/ImpersonationBanner";
 import JsonLd from "@/components/JsonLd";
-import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import ThemeSync from "@/components/ThemeSync";
 import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";

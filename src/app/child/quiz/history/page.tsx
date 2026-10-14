@@ -36,7 +36,7 @@ export default async function QuizHistoryPage() {
 
       {!attempts || attempts.length === 0 ? (
         <div className="text-center text-[var(--text-muted)] py-12">
-          Tu n'as pas encore terminé de quiz.
+          Tu n&apos;as pas encore terminé de quiz.
         </div>
       ) : (
         <div className="space-y-3">

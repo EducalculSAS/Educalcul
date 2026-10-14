@@ -75,7 +75,7 @@ export default function AdminLandingClient({
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase().trim();
-    let list = q
+    const list = q
       ? entries.filter(e =>
           e.email.toLowerCase().includes(q) ||
           (e.display_name || "").toLowerCase().includes(q) ||

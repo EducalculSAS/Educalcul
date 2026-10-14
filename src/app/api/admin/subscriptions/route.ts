@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { isValidPeriodId, ONE_TIME } from "@/lib/billingPeriods";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireSuperAdmin } from "@/lib/apiAuth";
 import { fetchAdminSubscriptionPlans } from "@/lib/adminSubscriptionPlans";
@@ -26,8 +26,8 @@ export async function GET(req: Request) {
 
     const plansWithCount = await fetchAdminSubscriptionPlans();
     return NextResponse.json(plansWithCount);
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -68,8 +68,8 @@ export async function POST(req: Request) {
     const stripeSync = await syncPlanToStripe(data.id);
     revalidatePath("/tarifs");
     return NextResponse.json({ ...data, stripe_sync: stripeSync }, { status: 201 });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -115,8 +115,8 @@ export async function PUT(req: Request) {
     const stripeSync = await syncPlanToStripe(data.id);
     revalidatePath("/tarifs");
     return NextResponse.json({ ...data, stripe_sync: stripeSync });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -154,7 +154,7 @@ export async function DELETE(req: Request) {
     const stripeSync = await removePlanFromStripe(id, doomed?.name);
     revalidatePath("/tarifs");
     return NextResponse.json({ success: true, stripe_sync: stripeSync });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

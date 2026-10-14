@@ -15,6 +15,7 @@ import { useAITutor } from "@/contexts/AITutorContext";
 import { playListeningCue, playModeProfCue } from "@/lib/audioCues";
 import { DEFAULT_CALIA_VOICE, isCaliaVoice, type CaliaVoiceId } from "@/lib/caliaVoices";
 import { getMyProfile } from "@/lib/updateMyProfile";
+import { errMessage } from "@/lib/safeError";
 
 const HIGHLIGHT_CLASS = "calia-scene-highlight";
 // Élève silencieux : Calia continue le cours après SILENCE_MS, et la séance se met en pause après MAX_SILENT_TURNS relances sans réponse.
@@ -263,6 +264,8 @@ export default function CaliaSceneDemo({
   const [shownWords, setShownWords] = useState<number | null>(null);
   const revealTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const sayTokensRef = useRef<string[]>([]);
+  // Copie en état des mots de la réplique : l'affichage ne lit pas une ref.
+  const [sayTokens, setSayTokens] = useState<string[]>([]);
   // Élément que Calia montre : le point et l'avatar le SUIVENT (défilement,
   // redimensionnement) au lieu de rester figés à l'ancienne position.
   const [pointerEl, setPointerEl] = useState<HTMLElement | null>(null);
@@ -270,7 +273,9 @@ export default function CaliaSceneDemo({
   // leur phrase (Calia se déplace en parlant).
   const pendingActionsRef = useRef<{ at: number; action: TurnAction }[]>([]);
   const showSay = (text: string) => {
-    sayTokensRef.current = text.match(/\$[^$]*\$\S*\s*|\S+\s*/g) ?? [];
+    const tokens = text.match(/\$[^$]*\$\S*\s*|\S+\s*/g) ?? [];
+    sayTokensRef.current = tokens;
+    setSayTokens(tokens);
     setShownWords(0); // rien avant que la voix démarre
     setSayText(text);
   };
@@ -732,8 +737,8 @@ export default function CaliaSceneDemo({
         });
       runDueActions(0);
       speak(result.say);
-    } catch (err: any) {
-      if (sessionActiveRef.current) setError(err?.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      if (sessionActiveRef.current) setError(errMessage(err) || "Une erreur est survenue.");
     } finally {
       setLoading(false);
     }
@@ -1094,7 +1099,7 @@ export default function CaliaSceneDemo({
                 style={error ? { background: "#fef2f2", color: "#b91c1c", border: "1px solid #fecaca" } : { background: "var(--greek-blue)", color: "#fff" }}
               >
                 {error ? error : <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(sayText || "") }} style={shownWords === null ? undefined : { display: "none" }} />}
-                {!error && shownWords !== null && sayTokensRef.current.slice(0, shownWords).map((t, i) => (
+                {!error && shownWords !== null && sayTokens.slice(0, shownWords).map((t, i) => (
                   <span key={i} className="calia-word" dangerouslySetInnerHTML={{ __html: renderLatexInHTML(t) }} />
                 ))}
               </div>

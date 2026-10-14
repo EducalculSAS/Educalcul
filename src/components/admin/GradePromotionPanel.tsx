@@ -5,6 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { ChevronDown, ChevronUp, GraduationCap, Loader2, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import { errMessage } from "@/lib/safeError";
 
 interface LastRun {
   id: number;
@@ -41,6 +42,7 @@ export default function GradePromotionPanel() {
     setLoading(false);
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- chargement déclenché par ce seul changement (load est recréée à chaque rendu)
   useEffect(() => { load(); }, []);
 
   const saveDate = async () => {
@@ -55,8 +57,8 @@ export default function GradePromotionPanel() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error);
       setMessage({ type: "success", text: "Date enregistrée." });
-    } catch (err: any) {
-      setMessage({ type: "error", text: err.message || "Erreur." });
+    } catch (err: unknown) {
+      setMessage({ type: "error", text: errMessage(err) || "Erreur." });
     } finally {
       setSaving(false);
       setTimeout(() => setMessage(null), 4000);
@@ -77,8 +79,8 @@ export default function GradePromotionPanel() {
         text: `${data.advanced} enfant(s) avancé(s) de niveau, ${data.graduated} diplômé(s), ${data.needsManualChoice} élève(s) en Seconde devront choisir leur spécialité à leur prochaine connexion.`,
       });
       load();
-    } catch (err: any) {
-      setMessage({ type: "error", text: err.message || "Erreur." });
+    } catch (err: unknown) {
+      setMessage({ type: "error", text: errMessage(err) || "Erreur." });
     } finally {
       setRunning(false);
     }
@@ -94,8 +96,8 @@ export default function GradePromotionPanel() {
       if (!res.ok) throw new Error(data.error);
       setMessage({ type: "success", text: `${data.restored} compte(s) restauré(s) à leur niveau précédent.` });
       load();
-    } catch (err: any) {
-      setMessage({ type: "error", text: err.message || "Erreur." });
+    } catch (err: unknown) {
+      setMessage({ type: "error", text: errMessage(err) || "Erreur." });
     } finally {
       setUndoing(false);
     }
@@ -124,7 +126,7 @@ export default function GradePromotionPanel() {
           ) : (
             <>
               <p className="text-sm text-gray-600 mb-4">
-                Chaque année à la date choisie, tous les comptes enfant avancent automatiquement d'un niveau (CP → CE1 → … → Seconde, et Première → Terminale sur la même spécialité). Les élèves en Seconde devront choisir leur spécialité maths eux-mêmes, via un popup obligatoire à leur prochaine connexion. Les élèves déjà en Terminale sont marqués diplômés.
+                Chaque année à la date choisie, tous les comptes enfant avancent automatiquement d&apos;un niveau (CP → CE1 → … → Seconde, et Première → Terminale sur la même spécialité). Les élèves en Seconde devront choisir leur spécialité maths eux-mêmes, via un popup obligatoire à leur prochaine connexion. Les élèves déjà en Terminale sont marqués diplômés.
               </p>
 
               {message && (
@@ -175,7 +177,7 @@ export default function GradePromotionPanel() {
               <GlassCloseButton onClick={() => setShowConfirm(false)} variant="light" size="sm" />
             </div>
             <p className="text-sm text-gray-600 mb-6">
-              Tous les comptes enfant vont avancer d'un niveau immédiatement, quelle que soit la date configurée. Une annulation reste possible juste après (bouton "Annuler le dernier passage"). Continuer ?
+              Tous les comptes enfant vont avancer d&apos;un niveau immédiatement, quelle que soit la date configurée. Une annulation reste possible juste après (bouton &quot;Annuler le dernier passage&quot;). Continuer ?
             </p>
             <div className="flex justify-end gap-2">
               <GlassButton size="sm" variant="ghost" onClick={() => setShowConfirm(false)}>Annuler</GlassButton>

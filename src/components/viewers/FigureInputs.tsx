@@ -18,7 +18,16 @@ interface FigureInputsProps {
  * cases vides de la figure. Les cases données s'affichent, les cases vides sont des champs.
  */
 export default function FigureInputs({ spec, values, disabled, expected, submitted, onChange }: FigureInputsProps) {
-  let blankIndex = -1;
+  // Rang d'une case vide = nombre de cases vides avant elle, dans l'ordre de lecture (calculé, pas compté pendant l'affichage).
+  const gridRows: string[][] = spec.kind === "brick_pyramid" ? spec.levels : spec.cells;
+  const blankAt = (r: number, c: number) => {
+    let n = -1;
+    for (let i = 0; i <= r; i++) {
+      const upTo = i === r ? c + 1 : gridRows[i].length;
+      for (let j = 0; j < upTo; j++) if (!gridRows[i][j]) n++;
+    }
+    return n;
+  };
 
   const setValue = (idx: number, value: string) => {
     const next = [...values];
@@ -26,7 +35,7 @@ export default function FigureInputs({ spec, values, disabled, expected, submitt
     onChange(next);
   };
 
-  const cell = (text: string, key: string, tone: "pyramid" | "grid", size: { w: number; h: number }) => {
+  const cell = (text: string, key: string, tone: "pyramid" | "grid", size: { w: number; h: number }, r: number, c: number) => {
     if (text) {
       return (
         <div
@@ -47,8 +56,7 @@ export default function FigureInputs({ spec, values, disabled, expected, submitt
         </div>
       );
     }
-    blankIndex += 1;
-    const idx = blankIndex;
+    const idx = blankAt(r, c);
     const value = values[idx] ?? "";
     let state: "idle" | "ok" | "ko" = "idle";
     if (submitted && expected && expected[idx] !== undefined) {
@@ -86,7 +94,7 @@ export default function FigureInputs({ spec, values, disabled, expected, submitt
       <div className="flex flex-col items-center gap-1 my-3 overflow-x-auto" role="group" aria-label="Pyramide à compléter">
         {spec.levels.map((row, r) => (
           <div key={r} className="flex gap-1">
-            {row.map((text, c) => cell(text, `${r}-${c}`, "pyramid", size))}
+            {row.map((text, c) => cell(text, `${r}-${c}`, "pyramid", size, r, c))}
           </div>
         ))}
       </div>
@@ -102,7 +110,7 @@ export default function FigureInputs({ spec, values, disabled, expected, submitt
       role="group"
       aria-label="Grille à compléter"
     >
-      {spec.cells.flatMap((row, r) => row.map((text, c) => cell(text, `${r}-${c}`, "grid", size)))}
+      {spec.cells.flatMap((row, r) => row.map((text, c) => cell(text, `${r}-${c}`, "grid", size, r, c)))}
     </div>
   );
 }

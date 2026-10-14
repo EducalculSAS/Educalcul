@@ -550,7 +550,7 @@ export default function AdminSubscriptionsClient({
                       </div>
                       {plan.trial_days ? (
                         <div className="flex items-center gap-1 mt-1 text-xs text-green-600 font-medium">
-                          <Clock size={12} /> {plan.trial_days} jours d'essai
+                          <Clock size={12} /> {plan.trial_days} jours d&apos;essai
                         </div>
                       ) : null}
                     </div>
@@ -605,7 +605,7 @@ export default function AdminSubscriptionsClient({
                     {plan.subscriber_count > 0 && expandedPlan === plan.id && (
                       <div className="px-6 pb-3">
                         <div className="max-h-48 overflow-y-auto space-y-1.5 pr-1">
-                          {plan.subscribers?.map((s: any) => {
+                          {plan.subscribers?.map((s) => {
                             const u = s.user;
                             const name = [u?.first_name, u?.last_name].filter(Boolean).join(" ") || u?.email || "Utilisateur";
                             return (
@@ -748,7 +748,7 @@ export default function AdminSubscriptionsClient({
                       <td className="px-5 py-4 text-xs text-gray-500">
                         {c.valid_until ? (
                           <span className={new Date(c.valid_until) < new Date() ? "text-red-500 font-medium" : ""}>
-                            jusqu'au {new Date(c.valid_until).toLocaleDateString("fr-FR")}
+                            jusqu&apos;au {new Date(c.valid_until).toLocaleDateString("fr-FR")}
                           </span>
                         ) : <span className="text-green-600">Sans limite</span>}
                       </td>
@@ -778,7 +778,7 @@ export default function AdminSubscriptionsClient({
           {parainageCodes.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
               <Gift size={48} className="mx-auto mb-3 opacity-30" />
-              <p className="font-medium">Aucun utilisateur n'a encore de code de parrainage</p>
+              <p className="font-medium">Aucun utilisateur n&apos;a encore de code de parrainage</p>
               <p className="text-sm mt-1">Les codes sont générés automatiquement à la première visite de la page abonnement</p>
             </div>
           ) : (
@@ -1052,7 +1052,7 @@ export default function AdminSubscriptionsClient({
                 </div>
               </div>
               <div>
-                <label className={labelCls}>Limite d'utilisation</label>
+                <label className={labelCls}>Limite d&apos;utilisation</label>
                 <input type="number" min="1" value={refForm.max_uses} onChange={e => setRefForm({...refForm, max_uses: e.target.value})} className={inputCls} placeholder="Illimité si vide" />
               </div>
               <div className="grid grid-cols-2 gap-4">

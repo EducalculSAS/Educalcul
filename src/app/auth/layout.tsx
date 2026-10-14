@@ -77,7 +77,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
                 color: "#f0ede8",
               }}
             >
-              L'excellence<br />
+              L&apos;excellence<br />
               <span style={{ color: "var(--greek-gold)" }}>mathématique</span><br />
               à portée de main.
             </h2>

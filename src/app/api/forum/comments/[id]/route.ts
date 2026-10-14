@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, type AuthenticatedUser } from "@/lib/apiAuth";
 import { COMMENT_MAX, cleanText, loadVisiblePost, parseId } from "@/lib/forum";
@@ -37,8 +37,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       .eq("id", res.comment.id);
     if (error) throw error;
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -52,7 +52,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ id: s
     const { error } = await supabaseAdmin.from("forum_comments").delete().eq("id", res.comment.id);
     if (error) throw error;
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

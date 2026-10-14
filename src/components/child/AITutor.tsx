@@ -177,6 +177,7 @@ export default function AITutor() {
       console.error("Failed to load chat:", e);
     }
     return [WELCOME];
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- texte d'accueil constant
   }, [getContextKey]);
 
   // Historique chargé seulement une fois le chat ouvert (puis à chaque

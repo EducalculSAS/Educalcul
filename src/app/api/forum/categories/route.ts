@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { audiencesFor, parseCategoryBody } from "@/lib/forum";
@@ -24,8 +24,8 @@ export async function GET(req: Request) {
       return { ...rest, post_count: forum_posts?.[0]?.count ?? 0 } as ForumCategory;
     });
     return NextResponse.json(categories);
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -45,7 +45,7 @@ export async function POST(req: Request) {
       .single();
     if (error) throw error;
     return NextResponse.json({ ...data, post_count: 0 });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

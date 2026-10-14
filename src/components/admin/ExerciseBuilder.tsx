@@ -1,34 +1,10 @@
 ﻿"use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
-import {
-  Plus,
-  Trash2,
-  GripVertical,
-  ChevronDown,
-  ChevronRight,
-  FileText,
-  Image as ImageIcon,
-  CheckCircle2,
-  CheckSquare,
-  List,
-  ArrowRightLeft,
-  ArrowUpDown,
-  AlignLeft,
-  Code2,
-  ToggleLeft,
-  Type,
-  Sparkles,
-  Loader2,
-  ArrowUp,
-  ArrowDown,
-  AlertTriangle,
-  LayoutGrid,
-  Ruler,
-  SearchX,
-} from "lucide-react";
+import { Plus, Trash2, GripVertical, ChevronDown, ChevronRight, FileText, Image as ImageIcon, CheckSquare, List, ArrowRightLeft, ArrowUpDown, AlignLeft, Code2, ToggleLeft, Type, Sparkles, ArrowUp, ArrowDown, AlertTriangle, LayoutGrid, Ruler, SearchX } from "lucide-react";
 
 import AISectionEditModal from "./AISectionEditModal";
 import AIAddExerciseModal from "./AIAddExerciseModal";
@@ -219,7 +195,6 @@ interface ExerciseBuilderProps {
 export default function ExerciseBuilder({
   initialContent,
   onChange,
-  onMetadataChange,
   level,
 }: ExerciseBuilderProps) {
   const confirm = useConfirm();
@@ -332,10 +307,12 @@ export default function ExerciseBuilder({
     ) {
       setPages(initialContent);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- resynchronisation quand le contenu initial change, pas à chaque modification locale
   }, [initialContent]);
 
   useEffect(() => {
     onChange(pages);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- onChange change d'identité à chaque rendu du parent : l'inclure relancerait l'effet en boucle
   }, [pages]);
 
   const addPage = () => {
@@ -514,11 +491,11 @@ export default function ExerciseBuilder({
   return (
     <div className="space-y-4" ref={contentRef}>
       <div className="flex justify-between items-center mb-4">
-        <h3 className="font-semibold text-gray-900">Contenu de l'exercice</h3>
+        <h3 className="font-semibold text-gray-900">Contenu de l&apos;exercice</h3>
         <div className="flex gap-2">
           <GlassButton size="sm" variant="navy" onClick={() => setIsAiAddModalOpen(true)}>
             <Sparkles size={16} />
-            Ajouter avec l'IA
+            Ajouter avec l&apos;IA
           </GlassButton>
           <GlassButton size="sm" variant="navy" onClick={addPage}>
             <Plus size={16} />
@@ -753,9 +730,9 @@ export default function ExerciseBuilder({
                               )}
                               {block.type === "impossible_search" && (
                                 <p className="text-xs text-gray-400">
-                                  Un énoncé qui semble demander un calcul/une réponse mais n'en a pas
+                                  Un énoncé qui semble demander un calcul/une réponse mais n&apos;en a pas
                                   (données insuffisantes, contradictoires, ou hors du domaine étudié).
-                                  L'élève doit reconnaître et justifier l'impossibilité, pas calculer.
+                                  L&apos;élève doit reconnaître et justifier l&apos;impossibilité, pas calculer.
                                 </p>
                               )}
                               <ContentInsertToolbar
@@ -886,7 +863,7 @@ export default function ExerciseBuilder({
                                 </label>
                               )}
                               {uploadErrorBlockId === block.id && (
-                                <p className="text-xs text-red-500">Échec de l'envoi du fichier. Réessaie (max 20 Mo).</p>
+                                <p className="text-xs text-red-500">Échec de l&apos;envoi du fichier. Réessaie (max 20 Mo).</p>
                               )}
                             </div>
                           )}
@@ -1009,7 +986,7 @@ export default function ExerciseBuilder({
                           {block.type === "coding" && (
                             <div className="space-y-2">
                               <label className="text-sm font-medium text-gray-700">
-                                Solution de référence (utilisée par l'IA pour corriger)
+                                Solution de référence (utilisée par l&apos;IA pour corriger)
                               </label>
                               <textarea
                                 value={(block.correctAnswer as string) || ""}
@@ -1027,7 +1004,7 @@ export default function ExerciseBuilder({
                           {block.type === "impossible_search" && (
                             <div className="space-y-2">
                               <label className="text-sm font-medium text-gray-700">
-                                Justification attendue (utilisée par l'IA pour corriger)
+                                Justification attendue (utilisée par l&apos;IA pour corriger)
                               </label>
                               <textarea
                                 value={(block.correctAnswer as string) || ""}
@@ -1045,7 +1022,7 @@ export default function ExerciseBuilder({
                           {block.type === "fill_in_the_blank" && (
                             <div className="space-y-2">
                               <label className="text-sm font-medium text-gray-700">
-                                Réponses attendues (une par trou, dans l'ordre)
+                                Réponses attendues (une par trou, dans l&apos;ordre)
                               </label>
                               {(block.blanks || []).map((blank, i) => (
                                 <div key={i} className="flex items-center gap-2">

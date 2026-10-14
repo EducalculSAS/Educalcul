@@ -1,5 +1,5 @@
 ﻿import { NextResponse, after } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { blockMaxPoints } from "@/lib/exerciseScoring";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
@@ -74,8 +74,8 @@ export async function GET(req: Request) {
       quizzes: quizzes || [],
       courses: courses || [],
     });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -89,7 +89,7 @@ export async function POST(req: Request) {
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
     const body = await req.json();
-    const { type, userId, itemId, score, totalPoints, timeSpent, chapterIndex, status, scorePercent, passed, lessonsCompleted, lessonCount, lastLessonId, lastChapterIndex, lastLessonIndex } = body;
+    const { type, userId, itemId, score, totalPoints, timeSpent, chapterIndex, status, scorePercent, lessonsCompleted, lessonCount, lastLessonId, lastChapterIndex, lastLessonIndex } = body;
 
     if (!type || !userId || !itemId) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
@@ -131,9 +131,9 @@ export async function POST(req: Request) {
       const table = type === "exercise" ? "exercises" : "quizzes";
       const { data: item } = await supabaseAdmin
         .from(table)
-        .select(type === "exercise" ? "content_json, min_score_percent, max_attempts, grading_type" : "content_json, min_score_percent, max_attempts")
+        .select(type === "exercise" ? "content_json, min_score_percent, max_attempts, grading_type, time_limit_minutes" : "content_json, min_score_percent, max_attempts, time_limit_minutes")
         .eq("id", itemId)
-        .maybeSingle<{ content_json: unknown; min_score_percent: number | null; max_attempts?: number | null; grading_type?: string | null }>();
+        .maybeSingle<{ content_json: unknown; min_score_percent: number | null; max_attempts?: number | null; grading_type?: string | null; time_limit_minutes?: number | null }>();
       if (type === "quiz") quizMaxAttempts = Number(item?.max_attempts) > 0 ? Number(item?.max_attempts) : null;
       if (type === "exercise") {
         exerciseMaxAttempts = Number(item?.max_attempts) > 0 ? Number(item?.max_attempts) : null;
@@ -156,7 +156,24 @@ export async function POST(req: Request) {
         const ids = new Set<string>();
         if (type === "exercise") (item?.content_json as any[] | undefined)?.forEach((p: any) => (p.blocks || []).forEach((b: any) => b?.id && ids.add(String(b.id))));
         else (item?.content_json as any[] | undefined)?.forEach((q: any) => q?.id !== undefined && ids.add(String(q.id)));
-        safeScore = await serverScore(internalId, type, itemId, ids, maxPoints);
+        // Temps limité : seuls les verdicts rendus pendant la tentative (début enregistré au premier envoi « en cours »,
+        // plus 90 s de marge réseau) comptent ; une réponse corrigée après la fin du temps ne rapporte rien.
+        const window: { since?: Date; until?: Date } = {};
+        const limitMin = Number(item?.time_limit_minutes) > 0 ? Number(item?.time_limit_minutes) : 0;
+        if (limitMin > 0) {
+          const { data: cur } = await supabaseAdmin
+            .from(type === "exercise" ? "user_exercise_attempts" : "user_quiz_attempts")
+            .select("attempt_started_at")
+            .eq("user_id", internalId)
+            .eq(type === "exercise" ? "exercise_id" : "quiz_id", itemId)
+            .maybeSingle();
+          if (cur?.attempt_started_at) {
+            const started = new Date(cur.attempt_started_at);
+            window.since = started;
+            window.until = new Date(started.getTime() + limitMin * 60_000 + 90_000);
+          }
+        }
+        safeScore = await serverScore(internalId, type, itemId, ids, maxPoints, window);
         gradedFromServer = true;
       }
 
@@ -177,6 +194,25 @@ export async function POST(req: Request) {
       }
     }
 
+    // Début de la tentative chronométrée : posé au premier envoi « en cours », conservé si la page est rechargée,
+    // repris à zéro si l'ancienne tentative a été abandonnée (plus de 30 minutes après la fin du temps).
+    let attemptStartedAt: string | null = null;
+    if (me.role === "child" && me.id === internalId && (type === "exercise" || type === "quiz") && status === "in_progress") {
+      const { data: it } = await supabaseAdmin.from(type === "exercise" ? "exercises" : "quizzes").select("time_limit_minutes").eq("id", itemId).maybeSingle();
+      const limitMin = Number(it?.time_limit_minutes) > 0 ? Number(it?.time_limit_minutes) : 0;
+      if (limitMin > 0) {
+        const { data: cur } = await supabaseAdmin
+          .from(type === "exercise" ? "user_exercise_attempts" : "user_quiz_attempts")
+          .select("attempt_started_at")
+          .eq("user_id", internalId)
+          .eq(type === "exercise" ? "exercise_id" : "quiz_id", itemId)
+          .maybeSingle();
+        const prev = cur?.attempt_started_at ? new Date(cur.attempt_started_at).getTime() : null;
+        const stale = prev !== null && Date.now() - prev > limitMin * 60_000 + 30 * 60_000;
+        attemptStartedAt = prev !== null && !stale ? cur!.attempt_started_at : new Date().toISOString();
+      }
+    }
+
     let result;
     // Un cours qui passe à « terminé » pour la première fois : le parent en est prévenu (voir parentAlerts).
     let courseCompletedTitle: string | null = null;
@@ -188,7 +224,7 @@ export async function POST(req: Request) {
       if (before?.status !== "completed") courseCompletedTitle = course?.title || "Cours";
     }
     if (type === "exercise") {
-      let attemptsHistory: any[] = [];
+      let attemptsHistory: unknown[] = [];
       if (status === "completed") {
         const { data: existing } = await supabaseAdmin
           .from("user_exercise_attempts")
@@ -207,7 +243,7 @@ export async function POST(req: Request) {
         if (exerciseMaxAttempts && (existing?.attempts_history?.length ?? 0) >= exerciseMaxAttempts) {
           return NextResponse.json({ error: "Tentatives épuisées pour cet exercice.", code: "attempts_exhausted" }, { status: 409 });
         }
-        const prevProgress = existing?.progress_json as { answers?: any; results?: any; revealed?: any; aiFeedback?: any } | undefined;
+        const prevProgress = existing?.progress_json as { answers?: unknown; results?: unknown; revealed?: unknown; aiFeedback?: unknown } | undefined;
         attemptsHistory = [...(existing?.attempts_history || []), {
           score: safeScore,
           total_points: totalPoints || 0,
@@ -232,10 +268,11 @@ export async function POST(req: Request) {
         score_percent: safeScorePercent,
         passed: safePassed,
         completed_at: new Date().toISOString(),
-        ...(status === "completed" ? { attempts_history: attemptsHistory } : {}),
+        ...(status === "completed" ? { attempts_history: attemptsHistory, attempt_started_at: null } : {}),
+        ...(attemptStartedAt ? { attempt_started_at: attemptStartedAt } : {}),
       }, { onConflict: 'user_id, exercise_id' });
     } else if (type === "quiz") {
-      let attemptsHistory: any[] = [];
+      let attemptsHistory: unknown[] = [];
       if (status === "completed") {
         const { data: existing } = await supabaseAdmin
           .from("user_quiz_attempts")
@@ -247,7 +284,7 @@ export async function POST(req: Request) {
         if (quizMaxAttempts && (existing?.attempts_history?.length ?? 0) >= quizMaxAttempts) {
           return NextResponse.json({ error: "Tentatives épuisées pour ce quiz.", code: "attempts_exhausted" }, { status: 409 });
         }
-        const prevProgress = existing?.progress_json as { answers?: any; questionResults?: any; revealed?: any; questionFeedbacks?: any } | undefined;
+        const prevProgress = existing?.progress_json as { answers?: unknown; questionResults?: unknown; revealed?: unknown; questionFeedbacks?: unknown } | undefined;
         attemptsHistory = [...(existing?.attempts_history || []), {
           score: safeScore,
           total_points: totalPoints || 0,
@@ -272,7 +309,8 @@ export async function POST(req: Request) {
         score_percent: safeScorePercent,
         passed: safePassed,
         completed_at: new Date().toISOString(),
-        ...(status === "completed" ? { attempts_history: attemptsHistory } : {}),
+        ...(status === "completed" ? { attempts_history: attemptsHistory, attempt_started_at: null } : {}),
+        ...(attemptStartedAt ? { attempt_started_at: attemptStartedAt } : {}),
       }, { onConflict: 'user_id, quiz_id' });
     } else if (type === "course") {
       result = await supabaseAdmin.from("user_course_progress").upsert({
@@ -303,8 +341,8 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error saving activity:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

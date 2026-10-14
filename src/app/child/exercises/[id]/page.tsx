@@ -3,6 +3,7 @@ import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripAnswers, fillEmptyContentJson } from "@/lib/exerciseContent";
 import { checkDifficultyAccess } from "@/lib/checkSubscription";
+import { childMayOpen } from "@/lib/levelAccess";
 import ExerciseDetailClient from "@/components/child/ExerciseDetailClient";
 
 export default async function ExerciseDetailPage({
@@ -43,7 +44,7 @@ export default async function ExerciseDetailPage({
     return (
       <ExerciseDetailClient
         exerciseId={exerciseId}
-        initialExercise={(preview?.payload as any) || null}
+        initialExercise={(preview?.payload as unknown) || null}
         initialAttemptsHistory={[]}
         initialAlreadyCompleted={false}
       />
@@ -83,6 +84,8 @@ export default async function ExerciseDetailPage({
   // résout lui-même l'enfant -> abonnement du parent).
   // Un brouillon n'existe pas pour un élève : le catalogue ne le montre pas, et l'adresse directe non plus.
   if (exercise && authUser.role !== "admin" && exercise.status !== "published") redirect("/child/exercises");
+  // Un élève n'ouvre par adresse directe que le contenu de ses niveaux (comme le catalogue).
+  if (exercise && !(await childMayOpen(authUser, { kind: "exercise", id: exerciseId, level: exercise.level, folder_id: exercise.folder_id }, "exercise_folders"))) redirect("/child/exercises");
   if (exercise) {
     const { allowed } = await checkDifficultyAccess(authUser.authId, exercise.difficulty_level);
     if (!allowed) redirect("/child/exercises");

@@ -1,4 +1,5 @@
 ﻿"use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { compareDisplayOrder } from "@/lib/contentOrder";
 import { useState, useEffect, useRef, useMemo } from "react";
@@ -26,42 +27,7 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
-import {
-  Plus,
-  Search,
-  Edit,
-  Trash2,
-  X,
-  Clock,
-  Folder,
-  FolderPlus,
-  ImageIcon,
-  XCircle,
-  BookOpen,
-  Zap,
-  GraduationCap,
-  Sparkles,
-  Camera,
-  Loader2,
-  Eye, Download, Upload,
-  Calculator,
-  Brain,
-  Trophy,
-  Star,
-  Pencil,
-  Ruler,
-  FlaskConical,
-  Shapes,
-  Pi,
-  Puzzle,
-  LineChart,
-  Hash,
-  Table2,
-  Superscript,
-  ArrowUp,
-  ArrowDown,
-} from "lucide-react";
-import ExerciseViewer from "@/components/viewers/ExerciseViewer";
+import { Plus, Search, Edit, Trash2, X, Folder, FolderPlus, ImageIcon, XCircle, BookOpen, GraduationCap, Sparkles, Camera, Loader2, Eye, Download, Upload, Calculator, Brain, Trophy, Star, Pencil, Ruler, FlaskConical, Shapes, Pi, Puzzle, LineChart, Hash, Table2, Superscript, ArrowUp, ArrowDown } from "lucide-react";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import PageLoader from "@/components/PageLoader";
 import { SCHOOL_LEVELS, SCHOOL_CYCLES, getLevelLabel, getLevelCycle, getEffectiveFolderLevel } from "@/lib/constants";
@@ -69,6 +35,7 @@ import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { EXERCISE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import { compileHandAuthoredExercise } from "@/lib/ai/handAuthoredContent";
 import CourseSelect from "@/components/admin/CourseSelect";
+import { errMessage } from "@/lib/safeError";
 
 const FOLDER_COLORS = [
   "#3b82f6", // Blue
@@ -87,7 +54,7 @@ const FOLDER_COLORS = [
   "#f43f5e", // Rose
 ];
 
-function Num123Icon({ size = 24, ...props }: any) {
+function Num123Icon({ size = 24, ...props }) {
   return (
     <svg
       width={size}
@@ -225,7 +192,7 @@ export default function AdminExercisesClient({
 
 
   // Drag and drop state
-  const [draggedExerciseId, setDraggedExerciseId] = useState<string | null>(
+  const [, setDraggedExerciseId] = useState<string | null>(
     null
   );
   const [dragOverFolderId, setDragOverFolderId] = useState<number | null>(null);
@@ -296,14 +263,7 @@ export default function AdminExercisesClient({
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const importExerciseRef = useRef<HTMLInputElement>(null);
   const [showImportModal, setShowImportModal] = useState(false);
-
-  const handleImportExercise = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    await processImportFile(file);
-  };
 
   const processImportFile = async (file: File) => {
     try {
@@ -316,8 +276,8 @@ export default function AdminExercisesClient({
         if (result.warnings.length > 0) {
           alert(`Importé, mais à vérifier avant d'enregistrer :\n\n- ${result.warnings.join("\n- ")}`);
         }
-      } catch (compileErr: any) {
-        alert(`Le contenu du fichier n'a pas pu être compilé : ${compileErr.message}`);
+      } catch (compileErr: unknown) {
+        alert(`Le contenu du fichier n'a pas pu être compilé : ${errMessage(compileErr)}`);
         return;
       }
       setFormData({
@@ -339,13 +299,12 @@ export default function AdminExercisesClient({
       });
       setEditingExercise(data.id ? ({ id: data.id } as Exercise) : null);
       setIsModalOpen(true);
-    } catch (err: any) { alert(err.message); }
+    } catch (err: unknown) { alert(errMessage(err)); }
   };
 
   // AI Generation state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
-  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
   const { startGeneration, onContentCreated } = useContentGenerations();
 
@@ -395,7 +354,7 @@ export default function AdminExercisesClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter, courseFilter, difficultyFilter, currentFolderId]);
 
-  const fetchInitialData = async () => {
+  async function fetchInitialData() {
     try {
       const coursesRes = await fetch("/api/admin/courses");
       const coursesData = await coursesRes.json();
@@ -404,9 +363,9 @@ export default function AdminExercisesClient({
     } catch (error) {
       console.error("Error loading initial data:", error);
     }
-  };
+  }
 
-  const fetchContents = async (silent = false) => {
+  async function fetchContents(silent = false) {
     const cacheKey = `exercises:${currentFolderId}:${statusFilter}:${courseFilter}:${difficultyFilter}`;
     const cached = getAdminCache<{ items: Exercise[]; allFolders: ContentFolder[] }>(cacheKey);
     if (!silent) {
@@ -439,17 +398,17 @@ export default function AdminExercisesClient({
 
       let items = data as Exercise[];
       if (difficultyFilter !== "all") {
-        items = items.filter((ex: any) => ex.difficulty_level === difficultyFilter);
+        items = items.filter((ex) => ex.difficulty_level === difficultyFilter);
       }
       setAllFolders(freshFolders);
       setExercises(items);
       setAdminCache(cacheKey, { items, allFolders: freshFolders });
-    } catch (error: any) {
-      console.error("Error fetching contents:", error?.message || error);
+    } catch (error: unknown) {
+      console.error("Error fetching contents:", errMessage(error) || error);
     } finally {
       if (!silent) setLoading(false);
     }
-  };
+  }
 
   const handleDragStart = (e: React.DragEvent, exerciseId: string) => {
     e.dataTransfer.setData("exerciseId", exerciseId);
@@ -570,11 +529,11 @@ export default function AdminExercisesClient({
       setIsFolderModalOpen(false);
       invalidateAdminCache("exercises:");
       fetchContents();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error saving folder:", error);
       alert(
         "Erreur lors de l'enregistrement du dossier: " +
-          (error?.message || JSON.stringify(error))
+          (errMessage(error) || JSON.stringify(error))
       );
     }
   };
@@ -933,7 +892,7 @@ export default function AdminExercisesClient({
       folder.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
       (cycleFilter === "all" ||
         currentFolderId !== null ||
-        getLevelCycle((folder as any).grade_level) === cycleFilter)
+        getLevelCycle(folder.grade_level) === cycleFilter)
   );
 
   return (
@@ -1472,7 +1431,7 @@ export default function AdminExercisesClient({
                   </h3>
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                     <div className="lg:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Titre de l'exercice</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Titre de l&apos;exercice</label>
                       <input
                         type="text"
                         required
@@ -1616,7 +1575,7 @@ export default function AdminExercisesClient({
                   </div>
                   <div className="grid grid-cols-3 gap-4 mt-4">
                     <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Type d'exercice</label>
+                      <label className="block text-sm font-semibold text-gray-700 mb-1.5">Type d&apos;exercice</label>
                       <select
                         value={formData.type}
                         onChange={(e) => setFormData({ ...formData, type: e.target.value })}
@@ -1663,7 +1622,7 @@ export default function AdminExercisesClient({
                 <div className="p-6">
                   <h3 className="text-xs font-bold text-[var(--greek-blue)] uppercase tracking-widest mb-4 flex items-center gap-2">
                     <span className="w-5 h-5 rounded-full bg-[var(--greek-blue)] text-white flex items-center justify-center text-[10px] font-black">3</span>
-                    Contenu de l'exercice
+                    Contenu de l&apos;exercice
                   </h3>
                   <ExerciseBuilder
                     initialContent={formData.content_json || []}

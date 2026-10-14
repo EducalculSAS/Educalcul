@@ -33,7 +33,7 @@ export default function ForgotPassword() {
 
       setStatus("success");
       setMessage("Si un compte existe avec cette adresse, un email de réinitialisation a été envoyé.");
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus("error");
       setMessage("Une erreur de connexion est survenue. Veuillez réessayer.");
     }

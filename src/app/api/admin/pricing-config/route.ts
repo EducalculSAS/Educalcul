@@ -26,7 +26,7 @@ export async function PUT(req: Request) {
   const admin = await requireSuperAdmin(req);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
 
-  let body: any;
+  let body: unknown;
   try {
     body = await req.json();
   } catch {

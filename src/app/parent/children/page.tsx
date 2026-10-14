@@ -31,7 +31,7 @@ export default async function ManageChildrenPage() {
             </GlassButton>
           ) : (
             <GlassButton href="/parent/subscription" variant="gold">
-              Plus d'enfants ? Voir les formules
+              Plus d&apos;enfants ? Voir les formules
             </GlassButton>
           )
         }

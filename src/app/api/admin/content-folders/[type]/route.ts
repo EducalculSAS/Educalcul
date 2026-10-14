@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { folderTable, loadFoldersWithCounts, pickFolderFields, type FolderType } from "@/lib/contentFolders";
 
 const SELECT = "id, name, parent_id, status, color, icon, grade_level, display_order, is_system";
@@ -20,8 +20,8 @@ export async function GET(req: Request, { params }: { params: Promise<{ type: st
     // Liste + nombre d'éléments par dossier (agrégé en base) : le client n'a
     // plus à télécharger TOUT le contenu juste pour afficher les compteurs.
     return NextResponse.json(await loadFoldersWithCounts((await params).type as FolderType));
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -43,7 +43,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ type: s
     const { data, error } = await supabaseAdmin.from(table).insert(fields).select(SELECT).single();
     if (error) throw error;
     return NextResponse.json(data);
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

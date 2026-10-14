@@ -42,7 +42,6 @@ export default function FadeInSection({
       // plus bas) : on affiche tout de suite, l'IntersectionObserver ne se
       // déclenchera pas puisqu'il n'y a pas de transition "hors -> dans" le
       // viewport à observer.
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setVisible(true);
       return;
     }

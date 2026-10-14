@@ -3,6 +3,7 @@ import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripAnswers } from "@/lib/quizContent";
 import { checkDifficultyAccess } from "@/lib/checkSubscription";
+import { childMayOpen } from "@/lib/levelAccess";
 import QuizDetailClient from "@/components/child/QuizDetailClient";
 
 export default async function QuizDetailPage({
@@ -43,7 +44,7 @@ export default async function QuizDetailPage({
     return (
       <QuizDetailClient
         quizId={quizId}
-        initialQuiz={(preview?.payload as any) || null}
+        initialQuiz={(preview?.payload as unknown) || null}
         initialAttemptsHistory={[]}
         initialAlreadyCompleted={false}
       />
@@ -65,6 +66,8 @@ export default async function QuizDetailPage({
   // src/app/child/exercises/[id]/page.tsx et contexte du plan).
   // Un brouillon n'existe pas pour un élève : le catalogue ne le montre pas, et l'adresse directe non plus.
   if (quiz && authUser.role !== "admin" && quiz.status !== "published") redirect("/child/quiz");
+  // Un élève n'ouvre par adresse directe que le contenu de ses niveaux (comme le catalogue).
+  if (quiz && !(await childMayOpen(authUser, { kind: "quiz", id: quizId, level: quiz.level, folder_id: quiz.folder_id }, "quiz_folders"))) redirect("/child/quiz");
   if (quiz) {
     const { allowed } = await checkDifficultyAccess(authUser.authId, quiz.difficulty_level);
     if (!allowed) redirect("/child/quiz");

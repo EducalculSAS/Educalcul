@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { requireSuperAdmin } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { IMPERSONATION_COOKIE_NAME, IMPERSONATION_MAX_AGE } from "@/lib/impersonationCookie";
 
@@ -88,7 +88,7 @@ export async function POST(req: Request) {
       targetRole: target.role,
       targetName,
     });
-  } catch (err: any) {
-    return Response.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return Response.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

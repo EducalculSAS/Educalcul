@@ -1,6 +1,6 @@
 import { requireSuperAdmin } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { ipMatchesCidr } from "@/lib/adminIpAllowlist";
 
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
     );
 
     return Response.json({ entry: data });
-  } catch (err: any) {
-    return Response.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return Response.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

@@ -1,7 +1,7 @@
 ﻿import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { isValidEmail } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
@@ -117,10 +117,10 @@ export async function POST(request: Request) {
 
     return NextResponse.json({ success: true, action }, { status: 200 });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in update-child-auth:", error);
     return NextResponse.json(
-      { error: sanitizeErrorMessage(error?.message || "Internal server error") },
+      { error: sanitizeErrorMessage(errMessage(error) || "Internal server error") },
       { status: 500 }
     );
   }

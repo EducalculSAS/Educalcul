@@ -17,10 +17,10 @@ export default function NotFound() {
             Page introuvable
           </h1>
           <p className="text-gray-500 mb-8">
-            Cette page n'existe pas ou a été déplacée. Retournez à l'accueil pour continuer.
+            Cette page n&apos;existe pas ou a été déplacée. Retournez à l&apos;accueil pour continuer.
           </p>
           <GlassButton href="/" variant="navy">
-            Retour à l'accueil
+            Retour à l&apos;accueil
           </GlassButton>
         </div>
       </main>

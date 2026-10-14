@@ -115,7 +115,7 @@ export default function QuizDetailClient({
             quiz={quiz}
             forceNewAttempt={forceNewAttempt}
             openCorrection={openCorrection}
-            bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a: any) => a.score_percent ?? 0)) : undefined}
+            bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a) => a.score_percent ?? 0)) : undefined}
             onBack={() => setStarted(false)}
             onComplete={(score, total, timeSpent) => {
               console.log(`Quiz completed: ${score}/${total} in ${timeSpent}s`);

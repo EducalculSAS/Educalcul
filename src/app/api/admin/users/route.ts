@@ -4,18 +4,9 @@ import { ADMIN_USER_LIST_COLUMNS } from "@/lib/adminUserColumns";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
-import {
-  validateEmail,
-  validateName,
-  isValidRole,
-  isValidUUID,
-  validateString,
-  validatePassword,
-  validateUsername,
-  isValidNumericId,
-} from "@/lib/validation";
+import { validateEmail, validateName, isValidRole, isValidUUID, validatePassword, validateUsername, isValidNumericId } from "@/lib/validation";
 import { grantOfferedSubscription, isBillingMode } from "@/lib/adminGrantSubscription";
-import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
+import { rateLimitWithBackoff } from "@/lib/rateLimitAdvanced";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 
 const VALID_GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
@@ -70,7 +61,7 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json(data);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[admin-users-get] Catch error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
@@ -201,7 +192,7 @@ export async function POST(request: Request) {
     if (authError) {
       console.error("[admin-users-post] Auth error:", authError);
       const message =
-        (authError as any)?.code === "email_exists"
+        authError?.code === "email_exists"
           ? "Cet email est déjà utilisé par un compte existant."
           : "Failed to create user";
       return NextResponse.json({ error: message }, { status: 400 });
@@ -305,7 +296,7 @@ export async function POST(request: Request) {
     );
 
     return NextResponse.json({ success: true, user: authData.user, grantedPlan });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[admin-users-post] Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
@@ -428,7 +419,7 @@ export async function PUT(request: Request) {
     );
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[admin-users-put] Error:", error);
     return NextResponse.json(
       { error: "Internal server error" },
@@ -646,7 +637,7 @@ export async function DELETE(request: Request) {
           ? "Le profil a été supprimé mais le compte de connexion (Supabase Auth) n'a pas pu l'être, contacte le support technique."
           : undefined,
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error(`[DELETE USER] Unexpected error:`, error);
     return NextResponse.json(
       { error: "Internal server error" },

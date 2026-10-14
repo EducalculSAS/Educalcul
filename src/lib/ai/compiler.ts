@@ -1491,7 +1491,6 @@ function renderAreaDecomposer(
 function renderScientificNotationConverter(
   block: Extract<StructuredCourseBlock, { type: "scientific_notation_converter" }>,
 ): string {
-  const notation = `${block.value} \\times 10^{${block.exponent}}`;
   const width = 260;
   const minExp = -6, maxExp = 6;
   const clampedExp = Math.max(minExp, Math.min(maxExp, block.exponent));

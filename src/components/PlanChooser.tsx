@@ -28,7 +28,7 @@ export interface ChooserPlan {
   billing_interval: string;
   trial_days: number;
   promo_description: string | null;
-  features: Record<string, any>;
+  features: Record<string, unknown>;
   /** Faux = formule masquée aux clients (visible, estompée, dans l'aperçu admin). */
   is_active?: boolean;
 }
@@ -68,7 +68,7 @@ const FEATURE_ROWS: { key: string; label: string }[] = [
   { key: "ai_daily_limit", label: "Questions IA / jour" },
 ];
 
-function formatVal(key: string, val: any): { label: string; included: boolean } {
+function formatVal(key: string, val: unknown): { label: string; included: boolean } {
   if (val === false || val === null || val === undefined || val === 0 || val === "none") return { label: "", included: false };
   if (val === true) return { label: "Inclus", included: true };
   if (key === "max_children") return { label: Number(val) === -1 ? "Illimité" : `${val} enfant${Number(val) > 1 ? "s" : ""}`, included: true };
@@ -87,7 +87,7 @@ function formatVal(key: string, val: any): { label: string; included: boolean } 
 
 const intervalLabel = periodSuffix;
 
-const featuresOf = (plan: ChooserPlan): Record<string, any> => {
+const featuresOf = (plan: ChooserPlan): Record<string, unknown> => {
   try {
     return typeof plan.features === "string" ? JSON.parse(plan.features) : plan.features || {};
   } catch {

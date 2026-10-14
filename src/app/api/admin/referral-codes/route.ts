@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { selectAllPages } from "@/lib/selectAllPages";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireSuperAdmin } from "@/lib/apiAuth";
 
@@ -29,8 +29,8 @@ export async function GET(req: Request) {
         .range(from, to),
     );
     return NextResponse.json(data);
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -64,8 +64,8 @@ export async function POST(req: Request) {
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
     return NextResponse.json(data, { status: 201 });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -89,8 +89,8 @@ export async function PUT(req: Request) {
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
     return NextResponse.json(data);
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }
 
@@ -112,7 +112,7 @@ export async function DELETE(req: Request) {
 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
     return NextResponse.json({ success: true });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

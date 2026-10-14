@@ -261,7 +261,7 @@ export default function LegalPageRenderer({ slug }: { slug: string }) {
                 </div>
               ))
             ) : data ? (
-              data.sections.map((section, i) => (
+              data.sections.map((section) => (
                 <Section key={section.id} section={section} delay={0} />
               ))
             ) : (

@@ -64,7 +64,6 @@ export function publicAuthor(row: Record<string, unknown> | null | undefined): F
 export function cleanText(input: unknown, max: number): string {
   if (typeof input !== "string") return "";
   return input
-    // eslint-disable-next-line no-control-regex
     .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "")
     .replace(/\r\n?/g, "\n")
     .replace(/\n{4,}/g, "\n\n\n")

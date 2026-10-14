@@ -2,7 +2,7 @@
 
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
-import { useState, useEffect, useMemo, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -22,6 +22,7 @@ import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 import { periodUnit } from "@/lib/billingPeriods";
+import { errMessage } from "@/lib/safeError";
 
 interface User {
   id: string;
@@ -47,6 +48,12 @@ interface User {
   longitude?: number;
   last_active_at?: string;
 }
+
+// Au niveau du module : un composant créé dans le rendu serait recréé (et son état perdu) à chaque affichage.
+const UserMap = dynamic(
+  () => import("@/components/admin/UserMap"),
+  { ssr: false, loading: () => <div className="h-full w-full bg-gray-50 animate-pulse flex items-center justify-center text-gray-400 text-sm">Chargement de la carte...</div> }
+);
 
 const ONLINE_THRESHOLD_MS = 5 * 60 * 1000;
 
@@ -377,11 +384,6 @@ export default function AdminUsersClient({
   const [submitting, setSubmitting] = useState(false);
   const isFirstRender = useRef(true);
 
-  const UserMap = useMemo(() => dynamic(
-    () => import("@/components/admin/UserMap"),
-    { ssr: false, loading: () => <div className="h-full w-full bg-gray-50 animate-pulse flex items-center justify-center text-gray-400 text-sm">Chargement de la carte...</div> }
-  ), []);
-
   // ── Modal states ──────────────────────────────────────────────────────────
   // Export
   const [showExportModal, setShowExportModal] = useState(false);
@@ -436,7 +438,7 @@ export default function AdminUsersClient({
     })();
   }, []);
 
-  const fetchUsers = async (silent = false) => {
+  async function fetchUsers(silent = false) {
     const cacheKey = `users:${roleFilter}:${statusFilter}`;
     const cached = getAdminCache<any[]>(cacheKey);
     if (!silent) {
@@ -454,7 +456,7 @@ export default function AdminUsersClient({
     setUsers(list);
     setAdminCache(cacheKey, list);
     if (!silent) setLoading(false);
-  };
+  }
 
   const filteredUsers = users.filter(u => {
     const s = searchTerm.toLowerCase();
@@ -480,7 +482,7 @@ export default function AdminUsersClient({
       setShowFormModal(false);
       invalidateAdminCache("users:");
       fetchUsers();
-    } catch (err: any) { alert(err.message); }
+    } catch (err: unknown) { alert(errMessage(err)); }
     finally { setSubmitting(false); }
   };
 
@@ -740,7 +742,7 @@ export default function AdminUsersClient({
               </div>
               {form.role === "child" && (
                 <div className="grid grid-cols-2 gap-4">
-                  <div><label className={labelCls}>Nom d'utilisateur (élève)</label>
+                  <div><label className={labelCls}>Nom d&apos;utilisateur (élève)</label>
                     <input required value={form.username} onChange={e => setForm({ ...form, username: e.target.value })} className={inputCls} placeholder="ex: leo_dupont" />
                   </div>
                   <div><label className={labelCls}>Niveau scolaire</label>
@@ -769,7 +771,7 @@ export default function AdminUsersClient({
                     </select>
                     {form.role === "child" && (
                       <p className="text-xs text-gray-500 mt-1.5">
-                        Un élève sans parent utilise son propre abonnement : ce choix lui donne l'accès directement.
+                        Un élève sans parent utilise son propre abonnement : ce choix lui donne l&apos;accès directement.
                       </p>
                     )}
                   </div>

@@ -96,7 +96,7 @@ export async function POST(request: Request) {
     const url = supabaseAdmin.storage.from("uploads").getPublicUrl(objectPath).data.publicUrl;
 
     return NextResponse.json({ success: true, url });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Upload error:", error);
     return NextResponse.json({ error: "Upload failed" }, { status: 500 });
   }

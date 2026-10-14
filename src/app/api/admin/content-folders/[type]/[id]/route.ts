@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { folderTable, pickFolderFields, isSelfOrDescendant } from "@/lib/contentFolders";
 
 const SELECT = "id, name, parent_id, status, color, icon, grade_level, display_order, is_system";
@@ -45,8 +45,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ type: 
     const { data, error } = await supabaseAdmin.from(table).update(fields).eq("id", folderId).select(SELECT).single();
     if (error) throw error;
     return NextResponse.json(data);
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -62,7 +62,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ type:
     const { error } = await supabaseAdmin.from(table).delete().eq("id", Number(id));
     if (error) throw error;
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

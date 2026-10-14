@@ -263,6 +263,7 @@ function SubscriptionPageContent({
         console.error("Error syncing subscription:", error);
       }
     })();
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- les fonctions de notification sont stables ; l'effet ne doit réagir qu'à la navigation
   }, [searchParams, isNewSignup, signupData, router]);
 
   const copyCode = () => {
@@ -533,7 +534,7 @@ function SubscriptionPageContent({
                 </div>
                 {selectedPlan.trial_days > 0 && (
                   <p className="text-sm text-green-600 font-medium mb-6 bg-green-50 px-4 py-2 rounded-lg">
-                    {selectedPlan.trial_days} jours d'essai gratuit
+                    {selectedPlan.trial_days} jours d&apos;essai gratuit
                   </p>
                 )}
                 <ul className="space-y-3 mb-8">
@@ -676,7 +677,7 @@ function SubscriptionPageContent({
               ) : (myReferralCode.uses?.length ?? 0) === 0 ? (
                 <div className="text-center py-8 text-gray-400">
                   <Users className="w-10 h-10 mx-auto mb-2 opacity-20" />
-                  <p className="text-sm">Personne n'a encore utilisé votre code.</p>
+                  <p className="text-sm">Personne n&apos;a encore utilisé votre code.</p>
                 </div>
               ) : (
                 <ul className="space-y-3">

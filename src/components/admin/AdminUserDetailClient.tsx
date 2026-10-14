@@ -19,6 +19,7 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import ChildLevelsCard from "@/components/admin/ChildLevelsCard";
 import { comparePeriods, defaultPeriodLabel } from "@/lib/billingPeriods";
+import { errMessage } from "@/lib/safeError";
 
 const roleBadge = (r: string) => {
   if (r === "admin") return <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-purple-100 text-purple-700"><Shield className="w-3 h-3" />Admin</span>;
@@ -104,6 +105,7 @@ export default function AdminUserDetailClient({
   const router = useRouter();
   const [data, setData] = useState<any>(initialData);
   const [actionLoading, setActionLoading] = useState(false);
+  const [nowMs] = useState(() => Date.now());
   const [toast, setToast] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   // Modals
@@ -192,8 +194,8 @@ export default function AdminUserDetailClient({
       if (verifyError) throw verifyError;
 
       window.location.href = result.targetRole === "child" ? "/child/dashboard" : "/parent/dashboard";
-    } catch (err: any) {
-      showToast("error", err.message || "Échec de la connexion en tant qu'utilisateur");
+    } catch (err: unknown) {
+      showToast("error", errMessage(err) || "Échec de la connexion en tant qu'utilisateur");
       setImpersonating(false);
     }
   };
@@ -206,7 +208,7 @@ export default function AdminUserDetailClient({
       if (!res.ok) throw new Error(result.error);
       showToast("success", "Action effectuée");
       fetchUser();
-    } catch (err: any) { showToast("error", err.message); }
+    } catch (err: unknown) { showToast("error", errMessage(err)); }
     finally { setActionLoading(false); }
   };
 
@@ -218,7 +220,7 @@ export default function AdminUserDetailClient({
       showToast("success", "Profil mis à jour");
       setShowEditModal(false);
       fetchUser();
-    } catch (err: any) { showToast("error", err.message); }
+    } catch (err: unknown) { showToast("error", errMessage(err)); }
     finally { setActionLoading(false); }
   };
 
@@ -243,8 +245,8 @@ export default function AdminUserDetailClient({
       showToast("success", "Signalement traité");
       setReportModal(null); setReportMsg(""); setReportConsequence("none");
       fetchUser();
-    } catch (err: any) {
-      showToast("error", err.message || "Échec");
+    } catch (err: unknown) {
+      showToast("error", errMessage(err) || "Échec");
     } finally {
       setActionLoading(false);
     }
@@ -282,7 +284,7 @@ export default function AdminUserDetailClient({
             : "Abonnement mis à jour (sans Stripe, client introuvable ou plan gratuit)",
       );
       fetchUser();
-    } catch (err: any) { showToast("error", err.message || "Erreur"); }
+    } catch (err: unknown) { showToast("error", errMessage(err) || "Erreur"); }
     finally { setSavingPlan(false); }
   };
 
@@ -299,7 +301,7 @@ export default function AdminUserDetailClient({
       setFreeWeeksOffset(w => w + sign);
       showToast("success", sign > 0 ? "1 semaine ajoutée" : "1 semaine retirée");
       fetchUser();
-    } catch (err: any) { showToast("error", err.message || "Erreur"); }
+    } catch (err: unknown) { showToast("error", errMessage(err) || "Erreur"); }
     finally { setFreeTimeLoading(false); }
   };
 
@@ -511,7 +513,7 @@ export default function AdminUserDetailClient({
 
                 {subscription && (() => {
                   const remainingMs = subscription.current_period_end
-                    ? new Date(subscription.current_period_end).getTime() - Date.now()
+                    ? new Date(subscription.current_period_end).getTime() - nowMs
                     : 0;
                   const remainingDays = Math.max(0, Math.round(remainingMs / (24 * 60 * 60 * 1000)));
                   const remainingWeeks = Math.round(remainingDays / 7);
@@ -1046,7 +1048,7 @@ export default function AdminUserDetailClient({
             </p>
           </div>
           <div>
-            <label className={labelCls}>Message à l'utilisateur signalé (facultatif)</label>
+            <label className={labelCls}>Message à l&apos;utilisateur signalé (facultatif)</label>
             <textarea value={reportMsg} onChange={e => setReportMsg(e.target.value)} className={inputCls + " h-24 resize-none"} placeholder="Ex : ton message enfreint la charte du forum…" />
           </div>
           <div>

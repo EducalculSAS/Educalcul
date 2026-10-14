@@ -10,7 +10,7 @@ import { normalizePricingConfig } from '@/lib/pricingConfig';
 import { getRequestSiteUrl } from '@/lib/siteUrl';
 import { validateEmail, validateName } from '@/lib/validation';
 import { rateLimitWithBackoff, RATE_LIMITS } from '@/lib/rateLimitAdvanced';
-import { sanitizeErrorMessage } from '@/lib/safeError';
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { computeWaitlistFreeTrialDays } from '@/lib/waitlistReferralCredit';
 
 // Crée (ou réutilise) le compte Supabase Auth d'un nouvel inscrit, AVANT tout
@@ -334,7 +334,7 @@ export async function POST(req: Request) {
 
     // Acceptation des CGV et demande d'accès immédiat (droit de rétractation :
     // remboursement au prorata), affichées au-dessus du bouton de paiement.
-    (sessionData as any).custom_text = {
+    sessionData.custom_text = {
       submit: {
         message:
           "En confirmant, vous acceptez les Conditions générales de vente (educalcul.com/cgv) et demandez l'accès immédiat au service. Vous gardez 14 jours pour vous rétracter (remboursement au prorata de la période non utilisée).",
@@ -380,8 +380,8 @@ export async function POST(req: Request) {
     // affiché sur la page Stripe reste modifiable par le payeur et ne doit
     // jamais servir de clé de recherche.
     return NextResponse.json({ sessionId: session.id, url: session.url, authId: isNewSignup ? userId : undefined });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Stripe error:', error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error?.message || String(error)) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error) || String(error)) }, { status: 500 });
   }
 }

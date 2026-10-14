@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { selectAllPages } from "@/lib/selectAllPages";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff } from "@/lib/rateLimitAdvanced";
@@ -33,7 +33,7 @@ export async function GET(req: Request) {
     // Un élève ne voit pas les événements que son parent a masqués.
     const childOnly = requester.role === "child" && requester.id === ownerId;
     const [events, ownerZoneRes] = await Promise.all([
-      selectAllPages<any>((from, to) => {
+      selectAllPages<unknown>((from, to) => {
         let q = supabaseAdmin.from("calendar_events").select(EVENT_COLUMNS).eq("owner_id", ownerId);
         if (childOnly) q = q.eq("visible_to_child", true);
         return q.order("start_date", { ascending: true }).order("id").range(from, to);
@@ -55,8 +55,8 @@ export async function GET(req: Request) {
     );
 
     return NextResponse.json({ events, globalEvents, schoolZone: ownerZone });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -118,7 +118,7 @@ export async function POST(req: Request) {
     const { data, error } = await supabaseAdmin.from("calendar_events").insert(rows).select(EVENT_COLUMNS);
     if (error) throw error;
     return NextResponse.json({ events: data ?? [], event: data?.[0] ?? null });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

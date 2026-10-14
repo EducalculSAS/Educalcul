@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { getSignupSession, clearSignupSession } from "@/lib/signupSession";
 import { CheckCircle, Loader2, AlertCircle, Mail } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import { errMessage } from "@/lib/safeError";
 
 function SuccessContent() {
   const router = useRouter();
@@ -126,9 +127,9 @@ function SuccessContent() {
         cleanup();
         setMessage("Redirection vers votre espace...");
         setTimeout(() => router.replace("/parent/dashboard"), 800);
-      } catch (err: any) {
+      } catch (err: unknown) {
         setStatus("error");
-        setErrorMsg(err?.message || "Une erreur inattendue est survenue.");
+        setErrorMsg(errMessage(err) || "Une erreur inattendue est survenue.");
       }
     };
 
@@ -184,7 +185,7 @@ function SuccessContent() {
           </p>
           <p className="font-bold text-[var(--greek-blue)] mb-6 break-all">{userEmail}</p>
           <p className="text-gray-500 text-sm leading-relaxed mb-6">
-            et le mot de passe que vous avez choisi lors de l'inscription.
+            et le mot de passe que vous avez choisi lors de l&apos;inscription.
           </p>
           <GlassButton onClick={() => router.push("/auth/connexion")} variant="navy" size="sm">
             Aller à la connexion
@@ -209,7 +210,7 @@ function SuccessContent() {
           </p>
           <p className="font-bold text-[var(--greek-blue)] mb-6 break-all">{userEmail}</p>
           <p className="text-gray-500 text-sm leading-relaxed mb-6">
-            Cliquez sur le lien dans l'email pour accéder à votre espace et démarrer votre expérience Educalcul.
+            Cliquez sur le lien dans l&apos;email pour accéder à votre espace et démarrer votre expérience Educalcul.
           </p>
           <div className="bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-xl p-4 text-sm text-gray-600">
             Pas reçu ? Vérifiez vos spams ou{" "}

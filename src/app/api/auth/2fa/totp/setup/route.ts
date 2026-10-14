@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { generateTotpSecret, buildOtpauthUrl } from "@/lib/totp";
 
 // Génère (ou régénère) un secret TOTP en attente de confirmation. Réservé aux
@@ -45,8 +45,8 @@ export async function POST(req: Request) {
 
     const otpauthUrl = buildOtpauthUrl(secret, user.email || `admin-${user.id}`);
     return NextResponse.json({ secret, otpauthUrl });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[2fa/totp/setup] failed:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

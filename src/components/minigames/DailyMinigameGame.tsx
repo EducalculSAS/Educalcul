@@ -48,7 +48,7 @@ export default function DailyMinigameGame({ gameType }: { gameType: MinigameType
   const [questions, setQuestions] = useState<Question[]>([]);
   const [answerType, setAnswerType] = useState<AnswerType>("number");
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [answers, setAnswers] = useState<Answer[]>([]);
+  const [, setAnswers] = useState<Answer[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [result, setResult] = useState<{ score: number; maxScore: number } | null>(null);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);

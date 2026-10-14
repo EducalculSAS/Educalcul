@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { BookOpen, CalendarPlus, CheckCircle2, ChevronLeft, ChevronRight, Circle, Clock, Pencil, Sparkles, Trash2 } from "lucide-react";
 import GlassDialog from "@/components/ui/GlassDialog";
 import GlassButton from "@/components/ui/GlassButton";

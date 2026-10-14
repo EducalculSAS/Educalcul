@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { applyFolderFilter, parseFolderParam } from "@/lib/adminFolderFilter";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
@@ -65,7 +65,7 @@ export async function GET(request: Request) {
     // voir aussi src/app/admin/exercises/page.tsx pour le même correctif
     // côté chargement initial de la page).
     const pageSize = 1000;
-    const data: any[] = [];
+    const data: unknown[] = [];
     for (let from = 0; ; from += pageSize) {
       let query = supabaseAdmin
         .from("exercises")
@@ -107,9 +107,9 @@ export async function GET(request: Request) {
     // fillEmptyContentJson ici, ça injecterait un faux contenu de repli sur
     // des lignes où le champ est simplement absent, pas vide.
     return NextResponse.json(isAdmin ? data : data.map(stripAnswers));
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error fetching exercises:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -143,7 +143,7 @@ export async function POST(request: Request) {
     let finalContentJson = content_json || [];
     if (!finalContentJson || finalContentJson.length === 0) {
       // Create a default page with appropriate block based on exercise type
-      let defaultBlock: any = {
+      let defaultBlock: unknown = {
         id: "block-1",
         type: "text",
         content: description || title || "Énoncé non spécifié",
@@ -240,9 +240,9 @@ export async function POST(request: Request) {
     }, request);
 
     return NextResponse.json({ success: true, exercise: data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error creating exercise:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -284,7 +284,7 @@ export async function PUT(request: Request) {
     let finalContentJson = content_json;
     if (hasContentKey && (!finalContentJson || (Array.isArray(finalContentJson) && finalContentJson.length === 0))) {
       // Create appropriate default block based on exercise type
-      let defaultBlock: any = {
+      let defaultBlock: unknown = {
         id: "block-1",
         type: "text",
         content: description || title || "Énoncé non spécifié",
@@ -334,7 +334,7 @@ export async function PUT(request: Request) {
 
     // Build a partial update: only include fields whose keys are present in the body.
     // This prevents a folder move ({ id, folder_id }) from wiping title/content/etc.
-    const updatePayload: Record<string, any> = { updated_at: new Date().toISOString() };
+    const updatePayload: Record<string, unknown> = { updated_at: new Date().toISOString() };
     const has = (k: string) => Object.prototype.hasOwnProperty.call(body, k);
     if (has("title")) updatePayload.title = title;
     if (has("description")) updatePayload.question = description;
@@ -393,9 +393,9 @@ export async function PUT(request: Request) {
     }, request);
 
     return NextResponse.json({ success: true, exercise: data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error updating exercise:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -439,7 +439,7 @@ export async function DELETE(request: Request) {
     }, request);
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

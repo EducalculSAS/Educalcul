@@ -1780,7 +1780,7 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
     return content.parts.length ? { type: "paragraph", content } : null;
   }
 
-  let type = FIGURE_TYPE_ALIASES[stringValue(raw.type, "paragraph").toLowerCase()]
+  const type = FIGURE_TYPE_ALIASES[stringValue(raw.type, "paragraph").toLowerCase()]
     ?? stringValue(raw.type, "paragraph").toLowerCase();
 
   // « figure » servant d'enveloppe : {"type":"figure","graph":{...}}. Le bloc

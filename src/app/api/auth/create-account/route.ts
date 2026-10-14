@@ -3,10 +3,10 @@ import { runAfterResponse } from "@/lib/background";
 import { randomBytes } from "crypto";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
-import { validateEmail, validateName, validateString } from "@/lib/validation";
+import { validateEmail, validateName } from "@/lib/validation";
 import { sendEmail } from "@/lib/mailer";
 import { welcomeEmail } from "@/lib/emailTemplates";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 
 export async function POST(req: NextRequest) {
@@ -195,10 +195,10 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ success: true, userId: authUserId, requireEmailConfirm: true });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Account creation error:", error);
     return NextResponse.json(
-      { error: sanitizeErrorMessage(error?.message || "Erreur interne") },
+      { error: sanitizeErrorMessage(errMessage(error) || "Erreur interne") },
       { status: 500 }
     );
   }

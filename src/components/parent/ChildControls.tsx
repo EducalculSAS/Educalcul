@@ -33,6 +33,7 @@ async function authHeaders(): Promise<Record<string, string>> {
 /** Objectifs, repos et partage du suivi : tout ce qu'un parent règle pour un enfant, au même endroit. */
 export default function ChildControls({ childId, childName, initialPrefs, summary }: { childId: number; childName: string; initialPrefs: ControlPrefs; summary: ControlSummary }) {
   const [prefs, setPrefs] = useState(initialPrefs);
+  const [nowMs] = useState(() => Date.now());
   const [weekly, setWeekly] = useState(initialPrefs.weeklyTarget ? String(initialPrefs.weeklyTarget) : "");
   const [saved, setSaved] = useState<string>("");
   const [error, setError] = useState("");
@@ -76,7 +77,7 @@ export default function ChildControls({ childId, childName, initialPrefs, summar
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const overrideActive = prefs.quietOverrideUntil && new Date(prefs.quietOverrideUntil).getTime() > Date.now();
+  const overrideActive = prefs.quietOverrideUntil && new Date(prefs.quietOverrideUntil).getTime() > nowMs;
   const card = "bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5";
   const input = "rounded-lg border border-[rgba(197,161,72,0.3)] bg-white px-3 py-1.5 text-sm";
 

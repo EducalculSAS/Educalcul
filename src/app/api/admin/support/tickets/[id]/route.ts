@@ -1,5 +1,5 @@
 ﻿import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 
@@ -31,8 +31,8 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
     if (repliesError) return NextResponse.json({ error: sanitizeErrorMessage(repliesError.message) }, { status: 500 });
 
     return NextResponse.json({ ticket, replies });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -78,8 +78,8 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
     if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -123,7 +123,7 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     if (deleteError) return NextResponse.json({ error: sanitizeErrorMessage(deleteError.message) }, { status: 500 });
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { IMPERSONATION_COOKIE_NAME } from "@/lib/impersonationCookie";
 
@@ -69,7 +69,7 @@ export async function POST(req: Request) {
       refresh_token: refreshedSession.refresh_token,
       returnTo: row.return_to,
     });
-  } catch (err: any) {
-    return Response.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return Response.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

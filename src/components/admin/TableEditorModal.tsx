@@ -5,6 +5,7 @@ import { Plus, Minus, Sparkles, Loader2 } from "lucide-react";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+import { errMessage } from "@/lib/safeError";
 
 type TableType = "value" | "sign" | "variation" | "generic";
 
@@ -95,8 +96,8 @@ export default function TableEditorModal({
       if (!res.ok) throw new Error(data.error || "Erreur de génération");
       setHeaders(data.headers);
       setRows(data.rows);
-    } catch (e: any) {
-      setAiError(e.message || "Erreur de génération");
+    } catch (e: unknown) {
+      setAiError(errMessage(e) || "Erreur de génération");
     } finally {
       setAiLoading(false);
     }
@@ -142,7 +143,7 @@ export default function TableEditorModal({
         {/* AI generation */}
         <div className="bg-amber-50/50 border border-[rgba(197,161,72,0.25)] rounded-lg p-3 space-y-2">
           <span className="text-xs font-bold text-gray-500 uppercase tracking-wider flex items-center gap-1">
-            <Sparkles size={14} /> Générer avec l'IA
+            <Sparkles size={14} /> Générer avec l&apos;IA
           </span>
           <div className="flex gap-2">
             <input

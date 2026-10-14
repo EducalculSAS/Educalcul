@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { selectAllPages } from "@/lib/selectAllPages";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { GLOBAL_EVENT_COLUMNS, parseGlobalEventInput } from "@/lib/calendarServer";
@@ -21,8 +21,8 @@ export async function GET(req: Request) {
         .range(from, to),
     );
     return NextResponse.json({ events: data || [] });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -48,7 +48,7 @@ export async function POST(req: Request) {
       req,
     );
     return NextResponse.json({ events: data ?? [] });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

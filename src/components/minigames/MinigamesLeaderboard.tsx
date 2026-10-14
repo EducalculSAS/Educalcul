@@ -78,7 +78,7 @@ export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador
       {loading ? (
         <PageLoader className="h-32" />
       ) : !data || data.leaderboard.length === 0 ? (
-        <p className="text-sm text-[var(--text-muted)] text-center py-6">Aucune partie jouée pour l'instant. Sois le premier !</p>
+        <p className="text-sm text-[var(--text-muted)] text-center py-6">Aucune partie jouée pour l&apos;instant. Sois le premier !</p>
       ) : (
         <ul className="space-y-2">
           {data.leaderboard.map((e) => (

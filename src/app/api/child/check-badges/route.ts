@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { selectAllPages } from "@/lib/selectAllPages";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 import { notify } from "@/lib/notify";
@@ -237,7 +237,7 @@ export async function POST(req: Request) {
     const ownedKeys = new Set((ownedCosmetics || []).map(c => c.cosmetic_key));
 
     const newCosmetics: string[] = [];
-    const cosmeticProgress: Record<string, any> = {};
+    const cosmeticProgress: Record<string, unknown> = {};
 
     for (const [key, def] of Object.entries(COSMETIC_REQUIREMENTS)) {
       const { met, needed } = def.checks(tiers);
@@ -259,7 +259,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ awarded: toAward.length, newCosmetics, progress: cosmeticProgress, tiers });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly, getClientIp, isIpAllowed } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 /**
  * Premier gate du flux de connexion, appelé juste après signInWithPassword
@@ -28,7 +28,7 @@ export async function GET(req: Request) {
 
     const allowed = isIpAllowed(user?.admin_allowed_ips, req);
     return NextResponse.json({ allowed, ip: getClientIp(req) });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || "Erreur interne") }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || "Erreur interne") }, { status: 500 });
   }
 }

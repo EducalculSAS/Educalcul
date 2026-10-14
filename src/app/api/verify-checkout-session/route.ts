@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { stripe, subscriptionIsEntitled, subscriptionPeriodEnd } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
 import { getAuthenticatedUser } from '@/lib/apiAuth';
-import { sanitizeErrorMessage } from '@/lib/safeError';
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { rateLimitWithBackoff } from '@/lib/rateLimitAdvanced';
 
 /** Au-delà, un identifiant de session de paiement n'est plus accepté. */
@@ -77,8 +77,8 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json({ status: 'success' });
-  } catch (error: any) {
-    console.error('[verify-checkout-session]', error?.message);
-    return NextResponse.json({ error: sanitizeErrorMessage(error?.message || String(error)) }, { status: 500 });
+  } catch (error: unknown) {
+    console.error('[verify-checkout-session]', errMessage(error));
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error) || String(error)) }, { status: 500 });
   }
 }

@@ -10,6 +10,7 @@ import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
 import { validatePassword, isValidEmail } from "@/lib/validation";
 import { Mail, Lock, User, AlertCircle, CheckCircle, Gift, Loader2, ArrowRight, ArrowLeft, Eye, EyeOff, Check } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import { errMessage } from "@/lib/safeError";
 
 /* ── Google SVG ── */
 const GoogleIcon = () => (
@@ -61,7 +62,7 @@ export default function Inscription() {
 
   /* ── état global ── */
   const [step, setStep] = useState(0);
-  const [dir, setDir] = useState<1 | -1>(1);
+  const [, setDir] = useState<1 | -1>(1);
   const [animating, setAnimating] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -199,7 +200,7 @@ export default function Inscription() {
         },
       });
       router.push("/auth/inscription/select-plan");
-    } catch (err: any) { setError(err.message || "Une erreur est survenue."); }
+    } catch (err: unknown) { setError(errMessage(err) || "Une erreur est survenue."); }
     finally { setLoading(false); }
   };
 
@@ -412,12 +413,12 @@ export default function Inscription() {
           <>
             <div className="flex items-center gap-3 my-5">
               <div className="flex-1 h-px" style={{ background: "rgba(197,161,72,0.15)" }} />
-              <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>ou s'inscrire avec</span>
+              <span className="text-xs font-medium" style={{ color: "var(--text-muted)" }}>ou s&apos;inscrire avec</span>
               <div className="flex-1 h-px" style={{ background: "rgba(197,161,72,0.15)" }} />
             </div>
             <GlassButton onClick={handleGoogleLogin} variant="outline" fullWidth>
               <GoogleIcon />
-              S'inscrire avec Google
+              S&apos;inscrire avec Google
             </GlassButton>
           </>
         )}

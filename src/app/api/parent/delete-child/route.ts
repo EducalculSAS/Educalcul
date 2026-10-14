@@ -4,7 +4,7 @@ import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
 import { deleteAuthUser } from "@/lib/deleteAuthUser";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { auditLog, AuditAction } from "@/lib/auditLog";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 /** Supprime UN profil enfant (compte Auth + profil public.users + données liées
  * par cascade). Avant, le bouton "corbeille" de /parent/children faisait un
@@ -66,8 +66,8 @@ export async function DELETE(req: Request) {
     }, req);
 
     return NextResponse.json({ success: true, warning: authWarning });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[delete-child] error:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || "Erreur interne") }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || "Erreur interne") }, { status: 500 });
   }
 }

@@ -8,7 +8,7 @@ import {
 } from "@/lib/emailTemplates";
 import { notify } from "@/lib/notify";
 import Stripe from "stripe";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 const frDate = (d: string | number | null | undefined) =>
   d ? new Date(typeof d === "number" ? d * 1000 : d).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris" }) : null;
@@ -51,9 +51,9 @@ export async function POST(req: Request) {
   let event: Stripe.Event;
   try {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
-  } catch (err: any) {
-    console.error("Webhook signature failed:", err.message);
-    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || String(err)) }, { status: 400 });
+  } catch (err: unknown) {
+    console.error("Webhook signature failed:", errMessage(err));
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || String(err)) }, { status: 400 });
   }
 
   // Stripe garantit une livraison "au moins une fois" — un meme evenement
@@ -154,8 +154,8 @@ export async function POST(req: Request) {
         if (oldSubId && oldSubId !== stripeSubId) {
           try {
             await stripe.subscriptions.cancel(oldSubId);
-          } catch (e: any) {
-            console.warn("Could not cancel previous subscription:", e.message);
+          } catch (e: unknown) {
+            console.warn("Could not cancel previous subscription:", errMessage(e));
           }
         }
 
@@ -385,9 +385,9 @@ export async function POST(req: Request) {
         break;
       }
     }
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Webhook handler error:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || String(err)) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || String(err)) }, { status: 500 });
   }
 
   return NextResponse.json({ received: true });

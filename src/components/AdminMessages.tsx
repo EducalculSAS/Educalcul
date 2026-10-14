@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Bell, X, AlertTriangle, Info, MessageCircle, Ban } from "lucide-react";
+import { X, AlertTriangle, Info, MessageCircle, Ban } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
 interface Notif {

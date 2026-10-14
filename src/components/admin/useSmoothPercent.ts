@@ -175,6 +175,7 @@ export function useSmoothPercentByKey(
 
     raf.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf.current);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, [key, active, current, total, stepMs]);
 
   return pct;

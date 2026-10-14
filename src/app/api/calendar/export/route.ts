@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { selectAllPages } from "@/lib/selectAllPages";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { generateIcs } from "@/lib/ics";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -45,7 +45,7 @@ export async function GET(req: Request) {
 
     // Paginé : les événements d'une famille s'accumulent au fil des années.
     const childOnly = requester.role === "child" && requester.id === ownerId;
-    const eventsQuery = selectAllPages<any>((from, to) => {
+    const eventsQuery = selectAllPages<unknown>((from, to) => {
       let q = supabaseAdmin
         .from("calendar_events")
         .select("id, title, description, start_date, end_date, start_time, end_time")
@@ -103,7 +103,7 @@ export async function GET(req: Request) {
         "Content-Disposition": 'attachment; filename="educalcul-calendrier.ics"',
       },
     });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

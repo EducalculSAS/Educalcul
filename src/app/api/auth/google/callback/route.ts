@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 export async function GET(req: NextRequest) {
   const { searchParams, origin } = new URL(req.url);
@@ -53,10 +53,10 @@ export async function GET(req: NextRequest) {
     return NextResponse.redirect(
       `${origin}/auth/callback#access_token=${access_token}&refresh_token=${refresh_token}`
     );
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[auth/google/callback] error:", err);
     return NextResponse.redirect(
-      `${origin}/auth/connexion?error=oauth&message=${encodeURIComponent(sanitizeErrorMessage(err?.message || String(err)))}`
+      `${origin}/auth/connexion?error=oauth&message=${encodeURIComponent(sanitizeErrorMessage(errMessage(err) || String(err)))}`
     );
   }
 }

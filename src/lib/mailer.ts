@@ -3,6 +3,7 @@
 // le bundle du navigateur.
 import "server-only";
 import nodemailer, { type Transporter } from "nodemailer";
+import { errMessage } from "@/lib/safeError";
 
 interface SendEmailParams {
   toEmail: string;
@@ -61,8 +62,8 @@ export async function sendEmail({ toEmail, toName, subject, textPart, htmlPart, 
       html: htmlPart,
     });
     return { success: true };
-  } catch (err: any) {
-    console.error("Gmail SMTP error:", err.message);
-    return { success: false, error: err.message };
+  } catch (err: unknown) {
+    console.error("Gmail SMTP error:", errMessage(err));
+    return { success: false, error: errMessage(err) };
   }
 }

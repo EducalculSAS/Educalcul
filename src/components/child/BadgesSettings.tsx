@@ -41,7 +41,6 @@ export default function BadgesSettings({
     return fb?.length ? [...fb, null, null, null].slice(0, 3) : [null, null, null];
   });
   const [savingFeatured, setSavingFeatured] = useState(false);
-  const [cosmeticProgress, setCosmeticProgress] = useState<Record<string, any>>({});
   const earnedSet = new Set(earnedIds);
 
   // Vérifie/attribue les nouveaux badges à chaque visite (mutation ; lecture
@@ -50,15 +49,11 @@ export default function BadgesSettings({
     (async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
-      const res = await fetch("/api/child/check-badges", {
+      await fetch("/api/child/check-badges", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ authId: session.user.id }),
       });
-      if (res.ok) {
-        const data = await res.json();
-        if (data.progress) setCosmeticProgress(data.progress);
-      }
     })();
   }, []);
 
@@ -145,7 +140,7 @@ export default function BadgesSettings({
           </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Contour d'avatar</p>
+              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Contour d&apos;avatar</p>
               <div className="flex flex-wrap gap-3">
                 {Object.entries(BORDER_STYLES).map(([key, val]) => {
                   const unlocked = unlockedBorders.includes(key);
@@ -207,7 +202,7 @@ export default function BadgesSettings({
               Sauvegarder
             </GlassButton>
           </div>
-          <p className="text-xs text-gray-500 mb-4">Sélectionne jusqu'à 3 badges à afficher sur ton profil dans le forum.</p>
+          <p className="text-xs text-gray-500 mb-4">Sélectionne jusqu&apos;à 3 badges à afficher sur ton profil dans le forum.</p>
           <div className="flex gap-4 mb-4">
             {[0, 1, 2].map((slot) => {
               const bid = featuredBadges[slot];
@@ -230,7 +225,7 @@ export default function BadgesSettings({
               );
             })}
           </div>
-          <p className="text-xs text-gray-400">Clique sur un badge obtenu ci-dessous pour l'ajouter/retirer.</p>
+          <p className="text-xs text-gray-400">Clique sur un badge obtenu ci-dessous pour l&apos;ajouter/retirer.</p>
         </div>
 
         {/* Badges grid */}

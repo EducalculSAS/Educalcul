@@ -4,7 +4,7 @@ import { isoUint8Array } from "@simplewebauthn/server/helpers";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { getWebauthnRp } from "@/lib/webauthn";
 
 // Génère les options de la cérémonie d'enregistrement d'une clé d'accès
@@ -62,8 +62,8 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json(options);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[webauthn/register/options] failed:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

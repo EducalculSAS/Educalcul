@@ -110,7 +110,7 @@ export default function AdminAttemptReviewClient({
             >
               Dernière tentative ({attemptData.score}/{attemptData.total_points})
             </button>
-            {history.map((h: any, i: number) => {
+            {history.map((h, i: number) => {
               const disabled = !h.detail;
               const label = `${new Date(h.completed_at).toLocaleDateString("fr-FR")} : ${h.score}/${h.total_points}${disabled ? " (résumé seulement)" : ""}`;
               return (

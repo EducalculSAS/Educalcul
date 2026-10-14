@@ -96,7 +96,6 @@ export default function MathadorGame() {
     if (startedRef.current) return;
     startedRef.current = true;
     startGame();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleTileClick = (tile: Tile) => {
@@ -143,6 +142,7 @@ export default function MathadorGame() {
   const submit = async (abandon = false) => {
     if (!sessionId) return;
     setSubmitting(true);
+    // eslint-disable-next-line react-hooks/purity -- gestionnaire de clic (appelé après l'affichage), pas le rendu
     const durationSeconds = Math.round((Date.now() - startedAt.current) / 1000);
     try {
       const res = await fetch(`/api/child/minigames/mathador/${sessionId}/submit`, {

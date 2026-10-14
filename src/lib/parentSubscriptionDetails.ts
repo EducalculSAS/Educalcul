@@ -71,7 +71,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
               stripe_subscription_id: activeSub.id,
               current_period_end: subscriptionPeriodEnd(activeSub),
               cancel_at_period_end: activeSub.cancel_at_period_end,
-            } as any;
+            } as unknown;
           }
         }
       }
@@ -83,11 +83,11 @@ export async function fetchParentSubscriptionDetails(userId: string) {
   }
 
   if (!subscription) {
-    return { subscription: null, invoices: [] as any[] };
+    return { subscription: null, invoices: [] as unknown[] };
   }
 
   if (!subscription.stripe_customer_id) {
-    return { subscription, invoices: [] as any[] };
+    return { subscription, invoices: [] as unknown[] };
   }
 
   const customerId = subscription.stripe_customer_id;
@@ -129,7 +129,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
     });
   } catch (err) {
     if (!isStripeMissing(err)) throw err;
-    return { subscription, invoices: [] as any[] };
+    return { subscription, invoices: [] as unknown[] };
   }
 
   const formattedInvoices = invoices.data.map((invoice) => ({

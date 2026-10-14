@@ -21,7 +21,7 @@ export default async function AdminCoursesPage() {
   return (
     <AdminCoursesClient
       initialFolderId={folderId}
-      initialItems={items.map((c: any) => ({ ...c, content_json: null }))}
+      initialItems={items.map((c) => ({ ...c, content_json: null }))}
       initialAllFolders={allFolders}
     />
   );

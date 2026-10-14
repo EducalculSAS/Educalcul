@@ -4,7 +4,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { validateEmail, validateString, validateName } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sendEmail } from "@/lib/mailer";
-import { buildEmailHtml, EMAIL_BASE_URL } from "@/lib/emailTemplates";
+import { buildEmailHtml } from "@/lib/emailTemplates";
 
 const SUBJECTS = [
   "Question sur les abonnements",
@@ -114,7 +114,7 @@ export async function POST(req: Request) {
     }).catch(console.error));
 
     return NextResponse.json({ success: true, id: data.id }, { status: 201 });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[contact] Error:", err);
     return NextResponse.json({ error: "Erreur interne" }, { status: 500 });
   }

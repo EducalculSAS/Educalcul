@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { selectAllPages } from "@/lib/selectAllPages";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { requireRole } from "@/lib/apiAuth";
 import { GLOBAL_EVENT_COLUMNS } from "@/lib/calendarServer";
 import { fetchOfficialHolidays, isSchoolYear, type OfficialHoliday } from "@/lib/officialHolidays";
@@ -37,8 +37,8 @@ export async function GET(req: Request) {
     const year = new URL(req.url).searchParams.get("year");
     if (!isSchoolYear(year)) return NextResponse.json({ error: "Année scolaire invalide" }, { status: 400 });
     return NextResponse.json({ year, holidays: await preview(year) });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 502 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 502 });
   }
 }
 
@@ -73,7 +73,7 @@ export async function POST(req: Request) {
 
     await auditLog({ action: AuditAction.CONTENT_CREATED, adminId: admin.id, targetType: "global_calendar_event", details: { import: year, added: data?.length ?? 0 } }, req);
     return NextResponse.json({ events: data ?? [], added: data?.length ?? 0 });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

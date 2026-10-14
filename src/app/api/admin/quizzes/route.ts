@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { applyFolderFilter, parseFolderParam } from "@/lib/adminFolderFilter";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
@@ -47,7 +47,7 @@ export async function GET(request: Request) {
     // on pagine par précaution pour ne pas reproduire le bug le jour où la
     // table grossit.
     const pageSize = 1000;
-    const data: any[] = [];
+    const data: unknown[] = [];
     for (let from = 0; ; from += pageSize) {
       let query = supabaseAdmin
         .from("quizzes")
@@ -83,9 +83,9 @@ export async function GET(request: Request) {
     }
 
     return NextResponse.json(isAdmin ? data : data.map(stripAnswers));
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error fetching quizzes:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -154,9 +154,9 @@ export async function POST(request: Request) {
     }, request);
 
     return NextResponse.json({ success: true, quiz: data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error creating quiz:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -193,7 +193,7 @@ export async function PUT(request: Request) {
 
     // Build a partial update: only include fields whose keys are present in the body.
     // This prevents a folder move ({ id, folder_id }) from wiping title/content/etc.
-    const updatePayload: Record<string, any> = { updated_at: new Date().toISOString() };
+    const updatePayload: Record<string, unknown> = { updated_at: new Date().toISOString() };
     const has = (k: string) => Object.prototype.hasOwnProperty.call(body, k);
     if (has("title")) updatePayload.title = title;
     if (has("description")) updatePayload.description = description;
@@ -246,9 +246,9 @@ export async function PUT(request: Request) {
     }, request);
 
     return NextResponse.json({ success: true, quiz: data });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error updating quiz:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }
 
@@ -289,7 +289,7 @@ export async function DELETE(request: Request) {
     }, request);
 
     return NextResponse.json({ success: true });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

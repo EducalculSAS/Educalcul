@@ -1,4 +1,5 @@
 ﻿"use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { compareDisplayOrder } from "@/lib/contentOrder";
 import { useState, useEffect, useRef, useMemo } from "react";
@@ -27,46 +28,12 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
 import { useConfirm } from "@/components/ConfirmDialog";
-import {
-  Plus,
-  Search,
-  Edit,
-  Trash2,
-  X,
-  Clock,
-  Folder,
-  FolderPlus,
-  ImageIcon,
-  XCircle,
-  FileText,
-  BookOpen,
-  BrainCircuit,
-  Zap,
-  GraduationCap,
-  Sparkles,
-  Loader2, Eye, Download, Upload,
-  Calculator,
-  Brain,
-  Trophy,
-  Star,
-  Pencil,
-  Ruler,
-  FlaskConical,
-  Shapes,
-  Pi,
-  Puzzle,
-  LineChart,
-  Hash,
-  Table2,
-  Superscript,
-  ArrowUp,
-  ArrowDown,
-} from "lucide-react";
-import QuizViewer from "@/components/viewers/QuizViewer";
+import { Plus, Search, Edit, Trash2, X, Clock, Folder, FolderPlus, ImageIcon, XCircle, FileText, BookOpen, BrainCircuit, Sparkles, Loader2, Eye, Download, Upload, Calculator, Brain, Trophy, Star, Pencil, Ruler, FlaskConical, Shapes, Pi, Puzzle, LineChart, Hash, Table2, Superscript, ArrowUp, ArrowDown } from "lucide-react";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import PageLoader from "@/components/PageLoader";
 import { SCHOOL_LEVELS, SCHOOL_CYCLES, getLevelLabel, getLevelCycle, getEffectiveFolderLevel } from "@/lib/constants";
 import CourseSelect from "@/components/admin/CourseSelect";
+import { errMessage } from "@/lib/safeError";
 
 const FOLDER_COLORS = [
   "#3b82f6", // Blue
@@ -85,7 +52,7 @@ const FOLDER_COLORS = [
   "#f43f5e", // Rose
 ];
 
-function Num123Icon({ size = 24, ...props }: any) {
+function Num123Icon({ size = 24, ...props }) {
   return (
     <svg
       width={size}
@@ -124,13 +91,6 @@ const getFolderIcon = (iconName?: string | null) => {
   const found = FOLDER_ICONS.find((i) => i.name === iconName);
   return found ? found.Icon : Folder;
 };
-
-const QUIZ_TYPES = [
-  { value: "standard", label: "Standard (Mélange)" },
-  { value: "exam", label: "Examen / Évaluation" },
-  { value: "practice", label: "Entraînement / Révision" },
-  { value: "homework", label: "Devoir Maison" },
-];
 
 export interface Quiz {
   id: string;
@@ -243,14 +203,7 @@ export default function AdminQuizzesClient({
     icon: "",
   });
 
-  const importQuizRef = useRef<HTMLInputElement>(null);
   const [showImportModal, setShowImportModal] = useState(false);
-
-  const handleImportQuiz = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    await processImportFile(file);
-  };
 
   const processImportFile = async (file: File) => {
     try {
@@ -263,8 +216,8 @@ export default function AdminQuizzesClient({
         if (result.warnings.length > 0) {
           alert(`Importé, mais à vérifier avant d'enregistrer :\n\n- ${result.warnings.join("\n- ")}`);
         }
-      } catch (compileErr: any) {
-        alert(`Le contenu du fichier n'a pas pu être compilé : ${compileErr.message}`);
+      } catch (compileErr: unknown) {
+        alert(`Le contenu du fichier n'a pas pu être compilé : ${errMessage(compileErr)}`);
         return;
       }
       setFormData({
@@ -286,7 +239,7 @@ export default function AdminQuizzesClient({
       setQuizEstimatedTime(data.estimated_time ?? 15);
       setEditingQuiz(data.id ? ({ id: data.id } as Quiz) : null);
       setIsModalOpen(true);
-    } catch (err: any) { alert(err.message); }
+    } catch (err: unknown) { alert(errMessage(err)); }
   };
 
   // Modal state
@@ -363,7 +316,7 @@ export default function AdminQuizzesClient({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [statusFilter, courseFilter, difficultyFilter, currentFolderId]);
 
-  const fetchInitialData = async () => {
+  async function fetchInitialData() {
     try {
       const coursesRes = await fetch("/api/admin/courses");
       const coursesData = await coursesRes.json();
@@ -372,9 +325,9 @@ export default function AdminQuizzesClient({
     } catch (error) {
       console.error("Error loading initial data:", error);
     }
-  };
+  }
 
-  const fetchContents = async (silent = false) => {
+  async function fetchContents(silent = false) {
     const cacheKey = `quizzes:${currentFolderId}:${statusFilter}:${courseFilter}:${difficultyFilter}`;
     const cached = getAdminCache<{ items: Quiz[]; allFolders: ContentFolder[] }>(cacheKey);
     if (!silent) {
@@ -407,17 +360,17 @@ export default function AdminQuizzesClient({
 
       let items = data as Quiz[];
       if (difficultyFilter !== "all") {
-        items = items.filter((q: any) => q.difficulty_level === difficultyFilter);
+        items = items.filter((q) => q.difficulty_level === difficultyFilter);
       }
       setAllFolders(freshFolders);
       setQuizzes(items);
       setAdminCache(cacheKey, { items, allFolders: freshFolders });
-    } catch (error: any) {
-      console.error("Error fetching contents:", error?.message || error);
+    } catch (error: unknown) {
+      console.error("Error fetching contents:", errMessage(error) || error);
     } finally {
       if (!silent) setLoading(false);
     }
-  };
+  }
 
   const handleDragStart = (e: React.DragEvent, quizId: string) => {
     e.dataTransfer.setData("quizId", quizId);
@@ -538,11 +491,11 @@ export default function AdminQuizzesClient({
       setIsFolderModalOpen(false);
       invalidateAdminCache("quizzes:");
       fetchContents();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error saving folder:", error);
       alert(
         "Erreur lors de l'enregistrement du dossier: " +
-          (error?.message || JSON.stringify(error))
+          (errMessage(error) || JSON.stringify(error))
       );
     }
   };
@@ -835,7 +788,7 @@ export default function AdminQuizzesClient({
       (quiz.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         (quiz.description &&
           quiz.description.toLowerCase().includes(searchQuery.toLowerCase()))) &&
-      (cycleFilter === "all" || getLevelCycle((quiz as any).level) === cycleFilter)
+      (cycleFilter === "all" || getLevelCycle(quiz.level) === cycleFilter)
   ).sort(compareDisplayOrder);
 
   // Ordre du dossier, réglé avec les flèches : c'est exactement celui que verra
@@ -866,7 +819,7 @@ export default function AdminQuizzesClient({
       folder.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
       (cycleFilter === "all" ||
         currentFolderId !== null ||
-        getLevelCycle((folder as any).grade_level) === cycleFilter)
+        getLevelCycle(folder.grade_level) === cycleFilter)
   );
 
   return (
@@ -1533,7 +1486,7 @@ export default function AdminQuizzesClient({
                           { id: "hard", label: "Difficile" },
                         ]}
                         value={formData.difficulty_level}
-                        onChange={(v) => setFormData({ ...formData, difficulty_level: v as any })}
+                        onChange={(v) => setFormData({ ...formData, difficulty_level: v })}
                       />
                     </div>
                     <div>
@@ -1563,7 +1516,7 @@ export default function AdminQuizzesClient({
                       <label className="block text-sm font-semibold text-gray-700 mb-1.5">Correction</label>
                       <select
                         value={formData.grading_type}
-                        onChange={(e) => setFormData({ ...formData, grading_type: e.target.value as any })}
+                        onChange={(e) => setFormData({ ...formData, grading_type: e.target.value })}
                         className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"
                       >
                         <option value="auto">Automatique</option>

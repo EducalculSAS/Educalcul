@@ -33,6 +33,7 @@ export default function BadgeMinis({ badgeIds }: { badgeIds: number[] }) {
         setBadges(ids.map(id => badgeCache[id]).filter(Boolean));
       })
       .catch(() => {});
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- la liste est comparée par son contenu (JSON), pas par référence
   }, [JSON.stringify(badgeIds)]);
 
   if (!badges.length) return null;

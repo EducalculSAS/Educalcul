@@ -1,5 +1,5 @@
 ﻿import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 
@@ -57,8 +57,8 @@ export async function GET(request: Request) {
         } : null
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("Error in auth-info API:", error);
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

@@ -24,8 +24,19 @@ export async function recordGrades(userId: number, kind: GradedKind, itemId: str
 }
 
 /** Note de la tentative en cours : somme des verdicts des questions existantes, bornée au barème. */
-export async function serverScore(userId: number, kind: GradedKind, itemId: string | number, validBlockIds: Set<string>, maxPoints: number): Promise<number> {
-  const { data } = await supabaseAdmin.from("graded_answers").select("block_id, score").eq("user_id", userId).eq("kind", kind).eq("item_id", String(itemId));
+export async function serverScore(
+  userId: number,
+  kind: GradedKind,
+  itemId: string | number,
+  validBlockIds: Set<string>,
+  maxPoints: number,
+  /** Temps limité : seuls les verdicts rendus entre `since` et `until` comptent. */
+  window: { since?: Date; until?: Date } = {},
+): Promise<number> {
+  let q = supabaseAdmin.from("graded_answers").select("block_id, score").eq("user_id", userId).eq("kind", kind).eq("item_id", String(itemId));
+  if (window.since) q = q.gte("graded_at", window.since.toISOString());
+  if (window.until) q = q.lte("graded_at", window.until.toISOString());
+  const { data } = await q;
   let total = 0;
   for (const r of data ?? []) if (validBlockIds.has(String(r.block_id))) total += Number(r.score) || 0;
   return Math.min(Math.round(total * 100) / 100, maxPoints);

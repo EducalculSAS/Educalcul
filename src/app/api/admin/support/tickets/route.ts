@@ -1,5 +1,5 @@
 ﻿import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { requireRole } from "@/lib/apiAuth";
 import { fetchSupportTickets } from "@/lib/supportTicketsQuery";
 
@@ -14,7 +14,7 @@ export async function GET(request: Request) {
 
     const data = await fetchSupportTickets(viewMode);
     return NextResponse.json(data);
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

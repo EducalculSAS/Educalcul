@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import { CGU_SECTIONS, CGU_VERSION } from "@/lib/cgu";
@@ -54,7 +55,7 @@ const TOUR_STEPS = [
   },
 ];
 
-export default function ParentOnboarding({ firstName, authId, onComplete }: Props) {
+export default function ParentOnboarding({ firstName, onComplete }: Props) {
   const [step, setStep] = useState<"cgu" | "welcome" | "tour" | "end">("cgu");
   const [tourIndex, setTourIndex] = useState(0);
   const [cguScrolled, setCguScrolled] = useState(false);
@@ -90,7 +91,7 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
               <div className="flex items-center gap-3 mb-1">
                 <Shield className="w-6 h-6 text-[var(--greek-blue)]" />
                 <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
-                  Conditions d'utilisation
+                  Conditions d&apos;utilisation
                 </h2>
               </div>
               <p className="text-sm text-gray-400">{CGU_VERSION} · Aucun cookie publicitaire</p>
@@ -123,7 +124,7 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
                 disabled={!cguScrolled}
               >
                 <CheckCircle className="w-5 h-5" />
-                J'accepte les conditions d'utilisation
+                J&apos;accepte les conditions d&apos;utilisation
               </GlassButton>
             </div>
           </div>
@@ -132,13 +133,13 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
         {/* ── WELCOME ── */}
         {step === "welcome" && (
           <div className="flex flex-col items-center justify-center px-8 py-12 text-center gap-6 flex-1">
-            <img src="/logo.png" alt="Educalcul" className="w-20 h-20 object-contain" />
+            <Image src="/logo.png" alt="Educalcul" width={80} height={80} className="w-20 h-20 object-contain" />
             <div>
               <h2 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-3">
                 Bienvenue, {firstName} !
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed max-w-md mx-auto">
-                Vous rejoignez Educalcul, la plateforme de mathématiques qui s'adapte au niveau de vos enfants.
+                Vous rejoignez Educalcul, la plateforme de mathématiques qui s&apos;adapte au niveau de vos enfants.
               </p>
             </div>
             <div className="bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-2xl p-5 max-w-md text-left space-y-2">
@@ -217,13 +218,13 @@ export default function ParentOnboarding({ firstName, authId, onComplete }: Prop
         {/* ── END ── */}
         {step === "end" && (
           <div className="flex flex-col items-center justify-center px-8 py-12 text-center gap-6 flex-1">
-            <img src="/logo.png" alt="Educalcul" className="w-20 h-20 object-contain" />
+            <Image src="/logo.png" alt="Educalcul" width={80} height={80} className="w-20 h-20 object-contain" />
             <div>
               <h2 className="text-3xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-3">
                 Vous êtes prêt(e) !
               </h2>
               <p className="text-gray-600 leading-relaxed max-w-md mx-auto">
-                La plateforme n'a plus de secrets pour vous. Commencez par ajouter vos enfants depuis votre tableau de bord.
+                La plateforme n&apos;a plus de secrets pour vous. Commencez par ajouter vos enfants depuis votre tableau de bord.
               </p>
             </div>
             <div className="bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-2xl p-5 max-w-sm text-left">

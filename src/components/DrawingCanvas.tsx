@@ -16,13 +16,14 @@ export default function DrawingCanvas({
   initialData?: string;
 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [ctx, setCtx] = useState<CanvasRenderingContext2D | null>(null);
+  // Contexte 2D du canevas : une ref (objet du navigateur modifié à chaque trait), pas un état React.
+  const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
   const [tool, setTool] = useState<"pen" | "eraser">("pen");
   const toolRef = useRef(tool);
-  toolRef.current = tool;
+  useEffect(() => { toolRef.current = tool; });
   const [penColor, setPenColor] = useState("#000000");
   const penColorRef = useRef(penColor);
-  penColorRef.current = penColor;
+  useEffect(() => { penColorRef.current = penColor; });
   const historyRef = useRef<string[]>([]);
   const [canUndo, setCanUndo] = useState(false);
 
@@ -45,7 +46,7 @@ export default function DrawingCanvas({
     context.lineJoin = "round";
     context.strokeStyle = "#000000";
     context.lineWidth = 2;
-    setCtx(context);
+    ctxRef.current = context;
 
     // Fond blanc initial (évite un fond transparent)
     context.fillStyle = "#FFFFFF";
@@ -58,7 +59,8 @@ export default function DrawingCanvas({
       };
       img.src = initialData;
     }
-  }, []); // Au montage uniquement
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- au montage uniquement
+  }, []);
 
   const pushHistory = () => {
     const canvas = canvasRef.current;
@@ -88,6 +90,7 @@ export default function DrawingCanvas({
   };
 
   const handlePointerDown = (e: React.PointerEvent) => {
+    const ctx = ctxRef.current;
     if (disabled || !ctx || !canvasRef.current) return;
     // Rejet de la paume : on ignore le tactile si un stylet est en usage.
     if (e.pointerType === "touch" && penUsedRef.current) return;
@@ -106,6 +109,7 @@ export default function DrawingCanvas({
   };
 
   const handlePointerMove = (e: React.PointerEvent) => {
+    const ctx = ctxRef.current;
     if (!isDrawingRef.current || disabled || !ctx) return;
     e.preventDefault();
 
@@ -172,6 +176,7 @@ export default function DrawingCanvas({
   };
 
   const undo = () => {
+    const ctx = ctxRef.current;
     if (disabled || !ctx || !canvasRef.current) return;
     const last = historyRef.current.pop();
     if (!last) return;
@@ -187,6 +192,7 @@ export default function DrawingCanvas({
   };
 
   const clearCanvas = () => {
+    const ctx = ctxRef.current;
     if (disabled || !ctx || !canvasRef.current) return;
     pushHistory();
     ctx.fillStyle = "#FFFFFF";

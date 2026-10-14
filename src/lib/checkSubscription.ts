@@ -22,7 +22,7 @@ interface PlanFeatures {
   minigames_premium_content: boolean;
   /** IA vocale "Calia en classe" (mode prof) — reservee au plan Family. */
   calia_classe: boolean;
-  [key: string]: any;
+  [key: string]: unknown;
 }
 
 const FREE_FEATURES: PlanFeatures = {

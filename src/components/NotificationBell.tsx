@@ -3,7 +3,7 @@
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { Bell, Check, MessageSquare, Trophy, CreditCard, AlertCircle, Info } from "lucide-react";
+import { Bell, Check, MessageSquare, Trophy, CreditCard, Info } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassButton from "@/components/ui/GlassButton";
@@ -32,6 +32,12 @@ export default function NotificationBell() {
   const router = useRouter();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [open, setOpen] = useState(false);
+  // « Il y a 5 min » : l'heure est rafraîchie chaque minute, pas lue pendant l'affichage.
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 60_000);
+    return () => clearInterval(t);
+  }, []);
   const [loading, setLoading] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
 
@@ -95,7 +101,7 @@ export default function NotificationBell() {
   };
 
   const timeAgo = (date: string) => {
-    const diff = Date.now() - new Date(date).getTime();
+    const diff = now - new Date(date).getTime();
     const m = Math.floor(diff / 60000);
     if (m < 1) return "à l'instant";
     if (m < 60) return `il y a ${m}min`;

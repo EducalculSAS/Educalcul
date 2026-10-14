@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { getIpGeo, getClientIp } from "@/lib/ipGeo";
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
       ? await getIpGeo(request)
       : { ip: ipNow, available: false as const };
 
-    const updates: Record<string, any> = {
+    const updates: Record<string, unknown> = {
       last_active_at: new Date().toISOString(),
     };
 
@@ -137,9 +137,9 @@ export async function POST(request: Request) {
       });
     }
     return response;
-  } catch (err: any) {
+  } catch (err: unknown) {
     return NextResponse.json(
-      { error: sanitizeErrorMessage(err.message) },
+      { error: sanitizeErrorMessage(errMessage(err)) },
       { status: 500 },
     );
   }

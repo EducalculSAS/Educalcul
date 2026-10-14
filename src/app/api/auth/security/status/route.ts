@@ -3,7 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { hashTwoFactorValue } from "@/lib/twoFactor";
 import { getTwoFactorCookie } from "@/lib/twoFactorCookie";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 /**
  * État de sécurité du compte connecté, en UN seul appel :
@@ -54,7 +54,7 @@ export async function GET(req: Request) {
       totpConfirmed: !!totp?.confirmed_at,
       twoFactorSessionValid,
     });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

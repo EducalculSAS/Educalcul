@@ -92,7 +92,7 @@ export default async function ParentDashboard() {
                 <MessageSquare className="w-7 h-7" />
               </div>
               <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Le Forum</h3>
-              <p className="text-gray-600 mb-4 text-sm">Échangez avec d'autres parents et l'équipe.</p>
+              <p className="text-gray-600 mb-4 text-sm">Échangez avec d&apos;autres parents et l&apos;équipe.</p>
               <div className="flex items-center text-[var(--greek-bronze)] font-bold group-hover:gap-2 transition-all">
                 Participer <ArrowRight className="w-5 h-5 ml-1" />
               </div>

@@ -142,7 +142,7 @@ function keepCompleteExerciseQuestions(
   };
 }
 
-function exerciseTypeRules(blockType: string, count: number): string {
+function exerciseTypeRules(blockType: string): string {
   const common = `Chaque question possède toujours les clés :
 {
   "prompt": RICH_TEXT,
@@ -208,7 +208,7 @@ ${STRUCTURED_MATH_OUTPUT_RULES}
 
 ${RICH_TEXT_SCHEMA_PROMPT}
 
-${exerciseTypeRules(options.blockType, options.count)}
+${exerciseTypeRules(options.blockType)}
 
 Structure JSON exacte :
 {

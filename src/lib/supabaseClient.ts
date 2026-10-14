@@ -3,10 +3,7 @@ import { createBrowserClient } from "@supabase/ssr";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-// Use SUPABASE_SERVICE_ROLE (not NEXT_PUBLIC_) for server-side only
-// Never evaluate this check in browser context - will always be undefined
-const supabaseServiceRole =
-  typeof window === "undefined" ? process.env.SUPABASE_SERVICE_ROLE : null;
+// La clé de service (SUPABASE_SERVICE_ROLE, jamais NEXT_PUBLIC_) n'est lue que côté serveur, dans getSupabaseAdmin() plus bas.
 
 // ─── Public client (anon key) — browser + server ──────────────────────────
 // One instance per JS context via globalThis to survive HMR re-evaluation.
@@ -82,7 +79,7 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
     isRetry = false,
   ): Promise<Response> => {
     if (!isRetry) init = await withAuthHeader(input, init);
-    const response = await originalFetch(input as any, init);
+    const response = await originalFetch(input, init);
     // Un jeton 2FA expiré/révoqué côté serveur (TTL admin de 4h) laisse
     // AdminShell croire la 2FA validée tant qu'il n'a pas revérifié (voir
     // /api/auth/2fa/totp/verify-session) : sans ce filet, la page pourrait
@@ -104,6 +101,7 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
       const redirect = encodeURIComponent(
         window.location.pathname || "/admin/dashboard",
       );
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination -- 2FA requise : rechargement complet vers la vérification
       window.location.href = `/auth/2fa-verify?redirect=${redirect}`;
     } else if (
       response.status === 401 &&
@@ -120,7 +118,7 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
       // puis on retente UNE fois avec le nouveau jeton avant d'abandonner
       // (la déconnexion sur inactivité réelle reste gérée par
       // SessionStillHereModal, pas ici).
-      const { data } = await getPublicClient().auth.refreshSession().catch(() => ({ data: null as any }));
+      const { data } = await getPublicClient().auth.refreshSession().catch(() => ({ data: null }));
       if (data?.session?.access_token) {
         const retryInit = await withAuthHeader(input, init);
         return apiFetch(input, retryInit, url, true);
@@ -136,7 +134,7 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
   window.fetch = ((input: RequestInfo | URL, init?: RequestInit) => {
     const url = targetUrl(input);
     if (url.startsWith("/api/")) return apiFetch(input, init, url);
-    return originalFetch(input as any, init);
+    return originalFetch(input, init);
   }) as typeof fetch;
 
   // « Failed to fetch » = échec de la COUCHE RÉSEAU (hors-ligne, DNS, CORS,

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 /** Statut de bannissement du compte connecté — SANS le gate "compte banni" de
  * getAuthenticatedUser (sinon un banni ne pourrait pas afficher la raison sur
@@ -26,7 +26,7 @@ export async function GET(req: Request) {
       ban_reason: data.ban_reason,
       ban_until: data.ban_until,
     });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || "Erreur interne") }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || "Erreur interne") }, { status: 500 });
   }
 }

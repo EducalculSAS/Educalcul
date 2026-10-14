@@ -124,9 +124,11 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
   // seule fois) lise toujours l'état le plus frais sans avoir à se
   // recréer à chaque changement — sinon le polling saccade/rate des ticks.
   const runsRef = useRef(runs);
-  runsRef.current = runs;
   const selectedRunIdRef = useRef(selectedRunId);
-  selectedRunIdRef.current = selectedRunId;
+  useEffect(() => {
+    runsRef.current = runs;
+    selectedRunIdRef.current = selectedRunId;
+  });
 
   const refreshRuns = async () => {
     const headers = await authHeaders();
@@ -259,7 +261,7 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
   };
 
   const selectedRun = useMemo(() => runs.find((r) => r.id === selectedRunId) || null, [runs, selectedRunId]);
-  const findings = (selectedRunId && findingsByRun[selectedRunId]) || [];
+  const findings = useMemo(() => (selectedRunId && findingsByRun[selectedRunId]) || [], [selectedRunId, findingsByRun]);
   const findingsLoading = selectedRunId ? findingsLoadingIds.has(selectedRunId) && findings.length === 0 : false;
 
   const activeByCategory = useMemo(() => {

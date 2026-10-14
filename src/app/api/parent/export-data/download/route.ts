@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { createHash } from "crypto";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { exportStudentData } from "@/lib/studentStore";
 
 // Endpoint public : la sécurité repose sur le token à usage personnel envoyé
@@ -73,7 +73,7 @@ export async function GET(req: Request) {
         "Content-Disposition": `attachment; filename="educalcul-donnees-${new Date().toISOString().slice(0, 10)}.json"`,
       },
     });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

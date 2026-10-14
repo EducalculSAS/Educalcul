@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { ShieldCheck, AlertCircle, RotateCcw } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { safeRedirectPath } from "@/lib/safeRedirect";
+import { errMessage } from "@/lib/safeError";
 
 function TwoFactorVerifyContent() {
   const router = useRouter();
@@ -40,8 +41,8 @@ function TwoFactorVerifyContent() {
       if (!res.ok) throw new Error(data.error || "Impossible d'envoyer le code.");
       setSent(true);
       setCooldown(60);
-    } catch (err: any) {
-      setError(err.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      setError(errMessage(err) || "Une erreur est survenue.");
     } finally {
       setSending(false);
     }
@@ -81,6 +82,7 @@ function TwoFactorVerifyContent() {
     })();
     // Précharge la page d'arrivée pendant que l'élève lit son code.
     router.prefetch(redirect);
+  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, []);
 
   useEffect(() => {
@@ -116,8 +118,8 @@ function TwoFactorVerifyContent() {
       // relâcher dans un `finally` laissait un écran figé et un bouton
       // inactif pendant le rechargement — c'était le « gel » après la 2FA.
       window.location.replace(redirect);
-    } catch (err: any) {
-      setError(err.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      setError(errMessage(err) || "Une erreur est survenue.");
       setLoading(false);
     }
   };

@@ -1,6 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { ArrowRight, LogIn, Users, BookOpen, Sparkles, GraduationCap, ShieldCheck, Check } from "lucide-react";
+import { ArrowRight, LogIn, BookOpen, Sparkles, GraduationCap, ShieldCheck, Check } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import ScrollArrow from "@/components/home/ScrollArrow";
@@ -116,7 +116,7 @@ export default async function Home() {
           <p className="text-base leading-relaxed mb-12 max-w-lg hero-rise hero-rise-3" style={{ color: "rgba(240,237,232,0.55)" }}>
             Une IA socratique qui guide sans donner la réponse, un programme complet du CP à la Terminale,
             et un suivi parental limpide.<br />
-            Educalcul accompagne toute la famille, pas seulement l'élève.
+            Educalcul accompagne toute la famille, pas seulement l&apos;élève.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 hero-rise hero-rise-4">
@@ -167,7 +167,7 @@ export default async function Home() {
           >
             <span style={{ color: "var(--greek-blue)" }}>Votre enfant ne manque pas de capacités.</span>
             <br />
-            <span className="text-gradient-gold-dark">Il manque d'une bonne méthode.</span>
+            <span className="text-gradient-gold-dark">Il manque d&apos;une bonne méthode.</span>
           </blockquote>
           <p className="mt-8 text-base leading-relaxed max-w-xl mx-auto" style={{ color: "var(--text-muted)" }}>
             Educalcul est construit sur un principe simple : chaque élève peut réussir en mathématiques si on lui donne les bons outils.
@@ -228,7 +228,7 @@ export default async function Home() {
                 Un tuteur IA qui pose<br />les bonnes questions
               </h3>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
-                Jamais la réponse tout de suite : Calia repère où ça bloque et guide l'élève jusqu'au déclic, avec la méthode socratique. Disponible 24h/24.
+                Jamais la réponse tout de suite : Calia repère où ça bloque et guide l&apos;élève jusqu&apos;au déclic, avec la méthode socratique. Disponible 24h/24.
               </p>
             </Reveal>
           </div>

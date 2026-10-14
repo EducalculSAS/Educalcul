@@ -366,7 +366,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
     ref,
     () => ({
       insert: (latex: string) => {
-        mfRef.current?.insert(latex, { focus: true, selectionMode: "placeholder" } as any);
+        mfRef.current?.insert(latex, { focus: true, selectionMode: "placeholder" });
       },
       command: (cmd: any) => {
         mfRef.current?.executeCommand(cmd);
@@ -412,12 +412,12 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       // toute fin du champ : impossible alors de remplir le haut ou le bas d'une fraction, l'intérieur de parenthèses
       // ou d'une racine (les chiffres tombaient après la structure).
       if (/^[0-9]$/.test(key.text) || key.text === ",") {
-        mf.insert(key.text === "," ? "{,}" : key.text, { focus: true, format: "latex", selectionMode: "after" } as any);
+        mf.insert(key.text === "," ? "{,}" : key.text, { focus: true, format: "latex", selectionMode: "after" });
         return;
       }
       // Une lettre tapée dans une structure (fraction, parenthèses…) s'y insère ; ailleurs elle s'ajoute en texte à la fin.
       if (/^[a-zA-ZÀ-ÿ]$/.test(key.text) && mf.position < mf.lastOffset) {
-        mf.insert(key.text, { focus: true, format: "latex", selectionMode: "after" } as any);
+        mf.insert(key.text, { focus: true, format: "latex", selectionMode: "after" });
         return;
       }
       appendText(`\\text{${key.text}}`);
@@ -430,13 +430,13 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
         // sélectionnée, donc l'insertion la remplace) — toutes les cases sont
         // des placeholders, donc toutes visibles.
         matrixSize += 1;
-        mf.insert(buildMatrixLatex(matrixSize), { selectionMode: "item" } as any);
+        mf.insert(buildMatrixLatex(matrixSize), { selectionMode: "item" });
       } else {
         // Première fois (ou après être sorti d'une matrice) : matrice 2×2
         // neuve, en fin de champ pour éviter toute imbrication.
         matrixSize = 2;
         mf.executeCommand("moveToMathfieldEnd");
-        mf.insert(buildMatrixLatex(matrixSize), { selectionMode: "item" } as any);
+        mf.insert(buildMatrixLatex(matrixSize), { selectionMode: "item" });
         matrixActive = true;
       }
       matrixGrowing = false;

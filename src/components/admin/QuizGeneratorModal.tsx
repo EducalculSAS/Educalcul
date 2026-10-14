@@ -54,8 +54,8 @@ export default function QuizGeneratorModal({
       if (Array.isArray(data)) {
         setCourses(
           [...data]
-            .map((c: any) => ({ id: c.id, title: c.title }))
-            .sort((a, b) => a.title.localeCompare(b.title)) as any,
+            .map((c) => ({ id: c.id, title: c.title }))
+            .sort((a, b) => a.title.localeCompare(b.title)),
         );
       }
     })();
@@ -98,10 +98,10 @@ export default function QuizGeneratorModal({
             </div>
             <div>
               <h2 className="text-xl font-bold font-[family-name:var(--font-display)]">
-                Générer un quiz avec l'IA
+                Générer un quiz avec l&apos;IA
               </h2>
               <p className="text-xs text-white/70 mt-0.5">
-                QCM adapté au niveau de l'élève
+                QCM adapté au niveau de l&apos;élève
               </p>
             </div>
           </div>

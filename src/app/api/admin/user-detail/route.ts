@@ -9,6 +9,7 @@ import { grantOfferedSubscription } from "@/lib/adminGrantSubscription";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { hasSpecialtyChoice, sanitizeExtraLevels } from "@/lib/specialties";
 import { periodDays as periodDaysOf, recurringFor } from "@/lib/billingPeriods";
+import { errMessage } from "@/lib/safeError";
 
 const VALID_GRADE_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
 
@@ -30,7 +31,7 @@ export async function GET(req: Request) {
     if (!detail) return NextResponse.json({ error: "User not found" }, { status: 404 });
 
     return NextResponse.json(detail);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[user-detail] Error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
@@ -87,7 +88,7 @@ export async function PUT(req: Request) {
     }, req);
 
     return NextResponse.json(data);
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[user-detail-put] Error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
@@ -121,7 +122,7 @@ export async function PATCH(req: Request) {
       details: { extra_levels },
     }, req);
     return NextResponse.json({ extra_levels });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[user-detail-patch] Error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
@@ -319,8 +320,8 @@ export async function POST(req: Request) {
       if (existingSub?.stripe_subscription_id) {
         try {
           await stripe.subscriptions.cancel(existingSub.stripe_subscription_id);
-        } catch (e: any) {
-          console.warn("Could not cancel previous subscription:", e.message);
+        } catch (e: unknown) {
+          console.warn("Could not cancel previous subscription:", errMessage(e));
         }
       }
 
@@ -330,8 +331,8 @@ export async function POST(req: Request) {
         try {
           const found = await stripe.customers.list({ email: user.email, limit: 1 });
           if (found.data[0]) stripeCustomerId = found.data[0].id;
-        } catch (e: any) {
-          console.warn("Could not look up Stripe customer:", e.message);
+        } catch (e: unknown) {
+          console.warn("Could not look up Stripe customer:", errMessage(e));
         }
       }
 
@@ -355,7 +356,7 @@ export async function POST(req: Request) {
           });
           newStripeSubId = newSub.id;
           newPeriodEnd = subscriptionPeriodEnd(newSub);
-        } catch (e: any) {
+        } catch (e: unknown) {
           // ✓ SECURITY / INTEGRITE : ne JAMAIS marquer l'abonnement "active"
           // en base si Stripe n'a pas reellement pu creer la facturation
           // (ex: carte retiree entre-temps) -- sinon l'admin croit avoir
@@ -363,9 +364,9 @@ export async function POST(req: Request) {
           // garde un acces payant complet sans jamais etre facture (bug
           // constate en test : stripe_subscription_id reste null, mais
           // status="active" ecrit quand meme).
-          console.error("Could not create new Stripe subscription:", e.message);
+          console.error("Could not create new Stripe subscription:", errMessage(e));
           return NextResponse.json(
-            { error: `Impossible de créer l'abonnement Stripe : ${e.message}. Le plan n'a pas été modifié.` },
+            { error: `Impossible de créer l'abonnement Stripe : ${errMessage(e)}. Le plan n'a pas été modifié.` },
             { status: 400 }
           );
         }
@@ -515,7 +516,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ success: true });
     }
     return NextResponse.json({ error: "Unknown action" }, { status: 400 });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[user-detail-post] Error:", err);
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }

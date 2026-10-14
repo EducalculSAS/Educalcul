@@ -6,6 +6,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { Lock, CheckCircle, AlertCircle } from "lucide-react";
 import { validatePassword } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
+import { errMessage } from "@/lib/safeError";
 
 export default function UpdatePassword() {
   const [password, setPassword] = useState("");
@@ -69,10 +70,10 @@ export default function UpdatePassword() {
       setTimeout(() => {
         router.push("/");
       }, 3000);
-    } catch (err: any) {
+    } catch (err: unknown) {
       setStatus("error");
       setMessage(
-        err.message ||
+        errMessage(err) ||
           "Une erreur est survenue lors de la mise à jour du mot de passe."
       );
     }
@@ -97,7 +98,7 @@ export default function UpdatePassword() {
               </div>
               <p className="text-gray-800 mb-6">{message}</p>
               <p className="text-sm text-gray-500">
-                Redirection vers l'accueil...
+                Redirection vers l&apos;accueil...
               </p>
             </div>
           ) : (

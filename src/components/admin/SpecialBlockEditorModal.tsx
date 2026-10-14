@@ -182,7 +182,7 @@ export default function SpecialBlockEditorModal({
               {uploading ? "Upload..." : "Uploader une image"}
               <input type="file" accept="image/*" className="hidden" disabled={uploading} onChange={handleImageUpload} />
             </label>
-            <span className="text-xs text-gray-400">ou colle directement un lien dans le champ "url" ci-dessous</span>
+            <span className="text-xs text-gray-400">ou colle directement un lien dans le champ &quot;url&quot; ci-dessous</span>
           </div>
         )}
 

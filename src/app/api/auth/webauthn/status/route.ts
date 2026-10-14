@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 // Liste les clés d'accès enregistrées pour l'admin connecté (jamais la clé
 // publique/l'identifiant technique, juste de quoi les afficher/supprimer).
@@ -28,8 +28,8 @@ export async function GET(req: Request) {
     }
 
     return NextResponse.json({ credentials: data || [] });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("[webauthn/status] failed:", err);
-    return NextResponse.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

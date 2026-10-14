@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { IMPERSONATION_COOKIE_NAME } from "@/lib/impersonationCookie";
 
 /** Lu par ImpersonationBanner sur chaque page pour savoir s'il faut
@@ -26,7 +26,7 @@ export async function GET() {
       targetName: data.target_name,
       returnTo: data.return_to,
     });
-  } catch (err: any) {
-    return Response.json({ error: sanitizeErrorMessage(err.message) }, { status: 500 });
+  } catch (err: unknown) {
+    return Response.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
 }

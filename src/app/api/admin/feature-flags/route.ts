@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { requireRole, requireSuperAdmin } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { FEATURE_BY_KEY } from "@/lib/featureCatalog";
 import { invalidateFeatureCache } from "@/lib/featureFlags";
@@ -60,7 +60,7 @@ export async function PUT(req: Request) {
       req,
     ).catch(() => {});
     return NextResponse.json({ state: data });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || "Erreur interne") }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || "Erreur interne") }, { status: 500 });
   }
 }

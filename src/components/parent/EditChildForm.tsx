@@ -3,7 +3,6 @@
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState, useEffect } from "react";
-import Image from "next/image";
 import {
   ArrowLeft, UserCog, Save, Loader2, AlertCircle, CheckCircle, RotateCcw,
   Fingerprint, Trash2,
@@ -11,12 +10,13 @@ import {
 import { useRouter } from "next/navigation";
 import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
-import { AVATARS, getLevelLabel } from "@/lib/constants";
+import { getLevelLabel } from "@/lib/constants";
 import { EXPERTES_LEVEL, PREMIERE_TRACKS, TERMINALE_TRACKS, hasSpecialtyChoice, isTerminale } from "@/lib/specialties";
 import { isValidEmail } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
 import LevelRequestCard from "@/components/parent/LevelRequestCard";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { errMessage } from "@/lib/safeError";
 
 interface WebauthnCredential {
   id: string;
@@ -135,9 +135,9 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
       setTimeout(() => {
         router.push("/parent/children");
       }, 1500);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error updating child:", err);
-      setError(err.message || "Erreur lors de la mise à jour.");
+      setError(errMessage(err) || "Erreur lors de la mise à jour.");
     } finally {
       setSaving(false);
     }
@@ -151,8 +151,8 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Impossible d'envoyer le code.");
       setTwoFACooldown(60);
-    } catch (err: any) {
-      setTwoFAError(err.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      setTwoFAError(errMessage(err) || "Une erreur est survenue.");
     } finally {
       setSendingTwoFACode(false);
     }
@@ -229,9 +229,9 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
       if (!verifyRes.ok || !verifyData.verified) throw new Error(verifyData.error || "Vérification échouée");
 
       await refetchWebauthn();
-    } catch (err: any) {
-      if (err?.name !== "NotAllowedError") {
-        setWebauthnError(err?.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      if ((err instanceof Error ? err.name : "") !== "NotAllowedError") {
+        setWebauthnError(errMessage(err) || "Une erreur est survenue.");
       }
     } finally {
       setWebauthnRegistering(false);
@@ -249,8 +249,8 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
       });
       if (!res.ok) throw new Error((await res.json()).error || "Erreur");
       setWebauthnCreds((prev) => prev.filter((c) => c.id !== credentialId));
-    } catch (err: any) {
-      setWebauthnError(err?.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      setWebauthnError(errMessage(err) || "Une erreur est survenue.");
     } finally {
       setWebauthnRemovingId(null);
     }
@@ -280,8 +280,8 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
       setTwoFAEnabled(toggleData.enabled);
       setTwoFAStep("idle");
       setTwoFACode("");
-    } catch (err: any) {
-      setTwoFAError(err.message || "Une erreur est survenue.");
+    } catch (err: unknown) {
+      setTwoFAError(errMessage(err) || "Une erreur est survenue.");
     } finally {
       setTogglingTwoFA(false);
     }
@@ -338,22 +338,22 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email de l'enfant</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Email de l&apos;enfant</label>
               <input
                 type="email" required value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               />
-              <p className="text-xs text-gray-500 mt-1">Utilisé pour la connexion et pour recevoir les notifications de l'enfant.</p>
+              <p className="text-xs text-gray-500 mt-1">Utilisé pour la connexion et pour recevoir les notifications de l&apos;enfant.</p>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Nom d'utilisateur (Pseudo)</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Nom d&apos;utilisateur (Pseudo)</label>
               <input
                 type="text" disabled title="Le nom d'utilisateur ne peut pas être modifié" value={formData.username}
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg bg-gray-100 text-gray-500 cursor-not-allowed"
               />
-              <p className="text-xs text-gray-500 mt-1">Le nom d'utilisateur ne peut pas être modifié.</p>
+              <p className="text-xs text-gray-500 mt-1">Le nom d&apos;utilisateur ne peut pas être modifié.</p>
             </div>
 
             <div>
@@ -365,7 +365,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               />
               <p className="text-xs text-gray-500 mt-1">
-                Remplissez ce champ pour définir ou modifier le mot de passe de l'enfant. Cela créera automatiquement l'accès si ce n'est pas déjà fait.
+                Remplissez ce champ pour définir ou modifier le mot de passe de l&apos;enfant. Cela créera automatiquement l&apos;accès si ce n&apos;est pas déjà fait.
               </p>
             </div>
 

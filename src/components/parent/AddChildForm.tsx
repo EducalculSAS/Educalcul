@@ -2,12 +2,12 @@
 
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
-import Image from "next/image";
 import { UserPlus, Save, Loader2, AlertCircle, CheckCircle, GraduationCap } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { AVATARS, SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
+import { SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 import { validatePassword, isValidEmail } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
+import { errMessage } from "@/lib/safeError";
 
 const SPECIALTY_LEVELS = new Set([
   "2nde", "1ere-generale", "1ere-generale-maths", "1ere-sti2d", "1ere-stmg", "1ere-st2s", "1ere-stl", "1ere-std2a", "1ere-sthr",
@@ -80,9 +80,9 @@ export default function AddChildForm() {
       setTimeout(() => {
         router.push("/parent/children");
       }, 1500);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Error adding child:", err);
-      setError(err.message || "Une erreur est survenue lors de l'ajout de l'enfant.");
+      setError(errMessage(err) || "Une erreur est survenue lors de l'ajout de l'enfant.");
     } finally {
       setLoading(false);
     }
@@ -128,18 +128,18 @@ export default function AddChildForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email de l'enfant</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Email de l&apos;enfant</label>
               <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]" />
-              <p className="text-xs text-gray-500 mt-1">Utilisé pour la connexion et pour recevoir les notifications de l'enfant.</p>
+              <p className="text-xs text-gray-500 mt-1">Utilisé pour la connexion et pour recevoir les notifications de l&apos;enfant.</p>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Nom d'utilisateur (Pseudo), optionnel</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Nom d&apos;utilisateur (Pseudo), optionnel</label>
               <input type="text" pattern="[a-zA-Z0-9_]+" title="Lettres, chiffres et underscores uniquement" value={formData.username}
                 onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]" />
-              <p className="text-xs text-gray-500 mt-1">Permet aussi de se connecter avec ce pseudo en plus de l'email.</p>
+              <p className="text-xs text-gray-500 mt-1">Permet aussi de se connecter avec ce pseudo en plus de l&apos;email.</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -188,7 +188,7 @@ export default function AddChildForm() {
               className="!py-4"
             >
               {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : <Save className="w-6 h-6" />}
-              <span className="text-lg">Enregistrer l'enfant</span>
+              <span className="text-lg">Enregistrer l&apos;enfant</span>
             </GlassButton>
           </form>
         </div>

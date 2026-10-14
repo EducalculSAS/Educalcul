@@ -76,7 +76,7 @@ export default function GlassSegmentedControl({
   const startLeftRef = useRef(0);
   const dragWidthRef = useRef(0);
   const valueRef = useRef(value);
-  valueRef.current = value;
+  useIsoLayoutEffect(() => { valueRef.current = value; });
 
   const rectOf = useCallback((id: string): Rect | null => {
     const btn = btnRefs.current[id];

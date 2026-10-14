@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getLiveSubscription } from "@/lib/subscriptionLive";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 
 /**
  * État d'abonnement de l'utilisateur connecté (plan, features, conso IA du
@@ -111,7 +111,7 @@ export async function GET(req: Request) {
       features,
       ai_uses_today: count ?? 0,
     });
-  } catch (err: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(err?.message || "Erreur interne") }, { status: 500 });
+  } catch (err: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || "Erreur interne") }, { status: 500 });
   }
 }

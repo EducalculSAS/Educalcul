@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { sanitizeErrorMessage } from "@/lib/safeError";
+import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { chatWithAI } from "@/lib/llm";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -117,17 +117,17 @@ export async function POST(req: Request) {
       byCourse.set(course.id, s);
     };
     for (const a of exAttempts ?? []) {
-      const ex = one(a.exercise as any);
+      const ex = one(a.exercise);
       const pct = a.score_percent ?? (a.is_correct === true ? 100 : a.is_correct === false ? 0 : null);
-      touch(one(ex?.course as any), pct, a.completed_at ?? a.attempted_at);
+      touch(one(ex?.course), pct, a.completed_at ?? a.attempted_at);
     }
     for (const q of quizAttempts ?? []) {
-      const qz = one(q.quiz as any);
+      const qz = one(q.quiz);
       const pct = q.score_percent ?? (q.total_questions ? Math.round(((q.score ?? 0) / q.total_questions) * 100) : null);
-      touch(one(qz?.course as any), pct, q.completed_at);
+      touch(one(qz?.course), pct, q.completed_at);
     }
     for (const p of progress ?? []) {
-      const c = one(p.course as any) as { id: number; title: string } | null;
+      const c = one(p.course) as { id: number; title: string } | null;
       touch(c, null, p.completed_at ?? p.created_at);
       if (c?.id) byCourse.get(c.id)!.status = p.status ?? null;
     }
@@ -168,7 +168,7 @@ export async function POST(req: Request) {
     const avgMin = sessionsCount ? Math.round(totalMin / sessionsCount) : null;
 
     const notions = (arr: unknown) =>
-      (Array.isArray(arr) ? arr : []).map((n: any) => (typeof n === "string" ? n : n?.notion)).filter(Boolean).slice(-12);
+      (Array.isArray(arr) ? arr : []).map((n) => (typeof n === "string" ? n : n?.notion)).filter(Boolean).slice(-12);
     const weak = notions(profile?.weak_notions);
     const mastered = notions(profile?.mastered_notions);
 
@@ -264,7 +264,7 @@ Réponds UNIQUEMENT par un JSON valide :
         weakNotions: weak.length,
       },
     });
-  } catch (error: any) {
-    return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  } catch (error: unknown) {
+    return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
   }
 }

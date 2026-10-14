@@ -1,4 +1,5 @@
 ﻿"use client";
+/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef, useMemo } from "react";
@@ -77,6 +78,7 @@ import {
 } from "@/lib/constants";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
+import { errMessage } from "@/lib/safeError";
 
 export interface Course {
   id: string;
@@ -124,7 +126,7 @@ const FOLDER_COLORS = [
   "#f43f5e", // Rose
 ];
 
-function Num123Icon({ size = 24, ...props }: any) {
+function Num123Icon({ size = 24, ...props }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
       <text
@@ -243,7 +245,6 @@ export default function AdminCoursesClient({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
-  const importCourseRef = useRef<HTMLInputElement>(null);
 
   const handleImportCourse = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -265,8 +266,8 @@ export default function AdminCoursesClient({
         if (result.warnings.length > 0) {
           alert(`Importé, mais à vérifier avant d'enregistrer :\n\n- ${result.warnings.join("\n- ")}`);
         }
-      } catch (compileErr: any) {
-        alert(`Le contenu du fichier n'a pas pu être compilé : ${compileErr.message}`);
+      } catch (compileErr: unknown) {
+        alert(`Le contenu du fichier n'a pas pu être compilé : ${errMessage(compileErr)}`);
         return;
       }
       setFormData({
@@ -287,8 +288,8 @@ export default function AdminCoursesClient({
         setModalMode("create");
       }
       setIsModalOpen(true);
-    } catch (err: any) {
-      alert(err.message);
+    } catch (err: unknown) {
+      alert(errMessage(err));
     }
     e.target.value = "";
   };
@@ -367,7 +368,7 @@ export default function AdminCoursesClient({
   useKatexIn(gridRef, [loading, courses, searchTerm, currentFolderId]);
 
   // Fetch folders and courses for the current directory
-  const fetchContents = async (silent = false) => {
+  async function fetchContents(silent = false) {
     const cacheKey = `courses:${currentFolderId}:${statusFilter}`;
     const cached = getAdminCache<{ items: Course[]; allFolders: ContentFolder[] }>(cacheKey);
     if (!silent) {
@@ -402,12 +403,12 @@ export default function AdminCoursesClient({
       setAllFolders(freshFolders);
       setCourses(items);
       setAdminCache(cacheKey, { items, allFolders: freshFolders });
-    } catch (error: any) {
-      console.error("Error fetching contents:", error?.message || error);
+    } catch (error: unknown) {
+      console.error("Error fetching contents:", errMessage(error) || error);
     } finally {
       if (!silent) setLoading(false);
     }
-  };
+  }
 
   const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files || e.target.files.length === 0) return;
@@ -533,7 +534,7 @@ export default function AdminCoursesClient({
         folder_id: course.folder_id || null,
         content_json: course.content_json || [],
       });
-      setEstimatedTime((course as any).estimated_time ?? 15);
+      setEstimatedTime(course.estimated_time ?? 15);
     } else {
       setCurrentCourse(null);
       setEstimatedTime(15);
@@ -706,11 +707,11 @@ export default function AdminCoursesClient({
       setIsFolderModalOpen(false);
       invalidateAdminCache("courses:");
       fetchContents();
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error saving folder:", error);
       alert(
         "Erreur lors de l'enregistrement du dossier: " +
-          (error?.message || JSON.stringify(error)),
+          (errMessage(error) || JSON.stringify(error)),
       );
     }
   };
@@ -834,7 +835,7 @@ export default function AdminCoursesClient({
       folder.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
       (cycleFilter === "all" ||
         currentFolderId !== null ||
-        getLevelCycle((folder as any).grade_level) === cycleFilter),
+        getLevelCycle(folder.grade_level) === cycleFilter),
   );
 
   const filteredCourses = courses.filter((course) => {
@@ -844,7 +845,7 @@ export default function AdminCoursesClient({
       (course.description?.toLowerCase() || "").includes(searchLower) ||
       (course.subject?.toLowerCase() || "").includes(searchLower);
     const matchesCycle =
-      cycleFilter === "all" || getLevelCycle((course as any).level) === cycleFilter;
+      cycleFilter === "all" || getLevelCycle(course.level) === cycleFilter;
     return matchesSearch && matchesCycle;
   }).sort(compareCourseOrder);
 

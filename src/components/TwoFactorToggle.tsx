@@ -7,6 +7,7 @@ import { getMyProfile } from "@/lib/updateMyProfile";
 import { ShieldCheck, Loader2, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
 import TwoFactorSessions from "@/components/TwoFactorSessions";
 import GlassButton from "@/components/ui/GlassButton";
+import { errMessage } from "@/lib/safeError";
 
 /** Section "Authentification à deux facteurs" — utilisée dans les 3 pages profil.
  * `mandatory` verrouille pour les comptes admin (TOTP toujours actif) ; pour un
@@ -51,8 +52,8 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Impossible d'envoyer le code.");
       setCooldown(60);
-    } catch (err: any) {
-      setMessage({ type: "error", text: err.message || "Une erreur est survenue." });
+    } catch (err: unknown) {
+      setMessage({ type: "error", text: errMessage(err) || "Une erreur est survenue." });
     } finally {
       setSending(false);
     }
@@ -102,8 +103,8 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
       setPendingAction(null);
       setCode("");
       setMessage({ type: "success", text: pendingAction ? "Authentification à deux facteurs activée." : "Authentification à deux facteurs désactivée." });
-    } catch (err: any) {
-      setMessage({ type: "error", text: err.message || "Une erreur est survenue." });
+    } catch (err: unknown) {
+      setMessage({ type: "error", text: errMessage(err) || "Une erreur est survenue." });
     } finally {
       setVerifying(false);
       setTimeout(() => setMessage(null), 4000);
