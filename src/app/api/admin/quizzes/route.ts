@@ -4,6 +4,7 @@ import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
+import { quizBlockingProblems, publishRefusal } from "@/lib/contentIntegrity";
 import { stripAnswers } from "@/lib/quizContent";
 import { parseMinScorePercent } from "@/lib/scorePercent";
 
@@ -113,6 +114,11 @@ export async function POST(request: Request) {
       estimated_time,
     } = body;
 
+    if (status === "published") {
+      const problems = quizBlockingProblems(content_json);
+      if (problems.length) return NextResponse.json({ error: publishRefusal(problems) }, { status: 400 });
+    }
+
     const { data, error } = await supabaseAdmin
       .from("quizzes")
       .insert({
@@ -204,6 +210,21 @@ export async function PUT(request: Request) {
     if (has("estimated_time")) updatePayload.estimated_time = body.estimated_time ?? 15;
     if (has("max_attempts")) updatePayload.max_attempts = max_attempts;
     if (has("grading_type")) updatePayload.grading_type = grading_type;
+
+    // Un quiz publié doit pouvoir être réussi et corrigé : on contrôle quand on le publie ou qu'on change son contenu.
+    if (has("status") || has("content_json")) {
+      let effStatus = has("status") ? status : null;
+      let effContent: unknown = has("content_json") ? content_json : null;
+      if (effStatus === null || effContent === null) {
+        const { data: cur } = await supabaseAdmin.from("quizzes").select("status, content_json").eq("id", id).maybeSingle();
+        if (effStatus === null) effStatus = cur?.status ?? null;
+        if (effContent === null) effContent = cur?.content_json ?? null;
+      }
+      if (effStatus === "published") {
+        const problems = quizBlockingProblems(effContent);
+        if (problems.length) return NextResponse.json({ error: publishRefusal(problems) }, { status: 400 });
+      }
+    }
 
     const { data, error } = await supabaseAdmin
       .from("quizzes")

@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getLiveSubscription } from "@/lib/subscriptionLive";
 import { DifficultyLevel, normalizeDifficulty } from "@/lib/difficultyLevels";
 import { isDifficultyAllowed } from "@/lib/difficultyAccess";
 
@@ -61,12 +62,7 @@ export async function getUserFeatures(
     if (parentRow?.auth_id) subscriptionUserId = parentRow.auth_id;
   }
 
-  const { data: sub } = await supabaseAdmin
-    .from("subscriptions")
-    .select("plan_id, status")
-    .eq("user_id", subscriptionUserId)
-    .eq("status", "active")
-    .maybeSingle();
+  const sub = await getLiveSubscription(subscriptionUserId);
 
   if (!sub?.plan_id) return FREE_FEATURES;
 

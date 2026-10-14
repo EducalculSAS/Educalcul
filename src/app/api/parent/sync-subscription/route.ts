@@ -20,7 +20,14 @@ export async function GET(req: Request) {
     if (!sub?.stripe_subscription_id) return NextResponse.json({ synced: false });
 
     // Pull live status from Stripe
-    const stripeSub = await stripe.subscriptions.retrieve(sub.stripe_subscription_id);
+    let stripeSub;
+    try {
+      stripeSub = await stripe.subscriptions.retrieve(sub.stripe_subscription_id);
+    } catch (err) {
+      // Abonnement disparu chez Stripe (compte de test, suppression) : rien à synchroniser.
+      if ((err as { code?: string })?.code === "resource_missing") return NextResponse.json({ synced: false, missing: true });
+      throw err;
+    }
 
     const newStatus = stripeSub.status === "active" ? "active"
       : stripeSub.status === "canceled" ? "cancelled"

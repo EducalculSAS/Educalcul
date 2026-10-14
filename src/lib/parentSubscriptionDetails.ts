@@ -1,6 +1,11 @@
 import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
+/** Stripe répond « No such … » quand l'objet n'existe plus (compte de test, abonnement supprimé côté Stripe) : ce n'est pas une panne. */
+function isStripeMissing(err: unknown): boolean {
+  return (err as { code?: string } | null)?.code === "resource_missing";
+}
+
 export async function fetchParentSubscriptionDetails(userId: string) {
   // 1. Get subscription from Supabase to find Stripe Customer ID
   // "past_due" (echec de paiement) reste inclus : le client garde acces a
@@ -90,7 +95,13 @@ export async function fetchParentSubscriptionDetails(userId: string) {
   // 2. Fetch subscription details from Stripe to get renewal date + cancellation status
   let stripeSubscription: any = null;
   if (subscription.stripe_subscription_id) {
-    stripeSubscription = await stripe.subscriptions.retrieve(subscription.stripe_subscription_id);
+    try {
+      stripeSubscription = await stripe.subscriptions.retrieve(subscription.stripe_subscription_id);
+    } catch (err) {
+      if (!isStripeMissing(err)) throw err;
+      // L'abonnement n'existe plus chez Stripe : on montre ce que la base sait, sans factures.
+      return { subscription, invoices: [] as any[] };
+    }
   }
 
   const stripeCancelAtPeriodEnd = stripeSubscription?.cancel_at_period_end ?? false;
@@ -109,11 +120,17 @@ export async function fetchParentSubscriptionDetails(userId: string) {
   }
 
   // 3. Fetch invoices from Stripe
-  const invoices = await stripe.invoices.list({
-    customer: customerId,
-    limit: 12,
-    status: "paid",
-  });
+  let invoices;
+  try {
+    invoices = await stripe.invoices.list({
+      customer: customerId,
+      limit: 12,
+      status: "paid",
+    });
+  } catch (err) {
+    if (!isStripeMissing(err)) throw err;
+    return { subscription, invoices: [] as any[] };
+  }
 
   const formattedInvoices = invoices.data.map((invoice) => ({
     id: invoice.id,

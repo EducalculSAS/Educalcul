@@ -88,9 +88,9 @@ export default function StreakFlame({ lit = true, count, size, className = "", s
 
         {/* La flamme respire : léger étirement vertical depuis la base */}
         <motion.g animate={animated ? { scaleY: [1, 1.05, 0.98, 1.04, 1], scaleX: [1, 0.97, 1.02, 0.98, 1], rotate: [0, -1.4, 1.2, -0.6, 0] } : undefined} transition={{ duration: 1.9, repeat: Infinity, ease: "easeInOut" }} style={{ transformOrigin: "50px 114px", transformBox: "view-box" }}>
-          <motion.path d={OUTER[0]} fill={`url(#o${uid})`} animate={flicker(OUTER, 1.7)} />
-          <motion.path d={MIDDLE[0]} fill={`url(#m${uid})`} animate={flicker(MIDDLE, 1.3, 0.15)} />
-          <motion.path d={CORE[0]} fill={`url(#c${uid})`} animate={flicker(CORE, 1.0, 0.3)} />
+          <motion.path d={OUTER[0]} initial={animated ? { d: OUTER[0] } : undefined} fill={`url(#o${uid})`} animate={flicker(OUTER, 1.7)} />
+          <motion.path d={MIDDLE[0]} initial={animated ? { d: MIDDLE[0] } : undefined} fill={`url(#m${uid})`} animate={flicker(MIDDLE, 1.3, 0.15)} />
+          <motion.path d={CORE[0]} initial={animated ? { d: CORE[0] } : undefined} fill={`url(#c${uid})`} animate={flicker(CORE, 1.0, 0.3)} />
           {/* Reflet façon vernis, comme sur la flamme de Duolingo */}
           <path d="M31 70 C29 82 33 94 40 101" stroke="#ffffff" strokeOpacity={lit ? 0.45 : 0.35} strokeWidth="3.2" strokeLinecap="round" fill="none" />
         </motion.g>

@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { getLiveSubscription } from "@/lib/subscriptionLive";
 import PageHero from "@/components/PageHero";
 import { User } from "lucide-react";
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
@@ -23,19 +24,15 @@ export default async function ParentProfilePage() {
     .maybeSingle();
   if (!profile || profile.role !== "parent") redirect("/dashboard");
 
-  const [{ data: sub }, { count: childrenCount }] = await Promise.all([
-    supabaseAdmin
-      .from("subscriptions")
-      .select("status, cancel_at_period_end")
-      .eq("user_id", au?.id)
-      .maybeSingle(),
+  const [sub, { count: childrenCount }] = await Promise.all([
+    au?.id ? getLiveSubscription<{ cancel_at_period_end: boolean | null }>(au.id, "cancel_at_period_end") : Promise.resolve(null),
     supabaseAdmin
       .from("users")
       .select("id", { count: "exact", head: true })
       .eq("parent_id", profile.id)
       .eq("role", "child"),
   ]);
-  const hasActiveSubscription = !!sub && sub.status === "active" && !sub.cancel_at_period_end;
+  const hasActiveSubscription = !!sub && !sub.cancel_at_period_end;
   const alertPrefs = await getAlertPrefs(profile.id);
 
   return (

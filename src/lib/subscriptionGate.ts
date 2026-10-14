@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getLiveSubscription } from "@/lib/subscriptionLive";
 
 /**
  * true si ce compte (identifié par son auth_id) a un abonnement actif dans
@@ -11,13 +12,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
  * même logique que subscription-status/route.ts, à garder synchronisée.
  */
 export async function hasActiveSubscription(authId: string): Promise<boolean> {
-  const { data } = await supabaseAdmin
-    .from("subscriptions")
-    .select("id")
-    .eq("user_id", authId)
-    .eq("status", "active")
-    .maybeSingle();
-  if (data) return true;
+  if (await getLiveSubscription(authId, "id")) return true;
 
   const { data: everSubscribed } = await supabaseAdmin
     .from("subscriptions")

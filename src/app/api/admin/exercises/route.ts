@@ -5,6 +5,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import { stripAnswers, fillEmptyContentJson, dedupeBlockIds } from "@/lib/exerciseContent";
+import { exerciseBlockingProblems, publishRefusal } from "@/lib/contentIntegrity";
 
 const GRADING_TYPES = ["auto", "ai", "manual"];
 import { parseMinScorePercent } from "@/lib/scorePercent";
@@ -197,6 +198,11 @@ export async function POST(request: Request) {
       });
     }
 
+    if (status === "published" || status === "active") {
+      const problems = exerciseBlockingProblems(finalContentJson);
+      if (problems.length) return NextResponse.json({ error: publishRefusal(problems) }, { status: 400 });
+    }
+
     const { data, error } = await supabaseAdmin
       .from("exercises")
       .insert({
@@ -351,6 +357,21 @@ export async function PUT(request: Request) {
     if (has("estimated_time")) updatePayload.estimated_time = body.estimated_time ?? 15;
     if (has("min_score_percent")) updatePayload.min_score_percent = parseMinScorePercent(body.min_score_percent);
     if (has("max_attempts")) updatePayload.max_attempts = max_attempts || null;
+
+    // Un exercice publié doit pouvoir être réussi et corrigé : on contrôle quand on le publie ou qu'on change son contenu.
+    if (has("status") || hasContentKey) {
+      let effStatus = has("status") ? status : null;
+      let effContent: unknown = hasContentKey ? finalContentJson : null;
+      if (effStatus === null || effContent === null) {
+        const { data: cur } = await supabaseAdmin.from("exercises").select("status, content_json").eq("id", id).maybeSingle();
+        if (effStatus === null) effStatus = cur?.status ?? null;
+        if (effContent === null) effContent = cur?.content_json ?? null;
+      }
+      if (effStatus === "published" || effStatus === "active") {
+        const problems = exerciseBlockingProblems(effContent);
+        if (problems.length) return NextResponse.json({ error: publishRefusal(problems) }, { status: 400 });
+      }
+    }
 
     const { data, error } = await supabaseAdmin
       .from("exercises")

@@ -3,6 +3,7 @@ import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { ArrowLeft, Award, BookOpen, CheckCircle, TrendingUp, Gamepad2 } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getLiveSubscription } from "@/lib/subscriptionLive";
 import ChildReportTabs from "@/components/parent/ChildReportTabs";
 import GlassButton from "@/components/ui/GlassButton";
 import ChildControls from "@/components/parent/ChildControls";
@@ -31,12 +32,7 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "parent") redirect("/dashboard");
 
-  const { data: subData } = await supabaseAdmin
-    .from("subscriptions")
-    .select("status")
-    .eq("user_id", authUser.authId)
-    .maybeSingle();
-  const hasSub = subData?.status === "active";
+  const hasSub = !!(await getLiveSubscription(authUser.authId));
 
   const { data: child } = await supabaseAdmin
     .from("users")

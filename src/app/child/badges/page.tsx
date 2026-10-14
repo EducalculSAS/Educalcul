@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getLiveSubscription } from "@/lib/subscriptionLive";
 import { BORDER_STYLES, NAME_COLORS, getSubscriptionUnlocks } from "@/lib/badgeStyles";
 import BadgesSettings from "@/components/child/BadgesSettings";
 
@@ -38,7 +39,7 @@ export default async function ChildBadgesPage() {
           const { data: parentUser } = await supabaseAdmin.from("users").select("auth_id").eq("id", userData.parent_id).maybeSingle();
           if (parentUser?.auth_id) subUserId = parentUser.auth_id;
         }
-        const { data: sub } = await supabaseAdmin.from("subscriptions").select("plan_id").eq("user_id", subUserId).maybeSingle();
+        const sub = await getLiveSubscription(subUserId);
         let planFeatures = null;
         if (sub?.plan_id) {
           const { data: planData } = await supabaseAdmin.from("subscription_plans").select("features").eq("id", sub.plan_id).maybeSingle();

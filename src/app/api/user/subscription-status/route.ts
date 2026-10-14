@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getLiveSubscription } from "@/lib/subscriptionLive";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 
@@ -59,12 +60,7 @@ export async function GET(req: Request) {
       if (parent?.auth_id) subUserAuthId = parent.auth_id;
     }
 
-    const { data: sub } = await supabaseAdmin
-      .from("subscriptions")
-      .select("plan_id, status")
-      .eq("user_id", subUserAuthId)
-      .eq("status", "active")
-      .maybeSingle();
+    const sub = await getLiveSubscription(subUserAuthId);
 
     let plan_id: number | null = null;
     let plan_name = "Découverte";

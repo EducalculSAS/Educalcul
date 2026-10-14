@@ -20,7 +20,8 @@ export async function GET(req: Request) {
 
     const admin = await requireSuperAdmin(req);
     if (!admin) {
-      return NextResponse.json(plans || []);
+      // Un plan masqué (is_active=false) ne doit pas fuiter vers le public.
+      return NextResponse.json((plans || []).filter((p) => p.is_active !== false));
     }
 
     const plansWithCount = await fetchAdminSubscriptionPlans();

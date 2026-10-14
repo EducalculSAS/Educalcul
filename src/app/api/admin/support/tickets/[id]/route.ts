@@ -23,7 +23,10 @@ export async function GET(request: Request, { params }: { params: Promise<{ id: 
       supabaseAdmin.from('ticket_replies').select('*').eq('ticket_id', id).order('replied_at', { ascending: true }),
     ]);
 
-    if (ticketError) return NextResponse.json({ error: sanitizeErrorMessage(ticketError.message) }, { status: 500 });
+    // PGRST116 = aucune ligne ; 22P02 = identifiant mal formé : dans les deux cas, ticket introuvable.
+    if (ticketError && ticketError.code !== "PGRST116" && ticketError.code !== "22P02") {
+      return NextResponse.json({ error: sanitizeErrorMessage(ticketError.message) }, { status: 500 });
+    }
     if (!ticket) return NextResponse.json({ error: "Ticket not found" }, { status: 404 });
     if (repliesError) return NextResponse.json({ error: sanitizeErrorMessage(repliesError.message) }, { status: 500 });
 

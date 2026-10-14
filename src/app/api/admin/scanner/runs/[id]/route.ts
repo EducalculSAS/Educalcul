@@ -20,7 +20,8 @@ export async function GET(
     .eq("id", id)
     .maybeSingle();
 
-  if (error) {
+  // 22P02 = identifiant mal formé (pas un uuid) : introuvable, pas une panne.
+  if (error && error.code !== "22P02") {
     return Response.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   }
   if (!run) return Response.json({ error: "Introuvable" }, { status: 404 });

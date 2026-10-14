@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getLiveSubscription } from "@/lib/subscriptionLive";
 import { getSubscriptionUnlocks } from "@/lib/badgeStyles";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 
@@ -52,7 +53,7 @@ export async function POST(req: Request) {
       const { data: parent } = await supabaseAdmin.from("users").select("auth_id").eq("id", fullUser.parent_id).maybeSingle();
       if (parent?.auth_id) subUserId = parent.auth_id;
     }
-    const { data: sub } = await supabaseAdmin.from("subscriptions").select("plan_id").eq("user_id", subUserId).maybeSingle();
+    const sub = await getLiveSubscription(subUserId);
     let planFeatures = null;
     if (sub?.plan_id) {
       const { data: planData } = await supabaseAdmin.from("subscription_plans").select("features").eq("id", sub.plan_id).maybeSingle();
