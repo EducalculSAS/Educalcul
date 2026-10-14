@@ -1,45 +1,49 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { RevealGroup, RevealItem } from "@/components/home/Reveal";
-import { PlanCard } from "@/components/tarifs/TarifsInteractive";
+import { PlansGrid } from "@/components/tarifs/TarifsInteractive";
 import type { Plan } from "@/lib/plans";
+import type { BillingPeriod } from "@/lib/billingPeriods";
+import type { PricingLayout } from "@/lib/pricingConfig";
 
-/** Client wrapper : PlanCard attend des handlers (onOpen, onToggleCompare) —
- * inutilisables en props depuis un Server Component.
- *
- * Comme sur /tarifs, seul le bouton "Voir les détails" doit être cliquable
- * (pas toute la fiche) — donc pas de <Link> englobant ici : `onOpen` navigue
- * lui-même vers /tarifs, le reste de la carte (en-tête, prix) reste inerte.
- *
- * `plans` arrive trié par prix croissant (même ordre que /tarifs) — on garde
- * cet ordre tel quel, sans réarrangement artificiel : la formule "Populaire"
- * (2e du tri par prix) se retrouve donc naturellement au centre. `items-stretch`
- * (comportement par défaut de la grille, comme sur /tarifs) pour que les
- * trois fiches aient la même hauteur quel que soit leur contenu. */
-export default function HomePricingGrid({ plans }: { plans: Plan[] }) {
+/**
+ * Aperçu des tarifs de la page d'accueil : les mêmes fiches, dans le même ordre et avec le même choix de durée
+ * (1 mois, 3 mois, 1 an) que la page Tarifs, car c'est le même composant (PlansGrid) avec les mêmes réglages admin.
+ * Seul le bouton « Voir les détails » est cliquable : il mène à /tarifs.
+ */
+export default function HomePricingGrid({
+  plans,
+  periods,
+  layout,
+  popularAuto,
+}: {
+  plans: Plan[];
+  periods: BillingPeriod[];
+  layout: PricingLayout;
+  popularAuto: boolean;
+}) {
   const router = useRouter();
-  const top3 = plans.slice(0, 3);
+  const [cardsVisible, setCardsVisible] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setCardsVisible(true), 80);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
-    <RevealGroup
-      className="grid grid-cols-1 sm:grid-cols-3 gap-6 items-stretch pt-4"
-      stagger={0.1}
-    >
-      {top3.map((plan, i) => (
-        <RevealItem key={plan.id} className="h-full">
-          <PlanCard
-            plan={plan}
-            popular={top3.length > 1 && i === 1}
-            hideChildren={false}
-            cardsVisible
-            onOpen={() => router.push("/tarifs")}
-            compareChecked={false}
-            onToggleCompare={() => {}}
-            hideCompare
-          />
-        </RevealItem>
-      ))}
-    </RevealGroup>
+    <div className="pt-4">
+      <style>{`@keyframes cardIn { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }`}</style>
+      <PlansGrid
+        plans={plans}
+        periods={periods}
+        layout={layout}
+        popularAuto={popularAuto}
+        cardsVisible={cardsVisible}
+        hideCompare
+        comparePlanIds={new Set()}
+        onToggleCompare={() => {}}
+        onOpen={() => router.push("/tarifs")}
+      />
+    </div>
   );
 }

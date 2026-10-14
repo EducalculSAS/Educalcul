@@ -16,6 +16,8 @@ import TestimonialsSection from "@/components/home/TestimonialsSection";
 import { fetchReviewsForHomepage } from "@/lib/manualReviews";
 import { fetchReviewRatingOverride } from "@/lib/reviewRatingOverride";
 import { fetchActivePlans } from "@/lib/plans";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import { normalizePricingConfig } from "@/lib/pricingConfig";
 
 // Page publique, quasi-statique (avis + tarifs) : ISR plutôt qu'un aller-retour
 // Supabase à chaque visite. 5 min de décalage max après une modification
@@ -51,21 +53,16 @@ const MINI_FAQ = [
 ];
 
 export default async function Home() {
-  const [tpReviews, ratingOverride, allPlans] = await Promise.all([
+  const [tpReviews, ratingOverride, allPlans, { data: pricingRow }] = await Promise.all([
     fetchReviewsForHomepage(),
     fetchReviewRatingOverride(),
     fetchActivePlans(),
+    supabaseAdmin.from("app_settings").select("value").eq("key", "pricing_config").maybeSingle(),
   ]);
+  // Mêmes réglages que la page Tarifs (admin > Abonnements) : périodes, présentation par formule, fiche « Populaire ».
+  const pricingCfg = normalizePricingConfig(pricingRow?.value);
 
-  // Chaque formule existe en plusieurs lignes (une par intervalle de
-  // facturation) — un seul aperçu par formule distincte (tarif mensuel de
-  // préférence), sinon l'aperçu tarifs affiche 3x la même formule.
-  const plansByName = new Map<string, (typeof allPlans)[number]>();
-  for (const p of allPlans) {
-    const existing = plansByName.get(p.name);
-    if (!existing || p.billing_interval === "month") plansByName.set(p.name, existing?.billing_interval === "month" ? existing : p);
-  }
-  const plans = Array.from(plansByName.values()).sort((a, b) => a.price - b.price);
+  const plans = allPlans;
 
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-blue)" }}>
@@ -265,7 +262,7 @@ export default async function Home() {
                 Une formule pour chaque famille
               </h2>
             </Reveal>
-            <HomePricingGrid plans={plans} />
+            <HomePricingGrid plans={plans} periods={pricingCfg.periods} layout={pricingCfg.layout} popularAuto={pricingCfg.popularAuto} />
             <Reveal y={12} delay={0.2} className="text-center mt-10">
               <Link href="/tarifs" className="text-sm font-bold underline underline-offset-4" style={{ color: "var(--greek-blue)" }}>
                 Comparer toutes les formules

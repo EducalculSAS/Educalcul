@@ -209,6 +209,89 @@ function PlanGroupCard({ group, autoPopular, hideCompare, cardsVisible, onOpen, 
   );
 }
 
+/**
+ * Les fiches de formules, EXACTEMENT comme sur la page Tarifs : une fiche par formule avec le choix de la durée dedans
+ * (présentation « byPlan »), ou un sélecteur de période au-dessus des fiches (« byPeriod »). Même ordre (formules
+ * payantes dans l'ordre réglé en admin, gratuite à la fin), même fiche « Populaire ». Utilisé par /tarifs et par l'aperçu
+ * de la page d'accueil, pour qu'ils ne divergent jamais.
+ */
+export function PlansGrid({
+  plans,
+  periods,
+  layout,
+  popularAuto,
+  cardsVisible,
+  hideCompare,
+  comparePlanIds,
+  onToggleCompare,
+  onOpen,
+}: {
+  plans: Plan[];
+  periods: BillingPeriod[];
+  layout: PricingLayout;
+  popularAuto: boolean;
+  cardsVisible: boolean;
+  hideCompare: boolean;
+  comparePlanIds: Set<number>;
+  onToggleCompare: (id: number) => void;
+  onOpen: (p: Plan) => void;
+}) {
+  const [interval, setInterval] = useState<string>(() => (periods.some((p) => p.id === "month") ? "month" : periods[0]?.id ?? "month"));
+
+  if (layout === "byPlan") {
+    // Une fiche par formule : « Solo - 1 mois », « Solo - 1 an »… se regroupent sous « Solo ».
+    const groupedAll = groupPlans(plans.filter((p) => Number(p.price) === 0 || periods.some((x) => x.id === p.billing_interval)));
+    const paidGroups = groupedAll.filter((g) => Number(g.plans[0].price) > 0);
+    const groups = [...paidGroups, ...groupedAll.filter((g) => Number(g.plans[0].price) === 0)];
+    const anyGroupFlagged = paidGroups.some((g) => g.plans.some((p) => p.features?.popular === true));
+    if (groups.length === 0) return <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>;
+    return (
+      <div className={`grid grid-cols-1 gap-8 ${groups.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : groups.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>
+        {groups.map((g, idx) => (
+          <PlanGroupCard
+            key={g.key}
+            group={g}
+            autoPopular={popularAuto && !anyGroupFlagged && paidGroups.length > 1 && idx === 1 && Number(g.plans[0].price) > 0}
+            hideCompare={hideCompare}
+            cardsVisible={cardsVisible}
+            onOpen={onOpen}
+            comparePlanIds={comparePlanIds}
+            onToggleCompare={onToggleCompare}
+          />
+        ))}
+      </div>
+    );
+  }
+
+  const list = plans.filter((p) => p.billing_interval === interval);
+  return (
+    <>
+      <div className="flex justify-center mb-10">
+        <GlassSegmentedControl options={periods.map((p) => ({ id: p.id, label: p.label }))} value={interval} onChange={setInterval} size="sm" />
+      </div>
+      {list.length === 0 ? (
+        <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>
+      ) : (
+        <div className={`grid grid-cols-1 gap-8 ${list.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : list.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>
+          {list.map((plan, idx) => (
+            <PlanCard
+              key={plan.id}
+              plan={plan}
+              popular={list.some((p) => p.features?.popular === true) ? plan.features?.popular === true : popularAuto && list.length > 1 && idx === 1}
+              hideChildren={false}
+              cardsVisible={cardsVisible}
+              onOpen={() => onOpen(plan)}
+              hideCompare={hideCompare}
+              compareChecked={comparePlanIds.has(plan.id)}
+              onToggleCompare={() => onToggleCompare(plan.id)}
+            />
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
+
 /* ─── Plan card (used in both Familles and Lycéens tabs) ─── */
 export function PlanCard({
   plan,
@@ -863,7 +946,6 @@ export default function TarifsInteractive({
 }) {
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
   const [tab, setTab] = useState<TabId>("familles");
-  const [interval, setInterval] = useState<string>(() => (periods.some((p) => p.id === "month") ? "month" : periods[0]?.id ?? "month"));
   const [cardsVisible, setCardsVisible] = useState(false);
   const cardsRef = useRef<HTMLDivElement>(null);
 
@@ -874,10 +956,6 @@ export default function TarifsInteractive({
     const t = setTimeout(() => setCardsVisible(true), 80);
     return () => clearTimeout(t);
   }, []);
-
-  const famillePlans = initialPlans.filter(
-    (p) => p.billing_interval === interval,
-  );
 
   const togglePlanCompare = (id: number) => {
     setComparePlanIds((prev) => {
@@ -914,40 +992,12 @@ export default function TarifsInteractive({
     });
   };
 
-  // Présentation « une fiche par formule » : « Solo - 1 mois », « Solo - 1 an »… se regroupent sous « Solo ».
-  const groupedAll = layout === "byPlan"
-    ? groupPlans(initialPlans.filter((p) => Number(p.price) === 0 || periods.some((x) => x.id === p.billing_interval)))
-    : [];
-  const paidGroups = groupedAll.filter((g) => Number(g.plans[0].price) > 0);
-  const groups = [...paidGroups, ...groupedAll.filter((g) => Number(g.plans[0].price) === 0)];
-  const anyGroupFlagged = paidGroups.some((g) => g.plans.some((p) => p.features?.popular === true));
-
   const TABS: { id: TabId; label: string }[] = [
     ...(visibility.familles ? [{ id: "familles" as TabId, label: tabLabels.familles }] : []),
     ...(visibility.custom ? [{ id: "abonnement" as TabId, label: tabLabels.custom }] : []),
   ];
   // Onglet masqué : on affiche celui qui reste (jamais une page vide).
   const activeTab: TabId = TABS.some((t) => t.id === tab) ? tab : TABS[0]?.id ?? "familles";
-
-  const renderCards = (list: Plan[], hideChildren: boolean) => (
-    <div
-      className={`grid grid-cols-1 gap-8 ${list.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : list.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}
-    >
-      {list.map((plan, idx) => (
-        <PlanCard
-          key={plan.id}
-          plan={plan}
-          popular={list.some((p) => p.features?.popular === true) ? plan.features?.popular === true : popularAuto && list.length > 1 && idx === 1}
-          hideChildren={hideChildren}
-          cardsVisible={cardsVisible}
-          onOpen={() => setSelectedPlan(plan)}
-          hideCompare={!visibility.comparator}
-          compareChecked={comparePlanIds.has(plan.id)}
-          onToggleCompare={() => togglePlanCompare(plan.id)}
-        />
-      ))}
-    </div>
-  );
 
   return (
     <>
@@ -969,42 +1019,17 @@ export default function TarifsInteractive({
 
           {activeTab === "familles" && (
             <>
-              {layout === "byPeriod" && (
-                <div className="flex justify-center mb-10">
-                  <GlassSegmentedControl
-                    options={periods.map((p) => ({ id: p.id, label: p.label }))}
-                    value={interval}
-                    onChange={setInterval}
-                    size="sm"
-                  />
-                </div>
-              )}
-              {layout === "byPlan" ? (
-                groups.length === 0 ? (
-                  <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>
-                ) : (
-                  <div className={`grid grid-cols-1 gap-8 ${groups.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : groups.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>
-                    {groups.map((g, idx) => (
-                      <PlanGroupCard
-                        key={g.key}
-                        group={g}
-                        autoPopular={popularAuto && !anyGroupFlagged && paidGroups.length > 1 && idx === 1 && Number(g.plans[0].price) > 0}
-                        hideCompare={!visibility.comparator}
-                        cardsVisible={cardsVisible}
-                        onOpen={setSelectedPlan}
-                        comparePlanIds={comparePlanIds}
-                        onToggleCompare={togglePlanCompare}
-                      />
-                    ))}
-                  </div>
-                )
-              ) : famillePlans.length === 0 ? (
-                <p className="text-center text-[var(--text-muted)] py-20">
-                  Aucun plan disponible pour le moment.
-                </p>
-              ) : (
-                renderCards(famillePlans, false)
-              )}
+              <PlansGrid
+                plans={initialPlans}
+                periods={periods}
+                layout={layout}
+                popularAuto={popularAuto}
+                cardsVisible={cardsVisible}
+                hideCompare={!visibility.comparator}
+                comparePlanIds={comparePlanIds}
+                onToggleCompare={togglePlanCompare}
+                onOpen={setSelectedPlan}
+              />
             </>
           )}
           {activeTab === "abonnement" && (
