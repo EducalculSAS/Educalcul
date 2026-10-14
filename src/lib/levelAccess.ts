@@ -1,5 +1,6 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import { loadPublishedFolders, resolveLevelScope, type CatalogFolder } from "@/lib/childCatalog";
+import { resolveLevelScope, type CatalogFolder } from "@/lib/childCatalog";
+import { loadPublishedFolders } from "@/lib/childCatalogLoaders";
 import { visibleLevels } from "@/lib/specialties";
 
 type FolderTable = "course_folders" | "exercise_folders" | "quiz_folders";

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { invalidateCatalog } from "@/lib/catalogCache";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
@@ -42,6 +43,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ type: s
 
     const { data, error } = await supabaseAdmin.from(table).insert(fields).select(SELECT).single();
     if (error) throw error;
+    invalidateCatalog();
     return NextResponse.json(data);
   } catch (error: unknown) {
     return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });

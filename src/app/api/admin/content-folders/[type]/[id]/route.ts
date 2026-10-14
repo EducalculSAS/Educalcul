@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { invalidateCatalog } from "@/lib/catalogCache";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
@@ -44,6 +45,7 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ type: 
 
     const { data, error } = await supabaseAdmin.from(table).update(fields).eq("id", folderId).select(SELECT).single();
     if (error) throw error;
+    invalidateCatalog();
     return NextResponse.json(data);
   } catch (error: unknown) {
     return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });
@@ -61,6 +63,7 @@ export async function DELETE(req: Request, { params }: { params: Promise<{ type:
 
     const { error } = await supabaseAdmin.from(table).delete().eq("id", Number(id));
     if (error) throw error;
+    invalidateCatalog();
     return NextResponse.json({ success: true });
   } catch (error: unknown) {
     return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });

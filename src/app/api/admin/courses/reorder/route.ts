@@ -3,6 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { auditLog, AuditAction } from "@/lib/auditLog";
+import { invalidateCatalog } from "@/lib/catalogCache";
 
 /**
  * Enregistre l'ordre des cours d'un dossier, tel que l'admin l'a arrangé.
@@ -49,6 +50,7 @@ export async function POST(req: Request) {
     );
     const failed = results.find((r) => r.error);
     if (failed?.error) throw failed.error;
+    invalidateCatalog();
 
     await auditLog(
       { action: AuditAction.CONTENT_UPDATED, adminId: admin.id, details: { reorder: "courses", count: clean.length } },

@@ -1,5 +1,3 @@
-import { supabaseAdmin } from "@/lib/supabaseClient";
-import { selectAllPages } from "@/lib/selectAllPages";
 
 /**
  * Chargement des catalogues élève (cours, exercices, quiz).
@@ -101,40 +99,4 @@ export function isFolderInLevelScope<F extends CatalogFolder>(
     current = current.parent_id === null ? undefined : byId.get(current.parent_id);
   }
   return false;
-}
-
-type CatalogTable = "courses" | "exercises" | "quizzes";
-
-/**
- * Éléments PUBLIÉS d'un catalogue, paginés.
- *  - `courseId` : uniquement ce cours (bouton « Faire les exercices » en fin
- *    de cours) — prioritaire, quel que soit le niveau du cours ;
- *  - `folderIds` : uniquement ces dossiers (le sous-arbre du niveau) ;
- *  - ni l'un ni l'autre : tout le catalogue publié (élève sans niveau).
- */
-export async function loadPublishedCatalog<T>(
-  table: CatalogTable,
-  columns: string,
-  scope: { courseId?: string | null; folderIds?: number[] | null },
-): Promise<T[]> {
-  return selectAllPages<T>((from, to) => {
-    // Tri par id : sans ordre fixe, la pagination (par 1000) pouvait sauter ou doubler des lignes.
-    let q = supabaseAdmin.from(table).select(columns).eq("status", "published").order("id").range(from, to);
-    if (scope.courseId) q = q.eq("course_id", scope.courseId);
-    else if (scope.folderIds) q = q.in("folder_id", scope.folderIds);
-    return q as unknown as PromiseLike<{ data: T[] | null; error: unknown }>;
-  });
-}
-
-/** Tous les dossiers publiés d'un type, paginés. */
-export async function loadPublishedFolders<F>(
-  table: "course_folders" | "exercise_folders" | "quiz_folders",
-  columns: string,
-  opts: { byDisplayOrder?: boolean } = {},
-): Promise<F[]> {
-  return selectAllPages<F>((from, to) => {
-    let q = supabaseAdmin.from(table).select(columns).eq("status", "published");
-    if (opts.byDisplayOrder) q = q.order("display_order");
-    return q.order("name").range(from, to) as unknown as PromiseLike<{ data: F[] | null; error: unknown }>;
-  });
 }

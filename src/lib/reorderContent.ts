@@ -1,5 +1,6 @@
 import "server-only";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { invalidateCatalog } from "@/lib/catalogCache";
 
 /**
  * Enregistre l'ordre d'éléments d'un même dossier (exercices ou quiz), tel
@@ -23,5 +24,6 @@ export async function reorderInFolder(table: "exercises" | "quizzes", ids: unkno
   );
   const failed = results.find((r) => r.error);
   if (failed?.error) throw failed.error;
+  invalidateCatalog();
   return { ok: true, count: clean.length };
 }

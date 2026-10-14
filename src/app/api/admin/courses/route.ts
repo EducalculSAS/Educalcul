@@ -4,6 +4,7 @@ import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { NextResponse } from "next/server";
 import { requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
+import { invalidateCatalog } from "@/lib/catalogCache";
 
 export async function GET(request: Request) {
   try {
@@ -106,6 +107,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    invalidateCatalog();
+
     await auditLog({
       action: data.status === "published" ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_CREATED,
       adminId: admin.id,
@@ -175,6 +178,8 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    invalidateCatalog();
+
     await auditLog({
       action: has("status") && status === "published" ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_UPDATED,
       adminId: admin.id,
@@ -217,6 +222,8 @@ export async function DELETE(request: Request) {
     if (error) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
+
+    invalidateCatalog();
 
     await auditLog({
       action: AuditAction.CONTENT_DELETED,

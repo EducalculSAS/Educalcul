@@ -4,6 +4,7 @@ import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, requireRole } from "@/lib/apiAuth";
 import { auditLog, AuditAction } from "@/lib/auditLog";
+import { invalidateCatalog } from "@/lib/catalogCache";
 import { stripAnswers, fillEmptyContentJson, dedupeBlockIds } from "@/lib/exerciseContent";
 import { exerciseBlockingProblems, publishRefusal } from "@/lib/contentIntegrity";
 
@@ -231,6 +232,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    invalidateCatalog();
+
     await auditLog({
       action: data.is_published ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_CREATED,
       adminId: admin.id,
@@ -384,6 +387,8 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
 
+    invalidateCatalog();
+
     await auditLog({
       action: has("status") && data.is_published ? AuditAction.CONTENT_PUBLISHED : AuditAction.CONTENT_UPDATED,
       adminId: admin.id,
@@ -429,6 +434,8 @@ export async function DELETE(request: Request) {
     if (error) {
       return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 400 });
     }
+
+    invalidateCatalog();
 
     await auditLog({
       action: AuditAction.CONTENT_DELETED,

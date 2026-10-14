@@ -5,7 +5,8 @@ import { Brain } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ExercisesCatalog from "@/components/child/ExercisesCatalog";
-import { resolveLevelScope, loadPublishedCatalog, loadPublishedFolders, type CatalogFolder } from "@/lib/childCatalog";
+import { resolveLevelScope, type CatalogFolder } from "@/lib/childCatalog";
+import { loadPublishedCatalog, loadPublishedFolders } from "@/lib/childCatalogLoaders";
 import { visibleLevels } from "@/lib/specialties";
 
 export default async function ChildExercisesPage({
