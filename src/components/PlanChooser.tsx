@@ -206,7 +206,8 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, t
         )}
 
         <div className="px-7 pt-8 pb-5 text-center border-b border-[var(--greek-border)]">
-          {plan.promo_description && (
+          {/* Avec un essai gratuit, seul le badge vert « X jours d'essai gratuit » s'affiche : la mention dorée disait la même chose. */}
+          {plan.promo_description && !(plan.trial_days > 0) && (
             <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-3">
               <Sparkles className="w-3 h-3" />{plan.promo_description}
             </div>

@@ -271,7 +271,8 @@ export function PlanCard({
 
         <div className="px-7 pt-8 pb-5 text-center border-b border-[var(--greek-border)]">
           <div className="min-h-[26px] mb-3 flex flex-wrap items-center justify-center gap-2">
-            {plan.promo_description && (
+            {/* Avec un essai gratuit, seul le badge vert s'affiche : la mention dorée disait la même chose. */}
+            {plan.promo_description && !(plan.trial_days > 0) && (
               <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)]">
                 <Sparkles className="w-3 h-3" />
                 {plan.promo_description}
