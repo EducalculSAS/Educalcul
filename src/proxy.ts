@@ -273,9 +273,10 @@ export async function proxy(req: NextRequest) {
         setAll: () => {},
       },
     });
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      const roleInfo = await getRole(user.id);
+    const { data: claimsData } = await supabase.auth.getClaims();
+    const userId = claimsData?.claims?.sub;
+    if (userId) {
+      const roleInfo = await getRole(userId);
       // Les admins ne sont jamais auto-redirigés : l'accès à /admin/dashboard
       // passe toujours par une navigation explicite (+ re-vérification 2FA),
       // pas par un simple cookie de session retrouvé sur la page d'accueil.
@@ -292,7 +293,7 @@ export async function proxy(req: NextRequest) {
   // bon `redirect=` plutôt qu'un /admin/dashboard fixe qui faisait perdre la
   // page demandée après une re-vérification 2FA.
   req.headers.set("x-pathname", pathname);
-  const { response, authId } = await updateSession(req);
+  const { response, authId } = await updateSession(req, { strict: pathname === "/admin" || pathname.startsWith("/admin/") });
 
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
     return guardAdminPage(req, response, authId);

@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { cache } from "react";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
@@ -52,14 +53,19 @@ export interface ServerUser {
  * API admin et par chaque route qui manipule des données sensibles. Cette
  * fonction ne sert qu'à décider quoi RENDRE, jamais à autoriser un accès.
  *
- * getUser() (pas getSession()) : identité vérifiée auprès du serveur Auth,
- * pas seulement lue depuis le cookie.
+ * getClaims() (pas getSession()) : la signature du jeton est vérifiée en local avec les clés publiques du projet, sans appel
+ * réseau ; React.cache() fait que le layout et la page d'une même requête partagent UNE seule vérification (avant : un
+ * getUser() réseau + une requête users par appelant). Un jeton non expiré reste accepté après une révocation de session
+ * jusqu'à son expiration : le statut banni/inactif est relu en base à chaque rendu, et les API sensibles utilisent
+ * getAuthenticatedUser (vérification auprès du serveur Auth).
  */
-export async function getServerUser(): Promise<ServerUser | null> {
+export const getServerUser = cache(async (): Promise<ServerUser | null> => {
   const supabase = await createSupabaseServerClient();
-  const { data, error } = await supabase.auth.getUser();
-  const authUser = data?.user;
-  if (error || !authUser) return null;
+  // getClaims() : jeton vérifié en local (pas d'appel réseau). Le statut banni/inactif est relu en base juste après.
+  const { data, error } = await supabase.auth.getClaims();
+  const sub = data?.claims?.sub;
+  if (error || !sub) return null;
+  const authUser = { id: sub };
 
   const { data: row } = await supabaseAdmin
     .from("users")
@@ -72,4 +78,4 @@ export async function getServerUser(): Promise<ServerUser | null> {
   if (row.status === "inactive" || row.ban_reason) return null;
 
   return { authId: authUser.id, id: row.id, role: row.role, parentId: row.parent_id };
-}
+});
