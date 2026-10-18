@@ -1,7 +1,8 @@
 import "server-only";
-import { commentOnMistake, gradeAnswerFast, gradeImageAnswer, runInteractive } from "@/lib/llm";
+import { commentOnMistake, gradeAnswerFast, gradeImageAnswer, runInteractive, transcribeAnswerImage } from "@/lib/llm";
 import { openComment, sealComment } from "@/lib/commentToken";
 import { tryDeterministicMathCheck } from "@/lib/mathAnswerCheck";
+import { integerValuesDiffer } from "@/lib/exactIntegerValue";
 
 export interface FreeAnswerResult {
   is_correct: boolean;
@@ -71,6 +72,10 @@ function shortExplanation(explanation: string | null | undefined): string {
  * 3. Sinon l'IA tranche (ou explique l'erreur déjà établie), en 2 phrases.
  * 4. IA indisponible : le calcul exact suffit s'il a tranché ; sinon
  *    « réessaie », jamais un verdict deviné.
+ *
+ * Réponse manuscrite (image) : on LIT d'abord la réponse finale (vision), puis on la corrige comme une réponse tapée
+ * (étapes 1 à 4). Le modèle de vision qui lisait et jugeait en une fois pouvait se contredire (« tu as écrit la bonne
+ * réponse… mais c'est faux ») ; il ne sert plus de repli que si la lecture est impossible.
  */
 export async function gradeFreeAnswer(opts: {
   question: string;
@@ -84,8 +89,24 @@ export async function gradeFreeAnswer(opts: {
   const { question, explanation, level, maxPoints } = opts;
   const mode = opts.mode ?? "numeric";
   const correct = typeof opts.correctAnswer === "string" ? opts.correctAnswer : JSON.stringify(opts.correctAnswer ?? "");
-  const student = typeof opts.studentAnswer === "string" ? opts.studentAnswer : JSON.stringify(opts.studentAnswer ?? "");
-  const isImage = student.startsWith("data:image");
+  let student = typeof opts.studentAnswer === "string" ? opts.studentAnswer : JSON.stringify(opts.studentAnswer ?? "");
+  let isImage = student.startsWith("data:image");
+  const originalImage = isImage ? student : "";
+  // Ce que le modèle a lu sur la copie : montré à l'élève quand la réponse est jugée fausse, pour qu'il voie s'il a été mal lu.
+  let reading = "";
+  if (isImage && mode !== "justification") {
+    try {
+      const t = await runInteractive(() => transcribeAnswerImage(originalImage, question));
+      if (t.legible) {
+        student = t.answer.startsWith("$") ? t.answer : `$${t.answer}$`;
+        reading = student;
+        isImage = false;
+      }
+    } catch (e) {
+      console.error("[gradeFreeAnswer] lecture manuscrite impossible, repli sur la vision :", e instanceof Error ? e.message : e);
+    }
+  }
+  const withReading = (feedback: string) => (reading ? `J'ai lu ${reading}. ${feedback}` : feedback);
 
   const deterministic =
     !isImage && mode !== "justification" ? tryDeterministicMathCheck(correct, student) : { decided: false as const };
@@ -101,12 +122,16 @@ export async function gradeFreeAnswer(opts: {
     return { is_correct: true, score: maxPoints, feedback: why ? `Bonne réponse ! ${why}` : "Bonne réponse !" };
   }
 
+  // Deux calculs d'entiers de valeurs différentes (ex. 2^3 × 5^5 = 40000 contre 2^2 × 5^5 = 12500) : fausse à coup sûr.
+  // Un petit modèle de langage se trompait parfois sur des écritures proches ; on ne laisse plus ce verdict à l'IA.
+  const exactMismatch = !isImage && mode !== "justification" && !deterministic.decided && integerValuesDiffer(correct, student);
+
   // Erreur établie par le calcul exact : verdict et réponse de base instantanés, l'IA commente ensuite (jeton).
-  if (deterministic.decided && !deterministic.isCorrect && !isImage) {
+  if ((deterministic.decided && !deterministic.isCorrect && !isImage) || exactMismatch) {
     return {
       is_correct: false,
       score: 0,
-      feedback: BASE_WRONG,
+      feedback: withReading(BASE_WRONG),
       comment_token: sealComment({ question, correct, student, explanation: explanation ?? undefined, level }),
     };
   }
@@ -116,7 +141,7 @@ export async function gradeFreeAnswer(opts: {
       ? await runInteractive(() => gradeImageAnswer(question, correct, student, explanation ?? undefined, level, maxPoints))
       : await gradeAnswerFast(question, correct, student, explanation ?? undefined, level, maxPoints, mode);
     if (r.is_correct) return { is_correct: true, score: maxPoints, feedback: r.feedback || "Bonne réponse !" };
-    return { is_correct: false, score: 0, feedback: withoutAnswer(r.feedback || BASE_WRONG, correct) };
+    return { is_correct: false, score: 0, feedback: withReading(withoutAnswer(r.feedback || BASE_WRONG, correct)) };
   } catch (e) {
     console.error("[gradeFreeAnswer] IA indisponible:", e instanceof Error ? e.message : e);
     if (deterministic.decided) {

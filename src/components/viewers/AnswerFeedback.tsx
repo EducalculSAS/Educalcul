@@ -12,6 +12,17 @@ const STYLES: Record<AnswerFeedbackKind, { bg: string; border: string; accent: s
   unavailable: { bg: "rgba(245,158,11,0.08)", border: "#f59e0b", accent: "#92400e", title: "Correction indisponible", Icon: AlertCircle },
 };
 
+/**
+ * Le gras en Markdown (`**mot**`), que l'IA glisse parfois dans ses retours, devient du vrai gras ; un `**` isolé ou un
+ * titre Markdown ne s'affiche jamais tel quel.
+ */
+function withBold(text: string): string {
+  return text
+    .replace(/\*\*([^*\n]+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*\*/g, "")
+    .replace(/^#{1,6}\s+/gm, "");
+}
+
 /** Réponse attendue affichée en formule quand c'est du LaTeX nu (sans $). */
 function asMath(value: string): string {
   const v = value.trim();
@@ -54,7 +65,7 @@ export default function AnswerFeedback({
             <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-[rgba(22,163,74,0.12)] text-green-700">+{points} pt{points > 1 ? "s" : ""}</span>
           ) : null}
         </p>
-        {text && <div className="latex-content mt-1" dangerouslySetInnerHTML={{ __html: renderLatexInHTML(text) }} />}
+        {text && <div className="latex-content mt-1" style={{ whiteSpace: "pre-line" }} dangerouslySetInnerHTML={{ __html: renderLatexInHTML(withBold(text)) }} />}
         {correctAnswer && (kind === "revealed" || kind === "wrong") && (
           <p className="latex-content mt-1.5">
             <span className="font-semibold">Réponse attendue : </span>
