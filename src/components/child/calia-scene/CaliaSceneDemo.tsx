@@ -23,7 +23,8 @@ const SILENCE_MS = 5000;
 const MAX_SILENT_TURNS = 5;
 const OUTLINE_SELECTORS: Record<OutlineKind, string> = {
   heading: "h3, h4",
-  paragraph: "p",
+  // Un encadré (définition, remarque) est UNE étape du cours, pas un paragraphe par ligne.
+  paragraph: "p, .course-definition, blockquote.course-callout",
   figure: ".course-figure",
   exercise: "[data-mini-exercise]",
   // Cibles fines : Calia pointe la formule, la ligne du tableau ou l'élément de
@@ -116,6 +117,49 @@ function inViewport(el: HTMLElement): boolean {
   return r.bottom > 80 && r.top < window.innerHeight - 40 && r.right > 0 && r.left < window.innerWidth;
 }
 
+/**
+ * Texte lisible d'un élément du cours. KaTeX écrit chaque formule trois fois dans le DOM (rendu visuel, MathML et
+ * source TeX) : `textContent` donnait « x2x2x^2 ». On remplace chaque formule par sa source TeX entre `$…$`, que
+ * Calia sait dire à voix haute.
+ */
+function readableText(el: HTMLElement): string {
+  const clone = el.cloneNode(true) as HTMLElement;
+  clone.querySelectorAll(".katex-display, .katex").forEach((k) => {
+    if (!clone.contains(k)) return; // formule déjà remplacée avec son bloc d'affichage
+    const tex = k.querySelector('annotation[encoding="application/x-tex"]')?.textContent?.trim();
+    k.replaceWith(document.createTextNode(tex ? ` $${tex}$ ` : " "));
+  });
+  clone.querySelectorAll("script, style, button, .course-definition-badge, [aria-hidden='true']").forEach((n) => n.remove());
+  return (clone.textContent || "").replace(/\s+/g, " ").trim();
+}
+
+// Unités du « fil du cours » : ce que Calia explique, dans l'ordre de lecture.
+const SCRIPT_CONTAINERS: OutlineKind[] = ["paragraph", "figure", "exercise", "item", "row"];
+const SCRIPT_CHARS = 900;
+interface ScriptUnit { kind: OutlineKind; index: number; text: string; visible: boolean; el: HTMLElement }
+
+/**
+ * La leçon affichée, DANS L'ORDRE DE LECTURE (titre, paragraphe, formule, figure…), sans doublon : un élément contenu
+ * dans un autre (un paragraphe dans un mini-exercice, une formule dans un paragraphe) n'est pas une étape à part.
+ * Avant, le plan était envoyé trié par TYPE (tous les titres, puis tous les paragraphes…) : Calia ne pouvait pas
+ * suivre le cours dans l'ordre.
+ */
+function buildScript(items: OutlineItem[]): ScriptUnit[] {
+  const containers = items.filter((o) => SCRIPT_CONTAINERS.includes(o.kind));
+  return items
+    .filter((o) => !containers.some((c) => c !== o && c.el !== o.el && c.el.contains(o.el)))
+    .sort((a, b) => (a.el === b.el ? 0 : a.el.compareDocumentPosition(b.el) & Node.DOCUMENT_POSITION_FOLLOWING ? -1 : 1))
+    .map((o) => ({
+      kind: o.kind,
+      index: o.index,
+      el: o.el,
+      visible: o.visible,
+      // Les figures gardent leur description (vision) ; le reste est relu en texte propre.
+      text: o.kind === "figure" ? o.preview : readableText(o.el).slice(0, SCRIPT_CHARS),
+    }))
+    .filter((u) => u.text);
+}
+
 function buildOutline(root: HTMLElement | null, figureDescs?: Map<string, string>): OutlineItem[] {
   if (!root) return [];
   const items: OutlineItem[] = [];
@@ -127,7 +171,7 @@ function buildOutline(root: HTMLElement | null, figureDescs?: Map<string, string
       // elle pointait sinon des zones vides.
       if (!el.offsetParent || el.getBoundingClientRect().height < 4) return;
       if (kept >= OUTLINE_MAX_PER_KIND) return;
-      const text = (el.textContent || "").replace(/\s+/g, " ").trim().slice(0, OUTLINE_PREVIEW_CHARS[kind]);
+      const text = readableText(el).slice(0, OUTLINE_PREVIEW_CHARS[kind]);
       let preview = text;
       if (kind === "figure") {
         // Vision : description de l'image (modèle de vision) + légende, même sans texte dans la figure.
@@ -257,6 +301,8 @@ export default function CaliaSceneDemo({
   const figureDescsRef = useRef(new Map<string, string>());
   const figurePendingRef = useRef(new Set<string>());
   const pointingRef = useRef<{ kind: OutlineKind; index: number; preview: string; el: HTMLElement } | null>(null);
+  // Fil du cours : numéro de la prochaine étape de la leçon affichée à expliquer (voir buildScript).
+  const cursorRef = useRef<{ lesson: number; pos: number }>({ lesson: -1, pos: 0 });
   const [mounted, setMounted] = useState(false);
   const [sayText, setSayText] = useState<string | null>(null);
   // Transcription mot à mot, calée sur la voix : nombre de « mots » affichés
@@ -684,6 +730,12 @@ export default function CaliaSceneDemo({
       // Vision des figures : lance les descriptions manquantes (sans attendre : elles servent aux tours suivants).
       prefetchFigureDescriptions();
       const outline = buildOutline(contentRef.current, figureDescsRef.current);
+      // Fil du cours : la leçon dans l'ordre de lecture + l'étape à expliquer maintenant (remise à zéro à chaque nouvelle leçon).
+      const script = buildScript(outline);
+      const lessonKey = courseContext?.lessons.findIndex((l) => l.current) ?? -1;
+      if (cursorRef.current.lesson !== lessonKey) cursorRef.current = { lesson: lessonKey, pos: 0 };
+      const cursor = Math.min(cursorRef.current.pos, script.length);
+      const inScript = new Set(script.map((u) => `${u.kind}#${u.index}`));
       // Où Calia en est : ce qu'elle pointait au dernier tour, et si c'est encore à l'écran
       // (l'élève a pu faire défiler). Reste vrai après une pause ou un retour.
       const pointing = pointingRef.current && pointingRef.current.el.isConnected ? pointingRef.current : null;
@@ -697,7 +749,12 @@ export default function CaliaSceneDemo({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           screen,
-          lessonOutline: outline.map(({ kind, index, preview, visible }) => ({ kind, index, preview, visible })),
+          lessonScript: script.map(({ kind, index, text, visible }) => ({ kind, index, text, visible })),
+          cursor,
+          // Cibles fines (formule, ligne de tableau, élément de liste) qui ne sont pas une étape à part.
+          lessonOutline: outline
+            .filter((o) => !inScript.has(`${o.kind}#${o.index}`))
+            .map(({ kind, index, preview, visible }) => ({ kind, index, preview: preview.slice(0, 120), visible })),
           courseContext,
           liveExerciseDraft: liveExerciseDraftRef.current,
           history: historyRef.current,
@@ -735,6 +792,19 @@ export default function CaliaSceneDemo({
           shownAt.add(at);
           return true;
         });
+      // L'étape en cours avance quand Calia montre l'étape suivante (ou, sur une relance sans réponse, d'office :
+      // le cours ne reste jamais bloqué sur le même passage).
+      let reached = -1;
+      for (const action of actions) {
+        if (!SHOW.has(action.kind) || !action.targetKind || action.targetIndex === null) continue;
+        const el = outline.find((o) => o.kind === action.targetKind && o.index === action.targetIndex)?.el;
+        const unit = el ? script.findIndex((u) => u.el === el || u.el.contains(el)) : -1;
+        reached = Math.max(reached, unit);
+      }
+      // Une simple annonce (« on va voir la définition ») n'a rien expliqué : l'étape reste à faire.
+      const explained = result.say.length >= 110 || script[reached]?.kind === "heading";
+      if (reached >= cursor && explained) cursorRef.current.pos = reached + 1;
+      else if (auto && reached < 0) cursorRef.current.pos = Math.min(cursor + 1, script.length);
       runDueActions(0);
       speak(result.say);
     } catch (err: unknown) {
@@ -937,7 +1007,10 @@ export default function CaliaSceneDemo({
     playModeProfCue();
     setIsRunning(true);
     setClasseActive(true);
-    if (fresh) historyRef.current = [];
+    if (fresh) {
+      historyRef.current = [];
+      cursorRef.current = { lesson: -1, pos: 0 };
+    }
     silentTurnsRef.current = 0;
     setPaused(false);
     startListening();
