@@ -1,46 +1,29 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import AppLoader from "@/components/AppLoader";
 import AdminSidebar from "@/components/AdminSidebar";
 import AdminTotpSetupModal from "@/components/admin/AdminTotpSetupModal";
 import PresenceTracker from "@/components/child/PresenceTracker";
 import { ContentGenerationsProvider } from "@/contexts/ContentGenerationsContext";
 import ContentGenerationsWidget from "@/components/admin/ContentGenerationsWidget";
 
-/** Coquille des pages admin : l'identité/rôle/statut banni sont désormais
- * vérifiés côté serveur (src/app/admin/layout.tsx) avant même que ce
- * composant ne s'exécute. Il ne reste ici que la vérification 2FA : le jeton
- * vit dans un cookie httpOnly (voir src/lib/twoFactorCookie.ts), illisible
- * en JS — on demande donc au serveur s'il est valide plutôt que de le lire
- * nous-mêmes. */
+/** Coquille des pages admin. Identité, rôle, statut banni, session 2FA et état du TOTP sont vérifiés côté serveur
+ * (src/app/admin/layout.tsx, et le proxy à chaque requête) : la coquille s'affiche donc directement, sans écran de
+ * chargement ni appel réseau. Elle ne garde que l'effacement du cookie 2FA (httpOnly, illisible en JS) à la déconnexion. */
 export default function AdminShell({
   children,
   adminLevel = "super",
+  needsTotpSetup: needsTotpSetupInitial = false,
 }: {
   children: React.ReactNode;
   adminLevel?: string;
+  needsTotpSetup?: boolean;
 }) {
-  const router = useRouter();
-  const mountedRef = useRef(true);
-  const [loading, setLoading] = useState(true);
-  // Tant que la 2FA n'est pas configurée, aucun appel /api/admin/* ne peut
-  // aboutir (proxy.ts l'exige pour tout admin). Rendre la coquille (sidebar,
-  // widgets, contenu de page) en même temps que le popup de configuration
-  // faisait partir ces appels immédiatement ; ils échouaient en 401
-  // "2FA required" et déclenchaient la déconnexion forcée de
-  // src/lib/supabaseClient.ts (le "flash puis déco" observé). Le popup
-  // s'affiche donc seul, bloquant, jusqu'à la fin de la configuration.
-  const [needsTotpSetup, setNeedsTotpSetup] = useState(false);
-
-  useEffect(() => {
-    mountedRef.current = true;
-    return () => {
-      mountedRef.current = false;
-    };
-  }, []);
+  // Tant que la 2FA n'est pas configurée, aucun appel /api/admin/* ne peut aboutir (proxy.ts l'exige pour tout
+  // admin). Le popup de configuration s'affiche donc seul, bloquant, sans la coquille ni le contenu de page : sinon
+  // leurs appels échouaient en 401 "2FA required" et déclenchaient la déconnexion forcée de supabaseClient.ts.
+  const [needsTotpSetup, setNeedsTotpSetup] = useState(needsTotpSetupInitial);
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
@@ -55,57 +38,6 @@ export default function AdminShell({
     });
     return () => subscription.unsubscribe();
   }, []);
-
-  useEffect(() => {
-    const checkTotp = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-
-      if (!session) {
-        router.push("/auth/connexion");
-        return;
-      }
-
-      // État de sécurité complet en un seul appel (rôle + TOTP + session 2FA).
-      const res = await fetch("/api/auth/security/status", {
-        headers: { Authorization: `Bearer ${session.access_token}` },
-      });
-
-      if (!res.ok) {
-        if (mountedRef.current) setLoading(false);
-        return;
-      }
-
-      const data = await res.json();
-      if (data.role === "admin" && !data.totpConfirmed) {
-        if (mountedRef.current) {
-          setNeedsTotpSetup(true);
-          setLoading(false);
-        }
-        return;
-      }
-
-      if (!data.twoFactorSessionValid) {
-        router.replace(
-          `/auth/2fa-verify?redirect=${encodeURIComponent(window.location.pathname)}`,
-        );
-        return;
-      }
-
-      if (mountedRef.current) setLoading(false);
-    };
-
-    checkTotp();
-  }, [router]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--greek-cream)]">
-        <AppLoader />
-      </div>
-    );
-  }
 
   if (needsTotpSetup) {
     return (

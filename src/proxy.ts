@@ -45,6 +45,10 @@ function isPublic(pathname: string, method: string) {
   // admin+2FA (voir src/lib/impersonationCookie.ts).
   if (pathname === "/api/admin/impersonate/status" && method === "GET") return true;
   if (pathname === "/api/admin/impersonate/end" && method === "POST") return true;
+  // Messages envoyés PAR un admin à un parent/élève (avertissement, bannissement, message) : le destinataire n'est
+  // pas admin. La route authentifie elle-même (getAuthenticatedUser) et ne renvoie que SES notifications ; le garde
+  // admin les refusait en 403 sur chaque page, donc aucun message d'admin n'arrivait jamais à son destinataire.
+  if (pathname === "/api/admin/notifications" && (method === "GET" || method === "PATCH")) return true;
   return false;
 }
 

@@ -1,8 +1,7 @@
 import Image from "next/image";
 
 /** Écran d'attente plein écran (connexion, déconnexion, paiement…). N'apparaît
- * qu'après 150 ms : une attente courte ne produit aucun flash. Les chargements
- * de PAGE utilisent PageSkeleton. */
+ * qu'après 150 ms : une attente courte ne produit aucun flash. */
 export default function AppLoader() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] flex items-center justify-center appear-late" aria-busy="true" aria-label="Chargement">

@@ -105,6 +105,19 @@ interface MathInputProps {
   level?: string;
 }
 
+/**
+ * Valeur d'un champ MathLive, sans jamais planter : une fois le champ retiré de la page (changement de page, remontage),
+ * MathLive libère son contenu et lire `value` jette « Cannot read properties of undefined (reading 'options') ». Le navigateur
+ * émet pourtant un `blur` au retrait d'un champ focalisé, ce qui relisait la valeur d'un champ déjà libéré.
+ */
+function safeValue(mf: MathfieldElement): string {
+  try {
+    return mf.value;
+  } catch {
+    return "";
+  }
+}
+
 const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput(
   { value, onChange, disabled, className, placeholder, ariaLabel, level },
   ref
@@ -200,7 +213,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       const ph = placeholderRef.current;
       if (ph)
         ph.style.display =
-          mf.value.length === 0 && !isFocusedRef.current ? "block" : "none";
+          safeValue(mf).length === 0 && !isFocusedRef.current ? "block" : "none";
     };
 
     const handler = () => {
@@ -347,7 +360,9 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
   useEffect(() => {
     const mf = mfRef.current;
     if (!mf) return;
-    if (mf.value !== value) mf.value = value || "";
+    if (safeValue(mf) !== (value || "")) {
+      try { mf.value = value || ""; } catch { /* champ déjà détaché par MathLive */ }
+    }
     const ph = placeholderRef.current;
     // Ne jamais afficher le placeholder pendant que le champ est focalisé,
     // même si le contenu vient de passer à vide (sinon il "clignote").

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "postinstall": "node scripts/copy-maplibre-worker.cjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -34,7 +35,6 @@
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-icons": "^5.5.0",
-    "react-map-gl": "^8.1.1",
     "sass": "^1.97.1",
     "stripe": "^20.4.1",
     "uuid": "^13.0.0"

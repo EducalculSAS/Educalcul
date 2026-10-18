@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
@@ -34,5 +35,7 @@ export async function PUT(req: Request) {
     .single();
 
   if (error) return NextResponse.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+  // La page publique est servie depuis le HTML généré (régénéré toutes les 24 h) : on la régénère tout de suite.
+  revalidatePath(`/${slug}`);
   return NextResponse.json(data);
 }

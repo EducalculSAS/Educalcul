@@ -23,7 +23,7 @@ import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { A11Y_INIT_SCRIPT } from "@/lib/a11y";
 import "@fontsource/opendyslexic/400.css";
 import "@fontsource/opendyslexic/700.css";
-import ScrollReveal from "@/components/ScrollReveal";
+import NavProgress from "@/components/NavProgress";
 
 const BASE = "https://educalcul.com";
 
@@ -187,8 +187,6 @@ export default function RootLayout({
         <meta name="geo.country" content="FR" />
         <meta name="language" content="French" />
         <meta name="content-language" content="fr" />
-        {/* Preload critical assets */}
-        <link rel="preload" href="/logo.png" as="image" />
       </head>
       <body className="antialiased min-h-screen flex flex-col overflow-x-hidden">
         <JsonLd data={organizationSchema} />
@@ -202,7 +200,7 @@ export default function RootLayout({
             <SessionStillHereModal />
             <ThemeSync />
             <JsxFigureEnhancer />
-            <ScrollReveal />
+            <NavProgress />
           </ConfirmProvider>
         </ToastProvider>
       </body>

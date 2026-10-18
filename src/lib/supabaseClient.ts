@@ -46,24 +46,38 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
     }
   };
 
+  // Jeton de la session en mémoire, tenu à jour par onAuthStateChange. getSession() prend le verrou d'authentification
+  // du navigateur : en l'appelant avant CHAQUE requête /api/*, les appels simultanés d'une page se bousculaient pour ce
+  // verrou (« Lock was stolen by another request »). On ne s'y adresse que si le jeton manque ou expire dans moins de 30 s.
+  let cachedToken: { value: string; expiresAt: number } | null = null;
+  getPublicClient().auth.onAuthStateChange((_event, session) => {
+    cachedToken = session?.access_token ? { value: session.access_token, expiresAt: (session.expires_at ?? 0) * 1000 } : null;
+  });
+
   const withAuthHeader = async (
     input: RequestInfo | URL,
     init: RequestInit | undefined,
   ): Promise<RequestInit | undefined> => {
     try {
-      const {
-        data: { session },
-      } = await getPublicClient().auth.getSession();
+      let accessToken: string | undefined;
+      if (cachedToken && cachedToken.expiresAt - Date.now() > 30_000) {
+        accessToken = cachedToken.value;
+      } else {
+        const {
+          data: { session },
+        } = await getPublicClient().auth.getSession();
+        accessToken = session?.access_token;
+      }
       // Le jeton 2FA voyage désormais dans un cookie httpOnly (voir
       // src/lib/twoFactorCookie.ts) : le navigateur l'attache tout seul aux
       // requêtes same-origin, plus besoin de le lire/poser à la main ici
       // (et il n'est de toute façon plus lisible depuis ce JS).
-      if (session?.access_token) {
+      if (accessToken) {
         const headers = new Headers(
           init?.headers ??
             (input instanceof Request ? input.headers : undefined),
         );
-        headers.set("Authorization", `Bearer ${session.access_token}`);
+        headers.set("Authorization", `Bearer ${accessToken}`);
         return { ...init, headers };
       }
     } catch {
@@ -120,6 +134,7 @@ if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
       // SessionStillHereModal, pas ici).
       const { data } = await getPublicClient().auth.refreshSession().catch(() => ({ data: null }));
       if (data?.session?.access_token) {
+        cachedToken = { value: data.session.access_token, expiresAt: (data.session.expires_at ?? 0) * 1000 };
         const retryInit = await withAuthHeader(input, init);
         return apiFetch(input, retryInit, url, true);
       }

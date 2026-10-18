@@ -76,19 +76,25 @@ export default async function AdminLayout({
   // TOTP soit configuré ou non (sans TOTP : code e-mail, puis AdminShell fait
   // configurer l'application). Le proxy applique la même règle à chaque
   // requête, y compris aux navigations qui ne ré-exécutent pas ce layout.
+  // Le TOTP est-il déjà configuré ? Lu ici, en même temps que la session 2FA, pour que la coquille s'affiche
+  // directement (avant, elle attendait trois appels réseau derrière un écran de chargement).
+  let needsTotpSetup = false;
   {
     const twoFactorToken = await getTwoFactorCookie();
-    let validTwoFactorSession = false;
-    if (twoFactorToken) {
-      const { data: twoFactorSession } = await supabaseAdmin
-        .from("two_factor_sessions")
-        .select("expires_at")
-        .eq("user_id", userData.id)
-        .eq("token_hash", hashTwoFactorValue(twoFactorToken))
-        .maybeSingle();
-      validTwoFactorSession =
-        !!twoFactorSession && new Date(twoFactorSession.expires_at) > new Date();
-    }
+    const [{ data: totp }, { data: twoFactorSession }] = await Promise.all([
+      supabaseAdmin.from("two_factor_totp").select("confirmed_at").eq("user_id", userData.id).maybeSingle(),
+      twoFactorToken
+        ? supabaseAdmin
+            .from("two_factor_sessions")
+            .select("expires_at")
+            .eq("user_id", userData.id)
+            .eq("token_hash", hashTwoFactorValue(twoFactorToken))
+            .maybeSingle()
+        : Promise.resolve({ data: null }),
+    ]);
+    needsTotpSetup = !totp?.confirmed_at;
+    const validTwoFactorSession =
+      !!twoFactorSession && new Date(twoFactorSession.expires_at) > new Date();
     if (!validTwoFactorSession) {
       // Chemin réellement demandé (posé par proxy.ts) plutôt qu'un
       // /admin/dashboard fixe — sinon revenir de /auth/2fa-verify après une
@@ -119,5 +125,9 @@ export default async function AdminLayout({
     );
   }
 
-  return <AdminShell adminLevel={userData.admin_level || "super"}>{children}</AdminShell>;
+  return (
+    <AdminShell adminLevel={userData.admin_level || "super"} needsTotpSetup={needsTotpSetup}>
+      {children}
+    </AdminShell>
+  );
 }

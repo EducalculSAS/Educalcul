@@ -2258,10 +2258,8 @@ main,
   margin-bottom: 0.4em;
 }
 
-/* ── Transitions de page (voir les template.tsx et PageSkeleton) ─────────────
- * Entrée douce du contenu à chaque navigation, squelettes qui n'apparaissent
- * qu'au-delà de 150 ms (pas de flash sur une navigation rapide), scintillement
- * discret des blocs en attente. La position finale est transform: none, pour
+/* ── Animations d'apparition ─────────────────────────────────────────────────
+ * Animations ponctuelles de composants (jamais appliquées à une page entière au chargement). La position finale est transform: none, pour
  * ne pas créer de contexte de positionnement après l'animation (modales en
  * position fixe, flou des boutons glass). */
 /* Entrée de page : fondu d'OPACITÉ seulement. Un transform (même terminé,
@@ -2941,16 +2939,27 @@ html[data-theme="dark"] .family-foot { background: rgba(255, 255, 255, 0.03); }
   .family-card::before { animation: none; --ring-angle: 300deg; }
 }
 
-/* ---------- Apparition progressive façon Apple (ScrollReveal) ---------- */
-@keyframes reveal-apple {
-  from { opacity: 0; transform: translateY(28px) scale(0.975); }
-  to { opacity: 1; transform: none; }
+/* ---------- Barre de progression des navigations (NavProgress) ----------
+   Une fine ligne dorée en haut de l'écran quand une page met plus de 120 ms à arriver : aucun squelette, la page
+   précédente reste affichée jusqu'à ce que la nouvelle soit prête. */
+@keyframes nav-progress-grow {
+  from { transform: scaleX(0.05); }
+  to { transform: scaleX(0.9); }
 }
-@media (prefers-reduced-motion: no-preference) {
-  .reveal-pre { opacity: 0; transform: translateY(28px) scale(0.975); }
-  .reveal-run { animation: reveal-apple 0.95s cubic-bezier(0.16, 1, 0.3, 1) backwards; }
+.nav-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 2000;
+  pointer-events: none;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--greek-gold), #e8d28a);
+  box-shadow: 0 0 8px rgba(197, 161, 72, 0.6);
+  animation: nav-progress-grow 6s cubic-bezier(0.1, 0.6, 0.2, 1) both;
 }
-@media print {
-  .reveal-pre { opacity: 1 !important; transform: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .nav-progress { animation: none; transform: scaleX(0.6); }
 }
 

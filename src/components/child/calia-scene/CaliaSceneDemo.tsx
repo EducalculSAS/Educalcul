@@ -130,6 +130,8 @@ function readableText(el: HTMLElement): string {
     k.replaceWith(document.createTextNode(tex ? ` $${tex}$ ` : " "));
   });
   clone.querySelectorAll("script, style, button, .course-definition-badge, [aria-hidden='true']").forEach((n) => n.remove());
+  // textContent recolle les blocs (« À retenirUn polynôme ») : une espace après chaque bloc les sépare.
+  clone.querySelectorAll("p, li, div, tr, td, th, br, h3, h4, blockquote, figcaption").forEach((n) => n.append(" "));
   return (clone.textContent || "").replace(/\s+/g, " ").trim();
 }
 

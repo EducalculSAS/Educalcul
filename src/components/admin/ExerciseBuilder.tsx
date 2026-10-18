@@ -11,7 +11,7 @@ import AIAddExerciseModal from "./AIAddExerciseModal";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import ContentInsertToolbar from "./ContentInsertToolbar";
-import { ensureKatexAutoRenderLoaded } from "@/lib/katexLoader";
+import { useKatexIn } from "@/lib/useKatexIn";
 
 export type BlockType =
   | "text"
@@ -260,44 +260,8 @@ export default function ExerciseBuilder({
     setExpandedPages((prev) => new Set(prev).add(pageId));
   };
 
-  // Charge KaTeX une seule fois, partagé entre tous les builders montés
-  // (voir ensureKatexAutoRenderLoaded — évite d'accumuler/retirer des
-  // scripts globaux à chaque montage/démontage de builder).
-  useEffect(() => {
-    ensureKatexAutoRenderLoaded()
-      .then(() => {
-        if (contentRef.current && (window as any).renderMathInElement) {
-          (window as any).renderMathInElement(contentRef.current, {
-            delimiters: [
-              { left: "$$", right: "$$", display: true },
-              { left: "$", right: "$", display: false },
-              { left: "\\(", right: "\\)", display: false },
-              { left: "\\[", right: "\\]", display: true },
-            ],
-            throwOnError: false,
-          });
-        }
-      })
-      .catch((err) => console.error(err));
-  }, []);
-
-  // Re-run math rendering when content changes
-  useEffect(() => {
-    if ((window as any).renderMathInElement && contentRef.current) {
-      // Small timeout to ensure DOM is updated
-      setTimeout(() => {
-        (window as any).renderMathInElement(contentRef.current, {
-          delimiters: [
-            { left: "$$", right: "$$", display: true },
-            { left: "$", right: "$", display: false },
-            { left: "\\(", right: "\\)", display: false },
-            { left: "\\[", right: "\\]", display: true },
-          ],
-          throwOnError: false,
-        });
-      }, 100);
-    }
-  }, [pages]);
+  // Formules $…$ rendues en place (voir useKatexIn : plus d'appel différé sur un élément déjà démonté).
+  useKatexIn(contentRef, [pages]);
 
   // Sync state with props when initialContent changes (e.g. from parent AI generation)
   useEffect(() => {
