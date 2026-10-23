@@ -41,11 +41,14 @@ interface Extracted {
   hasFigure: boolean;
   figureDescription: string;
   figures?: unknown[];
+  doubtful?: string[];
 }
 
-const MAX_SIDE = 1400;
+const MAX_SIDE = 2000;
+/** Au-delà (≈ 6 Mo en base64), le PNG est remplacé par un JPEG de bonne qualité. */
+const MAX_PNG_CHARS = 8_000_000;
 
-/** Réduit l'image (photos de téléphone très lourdes) et la renvoie en JPEG base64. */
+/** Réduit l'image (photos de téléphone très lourdes) et la renvoie en base64 : PNG sans perte (signes, exposants, virgules restent nets), JPEG si le PNG est trop lourd. */
 /** Sous ce côté (en pixels), l'écriture n'est plus lisible : la lecture inventerait. */
 const MIN_SIDE = 700;
 
@@ -60,7 +63,8 @@ async function toDataUrl(file: Blob): Promise<{ dataUrl: string; side: number }>
   ctx.fillStyle = "#fff";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  return { dataUrl: canvas.toDataURL("image/jpeg", 0.8), side: Math.max(bitmap.width, bitmap.height) };
+  const png = canvas.toDataURL("image/png");
+  return { dataUrl: png.length <= MAX_PNG_CHARS ? png : canvas.toDataURL("image/jpeg", 0.92), side: Math.max(bitmap.width, bitmap.height) };
 }
 
 /** Relit les figures corrigées par l'admin ; une figure mal formée est ignorée (un exemple la remplace). */
@@ -92,6 +96,8 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
   const [error, setError] = useState<string | null>(null);
   const [extracted, setExtracted] = useState<Extracted | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
+  const readingRef = useRef(false);
+  const [doubtful, setDoubtful] = useState<string[]>([]);
 
   const [statement, setStatement] = useState("");
   const [figure, setFigure] = useState("");
@@ -111,6 +117,9 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
   });
 
   const readImage = useCallback(async (file: Blob) => {
+    // Une seule lecture à la fois : deux collages rapprochés lançaient deux lectures dont la plus lente écrasait l'autre.
+    if (readingRef.current) return;
+    readingRef.current = true;
     setError(null);
     setReading(true);
     try {
@@ -137,6 +146,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
           text: (f.kind === "brick_pyramid" ? f.levels ?? [] : f.cells ?? []).map((row) => row.map((c) => c || "▢").join(" | ")).join("\n"),
         })),
       );
+      setDoubtful(Array.isArray(ex.doubtful) ? ex.doubtful : []);
       setTitle(ex.title);
       setSourceCount(ex.questionCount);
       setParams((p) => ({
@@ -150,9 +160,20 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
       setExtracted(null);
       setError(e instanceof Error ? e.message : "Lecture impossible.");
     } finally {
+      readingRef.current = false;
       setReading(false);
     }
   }, []);
+
+  // Nouvelle image alors qu'une transcription est déjà là : on ne l'écrase pas sans prévenir (corrections de l'admin).
+  const requestRead = useCallback(
+    (file: Blob) => {
+      if (readingRef.current) return;
+      if (extracted && statement.trim() && !window.confirm("Remplacer l'exercice déjà lu (et tes corrections) par cette nouvelle image ?")) return;
+      void readImage(file);
+    },
+    [extracted, statement, readImage],
+  );
 
   // Ctrl+V : colle directement une capture d'écran.
   useEffect(() => {
@@ -161,16 +182,17 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
       const file = item?.getAsFile();
       if (file) {
         e.preventDefault();
-        void readImage(file);
+        requestRead(file);
       }
     };
     window.addEventListener("paste", onPaste);
     return () => window.removeEventListener("paste", onPaste);
-  }, [readImage]);
+  }, [requestRead]);
 
   const reset = () => {
     setImage(null);
     setExtracted(null);
+    setDoubtful([]);
     setError(null);
     if (fileRef.current) fileRef.current.value = "";
   };
@@ -220,7 +242,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                 className="hidden"
                 onChange={(e) => {
                   const f = e.target.files?.[0];
-                  if (f) void readImage(f);
+                  if (f) requestRead(f);
                 }}
               />
               {reading ? (
@@ -237,7 +259,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                   onDrop={(e) => {
                     e.preventDefault();
                     const f = e.dataTransfer.files?.[0];
-                    if (f && f.type.startsWith("image/")) void readImage(f);
+                    if (f && f.type.startsWith("image/")) requestRead(f);
                   }}
                   className="w-full flex flex-col items-center gap-3 py-14 rounded-2xl border-2 border-dashed border-[rgba(197,161,72,0.5)] bg-white hover:border-[var(--greek-gold)] hover:shadow-lg transition-all"
                 >
@@ -255,7 +277,6 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
           ) : (
             <form onSubmit={submit} className="p-8 space-y-5">
               <div className="flex items-start gap-4">
-                {image && <img src={image} alt="Exercice" className="w-24 h-24 object-cover rounded-xl border border-[rgba(197,161,72,0.25)] flex-shrink-0" />}
                 <div className="flex-1">
                   <label className={labelClass}>Titre</label>
                   <input className={fieldClass} value={title} onChange={(e) => setTitle(e.target.value)} placeholder="Ex: Aire et périmètre" />
@@ -264,6 +285,23 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                   </button>
                 </div>
               </div>
+
+              {image && (
+                <a href={image} target="_blank" rel="noreferrer" title="Ouvrir l'image en grand">
+                  <img src={image} alt="Exercice" className="w-full max-h-72 object-contain rounded-xl border border-[rgba(197,161,72,0.25)] bg-white" />
+                </a>
+              )}
+
+              {doubtful.length > 0 && (
+                <div className="rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                  <p className="font-semibold mb-1">À vérifier : deux lectures de l&apos;image ne sont pas d&apos;accord sur ces lignes</p>
+                  <ul className="list-disc pl-5 space-y-0.5 font-mono text-xs">
+                    {doubtful.map((line, i) => (
+                      <li key={i}>{line}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               <div>
                 <label className={labelClass}>Exercice lu sur l&apos;image : c&apos;est ce qui sera copié (corrige-le ici si besoin)</label>
