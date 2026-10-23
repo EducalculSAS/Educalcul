@@ -28,6 +28,8 @@ export interface ExerciseFromPhotoParams {
 
 interface Props {
   onGenerate: (params: ExerciseFromPhotoParams) => void;
+  /** Lot de photos : lance la génération et attend sa fin ; renvoie un message d'erreur, ou null si l'exercice est créé. */
+  onGenerateBatch?: (params: ExerciseFromPhotoParams) => Promise<string | null>;
   onClose: () => void;
   defaultLevel?: string;
 }
@@ -90,13 +92,17 @@ const fieldClass =
   "w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 focus:border-[var(--greek-blue)] bg-white";
 const labelClass = "block text-sm font-semibold text-[var(--greek-blue)] mb-1.5";
 
-export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLevel }: Props) {
+type BatchItem = { name: string; status: "wait" | "read" | "gen" | "done" | "error"; message?: string };
+
+export default function ExerciseFromPhotoModal({ onGenerate, onGenerateBatch, onClose, defaultLevel }: Props) {
   const [image, setImage] = useState<string | null>(null);
   const [reading, setReading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [extracted, setExtracted] = useState<Extracted | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
   const readingRef = useRef(false);
+  const batchCancelRef = useRef(false);
+  const [batch, setBatch] = useState<BatchItem[] | null>(null);
   const [doubtful, setDoubtful] = useState<string[]>([]);
 
   const [statement, setStatement] = useState("");
@@ -175,6 +181,68 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
     [extracted, statement, readImage],
   );
 
+  // Lot de photos : chaque image est lue puis générée en copie fidèle, l'une après l'autre, sans intervention.
+  const runBatch = useCallback(
+    async (files: File[]) => {
+      if (!onGenerateBatch || readingRef.current) return;
+      readingRef.current = true;
+      batchCancelRef.current = false;
+      const set = (i: number, patch: Partial<BatchItem>) => setBatch((list) => (list ? list.map((it, k) => (k === i ? { ...it, ...patch } : it)) : list));
+      setError(null);
+      setBatch(files.map((f) => ({ name: f.name || "image collée", status: "wait" as const })));
+      for (let i = 0; i < files.length; i++) {
+        if (batchCancelRef.current) break;
+        try {
+          set(i, { status: "read" });
+          const { dataUrl, side } = await toDataUrl(files[i]);
+          if (side < MIN_SIDE) throw new Error(`Image trop petite (${side} px).`);
+          const res = await fetch("/api/admin/ai/exercise/from-image", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ imageDataUrl: dataUrl }),
+          });
+          const data = await res.json().catch(() => ({}));
+          if (!res.ok) throw new Error(data.error || "Lecture impossible.");
+          const ex = data as Extracted;
+          if (batchCancelRef.current) break;
+          set(i, { status: "gen" });
+          const failure = await onGenerateBatch({
+            ...params,
+            level: ex.level && SCHOOL_LEVELS.some((l) => l.value === ex.level) ? ex.level : params.level,
+            subjectArea: ex.subjectArea,
+            questionCount: Math.min(24, ex.questionCount + 2),
+            subject: ex.title.trim() || `Exercice inspiré d'une photo ${i + 1}`,
+            sourceExercise: ex.statement.trim(),
+            sourceQuestionCount: ex.questionCount,
+            sourceFigureDescription: ex.hasFigure ? ex.figureDescription : "",
+            copyMode: true,
+            sourceFigures: Array.isArray(ex.figures) ? ex.figures : [],
+          });
+          if (failure) throw new Error(failure);
+          set(i, { status: "done", message: (ex.doubtful?.length ?? 0) > 0 ? `${ex.doubtful!.length} ligne(s) à vérifier dans le brouillon` : undefined });
+        } catch (e) {
+          set(i, { status: "error", message: e instanceof Error ? e.message : "Échec." });
+        }
+      }
+      readingRef.current = false;
+    },
+    [onGenerateBatch, params],
+  );
+
+  const pickFiles = useCallback(
+    (files: File[]) => {
+      const images = files.filter((f) => f.type.startsWith("image/"));
+      if (images.length > 1 && onGenerateBatch) void runBatch(images);
+      else if (images[0]) requestRead(images[0]);
+    },
+    [onGenerateBatch, runBatch, requestRead],
+  );
+
+  const close = () => {
+    batchCancelRef.current = true;
+    onClose();
+  };
+
   // Ctrl+V : colle directement une capture d'écran.
   useEffect(() => {
     const onPaste = (e: ClipboardEvent) => {
@@ -229,7 +297,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
               </p>
             </div>
           </div>
-          <GlassCloseButton onClick={onClose} variant="dark" />
+          <GlassCloseButton onClick={close} variant="dark" />
         </div>
 
         <div className="flex-1 overflow-y-auto">
@@ -239,13 +307,36 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                 ref={fileRef}
                 type="file"
                 accept="image/png,image/jpeg,image/webp"
+                multiple={!!onGenerateBatch}
                 className="hidden"
                 onChange={(e) => {
-                  const f = e.target.files?.[0];
-                  if (f) requestRead(f);
+                  pickFiles(Array.from(e.target.files ?? []));
+                  e.target.value = "";
                 }}
               />
-              {reading ? (
+              {batch ? (
+                <div className="space-y-2">
+                  <p className="text-sm font-semibold text-[var(--greek-blue)]">
+                    Lot de {batch.length} photos : lecture puis génération en copie fidèle, une à la fois. Les brouillons arrivent dans la liste ; garde cette fenêtre ouverte (la fermer arrête les photos restantes).
+                  </p>
+                  <ul className="divide-y divide-[rgba(197,161,72,0.25)] rounded-xl border border-[rgba(197,161,72,0.25)] bg-white">
+                    {batch.map((it, i) => (
+                      <li key={i} className="flex items-center gap-3 px-4 py-2.5 text-sm">
+                        {it.status === "read" || it.status === "gen" ? <Loader2 className="animate-spin text-[var(--greek-blue)] flex-shrink-0" size={16} /> : <span className="w-4 flex-shrink-0 text-center">{it.status === "done" ? "✓" : it.status === "error" ? "✗" : "·"}</span>}
+                        <span className="flex-1 truncate">{it.name}</span>
+                        <span className={`text-xs ${it.status === "error" ? "text-red-600" : "text-gray-500"}`}>
+                          {it.status === "wait" ? "En attente" : it.status === "read" ? "Lecture..." : it.status === "gen" ? "Génération..." : it.status === "done" ? it.message || "Terminé" : it.message}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  {batch.every((it) => it.status === "done" || it.status === "error") && (
+                    <button type="button" onClick={() => setBatch(null)} className="text-xs font-semibold text-[var(--greek-blue)] hover:underline">
+                      Envoyer d&apos;autres photos
+                    </button>
+                  )}
+                </div>
+              ) : reading ? (
                 <div className="flex flex-col items-center justify-center gap-4 py-12">
                   {image && <img src={image} alt="Exercice" className="max-h-48 rounded-xl border border-[rgba(197,161,72,0.25)]" />}
                   <Loader2 className="animate-spin text-[var(--greek-blue)]" size={36} />
@@ -258,13 +349,12 @@ export default function ExerciseFromPhotoModal({ onGenerate, onClose, defaultLev
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={(e) => {
                     e.preventDefault();
-                    const f = e.dataTransfer.files?.[0];
-                    if (f && f.type.startsWith("image/")) requestRead(f);
+                    pickFiles(Array.from(e.dataTransfer.files ?? []));
                   }}
                   className="w-full flex flex-col items-center gap-3 py-14 rounded-2xl border-2 border-dashed border-[rgba(197,161,72,0.5)] bg-white hover:border-[var(--greek-gold)] hover:shadow-lg transition-all"
                 >
                   <Upload className="text-[var(--greek-blue)]" size={32} />
-                  <span className="font-bold text-[var(--greek-blue)]">Choisir une photo ou déposer une image</span>
+                  <span className="font-bold text-[var(--greek-blue)]">{onGenerateBatch ? "Choisir une ou plusieurs photos, ou les déposer ici" : "Choisir une photo ou déposer une image"}</span>
                   <span className="text-sm text-gray-500">Tu peux aussi coller une capture d&apos;écran avec Ctrl+V</span>
                 </button>
               )}

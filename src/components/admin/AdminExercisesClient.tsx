@@ -306,7 +306,42 @@ export default function AdminExercisesClient({
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
-  const { startGeneration, onContentCreated } = useContentGenerations();
+  const { startGeneration, onContentCreated, generations, minimize } = useContentGenerations();
+  const generationsRef = useRef(generations);
+  generationsRef.current = generations;
+
+  // Lot de photos : lance la génération puis attend qu'elle se termine (une seule à la fois : le plan gratuit
+  // de Mistral refuse les appels en rafale). Renvoie un message d'erreur, ou null si l'exercice est créé.
+  const generateAndWait = async (params: ExerciseFromPhotoParams): Promise<string | null> => {
+    const id = await startGeneration("exercise", {
+      exerciseType: params.exerciseType,
+      blockType: params.blockType,
+      linkedCourseId: null,
+      subject: params.subject,
+      level: currentFolderLevel || params.level || "6eme",
+      difficulty: params.difficulty,
+      questionCount: params.questionCount,
+      subjectArea: params.subjectArea,
+      instructions: params.instructions,
+      folder_id: currentFolderId || null,
+      sourceExercise: params.sourceExercise,
+      sourceQuestionCount: params.sourceQuestionCount,
+      sourceFigureDescription: params.sourceFigureDescription,
+      copyMode: params.copyMode,
+      sourceFigures: params.sourceFigures,
+    });
+    if (!id) return "Impossible de démarrer la génération.";
+    minimize();
+    for (let waited = 0; waited < 20 * 60_000; waited += 1_500) {
+      await new Promise((resolve) => setTimeout(resolve, 1_500));
+      const g = generationsRef.current.find((x) => x.id === id);
+      if (!g) return "Génération retirée de la liste.";
+      if (g.status === "done") return null;
+      if (g.status === "error") return g.error || "Erreur de génération.";
+      if (g.status === "cancelled") return "Génération annulée.";
+    }
+    return "Délai dépassé.";
+  };
 
   // Une génération lancée depuis cette page (ou une autre, ou avant un
   // rechargement) rafraîchit la liste dès qu'elle aboutit à un exercice créé.
@@ -1399,6 +1434,7 @@ export default function AdminExercisesClient({
       {isPhotoModalOpen && (
         <ExerciseFromPhotoModal
           onGenerate={handlePhotoGenerate}
+          onGenerateBatch={generateAndWait}
           onClose={() => setIsPhotoModalOpen(false)}
           defaultLevel={currentFolderLevel || undefined}
         />

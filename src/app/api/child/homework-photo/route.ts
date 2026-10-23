@@ -33,7 +33,7 @@ export async function POST(req: Request) {
 
     supabaseAdmin.from("user_ai_interactions").insert({ user_id: me.id, feature_type: "homework_photo" }).then(undefined, () => {});
 
-    const result = await runInteractive(() => extractExerciseFromImage(image));
+    const result = await runInteractive(() => extractExerciseFromImage(image, { doubleRead: false }));
     const figure = result.hasFigure && result.figureDescription ? `\n[Figure sur la photo : ${result.figureDescription}]` : "";
     return NextResponse.json({ title: result.title, statement: `${result.statement.replace(/▢/g, "…")}${figure}`.slice(0, 4000) });
   } catch (error) {
