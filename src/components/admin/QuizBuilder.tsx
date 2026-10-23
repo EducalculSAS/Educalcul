@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
-import { Plus, Trash2, GripVertical, CheckCircle2, Circle, Lightbulb, Sparkles } from "lucide-react";
+import { Plus, Trash2, GripVertical, CheckCircle2, Circle, Lightbulb, Sparkles, Copy, ListPlus, ShieldCheck } from "lucide-react";
 
 import AISectionEditModal from "./AISectionEditModal";
 import AIAddQuizModal from "./AIAddQuizModal";
@@ -11,6 +11,8 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import ContentInsertToolbar from "./ContentInsertToolbar";
 import { useKatexIn } from "@/lib/useKatexIn";
+import { QuickEntryModal, CheckPanel } from "./ExerciseAuthoringTools";
+import { blockToQuestion, duplicateQuestion, questionToBlock, type AuthoringBlock, type AuthoringQuestion } from "@/lib/contentAuthoring";
 
 export interface Question {
   id: string;
@@ -57,6 +59,28 @@ export default function QuizBuilder({
       copy.splice(to, 0, moved);
       return copy;
     });
+  };
+
+  // Outils de rédaction à la main : saisie rapide, vérificateur, duplication.
+  const [isQuickEntryOpen, setIsQuickEntryOpen] = useState(false);
+  const [isCheckOpen, setIsCheckOpen] = useState(false);
+
+  const applyQuickEntry = (groups: { title: string | null; blocks: AuthoringBlock[] }[]) => {
+    const added = groups.flatMap((g) => g.blocks).map((b) => blockToQuestion(b) as unknown as Question);
+    setQuestions((prev) => [...prev, ...added]);
+  };
+
+  const duplicateQuestionAt = (id: string) => {
+    setQuestions((prev) => {
+      const at = prev.findIndex((q) => q.id === id);
+      if (at < 0) return prev;
+      return [...prev.slice(0, at + 1), duplicateQuestion(prev[at] as unknown as AuthoringQuestion) as unknown as Question, ...prev.slice(at + 1)];
+    });
+  };
+
+  const jumpToQuestion = (_pageId: string, questionId: string) => {
+    setIsCheckOpen(false);
+    setTimeout(() => document.getElementById(`question-${questionId}`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 120);
   };
 
   // AI Edit State
@@ -201,7 +225,15 @@ export default function QuizBuilder({
         <h3 className="text-lg font-bold text-gray-800">
           Questions ({questions.length})
         </h3>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2 justify-end">
+          <GlassButton size="sm" variant="navy" type="button" onClick={() => setIsQuickEntryOpen(true)}>
+            <ListPlus size={16} />
+            Saisie rapide
+          </GlassButton>
+          <GlassButton size="sm" variant="ghost" type="button" onClick={() => setIsCheckOpen(true)}>
+            <ShieldCheck size={16} />
+            Vérifier
+          </GlassButton>
           <GlassButton size="sm" variant="navy" onClick={() => setIsAiAddModalOpen(true)}>
             <Sparkles size={16} />
             Ajouter avec l&apos;IA
@@ -212,6 +244,18 @@ export default function QuizBuilder({
           </GlassButton>
         </div>
       </div>
+
+      {isQuickEntryOpen && (
+        <QuickEntryModal defaultPageId={null} startIndex={questions.length} onApply={applyQuickEntry} onClose={() => setIsQuickEntryOpen(false)} />
+      )}
+
+      {isCheckOpen && (
+        <CheckPanel
+          pages={[{ id: "quiz", title: "Quiz", blocks: questions.map((q, i) => questionToBlock(q as unknown as AuthoringQuestion, i)) }]}
+          onJump={jumpToQuestion}
+          onClose={() => setIsCheckOpen(false)}
+        />
+      )}
 
       {isAiAddModalOpen && (
         <AIAddQuizModal
@@ -248,6 +292,7 @@ export default function QuizBuilder({
           {questions.map((question, index) => (
             <div
               key={question.id || `question-${index}`}
+              id={`question-${question.id}`}
               draggable
               onDragStart={() => setDraggedQuestion(index)}
               onDragOver={(e) => e.preventDefault()}
@@ -494,6 +539,13 @@ export default function QuizBuilder({
                     <Sparkles size={14} />
                     <span className="hidden sm:inline">IA</span>
                   </GlassButton>
+                  <GlassIconButton
+                    icon={Copy}
+                    onClick={() => duplicateQuestionAt(question.id)}
+                    color="navy"
+                    size="sm"
+                    aria-label="Dupliquer la question"
+                  />
                   <GlassIconButton
                     icon={Trash2}
                     onClick={() => removeQuestion(question.id)}

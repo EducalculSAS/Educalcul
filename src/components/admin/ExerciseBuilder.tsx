@@ -4,7 +4,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
-import { Plus, Trash2, GripVertical, ChevronDown, ChevronRight, FileText, Image as ImageIcon, CheckSquare, List, ArrowRightLeft, ArrowUpDown, AlignLeft, Code2, ToggleLeft, Type, Sparkles, ArrowUp, ArrowDown, AlertTriangle, LayoutGrid, Ruler, SearchX } from "lucide-react";
+import { Plus, Trash2, GripVertical, ChevronDown, ChevronRight, FileText, Image as ImageIcon, CheckSquare, List, ArrowRightLeft, ArrowUpDown, AlignLeft, Code2, ToggleLeft, Type, Sparkles, ArrowUp, ArrowDown, AlertTriangle, LayoutGrid, Ruler, SearchX, Copy, ClipboardPaste, Shuffle, ListPlus, ShieldCheck } from "lucide-react";
 
 import AISectionEditModal from "./AISectionEditModal";
 import AIAddExerciseModal from "./AIAddExerciseModal";
@@ -12,6 +12,10 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import ContentInsertToolbar from "./ContentInsertToolbar";
 import { useKatexIn } from "@/lib/useKatexIn";
+import { QuickEntryModal, CheckPanel } from "./ExerciseAuthoringTools";
+import { duplicateBlock, duplicatePage, makeVariants, newId, type AuthoringBlock, type AuthoringPage } from "@/lib/contentAuthoring";
+
+const BLOCK_CLIPBOARD_KEY = "educalcul:block-clipboard";
 
 export type BlockType =
   | "text"
@@ -225,6 +229,101 @@ export default function ExerciseBuilder({
       if (from === to || to < 0 || to >= p.blocks.length) return p;
       return { ...p, blocks: reorder(p.blocks, from, to) };
     }));
+  };
+
+  // Outils de rédaction à la main : saisie rapide, vérificateur, copier/coller de blocs entre exercices.
+  const [isQuickEntryOpen, setIsQuickEntryOpen] = useState(false);
+  const [quickEntryPageId, setQuickEntryPageId] = useState<string | null>(null);
+  const [isCheckOpen, setIsCheckOpen] = useState(false);
+  const [clipboardBlock, setClipboardBlock] = useState<Block | null>(null);
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(BLOCK_CLIPBOARD_KEY);
+      if (raw) setClipboardBlock(JSON.parse(raw) as Block);
+    } catch {
+      // Stockage indisponible ou contenu illisible : pas de bloc copié.
+    }
+  }, []);
+
+  // Titres par défaut (« Question 3 ») renumérotés dans l'ordre après une duplication, des variantes ou un collage ;
+  // un titre écrit à la main n'est jamais touché.
+  const renumberDefaultTitles = (blocks: Block[]): Block[] => {
+    let n = 0;
+    return blocks.map((b) => (/^Question \d+$/.test(b.title) ? { ...b, title: `Question ${++n}` } : b));
+  };
+
+  const applyQuickEntry = (groups: { title: string | null; blocks: AuthoringBlock[] }[], targetPageId: string | null) => {
+    const added: Page[] = [];
+    let next = pages;
+    groups.forEach((group, i) => {
+      const blocks = group.blocks as unknown as Block[];
+      if (targetPageId && i === 0 && !group.title) {
+        next = next.map((p) => (p.id === targetPageId ? { ...p, blocks: renumberDefaultTitles([...p.blocks, ...blocks]) } : p));
+      } else {
+        const page: Page = { id: newId(), title: group.title || `Page ${next.length + added.length + 1}`, blocks };
+        added.push(page);
+      }
+    });
+    setPages([...next, ...added]);
+    setExpandedPages((prev) => {
+      const open = new Set(prev);
+      if (targetPageId) open.add(targetPageId);
+      added.forEach((p) => open.add(p.id));
+      return open;
+    });
+  };
+
+  const duplicateBlockAt = (pageId: string, blockId: string) => {
+    setPages(pages.map((p) => {
+      if (p.id !== pageId) return p;
+      const at = p.blocks.findIndex((b) => b.id === blockId);
+      if (at < 0) return p;
+      const copy = duplicateBlock(p.blocks[at] as unknown as AuthoringBlock) as unknown as Block;
+      return { ...p, blocks: renumberDefaultTitles([...p.blocks.slice(0, at + 1), copy, ...p.blocks.slice(at + 1)]) };
+    }));
+  };
+
+  const duplicatePageAt = (pageId: string) => {
+    const at = pages.findIndex((p) => p.id === pageId);
+    if (at < 0) return;
+    const copy = duplicatePage(pages[at] as unknown as AuthoringPage) as unknown as Page;
+    setPages([...pages.slice(0, at + 1), copy, ...pages.slice(at + 1)]);
+    setExpandedPages((prev) => new Set(prev).add(copy.id));
+  };
+
+  const copyBlockToClipboard = (block: Block) => {
+    setClipboardBlock(block);
+    try {
+      localStorage.setItem(BLOCK_CLIPBOARD_KEY, JSON.stringify(block));
+    } catch {
+      // Le bloc reste copiable tant que cet exercice est ouvert.
+    }
+  };
+
+  const pasteBlock = (pageId: string) => {
+    if (!clipboardBlock) return;
+    const copy = duplicateBlock(clipboardBlock as unknown as AuthoringBlock) as unknown as Block;
+    setPages(pages.map((p) => (p.id === pageId ? { ...p, blocks: renumberDefaultTitles([...p.blocks, copy]) } : p)));
+    setExpandedPages((prev) => new Set(prev).add(pageId));
+  };
+
+  const addVariants = (pageId: string, blockId: string) => {
+    const page = pages.find((p) => p.id === pageId);
+    const block = page?.blocks.find((b) => b.id === blockId);
+    if (!page || !block) return;
+    const result = makeVariants(block as unknown as AuthoringBlock, 5);
+    if (result.blocks.length === 0) {
+      alert(result.reason || "Aucune variante possible pour ce bloc.");
+      return;
+    }
+    const at = page.blocks.findIndex((b) => b.id === blockId);
+    setPages(pages.map((p) => (p.id === pageId ? { ...p, blocks: renumberDefaultTitles([...p.blocks.slice(0, at + 1), ...(result.blocks as unknown as Block[]), ...p.blocks.slice(at + 1)]) } : p)));
+  };
+
+  const jumpToBlock = (pageId: string, blockId: string) => {
+    setIsCheckOpen(false);
+    setExpandedPages((prev) => new Set(prev).add(pageId));
+    setTimeout(() => document.getElementById(`block-${blockId}`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 120);
   };
 
   // AI Edit State
@@ -456,7 +555,15 @@ export default function ExerciseBuilder({
     <div className="space-y-4" ref={contentRef}>
       <div className="flex justify-between items-center mb-4">
         <h3 className="font-semibold text-gray-900">Contenu de l&apos;exercice</h3>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap gap-2 justify-end">
+          <GlassButton size="sm" variant="navy" type="button" onClick={() => { setQuickEntryPageId(null); setIsQuickEntryOpen(true); }}>
+            <ListPlus size={16} />
+            Saisie rapide
+          </GlassButton>
+          <GlassButton size="sm" variant="ghost" type="button" onClick={() => setIsCheckOpen(true)}>
+            <ShieldCheck size={16} />
+            Vérifier
+          </GlassButton>
           <GlassButton size="sm" variant="navy" onClick={() => setIsAiAddModalOpen(true)}>
             <Sparkles size={16} />
             Ajouter avec l&apos;IA
@@ -467,6 +574,17 @@ export default function ExerciseBuilder({
           </GlassButton>
         </div>
       </div>
+
+      {isQuickEntryOpen && (
+        <QuickEntryModal
+          pages={pages as unknown as AuthoringPage[]}
+          defaultPageId={quickEntryPageId}
+          onApply={applyQuickEntry}
+          onClose={() => setIsQuickEntryOpen(false)}
+        />
+      )}
+
+      {isCheckOpen && <CheckPanel pages={pages as unknown as AuthoringPage[]} onJump={jumpToBlock} onClose={() => setIsCheckOpen(false)} />}
 
       {isAiAddModalOpen && (
         <AIAddExerciseModal
@@ -563,6 +681,29 @@ export default function ExerciseBuilder({
                   <span className="hidden sm:inline">IA</span>
                 </GlassButton>
                 <GlassIconButton
+                  icon={ListPlus}
+                  onClick={() => { setQuickEntryPageId(page.id); setIsQuickEntryOpen(true); }}
+                  color="navy"
+                  size="sm"
+                  aria-label="Saisie rapide dans cette page"
+                />
+                {clipboardBlock && (
+                  <GlassIconButton
+                    icon={ClipboardPaste}
+                    onClick={() => pasteBlock(page.id)}
+                    color="navy"
+                    size="sm"
+                    aria-label="Coller le bloc copié dans cette page"
+                  />
+                )}
+                <GlassIconButton
+                  icon={Copy}
+                  onClick={() => duplicatePageAt(page.id)}
+                  color="navy"
+                  size="sm"
+                  aria-label="Dupliquer la page"
+                />
+                <GlassIconButton
                   icon={Trash2}
                   onClick={() => removePage(page.id)}
                   color="red"
@@ -596,6 +737,7 @@ export default function ExerciseBuilder({
                     {page.blocks.map((block, blockIndex) => (
                       <div
                         key={block.id}
+                        id={`block-${block.id}`}
                         draggable
                         onDragStart={() => setDraggedBlock({ pageId: page.id, index: blockIndex })}
                         onDragOver={(e) => e.preventDefault()}
@@ -647,6 +789,32 @@ export default function ExerciseBuilder({
                               ))}
                             </select>
                           </div>
+                          {block.type === "text_input" && (
+                            <GlassIconButton
+                              icon={Shuffle}
+                              onClick={() => addVariants(page.id, block.id)}
+                              color="navy"
+                              size="sm"
+                              aria-label="Créer 5 variantes de ce calcul (autres nombres, réponse recalculée)"
+                              className="ml-2"
+                            />
+                          )}
+                          <GlassIconButton
+                            icon={Copy}
+                            onClick={() => duplicateBlockAt(page.id, block.id)}
+                            color="navy"
+                            size="sm"
+                            aria-label="Dupliquer le bloc"
+                            className="ml-2"
+                          />
+                          <GlassIconButton
+                            icon={ClipboardPaste}
+                            onClick={() => copyBlockToClipboard(block)}
+                            color="navy"
+                            size="sm"
+                            aria-label="Copier le bloc (à coller dans une autre page ou un autre exercice)"
+                            className="ml-1"
+                          />
                           <GlassIconButton
                             icon={Sparkles}
                             onClick={() => setAiEditTarget({ scope: "block", pageId: page.id, blockId: block.id })}

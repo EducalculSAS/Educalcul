@@ -27,7 +27,7 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
-import { Plus, Search, Edit, Trash2, X, Folder, FolderPlus, ImageIcon, XCircle, BookOpen, GraduationCap, Sparkles, Camera, Loader2, Eye, Download, Upload, Calculator, Brain, Trophy, Star, Pencil, Ruler, FlaskConical, Shapes, Pi, Puzzle, LineChart, Hash, Table2, Superscript, ArrowUp, ArrowDown } from "lucide-react";
+import { Plus, Search, Edit, Trash2, X, Folder, FolderPlus, ImageIcon, XCircle, BookOpen, GraduationCap, Sparkles, Camera, Loader2, Eye, Download, Upload, Calculator, Brain, Trophy, Star, Pencil, Copy, Ruler, FlaskConical, Shapes, Pi, Puzzle, LineChart, Hash, Table2, Superscript, ArrowUp, ArrowDown } from "lucide-react";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import PageLoader from "@/components/PageLoader";
 import { SCHOOL_LEVELS, SCHOOL_CYCLES, getLevelLabel, getLevelCycle, getEffectiveFolderLevel } from "@/lib/constants";
@@ -633,6 +633,41 @@ export default function AdminExercisesClient({
     return { ...exercise, content_json: full.content_json ?? [] };
   };
 
+  // Duplique un exercice (brouillon, titre « … (copie) ») : même contenu, nouveaux identifiants côté base.
+  const duplicateExercise = async (exercise: Exercise) => {
+    const full = await getFullExercise(exercise);
+    const taken = new Set(exercises.map((e) => e.title.trim().toLowerCase()));
+    let title = `${full.title} (copie)`;
+    for (let n = 2; taken.has(title.trim().toLowerCase()); n++) title = `${full.title} (copie ${n})`;
+    try {
+      const res = await fetch("/api/admin/exercises", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          title,
+          description: full.question || "",
+          course_id: full.course_id || null,
+          difficulty_level: full.difficulty_level,
+          type: full.type,
+          level: full.level,
+          status: "draft",
+          folder_id: full.folder_id || null,
+          thumbnail_url: full.thumbnail_url || "",
+          content_json: full.content_json ?? [],
+          time_limit: full.time_limit || null,
+          min_score_percent: full.min_score_percent || null,
+          max_attempts: full.max_attempts || null,
+        }),
+      });
+      const result = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(result.error || "Duplication impossible.");
+      invalidateAdminCache("exercises:");
+      fetchContents(true);
+    } catch (err: unknown) {
+      alert(errMessage(err));
+    }
+  };
+
   const handlePreview = async (exercise: Exercise, win?: Window | null) => {
     const previewData = {
       title: exercise.title,
@@ -1220,6 +1255,13 @@ export default function AdminExercisesClient({
                         color="navy"
                         size="sm"
                         aria-label="Modifier"
+                      />
+                      <GlassIconButton
+                        icon={Copy}
+                        onClick={() => void duplicateExercise(exercise)}
+                        color="navy"
+                        size="sm"
+                        aria-label="Dupliquer l'exercice"
                       />
                       <GlassIconButton
                         icon={Download}
