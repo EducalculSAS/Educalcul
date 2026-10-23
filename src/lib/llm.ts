@@ -57,6 +57,20 @@ function retryDelayMs(attempt: number, retryAfterHeader: string | null): number 
   return Math.min(1_500, base) + Math.floor(Math.random() * 150);
 }
 
+// Pression de débit : monte à chaque 429 de Mistral, redescend à chaque succès. Les générations d'arrière-plan
+// espacent d'autant le démarrage de leurs appels (plan gratuit : on ralentit quand ça sature, on accélère sinon).
+let rateLimitPressureMs = 0;
+export function getRateLimitPressureMs(): number {
+  return rateLimitPressureMs;
+}
+
+/** Attente avant de réessayer un 429 en arrière-plan : Retry-After s'il est donné, sinon 2 s, 4 s, 8 s, 12 s (± aléa). */
+function backgroundRetryDelayMs(attempt: number, retryAfterHeader: string | null): number {
+  const headerSeconds = Number(retryAfterHeader);
+  const base = Number.isFinite(headerSeconds) && headerSeconds > 0 ? headerSeconds * 1_000 : 2_000 * 2 ** attempt;
+  return Math.min(12_000, base) + Math.floor(Math.random() * 400);
+}
+
 type JsonSchemaCapability = "unknown" | "supported" | "unsupported";
 const jsonSchemaCapabilityByModel = new Map<string, JsonSchemaCapability>();
 
@@ -147,7 +161,18 @@ async function callMistralModel(
   jsonSchema?: JsonSchemaContract,
 ): Promise<MistralResult> {
   let result = await callMistralModelOnce(model, msgs, temp, maxTokens, reasoning, jsonMode, abortSignal, jsonSchema);
-  if (result.status !== 429 || !interactiveStore.getStore()) return result;
+  if (result.status !== 429) return result;
+
+  // Génération d'arrière-plan : plusieurs nouvelles tentatives espacées de plus en plus (au lieu d'un échec qui
+  // faisait découper la partie en deux, donc doubler les appels).
+  if (!interactiveStore.getStore()) {
+    for (let attempt = 0; attempt < 4 && result.status === 429; attempt++) {
+      if (abortSignal?.aborted) return result;
+      await new Promise((resolve) => setTimeout(resolve, backgroundRetryDelayMs(attempt, result.retryAfter ?? null)));
+      result = await callMistralModelOnce(model, msgs, temp, maxTokens, reasoning, jsonMode, abortSignal, jsonSchema);
+    }
+    return result;
+  }
 
   for (let attempt = 0; attempt < 3 && result.status === 429; attempt++) {
     if (abortSignal?.aborted) return result;
@@ -230,6 +255,7 @@ async function callMistralModelOnce(
   }
 
   const text = await resp.text();
+  rateLimitPressureMs = resp.status === 429 ? Math.min(6_000, rateLimitPressureMs + 800) : resp.ok ? Math.max(0, rateLimitPressureMs - 200) : rateLimitPressureMs;
   return { ok: resp.ok, text, status: resp.status, retryAfter: resp.headers.get("retry-after") };
 }
 

@@ -1,4 +1,4 @@
-import { generateStructuredContentWithSchema, yieldToInteractive } from "@/lib/llm";
+import { generateStructuredContentWithSchema, getRateLimitPressureMs, yieldToInteractive } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import type { JsonSchemaContract } from "@/lib/ai/schemas";
 
@@ -74,7 +74,8 @@ export function createLlmStartGate(
     // Un élève qui parle à Calia ou au chat passe avant une génération de contenu.
     await yieldToInteractive();
     const elapsed = Date.now() - lastStartAt;
-    const waitMs = minIntervalMs > 0 ? Math.max(0, minIntervalMs - elapsed) : 0;
+    // Intervalle de base + pression de débit (monte quand Mistral répond 429, redescend ensuite).
+    const waitMs = minIntervalMs > 0 ? Math.max(0, minIntervalMs + getRateLimitPressureMs() - elapsed) : 0;
     if (waitMs > 0) await sleep(waitMs);
     lastStartAt = Date.now();
     release();
@@ -97,7 +98,7 @@ export function createLlmStartGate(
             break;
           }
 
-          await sleep(250);
+          await sleep(1_000);
         }
       } catch {
         // L'échec du polling ne doit pas interrompre une génération valide.
@@ -141,7 +142,7 @@ export function createLlmStartGate(
   };
 }
 
-export const DEFAULT_LLM_MIN_START_INTERVAL_MS = 1_700;
+export const DEFAULT_LLM_MIN_START_INTERVAL_MS = 800;
 export const REASONING_TOKEN_BUFFER = 10_000;
 
 // content_generations = table unifiée (kind = course|exercise|quiz|minigame).

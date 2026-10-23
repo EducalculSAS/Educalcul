@@ -448,8 +448,21 @@ async function dropWrongAnswers(
       false,
     );
     const mine = new Map((solved.solutions ?? []).map((s) => [s.index, s.final_answer]));
-    const pairs = checkable
-      .filter(({ index }) => mine.has(index))
+    // Deux réponses numériques se comparent en code (valeur exacte) : seul le reste passe par le modèle juge.
+    const wrongByCompare = new Set<number>();
+    const needJudge = checkable.filter(({ block, index }) => {
+      if (!mine.has(index)) return false;
+      const a = parseNumericAnswer(String(block.correctAnswer ?? ""));
+      const b = parseNumericAnswer(String(mine.get(index) ?? ""));
+      if (!a || !b) return true;
+      if (!fracEquals(a, b)) wrongByCompare.add(index);
+      return false;
+    });
+    if (wrongByCompare.size > 0) {
+      console.warn(`[photo-exercise] ${label} : ${wrongByCompare.size} question(s) retiree(s), reponse differente du recalcul (${[...wrongByCompare].join(", ")}).`);
+      wrongByCompare.forEach((i) => wrongByCode.add(i));
+    }
+    const pairs = needJudge
       .map(({ block, index }) => `Question ${index} : ${block.content}\nReponse A : ${String(block.correctAnswer)}\nReponse B : ${mine.get(index)}`)
       .join("\n\n");
     if (!pairs) return withoutIndexes(blocks, wrongByCode);
