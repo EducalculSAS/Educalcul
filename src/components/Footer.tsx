@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { Facebook, Twitter, Instagram, Youtube, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
+import { Facebook, Twitter, Instagram, Youtube } from "@/components/ui/BrandIcons";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassButton from "@/components/ui/GlassButton";
 
