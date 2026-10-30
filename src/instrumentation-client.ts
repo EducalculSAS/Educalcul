@@ -11,7 +11,7 @@ export function reportClientError(message: string, stack?: string | null) {
   try {
     const key = `${message}|${(stack ?? "").slice(0, 200)}`;
     if (!message || sent.has(key) || sent.size >= 10) return;
-    // Bruit sans conséquence (extensions, réseau, anciennes versions, hydratation des pages publiques) : même liste que le serveur.
+    // Bruit sans conséquence (extensions, réseau, anciennes versions du site) : même liste que le serveur.
     if (isNoiseError({ message, stack, url: location.pathname })) return;
     sent.add(key);
     const body = JSON.stringify({ message: message.slice(0, 1000), stack: stack?.slice(0, 6000) ?? null, url: location.pathname });
