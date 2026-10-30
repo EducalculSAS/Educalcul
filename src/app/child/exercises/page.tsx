@@ -25,7 +25,8 @@ export default async function ChildExercisesPage({
     supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", authUser.id).maybeSingle(),
     loadPublishedFolders<CatalogFolder & { grade_level?: string; color?: string; icon?: string }>(
       "exercise_folders",
-      "id, parent_id, name, color, icon, grade_level",
+      "id, parent_id, name, color, icon, grade_level, display_order",
+      { byDisplayOrder: true },
     ),
     // Paginé : une ligne par exercice tenté, un élève assidu dépasse les 1000.
     selectAllPages<{ exercise_id: string; attempts_history: unknown[] | null }>((from, to) =>

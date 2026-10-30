@@ -11,8 +11,10 @@ import {
   deleteFolder,
   isSelfOrDescendant as folderIsSelfOrDescendant,
   buildBreadcrumbs,
+  reorderFolders as reorderContentFolders,
   type ContentFolder,
 } from "@/lib/contentFoldersClient";
+import { compareFolderOrder } from "@/lib/contentOrder";
 import PageLoader from "@/components/PageLoader";
 import {
   BookOpen,
@@ -47,6 +49,8 @@ import {
   Superscript,
   ArrowUp,
   ArrowDown,
+  ArrowLeft,
+  ArrowRight,
 } from "lucide-react";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
@@ -205,7 +209,7 @@ export default function AdminCoursesClient({
       allFolders.filter(
         (f) => (currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId)
           && (statusFilter === "all" || f.status === statusFilter),
-      ) as unknown as Folder[],
+      ).sort(compareFolderOrder) as unknown as Folder[],
     [allFolders, currentFolderId, statusFilter],
   );
   const breadcrumbs = useMemo(
@@ -834,6 +838,23 @@ export default function AdminCoursesClient({
 
   // Seuls les dossiers racine portent le niveau scolaire : une fois dans un
   // dossier de niveau, le cycle est deja determine.
+  // Ordre des dossiers du niveau courant, réglé avec les flèches : c'est celui que verra l'élève. Seulement sans recherche ni
+  // filtre (déplacer dans une liste partielle n'aurait pas de sens). Mise à jour optimiste, annulée en cas d'échec.
+  const canReorderFolders = !searchTerm && cycleFilter === "all" && statusFilter === "all";
+  const moveFolder = async (folderId: number, direction: -1 | 1) => {
+    const ordered = [...folders];
+    const index = ordered.findIndex((f) => f.id === folderId);
+    const target = index + direction;
+    if (index < 0 || target < 0 || target >= ordered.length) return;
+    [ordered[index], ordered[target]] = [ordered[target], ordered[index]];
+    const ranks = new Map(ordered.map((f, i) => [f.id, (i + 1) * 10]));
+    const previous = allFolders;
+    setAllFolders((all) => all.map((f) => (ranks.has(f.id) ? { ...f, display_order: ranks.get(f.id)! } : f)));
+    const ok = await reorderContentFolders("course", ordered.map((f) => f.id));
+    if (ok) invalidateAdminCache("courses:");
+    else setAllFolders(previous);
+  };
+
   const filteredFolders = folders.filter(
     (folder) =>
       folder.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -1011,6 +1032,26 @@ export default function AdminCoursesClient({
                   className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10"
                   onClick={(e) => e.stopPropagation()}
                 >
+                  {canReorderFolders && folders.length > 1 && (
+                    <>
+                      <GlassIconButton
+                        icon={ArrowLeft}
+                        size="sm"
+                        color="navy"
+                        disabled={folders[0]?.id === folder.id}
+                        onClick={() => void moveFolder(folder.id, -1)}
+                        aria-label={`Avancer « ${folder.name} » dans l'ordre`}
+                      />
+                      <GlassIconButton
+                        icon={ArrowRight}
+                        size="sm"
+                        color="navy"
+                        disabled={folders[folders.length - 1]?.id === folder.id}
+                        onClick={() => void moveFolder(folder.id, 1)}
+                        aria-label={`Reculer « ${folder.name} » dans l'ordre`}
+                      />
+                    </>
+                  )}
                   <GlassIconButton
                     icon={Edit}
                     color="navy"

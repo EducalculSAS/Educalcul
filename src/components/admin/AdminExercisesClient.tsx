@@ -11,8 +11,10 @@ import {
   deleteFolder,
   isSelfOrDescendant as folderIsSelfOrDescendant,
   buildBreadcrumbs,
+  reorderFolders as reorderContentFolders,
   type ContentFolder,
 } from "@/lib/contentFoldersClient";
+import { compareFolderOrder } from "@/lib/contentOrder";
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import ExerciseGeneratorModal, { ExerciseGenParams } from "@/components/admin/ExerciseGeneratorModal";
@@ -27,7 +29,7 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
-import { Plus, Search, Edit, Trash2, X, Folder, FolderPlus, ImageIcon, XCircle, BookOpen, GraduationCap, Sparkles, Camera, Loader2, Eye, Download, Upload, Calculator, Brain, Trophy, Star, Pencil, Copy, Ruler, FlaskConical, Shapes, Pi, Puzzle, LineChart, Hash, Table2, Superscript, ArrowUp, ArrowDown } from "lucide-react";
+import { Plus, Search, Edit, Trash2, X, Folder, FolderPlus, ImageIcon, XCircle, BookOpen, GraduationCap, Sparkles, Camera, Loader2, Eye, Download, Upload, Calculator, Brain, Trophy, Star, Pencil, Copy, Ruler, FlaskConical, Shapes, Pi, Puzzle, LineChart, Hash, Table2, Superscript, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import PageLoader from "@/components/PageLoader";
 import { SCHOOL_LEVELS, SCHOOL_CYCLES, getLevelLabel, getLevelCycle, getEffectiveFolderLevel } from "@/lib/constants";
@@ -220,7 +222,7 @@ export default function AdminExercisesClient({
     () =>
       allFolders.filter(
         (f) => (currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId),
-      ) as unknown as ExerciseFolder[],
+      ).sort(compareFolderOrder) as unknown as ExerciseFolder[],
     [allFolders, currentFolderId],
   );
   const breadcrumbs = useMemo(
@@ -957,6 +959,23 @@ export default function AdminExercisesClient({
   // Les dossiers racine portent le niveau scolaire (`grade_level`) : c'est là
   // que filtrer par cycle a du sens. Une fois entré dans un dossier de niveau,
   // le cycle est déjà déterminé, on ne filtre plus les sous-dossiers de cours.
+  // Ordre des dossiers du niveau courant, réglé avec les flèches : c'est celui que verra l'élève. Seulement sans recherche ni
+  // filtre (déplacer dans une liste partielle n'aurait pas de sens). Mise à jour optimiste, annulée en cas d'échec.
+  const canReorderFolders = !searchQuery && cycleFilter === "all";
+  const moveFolder = async (folderId: number, direction: -1 | 1) => {
+    const ordered = [...folders];
+    const index = ordered.findIndex((f) => f.id === folderId);
+    const target = index + direction;
+    if (index < 0 || target < 0 || target >= ordered.length) return;
+    [ordered[index], ordered[target]] = [ordered[target], ordered[index]];
+    const ranks = new Map(ordered.map((f, i) => [f.id, (i + 1) * 10]));
+    const previous = allFolders;
+    setAllFolders((all) => all.map((f) => (ranks.has(f.id) ? { ...f, display_order: ranks.get(f.id)! } : f)));
+    const ok = await reorderContentFolders("exercise", ordered.map((f) => f.id));
+    if (ok) invalidateAdminCache("exercises:");
+    else setAllFolders(previous);
+  };
+
   const filteredFolders = folders.filter(
     (folder) =>
       folder.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
@@ -1097,6 +1116,26 @@ export default function AdminExercisesClient({
                   className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1 z-10"
                   onClick={(e) => e.stopPropagation()}
                 >
+                  {canReorderFolders && folders.length > 1 && (
+                    <>
+                      <GlassIconButton
+                        icon={ArrowLeft}
+                        size="sm"
+                        color="navy"
+                        disabled={folders[0]?.id === folder.id}
+                        onClick={() => void moveFolder(folder.id, -1)}
+                        aria-label={`Avancer « ${folder.name} » dans l'ordre`}
+                      />
+                      <GlassIconButton
+                        icon={ArrowRight}
+                        size="sm"
+                        color="navy"
+                        disabled={folders[folders.length - 1]?.id === folder.id}
+                        onClick={() => void moveFolder(folder.id, 1)}
+                        aria-label={`Reculer « ${folder.name} » dans l'ordre`}
+                      />
+                    </>
+                  )}
                   <GlassIconButton
                     icon={Edit}
                     onClick={() => {

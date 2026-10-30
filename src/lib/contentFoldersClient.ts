@@ -98,3 +98,13 @@ export function buildBreadcrumbs(folders: ContentFolder[], folderId: number): Co
   }
   return path;
 }
+
+/** Enregistre l'ordre de dossiers frères (liste d'identifiants dans l'ordre voulu). */
+export async function reorderFolders(type: ContentFolderType, orderedIds: number[]): Promise<boolean> {
+  const res = await fetch(`${base(type)}/reorder`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ orderedIds }),
+  });
+  return res.ok;
+}

@@ -16,7 +16,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import { isFolderInLevelScope } from "@/lib/childCatalog";
 import LevelScopePicker from "@/components/child/LevelScopePicker";
 
-interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string }
+interface FolderRow { id: number; parent_id: number | null; name: string; color?: string; icon?: string; grade_level?: string; display_order?: number | null }
 interface ExerciseRow {
   id: string; folder_id: number | null; course_id?: string | number | null; title: string; description?: string; question?: string;
   difficulty_level?: string; thumbnail_url?: string; courses?: { title?: string };
@@ -198,7 +198,8 @@ export default function ExercisesCatalog({
   }
 
   const displayParentId = currentFolderId === null ? (rootFolderIds ? activeRootId : levelFolderId) : currentFolderId;
-  const currentFolders = allFolders.filter((f) => (displayParentId === null && rootFolderIds ? rootFolderIds.includes(f.id) : f.parent_id === displayParentId));
+  const currentFolders = allFolders.filter((f) => (displayParentId === null && rootFolderIds ? rootFolderIds.includes(f.id) : f.parent_id === displayParentId))
+    .sort((a, b) => (a.display_order ?? 0) - (b.display_order ?? 0));
   const currentExercises = allExercises.filter((ex) => (ex.folder_id ?? null) === displayParentId).sort(compareDisplayOrder);
 
   return (

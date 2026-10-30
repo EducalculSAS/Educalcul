@@ -23,7 +23,7 @@ export default async function ChildQuizPage({
   // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
   const [{ data: userData }, allFolders, attempts] = await Promise.all([
     supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", authUser.id).maybeSingle(),
-    loadPublishedFolders<CatalogFolder & Record<string, unknown>>("quiz_folders", "*"),
+    loadPublishedFolders<CatalogFolder & Record<string, unknown>>("quiz_folders", "*", { byDisplayOrder: true }),
     selectAllPages<{ quiz_id: string; attempts_history: unknown[] | null }>((from, to) =>
       supabaseAdmin
         .from("user_quiz_attempts")
