@@ -3,6 +3,7 @@
 import katex from "katex";
 import "katex/dist/katex.min.css";
 import DOMPurify from "dompurify";
+import { sanitizeHtmlServer } from "@/lib/htmlSanitizeServer";
 import { mathToReadableText, normalizeStructuredLatex } from "@/lib/ai/structuredContent";
 
 /**
@@ -40,10 +41,8 @@ export function sanitizeHtml(html: string): string {
       ADD_TAGS: ["semantics", "annotation"],
     });
   }
-  return html
-    .replace(/<\s*script[\s\S]*?<\s*\/\s*script\s*>/gi, "")
-    .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
-    .replace(/javascript:/gi, "");
+  // Rendu serveur (pas de navigateur pour DOMPurify) : liste de tags et d'attributs autorisés, voir htmlSanitizeServer.ts.
+  return sanitizeHtmlServer(html);
 }
 
 function escapeHtml(value: string): string {

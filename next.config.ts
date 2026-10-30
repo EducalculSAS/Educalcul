@@ -20,8 +20,12 @@ const securityHeaders = [
   },
   // ✓ CRITICAL FIX: HSTS - enforce HTTPS
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
-  // Additional XSS protection
-  { key: "X-XSS-Protection", value: "1; mode=block" },
+  // Le filtre XSS des vieux navigateurs est lui-même une source de failles : la recommandation actuelle est de le désactiver (la CSP protège).
+  { key: "X-XSS-Protection", value: "0" },
+  // Une page d'un autre site ne peut plus garder de référence vers nos fenêtres ; les fenêtres que NOUS ouvrons (aperçus, paiement) gardent leur lien.
+  { key: "Cross-Origin-Opener-Policy", value: "same-origin-allow-popups" },
+  // Pas de politique Flash / PDF inter-domaines.
+  { key: "X-Permitted-Cross-Domain-Policies", value: "none" },
 ];
 
 const nextConfig: NextConfig = {
