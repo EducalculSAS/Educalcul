@@ -1,6 +1,7 @@
 import "server-only";
 import { createHash } from "crypto";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { isNoiseError } from "@/lib/errorNoise";
 
 /**
  * Journal d'erreurs maison (remplace Sentry) : les erreurs du serveur et des
@@ -35,14 +36,11 @@ function fingerprintOf(r: ErrorReport): string {
   return createHash("sha1").update(`${r.source}|${normalized}|${frame}`).digest("hex");
 }
 
-// Erreurs sans intérêt (extensions, réseau coupé côté élève, annulations).
-// « Lock was stolen by another request » : le verrou d'authentification Supabase passe d'un onglet / d'une fenêtre d'aperçu à l'autre ; la requête est rejouée, rien n'est perdu.
-const IGNORED = [/Lock was stolen by another request/i, /ResizeObserver loop/i, /^Script error\.?$/i, /Load failed/i, /Failed to fetch/i, /NetworkError/i, /AbortError/i, /NEXT_REDIRECT/, /NEXT_NOT_FOUND/, /chrome-extension:\/\//, /moz-extension:\/\//];
 
 export async function recordError(report: ErrorReport): Promise<void> {
   try {
     const message = String(report.message || "Erreur inconnue").trim();
-    if (IGNORED.some((re) => re.test(message) || re.test(report.stack ?? ""))) return;
+    if (isNoiseError({ ...report, message })) return;
 
     const { data: isNew } = await supabaseAdmin.rpc("log_error", {
       p_fingerprint: fingerprintOf({ ...report, message }),

@@ -3,14 +3,16 @@
  * src/lib/errorLog.ts). Une même erreur n'est envoyée qu'une fois par page,
  * et au plus 10 erreurs par page : un bug en boucle ne noie pas le serveur.
  */
+import { isNoiseError } from "@/lib/errorNoise";
+
 const sent = new Set<string>();
 
 export function reportClientError(message: string, stack?: string | null) {
   try {
     const key = `${message}|${(stack ?? "").slice(0, 200)}`;
     if (!message || sent.has(key) || sent.size >= 10) return;
-    // Bruit sans conséquence : verrou d'authentification Supabase repris par un autre onglet / une fenêtre d'aperçu.
-    if (/Lock was stolen by another request/i.test(message)) return;
+    // Bruit sans conséquence (extensions, réseau, anciennes versions, hydratation des pages publiques) : même liste que le serveur.
+    if (isNoiseError({ message, stack, url: location.pathname })) return;
     sent.add(key);
     const body = JSON.stringify({ message: message.slice(0, 1000), stack: stack?.slice(0, 6000) ?? null, url: location.pathname });
     fetch("/api/errors", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});
