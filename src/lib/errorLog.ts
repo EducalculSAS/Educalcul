@@ -36,7 +36,8 @@ function fingerprintOf(r: ErrorReport): string {
 }
 
 // Erreurs sans intérêt (extensions, réseau coupé côté élève, annulations).
-const IGNORED = [/ResizeObserver loop/i, /^Script error\.?$/i, /Load failed/i, /Failed to fetch/i, /NetworkError/i, /AbortError/i, /NEXT_REDIRECT/, /NEXT_NOT_FOUND/, /chrome-extension:\/\//, /moz-extension:\/\//];
+// « Lock was stolen by another request » : le verrou d'authentification Supabase passe d'un onglet / d'une fenêtre d'aperçu à l'autre ; la requête est rejouée, rien n'est perdu.
+const IGNORED = [/Lock was stolen by another request/i, /ResizeObserver loop/i, /^Script error\.?$/i, /Load failed/i, /Failed to fetch/i, /NetworkError/i, /AbortError/i, /NEXT_REDIRECT/, /NEXT_NOT_FOUND/, /chrome-extension:\/\//, /moz-extension:\/\//];
 
 export async function recordError(report: ErrorReport): Promise<void> {
   try {

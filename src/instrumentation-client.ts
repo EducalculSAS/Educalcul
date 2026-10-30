@@ -9,6 +9,8 @@ export function reportClientError(message: string, stack?: string | null) {
   try {
     const key = `${message}|${(stack ?? "").slice(0, 200)}`;
     if (!message || sent.has(key) || sent.size >= 10) return;
+    // Bruit sans conséquence : verrou d'authentification Supabase repris par un autre onglet / une fenêtre d'aperçu.
+    if (/Lock was stolen by another request/i.test(message)) return;
     sent.add(key);
     const body = JSON.stringify({ message: message.slice(0, 1000), stack: stack?.slice(0, 6000) ?? null, url: location.pathname });
     fetch("/api/errors", { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => {});

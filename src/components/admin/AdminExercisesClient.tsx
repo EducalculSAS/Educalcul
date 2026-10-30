@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { compareDisplayOrder } from "@/lib/contentOrder";
+import { formatDateFr } from "@/lib/formatDate";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import {
@@ -1272,7 +1273,7 @@ export default function AdminExercisesClient({
 
                   <div className="flex justify-between items-center pt-2 border-t border-[rgba(197,161,72,0.25)]">
                     <span className="text-xs text-gray-400">
-                      {new Date(exercise.created_at).toLocaleDateString()}
+                      {formatDateFr(exercise.created_at)}
                     </span>
                     <div className="flex gap-1">
                       <GlassIconButton

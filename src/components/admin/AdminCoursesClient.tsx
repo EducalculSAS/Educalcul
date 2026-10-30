@@ -15,6 +15,7 @@ import {
   type ContentFolder,
 } from "@/lib/contentFoldersClient";
 import { compareFolderOrder } from "@/lib/contentOrder";
+import { formatDateFr } from "@/lib/formatDate";
 import PageLoader from "@/components/PageLoader";
 import {
   BookOpen,
@@ -1199,7 +1200,7 @@ export default function AdminCoursesClient({
 
                 <div className="flex items-center justify-between pt-4 border-t border-[rgba(197,161,72,0.25)] mt-auto">
                   <span className="text-xs text-gray-400">
-                    {new Date(course.created_at).toLocaleDateString("fr-FR")}
+                    {formatDateFr(course.created_at)}
                   </span>
                   <div className="flex items-center gap-1">
                     <GlassIconButton

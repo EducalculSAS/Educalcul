@@ -1,6 +1,7 @@
 "use client";
 
 import PageHero from "@/components/PageHero";
+import { formatDateFr } from "@/lib/formatDate";
 import PageLoader from "@/components/PageLoader";
 import AppLoader from "@/components/AppLoader";
 import { useState, useEffect, Suspense } from "react";
@@ -600,7 +601,7 @@ function SubscriptionPageContent({
                   <tbody>
                     {billingHistory.map((bill) => (
                       <tr key={bill.id} className="border-b border-[rgba(197,161,72,0.25)]">
-                        <td className="py-4 text-gray-800">{new Date(bill.date).toLocaleDateString()}</td>
+                        <td className="py-4 text-gray-800">{formatDateFr(bill.date)}</td>
                         <td className="py-4 text-gray-800 font-medium">{bill.amount}€</td>
                         <td className="py-4">
                           <span className={`px-3 py-1 rounded-full text-xs font-bold ${bill.status === "paid" ? "bg-green-100 text-green-700" : "bg-yellow-100 text-yellow-700"}`}>

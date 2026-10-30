@@ -351,6 +351,14 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       // ce qui n'est pas garanti (ex: MathLive a pu détacher/remplacer son
       // propre élément en interne avant que ce cleanup ne s'exécute). On ne
       // retire que si c'est encore vraiment le cas.
+      // Retirer un champ encore focalisé fait émettre à MathLive un « blur » interne APRÈS la libération de son contenu :
+      // « undefined is not an object (evaluating 'this.mathfield.options') » (vu sur /child/cours/preview). On le défocalise
+      // d'abord, tant qu'il est encore entier.
+      try {
+        if (mf.matches(":focus-within") || document.activeElement === mf) mf.blur();
+      } catch {
+        // champ déjà libéré : rien à défocaliser
+      }
       if (mf.parentNode === container) container.removeChild(mf);
       mfRef.current = null;
     };

@@ -99,6 +99,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
+  // Safari transforme les suites de chiffres en liens téléphone : le HTML du navigateur ne correspond alors plus à celui du serveur (erreur React #418).
+  formatDetection: { telephone: false, email: false, address: false },
   title: {
     default: "Educalcul : Cours de maths du CP à la Terminale avec IA",
     template: "%s | Educalcul",
