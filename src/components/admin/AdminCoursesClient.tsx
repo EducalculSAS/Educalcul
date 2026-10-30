@@ -53,6 +53,8 @@ import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import { compileHandAuthoredCourse } from "@/lib/ai/handAuthoredContent";
 import CourseBuilder, { Chapter } from "@/components/admin/CourseBuilder";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import SubjectAreasEditor from "@/components/admin/SubjectAreasEditor";
+import { useSubjectAreas } from "@/lib/useSubjectAreas";
 import AdminBreadcrumbs from "@/components/admin/AdminBreadcrumbs";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
@@ -308,6 +310,8 @@ export default function AdminCoursesClient({
   // AI States
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const { startGeneration, onContentCreated } = useContentGenerations();
+  const { areas: subjectAreas, setAreas: setSubjectAreas } = useSubjectAreas();
+  const [isAreasEditorOpen, setIsAreasEditorOpen] = useState(false);
 
   // Une génération lancée depuis cette page (ou une autre, ou avant un
   // rechargement) rafraîchit la liste dès qu'elle aboutit à un cours créé.
@@ -1203,6 +1207,8 @@ export default function AdminCoursesClient({
       </div>
 
       {/* Create Course Modal */}
+      {isAreasEditorOpen && <SubjectAreasEditor areas={subjectAreas} onSaved={setSubjectAreas} onClose={() => setIsAreasEditorOpen(false)} />}
+
       {isModalOpen && (
         <div className="fixed inset-0 z-[1060] flex items-center justify-center bg-black/60 backdrop-blur-sm p-2 sm:p-4 modal-overlay">
           <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-3xl lg:max-w-5xl xl:max-w-6xl max-h-[94vh] sm:max-h-[90vh] flex flex-col overflow-hidden">
@@ -1250,8 +1256,11 @@ export default function AdminCoursesClient({
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                        <label className="flex items-center justify-between text-sm font-semibold text-gray-700 mb-1.5">
                           Domaine
+                          <button type="button" onClick={() => setIsAreasEditorOpen(true)} className="text-xs font-semibold text-[var(--greek-blue)] hover:underline">
+                            Modifier la liste
+                          </button>
                         </label>
                         <select
                           value={formData.subject}
@@ -1263,14 +1272,9 @@ export default function AdminCoursesClient({
                           }
                           className="w-full px-4 py-2.5 border border-[rgba(197,161,72,0.25)] rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-gray-50"
                         >
-                          <option value="Algèbre">Algèbre</option>
-                          <option value="Géométrie">Géométrie</option>
-                          <option value="Statistiques">Statistiques</option>
-                          <option value="Arithmétique">Arithmétique</option>
-                          <option value="Fonctions">Fonctions</option>
-                          <option value="Probabilités">Probabilités</option>
-                          <option value="Mesures">Mesures</option>
-                          <option value="Logique">Logique</option>
+                          {(subjectAreas.includes(formData.subject) || !formData.subject ? subjectAreas : [...subjectAreas, formData.subject]).map((area) => (
+                            <option key={area} value={area}>{area}</option>
+                          ))}
                         </select>
                       </div>
                       <div>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useSubjectAreas } from "@/lib/useSubjectAreas";
 import { Sparkles, XCircle, BookOpen, BrainCircuit, Target, Settings2, FileText, Layers, GraduationCap, Clock, ListChecks, Sliders, Check } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { useSmoothPercent } from "./useSmoothPercent";
@@ -60,20 +61,11 @@ function Card({
   );
 }
 
-const SUBJECT_AREAS = [
-  "Algèbre",
-  "Géométrie",
-  "Statistiques",
-  "Arithmétique",
-  "Fonctions",
-  "Probabilités",
-  "Mesures",
-  "Logique",
-];
 
 const DURATIONS = [20, 30, 45, 60];
 
 export default function AIGeneratorModal({ type, onGenerate, onClose, progress, defaultLevel }: AIGeneratorModalProps) {
+  const { areas: subjectAreas } = useSubjectAreas();
   const [params, setParams] = useState<AIGenerateParams>({
     topic: "",
     level: defaultLevel || "6eme",
@@ -291,7 +283,7 @@ export default function AIGeneratorModal({ type, onGenerate, onClose, progress, 
                       className="w-full px-4 py-2.5 border border-gray-200 bg-gray-50 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/30 transition-all appearance-none font-medium text-gray-800"
                       aria-label="Domaine mathématique"
                     >
-                      {SUBJECT_AREAS.map((s) => (
+                      {subjectAreas.map((s) => (
                         <option key={s} value={s}>
                           {s}
                         </option>
