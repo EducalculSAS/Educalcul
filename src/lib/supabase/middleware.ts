@@ -22,12 +22,15 @@ export async function updateSession(
         getAll() {
           return request.cookies.getAll();
         },
-        setAll(cookiesToSet) {
+        setAll(cookiesToSet, headers) {
           cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
           supabaseResponse = NextResponse.next({ request });
           cookiesToSet.forEach(({ name, value, options }) =>
             supabaseResponse.cookies.set(name, value, options),
           );
+          // En-têtes demandés par @supabase/ssr quand la session change (Cache-Control: private, no-store...) : une réponse qui porte
+          // un cookie de session ne doit jamais être gardée par un cache partagé (CDN) puis servie à quelqu'un d'autre.
+          Object.entries(headers ?? {}).forEach(([key, value]) => supabaseResponse.headers.set(key, value));
         },
       },
     },
