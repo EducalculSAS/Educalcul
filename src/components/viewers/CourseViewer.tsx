@@ -618,7 +618,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
       {/* Main Content Area */}
       <div className="flex-1 flex flex-col h-full overflow-hidden bg-white relative">
         {/* Header */}
-        <div className="h-14 border-b border-[var(--greek-gold)] flex items-center px-4 gap-2 bg-[var(--greek-cream)] shrink-0 z-10">
+        <div className="h-14 border-b border-[var(--greek-gold)] flex items-center px-3 md:px-4 gap-1.5 md:gap-2 bg-[var(--greek-cream)] shrink-0 z-10">
           {/* Flèche retour */}
           {onBack && (
             <GlassIconButton icon={ChevronLeft} onClick={onBack} color="navy" size="sm" aria-label="Retour à l'aperçu" />
@@ -653,7 +653,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
           {/* Cercle progression SVG */}
           <div className="flex-shrink-0">
-            <svg width="44" height="44" viewBox="0 0 44 44">
+            <svg viewBox="0 0 44 44" className="w-9 h-9 md:w-11 md:h-11">
               <circle cx="22" cy="22" r={r} fill="none" stroke="rgba(197,161,72,0.2)" strokeWidth="3" />
               <circle
                 cx="22" cy="22" r={r} fill="none"
@@ -673,7 +673,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         {/* Content Viewer */}
         <div ref={mainScrollRef} className={`flex-1 overflow-y-auto bg-white scroll-smooth transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}>
           <div
-            className="max-w-5xl mx-auto px-4 py-6 md:px-8 md:py-10 transition-[padding-bottom] duration-200"
+            className="max-w-5xl mx-auto px-4 pt-6 pb-28 md:px-8 md:py-10 transition-[padding-bottom] duration-200"
             style={mathKeyboardOpen ? { paddingBottom: "380px" } : undefined}
           >
             {currentLesson ? (

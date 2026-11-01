@@ -643,7 +643,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
       </div>
 
       <div ref={mainScrollRef} className={`flex-1 overflow-y-auto p-3 md:p-5 bg-white/50 transition-opacity duration-200 ${contentVisible ? "opacity-100" : "opacity-0"}`}>
-        <div className="max-w-4xl mx-auto py-2 md:py-4">
+        <div className="max-w-4xl mx-auto pt-2 pb-44 md:py-4">
         <div className="bg-[var(--greek-cream)]/30 rounded-2xl overflow-hidden p-4 md:p-6 border border-[var(--greek-gold)]">
           {/* Header */}
           <div className="flex justify-between items-start mb-8">
@@ -933,7 +933,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
           )}
 
           {/* Actions */}
-          <div className="flex justify-between pt-4 border-t border-gray-100">
+          <div className="flex justify-between pt-4 border-t border-gray-100 pr-14 md:pr-0">
             <GlassButton
               onClick={handlePrevQuestion}
               disabled={currentQuestionIndex === 0 || !showReview}

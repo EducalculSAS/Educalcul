@@ -1057,13 +1057,12 @@ export default function CaliaSceneDemo({
         href="/parent/subscription"
         title="Calia en classe, l'IA qui enseigne à l'oral, réservée au plan Family"
         aria-label="Calia en classe verrouillée, passer au plan Family"
-        className={`relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0`}
-        style={{ background: "var(--greek-blue)", border: "2px solid rgba(197,161,72,0.4)", opacity: 0.6 }}
+        className="liquid-glass-btn calia-glass calia-glass-ring backdrop-blur-[32px] backdrop-saturate-[1.4] relative w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
+        style={{ opacity: 0.7 }}
       >
         <Image src="/logoAI.png" alt="Calia" width={18} height={18} className="object-contain" />
         <span
-          className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center"
-          style={{ background: "var(--greek-gold)" }}
+          className="calia-glass-gold absolute -bottom-1 -right-1 w-4 h-4 rounded-full flex items-center justify-center"
         >
           <Lock className="w-2.5 h-2.5" style={{ color: "var(--greek-blue)" }} />
         </span>
@@ -1133,8 +1132,8 @@ export default function CaliaSceneDemo({
         onClick={isRunning ? () => stop() : paused ? resume : start}
         aria-label={isRunning ? "Arrêter Calia en classe" : paused ? "Reprendre Calia en classe (séance en pause)" : "Lancer Calia en classe"}
         title={paused ? "Séance en pause faute de réponse. Clique pour reprendre là où vous en étiez." : undefined}
-        className={`relative w-9 h-9 rounded-full flex items-center justify-center shadow-sm transition-transform hover:scale-105 active:scale-95 flex-shrink-0 ${paused ? "animate-pulse" : ""}`}
-        style={{ background: "var(--greek-blue)", border: `2px solid ${isRunning ? "#ef4444" : "var(--greek-gold)"}` }}
+        className={`liquid-glass-btn calia-glass calia-glass-ring backdrop-blur-[32px] backdrop-saturate-[1.4] relative w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 ${paused ? "animate-pulse" : ""}`}
+        style={isRunning ? { borderColor: "rgba(239,68,68,0.95)" } : undefined}
       >
         <Image src="/logoAI.png" alt="Calia" width={18} height={18} className="object-contain" />
       </button>
@@ -1165,13 +1164,13 @@ export default function CaliaSceneDemo({
               (bas-droite), masqué pendant cette session (AITutorContext). */}
           <div
             ref={clusterRef}
-            className="fixed bottom-[88px] right-4 z-[70] flex flex-col items-end gap-3 max-w-[calc(100vw-2rem)]"
+            className="fixed bottom-[112px] md:bottom-[88px] right-4 z-[70] flex flex-col items-end gap-3 max-w-[calc(100vw-2rem)]"
             style={{ transform: `translate(${clusterOffset.x}px, ${clusterOffset.y}px)`, transition: "transform 0.9s cubic-bezier(0.34, 1.3, 0.64, 1)" }}
           >
             {(sayText || error) && (
               <div
-                className="rounded-2xl rounded-br-sm px-4 py-2.5 shadow-lg text-sm max-w-[18rem]"
-                style={error ? { background: "#fef2f2", color: "#b91c1c", border: "1px solid #fecaca" } : { background: "var(--greek-blue)", color: "#fff" }}
+                className={`${error ? "" : "calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4]"} rounded-2xl rounded-br-sm px-4 py-2.5 text-sm max-w-[min(18rem,calc(100vw-2rem))] max-h-[32vh] overflow-y-auto`}
+                style={error ? { background: "rgba(254,242,242,0.85)", color: "#b91c1c", border: "1px solid rgba(254,202,202,0.9)", boxShadow: "0 10px 28px rgba(185,28,28,0.15)", backdropFilter: "blur(24px) saturate(1.3)" } : { color: "#fff" }}
               >
                 {error ? error : <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(sayText || "") }} style={shownWords === null ? undefined : { display: "none" }} />}
                 {!error && shownWords !== null && sayTokens.slice(0, shownWords).map((t, i) => (
@@ -1180,7 +1179,7 @@ export default function CaliaSceneDemo({
               </div>
             )}
             {interim && (
-              <div className="rounded-2xl px-4 py-2 text-sm italic max-w-[18rem]" style={{ background: "rgba(15,30,58,0.06)", color: "var(--text-muted)" }}>
+              <div className="calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4] rounded-2xl px-4 py-2 text-sm italic max-w-[min(18rem,calc(100vw-2rem))]" style={{ color: "rgba(240,237,232,0.85)" }}>
                 {interim}…
               </div>
             )}
@@ -1194,8 +1193,7 @@ export default function CaliaSceneDemo({
                 }}
               >
                 <div
-                  className="w-14 h-14 rounded-full flex items-center justify-center shadow-lg"
-                  style={{ background: "var(--greek-blue)", border: "2px solid var(--greek-gold)" }}
+                  className="calia-glass calia-glass-ring backdrop-blur-[32px] backdrop-saturate-[1.4] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center"
                 >
                   {loading ? (
                     <span className="flex gap-1 items-center">
@@ -1211,8 +1209,7 @@ export default function CaliaSceneDemo({
                   type="button"
                   onClick={() => stop()}
                   aria-label="Fermer Calia en classe"
-                  className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center text-white"
-                  style={{ background: "var(--greek-blue)" }}
+                  className="calia-glass backdrop-blur-xl absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-white"
                 >
                   <X className="w-3 h-3" />
                 </button>
@@ -1229,13 +1226,13 @@ export default function CaliaSceneDemo({
             </div>
 
             {!speechSupported && (
-              <div className="flex items-center gap-2 rounded-full pl-4 pr-1.5 py-1.5 shadow-lg" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
+              <div className="calia-glass-light backdrop-blur-[32px] backdrop-saturate-[1.4] flex items-center gap-2 rounded-full pl-4 pr-1.5 py-1.5 max-w-full">
                 <input
                   value={textFallback}
                   onChange={(e) => setTextFallback(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && submitTextFallback()}
                   placeholder="Ton navigateur ne supporte pas la voix, écris ici"
-                  className="text-sm outline-none bg-transparent w-56"
+                  className="text-sm outline-none bg-transparent w-44 sm:w-56 min-w-0"
                   disabled={loading}
                 />
                 <GlassIconButton icon={Send} color="navy" size="sm" aria-label="Envoyer" onClick={submitTextFallback} disabled={loading} />
@@ -1245,14 +1242,10 @@ export default function CaliaSceneDemo({
 
           {(boardLines.length > 0 || boardWriteOpen) && (
             <div
-              className="fixed z-[65] rounded-2xl shadow-2xl overflow-hidden top-16 left-2 right-2 md:top-20 md:right-4 md:left-auto md:w-80"
-              style={{
-                background: "linear-gradient(160deg, #333c48, #20252c)",
-                border: "1px solid rgba(238,242,236,0.15)",
-                boxShadow: "0 12px 32px rgba(0,0,0,0.35)",
-                transform: `translate(${boardOffset.x}px, ${boardOffset.y}px)`,
-              }}
+              className="fixed z-[65] top-16 left-2 right-2 md:top-20 md:right-4 md:left-auto md:w-80"
+              style={{ transform: `translate(${boardOffset.x}px, ${boardOffset.y}px)` }}
             >
+            <div className="calia-glass calia-glass-board backdrop-blur-[32px] backdrop-saturate-[1.4] rounded-3xl overflow-hidden">
               <div
                 onPointerDown={onBoardHeaderPointerDown}
                 onPointerMove={onBoardHeaderPointerMove}
@@ -1310,6 +1303,7 @@ export default function CaliaSceneDemo({
                   </GlassButton>
                 </div>
               )}
+            </div>
             </div>
           )}
         </>,

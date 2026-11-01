@@ -446,27 +446,31 @@ export default function AITutor() {
   return (
     <>
       {/* ── Floating button ── */}
-      <button
-        ref={floatBtnRef}
-        onClick={() => { setOpen((v) => !v); setMinimized(false); setHasOpened(true); }}
-        aria-label="Ouvrir Calia"
-        className={`fixed bottom-[88px] right-4 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 select-none group
+      {/* Le déplacement / grossissement va sur ce <span>, le verre (flou) sur le bouton : Safari coupe le flou d'un élément dont le
+          transform change. Sur téléphone la bulle est plus petite et plus haute, pour ne pas couvrir « Suivant » / « Valider » (barres du bas). */}
+      <span
+        className={`fixed bottom-[112px] md:bottom-[88px] right-4 z-50 transition-all duration-300 group
           ${open ? "scale-90" : "hover:scale-110 hover:-translate-y-1"}
           ${!isSupportMode && !hasOpened && !sub.loading && sub.features.ai_access !== "none" ? "animate-bounce-slow" : ""}
           ${mathKeyboardOpen ? "opacity-0 scale-75 pointer-events-none" : ""}
         `}
-        style={{ background: "#0d1829", border: "1.5px solid rgba(197,161,72,0.45)" }}
+      >
+      <button
+        ref={floatBtnRef}
+        onClick={() => { setOpen((v) => !v); setMinimized(false); setHasOpened(true); }}
+        aria-label="Ouvrir Calia"
+        className="liquid-glass-btn calia-glass calia-glass-ring backdrop-blur-[32px] backdrop-saturate-[1.4] relative w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center select-none"
       >
         {!isSupportMode && !hasOpened && !sub.loading && sub.features.ai_access !== "none" && (
-          <span className="absolute inset-0 rounded-full border-2 border-[var(--greek-gold)] animate-ping opacity-60" />
+          <span className="absolute inset-0 rounded-full border-2 border-[var(--greek-gold)] animate-ping opacity-60 pointer-events-none" />
         )}
         {!isSupportMode && !sub.loading && sub.features.ai_access === "limited" && !open && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-[var(--greek-gold)] rounded-full text-[10px] font-black text-[var(--greek-blue)] flex items-center justify-center shadow">
+          <span className="calia-glass-gold absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full text-[10px] font-black text-[var(--greek-blue)] flex items-center justify-center">
             {aiRemaining(sub)}
           </span>
         )}
         {!isSupportMode && !sub.loading && sub.features.ai_access === "none" && !open && (
-          <span className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center shadow">
+          <span className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full flex items-center justify-center border border-white/40" style={{ background: "linear-gradient(180deg, rgba(248,113,113,0.95), rgba(220,38,38,0.95))" }}>
             <Lock className="w-3 h-3 text-white" />
           </span>
         )}
@@ -474,23 +478,23 @@ export default function AITutor() {
           <X className="w-6 h-6" style={{ color: "rgba(240,237,232,0.8)" }} />
         ) : (
           <>
-            <Image src="/logoAI.png" alt="Calia" width={30} height={30} className="object-contain" />
+            <Image src="/logoAI.png" alt="Calia" width={30} height={30} className="object-contain w-6 h-6 md:w-[30px] md:h-[30px]" />
           </>
         )}
       </button>
+      </span>
 
       {/* ── Chat panel ── */}
       {open && !mathKeyboardOpen && (
         <div
           ref={chatPanelRef}
-          className={`fixed bottom-[164px] right-4 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-[calc(100vw-1.5rem)]
-            rounded-2xl shadow-2xl flex flex-col overflow-hidden transition-[height] duration-300 animate-chat-open
-            ${minimized ? "h-[60px]" : "h-[500px]"}
+          className={`calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4] fixed bottom-[176px] md:bottom-[164px] right-4 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-[calc(100vw-1.5rem)]
+            rounded-3xl flex flex-col overflow-hidden transition-[height] duration-300 animate-chat-open
+            ${minimized ? "h-[60px]" : "h-[min(500px,calc(100dvh-196px))] md:h-[min(500px,calc(100dvh-184px))]"}
           `}
-          style={{ background: "#0d1829", border: "1px solid rgba(197,161,72,0.25)" }}
         >
           {/* ── Header ── */}
-          <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ borderBottom: "1px solid rgba(197,161,72,0.15)", background: "rgba(255,255,255,0.03)" }}>
+          <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ borderBottom: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.06)" }}>
             <Image src="/logoAI.png" alt="Calia" width={28} height={28} className="object-contain flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Calia</p>
@@ -537,7 +541,7 @@ export default function AITutor() {
               {/* ── Context chip ── */}
               {contextLabel && (
                 <div className="px-3 pt-2.5 shrink-0">
-                  <div className="flex items-center gap-2 rounded-xl px-3 py-1.5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(197,161,72,0.15)" }}>
+                  <div className="calia-glass-soft flex items-center gap-2 rounded-xl px-3 py-1.5">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-400 shrink-0" />
                     <span className="text-[10px] font-black uppercase tracking-widest truncate" style={{ color: "rgba(197,161,72,0.8)" }}>
                       {contextLabel}
@@ -557,12 +561,12 @@ export default function AITutor() {
                     {msg.role === "assistant" && (
                       <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0 mt-1" />
                     )}
-                    <div className="max-w-[82%] px-3.5 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap"
+                    <div className={`max-w-[82%] px-3.5 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-wrap ${msg.local ? "" : msg.role === "assistant" ? "calia-glass-soft" : "calia-glass-gold"}`}
                       style={msg.local
-                        ? { background: "rgba(239,68,68,0.12)", color: "#fca5a5", border: "1px solid rgba(239,68,68,0.25)", borderBottomLeftRadius: 4 }
+                        ? { background: "rgba(239,68,68,0.14)", color: "#fca5a5", border: "1px solid rgba(239,68,68,0.3)", borderBottomLeftRadius: 4 }
                         : msg.role === "assistant"
-                        ? { background: "rgba(255,255,255,0.07)", color: "rgba(240,237,232,0.85)", borderBottomLeftRadius: 4 }
-                        : { background: "var(--greek-gold)", color: "var(--greek-blue)", borderBottomRightRadius: 4 }}>
+                        ? { color: "rgba(240,237,232,0.9)", borderBottomLeftRadius: 4 }
+                        : { color: "var(--greek-blue)", borderBottomRightRadius: 4 }}>
                       {/* Un message élève passe par renderUserContent, qui échappe
                           d'abord le HTML avant de rendre le LaTeX, donc pas de
                           surface XSS, mais un passage cité en $...$ (ex. via
@@ -575,7 +579,7 @@ export default function AITutor() {
                 {loading && (
                   <div className="flex items-center gap-2">
                     <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0" />
-                    <div className="px-3.5 py-2.5 rounded-2xl" style={{ background: "rgba(255,255,255,0.07)" }}>
+                    <div className="calia-glass-soft px-3.5 py-2.5 rounded-2xl">
                       <span className="flex gap-1 items-center h-3.5">
                         {[0, 1, 2].map(j => <span key={j} className="w-1.5 h-1.5 rounded-full animate-typing-dot" style={{ background: "rgba(197,161,72,0.7)", animationDelay: `${j * 150}ms` }} />)}
                       </span>
@@ -611,7 +615,7 @@ export default function AITutor() {
                   </div>
                 </div>
               ) : (
-                <div className="px-3 py-3 shrink-0 flex flex-col gap-2" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
+                <div className="px-3 py-3 shrink-0 flex flex-col gap-2" style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}>
                   {homework && (
                     <div className="flex items-center justify-between gap-2 rounded-lg px-3 py-1.5 text-[11px]" style={{ background: "rgba(197,161,72,0.12)", color: "rgba(240,237,232,0.85)" }}>
                       <span className="truncate">Devoir en photo : Calia te guide sans donner la réponse</span>
@@ -640,8 +644,8 @@ export default function AITutor() {
                     onKeyDown={handleKey}
                     placeholder="Pose ta question…"
                     rows={1}
-                    className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none resize-none"
-                    style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.15)", color: "rgba(240,237,232,0.85)", minHeight: "36px", maxHeight: "80px" }}
+                    className="calia-glass-soft flex-1 rounded-2xl px-3.5 py-2 text-sm outline-none resize-none placeholder:text-white/40 focus:border-[rgba(222,188,104,0.65)] transition-colors"
+                    style={{ color: "rgba(240,237,232,0.92)", minHeight: "36px", maxHeight: "80px" }}
                   />
                   <GlassIconButton
                     icon={Send}
