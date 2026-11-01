@@ -85,7 +85,6 @@ function Frame({ p, w, r, facets = false }: { p: Pal; w: number; r: number; face
       <rect {...rect} stroke={p.mid} strokeWidth={w * 0.7} />
       {facets && <rect {...rect} pathLength={100} stroke={p.light} strokeWidth={w * 0.7} strokeDasharray="2.2 2.2" strokeOpacity=".55" />}
       <rect x={o + inner} y={o + inner} width={size - 2 * inner} height={size - 2 * inner} rx={Math.max(1, r - inner)} fill="none" stroke={p.light} strokeWidth={w * 0.14} strokeOpacity=".8" />
-      {p !== PAL.gold && p !== PAL.pro && <rect x={o + inner * 2.2} y={o + inner * 2.2} width={size - 4.4 * inner} height={size - 4.4 * inner} rx={Math.max(1, r - inner * 2.2)} fill="none" stroke="#d9b95a" strokeWidth={w * 0.1} strokeOpacity=".9" />}
       <rect {...rect} pathLength={100} className="rf-shine" stroke="#fff" strokeWidth={w * 0.3} strokeLinecap="round" strokeDasharray="4 96" strokeOpacity=".95" />
     </g>
   );
