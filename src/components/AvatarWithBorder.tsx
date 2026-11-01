@@ -20,35 +20,14 @@ export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
 const SIZE: Record<AvatarSize, number> = { xs: 28, sm: 36, md: 44, lg: 64, xl: 88, "2xl": 112 };
 
-interface Ring {
-  /** Épaisseur du contour (px) et trait fixe pour « aucun ». */
-  width: number;
-}
-
-/**
- * Contour par clé `equipped_border` (voir BORDER_STYLES dans badgeStyles.ts). Les couleurs, vitesses et le halo sont dans
- * globals.css (`.ring-fx[data-ring="…"]`) : bande de dégradé qui tourne, halo qui respire, étincelles qui courent sur le contour,
- * dans l'esprit de la flamme de série (plusieurs couches, vivant), au lieu d'un simple trait qui change de couleur.
- */
-const RINGS: Record<string, Ring> = {
-  none:     { width: 1.5 },
-  bronze:   { width: 2 },
-  silver:   { width: 2 },
-  gold:     { width: 2.5 },
-  diamond:  { width: 2.5 },
-  premium:  { width: 2.5 },
-  famille:  { width: 2.5 },
-  flamme:   { width: 3 },
-  pro:      { width: 2.5 },
-  elite:    { width: 3 },
-  mathador: { width: 2.5 },
-  admin:    { width: 3 },
-};
+/** Épaisseur du cadre (px) selon la taille : les niveaux sont de vrais cadres épais en relief ; « aucun » reste un simple trait fin. */
+const FRAME_W: Record<AvatarSize, number> = { xs: 3, sm: 4.5, md: 5.5, lg: 7.5, xl: 10, "2xl": 12 };
+const KEYS = new Set(["none", "bronze", "silver", "gold", "diamond", "premium", "famille", "flamme", "pro", "elite", "mathador", "admin"]);
 
 /** "border-admin" (ancien format du profil admin) → "admin". */
 export function normalizeBorderKey(key: string | null | undefined): string {
   const k = (key || "none").replace(/^border-/, "");
-  return k in RINGS ? k : "none";
+  return KEYS.has(k) ? k : "none";
 }
 
 function initialsOf(name: string): string {
@@ -73,15 +52,16 @@ export default function AvatarWithBorder({
   avatar, equippedBorder, name, size = "sm", online = false, className = "", label,
 }: Props) {
   const av = SIZE[size];
-  const ring = RINGS[normalizeBorderKey(equippedBorder)];
+  const key = normalizeBorderKey(equippedBorder);
+  const rw = key === "none" ? 1.5 : FRAME_W[size];
   const url = avatarUrl(avatar);
   const isLogo = url === ADMIN_AVATAR;
 
   // Espace réservé autour de l'image pour le contour (+ sa lueur animée).
   const gap = Math.max(2, Math.round(av * 0.05));
-  const total = av + (ring.width + gap) * 2;
+  const total = av + (rw + gap) * 2;
   const radius = Math.round(av * 0.28);
-  const ringRadius = radius + gap + ring.width / 2;
+  const ringRadius = radius + gap + rw / 2;
 
   return (
     <span
@@ -93,7 +73,7 @@ export default function AvatarWithBorder({
       <span
         className="absolute overflow-hidden flex items-center justify-center font-bold select-none"
         style={{
-          inset: ring.width + gap,
+          inset: rw + gap,
           borderRadius: radius,
           background: isLogo ? "#fff" : "rgba(15,30,58,0.08)",
           color: "var(--greek-blue)",
@@ -117,16 +97,15 @@ export default function AvatarWithBorder({
         )}
       </span>
 
-      <span
-        className="ring-fx"
-        data-ring={normalizeBorderKey(equippedBorder)}
-        aria-hidden="true"
-        style={{ borderRadius: ringRadius + ring.width / 2, ["--rw" as string]: `${ring.width}px` }}
-      >
-        <i className="ring-fx-glow" />
-        <i className="ring-fx-band" />
-        {size !== "xs" && <AvatarRingDecor ringKey={normalizeBorderKey(equippedBorder)} />}
-      </span>
+      {key === "none" ? (
+        <span className="ring-fx" data-ring="none" aria-hidden="true" style={{ borderRadius: ringRadius + rw / 2, ["--rw" as string]: `${rw}px` }}>
+          <i className="ring-fx-band" />
+        </span>
+      ) : (
+        <span className="ring-fx" aria-hidden="true">
+          <AvatarRingDecor ringKey={key} w={(rw / total) * 100} r={(ringRadius / total) * 100} compact={size === "xs"} />
+        </span>
+      )}
 
       {online && (
         <span
