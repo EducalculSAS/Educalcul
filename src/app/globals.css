@@ -3248,8 +3248,9 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-admin-animated, .name-blue-animated) {
   display: inline-block;
   position: relative;
+  font-family: var(--font-display), "Cinzel", serif; /* même police que les titres du site */
   font-weight: 900;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.04em;
   background-image: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.85) 50%, transparent 60%), linear-gradient(180deg, var(--t) 0%, var(--m) 52%, var(--b) 100%);
   background-size: 250% 100%, 100% 100%;
   background-repeat: no-repeat;

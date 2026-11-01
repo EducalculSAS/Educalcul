@@ -5,6 +5,8 @@
  * (globals.css, classes `rf-*`). Composant sans état ni effet : utilisable dans un Server Component.
  */
 import type { ReactNode } from "react";
+import FlameRing from "@/components/FlameRing";
+import { pointAt } from "@/lib/ringPath";
 
 type Pal = { dark: string; mid: string; light: string };
 const PAL: Record<string, Pal> = {
@@ -20,19 +22,6 @@ const PAL: Record<string, Pal> = {
   mathador: { dark: "#12408f", mid: "#3a8cf0", light: "#c4e2ff" },
   admin: { dark: "#0b5e57", mid: "#2cc4b4", light: "#c4f7f0" },
 };
-
-/** Flamme en trois couches (mêmes silhouettes que la flamme de série), plantée par sa base en (x, y). */
-function Flame({ x, y, s, rot = 0, d = 0, hot = false }: { x: number; y: number; s: number; rot?: number; d?: number; hot?: boolean }) {
-  return (
-    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s}) translate(-50 -114)`}>
-      <g className="rf-flick" style={{ animationDelay: `${-d}s` }}>
-        <path d="M50 6 C57 26 82 42 82 74 C82 98 68 114 50 114 C32 114 18 98 18 74 C18 56 28 46 34 32 C38 44 42 48 45 44 C49 36 46 18 50 6 Z" fill="url(#rg-fo)" stroke="#a32400" strokeWidth="5" strokeLinejoin="round" />
-        <path d="M50 40 C55 56 70 64 70 84 C70 100 61 110 50 110 C39 110 30 100 30 84 C30 72 37 66 40 56 C43 64 46 66 48 62 C51 56 49 48 50 40 Z" fill="url(#rg-fm)" />
-        <path d="M50 72 C53 82 61 88 61 98 C61 106 56 110 50 110 C44 110 39 106 39 98 C39 90 44 86 46 80 C48 84 49 84 50 80 C51 77 50 75 50 72 Z" fill={hot ? "#fff" : "url(#rg-fc)"} />
-      </g>
-    </g>
-  );
-}
 
 /** Étincelle à 4 branches qui scintille. */
 function Spark({ x, y, r = 1, d = 0, fill = "#fff" }: { x: number; y: number; r?: number; d?: number; fill?: string }) {
@@ -80,33 +69,10 @@ function Crown({ x, y, s, jewels }: { x: number; y: number; s: number; jewels: [
 
 const DEFS: ReactNode = (
   <defs>
-    <linearGradient id="rg-fo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ff8a00" /><stop offset="1" stopColor="#ff3d00" /></linearGradient>
-    <linearGradient id="rg-fm" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ffd23f" /><stop offset="1" stopColor="#ff9c00" /></linearGradient>
-    <linearGradient id="rg-fc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fffbe0" /><stop offset="1" stopColor="#ffe27a" /></linearGradient>
     <linearGradient id="rg-dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#e0fbff" /><stop offset=".5" stopColor="#3bb8f0" /><stop offset="1" stopColor="#0b5f8a" /></linearGradient>
     <linearGradient id="rg-gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#fff3a3" /><stop offset=".5" stopColor="#f5c518" /><stop offset="1" stopColor="#a16207" /></linearGradient>
   </defs>
 );
-
-type P = { x: number; y: number; nx: number; ny: number; ang: number };
-
-/** Point d'abscisse curviligne `t` (0–1) sur un carré aux coins arrondis (sens horaire), avec la normale sortante. */
-function pointAt(t: number, inset: number, r: number): P {
-  const a = inset, b = 100 - inset, side = b - a - 2 * r, arc = (Math.PI / 2) * r, L = 4 * side + 4 * arc;
-  let d = (((t % 1) + 1) % 1) * L;
-  let x = 0, y = 0, nx = 0, ny = 0;
-  const seg = (len: number) => { if (d <= len) return true; d -= len; return false; };
-  const arcAt = (cx: number, cy: number, from: number) => { const f = from + (d / arc) * (Math.PI / 2); nx = Math.cos(f); ny = Math.sin(f); x = cx + r * nx; y = cy + r * ny; };
-  if (seg(side)) { x = a + r + d; y = a; ny = -1; }
-  else if (seg(arc)) arcAt(b - r, a + r, -Math.PI / 2);
-  else if (seg(side)) { x = b; y = a + r + d; nx = 1; }
-  else if (seg(arc)) arcAt(b - r, b - r, 0);
-  else if (seg(side)) { x = b - r - d; y = b; ny = 1; }
-  else if (seg(arc)) arcAt(a + r, b - r, Math.PI / 2);
-  else if (seg(side)) { x = a; y = b - r - d; nx = -1; }
-  else arcAt(a + r, a + r, Math.PI);
-  return { x, y, nx, ny, ang: (Math.atan2(ny, nx) * 180) / Math.PI };
-}
 
 /** Cadre épais en relief : contour sombre, matière, liseré clair, et un éclat qui fait le tour. `facets` = cristal (segments clairs). */
 function Frame({ p, w, r, facets = false }: { p: Pal; w: number; r: number; facets?: boolean }) {
@@ -119,6 +85,7 @@ function Frame({ p, w, r, facets = false }: { p: Pal; w: number; r: number; face
       <rect {...rect} stroke={p.mid} strokeWidth={w * 0.7} />
       {facets && <rect {...rect} pathLength={100} stroke={p.light} strokeWidth={w * 0.7} strokeDasharray="2.2 2.2" strokeOpacity=".55" />}
       <rect x={o + inner} y={o + inner} width={size - 2 * inner} height={size - 2 * inner} rx={Math.max(1, r - inner)} fill="none" stroke={p.light} strokeWidth={w * 0.14} strokeOpacity=".8" />
+      {p !== PAL.gold && p !== PAL.pro && <rect x={o + inner * 2.2} y={o + inner * 2.2} width={size - 4.4 * inner} height={size - 4.4 * inner} rx={Math.max(1, r - inner * 2.2)} fill="none" stroke="#d9b95a" strokeWidth={w * 0.1} strokeOpacity=".9" />}
       <rect {...rect} pathLength={100} className="rf-shine" stroke="#fff" strokeWidth={w * 0.3} strokeLinecap="round" strokeDasharray="4 96" strokeOpacity=".95" />
     </g>
   );
@@ -186,27 +153,9 @@ export default function AvatarRingDecor({ ringKey, w, r, compact = false }: { ri
           </>
         );
         break;
-      case "flamme": {
-        const top = [[10, 0.2, -8], [24, 0.27, -5], [38, 0.34, -2], [50, 0.42, 0], [62, 0.34, 2], [76, 0.27, 5], [90, 0.2, 8]];
-        const sideY = [[58, 0.22], [40, 0.27], [22, 0.22]];
-        const bottom = [12, 28, 44, 60, 76, 90];
-        const wi = w;
-        behind = (
-          <g className="rf-fire">
-            <clipPath id="rg-fclip">
-              <path clipRule="evenodd" d={`M-60 -60 H160 V160 H-60Z M${wi + r} ${wi} H${100 - wi - r} A${r} ${r} 0 0 1 ${100 - wi} ${wi + r} V${100 - wi - r} A${r} ${r} 0 0 1 ${100 - wi - r} ${100 - wi} H${wi + r} A${r} ${r} 0 0 1 ${wi} ${100 - wi - r} V${wi + r} A${r} ${r} 0 0 1 ${wi + r} ${wi}Z`} />
-            </clipPath>
-            <g clipPath="url(#rg-fclip)">
-              {bottom.map((x, i) => <Flame key={`bo${i}`} x={x} y={104} s={0.16 + (i % 2) * 0.03} rot={(i - 2.5) * 5} d={i * 0.17} />)}
-              {sideY.map(([y, sc], i) => <Flame key={`l${i}`} x={3} y={y + 14} s={sc} rot={-14} d={i * 0.23 + 0.1} />)}
-              {sideY.map(([y, sc], i) => <Flame key={`r${i}`} x={97} y={y + 14} s={sc} rot={14} d={i * 0.19 + 0.3} />)}
-              {top.map(([x, sc, rot], i) => <Flame key={`t2${i}`} x={x + (i % 2 ? 6 : -6)} y={10} s={sc * 0.62} rot={rot * 1.4} d={i * 0.21 + 0.4} />)}
-              {top.map(([x, sc, rot], i) => <Flame key={`t${i}`} x={x} y={8} s={sc} rot={rot} d={i * 0.13} hot={i === 3} />)}
-            </g>
-          </g>
-        );
+      case "flamme":
+        behind = <FlameRing w={w} r={r} />;
         break;
-      }
       case "pro": {
         const feathers = [[-84, 22], [-70, 30], [-56, 36], [-42, 40], [-28, 41], [-14, 38], [0, 33], [14, 26], [28, 19]];
         const wing = (
