@@ -76,7 +76,7 @@ function flameRing(n: number, h: number, variant: number, inset = 4): string {
   let d = `M${f(E[0].x)} ${f(E[0].y)}`;
   for (let i = 0; i < n; i++) {
     const a = E[i], z = E[i + 1], c = pointAt((i + 0.5) / n, inset), tx = -c.ny, ty = c.nx; // tangente (sens horaire)
-    const hh = h * (0.7 + 0.6 * rnd(i, 10 + variant)), lean = 10 + rnd(i, 20 + variant) * 6;
+    const hh = h * (0.7 + 0.6 * rnd(i, 10 + variant)), lean = 4 + rnd(i, 20 + variant) * 4;
     const tip = { x: c.x + c.nx * hh + tx * lean, y: c.y + c.ny * hh + ty * lean };
     const bx = (a.x + z.x) / 2, by = (a.y + z.y) / 2; // milieu de la base
     // flanc avant bombé, flanc arrière creusé : la langue s'enroule dans le sens de la montée, comme une vraie flamme
@@ -96,12 +96,12 @@ export default function AvatarRingDecor({ ringKey }: { ringKey: string }) {
   switch (ringKey) {
     case "flamme": {
       const dur = "1.2s", ks = "0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1";
-      const anim = (hh: number, v: number) => <animate attributeName="d" dur={dur} repeatCount="indefinite" calcMode="spline" keySplines={ks} values={[0, 1, 2, 0].map((k) => flameRing(9, hh, v * 3 + k)).join(";")} />;
+      const anim = (hh: number, v: number) => <animate attributeName="d" dur={dur} repeatCount="indefinite" calcMode="spline" keySplines={ks} values={[0, 1, 2, 0].map((k) => flameRing(11, hh, v * 3 + k)).join(";")} />;
       body = (
         <g className="rf-fire">
-          <path fillRule="evenodd" fill="url(#rg-fo)" d={flameRing(9, 34, 0)}>{anim(34, 0)}</path>
-          <path fillRule="evenodd" fill="url(#rg-fm)" d={flameRing(9, 23, 1)}>{anim(23, 1)}</path>
-          <path fillRule="evenodd" fill="url(#rg-fc)" d={flameRing(9, 12, 2)}>{anim(12, 2)}</path>
+          <path fillRule="evenodd" fill="url(#rg-fo)" d={flameRing(11, 17, 0)}>{anim(17, 0)}</path>
+          <path fillRule="evenodd" fill="url(#rg-fm)" d={flameRing(11, 11, 1)}>{anim(11, 1)}</path>
+          <path fillRule="evenodd" fill="url(#rg-fc)" d={flameRing(11, 5, 2)}>{anim(5, 2)}</path>
         </g>
       );
       break;
@@ -109,17 +109,16 @@ export default function AvatarRingDecor({ ringKey }: { ringKey: string }) {
     case "diamond":
       body = (
         <>
-          {perimeter(8, 4).map((p, i) => (
-            <g key={i} transform={`${at(p, 3)} rotate(${p.ang + 90}) scale(0.82) translate(-20 -26)`}>
-              <g className="rf-gem" style={{ animationDelay: `${-((i * 0.43) % 3.2)}s` }}>
-                <path d="M10 0 H30 L40 10 L20 34 L0 10 Z" fill="url(#rg-dg)" stroke="#0e7490" strokeWidth="1" strokeLinejoin="round" />
-                <path d="M0 10 H40 M10 0 L14 10 L20 34 M30 0 L26 10 L20 34 M14 10 L20 0 L26 10" fill="none" stroke="#fff" strokeOpacity=".9" strokeWidth=".8" strokeLinejoin="round" />
-                <path d="M10 0 L14 10 L20 0Z M30 0 L26 10 L20 0Z" fill="#fff" fillOpacity=".6" />
-                <path className="rf-glint" d="M20 0 L24 10 L20 34 L16 10Z" fill="#fff" />
+          {perimeter(20, 3.5).map((p, i) => (
+            <g key={i} transform={`${at(p, 2)} rotate(${p.ang + 90}) scale(0.4) translate(-20 -26)`}>
+              <g className="rf-gem" style={{ animationDelay: `${-((i * 0.29) % 3.2)}s` }}>
+                <path d="M10 0 H30 L40 10 L20 34 L0 10 Z" fill="url(#rg-dg)" stroke="#0e7490" strokeWidth="1.4" strokeLinejoin="round" />
+                <path d="M0 10 H40 M10 0 L14 10 L20 34 M30 0 L26 10 L20 34 M14 10 L20 0 L26 10" fill="none" stroke="#fff" strokeOpacity=".85" strokeWidth="1.1" strokeLinejoin="round" />
+                <path d="M10 0 L14 10 L20 0Z M30 0 L26 10 L20 0Z" fill="#fff" fillOpacity=".55" />
               </g>
             </g>
           ))}
-          {perimeter(8, 3).map((p, i) => <Star key={i} x={p.x + p.nx * 5 + p.ny * 14} y={p.y + p.ny * 5 - p.nx * 14} r={0.9 + rnd(i, 1) * 0.5} d={rnd(i, 2) * 1.8} />)}
+          {perimeter(8, 3).map((p, i) => <Star key={i} x={p.x + p.nx * 9} y={p.y + p.ny * 9} r={0.8 + rnd(i, 1) * 0.5} d={rnd(i, 2) * 1.8} />)}
         </>
       );
       break;
