@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import Image from "next/image";
+import { plural } from "@/lib/plural";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Play, CheckCircle, ChevronRight, Menu, X, FileText, Video, ChevronLeft, Sparkles, Lightbulb, PencilLine, Loader2, Keyboard, Pencil, Image as ImageIcon } from "lucide-react";
@@ -475,7 +476,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
 
     return (
       <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">
-        <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <div className="container mx-auto px-3 py-4 md:px-4 md:py-6 max-w-5xl">
           <div className="bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden">
             {/* Thumbnail header — same as preview */}
             <div className="relative h-64 md:h-80 bg-gray-100">
@@ -487,7 +488,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                 </div>
               )}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white w-full">
+                <div className="p-5 md:p-8 text-white w-full">
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--greek-gold)] text-[var(--greek-blue)] text-xs font-bold rounded-full mb-3 shadow-md">
                     <CheckCircle className="w-3.5 h-3.5" /> Cours terminé !
                   </div>
@@ -496,8 +497,8 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
               </div>
             </div>
 
-            <div className="p-8">
-              <div className="flex flex-col md:flex-row gap-8">
+            <div className="p-5 md:p-8">
+              <div className="flex flex-col md:flex-row gap-6 md:gap-8">
                 {/* Left: description + stats */}
                 <div className="flex-grow">
                   <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
@@ -556,15 +557,15 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     <div className="flex h-full bg-white overflow-hidden border border-[var(--greek-gold)] relative">
       {/* Sidebar - Chapter Navigation */}
       <div
-        className={`absolute inset-y-0 left-0 z-30 bg-[var(--greek-cream)] border-r border-[var(--greek-gold)] flex flex-col transition-all duration-300 ease-in-out md:relative md:inset-auto md:z-auto ${sidebarOpen ? "translate-x-0 w-72 md:w-72" : "-translate-x-full md:translate-x-0 w-72 md:w-0 md:overflow-hidden md:border-r-0"}`}
+        className={`absolute inset-y-0 left-0 z-30 bg-[var(--greek-cream)] border-r border-[var(--greek-gold)] flex flex-col transition-all duration-300 ease-in-out md:relative md:inset-auto md:z-auto ${sidebarOpen ? "translate-x-0 w-[88vw] max-w-sm md:w-80 md:max-w-none lg:w-96" : "-translate-x-full md:translate-x-0 w-[88vw] max-w-sm md:w-0 md:overflow-hidden md:border-r-0"}`}
       >
         <div className="p-5 border-b border-[var(--greek-gold)] bg-[var(--greek-cream)] flex justify-between items-center shadow-sm z-10">
-          <div>
-             <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] truncate max-w-[200px]" title={course.title}>
+          <div className="min-w-0 flex-1 pr-2">
+             <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-snug line-clamp-2" title={course.title}>
                {course.title}
              </h3>
              <p className="text-xs text-[var(--greek-bronze)] mt-1">
-               {chapters.reduce((acc, c) => acc + c.lessons.length, 0)} leçons • {chapters.length} chapitres
+               {plural(totalLessons, "leçon")} • {plural(chapters.length, "chapitre")}
              </p>
           </div>
           <div className="md:hidden">
@@ -601,7 +602,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                         <div className={`w-4 h-4 rounded-full border-2 flex-shrink-0 transition-colors ${isActive ? "border-white" : "border-gray-300 group-hover:border-[var(--greek-gold)]"}`} />
                       )}
                       <span
-                        className="truncate flex-1 font-medium"
+                        className="flex-1 min-w-0 font-medium leading-snug line-clamp-2"
                         dangerouslySetInnerHTML={{ __html: renderLatexInHTML(lesson.title) }}
                       />
                       <Icon className={`w-3 h-3 ${isActive ? "opacity-100" : "opacity-40"}`} />
@@ -672,7 +673,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         {/* Content Viewer */}
         <div ref={mainScrollRef} className={`flex-1 overflow-y-auto bg-white scroll-smooth transition-opacity duration-300 ${isRendering ? 'opacity-0' : 'opacity-100'}`}>
           <div
-            className="max-w-4xl mx-auto px-6 py-10 md:px-12 md:py-16 transition-[padding-bottom] duration-200"
+            className="max-w-5xl mx-auto px-4 py-6 md:px-8 md:py-10 transition-[padding-bottom] duration-200"
             style={mathKeyboardOpen ? { paddingBottom: "380px" } : undefined}
           >
             {currentLesson ? (
@@ -863,7 +864,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         </div>
 
         {/* Footer Navigation */}
-        <div className="h-20 border-t border-[var(--greek-gold)] bg-[var(--greek-cream)]/95 backdrop-blur-sm flex items-center justify-between px-6 md:px-12 shrink-0 z-10 sticky bottom-0">
+        <div className="h-20 border-t border-[var(--greek-gold)] bg-[var(--greek-cream)]/95 backdrop-blur-sm flex items-center justify-between px-4 md:px-8 shrink-0 z-10 sticky bottom-0">
           <GlassButton
             onClick={handlePrev}
             disabled={currentChapterIndex === 0 && currentLessonIndex === 0}

@@ -1626,13 +1626,13 @@ export default function ExerciseViewer({
 
     return (
       <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">
-        <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <div className="container mx-auto px-3 py-4 md:px-4 md:py-6 max-w-5xl">
           <div className="bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden">
             {/* Thumbnail header */}
             <div className={`relative h-64 md:h-80 overflow-hidden flex items-center justify-center ${passed ? "bg-[var(--greek-cream)]" : "bg-red-50"}`}>
               <Brain className="w-24 h-24 text-[var(--greek-blue)] opacity-20" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
-                <div className="p-8 text-white w-full">
+                <div className="p-5 md:p-8 text-white w-full">
                   <div className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold rounded-full mb-3 shadow-md ${passed ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]" : "bg-red-500 text-white"}`}>
                     {manual ? <><CheckCircle className="w-3.5 h-3.5" /> Copie envoyée</> : passed ? <><Trophy className="w-3.5 h-3.5" /> Exercice réussi !</> : <><XCircle className="w-3.5 h-3.5" /> Score insuffisant</>}
                   </div>
@@ -1641,8 +1641,8 @@ export default function ExerciseViewer({
               </div>
             </div>
 
-            <div className="p-8">
-              <div className="flex flex-col md:flex-row gap-8">
+            <div className="p-5 md:p-8">
+              <div className="flex flex-col md:flex-row gap-6 md:gap-8">
                 {/* Left */}
                 <div className="flex-grow">
                   <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
@@ -1732,7 +1732,7 @@ export default function ExerciseViewer({
   return (
     <div className="flex flex-col h-full bg-white overflow-hidden border border-[var(--greek-gold)]">
       {/* Header */}
-      <div className="bg-[var(--greek-cream)] border-b border-[var(--greek-gold)] px-6 py-4 flex items-center gap-3 justify-between shrink-0">
+      <div className="bg-[var(--greek-cream)] border-b border-[var(--greek-gold)] px-4 py-3 md:px-6 md:py-4 flex items-center gap-3 justify-between shrink-0">
         <div className="flex items-center gap-3">
           {onBack && (
             <GlassIconButton icon={ArrowLeft} onClick={() => { saveTimeSpent(); onBack(); }} color="navy" size="sm" aria-label="Retour" />
@@ -1753,10 +1753,10 @@ export default function ExerciseViewer({
       <div
         id="exercise-content-container"
         ref={mainScrollRef}
-        className={`flex-1 overflow-y-auto p-4 md:p-8 bg-white/50 transition-opacity duration-200 ${contentVisible ? "opacity-100" : "opacity-0"}`}
+        className={`flex-1 overflow-y-auto p-3 md:p-5 bg-white/50 transition-opacity duration-200 ${contentVisible ? "opacity-100" : "opacity-0"}`}
       >
         <div
-          className={`${currentScreen.layout === "problem" ? "max-w-6xl" : "max-w-3xl"} mx-auto space-y-8 pb-20 transition-[padding-bottom] duration-200`}
+          className={`${currentScreen.layout === "problem" ? "max-w-6xl" : "max-w-4xl"} mx-auto space-y-8 pb-20 transition-[padding-bottom] duration-200`}
           style={mathKeyboardOpen ? { paddingBottom: "380px" } : undefined}
         >
           {(() => {
@@ -1797,7 +1797,7 @@ export default function ExerciseViewer({
             return (
               <div
                 key={block.id}
-                className="bg-[var(--greek-cream)]/30 rounded-2xl overflow-hidden p-6 border border-[var(--greek-gold)]"
+                className="bg-[var(--greek-cream)]/30 rounded-2xl overflow-hidden p-4 md:p-6 border border-[var(--greek-gold)]"
               >
                 <div className="flex justify-between items-start mb-4">
                   <h4 className="font-bold text-lg text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
