@@ -686,6 +686,19 @@ html[data-theme="dark"] :is(div, section, article, aside, li, details, a).bg-whi
   border-color: var(--glass-dark-border);
   box-shadow: var(--glass-dark-shadow);
 }
+/* Champs de saisie blancs → verre clair (même teinte que les cartes, un cran plus transparent), panneaux gris clair arrondis → idem */
+:is(input, textarea, select).bg-white:not([type="checkbox"]):not([type="radio"]) {
+  background-color: rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 2px rgba(15, 30, 58, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+:is(div, section, article, aside, li, details).bg-gray-50:is(.rounded-xl, .rounded-2xl, .rounded-3xl) {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-color: var(--glass-light-border);
+  box-shadow: var(--glass-light-shadow);
+  border-radius: var(--glass-r-card);
+}
+html[data-theme="dark"] :is(input, textarea, select).bg-white { background-color: rgba(23, 34, 56, 0.55); }
+
 /* Champs de saisie et boutons « classiques » (hors pastilles GlassButton) : même courbure partout */
 :is(input, textarea):is(.rounded-lg, .rounded-xl, .rounded-2xl),
 :is(button, a):is(.rounded-lg, .rounded-xl):not(.liquid-glass-btn):not(.rounded-full) {
@@ -3093,3 +3106,125 @@ html[data-theme="dark"] .family-foot { background: rgba(255, 255, 255, 0.03); }
   .nav-progress { animation: none; transform: scaleX(0.6); }
 }
 
+
+/* ═══ Contours d'avatar « vivants » (dans l'esprit de la flamme de série) ═══
+   Trois couches : halo flou qui respire, bande de dégradé qui tourne (limitée au trait grâce à un masque), étincelles qui courent
+   sur le contour (offset-path). Tout en CSS : aucun JS, respecte « réduire les animations ». */
+@property --ring-a {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+.ring-fx {
+  --c1: #c5a148; --c2: #e8cf86; --c3: #fff1bf; --ring-dur: 4s; --ring-glow: rgba(222, 188, 104, 0.55); --ring-glow-dur: 2.6s;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.ring-fx-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: conic-gradient(from var(--ring-a), var(--c1), var(--c2), var(--c3), var(--c2), var(--c1));
+  filter: blur(5px);
+  opacity: 0.55;
+  animation: ring-spin var(--ring-dur) linear infinite, ring-breathe var(--ring-glow-dur) ease-in-out infinite alternate;
+  -webkit-mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  padding: calc(var(--rw) + 1px);
+}
+.ring-fx-band {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--rw);
+  background: conic-gradient(from var(--ring-a), var(--c1), var(--c2), var(--c3), var(--c2), var(--c1));
+  -webkit-mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: ring-spin var(--ring-dur) linear infinite;
+}
+.ring-fx-path {
+  position: absolute;
+}
+.ring-fx-spark {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--spark);
+  height: var(--spark);
+  margin: calc(var(--spark) / -2) 0 0 calc(var(--spark) / -2);
+  border-radius: 50%;
+  background: var(--c3);
+  box-shadow: 0 0 calc(var(--spark) * 2) calc(var(--spark) * 0.5) var(--ring-glow);
+  offset-path: inset(0 round var(--rr));
+  offset-rotate: 0deg;
+  animation: ring-orbit 6s linear infinite, ring-twinkle 1.4s ease-in-out infinite alternate;
+}
+@keyframes ring-spin { to { --ring-a: 360deg; } }
+@keyframes ring-breathe { from { opacity: 0.3; } to { opacity: 0.85; } }
+@keyframes ring-orbit { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+@keyframes ring-twinkle { from { opacity: 0.35; transform: scale(0.7); } to { opacity: 1; transform: scale(1.15); } }
+
+.ring-fx[data-ring="none"] { --c1: rgba(197,161,72,.55); --c2: rgba(197,161,72,.55); --c3: rgba(197,161,72,.55); }
+.ring-fx[data-ring="none"] .ring-fx-glow { display: none; }
+.ring-fx[data-ring="none"] .ring-fx-band { animation: none; }
+.ring-fx[data-ring="bronze"] { --c1: #7c3a0e; --c2: #cd7f32; --c3: #f3c9a0; --ring-dur: 6s; --ring-glow: rgba(205,127,50,.6); }
+.ring-fx[data-ring="silver"] { --c1: #7b8798; --c2: #e8eef6; --c3: #ffffff; --ring-dur: 5s; --ring-glow: rgba(203,213,225,.7); }
+.ring-fx[data-ring="gold"] { --c1: #a16207; --c2: #ffd700; --c3: #fff3a3; --ring-dur: 4s; --ring-glow: rgba(255,215,0,.7); }
+.ring-fx[data-ring="diamond"] { --c1: #0e7490; --c2: #22d3ee; --c3: #e0fbff; --ring-dur: 3.4s; --ring-glow: rgba(34,211,238,.75); }
+.ring-fx[data-ring="premium"] { --c1: #6b21a8; --c2: #a855f7; --c3: #f0abfc; --ring-dur: 4s; --ring-glow: rgba(168,85,247,.7); }
+.ring-fx[data-ring="famille"] { --c1: #0f766e; --c2: #14b8a6; --c3: #99f6e4; --ring-dur: 7s; --ring-glow: rgba(20,184,166,.6); }
+.ring-fx[data-ring="flamme"] { --c1: #dc2626; --c2: #f97316; --c3: #fde047; --ring-dur: 1.8s; --ring-glow: rgba(249,115,22,.85); --ring-glow-dur: .7s; }
+.ring-fx[data-ring="flamme"] .ring-fx-glow { filter: blur(6px); opacity: 0.8; }
+.ring-fx[data-ring="pro"] { --c1: #b45309; --c2: #f59e0b; --c3: #fef3c7; --ring-dur: 3.5s; --ring-glow: rgba(245,158,11,.7); }
+.ring-fx[data-ring="elite"] { --c1: #4c1d95; --c2: #7c3aed; --c3: #22d3ee; --ring-dur: 4s; --ring-glow: rgba(124,58,237,.8); }
+.ring-fx[data-ring="mathador"] { --c1: #4338ca; --c2: #6366f1; --c3: #a5b4fc; --ring-dur: 4.5s; --ring-glow: rgba(99,102,241,.7); }
+.ring-fx[data-ring="admin"] { --c1: #ff6b6b; --c2: #ffd700; --c3: #4ecdc4; --ring-dur: 3s; --ring-glow: rgba(255,170,90,.7); }
+.ring-fx[data-ring="admin"] .ring-fx-band { animation: ring-spin var(--ring-dur) linear infinite, ring-hue 6s linear infinite; }
+@keyframes ring-hue { to { filter: hue-rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .ring-fx-glow, .ring-fx-band, .ring-fx-spark { animation: none !important; }
+  .ring-fx-spark { display: none; }
+}
+
+/* ═══ Noms « vivants » : dégradé vertical métallique (clair en haut, profond en bas, comme la flamme), reflet qui balaie le nom, halo qui respire ═══ */
+:is(.name-blue-animated, .name-bronze-animated, .name-silver-animated, .name-gold-animated, .name-diamond-animated,
+    .name-purple-animated, .name-teal-animated, .name-pro-animated, .name-flame, .name-elite, .name-admin-animated) {
+  display: inline-block;
+  background-image:
+    linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.95) 50%, transparent 62%),
+    linear-gradient(180deg, var(--n-top) 0%, var(--n-mid) 52%, var(--n-bot) 100%);
+  background-size: 260% 100%, 100% 100%;
+  background-repeat: no-repeat;
+  background-position: 170% 0, 0 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--n-mid);
+  font-weight: 800;
+  animation: name-glint var(--n-dur, 3.4s) ease-in-out infinite, name-glow var(--n-glow-dur, 2.4s) ease-in-out infinite alternate;
+}
+@keyframes name-glint {
+  0%, 45% { background-position: 170% 0, 0 0; }
+  100% { background-position: -70% 0, 0 0; }
+}
+@keyframes name-glow {
+  from { filter: drop-shadow(0 0 1px var(--n-glow)); }
+  to { filter: drop-shadow(0 0 6px var(--n-glow)); }
+}
+.name-blue-animated { --n-top: #dbeafe; --n-mid: #3b82f6; --n-bot: #1d4ed8; --n-glow: #3b82f6aa; }
+.name-bronze-animated { --n-top: #f3c9a0; --n-mid: #cd7f32; --n-bot: #7c3a0e; --n-glow: #cd7f32aa; --n-dur: 4s; }
+.name-silver-animated { --n-top: #ffffff; --n-mid: #c5cedb; --n-bot: #7b8798; --n-glow: #cbd5e1cc; }
+.name-gold-animated { --n-top: #fff3a3; --n-mid: #f5c518; --n-bot: #a16207; --n-glow: #facc15cc; --n-dur: 3s; }
+.name-diamond-animated { --n-top: #e0fbff; --n-mid: #22d3ee; --n-bot: #0e7490; --n-glow: #22d3eecc; --n-dur: 2.8s; }
+.name-purple-animated { --n-top: #f3e8ff; --n-mid: #a855f7; --n-bot: #6b21a8; --n-glow: #a855f7cc; }
+.name-teal-animated { --n-top: #ccfbf1; --n-mid: #14b8a6; --n-bot: #0f766e; --n-glow: #14b8a6aa; }
+.name-pro-animated { --n-top: #fef3c7; --n-mid: #f59e0b; --n-bot: #b45309; --n-glow: #f59e0bcc; --n-dur: 3s; }
+.name-flame { --n-top: #fef08a; --n-mid: #f97316; --n-bot: #dc2626; --n-glow: #f97316; --n-dur: 2s; --n-glow-dur: 0.6s; }
+.name-elite { --n-top: #e0e7ff; --n-mid: #7c3aed; --n-bot: #0891b2; --n-glow: #7c3aedcc; --n-dur: 3.6s; }
+.name-admin-animated { --n-top: #ffe4e6; --n-mid: #ff6b6b; --n-bot: #b91c1c; --n-glow: #ff6b6bcc; --n-dur: 3s;
+  animation: name-glint var(--n-dur) ease-in-out infinite, name-glow 2s ease-in-out infinite alternate, ring-hue 6s linear infinite; }
+@media (prefers-reduced-motion: reduce) {
+  :is(.name-blue-animated, .name-bronze-animated, .name-silver-animated, .name-gold-animated, .name-diamond-animated,
+      .name-purple-animated, .name-teal-animated, .name-pro-animated, .name-flame, .name-elite, .name-admin-animated) { animation: none; }
+}
