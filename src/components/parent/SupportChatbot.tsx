@@ -54,18 +54,20 @@ export default function SupportChatbot() {
 
   return (
     <>
-      <button onClick={() => setOpen((v) => !v)} aria-label="Ouvrir Calia"
-        className="fixed bottom-6 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 hover:-translate-y-1"
-        style={{ background: "#0d1829", border: "1.5px solid rgba(197,161,72,0.45)" }}>
-        {open ? <X className="w-6 h-6" style={{ color: "rgba(240,237,232,0.8)" }} /> : (
-          <Image src="/logoAI.png" alt="Calia" width={30} height={30} className="object-contain" />
-        )}
-      </button>
+      {/* Zoom sur l'enveloppe, verre (flou) sur le bouton : Safari coupe le flou d'un élément dont le transform change. */}
+      <span className="fixed bottom-6 right-4 md:right-6 z-50 transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+        <button onClick={() => setOpen((v) => !v)} aria-label="Ouvrir Calia"
+          className="liquid-glass-btn calia-glass calia-glass-ring backdrop-blur-[32px] backdrop-saturate-[1.4] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center">
+          {open ? <X className="w-6 h-6" style={{ color: "rgba(240,237,232,0.85)" }} /> : (
+            <Image src="/logoAI.png" alt="Calia" width={30} height={30} className="object-contain w-6 h-6 md:w-[30px] md:h-[30px]" />
+          )}
+        </button>
+      </span>
 
       {open && (
-        <div className="fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-sm rounded-2xl shadow-2xl flex flex-col overflow-hidden"
-          style={{ height: 440, background: "#0d1829", border: "1px solid rgba(197,161,72,0.25)" }}>
-          <div className="flex items-center gap-3 px-4 py-3.5 shrink-0" style={{ borderBottom: "1px solid rgba(197,161,72,0.15)", background: "rgba(255,255,255,0.03)" }}>
+        <div className="calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4] fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-sm rounded-3xl flex flex-col overflow-hidden"
+          style={{ height: "min(440px, calc(100dvh - 8rem))" }}>
+          <div className="flex items-center gap-3 px-4 py-3.5 shrink-0" style={{ borderBottom: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.06)" }}>
             <Image src="/logoAI.png" alt="Calia" width={28} height={28} className="object-contain flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Calia</p>
@@ -79,10 +81,10 @@ export default function SupportChatbot() {
             {messages.map((msg, i) => (
               <div key={i} className={`flex gap-2 ${msg.from === "user" ? "justify-end" : "justify-start"}`}>
                 {msg.from === "bot" && <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0 mt-1" />}
-                <div className="max-w-[82%] text-sm px-3.5 py-2.5 rounded-2xl leading-relaxed"
+                <div className={`max-w-[82%] text-sm px-3.5 py-2.5 rounded-2xl leading-relaxed ${msg.from === "user" ? "calia-glass-gold" : "calia-glass-soft"}`}
                   style={msg.from === "user"
-                    ? { background: "var(--greek-gold)", color: "#fff", borderBottomRightRadius: 4 }
-                    : { background: "rgba(255,255,255,0.07)", color: "rgba(240,237,232,0.85)", borderBottomLeftRadius: 4 }}>
+                    ? { color: "var(--greek-blue)", borderBottomRightRadius: 4 }
+                    : { color: "rgba(240,237,232,0.9)", borderBottomLeftRadius: 4 }}>
                   {renderBotText(msg.text)}
                 </div>
               </div>
@@ -90,7 +92,7 @@ export default function SupportChatbot() {
             {sending && (
               <div className="flex items-center gap-2">
                 <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0" />
-                <div className="px-3.5 py-2.5 rounded-2xl" style={{ background: "rgba(255,255,255,0.07)" }}>
+                <div className="calia-glass-soft px-3.5 py-2.5 rounded-2xl">
                   <span className="flex gap-1 items-center h-3.5">
                     {[0, 1, 2].map((j) => <span key={j} className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: "rgba(197,161,72,0.7)", animationDelay: `${j * 150}ms` }} />)}
                   </span>
@@ -110,11 +112,11 @@ export default function SupportChatbot() {
             </div>
           )}
 
-          <div className="px-3 py-3 shrink-0 flex gap-2" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
+          <div className="px-3 py-3 shrink-0 flex gap-2" style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}>
             <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") sendMessage(); }}
               disabled={sending}
-              placeholder="Votre question…" aria-label="Votre question" className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none disabled:opacity-50"
-              style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(197,161,72,0.15)", color: "rgba(240,237,232,0.85)" }} />
+              placeholder="Votre question…" aria-label="Votre question" className="calia-glass-soft flex-1 min-w-0 rounded-2xl px-3.5 py-2 text-sm outline-none disabled:opacity-50 placeholder:text-white/40 focus:border-[rgba(222,188,104,0.65)] transition-colors"
+              style={{ color: "rgba(240,237,232,0.92)" }} />
             <GlassIconButton icon={Send} onClick={() => sendMessage()} disabled={!input.trim() || sending} color="gold" aria-label="Envoyer" />
           </div>
         </div>

@@ -15,7 +15,10 @@ export default function CaliaHover() {
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
-        <Image src="/logoAI.png" alt="Calia" width={40} height={40} className="w-10 h-10 object-contain" />
+        {/* Le zoom est sur l'enveloppe, le verre (flou) sur l'élément intérieur : Safari coupe le flou d'un élément dont le transform change. */}
+        <span className="calia-glass calia-glass-ring backdrop-blur-[32px] backdrop-saturate-[1.4] w-12 h-12 rounded-full flex items-center justify-center">
+          <Image src="/logoAI.png" alt="Calia" width={40} height={40} className="w-8 h-8 object-contain" />
+        </span>
       </div>
       <div
         className="absolute pointer-events-none"
@@ -29,18 +32,12 @@ export default function CaliaHover() {
         }}
       >
         <div
-          className="relative px-4 py-2.5 rounded-2xl whitespace-nowrap"
-          style={{
-            background: "linear-gradient(135deg, #1e3160 0%, #0f1e3a 100%)",
-            border: "1px solid rgba(197,161,72,0.3)",
-            color: "rgba(240,237,232,0.9)",
-            boxShadow: "0 12px 40px rgba(0,0,0,0.5)",
-            fontSize: "0.8rem",
-          }}
+          className="calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4] relative px-4 py-2.5 rounded-2xl whitespace-nowrap"
+          style={{ color: "rgba(240,237,232,0.92)", fontSize: "0.8rem" }}
         >
           <span
             className="absolute -left-[6px] top-1/2 -translate-y-1/2 w-3 h-3 rotate-45"
-            style={{ background: "#1e3160", borderLeft: "1px solid rgba(197,161,72,0.3)", borderBottom: "1px solid rgba(197,161,72,0.3)" }}
+            style={{ background: "rgba(30,49,96,0.85)", borderLeft: "1px solid rgba(255,255,255,0.2)", borderBottom: "1px solid rgba(255,255,255,0.2)" }}
           />
           <span style={{ color: "var(--greek-gold)", fontWeight: 600 }}>Votre enfant</span> est entre de bonnes mains.
         </div>

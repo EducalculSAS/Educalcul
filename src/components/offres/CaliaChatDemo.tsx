@@ -111,19 +111,17 @@ function CaliaChat({
 
   return (
     <div
-      className="flex flex-col rounded-2xl overflow-hidden shadow-2xl"
+      className="calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4] flex flex-col rounded-3xl overflow-hidden max-w-full"
       style={{
-        background: "var(--greek-blue)",
-        border: "1px solid rgba(197,161,72,0.25)",
         width: inline ? "100%" : 340,
-        height: 480,
+        height: "min(480px, calc(100dvh - 8rem))",
       }}
     >
       <div
         className="flex items-center gap-3 px-4 py-3 border-b flex-shrink-0"
         style={{
-          borderColor: "rgba(197,161,72,0.15)",
-          background: "rgba(255,255,255,0.03)",
+          borderColor: "rgba(255,255,255,0.12)",
+          background: "rgba(255,255,255,0.06)",
         }}
       >
         <Image
@@ -173,19 +171,11 @@ function CaliaChat({
                 />
               )}
               <div
-                className="max-w-[82%] px-3.5 py-2 rounded-2xl text-sm leading-relaxed"
+                className={`max-w-[82%] px-3.5 py-2 rounded-2xl text-sm leading-relaxed ${msg.from === "ai" ? "calia-glass-soft" : "calia-glass-gold"}`}
                 style={
                   msg.from === "ai"
-                    ? {
-                        background: "rgba(255,255,255,0.07)",
-                        color: "rgba(240,237,232,0.85)",
-                        borderBottomLeftRadius: 4,
-                      }
-                    : {
-                        background: "var(--greek-gold)",
-                        color: "#fff",
-                        borderBottomRightRadius: 4,
-                      }
+                    ? { color: "rgba(240,237,232,0.9)", borderBottomLeftRadius: 4 }
+                    : { color: "var(--greek-blue)", borderBottomRightRadius: 4 }
                 }
               >
                 {msg.text}
@@ -202,10 +192,7 @@ function CaliaChat({
               style={{ width: 20, height: 20 }}
               className="object-contain"
             />
-            <div
-              className="px-3.5 py-2.5 rounded-2xl"
-              style={{ background: "rgba(255,255,255,0.07)" }}
-            >
+            <div className="calia-glass-soft px-3.5 py-2.5 rounded-2xl">
               <span className="flex gap-1 items-center h-3.5">
                 {[0, 1, 2].map((j) => (
                   <span
@@ -227,8 +214,8 @@ function CaliaChat({
         <div
           className="px-4 py-4 border-t flex-shrink-0 text-center"
           style={{
-            borderColor: "rgba(197,161,72,0.15)",
-            background: "rgba(197,161,72,0.05)",
+            borderColor: "rgba(255,255,255,0.12)",
+            background: "rgba(222,188,104,0.08)",
           }}
         >
           <p
@@ -255,7 +242,7 @@ function CaliaChat({
       ) : (
         <div
           className="px-3 py-3 border-t flex gap-2 flex-shrink-0"
-          style={{ borderColor: "rgba(197,161,72,0.15)" }}
+          style={{ borderColor: "rgba(255,255,255,0.12)" }}
         >
           <input
             type="text"
@@ -264,12 +251,8 @@ function CaliaChat({
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="Pose ta question…"
             aria-label="Pose ta question"
-            className="flex-1 rounded-xl px-3.5 py-2 text-sm outline-none"
-            style={{
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(197,161,72,0.15)",
-              color: "rgba(240,237,232,0.85)",
-            }}
+            className="calia-glass-soft flex-1 min-w-0 rounded-2xl px-3.5 py-2 text-sm outline-none placeholder:text-white/40 focus:border-[rgba(222,188,104,0.65)] transition-colors"
+            style={{ color: "rgba(240,237,232,0.92)" }}
           />
           <GlassButton
             onClick={handleSend}
@@ -301,12 +284,8 @@ export default function CaliaChatDemo() {
       ) : (
         <div className="flex flex-col items-center gap-5">
           <div
-            className="px-5 py-3 rounded-2xl text-sm text-center"
-            style={{
-              background: "#fff",
-              border: "1px solid rgba(197,161,72,0.2)",
-              color: "var(--text-muted)",
-            }}
+            className="calia-glass-light backdrop-blur-[32px] backdrop-saturate-[1.4] px-5 py-3 rounded-2xl text-sm text-center"
+            style={{ color: "var(--text-muted)" }}
           >
             <span style={{ color: "var(--greek-gold)", fontWeight: 600 }}>
               Calia

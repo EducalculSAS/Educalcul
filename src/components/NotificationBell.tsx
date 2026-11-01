@@ -127,7 +127,7 @@ export default function NotificationBell() {
       </span>
 
       {open && (
-        <div className="absolute right-0 top-full mt-2 w-80 rounded-2xl shadow-2xl border border-[rgba(197,161,72,0.25)] z-[9999] overflow-hidden bg-white/85 backdrop-blur-[24px] backdrop-saturate-[1.4]">
+        <div className="absolute right-0 top-full mt-2 glass-panel w-80 max-w-[calc(100vw-1.5rem)] rounded-3xl z-[9999] overflow-hidden backdrop-blur-[32px] backdrop-saturate-[1.4]">
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-[rgba(197,161,72,0.15)]">
             <h3 className="font-bold text-[var(--greek-blue)] text-sm">Notifications</h3>

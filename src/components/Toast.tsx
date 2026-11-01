@@ -60,15 +60,15 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
   const configs = {
     success: {
       icon: <CheckCircle aria-hidden="true" className="w-4 h-4 shrink-0" style={{ color: "var(--greek-gold)" }} />,
-      style: { background: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.35)", color: "#fff" },
+      style: { borderColor: "rgba(222,188,104,0.5)", color: "#fff" },
     },
     error: {
       icon: <AlertCircle aria-hidden="true" className="w-4 h-4 shrink-0 text-red-300" />,
-      style: { background: "var(--greek-blue)", borderColor: "rgba(239,68,68,0.35)", color: "#fff" },
+      style: { borderColor: "rgba(248,113,113,0.55)", color: "#fff" },
     },
     info: {
       icon: <Info aria-hidden="true" className="w-4 h-4 shrink-0" style={{ color: "rgba(255,255,255,0.6)" }} />,
-      style: { background: "var(--greek-blue)", borderColor: "rgba(197,161,72,0.2)", color: "#fff" },
+      style: { color: "#fff" },
     },
   };
 
@@ -76,7 +76,7 @@ function ToastItem({ toast, onRemove }: { toast: Toast; onRemove: (id: string) =
 
   return (
     <div
-      className={`pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-xl border shadow-xl max-w-sm transition-all duration-300 ${
+      className={`glass-toast backdrop-blur-[32px] backdrop-saturate-[1.4] pointer-events-auto flex items-center gap-3 px-4 py-3 rounded-2xl max-w-sm transition-all duration-300 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
       }`}
       style={cfg.style}

@@ -81,7 +81,7 @@ export default function AccessibilityButton() {
   return (
     <div ref={ref} className="fixed left-3 bottom-3 z-40 no-print">
       {open && (
-        <div className="mb-2 w-[300px] max-w-[calc(100vw-1.5rem)] rounded-2xl border border-[rgba(197,161,72,0.35)] bg-white shadow-xl p-4">
+        <div className="mb-2 w-[300px] max-w-[calc(100vw-1.5rem)] glass-panel backdrop-blur-[32px] backdrop-saturate-[1.4] rounded-3xl p-4">
           <p className="font-bold text-[var(--greek-blue)] mb-3">Confort de lecture</p>
           <A11yControls />
         </div>

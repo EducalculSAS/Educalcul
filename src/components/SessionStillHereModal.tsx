@@ -70,7 +70,7 @@ export default function SessionStillHereModal() {
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[2000] p-4 modal-overlay">
-      <div className="rounded-2xl shadow-2xl w-full max-w-sm border border-[rgba(197,161,72,0.3)] overflow-hidden bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4]">
+      <div className="glass-panel rounded-3xl w-full max-w-sm overflow-hidden backdrop-blur-[32px] backdrop-saturate-[1.4]">
         <div className="p-6 flex flex-col items-center text-center gap-3">
           <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center">
             <UserCheck className="w-6 h-6 text-[var(--greek-blue)]" />

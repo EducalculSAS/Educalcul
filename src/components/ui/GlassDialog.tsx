@@ -39,7 +39,7 @@ export default function GlassDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={`dialog-enter w-full ${wide ? "sm:max-w-2xl" : "sm:max-w-lg"} max-h-[92dvh] flex flex-col rounded-t-3xl sm:rounded-3xl border border-[rgba(197,161,72,0.3)] bg-white/95 backdrop-blur-[24px] shadow-2xl`}
+        className={`dialog-enter w-full ${wide ? "sm:max-w-2xl" : "sm:max-w-lg"} max-h-[92dvh] flex flex-col glass-panel rounded-t-3xl sm:rounded-3xl backdrop-blur-[32px] backdrop-saturate-[1.4]`}
       >
         <div className="flex items-center justify-between gap-4 px-6 pt-5 pb-3">
           <h2 id={titleId} className="font-[family-name:var(--font-display)] font-bold text-lg text-[var(--greek-blue)]">{title}</h2>
