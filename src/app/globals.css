@@ -3210,6 +3210,8 @@ html[data-theme="dark"] .family-foot { background: rgba(255, 255, 255, 0.03); }
   .rf-twinkle, .rf-bolt { opacity: 0.8; }
   .rf-shine, .rf-flame-img { transform-box: fill-box; transform-origin: 50% 85%; animation: rf-flame-img 1.3s ease-in-out infinite alternate; }
 @keyframes rf-flame-img { 0% { transform: scale(1, 0.985) skewX(-0.6deg); filter: brightness(1); } 50% { transform: scale(0.995, 1.012) skewX(0.5deg); filter: brightness(1.07) saturate(1.1); } 100% { transform: scale(1.005, 1.02) skewX(-0.4deg); filter: brightness(1.03); } }
+.rf-flame-over { mix-blend-mode: screen; opacity: 0.5; transform-box: fill-box; transform-origin: 50% 85%; animation: rf-flame-over 0.9s ease-in-out infinite alternate; }
+@keyframes rf-flame-over { from { transform: scale(1.02, 0.97) translateY(0.6px); opacity: 0.35; } to { transform: scale(0.99, 1.05) translateY(-0.8px); opacity: 0.6; } }
 .rf-flow { display: none; }
 }
 

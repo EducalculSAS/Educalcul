@@ -103,7 +103,7 @@ export default function AvatarWithBorder({
         </span>
       ) : (
         <span className="ring-fx" aria-hidden="true">
-          <AvatarRingDecor ringKey={key} w={(rw / total) * 100} r={(ringRadius / total) * 100} inset={((rw + gap) / total) * 100} compact={size === "xs"} />
+          <AvatarRingDecor ringKey={key} w={(rw / total) * 100} r={(ringRadius / total) * 100} inset={((rw + gap) / total) * 100} compact={size === "xs"} animated={size === "lg" || size === "xl" || size === "2xl"} />
         </span>
       )}
 
