@@ -1,6 +1,7 @@
 /**
- * Décors vectoriels des contours d'avatar : chaque niveau a SON motif (vraies flammes, vrais diamants taillés, couronne de lauriers,
- * croissant de lune, rivets forgés, éclairs, cœurs, couronne, galaxie, symboles de calcul, écu), dessinés en SVG et animés en CSS
+ * Décors vectoriels des contours d'avatar : chaque niveau a SON motif, répété TOUT AUTOUR du cadre (mur de flammes, rangée de diamants
+ * taillés, couronne de lauriers, chaîne d'argent, engrenage de bronze, arcs électriques, cœurs, pointes de couronne, galaxie, symboles,
+ * étoiles arc-en-ciel), dessinés en SVG et animés en CSS
  * (globals.css, classes `rf-*`). Composant sans état ni effet : utilisable dans un Server Component.
  * Le dessin est fait dans un repère 100 × 100 qui recouvre l'avatar ; les motifs débordent volontairement du cadre.
  */
@@ -27,47 +28,6 @@ function Star({ x, y, r = 1, d = 0, fill = "#fff" }: { x: number; y: number; r?:
   );
 }
 
-function Gem({ x, y, s, rot = 0, d = 0 }: { x: number; y: number; s: number; rot?: number; d?: number }) {
-  return (
-    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s}) translate(-20 -17)`}>
-      <g className="rf-gem" style={{ animationDelay: `${-d}s` }}>
-        <path d="M10 0 H30 L40 10 L20 34 L0 10 Z" fill="url(#rg-dg)" stroke="#0e7490" strokeWidth="1.2" strokeLinejoin="round" />
-        <path d="M0 10 H40 M10 0 L14 10 L20 34 M30 0 L26 10 L20 34 M14 10 L20 0 L26 10" fill="none" stroke="#fff" strokeOpacity=".85" strokeWidth="1" strokeLinejoin="round" />
-        <path d="M10 0 L14 10 L20 0Z M30 0 L26 10 L20 0Z" fill="#fff" fillOpacity=".55" />
-        <path className="rf-glint" d="M20 0 L24 10 L20 34 L16 10Z" fill="#fff" />
-      </g>
-    </g>
-  );
-}
-
-function Leaf({ x, y, rot }: { x: number; y: number; rot: number }) {
-  return <ellipse cx={x} cy={y} rx="2.4" ry="5.6" transform={`rotate(${rot} ${x} ${y})`} fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".4" />;
-}
-
-function Heart({ x, d, c }: { x: number; d: number; c: string }) {
-  return (
-    <g transform={`translate(${x} 98)`}>
-      <path className="rf-heart" style={{ animationDelay: `${-d}s` }} d="M0 6 C-9 -1 -6 -9 0 -4 C6 -9 9 -1 0 6Z" fill={c} />
-    </g>
-  );
-}
-
-function Bolt({ x, y, rot, d }: { x: number; y: number; rot: number; d: number }) {
-  return (
-    <g transform={`translate(${x} ${y}) rotate(${rot})`}>
-      <path className="rf-bolt" style={{ animationDelay: `${-d}s` }} d="M0 0 L-5 9 L-1 9 L-4 18 L5 6 L1 6 Z" fill="#f5d0fe" stroke="#a855f7" strokeWidth="1" strokeLinejoin="round" />
-    </g>
-  );
-}
-
-function Rivet({ x, y, d = 0 }: { x: number; y: number; d?: number }) {
-  return (
-    <g>
-      <circle cx={x} cy={y} r="3.1" fill="url(#rg-br)" stroke="#5b2a08" strokeWidth=".6" />
-      <circle className="rf-ember-pulse" style={{ animationDelay: `${-d}s` }} cx={x - 0.8} cy={y - 0.8} r="0.9" fill="#ffe3c2" />
-    </g>
-  );
-}
 
 const DEFS: ReactNode = (
   <defs>
@@ -82,102 +42,134 @@ const DEFS: ReactNode = (
   </defs>
 );
 
+
+type P = { x: number; y: number; nx: number; ny: number; ang: number };
+
+/** `n` points régulièrement répartis sur le contour (carré aux coins arrondis, sens horaire) avec la normale sortante. */
+function perimeter(n: number, inset = 3, r = 28): P[] {
+  const a = inset, b = 100 - inset, side = b - a - 2 * r, arc = (Math.PI / 2) * r, L = 4 * side + 4 * arc;
+  const out: P[] = [];
+  for (let i = 0; i < n; i++) {
+    let d = ((i + 0.5) / n) * L;
+    let x = 0, y = 0, nx = 0, ny = 0;
+    const seg = (len: number) => { if (d <= len) return true; d -= len; return false; };
+    const arcAt = (cx: number, cy: number, from: number) => { const f = from + (d / arc) * (Math.PI / 2); nx = Math.cos(f); ny = Math.sin(f); x = cx + r * nx; y = cy + r * ny; };
+    if (seg(side)) { x = a + r + d; y = a; ny = -1; }
+    else if (seg(arc)) arcAt(b - r, a + r, -Math.PI / 2);
+    else if (seg(side)) { x = b; y = a + r + d; nx = 1; }
+    else if (seg(arc)) arcAt(b - r, b - r, 0);
+    else if (seg(side)) { x = b - r - d; y = b; ny = 1; }
+    else if (seg(arc)) arcAt(a + r, b - r, Math.PI / 2);
+    else if (seg(side)) { x = a; y = b - r - d; nx = -1; }
+    else arcAt(a + r, a + r, Math.PI);
+    out.push({ x, y, nx, ny, ang: (Math.atan2(ny, nx) * 180) / Math.PI });
+  }
+  return out;
+}
+const rnd = (i: number, k = 1) => { const v = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return v - Math.floor(v); };
+const at = (p: P, out = 0) => `translate(${(p.x + p.nx * out).toFixed(2)} ${(p.y + p.ny * out).toFixed(2)})`;
+
 export default function AvatarRingDecor({ ringKey }: { ringKey: string }) {
   let body: ReactNode = null;
   switch (ringKey) {
     case "flamme":
       body = (
         <>
-          <Flame x={4} y={78} s={0.13} rot={-78} d={0.3} />
-          <Flame x={3} y={52} s={0.17} rot={-72} d={0.1} />
-          <Flame x={8} y={26} s={0.17} rot={-38} d={0.5} />
-          <Flame x={26} y={10} s={0.2} rot={-14} d={0.2} />
-          <Flame x={50} y={9} s={0.3} d={0} hot />
-          <Flame x={74} y={10} s={0.2} rot={14} d={0.6} />
-          <Flame x={92} y={26} s={0.17} rot={38} d={0.4} />
-          <Flame x={97} y={52} s={0.17} rot={72} d={0.7} />
-          <Flame x={96} y={78} s={0.13} rot={78} d={0.15} />
-          {[20, 44, 62, 82].map((x, i) => <circle key={x} className="rf-ember" style={{ animationDelay: `${-i * 0.55}s` }} cx={x} cy={4} r={1.1} fill="#ffd23f" />)}
+          {perimeter(36, 4).map((p, i) => <Flame key={`b${i}`} x={p.x + p.nx * 1} y={p.y + p.ny * 1} s={0.08 + rnd(i, 2) * 0.03} rot={p.ang + 90 + (rnd(i, 3) - 0.5) * 24} d={rnd(i, 4) * 1.2} />)}
+          {perimeter(32, 3).map((p, i) => <Flame key={`f${i}`} x={p.x + p.nx * 0.5} y={p.y + p.ny * 0.5} s={0.11 + rnd(i, 5) * 0.06} rot={p.ang + 90 + (rnd(i, 6) - 0.5) * 18} d={rnd(i, 7) * 1.2} hot={i % 5 === 0} />)}
+          {perimeter(12, 3).map((p, i) => <circle key={i} className="rf-ember" style={{ animationDelay: `${-rnd(i, 8) * 1.8}s` }} cx={p.x + p.nx * 9} cy={p.y + p.ny * 9} r={0.9} fill="#ffd23f" />)}
         </>
       );
       break;
     case "diamond":
       body = (
         <>
-          <Gem x={50} y={-1} s={0.72} d={0} />
-          <Gem x={6} y={14} s={0.42} rot={-28} d={0.8} />
-          <Gem x={94} y={14} s={0.42} rot={28} d={1.4} />
-          <Gem x={5} y={88} s={0.3} rot={-14} d={0.4} />
-          <Gem x={95} y={88} s={0.3} rot={14} d={1} />
-          <Star x={96} y={50} r={1.1} d={0} />
-          <Star x={3} y={52} r={0.9} d={0.9} />
-          <Star x={50} y={101} r={1} d={0.5} />
+          {perimeter(20, 3.5).map((p, i) => (
+            <g key={i} transform={`${at(p, 2)} rotate(${p.ang + 90}) scale(0.4) translate(-20 -26)`}>
+              <g className="rf-gem" style={{ animationDelay: `${-((i * 0.29) % 3.2)}s` }}>
+                <path d="M10 0 H30 L40 10 L20 34 L0 10 Z" fill="url(#rg-dg)" stroke="#0e7490" strokeWidth="1.4" strokeLinejoin="round" />
+                <path d="M0 10 H40 M10 0 L14 10 L20 34 M30 0 L26 10 L20 34 M14 10 L20 0 L26 10" fill="none" stroke="#fff" strokeOpacity=".85" strokeWidth="1.1" strokeLinejoin="round" />
+                <path d="M10 0 L14 10 L20 0Z M30 0 L26 10 L20 0Z" fill="#fff" fillOpacity=".55" />
+              </g>
+            </g>
+          ))}
+          {perimeter(8, 3).map((p, i) => <Star key={i} x={p.x + p.nx * 9} y={p.y + p.ny * 9} r={0.8 + rnd(i, 1) * 0.5} d={rnd(i, 2) * 1.8} />)}
         </>
       );
       break;
     case "gold":
       body = (
         <>
-          {[[4, 82, -28], [1.5, 70, -12], [0.5, 58, 0], [0.8, 46, 8], [2, 34, 22], [5, 23, 36]].map(([x, y, r], i) => <Leaf key={i} x={x} y={y} rot={r} />)}
-          {[[96, 82, 28], [98.5, 70, 12], [99.5, 58, 0], [99.2, 46, -8], [98, 34, -22], [95, 23, -36]].map(([x, y, r], i) => <Leaf key={i} x={x} y={y} rot={r} />)}
-          <g transform="translate(50 1)"><path className="rf-pulse" d="M0 -8 L2.4 -2.6 L8 -2.2 L3.8 1.6 L5 7.4 L0 4.4 L-5 7.4 L-3.8 1.6 L-8 -2.2 L-2.4 -2.6Z" fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".5" /></g>
-          <Star x={14} y={5} r={0.8} d={0.3} fill="#fff3a3" />
-          <Star x={87} y={6} r={0.8} d={1} fill="#fff3a3" />
+          {perimeter(52, 3.5).map((p, i) => (
+            <ellipse key={i} cx={0} cy={0} rx="2.3" ry="5.2" transform={`${at(p, i % 2 ? 3 : -0.5)} rotate(${p.ang + (i % 2 ? 32 : -32)})`} fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".45" />
+          ))}
+          {perimeter(4, 3.5).map((p, i) => <g key={i} transform={at(p, 8)}><path className="rf-pulse" d="M0 -6 L1.8 -2 L6 -1.6 L2.9 1.2 L3.7 5.5 L0 3.3 L-3.7 5.5 L-2.9 1.2 L-6 -1.6 L-1.8 -2Z" fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".4" /></g>)}
         </>
       );
       break;
     case "silver":
       body = (
         <>
-          <g transform="translate(88 7) rotate(18)"><path className="rf-pulse" d="M0 -9 A9 9 0 1 0 9 0 A7 7 0 1 1 0 -9Z" fill="url(#rg-sv)" stroke="#7b8798" strokeWidth=".5" /></g>
-          <Star x={10} y={9} r={0.9} d={0} fill="#fff" />
-          <Star x={97} y={42} r={0.7} d={0.7} fill="#e8eef6" />
-          <Star x={4} y={64} r={0.8} d={1.2} fill="#fff" />
-          <Star x={80} y={98} r={0.9} d={0.4} fill="#e8eef6" />
-          <Star x={28} y={99} r={0.6} d={1.6} fill="#fff" />
+          {perimeter(34, 3.5).map((p, i) => (
+            <g key={i} transform={`${at(p, 1.2)} rotate(${p.ang + 90})`}>
+              <ellipse rx={i % 2 ? 1.5 : 3.8} ry={i % 2 ? 3.8 : 1.9} fill="none" stroke="#6b7686" strokeWidth="1.5" />
+              <ellipse rx={i % 2 ? 1.5 : 3.8} ry={i % 2 ? 3.8 : 1.9} fill="none" stroke="url(#rg-sv)" strokeWidth=".8" />
+            </g>
+          ))}
+          {perimeter(7, 3).map((p, i) => <Star key={i} x={p.x + p.nx * 8} y={p.y + p.ny * 8} r={0.7 + rnd(i, 1) * 0.4} d={rnd(i, 2) * 1.8} fill="#fff" />)}
         </>
       );
       break;
     case "bronze":
       body = (
         <>
-          {[[10, 8], [50, 2], [90, 8], [98, 50], [90, 92], [50, 98], [10, 92], [2, 50]].map(([x, y], i) => <Rivet key={i} x={x} y={y} d={i * 0.4} />)}
+          {perimeter(30, 3.5).map((p, i) => (
+            <g key={i} transform={`${at(p, 1.2)} rotate(${p.ang + 90})`}>
+              <rect x="-2.4" y="-5.2" width="4.8" height="6" rx="1" fill="url(#rg-br)" stroke="#5b2a08" strokeWidth=".55" />
+              {i % 3 === 0 && <circle className="rf-ember-pulse" style={{ animationDelay: `${-i * 0.2}s` }} cx="0" cy="-3" r="0.9" fill="#ffe3c2" />}
+            </g>
+          ))}
         </>
       );
       break;
-    case "premium":
+    case "premium": {
+      const pts = perimeter(110, 3);
+      const d = pts.map((p, i) => { const o = i % 2 ? 3.2 : -0.6; return `${i ? "L" : "M"}${(p.x + p.nx * o).toFixed(1)} ${(p.y + p.ny * o).toFixed(1)}`; }).join(" ") + "Z";
       body = (
         <>
-          <Bolt x={93} y={6} rot={12} d={0} />
-          <Bolt x={6} y={72} rot={-168} d={0.7} />
-          <Bolt x={4} y={14} rot={-24} d={1.3} />
-          <Bolt x={97} y={64} rot={160} d={0.35} />
-          <Star x={50} y={1} r={0.9} d={0.2} fill="#f5d0fe" />
+          <path className="rf-arc" d={d} fill="none" stroke="#f5d0fe" strokeWidth="1" strokeLinejoin="round" strokeLinecap="round" />
+          <path className="rf-arc" style={{ animationDelay: "-0.7s" }} d={d} fill="none" stroke="#a855f7" strokeWidth="1.8" strokeOpacity=".7" strokeLinejoin="round" />
+          {perimeter(14, 3).map((p, i) => {
+            const L = 6 + rnd(i, 1) * 6, k = (rnd(i, 2) - 0.5) * 5;
+            return <path key={i} className="rf-bolt" style={{ animationDelay: `${-rnd(i, 3) * 1.6}s` }} d={`M${p.x.toFixed(1)} ${p.y.toFixed(1)} l${(p.nx * L * 0.5 + k).toFixed(1)} ${(p.ny * L * 0.5).toFixed(1)} l${(-k * 1.4).toFixed(1)} ${(p.ny * 1.5).toFixed(1)} l${(p.nx * L * 0.5 + k * 0.4).toFixed(1)} ${(p.ny * L * 0.6).toFixed(1)}`} fill="none" stroke="#fbeaff" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />;
+          })}
         </>
       );
       break;
+    }
     case "famille":
       body = (
         <>
-          <Heart x={16} d={0} c="#f9a8d4" />
-          <Heart x={50} d={1.1} c="#5eead4" />
-          <Heart x={84} d={2.2} c="#fda4af" />
-          <Heart x={33} d={1.7} c="#99f6e4" />
-          <Heart x={68} d={0.6} c="#f9a8d4" />
+          {perimeter(24, 3.5).map((p, i) => (
+            <g key={i} transform={`${at(p, 3)} rotate(${p.ang + 90}) scale(.6)`}>
+              <path className="rf-beat" style={{ animationDelay: `${-i * 0.12}s` }} d="M0 6 C-9 -1 -6 -9 0 -4 C6 -9 9 -1 0 6Z" fill={["#f9a8d4", "#5eead4", "#fda4af", "#99f6e4"][i % 4]} stroke="#fff" strokeOpacity=".7" strokeWidth=".8" />
+            </g>
+          ))}
         </>
       );
       break;
     case "pro":
       body = (
         <>
-          <g transform="translate(50 3)">
-            <path d="M-15 7 L-13 -8 L-6.5 -1 L0 -12 L6.5 -1 L13 -8 L15 7 Z" fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".7" strokeLinejoin="round" />
-            <path d="M-15 7 H15 V11 H-15Z" fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".7" />
-            <circle cx="-13" cy="-8" r="1.7" fill="#ef4444" /><circle cx="0" cy="-12" r="2" fill="#38bdf8" /><circle cx="13" cy="-8" r="1.7" fill="#ef4444" />
-            <circle cx="0" cy="9" r="1.3" fill="#fff" />
-          </g>
-          <Star x={30} y={5} r={0.8} d={0.4} fill="#fef3c7" />
-          <Star x={71} y={5} r={0.8} d={1.1} fill="#fef3c7" />
+          {perimeter(24, 3.5).map((p, i) => {
+            const h = i % 2 ? 7 : 11;
+            return (
+              <g key={i} transform={`${at(p, 0.5)} rotate(${p.ang + 90})`}>
+                <path d={`M-3.4 0 L0 ${-h} L3.4 0 Z`} fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".5" strokeLinejoin="round" />
+                <circle className="rf-pulse" style={{ animationDelay: `${-i * 0.15}s` }} cx="0" cy={-h} r="1.25" fill={["#ef4444", "#38bdf8", "#fff"][i % 3]} />
+              </g>
+            );
+          })}
         </>
       );
       break;
@@ -185,40 +177,32 @@ export default function AvatarRingDecor({ ringKey }: { ringKey: string }) {
       body = (
         <>
           <g className="rf-orbit">
-            <circle cx="50" cy="50" r="57" fill="none" stroke="url(#rg-sh)" strokeWidth=".6" strokeOpacity=".55" strokeDasharray="2 5" />
-            <circle cx="50" cy="-7" r="3" fill="#22d3ee" /><circle cx="50" cy="-7" r="5.5" fill="#22d3ee" fillOpacity=".25" />
+            <circle cx="50" cy="50" r="58" fill="none" stroke="url(#rg-sh)" strokeWidth=".6" strokeOpacity=".5" strokeDasharray="2 5" />
+            <circle cx="50" cy="-8" r="3" fill="#22d3ee" /><circle cx="50" cy="-8" r="5.5" fill="#22d3ee" fillOpacity=".25" />
           </g>
-          <g className="rf-orbit rf-orbit-rev">
-            <circle cx="50" cy="50" r="52" fill="none" stroke="#a78bfa" strokeWidth=".5" strokeOpacity=".4" />
-            <circle cx="102" cy="50" r="2.2" fill="#c4b5fd" />
-          </g>
-          <Star x={8} y={8} r={0.8} d={0} fill="#c4b5fd" />
-          <Star x={95} y={12} r={1} d={0.6} fill="#67e8f9" />
-          <Star x={3} y={60} r={0.7} d={1.1} fill="#e0e7ff" />
-          <Star x={97} y={80} r={0.8} d={0.3} fill="#c4b5fd" />
-          <Star x={40} y={99} r={0.7} d={1.5} fill="#67e8f9" />
+          <g className="rf-orbit rf-orbit-rev"><circle cx="50" cy="50" r="53" fill="none" stroke="#a78bfa" strokeWidth=".5" strokeOpacity=".4" /><circle cx="103" cy="50" r="2.2" fill="#c4b5fd" /></g>
+          {perimeter(70, 3).map((p, i) => <Star key={i} x={p.x + p.nx * (1 + rnd(i, 1) * 9)} y={p.y + p.ny * (1 + rnd(i, 1) * 9)} r={0.28 + rnd(i, 2) * 0.55} d={rnd(i, 3) * 1.8} fill={["#fff", "#c4b5fd", "#67e8f9", "#e0e7ff"][i % 4]} />)}
         </>
       );
       break;
     case "mathador":
       body = (
         <>
-          {[["+", 5, 10, 0], ["×", 95, 10, 0.6], ["÷", 5, 96, 1.2], ["−", 95, 96, 1.8]].map(([g, x, y, d]) => (
-            <text key={g as string} className="rf-glyph" style={{ animationDelay: `${-(d as number)}s` }} x={x as number} y={y as number} textAnchor="middle" fontSize="15" fontWeight="800" fill="#818cf8" stroke="#312e81" strokeWidth=".6">{g as string}</text>
+          {perimeter(20, 3).map((p, i) => (
+            <text key={i} className="rf-glyph" style={{ animationDelay: `${-i * 0.18}s` }} x={p.x + p.nx * 6} y={p.y + p.ny * 6 + 3} textAnchor="middle" fontSize="9" fontWeight="800" fill="#818cf8" stroke="#312e81" strokeWidth=".4">{["+", "×", "÷", "−"][i % 4]}</text>
           ))}
-          <Star x={50} y={1} r={0.8} d={0.3} fill="#c7d2fe" />
         </>
       );
       break;
     case "admin":
       body = (
-        <>
-          <g transform="translate(50 3)"><path className="rf-pulse" d="M0 -10 L9 -7 V1 C9 7 4.5 10 0 12.5 C-4.5 10 -9 7 -9 1 V-7 Z" fill="url(#rg-sh)" stroke="#fff" strokeWidth=".9" strokeLinejoin="round" /><path d="M0 -5 L1.6 -1.4 L5.2 -1.2 L2.4 1.1 L3.3 4.6 L0 2.6 L-3.3 4.6 L-2.4 1.1 L-5.2 -1.2 L-1.6 -1.4Z" fill="#fff" /></g>
-          <Star x={14} y={6} r={0.8} d={0} fill="#ffd700" />
-          <Star x={87} y={6} r={0.8} d={0.8} fill="#4ecdc4" />
-          <Star x={97} y={60} r={0.7} d={1.4} fill="#ff6b6b" />
-          <Star x={3} y={60} r={0.7} d={0.5} fill="#8b5cf6" />
-        </>
+        <g className="rf-hue">
+          {perimeter(30, 3.5).map((p, i) => (
+            <g key={i} transform={at(p, 3)}>
+              <path className="rf-twinkle" style={{ animationDelay: `${-i * 0.11}s` }} d="M0 -5 L1.3 -1.3 L5 0 L1.3 1.3 L0 5 L-1.3 1.3 L-5 0 L-1.3 -1.3Z" fill={`hsl(${(i * 360) / 30} 95% 62%)`} stroke="#fff" strokeWidth=".4" />
+            </g>
+          ))}
+        </g>
       );
       break;
     default:
