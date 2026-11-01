@@ -3208,7 +3208,7 @@ html[data-theme="dark"] .family-foot { background: rgba(255, 255, 255, 0.03); }
   .rf-decor * { animation: none !important; }
   .rf-ember, .rf-heart, .rf-glint { display: none; }
   .rf-twinkle, .rf-bolt { opacity: 0.8; }
-  .rf-shine { display: none; }
+  .rf-shine, .rf-flow { display: none; }
 }
 
 /* Bandeaux de contour propres à chaque niveau (en plus du dégradé de base) */
@@ -3231,6 +3231,9 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
 }
 .rf-shine { animation: rf-shine 3.2s linear infinite; }
 @keyframes rf-shine { from { stroke-dashoffset: 0; } to { stroke-dashoffset: -100; } }
+.rf-flow { animation: rf-flow 2.6s linear infinite; }
+.rf-flow2 { animation-duration: 3.4s; animation-direction: reverse; }
+@keyframes rf-flow { to { stroke-dashoffset: -46; } }
 .rf-fire { filter: drop-shadow(0 0 4px rgba(249, 115, 22, 0.85)) drop-shadow(0 0 10px rgba(220, 38, 38, 0.45)); }
 .rf-wing { transform-box: view-box; transform-origin: 4px 44px; animation: rf-wing 2.8s ease-in-out infinite alternate; filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.7)); }
 @keyframes rf-wing { from { transform: rotate(-3deg); } to { transform: rotate(4deg); } }

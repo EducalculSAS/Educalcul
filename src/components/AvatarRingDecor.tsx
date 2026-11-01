@@ -214,7 +214,7 @@ export default function AvatarRingDecor({ ringKey, w, r, compact = false }: { ri
     <svg className="rf-decor" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
       {DEFS}
       {behind}
-      <Frame p={p} w={w} r={r} facets={ringKey === "diamond"} />
+      {ringKey !== "flamme" && <Frame p={p} w={w} r={r} facets={ringKey === "diamond"} />}
       {front}
     </svg>
   );
