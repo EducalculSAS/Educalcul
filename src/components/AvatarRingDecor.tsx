@@ -66,28 +66,6 @@ function pointAt(t: number, inset = 3, r = 28): P {
 function perimeter(n: number, inset = 3, r = 28): P[] {
   return Array.from({ length: n }, (_, i) => pointAt((i + 0.5) / n, inset, r));
 }
-/**
- * UNE seule grande flamme qui fait tout le tour : `n` langues de feu géantes qui se touchent par la base, penchées dans le sens de la
- * montée, dessinées comme un seul contour fermé (avec un trou au milieu pour l'avatar). `h` = hauteur, `variant` = autre forme (pour l'animation).
- */
-function flameRing(n: number, h: number, variant: number, inset = 4): string {
-  const f = (x: number) => x.toFixed(1);
-  const E = Array.from({ length: n + 1 }, (_, k) => pointAt(k / n, inset));
-  let d = `M${f(E[0].x)} ${f(E[0].y)}`;
-  for (let i = 0; i < n; i++) {
-    const a = E[i], z = E[i + 1], c = pointAt((i + 0.5) / n, inset), tx = -c.ny, ty = c.nx; // tangente (sens horaire)
-    const hh = h * (0.7 + 0.6 * rnd(i, 10 + variant)), lean = 4 + rnd(i, 20 + variant) * 4;
-    const tip = { x: c.x + c.nx * hh + tx * lean, y: c.y + c.ny * hh + ty * lean };
-    const bx = (a.x + z.x) / 2, by = (a.y + z.y) / 2; // milieu de la base
-    // flanc avant bombé, flanc arrière creusé : la langue s'enroule dans le sens de la montée, comme une vraie flamme
-    d += ` Q${f(a.x + a.nx * hh * 0.85 + tx * lean * 0.1)} ${f(a.y + a.ny * hh * 0.85 + ty * lean * 0.1)} ${f(tip.x)} ${f(tip.y)}`;
-    d += ` Q${f(z.x + (tip.x - z.x) * 0.45 + (bx - z.x) * 0.8)} ${f(z.y + (tip.y - z.y) * 0.45 + (by - z.y) * 0.8)} ${f(z.x)} ${f(z.y)}`;
-  }
-  d += "Z";
-  const m = 64;
-  for (let j = 0; j <= m; j++) { const q = pointAt(1 - j / m, inset + 1.6); d += `${j ? "L" : " M"}${f(q.x)} ${f(q.y)}`; }
-  return d + "Z";
-}
 const rnd = (i: number, k = 1) => { const v = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return v - Math.floor(v); };
 const at = (p: P, out = 0) => `translate(${(p.x + p.nx * out).toFixed(2)} ${(p.y + p.ny * out).toFixed(2)})`;
 
@@ -95,13 +73,24 @@ export default function AvatarRingDecor({ ringKey }: { ringKey: string }) {
   let body: ReactNode = null;
   switch (ringKey) {
     case "flamme": {
-      const dur = "1.2s", ks = "0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1";
-      const anim = (hh: number, v: number) => <animate attributeName="d" dur={dur} repeatCount="indefinite" calcMode="spline" keySplines={ks} values={[0, 1, 2, 0].map((k) => flameRing(11, hh, v * 3 + k)).join(";")} />;
+      // Vraies flammes : elles MONTENT comme du feu (pas en étoile), hautes en haut, plus basses sur les côtés, petites braises dessous.
+      // Le clip retire ce qui tomberait sur l'avatar lui-même.
+      const top = [[10, 0.18, -8], [24, 0.24, -5], [38, 0.3, -2], [50, 0.38, 0], [62, 0.3, 2], [76, 0.24, 5], [90, 0.18, 8]];
+      const sideY = [[58, 0.2], [40, 0.24], [22, 0.2]];
+      const bottom = [12, 28, 44, 60, 76, 90];
       body = (
         <g className="rf-fire">
-          <path fillRule="evenodd" fill="url(#rg-fo)" d={flameRing(11, 17, 0)}>{anim(17, 0)}</path>
-          <path fillRule="evenodd" fill="url(#rg-fm)" d={flameRing(11, 11, 1)}>{anim(11, 1)}</path>
-          <path fillRule="evenodd" fill="url(#rg-fc)" d={flameRing(11, 5, 2)}>{anim(5, 2)}</path>
+          <clipPath id="rg-fclip">
+            <path clipRule="evenodd" d="M-60 -60 H160 V160 H-60Z M29 7 H71 A22 22 0 0 1 93 29 V71 A22 22 0 0 1 71 93 H29 A22 22 0 0 1 7 71 V29 A22 22 0 0 1 29 7Z" />
+          </clipPath>
+          <g clipPath="url(#rg-fclip)">
+            {bottom.map((x, i) => <Flame key={`bo${i}`} x={x} y={103} s={0.15 + (i % 2) * 0.03} rot={(i - 2.5) * 5} d={i * 0.17} />)}
+            {sideY.map(([y, sc], i) => <Flame key={`l${i}`} x={4} y={y + 14} s={sc} rot={-14} d={i * 0.23 + 0.1} />)}
+            {sideY.map(([y, sc], i) => <Flame key={`r${i}`} x={96} y={y + 14} s={sc} rot={14} d={i * 0.19 + 0.3} />)}
+            {top.map(([x, sc, rot], i) => <Flame key={`t2${i}`} x={x + (i % 2 ? 6 : -6)} y={10} s={sc * 0.62} rot={rot * 1.4} d={i * 0.21 + 0.4} />)}
+            {top.map(([x, sc, rot], i) => <Flame key={`t${i}`} x={x} y={8} s={sc} rot={rot} d={i * 0.13} hot={i === 3} />)}
+          </g>
+          {[16, 36, 58, 80].map((x, i) => <circle key={x} className="rf-ember" style={{ animationDelay: `${-i * 0.5}s` }} cx={x} cy={-8} r={1} fill="#ffd23f" />)}
         </g>
       );
       break;

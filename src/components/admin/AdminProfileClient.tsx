@@ -323,30 +323,6 @@ export default function AdminProfileClient({ initialFormData }: {
                   </div>
                 </div>
 
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all"
-                    required
-                  />
-                </div>
-
-                {/* Avatar bloqué — toujours logo.png */}
-                <div className="mb-8 flex items-center gap-4 p-4 bg-gray-50 rounded-xl border border-gray-200">
-                  <img src={ADMIN_AVATAR} alt="Logo" className="w-12 h-12 rounded-xl object-contain" />
-                  <div>
-                    <p className="text-sm font-semibold text-gray-700">Photo de profil</p>
-                    <p className="text-xs text-gray-400 mt-0.5">Le logo du site est utilisé comme photo admin, non modifiable.</p>
-                  </div>
-                </div>
-
                 <GlassButton
                   size="sm"
                   variant="navy"
