@@ -191,6 +191,15 @@ export default function RootLayout({
         <meta name="content-language" content="fr" />
       </head>
       <body className="antialiased min-h-screen flex flex-col overflow-x-hidden">
+        {/* Filtre de la flamme du nom « Flamme » : fait onduler les lettres comme du feu (voir .name-flame dans globals.css) */}
+        <svg width="0" height="0" style={{ position: "absolute" }} aria-hidden="true" focusable="false">
+          <filter id="fx-fire" x="-10%" y="-20%" width="120%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02 0.09" numOctaves="2" seed="3" result="n">
+              <animate attributeName="baseFrequency" dur="1.6s" values="0.02 0.09;0.03 0.12;0.02 0.09" repeatCount="indefinite" />
+            </feTurbulence>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="3" xChannelSelector="R" yChannelSelector="G" />
+          </filter>
+        </svg>
         <JsonLd data={organizationSchema} />
         <JsonLd data={websiteSchema} />
         <JsonLd data={educationalOrgSchema} />

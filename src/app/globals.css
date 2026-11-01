@@ -3143,27 +3143,8 @@ html[data-theme="dark"] .family-foot { background: rgba(255, 255, 255, 0.03); }
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
   animation: ring-spin var(--ring-dur) linear infinite;
 }
-.ring-fx-path {
-  position: absolute;
-}
-.ring-fx-spark {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: var(--spark);
-  height: var(--spark);
-  margin: calc(var(--spark) / -2) 0 0 calc(var(--spark) / -2);
-  border-radius: 50%;
-  background: var(--c3);
-  box-shadow: 0 0 calc(var(--spark) * 2) calc(var(--spark) * 0.5) var(--ring-glow);
-  offset-path: inset(0 round var(--rr));
-  offset-rotate: 0deg;
-  animation: ring-orbit 6s linear infinite, ring-twinkle 1.4s ease-in-out infinite alternate;
-}
 @keyframes ring-spin { to { --ring-a: 360deg; } }
 @keyframes ring-breathe { from { opacity: 0.3; } to { opacity: 0.85; } }
-@keyframes ring-orbit { from { offset-distance: 0%; } to { offset-distance: 100%; } }
-@keyframes ring-twinkle { from { opacity: 0.35; transform: scale(0.7); } to { opacity: 1; transform: scale(1.15); } }
 
 .ring-fx[data-ring="none"] { --c1: rgba(197,161,72,.55); --c2: rgba(197,161,72,.55); --c3: rgba(197,161,72,.55); }
 .ring-fx[data-ring="none"] .ring-fx-glow { display: none; }
@@ -3183,48 +3164,176 @@ html[data-theme="dark"] .family-foot { background: rgba(255, 255, 255, 0.03); }
 .ring-fx[data-ring="admin"] .ring-fx-band { animation: ring-spin var(--ring-dur) linear infinite, ring-hue 6s linear infinite; }
 @keyframes ring-hue { to { filter: hue-rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) {
-  .ring-fx-glow, .ring-fx-band, .ring-fx-spark { animation: none !important; }
-  .ring-fx-spark { display: none; }
+  .ring-fx-glow, .ring-fx-band { animation: none !important; }
 }
 
-/* ═══ Noms « vivants » : dégradé vertical métallique (clair en haut, profond en bas, comme la flamme), reflet qui balaie le nom, halo qui respire ═══ */
+
+/* ═══ Décors de contour (AvatarRingDecor) ═══ */
+.rf-decor { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.rf-flick, .rf-twinkle, .rf-gem, .rf-glint, .rf-pulse, .rf-heart, .rf-ember, .rf-glyph, .rf-ember-pulse { transform-box: fill-box; }
+.rf-flick { transform-origin: 50% 100%; animation: rf-flick 0.85s ease-in-out infinite alternate; }
+@keyframes rf-flick {
+  0% { transform: scale(1, 0.92) skewX(-5deg); }
+  35% { transform: scale(0.94, 1.12) skewX(4deg); }
+  70% { transform: scale(1.04, 0.98) skewX(-3deg); }
+  100% { transform: scale(0.97, 1.16) skewX(5deg); }
+}
+.rf-ember { animation: rf-ember 1.8s ease-out infinite; }
+@keyframes rf-ember { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 1; } 100% { transform: translateY(-14px); opacity: 0; } }
+.rf-twinkle { transform-origin: 50% 50%; animation: rf-twinkle 1.8s ease-in-out infinite; }
+@keyframes rf-twinkle { 0%, 100% { opacity: 0.2; transform: scale(0.4) rotate(0deg); } 50% { opacity: 1; transform: scale(1.1) rotate(45deg); } }
+.rf-gem { transform-origin: 50% 50%; animation: rf-gem 3.2s ease-in-out infinite; }
+@keyframes rf-gem { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 1px #22d3ee); } 50% { transform: scale(1.07); filter: drop-shadow(0 0 4px #a5f3fc); } }
+.rf-glint { transform-origin: 50% 50%; animation: rf-glint 3.2s ease-in-out infinite; opacity: 0; }
+@keyframes rf-glint { 0%, 55% { opacity: 0; transform: translateX(-14px); } 70% { opacity: 0.8; } 100% { opacity: 0; transform: translateX(14px); } }
+.rf-pulse { transform-origin: 50% 50%; animation: rf-pulse 2.4s ease-in-out infinite; }
+@keyframes rf-pulse { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 1px rgba(255, 230, 150, 0.7)); } 50% { transform: scale(1.14); filter: drop-shadow(0 0 4px rgba(255, 230, 150, 1)); } }
+.rf-heart { transform-origin: 50% 50%; animation: rf-heart 3.4s ease-in infinite; opacity: 0; }
+@keyframes rf-heart { 0% { transform: translateY(0) scale(0.6); opacity: 0; } 15% { opacity: 0.95; } 100% { transform: translateY(-70px) scale(1.15); opacity: 0; } }
+.rf-bolt { animation: rf-bolt 1.6s steps(1, end) infinite; filter: drop-shadow(0 0 3px #c084fc); }
+@keyframes rf-bolt { 0% { opacity: 0; } 8% { opacity: 1; } 14% { opacity: 0.2; } 20% { opacity: 1; } 34% { opacity: 0; } 100% { opacity: 0; } }
+.rf-ember-pulse { animation: rf-pulse 2.6s ease-in-out infinite; }
+.rf-orbit { transform-box: view-box; transform-origin: 50px 50px; animation: rf-spin 9s linear infinite; }
+.rf-orbit-rev { animation-duration: 14s; animation-direction: reverse; }
+@keyframes rf-spin { to { transform: rotate(360deg); } }
+.rf-glyph { animation: rf-glyph 3s ease-in-out infinite; filter: drop-shadow(0 0 2px rgba(129, 140, 248, 0.8)); }
+@keyframes rf-glyph { 0%, 100% { transform: translateY(0) rotate(-8deg); } 50% { transform: translateY(-3px) rotate(8deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .rf-decor * { animation: none !important; }
+  .rf-ember, .rf-heart, .rf-glint { display: none; }
+  .rf-twinkle, .rf-bolt { opacity: 0.8; }
+}
+
+/* Bandeaux de contour propres à chaque niveau (en plus du dégradé de base) */
+.ring-fx[data-ring="diamond"] .ring-fx-band { background: repeating-conic-gradient(from var(--ring-a), #e0fbff 0 10deg, #22d3ee 10deg 22deg, #0e7490 22deg 28deg, #ffffff 28deg 34deg); }
+.ring-fx[data-ring="silver"] .ring-fx-band { background: repeating-conic-gradient(from var(--ring-a), #f8fafc 0 14deg, #9aa5b5 14deg 26deg, #e8eef6 26deg 40deg, #6b7686 40deg 46deg); }
+.ring-fx[data-ring="bronze"] .ring-fx-band { background: repeating-conic-gradient(from var(--ring-a), #cd7f32 0 20deg, #7c3a0e 20deg 30deg, #f3c9a0 30deg 36deg, #a65f1f 36deg 60deg); animation-duration: 12s; }
+.ring-fx[data-ring="flamme"] .ring-fx-band { background: conic-gradient(from var(--ring-a), #dc2626, #f97316, #fde047, #f97316, #dc2626 60%, #7f1d1d 80%, #dc2626); }
+.ring-fx[data-ring="elite"] .ring-fx-band { background: conic-gradient(from var(--ring-a), #0f0a2e, #4c1d95, #7c3aed, #22d3ee, #7c3aed, #4c1d95, #0f0a2e); }
+.ring-fx[data-ring="premium"] .ring-fx-band { background: conic-gradient(from var(--ring-a), #3b0764, #a855f7, #f0abfc, #fff, #a855f7, #3b0764); animation-duration: 2.4s; }
+
+/* ═══ Noms : un effet DIFFÉRENT par niveau (pas juste une couleur) ═══ */
 :is(.name-blue-animated, .name-bronze-animated, .name-silver-animated, .name-gold-animated, .name-diamond-animated,
     .name-purple-animated, .name-teal-animated, .name-pro-animated, .name-flame, .name-elite, .name-admin-animated) {
   display: inline-block;
-  background-image:
-    linear-gradient(105deg, transparent 38%, rgba(255, 255, 255, 0.95) 50%, transparent 62%),
-    linear-gradient(180deg, var(--n-top) 0%, var(--n-mid) 52%, var(--n-bot) 100%);
-  background-size: 260% 100%, 100% 100%;
-  background-repeat: no-repeat;
-  background-position: 170% 0, 0 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: var(--n-mid);
+  position: relative;
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
   font-weight: 800;
-  animation: name-glint var(--n-dur, 3.4s) ease-in-out infinite, name-glow var(--n-glow-dur, 2.4s) ease-in-out infinite alternate;
+  filter: none;
+  animation: none;
 }
-@keyframes name-glint {
-  0%, 45% { background-position: 170% 0, 0 0; }
-  100% { background-position: -70% 0, 0 0; }
+@keyframes nf-sweep { 0% { background-position: 200% 0, 0 0; } 100% { background-position: -100% 0, 0 0; } }
+@keyframes nf-rise { from { background-position: 0 0; } to { background-position: 0 -200%; } }
+@keyframes nf-glow { from { filter: drop-shadow(0 0 1px var(--g)); } to { filter: drop-shadow(0 0 6px var(--g)); } }
+@keyframes nf-flicker { 0%, 18%, 22%, 62%, 66%, 100% { opacity: 1; } 20%, 64% { opacity: 0.45; } }
+
+/* BLEU — simple lueur */
+.name-blue-animated { color: #2563eb; --g: #3b82f6aa; animation: nf-glow 2s ease-in-out infinite alternate; }
+
+/* BRONZE — métal forgé : bandes obliques martelées + braise qui pulse */
+.name-bronze-animated {
+  background-image: repeating-linear-gradient(115deg, #cd7f32 0 6px, #8a4a14 6px 9px, #f0b987 9px 11px, #b8691f 11px 18px);
+  background-size: 200% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  --g: #f97316aa;
+  animation: nf-sweep 6s linear infinite reverse, nf-glow 1.8s ease-in-out infinite alternate;
+  background-position: 0 0;
 }
-@keyframes name-glow {
-  from { filter: drop-shadow(0 0 1px var(--n-glow)); }
-  to { filter: drop-shadow(0 0 6px var(--n-glow)); }
+/* ARGENT — chrome : ligne d'horizon sombre au milieu, reflet qui balaie */
+.name-silver-animated {
+  background-image: linear-gradient(105deg, transparent 40%, rgba(255,247,204,.7) 50%, transparent 60%),
+    linear-gradient(180deg, #e5e9ef 0%, #8d98a8 40%, #3f4959 50%, #7d8898 60%, #cfd5de 100%);
+  background-size: 250% 100%, 100% 100%; background-repeat: no-repeat; background-position: 200% 0, 0 0;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  --g: #cbd5e1cc;
+  animation: nf-sweep 3.6s ease-in-out infinite, nf-glow 2.4s ease-in-out infinite alternate;
 }
-.name-blue-animated { --n-top: #dbeafe; --n-mid: #3b82f6; --n-bot: #1d4ed8; --n-glow: #3b82f6aa; }
-.name-bronze-animated { --n-top: #f3c9a0; --n-mid: #cd7f32; --n-bot: #7c3a0e; --n-glow: #cd7f32aa; --n-dur: 4s; }
-.name-silver-animated { --n-top: #ffffff; --n-mid: #c5cedb; --n-bot: #7b8798; --n-glow: #cbd5e1cc; }
-.name-gold-animated { --n-top: #fff3a3; --n-mid: #f5c518; --n-bot: #a16207; --n-glow: #facc15cc; --n-dur: 3s; }
-.name-diamond-animated { --n-top: #e0fbff; --n-mid: #22d3ee; --n-bot: #0e7490; --n-glow: #22d3eecc; --n-dur: 2.8s; }
-.name-purple-animated { --n-top: #f3e8ff; --n-mid: #a855f7; --n-bot: #6b21a8; --n-glow: #a855f7cc; }
-.name-teal-animated { --n-top: #ccfbf1; --n-mid: #14b8a6; --n-bot: #0f766e; --n-glow: #14b8a6aa; }
-.name-pro-animated { --n-top: #fef3c7; --n-mid: #f59e0b; --n-bot: #b45309; --n-glow: #f59e0bcc; --n-dur: 3s; }
-.name-flame { --n-top: #fef08a; --n-mid: #f97316; --n-bot: #dc2626; --n-glow: #f97316; --n-dur: 2s; --n-glow-dur: 0.6s; }
-.name-elite { --n-top: #e0e7ff; --n-mid: #7c3aed; --n-bot: #0891b2; --n-glow: #7c3aedcc; --n-dur: 3.6s; }
-.name-admin-animated { --n-top: #ffe4e6; --n-mid: #ff6b6b; --n-bot: #b91c1c; --n-glow: #ff6b6bcc; --n-dur: 3s;
-  animation: name-glint var(--n-dur) ease-in-out infinite, name-glow 2s ease-in-out infinite alternate, ring-hue 6s linear infinite; }
+/* OR — feuille d'or : bandes franches, éclat de pièce */
+.name-gold-animated {
+  background-image: linear-gradient(105deg, transparent 38%, rgba(255,247,204,.7) 50%, transparent 62%),
+    linear-gradient(180deg, #fff6b0 0%, #f7c92a 30%, #b9770e 52%, #f7c92a 72%, #ffe680 100%);
+  background-size: 260% 100%, 100% 100%; background-repeat: no-repeat; background-position: 200% 0, 0 0;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  --g: #facc15cc;
+  animation: nf-sweep 3s ease-in-out infinite, nf-glow 2s ease-in-out infinite alternate;
+}
+.name-gold-animated::after { content: ""; position: absolute; right: -0.5em; top: -0.25em; width: 0.55em; height: 0.55em; background: #fff3a3;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%); animation: rf-twinkle 1.8s ease-in-out infinite; -webkit-text-fill-color: initial; }
+/* DIAMANT — facettes : bandes à arêtes vives qui glissent + étincelle */
+.name-diamond-animated {
+  background-image: linear-gradient(115deg, #0e7490 0%, #22d3ee 14%, #e0fbff 20%, #22d3ee 26%, #0891b2 44%, #164e63 52%, #38bdf8 62%, #e0fbff 68%, #22d3ee 74%, #0e7490 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  --g: #22d3eecc;
+  animation: nf-sweep 4s linear infinite reverse, nf-glow 1.6s ease-in-out infinite alternate;
+  background-position: 0 0;
+}
+.name-diamond-animated::after { content: ""; position: absolute; right: -0.55em; top: -0.3em; width: 0.6em; height: 0.6em; background: #fff;
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%); animation: rf-twinkle 1.5s ease-in-out infinite; -webkit-text-fill-color: initial; filter: drop-shadow(0 0 3px #67e8f9); }
+/* PREMIUM — néon violet : tube allumé qui grésille */
+.name-purple-animated {
+  color: #fbeaff; -webkit-text-fill-color: #fbeaff; -webkit-text-stroke: 0.6px #7e22ce; --g: #c026d3;
+  text-shadow: 0 0 4px #e879f9, 0 0 10px #c026d3, 0 0 22px #a21caf;
+  animation: nf-flicker 3.2s steps(1, end) infinite;
+}
+/* FAMILLE — dégradé doux menthe→rose, petit cœur qui bat */
+.name-teal-animated {
+  background-image: linear-gradient(90deg, #14b8a6, #5eead4, #f9a8d4, #5eead4, #14b8a6);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  --g: #14b8a688; animation: nf-sweep 5s linear infinite reverse; background-position: 0 0;
+}
+.name-teal-animated::after { content: ""; position: absolute; right: -0.8em; top: 0.12em; width: 0.62em; height: 0.56em; background: #f472b6;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 18'%3E%3Cpath d='M10 18 C-6 6 2 -4 10 3 C18 -4 26 6 10 18Z'/%3E%3C/svg%3E") center/contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 18'%3E%3Cpath d='M10 18 C-6 6 2 -4 10 3 C18 -4 26 6 10 18Z'/%3E%3C/svg%3E") center/contain no-repeat; animation: nf-beat 1.2s ease-in-out infinite; -webkit-text-fill-color: initial; }
+@keyframes nf-beat { 0%, 100% { transform: scale(1); } 20% { transform: scale(1.25); } 40% { transform: scale(0.95); } 60% { transform: scale(1.15); } }
+/* PRO — doré royal avec couronne */
+.name-pro-animated {
+  background-image: linear-gradient(105deg, transparent 38%, rgba(255,247,204,.65) 50%, transparent 62%),
+    linear-gradient(180deg, #fef3c7 0%, #f59e0b 45%, #b45309 100%);
+  background-size: 260% 100%, 100% 100%; background-repeat: no-repeat; background-position: 200% 0, 0 0;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  --g: #f59e0bcc; padding-left: 1.15em;
+  animation: nf-sweep 3.2s ease-in-out infinite, nf-glow 2s ease-in-out infinite alternate;
+}
+.name-pro-animated::before { content: ""; position: absolute; left: 0; top: 50%; width: 1em; height: 0.8em; margin-top: -0.45em;
+  background: linear-gradient(180deg, #fde68a, #f59e0b 60%, #b45309);
+  clip-path: polygon(0 100%, 6% 25%, 28% 58%, 50% 0, 72% 58%, 94% 25%, 100% 100%); -webkit-text-fill-color: initial; }
+/* FLAMME — vraie flamme : dégradé qui monte + ondulation du texte (filtre SVG) */
+.name-flame {
+  background-image: linear-gradient(0deg, #7f1d1d 0%, #dc2626 25%, #f97316 55%, #fbbf24 85%, #fde047 100%);
+  background-size: 100% 220%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  --g: #f97316;
+  filter: url(#fx-fire) drop-shadow(0 0 5px #f97316);
+  animation: nf-rise 1.4s linear infinite; background-position: 0 0;
+}
+/* ELITE — galaxie : champ d'étoiles qui défile sur violet→cyan */
+.name-elite {
+  background-image:
+    radial-gradient(circle at 12% 30%, #fff 0 1px, transparent 1.5px), radial-gradient(circle at 48% 70%, #fff 0 1px, transparent 1.5px),
+    radial-gradient(circle at 80% 25%, #c4b5fd 0 1px, transparent 1.5px), radial-gradient(circle at 30% 85%, #67e8f9 0 1px, transparent 1.5px),
+    linear-gradient(100deg, #4c1d95, #7c3aed 35%, #0891b2 70%, #67e8f9);
+  background-size: 60px 100%, 60px 100%, 60px 100%, 60px 100%, 100% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  --g: #7c3aedcc;
+  animation: nf-sweep 5s linear infinite reverse, nf-glow 2.2s ease-in-out infinite alternate; background-position: 0 0;
+}
+/* ADMIN — arc-en-ciel liquide + écu */
+.name-admin-animated {
+  background-image: linear-gradient(90deg, #ff6b6b, #ffd700, #4ecdc4, #8b5cf6, #ff6b6b);
+  background-size: 300% 100%;
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  --g: #ffffff88; padding-left: 1.1em;
+  animation: nf-sweep 3s linear infinite reverse, nf-glow 2s ease-in-out infinite alternate; background-position: 0 0;
+}
+.name-admin-animated::before { content: ""; position: absolute; left: 0; top: 50%; width: 0.85em; height: 0.95em; margin-top: -0.5em;
+  background: linear-gradient(135deg, #ffd700, #ff6b6b 55%, #8b5cf6);
+  clip-path: polygon(50% 0, 100% 18%, 100% 55%, 50% 100%, 0 55%, 0 18%); -webkit-text-fill-color: initial; }
 @media (prefers-reduced-motion: reduce) {
   :is(.name-blue-animated, .name-bronze-animated, .name-silver-animated, .name-gold-animated, .name-diamond-animated,
-      .name-purple-animated, .name-teal-animated, .name-pro-animated, .name-flame, .name-elite, .name-admin-animated) { animation: none; }
+      .name-purple-animated, .name-teal-animated, .name-pro-animated, .name-flame, .name-elite, .name-admin-animated),
+  .name-gold-animated::after, .name-diamond-animated::after, .name-teal-animated::after { animation: none; }
 }

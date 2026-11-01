@@ -1,3 +1,4 @@
+import AvatarRingDecor from "@/components/AvatarRingDecor";
 import { avatarUrl, ADMIN_AVATAR } from "@/lib/avatarUrl";
 
 /**
@@ -22,8 +23,6 @@ const SIZE: Record<AvatarSize, number> = { xs: 28, sm: 36, md: 44, lg: 64, xl: 8
 interface Ring {
   /** Épaisseur du contour (px) et trait fixe pour « aucun ». */
   width: number;
-  /** Nombre d'étincelles qui font le tour de l'avatar (0 = aucune). */
-  sparks: number;
 }
 
 /**
@@ -32,18 +31,18 @@ interface Ring {
  * dans l'esprit de la flamme de série (plusieurs couches, vivant), au lieu d'un simple trait qui change de couleur.
  */
 const RINGS: Record<string, Ring> = {
-  none:     { width: 1.5, sparks: 0 },
-  bronze:   { width: 2,   sparks: 1 },
-  silver:   { width: 2,   sparks: 1 },
-  gold:     { width: 2.5, sparks: 2 },
-  diamond:  { width: 2.5, sparks: 3 },
-  premium:  { width: 2.5, sparks: 2 },
-  famille:  { width: 2.5, sparks: 1 },
-  flamme:   { width: 3,   sparks: 3 },
-  pro:      { width: 2.5, sparks: 2 },
-  elite:    { width: 3,   sparks: 3 },
-  mathador: { width: 2.5, sparks: 2 },
-  admin:    { width: 3,   sparks: 3 },
+  none:     { width: 1.5 },
+  bronze:   { width: 2 },
+  silver:   { width: 2 },
+  gold:     { width: 2.5 },
+  diamond:  { width: 2.5 },
+  premium:  { width: 2.5 },
+  famille:  { width: 2.5 },
+  flamme:   { width: 3 },
+  pro:      { width: 2.5 },
+  elite:    { width: 3 },
+  mathador: { width: 2.5 },
+  admin:    { width: 3 },
 };
 
 /** "border-admin" (ancien format du profil admin) → "admin". */
@@ -122,17 +121,11 @@ export default function AvatarWithBorder({
         className="ring-fx"
         data-ring={normalizeBorderKey(equippedBorder)}
         aria-hidden="true"
-        style={{ borderRadius: ringRadius + ring.width / 2, ["--rw" as string]: `${ring.width}px`, ["--spark" as string]: `${Math.max(2, Math.round(total * 0.045))}px` }}
+        style={{ borderRadius: ringRadius + ring.width / 2, ["--rw" as string]: `${ring.width}px` }}
       >
         <i className="ring-fx-glow" />
         <i className="ring-fx-band" />
-        {size !== "xs" && ring.sparks > 0 && (
-          <span className="ring-fx-path" style={{ inset: ring.width / 2, borderRadius: ringRadius, ["--rr" as string]: `${ringRadius}px` }}>
-            {Array.from({ length: ring.sparks }, (_, i) => (
-              <b key={i} className="ring-fx-spark" style={{ animationDelay: `${-(i * 100) / ring.sparks}%`, animationDuration: `calc(var(--ring-dur, 4s) * ${1.6 + i * 0.25})` }} />
-            ))}
-          </span>
-        )}
+        {size !== "xs" && <AvatarRingDecor ringKey={normalizeBorderKey(equippedBorder)} />}
       </span>
 
       {online && (
