@@ -1,35 +1,35 @@
 /** Avatar border styles by key */
 export const BORDER_STYLES: Record<string, { ring: string; label: string; preview: string; source?: "badge" | "subscription" | "admin" }> = {
-  none:     { ring: "",    label: "Aucun",       preview: "border-gray-200",   source: "badge" },
-  bronze:   { ring: "",    label: "Bronze",      preview: "border-amber-600",  source: "badge" },
-  silver:   { ring: "",    label: "Argent",      preview: "border-gray-400",   source: "badge" },
-  gold:     { ring: "",    label: "Or",          preview: "border-yellow-400", source: "badge" },
-  diamond:  { ring: "",    label: "Diamant",     preview: "border-cyan-400",   source: "badge" },
-  premium:  { ring: "",    label: "Premium",     preview: "border-purple-500", source: "subscription" },
-  famille:  { ring: "",    label: "Famille",     preview: "border-teal-400",   source: "subscription" },
-  flamme:   { ring: "",    label: "Flamme",      preview: "border-orange-500", source: "subscription" },
-  pro:      { ring: "",    label: "Annuel Pro",  preview: "border-yellow-500", source: "subscription" },
-  elite:    { ring: "",    label: "Elite",       preview: "border-pink-500",   source: "subscription" },
-  mathador: { ring: "",    label: "Mathador",    preview: "border-indigo-500", source: "badge" },
-  admin:    { ring: "",    label: "Admin",       preview: "border-red-500",    source: "admin" },
+  none:     { ring: "",    label: "Classique",       preview: "border-gray-200",   source: "badge" },
+  bronze:   { ring: "",    label: "Forge",      preview: "border-amber-600",  source: "badge" },
+  silver:   { ring: "",    label: "Acier",      preview: "border-gray-400",   source: "badge" },
+  gold:     { ring: "",    label: "Lauriers",          preview: "border-yellow-400", source: "badge" },
+  diamond:  { ring: "",    label: "Cristal",     preview: "border-cyan-400",   source: "badge" },
+  premium:  { ring: "",    label: "Royal",     preview: "border-purple-500", source: "subscription" },
+  famille:  { ring: "",    label: "Jardin",     preview: "border-teal-400",   source: "subscription" },
+  flamme:   { ring: "",    label: "Brasier",      preview: "border-orange-500", source: "subscription" },
+  pro:      { ring: "",    label: "Ailes d'or",  preview: "border-yellow-500", source: "subscription" },
+  elite:    { ring: "",    label: "Astral",       preview: "border-pink-500",   source: "subscription" },
+  mathador: { ring: "",    label: "Constellation",    preview: "border-indigo-500", source: "badge" },
+  admin:    { ring: "",    label: "Égide",       preview: "border-red-500",    source: "admin" },
 };
 
 /** Name color styles by key */
 export const NAME_COLORS: Record<string, { cls: string; label: string; source?: "badge" | "subscription" | "admin" }> = {
   // Badge unlocks (5 tiers)
-  default:  { cls: "text-gray-800",         label: "Défaut",      source: "badge" },
-  bronze:   { cls: "name-bronze-animated",  label: "Bronze",      source: "badge" },
-  silver:   { cls: "name-silver-animated",  label: "Argent",      source: "badge" },
-  gold:     { cls: "name-gold-animated",    label: "Or",          source: "badge" },
-  diamond:  { cls: "name-diamond-animated", label: "Diamant",     source: "badge" },
+  default:  { cls: "text-gray-800",         label: "Classique",      source: "badge" },
+  bronze:   { cls: "name-bronze-animated",  label: "Forge",      source: "badge" },
+  silver:   { cls: "name-silver-animated",  label: "Acier",      source: "badge" },
+  gold:     { cls: "name-gold-animated",    label: "Lauriers",          source: "badge" },
+  diamond:  { cls: "name-diamond-animated", label: "Cristal",     source: "badge" },
   // Subscription unlocks
-  premium:  { cls: "name-purple-animated",  label: "Premium",     source: "subscription" },
-  famille:  { cls: "name-teal-animated",    label: "Famille",     source: "subscription" },
-  pro:      { cls: "name-pro-animated",     label: "Annuel Pro",  source: "subscription" },
-  flame:    { cls: "name-flame",            label: "Flamme",      source: "subscription" },
-  elite:    { cls: "name-elite",            label: "Elite",       source: "subscription" },
+  premium:  { cls: "name-purple-animated",  label: "Royal",     source: "subscription" },
+  famille:  { cls: "name-teal-animated",    label: "Jardin",     source: "subscription" },
+  pro:      { cls: "name-pro-animated",     label: "Ailes d'or",  source: "subscription" },
+  flame:    { cls: "name-flame",            label: "Brasier",      source: "subscription" },
+  elite:    { cls: "name-elite",            label: "Astral",       source: "subscription" },
   // Admin exclusive
-  admin:    { cls: "name-admin-animated",   label: "Admin",       source: "admin" },
+  admin:    { cls: "name-admin-animated",   label: "Égide",       source: "admin" },
 };
 
 /** Fallback statique (si features pas encore chargées) */

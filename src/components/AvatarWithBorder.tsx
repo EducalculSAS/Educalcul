@@ -1,4 +1,5 @@
 import AvatarRingDecor from "@/components/AvatarRingDecor";
+import FlameFire from "@/components/FlameFire";
 import { avatarUrl, ADMIN_AVATAR } from "@/lib/avatarUrl";
 
 /**
@@ -53,7 +54,8 @@ export default function AvatarWithBorder({
 }: Props) {
   const av = SIZE[size];
   const key = normalizeBorderKey(equippedBorder);
-  const rw = key === "none" ? 1.5 : key === "flamme" ? FRAME_W[size] * 0.5 : FRAME_W[size];
+  const bigFlame = key === "flamme" && (size === "lg" || size === "xl" || size === "2xl");
+  const rw = key === "none" ? 1.5 : bigFlame ? Math.max(2, FRAME_W[size] * 0.3) : FRAME_W[size];
   const url = avatarUrl(avatar);
   const isLogo = url === ADMIN_AVATAR;
 
@@ -101,9 +103,13 @@ export default function AvatarWithBorder({
         <span className="ring-fx" data-ring="none" aria-hidden="true" style={{ borderRadius: ringRadius + rw / 2, ["--rw" as string]: `${rw}px` }}>
           <i className="ring-fx-band" />
         </span>
+      ) : bigFlame ? (
+        <span className="ring-fx" aria-hidden="true">
+          <FlameFire total={total} inset={rw + gap} avatar={av} radius={radius} />
+        </span>
       ) : (
         <span className="ring-fx" aria-hidden="true">
-          <AvatarRingDecor ringKey={key} w={(rw / total) * 100} r={(ringRadius / total) * 100} inset={((rw + gap) / total) * 100} compact={size === "xs"} animated={size === "lg" || size === "xl" || size === "2xl"} />
+          <AvatarRingDecor ringKey={key} w={(rw / total) * 100} r={(ringRadius / total) * 100} compact={size === "xs"} />
         </span>
       )}
 

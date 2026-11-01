@@ -127,14 +127,6 @@ export default function AdminProfileClient({ initialFormData }: {
           content:none;
         }
 
-        /* Text class — admin rainbow */
-        .text-admin {
-          background:linear-gradient(90deg,#ff6b6b,#ffd700,#4ecdc4,#8b5cf6,#ff6b6b) !important;
-          background-size:300% 100% !important;
-          -webkit-background-clip:text !important; -webkit-text-fill-color:transparent !important;
-          background-clip:text !important; font-weight:800 !important;
-          animation:adm-hue 3s linear infinite !important;
-        }
         .text-basic { color:#333 !important; }
       `}</style>
 
@@ -229,25 +221,25 @@ export default function AdminProfileClient({ initialFormData }: {
                         }
                         className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
-                        <option value="none">Aucun style</option>
+                        <option value="none">Classique</option>
                         <optgroup label="Admin exclusif">
-                          <option value="text-admin">Admin (arc-en-ciel)</option>
+                          <option value="text-admin">Égide</option>
                         </optgroup>
                         <optgroup label="Abonnements">
-                          <option value="name-elite">Élite (obsidian violet-cyan)</option>
-                          <option value="name-flame">Flamme</option>
-                          <option value="name-pro-animated">Annuel Pro (or)</option>
-                          <option value="name-purple-animated">Premium (violet)</option>
-                          <option value="name-teal-animated">Famille (turquoise)</option>
+                          <option value="name-elite">Astral</option>
+                          <option value="name-flame">Brasier</option>
+                          <option value="name-pro-animated">Ailes d&apos;or</option>
+                          <option value="name-purple-animated">Royal</option>
+                          <option value="name-teal-animated">Jardin</option>
                         </optgroup>
                         <optgroup label="Badges">
-                          <option value="name-diamond-animated">Diamant</option>
-                          <option value="name-gold-animated">Or</option>
-                          <option value="name-silver-animated">Argent</option>
-                          <option value="name-bronze-animated">Bronze</option>
+                          <option value="name-diamond-animated">Cristal</option>
+                          <option value="name-gold-animated">Lauriers</option>
+                          <option value="name-silver-animated">Acier</option>
+                          <option value="name-bronze-animated">Forge</option>
                         </optgroup>
                         <optgroup label="Autre">
-                          <option value="text-basic">Texte Basique</option>
+                          <option value="text-basic">Texte simple</option>
                         </optgroup>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
@@ -284,22 +276,22 @@ export default function AdminProfileClient({ initialFormData }: {
                         }
                         className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
                       >
-                        <option value="none">Aucun contour</option>
+                        <option value="none">Classique</option>
                         <optgroup label="Admin exclusif">
-                          <option value="border-admin">Admin (arc-en-ciel)</option>
+                          <option value="border-admin">Égide</option>
                         </optgroup>
                         <optgroup label="Abonnements">
-                          <option value="border-elite">Élite (obsidian violet)</option>
-                          <option value="border-flamme">Flamme</option>
-                          <option value="border-pro">Annuel Pro</option>
-                          <option value="border-premium">Premium</option>
-                          <option value="border-famille">Famille</option>
+                          <option value="border-elite">Astral</option>
+                          <option value="border-flamme">Brasier</option>
+                          <option value="border-pro">Ailes d&apos;or</option>
+                          <option value="border-premium">Royal</option>
+                          <option value="border-famille">Jardin</option>
                         </optgroup>
                         <optgroup label="Badges">
-                          <option value="border-diamond">Diamant</option>
-                          <option value="border-gold">Or</option>
-                          <option value="border-silver">Argent</option>
-                          <option value="border-bronze">Bronze</option>
+                          <option value="border-diamond">Cristal</option>
+                          <option value="border-gold">Lauriers</option>
+                          <option value="border-silver">Acier</option>
+                          <option value="border-bronze">Forge</option>
                         </optgroup>
                       </select>
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
@@ -367,7 +359,7 @@ export default function AdminProfileClient({ initialFormData }: {
               </div>
 
               <h4
-                className={`text-2xl mb-4 transition-all duration-300 font-bold ${formData.name_animation}`}
+                className={`text-2xl mb-4 transition-all duration-300 font-bold ${formData.name_animation === "text-admin" ? "name-admin-animated" : formData.name_animation}`}
               >
                 {formData.child_username || "Pseudo admin"}
               </h4>

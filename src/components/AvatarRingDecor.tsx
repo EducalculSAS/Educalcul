@@ -5,7 +5,6 @@
  * (globals.css, classes `rf-*`). Composant sans état ni effet : utilisable dans un Server Component.
  */
 import type { ReactNode } from "react";
-import FlameRing from "@/components/FlameRing";
 import { pointAt } from "@/lib/ringPath";
 
 type Pal = { dark: string; mid: string; light: string };
@@ -90,7 +89,7 @@ function Frame({ p, w, r, facets = false }: { p: Pal; w: number; r: number; face
   );
 }
 
-export default function AvatarRingDecor({ ringKey, w, r, inset, compact = false, animated = false }: { ringKey: string; w: number; r: number; inset: number; compact?: boolean; animated?: boolean }) {
+export default function AvatarRingDecor({ ringKey, w, r, compact = false }: { ringKey: string; w: number; r: number; compact?: boolean }) {
   const p = PAL[ringKey];
   if (!p) return null;
   const rOut = r + w / 2; // rayon du bord extérieur du cadre
@@ -152,9 +151,6 @@ export default function AvatarRingDecor({ ringKey, w, r, inset, compact = false,
           </>
         );
         break;
-      case "flamme":
-        behind = <FlameRing inset={inset} animated={animated} />;
-        break;
       case "pro": {
         const feathers = [[-84, 22], [-70, 30], [-56, 36], [-42, 40], [-28, 41], [-14, 38], [0, 33], [14, 26], [28, 19]];
         const wing = (
@@ -214,7 +210,7 @@ export default function AvatarRingDecor({ ringKey, w, r, inset, compact = false,
     <svg className="rf-decor" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
       {DEFS}
       {behind}
-      {ringKey !== "flamme" && <Frame p={p} w={w} r={r} facets={ringKey === "diamond"} />}
+      <Frame p={p} w={w} r={r} facets={ringKey === "diamond"} />
       {front}
     </svg>
   );
