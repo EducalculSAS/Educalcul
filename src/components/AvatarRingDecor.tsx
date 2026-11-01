@@ -90,7 +90,7 @@ function Frame({ p, w, r, facets = false }: { p: Pal; w: number; r: number; face
   );
 }
 
-export default function AvatarRingDecor({ ringKey, w, r, compact = false }: { ringKey: string; w: number; r: number; compact?: boolean }) {
+export default function AvatarRingDecor({ ringKey, w, r, inset, compact = false }: { ringKey: string; w: number; r: number; inset: number; compact?: boolean }) {
   const p = PAL[ringKey];
   if (!p) return null;
   const rOut = r + w / 2; // rayon du bord extérieur du cadre
@@ -153,7 +153,7 @@ export default function AvatarRingDecor({ ringKey, w, r, compact = false }: { ri
         );
         break;
       case "flamme":
-        behind = <FlameRing w={w} r={r} />;
+        behind = <FlameRing inset={inset} />;
         break;
       case "pro": {
         const feathers = [[-84, 22], [-70, 30], [-56, 36], [-42, 40], [-28, 41], [-14, 38], [0, 33], [14, 26], [28, 19]];

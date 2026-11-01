@@ -53,7 +53,7 @@ export default function AvatarWithBorder({
 }: Props) {
   const av = SIZE[size];
   const key = normalizeBorderKey(equippedBorder);
-  const rw = key === "none" ? 1.5 : FRAME_W[size];
+  const rw = key === "none" ? 1.5 : key === "flamme" ? FRAME_W[size] * 0.5 : FRAME_W[size];
   const url = avatarUrl(avatar);
   const isLogo = url === ADMIN_AVATAR;
 
@@ -103,7 +103,7 @@ export default function AvatarWithBorder({
         </span>
       ) : (
         <span className="ring-fx" aria-hidden="true">
-          <AvatarRingDecor ringKey={key} w={(rw / total) * 100} r={(ringRadius / total) * 100} compact={size === "xs"} />
+          <AvatarRingDecor ringKey={key} w={(rw / total) * 100} r={(ringRadius / total) * 100} inset={((rw + gap) / total) * 100} compact={size === "xs"} />
         </span>
       )}
 

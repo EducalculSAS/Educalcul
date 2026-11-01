@@ -3208,7 +3208,9 @@ html[data-theme="dark"] .family-foot { background: rgba(255, 255, 255, 0.03); }
   .rf-decor * { animation: none !important; }
   .rf-ember, .rf-heart, .rf-glint { display: none; }
   .rf-twinkle, .rf-bolt { opacity: 0.8; }
-  .rf-shine, .rf-flow { display: none; }
+  .rf-shine, .rf-flame-img { transform-box: fill-box; transform-origin: 50% 85%; animation: rf-flame-img 1.3s ease-in-out infinite alternate; }
+@keyframes rf-flame-img { 0% { transform: scale(1, 0.985) skewX(-0.6deg); filter: brightness(1); } 50% { transform: scale(0.995, 1.012) skewX(0.5deg); filter: brightness(1.07) saturate(1.1); } 100% { transform: scale(1.005, 1.02) skewX(-0.4deg); filter: brightness(1.03); } }
+.rf-flow { display: none; }
 }
 
 /* Bandeaux de contour propres à chaque niveau (en plus du dégradé de base) */
