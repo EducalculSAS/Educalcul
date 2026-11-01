@@ -45,26 +45,48 @@ const DEFS: ReactNode = (
 
 type P = { x: number; y: number; nx: number; ny: number; ang: number };
 
-/** `n` points régulièrement répartis sur le contour (carré aux coins arrondis, sens horaire) avec la normale sortante. */
-function perimeter(n: number, inset = 3, r = 28): P[] {
+/** Point d'abscisse curviligne `t` (0–1) sur le contour (carré aux coins arrondis, sens horaire), avec la normale sortante. */
+function pointAt(t: number, inset = 3, r = 28): P {
   const a = inset, b = 100 - inset, side = b - a - 2 * r, arc = (Math.PI / 2) * r, L = 4 * side + 4 * arc;
-  const out: P[] = [];
+  let d = (((t % 1) + 1) % 1) * L;
+  let x = 0, y = 0, nx = 0, ny = 0;
+  const seg = (len: number) => { if (d <= len) return true; d -= len; return false; };
+  const arcAt = (cx: number, cy: number, from: number) => { const f = from + (d / arc) * (Math.PI / 2); nx = Math.cos(f); ny = Math.sin(f); x = cx + r * nx; y = cy + r * ny; };
+  if (seg(side)) { x = a + r + d; y = a; ny = -1; }
+  else if (seg(arc)) arcAt(b - r, a + r, -Math.PI / 2);
+  else if (seg(side)) { x = b; y = a + r + d; nx = 1; }
+  else if (seg(arc)) arcAt(b - r, b - r, 0);
+  else if (seg(side)) { x = b - r - d; y = b; ny = 1; }
+  else if (seg(arc)) arcAt(a + r, b - r, Math.PI / 2);
+  else if (seg(side)) { x = a; y = b - r - d; nx = -1; }
+  else arcAt(a + r, a + r, Math.PI);
+  return { x, y, nx, ny, ang: (Math.atan2(ny, nx) * 180) / Math.PI };
+}
+/** `n` points régulièrement répartis sur le contour. */
+function perimeter(n: number, inset = 3, r = 28): P[] {
+  return Array.from({ length: n }, (_, i) => pointAt((i + 0.5) / n, inset, r));
+}
+/**
+ * UNE seule grande flamme qui fait tout le tour : `n` langues de feu géantes qui se touchent par la base, penchées dans le sens de la
+ * montée, dessinées comme un seul contour fermé (avec un trou au milieu pour l'avatar). `h` = hauteur, `variant` = autre forme (pour l'animation).
+ */
+function flameRing(n: number, h: number, variant: number, inset = 4): string {
+  const f = (x: number) => x.toFixed(1);
+  const E = Array.from({ length: n + 1 }, (_, k) => pointAt(k / n, inset));
+  let d = `M${f(E[0].x)} ${f(E[0].y)}`;
   for (let i = 0; i < n; i++) {
-    let d = ((i + 0.5) / n) * L;
-    let x = 0, y = 0, nx = 0, ny = 0;
-    const seg = (len: number) => { if (d <= len) return true; d -= len; return false; };
-    const arcAt = (cx: number, cy: number, from: number) => { const f = from + (d / arc) * (Math.PI / 2); nx = Math.cos(f); ny = Math.sin(f); x = cx + r * nx; y = cy + r * ny; };
-    if (seg(side)) { x = a + r + d; y = a; ny = -1; }
-    else if (seg(arc)) arcAt(b - r, a + r, -Math.PI / 2);
-    else if (seg(side)) { x = b; y = a + r + d; nx = 1; }
-    else if (seg(arc)) arcAt(b - r, b - r, 0);
-    else if (seg(side)) { x = b - r - d; y = b; ny = 1; }
-    else if (seg(arc)) arcAt(a + r, b - r, Math.PI / 2);
-    else if (seg(side)) { x = a; y = b - r - d; nx = -1; }
-    else arcAt(a + r, a + r, Math.PI);
-    out.push({ x, y, nx, ny, ang: (Math.atan2(ny, nx) * 180) / Math.PI });
+    const a = E[i], z = E[i + 1], c = pointAt((i + 0.5) / n, inset), tx = -c.ny, ty = c.nx; // tangente (sens horaire)
+    const hh = h * (0.7 + 0.6 * rnd(i, 10 + variant)), lean = 10 + rnd(i, 20 + variant) * 6;
+    const tip = { x: c.x + c.nx * hh + tx * lean, y: c.y + c.ny * hh + ty * lean };
+    const bx = (a.x + z.x) / 2, by = (a.y + z.y) / 2; // milieu de la base
+    // flanc avant bombé, flanc arrière creusé : la langue s'enroule dans le sens de la montée, comme une vraie flamme
+    d += ` Q${f(a.x + a.nx * hh * 0.85 + tx * lean * 0.1)} ${f(a.y + a.ny * hh * 0.85 + ty * lean * 0.1)} ${f(tip.x)} ${f(tip.y)}`;
+    d += ` Q${f(z.x + (tip.x - z.x) * 0.45 + (bx - z.x) * 0.8)} ${f(z.y + (tip.y - z.y) * 0.45 + (by - z.y) * 0.8)} ${f(z.x)} ${f(z.y)}`;
   }
-  return out;
+  d += "Z";
+  const m = 64;
+  for (let j = 0; j <= m; j++) { const q = pointAt(1 - j / m, inset + 1.6); d += `${j ? "L" : " M"}${f(q.x)} ${f(q.y)}`; }
+  return d + "Z";
 }
 const rnd = (i: number, k = 1) => { const v = Math.sin(i * 12.9898 + k * 78.233) * 43758.5453; return v - Math.floor(v); };
 const at = (p: P, out = 0) => `translate(${(p.x + p.nx * out).toFixed(2)} ${(p.y + p.ny * out).toFixed(2)})`;
@@ -72,28 +94,32 @@ const at = (p: P, out = 0) => `translate(${(p.x + p.nx * out).toFixed(2)} ${(p.y
 export default function AvatarRingDecor({ ringKey }: { ringKey: string }) {
   let body: ReactNode = null;
   switch (ringKey) {
-    case "flamme":
+    case "flamme": {
+      const dur = "1.2s", ks = "0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1";
+      const anim = (hh: number, v: number) => <animate attributeName="d" dur={dur} repeatCount="indefinite" calcMode="spline" keySplines={ks} values={[0, 1, 2, 0].map((k) => flameRing(9, hh, v * 3 + k)).join(";")} />;
       body = (
-        <>
-          {perimeter(36, 4).map((p, i) => <Flame key={`b${i}`} x={p.x + p.nx * 1} y={p.y + p.ny * 1} s={0.08 + rnd(i, 2) * 0.03} rot={p.ang + 90 + (rnd(i, 3) - 0.5) * 24} d={rnd(i, 4) * 1.2} />)}
-          {perimeter(32, 3).map((p, i) => <Flame key={`f${i}`} x={p.x + p.nx * 0.5} y={p.y + p.ny * 0.5} s={0.11 + rnd(i, 5) * 0.06} rot={p.ang + 90 + (rnd(i, 6) - 0.5) * 18} d={rnd(i, 7) * 1.2} hot={i % 5 === 0} />)}
-          {perimeter(12, 3).map((p, i) => <circle key={i} className="rf-ember" style={{ animationDelay: `${-rnd(i, 8) * 1.8}s` }} cx={p.x + p.nx * 9} cy={p.y + p.ny * 9} r={0.9} fill="#ffd23f" />)}
-        </>
+        <g className="rf-fire">
+          <path fillRule="evenodd" fill="url(#rg-fo)" d={flameRing(9, 34, 0)}>{anim(34, 0)}</path>
+          <path fillRule="evenodd" fill="url(#rg-fm)" d={flameRing(9, 23, 1)}>{anim(23, 1)}</path>
+          <path fillRule="evenodd" fill="url(#rg-fc)" d={flameRing(9, 12, 2)}>{anim(12, 2)}</path>
+        </g>
       );
       break;
+    }
     case "diamond":
       body = (
         <>
-          {perimeter(20, 3.5).map((p, i) => (
-            <g key={i} transform={`${at(p, 2)} rotate(${p.ang + 90}) scale(0.4) translate(-20 -26)`}>
-              <g className="rf-gem" style={{ animationDelay: `${-((i * 0.29) % 3.2)}s` }}>
-                <path d="M10 0 H30 L40 10 L20 34 L0 10 Z" fill="url(#rg-dg)" stroke="#0e7490" strokeWidth="1.4" strokeLinejoin="round" />
-                <path d="M0 10 H40 M10 0 L14 10 L20 34 M30 0 L26 10 L20 34 M14 10 L20 0 L26 10" fill="none" stroke="#fff" strokeOpacity=".85" strokeWidth="1.1" strokeLinejoin="round" />
-                <path d="M10 0 L14 10 L20 0Z M30 0 L26 10 L20 0Z" fill="#fff" fillOpacity=".55" />
+          {perimeter(8, 4).map((p, i) => (
+            <g key={i} transform={`${at(p, 3)} rotate(${p.ang + 90}) scale(0.82) translate(-20 -26)`}>
+              <g className="rf-gem" style={{ animationDelay: `${-((i * 0.43) % 3.2)}s` }}>
+                <path d="M10 0 H30 L40 10 L20 34 L0 10 Z" fill="url(#rg-dg)" stroke="#0e7490" strokeWidth="1" strokeLinejoin="round" />
+                <path d="M0 10 H40 M10 0 L14 10 L20 34 M30 0 L26 10 L20 34 M14 10 L20 0 L26 10" fill="none" stroke="#fff" strokeOpacity=".9" strokeWidth=".8" strokeLinejoin="round" />
+                <path d="M10 0 L14 10 L20 0Z M30 0 L26 10 L20 0Z" fill="#fff" fillOpacity=".6" />
+                <path className="rf-glint" d="M20 0 L24 10 L20 34 L16 10Z" fill="#fff" />
               </g>
             </g>
           ))}
-          {perimeter(8, 3).map((p, i) => <Star key={i} x={p.x + p.nx * 9} y={p.y + p.ny * 9} r={0.8 + rnd(i, 1) * 0.5} d={rnd(i, 2) * 1.8} />)}
+          {perimeter(8, 3).map((p, i) => <Star key={i} x={p.x + p.nx * 5 + p.ny * 14} y={p.y + p.ny * 5 - p.nx * 14} r={0.9 + rnd(i, 1) * 0.5} d={rnd(i, 2) * 1.8} />)}
         </>
       );
       break;
@@ -158,21 +184,41 @@ export default function AvatarRingDecor({ ringKey }: { ringKey: string }) {
         </>
       );
       break;
-    case "pro":
+    case "pro": {
+      const feathers = [[-84, 22], [-70, 30], [-56, 36], [-42, 40], [-28, 41], [-14, 38], [0, 33], [14, 26], [28, 19]];
+      const wing = (
+        <g className="rf-wing">
+          {feathers.map(([ang, L], i) => (
+            <g key={i} transform={`translate(5 46) rotate(${ang})`}>
+              <path d={`M0 0 C${-L * 0.2} ${-7} ${-L * 0.7} ${-7.5} ${-L} -0.6 C${-L * 0.7} 3.4 ${-L * 0.25} 5 0 0Z`} fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".55" strokeLinejoin="round" />
+              <path d={`M-3 0 L${-L * 0.92} -0.4`} stroke="#fff7cc" strokeWidth=".6" strokeOpacity=".85" strokeLinecap="round" />
+            </g>
+          ))}
+        </g>
+      );
       body = (
         <>
-          {perimeter(24, 3.5).map((p, i) => {
-            const h = i % 2 ? 7 : 11;
-            return (
-              <g key={i} transform={`${at(p, 0.5)} rotate(${p.ang + 90})`}>
-                <path d={`M-3.4 0 L0 ${-h} L3.4 0 Z`} fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".5" strokeLinejoin="round" />
-                <circle className="rf-pulse" style={{ animationDelay: `${-i * 0.15}s` }} cx="0" cy={-h} r="1.25" fill={["#ef4444", "#38bdf8", "#fff"][i % 3]} />
-              </g>
-            );
-          })}
+          {wing}
+          <g transform="translate(100 0) scale(-1 1)">{wing}</g>
+          <g transform="translate(50 4) scale(1.15)">
+            <g className="rf-pulse">
+              <path d="M-17 6 C-17 -3 -15 -12 -13 -14 L-7 -5 L0 -17 L7 -5 L13 -14 C15 -12 17 -3 17 6Z" fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".7" strokeLinejoin="round" />
+              <path d="M-17 6 H17 V11 C10 13 -10 13 -17 11Z" fill="url(#rg-gl)" stroke="#a16207" strokeWidth=".7" />
+              <path d="M-12 1 C-5 -4 5 -4 12 1" fill="none" stroke="#fff7cc" strokeWidth=".7" strokeOpacity=".8" />
+              <circle cx="-13" cy="-14" r="2" fill="#ef4444" stroke="#fff" strokeWidth=".4" /><circle cx="0" cy="-17" r="2.4" fill="#38bdf8" stroke="#fff" strokeWidth=".4" /><circle cx="13" cy="-14" r="2" fill="#ef4444" stroke="#fff" strokeWidth=".4" />
+              <circle cx="0" cy="8.6" r="1.7" fill="#fff" /><circle cx="-8" cy="8.4" r="1.2" fill="#a7f3d0" /><circle cx="8" cy="8.4" r="1.2" fill="#a7f3d0" />
+            </g>
+          </g>
+          <Star x={14} y={2} r={0.9} d={0.2} fill="#fff7cc" />
+          <Star x={86} y={2} r={0.9} d={0.9} fill="#fff7cc" />
+          <Star x={-30} y={30} r={0.8} d={0.5} fill="#fff7cc" />
+          <Star x={130} y={30} r={0.8} d={1.3} fill="#fff7cc" />
+          <Star x={-26} y={64} r={0.7} d={1.1} fill="#fff7cc" />
+          <Star x={126} y={64} r={0.7} d={0.7} fill="#fff7cc" />
         </>
       );
       break;
+    }
     case "elite":
       body = (
         <>
