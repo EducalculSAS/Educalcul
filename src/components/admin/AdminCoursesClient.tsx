@@ -18,42 +18,7 @@ import {
 import { compareFolderOrder } from "@/lib/contentOrder";
 import { formatDateFr } from "@/lib/formatDate";
 import PageLoader from "@/components/PageLoader";
-import {
-  BookOpen,
-  Search,
-  Plus,
-  Edit,
-  Trash2,
-  XCircle,
-  Loader2,
-  Image as ImageIcon,
-  Sparkles,
-  Eye,
-  Folder as FolderIcon,
-  FolderPlus,
-  Download,
-  Upload,
-  CheckCircle,
-  AlertTriangle,
-  Calculator,
-  Brain,
-  Trophy,
-  Star,
-  Pencil,
-  Ruler,
-  FlaskConical,
-  Shapes,
-  Pi,
-  Puzzle,
-  LineChart,
-  Hash,
-  Table2,
-  Superscript,
-  ArrowUp,
-  ArrowDown,
-  ArrowLeft,
-  ArrowRight,
-} from "lucide-react";
+import { BookOpen, Search, Plus, Edit, Trash2, XCircle, Loader2, Image as ImageIcon, Sparkles, Eye, Folder as FolderIcon, FolderPlus, Download, Upload, CheckCircle, AlertTriangle, ArrowUp, ArrowDown, ArrowLeft, ArrowRight } from "lucide-react";
 import { exportAsJSON, importFromJSONFile } from "@/lib/jsonIO";
 import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import { compileHandAuthoredCourse } from "@/lib/ai/handAuthoredContent";
@@ -87,6 +52,7 @@ import {
 import { useConfirm } from "@/components/ConfirmDialog";
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 import { errMessage } from "@/lib/safeError";
+import { COURSE_FOLDER_COLORS as FOLDER_COLORS, FOLDER_ICONS, getFolderIcon } from "@/components/admin/folderStyle";
 
 export interface Course {
   id: string;
@@ -115,68 +81,7 @@ export interface Folder {
   is_system?: boolean;
 }
 
-const FOLDER_COLORS = [
-  "#3b82f6", // Blue
-  "#ef4444", // Red
-  "#10b981", // Green
-  "#f59e0b", // Yellow/Gold
-  "#8b5cf6", // Purple
-  "#ec4899", // Pink
-  "#1e3a8a", // Bleu marine
-  "#14b8a6", // Teal
-  "#f97316", // Orange
-  "#64748b", // Slate
-  "#166534", // Vert foncé
-  "#78350f", // Marron
-  "#06b6d4", // Cyan
-  "#d946ef", // Fuchsia
-  "#0ea5e9", // Sky
-  "#f43f5e", // Rose
-];
 
-function Num123Icon({ size = 24, ...props }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" {...props}>
-      <text
-        x="12"
-        y="16.5"
-        textAnchor="middle"
-        fontSize="12"
-        fontWeight="bold"
-        fill="currentColor"
-        fillOpacity="1"
-        stroke="none"
-      >
-        123
-      </text>
-    </svg>
-  );
-}
-
-const FOLDER_ICONS = [
-  { name: "folder", Icon: FolderIcon },
-  { name: "book", Icon: BookOpen },
-  { name: "calculator", Icon: Calculator },
-  { name: "brain", Icon: Brain },
-  { name: "trophy", Icon: Trophy },
-  { name: "star", Icon: Star },
-  { name: "pencil", Icon: Pencil },
-  { name: "ruler", Icon: Ruler },
-  { name: "flask", Icon: FlaskConical },
-  { name: "shapes", Icon: Shapes },
-  { name: "pi", Icon: Pi },
-  { name: "puzzle", Icon: Puzzle },
-  { name: "chart", Icon: LineChart },
-  { name: "numbers", Icon: Hash },
-  { name: "table", Icon: Table2 },
-  { name: "exponent", Icon: Superscript },
-  { name: "123", Icon: Num123Icon },
-];
-
-const getFolderIcon = (iconName?: string | null) => {
-  const found = FOLDER_ICONS.find((i) => i.name === iconName);
-  return found ? found.Icon : FolderIcon;
-};
 
 /** Bibliothèque de cours admin : le dossier racine + tous les cours (filtres
  * par défaut) arrivent déjà chargés du serveur ; naviguer dans les dossiers,
