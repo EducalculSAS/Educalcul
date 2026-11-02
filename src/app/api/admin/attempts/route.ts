@@ -58,7 +58,7 @@ function gradeExerciseBlock(block: Loose, answer: Loose): boolean {
   const expected = block?.correctAnswer;
   if (Array.isArray(expected)) {
     const ansArr = Array.isArray(answer) ? answer : [answer];
-    return expected.every((e: Loose) => ansArr.includes(e)) && ansArr.length === expected.length;
+    return expected.every((e: unknown) => ansArr.includes(e)) && ansArr.length === expected.length;
   }
   if (typeof expected === "string" && typeof answer === "string") {
     return answer.trim().toLowerCase() === expected.trim().toLowerCase();

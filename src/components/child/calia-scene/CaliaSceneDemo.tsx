@@ -1,6 +1,6 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
+import { getSpeechRecognitionCtor, type SpeechRecognitionLike } from "@/types/speech";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
@@ -378,7 +378,7 @@ export default function CaliaSceneDemo({
 
   const highlightedElRef = useRef<HTMLElement | null>(null);
   const historyRef = useRef<HistoryMsg[]>([]);
-  const recognitionRef = useRef<Loose>(null);
+  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const shouldListenRef = useRef(false);
   const sessionActiveRef = useRef(false);
@@ -391,8 +391,7 @@ export default function CaliaSceneDemo({
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    const SR = (window as Loose).SpeechRecognition || (window as Loose).webkitSpeechRecognition;
-    setSpeechSupported(!!SR);
+    setSpeechSupported(!!getSpeechRecognitionCtor());
   }, []);
 
   const clearHighlight = () => {
@@ -938,14 +937,15 @@ export default function CaliaSceneDemo({
     startVolumeMonitor(stream);
     playListeningCue();
     shouldListenRef.current = true;
-    const SR = (window as Loose).SpeechRecognition || (window as Loose).webkitSpeechRecognition;
+    const SR = getSpeechRecognitionCtor();
+    if (!SR) return;
     const recognition = new SR();
     recognition.lang = "fr-FR";
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
     recognition.onstart = () => { setListening(true); setInterim(""); };
-    recognition.onresult = (e: Loose) => {
+    recognition.onresult = (e) => {
       let finalText = "";
       let interimText = "";
       for (let i = e.resultIndex; i < e.results.length; i++) {
@@ -956,7 +956,7 @@ export default function CaliaSceneDemo({
       setInterim(interimText);
       if (finalText.trim()) sendTurn(finalText.trim());
     };
-    recognition.onerror = (e: Loose) => {
+    recognition.onerror = (e) => {
       const code = e?.error;
       if (code === "not-allowed" || code === "service-not-allowed" || code === "audio-capture") {
         shouldListenRef.current = false;
