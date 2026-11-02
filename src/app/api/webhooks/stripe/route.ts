@@ -387,6 +387,12 @@ export async function POST(req: Request) {
     }
   } catch (err: unknown) {
     console.error("Webhook handler error:", err);
+    // Le traitement a échoué : on « oublie » l'événement pour que la nouvelle tentative de Stripe (réponse 500) soit
+    // traitée. Sans ça, la ligne posée plus haut faisait répondre « doublon » à chaque relivraison : l'abonnement
+    // payé n'était alors jamais créé.
+    if (!dedupeError) {
+      await supabaseAdmin.from("stripe_processed_events").delete().eq("event_id", event.id).then(() => undefined, () => undefined);
+    }
     return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err) || String(err)) }, { status: 500 });
   }
 
