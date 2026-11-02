@@ -225,7 +225,7 @@ export default function Inscription() {
         type={showPwd ? "text" : "password"}
         value={password} onChange={setPassword} placeholder="••••••••" required
         rightEl={
-          <button type="button" onClick={() => setShowPwd(v => !v)} className="opacity-50 hover:opacity-100 transition-opacity" style={{ color: "var(--text-muted)" }}>
+          <button type="button" onClick={() => setShowPwd(v => !v)} aria-label={showPwd ? "Masquer le mot de passe" : "Afficher le mot de passe"} aria-pressed={showPwd} className="opacity-50 hover:opacity-100 transition-opacity" style={{ color: "var(--text-muted)" }}>
             {showPwd ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
         }
@@ -239,7 +239,7 @@ export default function Inscription() {
         type={showPwd2 ? "text" : "password"}
         value={confirmPassword} onChange={setConfirmPassword} placeholder="••••••••" required
         rightEl={
-          <button type="button" onClick={() => setShowPwd2(v => !v)} className="opacity-50 hover:opacity-100 transition-opacity" style={{ color: "var(--text-muted)" }}>
+          <button type="button" onClick={() => setShowPwd2(v => !v)} aria-label={showPwd2 ? "Masquer la confirmation" : "Afficher la confirmation"} aria-pressed={showPwd2} className="opacity-50 hover:opacity-100 transition-opacity" style={{ color: "var(--text-muted)" }}>
             {showPwd2 ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
           </button>
         }
@@ -345,7 +345,7 @@ export default function Inscription() {
                 >
                   {i < step ? <CheckCircle className="w-3.5 h-3.5" /> : i + 1}
                 </div>
-                <span className="text-xs font-medium hidden sm:block" style={{ color: i === step ? accent : "var(--text-muted)", opacity: i === step ? 1 : 0.6 }}>
+                <span className="text-xs font-medium hidden sm:block" style={{ color: i === step ? accent : "var(--text-muted)", opacity: i === step ? 1 : 0.9 }}>
                   {s}
                 </span>
                 {i < TOTAL - 1 && (

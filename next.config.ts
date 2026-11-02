@@ -13,11 +13,7 @@ const securityHeaders = [
   // vocale (chat Calia + "Calia en classe"), sinon getUserMedia echoue sans
   // meme proposer la popup de permission au navigateur.
   { key: "Permissions-Policy", value: "camera=(), microphone=(self), geolocation=(), payment=()" },
-  // ✓ CRITICAL FIX: Content-Security-Policy to prevent XSS
-  {
-    key: "Content-Security-Policy",
-    value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://js.stripe.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data: https: blob:; font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net; media-src 'self' blob: https://kygsmclnwuiocqyvzrvp.supabase.co; connect-src 'self' https://*.supabase.co https://js.stripe.com https://m.stripe.network https://basemaps.cartocdn.com https://*.basemaps.cartocdn.com; frame-src https://js.stripe.com; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; manifest-src 'self'; worker-src 'self' blob:",
-  },
+  // La Content-Security-Policy est posée par src/proxy.ts (nonce par requête) : voir src/lib/csp.ts.
   // ✓ CRITICAL FIX: HSTS - enforce HTTPS
   { key: "Strict-Transport-Security", value: "max-age=31536000; includeSubDomains; preload" },
   // Le filtre XSS des vieux navigateurs est lui-même une source de failles : la recommandation actuelle est de le désactiver (la CSP protège).
@@ -48,7 +44,6 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "kygsmclnwuiocqyvzrvp.supabase.co" },
-      { protocol: "https", hostname: "images.unsplash.com" },
       { protocol: "https", hostname: "*.supabase.co" },
     ],
   },

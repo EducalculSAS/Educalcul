@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "eslint --max-warnings 0",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "check:csp-routes": "node scripts/check-csp-routes.mjs"
   },
   "dependencies": {
     "@fontsource/opendyslexic": "^5.3.0",
@@ -31,6 +32,7 @@
     "qrcode": "^1.5.4",
     "react": "19.3.1",
     "react-dom": "19.3.1",
+    "server-only": "^0.0.1",
     "stripe": "^23.1.0",
     "uuid": "^14.0.3"
   },
@@ -42,7 +44,6 @@
     "@types/qrcode": "^1.5.6",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "@types/uuid": "^10.0.0",
     "eslint": "^10.14.0",
     "eslint-config-next": "^16.4.3",
     "supabase": "^2.98.2",

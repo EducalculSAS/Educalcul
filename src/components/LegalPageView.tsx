@@ -154,7 +154,7 @@ export default function LegalPageView({ data }: { data: LegalPageData | null }) 
             <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-5">{data?.title}</h1>
             <p className="text-white/60 text-lg max-w-xl mx-auto leading-relaxed">{data?.subtitle}</p>
             {data?.updated_at && (
-              <p className="text-white/35 text-xs mt-4">Dernière mise à jour : {formatDate(data.updated_at)}</p>
+              <p className="text-white/55 text-xs mt-4">Dernière mise à jour : {formatDate(data.updated_at)}</p>
             )}
           </div>
         </section>

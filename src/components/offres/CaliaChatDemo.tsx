@@ -139,7 +139,7 @@ function CaliaChat({
           >
             Calia
           </p>
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>
             IA pédagogique · Aperçu
           </p>
         </div>
@@ -251,7 +251,7 @@ function CaliaChat({
             onKeyDown={(e) => e.key === "Enter" && handleSend()}
             placeholder="Pose ta question…"
             aria-label="Pose ta question"
-            className="calia-glass-soft flex-1 min-w-0 rounded-2xl px-3.5 py-2 text-sm outline-none placeholder:text-white/40 focus:border-[rgba(222,188,104,0.65)] transition-colors"
+            className="calia-glass-soft flex-1 min-w-0 rounded-2xl px-3.5 py-2 text-sm outline-none placeholder:text-white/55 focus:border-[rgba(222,188,104,0.65)] transition-colors"
             style={{ color: "rgba(240,237,232,0.92)" }}
           />
           <GlassButton

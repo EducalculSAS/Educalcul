@@ -7,6 +7,8 @@
   --greek-cream: #faf7f2;
   --greek-cream-dark: #f0ead8;
   --greek-gold: #c5a148;
+  /* Or foncé pour le TEXTE sur fond clair (l'or #c5a148 n'y atteint que 2,3 : 1 de contraste, il en faut 4,5 : 1) */
+  --greek-gold-text: #876a16;
   --greek-bronze: #a97142;
   --greek-border: #ede0c0;
   --text-dark: #1a1008;
@@ -2525,6 +2527,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white { background-color
    Règles NON layered : elles passent avant les utilitaires Tailwind.
    ══════════════════════════════════════════════════════════════════════════ */
 html[data-theme="dark"] {
+  --greek-gold-text: #c5a148;
   color-scheme: dark;
   --dm-page: #0a1020;
   --dm-surface: #111a2c;

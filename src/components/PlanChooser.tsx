@@ -460,9 +460,9 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
           <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "rgba(197,161,72,0.7)" }}>Votre formule</p>
           <div className="flex items-end gap-1 mb-1">
             <span className="font-[family-name:var(--font-display)] text-5xl font-bold text-white">{total.toFixed(2)}€</span>
-            <span className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.45)" }}>/mois</span>
+            <span className="text-sm mb-2" style={{ color: "rgba(255,255,255,0.55)" }}>/mois</span>
           </div>
-          <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.35)" }}>
+          <p className="text-xs mb-5" style={{ color: "rgba(255,255,255,0.55)" }}>
             {`Sur mesure · ${cfg.children} enfant${cfg.children > 1 ? "s" : ""}`}
           </p>
           <div className="space-y-1.5 mb-6 text-xs border-t border-white/10 pt-4">
@@ -475,12 +475,12 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
               </span>
             </div>
             {n > 1 && (
-              <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
+              <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.55)" }}>
                 <span>{n} enfants</span><span>+{childrenCost(n, pricing).toFixed(2)}€</span>
               </div>
             )}
             {cfg.ai !== "none" && (
-              <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.45)" }}>
+              <div className="flex justify-between" style={{ color: "rgba(255,255,255,0.55)" }}>
                 <span>IA {aiOption.label}</span><span>+{aiActualPrice.toFixed(2)}€</span>
               </div>
             )}

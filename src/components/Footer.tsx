@@ -53,13 +53,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <Image src="/logo.png" alt="Educalcul" width={84} height={48} className="h-12 w-auto object-contain mb-5" />
-            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.45)" }}>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.55)" }}>
               Plateforme d&apos;apprentissage des mathématiques, du CP à la Terminale.
               IA pédagogique, progression gamifiée, suivi parents.
             </p>
             <a href="mailto:contact@educalcul.com"
               className="flex items-center gap-2 text-sm mb-5 transition-colors hover:text-white"
-              style={{ color: "rgba(255,255,255,0.45)" }}
+              style={{ color: "rgba(255,255,255,0.55)" }}
             >
               <Mail className="w-4 h-4 shrink-0" />
               contact@educalcul.com
@@ -104,7 +104,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
+          <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>
             &copy; {currentYear} Educalcul. Tous droits réservés.
           </p>
         </div>

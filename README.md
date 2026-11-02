@@ -41,5 +41,7 @@ Le CI (GitHub Actions) lance typecheck, lint, tests et build à chaque envoi sur
   l'identité (`getAuthenticatedUser`, `requireRole`) **et** que la ressource appartient bien à l'appelant.
 - Lire le corps d'une requête avec `readJsonBody` (`src/lib/apiJson.ts`) : jamais d'exception sur un JSON invalide.
 - IP du client : `getClientIp` (`src/lib/apiAuth.ts`), jamais l'en-tête `x-forwarded-for` à la main.
+- CSP : `src/lib/csp.ts` + `src/proxy.ts`. Pages connectées/admin/contenu utilisateur = **stricte** (nonce, aucun script en ligne sans nonce) ;
+  vitrine et connexion (pré-rendues) = standard. `npm run check:csp-routes` (CI, après build) empêche de mettre une page pré-rendue en stricte.
 - Webhook Stripe : un événement échoué est retiré de `stripe_processed_events` pour que la relivraison soit traitée.
 - Dans Supabase, activer « Leaked password protection » (Auth → Providers → Password).

@@ -58,7 +58,7 @@ export default function FAQ() {
           <div className="relative container mx-auto px-6 max-w-5xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(197,161,72,0.6)" }}>Aide & réponses</p>
+                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(197,161,72,0.85)" }}>Aide & réponses</p>
                 <h1 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4 text-white"
                   style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)" }}>
                   Questions fréquentes
@@ -74,7 +74,7 @@ export default function FAQ() {
                     <div>
                       <p className="text-sm font-[family-name:var(--font-display)] font-semibold" style={{ color: "rgba(240,237,232,0.8)" }}>{section.title}</p>
                     </div>
-                    <ChevronDown className="w-4 h-4 flex-shrink-0" style={{ color: "rgba(197,161,72,0.45)" }} />
+                    <ChevronDown className="w-4 h-4 flex-shrink-0" style={{ color: "rgba(197,161,72,0.85)" }} />
                   </div>
                 ))}
               </div>

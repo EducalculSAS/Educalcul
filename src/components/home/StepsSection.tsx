@@ -92,7 +92,7 @@ export default function StepsSection() {
               >
                 {s.num}
               </div>
-              <h5 className="font-[family-name:var(--font-display)] font-bold text-base mb-2" style={{ color: "var(--greek-blue)" }}>{s.title}</h5>
+              <h3 className="font-[family-name:var(--font-display)] font-bold text-base mb-2" style={{ color: "var(--greek-blue)" }}>{s.title}</h3>
               <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{s.desc}</p>
             </div>
           ))}
@@ -130,7 +130,7 @@ export default function StepsSection() {
                 {s.num}
               </div>
               <div className="pt-0.5">
-                <h5 className="font-[family-name:var(--font-display)] font-bold text-base mb-1" style={{ color: "var(--greek-blue)" }}>{s.title}</h5>
+                <h3 className="font-[family-name:var(--font-display)] font-bold text-base mb-1" style={{ color: "var(--greek-blue)" }}>{s.title}</h3>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{s.desc}</p>
               </div>
             </div>

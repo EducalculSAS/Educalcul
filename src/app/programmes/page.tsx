@@ -29,6 +29,7 @@ export default async function ProgrammesPage() {
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
       <Navbar />
+      <main className="flex flex-col flex-1">
 
       {/* Hero — avec barre de progression niveaux */}
       <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white pt-[calc(var(--nav-h)+4rem)] pb-20 text-center">
@@ -79,7 +80,7 @@ export default async function ProgrammesPage() {
           <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl mb-4 text-white">
             Prêt à commencer ?
           </h2>
-          <p className="text-sm mb-8 text-white/45">
+          <p className="text-sm mb-8 text-white/55">
             Inscrivez-vous en 2 minutes et accédez à tous les contenus alignés sur ces programmes.
           </p>
           <GlassButton href="/auth/inscription" variant="gold">
@@ -87,6 +88,8 @@ export default async function ProgrammesPage() {
           </GlassButton>
         </div>
       </section>
+
+      </main>
 
       <Footer />
     </div>

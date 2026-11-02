@@ -499,7 +499,7 @@ export default function AITutor() {
             <Image src="/logoAI.png" alt="Calia" width={28} height={28} className="object-contain flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Calia</p>
-              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>{isSupportMode ? "Assistante IA" : "Tutrice IA · Maths"}</p>
+              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.55)" }}>{isSupportMode ? "Assistante IA" : "Tutrice IA · Maths"}</p>
             </div>
             {speechSupported && (
               <GlassIconButton
@@ -609,7 +609,7 @@ export default function AITutor() {
                   <div className="rounded-2xl p-4 text-center" style={{ background: "rgba(197,161,72,0.07)", border: "1px solid rgba(197,161,72,0.2)" }}>
                     <Lock className="w-5 h-5 mx-auto mb-2" style={{ color: "var(--greek-gold)" }} />
                     <p className="text-sm font-bold mb-1" style={{ color: "rgba(240,237,232,0.9)" }}>Plan requis</p>
-                    <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.4)" }}>L&apos;IA est disponible à partir du plan Premium.</p>
+                    <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>L&apos;IA est disponible à partir du plan Premium.</p>
                     <GlassButton href="/parent/subscription" variant="gold" size="sm">
                       Voir les abonnements <ArrowRight className="w-3 h-3" />
                     </GlassButton>
@@ -645,7 +645,7 @@ export default function AITutor() {
                     onKeyDown={handleKey}
                     placeholder="Pose ta question…"
                     rows={1}
-                    className="calia-glass-soft flex-1 rounded-2xl px-3.5 py-2 text-sm outline-none resize-none placeholder:text-white/40 focus:border-[rgba(222,188,104,0.65)] transition-colors"
+                    className="calia-glass-soft flex-1 rounded-2xl px-3.5 py-2 text-sm outline-none resize-none placeholder:text-white/55 focus:border-[rgba(222,188,104,0.65)] transition-colors"
                     style={{ color: "rgba(240,237,232,0.92)", minHeight: "36px", maxHeight: "80px" }}
                   />
                   <GlassIconButton

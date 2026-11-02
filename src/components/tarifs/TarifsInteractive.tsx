@@ -100,7 +100,7 @@ function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
             {Number(plan.price) > 0 && (
               <span
                 className="text-sm mb-2"
-                style={{ color: "rgba(255,255,255,0.45)" }}
+                style={{ color: "rgba(255,255,255,0.55)" }}
               >
                 {intervalLabel(plan.billing_interval)}
               </span>
@@ -471,7 +471,7 @@ function ComparisonTable({
               className="sticky top-0 z-20 text-left px-6 py-5 text-xs font-semibold uppercase tracking-wider"
               style={{
                 background: "var(--greek-blue)",
-                color: "rgba(255,255,255,0.35)",
+                color: "rgba(255,255,255,0.55)",
                 width: "34%",
               }}
             >
@@ -505,7 +505,7 @@ function ComparisonTable({
                     {Number(item.price) > 0 && (
                       <span
                         className="text-xs font-normal ml-0.5"
-                        style={{ color: "rgba(255,255,255,0.4)" }}
+                        style={{ color: "rgba(255,255,255,0.55)" }}
                       >
                         {intervalLabel(item.billing_interval)}
                       </span>
@@ -851,21 +851,21 @@ function Configurator({
             </span>
             <span
               className="text-sm mb-2"
-              style={{ color: "rgba(255,255,255,0.45)" }}
+              style={{ color: "rgba(255,255,255,0.55)" }}
             >
               /mois
             </span>
           </div>
           <p
             className="text-xs mb-5"
-            style={{ color: "rgba(255,255,255,0.35)" }}
+            style={{ color: "rgba(255,255,255,0.55)" }}
           >
             {`Sur mesure · ${cfg.children} enfant${cfg.children > 1 ? "s" : ""}`}
           </p>
           <div className="space-y-1.5 mb-6 text-xs border-t border-white/10 pt-4">
             <div
               className="flex justify-between"
-              style={{ color: "rgba(255,255,255,0.45)" }}
+              style={{ color: "rgba(255,255,255,0.55)" }}
             >
               <span>Base personnalisée</span>
               <span>{pricing.base_price.toFixed(2)}€</span>
@@ -873,7 +873,7 @@ function Configurator({
             {n > 1 && (
               <div
                 className="flex justify-between"
-                style={{ color: "rgba(255,255,255,0.45)" }}
+                style={{ color: "rgba(255,255,255,0.55)" }}
               >
                 <span>{n} enfants</span>
                 <span>+{childrenCost(n, pricing).toFixed(2)}€</span>
@@ -882,7 +882,7 @@ function Configurator({
             {cfg.ai !== "none" && (
               <div
                 className="flex justify-between"
-                style={{ color: "rgba(255,255,255,0.45)" }}
+                style={{ color: "rgba(255,255,255,0.55)" }}
               >
                 <span>IA {aiOption.label}</span>
                 <span>+{aiActualPrice.toFixed(2)}€</span>

@@ -68,6 +68,7 @@ export default async function Home() {
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-blue)" }}>
       <Navbar />
       <ScrollArrow />
+      <main className="flex flex-col flex-1">
 
       {/* ════════════════════════════════════════════════════════
           HERO
@@ -125,7 +126,7 @@ export default async function Home() {
             </GlassButton>
           </div>
 
-          <p className="text-sm italic mt-10 hero-rise hero-rise-5" style={{ color: "rgba(197,161,72,0.45)", fontFamily: "Georgia, serif" }}>
+          <p className="text-sm italic mt-10 hero-rise hero-rise-5" style={{ color: "rgba(197,161,72,0.85)", fontFamily: "Georgia, serif" }}>
             Educalcul, par amour des mathématiques.
           </p>
         </div>
@@ -183,9 +184,9 @@ export default async function Home() {
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
                 1 · Cours & Exercices
               </div>
-              <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
+              <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Tout le programme,<br />aucune lacune oubliée
-              </h3>
+              </h2>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
                 Cours structurés, exercices progressifs, corrections détaillées, construits chapitre par chapitre sur le programme officiel, du CP à la Terminale.
               </p>
@@ -221,9 +222,9 @@ export default async function Home() {
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
                 2 · IA Pédagogique
               </div>
-              <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
+              <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Un tuteur IA qui pose<br />les bonnes questions
-              </h3>
+              </h2>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
                 Jamais la réponse tout de suite : Calia repère où ça bloque et guide l&apos;élève jusqu&apos;au déclic, avec la méthode socratique. Disponible 24h/24.
               </p>
@@ -236,9 +237,9 @@ export default async function Home() {
               <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
                 3 · Suivi Parents
               </div>
-              <h3 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
+              <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
                 Vous savez enfin<br />où il en est vraiment
-              </h3>
+              </h2>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
                 Progression par chapitre, objectifs et séries, alerte quand il décroche : un tableau de bord clair pour chaque enfant, pas un bulletin de plus à décoder.
               </p>
@@ -339,6 +340,8 @@ export default async function Home() {
           </div>
         </Reveal>
       </section>
+
+      </main>
 
       <Footer />
     </div>

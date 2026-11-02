@@ -20,8 +20,6 @@ import JsonLd from "@/components/JsonLd";
 import ThemeSync from "@/components/ThemeSync";
 import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
-import { THEME_INIT_SCRIPT } from "@/lib/theme";
-import { A11Y_INIT_SCRIPT } from "@/lib/a11y";
 import "@fontsource/opendyslexic/400.css";
 import "@fontsource/opendyslexic/700.css";
 import NavProgress from "@/components/NavProgress";
@@ -183,8 +181,10 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         {/* Thème sombre mémorisé : appliqué avant le premier rendu (pas de flash clair). */}
-        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
-        <script dangerouslySetInnerHTML={{ __html: A11Y_INIT_SCRIPT }} />
+        {/* Thème + confort de lecture appliqués avant le premier rendu. Fichier externe (et non script en ligne) pour que la CSP stricte
+            avec nonce n'ait rien à autoriser ici ; contenu : src/app/api/boot-script/route.ts */}
+        {/* eslint-disable-next-line @next/next/no-sync-scripts -- volontairement bloquant : le thème doit être posé avant le premier rendu (sinon flash de page claire) */}
+        <script src="/api/boot-script" />
         {/* Geo meta tags */}
         <meta name="geo.region" content="FR" />
         <meta name="geo.country" content="FR" />

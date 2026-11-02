@@ -76,7 +76,7 @@ export default function ContactForm() {
 
           <div>
             <label className="block font-[family-name:var(--font-display)] text-xs font-semibold text-[var(--greek-blue)] mb-1.5 uppercase tracking-wide">Sujet</label>
-            <select name="subjectType" value={formData.subjectType} onChange={handleChange} required className={inputClass}>
+            <select name="subjectType" aria-label="Sujet" value={formData.subjectType} onChange={handleChange} required className={inputClass}>
               <option value="">Sélectionnez un sujet</option>
               {SUBJECTS.map((s) => <option key={s} value={s}>{s}</option>)}
             </select>

@@ -109,7 +109,7 @@ export default async function Offres() {
               <div>
                 <p
                   className="text-xs font-bold uppercase tracking-widest mb-5"
-                  style={{ color: "rgba(197,161,72,0.6)" }}
+                  style={{ color: "rgba(197,161,72,0.85)" }}
                 >
                   Plateforme de mathématiques
                 </p>
@@ -290,7 +290,7 @@ export default async function Offres() {
               </h2>
               <p
                 className="text-sm max-w-lg mx-auto"
-                style={{ color: "rgba(15,30,58,0.5)" }}
+                style={{ color: "rgba(15,30,58,0.68)" }}
               >
                 Chaque fonctionnalité est pensée pour un objectif précis :
                 apprendre mieux, progresser durablement, en toute confiance.
@@ -385,7 +385,7 @@ export default async function Offres() {
                 </p>
                 <p
                   className="text-xs mt-0.5"
-                  style={{ color: "rgba(255,255,255,0.45)" }}
+                  style={{ color: "rgba(255,255,255,0.55)" }}
                 >
                   Gérez jusqu&apos;à 5 profils enfants depuis un espace parent
                   unique. Chacun à son rythme, son niveau, ses statistiques.
@@ -419,7 +419,7 @@ export default async function Offres() {
               </h2>
               <p
                 className="text-sm max-w-lg mx-auto"
-                style={{ color: "rgba(15,30,58,0.5)" }}
+                style={{ color: "rgba(15,30,58,0.68)" }}
               >
                 Des familles utilisent déjà Educalcul au quotidien, voici ce
                 qu&apos;elles en disent.
@@ -470,7 +470,7 @@ export default async function Offres() {
             </h2>
             <p
               className="text-sm mb-8"
-              style={{ color: "rgba(255,255,255,0.45)" }}
+              style={{ color: "rgba(255,255,255,0.55)" }}
             >
               7 jours d&apos;essai gratuit, sans engagement, sans carte
               bancaire.

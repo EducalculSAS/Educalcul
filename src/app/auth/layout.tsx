@@ -24,7 +24,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
     <div className="min-h-screen flex flex-col" style={{ background: "var(--greek-blue)" }}>
       <Navbar />
 
-      <div className="flex flex-1 pt-[64px]">
+      <main className="flex flex-1 pt-[64px]">
         {/* ── Panneau gauche — même style hero homepage ── */}
         <div
           className="hidden lg:flex flex-col justify-center px-16 relative overflow-hidden"
@@ -95,7 +95,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         >
           {children}
         </div>
-      </div>
+      </main>
 
     </div>
   );

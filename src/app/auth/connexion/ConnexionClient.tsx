@@ -245,7 +245,7 @@ export default function ConnexionClient() {
           <div>
             <div className="flex items-center justify-between mb-1.5">
               <label className="text-xs font-bold tracking-wide uppercase" style={{ color: "var(--greek-blue)" }}>Mot de passe</label>
-              <Link href="/auth/forgot-password" className="text-xs font-medium hover:underline transition-colors" style={{ color: "var(--greek-gold)" }}>
+              <Link href="/auth/forgot-password" className="text-xs font-medium hover:underline transition-colors" style={{ color: "var(--greek-gold-text)" }}>
                 Mot de passe oublié ?
               </Link>
             </div>
@@ -265,6 +265,8 @@ export default function ConnexionClient() {
               <button
                 type="button"
                 onClick={() => setShowPassword(v => !v)}
+                aria-label={showPassword ? "Masquer le mot de passe" : "Afficher le mot de passe"}
+                aria-pressed={showPassword}
                 className="absolute right-3 top-1/2 -translate-y-1/2 transition-opacity hover:opacity-70"
                 style={{ color: "var(--text-muted)" }}
               >

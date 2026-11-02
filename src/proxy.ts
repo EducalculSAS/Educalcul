@@ -4,6 +4,7 @@ import { updateSession } from "@/lib/supabase/middleware";
 import { ipMatchesCidr } from "@/lib/adminIpAllowlist";
 import { getClientIp } from "@/lib/ipGeo";
 import { getDisabledFeatures } from "@/lib/featureFlags";
+import { isStrictCspPath, makeNonce, standardCsp, strictCsp } from "@/lib/csp";
 import { FEATURE_BY_KEY, MAINTENANCE_KEY, blockingFeature, exemptFromMaintenance } from "@/lib/featureCatalog";
 
 function dashboardPathForRole(role: string): string {
@@ -179,7 +180,7 @@ async function featureGate(req: NextRequest, pathname: string, method: string): 
   const target = new URL(maintenance ? "/maintenance" : "/indisponible", req.url);
   target.search = "";
   if (!maintenance) target.searchParams.set("f", feature.key);
-  return NextResponse.rewrite(target);
+  return NextResponse.rewrite(target, { request: { headers: req.headers } });
 }
 
 /**
@@ -204,7 +205,7 @@ async function rejectMalformedJson(req: NextRequest, pathname: string, method: s
   }
 }
 
-export async function proxy(req: NextRequest) {
+async function handle(req: NextRequest): Promise<NextResponse> {
   const { pathname } = req.nextUrl;
   const method = req.method.toUpperCase();
 
@@ -302,6 +303,27 @@ export async function proxy(req: NextRequest) {
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
     return guardAdminPage(req, response, authId);
   }
+  return response;
+}
+
+/**
+ * Point d'entrée : pose la Content-Security-Policy (src/lib/csp.ts) puis délègue au reste du garde. Pour une page « stricte », la CSP avec
+ * nonce est aussi transmise à la requête : c'est en la lisant que Next met le nonce sur ses propres scripts.
+ */
+export async function proxy(req: NextRequest) {
+  const { pathname } = req.nextUrl;
+  const isPage = !pathname.startsWith("/api/");
+  let csp: string | null = null;
+  if (isPage) {
+    if (isStrictCspPath(pathname)) {
+      csp = strictCsp(makeNonce());
+      req.headers.set("content-security-policy", csp);
+    } else {
+      csp = standardCsp();
+    }
+  }
+  const response = await handle(req);
+  if (csp) response.headers.set("Content-Security-Policy", csp);
   return response;
 }
 

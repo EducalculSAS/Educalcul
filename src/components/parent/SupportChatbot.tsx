@@ -71,7 +71,7 @@ export default function SupportChatbot() {
             <Image src="/logoAI.png" alt="Calia" width={28} height={28} className="object-contain flex-shrink-0" />
             <div className="flex-1 min-w-0">
               <p className="font-[family-name:var(--font-display)] font-bold text-sm" style={{ color: "var(--greek-gold)" }}>Calia</p>
-              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.35)" }}>Assistante IA</p>
+              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.55)" }}>Assistante IA</p>
             </div>
             <GlassIconButton icon={RotateCcw} onClick={() => setMessages([BOT_WELCOME])} color="white" size="sm" aria-label="Nouvelle conversation" />
             <GlassCloseButton onClick={() => setOpen(false)} variant="dark" size="sm" aria-label="Fermer le chat" />
@@ -115,7 +115,7 @@ export default function SupportChatbot() {
           <div className="px-3 py-3 shrink-0 flex gap-2" style={{ borderTop: "1px solid rgba(255,255,255,0.12)" }}>
             <input value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") sendMessage(); }}
               disabled={sending}
-              placeholder="Votre question…" aria-label="Votre question" className="calia-glass-soft flex-1 min-w-0 rounded-2xl px-3.5 py-2 text-sm outline-none disabled:opacity-50 placeholder:text-white/40 focus:border-[rgba(222,188,104,0.65)] transition-colors"
+              placeholder="Votre question…" aria-label="Votre question" className="calia-glass-soft flex-1 min-w-0 rounded-2xl px-3.5 py-2 text-sm outline-none disabled:opacity-50 placeholder:text-white/55 focus:border-[rgba(222,188,104,0.65)] transition-colors"
               style={{ color: "rgba(240,237,232,0.92)" }} />
             <GlassIconButton icon={Send} onClick={() => sendMessage()} disabled={!input.trim() || sending} color="gold" aria-label="Envoyer" />
           </div>

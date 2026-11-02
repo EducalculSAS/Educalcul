@@ -57,7 +57,7 @@ export default async function Tarifs() {
           <div className="relative container mx-auto px-6 max-w-5xl">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(197,161,72,0.6)" }}>Abonnements</p>
+                <p className="text-xs font-bold uppercase tracking-widest mb-5" style={{ color: "rgba(197,161,72,0.85)" }}>Abonnements</p>
                 <h1 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-5 text-white"
                   style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.4rem)" }}>
                   Nos Formules
@@ -71,9 +71,9 @@ export default async function Tarifs() {
               </div>
               <div className="hidden md:flex flex-col gap-4">
                 <div className="rounded-2xl p-6" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
-                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "rgba(197,161,72,0.6)" }}>Pour commencer</p>
+                  <p className="text-xs font-bold uppercase tracking-widest mb-1" style={{ color: "rgba(197,161,72,0.85)" }}>Pour commencer</p>
                   <p className="font-[family-name:var(--font-display)] font-bold mt-2" style={{ color: "var(--greek-gold)", fontSize: "2.8rem", lineHeight: 1 }}>0 €</p>
-                  <p className="text-xs mt-2" style={{ color: "rgba(255,255,255,0.35)" }}>Accès immédiat à toutes les fonctionnalités : 7 jours sans frais</p>
+                  <p className="text-xs mt-2" style={{ color: "rgba(255,255,255,0.55)" }}>Accès immédiat à toutes les fonctionnalités : 7 jours sans frais</p>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {["Sans engagement", "Sans carte bancaire", "Annulable à tout moment", "Accès immédiat"].map((item, i) => (
@@ -97,9 +97,9 @@ export default async function Tarifs() {
           <section className="py-14 bg-[var(--greek-cream)] border-t border-gray-100 text-center">
           <div className="container mx-auto px-6 max-w-xl">
             <FadeInSection translateY={20}>
-              <h3 className="font-[family-name:var(--font-display)] font-bold text-lg text-[var(--greek-blue)] mb-2">
+              <h2 className="font-[family-name:var(--font-display)] font-bold text-lg text-[var(--greek-blue)] mb-2">
                 Sans engagement · Annulable à tout moment
-              </h3>
+              </h2>
               <p className="text-[var(--text-muted)] text-sm leading-relaxed">
                 Paiement sécurisé par Stripe. Aucun frais caché. Remboursement garanti dans les 7 jours si insatisfait.
               </p>
@@ -126,9 +126,9 @@ export default async function Tarifs() {
             </div>
             <p className="text-center text-sm mt-8" style={{ color: "var(--text-muted)" }}>
               Vous avez une autre question ?{" "}
-              <a href="/contact" className="font-semibold hover:underline" style={{ color: "var(--greek-gold)" }}>Contactez-nous</a>
+              <a href="/contact" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>Contactez-nous</a>
               {" "}ou consultez la{" "}
-              <a href="/faq" className="font-semibold hover:underline" style={{ color: "var(--greek-gold)" }}>FAQ complète</a>.
+              <a href="/faq" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>FAQ complète</a>.
             </p>
           </div>
         </section>
