@@ -40,16 +40,9 @@ export function palierToGradeLevels(code: PalierCode): string[] {
     .map(([gl]) => gl);
 }
 
-export function isPalierCode(code: string): code is PalierCode {
-  return (PALIER_CODES as readonly string[]).includes(code);
-}
-
 // Alias conservés pour les call-sites existants (Mathador affiche encore un
 // "levelCode" informatif dans sa réponse API — non utilisé pour filtrer quoi
 // que ce soit côté Mathador, juste un résumé de niveau côté client).
 export function gradeLevelToMinigameCode(gradeLevel: string): string | null {
   return gradeLevelToPalier(gradeLevel);
-}
-export function minigameCodeToGradeLevel(code: string): string | null {
-  return isPalierCode(code) ? code : null;
 }

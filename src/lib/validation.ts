@@ -5,10 +5,7 @@
 
 // UUID v4 pattern
 import type { Loose } from "@/types/loose";
-export const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-
-// Numeric ID pattern
-export const NUMERIC_ID_REGEX = /^\d+$/;
+const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 /**
  * Validate UUID format
@@ -80,21 +77,6 @@ export function escapeHtml(text: string): string {
     "'": '&#039;',
   };
   return text.replace(/[&<>"']/g, char => map[char]);
-}
-
-/**
- * Safe string replace (prevents regex injection)
- */
-export function safeReplace(text: string, placeholder: string, value: string): string {
-  return text.split(placeholder).join(value);
-}
-
-/**
- * Validate file extension
- */
-export function isAllowedFileExtension(filename: string, allowedExtensions: Set<string>): boolean {
-  const ext = filename.split('.').pop()?.toLowerCase() || '';
-  return allowedExtensions.has(ext);
 }
 
 /**

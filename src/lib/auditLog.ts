@@ -84,35 +84,3 @@ export async function auditLog(
     return { success: false, error: "Failed to log audit entry" };
   }
 }
-
-/**
- * Get audit logs for a specific target
- */
-export async function getAuditLogs(
-  targetUserId?: number,
-  limit: number = 100
-): Promise<Loose[]> {
-  try {
-    let query = supabaseAdmin
-      .from("audit_logs")
-      .select("*")
-      .order("created_at", { ascending: false })
-      .limit(limit);
-
-    if (targetUserId) {
-      query = query.eq("target_user_id", targetUserId);
-    }
-
-    const { data, error } = await query;
-
-    if (error) {
-      console.error("[getAuditLogs] Database error:", error);
-      return [];
-    }
-
-    return data || [];
-  } catch (err) {
-    console.error("[getAuditLogs] Error:", err);
-    return [];
-  }
-}

@@ -16,7 +16,7 @@
  */
 
 /** Préfixes rendus à la demande, protégés par la CSP stricte avec nonce. */
-export const STRICT_CSP_PREFIXES = ["/admin", "/parent", "/child", "/dashboard", "/u/", "/suivi/", "/maintenance", "/indisponible"] as const;
+const STRICT_CSP_PREFIXES = ["/admin", "/parent", "/child", "/dashboard", "/u/", "/suivi/", "/maintenance", "/indisponible"] as const;
 
 export function isStrictCspPath(pathname: string): boolean {
   return STRICT_CSP_PREFIXES.some((p) => (p.endsWith("/") ? pathname.startsWith(p) : pathname === p || pathname.startsWith(`${p}/`)));

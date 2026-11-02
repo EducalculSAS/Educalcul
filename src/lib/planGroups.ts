@@ -1,7 +1,7 @@
 import { monthsOfPeriod } from "@/lib/billingPeriods";
 
 /** « Solo - 1 mois » et « Solo - 1 an » sont deux lignes de la même formule : le nom commun (« Solo ») sert à les regrouper. */
-export const baseName = (name: string): string => name.split(/\s+[-–—·]\s+/)[0].trim() || name;
+const baseName = (name: string): string => name.split(/\s+[-–—·]\s+/)[0].trim() || name;
 
 export interface PlanGroup<T> {
   key: string;

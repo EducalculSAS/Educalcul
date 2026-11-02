@@ -26,7 +26,7 @@ interface Source {
 }
 
 /** Une question de quiz, sous la forme d'un bloc d'exercice (mêmes types de réponse). */
-export function quizQuestionToBlock(q: Any): Any {
+function quizQuestionToBlock(q: Any): Any {
   const base = { id: String(q.id), title: "", content: q.text ?? "", points: q.points || 1, explanation: q.explanation };
   switch (q.type) {
     case "multiple_choice":

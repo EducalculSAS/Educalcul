@@ -78,7 +78,7 @@ export function parseDigitsItem(text: string): number | null {
 /*  Listes de calculs                                                  */
 /* ------------------------------------------------------------------ */
 
-export type ArithOp = "+" | "-" | "×" | "÷";
+type ArithOp = "+" | "-" | "×" | "÷";
 export interface ArithItem {
   a: number;
   op: ArithOp;

@@ -11,12 +11,12 @@ import { mathRepairSchema, type JsonSchemaContract } from "@/lib/ai/schemas";
  * de compiler vers les anciens champs HTML/texte utilisés par l'application.
  */
 
-export type StructuredTextPart = {
+type StructuredTextPart = {
   type: "text";
   value: string;
 };
 
-export type StructuredMathPart = {
+type StructuredMathPart = {
   type: "math";
   latex: string;
 };
@@ -27,15 +27,15 @@ export type StructuredRichText = {
   parts: StructuredRichTextPart[];
 };
 
-export type StructuredSignValue =
+type StructuredSignValue =
   | "negative"
   | "zero"
   | "positive"
   | "undefined";
 
-export type StructuredVariationDirection = "up" | "down" | "constant";
+type StructuredVariationDirection = "up" | "down" | "constant";
 
-export type StructuredFigureTone =
+type StructuredFigureTone =
   | "navy"
   | "gold"
   | "blue"
@@ -43,13 +43,13 @@ export type StructuredFigureTone =
   | "red"
   | "gray";
 
-export type StructuredFigurePoint = { x: number; y: number };
+type StructuredFigurePoint = { x: number; y: number };
 
 /** Brique de base composable du bloc "shape" : une forme simple posée sur le
  * quadrillage, avec ses options (étiquettes de sommets / côtés, marque d'angle
  * droit, cotes). Combiner plusieurs parts remplace les figures spécifiques
  * (triangle annoté, Pythagore, schémas d'énoncé...). */
-export type StructuredShapePart = {
+type StructuredShapePart = {
   kind:
     | "rectangle"
     | "square"
@@ -92,7 +92,7 @@ export type StructuredShapePart = {
   showDimensions: boolean;
 };
 
-export type StructuredFigureElement =
+type StructuredFigureElement =
   | {
       type: "line";
       x1: number;
@@ -148,7 +148,7 @@ export type StructuredFigureElement =
       labelY?: number;
     };
 
-export type StructuredGraphVector = {
+type StructuredGraphVector = {
   x: number;
   y: number;
   fromX?: number;
@@ -165,24 +165,24 @@ export type StructuredGraphVector = {
 // est calculée côté serveur dans compiler.ts, et les labels passent par
 // foreignObject + $...$ pour un rendu KaTeX correct.
 
-export type StructuredTrigCircleAngle = {
+type StructuredTrigCircleAngle = {
   angleDeg: number;
   label: string;
 };
 
-export type StructuredPieSlice = {
+type StructuredPieSlice = {
   label: string;
   value: number;
   tone: StructuredFigureTone;
 };
 
-export type StructuredNumberLinePoint = {
+type StructuredNumberLinePoint = {
   value: number;
   label: string;
   filled: boolean;
 };
 
-export type StructuredNumberLineInterval = {
+type StructuredNumberLineInterval = {
   from: number;
   to: number;
   fromIncluded: boolean;
@@ -190,22 +190,22 @@ export type StructuredNumberLineInterval = {
   tone: StructuredFigureTone;
 };
 
-export type StructuredBar = {
+type StructuredBar = {
   label: string;
   value: number;
   tone: StructuredFigureTone;
 };
 
-export type StructuredProbabilityLeaf = {
+type StructuredProbabilityLeaf = {
   label: string;
   probability: string;
 };
 
-export type StructuredProbabilityBranch = StructuredProbabilityLeaf & {
+type StructuredProbabilityBranch = StructuredProbabilityLeaf & {
   children: StructuredProbabilityLeaf[];
 };
 
-export type StructuredVennSet = {
+type StructuredVennSet = {
   label: string;
   tone: StructuredFigureTone;
 };
@@ -703,7 +703,7 @@ export type StructuredGenerator = (
   reasoning?: boolean,
 ) => Promise<unknown>;
 
-export type StructuredMathIssue = {
+type StructuredMathIssue = {
   id: string;
   path: string;
   latex: string;
@@ -917,7 +917,7 @@ const DIAGRAM_LABEL_CONVERSIONS: Array<[RegExp, string]> = [
   [/\\neq\b/g, "≠"],
 ];
 
-export function sanitizeDiagramLabel(value: unknown): string {
+function sanitizeDiagramLabel(value: unknown): string {
   let text = stringValue(value);
   for (const [pattern, replacement] of DIAGRAM_LABEL_CONVERSIONS) {
     text = text.replace(pattern, replacement);
@@ -1586,7 +1586,7 @@ function normalizeShapePart(value: unknown): StructuredShapePart | null {
   };
 }
 
-export function normalizeShapeBlock(
+function normalizeShapeBlock(
   raw: Record<string, unknown>,
 ): Extract<StructuredCourseBlock, { type: "shape" }> | null {
   const preset = raw.preset === "pythagoras" ? "pythagoras" : "none";
@@ -3166,59 +3166,4 @@ ${JSON.stringify({ formulas: issues.map(({ id, latex, error }) => ({ id, latex, 
       remainingInvalid,
     },
   };
-}
-
-export function structuredCourseWordCount(chapter: StructuredCourseChapter): number {
-  const words: string[] = [];
-  const visitRich = (rich: StructuredRichText | undefined) => {
-    if (!rich) return;
-    words.push(structuredRichTextToPlainText(rich));
-  };
-  const visitBlocks = (blocks: StructuredCourseBlock[]) => {
-    for (const block of blocks) {
-      switch (block.type) {
-        case "heading":
-        case "paragraph":
-          visitRich(block.content);
-          break;
-        case "list":
-          block.items.forEach(visitRich);
-          break;
-        case "callout":
-          visitRich(block.title);
-          block.paragraphs.forEach(visitRich);
-          break;
-        case "table":
-          block.headers.forEach(visitRich);
-          block.rows.flat().forEach(visitRich);
-          break;
-        case "sign_table":
-          visitRich(block.expression);
-          block.boundaries.forEach(visitRich);
-          break;
-        case "variation_table":
-          visitRich(block.variable);
-          visitRich(block.functionName);
-          block.points.forEach(visitRich);
-          block.values.forEach(visitRich);
-          break;
-        case "figure":
-          block.elements.forEach((element) => visitRich(element.label));
-          break;
-        case "steps":
-          block.steps.forEach((step) => {
-            visitRich(step.title);
-            visitBlocks(step.blocks);
-          });
-          break;
-        default:
-          break;
-      }
-    }
-  };
-  chapter.lessons.forEach((lesson) => visitBlocks(lesson.blocks));
-  return words
-    .join(" ")
-    .split(/\s+/)
-    .filter(Boolean).length;
 }

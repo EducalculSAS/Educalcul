@@ -28,11 +28,6 @@ async function playedDays(userId: number, gameTypes: string[]): Promise<Record<s
   return (data ?? {}) as Record<string, string[]>;
 }
 
-export async function getStreak(userId: number, gameType: string): Promise<number> {
-  const days = await playedDays(userId, [gameType]);
-  return streakFrom(days[gameType]);
-}
-
 /** Version groupée : un seul aller-retour pour plusieurs jeux. */
 export async function getStreaksForGames(userId: number, gameTypes: string[]): Promise<Record<string, number>> {
   const days = await playedDays(userId, gameTypes);

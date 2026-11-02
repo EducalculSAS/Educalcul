@@ -267,8 +267,6 @@ const MACROS: Record<string, (e: JsxElement) => El[]> = {
   },
 };
 
-export const MACRO_KINDS = Object.keys(MACROS);
-
 /** Remplace chaque macro par ses éléments de base ; les autres éléments passent tels quels. */
 export function expandMacros(elements: JsxElement[]): JsxElement[] {
   const out: JsxElement[] = [];

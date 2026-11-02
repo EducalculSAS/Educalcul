@@ -1,21 +1,9 @@
-import {
-  isStructuredLatexValid,
-  normalizeStructuredLatex,
-  sanitizeStructuredText,
-  structuredRichTextToPlainText,
-  type StructuredCourseBlock,
-  type StructuredCourseChapter,
-  type StructuredExerciseDraft,
-  type StructuredExerciseQuestion,
-  type StructuredQuizDraft,
-  type StructuredRichText,
-  type StructuredLearningResource,
-} from "@/lib/ai/structuredContent";
+import { isStructuredLatexValid, normalizeStructuredLatex, sanitizeStructuredText, structuredRichTextToPlainText, type StructuredCourseBlock, type StructuredCourseChapter, type StructuredExerciseDraft, type StructuredQuizDraft, type StructuredRichText, type StructuredLearningResource } from "@/lib/ai/structuredContent";
 import { buildGraphSvg } from "@/lib/mathGraph";
 import { encodeJsxSpec } from "@/lib/jsxFigure";
 import { evaluate as evaluateMathExpr } from "mathjs";
 
-export type CompiledCourseExercise = {
+type CompiledCourseExercise = {
   id: string;
   question: string;
   type: "short_answer";
@@ -24,7 +12,7 @@ export type CompiledCourseExercise = {
   explanation: string;
 };
 
-export type CompiledCourseLesson = {
+type CompiledCourseLesson = {
   id: string;
   type: "text";
   title: string;
@@ -39,7 +27,7 @@ export type CompiledCourseChapter = {
   lessons: CompiledCourseLesson[];
 };
 
-export type CompiledExerciseBlock = {
+type CompiledExerciseBlock = {
   id: string;
   type:
     | "text"
@@ -2785,10 +2773,4 @@ export function compileStructuredQuizDraft(draft: StructuredQuizDraft): {
     maxAttempts: draft.maxAttempts,
     questions,
   };
-}
-
-export function structuredExerciseQuestionSummary(
-  question: StructuredExerciseQuestion,
-): string {
-  return structuredRichTextToPlainText(question.prompt);
 }

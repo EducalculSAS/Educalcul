@@ -20,14 +20,14 @@ const ROLE_BADGE: Record<string, { label: string; cls: string }> = {
 };
 
 /** Lien vers le profil d'un auteur, selon l'espace de celui qui regarde. */
-export function profileHref(viewerRole: ForumRole, authorId: number | undefined, returnTo: string): string | null {
+function profileHref(viewerRole: ForumRole, authorId: number | undefined, returnTo: string): string | null {
   if (!authorId) return null;
   return viewerRole === "admin"
     ? `/admin/users/detail?id=${authorId}`
     : `/u/${authorId}?returnTo=${encodeURIComponent(returnTo)}`;
 }
 
-export function RoleBadge({ role }: { role: string | undefined }) {
+function RoleBadge({ role }: { role: string | undefined }) {
   const b = ROLE_BADGE[role || ""];
   if (!b) return null;
   return <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wide ${b.cls}`}>{b.label}</span>;

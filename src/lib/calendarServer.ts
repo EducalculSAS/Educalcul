@@ -13,8 +13,8 @@ import { ZONE_OPTIONS } from "@/lib/calendarZones";
  * - toute saisie est validée (dates réelles, heures, longueurs).
  */
 
-export const CHILD_ALLOWED_TYPES = new Set<string>(EVENT_TYPE_OPTIONS.map((o) => o.value));
-export const PARENT_ALLOWED_TYPES = new Set<string>(PARENT_ONLY_EVENT_TYPE_OPTIONS.map((o) => o.value));
+const CHILD_ALLOWED_TYPES = new Set<string>(EVENT_TYPE_OPTIONS.map((o) => o.value));
+const PARENT_ALLOWED_TYPES = new Set<string>(PARENT_ONLY_EVENT_TYPE_OPTIONS.map((o) => o.value));
 
 export interface CalendarRequester {
   id: number;

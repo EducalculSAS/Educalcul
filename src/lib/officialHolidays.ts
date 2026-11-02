@@ -57,11 +57,6 @@ export function isSchoolYear(value: unknown): value is string {
   return b === a + 1 && a >= 2020 && a <= 2040;
 }
 
-export function currentSchoolYear(now = new Date()): string {
-  const y = now.getFullYear();
-  return now.getMonth() >= 7 ? `${y}-${y + 1}` : `${y - 1}-${y}`;
-}
-
 export async function fetchOfficialHolidays(schoolYear: string): Promise<OfficialHoliday[]> {
   if (!isSchoolYear(schoolYear)) throw new Error("Année scolaire invalide");
   const params = new URLSearchParams({

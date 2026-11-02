@@ -31,7 +31,7 @@ function normalizeLevelKey(value: string): string {
 }
 
 /** Dossier racine correspondant au niveau de l'élève. */
-export function findLevelFolder<F extends CatalogFolder>(folders: F[], level: string | null): F | undefined {
+function findLevelFolder<F extends CatalogFolder>(folders: F[], level: string | null): F | undefined {
   const lvl = normalizeLevelKey(String(level || ""));
   if (!lvl) return undefined;
   return folders.find(
@@ -62,7 +62,7 @@ export function resolveLevelScope<F extends CatalogFolder>(folders: F[], levels:
 
 /** Ids du dossier et de tous ses descendants (parcours en largeur, sans
  * récursion : protégé contre un éventuel cycle en base). */
-export function subtreeIds(folders: CatalogFolder[], rootId: number): number[] {
+function subtreeIds(folders: CatalogFolder[], rootId: number): number[] {
   const children = new Map<number, number[]>();
   for (const f of folders) {
     if (f.parent_id == null) continue;

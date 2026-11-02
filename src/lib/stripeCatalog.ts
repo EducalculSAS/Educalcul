@@ -32,8 +32,8 @@ export interface CatalogPlan {
 const slug = (s: string) =>
   s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "") || "plan";
 
-export const productIdFor = (name: string) => `educalcul_${slug(name)}`;
-export const cents = (price: number | string) => Math.round(Number(price) * 100);
+const productIdFor = (name: string) => `educalcul_${slug(name)}`;
+const cents = (price: number | string) => Math.round(Number(price) * 100);
 const priceKeyFor = (plan: CatalogPlan) => `educalcul_plan_${plan.id}_${cents(plan.price)}_${plan.billing_interval}`;
 
 /** Le Produit existe (créé si besoin, remis à jour si le nom/la description ont changé, réactivé si archivé). */
@@ -121,20 +121,4 @@ export async function removePlanFromStripe(planId: number | string, name?: strin
     console.error("[stripeCatalog] archivage échoué :", (e as Error).message);
     return { ok: false, message: (e as Error).message };
   }
-}
-
-/** Synchronise toutes les formules payantes actives (initialisation du catalogue, ou remise à niveau). */
-export async function syncAllPlansToStripe() {
-  const { data: plans } = await supabaseAdmin
-    .from("subscription_plans")
-    .select("id, name, price, is_active")
-    .eq("is_active", true)
-    .gt("price", 0)
-    .neq("name", "Sur mesure");
-  const results: { id: number; name: string; ok: boolean; message?: string }[] = [];
-  for (const p of plans ?? []) {
-    const r = await syncPlanToStripe(p.id);
-    results.push({ id: p.id, name: p.name, ...r });
-  }
-  return results;
 }

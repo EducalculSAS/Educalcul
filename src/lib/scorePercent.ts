@@ -13,7 +13,7 @@ export function parseMinScorePercent(raw: unknown): number | null {
 }
 
 /** Seuil de réussite par défaut quand l'exercice/quiz n'a pas de minimum. */
-export const DEFAULT_PASS_PERCENT = 50;
+const DEFAULT_PASS_PERCENT = 50;
 
 /**
  * Seuil de réussite : le minimum de l'exercice/quiz, sinon 50 %. Une seule

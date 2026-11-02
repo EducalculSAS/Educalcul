@@ -373,7 +373,7 @@ const STRICT_PROGRAMME_GUARDRAILS: Record<string, string[]> = {
  * Retourne le programme officiel pour un niveau donné.
  * Utilisé dans les prompts IA pour biaiser la génération vers le curriculum national.
  */
-export function getProgrammeForLevel(level: string): ProgrammeEntry | undefined {
+function getProgrammeForLevel(level: string): ProgrammeEntry | undefined {
   return PROGRAMMES_NATIONAUX.find((p) => p.level === level);
 }
 

@@ -22,7 +22,7 @@ export interface AIGenerateParams {
   durationPerLesson: number;
 }
 
-export interface AIGenerateProgress {
+interface AIGenerateProgress {
   current: number;
   total: number;
   message: string;

@@ -5,7 +5,7 @@
 // comparait "moyen" à rien du tout, jamais verrouillé). Un seul point de vérité
 // désormais, avec normalisation de tout ce qui existe déjà en base.
 
-export const DIFFICULTY_LEVELS = ["facile", "moyen", "avance", "difficile"] as const;
+const DIFFICULTY_LEVELS = ["facile", "moyen", "avance", "difficile"] as const;
 export type DifficultyLevel = (typeof DIFFICULTY_LEVELS)[number];
 
 export const DIFFICULTY_LABELS: Record<DifficultyLevel, string> = {

@@ -12,7 +12,7 @@ import { mathToReadableText, normalizeStructuredLatex } from "@/lib/ai/structure
  * le serveur a déjà validées avec KaTeX. Le repli reste cependant sûr pour les
  * feedbacks IA ou les modifications manuelles.
  */
-export function sanitizeHtml(html: string): string {
+function sanitizeHtml(html: string): string {
   if (typeof window !== "undefined" && "sanitize" in DOMPurify) {
     return DOMPurify.sanitize(html, {
       USE_PROFILES: { html: true, svg: true, svgFilters: true, mathMl: true },
@@ -130,21 +130,6 @@ export function renderUserText(text: string): string {
         : escapeHtml(part).replace(/\*\*([^*\n]+)\*\*/g, "<strong>$1</strong>"),
     )
     .join("");
-}
-
-export function ensureKaTeX(): Promise<void> {
-  return Promise.resolve();
-}
-
-export function renderKaTeX(_container: HTMLElement | null): void {
-  void _container;
-}
-
-export function renderKaTeXAsync(
-  _container: HTMLElement | null,
-): Promise<void> {
-  void _container;
-  return Promise.resolve();
 }
 
 let autoRenderPromise: Promise<void> | null = null;

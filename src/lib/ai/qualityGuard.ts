@@ -1,15 +1,4 @@
-import {
-  normalizeStructuredRichText,
-  sanitizeStructuredText,
-  structuredRichTextToPlainText,
-  type StructuredCourseBlock,
-  type StructuredCourseChapter,
-  type StructuredExerciseDraft,
-  type StructuredGenerator,
-  type StructuredLearningResource,
-  type StructuredQuizDraft,
-  type StructuredRichText,
-} from "@/lib/ai/structuredContent";
+import { normalizeStructuredRichText, sanitizeStructuredText, structuredRichTextToPlainText, type StructuredCourseBlock, type StructuredGenerator, type StructuredLearningResource, type StructuredRichText } from "@/lib/ai/structuredContent";
 import type { JsonSchemaContract } from "@/lib/ai/schemas";
 
 type RichTextReference = {
@@ -102,7 +91,7 @@ async function mapWithConcurrency<T>(
  * Le test est volontairement conservateur : il cible surtout les commandes
  * LaTeX sans antislash, les puissances, limites, dérivées et équations.
  */
-export function containsSuspiciousUnstructuredMath(value: string): boolean {
+function containsSuspiciousUnstructuredMath(value: string): boolean {
   const text = value.trim();
   if (!text) return false;
   if (/\\[A-Za-z]+|\$/.test(text)) return true;
@@ -487,7 +476,7 @@ function packQualityFieldBatches(
  * afin qu'un audit de leçon ne puisse plus atteindre max_tokens. Les champs
  * d'un même exercice restent dans le même lot pour comparer answer/explanation.
  */
-export async function auditAndRepairMathematicalContent<T>(
+async function auditAndRepairMathematicalContent<T>(
   input: T,
   options: {
     generate: StructuredGenerator;
@@ -744,7 +733,7 @@ function replaceMathWord(value: string, word: string, symbol: string, flags = ""
   return value.replace(re, symbol);
 }
 
-export function readableMathFallbackText(value: string): string {
+function readableMathFallbackText(value: string): string {
   // \b seul en fin de motif ne protège pas le début : sans \b initial,
   // "leq?" matchait "le" à l'intérieur de n'importe quel mot français qui en
   // termine ainsi ("exponentielle" -> "exponentiel≤", "passage" -> "passa≥").
@@ -819,18 +808,6 @@ function applyReadableMathFallback<T>(input: T): {
   return { value, fallbacks };
 }
 
-export function assertNoUnstructuredMath(input: unknown, label: string): void {
-  const suspicious = suspiciousReferences(input);
-  if (suspicious.length === 0) return;
-  const details = suspicious
-    .slice(0, 8)
-    .map(({ reference, text }) => `${reference.path}: ${text.slice(0, 140)}`)
-    .join(" | ");
-  throw new Error(
-    `Mathématiques non structurées restantes dans ${label} (${suspicious.length} champ(s)) : ${details}`,
-  );
-}
-
 export async function runStructuredQualityGuard<T>(
   input: T,
   options: {
@@ -899,8 +876,3 @@ export async function runStructuredQualityGuard<T>(
     },
   };
 }
-
-export type QualityGuardSupportedContent =
-  | StructuredCourseChapter
-  | StructuredExerciseDraft
-  | StructuredQuizDraft;

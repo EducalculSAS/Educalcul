@@ -101,7 +101,7 @@ export interface StudentMeta {
   alertInactiveSince: string | null;
 }
 
-export const DEFAULT_META: StudentMeta = { srsMastered: 0, shareVersion: 1, alertGoalDay: null, alertWeeklyTargetWeek: null, alertStreakMilestone: 0, alertInactiveSince: null };
+const DEFAULT_META: StudentMeta = { srsMastered: 0, shareVersion: 1, alertGoalDay: null, alertWeeklyTargetWeek: null, alertStreakMilestone: 0, alertInactiveSince: null };
 
 interface MetaRow {
   user_id: number;

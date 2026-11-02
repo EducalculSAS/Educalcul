@@ -4,7 +4,7 @@ import type { Loose } from "@/types/loose";
 import { useCallback, useEffect, useState } from "react";
 import { DifficultyLevel } from "@/lib/difficultyLevels";
 
-export interface PlanFeatures {
+interface PlanFeatures {
   ai_access: "none" | "limited" | "unlimited";
   ai_daily_limit: number;          // -1 = unlimited
   max_children: number;
@@ -90,14 +90,6 @@ export function useSubscription(): SubscriptionInfo {
   }, [apply]);
 
   return { ...info, refresh: load };
-}
-
-/** Returns true if user can use AI right now */
-export function canUseAI(sub: SubscriptionInfo): boolean {
-  if (sub.loading) return false;
-  if (sub.features.ai_access === "none") return false;
-  if (sub.features.ai_access === "unlimited") return true;
-  return sub.ai_uses_today < sub.features.ai_daily_limit;
 }
 
 /** Returns remaining AI uses (-1 = unlimited) */

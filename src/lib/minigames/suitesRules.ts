@@ -20,10 +20,6 @@ export const SUITES_RULES: SuiteRule[] = [
 
 const BY_CODE = new Map(SUITES_RULES.map((r) => [r.code, r]));
 
-export function listSuitesRules(): SuiteRule[] {
-  return SUITES_RULES;
-}
-
 export function getSuiteRule(code: string): SuiteRule | null {
   return BY_CODE.get(code as PalierCode) ?? null;
 }
@@ -49,4 +45,3 @@ Règles impératives :
 - Pour toute notation nécessitant une mise en forme (indice uₙ, formule de récurrence u(n+1)=u(n)+r, fraction, puissance), utilise LaTeX entre signes dollar : $u_n$, $u_{n+1} = u_n + r$, $\\frac{3}{4}$. Pour une suite de nombres simples ("2, 5, 8, 11, ..."), le texte normal suffit.${avoidBlock}`;
 }
 
-export { SUITES_RULES as default };

@@ -39,7 +39,7 @@ function matches(notion: string, course: CourseRow): boolean {
   return tokens(notion).some((t) => hay.includes(t.replace(/s$/, "")));
 }
 
-export function previousLevel(level: string | null | undefined): string | null {
+function previousLevel(level: string | null | undefined): string | null {
   if (!level) return null;
   if (level.startsWith("terminale")) return "1ere-generale-maths";
   if (level.startsWith("1ere")) return "2nde";

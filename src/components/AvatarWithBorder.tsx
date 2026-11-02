@@ -26,7 +26,7 @@ const FRAME_W: Record<AvatarSize, number> = { xs: 3, sm: 4.5, md: 5.5, lg: 7.5, 
 const KEYS = new Set(["none", "bronze", "silver", "gold", "diamond", "premium", "famille", "flamme", "pro", "elite", "mathador", "admin"]);
 
 /** "border-admin" (ancien format du profil admin) → "admin". */
-export function normalizeBorderKey(key: string | null | undefined): string {
+function normalizeBorderKey(key: string | null | undefined): string {
   const k = (key || "none").replace(/^border-/, "");
   return KEYS.has(k) ? k : "none";
 }

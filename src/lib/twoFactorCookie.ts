@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
  * automatiquement par le navigateur sur les requêtes same-origin — plus
  * besoin de le lire/attacher manuellement côté client (voir l'ancien patch
  * fetch dans supabaseClient.ts, retiré). */
-export const TWO_FACTOR_COOKIE_NAME = "edu_2fa";
+const TWO_FACTOR_COOKIE_NAME = "edu_2fa";
 
 export async function setTwoFactorCookie(token: string, ttlMs: number) {
   const store = await cookies();

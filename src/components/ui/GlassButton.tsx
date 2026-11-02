@@ -19,7 +19,7 @@ const PRESS_SCALE = 0.93;
 // se voir l'un l'autre pour ne pas réagir chacun dans son coin.
 const registry = glassButtonRegistry;
 
-export type GlassButtonVariant =
+type GlassButtonVariant =
   | "gold"
   | "light"
   | "navy"

@@ -1,4 +1,4 @@
-import { PALIER_CODES, type PalierCode } from "@/lib/minigames/levels";
+import { type PalierCode } from "@/lib/minigames/levels";
 
 /** Grille des opérations autorisées par palier — fournie telle quelle par
  * l'équipe pédagogique (décompte 11=CP → 00=Terminale), en dur dans le code
@@ -27,10 +27,6 @@ export const CALCUL_MENTAL_RULES: CalculMentalRule[] = [
 ];
 
 const BY_CODE = new Map(CALCUL_MENTAL_RULES.map((r) => [r.code, r]));
-
-export function listCalculMentalRules(): CalculMentalRule[] {
-  return CALCUL_MENTAL_RULES;
-}
 
 export function getCalculMentalRule(code: string): CalculMentalRule | null {
   return BY_CODE.get(code as PalierCode) ?? null;
@@ -62,4 +58,3 @@ Règles impératives :
 
 // Export pour parcourir les 12 paliers ailleurs (cron, admin UI) sans
 // dépendre de la forme exacte de CALCUL_MENTAL_RULES.
-export { PALIER_CODES };

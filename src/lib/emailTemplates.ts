@@ -198,7 +198,7 @@ const TONES: Record<Tone, { bg: string; border: string; text: string }> = {
 };
 
 /** Encadré teinté (alerte, info), bordé comme les cartes du site. `html` est inséré tel quel. */
-export function emailCallout(html: string, tone: Tone = "warning"): string {
+function emailCallout(html: string, tone: Tone = "warning"): string {
   const t = TONES[tone];
   return `<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:20px 0;">
     <tr><td style="background:${t.bg};border:1px solid ${t.border};border-radius:14px;padding:14px 18px;">
@@ -208,7 +208,7 @@ export function emailCallout(html: string, tone: Tone = "warning"): string {
 }
 
 /** Valeur mise en avant (code, nouvelle adresse, méthode…). Texte échappé. */
-export function emailHighlight(label: string, value: string, tone: Tone = "info", mono = false): string {
+function emailHighlight(label: string, value: string, tone: Tone = "info", mono = false): string {
   const t = tone === "info" ? { bg: CREAM, border: BORDER, text: NAVY } : TONES[tone];
   return `<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin:0 0 20px;">
     <tr><td align="center" style="background:${t.bg};border:1px solid ${t.border};border-radius:16px;padding:18px 20px;">
@@ -219,7 +219,7 @@ export function emailHighlight(label: string, value: string, tone: Tone = "info"
 }
 
 /** Tableau récapitulatif (montant, formule, date…), en carte crème bordée d'or. Valeurs échappées. */
-export function emailDetails(rows: [string, string][]): string {
+function emailDetails(rows: [string, string][]): string {
   const trs = rows.map(([k, v], i) => `<tr>
       <td style="padding:12px 18px;font-size:13px;color:${MUTED};${i ? `border-top:1px solid ${BORDER};` : ""}">${escapeHtml(k)}</td>
       <td align="right" style="padding:12px 18px;font-size:14px;font-weight:700;color:${NAVY};${i ? `border-top:1px solid ${BORDER};` : ""}">${escapeHtml(v)}</td>

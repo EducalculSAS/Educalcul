@@ -20,7 +20,7 @@ import type { SourceFigure } from "@/lib/llm";
  * L'admin retouche ensuite ce qu'il veut.
  */
 
-export interface CopyItem {
+interface CopyItem {
   label: string;
   text: string;
 }
@@ -34,10 +34,10 @@ export interface CopySection {
 export type CopyBlock = Record<string, unknown> & { type: string; content: string };
 
 /** Emplacement de réponse laissé par la lecture de l'image. */
-export const BLANK = "▢";
+const BLANK = "▢";
 
 /** « 12 + 8 = ▢ » donne « 12 + 8 = {{1}} » ; renvoie aussi le nombre de trous. */
-export function blankize(text: string): { text: string; count: number } {
+function blankize(text: string): { text: string; count: number } {
   let count = 0;
   const out = text.replace(new RegExp(BLANK, "g"), () => `{{${++count}}}`);
   return { text: out.replace(/\s{2,}/g, " ").trim(), count };
@@ -248,7 +248,7 @@ ${figureSnippet}
 FORMAT : { "blocks": [ { "index": 1, "type": "text_input", "explanation": "...", "correctAnswer": "...", "figure": { "...optionnel..." } } ] }`;
 }
 
-export function copyUserPrompt(section: CopySection): string {
+function copyUserPrompt(section: CopySection): string {
   const list = section.items
     .map((it, i) => `${i + 1}. ${blankize(it.text).text}`)
     .join("\n");

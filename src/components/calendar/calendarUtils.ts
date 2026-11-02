@@ -29,11 +29,11 @@ export interface CalendarEventItem {
 export const MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
 export const MONTHS_SHORT = ["janv.", "févr.", "mars", "avr.", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."];
 export const DAYS_SHORT = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"];
-export const DAYS_LONG = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
+const DAYS_LONG = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"];
 
 export const toIso = (y: number, m: number, d: number) =>
   `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
-export const toLocalIso = (date: Date) => toIso(date.getFullYear(), date.getMonth(), date.getDate());
+const toLocalIso = (date: Date) => toIso(date.getFullYear(), date.getMonth(), date.getDate());
 export const fromIso = (iso: string) => new Date(`${iso}T00:00:00`);
 export const todayIso = () => toLocalIso(new Date());
 

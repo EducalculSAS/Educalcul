@@ -15,7 +15,7 @@ const OPS = {
 } satisfies Record<string, MathKeyboardKey>;
 
 /** Disposition « calculatrice » (celle d'origine) : 7-8-9 en haut. */
-export const NUM_ROWS_CALCULATOR: MathKeyboardKey[][] = [
+const NUM_ROWS_CALCULATOR: MathKeyboardKey[][] = [
   [digit("7"), digit("8"), digit("9"), OPS.div],
   [digit("4"), digit("5"), digit("6"), OPS.times],
   [digit("1"), digit("2"), digit("3"), OPS.minus],
@@ -23,7 +23,7 @@ export const NUM_ROWS_CALCULATOR: MathKeyboardKey[][] = [
 ];
 
 /** Disposition « téléphone » : 1-2-3 en haut. */
-export const NUM_ROWS_PHONE: MathKeyboardKey[][] = [
+const NUM_ROWS_PHONE: MathKeyboardKey[][] = [
   [digit("1"), digit("2"), digit("3"), OPS.plus],
   [digit("4"), digit("5"), digit("6"), OPS.minus],
   [digit("7"), digit("8"), digit("9"), OPS.times],

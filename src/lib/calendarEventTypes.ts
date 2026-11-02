@@ -15,7 +15,7 @@ export interface EventTypeMeta {
   textColor: string;
 }
 
-export const EVENT_TYPE_META: Record<CalendarEventType, EventTypeMeta> = {
+const EVENT_TYPE_META: Record<CalendarEventType, EventTypeMeta> = {
   controle: { label: "Contrôle", color: "#dc2626", textColor: "#ffffff" },
   devoir: { label: "Devoir", color: "var(--greek-bronze)", textColor: "#ffffff" },
   revision: { label: "Révision", color: "var(--greek-gold)", textColor: "var(--greek-blue)" },

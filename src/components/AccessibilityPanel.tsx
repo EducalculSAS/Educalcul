@@ -1,14 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Type } from "lucide-react";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
-import GlassIconButton from "@/components/ui/GlassIconButton";
-import { applyA11y, DEFAULT_A11Y, readA11y, saveA11y, type A11yPrefs } from "@/lib/a11y";
+import { DEFAULT_A11Y, readA11y, saveA11y, type A11yPrefs } from "@/lib/a11y";
 
 /** Réglages de confort de lecture : police pour la dyslexie, taille du texte, espacement. */
-export function A11yControls() {
+function A11yControls() {
   const [prefs, setPrefs] = useState<A11yPrefs>(DEFAULT_A11Y);
   useEffect(() => setPrefs(readA11y()), []);
   const update = (patch: Partial<A11yPrefs>) => {
@@ -59,34 +58,6 @@ export function AccessibilityCard() {
         Confort de lecture
       </h2>
       <A11yControls />
-    </div>
-  );
-}
-
-/** Petit bouton « Aa » toujours à portée, pour régler le confort de lecture sans quitter l'exercice. */
-export default function AccessibilityButton() {
-  const [open, setOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => applyA11y(readA11y()), []);
-  useEffect(() => {
-    if (!open) return;
-    const close = (e: MouseEvent) => {
-      if (!ref.current?.contains(e.target as Node)) setOpen(false);
-    };
-    document.addEventListener("mousedown", close);
-    return () => document.removeEventListener("mousedown", close);
-  }, [open]);
-
-  return (
-    <div ref={ref} className="fixed left-3 bottom-3 z-40 no-print">
-      {open && (
-        <div className="mb-2 w-[300px] max-w-[calc(100vw-1.5rem)] glass-panel backdrop-blur-[32px] backdrop-saturate-[1.4] rounded-3xl p-4">
-          <p className="font-bold text-[var(--greek-blue)] mb-3">Confort de lecture</p>
-          <A11yControls />
-        </div>
-      )}
-      <GlassIconButton icon={Type} onClick={() => setOpen((v) => !v)} color="navy" size="md" aria-label="Confort de lecture : police, taille, espacement" />
     </div>
   );
 }

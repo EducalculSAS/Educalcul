@@ -94,7 +94,7 @@ export interface Block {
 // Types encore proposés à la création — single_choice/multiple_choice restent
 // gérés en LECTURE (contenu déjà publié) mais ne sont plus proposés : "qcm"
 // les remplace (une case à cocher par option détermine les bonnes réponses).
-export const BLOCK_TYPE_META: Partial<Record<BlockType, { label: string; icon: typeof FileText; description: string }>> = {
+const BLOCK_TYPE_META: Partial<Record<BlockType, { label: string; icon: typeof FileText; description: string }>> = {
   text: { label: "Texte", icon: AlignLeft, description: "Paragraphe explicatif, sans question" },
   image: { label: "Média (image / vidéo / audio)", icon: ImageIcon, description: "Fichier à téléverser ou glisser" },
   text_input: { label: "Réponse libre", icon: Type, description: "Calcul / réponse courte, corrigée par IA" },
@@ -112,7 +112,7 @@ export const BLOCK_TYPE_META: Partial<Record<BlockType, { label: string; icon: t
 
 // Liste type-safe des types proposés à la création (pickers), dans l'ordre
 // d'affichage — dérivée des clés réellement présentes dans BLOCK_TYPE_META.
-export const CREATABLE_BLOCK_TYPES = Object.keys(BLOCK_TYPE_META) as BlockType[];
+const CREATABLE_BLOCK_TYPES = Object.keys(BLOCK_TYPE_META) as BlockType[];
 
 // Libellés pour les anciens types qui peuvent encore exister en base (contenu
 // déjà publié) mais qu'on ne propose plus à la création.
@@ -123,7 +123,7 @@ const LEGACY_BLOCK_LABELS: Partial<Record<BlockType, string>> = {
 
 // Normalise correctAnswer en tableau, que le bloc soit "qcm" (toujours un
 // tableau) ou un ancien "single_choice" (chaîne unique historique).
-export function correctAnswersArray(block: Block): string[] {
+function correctAnswersArray(block: Block): string[] {
   return Array.isArray(block.correctAnswer)
     ? block.correctAnswer
     : block.correctAnswer

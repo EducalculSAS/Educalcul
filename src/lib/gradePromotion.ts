@@ -3,7 +3,7 @@
  * (sortie de Seconde : choix d'une spécialité maths) n'ont pas de "suivant"
  * automatique — un adulte doit choisir la voie manuellement dans ce cas.
  */
-export const NEXT_GRADE: Record<string, string | null> = {
+const NEXT_GRADE: Record<string, string | null> = {
   cp: "ce1",
   ce1: "ce2",
   ce2: "cm1",

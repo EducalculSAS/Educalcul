@@ -8,7 +8,7 @@
  * exacte uniquement, jamais de soustraction négative) — comme au jeu réel.
  */
 
-export type Operation = "+" | "-" | "x" | "/";
+type Operation = "+" | "-" | "x" | "/";
 
 export interface MathadorStep {
   a: number;
@@ -17,7 +17,7 @@ export interface MathadorStep {
   result: number;
 }
 
-export interface MathadorSolution {
+interface MathadorSolution {
   steps: MathadorStep[];
   score: number;
   usedAllFourOperations: boolean;
@@ -58,7 +58,7 @@ function scoreSteps(steps: MathadorStep[]): number {
  * pour arrêter une branche (inutile de forcer l'usage des 5 nombres, comme
  * dans le jeu réel où on peut s'arrêter dès que la cible est atteinte).
  */
-export function solveMathador(numbers: number[], target: number): MathadorSolution | null {
+function solveMathador(numbers: number[], target: number): MathadorSolution | null {
   let best: MathadorSolution | null = null;
 
   function consider(steps: MathadorStep[]) {

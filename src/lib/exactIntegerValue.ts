@@ -135,7 +135,7 @@ class Parser {
 }
 
 /** Valeur entière exacte de l'expression, ou null (pas un calcul, pas un entier, trop grand…). */
-export function exactIntegerValue(raw: string): bigint | null {
+function exactIntegerValue(raw: string): bigint | null {
   try {
     const s = normalize(String(raw ?? ""));
     if (!s) return null;

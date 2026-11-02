@@ -128,21 +128,3 @@ export const RATE_LIMITS = {
   // Webhooks - very strict
   'webhook:stripe': { maxAttempts: 100, windowMs: 60 * 60 * 1000, name: 'Stripe webhook' },
 };
-
-/**
- * Get rate limit config by endpoint key
- */
-export function getRateLimitConfig(endpointKey: string) {
-  return RATE_LIMITS[endpointKey as keyof typeof RATE_LIMITS] || {
-    maxAttempts: 100,
-    windowMs: 60 * 60 * 1000,
-    name: 'API Call',
-  };
-}
-
-/**
- * Reset rate limit for a key (e.g., after successful auth)
- */
-export async function resetRateLimit(key: string) {
-  await supabaseAdmin.from("rate_limits").delete().eq("key", key);
-}

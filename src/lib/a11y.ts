@@ -3,7 +3,7 @@
  * espacement. Mémorisé dans le navigateur et appliqué avant le premier affichage (voir A11Y_INIT_SCRIPT), sans flash.
  * Les règles CSS correspondantes sont dans globals.css (html[data-a11y-...]).
  */
-export const A11Y_KEY = "educalcul-a11y";
+const A11Y_KEY = "educalcul-a11y";
 
 export interface A11yPrefs {
   dyslexia: boolean;

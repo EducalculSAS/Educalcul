@@ -37,8 +37,6 @@ const SUBSCRIPTION_UNLOCKS_FALLBACK: Record<string, { borders: string[]; colors:
   "2": { borders: ["premium"],          colors: ["premium"] },
   "3": { borders: ["famille","flamme"], colors: ["famille"] },
 };
-
-export function getBorderStyle(key: string) { return BORDER_STYLES[key] ?? BORDER_STYLES.none; }
 export function getNameColor(key: string) { return NAME_COLORS[key] ?? NAME_COLORS.default; }
 
 /** Utilise les features du plan si disponibles, sinon fallback hardcodé */

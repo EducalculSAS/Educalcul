@@ -9,7 +9,7 @@ import { invalidateCatalog } from "@/lib/catalogCache";
  * identiques, et plus aucune écriture `supabase.from("*_folders")` côté client.
  */
 
-export const FOLDER_TABLES = {
+const FOLDER_TABLES = {
   course: "course_folders",
   exercise: "exercise_folders",
   quiz: "quiz_folders",

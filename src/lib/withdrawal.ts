@@ -14,7 +14,7 @@ import { withdrawalConfirmedEmail } from "@/lib/emailTemplates";
  * demandé au paiement (voir create-checkout-session), le remboursement est
  * calculé au prorata de la période non utilisée (CGV).
  */
-export const WITHDRAWAL_DAYS = 14;
+const WITHDRAWAL_DAYS = 14;
 const DAY = 24 * 60 * 60 * 1000;
 
 export type WithdrawalQuote =

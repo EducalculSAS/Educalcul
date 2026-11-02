@@ -18,7 +18,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export const FOLDER_ICONS: { name: string; Icon: LucideIcon }[] = [
+const FOLDER_ICONS: { name: string; Icon: LucideIcon }[] = [
   { name: "folder", Icon: Folder },
   { name: "book", Icon: BookOpen },
   { name: "calculator", Icon: Calculator },

@@ -51,7 +51,7 @@ const GRID_HEIGHT = 4 * 44 + 3 * 6;
 const ACCENT_BOX = 34; // largeur d'une pastille dans le popup d'accents
 const LONG_PRESS_MS = 350;
 
-export type MathKeyboardStyle = {
+type MathKeyboardStyle = {
   bg?: string;
   keyBg?: string;
   keyText?: string;

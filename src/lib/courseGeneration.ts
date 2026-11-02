@@ -18,11 +18,7 @@ import {
   courseBlueprintSchema,
   courseChapterSchema,
 } from "@/lib/ai/schemas";
-import {
-  compileStructuredCourseChapter,
-  type CompiledCourseChapter,
-  type CompiledCourseLesson,
-} from "@/lib/ai/compiler";
+import { compileStructuredCourseChapter, type CompiledCourseChapter } from "@/lib/ai/compiler";
 import {
   auditStructuredCoursePedagogy,
   formatStructuredQualityIssues,
@@ -63,15 +59,6 @@ export type CourseGenerationParams = {
   difficulty?: string;
   quality_mode?: "fast" | "balanced" | "strict";
   folder_id?: number | null;
-};
-
-export type GenerationProgress = {
-  step: "outline" | "chapter" | "final-check";
-  current: number;
-  total: number;
-  message: string;
-  chapterTitles?: string[];
-  chapters?: Record<number, { title: string; lessons: CompiledCourseLesson[] }>;
 };
 
 function clampNumber(

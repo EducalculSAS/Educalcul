@@ -25,10 +25,6 @@ export const ENIGMES_RULES: EnigmeRule[] = [
 
 const BY_CODE = new Map(ENIGMES_RULES.map((r) => [r.code, r]));
 
-export function listEnigmesRules(): EnigmeRule[] {
-  return ENIGMES_RULES;
-}
-
 export function getEnigmeRule(code: string): EnigmeRule | null {
   return BY_CODE.get(code as PalierCode) ?? null;
 }
@@ -53,4 +49,3 @@ Règles impératives :
 - Les 5 énigmes de la fiche doivent toutes être DIFFÉRENTES les unes des autres.${avoidBlock}`;
 }
 
-export { ENIGMES_RULES as default };

@@ -12,12 +12,12 @@ import { supabase } from "@/lib/supabaseClient";
 
 export type ContentKind = "course" | "exercise" | "quiz";
 
-export type GenerationChapterPreview = {
+type GenerationChapterPreview = {
   title: string;
   lessons: unknown[];
 };
 
-export type GenerationProgress = {
+type GenerationProgress = {
   step: "outline" | "chapter" | "final-check";
   current: number;
   total: number;

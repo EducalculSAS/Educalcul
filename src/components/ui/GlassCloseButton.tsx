@@ -3,7 +3,7 @@
 import { X } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
-export type GlassCloseButtonVariant = "light" | "dark";
+type GlassCloseButtonVariant = "light" | "dark";
 
 interface GlassCloseButtonProps {
   onClick: () => void;

@@ -4,7 +4,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getGameTypeConfig, type MinigameType } from "@/lib/minigames/gameTypes";
 import type { PalierCode } from "@/lib/minigames/levels";
 
-export const QUESTIONS_PER_SHEET = 5;
+const QUESTIONS_PER_SHEET = 5;
 export type SheetTier = "free" | "premium";
 
 interface RawQuestion {
@@ -73,7 +73,7 @@ const defaultGate = () => createLlmStartGate(DEFAULT_LLM_MIN_START_INTERVAL_MS, 
  * relecture admin obligatoire, le contenu quotidien doit être prêt sans
  * intervention). Anti-répétition : dédoublonnage intra-fiche + relance si
  * besoin, et évite les questions publiées récemment pour ce même palier. */
-export async function generateDailySheet(
+async function generateDailySheet(
   gameType: MinigameType,
   palierCode: PalierCode,
   forDate: string, // YYYY-MM-DD

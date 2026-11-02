@@ -22,7 +22,7 @@ export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export async function withTimeout<T>(
+async function withTimeout<T>(
   promise: Promise<T>,
   timeoutMs: number,
   label: string,
@@ -143,7 +143,6 @@ export function createLlmStartGate(
 }
 
 export const DEFAULT_LLM_MIN_START_INTERVAL_MS = 800;
-export const REASONING_TOKEN_BUFFER = 10_000;
 
 // content_generations = table unifiée (kind = course|exercise|quiz|minigame).
 // scan_runs partage le même pattern pending/running/stale mais reste séparée.

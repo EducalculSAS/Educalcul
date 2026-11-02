@@ -16,7 +16,7 @@ export interface LiveSubFields {
   stripe_subscription_id?: string | null;
 }
 
-export function isSubscriptionLive(sub: LiveSubFields | null | undefined, now = Date.now()): boolean {
+function isSubscriptionLive(sub: LiveSubFields | null | undefined, now = Date.now()): boolean {
   if (!sub || sub.status !== "active") return false;
   if (!sub.current_period_end) return true;
   const end = new Date(sub.current_period_end).getTime();

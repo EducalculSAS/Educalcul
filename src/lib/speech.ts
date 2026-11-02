@@ -47,7 +47,7 @@ function replaceBraced(src: string, command: string, build: (arg: string) => str
 }
 
 /** Une formule LaTeX, dite à voix haute. */
-export function mathToSpeech(latex: string): string {
+function mathToSpeech(latex: string): string {
   let s = latex;
   s = s.replace(/\\left|\\right|\\,|\\;|\\!|\\quad/g, " ");
   s = s.replace(/\{,\}/g, " virgule ").replace(/(\d),(\d)/g, "$1 virgule $2");

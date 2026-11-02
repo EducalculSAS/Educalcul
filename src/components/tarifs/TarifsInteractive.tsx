@@ -293,7 +293,7 @@ export function PlansGrid({
 }
 
 /* ─── Plan card (used in both Familles and Lycéens tabs) ─── */
-export function PlanCard({
+function PlanCard({
   plan,
   popular,
   hideChildren,

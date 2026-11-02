@@ -31,7 +31,7 @@ export function dedupeBlockIds<T>(pages: T): T {
 
 // Mélange déterministe (seedé par une chaîne), miroir de celui utilisé côté
 // client (ExerciseViewer) pour l'affichage — garantit un ordre stable.
-export function seededShuffle<T>(arr: T[], seed: string): T[] {
+function seededShuffle<T>(arr: T[], seed: string): T[] {
   let h = 0;
   for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
   const rand = () => {

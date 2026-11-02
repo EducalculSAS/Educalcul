@@ -8,7 +8,7 @@ import { DEFAULT_CHILD_PREFS, getChildPrefs, getChildPrefsMany, getReviewDays, t
  * séries, aux alertes des parents et au bulletin.
  */
 
-export { DEFAULT_CHILD_PREFS, getChildPrefs, getChildPrefsMany, type ChildPrefs } from "@/lib/studentStore";
+export { getChildPrefs, getChildPrefsMany, type ChildPrefs } from "@/lib/studentStore";
 
 /* ------------------------------------------------------------------ */
 /*  Jours (heure de Paris)                                              */
@@ -20,7 +20,7 @@ const hourFormatter = new Intl.DateTimeFormat("en-GB", { timeZone: "Europe/Paris
 export const parisDay = (d: Date | string | number = new Date()): string => dayFormatter.format(new Date(d));
 
 /** « HH:MM » à Paris. */
-export const parisTime = (d: Date | string | number = new Date()): string => hourFormatter.format(new Date(d)).replace(/^24:/, "00:");
+const parisTime = (d: Date | string | number = new Date()): string => hourFormatter.format(new Date(d)).replace(/^24:/, "00:");
 
 export function addDays(day: string, n: number): string {
   const d = new Date(`${day}T12:00:00Z`);

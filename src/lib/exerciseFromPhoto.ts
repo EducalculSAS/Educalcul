@@ -236,7 +236,7 @@ function allocate(sections: SourceSection[], total: number): { section: SourceSe
   return keep.map((k) => ({ section: k.section, variants: k.section.items.length, extra: k.extra }));
 }
 
-export function pageSystemPrompt(level: string, programme: string): string {
+function pageSystemPrompt(level: string, programme: string): string {
   return `Tu es un professeur de mathematiques francais expert, pour le niveau ${level}. Tu transformes un exercice existant (fiche, manuel) en une VARIANTE propre, avec d'autres valeurs. Tu reponds UNIQUEMENT en JSON valide, sans texte autour, sans markdown.
 ${programme}
 
@@ -264,7 +264,7 @@ FORMAT DE SORTIE :
 Omets les champs sans objet. Chaque bloc porte obligatoirement "content", "explanation" et "correctAnswer" (ou "options"/"pairs"/"items" selon le type).`;
 }
 
-export function sectionUserPrompt(
+function sectionUserPrompt(
   section: SourceSection,
   variants: number,
   extra: number,

@@ -19,16 +19,6 @@ export type StructuredQualityIssue = {
   message: string;
 };
 
-export function courseTargetWordRange(duration: number): {
-  min: number;
-  max: number;
-} {
-  if (duration <= 20) return { min: 340, max: 560 };
-  if (duration <= 30) return { min: 480, max: 760 };
-  if (duration <= 45) return { min: 680, max: 1_000 };
-  return { min: 880, max: 1_280 };
-}
-
 export function topicRequiresFunctionGraph(...values: string[]): boolean {
   const source = values.join(" ").toLocaleLowerCase("fr");
   return /\b(fonction|courbe|variation|dériv|derive|exponent|logarith|trigonom|sinus|cosinus|tangente|parabole|polyn[oô]me|affine|quadratique|homographique)\b/.test(
@@ -181,7 +171,7 @@ function blockWordCount(block: StructuredCourseBlock): number {
   }
 }
 
-export function structuredLessonWordCount(
+function structuredLessonWordCount(
   lesson: StructuredCourseLesson,
 ): number {
   return lesson.blocks.reduce((sum, block) => sum + blockWordCount(block), 0);

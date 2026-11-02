@@ -2,17 +2,6 @@ import katex from "katex";
 import { evaluateExpression, formatFrac, fracEquals, parseNumericAnswer, type Frac } from "@/lib/exprEval";
 import { arithmeticExplanation, arithmeticResult, arithmeticStatement, makeArithmeticVariants, parseArithmeticItem } from "@/lib/primaryExercises";
 
-/**
- * Outils de rédaction à la main pour les exercices : saisie rapide (texte ou tableur → blocs), vérificateur,
- * variantes d'un calcul, duplication. Tout est calculé en code (aucun appel à un modèle) : une réponse est
- * calculée ou vérifiée par un calcul exact, jamais « devinée ».
- *
- * Les blocs produits ont la forme de ceux de l'éditeur d'exercices (ExerciseBuilder) : `content` en HTML avec
- * les formules en `$...$`.
- */
-
-export type AuthoringBlockType = "text_input" | "qcm" | "true_false" | "fill_in_the_blank";
-
 export interface AuthoringBlock {
   id: string;
   type: string;
@@ -125,7 +114,7 @@ function normalizeStatement(raw: string): string {
   return `$${latex} =$`;
 }
 
-export interface BlockFields {
+interface BlockFields {
   statement: string;
   answer?: string;
   explanation?: string;
@@ -134,7 +123,7 @@ export interface BlockFields {
   index?: number;
 }
 
-export interface BuiltBlock {
+interface BuiltBlock {
   block: AuthoringBlock;
   /** Remarques sur la ligne : réponse calculée, réponse qui ne correspond pas au calcul, QCM sans bonne réponse... */
   notes: string[];
@@ -148,7 +137,7 @@ function latexNumber(text: string): string {
 }
 
 /** Construit UN bloc d'exercice depuis une ligne (énoncé, réponse, explication). */
-export function blockFromFields(fields: BlockFields): BuiltBlock {
+function blockFromFields(fields: BlockFields): BuiltBlock {
   const notes: string[] = [];
   const title = `Question ${fields.index ?? 1}`;
   const answerRaw = (fields.answer ?? "").trim();
@@ -209,7 +198,7 @@ export function blockFromFields(fields: BlockFields): BuiltBlock {
   return { block: { ...base, type: "text_input", content: plainToHtml(statement), correctAnswer: answer, explanation: explanation ? plainToHtml(explanation) : "" }, notes };
 }
 
-export interface QuickEntryGroup {
+interface QuickEntryGroup {
   /** Titre de page donné par une ligne « # Titre » ou une colonne « page » ; null = blocs sans page nommée. */
   title: string | null;
   blocks: AuthoringBlock[];

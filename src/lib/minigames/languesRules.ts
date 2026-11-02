@@ -21,10 +21,6 @@ export const LANGUES_RULES: LangueRule[] = [
 
 const BY_CODE = new Map(LANGUES_RULES.map((r) => [r.code, r]));
 
-export function listLanguesRules(): LangueRule[] {
-  return LANGUES_RULES;
-}
-
 export function getLangueRule(code: string): LangueRule | null {
   return BY_CODE.get(code as PalierCode) ?? null;
 }
@@ -67,4 +63,3 @@ Règles impératives :
 - Pour toute notation mathématique nécessitant une mise en forme (équation, puissance, dérivée, trigonométrie), utilise LaTeX entre signes dollar (ex. $x^2 + 3x - 4 = 0$, $f'(x)$, $\\sin(\\theta)$) même si le texte autour est en langue étrangère, seul l'habillage textuel change de langue, la notation mathématique reste universelle.${avoidBlock}`;
 }
 
-export { LANGUES_RULES as default };

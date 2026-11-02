@@ -23,7 +23,7 @@ export type CourseBlueprintLesson = {
   complexity: 1 | 2 | 3;
 };
 
-export type CourseBlueprintChapter = {
+type CourseBlueprintChapter = {
   title: string;
   scope: string;
   lessons: CourseBlueprintLesson[];
@@ -41,7 +41,7 @@ export type LessonBoundaryContext = {
   forbiddenDevelopments: string[];
 };
 
-export type LessonContentBudget = {
+type LessonContentBudget = {
   hardMinWords: number;
   targetMinWords: number;
   targetMaxWords: number;
@@ -140,7 +140,7 @@ function containsAny(text: string, fragments: string[]): boolean {
  * les associations absurdes (par exemple un tableau de signes pour une leçon
  * sur les limites). Cette passe est locale, instantanée et déterministe.
  */
-export function resolveSemanticVisualFocus(
+function resolveSemanticVisualFocus(
   requested: CourseVisualFocus,
   lesson: Pick<
     CourseBlueprintLesson,
@@ -378,7 +378,7 @@ function uniqueConcepts(values: string[]): string[] {
   return output;
 }
 
-export function buildLessonBoundaries(
+function buildLessonBoundaries(
   blueprint: CourseBlueprint,
   chapterIndex: number,
   lessonIndex: number,

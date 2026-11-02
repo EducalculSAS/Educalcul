@@ -31,7 +31,7 @@ export const TERMINALE_TRACKS: TrackOption[] = [
 
 const KNOWN_LEVELS = new Set(SCHOOL_LEVELS.map((l) => l.value));
 
-export const isPremiere = (level: string | null | undefined) => !!level && level.startsWith("1ere");
+const isPremiere = (level: string | null | undefined) => !!level && level.startsWith("1ere");
 export const isTerminale = (level: string | null | undefined) => !!level && level.startsWith("terminale");
 /** L'élève a-t-il des spécialités à choisir (Première ou Terminale) ? */
 export const hasSpecialtyChoice = (level: string | null | undefined) => isPremiere(level) || isTerminale(level);

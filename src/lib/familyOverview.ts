@@ -6,7 +6,7 @@ import { getChildPrefsMany, studentSummaries, type ChildPrefs, type StudentSumma
 
 /** Les enfants d'un parent avec tout ce qu'il faut pour leur fiche : même chargement pour le tableau de bord et « Mes enfants ». */
 
-export interface FamilyChild {
+interface FamilyChild {
   id: number;
   first_name: string | null;
   last_name: string | null;
@@ -17,7 +17,7 @@ export interface FamilyChild {
   last_active_at: string | null;
 }
 
-export interface ChildStats {
+interface ChildStats {
   exerciseCount: number;
   quizCount: number;
   successRate: number;

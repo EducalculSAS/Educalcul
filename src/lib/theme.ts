@@ -10,13 +10,13 @@
  * toujours en clair, même si la préférence est « sombre ».
  */
 export type Theme = "light" | "dark";
-export const THEME_KEY = "educalcul-theme";
-export const DARK_MODE_PREFIXES = ["/parent", "/child", "/admin", "/dashboard"] as const;
+const THEME_KEY = "educalcul-theme";
+const DARK_MODE_PREFIXES = ["/parent", "/child", "/admin", "/dashboard"] as const;
 
 export const isTheme = (v: unknown): v is Theme => v === "light" || v === "dark";
 
 /** Cette page a-t-elle droit au mode sombre (espace connecté) ? */
-export const isDarkModePath = (pathname: string | null | undefined) =>
+const isDarkModePath = (pathname: string | null | undefined) =>
   !!pathname && DARK_MODE_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/"));
 
 export function readStoredTheme(): Theme {

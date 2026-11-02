@@ -32,7 +32,7 @@ export interface PlanSession {
   day: number;
 }
 
-export interface PlanWeek {
+interface PlanWeek {
   index: number;
   title: string;
   goal: string;

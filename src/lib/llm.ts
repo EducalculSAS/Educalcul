@@ -645,7 +645,7 @@ Retourne uniquement le JSON valide correspondant à la demande initiale.`;
  * pédagogiquement — son propre `is_correct` est alors ignoré par
  * l'appelant, qui garde toujours le verdict déterministe.
  */
-export async function gradeAnswer(
+async function gradeAnswer(
   question: string,
   correctAnswer: string,
   studentAnswer: string,
@@ -1499,8 +1499,3 @@ export async function streamChatPlain(
     },
   });
 }
-
-// ── Aliases de compatibilité ───────────────────────────────────────────────────
-export const gradeWithQwen = gradeAnswer;
-export const generateContentWithQwen = generateStructuredContent;
-export const chatWithQwen = chatWithAI;

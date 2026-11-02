@@ -26,7 +26,7 @@ import {
 export type { SrsItem, SrsKind };
 export { srsKey };
 
-export interface SrsMeta {
+interface SrsMeta {
   /** Séances de révision par jour (compte dans l'objectif du jour et la série). */
   reviewDays: Record<string, number>;
   mastered: number;
@@ -54,7 +54,7 @@ export interface SrsResult {
 }
 
 /** Fonction pure : applique des résultats à l'état (testable sans base). */
-export function applyResults(state: SrsState, results: SrsResult[], opts: { review: boolean; today?: string }): SrsState {
+function applyResults(state: SrsState, results: SrsResult[], opts: { review: boolean; today?: string }): SrsState {
   const today = opts.today ?? parisDay();
   const items = { ...(state.items ?? {}) };
   let mastered = state.mastered ?? 0;
@@ -117,5 +117,3 @@ export function dueItems(state: SrsState, limit: number, today = parisDay()): Sr
     .sort((a, b) => a.due.localeCompare(b.due) || a.box - b.box)
     .slice(0, limit);
 }
-
-export const itemCount = (state: SrsState) => Object.keys(state.items ?? {}).length;

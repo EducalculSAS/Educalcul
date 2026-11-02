@@ -10,7 +10,7 @@
 import type { Loose } from "@/types/loose";
 export type AIId = "none" | "15" | "30" | "60" | "120" | "unlim";
 
-export interface PricingAiOption {
+interface PricingAiOption {
   id: AIId;
   label: string;
   daily: number;
@@ -72,11 +72,6 @@ export const DEFAULT_CUSTOM_PRICING: PricingCustomConfig = {
     { id: "support", label: "Support prioritaire",    sub: "Réponse garantie sous 4h en semaine",  price: 1.49, feature: "priority_support" },
   ],
 };
-
-// Compat : anciens exports (= valeurs par défaut).
-export const AI_OPTIONS = DEFAULT_CUSTOM_PRICING.ai_options;
-export const CUSTOM_BASE_PRICE = DEFAULT_CUSTOM_PRICING.base_price;
-export const MAX_CHILDREN = DEFAULT_CUSTOM_PRICING.max_children;
 
 export function childrenCost(n: number, pricing: ChildPricing = DEFAULT_CUSTOM_PRICING): number {
   if (n <= 1) return 0;

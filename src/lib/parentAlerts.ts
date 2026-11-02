@@ -4,7 +4,7 @@ import { notify } from "@/lib/notify";
 import { sendEmail } from "@/lib/mailer";
 import { childInactiveEmail } from "@/lib/emailTemplates";
 import { selectAllPages } from "@/lib/selectAllPages";
-import { DEFAULT_ALERT_PREFS, getAlertPrefs, getAlertPrefsMany, getStudentMeta, getStudentMetaMany, saveAlertMemory, type ParentAlertPrefs, type StudentMeta } from "@/lib/studentStore";
+import { DEFAULT_ALERT_PREFS, getAlertPrefs, getAlertPrefsMany, getStudentMeta, getStudentMetaMany, saveAlertMemory, type StudentMeta } from "@/lib/studentStore";
 import { getChildPrefs, getChildPrefsMany, loadActivity, loadActivityMany, mondayOf, parisDay, summarize, type StudentSummary } from "@/lib/studentStats";
 
 /**
@@ -14,7 +14,6 @@ import { getChildPrefs, getChildPrefsMany, loadActivity, loadActivityMany, monda
  * Chaque alerte n'est envoyée qu'une fois (mémoire dans les données de l'élève).
  */
 
-export { DEFAULT_ALERT_PREFS, type ParentAlertPrefs };
 
 /** Mémoire des alertes déjà envoyées (colonnes alert_* de student_meta). */
 interface AlertMemory {

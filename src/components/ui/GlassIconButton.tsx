@@ -15,7 +15,7 @@ const MAX_GROW = 0.08;
 const MAX_PULL = 1.5;
 const SAFETY_GAP = 6;
 
-export type GlassIconButtonColor = "navy" | "gold" | "gray" | "orange" | "red" | "green" | "white";
+type GlassIconButtonColor = "navy" | "gold" | "gray" | "orange" | "red" | "green" | "white";
 
 // Une teinte par sens sémantique du bouton d'origine (voir/preview → gray,
 // télécharger/exporter → gold, avertissement/bannir → orange, supprimer →

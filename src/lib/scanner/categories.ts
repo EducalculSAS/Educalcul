@@ -5,7 +5,7 @@
  * pour tourner régulièrement sans supervision.
  */
 
-export type ScanCategoryKey =
+type ScanCategoryKey =
   | "style"
   | "security"
   | "performance"
@@ -13,7 +13,7 @@ export type ScanCategoryKey =
   | "seo"
   | "quality";
 
-export interface ScanFileRoot {
+interface ScanFileRoot {
   /** Chemin relatif à la racine du repo. */
   dir: string;
   /** Ne garde que les fichiers dont le nom passe ce filtre. */
@@ -43,7 +43,7 @@ Ne signale que des problèmes réels, concrets et VÉRIFIABLES dans le code four
 Reste concis : "title" en une phrase, "description" en 1-3 phrases avec le pourquoi (pas de conditionnel/spéculation), "fix" une suggestion concrète et actionnable qui ne casse rien d'existant (ou chaîne vide si pas de fix simple et sûr).
 Sévérité : "critical" (faille exploitable, perte de données), "high" (bug clair impactant des utilisateurs), "medium" (incohérence notable), "low" (cosmétique), "info" (amélioration possible, non urgent).`;
 
-export const SCAN_CATEGORIES: ScanCategory[] = [
+const SCAN_CATEGORIES: ScanCategory[] = [
   {
     key: "style",
     label: "Cohérence de style",
