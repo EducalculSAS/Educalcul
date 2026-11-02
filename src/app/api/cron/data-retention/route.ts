@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { selectAllPages } from "@/lib/selectAllPages";
@@ -42,7 +43,7 @@ export async function GET(req: Request) {
   report.errorsPurged = el ?? 0;
 
   // 2. Rappels de reconduction (abonnements annuels)
-  const subs = await selectAllPages<any>((from, to) =>
+  const subs = await selectAllPages<Loose>((from, to) =>
     supabaseAdmin
       .from("subscriptions")
       .select("id, user_id, plan_id, status, cancel_at_period_end, current_period_start, current_period_end, renewal_reminder_for")
@@ -73,7 +74,7 @@ export async function GET(req: Request) {
 
   // 3. Comptes inactifs depuis 3 ans (parent ET enfants)
   const threeYears = new Date(now - 3 * 365 * DAY).toISOString();
-  const parents = await selectAllPages<any>((from, to) =>
+  const parents = await selectAllPages<Loose>((from, to) =>
     supabaseAdmin
       .from("users")
       .select("id, auth_id, first_name, email, last_active_at, created_at, inactivity_warned_at")

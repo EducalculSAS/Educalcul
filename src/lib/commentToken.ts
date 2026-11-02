@@ -1,3 +1,4 @@
+import { serverSecret } from "@/lib/serverSecret";
 import "server-only";
 import { createCipheriv, createDecipheriv, createHash, randomBytes } from "crypto";
 
@@ -17,7 +18,7 @@ export interface CommentPayload {
 }
 
 function key(): Buffer {
-  const secret = process.env.SUPABASE_SERVICE_ROLE || process.env.SUPABASE_SERVICE_ROLE_KEY || "educalcul-dev-secret";
+  const secret = serverSecret();
   return createHash("sha256").update(`mini-comment:${secret}`).digest();
 }
 

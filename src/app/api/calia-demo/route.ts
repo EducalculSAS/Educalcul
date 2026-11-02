@@ -1,9 +1,11 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { randomUUID } from "crypto";
 import { chatWithAIPlain } from "@/lib/llm";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { sanitizeErrorMessage } from "@/lib/safeError";
+import { readJsonBody } from "@/lib/apiJson";
 
 const DEMO_COOKIE = "calia_demo_id";
 
@@ -96,7 +98,7 @@ export async function POST(req: NextRequest) {
   try {
     // Garde-fou grossier par IP : empêche un script d'effacer son cookie en
     // boucle pour contourner indéfiniment la limite de 3 messages/navigateur.
-    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const ip = getClientIp(req);
     const ipConfig = RATE_LIMITS["calia:demo"];
     const ipLimit = await rateLimitWithBackoff(`calia:demo:${ip}`, ipConfig.maxAttempts, ipConfig.windowMs);
     if (!ipLimit.allowed) {
@@ -105,28 +107,29 @@ export async function POST(req: NextRequest) {
 
     const id = readDemoId(req) ?? randomUUID();
 
-    // Compteur par navigateur (clé = cookie), enregistré dans Supabase.
-    const { data: existing } = await supabaseAdmin
-      .from("calia_demo_usage")
-      .select("count")
-      .eq("ip", id)
-      .maybeSingle();
-
-    if (existing && existing.count >= DEMO_LIMIT) {
-      return attachDemoId(NextResponse.json({ error: "demo_limit" }, { status: 403 }), id);
+    // Validation d'abord (on ne consomme pas d'essai pour une requête invalide) : au plus 12 messages, rôles « user » / « assistant »
+    // seulement (le client ne peut pas injecter de message « system »), texte de 1 000 caractères au plus.
+    const body = await readJsonBody(req);
+    const raw: unknown = body?.messages;
+    if (!Array.isArray(raw) || raw.length === 0 || raw.length > 12) {
+      return attachDemoId(NextResponse.json({ error: "Messages requis" }, { status: 400 }), id);
     }
-
-    const { messages } = await req.json();
-    if (!Array.isArray(messages) || messages.length === 0) {
+    const messages = raw
+      .filter((m): m is { role: string; content: string } => !!m && typeof m === "object" && typeof (m as { content?: unknown }).content === "string")
+      .map((m) => ({ role: (m.role === "assistant" ? "assistant" : "user") as "assistant" | "user", content: m.content.slice(0, 1000) }));
+    if (messages.length === 0 || messages[messages.length - 1].role !== "user") {
       return attachDemoId(NextResponse.json({ error: "Messages requis" }, { status: 400 }), id);
     }
 
-    const raw = await chatWithAIPlain(messages, SYSTEM_PROMPT, 0.6, 1000);
-    const reply = cleanReply(raw);
-    const newCount = (existing?.count ?? 0) + 1;
+    // Compteur par navigateur (clé = cookie), incrémenté de façon ATOMIQUE en base : deux requêtes simultanées ne dépassent plus la limite.
+    const { data: claimed } = await supabaseAdmin.rpc("claim_calia_demo", { p_id: id, p_limit: DEMO_LIMIT });
+    if (typeof claimed !== "number" || claimed < 0) {
+      return attachDemoId(NextResponse.json({ error: "demo_limit" }, { status: 403 }), id);
+    }
+    const newCount = claimed;
 
-    // Upsert : insert ou incrémente le compteur
-    await supabaseAdmin.from("calia_demo_usage").upsert({ ip: id, count: newCount });
+    const rawReply = await chatWithAIPlain(messages, SYSTEM_PROMPT, 0.6, 1000);
+    const reply = cleanReply(rawReply);
 
     const limitReached = newCount >= DEMO_LIMIT;
 

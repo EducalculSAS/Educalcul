@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -59,13 +60,13 @@ export default async function SubscriptionPage({
       .maybeSingle(),
     fetchParentSubscriptionDetails(authUser.authId).catch((err) => {
       console.error("subscription-details fetch failed:", err);
-      return { subscription: null, invoices: [] as any[] };
+      return { subscription: null, invoices: [] as Loose[] };
     }),
   ]);
   const plans = (plansData || []).filter((p) => p.is_active);
   const pricingConfig = pricingRow?.value ? normalizePricingConfig(pricingRow.value) : DEFAULT_PRICING_CONFIG;
 
-  let referralCode: any = null;
+  let referralCode: Loose = null;
   if (userRow) {
     const { data: existing } = await supabaseAdmin
       .from("referral_codes")

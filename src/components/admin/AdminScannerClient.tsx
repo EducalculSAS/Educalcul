@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   Palette,
@@ -22,7 +23,7 @@ import LoaderDots from "@/components/LoaderDots";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 
-const ICONS: Record<string, any> = { Palette, ShieldAlert, Gauge, Accessibility, Search, Code2 };
+const ICONS: Record<string, Loose> = { Palette, ShieldAlert, Gauge, Accessibility, Search, Code2 };
 
 // Miroir de src/lib/scanner/categories.ts (pas d'import direct : ce fichier
 // est côté client, categories.ts référence fs/path côté serveur).

@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useEffect, useRef, useState } from "react";
 import { Trash2, Sigma, Calculator, Clock, PuzzleIcon, TrendingUp, Languages } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
@@ -14,8 +15,8 @@ type Session = {
   game_type: string;
   childName: string;
   grade_level: string;
-  content_json: any;
-  answer_json: any;
+  content_json: Loose;
+  answer_json: Loose;
   score: number;
   max_score: number | null;
   duration_seconds: number | null;

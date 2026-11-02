@@ -186,13 +186,13 @@ export async function POST(request: Request) {
           blocks: [defaultBlock],
         },
       ];
-      console.log("✅ Created default content_json for type:", {
+      console.info("✅ Created default content_json for type:", {
         title,
         type,
         hasDescription: !!description,
       });
     } else {
-      console.log("✅ Using provided content_json:", {
+      console.info("✅ Using provided content_json:", {
         title,
         type,
         pagesCount: finalContentJson.length,
@@ -328,7 +328,7 @@ export async function PUT(request: Request) {
           blocks: [defaultBlock],
         },
       ];
-      console.log("✅ Created default content_json from description (UPDATE):", {
+      console.info("✅ Created default content_json from description (UPDATE):", {
         title,
         type,
         hasDescription: !!description,

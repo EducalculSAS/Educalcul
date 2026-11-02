@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { NextResponse } from "next/server";
 import { v4 as uuidv4 } from "uuid";
 import { isValidUrlPath } from "@/lib/validation";
@@ -29,7 +30,7 @@ export async function POST(request: Request) {
     if (me.role !== "admin") return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
     // ✓ HIGH PRIORITY FIX: Rate limiting on file upload
-    const ip = request.headers.get("x-forwarded-for") ?? "unknown";
+    const ip = getClientIp(request);
     const config = RATE_LIMITS["upload:file"];
     const rl = await rateLimitWithBackoff(`upload:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {

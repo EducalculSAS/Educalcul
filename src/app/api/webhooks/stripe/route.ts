@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -206,7 +207,7 @@ export async function POST(req: Request) {
         const sub = event.data.object as Stripe.Subscription;
         // Depuis l'API Stripe 2025-07-30 ("basil"), current_period_end n'est
         // plus sur l'objet subscription mais sur chaque item de facturation.
-        const rawPeriodEnd = (sub as any).current_period_end ?? sub.items?.data?.[0]?.current_period_end;
+        const rawPeriodEnd = (sub as Loose).current_period_end ?? sub.items?.data?.[0]?.current_period_end;
         // "trialing" est un abonnement legitimement actif (periode d'essai en
         // cours, deja payante en intention) — normalise en "active" comme le
         // fait deja checkout.session.completed, sinon le premier evenement
@@ -217,7 +218,7 @@ export async function POST(req: Request) {
         // Une résiliation programmée arrive soit en cancel_at_period_end,
         // soit en date de fin (cancel_at) selon l'endroit où elle est faite.
         const scheduled = !!sub.cancel_at_period_end || !!sub.cancel_at;
-        const update: Record<string, any> = {
+        const update: Record<string, Loose> = {
           status: isEntitled ? "active" : sub.status,
           cancel_at_period_end: scheduled,
           updated_at: new Date().toISOString(),
@@ -296,7 +297,7 @@ export async function POST(req: Request) {
         // (reactivation apres paiement, recompense de parrainage, has_paid)
         // ne s'executait jamais, silencieusement. Trouve en testant un vrai
         // paiement de bout en bout (essai termine -> facture reelle payee).
-        const subId = ((invoice as any).subscription || (invoice as any).parent?.subscription_details?.subscription) as string | undefined;
+        const subId = ((invoice as Loose).subscription || (invoice as Loose).parent?.subscription_details?.subscription) as string | undefined;
         const isRealPayment = (invoice.amount_paid || 0) > 0;
 
         if (subId) {
@@ -368,7 +369,7 @@ export async function POST(req: Request) {
         // Meme bascule d'API que invoice.payment_succeeded ci-dessus — sans le
         // fallback, un paiement de renouvellement refuse ne marquait JAMAIS le
         // compte "past_due", qui gardait donc un acces complet malgre l'echec.
-        const failedSubId = ((invoice as any).subscription || (invoice as any).parent?.subscription_details?.subscription) as string | undefined;
+        const failedSubId = ((invoice as Loose).subscription || (invoice as Loose).parent?.subscription_details?.subscription) as string | undefined;
         if (failedSubId) {
           await supabaseAdmin.from("subscriptions").update({
             status: "past_due",

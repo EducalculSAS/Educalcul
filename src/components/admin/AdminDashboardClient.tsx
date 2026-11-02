@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useCallback } from "react";
 import {
@@ -27,8 +28,8 @@ const STATUS_COLOR: Record<string, string> = {
 /** Tableau de bord admin : les stats initiales arrivent déjà chargées du
  * serveur ; le bouton "Actualiser" reste un aller-retour client, comme
  * avant. */
-export default function AdminDashboardClient({ initialData }: { initialData: any }) {
-  const [data, setData] = useState<any>(initialData);
+export default function AdminDashboardClient({ initialData }: { initialData: Loose }) {
+  const [data, setData] = useState<Loose>(initialData);
   const [refreshing, setRefreshing] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -117,7 +118,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
             {recent.users.length === 0 && (
               <p className="text-gray-400 text-sm italic p-6 text-center">Aucun utilisateur.</p>
             )}
-            {recent.users.map((u: any) => (
+            {recent.users.map((u: Loose) => (
               <div key={u.id} className="flex items-center gap-3 px-6 py-3 hover:bg-gray-50 transition-colors">
                 <AvatarWithBorder avatar={u.avatar} equippedBorder={u.equipped_border} name={`${u.first_name ?? ""} ${u.last_name ?? ""}`} size="sm" label="" />
                 <div className="flex-1 min-w-0">
@@ -151,7 +152,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
             {recent.courses.length === 0 && (
               <p className="text-gray-400 text-sm italic p-6 text-center">Aucun cours.</p>
             )}
-            {recent.courses.map((c: any) => (
+            {recent.courses.map((c: Loose) => (
               <div key={c.id} className="flex items-center gap-3 px-6 py-3 hover:bg-gray-50 transition-colors">
                 <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center shrink-0">
                   <BookOpen size={14} className="text-orange-600" />
@@ -183,7 +184,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: any
             {recent.forum_posts.length === 0 && (
               <p className="text-gray-400 text-sm italic p-6 text-center">Aucun post.</p>
             )}
-            {recent.forum_posts.map((p: any) => (
+            {recent.forum_posts.map((p: Loose) => (
               <div key={p.id} className="flex items-center gap-3 px-6 py-3 hover:bg-gray-50 transition-colors">
                 <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center shrink-0">
                   <MessageSquare size={14} className="text-purple-600" />

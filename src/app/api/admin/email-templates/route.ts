@@ -1,4 +1,6 @@
 ﻿import { NextResponse } from "next/server";
+import { readJsonBody } from "@/lib/apiJson";
+import type { Loose } from "@/types/loose";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
@@ -24,7 +26,7 @@ export async function POST(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { name, subject, body, target, schedule } = await req.json();
+  const { name, subject, body, target, schedule } = await readJsonBody(req);
   if (!name || !subject || !body)
     return NextResponse.json({ error: "Champs requis manquants" }, { status: 400 });
 
@@ -43,10 +45,10 @@ export async function PATCH(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { id, name, subject, body, target, schedule } = await req.json();
+  const { id, name, subject, body, target, schedule } = await readJsonBody(req);
   if (!id) return NextResponse.json({ error: "ID requis" }, { status: 400 });
 
-  const updates: any = { updated_at: new Date().toISOString() };
+  const updates: Loose = { updated_at: new Date().toISOString() };
   if (name !== undefined) updates.name = name;
   if (subject !== undefined) updates.subject = subject;
   if (body !== undefined) updates.body = body;
@@ -69,7 +71,7 @@ export async function DELETE(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { id } = await req.json();
+  const { id } = await readJsonBody(req);
   const { data: tmpl } = await supabaseAdmin.from("email_templates").select("is_deletable").eq("id", id).single();
   if (!tmpl?.is_deletable)
     return NextResponse.json({ error: "Ce template système ne peut pas être supprimé" }, { status: 403 });

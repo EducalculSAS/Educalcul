@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { gradeFreeAnswer } from "@/lib/gradeFreeAnswer";
@@ -28,7 +29,7 @@ export async function POST(
     const body = await req.json();
     const { question_id, answer, level } = body;
 
-    let targetQuestion: any = null;
+    let targetQuestion: Loose = null;
     let maxPoints = 1;
     let dbLevel: string | null = null;
 
@@ -50,7 +51,7 @@ export async function POST(
       if (me.role !== "admin" && quiz.status !== "published") {
         return NextResponse.json({ error: "Quiz not found" }, { status: 404 });
       }
-      const questions: any[] = Array.isArray(quiz.content_json) ? quiz.content_json : [];
+      const questions: Loose[] = Array.isArray(quiz.content_json) ? quiz.content_json : [];
       targetQuestion = questions.find((q) => q.id === question_id) || null;
       if (!targetQuestion) {
         return NextResponse.json({ error: "Question not found" }, { status: 404 });
@@ -94,7 +95,7 @@ export async function POST(
         ? targetQuestion.correctAnswer
         : [targetQuestion.correctAnswer];
       const selected = Array.isArray(answer) ? answer : [answer];
-      isCorrect = correct.length === selected.length && correct.every((a: any) => selected.includes(String(a)));
+      isCorrect = correct.length === selected.length && correct.every((a: Loose) => selected.includes(String(a)));
       score = isCorrect ? maxPoints : 0;
       feedback = isCorrect ? "Bonne réponse !" : "Ce n'est pas la bonne réponse.";
     } else {

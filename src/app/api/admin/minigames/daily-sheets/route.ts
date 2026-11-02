@@ -1,3 +1,6 @@
+import { getClientIp } from "@/lib/apiAuth";
+import { readJsonBody } from "@/lib/apiJson";
+import type { Loose } from "@/types/loose";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -36,14 +39,14 @@ export async function POST(request: Request) {
   const admin = await requireRole(request, ["admin"]);
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
-  const ip = request.headers.get("x-forwarded-for") ?? "unknown";
+  const ip = getClientIp(request);
   const config = RATE_LIMITS["ai:admin"];
   const rl = await rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
   if (!rl.allowed) {
     return Response.json({ error: "Trop de générations IA, réessaie dans quelques minutes." }, { status: 429 });
   }
 
-  const body = await request.json();
+  const body = await readJsonBody(request);
   const gameType = String(body?.gameType || "calcul_mental");
   const palierCode = String(body?.palierCode || "");
   const date = String(body?.date || "");
@@ -51,12 +54,12 @@ export async function POST(request: Request) {
 
   if (!isMinigameType(gameType)) return Response.json({ error: "Jeu inconnu." }, { status: 400 });
   const gameConfig = getGameTypeConfig(gameType);
-  if (!gameConfig?.palierCodes.includes(palierCode as any)) {
+  if (!gameConfig?.palierCodes.includes(palierCode as Loose)) {
     return Response.json({ error: "Palier hors plage pour ce jeu." }, { status: 400 });
   }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return Response.json({ error: "Date invalide." }, { status: 400 });
 
-  const result = await generateAndUpsertDailySheet(gameType, palierCode as any, date, tier);
+  const result = await generateAndUpsertDailySheet(gameType, palierCode as Loose, date, tier);
   if (result.error) return Response.json({ error: sanitizeErrorMessage(result.error) }, { status: 500 });
   return Response.json({ success: true });
 }

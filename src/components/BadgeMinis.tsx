@@ -1,10 +1,11 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useEffect, useState } from "react";
 import { Star, Zap, Trophy, BookOpen, CheckCircle, Crown } from "lucide-react";
 import StreakFlame from "@/components/StreakFlame";
 
-const ICON_MAP: Record<string, any> = {
+const ICON_MAP: Record<string, Loose> = {
   pencil: Star, zap: Zap, flame: StreakFlame, star: Star, crown: Crown,
   check: CheckCircle, trophy: Trophy, brain: Star, sparkles: Star,
   graduation: Star, book: BookOpen, map: Star, library: BookOpen,
@@ -13,10 +14,10 @@ const ICON_MAP: Record<string, any> = {
   scroll: BookOpen, owl: Star, universe: Crown,
 };
 
-const badgeCache: Record<number, any> = {};
+const badgeCache: Record<number, Loose> = {};
 
 export default function BadgeMinis({ badgeIds }: { badgeIds: number[] }) {
-  const [badges, setBadges] = useState<any[]>([]);
+  const [badges, setBadges] = useState<Loose[]>([]);
 
   useEffect(() => {
     if (!badgeIds?.length) return;
@@ -28,7 +29,7 @@ export default function BadgeMinis({ badgeIds }: { badgeIds: number[] }) {
 
     fetch(`/api/badges?ids=${ids.join(",")}`)
       .then(r => (r.ok ? r.json() : []))
-      .then((data: any[]) => {
+      .then((data: Loose[]) => {
         (data || []).forEach(b => { badgeCache[b.id] = b; });
         setBadges(ids.map(id => badgeCache[id]).filter(Boolean));
       })

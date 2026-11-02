@@ -1,5 +1,6 @@
 'use client';
 
+import type { Loose } from "@/types/loose";
 import { useEffect } from "react";
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
@@ -20,7 +21,10 @@ export default function AuthCallback() {
       return;
     }
 
-    const handleAuth = async () => {
+    // La résiliation de l'écoute d'authentification doit remonter jusqu'au nettoyage de l'effet : renvoyée depuis une fonction async,
+    // elle se perdait dans une promesse oubliée et l'abonnement restait actif après avoir quitté la page.
+    let unsubscribe: (() => void) | null = null;
+    const handleAuth = async (): Promise<void> => {
       // Flow OAuth Google maison : tokens transmis dans le hash par /api/auth/google/callback
       if (hash && hash.includes('access_token=')) {
         const params = new URLSearchParams(hash.substring(1));
@@ -42,13 +46,14 @@ export default function AuthCallback() {
             handleSession(session);
           }
         });
-        return () => subscription.unsubscribe();
+        unsubscribe = () => subscription.unsubscribe();
+        return;
       }
 
       handleSession(session);
     };
 
-    const handleSession = async (session: any) => {
+    const handleSession = async (session: Loose) => {
 
       // Méthode unique : resolveAuthDestination gère ban + role + first_name
       const dest = await resolveAuthDestination(session?.access_token);
@@ -95,6 +100,7 @@ export default function AuthCallback() {
     };
 
     handleAuth();
+    return () => { unsubscribe?.(); };
   }, [router]);
 
   return <AppLoader />;

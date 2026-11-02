@@ -1,3 +1,4 @@
+import { readJsonBody } from "@/lib/apiJson";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -22,7 +23,7 @@ export async function POST(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { name, title, review_text, rating, is_verified, country, published_at, total_reviews, display_order } = await req.json();
+  const { name, title, review_text, rating, is_verified, country, published_at, total_reviews, display_order } = await readJsonBody(req);
   if (!name || !review_text || !rating)
     return NextResponse.json({ error: "Champs requis manquants (nom, texte, note)" }, { status: 400 });
   if (rating < 1 || rating > 5)
@@ -52,7 +53,7 @@ export async function PATCH(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { id, name, title, review_text, rating, is_verified, country, published_at, total_reviews, display_order } = await req.json();
+  const { id, name, title, review_text, rating, is_verified, country, published_at, total_reviews, display_order } = await readJsonBody(req);
   if (!id) return NextResponse.json({ error: "ID requis" }, { status: 400 });
   if (rating !== undefined && (rating < 1 || rating > 5))
     return NextResponse.json({ error: "La note doit être entre 1 et 5" }, { status: 400 });
@@ -83,7 +84,7 @@ export async function DELETE(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { id } = await req.json();
+  const { id } = await readJsonBody(req);
   if (!id) return NextResponse.json({ error: "ID requis" }, { status: 400 });
 
   const { error } = await supabaseAdmin.from("manual_reviews").delete().eq("id", id);

@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { validateEmail, isValidRole } from "@/lib/validation";
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
     }
 
     // ✓ HIGH PRIORITY FIX: Add rate limiting
-    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const ip = getClientIp(req);
     const config = RATE_LIMITS["auth:validate-email"];
     const rl = await rateLimitWithBackoff(`validate-signup:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {

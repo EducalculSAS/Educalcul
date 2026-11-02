@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import "mathlive";
 import type { MathfieldElement } from "mathlive";
@@ -391,7 +392,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       insert: (latex: string) => {
         mfRef.current?.insert(latex, { focus: true, selectionMode: "placeholder" });
       },
-      command: (cmd: any) => {
+      command: (cmd: Loose) => {
         mfRef.current?.executeCommand(cmd);
         mfRef.current?.focus();
       },
@@ -482,11 +483,11 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
         focus: true,
         format: "latex",
         selectionMode: hasPlaceholder ? "placeholder" : "after",
-      } as any);
+      } as Loose);
       return;
     }
     if (key.cmd) {
-      mf.executeCommand(key.cmd as any);
+      mf.executeCommand(key.cmd as Loose);
       mf.focus();
     }
   };

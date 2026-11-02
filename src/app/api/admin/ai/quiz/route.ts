@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { after } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -11,7 +12,7 @@ export async function POST(request: Request) {
   const admin = await requireRole(request, ["admin"]);
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
-  const ip = request.headers.get("x-forwarded-for") ?? "unknown";
+  const ip = getClientIp(request);
   const config = RATE_LIMITS["ai:admin"];
   const rl = await rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
   if (!rl.allowed) {

@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { requireSuperAdmin } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
@@ -35,10 +36,8 @@ export async function POST(req: Request) {
       return Response.json({ error: "Format invalide (ex: 203.0.113.4 ou 203.0.113.0/24)" }, { status: 400 });
     }
 
-    const callerIp =
-      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      req.headers.get("x-real-ip") ||
-      null;
+    const callerIpRaw = getClientIp(req);
+    const callerIp = callerIpRaw === "unknown" ? null : callerIpRaw;
     if (callerIp && !ipMatchesCidr(callerIp, trimmed)) {
       return Response.json(
         { error: `Cette entrée exclurait votre propre IP (${callerIp}), ajout refusé pour éviter un verrouillage.` },

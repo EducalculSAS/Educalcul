@@ -1,7 +1,8 @@
+import type { Loose } from "@/types/loose";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
-async function safeCount(table: string, filter?: (q: any) => any): Promise<number> {
+async function safeCount(table: string, filter?: (q: Loose) => Loose): Promise<number> {
   try {
     let q = supabaseAdmin.from(table).select("*", { count: "exact", head: true });
     if (filter) q = filter(q);
@@ -121,19 +122,19 @@ export async function fetchAdminReports() {
       description: `${u.first_name || "Utilisateur"} ${u.last_name || ""} s'est inscrit(e) en tant que ${u.role === "parent" ? "parent" : "élève"}`,
       timestamp: u.created_at,
     })),
-    ...(recentPosts || []).map((p: any) => ({
+    ...(recentPosts || []).map((p: Loose) => ({
       type: "forum",
       icon: "message",
       description: `${p.author?.first_name || "Quelqu'un"} a posté "${p.title}"`,
       timestamp: p.created_at,
     })),
-    ...(recentAttempts || []).map((a: any) => ({
+    ...(recentAttempts || []).map((a: Loose) => ({
       type: "exercice",
       icon: "exercise",
       description: `${a.user?.first_name || "Un élève"} a fait un exercice`,
       timestamp: a.created_at,
     })),
-    ...(recentReports || []).map((r: any) => {
+    ...(recentReports || []).map((r: Loose) => {
       const target = r.post_id ? "un sujet" : r.comment_id ? "un commentaire" : `le profil de ${r.reported?.first_name || "?"}`;
       return {
         type: "signalement",

@@ -1,3 +1,4 @@
+import { readJsonBody } from "@/lib/apiJson";
 import { NextResponse } from "next/server";
 import { revalidatePath } from "next/cache";
 import { sanitizeErrorMessage } from "@/lib/safeError";
@@ -22,7 +23,7 @@ export async function PUT(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const body = await req.json();
+  const body = await readJsonBody(req);
   const { slug, title, subtitle, sections } = body;
 
   if (!slug) return NextResponse.json({ error: "Missing slug" }, { status: 400 });

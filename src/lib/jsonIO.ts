@@ -1,4 +1,5 @@
 /** Export an item as a downloadable JSON file */
+import type { Loose } from "@/types/loose";
 export function exportAsJSON(data: object, type: string, title: string) {
   const payload = { _type: type, _version: "1", _exported_at: new Date().toISOString(), ...data };
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -11,7 +12,7 @@ export function exportAsJSON(data: object, type: string, title: string) {
 }
 
 /** Read a JSON file from an <input type="file"> change event and return parsed data */
-export function importFromJSONFile(file: File): Promise<any> {
+export function importFromJSONFile(file: File): Promise<Loose> {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.onload = (e) => {

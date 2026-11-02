@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { after } from "next/server";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
@@ -20,7 +21,7 @@ export async function POST(request: Request) {
   const admin = await requireRole(request, ["admin"]);
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
-  const ip = request.headers.get("x-forwarded-for") ?? "unknown";
+  const ip = getClientIp(request);
   const config = RATE_LIMITS["scanner:run"];
   const rl = await rateLimitWithBackoff(`scanner:run:${ip}`, config.maxAttempts, config.windowMs);
   if (!rl.allowed) {

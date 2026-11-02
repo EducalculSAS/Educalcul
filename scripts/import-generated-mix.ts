@@ -6,6 +6,7 @@
 // l'import à la main depuis l'admin (compileHandAuthoredExercise/Quiz), donc
 // même comportement pour les figures (src/lib/figureCatalog.ts) et les types
 // de blocs/questions (voir src/lib/ai/handAuthoredContent.ts).
+import type { Loose } from "../src/types/loose";
 import { createClient } from "@supabase/supabase-js";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
@@ -235,7 +236,7 @@ async function main() {
           max_attempts: MAX_ATTEMPTS,
           estimated_time: estimateMinutes(
             raw.content_json.reduce(
-              (total: number, page: any) => total + (page?.blocks?.length ?? 0),
+              (total: number, page: Loose) => total + (page?.blocks?.length ?? 0),
               0,
             ),
           ),

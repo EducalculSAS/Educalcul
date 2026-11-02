@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -83,7 +84,7 @@ export default function AIAddExerciseModal({
           ...data.item,
           id: crypto.randomUUID(),
           title: data.item.title || "Nouvelle page",
-          blocks: (data.item.blocks || []).map((b: any) => ({ ...b, id: crypto.randomUUID() })),
+          blocks: (data.item.blocks || []).map((b: Loose) => ({ ...b, id: crypto.randomUUID() })),
         };
         onAddPage(pg, position);
       } else {

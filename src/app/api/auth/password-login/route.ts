@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -58,7 +59,7 @@ export async function POST(req: Request) {
     // Deux limites : par IP (balayage de nombreux comptes depuis une même
     // machine) et par identifiant (force brute sur UN compte, même en
     // changeant d'IP).
-    const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    const ip = getClientIp(req);
     const ipCfg = RATE_LIMITS["auth:resolve-username"];
     const idCfg = RATE_LIMITS["auth:login"];
     const [byIp, byId] = await Promise.all([

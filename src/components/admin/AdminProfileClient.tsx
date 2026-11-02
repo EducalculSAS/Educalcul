@@ -1,6 +1,6 @@
 "use client";
-/* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import type { Loose } from "@/types/loose";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -39,7 +39,7 @@ export default function AdminProfileClient({ initialFormData }: {
   const refetchProfile = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
-    const data: any = await getMyProfile();
+    const data: Loose = await getMyProfile();
     if (data) {
       setFormData((prev) => ({
         ...prev,

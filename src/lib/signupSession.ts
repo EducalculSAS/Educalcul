@@ -3,7 +3,8 @@
  * et référencé par un cookie httpOnly — jamais dans sessionStorage. Le mot de
  * passe choisi ne transite jamais ici : voir pendingSignupPassword.ts. */
 
-export async function getSignupSession(): Promise<Record<string, any>> {
+import type { Loose } from "@/types/loose";
+export async function getSignupSession(): Promise<Record<string, Loose>> {
   try {
     const res = await fetch("/api/auth/signup-session");
     if (!res.ok) return {};
@@ -13,7 +14,7 @@ export async function getSignupSession(): Promise<Record<string, any>> {
   }
 }
 
-export async function patchSignupSession(patch: Record<string, any>): Promise<Record<string, any>> {
+export async function patchSignupSession(patch: Record<string, Loose>): Promise<Record<string, Loose>> {
   try {
     const res = await fetch("/api/auth/signup-session", {
       method: "PATCH",

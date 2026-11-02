@@ -2,6 +2,7 @@
 // Commons — aucune clé requise, et toute image hébergée là-bas est par
 // politique de la plateforme sous licence libre ou dans le domaine public
 // (Creative Commons, CC0...), donc utilisable sans risque de droit d'auteur.
+import type { Loose } from "@/types/loose";
 const USER_AGENT = "Educalcul/1.0 (https://educalcul.com; contact via site)";
 
 export type CommonsImage = {
@@ -35,7 +36,7 @@ export async function searchCommonsImage(query: string): Promise<CommonsImage | 
     const infoData = await infoRes.json();
     const pages = infoData?.query?.pages || {};
     const page = Object.values(pages)[0] as
-      | { imageinfo?: Array<Record<string, any>> }
+      | { imageinfo?: Array<Record<string, Loose>> }
       | undefined;
     const info = page?.imageinfo?.[0];
     const url = info?.thumburl || info?.url;

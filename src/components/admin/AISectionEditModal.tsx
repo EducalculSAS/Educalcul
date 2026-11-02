@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, X } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -32,8 +33,8 @@ export default function AISectionEditModal({
 }: {
   scope: "lesson" | "chapter" | "page" | "block" | "question";
   level?: string;
-  section: any;
-  onApply: (updated: any) => void;
+  section: Loose;
+  onApply: (updated: Loose) => void;
   onClose: () => void;
 }) {
   const [instruction, setInstruction] = useState("");
@@ -73,7 +74,7 @@ export default function AISectionEditModal({
       if (!res.ok) throw new Error(data.error || "Erreur de modification");
       if (!data.item) throw new Error("Réponse IA invalide");
 
-      let updated: any;
+      let updated: Loose;
       if (scope === "block" && section.type === "text") {
         // Bloc de texte (énoncé, données) : il reste un bloc de texte, seul son contenu change.
         updated = { ...section, content: data.item.content ?? section.content, id: section.id };
@@ -91,7 +92,7 @@ export default function AISectionEditModal({
           ...section,
           ...data.item,
           id: section.id,
-          blocks: (Array.isArray(data.item.blocks) ? data.item.blocks : []).map((b: any) => ({ ...b, id: crypto.randomUUID() })),
+          blocks: (Array.isArray(data.item.blocks) ? data.item.blocks : []).map((b: Loose) => ({ ...b, id: crypto.randomUUID() })),
         };
       } else {
         // On fusionne avec la section existante : tout champ non renvoyé par l'IA est conservé, et on garde l'id d'origine.
@@ -102,8 +103,8 @@ export default function AISectionEditModal({
       // si l'IA a oublié des enfants existants, on les ré-ajoute.
       const childKey = scope === "page" ? undefined : CHILD_KEY[scope];
       if (childKey && Array.isArray(section[childKey]) && Array.isArray(updated[childKey])) {
-        const returned = new Set(updated[childKey].map((c: any) => c?.id));
-        const missing = section[childKey].filter((c: any) => !returned.has(c?.id));
+        const returned = new Set(updated[childKey].map((c: Loose) => c?.id));
+        const missing = section[childKey].filter((c: Loose) => !returned.has(c?.id));
         if (missing.length > 0) updated[childKey] = [...updated[childKey], ...missing];
       }
 

@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
@@ -28,8 +29,8 @@ export default function RecapClient() {
   const [loading, setLoading] = useState(true);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [signupData, setSignupData] = useState<any>(null);
-  const [selectedPlan, setSelectedPlan] = useState<any>(null);
+  const [signupData, setSignupData] = useState<Loose>(null);
+  const [selectedPlan, setSelectedPlan] = useState<Loose>(null);
   const [pricingConfig, setPricingConfig] = useState<PricingConfig>(DEFAULT_PRICING_CONFIG);
   const [referralCode, setReferralCode] = useState("");
   const [referralStatus, setReferralStatus] = useState<"idle" | "valid" | "invalid">("idle");

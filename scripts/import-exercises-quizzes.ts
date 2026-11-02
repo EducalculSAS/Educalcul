@@ -1,5 +1,6 @@
+import type { Loose } from "../src/types/loose";
 import { createClient } from "@supabase/supabase-js";
-import { readdir, readFile, stat } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import { compileCourseBlock } from "../src/lib/ai/compiler";
 import { normalizeCourseBlock } from "../src/lib/ai/structuredContent";
@@ -250,9 +251,9 @@ async function loadCoursesIndex(): Promise<Map<string, CourseInfo>> {
    brut + $...$ au lieu du format RICH_TEXT structuré).
    ============================================================ */
 
-function compileExerciseBlocks(raw: any): any[] {
+function compileExerciseBlocks(raw: Loose): Loose[] {
   const blocks = Array.isArray(raw.blocks) ? raw.blocks : [];
-  return blocks.map((b: any, index: number) => {
+  return blocks.map((b: Loose, index: number) => {
     const id = `block-${index + 1}`;
     const title = String(b.title || `Question ${index + 1}`);
     const content = withOptionalFigure(textToHtml(b.content || ""), b.figure);
@@ -266,7 +267,7 @@ function compileExerciseBlocks(raw: any): any[] {
     if (type === "matching") {
       return {
         id, type, title, content, points,
-        pairs: Array.isArray(b.pairs) ? b.pairs.map((p: any) => ({ left: escapeHtml(p.left || ""), right: String(p.right || "") })) : [],
+        pairs: Array.isArray(b.pairs) ? b.pairs.map((p: Loose) => ({ left: escapeHtml(p.left || ""), right: String(p.right || "") })) : [],
         explanation,
       };
     }
@@ -278,9 +279,9 @@ function compileExerciseBlocks(raw: any): any[] {
   });
 }
 
-function compileQuizQuestions(raw: any): any[] {
+function compileQuizQuestions(raw: Loose): Loose[] {
   const questions = Array.isArray(raw.questions) ? raw.questions : [];
-  return questions.map((q: any, index: number) => {
+  return questions.map((q: Loose, index: number) => {
     const options = Array.isArray(q.options) ? q.options.map((o: string) => escapeHtml(o)) : [];
     const correctRaw = String(q.correctAnswer || "");
     const correctIndex = (Array.isArray(q.options) ? q.options : []).findIndex((o: string) => o === correctRaw);

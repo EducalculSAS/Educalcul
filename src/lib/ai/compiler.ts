@@ -991,7 +991,7 @@ function renderPlaceValueChart(
   const intCells = intDigits
     .slice()
     .reverse()
-    .map((d, i) => `<th>${intLabels[i] ?? `10^${i}`}</th>`)
+    .map((_, i) => `<th>${intLabels[i] ?? `10^${i}`}</th>`)
     .reverse();
   const decCells = decDigits.map((_, i) => `<th>${decLabels[i] ?? `10^-${i + 1}`}</th>`);
   const intValues = intDigits.map((d) => `<td>${escapeHtml(d)}</td>`);

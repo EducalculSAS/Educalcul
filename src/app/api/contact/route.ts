@@ -1,4 +1,5 @@
 ﻿import { NextResponse } from "next/server";
+import { getClientIp } from "@/lib/apiAuth";
 import { runAfterResponse } from "@/lib/background";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { validateEmail, validateString, validateName } from "@/lib/validation";
@@ -41,7 +42,7 @@ export async function POST(req: Request) {
     }
 
     // ✓ HIGH PRIORITY FIX: Add rate limiting
-    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const ip = getClientIp(req);
     const config = RATE_LIMITS["contact:form"];
     const rl = await rateLimitWithBackoff(`contact:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {

@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -68,7 +69,7 @@ export async function GET(req: Request) {
     if (error) throw error;
 
     const rows = data ?? [];
-    const items: ForumPostSummary[] = rows.slice(0, PAGE_SIZE).map((p: any) => ({
+    const items: ForumPostSummary[] = rows.slice(0, PAGE_SIZE).map((p: Loose) => ({
       id: p.id,
       title: p.title,
       excerpt: String(p.content || "").replace(/\s+/g, " ").slice(0, 220),

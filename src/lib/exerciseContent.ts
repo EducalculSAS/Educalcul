@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { randomUUID } from "crypto";
 import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 
@@ -7,11 +8,11 @@ import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 export function dedupeBlockIds<T>(pages: T): T {
   if (!Array.isArray(pages)) return pages;
   const seen = new Set<string>();
-  return pages.map((page: any) => {
+  return pages.map((page: Loose) => {
     if (!page || !Array.isArray(page.blocks)) return page;
     return {
       ...page,
-      blocks: page.blocks.map((b: any) => {
+      blocks: page.blocks.map((b: Loose) => {
         if (!b || typeof b !== "object") return b;
         let id = typeof b.id === "string" && b.id ? b.id : "";
         if (!id || seen.has(id)) id = `block-${randomUUID()}`;
@@ -50,7 +51,7 @@ export function seededShuffle<T>(arr: T[], seed: string): T[] {
 // le client a besoin d'une liste mélangée à afficher : on la fournit déjà
 // mélangée côté serveur (matchingOptions / shuffledItems) sans jamais exposer
 // la correspondance/l'ordre correct.
-export function stripBlockAnswers(block: any) {
+export function stripBlockAnswers(block: Loose) {
   const { correctAnswer, blanks, ...stripped } = block;
   // Un point par élément pour les associations / catégories / trous : le client ne voit jamais les réponses, mais il
   // doit connaître le bon total de points.
@@ -59,8 +60,8 @@ export function stripBlockAnswers(block: any) {
     const { pairs, ...safe } = rest;
     return {
       ...safe,
-      pairs: pairs.map((p: any) => ({ left: p.left })),
-      matchingOptions: seededShuffle(pairs.map((p: any) => p.right), block.id || ""),
+      pairs: pairs.map((p: Loose) => ({ left: p.left })),
+      matchingOptions: seededShuffle(pairs.map((p: Loose) => p.right), block.id || ""),
     };
   }
   if (block.type === "ordering" && Array.isArray(block.items)) {
@@ -74,7 +75,7 @@ export function stripBlockAnswers(block: any) {
     const { categoryItems, ...safe } = rest;
     return {
       ...safe,
-      categoryItems: categoryItems.map((it: any) => ({ text: it.text })),
+      categoryItems: categoryItems.map((it: Loose) => ({ text: it.text })),
     };
   }
   return rest;
@@ -83,13 +84,13 @@ export function stripBlockAnswers(block: any) {
 // Garantit qu'un exercice a toujours au moins un bloc de contenu affichable
 // (certains exercices legacy ont un content_json vide) : reconstruit un bloc
 // par défaut à partir du type d'exercice et de son énoncé/titre.
-export function fillEmptyContentJson(exercise: any) {
+export function fillEmptyContentJson(exercise: Loose) {
   if (exercise.content_json && !(Array.isArray(exercise.content_json) && exercise.content_json.length === 0)) {
     return exercise;
   }
   const fallbackQuestion = exercise.question || exercise.description || exercise.title || "Énoncé non spécifié";
 
-  let defaultBlock: any = {
+  let defaultBlock: Loose = {
     id: "block-1",
     type: "text",
     content: fallbackQuestion,
@@ -135,11 +136,11 @@ export function fillEmptyContentJson(exercise: any) {
   };
 }
 
-export function stripAnswers(content: any) {
+export function stripAnswers(content: Loose) {
   if (!content?.content_json || !Array.isArray(content.content_json)) return content;
   return {
     ...content,
-    content_json: content.content_json.map((page: any) => ({
+    content_json: content.content_json.map((page: Loose) => ({
       ...page,
       blocks: Array.isArray(page.blocks) ? page.blocks.map(stripBlockAnswers) : page.blocks,
     })),

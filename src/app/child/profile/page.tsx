@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
 import PageHero from "@/components/PageHero";
 import { User } from "lucide-react";
@@ -18,7 +19,7 @@ export default async function ChildProfilePage() {
   const au = session?.user;
   const googleLinked = !!au?.identities?.some((id) => id.provider === "google");
 
-  const { data: userData }: { data: any } = await supabaseAdmin
+  const { data: userData }: { data: Loose } = await supabaseAdmin
     .from("users")
     .select(USER_SELECT_COLUMNS)
     .eq("id", authUser.id)

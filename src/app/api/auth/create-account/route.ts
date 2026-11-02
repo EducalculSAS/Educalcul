@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { NextRequest, NextResponse } from "next/server";
 import { runAfterResponse } from "@/lib/background";
 import { randomBytes } from "crypto";
@@ -67,7 +68,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ✓ HIGH PRIORITY FIX: Advanced rate limiting with backoff
-    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const ip = getClientIp(req);
     const config = RATE_LIMITS["auth:signup"];
     const rl = await rateLimitWithBackoff(`auth:signup:${ip}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {

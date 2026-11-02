@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
@@ -15,8 +16,8 @@ async function authHeaders() {
 
 interface AttemptRow {
   id: string;
-  progress_json: any;
-  attempts_history: any[] | null;
+  progress_json: Loose;
+  attempts_history: Loose[] | null;
   score: number | null;
   total_points: number | null;
 }
@@ -32,7 +33,7 @@ export default function AdminAttemptReviewClient({
   childName: string;
   kind: "exercise" | "quiz";
   itemId: string;
-  item: any;
+  item: Loose;
   attempt: AttemptRow;
 }) {
   const router = useRouter();
@@ -62,7 +63,7 @@ export default function AdminAttemptReviewClient({
     }
   };
 
-  const save = async (key: string, extra: { comment?: string; editedAnswer?: any; verdict?: boolean }) => {
+  const save = async (key: string, extra: { comment?: string; editedAnswer?: Loose; verdict?: boolean }) => {
     setSaving(true);
     try {
       const headers = await authHeaders();
@@ -79,7 +80,7 @@ export default function AdminAttemptReviewClient({
 
   const adminMode = {
     onComment: (key: string, text: string) => save(key, { comment: text }),
-    onEditAnswer: (key: string, value: any) => save(key, { editedAnswer: value }),
+    onEditAnswer: (key: string, value: Loose) => save(key, { editedAnswer: value }),
     ...(kind === "exercise" ? { onVerdict: (key: string, correct: boolean) => save(key, { verdict: correct }) } : {}),
     saving,
   };

@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -40,7 +41,7 @@ export default async function ChildDashboard() {
   // USER_SELECT_COLUMNS est une chaîne dynamique (pas un littéral) : comme
   // dans le code client d'origine, supabase-js ne peut pas en inférer les
   // colonnes et retombe sur un type d'erreur générique sans ce `: any`.
-  const { data: userData }: { data: any } = await supabaseAdmin
+  const { data: userData }: { data: Loose } = await supabaseAdmin
     .from("users")
     .select(USER_SELECT_COLUMNS)
     .eq("id", authUser.id)

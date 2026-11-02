@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import type { Loose } from "@/types/loose";
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
@@ -34,7 +35,7 @@ export interface Question {
 interface QuizBuilderProps {
   initialQuestions: Question[];
   onChange: (questions: Question[]) => void;
-  onMetadataChange?: (metadata: any) => void;
+  onMetadataChange?: (metadata: Loose) => void;
   /** Niveau scolaire du quiz, déjà choisi plus haut dans le formulaire. */
   level?: string;
 }
@@ -344,7 +345,7 @@ export default function QuizBuilder({
                       value={question.type}
                       onChange={(e) =>
                         updateQuestion(question.id, {
-                          type: e.target.value as any,
+                          type: e.target.value as Loose,
                           // Reset options/answers based on type change if needed
                           options:
                             e.target.value === "true_false"

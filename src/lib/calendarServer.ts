@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import "server-only";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { selectAllPages } from "@/lib/selectAllPages";
@@ -148,12 +149,12 @@ export const EVENT_COLUMNS =
  * exclus pour l'élève) + vacances de la zone, tout paginé. */
 export async function loadCalendar(ownerId: number, opts: { childView: boolean; zone: string }) {
   const [events, globalEvents] = await Promise.all([
-    selectAllPages<any>((from, to) => {
+    selectAllPages<Loose>((from, to) => {
       let q = supabaseAdmin.from("calendar_events").select(EVENT_COLUMNS).eq("owner_id", ownerId);
       if (opts.childView) q = q.eq("visible_to_child", true);
       return q.order("start_date", { ascending: true }).order("id").range(from, to);
     }),
-    selectAllPages<any>((from, to) =>
+    selectAllPages<Loose>((from, to) =>
       supabaseAdmin
         .from("global_calendar_events")
         .select("id, title, description, event_type, start_date, end_date, zone")

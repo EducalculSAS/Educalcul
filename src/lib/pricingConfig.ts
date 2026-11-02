@@ -3,6 +3,7 @@
 // types + valeurs par défaut + normalisation — aucun accès base, donc
 // importable côté client comme côté serveur.
 
+import type { Loose } from "@/types/loose";
 import { DEFAULT_CUSTOM_PRICING, type PricingCustomConfig, type PricingOption, type AIId } from "./customPlanPricing";
 import { DEFAULT_PERIODS, defaultPeriodLabel, isValidPeriodId, monthsOfPeriod, type BillingPeriod } from "./billingPeriods";
 
@@ -53,22 +54,22 @@ export const DEFAULT_PRICING_CONFIG: PricingConfig = {
 
 const AI_IDS: AIId[] = ["none", "15", "30", "60", "120", "unlim"];
 
-const num = (v: any, fallback: number) => {
+const num = (v: Loose, fallback: number) => {
   const n = Number(v);
   return Number.isFinite(n) && n >= 0 ? Math.round(n * 100) / 100 : fallback;
 };
-const str = (v: any, fallback: string, max = 80) => (typeof v === "string" && v.trim() ? v.trim().slice(0, max) : fallback);
-const slug = (v: any) => String(v || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
+const str = (v: Loose, fallback: string, max = 80) => (typeof v === "string" && v.trim() ? v.trim().slice(0, max) : fallback);
+const slug = (v: Loose) => String(v || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
 
 /** Ancien format `toggles` (objet) → nouvelle liste `options`. */
-function migrateToggles(toggles: any): PricingOption[] {
+function migrateToggles(toggles: Loose): PricingOption[] {
   return DEFAULT_CUSTOM_PRICING.options.map(def => ({
     ...def,
     price: num(toggles?.[def.id], def.price),
   }));
 }
 
-function normalizeOptions(raw: any): PricingOption[] {
+function normalizeOptions(raw: Loose): PricingOption[] {
   if (Array.isArray(raw)) {
     const seen = new Set<string>();
     const out: PricingOption[] = [];
@@ -92,7 +93,7 @@ function normalizeOptions(raw: any): PricingOption[] {
 
 /** Liste de périodes valide : identifiants connus et uniques, triés par durée ; au moins une période. Sans liste enregistrée,
  * on part des quatre historiques (avec les anciens libellés personnalisés). */
-function normalizePeriods(raw: any, legacyIntervals: any): BillingPeriod[] {
+function normalizePeriods(raw: Loose, legacyIntervals: Loose): BillingPeriod[] {
   if (!Array.isArray(raw)) {
     return DEFAULT_PERIODS.map((p) => ({ ...p, label: str(legacyIntervals?.[p.id], p.label) }));
   }
@@ -109,7 +110,7 @@ function normalizePeriods(raw: any, legacyIntervals: any): BillingPeriod[] {
 }
 
 /** Complète/nettoie une config brute (DB ou formulaire) avec les valeurs par défaut. */
-export function normalizePricingConfig(raw: any): PricingConfig {
+export function normalizePricingConfig(raw: Loose): PricingConfig {
   const d = DEFAULT_PRICING_CONFIG;
   const r = raw && typeof raw === "object" ? raw : {};
   const tabs = r.tabs || {};
@@ -117,7 +118,7 @@ export function normalizePricingConfig(raw: any): PricingConfig {
   const custom = r.custom || {};
 
   // AI options : ordre canonique, seuls label/basePrice/daily varient.
-  const rawAi: any[] = Array.isArray(custom.ai_options) ? custom.ai_options : [];
+  const rawAi: Loose[] = Array.isArray(custom.ai_options) ? custom.ai_options : [];
   const ai_options = AI_IDS.map((id) => {
     const def = DEFAULT_CUSTOM_PRICING.ai_options.find(o => o.id === id)!;
     const found = rawAi.find((o) => o?.id === id) || {};

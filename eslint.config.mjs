@@ -17,11 +17,18 @@ const eslintConfig = defineConfig([
       // données et remises à zéro quand une propriété change. Les autres règles du compilateur (pureté, refs, composants
       // créés pendant l'affichage, accès avant déclaration) restent actives et sont respectées.
       "react-hooks/set-state-in-effect": "off",
-      // Le contenu des cours, exercices et quiz est du JSON libre dont la forme dépend du type de bloc : `any` y est
-      // encore très présent. Signalé (warn) sans bloquer ; à typer au fil des évolutions.
-      "@typescript-eslint/no-explicit-any": "warn",
+      // `any` interdit : pour du contenu JSON libre (blocs de cours/exercices/quiz, lignes Supabase dynamiques) on utilise le type
+      // `Loose` de src/types/loose.ts — seul endroit où `any` est autorisé, pour que chaque usage soit visible et recherchable.
+      "@typescript-eslint/no-explicit-any": "error",
+      // Pas de journaux de débogage oubliés : console.info / warn / error restent permis (journaux d'exploitation sur Vercel).
+      "no-console": ["error", { allow: ["info", "warn", "error"] }],
+      "eqeqeq": ["error", "always", { null: "ignore" }],
+      "no-debugger": "error",
+      "no-var": "error",
     },
   },
+  // Les scripts en ligne de commande (import, sauvegarde, remplissage) affichent leur progression : console.log y est normal.
+  { files: ["scripts/**"], rules: { "no-console": "off" } },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:

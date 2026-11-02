@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import PageHero from "@/components/PageHero";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -10,7 +11,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
-const STATUS_CONFIG: Record<string, { label: string; color: string; icon: any }> = {
+const STATUS_CONFIG: Record<string, { label: string; color: string; icon: Loose }> = {
   "Ouvert":    { label: "Ouvert",    color: "bg-blue-100 text-blue-700",    icon: Clock },
   "En cours":  { label: "En cours",  color: "bg-orange-100 text-orange-700", icon: AlertCircle },
   "Répondu":   { label: "Répondu",   color: "bg-purple-100 text-purple-700", icon: CheckCircle },
@@ -33,14 +34,14 @@ const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-w
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function SupportPage({ role }: { role: "child" | "parent" }) {
-  const [tickets, setTickets] = useState<any[]>([]);
+  const [tickets, setTickets] = useState<Loose[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [form, setForm] = useState({ subject: "", message: "", priority: "normal" });
-  const [userInfo, setUserInfo] = useState<any>(null);
+  const [userInfo, setUserInfo] = useState<Loose>(null);
   const [replyText, setReplyText] = useState<Record<number, string>>({});
   const [sending, setSending] = useState<number | null>(null);
   const { setPageContext, clearContext } = useAITutor();
@@ -224,7 +225,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
                         {/* Réponses */}
                         {replies.length > 0 && (
                           <div className="space-y-3">
-                            {replies.map((r: any) => (
+                            {replies.map((r: Loose) => (
                               <div key={r.id} className={`flex ${r.is_admin ? "justify-start" : "justify-end"}`}>
                                 <div className={`max-w-[85%] rounded-xl p-4 ${r.is_admin ? "bg-[var(--greek-blue)]/5 border border-[var(--greek-blue)]/10" : "bg-[var(--greek-blue)] text-white"}`}>
                                   <div className="flex items-center justify-between gap-3 mb-2">

@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { isValidUUID } from "@/lib/validation";
@@ -15,7 +16,7 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "Invalid authId" }, { status: 400 });
   }
 
-  const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+  const ip = getClientIp(req);
   const config = RATE_LIMITS["auth:resolve-username"];
   const rl = await rateLimitWithBackoff(`signup-status:${ip}`, config.maxAttempts, config.windowMs);
   if (!rl.allowed) {

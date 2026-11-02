@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { requireRole } from "@/lib/apiAuth";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -29,7 +30,7 @@ export async function GET(
 
   if (!run) return Response.json({ error: "Introuvable" }, { status: 404 });
 
-  const findings = await selectAllPages<any>((from, to) =>
+  const findings = await selectAllPages<Loose>((from, to) =>
     supabaseAdmin
       .from("scan_findings")
       .select("severity, file_path, title, description, suggested_fix, status")

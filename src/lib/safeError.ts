@@ -3,6 +3,7 @@
  * Always returns generic messages to client, logs full errors server-side
  */
 
+import type { Loose } from "@/types/loose";
 export interface SafeErrorOptions {
   statusCode?: number;
   logError?: boolean;
@@ -13,7 +14,7 @@ export interface SafeErrorOptions {
  * Safely handle and return errors without exposing sensitive information
  */
 export function handleError(
-  error: any,
+  error: Loose,
   options: SafeErrorOptions = {}
 ): Response {
   const {
@@ -80,7 +81,7 @@ export function extractAndValidateId(
 /**
  * Safely extract and validate role from request
  */
-export function extractAndValidateRole(role: any): string | null {
+export function extractAndValidateRole(role: Loose): string | null {
   const validRoles = ["parent", "child", "admin"];
   return validRoles.includes(role) ? role : null;
 }

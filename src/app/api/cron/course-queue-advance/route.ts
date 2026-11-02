@@ -102,7 +102,7 @@ async function handle(req: Request) {
 
   const item = await claimNext();
   if (!item) {
-    console.log("[course-queue-advance] File vide, rien à faire.");
+    console.info("[course-queue-advance] File vide, rien à faire.");
     return NextResponse.json({ done: true });
   }
 

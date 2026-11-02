@@ -1,3 +1,4 @@
+import { readJsonBody } from "@/lib/apiJson";
 import { NextRequest, NextResponse } from "next/server";
 
 const BASE = "https://educalcul.com";
@@ -57,11 +58,11 @@ async function submitToIndexNow(urls: string[]) {
 // POST — submit specific URLs (called on deploy or content update)
 export async function POST(req: NextRequest) {
   const secret = req.headers.get("x-indexnow-secret");
-  if (secret !== process.env.INDEXNOW_SECRET) {
+  if (!process.env.INDEXNOW_SECRET || secret !== process.env.INDEXNOW_SECRET) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const body = await req.json().catch(() => ({}));
+  const body = await readJsonBody(req).catch(() => ({}));
   const urls: string[] = body.urls ?? ALL_URLS;
 
   const results = await submitToIndexNow(urls);

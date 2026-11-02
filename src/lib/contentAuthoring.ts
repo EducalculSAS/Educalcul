@@ -118,7 +118,7 @@ function normalizeStatement(raw: string): string {
     .replace(/−|–/g, "-")
     .replace(/(\d)\s*[x*]\s*(?=[\d(])/gi, "$1 \\times ")
     .replace(/×/g, "\\times ")
-    .replace(/÷|(\d)\s*[:/]\s*(?=[\d(])/g, (m, d) => `${d ?? ""} \\div `)
+    .replace(/÷|(\d)\s*[:/]\s*(?=[\d(])/g, (_m, d) => `${d ?? ""} \\div `)
     .replace(/(\d),(\d)/g, "$1{,}$2")
     .replace(/\s+/g, " ")
     .trim();

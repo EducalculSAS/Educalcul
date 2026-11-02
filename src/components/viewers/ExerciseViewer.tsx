@@ -1,6 +1,7 @@
 ﻿"use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import type { Loose } from "@/types/loose";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Loader2, Sparkles, Pencil, Keyboard, AlertTriangle, Lock, Lightbulb } from "lucide-react";
@@ -55,10 +56,10 @@ export function AdminAttemptControls({
   adminMode,
 }: {
   itemKey: string;
-  currentAnswer: any;
+  currentAnswer: Loose;
   existingComment?: string;
-  existingEditedAnswer?: any;
-  adminMode: { onComment: (key: string, text: string) => void; onEditAnswer: (key: string, value: any) => void; onVerdict?: (key: string, correct: boolean) => void; saving?: boolean };
+  existingEditedAnswer?: Loose;
+  adminMode: { onComment: (key: string, text: string) => void; onEditAnswer: (key: string, value: Loose) => void; onVerdict?: (key: string, correct: boolean) => void; saving?: boolean };
 }) {
   const [comment, setComment] = useState(existingComment || "");
   const [editing, setEditing] = useState(false);
@@ -159,11 +160,11 @@ interface ExerciseViewerProps {
   /** Plus d'essai disponible (limite de tentatives de l'exercice atteinte) : le bouton « Refaire » est grisé. */
   restartBlocked?: boolean;
   initialProgress?: {
-    answers?: Record<string, any>;
+    answers?: Record<string, Loose>;
     submittedBlocks?: string[];
     results?: Record<string, boolean>;
     aiFeedback?: Record<string, string>;
-    revealed?: Record<string, any>;
+    revealed?: Record<string, Loose>;
     score?: number;
     blockModes?: Record<string, "text" | "draw">;
     /** Commentaire/réponse corrigée laissés par un admin sur cette tentative
@@ -171,7 +172,7 @@ interface ExerciseViewerProps {
      * même hors mode admin, pour que l'élève les voie sur SA propre page de
      * correction. */
     adminComments?: Record<string, string>;
-    adminEditedAnswers?: Record<string, any>;
+    adminEditedAnswers?: Record<string, Loose>;
   } | null;
   /** Présent uniquement sur l'écran de revue admin (reviewMode est aussi vrai
    * dans ce cas) : ajoute, sous chaque question déjà affichée en lecture
@@ -180,7 +181,7 @@ interface ExerciseViewerProps {
    * comporte exactement comme avant (écran élève). */
   adminMode?: {
     onComment: (blockId: string, text: string) => void;
-    onEditAnswer: (blockId: string, value: any) => void;
+    onEditAnswer: (blockId: string, value: Loose) => void;
     /** Correction manuelle : compter la réponse juste ou fausse (exercices). */
     onVerdict?: (blockId: string, correct: boolean) => void;
     saving?: boolean;
@@ -1002,7 +1003,7 @@ export default function ExerciseViewer({
   // Coups de pouce déjà demandés, par question.
   const [hintsShown, setHintsShown] = useState<Record<string, number>>({});
 
-  const [answers, setAnswers] = useState<Record<string, any>>(() => (reviewMode ? initialProgress?.answers : undefined) || {});
+  const [answers, setAnswers] = useState<Record<string, Loose>>(() => (reviewMode ? initialProgress?.answers : undefined) || {});
   const mathfieldRefs = useRef<Record<string, MathInputHandle | null>>({});
   const [submittedBlocks, setSubmittedBlocks] = useState<Set<string>>(
     () => new Set((reviewMode ? initialProgress?.submittedBlocks : undefined) || [])
@@ -1011,7 +1012,7 @@ export default function ExerciseViewer({
   const [aiFeedback, setAiFeedback] = useState<Record<string, string>>(() => (reviewMode ? initialProgress?.aiFeedback : undefined) || {});
   // Réponse correcte, révélée par le serveur uniquement après soumission de
   // chaque bloc — jamais présente dans le contenu initial envoyé à l'élève.
-  const [revealed, setRevealed] = useState<Record<string, any>>(() => (reviewMode ? initialProgress?.revealed : undefined) || {});
+  const [revealed, setRevealed] = useState<Record<string, Loose>>(() => (reviewMode ? initialProgress?.revealed : undefined) || {});
   const [score, setScore] = useState(() => (reviewMode ? initialProgress?.score : undefined) || 0);
   const [exerciseCompleted, setExerciseCompleted] = useState(() => (reviewMode ? true : false));
   const [showReview, setShowReview] = useState(false);
@@ -1034,7 +1035,7 @@ export default function ExerciseViewer({
   }
   const [inlineText, setInlineText] = useState<Record<string, InlineTextState>>({});
 
-  const verifyTextBlock = async (block: any) => {
+  const verifyTextBlock = async (block: Loose) => {
     const studentAnswer = answers[block.id];
     if (!studentAnswer) return;
     const current = inlineText[block.id];
@@ -1135,7 +1136,7 @@ export default function ExerciseViewer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [adminComments] = useState<Record<string, string>>(() => initialProgress?.adminComments || {});
-  const [adminEditedAnswers] = useState<Record<string, any>>(() => initialProgress?.adminEditedAnswers || {});
+  const [adminEditedAnswers] = useState<Record<string, Loose>>(() => initialProgress?.adminEditedAnswers || {});
   // Rempli par l'effet de chargement serveur ci-dessous.
   const accumulatedSecondsRef = useRef(0);
 
@@ -1278,23 +1279,23 @@ export default function ExerciseViewer({
     if (!exercise.title) return;
 
     // Extract content from all blocks (same function as in [id]/page.tsx)
-    const extractContent = (contentJson: any): string => {
+    const extractContent = (contentJson: Loose): string => {
       if (!contentJson || !Array.isArray(contentJson)) {
         return "";
       }
 
       const allContent: string[] = [];
 
-      contentJson.forEach((page: any) => {
+      contentJson.forEach((page: Loose) => {
         if (page.blocks && Array.isArray(page.blocks)) {
-          page.blocks.forEach((block: any) => {
+          page.blocks.forEach((block: Loose) => {
             if (block.content) allContent.push(block.content);
             if (block.text) allContent.push(block.text);
             if (block.question) allContent.push(block.question);
             if (block.prompt) allContent.push(block.prompt);
 
             if (block.options && Array.isArray(block.options)) {
-              block.options.forEach((opt: any) => {
+              block.options.forEach((opt: Loose) => {
                 if (opt.text) allContent.push(`- ${opt.text}`);
                 if (opt.label) allContent.push(`- ${opt.label}`);
               });
@@ -1337,7 +1338,7 @@ export default function ExerciseViewer({
       courseLevel: exercise.courses?.level || exercise.level,
     };
 
-    setPageContext(newContext as any);
+    setPageContext(newContext as Loose);
   // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, [exercise.id, exercise.title, setPageContext]);
 
@@ -1430,7 +1431,7 @@ export default function ExerciseViewer({
     return () => clearTimeout(t);
   }, [currentScreenIndex, contentVisible]);
 
-  const handleBlockAnswerChange = (blockId: string, value: any) => {
+  const handleBlockAnswerChange = (blockId: string, value: Loose) => {
     if (submittedBlocks.has(blockId)) return;
     const inlineStatus = inlineText[blockId]?.status;
     if (inlineStatus === "correct" || inlineStatus === "revealed") return;
@@ -1444,7 +1445,7 @@ export default function ExerciseViewer({
     const newResults: Record<string, boolean> = {};
     const newAiFeedback: Record<string, string> = {};
     const newCommentTokens: Record<string, string> = {};
-    const newRevealed: Record<string, any> = {};
+    const newRevealed: Record<string, Loose> = {};
     const newSubmitted = new Set<string>();
     const exerciseId = exercise.id || "preview";
 
@@ -1513,10 +1514,10 @@ export default function ExerciseViewer({
                 }).then(async (r) => {
                   const d = await r.json();
                   if (!r.ok) throw new Error(d.error || "Correction indisponible, réessaie.");
-                  return d.results as any[];
+                  return d.results as Loose[];
                 }),
               ],
-        ).then((out) => (preview ? out : out[0]) as any[]);
+        ).then((out) => (preview ? out : out[0]) as Loose[]);
 
         const byBlock = new Map(results.map((r) => [r.block_id, r]));
         if (results.some((r) => r?.unavailable)) {

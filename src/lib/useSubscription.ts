@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useCallback, useEffect, useState } from "react";
 import { DifficultyLevel } from "@/lib/difficultyLevels";
 
@@ -69,7 +70,7 @@ function fetchSubscription(force: boolean): Promise<unknown | null> {
 export function useSubscription(): SubscriptionInfo {
   const [info, setInfo] = useState(DEFAULT_INFO);
 
-  const apply = useCallback((d: any | null) => {
+  const apply = useCallback((d: Loose | null) => {
     if (!d) { setInfo(i => ({ ...i, loading: false })); return; }
     setInfo({
       plan_id: d.plan_id ?? null,

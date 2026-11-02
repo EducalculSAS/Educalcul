@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -213,7 +214,7 @@ Réponds UNIQUEMENT par un JSON valide :
     }
 
     const ai = await chatWithAI([{ role: "user", content: lines.join("\n") }], systemPrompt, 0.4, 5000);
-    let parsed: { summary?: string; sessions?: any[] };
+    let parsed: { summary?: string; sessions?: Loose[] };
     try {
       const m = ai.match(/\{[\s\S]*\}/);
       parsed = JSON.parse(m ? m[0] : ai);
@@ -223,7 +224,7 @@ Réponds UNIQUEMENT par un JSON valide :
 
     // ── Validation stricte de la proposition ──────────────────────
     const taken = new Set(plannedRevisions);
-    const sessionsOut: any[] = [];
+    const sessionsOut: Loose[] = [];
     for (const s of Array.isArray(parsed.sessions) ? parsed.sessions : []) {
       const courseId = Number(s?.course_id);
       if (!isRealDate(s?.date) || s.date < today || s.date > until) continue;

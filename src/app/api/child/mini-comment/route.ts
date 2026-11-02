@@ -1,3 +1,4 @@
+import { readJsonBody } from "@/lib/apiJson";
 import { NextResponse } from "next/server";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -14,7 +15,7 @@ export async function POST(req: Request) {
   const rl = await rateLimitWithBackoff(`ai:comment:${me.authId}`, cfg.maxAttempts * 2, cfg.windowMs);
   if (!rl.allowed) return NextResponse.json({ comment: "" });
 
-  const { token } = await req.json().catch(() => ({}));
+  const { token } = await readJsonBody(req).catch(() => ({}));
   if (typeof token !== "string" || token.length > 8000) return NextResponse.json({ comment: "" });
   return NextResponse.json({ comment: await miniComment(token) });
 }

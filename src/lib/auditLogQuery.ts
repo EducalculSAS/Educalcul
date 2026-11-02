@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
 const PAGE_SIZE = 50;
@@ -21,7 +22,7 @@ export async function fetchAuditLogPage(page: number, action?: string | null) {
   const allIds = Array.from(new Set([...adminIds, ...targetIds]));
   const { data: users } = allIds.length
     ? await supabaseAdmin.from("users").select("id, first_name, last_name, email").in("id", allIds)
-    : { data: [] as any[] };
+    : { data: [] as Loose[] };
   const usersById = Object.fromEntries((users || []).map((u) => [u.id, u]));
 
   const entries = (data || []).map((d) => ({
@@ -37,7 +38,7 @@ export async function fetchAuditLogPage(page: number, action?: string | null) {
  * (plafonné à EXPORT_MAX) par lots de EXPORT_BATCH pour rester sous la limite
  * de lignes d'une requête Supabase. */
 export async function fetchAllAuditLogEntries(action?: string | null) {
-  const rows: any[] = [];
+  const rows: Loose[] = [];
   for (let offset = 0; offset < EXPORT_MAX; offset += EXPORT_BATCH) {
     let query = supabaseAdmin
       .from("audit_logs")

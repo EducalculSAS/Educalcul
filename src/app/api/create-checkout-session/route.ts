@@ -1,3 +1,5 @@
+import { getClientIp } from "@/lib/apiAuth";
+import type { Loose } from "@/types/loose";
 import { NextResponse } from 'next/server';
 import { getVatTaxRateId } from "@/lib/stripeVat";
 import { ensurePlanPrice, ensureProduct, recurringFor } from "@/lib/stripeCatalog";
@@ -126,7 +128,7 @@ export async function POST(req: Request) {
       }
     }
 
-    let plan: any = null;
+    let plan: Loose = null;
 
     if (customConfig) {
       // SECURITY: never trust a client-supplied price/features. Recompute the
@@ -211,7 +213,7 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: 'Missing or invalid signup fields' }, { status: 400 });
       }
 
-      const ip = req.headers.get('x-forwarded-for') ?? 'unknown';
+      const ip = getClientIp(req);
       const rlConfig = RATE_LIMITS['auth:signup'];
       const rl = await rateLimitWithBackoff(`auth:signup:${ip}`, rlConfig.maxAttempts, rlConfig.windowMs);
       if (!rl.allowed) {
@@ -272,7 +274,7 @@ export async function POST(req: Request) {
     // (montant différent), on garde le PRODUIT du catalogue avec un montant à
     // la volée. Si Stripe ne répond pas au catalogue, on retombe sur l'ancien
     // fonctionnement (prix en ligne) plutôt que de bloquer le paiement.
-    let lineItem: any;
+    let lineItem: Loose;
     try {
       const isCustom = !!customConfig;
       if (isCustom) {
@@ -298,7 +300,7 @@ export async function POST(req: Request) {
       email,
       name: `${userRow?.first_name || firstName || ''} ${userRow?.last_name || lastName || ''}`.trim() || undefined,
     });
-    const sessionData: any = {
+    const sessionData: Loose = {
       payment_method_types: ['card'],
       line_items: [lineItem],
       mode: 'subscription',

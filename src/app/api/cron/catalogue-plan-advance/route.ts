@@ -123,7 +123,7 @@ async function handle(req: Request) {
 
   const item = await claimNext();
   if (!item) {
-    console.log("[catalogue-plan-advance] File vide, rien à faire.");
+    console.info("[catalogue-plan-advance] File vide, rien à faire.");
     return NextResponse.json({ done: true });
   }
 

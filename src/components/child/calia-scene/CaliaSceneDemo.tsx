@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useEffect, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import Image from "next/image";
@@ -377,7 +378,7 @@ export default function CaliaSceneDemo({
 
   const highlightedElRef = useRef<HTMLElement | null>(null);
   const historyRef = useRef<HistoryMsg[]>([]);
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<Loose>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const shouldListenRef = useRef(false);
   const sessionActiveRef = useRef(false);
@@ -390,7 +391,7 @@ export default function CaliaSceneDemo({
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SR = (window as Loose).SpeechRecognition || (window as Loose).webkitSpeechRecognition;
     setSpeechSupported(!!SR);
   }, []);
 
@@ -937,14 +938,14 @@ export default function CaliaSceneDemo({
     startVolumeMonitor(stream);
     playListeningCue();
     shouldListenRef.current = true;
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SR = (window as Loose).SpeechRecognition || (window as Loose).webkitSpeechRecognition;
     const recognition = new SR();
     recognition.lang = "fr-FR";
     recognition.continuous = true;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
     recognition.onstart = () => { setListening(true); setInterim(""); };
-    recognition.onresult = (e: any) => {
+    recognition.onresult = (e: Loose) => {
       let finalText = "";
       let interimText = "";
       for (let i = e.resultIndex; i < e.results.length; i++) {
@@ -955,7 +956,7 @@ export default function CaliaSceneDemo({
       setInterim(interimText);
       if (finalText.trim()) sendTurn(finalText.trim());
     };
-    recognition.onerror = (e: any) => {
+    recognition.onerror = (e: Loose) => {
       const code = e?.error;
       if (code === "not-allowed" || code === "service-not-allowed" || code === "audio-capture") {
         shouldListenRef.current = false;

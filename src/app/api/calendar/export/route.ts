@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
@@ -67,7 +68,7 @@ export async function GET(req: Request) {
 
     const ownerZone = ownerZoneRes ? ownerZoneRes.data?.school_zone || "C" : requester.school_zone || "C";
 
-    const globalEvents = await selectAllPages<any>((from, to) =>
+    const globalEvents = await selectAllPages<Loose>((from, to) =>
       supabaseAdmin
         .from("global_calendar_events")
         .select("id, title, description, start_date, end_date")
@@ -77,7 +78,7 @@ export async function GET(req: Request) {
     );
 
     const icsEvents = [
-      ...(events || []).map((e: any) => ({
+      ...(events || []).map((e: Loose) => ({
         id: e.id,
         title: e.title,
         description: e.description,
@@ -86,7 +87,7 @@ export async function GET(req: Request) {
         start_time: e.start_time,
         end_time: e.end_time,
       })),
-      ...(globalEvents || []).map((e: any) => ({
+      ...(globalEvents || []).map((e: Loose) => ({
         id: `global-${e.id}`,
         title: e.title,
         description: e.description,

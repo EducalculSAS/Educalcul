@@ -2,11 +2,12 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { hashTwoFactorValue } from "@/lib/twoFactor";
 import { getTwoFactorCookieFromRequest } from "@/lib/twoFactorCookie";
 import { verifySupabaseJwt } from "@/lib/supabaseJwt";
+import { getClientIp as getClientIpOrNull } from "@/lib/ipGeo";
 
 /** IP publique de l'appelant, telle que vue par Vercel (en-tête posé par la
  * plateforme, pas falsifiable depuis le client malgré le nom "forwarded"). */
 export function getClientIp(req: Request): string {
-  return req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+  return getClientIpOrNull(req) ?? "unknown";
 }
 
 /** True si `allowedIps` est vide/absent (pas de restriction) ou contient

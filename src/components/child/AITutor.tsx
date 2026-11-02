@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import type { Loose } from "@/types/loose";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { Send, X, Minus, RotateCcw, Lock, ArrowRight, Mic, MicOff, Camera, Loader2 } from "lucide-react";
@@ -83,11 +84,11 @@ export default function AITutor() {
   const [listening, setListening] = useState(false);
   const [micError, setMicError] = useState<string | null>(null);
   const [speechSupported, setSpeechSupported] = useState(false);
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<Loose>(null);
   const dictationBaseRef = useRef("");
 
   useEffect(() => {
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SR = (window as Loose).SpeechRecognition || (window as Loose).webkitSpeechRecognition;
     setSpeechSupported(!!SR);
   }, []);
 
@@ -399,14 +400,14 @@ export default function AITutor() {
       return;
     }
     playListeningCue();
-    const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    const SR = (window as Loose).SpeechRecognition || (window as Loose).webkitSpeechRecognition;
     const recognition = new SR();
     recognition.lang = "fr-FR";
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
     dictationBaseRef.current = input;
     recognition.onstart = () => setListening(true);
-    recognition.onresult = (e: any) => {
+    recognition.onresult = (e: Loose) => {
       let finalText = "";
       let interimText = "";
       for (let i = e.resultIndex; i < e.results.length; i++) {
@@ -419,7 +420,7 @@ export default function AITutor() {
       setInput(dictated ? (base ? `${base} ${dictated}` : dictated) : base);
       if (finalText.trim()) dictationBaseRef.current = base ? `${base} ${finalText.trim()}` : finalText.trim();
     };
-    recognition.onerror = (e: any) => {
+    recognition.onerror = (e: Loose) => {
       setListening(false);
       if (e?.error && e.error !== "no-speech" && e.error !== "aborted") setMicError(micErrorMessage(e.error));
     };

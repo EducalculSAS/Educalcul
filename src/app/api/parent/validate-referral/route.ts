@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -9,7 +10,7 @@ import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 // casserait ce flux.
 export async function POST(req: Request) {
   try {
-    const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+    const ip = getClientIp(req);
     const cfg = RATE_LIMITS["auth:resolve-username"];
     const rl = await rateLimitWithBackoff(`referral:validate:${ip}`, cfg.maxAttempts, cfg.windowMs);
     if (!rl.allowed) {

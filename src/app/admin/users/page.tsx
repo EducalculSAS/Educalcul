@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import AdminUsersClient from "@/components/admin/AdminUsersClient";
 import { selectAllPages } from "@/lib/selectAllPages";
@@ -22,5 +23,5 @@ export default async function AdminUsersPage() {
       .order("id"),
   ]);
 
-  return <AdminUsersClient initialUsers={users as any[]} plans={plans || []} />;
+  return <AdminUsersClient initialUsers={users as Loose[]} plans={plans || []} />;
 }

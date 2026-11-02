@@ -1,3 +1,4 @@
+import { readJsonBody } from "@/lib/apiJson";
 import { NextResponse } from "next/server";
 import { gradeFreeAnswer } from "@/lib/gradeFreeAnswer";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -19,7 +20,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Trop de corrections, réessaie plus tard." }, { status: 429 });
   }
 
-  const { question, answer, studentAnswer, level, explanation } = await req.json().catch(() => ({}));
+  const { question, answer, studentAnswer, level, explanation } = await readJsonBody(req).catch(() => ({}));
   if (typeof studentAnswer === "string" && studentAnswer.length > MAX_IMAGE_CHARS) {
     return NextResponse.json({ error: "Réponse trop volumineuse." }, { status: 413 });
   }

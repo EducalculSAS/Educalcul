@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -33,8 +34,8 @@ export default function QuizDetailClient({
   initialAlreadyCompleted,
 }: {
   quizId: string;
-  initialQuiz: any | null;
-  initialAttemptsHistory: any[];
+  initialQuiz: Loose | null;
+  initialAttemptsHistory: Loose[];
   initialAlreadyCompleted: boolean;
 }) {
   const router = useRouter();
@@ -42,7 +43,7 @@ export default function QuizDetailClient({
   const isPreview = quizId === "preview";
 
   const [loading] = useState(false);
-  const [quiz] = useState<any>(initialQuiz);
+  const [quiz] = useState<Loose>(initialQuiz);
   const [started, setStarted] = useState(false);
   const attemptsHistory = isPreview ? [] : initialAttemptsHistory;
   const alreadyCompleted = isPreview ? false : initialAlreadyCompleted;
@@ -118,7 +119,7 @@ export default function QuizDetailClient({
             bestScorePercent={attemptsHistory.length > 0 ? Math.max(...attemptsHistory.map((a) => a.score_percent ?? 0)) : undefined}
             onBack={() => setStarted(false)}
             onComplete={(score, total, timeSpent) => {
-              console.log(`Quiz completed: ${score}/${total} in ${timeSpent}s`);
+              console.info(`Quiz completed: ${score}/${total} in ${timeSpent}s`);
             }}
           />
         </div>

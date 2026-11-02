@@ -1,11 +1,12 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { Star } from "lucide-react";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { shortPeriodLabel } from "@/lib/billingPeriods";
 
 /** Choix de la durée à l'intérieur d'une fiche (« 1 mois · 3 mois · 1 an ») ; une étoile marque la durée mise en avant. */
-export default function PeriodChips<T extends { id: string | number; billing_interval: string; features?: any }>({
+export default function PeriodChips<T extends { id: string | number; billing_interval: string; features?: Loose }>({
   plans, value, onChange,
 }: {
   plans: T[];

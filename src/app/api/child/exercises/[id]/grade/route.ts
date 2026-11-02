@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse, after } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -21,7 +22,7 @@ interface GradeItem {
   block_id?: string;
   answer: unknown;
   /** Aperçu admin uniquement : la question complète (le contenu n'est pas encore enregistré). */
-  block?: any;
+  block?: Loose;
 }
 
 interface GradeResult {
@@ -53,12 +54,12 @@ async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promis
 }
 
 /** Correction exacte des blocs à choix / à manipuler (pas d'IA). */
-function gradeStructured(block: any, answer: any): boolean {
+function gradeStructured(block: Loose, answer: Loose): boolean {
   const type = block.type;
   if (type === "multiple_choice" || type === "qcm") {
     const correct = Array.isArray(block.correctAnswer) ? block.correctAnswer : [block.correctAnswer];
     const selected = Array.isArray(answer) ? answer : [answer];
-    return correct.length === selected.length && correct.every((a: any) => selected.includes(a));
+    return correct.length === selected.length && correct.every((a: Loose) => selected.includes(a));
   }
   if (type === "single_choice" || type === "true_false") return answer === block.correctAnswer;
   if (type === "fill_in_the_blank") {
@@ -72,7 +73,7 @@ function gradeStructured(block: any, answer: any): boolean {
   if (type === "matching") {
     const given: string[] = Array.isArray(answer) ? answer : [];
     const pairs = block.pairs || [];
-    return pairs.length > 0 && pairs.every((p: any, i: number) => given[i] === p.right);
+    return pairs.length > 0 && pairs.every((p: Loose, i: number) => given[i] === p.right);
   }
   if (type === "ordering") {
     const given: string[] = Array.isArray(answer) ? answer : [];
@@ -81,7 +82,7 @@ function gradeStructured(block: any, answer: any): boolean {
   }
   if (type === "categorize") {
     const given: (string | null)[] = Array.isArray(answer) ? answer : [];
-    const expected: string[] = (block.categoryItems || []).map((it: any) => it.category);
+    const expected: string[] = (block.categoryItems || []).map((it: Loose) => it.category);
     return expected.length > 0 && given.length === expected.length && expected.every((cat, i) => given[i] === cat);
   }
   if (type === "number_line_point") {
@@ -96,13 +97,13 @@ function gradeStructured(block: any, answer: any): boolean {
   const expected = block.correctAnswer;
   if (Array.isArray(expected)) {
     const ansArr = Array.isArray(answer) ? answer : [answer];
-    return expected.every((e: any) => ansArr.includes(e)) && ansArr.length === expected.length;
+    return expected.every((e: Loose) => ansArr.includes(e)) && ansArr.length === expected.length;
   }
   return answer === expected;
 }
 
 /** Révélation renvoyée APRÈS correction (écran de correction), jamais avant. */
-function revealFor(block: any) {
+function revealFor(block: Loose) {
   if (block.type === "matching") return { pairs: block.pairs };
   if (block.type === "ordering") return { items: block.items };
   if (block.type === "fill_in_the_blank") return { blanks: block.blanks };
@@ -135,7 +136,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     const items: GradeItem[] = (batch ? body.items : [{ block_id: body.block_id, answer: body.answer, block: body.block }]).slice(0, MAX_ITEMS);
 
     let level = "6ème";
-    let blockFor: (blockId?: string) => any;
+    let blockFor: (blockId?: string) => Loose;
     let defaultPoints = 1;
     let manual = false;
 
@@ -148,7 +149,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       // Chaque question part avec son bloc COMPLET : elle est corrigée comme dans l'exercice enregistré (association,
       // catégories, QCM… ). Avant, tout était traité comme une réponse libre, donc une question « catégoriser » ou
       // « relier » ne pouvait jamais être juste dans l'aperçu.
-      const previewBlocks = new Map<string, any>();
+      const previewBlocks = new Map<string, Loose>();
       for (const it of items) {
         const b = it.block && typeof it.block === "object" ? it.block : null;
         const bid = String(it.block_id ?? b?.id ?? "");
@@ -166,7 +167,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       const keys = items.map((i) => parseReviewKey(String(i.block_id ?? ""))).filter((k): k is NonNullable<typeof k> => !!k);
       const sources = await loadSources(keys);
       const diffOk = new Map<string, boolean>();
-      const blocks = new Map<string, any>();
+      const blocks = new Map<string, Loose>();
       for (const [key, src] of sources) {
         const d = src.difficulty ?? "";
         if (!diffOk.has(d)) diffOk.set(d, (await checkDifficultyAccess(me.authId, src.difficulty)).allowed);
@@ -188,7 +189,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 
       // Niveau de la base, jamais du client : il ne doit pas pouvoir influencer le verdict.
       level = exercise.level || level;
-      const blocks = new Map<string, any>();
+      const blocks = new Map<string, Loose>();
       for (const page of Array.isArray(exercise.content_json) ? exercise.content_json : []) {
         for (const b of page?.blocks ?? []) if (b?.id) blocks.set(b.id, b);
       }

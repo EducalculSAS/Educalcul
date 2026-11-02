@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { Star, Trophy, BookOpen, CheckCircle, Zap } from "lucide-react";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getNameColor } from "@/lib/badgeStyles";
@@ -8,7 +9,7 @@ import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { safeRedirectPath } from "@/lib/safeRedirect";
 
-const ICON_MAP: Record<string, any> = {
+const ICON_MAP: Record<string, Loose> = {
   pencil: Star, zap: Zap, flame: Star, star: Star, crown: Star,
   check: CheckCircle, trophy: Trophy, brain: Star, sparkles: Star,
   graduation: Star, book: BookOpen, map: Star, library: BookOpen,
@@ -46,7 +47,7 @@ export default async function PublicProfilePage({
   const [{ data: featuredBadges }, { data: earnedBadgeRows }, { count: exos }, { count: quiz }, { count: cours }] = await Promise.all([
     user.featured_badges?.length
       ? supabaseAdmin.from("badges").select("*").in("id", user.featured_badges.filter(Boolean))
-      : Promise.resolve({ data: [] as any[] }),
+      : Promise.resolve({ data: [] as Loose[] }),
     supabaseAdmin.from("user_badges").select("badge:badges(id, name, icon, color, category)").eq("user_id", user.id),
     supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", user.id),
     supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", user.id),
@@ -54,7 +55,7 @@ export default async function PublicProfilePage({
   ]);
 
   const badges = featuredBadges || [];
-  const allBadges = ((earnedBadgeRows || []) as unknown as { badge: any }[]).map((e) => e.badge).filter(Boolean);
+  const allBadges = ((earnedBadgeRows || []) as unknown as { badge: Loose }[]).map((e) => e.badge).filter(Boolean);
   const stats = { exos: exos ?? 0, quiz: quiz ?? 0, cours: cours ?? 0 };
 
   const nameColor = getNameColor(user.name_color || "default");

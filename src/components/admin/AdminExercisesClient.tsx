@@ -1,6 +1,7 @@
 ﻿"use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import type { Loose } from "@/types/loose";
 import { compareDisplayOrder } from "@/lib/contentOrder";
 import { formatDateFr } from "@/lib/formatDate";
 import { useState, useEffect, useRef, useMemo } from "react";
@@ -1386,7 +1387,7 @@ export default function AdminExercisesClient({
                   onChange={(e) =>
                     setFolderFormData({
                       ...folderFormData,
-                      status: e.target.value as any,
+                      status: e.target.value as Loose,
                     })
                   }
                   className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"

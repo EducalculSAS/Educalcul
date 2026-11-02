@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
@@ -49,13 +50,13 @@ export default function AuditLogTable({
   initialTotal,
   pageSize,
 }: {
-  initialEntries: any[];
+  initialEntries: Loose[];
   initialTotal: number;
   pageSize: number;
 }) {
   const [loading, setLoading] = useState(false);
   const [exporting, setExporting] = useState(false);
-  const [entries, setEntries] = useState<any[]>(initialEntries);
+  const [entries, setEntries] = useState<Loose[]>(initialEntries);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(initialTotal);
 

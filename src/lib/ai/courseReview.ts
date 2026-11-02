@@ -185,7 +185,7 @@ function collectBlockReferences(
         );
         break;
       case "list":
-        block.items.forEach((item, itemIndex) =>
+        block.items.forEach((_item, itemIndex) =>
           addRichReference(
             references,
             `${idPrefix}-item${itemIndex}`,

@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -73,7 +74,7 @@ export default async function QuizDetailPage({
     if (!allowed) redirect("/child/quiz");
   }
 
-  let attemptsHistory: any[] = [];
+  let attemptsHistory: Loose[] = [];
   let alreadyCompleted = false;
   if (quiz) {
     const { data: attemptRow } = await supabaseAdmin

@@ -1,6 +1,7 @@
 ﻿"use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import type { Loose } from "@/types/loose";
 import Image from "next/image";
 import { plural } from "@/lib/plural";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
@@ -81,7 +82,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     () => (course.content_json || []).map((c) => ({ ...c, lessons: c.lessons || [] })),
     [course.content_json]
   );
-  const courseId = (course as any).id;
+  const courseId = (course as Loose).id;
   const isPreviewCourse = !courseId || courseId === "preview";
 
   // Position/progression : plus de repli localStorage — la position exacte
@@ -188,20 +189,20 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
       if (currentLesson.content.length > 2000) {
         lessonContent += "\n\n[Contenu tronqué pour concision]";
       }
-    } else if (currentLesson.type === "video" && (currentLesson as any).videoUrl) {
-      lessonContent += `\n\n[Vidéo]: ${(currentLesson as any).videoUrl}`;
+    } else if (currentLesson.type === "video" && (currentLesson as Loose).videoUrl) {
+      lessonContent += `\n\n[Vidéo]: ${(currentLesson as Loose).videoUrl}`;
     }
 
     // Set the AI context with ONLY current lesson (not full course)
     setPageContext({
       page: "cours_detail",
       courseTitle: course.title,
-      courseSubject: (course as any).subject || "Maths",
-      courseLevel: (course as any).level || "Collège",
+      courseSubject: (course as Loose).subject || "Maths",
+      courseLevel: (course as Loose).level || "Collège",
       courseContent: lessonContent, // CURRENT LESSON ONLY, not full course
     });
 
-    console.log("📚 AI Context Updated with Current Lesson:", {
+    console.info("📚 AI Context Updated with Current Lesson:", {
       courseTitle: course.title,
       lessonTitle: currentLesson.title,
       contentLength: lessonContent.length,
@@ -472,7 +473,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   if (courseCompleted) {
     const totalLessons = chapters.reduce((acc, c) => acc + (c.lessons?.length || 0), 0);
     const mins = Math.floor(timeTotal / 60);
-    const courseFull = course as any;
+    const courseFull = course as Loose;
 
     return (
       <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">

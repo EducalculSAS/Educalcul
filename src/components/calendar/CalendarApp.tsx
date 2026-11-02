@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   AlarmClock, CalendarDays, CalendarPlus, CheckCircle2, ChevronLeft, ChevronRight, Download, Eye, EyeOff, Sparkles,
@@ -200,7 +201,7 @@ export default function CalendarApp({
     } else if (completed) toast.success("Bravo, c'est fait !");
   };
 
-  const acceptPlan = async (sessions: any[]): Promise<boolean> => {
+  const acceptPlan = async (sessions: Loose[]): Promise<boolean> => {
     const target = ownerId === FAMILY ? studentOwners[0]?.id : ownerId;
     const res = await fetch("/api/calendar/events", {
       method: "POST",

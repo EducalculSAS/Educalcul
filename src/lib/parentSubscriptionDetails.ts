@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
@@ -51,7 +52,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
               user_id: userId,
               plan_id: planId,
               status: "active",
-              current_period_start: new Date((activeSub as any).current_period_start * 1000).toISOString(),
+              current_period_start: new Date((activeSub as Loose).current_period_start * 1000).toISOString(),
               current_period_end: subscriptionPeriodEnd(activeSub),
               stripe_customer_id: customer.id,
               stripe_subscription_id: activeSub.id,
@@ -93,14 +94,14 @@ export async function fetchParentSubscriptionDetails(userId: string) {
   const customerId = subscription.stripe_customer_id;
 
   // 2. Fetch subscription details from Stripe to get renewal date + cancellation status
-  let stripeSubscription: any = null;
+  let stripeSubscription: Loose = null;
   if (subscription.stripe_subscription_id) {
     try {
       stripeSubscription = await stripe.subscriptions.retrieve(subscription.stripe_subscription_id);
     } catch (err) {
       if (!isStripeMissing(err)) throw err;
       // L'abonnement n'existe plus chez Stripe : on montre ce que la base sait, sans factures.
-      return { subscription, invoices: [] as any[] };
+      return { subscription, invoices: [] as Loose[] };
     }
   }
 

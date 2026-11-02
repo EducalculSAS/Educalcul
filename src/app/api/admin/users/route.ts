@@ -1,4 +1,6 @@
 ﻿import { NextResponse } from "next/server";
+import { getClientIp } from "@/lib/apiAuth";
+import type { Loose } from "@/types/loose";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { ADMIN_USER_LIST_COLUMNS } from "@/lib/adminUserColumns";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -79,7 +81,7 @@ export async function POST(request: Request) {
     }
 
     // ✓ SECURITY: Rate limiting on user creation
-    const ip = request.headers.get("x-forwarded-for") ?? "unknown";
+    const ip = getClientIp(request);
     const rl = await rateLimitWithBackoff(`admin:user-create:${ip}`, 10, 60000); // 10 per minute
     if (!rl.allowed) {
       return NextResponse.json({ error: "Too many requests" }, { status: 429 });
@@ -353,7 +355,7 @@ export async function PUT(request: Request) {
     }
 
     // Update auth user
-    const authUpdates: any = {
+    const authUpdates: Loose = {
       user_metadata: {
         role,
         first_name: firstName,
@@ -444,7 +446,7 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: "Invalid auth_id" }, { status: 400 });
     }
 
-    console.log(`[DELETE USER] Starting deletion for auth_id: ${auth_id}`);
+    console.info(`[DELETE USER] Starting deletion for auth_id: ${auth_id}`);
 
     // First, check if user exists in public.users table
     const { data: userData, error: checkError } = await supabaseAdmin
@@ -467,13 +469,13 @@ export async function DELETE(request: Request) {
       );
       // Continue anyway - try to delete from auth
     } else {
-      console.log(
+      console.info(
         `[DELETE USER] Found user ${userData.id} with auth_id ${auth_id}`,
       );
 
       // FIRST: Handle self-referencing children (parent_id) BEFORE deleting anything
       // This prevents CASCADE delete of children
-      console.log(`[DELETE USER] Updating parent-child relationships`);
+      console.info(`[DELETE USER] Updating parent-child relationships`);
       const { error: updateChildrenError } = await supabaseAdmin
         .from("users")
         .update({ parent_id: null })
@@ -485,11 +487,11 @@ export async function DELETE(request: Request) {
           updateChildrenError.message,
         );
       } else {
-        console.log(`[DELETE USER] Orphaned children (set parent_id to null)`);
+        console.info(`[DELETE USER] Orphaned children (set parent_id to null)`);
       }
 
       // Delete all related data before deleting the user
-      console.log(
+      console.info(
         `[DELETE USER] Deleting related data for user ${userData.id}`,
       );
 
@@ -549,7 +551,7 @@ export async function DELETE(request: Request) {
                 deleteError.message,
               );
             } else {
-              console.log(`[DELETE USER] Cleaned ${table}.${column}`);
+              console.info(`[DELETE USER] Cleaned ${table}.${column}`);
             }
           }),
         ),
@@ -582,7 +584,7 @@ export async function DELETE(request: Request) {
     // user" sans cause identifiable côté schéma applicatif. Un compte
     // "fantôme" (profil supprimé, connexion Auth impossible à supprimer)
     // a déjà été observé en prod pour cette raison.
-    console.log(`[DELETE USER] Deleting from Supabase Auth`);
+    console.info(`[DELETE USER] Deleting from Supabase Auth`);
     let { error: authError } =
       await supabaseAdmin.auth.admin.deleteUser(auth_id);
     if (authError) {
@@ -608,7 +610,7 @@ export async function DELETE(request: Request) {
           JSON.stringify(rpcError),
         );
       } else {
-        console.log(`[DELETE USER] Fallback deletion succeeded for ${auth_id}`);
+        console.info(`[DELETE USER] Fallback deletion succeeded for ${auth_id}`);
         authError = null;
       }
     }
@@ -625,7 +627,7 @@ export async function DELETE(request: Request) {
       request,
     );
 
-    console.log(
+    console.info(
       `[DELETE USER] Successfully completed deletion for auth_id: ${auth_id}`,
     );
     return NextResponse.json({

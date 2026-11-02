@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import AdminExercisesClient from "@/components/admin/AdminExercisesClient";
 import { loadFoldersWithCounts } from "@/lib/contentFolders";
@@ -33,9 +34,9 @@ export default async function AdminExercisesPage() {
   return (
     <AdminExercisesClient
       initialFolderId={folderId}
-      initialItems={items.map((e: any) => ({ ...e, content_json: null }))}
+      initialItems={items.map((e: Loose) => ({ ...e, content_json: null }))}
       initialAllFolders={allFolders}
-      initialCourses={courses as any[]}
+      initialCourses={courses as Loose[]}
     />
   );
 }

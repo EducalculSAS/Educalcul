@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -56,7 +57,7 @@ export async function POST(req: Request) {
     ]);
     const who = me2?.role === "child" ? me2.child_username || me2.first_name : me2?.first_name;
     for (const f of followers ?? []) {
-      const u = (f as any).user as { id: number; auth_id: string; role: string } | null;
+      const u = (f as Loose).user as { id: number; auth_id: string; role: string } | null;
       if (!u?.auth_id) continue;
       await notify({
         userId: u.auth_id,

@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, X, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -90,7 +91,7 @@ export default function AIAddContentModal({
           ...data.item,
           id: crypto.randomUUID(),
           title: data.item.title || "Nouveau chapitre",
-          lessons: (data.item.lessons || []).map((l: any) => ({
+          lessons: (data.item.lessons || []).map((l: Loose) => ({
             ...l,
             id: crypto.randomUUID(),
             type: l.type || "text",

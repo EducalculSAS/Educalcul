@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -102,8 +103,8 @@ async function fetchLoginHistory(userId: string): Promise<LoginEvent[]> {
 }
 
 function buildCSV(users: User[], loginHistory?: LoginEvent[]): string {
-  const q = (v: any) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-  const d = (v: any) => v ? new Date(v).toLocaleString("fr-FR") : "";
+  const q = (v: Loose) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const d = (v: Loose) => v ? new Date(v).toLocaleString("fr-FR") : "";
 
   if (users.length === 1 && loginHistory) {
     // Fiche détaillée d'un seul utilisateur avec historique complet
@@ -147,14 +148,14 @@ function downloadCSV(users: User[], filename: string, loginHistory?: LoginEvent[
 // pays...) sont saisies par des utilisateurs non-admin et sont injectées via
 // document.write dans une fenêtre de même origine que l'admin — sans
 // échappement, un utilisateur pourrait exécuter du script dans ce contexte.
-function esc(v: any): string {
+function esc(v: Loose): string {
   if (v === null || v === undefined) return "";
   return String(v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
 }
 
 function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): string {
   const NAVY = "#1a3a5c", GOLD = "#c5a148";
-  const d = (v: any) => v ? esc(new Date(v).toLocaleString("fr-FR")) : "-";
+  const d = (v: Loose) => v ? esc(new Date(v).toLocaleString("fr-FR")) : "-";
   const single = users.length === 1;
   const u = users[0];
 
@@ -440,7 +441,7 @@ export default function AdminUsersClient({
 
   async function fetchUsers(silent = false) {
     const cacheKey = `users:${roleFilter}:${statusFilter}`;
-    const cached = getAdminCache<any[]>(cacheKey);
+    const cached = getAdminCache<Loose[]>(cacheKey);
     if (!silent) {
       if (cached) { setUsers(cached); setLoading(false); }
       else setLoading(true);
@@ -470,7 +471,7 @@ export default function AdminUsersClient({
     e.preventDefault();
     setSubmitting(true);
     try {
-      const body: any = { userId: currentAuthId, firstName: form.firstName, lastName: form.lastName, email: form.email, role: form.role, status: form.status, gradeLevel: form.gradeLevel, password: form.password };
+      const body: Loose = { userId: currentAuthId, firstName: form.firstName, lastName: form.lastName, email: form.email, role: form.role, status: form.status, gradeLevel: form.gradeLevel, password: form.password };
       if (form.role === "child") body.username = form.username;
       if (form.subscriptionPlanId) {
         body.subscriptionPlanId = form.subscriptionPlanId;

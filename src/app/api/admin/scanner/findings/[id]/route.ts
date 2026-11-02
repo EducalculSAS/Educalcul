@@ -1,3 +1,4 @@
+import { readJsonBody } from "@/lib/apiJson";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -13,7 +14,7 @@ export async function PATCH(
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  const { status } = await request.json();
+  const { status } = await readJsonBody(request);
   if (!VALID_STATUSES.has(status)) {
     return Response.json({ error: "Statut invalide." }, { status: 400 });
   }

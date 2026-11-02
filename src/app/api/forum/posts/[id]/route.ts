@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -40,7 +41,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
     ]);
     if (error || !post) throw error ?? new Error("Sujet introuvable");
 
-    const commentRows = (comments ?? []) as any[];
+    const commentRows = (comments ?? []) as Loose[];
     const commentIds = commentRows.map((c) => c.id);
     const likeFilter = commentIds.length
       ? `post_id.eq.${id},comment_id.in.(${commentIds.join(",")})`
@@ -55,7 +56,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
     const byId = new Map(commentRows.map((c) => [c.id, c]));
     const isAdmin = me.role === "admin";
-    const p = post as any;
+    const p = post as Loose;
 
     const thread: ForumThread = {
       id: p.id,

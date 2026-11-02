@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import AdminEmailsClient from "@/components/admin/AdminEmailsClient";
 import { selectAllPages } from "@/lib/selectAllPages";
@@ -11,5 +12,5 @@ export default async function AdminEmailsPage() {
     ),
   ]);
 
-  return <AdminEmailsClient initialTemplates={templates || []} initialSiteUsers={users as any[]} />;
+  return <AdminEmailsClient initialTemplates={templates || []} initialSiteUsers={users as Loose[]} />;
 }

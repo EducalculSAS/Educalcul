@@ -1,3 +1,4 @@
+import { readJsonBody } from "@/lib/apiJson";
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -22,7 +23,7 @@ export async function PATCH(req: NextRequest) {
   const me = await getAuthenticatedUser(req);
   if (!me) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
 
-  const { ids } = await req.json(); // ids = null → marque tout
+  const { ids } = await readJsonBody(req); // ids = null → marque tout
 
   let query = supabaseAdmin
     .from("user_notifications")

@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import PageHero from "@/components/PageHero";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -9,7 +10,7 @@ import { BORDER_STYLES, NAME_COLORS, getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import GlassButton from "@/components/ui/GlassButton";
 
-const ICON_MAP: Record<string, any> = {
+const ICON_MAP: Record<string, Loose> = {
   pencil: Pencil, zap: Zap, flame: StreakFlame as unknown as LucideIcon, star: Star, crown: Crown,
   check: CheckCircle, target: Target, brain: Brain, trophy: Trophy,
   sparkles: Sparkles, graduation: Star, book: BookOpen, map: Map, library: BookOpen,
@@ -84,7 +85,7 @@ export default function BadgesSettings({
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
     setEquipping(true);
-    const body: any = { authId: session.user.id };
+    const body: Loose = { authId: session.user.id };
     if (border !== undefined) body.equipped_border = border;
     if (color !== undefined) body.name_color = color;
     await fetch("/api/child/equip", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });

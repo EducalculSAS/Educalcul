@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useState, useRef } from "react";
 import { BORDER_STYLES, NAME_COLORS } from "@/lib/badgeStyles";
@@ -28,7 +29,7 @@ interface Plan {
   billing_interval: string;
   trial_days: number | null;
   promo_description: string | null;
-  features: any;
+  features: Loose;
   is_active: boolean;
   sort_order: number;
   subscriber_count: number;
@@ -48,7 +49,7 @@ interface ReferralCode {
   valid_until: string | null;
   is_active: boolean;
   description: string | null;
-  referral_uses: any[];
+  referral_uses: Loose[];
   created_at: string;
 }
 
@@ -110,13 +111,13 @@ export default function AdminSubscriptionsClient({
   const [plans, setPlans] = useState<Plan[]>(initialPlans);
   const [showPlanModal, setShowPlanModal] = useState(false);
   const [editingPlan, setEditingPlan] = useState<Plan | null>(null);
-  const [planForm, setPlanForm] = useState<any>(defaultPlanForm);
+  const [planForm, setPlanForm] = useState<Loose>(defaultPlanForm);
 
   // Referrals state
   const [codes, setCodes] = useState<ReferralCode[]>(initialCodes);
   const [showRefModal, setShowRefModal] = useState(false);
   const [editingCode, setEditingCode] = useState<ReferralCode | null>(null);
-  const [refForm, setRefForm] = useState<any>(defaultRefForm);
+  const [refForm, setRefForm] = useState<Loose>(defaultRefForm);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [expandedPlan, setExpandedPlan] = useState<string | null>(null);
 

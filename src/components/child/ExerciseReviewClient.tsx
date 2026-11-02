@@ -1,12 +1,13 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
-export default function ExerciseReviewClient({ exercise, progress }: { exercise: any; progress: any }) {
+export default function ExerciseReviewClient({ exercise, progress }: { exercise: Loose; progress: Loose }) {
   const router = useRouter();
 
   return (

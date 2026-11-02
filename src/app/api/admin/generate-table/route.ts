@@ -1,3 +1,5 @@
+import { getClientIp } from "@/lib/apiAuth";
+import type { Loose } from "@/types/loose";
 import { NextRequest } from "next/server";
 import { generateStructuredContent } from "@/lib/llm";
 import { requireRole } from "@/lib/apiAuth";
@@ -9,7 +11,7 @@ export async function POST(req: NextRequest) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
-  const ip = req.headers.get("x-forwarded-for") ?? "unknown";
+  const ip = getClientIp(req);
   const config = RATE_LIMITS["ai:admin"];
   const rate = await rateLimitWithBackoff(`ai:admin:${ip}`, config.maxAttempts, config.windowMs);
   if (!rate.allowed) {
@@ -36,10 +38,10 @@ Réponds UNIQUEMENT avec un JSON de la forme :
 Chaque sous-tableau de "rows" doit avoir le même nombre de colonnes que "headers". Utilise des symboles mathématiques unicode (↗, ↘, ∞, ‖, etc.) directement dans le texte des cellules.`;
 
   try {
-    const result = (await generateStructuredContent(description, systemPrompt, 0.4)) as any;
+    const result = (await generateStructuredContent(description, systemPrompt, 0.4)) as Loose;
     const headers = Array.isArray(result?.headers) ? result.headers.map(String) : [];
     const rows = Array.isArray(result?.rows)
-      ? result.rows.map((r: any) => (Array.isArray(r) ? r.map(String) : []))
+      ? result.rows.map((r: Loose) => (Array.isArray(r) ? r.map(String) : []))
       : [];
     if (!headers.length || !rows.length) {
       throw new Error("Réponse IA invalide");

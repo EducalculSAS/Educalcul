@@ -3,7 +3,9 @@
  * Ensures all sensitive operations are logged for security and compliance
  */
 
+import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { getClientIp as getClientIpOrNull } from "@/lib/ipGeo";
 
 export enum AuditAction {
   USER_CREATED = "USER_CREATED",
@@ -42,7 +44,7 @@ export interface AuditLogEntry {
   targetUserId?: number;
   targetType?: string;
   targetId?: string;
-  details?: Record<string, any>;
+  details?: Record<string, Loose>;
   ipAddress?: string;
   userAgent?: string;
 }
@@ -55,10 +57,7 @@ export async function auditLog(
   request?: Request
 ): Promise<{ success: boolean; error?: string }> {
   try {
-    const ipAddress =
-      request?.headers.get("x-forwarded-for") ||
-      request?.headers.get("x-real-ip") ||
-      "unknown";
+    const ipAddress = request ? getClientIpOrNull(request) ?? "unknown" : "unknown";
     const userAgent = request?.headers.get("user-agent") || "unknown";
 
     // Create audit log entry
@@ -92,7 +91,7 @@ export async function auditLog(
 export async function getAuditLogs(
   targetUserId?: number,
   limit: number = 100
-): Promise<any[]> {
+): Promise<Loose[]> {
   try {
     let query = supabaseAdmin
       .from("audit_logs")

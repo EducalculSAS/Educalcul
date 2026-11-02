@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -10,7 +11,7 @@ export default async function EditChildPage({ params }: { params: Promise<{ id: 
   if (!authUser) redirect("/auth/connexion");
   if (authUser.role !== "parent") redirect("/dashboard");
 
-  const { data: childData }: { data: any } = await supabaseAdmin
+  const { data: childData }: { data: Loose } = await supabaseAdmin
     .from("users")
     .select(`${USER_SELECT_COLUMNS}, extra_levels`)
     .eq("id", childId)

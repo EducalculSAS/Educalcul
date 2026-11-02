@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { invalidateCatalog } from "@/lib/catalogCache";
 
@@ -37,7 +38,7 @@ export async function loadFoldersWithCounts(type: FolderType) {
   const table = FOLDER_TABLES[type];
   const pageSize = 1000;
   const loadFolders = async () => {
-    const rows: any[] = [];
+    const rows: Loose[] = [];
     for (let from = 0; ; from += pageSize) {
       const { data, error } = await supabaseAdmin
         .from(table)

@@ -24,6 +24,7 @@
  * renvoie donc aussi `warnings`: la liste de ce qui a été ignoré ou corrigé,
  * pour que l'admin sache exactement quoi relire avant d'enregistrer.
  */
+import type { Loose } from "@/types/loose";
 import {
   normalizeCourseBlock,
   normalizeStructuredRichText,
@@ -122,20 +123,20 @@ function isRichTextEmpty(value: unknown): boolean {
 /*  Cours                                                              */
 /* ------------------------------------------------------------------ */
 
-export function compileHandAuthoredCourse(raw: any): CompileResult<any[]> {
+export function compileHandAuthoredCourse(raw: Loose): CompileResult<Loose[]> {
   const chapters = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
   if (!isSourceFormat(raw)) return { content: chapters, warnings }; // déjà compilé (export ré-importé) : inchangé
 
-  const content = chapters.map((chapter: any, chapterIndex: number) => {
+  const content = chapters.map((chapter: Loose, chapterIndex: number) => {
     const chapterLabel = `Chapitre ${chapterIndex + 1} (« ${chapter?.title || "?"} »)`;
     let exerciseCounter = 1;
     const lessons = (Array.isArray(chapter?.lessons) ? chapter.lessons : []).map(
-      (lesson: any, lessonIndex: number) => {
+      (lesson: Loose, lessonIndex: number) => {
         const lessonLabel = `${chapterLabel} → leçon ${lessonIndex + 1} (« ${lesson?.title || "?"} »)`;
         const rawExercises = Array.isArray(lesson?.exercises) ? lesson.exercises : [];
         const exerciseIds = rawExercises.map(() => `c${chapterIndex + 1}-ex-${exerciseCounter++}`);
-        const compiledExercises = rawExercises.map((ex: any, i: number) => {
+        const compiledExercises = rawExercises.map((ex: Loose, i: number) => {
           if (isRichTextEmpty(ex?.question)) {
             warnings.push(`${lessonLabel} : exercice ${i + 1}, "question" vide ou manquante.`);
           }
@@ -213,15 +214,15 @@ const EXERCISE_BLOCK_TYPES = new Set([
   "categorize", "number_line_point", "click_error",
 ]);
 
-export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
+export function compileHandAuthoredExercise(raw: Loose): CompileResult<Loose[]> {
   const pages = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
   if (!isSourceFormat(raw)) return { content: pages, warnings };
 
-  const content = pages.map((page: any) => ({
+  const content = pages.map((page: Loose) => ({
     id: String(page?.id || "page-1"),
     title: String(page?.title || "Questions"),
-    blocks: (Array.isArray(page?.blocks) ? page.blocks : []).map((block: any, index: number) => {
+    blocks: (Array.isArray(page?.blocks) ? page.blocks : []).map((block: Loose, index: number) => {
       const where = `Question ${index + 1}`;
       const requestedType = String(block?.type ?? "");
       const type = EXERCISE_BLOCK_TYPES.has(requestedType) ? requestedType : "text_input";
@@ -259,7 +260,7 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
       }
       if (type === "matching") {
         const pairs = Array.isArray(block?.pairs)
-          ? block.pairs.map((p: any) => ({ left: escapeHtml(p?.left), right: String(p?.right ?? "") }))
+          ? block.pairs.map((p: Loose) => ({ left: escapeHtml(p?.left), right: String(p?.right ?? "") }))
           : [];
         if (pairs.length < 2) warnings.push(`${where} : moins de 2 "pairs", l'appariement n'a pas de sens.`);
         return { ...base, pairs };
@@ -272,10 +273,10 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
       if (type === "categorize") {
         const categories = Array.isArray(block?.categories) ? block.categories.map(String) : [];
         const categoryItems = Array.isArray(block?.categoryItems)
-          ? block.categoryItems.map((it: any) => ({ text: escapeHtml(it?.text), category: String(it?.category ?? "") }))
+          ? block.categoryItems.map((it: Loose) => ({ text: escapeHtml(it?.text), category: String(it?.category ?? "") }))
           : [];
         if (categories.length < 2) warnings.push(`${where} : moins de 2 "categories", rien à catégoriser.`);
-        if (categoryItems.some((it: any) => !categories.includes(it.category))) {
+        if (categoryItems.some((it: Loose) => !categories.includes(it.category))) {
           warnings.push(`${where} : un élément de "categoryItems" référence une catégorie absente de "categories".`);
         }
         return { ...base, categories, categoryItems };
@@ -336,12 +337,12 @@ export function compileHandAuthoredExercise(raw: any): CompileResult<any[]> {
 
 const QUIZ_QUESTION_TYPES = new Set(["single_choice", "multiple_choice", "true_false", "text_input", "impossible_search"]);
 
-export function compileHandAuthoredQuiz(raw: any): CompileResult<any[]> {
+export function compileHandAuthoredQuiz(raw: Loose): CompileResult<Loose[]> {
   const questions = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
   if (!isSourceFormat(raw)) return { content: questions, warnings };
 
-  const content = questions.map((q: any, index: number) => {
+  const content = questions.map((q: Loose, index: number) => {
     const where = `Question ${index + 1}`;
     const requestedType = String(q?.type ?? "single_choice");
     // Par défaut "single_choice" (comportement historique, seul type géré

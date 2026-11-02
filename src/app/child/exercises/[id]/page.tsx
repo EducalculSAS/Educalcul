@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -91,7 +92,7 @@ export default async function ExerciseDetailPage({
     if (!allowed) redirect("/child/exercises");
   }
 
-  let attemptsHistory: any[] = [];
+  let attemptsHistory: Loose[] = [];
   let alreadyCompleted = false;
   if (exercise) {
     attemptsHistory = attemptRow?.attempts_history || [];

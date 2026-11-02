@@ -14,7 +14,7 @@ const PING_URLS = [
 
 export async function POST(req: NextRequest) {
   const secret = req.headers.get("x-ping-secret");
-  if (secret !== process.env.INDEXNOW_SECRET) {
+  if (!process.env.INDEXNOW_SECRET || secret !== process.env.INDEXNOW_SECRET) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

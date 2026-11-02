@@ -1,3 +1,4 @@
+import { readJsonBody } from "@/lib/apiJson";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -13,7 +14,7 @@ export async function PATCH(
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
   const { id } = await params;
-  const body = await request.json();
+  const body = await readJsonBody(request);
   const questions = body?.questions;
   if (!Array.isArray(questions) || questions.length === 0) {
     return Response.json({ error: "Questions invalides." }, { status: 400 });

@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { PALIER_CODES, type PalierCode } from "@/lib/minigames/levels";
 import { CALCUL_MENTAL_RULES, getCalculMentalRule, buildCalculMentalSystemPrompt } from "@/lib/minigames/calculMentalRules";
 import { ENIGMES_RULES, getEnigmeRule, buildEnigmesSystemPrompt } from "@/lib/minigames/enigmesRules";
@@ -18,7 +19,7 @@ export interface GameTypeConfig {
   palierCodes: PalierCode[];
   answerType: AnswerType;
   getRule: (code: string) => DailyRule | null;
-  buildSystemPrompt: (rule: any, avoidPrompts: string[], theme?: string, language?: MathLanguage) => string;
+  buildSystemPrompt: (rule: Loose, avoidPrompts: string[], theme?: string, language?: MathLanguage) => string;
   /** Uniquement pour "langues" — une langue tournante par jour (déterministe). */
   getLanguageForDate?: (forDate: string) => MathLanguage;
   /** Une seule fiche de 5 questions est générée par jour/palier (plus de

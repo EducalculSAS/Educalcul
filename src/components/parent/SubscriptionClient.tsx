@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import PageHero from "@/components/PageHero";
 import { formatDateFr } from "@/lib/formatDate";
 import PageLoader from "@/components/PageLoader";
@@ -63,10 +64,10 @@ function SubscriptionPageContent({
   authEmail: string | null;
   initialPlans: SubscriptionPlan[];
   initialPricingConfig: PricingConfig;
-  initialReferralCode: any | null;
+  initialReferralCode: Loose | null;
   initialPendingDiscount: number;
-  initialCurrentPlan: any | null;
-  initialBillingHistory: any[];
+  initialCurrentPlan: Loose | null;
+  initialBillingHistory: Loose[];
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -86,7 +87,7 @@ function SubscriptionPageContent({
   const [copied, setCopied] = useState(false);
   const [pendingDiscount] = useState(initialPendingDiscount);
   const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);
-  const [signupData, setSignupData] = useState<any>(null);
+  const [signupData, setSignupData] = useState<Loose>(null);
   const [customProcessing, setCustomProcessing] = useState(false);
   const [pricingConfig] = useState<PricingConfig>(initialPricingConfig);
   // Fonction de rétractation (14 jours après la souscription, voir src/lib/withdrawal.ts)
@@ -682,7 +683,7 @@ function SubscriptionPageContent({
                 </div>
               ) : (
                 <ul className="space-y-3">
-                  {myReferralCode.uses.map((u: any) => (
+                  {myReferralCode.uses.map((u: Loose) => (
                     <li key={u.id} className="flex items-center justify-between gap-3 py-2 border-b border-[rgba(197,161,72,0.25)] last:border-0">
                       <div>
                         <p className="font-semibold text-gray-800 text-sm">
@@ -714,10 +715,10 @@ export default function SubscriptionClient(props: {
   authEmail: string | null;
   initialPlans: SubscriptionPlan[];
   initialPricingConfig: PricingConfig;
-  initialReferralCode: any | null;
+  initialReferralCode: Loose | null;
   initialPendingDiscount: number;
-  initialCurrentPlan: any | null;
-  initialBillingHistory: any[];
+  initialCurrentPlan: Loose | null;
+  initialBillingHistory: Loose[];
 }) {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><AppLoader /></div>}>

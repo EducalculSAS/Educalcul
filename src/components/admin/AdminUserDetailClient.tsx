@@ -1,5 +1,6 @@
 "use client";
 
+import type { Loose } from "@/types/loose";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -64,7 +65,7 @@ function Row({ label, value, mono }: { label: string; value: string; mono?: bool
 }
 
 // Reusable confirm modal
-function ConfirmModal({ open, onClose, onConfirm, title, description, confirmLabel, confirmVariant, loading, children }: any) {
+function ConfirmModal({ open, onClose, onConfirm, title, description, confirmLabel, confirmVariant, loading, children }: Loose) {
   if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4 modal-overlay">
@@ -99,18 +100,18 @@ export default function AdminUserDetailClient({
   initialPlans,
 }: {
   id: string;
-  initialData: any;
-  initialPlans: any[];
+  initialData: Loose;
+  initialPlans: Loose[];
 }) {
   const router = useRouter();
-  const [data, setData] = useState<any>(initialData);
+  const [data, setData] = useState<Loose>(initialData);
   const [actionLoading, setActionLoading] = useState(false);
   const [nowMs] = useState(() => Date.now());
   const [toast, setToast] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   // Modals
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editForm, setEditForm] = useState<any>({
+  const [editForm, setEditForm] = useState<Loose>({
     first_name: initialData.user.first_name || "",
     last_name: initialData.user.last_name || "",
     email: initialData.user.email || "",
@@ -129,7 +130,7 @@ export default function AdminUserDetailClient({
   const [banReason, setBanReason] = useState("");
   const [banDays, setBanDays] = useState<number | null>(null);
   // Modale de traitement d'un signalement (message + conséquence).
-  const [reportModal, setReportModal] = useState<any>(null);
+  const [reportModal, setReportModal] = useState<Loose>(null);
   const [reportMsg, setReportMsg] = useState("");
   const [reportConsequence, setReportConsequence] = useState<"none" | "warn" | "ban7" | "ban_perm">("none");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -148,7 +149,7 @@ export default function AdminUserDetailClient({
   const [showAttempts, setShowAttempts] = useState(false);
   const [showMinigames, setShowMinigames] = useState(false);
   const [showTickets, setShowTickets] = useState(false);
-  const [plans] = useState<any[]>(initialPlans);
+  const [plans] = useState<Loose[]>(initialPlans);
   const [selectedPlanId, setSelectedPlanId] = useState<string>(initialData.subscription?.plan_id?.toString() || "");
   // "offert" = accès sans facturation (compte de test, partenariat, élève sans
   // parent payeur) ; "stripe" = facturation réelle exigée, l'action échoue si
@@ -200,7 +201,7 @@ export default function AdminUserDetailClient({
     }
   };
 
-  const doAction = async (actionName: string, payload?: any) => {
+  const doAction = async (actionName: string, payload?: Loose) => {
     setActionLoading(true);
     try {
       const res = await fetch(`/api/admin/user-detail?id=${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: actionName, payload }) });
@@ -320,7 +321,7 @@ export default function AdminUserDetailClient({
   const isParent = user.role === "parent";
   const isBanned = user.status === "inactive";
 
-  const notifColors: any = { ban: "bg-red-50 text-red-700 border-red-100", warning: "bg-orange-50 text-orange-700 border-orange-100", message: "bg-blue-50 text-blue-700 border-blue-100", info: "bg-green-50 text-green-700 border-green-100" };
+  const notifColors: Loose = { ban: "bg-red-50 text-red-700 border-red-100", warning: "bg-orange-50 text-orange-700 border-orange-100", message: "bg-blue-50 text-blue-700 border-blue-100", info: "bg-green-50 text-green-700 border-green-100" };
 
   return (
     <div className="space-y-6">
@@ -448,16 +449,16 @@ export default function AdminUserDetailClient({
                   <option value=""> : Aucun abonnement, </option>
                   {Object.entries(
                     plans
-                      .filter((p: any) => p.is_active)
-                      .reduce((groups: Record<string, any[]>, p: any) => {
+                      .filter((p: Loose) => p.is_active)
+                      .reduce((groups: Record<string, Loose[]>, p: Loose) => {
                         (groups[p.name] ??= []).push(p);
                         return groups;
                       }, {})
                   ).map(([groupName, groupPlans]) => {
-                    const sorted = [...(groupPlans as any[])].sort((a, b) => comparePeriods(a.billing_interval, b.billing_interval));
+                    const sorted = [...(groupPlans as Loose[])].sort((a, b) => comparePeriods(a.billing_interval, b.billing_interval));
                     return (
                       <optgroup key={groupName} label={groupName}>
-                        {sorted.map((p: any) => (
+                        {sorted.map((p: Loose) => (
                           <option key={p.id} value={p.id.toString()}>
                             {p.price}€ : {p.billing_interval === "one_time" ? "Unique" : defaultPeriodLabel(p.billing_interval)}
                           </option>
@@ -503,7 +504,7 @@ export default function AdminUserDetailClient({
                 {subscription ? (
                   <p className="text-xs text-gray-400 text-center">
                     Actuel : <span className="font-semibold text-gray-600">
-                      {plans.find((p: any) => p.id.toString() === subscription?.plan_id?.toString())?.name || subscription?.plan_id || "?"}
+                      {plans.find((p: Loose) => p.id.toString() === subscription?.plan_id?.toString())?.name || subscription?.plan_id || "?"}
                     </span>
                     {subscription.current_period_end && ` · jusqu'au ${new Date(subscription.current_period_end).toLocaleDateString("fr-FR")}`}
                   </p>
@@ -557,7 +558,7 @@ export default function AdminUserDetailClient({
           {isParent && (
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Enfants ({children.length})</h2>
-              {children.length > 0 ? children.map((c: any) => (
+              {children.length > 0 ? children.map((c: Loose) => (
                 <button key={c.id} onClick={() => router.push(`/admin/users/detail?id=${c.id}`)} className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors text-left mb-1">
                   <AvatarWithBorder avatar={c.avatar} equippedBorder={c.equipped_border} name={`${c.first_name ?? ""} ${c.last_name ?? ""}`} size="xs" label="" />
                   <div><p className="text-sm font-semibold text-gray-700">{c.first_name} {c.last_name}</p><p className="text-xs text-gray-400">{c.grade_level}</p></div>
@@ -570,7 +571,7 @@ export default function AdminUserDetailClient({
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2"><Trophy className="w-4 h-4" />Badges</h2>
               <div className="flex flex-wrap gap-2">
-                {badges.map((b: any, i: number) => <span key={i} className="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full border border-amber-200">{b.badge?.name}</span>)}
+                {badges.map((b: Loose, i: number) => <span key={i} className="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full border border-amber-200">{b.badge?.name}</span>)}
               </div>
             </div>
           )}
@@ -611,7 +612,7 @@ export default function AdminUserDetailClient({
                     <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Exercices ({exercise_attempts.length})</p>
                     {exercise_attempts.length > 0 ? (
                       <div className="space-y-1.5">
-                        {exercise_attempts.map((a: any) => (
+                        {exercise_attempts.map((a: Loose) => (
                           <div key={a.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                             <div className="min-w-0">
                               <p className="font-semibold text-gray-700 truncate">{a.exercises?.title || "Exercice supprimé"}</p>
@@ -640,7 +641,7 @@ export default function AdminUserDetailClient({
                     <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Quiz ({quiz_attempts.length})</p>
                     {quiz_attempts.length > 0 ? (
                       <div className="space-y-1.5">
-                        {quiz_attempts.map((a: any) => (
+                        {quiz_attempts.map((a: Loose) => (
                           <div key={a.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                             <div className="min-w-0">
                               <p className="font-semibold text-gray-700 truncate">{a.quizzes?.title || "Quiz supprimé"}</p>
@@ -669,7 +670,7 @@ export default function AdminUserDetailClient({
                     <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Cours ({course_progress.length})</p>
                     {course_progress.length > 0 ? (
                       <div className="space-y-1.5">
-                        {course_progress.map((c: any) => (
+                        {course_progress.map((c: Loose) => (
                           <div key={c.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                             <div className="min-w-0">
                               <p className="font-semibold text-gray-700 truncate">{c.courses?.title || "Cours supprimé"}</p>
@@ -701,7 +702,7 @@ export default function AdminUserDetailClient({
                 <div className="mt-4">
                   {minigame_sessions.length > 0 ? (
                     <div className="space-y-1.5">
-                      {minigame_sessions.map((s: any) => (
+                      {minigame_sessions.map((s: Loose) => (
                         <div key={s.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                           <div className="min-w-0">
                             <p className="font-semibold text-gray-700 truncate">{MINIGAME_LABEL[s.game_type] || s.game_type}</p>
@@ -737,7 +738,7 @@ export default function AdminUserDetailClient({
             </button>
             {showTickets && (
               <div className="mt-3 space-y-2">
-                {support_tickets.length > 0 ? support_tickets.map((t: any) => (
+                {support_tickets.length > 0 ? support_tickets.map((t: Loose) => (
                   <div key={t.id} className="flex items-center justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                     <div className="min-w-0">
                       <p className="font-semibold text-gray-700 truncate">{t.subject}</p>
@@ -757,7 +758,7 @@ export default function AdminUserDetailClient({
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2"><Bell className="w-4 h-4" />Messages & actions admin</h2>
             {notifications.length > 0 ? (
               <div className="space-y-2">
-                {notifications.map((n: any) => (
+                {notifications.map((n: Loose) => (
                   <div key={n.id} className={`p-3 rounded-xl border text-sm ${notifColors[n.type] || notifColors.message}`}>
                     <div className="flex justify-between items-start gap-2">
                       <p className="font-semibold">{n.title}</p>
@@ -778,7 +779,7 @@ export default function AdminUserDetailClient({
             </button>
             {showPosts && (
               <div className="mt-3 space-y-2">
-                {forum_posts.length > 0 ? forum_posts.map((p: any) => (
+                {forum_posts.length > 0 ? forum_posts.map((p: Loose) => (
                   <div key={p.id} className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)]">
                     <div className="min-w-0">
                       <p className="font-semibold text-gray-800 text-sm truncate">{p.title}</p>
@@ -807,7 +808,7 @@ export default function AdminUserDetailClient({
             </button>
             {showComments && (
               <div className="mt-3 space-y-2">
-                {forum_comments.length > 0 ? forum_comments.map((c: any) => (
+                {forum_comments.length > 0 ? forum_comments.map((c: Loose) => (
                   <div key={c.id} className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)]">
                     <div className="min-w-0">
                       <p className="text-xs text-gray-400 mb-0.5">Dans : {c.post?.title || "Sujet supprimé"}</p>
@@ -832,11 +833,11 @@ export default function AdminUserDetailClient({
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2">
               <Flag className="w-4 h-4 text-red-400" />
-              Signalements reçus ({reports.filter((r: any) => r.status === "pending").length} en attente)
+              Signalements reçus ({reports.filter((r: Loose) => r.status === "pending").length} en attente)
             </h2>
             {reports.length > 0 ? (
               <div className="space-y-2">
-                {reports.map((r: any) => (
+                {reports.map((r: Loose) => (
                   <div key={r.id} className={`p-3 rounded-xl border text-sm ${r.status === "pending" ? "bg-red-50 border-red-100" : r.status === "reviewed" ? "bg-green-50 border-green-100" : "bg-gray-50 border-[rgba(197,161,72,0.25)]"}`}>
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
@@ -1053,7 +1054,7 @@ export default function AdminUserDetailClient({
           </div>
           <div>
             <label className={labelCls}>Conséquence</label>
-            <select value={reportConsequence} onChange={e => setReportConsequence(e.target.value as any)} className={inputCls}>
+            <select value={reportConsequence} onChange={e => setReportConsequence(e.target.value as Loose)} className={inputCls}>
               <option value="none">Aucune, juste marquer traité</option>
               <option value="warn">Avertissement (message seul)</option>
               <option value="ban7">Bannir le compte 7 jours</option>

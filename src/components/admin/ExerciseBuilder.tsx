@@ -1,6 +1,7 @@
 ﻿"use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import type { Loose } from "@/types/loose";
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
@@ -191,7 +192,7 @@ export interface Page {
 interface ExerciseBuilderProps {
   initialContent: Page[];
   onChange: (content: Page[]) => void;
-  onMetadataChange?: (metadata: any) => void;
+  onMetadataChange?: (metadata: Loose) => void;
   /** Niveau scolaire de l'exercice, déjà choisi plus haut dans le formulaire. */
   level?: string;
 }

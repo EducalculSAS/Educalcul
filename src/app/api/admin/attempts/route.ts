@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -26,12 +27,12 @@ const CONTENT_TABLE: Record<Kind, string> = {
  * text_input/coding (corrigés par IA à l'origine), pas de nouvel appel IA
  * pour une simple édition admin ponctuelle — repli en comparaison texte,
  * même filet de secours que la route de correction en cas d'échec IA. */
-function gradeExerciseBlock(block: any, answer: any): boolean {
+function gradeExerciseBlock(block: Loose, answer: Loose): boolean {
   const type = block?.type;
   if (type === "multiple_choice" || type === "qcm") {
     const correct = Array.isArray(block.correctAnswer) ? block.correctAnswer : [block.correctAnswer];
     const selected = Array.isArray(answer) ? answer : [answer];
-    return correct.length === selected.length && correct.every((a: any) => selected.includes(a));
+    return correct.length === selected.length && correct.every((a: Loose) => selected.includes(a));
   }
   if (type === "single_choice" || type === "true_false") {
     return answer === block.correctAnswer;
@@ -47,7 +48,7 @@ function gradeExerciseBlock(block: any, answer: any): boolean {
   if (type === "matching") {
     const given: string[] = Array.isArray(answer) ? answer : [];
     const pairs = block.pairs || [];
-    return pairs.length > 0 && pairs.every((p: any, i: number) => given[i] === p.right);
+    return pairs.length > 0 && pairs.every((p: Loose, i: number) => given[i] === p.right);
   }
   if (type === "ordering") {
     const given: string[] = Array.isArray(answer) ? answer : [];
@@ -57,7 +58,7 @@ function gradeExerciseBlock(block: any, answer: any): boolean {
   const expected = block?.correctAnswer;
   if (Array.isArray(expected)) {
     const ansArr = Array.isArray(answer) ? answer : [answer];
-    return expected.every((e: any) => ansArr.includes(e)) && ansArr.length === expected.length;
+    return expected.every((e: Loose) => ansArr.includes(e)) && ansArr.length === expected.length;
   }
   if (typeof expected === "string" && typeof answer === "string") {
     return answer.trim().toLowerCase() === expected.trim().toLowerCase();
@@ -65,11 +66,11 @@ function gradeExerciseBlock(block: any, answer: any): boolean {
   return answer === expected;
 }
 
-function gradeQuizQuestion(question: any, answer: any): boolean {
+function gradeQuizQuestion(question: Loose, answer: Loose): boolean {
   if (question?.type === "multiple_choice") {
     const correct = Array.isArray(question.correctAnswer) ? question.correctAnswer : [question.correctAnswer];
     const selected = Array.isArray(answer) ? answer : [answer];
-    return correct.length === selected.length && correct.every((a: any) => selected.includes(String(a)));
+    return correct.length === selected.length && correct.every((a: Loose) => selected.includes(String(a)));
   }
   if (question?.type === "text_input") {
     const expected = typeof question.correctAnswer === "string" ? question.correctAnswer : JSON.stringify(question.correctAnswer);
@@ -79,15 +80,15 @@ function gradeQuizQuestion(question: any, answer: any): boolean {
   return String(answer) === String(question?.correctAnswer);
 }
 
-function allExerciseBlocks(contentJson: any): any[] {
-  return Array.isArray(contentJson) ? contentJson.flatMap((p: any) => p.blocks || []) : [];
+function allExerciseBlocks(contentJson: Loose): Loose[] {
+  return Array.isArray(contentJson) ? contentJson.flatMap((p: Loose) => p.blocks || []) : [];
 }
 
 /** Points totaux gagnés vu les résultats question par question, pour
  * recalculer score/total_points après une édition admin sur une seule
  * question — évite que le score global reste incohérent avec le détail. */
-function recomputeExerciseScore(contentJson: any, results: Record<string, boolean>) {
-  const blocks = allExerciseBlocks(contentJson).filter((b: any) => b.type !== "text");
+function recomputeExerciseScore(contentJson: Loose, results: Record<string, boolean>) {
+  const blocks = allExerciseBlocks(contentJson).filter((b: Loose) => b.type !== "text");
   let score = 0, total = 0;
   for (const b of blocks) {
     const pts = blockMaxPoints(b, 1);
@@ -96,10 +97,10 @@ function recomputeExerciseScore(contentJson: any, results: Record<string, boolea
   }
   return { score, total };
 }
-function recomputeQuizScore(contentJson: any, results: Record<number, boolean>) {
+function recomputeQuizScore(contentJson: Loose, results: Record<number, boolean>) {
   const questions = Array.isArray(contentJson) ? contentJson : [];
   let score = 0, total = 0;
-  questions.forEach((q: any, i: number) => {
+  questions.forEach((q: Loose, i: number) => {
     const pts = q.points || 1;
     total += pts;
     if (results[i]) score += pts;
@@ -151,7 +152,7 @@ export async function PATCH(req: Request) {
     const body = await req.json();
     const { kind, userId, itemId, attemptRef, key, comment, editedAnswer, verdict } = body as {
       kind: Kind; userId: number; itemId: string; attemptRef: "latest" | number; key: string;
-      comment?: string; editedAnswer?: any;
+      comment?: string; editedAnswer?: Loose;
       /** Correction manuelle d'une question d'exercice : true = juste, false = fausse. */
       verdict?: boolean;
     };
@@ -175,8 +176,8 @@ export async function PATCH(req: Request) {
     if (!item) return NextResponse.json({ error: "Contenu introuvable" }, { status: 404 });
 
     const isLatest = attemptRef === "latest";
-    const history: any[] = Array.isArray(attempt.attempts_history) ? [...attempt.attempts_history] : [];
-    let target: any;
+    const history: Loose[] = Array.isArray(attempt.attempts_history) ? [...attempt.attempts_history] : [];
+    let target: Loose;
     if (isLatest) {
       target = { ...(attempt.progress_json || {}) };
     } else {
@@ -226,7 +227,7 @@ export async function PATCH(req: Request) {
     const pctOf = (s: number, t: number) => (t ? Math.round((s / t) * 100) : 0);
     const passedOf = (pct: number) => pct >= passThreshold((item as { min_score_percent?: number | null }).min_score_percent);
     if (isLatest) {
-      const update: Record<string, any> = { progress_json: target };
+      const update: Record<string, Loose> = { progress_json: target };
       if (newScore !== undefined) {
         update.score = newScore;
         update.total_points = newTotal;

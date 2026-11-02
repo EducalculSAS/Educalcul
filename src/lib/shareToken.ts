@@ -1,3 +1,4 @@
+import { serverSecret } from "@/lib/serverSecret";
 import "server-only";
 import { createHmac, timingSafeEqual } from "crypto";
 import { bumpShareVersion, getStudentMeta } from "@/lib/studentStore";
@@ -9,7 +10,7 @@ import { bumpShareVersion, getStudentMeta } from "@/lib/studentStore";
  */
 const TTL_MS = 30 * 24 * 60 * 60 * 1000;
 
-const secret = () => `share:${process.env.SUPABASE_SERVICE_ROLE || process.env.SUPABASE_SERVICE_ROLE_KEY || "educalcul-dev-secret"}`;
+const secret = () => `share:${serverSecret()}`;
 const sign = (payload: string) => createHmac("sha256", secret()).update(payload).digest("base64url");
 
 export async function createShareToken(childId: number): Promise<{ token: string; expiresAt: string }> {

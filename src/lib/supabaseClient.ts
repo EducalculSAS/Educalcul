@@ -1,3 +1,4 @@
+import type { Loose } from "@/types/loose";
 import { createClient, SupabaseClient } from "@supabase/supabase-js";
 import { createBrowserClient } from "@supabase/ssr";
 
@@ -9,7 +10,7 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 // One instance per JS context via globalThis to survive HMR re-evaluation.
 const PUBLIC_KEY = "__sb_public__";
 function getPublicClient(): SupabaseClient {
-  if (!(globalThis as any)[PUBLIC_KEY]) {
+  if (!(globalThis as Loose)[PUBLIC_KEY]) {
     // createBrowserClient (session en cookies, lisible par le serveur via
     // createSupabaseServerClient) UNIQUEMENT dans le navigateur : ce module
     // est importé par les ~100 routes /api/* pour supabaseAdmin, et son
@@ -18,12 +19,12 @@ function getPublicClient(): SupabaseClient {
     // l'appeler côté serveur casserait toutes ces routes. Ce client "public"
     // n'est de toute façon jamais réellement utilisé côté serveur (seul
     // supabaseAdmin l'est) : createClient() y sert juste à ne rien casser.
-    (globalThis as any)[PUBLIC_KEY] =
+    (globalThis as Loose)[PUBLIC_KEY] =
       typeof window === "undefined"
         ? createClient(supabaseUrl, supabaseAnonKey)
         : createBrowserClient(supabaseUrl, supabaseAnonKey);
   }
-  return (globalThis as any)[PUBLIC_KEY];
+  return (globalThis as Loose)[PUBLIC_KEY];
 }
 
 export const supabase: SupabaseClient = getPublicClient();
@@ -32,8 +33,8 @@ export const supabase: SupabaseClient = getPublicClient();
 // Server routes and the middleware authenticate requests via this header, so
 // every page gets auth transparently without touching individual fetch calls.
 const FETCH_PATCH_KEY = "__api_fetch_patched__";
-if (typeof window !== "undefined" && !(window as any)[FETCH_PATCH_KEY]) {
-  (window as any)[FETCH_PATCH_KEY] = true;
+if (typeof window !== "undefined" && !(window as Loose)[FETCH_PATCH_KEY]) {
+  (window as Loose)[FETCH_PATCH_KEY] = true;
   const originalFetch = window.fetch.bind(window);
 
   const targetUrl = (input: RequestInfo | URL): string => {
@@ -188,7 +189,7 @@ function getAdminClient(): SupabaseClient {
   // API routes / server components never have `window`.
   if (typeof window !== "undefined") return supabase;
 
-  if (!(globalThis as any)[ADMIN_KEY]) {
+  if (!(globalThis as Loose)[ADMIN_KEY]) {
     const serviceKey = process.env.SUPABASE_SERVICE_ROLE;
     if (!serviceKey) {
       console.error(
@@ -198,18 +199,18 @@ function getAdminClient(): SupabaseClient {
         "[Supabase] FATAL: Cannot initialize admin client without SUPABASE_SERVICE_ROLE",
       );
     }
-    (globalThis as any)[ADMIN_KEY] = createClient(supabaseUrl, serviceKey, {
+    (globalThis as Loose)[ADMIN_KEY] = createClient(supabaseUrl, serviceKey, {
       auth: { autoRefreshToken: false, persistSession: false },
     });
   }
-  return (globalThis as any)[ADMIN_KEY];
+  return (globalThis as Loose)[ADMIN_KEY];
 }
 
 // Lazy proxy: the admin client is only created on first real use, so a missing
 // SUPABASE_SERVICE_ROLE breaks admin operations — not every public page.
 export const supabaseAdmin: SupabaseClient = new Proxy({} as SupabaseClient, {
   get(_target, prop) {
-    const client = getAdminClient() as any;
+    const client = getAdminClient() as Loose;
     const value = client[prop];
     return typeof value === "function" ? value.bind(client) : value;
   },

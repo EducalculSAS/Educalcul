@@ -1,3 +1,5 @@
+import { getClientIp } from "@/lib/apiAuth";
+import { readJsonBody } from "@/lib/apiJson";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
@@ -5,13 +7,13 @@ import { buildEmailHtml, EMAIL_BASE_URL } from "@/lib/emailTemplates";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(req: Request) {
-  const { email } = await req.json();
-  if (!email) return NextResponse.json({ error: "Email requis" }, { status: 400 });
+  const { email } = await readJsonBody(req);
+  if (!email || typeof email !== "string") return NextResponse.json({ error: "Email requis" }, { status: 400 });
 
   const entered = email.trim().toLowerCase();
 
   // Rate limit (per IP + per target email) to prevent reset-email bombing.
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "unknown";
+  const ip = getClientIp(req);
   const cfg = RATE_LIMITS["auth:forgot-password"];
   const rlIp = await rateLimitWithBackoff(`forgot:ip:${ip}`, cfg.maxAttempts, cfg.windowMs);
   const rlEmail = await rateLimitWithBackoff(`forgot:email:${entered}`, cfg.maxAttempts, cfg.windowMs);

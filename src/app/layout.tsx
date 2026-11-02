@@ -18,6 +18,7 @@ import SessionStillHereModal from "@/components/SessionStillHereModal";
 import ImpersonationBanner from "@/components/ImpersonationBanner";
 import JsonLd from "@/components/JsonLd";
 import ThemeSync from "@/components/ThemeSync";
+import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
 import { THEME_INIT_SCRIPT } from "@/lib/theme";
 import { A11Y_INIT_SCRIPT } from "@/lib/a11y";
@@ -210,6 +211,7 @@ export default function RootLayout({
             <CookieBanner />
             <SessionStillHereModal />
             <ThemeSync />
+        <PasswordRecoveryRedirect />
             <JsxFigureEnhancer />
             <NavProgress />
           </ConfirmProvider>

@@ -1,3 +1,4 @@
+import { getClientIp } from "@/lib/apiAuth";
 import { NextResponse } from 'next/server';
 import { stripe, subscriptionIsEntitled, subscriptionPeriodEnd } from '@/lib/stripe';
 import { supabaseAdmin } from '@/lib/supabaseClient';
@@ -21,7 +22,7 @@ const MAX_SESSION_AGE_MS = 48 * 60 * 60 * 1000;
  */
 export async function POST(req: Request) {
   try {
-    const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || 'unknown';
+    const ip = getClientIp(req);
     const rl = await rateLimitWithBackoff(`verify-checkout:${ip}`, 30, 60 * 60 * 1000);
     if (!rl.allowed) return NextResponse.json({ error: 'Trop de tentatives' }, { status: 429 });
 
