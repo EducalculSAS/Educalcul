@@ -1,3 +1,4 @@
+import type { JxgBoard, JxgElement, JxgModule } from "@/lib/jsxgraphTypes";
 import { expandMacros } from "@/lib/jsxMacros";
 
 /**
@@ -126,11 +127,9 @@ export function decodeJsxSpec(attr: string | null | undefined): JsxFigureSpec | 
 /*  Construction du tableau JSXGraph                                    */
 /* ------------------------------------------------------------------ */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Any = any;
 
 export interface JsxBoardHandle {
-  board: Any;
+  board: JxgBoard;
   /** Positions actuelles des points déplaçables (pour les ré-enregistrer dans le JSON). */
   readPoints: () => Record<string, [number, number]>;
   destroy: () => void;
@@ -143,7 +142,7 @@ export async function buildJsxBoard(
   spec: JsxFigureSpec,
   options: { editable?: boolean } = {},
 ): Promise<JsxBoardHandle> {
-  const [{ default: JXG }, math] = await Promise.all([import("jsxgraph") as Promise<Any>, import("mathjs")]);
+  const [{ default: JXG }, math] = await Promise.all([import("jsxgraph") as unknown as Promise<{ default: JxgModule }>, import("mathjs")]);
   let boundingBox: [number, number, number, number] = [...spec.boundingBox];
   const [xmin, ymax, xmax, ymin] = boundingBox;
 
@@ -164,7 +163,7 @@ export async function buildJsxBoard(
     return { board: three.board, readPoints: () => ({}), destroy: three.destroy };
   }
 
-  const board: Any = JXG.JSXGraph.initBoard(id, {
+  const board: JxgBoard = JXG.JSXGraph.initBoard(id, {
     boundingbox: boundingBox,
     axis: false,
     grid: false,
@@ -187,11 +186,11 @@ export async function buildJsxBoard(
     board.create("axis", [[0, 0], [0, 1]], axisStyle);
   }
 
-  const byId = new Map<string, Any>();
-  const hiddenObjects = new Set<Any>();
-  const sliders = new Map<string, Any>();
+  const byId = new Map<string, JxgElement>();
+  const hiddenObjects = new Set<JxgElement>();
+  const sliders = new Map<string, JxgElement>();
   // Mesures utilisables dans les formules et les textes « {dist(A,B)} » : elles suivent les points quand on les déplace.
-  const measures: Record<string, (...a: Any[]) => number> = {
+  const measures: Record<string, (...a: JxgElement[]) => number> = {
     dist: (a, b) => Math.hypot(a.X() - b.X(), a.Y() - b.Y()),
     px: (a) => a.X(),
     py: (a) => a.Y(),
@@ -238,7 +237,7 @@ export async function buildJsxBoard(
     }
     return fallback;
   };
-  const ref = (key: unknown): Any => (typeof key === "string" ? byId.get(key) : undefined);
+  const ref = (key: unknown): JxgElement | undefined => (typeof key === "string" ? byId.get(key) : undefined);
   const arr = (v: unknown): unknown[] => (Array.isArray(v) ? v : []);
 
   const colorOf = (e: JsxElement, fallback: string) => JSX_TONES[String(e.color)] ?? fallback;
@@ -257,10 +256,10 @@ export async function buildJsxBoard(
 
   const slotMarks: { n: number; x: number; y: number; w?: number; h?: number }[] = [];
   const elements = expandMacros(spec.elements);
-  const movable: { key: string; el: Any }[] = [];
+  const movable: { key: string; el: JxgElement }[] = [];
 
   for (const e of elements) {
-    let created: Any = null;
+    let created: JxgElement | null = null;
     try {
       switch (e.kind) {
         case "point": {
@@ -420,7 +419,7 @@ export async function buildJsxBoard(
         case "riemann": {
           const curve = ref(e.graph);
           const n = Math.min(60, Math.max(1, Math.round(num(e.n, 8))));
-          created = board.create("riemannsum", [curve.Y ? (x: number) => curve.Y(x) : (x: number) => x, n, String(e.type ?? "left"), num(e.from, xmin), num(e.to, xmax)], {
+          created = board.create("riemannsum", [curve?.Y ? (x: number) => curve.Y(x) : (x: number) => x, n, String(e.type ?? "left"), num(e.from, xmin), num(e.to, xmax)], {
             fillColor: colorOf(e, JSX_TONES.blue),
             fillOpacity: 0.25,
             strokeColor: colorOf(e, JSX_TONES.blue),
@@ -526,7 +525,7 @@ export async function buildJsxBoard(
           created = board.create("checkbox", [num(e.x, xmin + 0.5), num(e.y, ymax - 0.8), String(e.label ?? "Afficher")], { fixed: true });
           const targets = arr(e.targets).map(String);
           const apply = () => {
-            const on = !!created.Value();
+            const on = !!(created as JxgElement).Value();
             targets.forEach((key) => byId.get(key)?.setAttribute({ visible: on }));
             board.update();
           };
@@ -568,8 +567,8 @@ export async function buildJsxBoard(
           const dy = val(e.dy, 0);
           const get = (v: number | (() => number)) => (typeof v === "number" ? v : v());
           const image = (axis: 0 | 1) => () => {
-            const px = src.X();
-            const py = src.Y();
+            const px = src!.X();
+            const py = src!.Y();
             if (e.kind === "translate") return axis === 0 ? px + get(dx) : py + get(dy);
             const cx = center ? center.X() : 0;
             const cy = center ? center.Y() : 0;
@@ -621,7 +620,7 @@ export async function buildJsxBoard(
       if (!Number.isFinite(x) || !Number.isFinite(y)) return;
       x0 = Math.min(x0, x - r); x1 = Math.max(x1, x + r); y0 = Math.min(y0, y - r); y1 = Math.max(y1, y + r);
     };
-    for (const obj of board.objectsList as Any[]) {
+    for (const obj of board.objectsList) {
       if (hiddenObjects.has(obj)) continue;
       try {
         if (obj.elementClass === JXG.OBJECT_CLASS_POINT) grow(obj.X(), obj.Y());

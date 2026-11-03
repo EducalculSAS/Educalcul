@@ -3,9 +3,8 @@
  * courbes. L'élève fait tourner la figure à la souris ou au doigt. Même style Educalcul que les figures plates.
  */
 import type { JsxElement, JsxFigureSpec } from "@/lib/jsxFigure";
+import type { JxgBoard, JxgElement, JxgModule, MathJs } from "@/lib/jsxgraphTypes";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Any = any;
 
 const TONES: Record<string, string> = { navy: "#10213d", blue: "#2563eb", green: "#15803d", red: "#dc2626", gold: "#c89f36", gray: "#64748b" };
 const num = (v: unknown, d: number) => (typeof v === "number" && Number.isFinite(v) ? v : d);
@@ -53,13 +52,13 @@ function polyhedron(e: JsxElement): { vertices: number[][]; faces: number[][] } 
   return null;
 }
 
-export function buildBoard3d(JXG: Any, math: Any, container: HTMLElement, spec: JsxFigureSpec, id: string, width: number): { board: Any; destroy: () => void } {
+export function buildBoard3d(JXG: JxgModule, math: MathJs, container: HTMLElement, spec: JsxFigureSpec, id: string, width: number): { board: JxgBoard; destroy: () => void } {
   const height = spec.height > 0 ? Math.max(spec.height, Math.min(520, width)) : width;
   container.style.width = "100%";
   container.style.minHeight = "0";
   container.style.height = `${Math.min(520, Math.max(240, Math.round(height)))}px`;
 
-  const board: Any = JXG.JSXGraph.initBoard(id, {
+  const board: JxgBoard = JXG.JSXGraph.initBoard(id, {
     boundingbox: [-8, 8, 8, -8],
     axis: false,
     grid: false,
@@ -73,7 +72,7 @@ export function buildBoard3d(JXG: Any, math: Any, container: HTMLElement, spec: 
   });
   const [x0, x1, y0, y1, z0, z1] = spec.box3d ?? [-3, 3, -3, 3, -3, 3];
   const hidden = { slider: { visible: false } };
-  const view: Any = board.create("view3d", [[-5, -5], [10, 10], [[x0, x1], [y0, y1], [z0, z1]]], {
+  const view: JxgElement = board.create("view3d", [[-5, -5], [10, 10], [[x0, x1], [y0, y1], [z0, z1]]], {
     projection: "parallel",
     trackball: { enabled: true },
     axesPosition: spec.axes ? "center" : "none",

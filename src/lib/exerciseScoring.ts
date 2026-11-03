@@ -6,8 +6,7 @@
  * Fonctions pures, partagées par la correction (serveur), l'envoi de l'exercice à l'élève et le calcul des totaux.
  */
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Block = any;
+import type { Block } from "@/components/admin/ExerciseBuilder";
 
 /** Nombre d'éléments à placer dans le bloc, ou 0 si le bloc se corrige d'un seul tenant. */
 export function itemTotal(block: Block): number {
@@ -32,15 +31,15 @@ export function itemsCorrect(block: Block, answer: unknown): { correct: number; 
   const given: unknown[] = Array.isArray(answer) ? answer : [];
   let correct = 0;
   if (block.type === "matching") {
-    block.pairs.forEach((p: { right: string }, i: number) => {
+    (block.pairs ?? []).forEach((p, i) => {
       if (given[i] === p.right) correct++;
     });
   } else if (block.type === "categorize") {
-    block.categoryItems.forEach((it: { category: string }, i: number) => {
+    (block.categoryItems ?? []).forEach((it, i) => {
       if (given[i] === it.category) correct++;
     });
   } else if (block.type === "fill_in_the_blank") {
-    block.blanks.forEach((expected: string, i: number) => {
+    (block.blanks ?? []).forEach((expected, i) => {
       const alternatives = String(expected).split("|").map((s) => s.trim().toLowerCase());
       if (alternatives.includes(String(given[i] ?? "").trim().toLowerCase())) correct++;
     });
