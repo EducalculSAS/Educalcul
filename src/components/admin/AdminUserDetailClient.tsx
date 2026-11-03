@@ -1,6 +1,7 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
+import type { AdminUserDetail } from "@/lib/adminUserDetail";
+import type { Row } from "@/types/db";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -64,8 +65,23 @@ function Row({ label, value, mono }: { label: string; value: string; mono?: bool
   );
 }
 
+/** Date lisible, ou « — » quand la base n'en a pas (colonne vide). */
+const dateFr = (v: string | null | undefined) => (v ? new Date(v).toLocaleDateString("fr-FR") : "—");
+const dateTimeFr = (v: string | null | undefined) => (v ? new Date(v).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }) : "—");
+
 // Reusable confirm modal
-function ConfirmModal({ open, onClose, onConfirm, title, description, confirmLabel, confirmVariant, loading, children }: Loose) {
+interface ConfirmModalProps {
+  open: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+  title: string;
+  description?: React.ReactNode;
+  confirmLabel: string;
+  confirmVariant?: React.ComponentProps<typeof GlassButton>["variant"];
+  loading?: boolean;
+  children?: React.ReactNode;
+}
+function ConfirmModal({ open, onClose, onConfirm, title, description, confirmLabel, confirmVariant, loading, children }: ConfirmModalProps) {
   if (!open) return null;
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[1060] p-4 modal-overlay">
@@ -100,18 +116,18 @@ export default function AdminUserDetailClient({
   initialPlans,
 }: {
   id: string;
-  initialData: Loose;
-  initialPlans: Loose[];
+  initialData: AdminUserDetail;
+  initialPlans: Row<"subscription_plans">[];
 }) {
   const router = useRouter();
-  const [data, setData] = useState<Loose>(initialData);
+  const [data, setData] = useState<AdminUserDetail>(initialData);
   const [actionLoading, setActionLoading] = useState(false);
   const [nowMs] = useState(() => Date.now());
   const [toast, setToast] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   // Modals
   const [showEditModal, setShowEditModal] = useState(false);
-  const [editForm, setEditForm] = useState<Loose>({
+  const [editForm, setEditForm] = useState({
     first_name: initialData.user.first_name || "",
     last_name: initialData.user.last_name || "",
     email: initialData.user.email || "",
@@ -130,7 +146,7 @@ export default function AdminUserDetailClient({
   const [banReason, setBanReason] = useState("");
   const [banDays, setBanDays] = useState<number | null>(null);
   // Modale de traitement d'un signalement (message + conséquence).
-  const [reportModal, setReportModal] = useState<Loose>(null);
+  const [reportModal, setReportModal] = useState<AdminUserDetail["reports"][number] | null>(null);
   const [reportMsg, setReportMsg] = useState("");
   const [reportConsequence, setReportConsequence] = useState<"none" | "warn" | "ban7" | "ban_perm">("none");
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -149,7 +165,7 @@ export default function AdminUserDetailClient({
   const [showAttempts, setShowAttempts] = useState(false);
   const [showMinigames, setShowMinigames] = useState(false);
   const [showTickets, setShowTickets] = useState(false);
-  const [plans] = useState<Loose[]>(initialPlans);
+  const [plans] = useState(initialPlans);
   const [selectedPlanId, setSelectedPlanId] = useState<string>(initialData.subscription?.plan_id?.toString() || "");
   // "offert" = accès sans facturation (compte de test, partenariat, élève sans
   // parent payeur) ; "stripe" = facturation réelle exigée, l'action échoue si
@@ -164,7 +180,7 @@ export default function AdminUserDetailClient({
     if (res.ok) {
       const d = await res.json();
       setData(d);
-      setEditForm({ first_name: d.user.first_name || "", last_name: d.user.last_name || "", email: d.user.email || "", role: d.user.role || "parent", status: d.user.status || "active", grade_level: d.user.grade_level || "", password: "" });
+      setEditForm({ first_name: d.user.first_name || "", last_name: d.user.last_name || "", email: d.user.email || "", role: d.user.role || "parent", admin_level: d.user.admin_level || "super", status: d.user.status || "active", grade_level: d.user.grade_level || "", password: "" });
       setSelectedPlanId(d.subscription?.plan_id?.toString() || "");
     }
   };
@@ -201,7 +217,7 @@ export default function AdminUserDetailClient({
     }
   };
 
-  const doAction = async (actionName: string, payload?: Loose) => {
+  const doAction = async (actionName: string, payload?: Record<string, unknown>) => {
     setActionLoading(true);
     try {
       const res = await fetch(`/api/admin/user-detail?id=${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: actionName, payload }) });
@@ -321,7 +337,7 @@ export default function AdminUserDetailClient({
   const isParent = user.role === "parent";
   const isBanned = user.status === "inactive";
 
-  const notifColors: Loose = { ban: "bg-red-50 text-red-700 border-red-100", warning: "bg-orange-50 text-orange-700 border-orange-100", message: "bg-blue-50 text-blue-700 border-blue-100", info: "bg-green-50 text-green-700 border-green-100" };
+  const notifColors: Record<string, string> = { ban: "bg-red-50 text-red-700 border-red-100", warning: "bg-orange-50 text-orange-700 border-orange-100", message: "bg-blue-50 text-blue-700 border-blue-100", info: "bg-green-50 text-green-700 border-green-100" };
 
   return (
     <div className="space-y-6">
@@ -408,7 +424,7 @@ export default function AdminUserDetailClient({
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Informations</h2>
             <div className="space-y-3 text-sm">
-              <Row label="Inscrit le" value={new Date(user.created_at).toLocaleDateString("fr-FR")} />
+              <Row label="Inscrit le" value={dateFr(user.created_at)} />
               {user.last_active_at && <Row label="Dernière activité" value={new Date(user.last_active_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })} />}
               {user.grade_level && <Row label="Niveau" value={getLevelLabel(user.grade_level)} />}
               {user.last_login_ip && <Row label="IP" value={user.last_login_ip} mono />}
@@ -449,16 +465,16 @@ export default function AdminUserDetailClient({
                   <option value=""> : Aucun abonnement, </option>
                   {Object.entries(
                     plans
-                      .filter((p: Loose) => p.is_active)
-                      .reduce((groups: Record<string, Loose[]>, p: Loose) => {
+                      .filter((p) => p.is_active)
+                      .reduce((groups: Record<string, typeof plans>, p) => {
                         (groups[p.name] ??= []).push(p);
                         return groups;
                       }, {})
                   ).map(([groupName, groupPlans]) => {
-                    const sorted = [...(groupPlans as Loose[])].sort((a, b) => comparePeriods(a.billing_interval, b.billing_interval));
+                    const sorted = [...groupPlans].sort((a, b) => comparePeriods(a.billing_interval, b.billing_interval));
                     return (
                       <optgroup key={groupName} label={groupName}>
-                        {sorted.map((p: Loose) => (
+                        {sorted.map((p) => (
                           <option key={p.id} value={p.id.toString()}>
                             {p.price}€ : {p.billing_interval === "one_time" ? "Unique" : defaultPeriodLabel(p.billing_interval)}
                           </option>
@@ -504,7 +520,7 @@ export default function AdminUserDetailClient({
                 {subscription ? (
                   <p className="text-xs text-gray-400 text-center">
                     Actuel : <span className="font-semibold text-gray-600">
-                      {plans.find((p: Loose) => p.id.toString() === subscription?.plan_id?.toString())?.name || subscription?.plan_id || "?"}
+                      {plans.find((p) => p.id.toString() === subscription?.plan_id?.toString())?.name || subscription?.plan_id || "?"}
                     </span>
                     {subscription.current_period_end && ` · jusqu'au ${new Date(subscription.current_period_end).toLocaleDateString("fr-FR")}`}
                   </p>
@@ -558,7 +574,7 @@ export default function AdminUserDetailClient({
           {isParent && (
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3">Enfants ({children.length})</h2>
-              {children.length > 0 ? children.map((c: Loose) => (
+              {children.length > 0 ? children.map((c) => (
                 <button key={c.id} onClick={() => router.push(`/admin/users/detail?id=${c.id}`)} className="w-full flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors text-left mb-1">
                   <AvatarWithBorder avatar={c.avatar} equippedBorder={c.equipped_border} name={`${c.first_name ?? ""} ${c.last_name ?? ""}`} size="xs" label="" />
                   <div><p className="text-sm font-semibold text-gray-700">{c.first_name} {c.last_name}</p><p className="text-xs text-gray-400">{c.grade_level}</p></div>
@@ -571,7 +587,7 @@ export default function AdminUserDetailClient({
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2"><Trophy className="w-4 h-4" />Badges</h2>
               <div className="flex flex-wrap gap-2">
-                {badges.map((b: Loose, i: number) => <span key={i} className="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full border border-amber-200">{b.badge?.name}</span>)}
+                {badges.map((b, i) => <span key={i} className="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full border border-amber-200">{b.badge?.name}</span>)}
               </div>
             </div>
           )}
@@ -612,11 +628,11 @@ export default function AdminUserDetailClient({
                     <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Exercices ({exercise_attempts.length})</p>
                     {exercise_attempts.length > 0 ? (
                       <div className="space-y-1.5">
-                        {exercise_attempts.map((a: Loose) => (
+                        {exercise_attempts.map((a) => (
                           <div key={a.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                             <div className="min-w-0">
                               <p className="font-semibold text-gray-700 truncate">{a.exercises?.title || "Exercice supprimé"}</p>
-                              <p className="text-xs text-gray-400">{new Date(a.completed_at || a.attempted_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}</p>
+                              <p className="text-xs text-gray-400">{dateTimeFr(a.completed_at || a.attempted_at)}</p>
                             </div>
                             <div className="flex items-center gap-2 shrink-0">
                               <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${a.passed ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
@@ -641,7 +657,7 @@ export default function AdminUserDetailClient({
                     <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Quiz ({quiz_attempts.length})</p>
                     {quiz_attempts.length > 0 ? (
                       <div className="space-y-1.5">
-                        {quiz_attempts.map((a: Loose) => (
+                        {quiz_attempts.map((a) => (
                           <div key={a.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                             <div className="min-w-0">
                               <p className="font-semibold text-gray-700 truncate">{a.quizzes?.title || "Quiz supprimé"}</p>
@@ -670,7 +686,7 @@ export default function AdminUserDetailClient({
                     <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Cours ({course_progress.length})</p>
                     {course_progress.length > 0 ? (
                       <div className="space-y-1.5">
-                        {course_progress.map((c: Loose) => (
+                        {course_progress.map((c) => (
                           <div key={c.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                             <div className="min-w-0">
                               <p className="font-semibold text-gray-700 truncate">{c.courses?.title || "Cours supprimé"}</p>
@@ -702,7 +718,7 @@ export default function AdminUserDetailClient({
                 <div className="mt-4">
                   {minigame_sessions.length > 0 ? (
                     <div className="space-y-1.5">
-                      {minigame_sessions.map((s: Loose) => (
+                      {minigame_sessions.map((s) => (
                         <div key={s.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                           <div className="min-w-0">
                             <p className="font-semibold text-gray-700 truncate">{MINIGAME_LABEL[s.game_type] || s.game_type}</p>
@@ -738,11 +754,11 @@ export default function AdminUserDetailClient({
             </button>
             {showTickets && (
               <div className="mt-3 space-y-2">
-                {support_tickets.length > 0 ? support_tickets.map((t: Loose) => (
+                {support_tickets.length > 0 ? support_tickets.map((t) => (
                   <div key={t.id} className="flex items-center justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                     <div className="min-w-0">
                       <p className="font-semibold text-gray-700 truncate">{t.subject}</p>
-                      <p className="text-xs text-gray-400">{new Date(t.created_at).toLocaleDateString("fr-FR")}</p>
+                      <p className="text-xs text-gray-400">{dateFr(t.created_at)}</p>
                     </div>
                     <span className={`shrink-0 text-xs font-bold px-2 py-0.5 rounded-full ${t.status === "Résolu" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"}`}>
                       {t.status}{t.priority === "high" ? " · Urgent" : ""}
@@ -758,11 +774,11 @@ export default function AdminUserDetailClient({
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2"><Bell className="w-4 h-4" />Messages & actions admin</h2>
             {notifications.length > 0 ? (
               <div className="space-y-2">
-                {notifications.map((n: Loose) => (
+                {notifications.map((n) => (
                   <div key={n.id} className={`p-3 rounded-xl border text-sm ${notifColors[n.type] || notifColors.message}`}>
                     <div className="flex justify-between items-start gap-2">
                       <p className="font-semibold">{n.title}</p>
-                      <span className="text-xs opacity-60 shrink-0">{new Date(n.created_at).toLocaleDateString("fr-FR")}</span>
+                      <span className="text-xs opacity-60 shrink-0">{dateFr(n.created_at)}</span>
                     </div>
                     <p className="opacity-75 mt-0.5 text-xs">{n.content}</p>
                   </div>
@@ -779,11 +795,11 @@ export default function AdminUserDetailClient({
             </button>
             {showPosts && (
               <div className="mt-3 space-y-2">
-                {forum_posts.length > 0 ? forum_posts.map((p: Loose) => (
+                {forum_posts.length > 0 ? forum_posts.map((p) => (
                   <div key={p.id} className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)]">
                     <div className="min-w-0">
                       <p className="font-semibold text-gray-800 text-sm truncate">{p.title}</p>
-                      <p className="text-xs text-gray-400 mt-0.5">{p.category?.name} · {new Date(p.created_at).toLocaleDateString("fr-FR")}</p>
+                      <p className="text-xs text-gray-400 mt-0.5">{p.category?.name} · {dateFr(p.created_at)}</p>
                       <p className="text-xs text-gray-500 mt-1 line-clamp-2">{p.content}</p>
                     </div>
                     <GlassIconButton
@@ -808,12 +824,12 @@ export default function AdminUserDetailClient({
             </button>
             {showComments && (
               <div className="mt-3 space-y-2">
-                {forum_comments.length > 0 ? forum_comments.map((c: Loose) => (
+                {forum_comments.length > 0 ? forum_comments.map((c) => (
                   <div key={c.id} className="flex items-start justify-between gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)]">
                     <div className="min-w-0">
                       <p className="text-xs text-gray-400 mb-0.5">Dans : {c.post?.title || "Sujet supprimé"}</p>
                       <p className="text-sm text-gray-700 line-clamp-3">{c.content}</p>
-                      <p className="text-xs text-gray-400 mt-1">{new Date(c.created_at).toLocaleDateString("fr-FR")}</p>
+                      <p className="text-xs text-gray-400 mt-1">{dateFr(c.created_at)}</p>
                     </div>
                     <GlassIconButton
                       icon={Trash2}
@@ -833,17 +849,17 @@ export default function AdminUserDetailClient({
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2">
               <Flag className="w-4 h-4 text-red-400" />
-              Signalements reçus ({reports.filter((r: Loose) => r.status === "pending").length} en attente)
+              Signalements reçus ({reports.filter((r) => r.status === "pending").length} en attente)
             </h2>
             {reports.length > 0 ? (
               <div className="space-y-2">
-                {reports.map((r: Loose) => (
+                {reports.map((r) => (
                   <div key={r.id} className={`p-3 rounded-xl border text-sm ${r.status === "pending" ? "bg-red-50 border-red-100" : r.status === "reviewed" ? "bg-green-50 border-green-100" : "bg-gray-50 border-[rgba(197,161,72,0.25)]"}`}>
                     <div className="flex items-start justify-between gap-2">
                       <div className="min-w-0">
                         <p className="font-semibold text-gray-800">{r.reason}</p>
                         <p className="text-xs text-gray-500 mt-0.5">
-                          Par {r.reporter?.first_name || "Anonyme"} · {new Date(r.created_at).toLocaleDateString("fr-FR")}
+                          Par {r.reporter?.first_name || "Anonyme"} · {dateFr(r.created_at)}
                           {r.post && ` · Sujet: "${r.post.title}"`}
                           {r.comment && ` · Message: "${r.comment.content?.slice(0, 40)}..."`}
                         </p>
@@ -1054,7 +1070,7 @@ export default function AdminUserDetailClient({
           </div>
           <div>
             <label className={labelCls}>Conséquence</label>
-            <select value={reportConsequence} onChange={e => setReportConsequence(e.target.value as Loose)} className={inputCls}>
+            <select value={reportConsequence} onChange={e => setReportConsequence(e.target.value as typeof reportConsequence)} className={inputCls}>
               <option value="none">Aucune, juste marquer traité</option>
               <option value="warn">Avertissement (message seul)</option>
               <option value="ban7">Bannir le compte 7 jours</option>

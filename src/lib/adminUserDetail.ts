@@ -1,6 +1,27 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import type { Row } from "@/types/db";
 
-export async function fetchAdminUserDetail(id: string) {
+type Named<T> = T | null;
+/** Fiche complète d'un utilisateur côté admin (page détail). */
+export interface AdminUserDetail {
+  user: Row<"users">;
+  stats: { exercise_attempts: number; quiz_attempts: number; course_progress: number; minigame_sessions: number };
+  subscription: Row<"subscriptions"> | null;
+  children: Pick<Row<"users">, "id" | "first_name" | "last_name" | "grade_level" | "avatar" | "equipped_border">[];
+  notifications: Row<"admin_notifications">[];
+  badges: { badge: Named<{ name: string; icon: string | null }> }[];
+  forum_posts: (Pick<Row<"forum_posts">, "id" | "title" | "content" | "created_at" | "is_locked"> & { category: Named<{ name: string }> })[];
+  forum_comments: (Pick<Row<"forum_comments">, "id" | "content" | "created_at"> & { post: Named<{ title: string }> })[];
+  reports: (Row<"forum_reports"> & { reporter: Named<{ first_name: string | null; last_name: string | null }>; post: Named<{ title: string }>; comment: Named<{ content: string }> })[];
+  login_history: Row<"user_login_history">[];
+  exercise_attempts: (Pick<Row<"user_exercise_attempts">, "id" | "exercise_id" | "score" | "total_points" | "score_percent" | "passed" | "status" | "completed_at" | "attempted_at"> & { exercises: Named<{ title: string }> })[];
+  quiz_attempts: (Pick<Row<"user_quiz_attempts">, "id" | "quiz_id" | "score" | "total_points" | "score_percent" | "passed" | "status" | "completed_at" | "time_spent_seconds"> & { quizzes: Named<{ title: string }> })[];
+  course_progress: (Pick<Row<"user_course_progress">, "id" | "course_id" | "chapter_index" | "status" | "completed_at"> & { courses: Named<{ title: string }> })[];
+  support_tickets: Pick<Row<"support_tickets">, "id" | "subject" | "status" | "priority" | "created_at" | "updated_at">[];
+  minigame_sessions: Pick<Row<"minigame_sessions">, "id" | "game_type" | "score" | "max_score" | "duration_seconds" | "status" | "created_at" | "completed_at">[];
+}
+
+export async function fetchAdminUserDetail(id: string): Promise<AdminUserDetail | null> {
   const { data: user, error } = await supabaseAdmin
     .from("users")
     .select("*")
@@ -45,6 +66,8 @@ export async function fetchAdminUserDetail(id: string) {
       .eq("user_id", id).order("created_at", { ascending: false }).limit(20),
   ]);
 
+  // Les relations « vers un » (category, post, exercises…) arrivent en objet : le type déduit de la chaîne `select` les annonce à tort en
+  // tableau. C'est le seul endroit où l'on tranche ; tout le reste de la page est typé par AdminUserDetail.
   return {
     user,
     stats: { exercise_attempts: ea ?? 0, quiz_attempts: qa ?? 0, course_progress: cp ?? 0, minigame_sessions: mg ?? 0 },
@@ -57,5 +80,5 @@ export async function fetchAdminUserDetail(id: string) {
     course_progress: courseProgress ?? [],
     support_tickets: tickets ?? [],
     minigame_sessions: minigameSessions ?? [],
-  };
+  } as unknown as AdminUserDetail;
 }
