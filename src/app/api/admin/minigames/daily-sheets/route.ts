@@ -1,6 +1,6 @@
 import { getClientIp } from "@/lib/apiAuth";
+import type { PalierCode } from "@/lib/minigames/levels";
 import { readJsonBody } from "@/lib/apiJson";
-import type { Loose } from "@/types/loose";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -54,12 +54,12 @@ export async function POST(request: Request) {
 
   if (!isMinigameType(gameType)) return Response.json({ error: "Jeu inconnu." }, { status: 400 });
   const gameConfig = getGameTypeConfig(gameType);
-  if (!gameConfig?.palierCodes.includes(palierCode as Loose)) {
+  if (!gameConfig?.palierCodes.includes(palierCode as PalierCode)) {
     return Response.json({ error: "Palier hors plage pour ce jeu." }, { status: 400 });
   }
   if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return Response.json({ error: "Date invalide." }, { status: 400 });
 
-  const result = await generateAndUpsertDailySheet(gameType, palierCode as Loose, date, tier);
+  const result = await generateAndUpsertDailySheet(gameType, palierCode as PalierCode, date, tier);
   if (result.error) return Response.json({ error: sanitizeErrorMessage(result.error) }, { status: 500 });
   return Response.json({ success: true });
 }

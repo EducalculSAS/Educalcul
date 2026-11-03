@@ -1,5 +1,4 @@
 ﻿import { NextResponse } from "next/server";
-import type { Loose } from "@/types/loose";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
@@ -48,7 +47,7 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
     const body = await request.json();
     const { action, status, assigned_to } = body;
 
-    const updates: Loose = { updated_at: new Date().toISOString() };
+    const updates: Record<string, unknown> = { updated_at: new Date().toISOString() };
 
     if (action === 'change_status') {
       if (!['Ouvert', 'En cours', 'Répondu', 'Résolu'].includes(status)) {

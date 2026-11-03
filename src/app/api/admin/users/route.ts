@@ -1,6 +1,5 @@
 ﻿import { NextResponse } from "next/server";
 import { getClientIp } from "@/lib/apiAuth";
-import type { Loose } from "@/types/loose";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { ADMIN_USER_LIST_COLUMNS } from "@/lib/adminUserColumns";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -355,7 +354,7 @@ export async function PUT(request: Request) {
     }
 
     // Update auth user
-    const authUpdates: Loose = {
+    const authUpdates: Parameters<typeof supabaseAdmin.auth.admin.updateUserById>[1] = {
       user_metadata: {
         role,
         first_name: firstName,

@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -13,6 +12,34 @@ import type { ForumComment, ForumThread } from "@/lib/forumTypes";
 const MAX_COMMENTS = 500;
 
 /** Un sujet complet : message, réponses, j'aime et suivi de l'utilisateur. */
+/** Lignes lues (les chaînes `select` sont dynamiques : le type n'est pas déduit). */
+interface ForumCommentRow {
+  id: number;
+  content: string | null;
+  author: Record<string, unknown> | null;
+  author_id: number | null;
+  created_at: string;
+  updated_at: string | null;
+  like_count: number | null;
+  quoted_comment_id: number | null;
+}
+interface ForumPostRow {
+  id: number;
+  title: string;
+  content: string;
+  category: { id: number; name: string; color: string | null } | null;
+  author: Record<string, unknown> | null;
+  author_id: number | null;
+  is_pinned: boolean | null;
+  is_locked: boolean | null;
+  solved_comment_id: number | null;
+  like_count: number | null;
+  view_count: number | null;
+  comment_count: number | null;
+  created_at: string;
+  updated_at: string | null;
+}
+
 export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
     const me = await getAuthenticatedUser(req);
@@ -41,7 +68,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
     ]);
     if (error || !post) throw error ?? new Error("Sujet introuvable");
 
-    const commentRows = (comments ?? []) as Loose[];
+    const commentRows = (comments ?? []) as unknown as ForumCommentRow[];
     const commentIds = commentRows.map((c) => c.id);
     const likeFilter = commentIds.length
       ? `post_id.eq.${id},comment_id.in.(${commentIds.join(",")})`
@@ -56,7 +83,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
     const byId = new Map(commentRows.map((c) => [c.id, c]));
     const isAdmin = me.role === "admin";
-    const p = post as Loose;
+    const p = post as unknown as ForumPostRow;
 
     const thread: ForumThread = {
       id: p.id,
@@ -81,7 +108,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
         const quoted = c.quoted_comment_id ? byId.get(c.quoted_comment_id) : null;
         return {
           id: c.id,
-          content: c.content,
+          content: c.content ?? "",
           author: publicAuthor(c.author),
           created_at: c.created_at,
           updated_at: c.updated_at,

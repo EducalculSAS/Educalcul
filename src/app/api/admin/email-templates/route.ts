@@ -1,6 +1,5 @@
 ﻿import { NextResponse } from "next/server";
 import { readJsonBody } from "@/lib/apiJson";
-import type { Loose } from "@/types/loose";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
@@ -48,7 +47,7 @@ export async function PATCH(req: Request) {
   const { id, name, subject, body, target, schedule } = await readJsonBody(req);
   if (!id) return NextResponse.json({ error: "ID requis" }, { status: 400 });
 
-  const updates: Loose = { updated_at: new Date().toISOString() };
+  const updates: Record<string, unknown> = { updated_at: new Date().toISOString() };
   if (name !== undefined) updates.name = name;
   if (subject !== undefined) updates.subject = subject;
   if (body !== undefined) updates.body = body;

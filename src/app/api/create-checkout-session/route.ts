@@ -1,5 +1,6 @@
 import { getClientIp } from "@/lib/apiAuth";
-import type { Loose } from "@/types/loose";
+import type Stripe from "stripe";
+import type { Row } from "@/types/db";
 import { NextResponse } from 'next/server';
 import { getVatTaxRateId } from "@/lib/stripeVat";
 import { ensurePlanPrice, ensureProduct, recurringFor } from "@/lib/stripeCatalog";
@@ -128,7 +129,7 @@ export async function POST(req: Request) {
       }
     }
 
-    let plan: Loose = null;
+    let plan: Pick<Row<'subscription_plans'>, 'id' | 'name' | 'price' | 'billing_interval' | 'trial_days' | 'is_active'>;
 
     if (customConfig) {
       // SECURITY: never trust a client-supplied price/features. Recompute the
@@ -274,7 +275,7 @@ export async function POST(req: Request) {
     // (montant différent), on garde le PRODUIT du catalogue avec un montant à
     // la volée. Si Stripe ne répond pas au catalogue, on retombe sur l'ancien
     // fonctionnement (prix en ligne) plutôt que de bloquer le paiement.
-    let lineItem: Loose;
+    let lineItem: Stripe.Checkout.SessionCreateParams.LineItem;
     try {
       const isCustom = !!customConfig;
       if (isCustom) {
@@ -300,7 +301,7 @@ export async function POST(req: Request) {
       email,
       name: `${userRow?.first_name || firstName || ''} ${userRow?.last_name || lastName || ''}`.trim() || undefined,
     });
-    const sessionData: Loose = {
+    const sessionData: Stripe.Checkout.SessionCreateParams & { payment_method_types?: string[] } = {
       payment_method_types: ['card'],
       line_items: [lineItem],
       mode: 'subscription',

@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -43,7 +42,7 @@ export async function POST(req: Request) {
     }
     // Legacy badge unlocks (kept for backward compat)
     for (const ub of (userBadges || [])) {
-      const b = ub.badge as Loose;
+      const b = ub.badge as unknown as { unlocks_avatar_border?: string | null; unlocks_name_animation?: string | null } | null;
       if (b?.unlocks_avatar_border) unlockedBorders.add(b.unlocks_avatar_border);
       if (b?.unlocks_name_animation) unlockedColors.add(b.unlocks_name_animation);
     }
@@ -64,7 +63,7 @@ export async function POST(req: Request) {
     subUnlocks.borders.forEach(b => unlockedBorders.add(b));
     subUnlocks.colors.forEach(c => unlockedColors.add(c));
 
-    const updates: Loose = {};
+    const updates: Record<string, unknown> = {};
     if (equipped_border !== undefined) {
       if (!unlockedBorders.has(equipped_border)) return NextResponse.json({ error: "Border not unlocked" }, { status: 403 });
       updates.equipped_border = equipped_border;

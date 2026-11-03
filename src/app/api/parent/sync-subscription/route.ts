@@ -1,4 +1,4 @@
-import type { Loose } from "@/types/loose";
+import type Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
@@ -81,7 +81,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Session non autorisée" }, { status: 403 });
     }
 
-    const sub = session.subscription as Loose;
+    const sub = session.subscription as Stripe.Subscription & { current_period_start: number };
 
     await supabaseAdmin.from("subscriptions").upsert({
       user_id: authId,
