@@ -1,6 +1,17 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
+import type { Row } from "@/types/db";
+import type { BillingInvoice } from "@/lib/parentSubscriptionDetails";
+
+/** Code de parrainage du parent, avec ses utilisations (et le filleul qui l'a utilisé). */
+/** Données d'inscription saisies avant le paiement (sessionStorage). Le mot de passe n'y figure jamais. */
+interface SignupData { email: string; firstName: string; lastName: string; password?: string; referralCode?: string | null; [key: string]: unknown }
+
+export interface ReferralCodeWithUses extends Row<"referral_codes"> {
+  uses?: (Row<"referral_uses"> & { users?: { first_name: string | null; last_name: string | null; email: string } | null })[];
+}
+/** Abonnement du parent, ou un abonnement vide « gratuit » quand il n'en a pas. */
+export type CurrentSubscription = Partial<Row<"subscriptions">> & { plan_id: Row<"subscriptions">["plan_id"] | null; status: string };
 import PageHero from "@/components/PageHero";
 import { formatDateFr } from "@/lib/formatDate";
 import PageLoader from "@/components/PageLoader";
@@ -64,10 +75,10 @@ function SubscriptionPageContent({
   authEmail: string | null;
   initialPlans: SubscriptionPlan[];
   initialPricingConfig: PricingConfig;
-  initialReferralCode: Loose | null;
+  initialReferralCode: ReferralCodeWithUses | null;
   initialPendingDiscount: number;
-  initialCurrentPlan: Loose | null;
-  initialBillingHistory: Loose[];
+  initialCurrentPlan: CurrentSubscription | null;
+  initialBillingHistory: BillingInvoice[];
 }) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -87,7 +98,7 @@ function SubscriptionPageContent({
   const [copied, setCopied] = useState(false);
   const [pendingDiscount] = useState(initialPendingDiscount);
   const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);
-  const [signupData, setSignupData] = useState<Loose>(null);
+  const [signupData, setSignupData] = useState<SignupData | null>(null);
   const [customProcessing, setCustomProcessing] = useState(false);
   const [pricingConfig] = useState<PricingConfig>(initialPricingConfig);
   // Fonction de rétractation (14 jours après la souscription, voir src/lib/withdrawal.ts)
@@ -683,7 +694,7 @@ function SubscriptionPageContent({
                 </div>
               ) : (
                 <ul className="space-y-3">
-                  {myReferralCode.uses.map((u: Loose) => (
+                  {(myReferralCode.uses ?? []).map((u) => (
                     <li key={u.id} className="flex items-center justify-between gap-3 py-2 border-b border-[rgba(197,161,72,0.25)] last:border-0">
                       <div>
                         <p className="font-semibold text-gray-800 text-sm">
@@ -696,7 +707,7 @@ function SubscriptionPageContent({
                         )}
                       </div>
                       <span className="text-xs text-gray-400 shrink-0">
-                        {new Date(u.used_at).toLocaleDateString("fr-FR")}
+                        {u.used_at ? new Date(u.used_at).toLocaleDateString("fr-FR") : "—"}
                       </span>
                     </li>
                   ))}
@@ -715,10 +726,10 @@ export default function SubscriptionClient(props: {
   authEmail: string | null;
   initialPlans: SubscriptionPlan[];
   initialPricingConfig: PricingConfig;
-  initialReferralCode: Loose | null;
+  initialReferralCode: ReferralCodeWithUses | null;
   initialPendingDiscount: number;
-  initialCurrentPlan: Loose | null;
-  initialBillingHistory: Loose[];
+  initialCurrentPlan: CurrentSubscription | null;
+  initialBillingHistory: BillingInvoice[];
 }) {
   return (
     <Suspense fallback={<div className="min-h-screen flex items-center justify-center"><AppLoader /></div>}>

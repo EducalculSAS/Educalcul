@@ -7,6 +7,17 @@ function isStripeMissing(err: unknown): boolean {
   return (err as { code?: string } | null)?.code === "resource_missing";
 }
 
+/** Facture payée, telle qu'affichée dans l'historique de facturation du parent. */
+export interface BillingInvoice {
+  id: string;
+  date: string;
+  amount: number;
+  currency: string;
+  status: string | null;
+  pdf_url: string | null | undefined;
+  number: string | null;
+}
+
 export async function fetchParentSubscriptionDetails(userId: string) {
   // 1. Get subscription from Supabase to find Stripe Customer ID
   // "past_due" (echec de paiement) reste inclus : le client garde acces a
@@ -84,11 +95,11 @@ export async function fetchParentSubscriptionDetails(userId: string) {
   }
 
   if (!subscription) {
-    return { subscription: null, invoices: [] as unknown[] };
+    return { subscription: null, invoices: [] as BillingInvoice[] };
   }
 
   if (!subscription.stripe_customer_id) {
-    return { subscription, invoices: [] as unknown[] };
+    return { subscription, invoices: [] as BillingInvoice[] };
   }
 
   const customerId = subscription.stripe_customer_id;
@@ -101,7 +112,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
     } catch (err) {
       if (!isStripeMissing(err)) throw err;
       // L'abonnement n'existe plus chez Stripe : on montre ce que la base sait, sans factures.
-      return { subscription, invoices: [] as Loose[] };
+      return { subscription, invoices: [] as BillingInvoice[] };
     }
   }
 
@@ -130,7 +141,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
     });
   } catch (err) {
     if (!isStripeMissing(err)) throw err;
-    return { subscription, invoices: [] as unknown[] };
+    return { subscription, invoices: [] as BillingInvoice[] };
   }
 
   const formattedInvoices = invoices.data.map((invoice) => ({
