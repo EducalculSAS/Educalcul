@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import type { Block } from "@/components/admin/ExerciseBuilder";
 
 /** Page de contenu telle que stockée : une liste de blocs (forme libre tant qu'elle n'est pas vérifiée). */
@@ -92,13 +91,13 @@ export function stripBlockAnswers(block: Block) {
 // Garantit qu'un exercice a toujours au moins un bloc de contenu affichable
 // (certains exercices legacy ont un content_json vide) : reconstruit un bloc
 // par défaut à partir du type d'exercice et de son énoncé/titre.
-export function fillEmptyContentJson(exercise: Loose) {
+export function fillEmptyContentJson<T extends { content_json?: unknown; question?: string | null; description?: string | null; title?: string | null; type?: string | null }>(exercise: T): T {
   if (exercise.content_json && !(Array.isArray(exercise.content_json) && exercise.content_json.length === 0)) {
     return exercise;
   }
   const fallbackQuestion = exercise.question || exercise.description || exercise.title || "Énoncé non spécifié";
 
-  let defaultBlock: Loose = {
+  let defaultBlock: Record<string, unknown> = {
     id: "block-1",
     type: "text",
     content: fallbackQuestion,
@@ -144,7 +143,7 @@ export function fillEmptyContentJson(exercise: Loose) {
   };
 }
 
-export function stripAnswers(content: Loose) {
+export function stripAnswers<T extends { content_json?: unknown }>(content: T): T {
   if (!content?.content_json || !Array.isArray(content.content_json)) return content;
   return {
     ...content,

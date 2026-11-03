@@ -107,7 +107,7 @@ export async function GET(request: Request) {
     // La liste n'inclut plus content_json (voir select ci-dessus) : pas de
     // fillEmptyContentJson ici, ça injecterait un faux contenu de repli sur
     // des lignes où le champ est simplement absent, pas vide.
-    return NextResponse.json(isAdmin ? data : data.map(stripAnswers));
+    return NextResponse.json(isAdmin ? data : data.map((exercise) => stripAnswers(exercise as { content_json?: unknown })));
   } catch (error: unknown) {
     console.error("Error fetching exercises:", error);
     return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });

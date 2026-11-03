@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import type { ComponentProps } from "react";
 import { AlertCircle, ArrowLeft } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -46,5 +47,5 @@ export default async function QuizReviewPage({
     );
   }
 
-  return <QuizReviewClient quiz={quiz} progress={progress} />;
+  return <QuizReviewClient quiz={quiz as unknown as ComponentProps<typeof QuizReviewClient>["quiz"]} progress={progress as unknown as ComponentProps<typeof QuizReviewClient>["progress"]} />;
 }

@@ -32,7 +32,7 @@ describe("stripBlockAnswers : aucune bonne réponse ne doit partir vers l'élèv
 
 describe("stripAnswers / dedupeBlockIds", () => {
   it("nettoie toutes les pages", () => {
-    const out = stripAnswers({ content_json: [{ id: "p", blocks: [b({ correctAnswer: "z" })] }] }) as { content_json: { blocks: Record<string, unknown>[] }[] };
+    const out = stripAnswers({ content_json: [{ id: "p", blocks: [b({ correctAnswer: "z" })] }] }) as unknown as { content_json: { blocks: Record<string, unknown>[] }[] };
     expect(out.content_json[0].blocks[0]).not.toHaveProperty("correctAnswer");
   });
   it("rend les identifiants uniques dans tout l'exercice", () => {

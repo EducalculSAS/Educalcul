@@ -1,6 +1,6 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
+import type { AttemptSummary } from "@/types/attempts";
 import { extractExerciseContent } from "@/lib/exerciseContextText";
 import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef } from "react";
@@ -14,7 +14,7 @@ import {
   AlertCircle,
   Eye,
 } from "lucide-react";
-import ExerciseViewer from "@/components/viewers/ExerciseViewer";
+import ExerciseViewer, { type ExerciseViewerProps } from "@/components/viewers/ExerciseViewer";
 import AppLoader from "@/components/AppLoader";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import { passThreshold } from "@/lib/scorePercent";
@@ -24,6 +24,9 @@ import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
+
+/** Exercice tel que chargé par la page serveur : ce que lit le lecteur, plus quelques champs d'affichage (certains viennent d'anciennes versions). */
+export type ExerciseDetail = ExerciseViewerProps["exercise"] & { question?: string | null; course_title?: string; estimated_time?: number | null };
 
 /** Page de détail exercice : le contenu (déjà purgé des réponses côté
  * serveur) et l'historique de tentatives arrivent en props quand id !==
@@ -36,8 +39,8 @@ export default function ExerciseDetailClient({
   initialAlreadyCompleted,
 }: {
   exerciseId: string;
-  initialExercise: Loose | null;
-  initialAttemptsHistory: Loose[];
+  initialExercise: ExerciseDetail | null;
+  initialAttemptsHistory: AttemptSummary[];
   initialAlreadyCompleted: boolean;
 }) {
   const router = useRouter();
@@ -45,7 +48,7 @@ export default function ExerciseDetailClient({
   const isPreview = exerciseId === "preview";
 
   const [loading] = useState(false);
-  const [exercise] = useState<Loose>(initialExercise);
+  const [exercise] = useState(initialExercise);
   const [started, setStarted] = useState(false);
   const savedAttempts = isPreview ? [] : initialAttemptsHistory;
   const alreadyCompleted = isPreview ? false : initialAlreadyCompleted;
@@ -66,9 +69,9 @@ export default function ExerciseDetailClient({
     if (!exercise) return;
     let questionText = extractExerciseContent(exercise.content_json, { includePlaceholder: true });
     if (!questionText && (exercise.question || exercise.description)) {
-      questionText = (exercise.question || exercise.description).slice(0, 1000);
+      questionText = (exercise.question || exercise.description || "").slice(0, 1000);
     }
-    const hints = (exercise.content_json?.hints || [])
+    const hints = ((exercise.content_json as unknown as { hints?: (string | { text?: string; hint?: string })[] } | null)?.hints || [])
       .map((h: string | { text?: string; hint?: string }) => (typeof h === "string" ? h : h.text || h.hint || ""))
       .filter((h: string) => h.length > 0)
       .slice(0, 3);

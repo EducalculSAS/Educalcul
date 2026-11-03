@@ -1,6 +1,6 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
+import type { AttemptSummary } from "@/types/attempts";
 import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -13,7 +13,7 @@ import {
   BookOpen,
   Eye,
 } from "lucide-react";
-import QuizViewer from "@/components/viewers/QuizViewer";
+import QuizViewer, { type QuizViewerProps } from "@/components/viewers/QuizViewer";
 import AppLoader from "@/components/AppLoader";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import Link from "next/link";
@@ -27,6 +27,9 @@ import GlassCloseButton from "@/components/ui/GlassCloseButton";
  * et l'historique de tentatives arrivent en props quand id !== "preview"
  * (aperçu admin transmis via une ligne content_previews, cf. la page
  * serveur). */
+/** Quiz tel que chargé par la page serveur : ce que lit le lecteur, plus quelques champs d'affichage. */
+export type QuizDetail = QuizViewerProps["quiz"] & { difficulty_level?: string; estimated_time?: number | null; max_attempts?: number | null; courses?: { title?: string } | null };
+
 export default function QuizDetailClient({
   quizId,
   initialQuiz,
@@ -34,8 +37,8 @@ export default function QuizDetailClient({
   initialAlreadyCompleted,
 }: {
   quizId: string;
-  initialQuiz: Loose | null;
-  initialAttemptsHistory: Loose[];
+  initialQuiz: QuizDetail | null;
+  initialAttemptsHistory: AttemptSummary[];
   initialAlreadyCompleted: boolean;
 }) {
   const router = useRouter();
@@ -43,7 +46,7 @@ export default function QuizDetailClient({
   const isPreview = quizId === "preview";
 
   const [loading] = useState(false);
-  const [quiz] = useState<Loose>(initialQuiz);
+  const [quiz] = useState(initialQuiz);
   const [started, setStarted] = useState(false);
   const attemptsHistory = isPreview ? [] : initialAttemptsHistory;
   const alreadyCompleted = isPreview ? false : initialAlreadyCompleted;

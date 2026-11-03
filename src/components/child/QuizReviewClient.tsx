@@ -1,13 +1,12 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
-import QuizViewer from "@/components/viewers/QuizViewer";
+import QuizViewer, { type QuizViewerProps } from "@/components/viewers/QuizViewer";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
-export default function QuizReviewClient({ quiz, progress }: { quiz: Loose; progress: Loose }) {
+export default function QuizReviewClient({ quiz, progress }: { quiz: QuizViewerProps["quiz"]; progress: QuizViewerProps["initialProgress"] }) {
   const router = useRouter();
 
   return (

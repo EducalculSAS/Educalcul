@@ -1,11 +1,11 @@
-import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripAnswers, fillEmptyContentJson } from "@/lib/exerciseContent";
 import { checkDifficultyAccess } from "@/lib/checkSubscription";
 import { childMayOpen } from "@/lib/levelAccess";
-import ExerciseDetailClient from "@/components/child/ExerciseDetailClient";
+import ExerciseDetailClient, { type ExerciseDetail } from "@/components/child/ExerciseDetailClient";
+import type { AttemptSummary } from "@/types/attempts";
 
 export default async function ExerciseDetailPage({
   params,
@@ -45,7 +45,7 @@ export default async function ExerciseDetailPage({
     return (
       <ExerciseDetailClient
         exerciseId={exerciseId}
-        initialExercise={(preview?.payload as unknown) || null}
+        initialExercise={(preview?.payload as ExerciseDetail | null) || null}
         initialAttemptsHistory={[]}
         initialAlreadyCompleted={false}
       />
@@ -92,17 +92,17 @@ export default async function ExerciseDetailPage({
     if (!allowed) redirect("/child/exercises");
   }
 
-  let attemptsHistory: Loose[] = [];
+  let attemptsHistory: AttemptSummary[] = [];
   let alreadyCompleted = false;
   if (exercise) {
-    attemptsHistory = attemptRow?.attempts_history || [];
+    attemptsHistory = (attemptRow?.attempts_history as unknown as AttemptSummary[] | null) || [];
     alreadyCompleted = attemptRow?.status === "completed";
   }
 
   return (
     <ExerciseDetailClient
       exerciseId={exerciseId}
-      initialExercise={exercise}
+      initialExercise={exercise as ExerciseDetail | null}
       initialAttemptsHistory={attemptsHistory}
       initialAlreadyCompleted={alreadyCompleted}
     />

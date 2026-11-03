@@ -1,11 +1,11 @@
-import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripAnswers } from "@/lib/quizContent";
 import { checkDifficultyAccess } from "@/lib/checkSubscription";
 import { childMayOpen } from "@/lib/levelAccess";
-import QuizDetailClient from "@/components/child/QuizDetailClient";
+import QuizDetailClient, { type QuizDetail } from "@/components/child/QuizDetailClient";
+import type { AttemptSummary } from "@/types/attempts";
 
 export default async function QuizDetailPage({
   params,
@@ -45,7 +45,7 @@ export default async function QuizDetailPage({
     return (
       <QuizDetailClient
         quizId={quizId}
-        initialQuiz={(preview?.payload as unknown) || null}
+        initialQuiz={(preview?.payload as QuizDetail | null) || null}
         initialAttemptsHistory={[]}
         initialAlreadyCompleted={false}
       />
@@ -74,7 +74,7 @@ export default async function QuizDetailPage({
     if (!allowed) redirect("/child/quiz");
   }
 
-  let attemptsHistory: Loose[] = [];
+  let attemptsHistory: AttemptSummary[] = [];
   let alreadyCompleted = false;
   if (quiz) {
     const { data: attemptRow } = await supabaseAdmin
@@ -83,14 +83,14 @@ export default async function QuizDetailPage({
       .eq("user_id", authUser.id)
       .eq("quiz_id", quizId)
       .maybeSingle();
-    attemptsHistory = attemptRow?.attempts_history || [];
+    attemptsHistory = (attemptRow?.attempts_history as unknown as AttemptSummary[] | null) || [];
     alreadyCompleted = attemptRow?.status === "completed";
   }
 
   return (
     <QuizDetailClient
       quizId={quizId}
-      initialQuiz={quiz}
+      initialQuiz={quiz as QuizDetail | null}
       initialAttemptsHistory={attemptsHistory}
       initialAlreadyCompleted={alreadyCompleted}
     />
