@@ -1,15 +1,17 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
 import ChildOnboarding from "./ChildOnboarding";
 
+/** Colonnes du profil lues ici (la route renvoie la ligne utilisateur). */
+interface ChildProfile { first_name?: string | null; auth_id: string; grade_level?: string | null; status?: string; ban_reason?: string | null; onboarding_completed?: boolean | null }
+
 export default function ChildOnboardingWrapper() {
   const router = useRouter();
-  const [userData, setUserData] = useState<Loose>(null);
+  const [userData, setUserData] = useState<ChildProfile | null>(null);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -17,7 +19,7 @@ export default function ChildOnboardingWrapper() {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
 
-      const data = await getMyProfile<Loose>();
+      const data = await getMyProfile<ChildProfile>();
       if (!data) return;
       if (data.status === "inactive" || data.ban_reason) {
         router.push("/auth/banned");

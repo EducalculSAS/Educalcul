@@ -1,6 +1,5 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -39,7 +38,7 @@ export default function AdminProfileClient({ initialFormData }: {
   const refetchProfile = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
-    const data: Loose = await getMyProfile();
+    const data = await getMyProfile<{ first_name?: string; last_name?: string; child_username?: string; email?: string; name_animation?: string; avatar_border?: string }>();
     if (data) {
       setFormData((prev) => ({
         ...prev,

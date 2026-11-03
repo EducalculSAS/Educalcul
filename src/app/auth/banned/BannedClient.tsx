@@ -1,6 +1,5 @@
 ﻿'use client';
 
-import type { Loose } from "@/types/loose";
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
@@ -11,7 +10,7 @@ import GlassButton from '@/components/ui/GlassButton';
 export default function BannedPage() {
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [banData, setBanData] = useState<Loose>(null);
+  const [banData, setBanData] = useState<{ firstName?: string | null; lastName?: string | null; reason: string; banUntil?: string | null } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {

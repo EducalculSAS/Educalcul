@@ -1,6 +1,6 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
+import type { AuditLogEntry } from "@/lib/auditLogQuery";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ChevronLeft, ChevronRight, Download } from "lucide-react";
@@ -37,7 +37,7 @@ const ACTION_LABELS: Record<string, string> = {
   IMPERSONATION_ENDED: "Fin de connexion en tant qu'utilisateur",
 };
 
-function userLabel(u: { first_name?: string; last_name?: string; email?: string } | null): string {
+function userLabel(u: { first_name?: string | null; last_name?: string | null; email?: string | null } | null): string {
   if (!u) return "-";
   const name = [u.first_name, u.last_name].filter(Boolean).join(" ");
   return name || u.email || "-";
@@ -50,13 +50,13 @@ export default function AuditLogTable({
   initialTotal,
   pageSize,
 }: {
-  initialEntries: Loose[];
+  initialEntries: AuditLogEntry[];
   initialTotal: number;
   pageSize: number;
 }) {
   const [loading, setLoading] = useState(false);
   const [exporting, setExporting] = useState(false);
-  const [entries, setEntries] = useState<Loose[]>(initialEntries);
+  const [entries, setEntries] = useState<AuditLogEntry[]>(initialEntries);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(initialTotal);
 
@@ -128,7 +128,7 @@ export default function AuditLogTable({
                 </td>
                 <td className="px-4 py-3 font-medium text-[var(--greek-blue)]">
                   {ACTION_LABELS[e.action] || e.action}
-                  {e.details?.method && <span className="ml-1 font-normal text-gray-400">({e.details.method})</span>}
+                  {typeof e.details?.method === "string" && <span className="ml-1 font-normal text-gray-400">({e.details.method})</span>}
                 </td>
                 <td className="px-4 py-3 text-gray-700">{userLabel(e.admin)}</td>
                 <td className="px-4 py-3 text-gray-700">{e.target ? userLabel(e.target) : (e.target_type || "-")}</td>

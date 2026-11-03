@@ -1,6 +1,5 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useEffect, useRef, useCallback } from "react";
@@ -441,7 +440,7 @@ export default function AdminUsersClient({
 
   async function fetchUsers(silent = false) {
     const cacheKey = `users:${roleFilter}:${statusFilter}`;
-    const cached = getAdminCache<Loose[]>(cacheKey);
+    const cached = getAdminCache<User[]>(cacheKey);
     if (!silent) {
       if (cached) { setUsers(cached); setLoading(false); }
       else setLoading(true);
@@ -471,7 +470,7 @@ export default function AdminUsersClient({
     e.preventDefault();
     setSubmitting(true);
     try {
-      const body: Loose = { userId: currentAuthId, firstName: form.firstName, lastName: form.lastName, email: form.email, role: form.role, status: form.status, gradeLevel: form.gradeLevel, password: form.password };
+      const body: Record<string, unknown> = { userId: currentAuthId, firstName: form.firstName, lastName: form.lastName, email: form.email, role: form.role, status: form.status, gradeLevel: form.gradeLevel, password: form.password };
       if (form.role === "child") body.username = form.username;
       if (form.subscriptionPlanId) {
         body.subscriptionPlanId = form.subscriptionPlanId;

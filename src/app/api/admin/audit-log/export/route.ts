@@ -7,7 +7,7 @@ function csvCell(value: unknown): string {
   return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
 }
 
-function userLabel(u: { first_name?: string; last_name?: string; email?: string } | null): string {
+function userLabel(u: { first_name?: string | null; last_name?: string | null; email?: string | null } | null): string {
   if (!u) return "";
   const name = [u.first_name, u.last_name].filter(Boolean).join(" ");
   return name || u.email || "";

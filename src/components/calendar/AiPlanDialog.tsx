@@ -7,7 +7,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { longDate } from "./calendarUtils";
 
-interface Proposal {
+export interface Proposal {
   start_date: string;
   start_time: string | null;
   end_time: string | null;

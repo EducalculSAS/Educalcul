@@ -1,6 +1,5 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import PageHero from "@/components/PageHero";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -85,7 +84,7 @@ export default function BadgesSettings({
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
     setEquipping(true);
-    const body: Loose = { authId: session.user.id };
+    const body: { authId: string; equipped_border?: string; name_color?: string } = { authId: session.user.id };
     if (border !== undefined) body.equipped_border = border;
     if (color !== undefined) body.name_color = color;
     await fetch("/api/child/equip", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
