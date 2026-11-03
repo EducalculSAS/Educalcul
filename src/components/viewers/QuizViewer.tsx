@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import type { Loose } from "@/types/loose";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef } from "react";
 import { CheckCircle, XCircle, ArrowRight, ArrowLeft, Trophy, Loader2, Type, HelpCircle, Clock, AlertTriangle } from "lucide-react";
@@ -18,8 +17,22 @@ import ReadAloudButton from "@/components/ReadAloudButton";
 
 
 
+/** Réponse d'un élève à une question : un choix (ou « true »/« false »), une saisie, ou plusieurs choix. */
+type QuizAnswer = string | string[];
+
+/** Réponse de /api/child/quizzes/[id]/grade pour une question. */
+interface QuizGradeResponse {
+  unavailable?: boolean;
+  error?: string;
+  is_correct?: boolean;
+  feedback?: string;
+  comment_token?: string;
+  reveal?: { correctAnswer?: string | string[]; explanation?: string };
+}
+
 interface QuizViewerProps {
   quiz: {
+    id?: string | number;
     title: string;
     description?: string | null;
     content_json: Question[] | null;
@@ -38,18 +51,18 @@ interface QuizViewerProps {
   /** Ouvre directement la correction de la dernière tentative au lieu de l'écran de fin */
   openCorrection?: boolean;
   initialProgress?: {
-    answers?: Record<number, Loose>;
+    answers?: Record<number, QuizAnswer>;
     questionResults?: Record<number, boolean>;
     questionFeedbacks?: Record<number, string>;
     revealed?: Record<number, { correctAnswer?: string | string[]; explanation?: string }>;
     score?: number;
     adminComments?: Record<string, string>;
-    adminEditedAnswers?: Record<string, Loose>;
+    adminEditedAnswers?: Record<string, QuizAnswer>;
   } | null;
   /** Voir ExerciseViewer.tsx — même contrat, réutilisé tel quel côté quiz. */
   adminMode?: {
     onComment: (key: string, text: string) => void;
-    onEditAnswer: (key: string, value: Loose) => void;
+    onEditAnswer: (key: string, value: QuizAnswer) => void;
     saving?: boolean;
   };
 }
@@ -57,11 +70,11 @@ interface QuizViewerProps {
 export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, forceNewAttempt, bestScorePercent, openCorrection, initialProgress, adminMode }: QuizViewerProps) {
   const questions = quiz.content_json || [];
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, Loose>>(
+  const [answers, setAnswers] = useState<Record<number, QuizAnswer>>(
     () => (reviewMode ? initialProgress?.answers : undefined) || {}
   );
   const [adminComments] = useState<Record<string, string>>(() => initialProgress?.adminComments || {});
-  const [adminEditedAnswers] = useState<Record<string, Loose>>(() => initialProgress?.adminEditedAnswers || {});
+  const [adminEditedAnswers] = useState<Record<string, QuizAnswer>>(() => initialProgress?.adminEditedAnswers || {});
   const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(!!reviewMode);
   const [score, setScore] = useState(() => (reviewMode ? initialProgress?.score : 0) || 0);
   const [quizCompleted, setQuizCompleted] = useState(false);
@@ -93,7 +106,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     const attemptsSoFar = current?.attempts || 0;
     setInlineText((prev) => ({ ...prev, [idx]: { attempts: attemptsSoFar, status: "grading" } }));
     try {
-      const quizId = (quiz as Loose).id || "preview";
+      const quizId = quiz.id || "preview";
       const res = await fetch(`/api/child/quizzes/${quizId}/grade`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -218,7 +231,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
 
   // Dynamic progress tracking
   const saveProgress = async (status: 'in_progress' | 'completed', currentScore: number, scorePercent?: number, passed?: boolean) => {
-    const isPreview = (quiz as Loose).id === undefined || (quiz as Loose).id === "preview";
+    const isPreview = quiz.id === undefined || quiz.id === "preview";
     if (isPreview) return;
 
     const { data: { session } } = await supabase.auth.getSession();
@@ -234,7 +247,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
         body: JSON.stringify({
           type: "quiz",
           userId: session.user.id,
-          itemId: (quiz as Loose).id,
+          itemId: quiz.id,
           score: currentScore,
           totalPoints,
           timeSpent,
@@ -256,13 +269,13 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   }, []);
 
   // Sauvegarde la progression détaillée (réponses, résultats, feedback) en base
-  const saveDetailedProgress = async (status: 'in_progress' | 'completed', extra?: { results?: Record<number, boolean>; feedbacks?: Record<number, string>; revealed?: Record<number, Loose>; finalScore?: number }) => {
-    const isPreview = (quiz as Loose).id === undefined || (quiz as Loose).id === "preview";
+  const saveDetailedProgress = async (status: 'in_progress' | 'completed', extra?: { results?: Record<number, boolean>; feedbacks?: Record<number, string>; revealed?: Record<number, { correctAnswer?: string | string[]; explanation?: string }>; finalScore?: number }) => {
+    const isPreview = quiz.id === undefined || quiz.id === "preview";
     if (isPreview || reviewMode) return;
     const { data: { session } } = await supabase.auth.getSession();
     if (!session?.user) return;
     try {
-      await fetch(`/api/child/quizzes/${(quiz as Loose).id}/progress`, {
+      await fetch(`/api/child/quizzes/${quiz.id}/progress`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -285,13 +298,13 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   // Charge la progression en cours depuis la base (reprise après déconnexion)
   useEffect(() => {
     if (reviewMode) return;
-    const isPreview = (quiz as Loose).id === undefined || (quiz as Loose).id === "preview";
+    const isPreview = quiz.id === undefined || quiz.id === "preview";
     if (isPreview) return;
     (async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session?.user) return;
       try {
-        const res = await fetch(`/api/child/quizzes/${(quiz as Loose).id}/progress?userId=${session.user.id}`);
+        const res = await fetch(`/api/child/quizzes/${quiz.id}/progress?userId=${session.user.id}`);
         const data = await res.json();
         if (forceNewAttempt) {
           // Nouvelle tentative : on ne restaure pas l'état d'une session précédente
@@ -391,8 +404,8 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     const newResults: Record<number, boolean> = {};
     const newFeedbacks: Record<number, string> = {};
     const newCommentTokens: Record<number, string> = {};
-    const newRevealed: Record<number, Loose> = {};
-    const quizId = (quiz as Loose).id || "preview";
+    const newRevealed: Record<number, { correctAnswer?: string | string[]; explanation?: string }> = {};
+    const quizId = quiz.id || "preview";
 
     // Les questions à corriger partent toutes en même temps (avant : l'une
     // après l'autre, chaque réponse attendait la précédente).
@@ -419,7 +432,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
 
     // La correction se fait toujours côté serveur : le client ne connaît
     // jamais la réponse correcte avant d'avoir soumis la sienne.
-    let graded: Loose[];
+    let graded: QuizGradeResponse[];
     try {
       graded = await Promise.all(
         pending.map((i) => {
@@ -439,7 +452,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
               points: q.points,
             }),
           }).then(async (r) => {
-            const d = await r.json().catch(() => ({}));
+            const d: QuizGradeResponse = await r.json().catch(() => ({}));
             if (!r.ok && !d.unavailable) throw new Error(d.error || "Correction indisponible, réessaie.");
             return d;
           });
