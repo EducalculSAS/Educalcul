@@ -1,5 +1,6 @@
 "use client";
 
+import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { Check, X, Star, ArrowRight, Sparkles, Info, AlertTriangle } from "lucide-react";
 import type { Plan } from "@/lib/plans";
@@ -435,11 +436,10 @@ function PlanCard({
                 className="mt-4 flex items-center justify-center gap-2 text-xs font-semibold cursor-pointer select-none"
                 style={{ color: "var(--text-muted)" }}
               >
-                <input
-                  type="checkbox"
+                <GlassCheckbox
                   checked={compareChecked}
                   onChange={onToggleCompare}
-                  className="w-4 h-4 rounded accent-[var(--greek-gold)] cursor-pointer"
+                  
                 />
                 Comparer
               </label>

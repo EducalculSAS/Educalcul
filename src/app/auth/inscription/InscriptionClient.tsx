@@ -1,5 +1,6 @@
 "use client";
 
+import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import { useState, useEffect } from "react";
 import PasswordStrength from "@/components/PasswordStrength";
 import { useRouter } from "next/navigation";
@@ -288,11 +289,9 @@ export default function Inscription() {
 
       {/* CGU */}
       <label className="flex items-start gap-3 cursor-pointer">
-        <input
-          type="checkbox" checked={cguAccepted}
+        <GlassCheckbox checked={cguAccepted}
           onChange={e => setCguAccepted(e.target.checked)}
-          className="mt-0.5 w-4 h-4 rounded shrink-0"
-          style={{ accentColor: accent }}
+          className="mt-0.5 shrink-0"
         />
         <span className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
           J&apos;accepte les{" "}

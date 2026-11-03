@@ -1,5 +1,6 @@
 "use client";
  
+import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import { GripVertical, ChevronDown, ChevronRight, Sparkles, ListPlus, ClipboardPaste, Copy, Trash2, Shuffle, Plus } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassButton from "@/components/ui/GlassButton";
@@ -134,16 +135,14 @@ export default function BuilderPageList(props: BuilderPageListProps) {
         <div className="p-4 bg-gray-50/50">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1 mb-3 text-xs text-gray-600">
             <label className="flex items-center gap-1.5" title="Les blocs « Texte » et « Média » du début forment l'énoncé commun, affiché à côté des questions">
-              <input
-                type="checkbox"
+              <GlassCheckbox
                 checked={page.layout === "problem"}
                 onChange={(e) => updatePage(page.id, { layout: e.target.checked ? "problem" : undefined })}
               />
               Problème guidé : énoncé et figure fixes à côté des questions
             </label>
             <label className="flex items-center gap-1.5" title="La question suivante apparaît quand l'élève a répondu à la précédente">
-              <input
-                type="checkbox"
+              <GlassCheckbox
                 checked={page.sequential === true}
                 onChange={(e) => updatePage(page.id, { sequential: e.target.checked || undefined })}
               />
@@ -377,8 +376,7 @@ export default function BuilderPageList(props: BuilderPageListProps) {
                             key={optIndex}
                             className="flex items-center gap-2"
                           >
-                            <input
-                              type="checkbox"
+                            <GlassCheckbox
                               checked={isChecked}
                               onChange={(e) => {
                                 const next = e.target.checked

@@ -1,5 +1,6 @@
 "use client";
 
+import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import { useMemo, useRef, useState } from "react";
 import { AlertTriangle, CheckCircle2, FileSpreadsheet, XCircle } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -64,7 +65,7 @@ export function QuickEntryModal({ pages, defaultPageId, onApply, onClose, startI
               </label>
             )}
             <label className="flex items-center gap-1.5" title="Première ligne = en-têtes : énoncé, réponse, explication, type, page">
-              <input type="checkbox" checked={table} onChange={(e) => setTable(e.target.checked)} />
+              <GlassCheckbox checked={table} onChange={(e) => setTable(e.target.checked)} />
               Format tableau (CSV)
             </label>
             <input ref={fileRef} type="file" accept=".csv,.tsv,.txt,text/csv" className="hidden" onChange={(e) => { const f = e.target.files?.[0]; if (f) void readFile(f); e.target.value = ""; }} />

@@ -1,5 +1,6 @@
 "use client";
 
+import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import type { Loose } from "@/types/loose";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useState, useRef } from "react";
@@ -923,10 +924,10 @@ export default function AdminSubscriptionsClient({
                     <div className="space-y-2">
                       {Object.entries(BORDER_STYLES).filter(([, v]) => v.source === "subscription").map(([key, val]) => (
                         <label key={key} className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-gray-50">
-                          <input type="checkbox"
+                          <GlassCheckbox
                             checked={planForm.cosmetic_borders.includes(key)}
                             onChange={e => setPlanForm({ ...planForm, cosmetic_borders: e.target.checked ? [...planForm.cosmetic_borders, key] : planForm.cosmetic_borders.filter((b: string) => b !== key) })}
-                            className="w-4 h-4 text-[var(--greek-blue)] rounded"
+                            
                           />
                           <span className={`w-4 h-4 rounded-full border-2 ${val.preview}`} />
                           <span className="text-sm font-medium text-gray-700">{val.label}</span>
@@ -939,10 +940,10 @@ export default function AdminSubscriptionsClient({
                     <div className="space-y-2">
                       {Object.entries(NAME_COLORS).filter(([, v]) => v.source === "subscription").map(([key, val]) => (
                         <label key={key} className="flex items-center gap-3 cursor-pointer p-2 rounded-lg hover:bg-gray-50">
-                          <input type="checkbox"
+                          <GlassCheckbox
                             checked={planForm.cosmetic_colors.includes(key)}
                             onChange={e => setPlanForm({ ...planForm, cosmetic_colors: e.target.checked ? [...planForm.cosmetic_colors, key] : planForm.cosmetic_colors.filter((c: string) => c !== key) })}
-                            className="w-4 h-4 text-[var(--greek-blue)] rounded"
+                            
                           />
                           <span className={`text-sm font-bold ${val.cls}`}>{val.label}</span>
                         </label>

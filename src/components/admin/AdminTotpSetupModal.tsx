@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import { useState, useEffect } from "react";
 import QRCode from "qrcode";
 import { supabase } from "@/lib/supabaseClient";
@@ -116,7 +117,7 @@ export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () =>
             {backupCodes.map(c => <div key={c}>{c}</div>)}
           </div>
           <label className="flex items-center gap-2 mb-4 text-sm text-gray-600">
-            <input type="checkbox" checked={savedBackupCodes} onChange={e => setSavedBackupCodes(e.target.checked)} />
+            <GlassCheckbox checked={savedBackupCodes} onChange={e => setSavedBackupCodes(e.target.checked)} />
             J&apos;ai noté ces codes dans un endroit sûr.
           </label>
           <GlassButton

@@ -1,6 +1,7 @@
 "use client";
 
-import { BookOpen, CalendarPlus, CheckCircle2, ChevronLeft, ChevronRight, Circle, Clock, Pencil, Sparkles, Trash2 } from "lucide-react";
+import GlassCheckbox from "@/components/ui/GlassCheckbox";
+import { BookOpen, CalendarPlus, ChevronLeft, ChevronRight, Clock, Pencil, Sparkles, Trash2 } from "lucide-react";
 import GlassDialog from "@/components/ui/GlassDialog";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -65,15 +66,13 @@ export default function DayPanel({
               <li key={ev.id} className={`rounded-2xl border p-4 transition-colors ${done ? "bg-emerald-50/60 border-emerald-200" : "bg-white border-[rgba(197,161,72,0.25)]"}`}>
                 <div className="flex items-start gap-3">
                   {tickable ? (
-                    <button
-                      type="button"
-                      onClick={() => onToggleDone(ev)}
-                      aria-pressed={done}
+                    <GlassCheckbox
+                      large
+                      checked={done}
+                      onChange={() => onToggleDone(ev)}
                       aria-label={done ? "Marquer comme à faire" : "Marquer comme fait"}
-                      className="mt-0.5 shrink-0 transition-transform active:scale-90"
-                    >
-                      {done ? <CheckCircle2 className="w-6 h-6 text-emerald-600" /> : <Circle className="w-6 h-6 text-gray-300 hover:text-emerald-500" />}
-                    </button>
+                      className="mt-0.5"
+                    />
                   ) : (
                     <span className="mt-1.5 w-3 h-3 rounded-full shrink-0" style={{ background: meta.color }} />
                   )}

@@ -1,9 +1,10 @@
 "use client";
+import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import { Exercise } from "@/components/admin/CourseBuilder";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
 import { useState, useEffect, useRef } from "react";
-import { CheckCircle, PencilLine, Lightbulb, Keyboard, Pencil, Loader2 } from "lucide-react";
+import { PencilLine, Lightbulb, Keyboard, Pencil, Loader2 } from "lucide-react";
 import { fetchMiniComment } from "@/lib/miniComment";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -131,18 +132,11 @@ export function InteractiveChecklist({
             key={`${checklistId}-${index}`}
             className="flex items-start gap-3 cursor-pointer select-none py-1"
           >
-            <button
-              type="button"
-              onClick={() => toggle(index)}
-              aria-pressed={isChecked}
-              className={`mt-0.5 shrink-0 w-5 h-5 rounded-md border-2 flex items-center justify-center transition-colors ${
-                isChecked
-                  ? "bg-[var(--greek-blue)] border-[var(--greek-blue)]"
-                  : "border-[rgba(197,161,72,0.6)] bg-white"
-              }`}
-            >
-              {isChecked && <CheckCircle className="w-3.5 h-3.5 text-white" strokeWidth={3} />}
-            </button>
+            <GlassCheckbox
+              checked={isChecked}
+              onChange={() => toggle(index)}
+              className="mt-0.5"
+            />
             <span
               className={isChecked ? "text-[var(--greek-blue)]/60 line-through" : "text-[var(--greek-blue)]"}
               dangerouslySetInnerHTML={{ __html: renderLatexInHTML(item) }}

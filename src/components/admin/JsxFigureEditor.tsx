@@ -1,5 +1,6 @@
 "use client";
 
+import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowDown, ArrowUp, Plus, Trash2 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -189,7 +190,7 @@ function ElementCard({
       case "text":
         return <input className={inputCls} value={typeof value === "string" ? value : ""} onChange={(e) => set(field.key, e.target.value)} placeholder={field.hint} />;
       case "bool":
-        return <input type="checkbox" checked={value === true || (field.key === "filled" && value === undefined)} onChange={(e) => set(field.key, field.key === "filled" ? (e.target.checked ? undefined : false) : e.target.checked || undefined)} />;
+        return <GlassCheckbox checked={value === true || (field.key === "filled" && value === undefined)} onChange={(e) => set(field.key, field.key === "filled" ? (e.target.checked ? undefined : false) : e.target.checked || undefined)} />;
       case "select":
         return <select className={inputCls} value={typeof value === "string" ? value : field.options?.[0]} onChange={(e) => set(field.key, e.target.value)}>{field.options?.map((o) => <option key={o}>{o}</option>)}</select>;
       case "range": {
@@ -227,7 +228,7 @@ function ElementCard({
                 {cols.map((col) =>
                   col.type === "bool" ? (
                     <label key={col.key} className="flex items-center gap-0.5 text-[10px] text-gray-500" title={col.label}>
-                      <input type="checkbox" checked={row[col.key] === true} onChange={(e) => update(rows.map((r, k) => (k === ri ? { ...r, [col.key]: e.target.checked || undefined } : r)))} />
+                      <GlassCheckbox checked={row[col.key] === true} onChange={(e) => update(rows.map((r, k) => (k === ri ? { ...r, [col.key]: e.target.checked || undefined } : r)))} />
                       {col.label.slice(0, 8)}
                     </label>
                   ) : col.type === "color" ? (
@@ -284,8 +285,8 @@ function ElementCard({
               {Object.keys(JSX_TONES).map((t) => <option key={t} value={t}>{t}</option>)}
             </select>
           </label>
-          <label className="flex items-center gap-1"><input type="checkbox" checked={!!el.dash} onChange={(e) => set("dash", e.target.checked || undefined)} /> Pointillés</label>
-          <label className="flex items-center gap-1"><input type="checkbox" checked={!!el.hidden} onChange={(e) => set("hidden", e.target.checked || undefined)} /> Masqué (sert de support)</label>
+          <label className="flex items-center gap-1"><GlassCheckbox checked={!!el.dash} onChange={(e) => set("dash", e.target.checked || undefined)} /> Pointillés</label>
+          <label className="flex items-center gap-1"><GlassCheckbox checked={!!el.hidden} onChange={(e) => set("hidden", e.target.checked || undefined)} /> Masqué (sert de support)</label>
         </div>
       )}
     </div>
@@ -407,8 +408,8 @@ export default function JsxFigureEditor({ value, onChange }: { value: Record<str
             }} />
           </label>
         ))}
-        <label className="flex items-center gap-1"><input type="checkbox" checked={spec.axes} onChange={(e) => emit({ ...spec, axes: e.target.checked })} /> Axes</label>
-        <label className="flex items-center gap-1"><input type="checkbox" checked={spec.grid} onChange={(e) => emit({ ...spec, grid: e.target.checked })} /> Quadrillage</label>
+        <label className="flex items-center gap-1"><GlassCheckbox checked={spec.axes} onChange={(e) => emit({ ...spec, axes: e.target.checked })} /> Axes</label>
+        <label className="flex items-center gap-1"><GlassCheckbox checked={spec.grid} onChange={(e) => emit({ ...spec, grid: e.target.checked })} /> Quadrillage</label>
         {spec.mode === "3d" && (["x min", "x max", "y min", "y max", "z min", "z max"] as const).map((label, i) => (
           <label key={label}>{label}
             <input className={inputCls} key={String(spec.box3d?.[i])} defaultValue={spec.box3d?.[i] ?? 0} onBlur={(e) => {
@@ -420,8 +421,8 @@ export default function JsxFigureEditor({ value, onChange }: { value: Record<str
             }} />
           </label>
         ))}
-        <label className="flex items-center gap-1" title="Les noms (A, B, C...) vont plutôt dans l'énoncé"><input type="checkbox" checked={spec.showNames} onChange={(e) => emit({ ...spec, showNames: e.target.checked })} /> Noms des points</label>
-        {spec.mode !== "3d" && <label className="flex items-center gap-1"><input type="checkbox" checked={spec.keepAspect} onChange={(e) => emit({ ...spec, keepAspect: e.target.checked })} /> Repère orthonormé</label>}
+        <label className="flex items-center gap-1" title="Les noms (A, B, C...) vont plutôt dans l'énoncé"><GlassCheckbox checked={spec.showNames} onChange={(e) => emit({ ...spec, showNames: e.target.checked })} /> Noms des points</label>
+        {spec.mode !== "3d" && <label className="flex items-center gap-1"><GlassCheckbox checked={spec.keepAspect} onChange={(e) => emit({ ...spec, keepAspect: e.target.checked })} /> Repère orthonormé</label>}
       </div>
 
       <div>
