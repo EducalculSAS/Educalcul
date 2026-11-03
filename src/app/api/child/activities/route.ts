@@ -1,5 +1,6 @@
 ﻿import { NextResponse, after } from "next/server";
-import type { Loose } from "@/types/loose";
+import type { Page } from "@/components/admin/ExerciseBuilder";
+import type { Question } from "@/components/admin/QuizBuilder";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { blockMaxPoints } from "@/lib/exerciseScoring";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -143,11 +144,11 @@ export async function POST(req: Request) {
 
       let maxPoints = 0;
       if (type === "exercise" && Array.isArray(item?.content_json)) {
-        item.content_json.forEach((p: Loose) =>
-          (p.blocks || []).forEach((b: Loose) => (maxPoints += blockMaxPoints(b)))
+        (item.content_json as Page[]).forEach((p) =>
+          (p.blocks || []).forEach((b) => (maxPoints += blockMaxPoints(b)))
         );
       } else if (type === "quiz" && Array.isArray(item?.content_json)) {
-        item.content_json.forEach((q: Loose) => (maxPoints += q.points || 1));
+        (item.content_json as Question[]).forEach((q) => (maxPoints += q.points || 1));
       }
 
       // L'élève qui joue pour lui-même ne déclare plus sa note : elle vient des verdicts enregistrés par la correction.
@@ -155,8 +156,8 @@ export async function POST(req: Request) {
       const fromServer = me.role === "child" && me.id === internalId && !manualGrading && maxPoints > 0;
       if (fromServer) {
         const ids = new Set<string>();
-        if (type === "exercise") (item?.content_json as Loose[] | undefined)?.forEach((p: Loose) => (p.blocks || []).forEach((b: Loose) => b?.id && ids.add(String(b.id))));
-        else (item?.content_json as Loose[] | undefined)?.forEach((q: Loose) => q?.id !== undefined && ids.add(String(q.id)));
+        if (type === "exercise") (item?.content_json as Page[] | undefined)?.forEach((p) => (p.blocks || []).forEach((b) => b?.id && ids.add(String(b.id))));
+        else (item?.content_json as Question[] | undefined)?.forEach((q) => q?.id !== undefined && ids.add(String(q.id)));
         // Temps limité : seuls les verdicts rendus pendant la tentative (début enregistré au premier envoi « en cours »,
         // plus 90 s de marge réseau) comptent ; une réponse corrigée après la fin du temps ne rapporte rien.
         const window: { since?: Date; until?: Date } = {};

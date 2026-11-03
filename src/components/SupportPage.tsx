@@ -1,6 +1,6 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
+import type { LucideIcon } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -11,7 +11,12 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 
-const STATUS_CONFIG: Record<string, { label: string; color: string; icon: Loose }> = {
+/** Réponse à un ticket (de l'équipe ou de l'utilisateur). */
+interface SupportReply { id: number | string; is_admin?: boolean; admin_name?: string; color?: string; label?: string; replied_at?: string | null; reply_message?: string }
+/** Ticket renvoyé par /api/support. */
+interface SupportTicket { id: number; subject: string; message: string; priority?: string; status: string; created_at: string; replies?: SupportReply[] }
+
+const STATUS_CONFIG: Record<string, { label: string; color: string; icon: LucideIcon }> = {
   "Ouvert":    { label: "Ouvert",    color: "bg-blue-100 text-blue-700",    icon: Clock },
   "En cours":  { label: "En cours",  color: "bg-orange-100 text-orange-700", icon: AlertCircle },
   "Répondu":   { label: "Répondu",   color: "bg-purple-100 text-purple-700", icon: CheckCircle },
@@ -34,14 +39,14 @@ const labelCls = "block text-xs font-semibold text-gray-600 uppercase tracking-w
 // ─────────────────────────────────────────────────────────────────────────────
 
 export default function SupportPage({ role }: { role: "child" | "parent" }) {
-  const [tickets, setTickets] = useState<Loose[]>([]);
+  const [tickets, setTickets] = useState<SupportTicket[]>([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [expanded, setExpanded] = useState<Set<number>>(new Set());
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<string | null>(null);
   const [form, setForm] = useState({ subject: "", message: "", priority: "normal" });
-  const [userInfo, setUserInfo] = useState<Loose>(null);
+  const [userInfo, setUserInfo] = useState<{ authId: string; email?: string; first_name?: string; last_name?: string } | null>(null);
   const [replyText, setReplyText] = useState<Record<number, string>>({});
   const [sending, setSending] = useState<number | null>(null);
   const { setPageContext, clearContext } = useAITutor();
@@ -193,7 +198,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
             <div className="space-y-3">
               {tickets.map(ticket => {
                 const st = STATUS_CONFIG[ticket.status] || STATUS_CONFIG.open;
-                const pr = PRIORITY_CONFIG[ticket.priority] || PRIORITY_CONFIG.normal;
+                const pr = PRIORITY_CONFIG[ticket.priority ?? "normal"] || PRIORITY_CONFIG.normal;
                 const StatusIcon = st.icon;
                 const isExpanded = expanded.has(ticket.id);
                 const replies = ticket.replies || [];
@@ -225,12 +230,12 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
                         {/* Réponses */}
                         {replies.length > 0 && (
                           <div className="space-y-3">
-                            {replies.map((r: Loose) => (
+                            {replies.map((r) => (
                               <div key={r.id} className={`flex ${r.is_admin ? "justify-start" : "justify-end"}`}>
                                 <div className={`max-w-[85%] rounded-xl p-4 ${r.is_admin ? "bg-[var(--greek-blue)]/5 border border-[var(--greek-blue)]/10" : "bg-[var(--greek-blue)] text-white"}`}>
                                   <div className="flex items-center justify-between gap-3 mb-2">
                                     <span className={`text-xs font-bold ${r.is_admin ? "text-[var(--greek-blue)]" : "text-white/80"}`}>{r.is_admin ? (r.admin_name || "Support Educalcul") : "Vous"}</span>
-                                    <span className={`text-xs ${r.is_admin ? "text-gray-400" : "text-white/60"}`}>{new Date(r.replied_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
+                                    <span className={`text-xs ${r.is_admin ? "text-gray-400" : "text-white/60"}`}>{(r.replied_at ? new Date(r.replied_at) : new Date()).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
                                   </div>
                                   <p className={`text-sm whitespace-pre-wrap ${r.is_admin ? "text-gray-700" : "text-white"}`}>{r.reply_message}</p>
                                 </div>

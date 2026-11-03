@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -91,22 +90,26 @@ export async function GET(req: Request) {
 
     // Build data summary for AI
     const exSummary = exercises?.slice(0, 15).map(e => ({
-      titre: (e.exercises as Loose)?.title || "?",
-      difficulte: (e.exercises as Loose)?.difficulty_level,
+      titre: (e.exercises as { title?: string; difficulty_level?: string } | null)?.title || "?",
+      difficulte: (e.exercises as { difficulty_level?: string } | null)?.difficulty_level,
       correct: e.is_correct,
       date: new Date(e.attempted_at).toLocaleDateString("fr-FR"),
     })) || [];
 
     const quizSummary = quizzes?.slice(0, 10).map(q => ({
-      titre: (q.quizzes as Loose)?.title || "?",
+      titre: (q.quizzes as { title?: string } | null)?.title || "?",
       score: `${q.score}/${q.total_questions}`,
       date: new Date(q.completed_at).toLocaleDateString("fr-FR"),
     })) || [];
 
-    const courseSummary = courseProgress?.slice(0, 8).map((c: Loose) => ({
-      cours: Array.isArray(c.courses) ? c.courses[0]?.title : c.courses?.title || "?",
-      matiere: Array.isArray(c.courses) ? c.courses[0]?.subject : c.courses?.subject || "?",
-    })) || [];
+    type CourseRef = { title?: string; subject?: string };
+    const courseSummary = courseProgress?.slice(0, 8).map((c) => {
+      const courses = c.courses as unknown as CourseRef | CourseRef[] | null;
+      return {
+        cours: Array.isArray(courses) ? courses[0]?.title : courses?.title || "?",
+        matiere: Array.isArray(courses) ? courses[0]?.subject : courses?.subject || "?",
+      };
+    }) || [];
 
     const prompt = `Tu es un assistant pédagogique expert. Voici les données de progression de ${child?.first_name || "l'enfant"} (${child?.grade_level || "niveau non défini"}).
 
