@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { ArrowLeft, Award, BookOpen, CheckCircle, TrendingUp, Gamepad2 } from "lucide-react";
@@ -26,6 +25,9 @@ const MINIGAME_LABEL: Record<string, string> = {
   suites: "Suites",
   langues: "Maths en langues",
 };
+
+/** Relation « vers un » de Supabase : objet (ou tableau d'un élément selon le typage), jamais plusieurs. */
+const one = <T,>(v: T | T[] | null | undefined): T | undefined => (Array.isArray(v) ? v[0] : v ?? undefined);
 
 export default async function ChildReportPage({ params }: { params: Promise<{ id: string }> }) {
   const { id: childId } = await params;
@@ -56,28 +58,28 @@ export default async function ChildReportPage({ params }: { params: Promise<{ id
   const allActivities: ActivityItem[] = [];
   let totalScore = 0, scoreCount = 0;
 
-  (quizzes || []).forEach((q: Loose) => {
+  (quizzes || []).forEach((q) => {
     const pct = q.total_questions > 0 ? (q.score / q.total_questions) * 100 : 0;
     totalScore += pct; scoreCount++;
-    allActivities.push({ id: q.id, type: "Quiz", title: q.quizzes?.title || "Quiz", date: q.completed_at, score: `${q.score}/${q.total_questions}`, status: pct >= 50 ? "success" : "failure" });
+    allActivities.push({ id: q.id, type: "Quiz", title: one(q.quizzes)?.title || "Quiz", date: q.completed_at, score: `${q.score}/${q.total_questions}`, status: pct >= 50 ? "success" : "failure" });
   });
 
   const subjectMap: Record<string, { correct: number; total: number }> = {};
-  (exercises || []).forEach((e: Loose) => {
-    allActivities.push({ id: e.id, type: "Exercice", title: e.exercises?.title || "Exercice", date: e.attempted_at, score: e.is_correct ? "Correct" : "Incorrect", status: e.is_correct ? "success" : "failure" });
-    const subj = e.exercises?.subject || "Mathématiques";
+  (exercises || []).forEach((e) => {
+    allActivities.push({ id: e.id, type: "Exercice", title: one(e.exercises)?.title || "Exercice", date: e.attempted_at, score: e.is_correct ? "Correct" : "Incorrect", status: e.is_correct ? "success" : "failure" });
+    const subj = one(e.exercises)?.subject || "Mathématiques";
     if (!subjectMap[subj]) subjectMap[subj] = { correct: 0, total: 0 };
     subjectMap[subj].total++;
     if (e.is_correct) subjectMap[subj].correct++;
   });
 
-  (courseProgress || []).forEach((c: Loose) => {
-    allActivities.push({ id: c.id, type: "Cours", title: c.course?.title || "Cours", date: c.created_at, status: "completed" });
-    const subj = c.course?.subject || "Mathématiques";
+  (courseProgress || []).forEach((c) => {
+    allActivities.push({ id: c.id, type: "Cours", title: one(c.courses)?.title || "Cours", date: c.created_at, status: "completed" });
+    const subj = one(c.courses)?.subject || "Mathématiques";
     if (!subjectMap[subj]) subjectMap[subj] = { correct: 0, total: 0 };
   });
 
-  (minigameSessions || []).forEach((m: Loose) => {
+  (minigameSessions || []).forEach((m) => {
     const pct = m.max_score > 0 ? (m.score / m.max_score) * 100 : 0;
     allActivities.push({
       id: m.id, type: "Mini-jeu", title: MINIGAME_LABEL[m.game_type] || m.game_type, date: m.completed_at,
