@@ -83,7 +83,7 @@ export async function GET(request: Request) {
       if (!page || page.length < pageSize) break;
     }
 
-    return NextResponse.json(isAdmin ? data : data.map(stripAnswers));
+    return NextResponse.json(isAdmin ? data : data.map((quiz) => stripAnswers(quiz as { content_json?: unknown })));
   } catch (error: unknown) {
     console.error("Error fetching quizzes:", error);
     return NextResponse.json({ error: sanitizeErrorMessage(errMessage(error)) }, { status: 500 });

@@ -1,10 +1,12 @@
-import type { Loose } from "@/types/loose";
+import { one } from "@/lib/relations";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
-async function safeCount(table: string, filter?: (q: Loose) => Loose): Promise<number> {
+type CountQuery = ReturnType<ReturnType<typeof supabaseAdmin.from>["select"]>;
+
+async function safeCount(table: string, filter?: (q: CountQuery) => CountQuery): Promise<number> {
   try {
-    let q = supabaseAdmin.from(table).select("*", { count: "exact", head: true });
+    let q: CountQuery = supabaseAdmin.from(table).select("*", { count: "exact", head: true });
     if (filter) q = filter(q);
     const { count, error } = await q;
     return error ? 0 : (count ?? 0);
@@ -122,24 +124,24 @@ export async function fetchAdminReports() {
       description: `${u.first_name || "Utilisateur"} ${u.last_name || ""} s'est inscrit(e) en tant que ${u.role === "parent" ? "parent" : "élève"}`,
       timestamp: u.created_at,
     })),
-    ...(recentPosts || []).map((p: Loose) => ({
+    ...(recentPosts || []).map((p) => ({
       type: "forum",
       icon: "message",
-      description: `${p.author?.first_name || "Quelqu'un"} a posté "${p.title}"`,
+      description: `${one(p.author)?.first_name || "Quelqu'un"} a posté "${p.title}"`,
       timestamp: p.created_at,
     })),
-    ...(recentAttempts || []).map((a: Loose) => ({
+    ...(recentAttempts || []).map((a) => ({
       type: "exercice",
       icon: "exercise",
-      description: `${a.user?.first_name || "Un élève"} a fait un exercice`,
+      description: `${one(a.users)?.first_name || "Un élève"} a fait un exercice`,
       timestamp: a.created_at,
     })),
-    ...(recentReports || []).map((r: Loose) => {
-      const target = r.post_id ? "un sujet" : r.comment_id ? "un commentaire" : `le profil de ${r.reported?.first_name || "?"}`;
+    ...(recentReports || []).map((r) => {
+      const target = r.post_id ? "un sujet" : r.comment_id ? "un commentaire" : `le profil de ${one(r.reported)?.first_name || "?"}`;
       return {
         type: "signalement",
         icon: "flag",
-        description: `${r.reporter?.first_name || "Quelqu'un"} a signalé ${target}`,
+        description: `${one(r.reporter)?.first_name || "Quelqu'un"} a signalé ${target}`,
         timestamp: r.created_at,
       };
     }),

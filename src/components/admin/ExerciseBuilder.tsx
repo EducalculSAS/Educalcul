@@ -1,7 +1,6 @@
 "use client";
  
 
-import type { Loose } from "@/types/loose";
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
@@ -138,6 +137,17 @@ function defaultBlockFields(type: BlockType): Partial<Block> {
   }
 }
 
+/** Métadonnées qu'un éditeur de contenu peut proposer au formulaire qui l'entoure (titre, description, difficulté, durée). */
+export interface ContentMetadata {
+  title?: string;
+  description?: string;
+  difficulty_level?: "easy" | "medium" | "hard";
+  time_limit?: number;
+  time_limit_minutes?: number;
+  min_score_percent?: number;
+  max_attempts?: number;
+}
+
 export interface Page {
   id: string;
   title: string;
@@ -151,7 +161,7 @@ export interface Page {
 interface ExerciseBuilderProps {
   initialContent: Page[];
   onChange: (content: Page[]) => void;
-  onMetadataChange?: (metadata: Loose) => void;
+  onMetadataChange?: (metadata: ContentMetadata) => void;
   /** Niveau scolaire de l'exercice, déjà choisi plus haut dans le formulaire. */
   level?: string;
 }

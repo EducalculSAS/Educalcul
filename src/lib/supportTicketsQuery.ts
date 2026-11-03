@@ -1,10 +1,9 @@
-import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { selectAllPages } from "@/lib/selectAllPages";
 
 export async function fetchSupportTickets(viewMode: "active" | "archived") {
   // Paginé : un simple select s'arrêtait aux 1000 premiers tickets.
-  const data = await selectAllPages<Loose>((from, to) => {
+  const data = await selectAllPages((from, to) => {
     const query = supabaseAdmin.from("support_tickets").select("*");
     return (viewMode === "archived"
       ? query.eq("is_archived", true).order("archived_at", { ascending: false })

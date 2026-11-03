@@ -1,6 +1,5 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, X } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -24,19 +23,24 @@ const SCOPE_LABELS: Record<string, { article: string; noun: string }> = {
   question: { article: "la question", noun: "cette question" },
 };
 
-export default function AISectionEditModal({
+/** Section de contenu modifiable par l'IA (chapitre, leçon, page, bloc ou question) : forme libre selon le type, identifiée par `id`. */
+type AiSection = { id: string };
+
+export default function AISectionEditModal<T extends AiSection>({
   scope,
   level,
-  section,
+  section: typedSection,
   onApply,
   onClose,
 }: {
   scope: "lesson" | "chapter" | "page" | "block" | "question";
   level?: string;
-  section: Loose;
-  onApply: (updated: Loose) => void;
+  section: T;
+  onApply: (updated: T) => void;
   onClose: () => void;
 }) {
+  // La forme dépend du type de section (chapitre, leçon, page, bloc, question) : on la lit comme un objet libre, le type T n'est restitué qu'à la sortie.
+  const section = typedSection as unknown as Record<string, unknown> & { id: string };
   const [instruction, setInstruction] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -70,11 +74,11 @@ export default function AISectionEditModal({
         body: JSON.stringify({ type: scope, instruction, content: section, level }),
         signal: controller.signal,
       });
-      const data = await res.json();
+      const data: { error?: string; item?: Record<string, unknown> } = await res.json();
       if (!res.ok) throw new Error(data.error || "Erreur de modification");
       if (!data.item) throw new Error("Réponse IA invalide");
 
-      let updated: Loose;
+      let updated: Record<string, unknown>;
       if (scope === "block" && section.type === "text") {
         // Bloc de texte (énoncé, données) : il reste un bloc de texte, seul son contenu change.
         updated = { ...section, content: data.item.content ?? section.content, id: section.id };
@@ -92,7 +96,7 @@ export default function AISectionEditModal({
           ...section,
           ...data.item,
           id: section.id,
-          blocks: (Array.isArray(data.item.blocks) ? data.item.blocks : []).map((b: Loose) => ({ ...b, id: crypto.randomUUID() })),
+          blocks: ((Array.isArray(data.item.blocks) ? data.item.blocks : []) as Record<string, unknown>[]).map((b) => ({ ...b, id: crypto.randomUUID() })),
         };
       } else {
         // On fusionne avec la section existante : tout champ non renvoyé par l'IA est conservé, et on garde l'id d'origine.
@@ -103,14 +107,15 @@ export default function AISectionEditModal({
       // si l'IA a oublié des enfants existants, on les ré-ajoute.
       const childKey = scope === "page" ? undefined : CHILD_KEY[scope];
       if (childKey && Array.isArray(section[childKey]) && Array.isArray(updated[childKey])) {
-        const returned = new Set(updated[childKey].map((c: Loose) => c?.id));
-        const missing = section[childKey].filter((c: Loose) => !returned.has(c?.id));
-        if (missing.length > 0) updated[childKey] = [...updated[childKey], ...missing];
+        const updatedChildren = updated[childKey] as { id?: unknown }[];
+        const returned = new Set(updatedChildren.map((c) => c?.id));
+        const missing = (section[childKey] as { id?: unknown }[]).filter((c) => !returned.has(c?.id));
+        if (missing.length > 0) updated[childKey] = [...updatedChildren, ...missing];
       }
 
       setDone(true);
       await new Promise((r) => setTimeout(r, 350));
-      onApply(updated);
+      onApply(updated as T);
       onClose();
     } catch (e: unknown) {
       if ((e instanceof Error ? e.name : "") === "AbortError") return;
@@ -169,7 +174,7 @@ export default function AISectionEditModal({
               </p>
               <p className="text-xs text-gray-400 truncate">
                 {titleNoun.charAt(0).toUpperCase() + titleNoun.slice(1)} :{" "}
-                <strong>{section?.title || section?.text || "(sans titre)"}</strong>
+                <strong>{String(section?.title || section?.text || "(sans titre)")}</strong>
               </p>
               <textarea
                 value={instruction}

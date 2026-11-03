@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { one } from "@/lib/relations";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { ArrowLeft, Award, BookOpen, CheckCircle, TrendingUp, Gamepad2 } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
@@ -25,9 +26,6 @@ const MINIGAME_LABEL: Record<string, string> = {
   suites: "Suites",
   langues: "Maths en langues",
 };
-
-/** Relation « vers un » de Supabase : objet (ou tableau d'un élément selon le typage), jamais plusieurs. */
-const one = <T,>(v: T | T[] | null | undefined): T | undefined => (Array.isArray(v) ? v[0] : v ?? undefined);
 
 export default async function ChildReportPage({ params }: { params: Promise<{ id: string }> }) {
   const { id: childId } = await params;

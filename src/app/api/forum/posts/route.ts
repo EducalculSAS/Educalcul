@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -9,6 +8,23 @@ import {
   audiencesFor, canSeeAudience, cleanText, ilikePattern, parseId, publicAuthor,
 } from "@/lib/forum";
 import type { ForumFilter, ForumPostSummary, ForumSort } from "@/lib/forumTypes";
+
+/** Ligne renvoyée par la requête de liste (la chaîne `select` est dynamique, le type n'est donc pas déduit). */
+interface ForumPostRow {
+  id: number;
+  title: string;
+  content: string | null;
+  is_pinned: boolean | null;
+  is_locked: boolean | null;
+  solved_comment_id: number | null;
+  comment_count: number | null;
+  like_count: number | null;
+  view_count: number | null;
+  created_at: string;
+  last_activity_at: string;
+  category: { id: number; name: string; color: string | null; audience: string } | null;
+  author: Record<string, unknown> | null;
+}
 
 const FILTERS: ForumFilter[] = ["all", "following", "mine", "unanswered", "solved"];
 const SORTS: ForumSort[] = ["activity", "new", "popular"];
@@ -68,8 +84,8 @@ export async function GET(req: Request) {
     const { data, error } = await query.range(offset, offset + PAGE_SIZE);
     if (error) throw error;
 
-    const rows = data ?? [];
-    const items: ForumPostSummary[] = rows.slice(0, PAGE_SIZE).map((p: Loose) => ({
+    const rows = (data ?? []) as unknown as ForumPostRow[];
+    const items: ForumPostSummary[] = rows.slice(0, PAGE_SIZE).map((p) => ({
       id: p.id,
       title: p.title,
       excerpt: String(p.content || "").replace(/\s+/g, " ").slice(0, 220),

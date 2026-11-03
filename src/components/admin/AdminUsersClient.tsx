@@ -155,7 +155,7 @@ function esc(v: unknown): string {
 
 function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): string {
   const NAVY = "#1a3a5c", GOLD = "#c5a148";
-  const d = (v: Loose) => v ? esc(new Date(v).toLocaleString("fr-FR")) : "-";
+  const d = (v: string | null | undefined) => v ? esc(new Date(v).toLocaleString("fr-FR")) : "-";
   const single = users.length === 1;
   const u = users[0];
 

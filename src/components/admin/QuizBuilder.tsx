@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import type { Loose } from "@/types/loose";
+import type { ContentMetadata } from "@/components/admin/ExerciseBuilder";
 import { useState, useEffect, useRef } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
@@ -35,7 +35,7 @@ export interface Question {
 interface QuizBuilderProps {
   initialQuestions: Question[];
   onChange: (questions: Question[]) => void;
-  onMetadataChange?: (metadata: Loose) => void;
+  onMetadataChange?: (metadata: ContentMetadata) => void;
   /** Niveau scolaire du quiz, déjà choisi plus haut dans le formulaire. */
   level?: string;
 }

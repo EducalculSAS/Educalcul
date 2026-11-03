@@ -95,7 +95,7 @@ export async function POST(
         ? targetQuestion.correctAnswer
         : [targetQuestion.correctAnswer];
       const selected = Array.isArray(answer) ? answer : [answer];
-      isCorrect = correct.length === selected.length && correct.every((a: Loose) => selected.includes(String(a)));
+      isCorrect = correct.length === selected.length && correct.every((a: unknown) => selected.includes(String(a)));
       score = isCorrect ? maxPoints : 0;
       feedback = isCorrect ? "Bonne réponse !" : "Ce n'est pas la bonne réponse.";
     } else {

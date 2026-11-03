@@ -1,9 +1,10 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
 import "mathlive";
 import type { MathfieldElement } from "mathlive";
+
+type MathCommand = Parameters<MathfieldElement["executeCommand"]>[0];
 import { incrementMathKeyboardOpen, decrementMathKeyboardOpen, subscribeMathKeyboardVisibility } from "@/lib/mathKeyboardVisibility";
 import CustomMathKeyboard, {
   type MathKeyboardConfig,
@@ -392,8 +393,8 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       insert: (latex: string) => {
         mfRef.current?.insert(latex, { focus: true, selectionMode: "placeholder" });
       },
-      command: (cmd: Loose) => {
-        mfRef.current?.executeCommand(cmd);
+      command: (cmd) => {
+        mfRef.current?.executeCommand(cmd as MathCommand);
         mfRef.current?.focus();
       },
       focus: () => mfRef.current?.focus(),
@@ -483,11 +484,11 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
         focus: true,
         format: "latex",
         selectionMode: hasPlaceholder ? "placeholder" : "after",
-      } as Loose);
+      });
       return;
     }
     if (key.cmd) {
-      mf.executeCommand(key.cmd as Loose);
+      mf.executeCommand(key.cmd as unknown as MathCommand);
       mf.focus();
     }
   };

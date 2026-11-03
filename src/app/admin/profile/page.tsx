@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
@@ -10,7 +9,7 @@ export default async function AdminProfilePage() {
   const supabase = await createSupabaseServerClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  const { data }: { data: Loose } = await supabaseAdmin
+  const { data } = await supabaseAdmin
     .from("users")
     .select(USER_SELECT_COLUMNS)
     .eq("auth_id", user?.id)

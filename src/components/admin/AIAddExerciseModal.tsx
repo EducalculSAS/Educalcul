@@ -1,6 +1,5 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -72,7 +71,7 @@ export default function AIAddExerciseModal({
         body: JSON.stringify({ type, instruction, content: ctx, level }),
         signal: controller.signal,
       });
-      const data = await res.json();
+      const data: { error?: string; item?: Partial<Page> & Partial<Block> } = await res.json();
       if (!res.ok) throw new Error(data.error || "Erreur de génération");
       if (!data.item) throw new Error("Réponse IA invalide");
 
@@ -84,11 +83,11 @@ export default function AIAddExerciseModal({
           ...data.item,
           id: crypto.randomUUID(),
           title: data.item.title || "Nouvelle page",
-          blocks: (data.item.blocks || []).map((b: Loose) => ({ ...b, id: crypto.randomUUID() })),
+          blocks: ((data.item.blocks || []) as Block[]).map((b) => ({ ...b, id: crypto.randomUUID() })),
         };
         onAddPage(pg, position);
       } else {
-        const bl: Block = { ...data.item, id: crypto.randomUUID(), title: data.item.title || "Nouveau bloc" };
+        const bl = { ...data.item, id: crypto.randomUUID(), title: data.item.title || "Nouveau bloc" } as Block;
         onAddBlock(bl, targetPageId, position);
       }
       onClose();

@@ -1,5 +1,4 @@
 import { getClientIp } from "@/lib/apiAuth";
-import type { Loose } from "@/types/loose";
 import { NextRequest } from "next/server";
 import { generateStructuredContent } from "@/lib/llm";
 import { requireRole } from "@/lib/apiAuth";
@@ -38,10 +37,10 @@ Réponds UNIQUEMENT avec un JSON de la forme :
 Chaque sous-tableau de "rows" doit avoir le même nombre de colonnes que "headers". Utilise des symboles mathématiques unicode (↗, ↘, ∞, ‖, etc.) directement dans le texte des cellules.`;
 
   try {
-    const result = (await generateStructuredContent(description, systemPrompt, 0.4)) as Loose;
+    const result = (await generateStructuredContent(description, systemPrompt, 0.4)) as { rows?: unknown[]; [key: string]: unknown };
     const headers = Array.isArray(result?.headers) ? result.headers.map(String) : [];
     const rows = Array.isArray(result?.rows)
-      ? result.rows.map((r: Loose) => (Array.isArray(r) ? r.map(String) : []))
+      ? result.rows.map((r) => (Array.isArray(r) ? r.map(String) : []))
       : [];
     if (!headers.length || !rows.length) {
       throw new Error("Réponse IA invalide");

@@ -1,5 +1,5 @@
-import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
+import { one } from "@/lib/relations";
 import { ArrowLeft, CheckCircle, XCircle, Clock, Eye, Brain } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Link from "next/link";
@@ -41,7 +41,7 @@ export default async function ExerciseHistoryPage() {
         </div>
       ) : (
         <div className="space-y-3">
-          {attempts.map((a: Loose) => {
+          {attempts.map((a) => {
             const passed = a.passed ?? (a.score_percent != null ? a.score_percent >= 50 : a.is_correct);
             return (
               <Link
@@ -57,7 +57,7 @@ export default async function ExerciseHistoryPage() {
                   )}
                   <div className="min-w-0">
                     <div className="font-bold text-[var(--text-dark)] truncate">
-                      {a.exercises?.title || "Exercice"}
+                      {one(a.exercises)?.title || "Exercice"}
                     </div>
                     <div className="text-sm text-[var(--text-muted)] flex items-center gap-2">
                       <Clock className="w-3.5 h-3.5" />

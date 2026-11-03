@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
@@ -46,7 +45,7 @@ export async function GET(req: Request) {
 
     // Paginé : les événements d'une famille s'accumulent au fil des années.
     const childOnly = requester.role === "child" && requester.id === ownerId;
-    const eventsQuery = selectAllPages<unknown>((from, to) => {
+    const eventsQuery = selectAllPages((from, to) => {
       let q = supabaseAdmin
         .from("calendar_events")
         .select("id, title, description, start_date, end_date, start_time, end_time")
@@ -68,7 +67,7 @@ export async function GET(req: Request) {
 
     const ownerZone = ownerZoneRes ? ownerZoneRes.data?.school_zone || "C" : requester.school_zone || "C";
 
-    const globalEvents = await selectAllPages<Loose>((from, to) =>
+    const globalEvents = await selectAllPages((from, to) =>
       supabaseAdmin
         .from("global_calendar_events")
         .select("id, title, description, start_date, end_date")
@@ -78,7 +77,7 @@ export async function GET(req: Request) {
     );
 
     const icsEvents = [
-      ...(events || []).map((e: Loose) => ({
+      ...(events || []).map((e) => ({
         id: e.id,
         title: e.title,
         description: e.description,
@@ -87,7 +86,7 @@ export async function GET(req: Request) {
         start_time: e.start_time,
         end_time: e.end_time,
       })),
-      ...(globalEvents || []).map((e: Loose) => ({
+      ...(globalEvents || []).map((e) => ({
         id: `global-${e.id}`,
         title: e.title,
         description: e.description,

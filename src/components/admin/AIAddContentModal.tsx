@@ -1,6 +1,5 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { useState, useEffect, useRef } from "react";
 import { Sparkles, X, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -78,7 +77,7 @@ export default function AIAddContentModal({
         body: JSON.stringify({ type, instruction, content: ctx, level }),
         signal: controller.signal,
       });
-      const data = await res.json();
+      const data: { error?: string; item?: Partial<Chapter> & Partial<Lesson> } = await res.json();
       if (!res.ok) throw new Error(data.error || "Erreur de génération");
       if (!data.item) throw new Error("Réponse IA invalide");
 
@@ -91,9 +90,11 @@ export default function AIAddContentModal({
           ...data.item,
           id: crypto.randomUUID(),
           title: data.item.title || "Nouveau chapitre",
-          lessons: (data.item.lessons || []).map((l: Loose) => ({
+          lessons: ((data.item.lessons || []) as Partial<Lesson>[]).map((l) => ({
             ...l,
             id: crypto.randomUUID(),
+            title: l.title || "Nouvelle leçon",
+            content: l.content ?? "",
             type: l.type || "text",
             duration: l.duration || 5,
           })),

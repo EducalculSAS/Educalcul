@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { normalizePricingConfig } from "@/lib/pricingConfig";
@@ -9,7 +8,7 @@ export default async function AdminSubscriptionsPage() {
   const [plans, codes, { data: pricingRow }] = await Promise.all([
     fetchAdminSubscriptionPlans(),
     // Paginé : un code par parent, bien plus de 1000 au lancement.
-    selectAllPages<Loose>((from, to) =>
+    selectAllPages((from, to) =>
       supabaseAdmin
         .from("referral_codes")
         .select(`

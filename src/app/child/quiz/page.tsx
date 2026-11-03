@@ -54,9 +54,9 @@ export default async function ChildQuizPage({
 
   const initialProgress: Record<string, { status: string; score: number; attempts: number }> = {};
   for (const a of attempts || []) {
-    const history = a.attempts_history || [];
+    const history = (a.attempts_history || []) as { passed?: boolean; score_percent?: number }[];
     if (history.length === 0) continue;
-    const everPassed = history.some((h: Loose) => h.passed === true);
+    const everPassed = history.some((h) => h.passed === true);
     const best = history.reduce((max: number, h: Loose) => Math.max(max, h.score_percent ?? 0), 0);
     initialProgress[a.quiz_id] = { status: everPassed ? "passed" : "failed", score: best, attempts: history.length };
   }

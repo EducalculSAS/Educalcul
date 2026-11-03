@@ -1,7 +1,7 @@
 'use client';
 
-import type { Loose } from "@/types/loose";
 import { useEffect } from "react";
+import type { Session } from "@supabase/supabase-js";
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { resolveAuthDestination } from '@/lib/authRedirect';
@@ -53,7 +53,7 @@ export default function AuthCallback() {
       handleSession(session);
     };
 
-    const handleSession = async (session: Loose) => {
+    const handleSession = async (session: Session) => {
 
       // Méthode unique : resolveAuthDestination gère ban + role + first_name
       const dest = await resolveAuthDestination(session?.access_token);
