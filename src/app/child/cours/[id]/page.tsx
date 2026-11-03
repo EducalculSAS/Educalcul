@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { childMayOpen } from "@/lib/levelAccess";
-import CourseDetailClient from "@/components/child/CourseDetailClient";
+import CourseDetailClient, { type CourseDetail } from "@/components/child/CourseDetailClient";
 
 export default async function CourseDetailPage({
   params,
@@ -31,7 +31,7 @@ export default async function CourseDetailPage({
       .eq("type", "course")
       .maybeSingle();
 
-    return <CourseDetailClient courseId={courseId} initialCourse={(preview?.payload as unknown) || null} />;
+    return <CourseDetailClient courseId={courseId} initialCourse={(preview?.payload as CourseDetail | null) || null} />;
   }
 
   const authUser = await getServerUser();
@@ -49,5 +49,5 @@ export default async function CourseDetailPage({
   if (courseData && !(await childMayOpen(authUser, { kind: "course", id: courseId, level: courseData.level, folder_id: courseData.folder_id }, "course_folders"))) redirect("/child/cours");
   const course = error || !courseData ? null : courseData;
 
-  return <CourseDetailClient courseId={courseId} initialCourse={course} />;
+  return <CourseDetailClient courseId={courseId} initialCourse={course as CourseDetail | null} />;
 }

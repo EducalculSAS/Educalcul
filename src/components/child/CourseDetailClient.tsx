@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
-import type { Loose } from "@/types/loose";
+import type { Chapter } from "@/components/admin/CourseBuilder";
 import Image from "next/image";
 import { useKatexIn } from "@/lib/useKatexIn";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -20,19 +20,31 @@ import { supabase } from "@/lib/supabaseClient";
  * (aperçu admin transmis via une ligne content_previews, cf. la page
  * serveur). La progression (resumeInfo) vient de la même route serveur que
  * CourseViewer, plus de copie locale. */
+/** Cours tel que chargé par la page serveur (ou par l'aperçu admin). `blocks` sur un chapitre vient d'anciennes versions du contenu. */
+export interface CourseDetail {
+  id?: string | number;
+  title: string;
+  description?: string | null;
+  level?: string | null;
+  subject?: string | null;
+  thumbnail_url?: string | null;
+  estimated_time?: number | null;
+  content_json: (Chapter & { blocks?: { content?: string; text?: string }[] })[] | null;
+}
+
 export default function CourseDetailClient({
   courseId,
   initialCourse,
 }: {
   courseId: string;
-  initialCourse: Loose | null;
+  initialCourse: CourseDetail | null;
 }) {
   const router = useRouter();
   const { setPageContext, clearContext } = useAITutor();
   const isPreview = courseId === "preview";
 
   const [loading] = useState(false);
-  const [course] = useState<Loose>(initialCourse);
+  const [course] = useState(initialCourse);
   const [resumeInfo, setResumeInfo] = useState<{ pct: number; chapterIndex: number; status: string } | null>(null);
   const [started, setStarted] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -49,7 +61,7 @@ export default function CourseDetailClient({
         const p = data?.progress;
         const done = p?.lessonsCompleted || [];
         const chIdx = typeof p?.lastChapterIndex === "number" ? p.lastChapterIndex : 0;
-        const totalL = (course.content_json || []).reduce((a: number, ch: Loose) => a + (ch.lessons?.length || 0), 0);
+        const totalL = (course.content_json || []).reduce((a, ch) => a + (ch.lessons?.length || 0), 0);
         const pct = totalL > 0 ? Math.round((done.length / totalL) * 100) : 0;
         const status = data?.status || "not_started";
         const effectiveStatus = status === "completed" || pct >= 100 ? "completed" : status;
@@ -60,14 +72,14 @@ export default function CourseDetailClient({
     })();
 
     const chaptersSummary = (course.content_json || [])
-      .map((ch: Loose) => `Chapitre: ${ch.title || ""}\n${(ch.blocks || []).map((b: Loose) => b.content || b.text || "").join(" ")}`)
+      .map((ch) => `Chapitre: ${ch.title || ""}\n${(ch.blocks || []).map((b) => b.content || b.text || "").join(" ")}`)
       .join("\n")
       .slice(0, 2000);
     setPageContext({
       page: "cours_detail",
       courseTitle: course.title,
-      courseSubject: course.subject,
-      courseLevel: course.level,
+      courseSubject: course.subject ?? undefined,
+      courseLevel: course.level ?? undefined,
       courseContent: chaptersSummary,
     });
     return () => clearContext();
@@ -120,7 +132,7 @@ export default function CourseDetailClient({
         </div>
         <div className="flex-1 overflow-hidden">
           <CourseViewer
-            course={course}
+            course={{ ...course, description: course.description ?? undefined, level: course.level ?? undefined }}
             reviewMode={resumeInfo?.status === "completed"}
             onBack={() => { if (!isPreview) setStarted(false); }}
             onChapterComplete={(chapterIndex) => {
