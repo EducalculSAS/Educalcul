@@ -4,7 +4,6 @@
  */
 
 // UUID v4 pattern
-import type { Loose } from "@/types/loose";
 const UUID_REGEX = /^[0-9a-f]{8}-[0-9a-f]{4}-[4][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 /**
@@ -17,7 +16,7 @@ export function isValidUUID(value: string): boolean {
 /**
  * Validate numeric ID
  */
-export function isValidNumericId(value: Loose): boolean {
+export function isValidNumericId(value: unknown): boolean {
   const num = Number(value);
   return !isNaN(num) && num > 0 && Number.isInteger(num);
 }
@@ -36,7 +35,7 @@ export const validateEmail = isValidEmail;
 /**
  * Validate string with max length (prevents DoS)
  */
-export function validateString(value: Loose, maxLength: number = 5000): string | null {
+export function validateString(value: unknown, maxLength: number = 5000): string | null {
   if (typeof value !== 'string') return null;
   if (value.length === 0 || value.length > maxLength) return null;
   return value.trim();
@@ -45,7 +44,7 @@ export function validateString(value: Loose, maxLength: number = 5000): string |
 /**
  * Validate name fields (first_name, last_name, etc)
  */
-export function validateName(name: Loose, maxLength: number = 100): string | null {
+export function validateName(name: unknown, maxLength: number = 100): string | null {
   const validated = validateString(name, maxLength);
   if (!validated) return null;
   // Allow only letters, spaces, hyphens, apostrophes
@@ -56,7 +55,7 @@ export function validateName(name: Loose, maxLength: number = 100): string | nul
 /**
  * Validate username (alphanumeric, underscore, hyphen)
  */
-export function validateUsername(username: Loose, maxLength: number = 50): string | null {
+export function validateUsername(username: unknown, maxLength: number = 50): string | null {
   const validated = validateString(username, maxLength);
   if (!validated) return null;
   if (!/^[a-zA-Z0-9_-]+$/.test(validated)) return null;
@@ -93,7 +92,7 @@ export function isValidUrlPath(path: string): boolean {
 /**
  * Validate role
  */
-export function isValidRole(role: Loose, allowedRoles: string[] = ['parent', 'child', 'admin']): boolean {
+export function isValidRole(role: unknown, allowedRoles: string[] = ['parent', 'child', 'admin']): boolean {
   return typeof role === 'string' && allowedRoles.includes(role);
 }
 
@@ -101,7 +100,7 @@ export function isValidRole(role: Loose, allowedRoles: string[] = ['parent', 'ch
  * Validate password strength: at least 10 characters, with a mix of letters
  * and digits (or symbols). Returns an error message in French, or null if valid.
  */
-export function validatePassword(password: Loose): string | null {
+export function validatePassword(password: unknown): string | null {
   if (typeof password !== 'string' || password.length === 0) {
     return "Le mot de passe est requis.";
   }

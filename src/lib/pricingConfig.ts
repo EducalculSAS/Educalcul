@@ -54,22 +54,23 @@ export const DEFAULT_PRICING_CONFIG: PricingConfig = {
 
 const AI_IDS: AIId[] = ["none", "15", "30", "60", "120", "unlim"];
 
-const num = (v: Loose, fallback: number) => {
+const num = (v: unknown, fallback: number) => {
   const n = Number(v);
   return Number.isFinite(n) && n >= 0 ? Math.round(n * 100) / 100 : fallback;
 };
-const str = (v: Loose, fallback: string, max = 80) => (typeof v === "string" && v.trim() ? v.trim().slice(0, max) : fallback);
-const slug = (v: Loose) => String(v || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
+const str = (v: unknown, fallback: string, max = 80) => (typeof v === "string" && v.trim() ? v.trim().slice(0, max) : fallback);
+const slug = (v: unknown) => String(v || "").toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
 
 /** Ancien format `toggles` (objet) → nouvelle liste `options`. */
-function migrateToggles(toggles: Loose): PricingOption[] {
+function migrateToggles(toggles: unknown): PricingOption[] {
+  const prices = (toggles && typeof toggles === "object" ? toggles : {}) as Record<string, unknown>;
   return DEFAULT_CUSTOM_PRICING.options.map(def => ({
     ...def,
-    price: num(toggles?.[def.id], def.price),
+    price: num(prices[def.id], def.price),
   }));
 }
 
-function normalizeOptions(raw: Loose): PricingOption[] {
+function normalizeOptions(raw: unknown): PricingOption[] {
   if (Array.isArray(raw)) {
     const seen = new Set<string>();
     const out: PricingOption[] = [];
