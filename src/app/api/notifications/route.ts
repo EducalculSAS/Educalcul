@@ -30,7 +30,7 @@ export async function PATCH(req: NextRequest) {
     .update({ is_read: true })
     .eq("user_id", me.authId);
 
-  if (ids?.length) query = query.in("id", ids);
+  if (Array.isArray(ids) && ids.length) query = query.in("id", ids);
 
   await query;
   return NextResponse.json({ success: true });

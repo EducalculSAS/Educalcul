@@ -30,7 +30,7 @@ export async function GET(req: Request) {
 export async function PATCH(req: Request) {
   const admin = await requireRole(req, ["admin"]);
   if (!admin) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
-  const body = await readJsonBody(req).catch(() => ({}));
+  const body = await readJsonBody(req);
   const resolved = body.resolved !== false;
   let q = supabaseAdmin.from("error_logs").update({ resolved });
   if (body.all === true) q = q.eq("resolved", !resolved);

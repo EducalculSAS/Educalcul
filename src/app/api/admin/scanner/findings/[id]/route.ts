@@ -15,7 +15,7 @@ export async function PATCH(
 
   const { id } = await params;
   const { status } = await readJsonBody(request);
-  if (!VALID_STATUSES.has(status)) {
+  if (typeof status !== "string" || !VALID_STATUSES.has(status)) {
     return Response.json({ error: "Statut invalide." }, { status: 400 });
   }
 

@@ -62,8 +62,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const body = await readJsonBody(req).catch(() => ({}));
-  const urls: string[] = body.urls ?? ALL_URLS;
+  const body = await readJsonBody(req);
+  const urls: string[] = Array.isArray(body.urls) ? body.urls.filter((u): u is string => typeof u === "string") : ALL_URLS;
 
   const results = await submitToIndexNow(urls);
   return NextResponse.json({ submitted: urls.length, results });

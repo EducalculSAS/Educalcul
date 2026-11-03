@@ -20,7 +20,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Trop de corrections, réessaie plus tard." }, { status: 429 });
   }
 
-  const { question, answer, studentAnswer, level, explanation } = await readJsonBody(req).catch(() => ({}));
+  const { question, answer, studentAnswer, level, explanation } = await readJsonBody(req);
   if (typeof studentAnswer === "string" && studentAnswer.length > MAX_IMAGE_CHARS) {
     return NextResponse.json({ error: "Réponse trop volumineuse." }, { status: 413 });
   }
@@ -28,10 +28,10 @@ export async function POST(req: Request) {
   // Même correction que les exercices et les quiz (gradeFreeAnswer).
   const r = await gradeFreeAnswer({
     question: String(question ?? ""),
-    correctAnswer: answer ?? "",
-    studentAnswer,
+    correctAnswer: typeof answer === "string" || Array.isArray(answer) ? (answer as string | string[]) : String(answer ?? ""),
+    studentAnswer: typeof studentAnswer === "string" ? studentAnswer : String(studentAnswer ?? ""),
     explanation: typeof explanation === "string" ? explanation : undefined,
-    level: level || "collège",
+    level: typeof level === "string" && level ? level : "collège",
     maxPoints: 1,
   });
   return NextResponse.json(r);

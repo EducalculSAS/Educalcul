@@ -15,7 +15,7 @@ export async function POST(req: Request) {
   const rl = await rateLimitWithBackoff(`ai:comment:${me.authId}`, cfg.maxAttempts * 2, cfg.windowMs);
   if (!rl.allowed) return NextResponse.json({ comment: "" });
 
-  const { token } = await readJsonBody(req).catch(() => ({}));
+  const { token } = await readJsonBody(req);
   if (typeof token !== "string" || token.length > 8000) return NextResponse.json({ comment: "" });
   return NextResponse.json({ comment: await miniComment(token) });
 }
