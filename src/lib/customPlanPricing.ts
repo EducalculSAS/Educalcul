@@ -7,7 +7,6 @@
 // it recomputes both from the raw config with computeCustomPlan() using the
 // authoritative pricing loaded from the DB.
 
-import type { Loose } from "@/types/loose";
 export type AIId = "none" | "15" | "30" | "60" | "120" | "unlim";
 
 interface PricingAiOption {
@@ -98,7 +97,7 @@ export function configPrice(c: CustomPlanConfig, pricing: PricingCustomConfig = 
 export function configFeatures(c: CustomPlanConfig, pricing: PricingCustomConfig = DEFAULT_CUSTOM_PRICING) {
   const ai = pricing.ai_options.find(o => o.id === c.ai);
   const n = Math.max(1, c.children);
-  const feats: Record<string, Loose> = {
+  const feats: Record<string, string | number | boolean> = {
     max_children: n,
     access_level_exercises: "difficile",
     ai_access: c.ai === "none" ? "none" : c.ai === "unlim" ? "unlimited" : "limited",
@@ -117,10 +116,11 @@ export function configFeatures(c: CustomPlanConfig, pricing: PricingCustomConfig
  * unknown priced option. Returns null if malformed.
  */
 export function computeCustomPlan(
-  raw: Loose,
+  rawConfig: unknown,
   pricing: PricingCustomConfig = DEFAULT_CUSTOM_PRICING,
 ): { price: number; features: ReturnType<typeof configFeatures> } | null {
-  if (!raw || typeof raw !== "object") return null;
+  if (!rawConfig || typeof rawConfig !== "object") return null;
+  const raw = rawConfig as { ai?: AIId; children?: unknown; options?: Record<string, unknown> };
   const validAi = pricing.ai_options.some(o => o.id === raw.ai);
   if (!validAi) return null;
   const children = Math.min(pricing.max_children, Math.max(1, Math.floor(Number(raw.children) || 1)));
@@ -128,6 +128,6 @@ export function computeCustomPlan(
   for (const opt of pricing.options) {
     options[opt.id] = !!(raw.options && raw.options[opt.id]);
   }
-  const cfg: CustomPlanConfig = { children, ai: raw.ai, options };
+  const cfg: CustomPlanConfig = { children, ai: raw.ai as AIId, options };
   return { price: configPrice(cfg, pricing), features: configFeatures(cfg, pricing) };
 }
