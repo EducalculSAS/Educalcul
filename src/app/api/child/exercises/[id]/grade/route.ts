@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import type { Block } from "@/components/admin/ExerciseBuilder";
 import { NextResponse, after } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
@@ -23,7 +22,7 @@ interface GradeItem {
   block_id?: string;
   answer: unknown;
   /** Aperçu admin uniquement : la question complète (le contenu n'est pas encore enregistré). */
-  block?: Loose;
+  block?: Block;
 }
 
 interface GradeResult {
@@ -104,7 +103,7 @@ function gradeStructured(block: Block, answer: unknown): boolean {
 }
 
 /** Révélation renvoyée APRÈS correction (écran de correction), jamais avant. */
-function revealFor(block: Loose) {
+function revealFor(block: Block) {
   if (block.type === "matching") return { pairs: block.pairs };
   if (block.type === "ordering") return { items: block.items };
   if (block.type === "fill_in_the_blank") return { blanks: block.blanks };
@@ -137,7 +136,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     const items: GradeItem[] = (batch ? body.items : [{ block_id: body.block_id, answer: body.answer, block: body.block }]).slice(0, MAX_ITEMS);
 
     let level = "6ème";
-    let blockFor: (blockId?: string) => Loose;
+    let blockFor: (blockId?: string) => Block | undefined;
     let defaultPoints = 1;
     let manual = false;
 
@@ -150,13 +149,13 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       // Chaque question part avec son bloc COMPLET : elle est corrigée comme dans l'exercice enregistré (association,
       // catégories, QCM… ). Avant, tout était traité comme une réponse libre, donc une question « catégoriser » ou
       // « relier » ne pouvait jamais être juste dans l'aperçu.
-      const previewBlocks = new Map<string, Loose>();
+      const previewBlocks = new Map<string, Block>();
       for (const it of items) {
         const b = it.block && typeof it.block === "object" ? it.block : null;
         const bid = String(it.block_id ?? b?.id ?? "");
         if (b && bid) previewBlocks.set(bid, b);
       }
-      const legacy = { content: body.question, correctAnswer: body.correctAnswer, explanation: body.explanation, type: "text_input", points: body.points || 1 };
+      const legacy = { id: "legacy", title: "", content: body.question, correctAnswer: body.correctAnswer, explanation: body.explanation, type: "text_input" as const, points: body.points || 1 };
       blockFor = (blockId) => {
         const b = blockId ? previewBlocks.get(String(blockId)) : undefined;
         if (!b) return legacy;
@@ -168,7 +167,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
       const keys = items.map((i) => parseReviewKey(String(i.block_id ?? ""))).filter((k): k is NonNullable<typeof k> => !!k);
       const sources = await loadSources(keys);
       const diffOk = new Map<string, boolean>();
-      const blocks = new Map<string, Loose>();
+      const blocks = new Map<string, Block>();
       for (const [key, src] of sources) {
         const d = src.difficulty ?? "";
         if (!diffOk.has(d)) diffOk.set(d, (await checkDifficultyAccess(me.authId, src.difficulty)).allowed);
@@ -190,7 +189,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 
       // Niveau de la base, jamais du client : il ne doit pas pouvoir influencer le verdict.
       level = exercise.level || level;
-      const blocks = new Map<string, Loose>();
+      const blocks = new Map<string, Block>();
       for (const page of Array.isArray(exercise.content_json) ? exercise.content_json : []) {
         for (const b of page?.blocks ?? []) if (b?.id) blocks.set(b.id, b);
       }

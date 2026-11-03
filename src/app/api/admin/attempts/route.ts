@@ -1,5 +1,6 @@
 import type { Loose } from "@/types/loose";
-import type { Block } from "@/components/admin/ExerciseBuilder";
+import type { Block, Page } from "@/components/admin/ExerciseBuilder";
+import type { Question } from "@/components/admin/QuizBuilder";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -67,11 +68,11 @@ function gradeExerciseBlock(block: Block, answer: unknown): boolean {
   return answer === expected;
 }
 
-function gradeQuizQuestion(question: Loose, answer: Loose): boolean {
+function gradeQuizQuestion(question: Question | null | undefined, answer: unknown): boolean {
   if (question?.type === "multiple_choice") {
     const correct = Array.isArray(question.correctAnswer) ? question.correctAnswer : [question.correctAnswer];
     const selected = Array.isArray(answer) ? answer : [answer];
-    return correct.length === selected.length && correct.every((a: Loose) => selected.includes(String(a)));
+    return correct.length === selected.length && correct.every((a) => selected.includes(String(a)));
   }
   if (question?.type === "text_input") {
     const expected = typeof question.correctAnswer === "string" ? question.correctAnswer : JSON.stringify(question.correctAnswer);
@@ -81,15 +82,15 @@ function gradeQuizQuestion(question: Loose, answer: Loose): boolean {
   return String(answer) === String(question?.correctAnswer);
 }
 
-function allExerciseBlocks(contentJson: Loose): Loose[] {
-  return Array.isArray(contentJson) ? contentJson.flatMap((p: Loose) => p.blocks || []) : [];
+function allExerciseBlocks(contentJson: unknown): Block[] {
+  return Array.isArray(contentJson) ? (contentJson as Page[]).flatMap((p) => p.blocks || []) : [];
 }
 
 /** Points totaux gagnés vu les résultats question par question, pour
  * recalculer score/total_points après une édition admin sur une seule
  * question — évite que le score global reste incohérent avec le détail. */
-function recomputeExerciseScore(contentJson: Loose, results: Record<string, boolean>) {
-  const blocks = allExerciseBlocks(contentJson).filter((b: Loose) => b.type !== "text");
+function recomputeExerciseScore(contentJson: unknown, results: Record<string, boolean>) {
+  const blocks = allExerciseBlocks(contentJson).filter((b) => b.type !== "text");
   let score = 0, total = 0;
   for (const b of blocks) {
     const pts = blockMaxPoints(b, 1);
@@ -98,10 +99,10 @@ function recomputeExerciseScore(contentJson: Loose, results: Record<string, bool
   }
   return { score, total };
 }
-function recomputeQuizScore(contentJson: Loose, results: Record<number, boolean>) {
-  const questions = Array.isArray(contentJson) ? contentJson : [];
+function recomputeQuizScore(contentJson: unknown, results: Record<number, boolean>) {
+  const questions: Question[] = Array.isArray(contentJson) ? contentJson : [];
   let score = 0, total = 0;
-  questions.forEach((q: Loose, i: number) => {
+  questions.forEach((q, i) => {
     const pts = q.points || 1;
     total += pts;
     if (results[i]) score += pts;
@@ -211,7 +212,7 @@ export async function PATCH(req: Request) {
 
       if (kind === "exercise") {
         const block = allExerciseBlocks(item.content_json).find((b) => b.id === key);
-        const isCorrect = gradeExerciseBlock(block, editedAnswer);
+        const isCorrect = block ? gradeExerciseBlock(block, editedAnswer) : false;
         detailHolder.results = { ...(detailHolder.results || {}), [key]: isCorrect };
         const { score, total } = recomputeExerciseScore(item.content_json, detailHolder.results);
         newScore = score; newTotal = total;
