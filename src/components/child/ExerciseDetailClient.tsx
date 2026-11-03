@@ -1,6 +1,7 @@
 "use client";
 
 import type { Loose } from "@/types/loose";
+import { extractExerciseContent } from "@/lib/exerciseContextText";
 import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef } from "react";
 import {
@@ -23,49 +24,6 @@ import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
-
-// Utility function to extract all content from exercise blocks
-function extractExerciseContent(contentJson: Loose): string {
-  if (!contentJson || !Array.isArray(contentJson)) {
-    return "";
-  }
-
-  const allContent: string[] = [];
-
-  contentJson.forEach((page: Loose) => {
-    if (page.blocks && Array.isArray(page.blocks)) {
-      page.blocks.forEach((block: Loose) => {
-        if (block.content) allContent.push(block.content);
-        if (block.text) allContent.push(block.text);
-        if (block.question) allContent.push(block.question);
-        if (block.prompt) allContent.push(block.prompt);
-
-        if (block.options && Array.isArray(block.options)) {
-          block.options.forEach((opt: Loose) => {
-            if (opt.text) allContent.push(`- ${opt.text}`);
-            if (opt.label) allContent.push(`- ${opt.label}`);
-          });
-        }
-
-        if (block.type === "true_false") {
-          if (block.statement) allContent.push(block.statement);
-        }
-
-        if (block.type === "text_input") {
-          if (block.label) allContent.push(block.label);
-          if (block.placeholder) allContent.push(`Indice: ${block.placeholder}`);
-        }
-
-        if (block.type === "image") {
-          if (block.alt) allContent.push(`[Image: ${block.alt}]`);
-          if (block.caption) allContent.push(block.caption);
-        }
-      });
-    }
-  });
-
-  return allContent.filter((c) => c && c.length > 0).join("\n");
-}
 
 /** Page de détail exercice : le contenu (déjà purgé des réponses côté
  * serveur) et l'historique de tentatives arrivent en props quand id !==
@@ -106,12 +64,12 @@ export default function ExerciseDetailClient({
 
   useEffect(() => {
     if (!exercise) return;
-    let questionText = extractExerciseContent(exercise.content_json);
+    let questionText = extractExerciseContent(exercise.content_json, { includePlaceholder: true });
     if (!questionText && (exercise.question || exercise.description)) {
       questionText = (exercise.question || exercise.description).slice(0, 1000);
     }
     const hints = (exercise.content_json?.hints || [])
-      .map((h: Loose) => (typeof h === "string" ? h : h.text || h.hint || ""))
+      .map((h: string | { text?: string; hint?: string }) => (typeof h === "string" ? h : h.text || h.hint || ""))
       .filter((h: string) => h.length > 0)
       .slice(0, 3);
 

@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import type { Loose } from "@/types/loose";
+import { extractExerciseContent } from "@/lib/exerciseContextText";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Loader2, Sparkles, Pencil, Keyboard, AlertTriangle, Lock, Lightbulb } from "lucide-react";
@@ -570,49 +571,7 @@ export default function ExerciseViewer({
   useEffect(() => {
     if (!exercise.title) return;
 
-    // Extract content from all blocks (same function as in [id]/page.tsx)
-    const extractContent = (contentJson: Loose): string => {
-      if (!contentJson || !Array.isArray(contentJson)) {
-        return "";
-      }
-
-      const allContent: string[] = [];
-
-      contentJson.forEach((page: Loose) => {
-        if (page.blocks && Array.isArray(page.blocks)) {
-          page.blocks.forEach((block: Loose) => {
-            if (block.content) allContent.push(block.content);
-            if (block.text) allContent.push(block.text);
-            if (block.question) allContent.push(block.question);
-            if (block.prompt) allContent.push(block.prompt);
-
-            if (block.options && Array.isArray(block.options)) {
-              block.options.forEach((opt: Loose) => {
-                if (opt.text) allContent.push(`- ${opt.text}`);
-                if (opt.label) allContent.push(`- ${opt.label}`);
-              });
-            }
-
-            if (block.type === "true_false" && block.statement) {
-              allContent.push(block.statement);
-            }
-
-            if (block.type === "text_input" && block.label) {
-              allContent.push(block.label);
-            }
-
-            if (block.type === "image") {
-              if (block.alt) allContent.push(`[Image: ${block.alt}]`);
-              if (block.caption) allContent.push(block.caption);
-            }
-          });
-        }
-      });
-
-      return allContent.filter((c) => c && c.length > 0).join("\n");
-    };
-
-    let questionText = extractContent(exercise.content_json);
+    let questionText = extractExerciseContent(exercise.content_json);
 
     // Fallback to description
     if (!questionText && exercise.description) {

@@ -1,4 +1,5 @@
 import type { Loose } from "@/types/loose";
+import type { Block } from "@/components/admin/ExerciseBuilder";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -27,12 +28,12 @@ const CONTENT_TABLE: Record<Kind, string> = {
  * text_input/coding (corrigés par IA à l'origine), pas de nouvel appel IA
  * pour une simple édition admin ponctuelle — repli en comparaison texte,
  * même filet de secours que la route de correction en cas d'échec IA. */
-function gradeExerciseBlock(block: Loose, answer: Loose): boolean {
+function gradeExerciseBlock(block: Block, answer: unknown): boolean {
   const type = block?.type;
   if (type === "multiple_choice" || type === "qcm") {
     const correct = Array.isArray(block.correctAnswer) ? block.correctAnswer : [block.correctAnswer];
     const selected = Array.isArray(answer) ? answer : [answer];
-    return correct.length === selected.length && correct.every((a: Loose) => selected.includes(a));
+    return correct.length === selected.length && correct.every((a: unknown) => selected.includes(a));
   }
   if (type === "single_choice" || type === "true_false") {
     return answer === block.correctAnswer;
@@ -48,7 +49,7 @@ function gradeExerciseBlock(block: Loose, answer: Loose): boolean {
   if (type === "matching") {
     const given: string[] = Array.isArray(answer) ? answer : [];
     const pairs = block.pairs || [];
-    return pairs.length > 0 && pairs.every((p: Loose, i: number) => given[i] === p.right);
+    return pairs.length > 0 && pairs.every((p, i: number) => given[i] === p.right);
   }
   if (type === "ordering") {
     const given: string[] = Array.isArray(answer) ? answer : [];

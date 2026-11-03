@@ -1,6 +1,8 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
+import type { fetchAdminReports } from "@/lib/adminReports";
+
+type AdminReportsData = Awaited<ReturnType<typeof fetchAdminReports>>;
 import { useState, useEffect, useCallback } from "react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
@@ -15,8 +17,8 @@ const REFRESH_SEC = 60;
 /** Rapports & analytics : la première capture arrive déjà chargée du
  * serveur ; l'auto-refresh (30s) et le bouton "Actualiser" restent des
  * allers-retours client, comme avant. */
-export default function AdminReportsClient({ initialData }: { initialData: Loose }) {
-  const [data, setData] = useState<Loose>(initialData);
+export default function AdminReportsClient({ initialData }: { initialData: AdminReportsData }) {
+  const [data, setData] = useState<AdminReportsData>(initialData);
   const [refreshing, setRefreshing] = useState(false);
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -47,7 +49,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Loose
   if (!data) return <div className="p-6 text-red-500">Erreur de chargement.</div>;
 
   const { stats, charts, recent_activity, top_countries } = data;
-  const maxCount = Math.max(...charts.registrations.map((r: Loose) => r.count), 1);
+  const maxCount = Math.max(...charts.registrations.map((r) => r.count), 1);
 
   const activityIcon = (type: string) => {
     if (type === "forum") return <MessageSquare size={14} />;
@@ -204,7 +206,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Loose
             </p>
             {top_countries && top_countries.length > 0 ? (
               <div className="space-y-2">
-                {top_countries.map((c: Loose, i: number) => {
+                {top_countries.map((c, i) => {
                   const pct = stats.total_users > 0 ? Math.round((c.count / stats.total_users) * 100) : 0;
                   return (
                     <div key={c.country} className="flex items-center gap-2 text-xs">
@@ -235,7 +237,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Loose
             Inscriptions : 8 dernières semaines
           </h3>
           <div className="flex items-end gap-2 h-48">
-            {charts.registrations.map((item: Loose, i: number) => {
+            {charts.registrations.map((item, i) => {
               const heightPct = maxCount > 0 ? Math.max((item.count / maxCount) * 100, item.count > 0 ? 4 : 1) : 1;
               const label = new Date(item.date).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
               return (
@@ -265,7 +267,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Loose
             Activité récente
           </h3>
           <div className="space-y-3">
-            {recent_activity.length > 0 ? recent_activity.map((item: Loose, i: number) => (
+            {recent_activity.length > 0 ? recent_activity.map((item, i) => (
               <div key={i} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)]">
                 <div className={`p-1.5 rounded-lg shrink-0 ${activityColor(item.type)}`}>
                   {activityIcon(item.type)}

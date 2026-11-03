@@ -1,4 +1,5 @@
 import type { Loose } from "@/types/loose";
+import type { Block } from "@/components/admin/ExerciseBuilder";
 import { NextResponse, after } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -54,12 +55,12 @@ async function mapLimit<T, R>(items: T[], limit: number, fn: (item: T) => Promis
 }
 
 /** Correction exacte des blocs à choix / à manipuler (pas d'IA). */
-function gradeStructured(block: Loose, answer: Loose): boolean {
+function gradeStructured(block: Block, answer: unknown): boolean {
   const type = block.type;
   if (type === "multiple_choice" || type === "qcm") {
     const correct = Array.isArray(block.correctAnswer) ? block.correctAnswer : [block.correctAnswer];
     const selected = Array.isArray(answer) ? answer : [answer];
-    return correct.length === selected.length && correct.every((a: Loose) => selected.includes(a));
+    return correct.length === selected.length && correct.every((a: unknown) => selected.includes(a));
   }
   if (type === "single_choice" || type === "true_false") return answer === block.correctAnswer;
   if (type === "fill_in_the_blank") {
@@ -73,7 +74,7 @@ function gradeStructured(block: Loose, answer: Loose): boolean {
   if (type === "matching") {
     const given: string[] = Array.isArray(answer) ? answer : [];
     const pairs = block.pairs || [];
-    return pairs.length > 0 && pairs.every((p: Loose, i: number) => given[i] === p.right);
+    return pairs.length > 0 && pairs.every((p, i: number) => given[i] === p.right);
   }
   if (type === "ordering") {
     const given: string[] = Array.isArray(answer) ? answer : [];
@@ -82,17 +83,17 @@ function gradeStructured(block: Loose, answer: Loose): boolean {
   }
   if (type === "categorize") {
     const given: (string | null)[] = Array.isArray(answer) ? answer : [];
-    const expected: string[] = (block.categoryItems || []).map((it: Loose) => it.category);
+    const expected: string[] = (block.categoryItems || []).map((it) => it.category);
     return expected.length > 0 && given.length === expected.length && expected.every((cat, i) => given[i] === cat);
   }
   if (type === "number_line_point") {
-    const given = typeof answer === "number" ? answer : parseFloat(answer);
-    const expected = parseFloat(block.correctAnswer);
+    const given = typeof answer === "number" ? answer : parseFloat(String(answer));
+    const expected = parseFloat(String(block.correctAnswer));
     return !Number.isNaN(given) && !Number.isNaN(expected) && Math.abs(given - expected) < 1e-6;
   }
   if (type === "click_error") {
-    const given = typeof answer === "number" ? answer : parseInt(answer, 10);
-    return !Number.isNaN(given) && given === parseInt(block.correctAnswer, 10);
+    const given = typeof answer === "number" ? answer : parseInt(String(answer), 10);
+    return !Number.isNaN(given) && given === parseInt(String(block.correctAnswer), 10);
   }
   const expected = block.correctAnswer;
   if (Array.isArray(expected)) {
