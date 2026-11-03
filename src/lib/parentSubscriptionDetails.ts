@@ -1,4 +1,4 @@
-import type { Loose } from "@/types/loose";
+import type Stripe from "stripe";
 import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
@@ -63,7 +63,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
               user_id: userId,
               plan_id: planId,
               status: "active",
-              current_period_start: new Date((activeSub as Loose).current_period_start * 1000).toISOString(),
+              current_period_start: new Date((activeSub as Stripe.Subscription & { current_period_start: number }).current_period_start * 1000).toISOString(),
               current_period_end: subscriptionPeriodEnd(activeSub),
               stripe_customer_id: customer.id,
               stripe_subscription_id: activeSub.id,
@@ -105,7 +105,7 @@ export async function fetchParentSubscriptionDetails(userId: string) {
   const customerId = subscription.stripe_customer_id;
 
   // 2. Fetch subscription details from Stripe to get renewal date + cancellation status
-  let stripeSubscription: Loose = null;
+  let stripeSubscription: Stripe.Subscription | null = null;
   if (subscription.stripe_subscription_id) {
     try {
       stripeSubscription = await stripe.subscriptions.retrieve(subscription.stripe_subscription_id);

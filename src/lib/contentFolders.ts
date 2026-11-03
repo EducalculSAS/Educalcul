@@ -1,5 +1,5 @@
-import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import type { ContentFolder } from "@/lib/contentFoldersClient";
 import { invalidateCatalog } from "@/lib/catalogCache";
 
 /**
@@ -38,7 +38,7 @@ export async function loadFoldersWithCounts(type: FolderType) {
   const table = FOLDER_TABLES[type];
   const pageSize = 1000;
   const loadFolders = async () => {
-    const rows: Loose[] = [];
+    const rows: Omit<ContentFolder, "item_count">[] = [];
     for (let from = 0; ; from += pageSize) {
       const { data, error } = await supabaseAdmin
         .from(table)
@@ -47,7 +47,7 @@ export async function loadFoldersWithCounts(type: FolderType) {
         .order("name", { ascending: true })
         .range(from, from + pageSize - 1);
       if (error) throw error;
-      rows.push(...(data ?? []));
+      rows.push(...((data ?? []) as unknown as Omit<ContentFolder, "item_count">[]));
       if (!data || data.length < pageSize) break;
     }
     return rows;

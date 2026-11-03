@@ -1,5 +1,5 @@
-import type { Loose } from "@/types/loose";
 import "server-only";
+import { one } from "@/lib/relations";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { relativeTime } from "@/lib/relativeTime";
 import { getChildPrefsMany, studentSummaries, type ChildPrefs, type StudentSummary } from "@/lib/studentStats";
@@ -42,8 +42,8 @@ async function fetchChildStats(childId: number): Promise<ChildStats> {
 
   const successRate = (totalEx || 0) > 0 ? Math.round(((correctCount || 0) / (totalEx || 1)) * 100) : 0;
   const activities: { type: string; title: string; date: string }[] = [];
-  if (lastQuiz) activities.push({ type: "Quiz", title: (lastQuiz as Loose).quizzes?.title || "Quiz", date: (lastQuiz as Loose).completed_at });
-  if (lastEx) activities.push({ type: "Exercice", title: (lastEx as Loose).exercises?.title || "Exercice", date: (lastEx as Loose).attempted_at });
+  if (lastQuiz) activities.push({ type: "Quiz", title: one(lastQuiz.quizzes)?.title || "Quiz", date: lastQuiz.completed_at });
+  if (lastEx) activities.push({ type: "Exercice", title: one(lastEx.exercises)?.title || "Exercice", date: lastEx.attempted_at });
   activities.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return {

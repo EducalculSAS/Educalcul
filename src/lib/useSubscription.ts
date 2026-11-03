@@ -1,6 +1,5 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { useCallback, useEffect, useState } from "react";
 import { DifficultyLevel } from "@/lib/difficultyLevels";
 
@@ -17,6 +16,15 @@ interface PlanFeatures {
   access_level_exercises: DifficultyLevel;
   /** IA vocale "Calia en classe" (mode prof) — reservee au plan Family. */
   calia_classe: boolean;
+}
+
+/** Réponse de /api/user/subscription-status. */
+interface SubscriptionStatusResponse {
+  plan_id?: number | null;
+  plan_name?: string;
+  status?: string;
+  features?: Partial<PlanFeatures> | null;
+  ai_uses_today?: number;
 }
 
 export interface SubscriptionInfo {
@@ -70,7 +78,7 @@ function fetchSubscription(force: boolean): Promise<unknown | null> {
 export function useSubscription(): SubscriptionInfo {
   const [info, setInfo] = useState(DEFAULT_INFO);
 
-  const apply = useCallback((d: Loose | null) => {
+  const apply = useCallback((d: SubscriptionStatusResponse | null) => {
     if (!d) { setInfo(i => ({ ...i, loading: false })); return; }
     setInfo({
       plan_id: d.plan_id ?? null,
@@ -82,10 +90,10 @@ export function useSubscription(): SubscriptionInfo {
     });
   }, []);
 
-  const load = useCallback(() => fetchSubscription(true).then(apply), [apply]);
+  const load = useCallback(() => fetchSubscription(true).then((d) => apply(d as SubscriptionStatusResponse | null)), [apply]);
   useEffect(() => {
     let alive = true;
-    fetchSubscription(false).then((d) => { if (alive) apply(d); });
+    fetchSubscription(false).then((d) => { if (alive) apply(d as SubscriptionStatusResponse | null); });
     return () => { alive = false; };
   }, [apply]);
 
