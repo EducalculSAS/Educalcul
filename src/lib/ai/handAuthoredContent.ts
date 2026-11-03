@@ -24,7 +24,9 @@
  * renvoie donc aussi `warnings`: la liste de ce qui a été ignoré ou corrigé,
  * pour que l'admin sache exactement quoi relire avant d'enregistrer.
  */
-import type { Loose } from "@/types/loose";
+import type { Chapter } from "@/components/admin/CourseBuilder";
+import type { Page } from "@/components/admin/ExerciseBuilder";
+import type { Question } from "@/components/admin/QuizBuilder";
 import {
   normalizeCourseBlock,
   normalizeStructuredRichText,
@@ -33,6 +35,25 @@ import {
 import { compileCourseBlock, compileStructuredRichText } from "@/lib/ai/compiler";
 
 export type CompileResult<T> = { content: T; warnings: string[] };
+
+/* Forme (non vérifiée) d'un fichier écrit à la main : tous les champs sont facultatifs et de type inconnu, chaque lecture est contrôlée plus bas. */
+interface RawFile { _format?: unknown; content_json?: unknown }
+interface RawExercise { question?: unknown; answer?: unknown; hint?: unknown; explanation?: unknown }
+interface RawLesson { title?: unknown; content?: unknown; duration?: unknown; blocks?: unknown; exercises?: unknown }
+interface RawChapter { title?: unknown; lessons?: unknown }
+interface RawFigureSpec { kind?: unknown; levels?: unknown; cells?: unknown }
+interface RawPair { left?: unknown; right?: unknown }
+interface RawCategoryItem { text?: unknown; category?: unknown }
+interface RawPage { id?: unknown; title?: unknown; blocks?: unknown }
+interface RawBlock {
+  id?: unknown; type?: unknown; title?: unknown; content?: unknown; figure?: unknown; points?: unknown; explanation?: unknown;
+  blanks?: unknown; figureSpec?: RawFigureSpec; pairs?: unknown; items?: unknown; categories?: unknown; categoryItems?: unknown;
+  numberLineMin?: unknown; numberLineMax?: unknown; numberLineStep?: unknown; correctAnswer?: unknown; steps?: unknown; options?: unknown;
+}
+interface RawQuestion {
+  id?: unknown; type?: unknown; text?: unknown; figure?: unknown; points?: unknown; explanation?: unknown; group_id?: unknown; group_intro?: unknown;
+  correctAnswer?: unknown; options?: unknown;
+}
 
 function escapeHtml(value: unknown): string {
   return String(value ?? "")
@@ -123,20 +144,20 @@ function isRichTextEmpty(value: unknown): boolean {
 /*  Cours                                                              */
 /* ------------------------------------------------------------------ */
 
-export function compileHandAuthoredCourse(raw: Loose): CompileResult<Loose[]> {
-  const chapters = Array.isArray(raw?.content_json) ? raw.content_json : [];
+export function compileHandAuthoredCourse(raw: RawFile): CompileResult<Chapter[]> {
+  const chapters: RawChapter[] = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
-  if (!isSourceFormat(raw)) return { content: chapters, warnings }; // déjà compilé (export ré-importé) : inchangé
+  if (!isSourceFormat(raw)) return { content: chapters as unknown as Chapter[], warnings }; // déjà compilé (export ré-importé) : inchangé
 
-  const content = chapters.map((chapter: Loose, chapterIndex: number) => {
+  const content = chapters.map((chapter, chapterIndex) => {
     const chapterLabel = `Chapitre ${chapterIndex + 1} (« ${chapter?.title || "?"} »)`;
     let exerciseCounter = 1;
     const lessons = (Array.isArray(chapter?.lessons) ? chapter.lessons : []).map(
-      (lesson: Loose, lessonIndex: number) => {
+      (lesson: RawLesson, lessonIndex: number) => {
         const lessonLabel = `${chapterLabel} → leçon ${lessonIndex + 1} (« ${lesson?.title || "?"} »)`;
         const rawExercises = Array.isArray(lesson?.exercises) ? lesson.exercises : [];
         const exerciseIds = rawExercises.map(() => `c${chapterIndex + 1}-ex-${exerciseCounter++}`);
-        const compiledExercises = rawExercises.map((ex: Loose, i: number) => {
+        const compiledExercises = (rawExercises as RawExercise[]).map((ex, i) => {
           if (isRichTextEmpty(ex?.question)) {
             warnings.push(`${lessonLabel} : exercice ${i + 1}, "question" vide ou manquante.`);
           }
@@ -214,15 +235,15 @@ const EXERCISE_BLOCK_TYPES = new Set([
   "categorize", "number_line_point", "click_error",
 ]);
 
-export function compileHandAuthoredExercise(raw: Loose): CompileResult<Loose[]> {
-  const pages = Array.isArray(raw?.content_json) ? raw.content_json : [];
+export function compileHandAuthoredExercise(raw: RawFile): CompileResult<Page[]> {
+  const pages: RawPage[] = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
-  if (!isSourceFormat(raw)) return { content: pages, warnings };
+  if (!isSourceFormat(raw)) return { content: pages as unknown as Page[], warnings };
 
-  const content = pages.map((page: Loose) => ({
+  const content = pages.map((page) => ({
     id: String(page?.id || "page-1"),
     title: String(page?.title || "Questions"),
-    blocks: (Array.isArray(page?.blocks) ? page.blocks : []).map((block: Loose, index: number) => {
+    blocks: ((Array.isArray(page?.blocks) ? page.blocks : []) as RawBlock[]).map((block, index) => {
       const where = `Question ${index + 1}`;
       const requestedType = String(block?.type ?? "");
       const type = EXERCISE_BLOCK_TYPES.has(requestedType) ? requestedType : "text_input";
@@ -260,7 +281,7 @@ export function compileHandAuthoredExercise(raw: Loose): CompileResult<Loose[]> 
       }
       if (type === "matching") {
         const pairs = Array.isArray(block?.pairs)
-          ? block.pairs.map((p: Loose) => ({ left: escapeHtml(p?.left), right: String(p?.right ?? "") }))
+          ? (block.pairs as RawPair[]).map((p) => ({ left: escapeHtml(p?.left), right: String(p?.right ?? "") }))
           : [];
         if (pairs.length < 2) warnings.push(`${where} : moins de 2 "pairs", l'appariement n'a pas de sens.`);
         return { ...base, pairs };
@@ -273,10 +294,10 @@ export function compileHandAuthoredExercise(raw: Loose): CompileResult<Loose[]> 
       if (type === "categorize") {
         const categories = Array.isArray(block?.categories) ? block.categories.map(String) : [];
         const categoryItems = Array.isArray(block?.categoryItems)
-          ? block.categoryItems.map((it: Loose) => ({ text: escapeHtml(it?.text), category: String(it?.category ?? "") }))
+          ? (block.categoryItems as RawCategoryItem[]).map((it) => ({ text: escapeHtml(it?.text), category: String(it?.category ?? "") }))
           : [];
         if (categories.length < 2) warnings.push(`${where} : moins de 2 "categories", rien à catégoriser.`);
-        if (categoryItems.some((it: Loose) => !categories.includes(it.category))) {
+        if (categoryItems.some((it) => !categories.includes(it.category))) {
           warnings.push(`${where} : un élément de "categoryItems" référence une catégorie absente de "categories".`);
         }
         return { ...base, categories, categoryItems };
@@ -328,7 +349,8 @@ export function compileHandAuthoredExercise(raw: Loose): CompileResult<Loose[]> 
     }),
   }));
 
-  return { content, warnings };
+  // Le format produit est celui lu par les éditeurs et les lecteurs ; ses types littéraux (`type`) sont élargis en string ci-dessus.
+  return { content: content as unknown as Page[], warnings };
 }
 
 /* ------------------------------------------------------------------ */
@@ -337,12 +359,12 @@ export function compileHandAuthoredExercise(raw: Loose): CompileResult<Loose[]> 
 
 const QUIZ_QUESTION_TYPES = new Set(["single_choice", "multiple_choice", "true_false", "text_input", "impossible_search"]);
 
-export function compileHandAuthoredQuiz(raw: Loose): CompileResult<Loose[]> {
-  const questions = Array.isArray(raw?.content_json) ? raw.content_json : [];
+export function compileHandAuthoredQuiz(raw: RawFile): CompileResult<Question[]> {
+  const questions: RawQuestion[] = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
-  if (!isSourceFormat(raw)) return { content: questions, warnings };
+  if (!isSourceFormat(raw)) return { content: questions as unknown as Question[], warnings };
 
-  const content = questions.map((q: Loose, index: number) => {
+  const content = questions.map((q, index) => {
     const where = `Question ${index + 1}`;
     const requestedType = String(q?.type ?? "single_choice");
     // Par défaut "single_choice" (comportement historique, seul type géré
@@ -403,5 +425,6 @@ export function compileHandAuthoredQuiz(raw: Loose): CompileResult<Loose[]> {
     return { ...base, options, correctAnswer: escapeHtml(resolved ?? rawOptions[0] ?? q?.correctAnswer) };
   });
 
-  return { content, warnings };
+  // Le format produit est celui lu par les éditeurs et les lecteurs ; ses types littéraux (`type`) sont élargis en string ci-dessus.
+  return { content: content as unknown as Question[], warnings };
 }
