@@ -6,7 +6,7 @@ import { extractExerciseContent } from "@/lib/exerciseContextText";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Loader2, Sparkles, Pencil, Keyboard, AlertTriangle, Lock, Lightbulb } from "lucide-react";
-import { Page } from "@/components/admin/ExerciseBuilder";
+import { Page, type Block } from "@/components/admin/ExerciseBuilder";
 import FigureInputs from "@/components/viewers/FigureInputs";
 import SlotHtml, { tokenizeSlots } from "@/components/viewers/SlotHtml";
 import { supabase } from "@/lib/supabaseClient";
@@ -132,6 +132,20 @@ export function AdminAttemptControls({
 
 
 
+/** Ce que le serveur dévoile d'un bloc une fois la réponse soumise (bonne réponse, trous, paires, ordre, catégories). */
+/** Correction d'un bloc renvoyée par /api/child/exercises/[id]/grade (ou par la route d'aperçu admin). */
+interface ExerciseGradeResult {
+  block_id?: string;
+  unavailable?: boolean;
+  is_correct?: boolean;
+  feedback?: string;
+  comment_token?: string;
+  reveal?: RevealInfo;
+  score?: number;
+}
+
+type RevealInfo = Pick<Block, "correctAnswer" | "blanks" | "pairs" | "items" | "categoryItems">;
+
 interface ExerciseViewerProps {
   exercise: {
     id?: string;
@@ -166,7 +180,7 @@ interface ExerciseViewerProps {
     submittedBlocks?: string[];
     results?: Record<string, boolean>;
     aiFeedback?: Record<string, string>;
-    revealed?: Record<string, Loose>;
+    revealed?: Record<string, RevealInfo>;
     score?: number;
     blockModes?: Record<string, "text" | "draw">;
     /** Commentaire/réponse corrigée laissés par un admin sur cette tentative
@@ -305,7 +319,7 @@ export default function ExerciseViewer({
   const [aiFeedback, setAiFeedback] = useState<Record<string, string>>(() => (reviewMode ? initialProgress?.aiFeedback : undefined) || {});
   // Réponse correcte, révélée par le serveur uniquement après soumission de
   // chaque bloc — jamais présente dans le contenu initial envoyé à l'élève.
-  const [revealed, setRevealed] = useState<Record<string, Loose>>(() => (reviewMode ? initialProgress?.revealed : undefined) || {});
+  const [revealed, setRevealed] = useState<Record<string, RevealInfo>>(() => (reviewMode ? initialProgress?.revealed : undefined) || {});
   const [score, setScore] = useState(() => (reviewMode ? initialProgress?.score : undefined) || 0);
   const [exerciseCompleted, setExerciseCompleted] = useState(() => (reviewMode ? true : false));
   const [showReview, setShowReview] = useState(false);
@@ -328,7 +342,7 @@ export default function ExerciseViewer({
   }
   const [inlineText, setInlineText] = useState<Record<string, InlineTextState>>({});
 
-  const verifyTextBlock = async (block: Loose) => {
+  const verifyTextBlock = async (block: Block) => {
     const studentAnswer = answers[block.id];
     if (!studentAnswer) return;
     const current = inlineText[block.id];
@@ -579,7 +593,7 @@ export default function ExerciseViewer({
     }
 
     const newContext = {
-      page: "exercise_detail",
+      page: "exercise_detail" as const,
       exerciseTitle: exercise.title,
       exerciseQuestion: questionText.slice(0, 1000),
       exerciseDifficulty: exercise.difficulty_level || exercise.level || "moyen",
@@ -589,7 +603,7 @@ export default function ExerciseViewer({
       courseLevel: exercise.courses?.level || exercise.level,
     };
 
-    setPageContext(newContext as Loose);
+    setPageContext(newContext);
   // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
   }, [exercise.id, exercise.title, setPageContext]);
 
@@ -696,7 +710,7 @@ export default function ExerciseViewer({
     const newResults: Record<string, boolean> = {};
     const newAiFeedback: Record<string, string> = {};
     const newCommentTokens: Record<string, string> = {};
-    const newRevealed: Record<string, Loose> = {};
+    const newRevealed: Record<string, RevealInfo> = {};
     const newSubmitted = new Set<string>();
     const exerciseId = exercise.id || "preview";
 
@@ -765,10 +779,10 @@ export default function ExerciseViewer({
                 }).then(async (r) => {
                   const d = await r.json();
                   if (!r.ok) throw new Error(d.error || "Correction indisponible, réessaie.");
-                  return d.results as Loose[];
+                  return d.results as ExerciseGradeResult[];
                 }),
               ],
-        ).then((out) => (preview ? out : out[0]) as Loose[]);
+        ).then((out) => (preview ? out : out[0]) as ExerciseGradeResult[]);
 
         const byBlock = new Map(results.map((r) => [r.block_id, r]));
         if (results.some((r) => r?.unavailable)) {
@@ -779,7 +793,7 @@ export default function ExerciseViewer({
           return;
         }
         for (const { block } of toGrade) {
-          const data = byBlock.get(block.id) || {};
+          const data: ExerciseGradeResult = byBlock.get(block.id) || {};
           const isCorrect = !!data.is_correct;
           if (data.feedback) newAiFeedback[block.id] = data.feedback;
           if (data.comment_token) newCommentTokens[block.id] = data.comment_token;
@@ -1520,7 +1534,7 @@ export default function ExerciseViewer({
                       kind={isCorrect ? "correct" : "wrong"}
                       feedback={aiFeedback[block.id]}
                       points={isCorrect ? block.points : undefined}
-                      correctAnswer={!isCorrect && typeof revealed[block.id]?.correctAnswer === "string" && ["text_input", "impossible_search"].includes(block.type) ? revealed[block.id].correctAnswer : undefined}
+                      correctAnswer={!isCorrect && typeof revealed[block.id]?.correctAnswer === "string" && ["text_input", "impossible_search"].includes(block.type) ? (revealed[block.id].correctAnswer as string) : undefined}
                     />
 
                     {adminEditedAnswers[block.id] !== undefined && (
