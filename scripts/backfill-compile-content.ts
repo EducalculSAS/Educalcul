@@ -1,4 +1,3 @@
-import type { Loose } from "../src/types/loose";
 import { createClient } from "@supabase/supabase-js";
 import {
   compileStructuredCourseChapter,
@@ -20,10 +19,10 @@ const supabase = createClient(supabaseUrl, serviceRoleKey, {
   auth: { persistSession: false, autoRefreshToken: false },
 });
 
-function isAlreadyCompiled(chapter: Loose): boolean {
+function isAlreadyCompiled(chapter: { lessons?: unknown } | null): boolean {
   const lessons = chapter?.lessons;
   if (!Array.isArray(lessons) || lessons.length === 0) return false;
-  return lessons.every((l: Loose) => typeof l?.content === "string" && !Array.isArray(l?.blocks));
+  return lessons.every((l: { content?: unknown; blocks?: unknown } | null) => typeof l?.content === "string" && !Array.isArray(l?.blocks));
 }
 
 async function main() {
@@ -40,7 +39,7 @@ async function main() {
   const failures: { id: number; title: string; error: string }[] = [];
 
   for (const course of courses) {
-    const rawChapters = course.content_json as Loose[] | null;
+    const rawChapters = course.content_json as { lessons?: unknown }[] | null;
     if (!rawChapters || rawChapters.length === 0) continue;
     const rawChapter = rawChapters[0];
 
@@ -65,7 +64,7 @@ async function main() {
       // Restaure la duree d'origine de chaque lecon (le compilateur applique
       // sinon la meme duree uniforme a toutes les lecons du chapitre).
       compiled.lessons.forEach((lesson, i) => {
-        const originalDuration = rawChapter.lessons?.[i]?.duration;
+        const originalDuration = (rawChapter.lessons as { duration?: unknown }[] | undefined)?.[i]?.duration;
         if (typeof originalDuration === "number") lesson.duration = originalDuration;
       });
 
@@ -77,10 +76,10 @@ async function main() {
         if (updateError) throw updateError;
       }
       console.log(`${APPLY ? "OK" : "DRY"} [${course.level}] ${course.id} ${course.title}`);
-    } catch (e: Loose) {
+    } catch (e: unknown) {
       failed++;
-      failures.push({ id: course.id, title: course.title, error: String(e?.message || e) });
-      console.log(`ERREUR [${course.level}] ${course.id} ${course.title}: ${e?.message || e}`);
+      failures.push({ id: course.id, title: course.title, error: String((e as Error)?.message || e) });
+      console.log(`ERREUR [${course.level}] ${course.id} ${course.title}: ${(e as Error)?.message || e}`);
     }
   }
 

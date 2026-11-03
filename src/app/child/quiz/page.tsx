@@ -1,5 +1,5 @@
-import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
+import type { ComponentProps } from "react";
 import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
 import { Trophy } from "lucide-react";
@@ -57,7 +57,7 @@ export default async function ChildQuizPage({
     const history = (a.attempts_history || []) as { passed?: boolean; score_percent?: number }[];
     if (history.length === 0) continue;
     const everPassed = history.some((h) => h.passed === true);
-    const best = history.reduce((max: number, h: Loose) => Math.max(max, h.score_percent ?? 0), 0);
+    const best = history.reduce((max: number, h) => Math.max(max, h.score_percent ?? 0), 0);
     initialProgress[a.quiz_id] = { status: everPassed ? "passed" : "failed", score: best, attempts: history.length };
   }
 
@@ -67,8 +67,8 @@ export default async function ChildQuizPage({
       <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={Trophy} title="Quiz & défis" badge="Défi" subtitle="Teste tes connaissances et gagne des trophées !" />
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <QuizCatalog
-          allFolders={allFolders as Loose}
-          allQuizzes={allQuizzes as Loose}
+          allFolders={allFolders as unknown as ComponentProps<typeof QuizCatalog>["allFolders"]}
+          allQuizzes={allQuizzes as unknown as ComponentProps<typeof QuizCatalog>["allQuizzes"]}
           levelFolderId={scope.levelFolderId}
           rootFolderIds={scope.rootFolderIds}
           initialProgress={initialProgress}

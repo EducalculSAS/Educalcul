@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import type { Block, Page } from "@/components/admin/ExerciseBuilder";
 import type { Question } from "@/components/admin/QuizBuilder";
 import { NextResponse } from "next/server";
@@ -110,6 +109,26 @@ function recomputeQuizScore(contentJson: unknown, results: Record<number, boolea
   return { score, total };
 }
 
+/** Détail d'une tentative (réponses, verdicts, commentaires admin) tel que stocké dans `progress_json` ou dans une entrée d'historique. */
+interface AttemptDetail {
+  adminComments?: Record<string, string>;
+  adminEditedAnswers?: Record<string, unknown>;
+  results?: Record<string, boolean>;
+  manualVerdicts?: Record<string, boolean>;
+  questionResults?: Record<number, boolean>;
+  [key: string]: unknown;
+}
+/** Entrée de `attempts_history` : le résumé de la tentative et, si conservé, son détail. */
+interface HistoryEntry {
+  detail?: AttemptDetail;
+  score?: number;
+  total_points?: number;
+  score_percent?: number;
+  passed?: boolean;
+  pending?: boolean;
+  [key: string]: unknown;
+}
+
 export async function GET(req: Request) {
   try {
     const admin = await requireRole(req, ["admin"]);
@@ -154,7 +173,7 @@ export async function PATCH(req: Request) {
     const body = await req.json();
     const { kind, userId, itemId, attemptRef, key, comment, editedAnswer, verdict } = body as {
       kind: Kind; userId: number; itemId: string; attemptRef: "latest" | number; key: string;
-      comment?: string; editedAnswer?: Loose;
+      comment?: string; editedAnswer?: unknown;
       /** Correction manuelle d'une question d'exercice : true = juste, false = fausse. */
       verdict?: boolean;
     };
@@ -178,10 +197,10 @@ export async function PATCH(req: Request) {
     if (!item) return NextResponse.json({ error: "Contenu introuvable" }, { status: 404 });
 
     const isLatest = attemptRef === "latest";
-    const history: Loose[] = Array.isArray(attempt.attempts_history) ? [...attempt.attempts_history] : [];
-    let target: Loose;
+    const history: HistoryEntry[] = Array.isArray(attempt.attempts_history) ? [...(attempt.attempts_history as unknown as HistoryEntry[])] : [];
+    let target: AttemptDetail | HistoryEntry;
     if (isLatest) {
-      target = { ...(attempt.progress_json || {}) };
+      target = { ...((attempt.progress_json as AttemptDetail | null) || {}) };
     } else {
       const idx = Number(attemptRef);
       if (!Number.isInteger(idx) || !history[idx] || !history[idx].detail) {
@@ -189,7 +208,7 @@ export async function PATCH(req: Request) {
       }
       target = { ...history[idx], detail: { ...history[idx].detail } };
     }
-    const detailHolder = isLatest ? target : target.detail;
+    const detailHolder = (isLatest ? target : (target as HistoryEntry).detail) as AttemptDetail;
 
     detailHolder.adminComments = { ...(detailHolder.adminComments || {}) };
     detailHolder.adminEditedAnswers = { ...(detailHolder.adminEditedAnswers || {}) };
@@ -205,7 +224,7 @@ export async function PATCH(req: Request) {
       const { score, total } = recomputeExerciseScore(item.content_json, detailHolder.results);
       newScore = score; newTotal = total;
       const gradable = allExerciseBlocks(item.content_json).filter((b) => b.type !== "text" && b.type !== "image");
-      stillPending = !gradable.every((b) => detailHolder.manualVerdicts[b.id]);
+      stillPending = !gradable.every((b) => detailHolder.manualVerdicts?.[b.id]);
     }
     if (editedAnswer !== undefined) {
       detailHolder.adminEditedAnswers[key] = editedAnswer;
@@ -229,12 +248,14 @@ export async function PATCH(req: Request) {
     const pctOf = (s: number, t: number) => (t ? Math.round((s / t) * 100) : 0);
     const passedOf = (pct: number) => pct >= passThreshold((item as { min_score_percent?: number | null }).min_score_percent);
     if (isLatest) {
-      const update: Record<string, Loose> = { progress_json: target };
+      const update: Record<string, unknown> = { progress_json: target };
       if (newScore !== undefined) {
         update.score = newScore;
         update.total_points = newTotal;
-        update.score_percent = pctOf(newScore, newTotal!);
-        if (stillPending === false) update.passed = passedOf(update.score_percent);
+        const scorePercent = pctOf(newScore, newTotal!);
+        update.score_percent = scorePercent;
+        const passed = stillPending === false ? passedOf(scorePercent) : undefined;
+        if (passed !== undefined) update.passed = passed;
         // La dernière entrée de l'historique est cette même tentative : elle reste alignée sur la note.
         const last = history.length - 1;
         if (stillPending !== undefined && last >= 0) {
@@ -242,9 +263,9 @@ export async function PATCH(req: Request) {
             ...history[last],
             score: newScore,
             total_points: newTotal,
-            score_percent: update.score_percent,
+            score_percent: scorePercent,
             pending: stillPending,
-            ...(stillPending === false ? { passed: update.passed } : {}),
+            ...(stillPending === false ? { passed } : {}),
           };
           update.attempts_history = history;
         }
@@ -255,7 +276,7 @@ export async function PATCH(req: Request) {
       const idx = Number(attemptRef);
       history[idx] = {
         ...history[idx],
-        detail: target.detail,
+        detail: (target as HistoryEntry).detail,
         ...(newScore !== undefined ? {
           score: newScore,
           total_points: newTotal,

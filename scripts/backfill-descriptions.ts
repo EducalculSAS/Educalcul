@@ -3,7 +3,6 @@
 // description" (exercises.question / quizzes.description jamais remplis par
 // le générateur). Ne touche que les lignes vides — jamais un texte déjà
 // écrit à la main.
-import type { Loose } from "../src/types/loose";
 import { createClient } from "@supabase/supabase-js";
 
 const APPLY = process.argv.includes("--apply");
@@ -25,7 +24,7 @@ async function fetchRows(table: "exercises" | "quizzes", emptyField: string): Pr
       .select(`id,course_id,${emptyField}`)
       .range(from, from + pageSize - 1);
     if (error) throw error;
-    for (const row of (data ?? []) as Loose[]) {
+    for (const row of (data ?? []) as unknown as { id: number; course_id: number; [key: string]: unknown }[]) {
       const value = row[emptyField];
       if (value === null || value === undefined || String(value).trim() === "") {
         out.push({ id: row.id, course_id: row.course_id });

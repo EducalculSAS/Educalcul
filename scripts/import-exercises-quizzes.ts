@@ -1,4 +1,3 @@
-import type { Loose } from "../src/types/loose";
 import { createClient } from "@supabase/supabase-js";
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
@@ -76,7 +75,7 @@ function inferLevelFromFile(file: string, declaredLevel: string): string {
    client (renderLatexInHTML), tout enveloppé dans <p>.
    ============================================================ */
 
-function escapeHtml(value: string): string {
+function escapeHtml(value: unknown): string {
   return String(value ?? "")
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
@@ -88,7 +87,7 @@ function escapeHtml(value: string): string {
 // Le modèle écrit du texte brut avec des $...$ : on échappe le HTML SAUF les
 // segments $...$ eux-mêmes (qui doivent rester lisibles tels quels pour le
 // rendu KaTeX côté client, comme le fait compileStructuredRichText).
-function textToHtml(value: string): string {
+function textToHtml(value: unknown): string {
   const raw = String(value ?? "");
   const parts = raw.split(/(\$[^$]*\$)/g);
   const html = parts
@@ -251,9 +250,13 @@ async function loadCoursesIndex(): Promise<Map<string, CourseInfo>> {
    brut + $...$ au lieu du format RICH_TEXT structuré).
    ============================================================ */
 
-function compileExerciseBlocks(raw: Loose): Loose[] {
-  const blocks = Array.isArray(raw.blocks) ? raw.blocks : [];
-  return blocks.map((b: Loose, index: number) => {
+/** Question d'un fichier source (rien n'est de confiance). */
+interface RawItem { title?: unknown; content?: unknown; figure?: unknown; explanation?: unknown; points?: unknown; blanks?: unknown; pairs?: unknown; items?: unknown; correctAnswer?: unknown; text?: unknown; options?: unknown }
+interface RawFile { _type?: unknown; blocks?: unknown; questions?: unknown }
+
+function compileExerciseBlocks(raw: RawFile) {
+  const blocks: RawItem[] = Array.isArray(raw.blocks) ? raw.blocks : [];
+  return blocks.map((b, index) => {
     const id = `block-${index + 1}`;
     const title = String(b.title || `Question ${index + 1}`);
     const content = withOptionalFigure(textToHtml(b.content || ""), b.figure);
@@ -267,7 +270,7 @@ function compileExerciseBlocks(raw: Loose): Loose[] {
     if (type === "matching") {
       return {
         id, type, title, content, points,
-        pairs: Array.isArray(b.pairs) ? b.pairs.map((p: Loose) => ({ left: escapeHtml(p.left || ""), right: String(p.right || "") })) : [],
+        pairs: Array.isArray(b.pairs) ? (b.pairs as { left?: unknown; right?: unknown }[]).map((p) => ({ left: escapeHtml(p.left || ""), right: String(p.right || "") })) : [],
         explanation,
       };
     }
@@ -279,9 +282,9 @@ function compileExerciseBlocks(raw: Loose): Loose[] {
   });
 }
 
-function compileQuizQuestions(raw: Loose): Loose[] {
-  const questions = Array.isArray(raw.questions) ? raw.questions : [];
-  return questions.map((q: Loose, index: number) => {
+function compileQuizQuestions(raw: RawFile) {
+  const questions: RawItem[] = Array.isArray(raw.questions) ? raw.questions : [];
+  return questions.map((q, index) => {
     const options = Array.isArray(q.options) ? q.options.map((o: string) => escapeHtml(o)) : [];
     const correctRaw = String(q.correctAnswer || "");
     const correctIndex = (Array.isArray(q.options) ? q.options : []).findIndex((o: string) => o === correctRaw);

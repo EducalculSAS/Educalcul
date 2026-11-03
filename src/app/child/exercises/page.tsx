@@ -1,5 +1,5 @@
-import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
+import type { ComponentProps } from "react";
 import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
 import { Brain } from "lucide-react";
@@ -58,7 +58,7 @@ export default async function ChildExercisesPage({
     const history = (a.attempts_history || []) as { passed?: boolean; score_percent?: number }[];
     if (history.length === 0) continue;
     const everPassed = history.some((h) => h.passed === true);
-    const best = history.reduce((max: number, h: Loose) => Math.max(max, h.score_percent ?? 0), 0);
+    const best = history.reduce((max: number, h) => Math.max(max, h.score_percent ?? 0), 0);
     initialProgress[a.exercise_id] = { status: everPassed ? "passed" : "failed", score: best, attempts: history.length };
   }
 
@@ -69,7 +69,7 @@ export default async function ChildExercisesPage({
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <ExercisesCatalog
           allFolders={allFolders || []}
-          allExercises={(allExercises || []) as Loose}
+          allExercises={(allExercises || []) as unknown as ComponentProps<typeof ExercisesCatalog>["allExercises"]}
           levelFolderId={scope.levelFolderId}
           rootFolderIds={scope.rootFolderIds}
           initialProgress={initialProgress}

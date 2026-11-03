@@ -18,7 +18,7 @@ Node 22 requis (voir `.github/workflows/ci.yml`).
 | Commande | Rôle |
 | --- | --- |
 | `npm run typecheck` | TypeScript strict (variables inutilisées, retours manquants, `switch` qui « tombe »…) |
-| `npm run lint` | ESLint, **0 avertissement toléré** (`any` interdit : utiliser `Loose` de `src/types/loose.ts` pour du JSON libre) |
+| `npm run lint` | ESLint, **0 avertissement toléré** (`any` interdit : `unknown` + un contrôle, ou un vrai type) |
 | `npm test` | Tests unitaires (vitest) : `src/lib/__tests__/` |
 | `npm run build` | Build de production (nécessite les variables Supabase/Stripe) |
 

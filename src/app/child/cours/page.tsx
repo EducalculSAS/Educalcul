@@ -1,5 +1,5 @@
-import type { Loose } from "@/types/loose";
 import { redirect } from "next/navigation";
+import type { ComponentProps } from "react";
 import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
 import { BookOpen } from "lucide-react";
@@ -23,7 +23,7 @@ export default async function ChildCoursesPage() {
       "id, parent_id, name, color, icon, grade_level, display_order",
       { byDisplayOrder: true },
     ),
-    selectAllPages<{ course_id: string; status: string | null; progress_json: Loose }>((from, to) =>
+    selectAllPages<{ course_id: string; status: string | null; progress_json: { lessonsCompleted?: string[] } | null }>((from, to) =>
       supabaseAdmin
         .from("user_course_progress")
         .select("course_id, status, progress_json")
@@ -39,7 +39,7 @@ export default async function ChildCoursesPage() {
   // content_json COMPLET de chaque cours publié (~23 Mo pour 756 cours)
   // transitait à chaque visite uniquement pour compter les leçons. Et seul le
   // sous-arbre du niveau de l'élève est chargé, paginé (voir childCatalog.ts).
-  const allCourses = await loadPublishedCatalog<Record<string, Loose>>(
+  const allCourses = await loadPublishedCatalog<Record<string, unknown> & { id: string; lesson_count?: number | null }>(
     "courses",
     "id, folder_id, title, description, thumbnail_url, subject, chapter_order, is_theme_summary, lesson_count",
     { folderIds: scope.folderIds },
@@ -64,8 +64,8 @@ export default async function ChildCoursesPage() {
       <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={BookOpen} title="Mes cours" badge="Leçons" subtitle="Explore et deviens expert en mathématiques !" />
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <CoursesCatalog
-          allFolders={allFolders as Loose}
-          allCourses={coursesForClient as Loose}
+          allFolders={allFolders as unknown as ComponentProps<typeof CoursesCatalog>["allFolders"]}
+          allCourses={coursesForClient as unknown as ComponentProps<typeof CoursesCatalog>["allCourses"]}
           levelFolderId={scope.levelFolderId}
           rootFolderIds={scope.rootFolderIds}
           courseProgress={courseProgress}

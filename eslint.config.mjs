@@ -17,8 +17,7 @@ const eslintConfig = defineConfig([
       // données et remises à zéro quand une propriété change. Les autres règles du compilateur (pureté, refs, composants
       // créés pendant l'affichage, accès avant déclaration) restent actives et sont respectées.
       "react-hooks/set-state-in-effect": "off",
-      // `any` interdit : pour du contenu JSON libre (blocs de cours/exercices/quiz, lignes Supabase dynamiques) on utilise le type
-      // `Loose` de src/types/loose.ts — seul endroit où `any` est autorisé, pour que chaque usage soit visible et recherchable.
+      // `any` interdit partout : pour du contenu JSON libre on utilise `unknown` + un contrôle, ou un vrai type (src/types, interfaces locales).
       "@typescript-eslint/no-explicit-any": "error",
       // Pas de journaux de débogage oubliés : console.info / warn / error restent permis (journaux d'exploitation sur Vercel).
       "no-console": ["error", { allow: ["info", "warn", "error"] }],
