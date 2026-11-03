@@ -1,6 +1,5 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { useEffect, useState } from "react";
 import { X, AlertTriangle, Info, MessageCircle, Ban } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -14,13 +13,13 @@ interface Notif {
   created_at: string;
 }
 
-const icons: Loose = {
+const icons: Record<string, React.ReactNode> = {
   ban: <Ban className="w-4 h-4" />,
   warning: <AlertTriangle className="w-4 h-4" />,
   info: <Info className="w-4 h-4" />,
   message: <MessageCircle className="w-4 h-4" />,
 };
-const colors: Loose = {
+const colors: Record<string, string> = {
   ban: "bg-red-50 border-red-200 text-red-800",
   warning: "bg-orange-50 border-orange-200 text-orange-800",
   info: "bg-blue-50 border-blue-200 text-blue-800",

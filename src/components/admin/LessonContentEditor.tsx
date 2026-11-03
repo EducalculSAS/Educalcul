@@ -1,7 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
-import type { Loose } from "@/types/loose";
+import type { LucideIcon } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
   Plus,
@@ -36,7 +36,7 @@ const BLOCK_LABELS: Record<LessonBlock["type"], string> = {
   special: "Bloc spécial",
 };
 
-const BLOCK_ICONS: Record<LessonBlock["type"], Loose> = {
+const BLOCK_ICONS: Record<LessonBlock["type"], LucideIcon> = {
   text: Type,
   table: Table2,
   graph: LineChart,

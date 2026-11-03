@@ -1,7 +1,6 @@
 ﻿"use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
-import type { Loose } from "@/types/loose";
 import { useState, useEffect } from "react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
@@ -466,7 +465,7 @@ export default function CourseBuilder({ initialContent, onChange, level }: Cours
                             <div className="flex flex-wrap gap-3">
                               <select
                                 value={lesson.type}
-                                onChange={(e) => updateLesson(chapter.id, lesson.id, { type: e.target.value as Loose })}
+                                onChange={(e) => updateLesson(chapter.id, lesson.id, { type: e.target.value as Lesson["type"] })}
                                 className="text-sm border border-[rgba(197,161,72,0.25)] rounded-lg text-gray-600 focus:ring-blue-500 focus:border-blue-500 px-2 py-1.5"
                               >
                                 <option value="text">Texte / Article</option>

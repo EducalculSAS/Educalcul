@@ -4,7 +4,6 @@ import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { COURSE_FOLDER_COLORS as FOLDER_COLORS, FOLDER_ICONS } from "@/components/admin/folderStyle";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import GlassButton from "@/components/ui/GlassButton";
-import { type Loose } from "@/types/loose";
 import { type Folder } from "@/components/admin/AdminCoursesClient";
 
 type CourseFolderModalProps = {
@@ -68,7 +67,7 @@ export default function CourseFolderModal(props: CourseFolderModalProps) {
             onChange={(e) =>
               setFolderFormData({
                 ...folderFormData,
-                status: e.target.value as Loose,
+                status: e.target.value as "published" | "draft" | "archived",
               })
             }
             className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--greek-blue)]/20 bg-white"

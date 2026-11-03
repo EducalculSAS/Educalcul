@@ -345,7 +345,7 @@ export default function QuizBuilder({
                       value={question.type}
                       onChange={(e) =>
                         updateQuestion(question.id, {
-                          type: e.target.value as Loose,
+                          type: e.target.value as Question["type"],
                           // Reset options/answers based on type change if needed
                           options:
                             e.target.value === "true_false"

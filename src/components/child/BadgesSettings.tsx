@@ -10,7 +10,7 @@ import { BORDER_STYLES, NAME_COLORS, getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import GlassButton from "@/components/ui/GlassButton";
 
-const ICON_MAP: Record<string, Loose> = {
+const ICON_MAP: Record<string, LucideIcon> = {
   pencil: Pencil, zap: Zap, flame: StreakFlame as unknown as LucideIcon, star: Star, crown: Crown,
   check: CheckCircle, target: Target, brain: Brain, trophy: Trophy,
   sparkles: Sparkles, graduation: Star, book: BookOpen, map: Map, library: BookOpen,

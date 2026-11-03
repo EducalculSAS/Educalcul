@@ -9,7 +9,6 @@ import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import QuizBuilder from "@/components/admin/QuizBuilder";
 import GlassButton from "@/components/ui/GlassButton";
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
-import { type Loose } from "@/types/loose";
 import { type Quiz, type Course, type QuizFolder } from "@/components/admin/AdminQuizzesClient";
 
 import { type Question } from "@/components/admin/QuizBuilder";
@@ -280,7 +279,7 @@ export default function QuizEditorModal(props: QuizEditorModalProps) {
                 folder_id: typeof formData.folder_id === "number" ? formData.folder_id : null,
                 time_limit_minutes: formData.time_limit_minutes,
                 min_score_percent: formData.min_score_percent,
-                status: formData.status as Loose,
+                status: formData.status as "published" | "draft" | "archived",
                 type: formData.type,
                 difficulty_level: formData.difficulty_level,
                 level: formData.level,
