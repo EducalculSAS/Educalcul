@@ -1,7 +1,6 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
-import type { Loose } from "@/types/loose";
 import Image from "next/image";
 import { plural } from "@/lib/plural";
 import { useState, useEffect, useRef, useMemo } from "react";
@@ -61,10 +60,13 @@ function getCleanSelectionText(range: Range): string {
 
 interface CourseViewerProps {
   course: {
+    id?: string | number;
     title: string;
     description?: string;
     content_json: Chapter[] | null;
     level?: string;
+    subject?: string | null;
+    thumbnail_url?: string | null;
   };
   onComplete?: () => void;
   onChapterComplete?: (chapterIndex: number) => void;
@@ -79,7 +81,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     () => (course.content_json || []).map((c) => ({ ...c, lessons: c.lessons || [] })),
     [course.content_json]
   );
-  const courseId = (course as Loose).id;
+  const courseId = course.id;
   const isPreviewCourse = !courseId || courseId === "preview";
 
   // Position/progression : plus de repli localStorage — la position exacte
@@ -186,16 +188,16 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
       if (currentLesson.content.length > 2000) {
         lessonContent += "\n\n[Contenu tronqué pour concision]";
       }
-    } else if (currentLesson.type === "video" && (currentLesson as Loose).videoUrl) {
-      lessonContent += `\n\n[Vidéo]: ${(currentLesson as Loose).videoUrl}`;
+    } else if (currentLesson.type === "video" && (currentLesson as { videoUrl?: string }).videoUrl) {
+      lessonContent += `\n\n[Vidéo]: ${(currentLesson as { videoUrl?: string }).videoUrl}`;
     }
 
     // Set the AI context with ONLY current lesson (not full course)
     setPageContext({
       page: "cours_detail",
       courseTitle: course.title,
-      courseSubject: (course as Loose).subject || "Maths",
-      courseLevel: (course as Loose).level || "Collège",
+      courseSubject: course.subject || "Maths",
+      courseLevel: course.level || "Collège",
       courseContent: lessonContent, // CURRENT LESSON ONLY, not full course
     });
 
@@ -470,7 +472,6 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   if (courseCompleted) {
     const totalLessons = chapters.reduce((acc, c) => acc + (c.lessons?.length || 0), 0);
     const mins = Math.floor(timeTotal / 60);
-    const courseFull = course as Loose;
 
     return (
       <div className="flex flex-col h-full overflow-y-auto bg-[var(--greek-cream)]">
@@ -478,8 +479,8 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
           <div className="bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden">
             {/* Thumbnail header — same as preview */}
             <div className="relative h-64 md:h-80 bg-gray-100">
-              {courseFull.thumbnail_url ? (
-                <img src={courseFull.thumbnail_url} alt={course.title} className="w-full h-full object-cover" />
+              {course.thumbnail_url ? (
+                <img src={course.thumbnail_url} alt={course.title} className="w-full h-full object-cover" />
               ) : (
                 <div className="w-full h-full flex items-center justify-center bg-[var(--greek-blue)]/10">
                   <Image src="/logo.png" alt="Educalcul" width={96} height={96} className="w-24 h-24 object-contain opacity-20" />

@@ -3,7 +3,7 @@ import { getLiveSubscription } from "@/lib/subscriptionLive";
 import { DifficultyLevel, normalizeDifficulty } from "@/lib/difficultyLevels";
 import { isDifficultyAllowed } from "@/lib/difficultyAccess";
 
-interface PlanFeatures {
+export interface PlanFeatures {
   ai_access: "none" | "limited" | "unlimited";
   ai_daily_limit: number;
   max_children: number;

@@ -1,7 +1,7 @@
 "use client";
 
+import { type PlanFeatureValues } from "@/types/plans";
 import GlassCheckbox from "@/components/ui/GlassCheckbox";
-import type { Loose } from "@/types/loose";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useState, useRef } from "react";
 import { BORDER_STYLES, NAME_COLORS } from "@/lib/badgeStyles";
@@ -30,7 +30,7 @@ interface Plan {
   billing_interval: string;
   trial_days: number | null;
   promo_description: string | null;
-  features: Loose;
+  features: PlanFeatureValues | string | null;
   is_active: boolean;
   sort_order: number;
   subscriber_count: number;
@@ -50,28 +50,28 @@ interface ReferralCode {
   valid_until: string | null;
   is_active: boolean;
   description: string | null;
-  referral_uses: Loose[];
+  referral_uses: { id: number | string }[];
   created_at: string;
 }
 
 // ── Default form values ────────────────────────────────────────────────────
 const CUSTOM_PERIOD = "__custom";
 const defaultPlanForm = {
-  name: "", description: "", price: 0, billing_interval: "month", custom_months: "2", custom_label: "",
-  trial_days: "", promo_description: "", is_active: true, sort_order: 0,
-  feature_max_children: 1, feature_access_level_exercises: "difficile",
+  name: "", description: "", price: 0 as number | string, billing_interval: "month", custom_months: "2", custom_label: "",
+  trial_days: "", promo_description: "", is_active: true, sort_order: 0 as number | string,
+  feature_max_children: 1 as number | string, feature_access_level_exercises: "difficile",
   feature_detailed_reports: false, feature_priority_support: false,
   feature_custom_avatars: false, feature_calia_classe: false,
   feature_ai_access: "limited" as "none" | "limited" | "unlimited",
-  feature_ai_daily_limit: 10,
-  feature_minigames_daily_limit: 3,
+  feature_ai_daily_limit: 10 as number | string,
+  feature_minigames_daily_limit: 3 as number | string,
   feature_minigames_premium_content: false,
   cosmetic_borders: [] as string[],
   cosmetic_colors: [] as string[],
 };
 
 const defaultRefForm = {
-  code: "", description: "", discount_type: "percent", discount_value: 10,
+  code: "", description: "", discount_type: "percent", discount_value: 10 as number | string,
   max_uses: "", valid_from: "", valid_until: "", is_active: true,
 };
 
@@ -112,13 +112,13 @@ export default function AdminSubscriptionsClient({
   const [plans, setPlans] = useState<Plan[]>(initialPlans);
   const [showPlanModal, setShowPlanModal] = useState(false);
   const [editingPlan, setEditingPlan] = useState<Plan | null>(null);
-  const [planForm, setPlanForm] = useState<Loose>(defaultPlanForm);
+  const [planForm, setPlanForm] = useState(defaultPlanForm);
 
   // Referrals state
   const [codes, setCodes] = useState<ReferralCode[]>(initialCodes);
   const [showRefModal, setShowRefModal] = useState(false);
   const [editingCode, setEditingCode] = useState<ReferralCode | null>(null);
-  const [refForm, setRefForm] = useState<Loose>(defaultRefForm);
+  const [refForm, setRefForm] = useState(defaultRefForm);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const [expandedPlan, setExpandedPlan] = useState<string | null>(null);
 
