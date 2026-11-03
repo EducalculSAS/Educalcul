@@ -103,8 +103,8 @@ async function fetchLoginHistory(userId: string): Promise<LoginEvent[]> {
 }
 
 function buildCSV(users: User[], loginHistory?: LoginEvent[]): string {
-  const q = (v: Loose) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-  const d = (v: Loose) => v ? new Date(v).toLocaleString("fr-FR") : "";
+  const q = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
+  const d = (v: string | null | undefined) => v ? new Date(v).toLocaleString("fr-FR") : "";
 
   if (users.length === 1 && loginHistory) {
     // Fiche détaillée d'un seul utilisateur avec historique complet
@@ -148,7 +148,7 @@ function downloadCSV(users: User[], filename: string, loginHistory?: LoginEvent[
 // pays...) sont saisies par des utilisateurs non-admin et sont injectées via
 // document.write dans une fenêtre de même origine que l'admin — sans
 // échappement, un utilisateur pourrait exécuter du script dans ce contexte.
-function esc(v: Loose): string {
+function esc(v: unknown): string {
   if (v === null || v === undefined) return "";
   return String(v).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[c] as string));
 }
