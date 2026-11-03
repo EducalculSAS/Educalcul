@@ -1,11 +1,11 @@
-﻿"use client";
+"use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
-import type { Loose } from "@/types/loose";
+import { answerList, type AnswerMap, type AnswerValue } from "@/types/answers";
 import { extractExerciseContent } from "@/lib/exerciseContextText";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import { useState, useEffect, useRef, useMemo } from "react";
-import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Loader2, Sparkles, Pencil, Keyboard, AlertTriangle, Lock, Lightbulb } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, XCircle, RotateCcw, Trophy, Brain, Loader2, Lock, Lightbulb } from "lucide-react";
 import { Page, type Block } from "@/components/admin/ExerciseBuilder";
 import FigureInputs from "@/components/viewers/FigureInputs";
 import SlotHtml, { tokenizeSlots } from "@/components/viewers/SlotHtml";
@@ -13,18 +13,24 @@ import { supabase } from "@/lib/supabaseClient";
 import { useAITutor } from "@/contexts/AITutorContext";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
-import MathInput, { MathInputHandle, subscribeMathKeyboardVisibility } from "@/components/MathInput";
-import DrawingCanvas from "@/components/DrawingCanvas";
+import { MathInputHandle, subscribeMathKeyboardVisibility } from "@/components/MathInput";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
-import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import "katex/dist/katex.min.css";
 import { passThreshold } from "@/lib/scorePercent";
 import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 import { fetchMiniComment } from "@/lib/miniComment";
 import ReadAloudButton from "@/components/ReadAloudButton";
+import { AdminAttemptControls } from "@/components/viewers/blocks/AdminAttemptControls";
+import type { InlineTextState } from "@/components/viewers/blocks/inlineText";
 import { OrderingDragList, MatchingDragList, CategorizeDragList, NumberLinePoint } from "@/components/viewers/ExerciseDragLists";
 
+import AdminReviewPanel from "@/components/viewers/blocks/AdminReviewPanel";
+import ImpossibleSearchAnswer from "@/components/viewers/blocks/ImpossibleSearchAnswer";
+import CodingAnswer from "@/components/viewers/blocks/CodingAnswer";
+import ClickErrorAnswer from "@/components/viewers/blocks/ClickErrorAnswer";
+import TextInputAnswer from "@/components/viewers/blocks/TextInputAnswer";
+export { AdminAttemptControls };
 /** Aperçu admin ou séance « à revoir » : rien n'est enregistré comme tentative de cet exercice. */
 const isVirtualExercise = (id?: string | null) => !id || id === "preview" || id === "review";
 
@@ -46,89 +52,6 @@ function seededShuffle<T>(arr: T[], seed: string): T[] {
   return copy;
 }
 
-/** Zone commentaire + édition de réponse affichée sous une question, en revue
- * admin uniquement (`adminMode` fourni par le parent). Composant local pour
- * ne pas alourdir l'état déjà volumineux d'ExerciseViewer — gère juste ses
- * deux champs (textarea) et délègue la sauvegarde au parent. */
-export function AdminAttemptControls({
-  itemKey,
-  currentAnswer,
-  existingComment,
-  existingEditedAnswer,
-  adminMode,
-}: {
-  itemKey: string;
-  currentAnswer: Loose;
-  existingComment?: string;
-  existingEditedAnswer?: Loose;
-  adminMode: { onComment: (key: string, text: string) => void; onEditAnswer: (key: string, value: Loose) => void; onVerdict?: (key: string, correct: boolean) => void; saving?: boolean };
-}) {
-  const [comment, setComment] = useState(existingComment || "");
-  const [editing, setEditing] = useState(false);
-  const [editValue, setEditValue] = useState(() =>
-    JSON.stringify(existingEditedAnswer !== undefined ? existingEditedAnswer : currentAnswer, null, 2)
-  );
-
-  return (
-    <div className="mt-3 pt-3 border-t border-dashed border-purple-200 space-y-2">
-      <div className="flex items-center gap-2">
-        <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          placeholder="Laisser un commentaire pour l'élève sur cette question..."
-          className="flex-1 text-xs border border-purple-200 rounded-lg px-2 py-1.5 outline-none focus:ring-2 focus:ring-purple-300"
-          rows={2}
-        />
-        <GlassButton size="sm" variant="outline" onClick={() => adminMode.onComment(itemKey, comment)} disabled={adminMode.saving}>
-          Enregistrer
-        </GlassButton>
-      </div>
-      {adminMode.onVerdict && (
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-semibold text-purple-700">Correction manuelle :</span>
-          <GlassButton size="sm" variant="outline" onClick={() => adminMode.onVerdict?.(itemKey, true)} disabled={adminMode.saving}>
-            <CheckCircle className="w-3.5 h-3.5 text-green-600" /> Compter juste
-          </GlassButton>
-          <GlassButton size="sm" variant="outline" onClick={() => adminMode.onVerdict?.(itemKey, false)} disabled={adminMode.saving}>
-            <XCircle className="w-3.5 h-3.5 text-red-600" /> Compter fausse
-          </GlassButton>
-        </div>
-      )}
-      {!editing ? (
-        <GlassButton onClick={() => setEditing(true)} variant="outline" size="sm">
-          Modifier la réponse enregistrée
-        </GlassButton>
-      ) : (
-        <div className="space-y-1.5">
-          <textarea
-            value={editValue}
-            onChange={(e) => setEditValue(e.target.value)}
-            className="w-full text-xs font-mono border border-purple-200 rounded-lg px-2 py-1.5 outline-none focus:ring-2 focus:ring-purple-300"
-            rows={2}
-          />
-          <div className="flex gap-2">
-            <GlassButton
-              size="sm"
-              variant="outline"
-              onClick={() => {
-                try {
-                  adminMode.onEditAnswer(itemKey, JSON.parse(editValue));
-                  setEditing(false);
-                } catch {
-                  // JSON invalide — on laisse le champ ouvert pour correction.
-                }
-              }}
-              disabled={adminMode.saving}
-            >
-              Enregistrer la correction
-            </GlassButton>
-            <GlassButton size="sm" variant="ghost" onClick={() => setEditing(false)}>Annuler</GlassButton>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
 
 
 
@@ -144,7 +67,7 @@ interface ExerciseGradeResult {
   score?: number;
 }
 
-type RevealInfo = Pick<Block, "correctAnswer" | "blanks" | "pairs" | "items" | "categoryItems">;
+export type RevealInfo = Pick<Block, "correctAnswer" | "blanks" | "pairs" | "items" | "categoryItems">;
 
 interface ExerciseViewerProps {
   exercise: {
@@ -176,7 +99,7 @@ interface ExerciseViewerProps {
   /** Plus d'essai disponible (limite de tentatives de l'exercice atteinte) : le bouton « Refaire » est grisé. */
   restartBlocked?: boolean;
   initialProgress?: {
-    answers?: Record<string, Loose>;
+    answers?: AnswerMap;
     submittedBlocks?: string[];
     results?: Record<string, boolean>;
     aiFeedback?: Record<string, string>;
@@ -188,7 +111,7 @@ interface ExerciseViewerProps {
      * même hors mode admin, pour que l'élève les voie sur SA propre page de
      * correction. */
     adminComments?: Record<string, string>;
-    adminEditedAnswers?: Record<string, Loose>;
+    adminEditedAnswers?: AnswerMap;
   } | null;
   /** Présent uniquement sur l'écran de revue admin (reviewMode est aussi vrai
    * dans ce cas) : ajoute, sous chaque question déjà affichée en lecture
@@ -197,7 +120,7 @@ interface ExerciseViewerProps {
    * comporte exactement comme avant (écran élève). */
   adminMode?: {
     onComment: (blockId: string, text: string) => void;
-    onEditAnswer: (blockId: string, value: Loose) => void;
+    onEditAnswer: (blockId: string, value: AnswerValue) => void;
     /** Correction manuelle : compter la réponse juste ou fausse (exercices). */
     onVerdict?: (blockId: string, correct: boolean) => void;
     saving?: boolean;
@@ -310,7 +233,7 @@ export default function ExerciseViewer({
   // Coups de pouce déjà demandés, par question.
   const [hintsShown, setHintsShown] = useState<Record<string, number>>({});
 
-  const [answers, setAnswers] = useState<Record<string, Loose>>(() => (reviewMode ? initialProgress?.answers : undefined) || {});
+  const [answers, setAnswers] = useState<AnswerMap>(() => (reviewMode ? initialProgress?.answers : undefined) || {});
   const mathfieldRefs = useRef<Record<string, MathInputHandle | null>>({});
   const [submittedBlocks, setSubmittedBlocks] = useState<Set<string>>(
     () => new Set((reviewMode ? initialProgress?.submittedBlocks : undefined) || [])
@@ -332,14 +255,6 @@ export default function ExerciseViewer({
   // proposer la réponse après 2 échecs plutôt que de laisser retenter à
   // l'infini. Une fois résolu (correct ou révélé), la validation finale de
   // la page réutilise ce verdict au lieu de rappeler l'IA.
-  interface InlineTextState {
-    attempts: number;
-    status: "grading" | "correct" | "wrong" | "revealed" | "unavailable";
-    feedback?: string;
-    resolvedScore?: number;
-    resolvedCorrect?: boolean;
-    revealedAnswer?: string;
-  }
   const [inlineText, setInlineText] = useState<Record<string, InlineTextState>>({});
 
   const verifyTextBlock = async (block: Block) => {
@@ -443,7 +358,7 @@ export default function ExerciseViewer({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [adminComments] = useState<Record<string, string>>(() => initialProgress?.adminComments || {});
-  const [adminEditedAnswers] = useState<Record<string, Loose>>(() => initialProgress?.adminEditedAnswers || {});
+  const [adminEditedAnswers] = useState<AnswerMap>(() => initialProgress?.adminEditedAnswers || {});
   // Rempli par l'effet de chargement serveur ci-dessous.
   const accumulatedSecondsRef = useRef(0);
 
@@ -696,7 +611,7 @@ export default function ExerciseViewer({
     return () => clearTimeout(t);
   }, [currentScreenIndex, contentVisible]);
 
-  const handleBlockAnswerChange = (blockId: string, value: Loose) => {
+  const handleBlockAnswerChange = (blockId: string, value: AnswerValue) => {
     if (submittedBlocks.has(blockId)) return;
     const inlineStatus = inlineText[blockId]?.status;
     if (inlineStatus === "correct" || inlineStatus === "revealed") return;
@@ -1125,130 +1040,7 @@ export default function ExerciseViewer({
 
                 {/* Interactive Elements */}
                 <div className="mt-4">
-                  {block.type === "text_input" && (
-                    <div className="flex flex-col gap-2" data-exercise-answer-block>
-                      {/* Mode Toggle */}
-                      <div className="flex justify-end mb-1">
-                        <GlassSegmentedControl
-                          size="sm"
-                          options={[
-                            {
-                              id: "text",
-                              label: (
-                                <span className="flex items-center gap-1">
-                                  <Keyboard className="w-3 h-3" /> Clavier
-                                </span>
-                              ),
-                            },
-                            {
-                              id: "draw",
-                              label: (
-                                <span className="flex items-center gap-1">
-                                  <Pencil className="w-3 h-3" /> Dessin
-                                </span>
-                              ),
-                            },
-                          ]}
-                          value={blockModes[block.id] || "text"}
-                          onChange={(mode) =>
-                            setBlockModes((prev) => ({
-                              ...prev,
-                              [block.id]: mode as "text" | "draw",
-                            }))
-                          }
-                        />
-                      </div>
-
-                      {blockModes[block.id] === "draw" ? (
-                        <DrawingCanvas
-                          disabled={isSubmitted || inlineResolved}
-                          initialData={answer}
-                          onChange={(data) =>
-                            handleBlockAnswerChange(block.id, data)
-                          }
-                        />
-                      ) : (
-                        <>
-                          {(() => {
-                            const currentVal =
-                              answers[block.id] &&
-                              !answers[block.id].startsWith("data:image")
-                                ? answers[block.id]
-                                : "";
-                            return (
-                              <div className="relative">
-                                <MathInput
-                                  ref={(el) => {
-                                    mathfieldRefs.current[block.id] = el;
-                                  }}
-                                  value={currentVal}
-                                  disabled={isSubmitted || inlineResolved}
-                                  onChange={(latex) =>
-                                    handleBlockAnswerChange(block.id, latex)
-                                  }
-                                  className={`w-full min-h-[60px] border rounded-xl focus-within:ring-2 focus-within:ring-[var(--greek-blue)] text-lg ${
-                                    isSubmitted
-                                      ? isCorrect
-                                        ? "border-green-500 bg-green-50"
-                                        : "border-red-500 bg-red-50"
-                                      : inline?.status === "correct"
-                                      ? "border-green-500 bg-green-50"
-                                      : inline?.status === "wrong" || inline?.status === "revealed"
-                                      ? "border-red-500 bg-red-50"
-                                      : "border-gray-300 focus-within:border-[var(--greek-blue)]"
-                                  }`}
-                                  placeholder="Tapez votre réponse"
-                                  ariaLabel={block.title || "Réponse mathématique"}
-                                  level={exercise.level}
-                                />
-                                {exercise.grading_type === "ai" && !isSubmitted && (
-                                  <div
-                                    className="absolute right-3 bottom-3 text-[var(--greek-blue)]/50 pointer-events-none"
-                                    title="Correction par IA"
-                                  >
-                                    <Sparkles className="w-5 h-5" />
-                                  </div>
-                                )}
-                              </div>
-                            );
-                          })()}
-                        </>
-                      )}
-
-                      {/* Correction immédiate, même style que les mini-exercices de cours */}
-                      {!isSubmitted && (
-                        <>
-                          {!inlineResolved && (
-                            <GlassButton
-                              onClick={() => verifyTextBlock(block)}
-                              disabled={!answer || inline?.status === "grading"}
-                              variant="navy"
-                              size="sm"
-                              className="self-start min-w-[150px]"
-                            >
-                              {inline?.status === "grading" ? (
-                                <>
-                                  <Loader2 className="w-4 h-4 animate-spin" />
-                                  <span>Correction...</span>
-                                </>
-                              ) : (
-                                "Vérifier"
-                              )}
-                            </GlassButton>
-                          )}
-
-                          {inline && ["correct", "wrong", "revealed", "unavailable"].includes(inline.status) && (
-                            <AnswerFeedback
-                              kind={inline.status as "correct" | "wrong" | "revealed" | "unavailable"}
-                              feedback={inline.feedback}
-                              correctAnswer={inline.status === "revealed" ? inline.revealedAnswer : undefined}
-                              tryAgain={inline.status === "wrong"}
-                            />
-                          )}
-                        </>
-                      )}
-                    </div>
-                  )}
+                  {block.type === "text_input" && <TextInputAnswer blockModes={blockModes} block={block} setBlockModes={setBlockModes} isSubmitted={isSubmitted} inlineResolved={inlineResolved} answer={answer} handleBlockAnswerChange={handleBlockAnswerChange} answers={answers} mathfieldRefs={mathfieldRefs} isCorrect={isCorrect} inline={inline} exercise={exercise} verifyTextBlock={verifyTextBlock} />}
 
                   {(block.type === "single_choice" ||
                     block.type === "true_false") && (
@@ -1324,7 +1116,7 @@ export default function ExerciseViewer({
                               if (isSubmitted) return;
                               const newSelected = isSelected
                                 ? currentSelected.filter(
-                                    (a: string) => a !== option
+                                    (a) => a !== option
                                   )
                                 : [...currentSelected, option];
                               handleBlockAnswerChange(block.id, newSelected);
@@ -1349,7 +1141,7 @@ export default function ExerciseViewer({
                       )}
                       <FigureInputs
                         spec={block.figureSpec}
-                        values={Array.isArray(answer) ? answer : []}
+                        values={answerList(answer) as string[]}
                         disabled={!!isSubmitted}
                         expected={revealed[block.id]?.blanks}
                         submitted={!!isSubmitted}
@@ -1363,7 +1155,7 @@ export default function ExerciseViewer({
                       {/* Chaque trou est un champ posé à sa place : dans la phrase, dans une case de tableau ou DANS la figure. */}
                       <SlotHtml
                         html={renderLatexInHTML(tokenizeSlots(block.content || ""))}
-                        values={Array.isArray(answer) ? answer : []}
+                        values={answerList(answer) as string[]}
                         disabled={!!isSubmitted}
                         expected={revealed[block.id]?.blanks}
                         submitted={!!isSubmitted}
@@ -1376,7 +1168,7 @@ export default function ExerciseViewer({
                     <MatchingDragList
                       lefts={(block.pairs || []).map((p) => p.left)}
                       shuffledRights={shuffledRightOptions[block.id] || []}
-                      savedAnswer={Array.isArray(answer) && answer.length ? answer : undefined}
+                      savedAnswer={Array.isArray(answer) && answer.length ? (answer as string[]) : undefined}
                       disabled={!!isSubmitted}
                       onChange={(next) => handleBlockAnswerChange(block.id, next)}
                       getItemClass={(right, i) => {
@@ -1390,7 +1182,7 @@ export default function ExerciseViewer({
                   {block.type === "ordering" && (
                     <OrderingDragList
                       shuffledItems={shuffledOrderingItems[block.id] || block.items || []}
-                      savedAnswer={Array.isArray(answer) && answer.length ? answer : undefined}
+                      savedAnswer={Array.isArray(answer) && answer.length ? (answer as string[]) : undefined}
                       disabled={!!isSubmitted}
                       onChange={(next) => handleBlockAnswerChange(block.id, next)}
                       getItemClass={(item, i) => {
@@ -1405,7 +1197,7 @@ export default function ExerciseViewer({
                     <CategorizeDragList
                       displayItems={shuffledCategorizeItems[block.id] || (block.categoryItems || []).map((it, i) => ({ originalIndex: i, text: it.text }))}
                       categories={block.categories || []}
-                      savedAnswer={Array.isArray(answer) && answer.length ? answer : undefined}
+                      savedAnswer={Array.isArray(answer) && answer.length ? (answer as string[]) : undefined}
                       disabled={!!isSubmitted}
                       onChange={(next) => handleBlockAnswerChange(block.id, next)}
                       getItemClass={(originalIndex) => {
@@ -1436,95 +1228,11 @@ export default function ExerciseViewer({
                     />
                   )}
 
-                  {block.type === "click_error" && (
-                    <div className="space-y-2">
-                      {(block.steps || []).map((step, i) => {
-                        const selected = answer === i;
-                        let cls = selected
-                          ? "border-[var(--greek-blue)] bg-[var(--greek-blue)]/5"
-                          : "border-gray-200 bg-white hover:border-[var(--greek-blue)]";
-                        if (isSubmitted) {
-                          const correctIdx = parseInt(String(revealed[block.id]?.correctAnswer ?? ""), 10);
-                          if (i === correctIdx) cls = "border-green-500 bg-green-50";
-                          else if (selected) cls = "border-red-500 bg-red-50";
-                          else cls = "border-gray-200 bg-white opacity-60";
-                        }
-                        return (
-                          <button
-                            key={i}
-                            type="button"
-                            disabled={isSubmitted}
-                            onClick={() => handleBlockAnswerChange(block.id, i)}
-                            className={`w-full text-left px-3 py-2.5 rounded-lg border-2 text-sm font-mono transition-colors disabled:cursor-not-allowed ${cls}`}
-                          >
-                            <span dangerouslySetInnerHTML={{ __html: renderLatexInHTML(step) }} />
-                          </button>
-                        );
-                      })}
-                    </div>
-                  )}
+                  {block.type === "click_error" && <ClickErrorAnswer block={block} answer={answer} isSubmitted={isSubmitted} revealed={revealed} handleBlockAnswerChange={handleBlockAnswerChange} />}
 
-                  {block.type === "coding" && (
-                    <div className="relative">
-                      <textarea
-                        disabled={isSubmitted}
-                        value={typeof answer === "string" ? answer : ""}
-                        onChange={(e) => handleBlockAnswerChange(block.id, e.target.value)}
-                        className={`w-full min-h-[140px] font-mono text-sm border rounded-lg p-3 focus:outline-none ${
-                          isSubmitted
-                            ? isCorrect
-                              ? "border-green-500 bg-green-50"
-                              : "border-red-500 bg-red-50"
-                            : "border-gray-300 focus:border-[var(--greek-blue)]"
-                        }`}
-                        placeholder="Écris ton algorithme / code ici..."
-                        spellCheck={false}
-                      />
-                      {exercise.grading_type === "ai" && !isSubmitted && (
-                        <div
-                          className="absolute right-3 bottom-3 text-[var(--greek-blue)]/50 pointer-events-none"
-                          title="Correction par IA"
-                        >
-                          <Sparkles className="w-5 h-5" />
-                        </div>
-                      )}
-                    </div>
-                  )}
+                  {block.type === "coding" && <CodingAnswer isSubmitted={isSubmitted} answer={answer} handleBlockAnswerChange={handleBlockAnswerChange} block={block} isCorrect={isCorrect} exercise={exercise} />}
 
-                  {block.type === "impossible_search" && (
-                    <div className="flex flex-col gap-3">
-                      <div className="flex items-start gap-2 rounded-lg border border-[rgba(197,161,72,0.4)] bg-[var(--greek-cream)] p-3 text-sm text-[var(--greek-bronze)]">
-                        <AlertTriangle className="w-5 h-5 shrink-0 text-[var(--greek-gold)]" />
-                        <span>
-                          Attention : cet énoncé n&apos;a peut-être pas de solution. Justifie ta réponse
-                          plutôt que de deviner un résultat.
-                        </span>
-                      </div>
-                      <div className="relative">
-                        <textarea
-                          disabled={isSubmitted}
-                          value={typeof answer === "string" ? answer : ""}
-                          onChange={(e) => handleBlockAnswerChange(block.id, e.target.value)}
-                          className={`w-full min-h-[100px] text-sm border rounded-lg p-3 focus:outline-none ${
-                            isSubmitted
-                              ? isCorrect
-                                ? "border-green-500 bg-green-50"
-                                : "border-red-500 bg-red-50"
-                              : "border-gray-300 focus:border-[var(--greek-blue)]"
-                          }`}
-                          placeholder="Explique pourquoi ce problème n'a pas de solution..."
-                        />
-                        {exercise.grading_type === "ai" && !isSubmitted && (
-                          <div
-                            className="absolute right-3 bottom-3 text-[var(--greek-blue)]/50 pointer-events-none"
-                            title="Correction par IA"
-                          >
-                            <Sparkles className="w-5 h-5" />
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  )}
+                  {block.type === "impossible_search" && <ImpossibleSearchAnswer isSubmitted={isSubmitted} answer={answer} handleBlockAnswerChange={handleBlockAnswerChange} block={block} isCorrect={isCorrect} exercise={exercise} />}
                 </div>
 
                 {/* Feedback after global validation */}
@@ -1549,15 +1257,7 @@ export default function ExerciseViewer({
                         {adminComments[block.id]}
                       </div>
                     )}
-                    {adminMode && (
-                      <AdminAttemptControls
-                        itemKey={block.id}
-                        currentAnswer={answer}
-                        existingComment={adminComments[block.id]}
-                        existingEditedAnswer={adminEditedAnswers[block.id]}
-                        adminMode={adminMode}
-                      />
-                    )}
+                    {adminMode && <AdminReviewPanel block={block} answer={answer} adminComments={adminComments} adminEditedAnswers={adminEditedAnswers} adminMode={adminMode} />}
                   </div>
                 )}
               </div>
