@@ -1,5 +1,5 @@
-import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import type { ComponentProps } from "react";
 import AdminExercisesClient from "@/components/admin/AdminExercisesClient";
 import { loadFoldersWithCounts } from "@/lib/contentFolders";
 import { readFolderCookie } from "@/lib/adminFolderPage";
@@ -34,9 +34,9 @@ export default async function AdminExercisesPage() {
   return (
     <AdminExercisesClient
       initialFolderId={folderId}
-      initialItems={items.map((e: Loose) => ({ ...e, content_json: null }))}
+      initialItems={items.map((e) => ({ ...e, content_json: null })) as unknown as ComponentProps<typeof AdminExercisesClient>["initialItems"]}
       initialAllFolders={allFolders}
-      initialCourses={courses as Loose[]}
+      initialCourses={courses as ComponentProps<typeof AdminExercisesClient>["initialCourses"]}
     />
   );
 }
