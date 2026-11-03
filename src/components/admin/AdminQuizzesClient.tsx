@@ -155,7 +155,7 @@ export default function AdminQuizzesClient({
     try {
       const data = await importFromJSONFile(file);
       if (data._type && data._type !== "quiz") { alert("Ce fichier n'est pas un quiz."); return; }
-      let compiledContent = data.content_json || [];
+      let compiledContent = ((data.content_json as Question[] | undefined) || []) as Question[];
       try {
         const result = compileHandAuthoredQuiz(data);
         compiledContent = result.content;
@@ -169,11 +169,11 @@ export default function AdminQuizzesClient({
       setFormData({
         title: data.title || "",
         description: data.description || "",
-        course_id: data.course_id || "",
-        folder_id: data.folder_id || "",
+        course_id: String(data.course_id ?? ""),
+        folder_id: data.folder_id ?? "",
         time_limit_minutes: data.time_limit_minutes || data.time_limit || 0,
         min_score_percent: data.min_score_percent || 0,
-        difficulty_level: data.difficulty_level || "medium",
+        difficulty_level: (data.difficulty_level || "medium") as "easy" | "medium" | "hard",
         type: data.type || "standard",
         level: data.level || "6eme",
         grading_type: data.grading_type || "auto",

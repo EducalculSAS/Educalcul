@@ -163,7 +163,7 @@ export default function AdminCoursesClient({
       // déclaratifs + texte $...$ sont compilés vers le format affiché par le
       // site. Sans ce marqueur (ex: export ré-importé), contenu déjà compilé
       // → inchangé.
-      let compiledContent = data.content_json || [];
+      let compiledContent = ((data.content_json as Chapter[] | undefined) || []) as Chapter[];
       try {
         const result = compileHandAuthoredCourse(data);
         compiledContent = result.content;
@@ -181,7 +181,7 @@ export default function AdminCoursesClient({
         level: data.level || "6eme",
         status: data.status || "draft",
         thumbnail_url: data.thumbnail_url || "",
-        folder_id: data.folder_id ?? currentFolderId,
+        folder_id: data.folder_id === undefined ? currentFolderId : Number(data.folder_id),
         content_json: compiledContent,
       });
       if (data.id) {
