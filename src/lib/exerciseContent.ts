@@ -1,4 +1,8 @@
 import type { Loose } from "@/types/loose";
+import type { Block } from "@/components/admin/ExerciseBuilder";
+
+/** Page de contenu telle que stockée : une liste de blocs (forme libre tant qu'elle n'est pas vérifiée). */
+interface StoredPage { blocks?: unknown; [key: string]: unknown }
 import { randomUUID } from "crypto";
 import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 
@@ -8,11 +12,12 @@ import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 export function dedupeBlockIds<T>(pages: T): T {
   if (!Array.isArray(pages)) return pages;
   const seen = new Set<string>();
-  return pages.map((page: Loose) => {
+  return (pages as unknown[]).map((rawPage) => {
+    const page = rawPage as StoredPage | null;
     if (!page || !Array.isArray(page.blocks)) return page;
     return {
       ...page,
-      blocks: page.blocks.map((b: Loose) => {
+      blocks: (page.blocks as (Block | null)[]).map((b) => {
         if (!b || typeof b !== "object") return b;
         let id = typeof b.id === "string" && b.id ? b.id : "";
         if (!id || seen.has(id)) id = `block-${randomUUID()}`;
@@ -51,31 +56,34 @@ function seededShuffle<T>(arr: T[], seed: string): T[] {
 // le client a besoin d'une liste mélangée à afficher : on la fournit déjà
 // mélangée côté serveur (matchingOptions / shuffledItems) sans jamais exposer
 // la correspondance/l'ordre correct.
-export function stripBlockAnswers(block: Loose) {
+export function stripBlockAnswers(block: Block) {
   const { correctAnswer, blanks, ...stripped } = block;
   // Un point par élément pour les associations / catégories / trous : le client ne voit jamais les réponses, mais il
   // doit connaître le bon total de points.
   const rest = itemTotal(block) > 1 ? { ...stripped, points: blockMaxPoints(block) } : stripped;
   if (block.type === "matching" && Array.isArray(block.pairs)) {
-    const { pairs, ...safe } = rest;
+    const { pairs: _hidden, ...safe } = rest;
+    const pairs = block.pairs;
     return {
       ...safe,
-      pairs: pairs.map((p: Loose) => ({ left: p.left })),
-      matchingOptions: seededShuffle(pairs.map((p: Loose) => p.right), block.id || ""),
+      pairs: pairs.map((p) => ({ left: p.left })),
+      matchingOptions: seededShuffle(pairs.map((p) => p.right), block.id || ""),
     };
   }
   if (block.type === "ordering" && Array.isArray(block.items)) {
-    const { items, ...safe } = rest;
+    const { items: _hidden, ...safe } = rest;
+    const items = block.items;
     return {
       ...safe,
       shuffledItems: seededShuffle(items, block.id || ""),
     };
   }
   if (block.type === "categorize" && Array.isArray(block.categoryItems)) {
-    const { categoryItems, ...safe } = rest;
+    const { categoryItems: _hidden, ...safe } = rest;
+    const categoryItems = block.categoryItems;
     return {
       ...safe,
-      categoryItems: categoryItems.map((it: Loose) => ({ text: it.text })),
+      categoryItems: categoryItems.map((it) => ({ text: it.text })),
     };
   }
   return rest;
@@ -140,9 +148,9 @@ export function stripAnswers(content: Loose) {
   if (!content?.content_json || !Array.isArray(content.content_json)) return content;
   return {
     ...content,
-    content_json: content.content_json.map((page: Loose) => ({
+    content_json: content.content_json.map((page: StoredPage) => ({
       ...page,
-      blocks: Array.isArray(page.blocks) ? page.blocks.map(stripBlockAnswers) : page.blocks,
+      blocks: Array.isArray(page.blocks) ? (page.blocks as Block[]).map(stripBlockAnswers) : page.blocks,
     })),
   };
 }
