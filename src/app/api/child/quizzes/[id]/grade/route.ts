@@ -1,5 +1,5 @@
-import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
+import type { Question } from "@/components/admin/QuizBuilder";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { gradeFreeAnswer } from "@/lib/gradeFreeAnswer";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -29,7 +29,7 @@ export async function POST(
     const body = await req.json();
     const { question_id, answer, level } = body;
 
-    let targetQuestion: Loose = null;
+    let targetQuestion: Pick<Question, "text" | "correctAnswer" | "explanation" | "points" | "type" | "id"> | null = null;
     let maxPoints = 1;
     let dbLevel: string | null = null;
 
@@ -37,7 +37,7 @@ export async function POST(
       // Prévisualisation admin : les données de la question viennent du corps
       // (pas encore enregistrées en base), on leur fait confiance ici.
       const { question, correctAnswer, explanation, points } = body;
-      targetQuestion = { text: question, correctAnswer, explanation, points: points || 1, type: "text_input" };
+      targetQuestion = { id: "preview", text: question, correctAnswer, explanation, points: points || 1, type: "text_input" };
       maxPoints = points || 1;
     } else {
       const { data: quiz, error: qzError } = await supabaseAdmin
@@ -51,7 +51,7 @@ export async function POST(
       if (me.role !== "admin" && quiz.status !== "published") {
         return NextResponse.json({ error: "Quiz not found" }, { status: 404 });
       }
-      const questions: Loose[] = Array.isArray(quiz.content_json) ? quiz.content_json : [];
+      const questions: Question[] = Array.isArray(quiz.content_json) ? (quiz.content_json as unknown as Question[]) : [];
       targetQuestion = questions.find((q) => q.id === question_id) || null;
       if (!targetQuestion) {
         return NextResponse.json({ error: "Question not found" }, { status: 404 });

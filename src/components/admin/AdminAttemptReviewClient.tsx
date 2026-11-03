@@ -1,13 +1,13 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
+import type { AnswerValue } from "@/types/answers";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
-import ExerciseViewer from "@/components/viewers/ExerciseViewer";
-import QuizViewer from "@/components/viewers/QuizViewer";
+import ExerciseViewer, { type ExerciseViewerProps } from "@/components/viewers/ExerciseViewer";
+import QuizViewer, { type QuizViewerProps } from "@/components/viewers/QuizViewer";
 
 async function authHeaders() {
   const { data: { session } } = await supabase.auth.getSession();
@@ -16,8 +16,8 @@ async function authHeaders() {
 
 interface AttemptRow {
   id: string;
-  progress_json: Loose;
-  attempts_history: Loose[] | null;
+  progress_json: Record<string, unknown> | null;
+  attempts_history: { detail?: Record<string, unknown>; score?: number; completed_at?: string; total_points?: number }[] | null;
   score: number | null;
   total_points: number | null;
 }
@@ -33,7 +33,7 @@ export default function AdminAttemptReviewClient({
   childName: string;
   kind: "exercise" | "quiz";
   itemId: string;
-  item: Loose;
+  item: { title: string };
   attempt: AttemptRow;
 }) {
   const router = useRouter();
@@ -63,7 +63,7 @@ export default function AdminAttemptReviewClient({
     }
   };
 
-  const save = async (key: string, extra: { comment?: string; editedAnswer?: Loose; verdict?: boolean }) => {
+  const save = async (key: string, extra: { comment?: string; editedAnswer?: AnswerValue | string[]; verdict?: boolean }) => {
     setSaving(true);
     try {
       const headers = await authHeaders();
@@ -80,7 +80,7 @@ export default function AdminAttemptReviewClient({
 
   const adminMode = {
     onComment: (key: string, text: string) => save(key, { comment: text }),
-    onEditAnswer: (key: string, value: Loose) => save(key, { editedAnswer: value }),
+    onEditAnswer: (key: string, value: AnswerValue | string[]) => save(key, { editedAnswer: value }),
     ...(kind === "exercise" ? { onVerdict: (key: string, correct: boolean) => save(key, { verdict: correct }) } : {}),
     saving,
   };
@@ -113,7 +113,7 @@ export default function AdminAttemptReviewClient({
             </button>
             {history.map((h, i: number) => {
               const disabled = !h.detail;
-              const label = `${new Date(h.completed_at).toLocaleDateString("fr-FR")} : ${h.score}/${h.total_points}${disabled ? " (résumé seulement)" : ""}`;
+              const label = `${new Date(h.completed_at ?? 0).toLocaleDateString("fr-FR")} : ${h.score}/${h.total_points}${disabled ? " (résumé seulement)" : ""}`;
               return (
                 <button
                   key={i}
@@ -140,9 +140,9 @@ export default function AdminAttemptReviewClient({
         {!progress ? (
           <div className="p-8 text-center text-gray-400">Détail non disponible pour cette tentative.</div>
         ) : kind === "exercise" ? (
-          <ExerciseViewer key={`${selected}-${version}`} exercise={item} reviewMode initialProgress={progress} adminMode={adminMode} />
+          <ExerciseViewer key={`${selected}-${version}`} exercise={item as unknown as ExerciseViewerProps["exercise"]} reviewMode initialProgress={progress as unknown as ExerciseViewerProps["initialProgress"]} adminMode={adminMode as unknown as ExerciseViewerProps["adminMode"]} />
         ) : (
-          <QuizViewer key={`${selected}-${version}`} quiz={item} reviewMode initialProgress={progress} adminMode={adminMode} />
+          <QuizViewer key={`${selected}-${version}`} quiz={item as unknown as QuizViewerProps["quiz"]} reviewMode initialProgress={progress as unknown as QuizViewerProps["initialProgress"]} adminMode={adminMode as unknown as QuizViewerProps["adminMode"]} />
         )}
       </div>
     </div>

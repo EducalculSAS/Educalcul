@@ -1,6 +1,5 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { useState, type ReactNode } from "react";
 import { Award, BookOpen, TrendingUp, Activity, Brain, Sparkles, RotateCcw, Star, Lock, CalendarClock, Gamepad2 } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -89,7 +88,7 @@ export default function ChildReportTabs({
   const [tab, setTab] = useState<"activite" | "ia">("activite");
   const [analysis, setAnalysis] = useState<string | null>(null);
   const [analysisLoading, setAnalysisLoading] = useState(false);
-  const [analysisStats, setAnalysisStats] = useState<Loose>(null);
+  const [analysisStats, setAnalysisStats] = useState<{ totalEx: number; totalQuiz: number; totalCourses: number; successRate: number; avgQuizScore: number | null } | null>(null);
   const [generatedAt, setGeneratedAt] = useState<string | null>(null);
   const [canRegenerate, setCanRegenerate] = useState(true);
 

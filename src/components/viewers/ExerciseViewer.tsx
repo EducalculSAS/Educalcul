@@ -69,7 +69,7 @@ interface ExerciseGradeResult {
 
 export type RevealInfo = Pick<Block, "correctAnswer" | "blanks" | "pairs" | "items" | "categoryItems">;
 
-interface ExerciseViewerProps {
+export interface ExerciseViewerProps {
   exercise: {
     id?: string;
     title: string;

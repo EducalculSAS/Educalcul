@@ -30,7 +30,7 @@ interface QuizGradeResponse {
   reveal?: { correctAnswer?: string | string[]; explanation?: string };
 }
 
-interface QuizViewerProps {
+export interface QuizViewerProps {
   quiz: {
     id?: string | number;
     title: string;

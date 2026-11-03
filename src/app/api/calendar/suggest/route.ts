@@ -1,4 +1,3 @@
-import type { Loose } from "@/types/loose";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -43,6 +42,9 @@ interface CourseSignal {
   lastSeen: string | null;
   status: string | null;
 }
+
+/** Séance telle que proposée par l'IA (rien n'est de confiance : tout est revalidé plus bas). */
+interface AiSession { course_id?: unknown; date?: string; duration_min?: unknown; start_time?: unknown; title?: unknown; description?: unknown; reason?: unknown }
 
 export async function POST(req: Request) {
   try {
@@ -214,7 +216,7 @@ Réponds UNIQUEMENT par un JSON valide :
     }
 
     const ai = await chatWithAI([{ role: "user", content: lines.join("\n") }], systemPrompt, 0.4, 5000);
-    let parsed: { summary?: string; sessions?: Loose[] };
+    let parsed: { summary?: string; sessions?: AiSession[] };
     try {
       const m = ai.match(/\{[\s\S]*\}/);
       parsed = JSON.parse(m ? m[0] : ai);
@@ -224,7 +226,7 @@ Réponds UNIQUEMENT par un JSON valide :
 
     // ── Validation stricte de la proposition ──────────────────────
     const taken = new Set(plannedRevisions);
-    const sessionsOut: Loose[] = [];
+    const sessionsOut: { start_date: string; [key: string]: unknown }[] = [];
     for (const s of Array.isArray(parsed.sessions) ? parsed.sessions : []) {
       const courseId = Number(s?.course_id);
       if (!isRealDate(s?.date) || s.date < today || s.date > until) continue;

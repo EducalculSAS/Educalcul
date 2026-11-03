@@ -1,5 +1,6 @@
-import type { Loose } from "@/types/loose";
 import { Star, Trophy, BookOpen, CheckCircle, Zap } from "lucide-react";
+import type { Row } from "@/types/db";
+import type { LucideIcon } from "lucide-react";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getNameColor } from "@/lib/badgeStyles";
 import Navbar from "@/components/Navbar";
@@ -9,7 +10,7 @@ import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { safeRedirectPath } from "@/lib/safeRedirect";
 
-const ICON_MAP: Record<string, Loose> = {
+const ICON_MAP: Record<string, LucideIcon> = {
   pencil: Star, zap: Zap, flame: Star, star: Star, crown: Star,
   check: CheckCircle, trophy: Trophy, brain: Star, sparkles: Star,
   graduation: Star, book: BookOpen, map: Star, library: BookOpen,
@@ -47,7 +48,7 @@ export default async function PublicProfilePage({
   const [{ data: featuredBadges }, { data: earnedBadgeRows }, { count: exos }, { count: quiz }, { count: cours }] = await Promise.all([
     user.featured_badges?.length
       ? supabaseAdmin.from("badges").select("*").in("id", user.featured_badges.filter(Boolean))
-      : Promise.resolve({ data: [] as Loose[] }),
+      : Promise.resolve({ data: [] as Row<"badges">[] }),
     supabaseAdmin.from("user_badges").select("badge:badges(id, name, icon, color, category)").eq("user_id", user.id),
     supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", user.id),
     supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", user.id),
@@ -55,7 +56,7 @@ export default async function PublicProfilePage({
   ]);
 
   const badges = featuredBadges || [];
-  const allBadges = ((earnedBadgeRows || []) as unknown as { badge: Loose }[]).map((e) => e.badge).filter(Boolean);
+  const allBadges = ((earnedBadgeRows || []) as unknown as { badge: { id: number; name: string; icon: string; color: string; category?: string | null } | null }[]).map((e) => e.badge).filter((b): b is NonNullable<typeof b> => !!b);
   const stats = { exos: exos ?? 0, quiz: quiz ?? 0, cours: cours ?? 0 };
 
   const nameColor = getNameColor(user.name_color || "default");
