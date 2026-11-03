@@ -4,9 +4,6 @@ import type { Row } from "@/types/db";
 import type { BillingInvoice } from "@/lib/parentSubscriptionDetails";
 
 /** Code de parrainage du parent, avec ses utilisations (et le filleul qui l'a utilisé). */
-/** Données d'inscription saisies avant le paiement (sessionStorage). Le mot de passe n'y figure jamais. */
-interface SignupData { email: string; firstName: string; lastName: string; password?: string; referralCode?: string | null; [key: string]: unknown }
-
 export interface ReferralCodeWithUses extends Row<"referral_codes"> {
   uses?: (Row<"referral_uses"> & { users?: { first_name: string | null; last_name: string | null; email: string } | null })[];
 }
@@ -39,7 +36,7 @@ import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
 import { type PricingConfig } from "@/lib/pricingConfig";
 import GlassButton from "@/components/ui/GlassButton";
-import { getSignupSession, patchSignupSession, clearSignupSession } from "@/lib/signupSession";
+import { getSignupSession, patchSignupSession, clearSignupSession, type SignupData } from "@/lib/signupSession";
 import { periodSuffix } from "@/lib/billingPeriods";
 
 interface SubscriptionPlan {
@@ -143,7 +140,7 @@ function SubscriptionPageContent({
             router.push("/auth/inscription");
             return;
           }
-          setSelectedPlan(s.selectedPlan);
+          setSelectedPlan(s.selectedPlan as unknown as SubscriptionPlan);
           setSignupData(s.data);
           setLoading(false);
         } catch (error) {

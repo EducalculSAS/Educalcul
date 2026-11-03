@@ -1,11 +1,10 @@
 "use client";
 
-import type { Loose } from "@/types/loose";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { getPendingSignupPassword, clearPendingSignupPassword } from "@/lib/pendingSignupPassword";
-import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
+import { getSignupSession, patchSignupSession, type SignupData, type SelectedPlan } from "@/lib/signupSession";
 import { AlertCircle, Loader2, Gift, CheckCircle, Pencil, User, Mail, ArrowLeft, Check } from "lucide-react";
 import { computeCustomPlan, DEFAULT_CUSTOM_PRICING } from "@/lib/customPlanPricing";
 import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
@@ -29,8 +28,8 @@ export default function RecapClient() {
   const [loading, setLoading] = useState(true);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [signupData, setSignupData] = useState<Loose>(null);
-  const [selectedPlan, setSelectedPlan] = useState<Loose>(null);
+  const [signupData, setSignupData] = useState<SignupData | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<SelectedPlan | null>(null);
   const [pricingConfig, setPricingConfig] = useState<PricingConfig>(DEFAULT_PRICING_CONFIG);
   const [referralCode, setReferralCode] = useState("");
   const [referralStatus, setReferralStatus] = useState<"idle" | "valid" | "invalid">("idle");
@@ -94,7 +93,7 @@ export default function RecapClient() {
       await patchSignupSession({ data: updatedData });
 
       const email = updatedData.email || (await supabase.auth.getUser()).data.user?.email || "";
-      const isFreePlan = selectedPlan.price === 0 || custom?.price === 0;
+      const isFreePlan = (!selectedPlan.custom && selectedPlan.price === 0) || custom?.price === 0;
 
       // Plan gratuit + inscription email/mot de passe (pas Google, deja
       // authentifie autrement) : rien a payer, donc pas besoin de passer par
@@ -191,6 +190,8 @@ export default function RecapClient() {
       </div>
     );
   }
+
+  if (!signupData || !selectedPlan) return null;
 
   return (
     <div className="w-full bg-[var(--greek-cream)] py-12">
@@ -304,7 +305,7 @@ export default function RecapClient() {
         <GlassButton onClick={confirmAndPay} variant="navy" fullWidth disabled={processing} className="text-lg">
           {processing
             ? <><Loader2 className="w-5 h-5 animate-spin" /> Traitement…</>
-            : selectedPlan.price === 0 || custom?.price === 0
+            : (!selectedPlan.custom && selectedPlan.price === 0) || custom?.price === 0
             ? "Confirmer et créer mon compte"
             : "Confirmer et payer"}
         </GlassButton>

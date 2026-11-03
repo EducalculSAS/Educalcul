@@ -48,8 +48,8 @@ export default function CompleteGoogleProfile() {
       // Récupérer données pré-remplies depuis l'inscription
       const s = await getSignupSession();
       if (s.data) {
-        if (s.data.firstName) setFirstName(v => v || s.data.firstName);
-        if (s.data.lastName)  setLastName(v => v || s.data.lastName);
+        if (s.data.firstName) setFirstName(v => v || (s.data?.firstName ?? ""));
+        if (s.data.lastName)  setLastName(v => v || (s.data?.lastName ?? ""));
       }
 
       setLoading(false);

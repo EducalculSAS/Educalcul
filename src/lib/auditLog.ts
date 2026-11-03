@@ -3,7 +3,6 @@
  * Ensures all sensitive operations are logged for security and compliance
  */
 
-import type { Loose } from "@/types/loose";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getClientIp as getClientIpOrNull } from "@/lib/ipGeo";
 
@@ -44,7 +43,7 @@ export interface AuditLogEntry {
   targetUserId?: number;
   targetType?: string;
   targetId?: string;
-  details?: Record<string, Loose>;
+  details?: object;
   ipAddress?: string;
   userAgent?: string;
 }
