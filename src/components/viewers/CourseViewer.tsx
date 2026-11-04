@@ -393,8 +393,9 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   // Scroll back to top when changing lesson/chapter
   useEffect(() => {
     mainScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }, [currentChapterIndex, currentLessonIndex]);
+    // Lecteur intégré dans une page (démo de la page Offres) : on ne fait défiler que le lecteur, jamais la page.
+    if (String(course.id) !== "demo") window.scrollTo({ top: 0, behavior: "auto" });
+  }, [currentChapterIndex, currentLessonIndex, course.id]);
 
   const handleNext = () => {
     if (!currentChapter) return;

@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlassButton from "@/components/ui/GlassButton";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import PublicHero from "@/components/seo/PublicHero";
 import SeoFaq from "@/components/seo/SeoFaq";
 import CaliaChatDemo from "@/components/offres/CaliaChatDemo";
 
@@ -53,24 +54,18 @@ export default function CaliaPage() {
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
       <Navbar />
       <main className="flex flex-col flex-1">
-        <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white pt-[calc(var(--nav-h)+2.5rem)] pb-16 text-center">
-          <div className="relative container mx-auto px-6 max-w-3xl">
-            <div className="mb-8">
-              <Breadcrumbs items={[{ name: "Accueil", href: "/" }, { name: "Offres", href: "/offres" }, { name: "Calia", href: "/calia-tuteur-ia-maths" }]} />
-            </div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "rgba(197,161,72,0.85)" }}>Tuteur IA de mathématiques</p>
-            <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-bold mb-5">Calia, le tuteur IA qui fait réfléchir en maths</h1>
-            <p className="text-white/70 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">
-              Calia accompagne l&apos;élève du CP à la Terminale. Plutôt que de donner la réponse, elle pose les bonnes questions pour qu&apos;il comprenne et sache refaire seul.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <GlassButton href="/auth/inscription" variant="gold" className="font-bold">
-                Essayer gratuitement 7 jours <ArrowRight className="w-4 h-4" />
-              </GlassButton>
-              <GlassButton href="#essayer-calia" variant="light" className="font-semibold">Parler à Calia</GlassButton>
-            </div>
-          </div>
-        </section>
+        <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "Calia", href: "/calia-tuteur-ia-maths" }]} />
+        <PublicHero
+          back={{ href: "/", label: "Retour à l'accueil" }}
+          eyebrow="Tuteur IA de mathématiques"
+          title="Calia, le tuteur IA qui fait réfléchir en maths"
+          intro={<>Calia accompagne l&apos;élève du CP à la Terminale. Plutôt que de donner la réponse, elle pose les bonnes questions pour qu&apos;il comprenne et sache refaire seul.</>}
+        >
+          <GlassButton href="/auth/inscription" variant="gold" className="font-bold">
+            Essayer gratuitement 7 jours <ArrowRight className="w-4 h-4" />
+          </GlassButton>
+          <GlassButton href="#essayer-calia" variant="light" className="font-semibold">Parler à Calia</GlassButton>
+        </PublicHero>
 
         <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
           <section className={CARD}>

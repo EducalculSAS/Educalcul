@@ -193,7 +193,7 @@ export default function Navbar() {
         {/* Dropdown Menu */}
         <div
           data-glass-bounds
-          className={`absolute top-[64px] right-0 w-full sm:w-72 flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top overflow-hidden border border-white/10 ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
+          className={`absolute top-[64px] right-0 w-full sm:w-72 flex flex-col z-[1040] transition-all duration-300 ease-in-out origin-top overflow-y-auto overscroll-contain max-h-[calc(100dvh-64px)] border border-white/10 ${isOpen ? "scale-y-100 opacity-100" : "scale-y-0 opacity-0 pointer-events-none"}`}
           style={{
             // Fond plein (pas de flou/transparence) — cohérent avec le
             // bandeau navbar lui-même, plutôt qu'un panneau translucide qui
@@ -212,7 +212,11 @@ export default function Navbar() {
             <div className="flex flex-col p-4 gap-2">
               <DropdownLink href="/" onClick={() => setIsOpen(false)}>Accueil</DropdownLink>
               <DropdownLink href="/offres" onClick={() => setIsOpen(false)}>Offres</DropdownLink>
+              <DropdownLink href="/calia-tuteur-ia-maths" onClick={() => setIsOpen(false)}>Calia, le tuteur IA</DropdownLink>
+              <DropdownLink href="/programmes" onClick={() => setIsOpen(false)}>Programmes</DropdownLink>
+              <DropdownLink href="/methode-pedagogique" onClick={() => setIsOpen(false)}>Méthode pédagogique</DropdownLink>
               <DropdownLink href="/tarifs" onClick={() => setIsOpen(false)}>Tarifs</DropdownLink>
+              <DropdownLink href="/a-propos" onClick={() => setIsOpen(false)}>À propos</DropdownLink>
               <DropdownLink href="/faq" onClick={() => setIsOpen(false)}>FAQ</DropdownLink>
               <DropdownLink href="/contact" onClick={() => setIsOpen(false)}>Contact</DropdownLink>
             </div>

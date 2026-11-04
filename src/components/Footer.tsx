@@ -21,6 +21,8 @@ const NAV_COLS = [
       { label: "Tarifs", href: "/tarifs" },
       { label: "Programmes", href: "/programmes" },
       { label: "Calia, tuteur IA", href: "/calia-tuteur-ia-maths" },
+      { label: "Méthode pédagogique", href: "/methode-pedagogique" },
+      { label: "À propos", href: "/a-propos" },
       { label: "FAQ", href: "/faq" },
     ],
   },

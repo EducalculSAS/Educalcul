@@ -94,6 +94,8 @@ interface GlassButtonProps {
   /** "submit" dans un <form> : la touche Entrée d'un champ valide le
    * formulaire (sinon rien ne se passe, faute de bouton d'envoi). */
   type?: "button" | "submit";
+  /** Lien externe : s'ouvre dans un nouvel onglet. */
+  external?: boolean;
 }
 
 /** Bouton "verre liquide" universel — même comportement partout sur le site :
@@ -110,6 +112,7 @@ interface GlassButtonProps {
  * il ne s'agit pas d'une navigation). */
 export default function GlassButton({
   href,
+  external = false,
   onClick,
   children,
   variant = "gold",
@@ -334,6 +337,7 @@ export default function GlassButton({
           ref={elRef as React.Ref<HTMLAnchorElement>}
           href={href}
           onClick={onClick}
+          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           className={combinedClassName}
           style={combinedStyle}
           data-variant={variant}

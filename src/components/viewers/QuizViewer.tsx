@@ -363,8 +363,9 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   // Scroll back to top when changing question
   useEffect(() => {
     mainScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }, [currentQuestionIndex]);
+    // Lecteur intégré dans une page (démo de la page Offres) : on ne fait défiler que le lecteur, jamais la page.
+    if (String(quiz.id) !== "demo") window.scrollTo({ top: 0, behavior: "auto" });
+  }, [currentQuestionIndex, quiz.id]);
 
   // Rend les graphiques interactifs après affichage
   useEffect(() => {

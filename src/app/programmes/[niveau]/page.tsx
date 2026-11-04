@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlassButton from "@/components/ui/GlassButton";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import PublicHero from "@/components/seo/PublicHero";
 import SeoFaq from "@/components/seo/SeoFaq";
 import MiniExercise from "@/components/seo/MiniExercise";
 import JsonLd from "@/components/JsonLd";
@@ -71,26 +72,20 @@ export default async function LevelProgrammePage({ params }: { params: Promise<{
       <Navbar />
       <main className="flex flex-col flex-1">
         {/* En-tête */}
-        <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white pt-[calc(var(--nav-h)+2.5rem)] pb-16 text-center">
-          <div className="relative container mx-auto px-6 max-w-3xl">
-            <div className="mb-8">
-              <Breadcrumbs items={[{ name: "Accueil", href: "/" }, { name: "Programmes", href: "/programmes" }, { name: level.name, href: `/programmes/${level.slug}` }]} />
-            </div>
-            <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "rgba(197,161,72,0.85)" }}>
-              {CYCLE_LABEL[level.cycle]} · {level.cycleLabel}
-            </p>
-            <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-bold mb-5">{level.h1}</h1>
-            <p className="text-white/70 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-8">{level.intro}</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <GlassButton href="/auth/inscription" variant="gold" className="font-bold">
-                Essayer gratuitement 7 jours <ArrowRight className="w-4 h-4" />
-              </GlassButton>
-              <GlassButton href="#exercice" variant="light" className="font-semibold">
-                Faire un exercice de {level.short}
-              </GlassButton>
-            </div>
-          </div>
-        </section>
+        <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "Programmes", href: "/programmes" }, { name: level.name, href: `/programmes/${level.slug}` }]} />
+        <PublicHero
+          back={{ href: "/programmes", label: "Tous les programmes" }}
+          eyebrow={<>{CYCLE_LABEL[level.cycle]} · {level.cycleLabel}</>}
+          title={level.h1}
+          intro={level.intro}
+        >
+          <GlassButton href="/auth/inscription" variant="gold" className="font-bold">
+            Essayer gratuitement 7 jours <ArrowRight className="w-4 h-4" />
+          </GlassButton>
+          <GlassButton href="#exercice" variant="light" className="font-semibold">
+            Faire un exercice de {level.short}
+          </GlassButton>
+        </PublicHero>
 
         <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
           {/* Programme */}

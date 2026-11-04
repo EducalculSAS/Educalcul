@@ -10,7 +10,8 @@ export interface Crumb {
 }
 
 /** Fil d'Ariane visible + données structurées BreadcrumbList (mêmes libellés, mêmes liens). */
-export default function Breadcrumbs({ items, tone = "light" }: { items: Crumb[]; tone?: "light" | "dark" }) {
+/** `hidden` : seulement les données structurées (pour les moteurs), sans fil d'Ariane affiché. */
+export default function Breadcrumbs({ items, tone = "light", hidden = false }: { items: Crumb[]; tone?: "light" | "dark"; hidden?: boolean }) {
   const data = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -18,6 +19,7 @@ export default function Breadcrumbs({ items, tone = "light" }: { items: Crumb[];
   };
   const muted = tone === "light" ? "text-white/60 hover:text-white" : "text-gray-500 hover:text-[var(--greek-blue)]";
   const current = tone === "light" ? "text-white" : "text-[var(--greek-blue)]";
+  if (hidden) return <JsonLd data={data} />;
   return (
     <>
       <JsonLd data={data} />

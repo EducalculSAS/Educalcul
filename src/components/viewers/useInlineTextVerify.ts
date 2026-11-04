@@ -22,7 +22,14 @@ export function useInlineTextVerify(exercise: ExerciseViewerProps["exercise"], a
     setInlineText((prev) => ({ ...prev, [block.id]: { attempts: attemptsSoFar, status: "grading" } }));
     try {
       const exerciseId = exercise.id || "preview";
-      const res = await fetch(`/api/child/exercises/${exerciseId}/grade`, {
+      // Démo publique (page Offres) : correction de démonstration, sans compte.
+      const res = exerciseId === "demo"
+        ? await fetch("/api/demo/grade", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ kind: "exercise", items: [{ block_id: block.id, answer: studentAnswer }] }),
+          }).then(async (r) => new Response(JSON.stringify((await r.json())?.results?.[0] ?? { is_correct: false, feedback: "Correction indisponible, réessaie." }), { status: r.status }))
+        : await fetch(`/api/child/exercises/${exerciseId}/grade`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

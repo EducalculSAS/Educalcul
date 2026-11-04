@@ -2,7 +2,8 @@ import { NextResponse } from "next/server";
 import { getClientIp } from "@/lib/apiAuth";
 import { rateLimitWithBackoff } from "@/lib/rateLimitAdvanced";
 import { DEMO_EXERCISE, DEMO_QUIZ } from "@/lib/demoContent";
-import { gradeBlock } from "@/lib/structuredGrading";
+import { gradeBlock, revealFor } from "@/lib/structuredGrading";
+import { gradeDemoWritten, isDemoWrittenBlock } from "@/lib/demoGrading";
 
 /**
  * Correction de la DÉMONSTRATION de la page Offres (sans compte) : uniquement les questions du contenu de démonstration,
@@ -23,6 +24,8 @@ export async function POST(req: Request) {
     const results = items.map((it) => {
       const block = blocks.get(String(it.block_id ?? ""));
       if (!block) return { block_id: it.block_id, score: 0, max_score: 0, is_correct: false, feedback: "Question inconnue." };
+      // Réponses écrites : correction déterministe, présentée comme un retour de Calia (aucune IA appelée).
+      if (isDemoWrittenBlock(block.id)) return { block_id: block.id, ...gradeDemoWritten(block.id, it.answer, block.points || 1), reveal: revealFor(block) };
       return { block_id: block.id, ...gradeBlock(block, it.answer, block.points || 1) };
     });
     return NextResponse.json({ results });

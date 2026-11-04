@@ -13,6 +13,8 @@ const PAGES: { path: string; updated?: string; changeFrequency: "weekly" | "mont
   { path: "/tarifs", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.9 },
   { path: "/programmes", updated: LEVEL_PAGES_UPDATED, changeFrequency: "monthly", priority: 0.9 },
   { path: "/calia-tuteur-ia-maths", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/methode-pedagogique", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/a-propos", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.6 },
   { path: "/auth/inscription", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.8 },
   { path: "/faq", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", updated: "2026-11-04", changeFrequency: "yearly", priority: 0.5 },

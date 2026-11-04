@@ -14,6 +14,8 @@ export default function robots(): MetadataRoute.Robots {
           "/programmes",
           "/programmes/",
           "/calia-tuteur-ia-maths",
+          "/methode-pedagogique",
+          "/a-propos",
           "/auth/inscription",
           "/auth/connexion",
           "/mentions-legales",

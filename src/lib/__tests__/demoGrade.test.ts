@@ -17,32 +17,36 @@ beforeEach(() => { allowed = true; });
 describe("démo de la page Offres", () => {
   it("le navigateur ne reçoit aucune réponse avant correction", () => {
     const ex = JSON.stringify(stripExercise(DEMO_EXERCISE));
-    expect(ex).not.toMatch(/correctAnswer|"right"|0\.75|explanation/);
+    expect(ex).not.toMatch(/correctAnswer|"right"|5\/12|explanation|Calia :/);
     const qz = JSON.stringify(stripQuiz(DEMO_QUIZ));
     expect(qz).not.toMatch(/correctAnswer|explanation/);
   });
 
-  it("exercice : bonnes réponses → tout juste, avec la correction révélée", async () => {
+  it("exercice : réponses écrites justes, sous plusieurs formes, avec un retour de Calia", async () => {
     const { status, body } = await post({ kind: "exercise", items: [
-      { block_id: "demo-b-1", answer: "$\\frac{5}{12}$" },
-      { block_id: "demo-b-2", answer: ["$\\frac{4}{8}$", "$\\frac{6}{9}$", "$\\frac{9}{12}$"] },
-      { block_id: "demo-b-3", answer: ["$\\frac{1}{4}$", "$\\frac{2}{4}$", "$\\frac{3}{4}$", "$\\frac{5}{4}$"] },
-      { block_id: "demo-b-4", answer: 0.75 },
+      { block_id: "demo-b-1", answer: "5/12" },
+      { block_id: "demo-b-2", answer: " 9 " },
+      { block_id: "demo-b-3", answer: "\\frac{3}{4}" },
+      { block_id: "demo-b-4", answer: "0,75" },
     ] });
     expect(status).toBe(200);
     expect(body.results.map((r: { is_correct: boolean }) => r.is_correct)).toEqual([true, true, true, true]);
-    expect(body.results[0].reveal).toEqual({ correctAnswer: "$\\frac{5}{12}$" });
+    expect(body.results[0].feedback).toMatch(/^Calia : /);
+    expect(body.results[0].reveal).toEqual({ correctAnswer: "5/12" });
   });
 
-  it("exercice : crédit partiel sur l'association, erreurs reconnues", async () => {
+  it("exercice : erreurs reconnues, forme non simplifiée signalée", async () => {
     const { body } = await post({ kind: "exercise", items: [
-      { block_id: "demo-b-1", answer: "$\\frac{12}{5}$" },
-      { block_id: "demo-b-2", answer: ["$\\frac{4}{8}$", "$\\frac{9}{12}$", "$\\frac{6}{9}$"] },
+      { block_id: "demo-b-1", answer: "12/5" },
+      { block_id: "demo-b-3", answer: "6/8" },
+      { block_id: "demo-b-4", answer: "3/8" },
+      { block_id: "demo-b-2", answer: "bonjour" },
       { block_id: "inconnu", answer: 1 },
     ] });
-    expect(body.results[0].is_correct).toBe(false);
-    expect(body.results[1]).toMatchObject({ is_correct: false, score: 1, max_score: 3 });
-    expect(body.results[2]).toMatchObject({ is_correct: false, max_score: 0 });
+    expect(body.results.slice(0, 4).every((r: { is_correct: boolean }) => !r.is_correct)).toBe(true);
+    expect(body.results[1].feedback).toMatch(/même valeur/);
+    expect(body.results[3].feedback).toMatch(/Écris un nombre/);
+    expect(body.results[4]).toMatchObject({ is_correct: false, max_score: 0 });
   });
 
   it("quiz : choix unique, vrai/faux, choix multiples", async () => {

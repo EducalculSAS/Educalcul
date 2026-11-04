@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { ChevronDown, BookOpen, ExternalLink } from "lucide-react";
+import { ArrowRight, ChevronDown, BookOpen, ExternalLink } from "lucide-react";
+import GlassButton from "@/components/ui/GlassButton";
+import { LEVEL_PAGES } from "@/lib/seo/levels";
 import { PROGRAMMES_NATIONAUX, type ProgrammeEntry } from "@/lib/programmes-nationaux";
 import katex from "katex";
 import "katex/dist/katex.min.css";
@@ -61,6 +63,7 @@ function renderNotion(text: string): string {
 
 function LevelCard({ prog, color, isOpen, onToggle, dbPdf, isMine }: { prog: ProgrammeEntry; color: string; isOpen: boolean; onToggle: () => void; dbPdf?: DbProgrammePdf; isMine?: boolean }) {
   const pdfs = PDF_LINKS[prog.level] || [];
+  const levelPage = LEVEL_PAGES.find((l) => l.appLevel === prog.level);
   return (
     <div
       className="rounded-2xl border transition-all duration-200"
@@ -107,24 +110,23 @@ function LevelCard({ prog, color, isOpen, onToggle, dbPdf, isMine }: { prog: Pro
               </div>
             ))}
 
-            {(pdfs.length > 0 || dbPdf) && (
+            {levelPage ? (
+              <div className="pt-4 border-t" style={{ borderColor: "var(--greek-border)" }}>
+                <GlassButton href={`/programmes/${levelPage.slug}`} variant="navy" size="sm">
+                  Voir le programme de {levelPage.short} <ArrowRight className="w-4 h-4" />
+                </GlassButton>
+              </div>
+            ) : (pdfs.length > 0 || dbPdf) && (
               <div className="pt-4 border-t space-y-2" style={{ borderColor: "var(--greek-border)" }}>
                 <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "var(--text-muted)" }}>
                   Programme officiel
                 </p>
                 {pdfs.map((pdf) => (
-                  <a
-                    key={pdf.url}
-                    href={dbPdf?.file_url || pdf.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl transition-colors hover:opacity-80 mr-2"
-                    style={{ background: "rgba(197,161,72,0.1)", color: "var(--greek-blue)", border: "1px solid rgba(197,161,72,0.25)" }}
-                  >
+                  <GlassButton key={pdf.url} href={dbPdf?.file_url || pdf.url} external variant="outline" size="sm" className="mr-2">
                     <BookOpen size={14} />
                     {pdf.label}
-                    <ExternalLink size={12} style={{ color: "var(--text-muted)" }} />
-                  </a>
+                    <ExternalLink size={12} />
+                  </GlassButton>
                 ))}
               </div>
             )}

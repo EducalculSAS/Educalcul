@@ -48,6 +48,66 @@ export const DEMO_COURSE: { id: string; title: string; level: string; content_js
             "<p>Pour placer $\\frac{3}{4}$ entre 0 et 1, on partage l'unité en 4 parts égales et on compte 3 parts à partir de 0.</p>" +
             "<p>$$0 < \\frac{3}{4} < 1$$</p><p>Une fraction dont le numérateur est plus petit que le dénominateur est toujours <strong>inférieure à 1</strong>.</p>",
         },
+        {
+          id: "demo-l-4",
+          type: "text",
+          title: "Bilan : je sais faire",
+          duration: 2,
+          content:
+            "<p>Coche ce que tu sais faire maintenant. S'il reste une case vide, relis la leçon correspondante.</p>" +
+            '<ul class="course-checklist"><li>Je sais lire une fraction : numérateur et dénominateur</li><li>Je sais trouver une fraction égale en multipliant en haut et en bas</li><li>Je sais simplifier une fraction</li><li>Je sais placer une fraction sur une droite graduée</li></ul>',
+        },
+      ],
+    },
+  ],
+};
+
+export const DEMO_COURSE_PYTHAGORE: { id: string; title: string; level: string; content_json: Chapter[] } = {
+  id: DEMO_ID,
+  title: "Le théorème de Pythagore (4e)",
+  level: "4ème",
+  content_json: [
+    {
+      id: "demo-py-ch-1",
+      title: "Le théorème de Pythagore",
+      lessons: [
+        {
+          id: "demo-py-l-1",
+          type: "text",
+          title: "1. Le triangle rectangle",
+          duration: 4,
+          content:
+            "<p>Un triangle <strong>rectangle</strong> possède un angle droit. Le côté opposé à l'angle droit est le plus long : c'est l'<strong>hypoténuse</strong>.</p>" +
+            '<blockquote class="course-callout course-callout-note"><strong>À retenir</strong><p>Dans le triangle $ABC$ rectangle en $A$, l\'hypoténuse est $[BC]$.</p></blockquote>',
+        },
+        {
+          id: "demo-py-l-2",
+          type: "text",
+          title: "2. L'égalité de Pythagore",
+          duration: 6,
+          content:
+            '<blockquote class="course-callout course-callout-note"><strong>Théorème</strong><p>Si le triangle $ABC$ est rectangle en $A$, alors $BC^2 = AB^2 + AC^2$.</p></blockquote>' +
+            "<p>Exemple : $AB = 3$ cm et $AC = 4$ cm.</p><p>$$BC^2 = 3^2 + 4^2 = 9 + 16 = 25 \\quad\\text{donc}\\quad BC = \\sqrt{25} = 5 \\text{ cm}$$</p>",
+        },
+        {
+          id: "demo-py-l-3",
+          type: "text",
+          title: "3. Calculer un côté de l'angle droit",
+          duration: 6,
+          content:
+            "<p>Si l'on connaît l'hypoténuse, on soustrait : $AB^2 = BC^2 - AC^2$.</p>" +
+            "<p>Exemple : $BC = 13$ et $AC = 5$.</p><p>$$AB^2 = 13^2 - 5^2 = 169 - 25 = 144 \\quad\\text{donc}\\quad AB = 12$$</p>" +
+            '<blockquote class="course-callout course-callout-warning"><strong>Attention</strong><p>Le théorème ne s\'applique qu\'aux triangles <strong>rectangles</strong>.</p></blockquote>',
+        },
+        {
+          id: "demo-py-l-4",
+          type: "text",
+          title: "Bilan : je sais faire",
+          duration: 2,
+          content:
+            "<p>Coche ce que tu sais faire maintenant.</p>" +
+            '<ul class="course-checklist"><li>Je sais repérer l\'hypoténuse d\'un triangle rectangle</li><li>Je sais écrire l\'égalité de Pythagore</li><li>Je sais calculer l\'hypoténuse</li><li>Je sais calculer un côté de l\'angle droit</li></ul>',
+        },
       ],
     },
   ],
@@ -60,38 +120,18 @@ export const DEMO_EXERCISE: { id: string; title: string; level: string; grading_
   grading_type: "auto",
   min_score_percent: 50,
   content_json: [
-    {
-      id: "demo-p-1",
-      title: "Lire une fraction",
-      blocks: [
-        { id: "demo-b-1", type: "single_choice", title: "Question 1", points: 1, content: "<p>Une tablette de chocolat a 12 carrés. Léa en mange 5. Quelle fraction de la tablette a-t-elle mangée ?</p>", options: ["$\\frac{5}{12}$", "$\\frac{12}{5}$", "$\\frac{5}{7}$", "$\\frac{7}{12}$"], correctAnswer: "$\\frac{5}{12}$", explanation: "<p>On partage en 12 parts égales (dénominateur) et on en prend 5 (numérateur) : $\\frac{5}{12}$.</p>" },
-      ],
-    },
-    {
-      id: "demo-p-2",
-      title: "Fractions égales",
-      blocks: [
-        {
-          id: "demo-b-2", type: "matching", title: "Question 2", points: 3, content: "<p>Relie chaque fraction à la fraction qui lui est égale.</p>",
-          pairs: [{ left: "$\\frac{1}{2}$", right: "$\\frac{4}{8}$" }, { left: "$\\frac{2}{3}$", right: "$\\frac{6}{9}$" }, { left: "$\\frac{3}{4}$", right: "$\\frac{9}{12}$" }],
-          explanation: "<p>On multiplie le numérateur et le dénominateur par le même nombre : par 4, par 3, puis par 3.</p>",
-        },
-      ],
-    },
-    {
-      id: "demo-p-3",
-      title: "Ranger des fractions",
-      blocks: [
-        { id: "demo-b-3", type: "ordering", title: "Question 3", points: 1, content: "<p>Range ces fractions de la plus petite à la plus grande.</p>", items: ["$\\frac{1}{4}$", "$\\frac{2}{4}$", "$\\frac{3}{4}$", "$\\frac{5}{4}$"], explanation: "<p>Même dénominateur : on compare les numérateurs, 1 < 2 < 3 < 5.</p>" },
-      ],
-    },
-    {
-      id: "demo-p-4",
-      title: "Sur la droite graduée",
-      blocks: [
-        { id: "demo-b-4", type: "number_line_point", title: "Question 4", points: 1, content: "<p>Place $\\frac{3}{4}$ sur la droite graduée.</p>", numberLineMin: 0, numberLineMax: 1, numberLineStep: 0.25, correctAnswer: "0.75", explanation: "<p>L'unité est partagée en 4 : on compte 3 graduations à partir de 0.</p>" },
-      ],
-    },
+    { id: "demo-p-1", title: "Lire une fraction", blocks: [
+      { id: "demo-b-1", type: "text_input", title: "Question 1", points: 1, content: "<p>Une tablette de chocolat a 12 carrés. Léa en mange 5. Quelle fraction de la tablette a-t-elle mangée ?</p><p><em>Écris ta réponse sous la forme a/b.</em></p>", correctAnswer: "5/12", explanation: "<p>12 parts égales (dénominateur), on en prend 5 (numérateur) : $\\frac{5}{12}$.</p>" },
+    ] },
+    { id: "demo-p-2", title: "Fractions égales", blocks: [
+      { id: "demo-b-2", type: "text_input", title: "Question 2", points: 1, content: "<p>Complète : $\\frac{3}{4} = \\frac{\\ldots}{12}$</p><p><em>Écris le nombre manquant.</em></p>", correctAnswer: "9", explanation: "<p>On passe de 4 à 12 en multipliant par 3, donc $3 \\times 3 = 9$ : $\\frac{3}{4} = \\frac{9}{12}$.</p>" },
+    ] },
+    { id: "demo-p-3", title: "Simplifier", blocks: [
+      { id: "demo-b-3", type: "text_input", title: "Question 3", points: 1, content: "<p>Simplifie au maximum la fraction $\\frac{6}{8}$.</p>", correctAnswer: "3/4", explanation: "<p>On divise en haut et en bas par 2 : $\\frac{6}{8} = \\frac{3}{4}$, qu'on ne peut plus simplifier.</p>" },
+    ] },
+    { id: "demo-p-4", title: "Additionner", blocks: [
+      { id: "demo-b-4", type: "text_input", title: "Question 4", points: 1, content: "<p>Calcule $\\frac{1}{4} + \\frac{2}{4}$.</p>", correctAnswer: "3/4", explanation: "<p>Même dénominateur : on additionne les numérateurs, $1 + 2 = 3$, donc $\\frac{3}{4}$.</p>" },
+    ] },
   ],
 };
 

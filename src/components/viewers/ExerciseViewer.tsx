@@ -283,8 +283,9 @@ export default function ExerciseViewer({
   // Scroll back to top when changing page
   useEffect(() => {
     mainScrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }, [currentScreenIndex]);
+    // Lecteur intégré dans une page (démo de la page Offres) : on ne fait défiler que le lecteur, jamais la page.
+    if (String(exercise.id) !== "demo") window.scrollTo({ top: 0, behavior: "auto" });
+  }, [currentScreenIndex, exercise.id]);
 
   // Rend les graphiques interactifs après affichage de la page
   useEffect(() => {

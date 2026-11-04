@@ -12,15 +12,11 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 import FadeInSection from "@/components/home/FadeInSection";
-import CaliaChatDemo from "@/components/offres/CaliaChatDemo";
 import OffresDemo from "@/components/offres/OffresDemo";
-import { DEMO_COURSE, DEMO_EXERCISE, DEMO_QUIZ } from "@/lib/demoContent";
+import { DEMO_COURSE, DEMO_COURSE_PYTHAGORE, DEMO_EXERCISE, DEMO_QUIZ } from "@/lib/demoContent";
 import { stripAnswers as stripExerciseAnswers } from "@/lib/exerciseContent";
 import { stripAnswers as stripQuizAnswers } from "@/lib/quizContent";
 import GlassButton from "@/components/ui/GlassButton";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
-import { fetchReviewsForHomepage } from "@/lib/manualReviews";
-import { fetchReviewRatingOverride } from "@/lib/reviewRatingOverride";
 
 // Page publique statique : ISR pour servir depuis le cache plutôt que de
 // re-render à chaque visite.
@@ -73,12 +69,7 @@ const PILLARS = [
   },
 ];
 
-export default async function Offres() {
-  const [tpReviews, ratingOverride] = await Promise.all([
-    fetchReviewsForHomepage(),
-    fetchReviewRatingOverride(),
-  ]);
-
+export default function Offres() {
   return (
     <div
       className="flex flex-col min-h-screen"
@@ -225,13 +216,13 @@ export default async function Offres() {
                   Un cours, un exercice, un quiz : <span style={{ color: "var(--greek-gold)" }}>comme dans l&apos;espace élève.</span>
                 </h2>
                 <p className="text-sm leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--text-muted)" }}>
-                  Exemple sur les fractions (6e). Les réponses sont corrigées pour de vrai ; rien n&apos;est enregistré.
+                  Deux cours (fractions en 6e, Pythagore en 4e), un exercice à réponses écrites commentées et un quiz. Rien n&apos;est enregistré.
                   {" "}Voir aussi <Link href="/programmes/6eme" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>le programme de maths de 6e</Link>
                   {" "}et <Link href="/programmes" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>les programmes de tous les niveaux</Link>.
                 </p>
               </div>
               <OffresDemo
-                course={DEMO_COURSE}
+                courses={[{ label: "Les fractions (6e)", course: DEMO_COURSE }, { label: "Pythagore (4e)", course: DEMO_COURSE_PYTHAGORE }]}
                 exercise={stripExerciseAnswers(DEMO_EXERCISE)}
                 quiz={stripQuizAnswers(DEMO_QUIZ)}
               />
@@ -242,77 +233,46 @@ export default async function Offres() {
         {/* ── CALIA — EN VEDETTE ── */}
         <section className="py-24" style={{ background: "var(--greek-cream)" }}>
           <div className="container mx-auto px-6 max-w-5xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-              <FadeInSection translateX={-24} durationMs={600}>
-                <div className="flex items-center gap-3 mb-6">
-                  <Image
-                    src="/logoAI.png"
-                    alt="Calia"
-                    width={40}
-                    height={40}
-                    className="w-10 h-10 object-contain"
-                  />
-                  <span
-                    className="text-xs font-bold uppercase tracking-widest"
-                    style={{ color: "var(--greek-gold)" }}
-                  >
-                    La feature qui change tout
-                  </span>
+            <FadeInSection className="text-center max-w-2xl mx-auto">
+              <div className="flex items-center justify-center gap-3 mb-6">
+                <Image src="/logoAI.png" alt="Calia" width={40} height={40} className="w-10 h-10 object-contain" />
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--greek-gold)" }}>
+                  La feature qui change tout
+                </span>
+              </div>
+              <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-5" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", color: "var(--greek-blue)" }}>
+                Calia enseigne, <br />
+                <span style={{ color: "var(--greek-gold)" }}>elle ne donne pas les réponses.</span>
+              </h2>
+              <p className="text-base leading-relaxed mb-4" style={{ color: "var(--text-muted)" }}>
+                Calia est le tuteur IA d&apos;Educalcul. Elle suit la méthode socratique : plutôt que de corriger à la place de
+                l&apos;élève, elle lui pose la question qui débloque. L&apos;élève arrive lui-même à la solution, et c&apos;est ce qui
+                ancre vraiment la compréhension.
+              </p>
+              <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                Elle s&apos;adapte au niveau de chaque élève, du CP à la Terminale, et reste disponible le soir comme le week-end,
+                quand personne d&apos;autre ne l&apos;est.
+              </p>
+            </FadeInSection>
+
+            <FadeInSection delayMs={120} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-12">
+              {[
+                { t: "Pendant les exercices", d: "Une bulle d'aide : l'élève explique où il bloque, Calia l'aide à avancer." },
+                { t: "En mode classe", d: "Une séance vocale au tableau, avec un résumé à la fin." },
+                { t: "Pour les devoirs", d: "L'élève photographie son exercice, Calia l'aide à le résoudre lui-même." },
+                { t: "Pour les parents", d: "Une analyse de la progression, depuis l'espace parent." },
+              ].map((f) => (
+                <div key={f.t} className="rounded-2xl p-5 text-left" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
+                  <p className="font-bold text-sm mb-1" style={{ color: "var(--greek-blue)" }}>{f.t}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{f.d}</p>
                 </div>
-                <h2
-                  className="font-[family-name:var(--font-display)] font-bold leading-tight mb-5"
-                  style={{
-                    fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)",
-                    color: "var(--greek-blue)",
-                  }}
-                >
-                  Calia enseigne, <br />
-                  <span style={{ color: "var(--greek-gold)" }}>
-                    elle ne donne pas les réponses.
-                  </span>
-                </h2>
-                <p
-                  className="text-sm leading-relaxed mb-8"
-                  style={{ color: "var(--text-muted)" }}
-                >
-                  Calia utilise la méthode socratique : plutôt que de corriger,
-                  elle questionne. L&apos;élève arrive lui-même à la solution,
-                  ce qui ancre vraiment la compréhension.
-                </p>
-                <ul className="flex flex-col gap-3">
-                  {[
-                    "Détecte les lacunes en temps réel",
-                    "Adapte le niveau de chaque question",
-                    "Encourage sans jamais juger",
-                    "Disponible 24h/24, 7j/7",
-                  ].map((item, i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-3 text-sm"
-                      style={{ color: "var(--text-muted)" }}
-                    >
-                      <span
-                        className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
-                        style={{
-                          background: "rgba(197,161,72,0.15)",
-                          color: "var(--greek-gold)",
-                        }}
-                      >
-                        <Check className="w-3 h-3" />
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-8">
-                  <GlassButton href="/calia-tuteur-ia-maths" variant="outline" size="sm">
-                    Tout savoir sur Calia <ArrowRight className="w-4 h-4" />
-                  </GlassButton>
-                </div>
-              </FadeInSection>
-              <FadeInSection translateX={24} durationMs={600} delayMs={150}>
-                <CaliaChatDemo />
-              </FadeInSection>
+              ))}
+            </FadeInSection>
+
+            <div className="flex justify-center mt-10">
+              <GlassButton href="/calia-tuteur-ia-maths" variant="navy">
+                Tout savoir sur Calia <ArrowRight className="w-4 h-4" />
+              </GlassButton>
             </div>
           </div>
         </section>
@@ -446,30 +406,11 @@ export default async function Offres() {
           </div>
         </section>
 
-        {/* ── CONFIANCE / AVIS ── */}
+        {/* ── GARANTIES (les avis sont sur la page À propos) ── */}
         <section className="py-24" style={{ background: "var(--greek-cream)" }}>
           <div className="container mx-auto px-6 max-w-5xl">
-            <div className="text-center mb-12">
-              <h2
-                className="font-[family-name:var(--font-display)] font-bold text-4xl mb-4"
-                style={{ color: "var(--greek-blue)" }}
-              >
-                Ils nous font confiance
-              </h2>
-              <p
-                className="text-sm max-w-lg mx-auto"
-                style={{ color: "rgba(15,30,58,0.68)" }}
-              >
-                Des familles utilisent déjà Educalcul au quotidien, voici ce
-                qu&apos;elles en disent.
-              </p>
-            </div>
-            <FadeInSection>
-              <TestimonialsSection reviews={tpReviews} ratingOverride={ratingOverride} />
-            </FadeInSection>
-
             {/* Garanties */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
                 { icon: ShieldCheck, text: "Essai 7 jours, sans carte bancaire" },
                 { icon: Check, text: "Sans engagement, résiliable à tout moment" },

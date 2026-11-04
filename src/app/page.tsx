@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LEVEL_PAGES } from "@/lib/seo/levels";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, LogIn, BookOpen, Sparkles, GraduationCap, ShieldCheck, Check } from "lucide-react";
@@ -30,14 +31,6 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://educalcul.com" },
 };
 
-const HERO_LEVELS = [
-  { slug: "cp", label: "CP" },
-  { slug: "cm2", label: "CM2" },
-  { slug: "6eme", label: "6e" },
-  { slug: "3eme", label: "3e" },
-  { slug: "seconde", label: "Seconde" },
-  { slug: "terminale-specialite-maths", label: "Terminale" },
-];
 
 /* ─── Symboles math hero — animation CSS pure, aucun état React requis ─── */
 const SYM = [
@@ -141,17 +134,7 @@ export default async function Home() {
             </GlassButton>
           </div>
 
-          <nav aria-label="Programmes par niveau" className="mt-8 hero-rise hero-rise-5 text-sm" style={{ color: "rgba(240,237,232,0.5)" }}>
-            Programmes :{" "}
-            {HERO_LEVELS.map((l, i) => (
-              <span key={l.slug}>
-                {i > 0 && <span aria-hidden="true"> · </span>}
-                <Link href={`/programmes/${l.slug}`} className="hover:text-[var(--greek-gold)] underline-offset-4 hover:underline transition-colors">{l.label}</Link>
-              </span>
-            ))}
-          </nav>
-
-          <p className="text-sm italic mt-6 hero-rise hero-rise-5" style={{ color: "rgba(197,161,72,0.85)", fontFamily: "Georgia, serif" }}>
+          <p className="text-sm italic mt-10 hero-rise hero-rise-5" style={{ color: "rgba(197,161,72,0.85)", fontFamily: "Georgia, serif" }}>
             Educalcul, par amour des mathématiques.
           </p>
         </div>
@@ -217,14 +200,23 @@ export default async function Home() {
               </p>
             </Reveal>
             <Reveal y={36} scale={0.95} delay={0.1} className="rounded-3xl p-5 sm:p-8 md:min-h-[280px] transition-transform duration-500 hover:-translate-y-1" style={{ background: "#fff", border: "1px solid var(--greek-border)" }}>
-              <div className="h-full flex flex-col justify-center gap-3">
-                {["Fractions et nombres décimaux", "Théorème de Pythagore", "Fonctions affines"].map((t, i) => (
-                  <div key={t} className="flex items-center gap-3 p-3 rounded-xl" style={{ background: i === 1 ? "rgba(197,161,72,0.08)" : "transparent", border: i === 1 ? "1px solid rgba(197,161,72,0.25)" : "1px solid transparent" }}>
-                    <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: i <= 1 ? "var(--greek-gold)" : "var(--greek-border)" }} />
-                    <span className="text-sm font-semibold" style={{ color: i <= 1 ? "var(--greek-blue)" : "var(--text-muted)" }}>{t}</span>
-                    {i < 1 && <BookOpen className="w-4 h-4 ml-auto" style={{ color: "var(--greek-gold)" }} />}
-                  </div>
-                ))}
+              <div className="h-full flex flex-col justify-center gap-4">
+                <p className="font-[family-name:var(--font-display)] font-bold text-lg" style={{ color: "var(--greek-blue)" }}>Le programme de chaque niveau</p>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
+                  Les notions au programme, les compétences travaillées et un exercice à essayer, classe par classe, d&apos;après les textes officiels.
+                </p>
+                <nav aria-label="Programmes par niveau" className="flex flex-wrap gap-2">
+                  {LEVEL_PAGES.map((l) => (
+                    <Link key={l.slug} href={`/programmes/${l.slug}`} className="px-3 py-1.5 rounded-full text-xs font-bold transition-colors hover:bg-[rgba(197,161,72,0.18)]" style={{ background: "rgba(197,161,72,0.08)", border: "1px solid rgba(197,161,72,0.25)", color: "var(--greek-blue)" }}>
+                      {l.short}
+                    </Link>
+                  ))}
+                </nav>
+                <div>
+                  <GlassButton href="/programmes" variant="navy" size="sm">
+                    <BookOpen className="w-4 h-4" /> Voir tous les programmes
+                  </GlassButton>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -253,6 +245,11 @@ export default async function Home() {
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
                 Jamais la réponse tout de suite : Calia repère où ça bloque et guide l&apos;élève jusqu&apos;au déclic, avec la méthode socratique. Disponible 24h/24.
               </p>
+              <div className="mt-6">
+                <GlassButton href="/calia-tuteur-ia-maths" variant="outline" size="sm">
+                  Tout savoir sur Calia <ArrowRight className="w-4 h-4" />
+                </GlassButton>
+              </div>
             </Reveal>
           </div>
 
