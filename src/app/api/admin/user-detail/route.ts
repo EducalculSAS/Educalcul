@@ -1,3 +1,4 @@
+import { reconcileCosmeticsForFamily } from "@/lib/cosmeticEntitlements";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
@@ -389,6 +390,7 @@ export async function POST(req: Request) {
         current_period_end: newPeriodEnd || new Date(Date.now() + periodDays * 24 * 60 * 60 * 1000).toISOString(),
         updated_at: new Date().toISOString(),
       }, { onConflict: "user_id" });
+      await reconcileCosmeticsForFamily(user.auth_id).catch((e) => console.error("[admin/user-detail] cosmétiques non mis à jour", (e as Error).message));
 
       // ✓ SECURITY: Log admin action
       await auditLog({

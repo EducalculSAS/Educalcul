@@ -1,3 +1,4 @@
+import { reconcileCosmeticsForFamily } from "@/lib/cosmeticEntitlements";
 import type Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
@@ -41,6 +42,7 @@ export async function GET(req: Request) {
       cancel_at_period_end: stripeSub.cancel_at_period_end,
       updated_at: new Date().toISOString(),
     }).eq("user_id", authId);
+    await reconcileCosmeticsForFamily(authId).catch((e) => console.error("[sync-subscription] cosmétiques non mis à jour", (e as Error).message));
 
     return NextResponse.json({ synced: true, status: newStatus, cancel_at_period_end: stripeSub.cancel_at_period_end });
   } catch (err: unknown) {

@@ -1,3 +1,4 @@
+import { reconcileCosmeticsForFamily } from "@/lib/cosmeticEntitlements";
 import { NextResponse } from "next/server";
 import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -42,6 +43,16 @@ async function getSubscriber(column: "stripe_customer_id" | "stripe_subscription
 // attendu peut être coupé dès que la réponse au webhook est partie.
 const mail = (to: { email: string; firstName: string }, tmpl: { subject: string; textPart: string; htmlPart: string }) =>
   sendEmail({ toEmail: to.email, toName: to.firstName || "Utilisateur", ...tmpl }).catch(console.error);
+
+/** L'abonnement a changé ou pris fin : le contour et la couleur de nom que la formule ne permet plus sont retirés (parent et enfants). */
+async function syncCosmetics(stripeSubscriptionId: string) {
+  try {
+    const { data: row } = await supabaseAdmin.from("subscriptions").select("user_id").eq("stripe_subscription_id", stripeSubscriptionId).maybeSingle();
+    if (row?.user_id) await reconcileCosmeticsForFamily(row.user_id);
+  } catch (e) {
+    console.error("[stripe-webhook] cosmétiques non mis à jour", (e as Error).message);
+  }
+}
 
 export async function POST(req: Request) {
   const body = await req.text();
@@ -228,6 +239,7 @@ export async function POST(req: Request) {
         };
         if (rawPeriodEnd) update.current_period_end = new Date(rawPeriodEnd * 1000).toISOString();
         await supabaseAdmin.from("subscriptions").update(update).eq("stripe_subscription_id", sub.id);
+        await syncCosmetics(sub.id);
 
         // Confirmation écrite de la résiliation avec sa date d'effet
         // (Code de la consommation, art. L.215-1-1), ou de son annulation.
@@ -281,6 +293,7 @@ export async function POST(req: Request) {
           status: "cancelled",
           updated_at: new Date().toISOString(),
         }).eq("stripe_subscription_id", sub.id).select("id");
+        await syncCosmetics(sub.id);
         // Aucune ligne : ancien abonnement remplacé par un changement de
         // formule, ou compte supprimé : pas d'email « abonnement terminé ».
         // Rétractation : son propre email a déjà été envoyé (src/lib/withdrawal.ts).
@@ -378,6 +391,7 @@ export async function POST(req: Request) {
             status: "past_due",
             updated_at: new Date().toISOString(),
           }).eq("stripe_subscription_id", failedSubId);
+          await syncCosmetics(failedSubId);
         }
 
         // Email paiement échoué + notification urgente

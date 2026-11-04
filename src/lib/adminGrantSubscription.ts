@@ -1,3 +1,4 @@
+import { reconcileCosmeticsForFamily } from "@/lib/cosmeticEntitlements";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { periodDays as periodDaysOf } from "@/lib/billingPeriods";
 
@@ -70,6 +71,7 @@ export async function grantOfferedSubscription(params: {
   );
 
   if (error) return { ok: false, error: error.message };
+  await reconcileCosmeticsForFamily(authId).catch((e) => console.error("[grant-subscription] cosmétiques non mis à jour", (e as Error).message));
 
   return { ok: true, planName: plan.name ?? null };
 }

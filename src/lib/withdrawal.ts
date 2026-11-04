@@ -1,3 +1,4 @@
+import { reconcileCosmeticsForFamily } from "@/lib/cosmeticEntitlements";
 import "server-only";
 import type Stripe from "stripe";
 import { stripe } from "@/lib/stripe";
@@ -111,6 +112,8 @@ export async function withdraw(authId: string): Promise<{ ok: true; refundCents:
     supabaseAdmin.from("subscription_withdrawals").update({ refund_cents: refunded, refund_ids: refundIds }).eq("id", record.id),
     supabaseAdmin.from("subscriptions").update({ status: "cancelled", cancel_at_period_end: false, updated_at: new Date().toISOString() }).eq("user_id", authId),
   ]);
+
+  await reconcileCosmeticsForFamily(authId).catch((e) => console.error("[withdrawal] cosmétiques non mis à jour", (e as Error).message));
 
   const { data: parent } = await supabaseAdmin.from("users").select("first_name, email").eq("auth_id", authId).maybeSingle();
   if (parent?.email) {

@@ -1,3 +1,4 @@
+import { reconcileAllCosmetics } from "@/lib/cosmeticEntitlements";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { selectAllPages } from "@/lib/selectAllPages";
@@ -13,6 +14,7 @@ const frDate = (d: Date) => d.toLocaleDateString("fr-FR", { day: "numeric", mont
 /**
  * Engagements de la Politique de confidentialité et des CGV, appliqués chaque
  * jour (Vercel Cron, voir vercel.json) :
+ * 0. cosmétiques : retire le contour et la couleur de nom qu'un compte ne mérite plus (abonnement terminé) ;
  * 1. purge : historique de connexion > 12 mois, journaux d'erreurs > 6 mois ;
  * 2. rappel avant la reconduction d'un abonnement ANNUEL (entre 1 et 2 mois
  *    avant l'échéance, une seule fois par échéance) ;
@@ -27,7 +29,16 @@ export async function GET(req: Request) {
   }
 
   const now = Date.now();
-  const report = { loginHistoryPurged: 0, errorsPurged: 0, renewalReminders: 0, inactivityWarnings: 0, accountsDeleted: 0 };
+  const report = { loginHistoryPurged: 0, errorsPurged: 0, renewalReminders: 0, inactivityWarnings: 0, accountsDeleted: 0, cosmeticsChecked: 0, cosmeticsRemoved: 0 };
+
+  // 0. Contours et couleurs de nom que le compte n'a plus le droit de porter (abonnement échu ou formule changée).
+  try {
+    const c = await reconcileAllCosmetics();
+    report.cosmeticsChecked = c.checked;
+    report.cosmeticsRemoved = c.changed;
+  } catch (e) {
+    console.error("[data-retention] cosmétiques", (e as Error).message);
+  }
 
   // 1. Purge
   const { count: lh } = await supabaseAdmin
