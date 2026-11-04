@@ -62,11 +62,6 @@ const websiteSchema = {
   name: "Educalcul",
   url: BASE,
   inLanguage: "fr-FR",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: { "@type": "EntryPoint", urlTemplate: `${BASE}/programmes?q={search_term_string}` },
-    "query-input": "required name=search_term_string",
-  },
   publisher: { "@type": "Organization", name: "Educalcul", url: BASE },
 };
 
@@ -118,18 +113,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Educalcul", url: BASE }],
   creator: "Educalcul",
   publisher: "Educalcul",
-  alternates: {
-    canonical: BASE,
-    languages: {
-      "fr-FR": BASE,
-      "fr-BE": BASE,
-      "fr-CH": BASE,
-      "fr-CA": BASE,
-      "fr-MA": BASE,
-      "fr-DZ": BASE,
-      "fr-TN": BASE,
-    },
-  },
   openGraph: {
     title: "Educalcul : Cours de maths du CP à la Terminale avec IA",
     description: "Cours, exercices et IA pédagogique pour vos enfants, du CP à la Terminale. Aligné sur le programme officiel de l'Éducation Nationale.",

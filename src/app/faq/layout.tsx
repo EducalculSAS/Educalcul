@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FAQ : Questions fréquentes",
+  title: { absolute: "Questions fréquentes sur Educalcul" },
   description: "Toutes les réponses à vos questions sur Educalcul : fonctionnement, niveaux, abonnements, IA pédagogique et programme officiel du CP à la Terminale.",
   alternates: { canonical: "https://educalcul.com/faq" },
   openGraph: {

@@ -25,7 +25,7 @@ const breadcrumb = {
 };
 
 export const metadata: Metadata = {
-  title: "Tarifs : Essai gratuit 7 jours sans engagement",
+  title: { absolute: "Tarifs Educalcul : cours de maths et IA pédagogique" },
   description: "Formules Educalcul : Gratuit, Solo (9,99€/mois) et Family (16,99€/mois). Essai 7 jours sans engagement, sans carte bancaire. Accès complet CP à Terminale avec les formules Solo et Family.",
   keywords: ["tarif cours maths", "abonnement mathématiques enfant", "prix plateforme maths", "essai gratuit maths", "soutien scolaire prix"],
   alternates: { canonical: `${BASE}/tarifs` },

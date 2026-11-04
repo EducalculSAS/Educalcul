@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ArrowRight, LogIn, BookOpen, Sparkles, GraduationCap, ShieldCheck, Check } from "lucide-react";
@@ -23,6 +24,20 @@ import { normalizePricingConfig } from "@/lib/pricingConfig";
 // Supabase à chaque visite. 5 min de décalage max après une modification
 // admin, en échange d'un TTFB en cache pour tout le reste.
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: { absolute: "Cours de maths du CP à la Terminale avec IA | Educalcul" },
+  alternates: { canonical: "https://educalcul.com" },
+};
+
+const HERO_LEVELS = [
+  { slug: "cp", label: "CP" },
+  { slug: "cm2", label: "CM2" },
+  { slug: "6eme", label: "6e" },
+  { slug: "3eme", label: "3e" },
+  { slug: "seconde", label: "Seconde" },
+  { slug: "terminale-specialite-maths", label: "Terminale" },
+];
 
 /* ─── Symboles math hero — animation CSS pure, aucun état React requis ─── */
 const SYM = [
@@ -107,7 +122,7 @@ export default async function Home() {
             className="font-[family-name:var(--font-display)] font-bold leading-[0.98] tracking-tight mb-8 hero-rise hero-rise-2 max-w-3xl"
             style={{ color: "#f0ede8", fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
           >
-            Les maths,<br />
+            Les maths du CP à la Terminale,<br />
             <span className="text-gradient-gold">enfin à portée de main</span>
           </h1>
 
@@ -126,7 +141,17 @@ export default async function Home() {
             </GlassButton>
           </div>
 
-          <p className="text-sm italic mt-10 hero-rise hero-rise-5" style={{ color: "rgba(197,161,72,0.85)", fontFamily: "Georgia, serif" }}>
+          <nav aria-label="Programmes par niveau" className="mt-8 hero-rise hero-rise-5 text-sm" style={{ color: "rgba(240,237,232,0.5)" }}>
+            Programmes :{" "}
+            {HERO_LEVELS.map((l, i) => (
+              <span key={l.slug}>
+                {i > 0 && <span aria-hidden="true"> · </span>}
+                <Link href={`/programmes/${l.slug}`} className="hover:text-[var(--greek-gold)] underline-offset-4 hover:underline transition-colors">{l.label}</Link>
+              </span>
+            ))}
+          </nav>
+
+          <p className="text-sm italic mt-6 hero-rise hero-rise-5" style={{ color: "rgba(197,161,72,0.85)", fontFamily: "Georgia, serif" }}>
             Educalcul, par amour des mathématiques.
           </p>
         </div>

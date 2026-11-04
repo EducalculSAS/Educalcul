@@ -10,6 +10,7 @@ import {
   Check,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import FadeInSection from "@/components/home/FadeInSection";
 import CaliaChatDemo from "@/components/offres/CaliaChatDemo";
 import OffresDemo from "@/components/offres/OffresDemo";
@@ -225,6 +226,8 @@ export default async function Offres() {
                 </h2>
                 <p className="text-sm leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--text-muted)" }}>
                   Exemple sur les fractions (6e). Les réponses sont corrigées pour de vrai ; rien n&apos;est enregistré.
+                  {" "}Voir aussi <Link href="/programmes/6eme" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>le programme de maths de 6e</Link>
+                  {" "}et <Link href="/programmes" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>les programmes de tous les niveaux</Link>.
                 </p>
               </div>
               <OffresDemo
@@ -301,6 +304,11 @@ export default async function Offres() {
                     </li>
                   ))}
                 </ul>
+                <div className="mt-8">
+                  <GlassButton href="/calia-tuteur-ia-maths" variant="outline" size="sm">
+                    Tout savoir sur Calia <ArrowRight className="w-4 h-4" />
+                  </GlassButton>
+                </div>
               </FadeInSection>
               <FadeInSection translateX={24} durationMs={600} delayMs={150}>
                 <CaliaChatDemo />

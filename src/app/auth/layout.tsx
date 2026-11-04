@@ -82,8 +82,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
               à portée de main.
             </h2>
             <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.5)" }}>
-              Rejoignez des milliers de familles qui font<br />
-              confiance à Educalcul pour progresser.
+              Cours, exercices corrigés et tuteur IA,<br />
+              du CP à la Terminale.
             </p>
           </div>
         </div>

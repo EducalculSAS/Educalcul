@@ -7,6 +7,24 @@ import LevelPicker from "@/components/programmes/LevelPicker";
 import LevelGroupsList from "@/components/programmes/LevelGroupsList";
 import { fetchProgrammePdfs } from "@/lib/programmePdfs";
 import GlassButton from "@/components/ui/GlassButton";
+import Link from "next/link";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import SeoFaq from "@/components/seo/SeoFaq";
+import HowWeHelp from "@/components/seo/HowWeHelp";
+import { CYCLE_LABEL, chapterCount, levelsOfCycle, type Cycle } from "@/lib/seo/levels";
+
+const CYCLES: { id: Cycle; intro: string }[] = [
+  { id: "primaire", intro: "Du CP au CM2 : nombres, calcul, premières fractions, mesures et géométrie." },
+  { id: "college", intro: "De la 6e à la 3e : fractions, relatifs, calcul littéral, géométrie et préparation du brevet." },
+  { id: "lycee", intro: "De la Seconde à la Terminale : fonctions, suites, analyse, probabilités et préparation du bac." },
+];
+
+const HUB_FAQ = [
+  { q: "Les contenus d'Educalcul suivent-ils les programmes officiels ?", a: "Oui, chaque contenu est rattaché à un niveau et à une notion des programmes de l'Éducation nationale publiés sur Éduscol." },
+  { q: "Comment choisir le bon niveau ?", a: "La classe de l'enfant (et son option au lycée : spécialité, maths expertes ou complémentaires) est choisie à la création de son compte ; il voit ensuite les contenus de son niveau." },
+  { q: "Peut-on revoir les notions d'une année précédente ?", a: "Oui, les pages de chaque niveau restent consultables et Calia peut réexpliquer une notion ancienne qui bloque." },
+  { q: "Combien coûte Educalcul ?", a: "Les formules sont détaillées sur la page Tarifs. L'essai est gratuit pendant 7 jours, sans carte bancaire et sans engagement." },
+];
 
 // Page publique quasi-statique (PDFs édités en admin) : ISR au lieu d'un
 // aller-retour Supabase à chaque visite.
@@ -39,14 +57,55 @@ export default async function ProgrammesPage() {
           >{cfg.s}</span>
         ))}
         <div className="relative container mx-auto px-6 max-w-3xl">
-          <h1 className="font-[family-name:var(--font-display)] text-4xl md:text-5xl font-bold mb-4">
-            Programmes officiels
+          <div className="mb-8">
+            <Breadcrumbs items={[{ name: "Accueil", href: "/" }, { name: "Programmes", href: "/programmes" }]} />
+          </div>
+          <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-bold mb-4">
+            Programmes de mathématiques du CP à la Terminale
           </h1>
           <p className="text-white/55 text-lg max-w-xl mx-auto leading-relaxed mb-10">
-            Du CP à la Terminale, aligné sur l&apos;Éducation Nationale, par niveau et filière.
+            Pour chaque niveau : les notions au programme, les compétences travaillées et un exercice à essayer, d&apos;après les textes de l&apos;Éducation nationale.
           </p>
 
           <LevelPicker />
+        </div>
+      </section>
+
+      {/* Niveaux, par cycle */}
+      <section className="pt-16 px-6" aria-label="Programmes par niveau">
+        <div className="max-w-5xl mx-auto space-y-12">
+          {CYCLES.map((c) => (
+            <div key={c.id}>
+              <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-[var(--greek-blue)] mb-1">{CYCLE_LABEL[c.id]}</h2>
+              <p className="text-sm text-gray-500 mb-5">{c.intro}</p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {levelsOfCycle(c.id).map((l) => (
+                  <li key={l.slug}>
+                    <Link
+                      href={`/programmes/${l.slug}`}
+                      className="group h-full flex flex-col bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-[border-color,box-shadow,transform] duration-200 hover:border-[var(--greek-gold)] hover:shadow-md hover:-translate-y-0.5 motion-reduce:hover:translate-y-0"
+                    >
+                      <span className="text-xs font-bold uppercase tracking-widest text-[var(--greek-gold-text)]">{l.cycleLabel}</span>
+                      <span className="mt-1 text-xl font-bold text-[var(--greek-blue)]">{l.name}</span>
+                      <span className="mt-2 text-sm text-gray-600 flex-1">{l.card}</span>
+                      <span className="mt-3 text-xs text-gray-500">{chapterCount(l)} notions au programme · exercice d&apos;essai · FAQ</span>
+                      <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-[var(--greek-blue)] group-hover:text-[var(--greek-gold-text)]">
+                        Voir le programme de {l.short} <ArrowRight size={15} aria-hidden="true" />
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+
+          <div>
+            <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-[var(--greek-blue)] mb-1">Comment Educalcul accompagne l&apos;élève</h2>
+            <p className="text-sm text-gray-500 mb-5">
+              La même méthode à tous les niveaux. <Link href="/offres#essayer" className="font-semibold text-[var(--greek-gold-text)] hover:underline">Essayer un cours, un exercice et un quiz</Link> sans compte.
+            </p>
+            <HowWeHelp />
+          </div>
         </div>
       </section>
 
@@ -70,7 +129,13 @@ export default async function ProgrammesPage() {
             </div>
           </FadeInSection>
 
+          <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-[var(--greek-blue)] text-center">Les textes officiels, niveau par niveau</h2>
           <LevelGroupsList dbPdfs={dbPdfs} />
+
+          <div>
+            <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl text-[var(--greek-blue)] text-center mb-6">Questions fréquentes</h2>
+            <SeoFaq items={HUB_FAQ} />
+          </div>
         </div>
       </section>
 

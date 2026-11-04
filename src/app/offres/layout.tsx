@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Nos offres : Cours, Exercices & IA pédagogique",
+  title: { absolute: "Cours, exercices et tuteur IA de maths | Educalcul" },
   description: "Explorez toutes les fonctionnalités d'Educalcul : cours alignés sur le programme, exercices corrigés par IA, gamification et suivi parental en temps réel.",
   alternates: { canonical: "https://educalcul.com/offres" },
   openGraph: {
