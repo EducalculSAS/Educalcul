@@ -74,7 +74,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Admin
               <div className="text-right hidden sm:block">
                 <p className="text-xs text-gray-400 flex items-center gap-1 justify-end">
                   <Clock size={11} />
-                  {lastUpdated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+                  {lastUpdated.toLocaleTimeString("fr-FR", { timeZone: "Europe/Paris", hour: "2-digit", minute: "2-digit", second: "2-digit" })}
                 </p>
                 <p className="text-xs text-gray-300">actualisation automatique toutes les {REFRESH_SEC} s</p>
               </div>
@@ -239,7 +239,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Admin
           <div className="flex items-end gap-2 h-48">
             {charts.registrations.map((item, i) => {
               const heightPct = maxCount > 0 ? Math.max((item.count / maxCount) * 100, item.count > 0 ? 4 : 1) : 1;
-              const label = new Date(item.date).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit" });
+              const label = new Date(item.date).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "2-digit" });
               return (
                 <div key={i} className="flex flex-col items-center flex-1 group">
                   <div className="relative w-full flex flex-col justify-end" style={{ height: "180px" }}>
@@ -275,7 +275,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Admin
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium text-gray-800 truncate">{item.description}</p>
                   <p className="text-xs text-gray-400 mt-0.5">
-                    {item.type} · {new Date(item.timestamp).toLocaleString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" })}
+                    {item.type} · {new Date(item.timestamp).toLocaleString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" })}
                   </p>
                 </div>
               </div>

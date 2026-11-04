@@ -103,7 +103,7 @@ async function fetchLoginHistory(userId: string): Promise<LoginEvent[]> {
 
 function buildCSV(users: User[], loginHistory?: LoginEvent[]): string {
   const q = (v: unknown) => `"${String(v ?? "").replace(/"/g, '""')}"`;
-  const d = (v: string | null | undefined) => v ? new Date(v).toLocaleString("fr-FR") : "";
+  const d = (v: string | null | undefined) => v ? new Date(v).toLocaleString("fr-FR", { timeZone: "Europe/Paris" }) : "";
 
   if (users.length === 1 && loginHistory) {
     // Fiche détaillée d'un seul utilisateur avec historique complet
@@ -154,7 +154,7 @@ function esc(v: unknown): string {
 
 function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): string {
   const NAVY = "#1a3a5c", GOLD = "#c5a148";
-  const d = (v: string | null | undefined) => v ? esc(new Date(v).toLocaleString("fr-FR")) : "-";
+  const d = (v: string | null | undefined) => v ? esc(new Date(v).toLocaleString("fr-FR", { timeZone: "Europe/Paris" })) : "-";
   const single = users.length === 1;
   const u = users[0];
 
@@ -248,14 +248,14 @@ function buildPDF(users: User[], title: string, loginHistory?: LoginEvent[]): st
       <div>
         <div class="brand">EDUCALCUL</div>
         <div class="header-title">${esc(title)}</div>
-        <div class="header-sub">${single ? `${esc(u.first_name)} ${esc(u.last_name)} : ${esc(u.email)}` : `${users.length} utilisateurs : ${new Date().toLocaleDateString("fr-FR")}`}</div>
+        <div class="header-sub">${single ? `${esc(u.first_name)} ${esc(u.last_name)} : ${esc(u.email)}` : `${users.length} utilisateurs : ${new Date().toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}`}</div>
       </div>
     </div>
     <div class="bar"></div>
     ${tableRows}
     <div class="footer">
       <strong>EDUCALCUL</strong>
-      Généré le ${new Date().toLocaleString("fr-FR")} : Usage interne confidentiel
+      Généré le ${new Date().toLocaleString("fr-FR", { timeZone: "Europe/Paris" })} : Usage interne confidentiel
     </div>
   </div>
 </body></html>`;
@@ -640,7 +640,7 @@ export default function AdminUsersClient({
                     <td className="px-5 py-4 text-xs text-gray-400">
                       {user.last_active_at ? online
                         ? <span className="text-green-600 font-semibold">En ligne</span>
-                        : new Date(user.last_active_at).toLocaleString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" })
+                        : new Date(user.last_active_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" })
                         : "Jamais"}
                     </td>
                     <td className="px-5 py-4">

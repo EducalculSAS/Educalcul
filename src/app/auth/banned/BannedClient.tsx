@@ -81,6 +81,7 @@ export default function BannedPage() {
   const isBanPermanent = !banData.banUntil;
   const banEndDate = banData.banUntil 
     ? new Date(banData.banUntil).toLocaleDateString('fr-FR', {
+        timeZone: 'Europe/Paris',
         year: 'numeric',
         month: 'long',
         day: 'numeric',

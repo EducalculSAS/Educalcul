@@ -126,7 +126,7 @@ export default function AdminLandingClient({
 
   const exportCSV = () => {
     const csv = ["Position,Nom,Email,Code,Filleuls,Parraine par,Date", ...filtered.map(e =>
-      `${e.position},"${e.display_name || ""}",${e.email},${e.referral_code},${e.referral_count},${e.referred_by || ""},${new Date(e.created_at).toLocaleString("fr-FR")}`
+      `${e.position},"${e.display_name || ""}",${e.email},${e.referral_code},${e.referral_count},${e.referred_by || ""},${new Date(e.created_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris" })}`
     )].join("\n");
     const blob = new Blob([csv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
@@ -248,7 +248,7 @@ export default function AdminLandingClient({
                       </span>
                     ) : <span className="text-gray-300">-</span>}
                   </td>
-                  <td className="px-4 py-3 text-gray-500 whitespace-nowrap">{new Date(e.created_at).toLocaleDateString("fr-FR")}</td>
+                  <td className="px-4 py-3 text-gray-500 whitespace-nowrap">{new Date(e.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}</td>
                   <td className="px-4 py-3">
                     <div className="flex items-center justify-end gap-1.5">
                       {editId === e.id ? (

@@ -66,8 +66,8 @@ function Row({ label, value, mono }: { label: string; value: string; mono?: bool
 }
 
 /** Date lisible, ou « — » quand la base n'en a pas (colonne vide). */
-const dateFr = (v: string | null | undefined) => (v ? new Date(v).toLocaleDateString("fr-FR") : "—");
-const dateTimeFr = (v: string | null | undefined) => (v ? new Date(v).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }) : "—");
+const dateFr = (v: string | null | undefined) => (v ? new Date(v).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" }) : "—");
+const dateTimeFr = (v: string | null | undefined) => (v ? new Date(v).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" }) : "—");
 
 // Reusable confirm modal
 interface ConfirmModalProps {
@@ -425,7 +425,7 @@ export default function AdminUserDetailClient({
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4">Informations</h2>
             <div className="space-y-3 text-sm">
               <Row label="Inscrit le" value={dateFr(user.created_at)} />
-              {user.last_active_at && <Row label="Dernière activité" value={new Date(user.last_active_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })} />}
+              {user.last_active_at && <Row label="Dernière activité" value={new Date(user.last_active_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" })} />}
               {user.grade_level && <Row label="Niveau" value={getLevelLabel(user.grade_level)} />}
               {user.last_login_ip && <Row label="IP" value={user.last_login_ip} mono />}
               {user.last_login_country && <Row label="Localisation" value={`${user.last_login_city || ""} ${user.last_login_country}`} />}
@@ -522,7 +522,7 @@ export default function AdminUserDetailClient({
                     Actuel : <span className="font-semibold text-gray-600">
                       {plans.find((p) => p.id.toString() === subscription?.plan_id?.toString())?.name || subscription?.plan_id || "?"}
                     </span>
-                    {subscription.current_period_end && ` · jusqu'au ${new Date(subscription.current_period_end).toLocaleDateString("fr-FR")}`}
+                    {subscription.current_period_end && ` · jusqu'au ${new Date(subscription.current_period_end).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}`}
                   </p>
                 ) : (
                   <p className="text-xs text-gray-400 text-center italic">Aucun abonnement actif</p>
@@ -661,7 +661,7 @@ export default function AdminUserDetailClient({
                           <div key={a.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                             <div className="min-w-0">
                               <p className="font-semibold text-gray-700 truncate">{a.quizzes?.title || "Quiz supprimé"}</p>
-                              <p className="text-xs text-gray-400">{new Date(a.completed_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}</p>
+                              <p className="text-xs text-gray-400">{new Date(a.completed_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" })}</p>
                             </div>
                             <div className="flex items-center gap-2 shrink-0">
                               <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${a.passed ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>
@@ -690,7 +690,7 @@ export default function AdminUserDetailClient({
                           <div key={c.id} className="flex items-center justify-between gap-2 p-2.5 bg-gray-50 rounded-xl border border-[rgba(197,161,72,0.25)] text-sm">
                             <div className="min-w-0">
                               <p className="font-semibold text-gray-700 truncate">{c.courses?.title || "Cours supprimé"}</p>
-                              <p className="text-xs text-gray-400">Chapitre {c.chapter_index + 1} · {c.completed_at ? new Date(c.completed_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" }) : "en cours"}</p>
+                              <p className="text-xs text-gray-400">Chapitre {c.chapter_index + 1} · {c.completed_at ? new Date(c.completed_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" }) : "en cours"}</p>
                             </div>
                             <span className={`shrink-0 text-xs font-bold px-2 py-0.5 rounded-full ${c.status === "completed" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"}`}>
                               {c.status === "completed" ? "Terminé" : "En cours"}
@@ -723,7 +723,7 @@ export default function AdminUserDetailClient({
                           <div className="min-w-0">
                             <p className="font-semibold text-gray-700 truncate">{MINIGAME_LABEL[s.game_type] || s.game_type}</p>
                             <p className="text-xs text-gray-400">
-                              {new Date(s.completed_at || s.created_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
+                              {new Date(s.completed_at || s.created_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" })}
                               {" · "}{formatMinigameDuration(s.duration_seconds)}
                             </p>
                           </div>

@@ -124,7 +124,7 @@ export default function AuditLogTable({
             {entries.map((e) => (
               <tr key={e.id} className="hover:bg-gray-50">
                 <td className="px-4 py-3 text-gray-500 whitespace-nowrap">
-                  {new Date(e.created_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
+                  {new Date(e.created_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" })}
                 </td>
                 <td className="px-4 py-3 font-medium text-[var(--greek-blue)]">
                   {ACTION_LABELS[e.action] || e.action}

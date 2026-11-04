@@ -115,7 +115,7 @@ export default function AdminAttemptReviewClient(props: ReviewProps) {
             </button>
             {history.map((h, i: number) => {
               const disabled = !h.detail;
-              const label = `${new Date(h.completed_at ?? 0).toLocaleDateString("fr-FR")} : ${h.score}/${h.total_points}${disabled ? " (résumé seulement)" : ""}`;
+              const label = `${new Date(h.completed_at ?? 0).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })} : ${h.score}/${h.total_points}${disabled ? " (résumé seulement)" : ""}`;
               return (
                 <button
                   key={i}

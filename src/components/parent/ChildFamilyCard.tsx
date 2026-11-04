@@ -9,7 +9,7 @@ import { getCatalogLevelLabel } from "@/lib/constants";
 import { relativeTime } from "@/lib/relativeTime";
 import type { FamilyEntry } from "@/lib/familyOverview";
 
-const fmtDay = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
+const fmtDay = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "long" });
 
 /**
  * Fiche d'un enfant : la MÊME dans le tableau de bord (« overview ») et dans « Mes enfants » (« manage »), qui ajoute

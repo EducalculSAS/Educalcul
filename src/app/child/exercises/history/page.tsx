@@ -62,7 +62,7 @@ export default async function ExerciseHistoryPage() {
                     <div className="text-sm text-[var(--text-muted)] flex items-center gap-2">
                       <Clock className="w-3.5 h-3.5" />
                       {a.completed_at
-                        ? new Date(a.completed_at).toLocaleDateString("fr-FR", {
+                        ? new Date(a.completed_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris",
                             day: "numeric",
                             month: "long",
                             year: "numeric",

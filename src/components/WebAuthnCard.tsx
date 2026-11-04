@@ -167,8 +167,8 @@ export default function WebAuthnCard() {
               <div>
                 <p className="font-semibold text-gray-700">{c.device_label || "Appareil"}</p>
                 <p className="text-xs text-gray-400">
-                  Ajoutée le {new Date(c.created_at).toLocaleDateString("fr-FR")}
-                  {c.last_used_at ? ` · utilisée le ${new Date(c.last_used_at).toLocaleDateString("fr-FR")}` : ""}
+                  Ajoutée le {new Date(c.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}
+                  {c.last_used_at ? ` · utilisée le ${new Date(c.last_used_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}` : ""}
                 </p>
               </div>
               <GlassIconButton icon={Trash2} color="red" size="sm" onClick={() => remove(c.id)} disabled={removingId === c.id} loading={removingId === c.id} aria-label="Supprimer cette clé" />

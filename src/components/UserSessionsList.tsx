@@ -66,7 +66,7 @@ export default function UserSessionsList() {
                 {s.label || "Appareil inconnu"}
                 {s.is_current && <span className="text-xs font-semibold text-green-600">(cet appareil)</span>}
                 <span className="text-gray-400">
-, actif le {new Date(s.updated_at || s.created_at).toLocaleDateString("fr-FR")}
+, actif le {new Date(s.updated_at || s.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}
                 </span>
               </span>
               {!s.is_current && (

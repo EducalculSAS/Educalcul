@@ -65,7 +65,7 @@ export function AuthorLine({
           {!!author?.featuredBadges?.length && <BadgeMinis badgeIds={author.featuredBadges} />}
           {extra}
         </div>
-        <p className="text-xs text-[var(--text-muted)]" title={new Date(date).toLocaleString("fr-FR")}>
+        <p className="text-xs text-[var(--text-muted)]" title={new Date(date).toLocaleString("fr-FR", { timeZone: "Europe/Paris" })}>
           {relativeTime(date)}
           {edited && <span className="italic"> · modifié</span>}
         </p>

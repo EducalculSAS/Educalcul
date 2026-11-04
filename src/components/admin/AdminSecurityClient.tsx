@@ -122,7 +122,7 @@ export default function AdminSecurityClient({ initialEntries }: { initialEntries
                 <td className="px-4 py-3 font-mono text-[var(--greek-blue)]">{e.cidr}</td>
                 <td className="px-4 py-3 text-gray-700">{e.label || "-"}</td>
                 <td className="px-4 py-3 text-gray-500">
-                  {new Date(e.created_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
+                  {new Date(e.created_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" })}
                 </td>
                 <td className="px-4 py-3 text-right">
                   <GlassIconButton icon={Trash2} color="red" size="sm" onClick={() => removeEntry(e)} aria-label="Supprimer" />

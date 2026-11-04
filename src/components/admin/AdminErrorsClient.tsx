@@ -23,7 +23,7 @@ interface ErrorRow {
 }
 
 const when = (iso: string) =>
-  new Date(iso).toLocaleString("fr-FR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+  new Date(iso).toLocaleString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
 
 /**
  * Journal d'erreurs du site (remplace Sentry) : chaque bug n'apparaît qu'une

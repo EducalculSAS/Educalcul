@@ -10,7 +10,7 @@ import ExamControls from "@/components/child/ExamControls";
 const ICON: Record<PlanSession["kind"], typeof BookOpen> = { course: BookOpen, exercise: PenTool, review: Repeat, rest: Moon };
 const DAY_NAMES = ["lun.", "mar.", "mer.", "jeu.", "ven.", "sam.", "dim."];
 
-const fmt = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
+const fmt = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "long" });
 const dayName = (iso: string) => DAY_NAMES[(new Date(`${iso}T12:00:00Z`).getUTCDay() + 6) % 7];
 const addDays = (iso: string, n: number) => {
   const d = new Date(`${iso}T12:00:00Z`);

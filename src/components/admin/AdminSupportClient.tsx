@@ -429,7 +429,7 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                     <span className="font-semibold">Créé le:</span>{" "}
                     {new Date(selectedTicket.created_at).toLocaleString(
                       "fr-FR"
-                    )}
+                    , { timeZone: "Europe/Paris" })}
                   </div>
                   <div className="flex items-center gap-2">
                     <Tag size={16} />
@@ -475,7 +475,7 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                           {reply.admin_name}
                         </span>
                         <span className="text-xs text-gray-500">
-                          {new Date(reply.replied_at).toLocaleString("fr-FR")}
+                          {new Date(reply.replied_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris" })}
                         </span>
                       </div>
                       <div className="text-gray-700 whitespace-pre-wrap">
@@ -603,12 +603,12 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                       <td className="px-6 py-4 text-sm text-gray-600">
                         {new Date(ticket.updated_at).toLocaleDateString(
                           "fr-FR",
-                          { day: "2-digit", month: "short", year: "numeric" }
+                          { timeZone: "Europe/Paris", day: "2-digit", month: "short", year: "numeric" }
                         )}
                         <div className="text-xs text-gray-400">
                           {new Date(ticket.updated_at).toLocaleTimeString(
                             "fr-FR",
-                            { hour: "2-digit", minute: "2-digit" }
+                            { timeZone: "Europe/Paris", hour: "2-digit", minute: "2-digit" }
                           )}
                         </div>
                       </td>

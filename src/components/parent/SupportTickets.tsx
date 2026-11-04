@@ -185,8 +185,8 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
                     </div>
                     <p className="text-xs text-gray-400">
                       {allReplies.length > 0
-                        ? `${allReplies.length} message${allReplies.length > 1 ? "s" : ""} · ${new Date(ticket.updated_at).toLocaleDateString("fr-FR")}`
-                        : `Ouvert le ${new Date(ticket.created_at).toLocaleDateString("fr-FR")}`}
+                        ? `${allReplies.length} message${allReplies.length > 1 ? "s" : ""} · ${new Date(ticket.updated_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}`
+                        : `Ouvert le ${new Date(ticket.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}`}
                     </p>
                   </div>
                   {isOpen ? <ChevronUp className="w-5 h-5 text-gray-400 shrink-0 ml-3" /> : <ChevronDown className="w-5 h-5 text-gray-400 shrink-0 ml-3" />}
@@ -207,7 +207,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
                                 {ticket.message.replace("[Message de l'équipe Educalcul]\n\n", "")}
                               </p>
                               <p className={`text-xs mt-1.5 ${fromTeam ? "text-gray-400" : "text-white/50 text-right"}`}>
-                                {new Date(ticket.created_at).toLocaleString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
+                                {new Date(ticket.created_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
                               </p>
                             </div>
                           </div>
@@ -220,7 +220,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
                             {reply.is_admin && <p className="text-xs font-semibold text-[var(--greek-gold)] mb-1">{reply.author_name || "Equipe Educalcul"}</p>}
                             <p className={`text-sm leading-relaxed whitespace-pre-wrap ${reply.is_admin ? "text-gray-700" : "text-white"}`}>{reply.reply_message}</p>
                             <p className={`text-xs mt-1.5 ${reply.is_admin ? "text-gray-400" : "text-white/50 text-right"}`}>
-                              {new Date(reply.replied_at).toLocaleString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
+                              {new Date(reply.replied_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
                             </p>
                           </div>
                         </div>

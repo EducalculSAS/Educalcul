@@ -15,7 +15,7 @@ interface ActivityItem {
 }
 
 const formatDate = (d: string) =>
-  new Date(d).toLocaleDateString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  new Date(d).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
 
 function parseBold(text: string): ReactNode {
   const parts = text.split(/\*\*(.*?)\*\*/g);
@@ -112,7 +112,7 @@ export default function ChildReportTabs({
   };
 
   const formattedGeneratedAt = generatedAt
-    ? new Date(generatedAt).toLocaleDateString("fr-FR", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })
+    ? new Date(generatedAt).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })
     : null;
 
   return (

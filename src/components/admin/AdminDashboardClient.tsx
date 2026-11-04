@@ -72,7 +72,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
             {lastUpdated && (
               <span className="text-xs text-gray-400 flex items-center gap-1">
                 <Clock size={12} />
-                {lastUpdated.toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+                {lastUpdated.toLocaleTimeString("fr-FR", { timeZone: "Europe/Paris", hour: "2-digit", minute: "2-digit", second: "2-digit" })}
               </span>
             )}
             <GlassButton
@@ -128,7 +128,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
                     {u.first_name} {u.last_name}
                   </p>
                   <p className="text-xs text-gray-400">
-                    {new Date(u.created_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
+                    {new Date(u.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
                   </p>
                 </div>
                 <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${ROLE_COLOR[u.role] ?? "bg-gray-100 text-gray-600"}`}>
@@ -195,7 +195,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
                   <p className="text-sm font-semibold text-gray-800 truncate">{p.title}</p>
                   <p className="text-xs text-gray-400">
                     {p.author?.first_name ?? "?"} {p.author?.last_name ?? ""} ·{" "}
-                    {new Date(p.created_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "short" })}
+                    {new Date(p.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "short" })}
                   </p>
                 </div>
               </div>

@@ -94,7 +94,7 @@ function MarkerBody({ user }: { user: UserMarker }) {
         {user.lastActive && (
           <div className="flex items-center gap-1.5 text-gray-400">
             <Clock size={10} />
-            {new Date(user.lastActive).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
+            {new Date(user.lastActive).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
           </div>
         )}
         <div className="mt-1.5 pt-1.5 border-t border-gray-100 flex items-center justify-between">

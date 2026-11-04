@@ -454,13 +454,13 @@ function SubscriptionPageContent({
                   {currentPlan?.current_period_end && !currentPlan?.cancel_at_period_end && (
                     <p className="text-sm text-gray-500 flex items-center mt-1">
                       <Clock className="w-4 h-4 mr-1" />
-                      Renouvellement le : {new Date(currentPlan.current_period_end).toLocaleDateString("fr-FR")}
+                      Renouvellement le : {new Date(currentPlan.current_period_end).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}
                     </p>
                   )}
                   {currentPlan?.cancel_at_period_end && currentPlan?.current_period_end && (
                     <p className="text-sm text-red-500 flex items-center mt-1">
                       <AlertTriangle className="w-4 h-4 mr-1" />
-                      Se termine le : {new Date(currentPlan.current_period_end).toLocaleDateString("fr-FR")}
+                      Se termine le : {new Date(currentPlan.current_period_end).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}
                     </p>
                   )}
                   {currentPlan?.status === "past_due" && (
@@ -482,7 +482,7 @@ function SubscriptionPageContent({
               <div className="mt-5 pt-4 border-t border-[rgba(197,161,72,0.2)] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <p className="text-sm text-[var(--text-muted)]">
                   Vous pouvez vous rétracter jusqu’au{" "}
-                  <strong className="text-[var(--greek-blue)]">{new Date(withdrawal.deadline).toLocaleDateString("fr-FR", { day: "numeric", month: "long" })}</strong>, sans justification.
+                  <strong className="text-[var(--greek-blue)]">{new Date(withdrawal.deadline).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "long" })}</strong>, sans justification.
                 </p>
                 <GlassButton onClick={() => setWithdrawOpen(true)} variant="outline" size="sm" className="whitespace-nowrap">
                   <Undo2 className="w-4 h-4" />
@@ -707,7 +707,7 @@ function SubscriptionPageContent({
                         )}
                       </div>
                       <span className="text-xs text-gray-400 shrink-0">
-                        {u.used_at ? new Date(u.used_at).toLocaleDateString("fr-FR") : "—"}
+                        {u.used_at ? new Date(u.used_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" }) : "—"}
                       </span>
                     </li>
                   ))}

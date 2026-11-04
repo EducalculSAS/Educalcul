@@ -151,7 +151,7 @@ export default function ChildControls({ childId, childName, initialPrefs, summar
                 </div>
                 <div>
                   {overrideActive ? (
-                    <GlassButton variant="outline" size="sm" onClick={() => patch({ liftQuietMinutes: 0 }, "Repos rétabli")}>Repos levé jusqu&apos;à {new Date(prefs.quietOverrideUntil!).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" })} : rétablir</GlassButton>
+                    <GlassButton variant="outline" size="sm" onClick={() => patch({ liftQuietMinutes: 0 }, "Repos rétabli")}>Repos levé jusqu&apos;à {new Date(prefs.quietOverrideUntil!).toLocaleTimeString("fr-FR", { timeZone: "Europe/Paris", hour: "2-digit", minute: "2-digit" })} : rétablir</GlassButton>
                   ) : (
                     <GlassButton variant="outline" size="sm" onClick={() => patch({ liftQuietMinutes: 120 }, "Repos levé 2 heures")}>Exceptionnellement, autoriser 2 heures</GlassButton>
                   )}

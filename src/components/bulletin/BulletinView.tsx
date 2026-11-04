@@ -3,7 +3,7 @@ import StreakFlame from "@/components/StreakFlame";
 import type { Bulletin } from "@/lib/bulletin";
 import { getCatalogLevelLabel } from "@/lib/constants";
 
-const fmtDate = (iso: string) => new Date(iso).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" });
+const fmtDate = (iso: string) => new Date(iso).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "long", year: "numeric" });
 
 function WeeklyChart({ weeks }: { weeks: Bulletin["weeks"] }) {
   const max = Math.max(4, ...weeks.map((w) => w.activities));

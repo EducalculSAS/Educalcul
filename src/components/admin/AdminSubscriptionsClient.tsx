@@ -621,7 +621,7 @@ export default function AdminSubscriptionsClient({
                                 </div>
                                 {s.current_period_end && (
                                   <span className="text-gray-300 shrink-0">
-                                    {new Date(s.current_period_end).toLocaleDateString("fr-FR", { day: "2-digit", month: "2-digit", year: "2-digit" })}
+                                    {new Date(s.current_period_end).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "2-digit", year: "2-digit" })}
                                   </span>
                                 )}
                               </div>
@@ -750,7 +750,7 @@ export default function AdminSubscriptionsClient({
                       <td className="px-5 py-4 text-xs text-gray-500">
                         {c.valid_until ? (
                           <span className={new Date(c.valid_until) < new Date() ? "text-red-500 font-medium" : ""}>
-                            jusqu&apos;au {new Date(c.valid_until).toLocaleDateString("fr-FR")}
+                            jusqu&apos;au {new Date(c.valid_until).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}
                           </span>
                         ) : <span className="text-green-600">Sans limite</span>}
                       </td>

@@ -158,7 +158,7 @@ export default function AdminMinigameSessionsPanel() {
                   </span>
                 </td>
                 <td className="px-4 py-2 text-gray-400 text-xs whitespace-nowrap">
-                  {new Date(s.created_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
+                  {new Date(s.created_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" })}
                 </td>
                 <td className="px-4 py-2">
                   <GlassIconButton icon={Trash2} color="red" size="sm" onClick={() => remove(s.id)} aria-label="Supprimer" />

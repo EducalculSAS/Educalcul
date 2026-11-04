@@ -215,7 +215,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
                           {replies.length > 0 && <span className="text-xs font-bold text-[var(--greek-blue)] bg-blue-50 px-2 py-0.5 rounded-full">{replies.length} réponse{replies.length > 1 ? "s" : ""}</span>}
                         </div>
                         <p className="font-bold text-gray-800 truncate">{ticket.subject}</p>
-                        <p className="text-xs text-gray-400 mt-0.5">{new Date(ticket.created_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", year: "numeric" })}</p>
+                        <p className="text-xs text-gray-400 mt-0.5">{new Date(ticket.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "short", year: "numeric" })}</p>
                       </div>
                       {isExpanded ? <ChevronUp size={16} className="text-gray-400 shrink-0 mt-1" /> : <ChevronDown size={16} className="text-gray-400 shrink-0 mt-1" />}
                     </button>
@@ -235,7 +235,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
                                 <div className={`max-w-[85%] rounded-xl p-4 ${r.is_admin ? "bg-[var(--greek-blue)]/5 border border-[var(--greek-blue)]/10" : "bg-[var(--greek-blue)] text-white"}`}>
                                   <div className="flex items-center justify-between gap-3 mb-2">
                                     <span className={`text-xs font-bold ${r.is_admin ? "text-[var(--greek-blue)]" : "text-white/80"}`}>{r.is_admin ? (r.admin_name || "Support Educalcul") : "Vous"}</span>
-                                    <span className={`text-xs ${r.is_admin ? "text-gray-400" : "text-white/60"}`}>{(r.replied_at ? new Date(r.replied_at) : new Date()).toLocaleDateString("fr-FR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
+                                    <span className={`text-xs ${r.is_admin ? "text-gray-400" : "text-white/60"}`}>{(r.replied_at ? new Date(r.replied_at) : new Date()).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}</span>
                                   </div>
                                   <p className={`text-sm whitespace-pre-wrap ${r.is_admin ? "text-gray-700" : "text-white"}`}>{r.reply_message}</p>
                                 </div>

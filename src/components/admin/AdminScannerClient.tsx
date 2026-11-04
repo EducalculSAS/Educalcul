@@ -364,7 +364,7 @@ export default function AdminScannerClient({ initialRuns }: { initialRuns: Run[]
                     </div>
                   )}
                   <div className="text-xs text-gray-400 mt-1.5">
-                    {new Date(r.created_at).toLocaleString("fr-FR", { dateStyle: "short", timeStyle: "short" })}
+                    {new Date(r.created_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", dateStyle: "short", timeStyle: "short" })}
                     {typeof r.findings_count === "number" && r.status === "completed" && (
                       <span className="ml-2">· {r.findings_count} problème(s)</span>
                     )}
