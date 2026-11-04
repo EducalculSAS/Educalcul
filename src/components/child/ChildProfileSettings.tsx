@@ -2,6 +2,7 @@
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import ThemeToggle from "@/components/ThemeToggle";
+import SeasonSettings from "@/components/SeasonSettings";
 import { AccessibilityCard } from "@/components/AccessibilityPanel";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useRef, useState } from "react";
@@ -277,6 +278,8 @@ export default function ChildProfileSettings({
         </div>
 
         <ThemeToggle />
+
+        <SeasonSettings />
         <AccessibilityCard />
 
         {/* ── Voix de Calia en classe ── */}

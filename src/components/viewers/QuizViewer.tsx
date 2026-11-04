@@ -107,10 +107,11 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
     setInlineText((prev) => ({ ...prev, [idx]: { attempts: attemptsSoFar, status: "grading" } }));
     try {
       const quizId = quiz.id || "preview";
-      const res = await fetch(`/api/child/quizzes/${quizId}/grade`, {
+      const res = await fetch(quizId === "demo" ? "/api/demo/grade" : `/api/child/quizzes/${quizId}/grade`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ...(quizId === "demo" ? { kind: "quiz" } : {}),
           question_id: q.id,
           answer: studentAnswer,
           level: quiz.level || "6eme",
@@ -231,7 +232,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
 
   // Dynamic progress tracking
   const saveProgress = async (status: 'in_progress' | 'completed', currentScore: number, scorePercent?: number, passed?: boolean) => {
-    const isPreview = quiz.id === undefined || quiz.id === "preview";
+    const isPreview = quiz.id === undefined || quiz.id === "preview" || quiz.id === "demo";
     if (isPreview) return;
 
     const { data: { session } } = await supabase.auth.getSession();
@@ -270,7 +271,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
 
   // Sauvegarde la progression détaillée (réponses, résultats, feedback) en base
   const saveDetailedProgress = async (status: 'in_progress' | 'completed', extra?: { results?: Record<number, boolean>; feedbacks?: Record<number, string>; revealed?: Record<number, { correctAnswer?: string | string[]; explanation?: string }>; finalScore?: number }) => {
-    const isPreview = quiz.id === undefined || quiz.id === "preview";
+    const isPreview = quiz.id === undefined || quiz.id === "preview" || quiz.id === "demo";
     if (isPreview || reviewMode) return;
     const { data: { session } } = await supabase.auth.getSession();
     if (!session?.user) return;
@@ -298,7 +299,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   // Charge la progression en cours depuis la base (reprise après déconnexion)
   useEffect(() => {
     if (reviewMode) return;
-    const isPreview = quiz.id === undefined || quiz.id === "preview";
+    const isPreview = quiz.id === undefined || quiz.id === "preview" || quiz.id === "demo";
     if (isPreview) return;
     (async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -437,10 +438,11 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
       graded = await Promise.all(
         pending.map((i) => {
           const q = questions[i];
-          return fetch(`/api/child/quizzes/${quizId}/grade`, {
+          return fetch(quizId === "demo" ? "/api/demo/grade" : `/api/child/quizzes/${quizId}/grade`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
+              ...(quizId === "demo" ? { kind: "quiz" } : {}),
               question_id: q.id,
               answer: answers[i],
               level: quiz.level || "6eme",
@@ -607,12 +609,20 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                     >
                       Voir la correction
                     </GlassButton>
-                    <GlassButton href={quiz.course_id ? `/child/exercises?course=${quiz.course_id}` : "/child/exercises"} variant="navy" fullWidth className="font-bold text-base">
-                      Faire les exercices
-                    </GlassButton>
-                    <GlassButton href={quiz.course_id ? `/child/quiz?course=${quiz.course_id}` : "/child/quiz"} variant="outline" fullWidth className="font-bold text-base">
-                      Retour aux quiz
-                    </GlassButton>
+                    {quiz.id === "demo" ? (
+                      <GlassButton href="/auth/inscription" variant="outline" fullWidth className="font-bold text-base">
+                        Essayer gratuitement
+                      </GlassButton>
+                    ) : (
+                      <>
+                        <GlassButton href={quiz.course_id ? `/child/exercises?course=${quiz.course_id}` : "/child/exercises"} variant="navy" fullWidth className="font-bold text-base">
+                          Faire les exercices
+                        </GlassButton>
+                        <GlassButton href={quiz.course_id ? `/child/quiz?course=${quiz.course_id}` : "/child/quiz"} variant="outline" fullWidth className="font-bold text-base">
+                          Retour aux quiz
+                        </GlassButton>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>

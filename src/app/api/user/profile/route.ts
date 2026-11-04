@@ -1,3 +1,4 @@
+import { isSeasonPreference } from "@/lib/season";
 import { sanitizeAvatar } from "@/lib/avatarUrl";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -19,7 +20,7 @@ import { isCaliaVoice } from "@/lib/caliaVoices";
  * la liste "safe" partagée (USER_SELECT_COLUMNS, sans les colonnes forensic)
  * + deux flags 2FA/onboarding. Remplace tous les
  * `supabase.from("users").select(...).eq("auth_id", …)` côté client. */
-const READABLE = `${USER_SELECT_COLUMNS}, two_factor_locked_by_parent, needs_grade_choice, extra_levels, specialties_chosen_at`;
+const READABLE = `${USER_SELECT_COLUMNS}, season_preference, two_factor_locked_by_parent, needs_grade_choice, extra_levels, specialties_chosen_at`;
 
 export async function GET(req: Request) {
   try {
@@ -59,6 +60,8 @@ export async function PATCH(req: Request) {
       else if (k === "calia_voice" && isCaliaVoice(v)) patch[k] = v;
       // Mode clair / sombre choisi dans le profil (voir src/lib/theme.ts).
       else if (k === "theme_preference" && (v === "light" || v === "dark")) patch[k] = v;
+      // Thème du site (saisons, voir src/lib/season.ts).
+      else if (k === "season_preference" && isSeasonPreference(v)) patch[k] = v;
       // Avatar : uniquement une image servie par le site (voir sanitizeAvatar).
       else if (k === "avatar") {
         const avatar = sanitizeAvatar(v);

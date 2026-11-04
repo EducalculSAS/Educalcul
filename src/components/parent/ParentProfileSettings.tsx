@@ -2,6 +2,7 @@
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import ThemeToggle from "@/components/ThemeToggle";
+import SeasonSettings from "@/components/SeasonSettings";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
@@ -544,6 +545,8 @@ export default function ParentProfileSettings({
           </div>
 
           <ThemeToggle />
+
+          <SeasonSettings />
 
           <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
             <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">

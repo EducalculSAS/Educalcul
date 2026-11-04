@@ -9,6 +9,7 @@ import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import AdminTotpCard from "@/components/admin/AdminTotpCard";
 import WebAuthnCard from "@/components/WebAuthnCard";
 import ThemeToggle from "@/components/ThemeToggle";
+import SeasonSettings from "@/components/SeasonSettings";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { errMessage } from "@/lib/safeError";
@@ -187,6 +188,7 @@ export default function AdminProfileClient({ initialFormData }: {
 
           <div className="mt-6">
             <ThemeToggle />
+            <div className="mt-6"><SeasonSettings /></div>
           </div>
 
           <div className="mt-6">

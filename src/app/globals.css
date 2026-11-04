@@ -3369,3 +3369,35 @@ html[data-scrolling] :is(.ring-fx) *,
 .cosmetic-card:not(:hover):not(:focus-visible):not([aria-pressed="true"]) [class*="name-"]::after {
   animation-play-state: paused !important;
 }
+
+/* ── Thèmes de saison (src/lib/season.ts) ─────────────────────────────────────────────────────────────────────────
+   Couleur principale (boutons, en-têtes) et accent doré remplacés ; le mode sombre ne garde que l'accent. */
+html[data-season="noel"]:not([data-theme="dark"]) { --greek-blue: #123f2b; --greek-blue-mid: #1d6142; --greek-gold: #c8102e; --greek-gold-text: #8e0b20; }
+html[data-season="noel"][data-theme="dark"] { --greek-gold: #e04358; }
+html[data-season="paques"]:not([data-theme="dark"]) { --greek-blue: #3b2a6b; --greek-blue-mid: #5b44a0; --greek-gold: #6fae3c; --greek-gold-text: #3f6e16; }
+html[data-season="paques"][data-theme="dark"] { --greek-gold: #9fd36c; }
+html[data-season="foot"]:not([data-theme="dark"]) { --greek-blue: #0b4d24; --greek-blue-mid: #11733a; --greek-gold: #e2b400; --greek-gold-text: #7a6200; }
+html[data-season="foot"][data-theme="dark"] { --greek-gold: #f2c94c; }
+html[data-season="halloween"]:not([data-theme="dark"]) { --greek-blue: #2a1035; --greek-blue-mid: #4a1d5e; --greek-gold: #ff7a18; --greek-gold-text: #a84300; }
+html[data-season="halloween"][data-theme="dark"] { --greek-gold: #ff9a4a; }
+
+.season-particle {
+  position: absolute; top: -8vh; display: block; opacity: 0.85;
+  animation-name: season-fall; animation-timing-function: linear; animation-iteration-count: infinite;
+  will-change: transform;
+}
+.season-particle > svg { width: 100%; height: 100%; display: block; }
+.season-halloween { animation-name: season-fly; opacity: 0.75; }
+@keyframes season-fall {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50% { transform: translate3d(22px, 58vh, 0) rotate(180deg); }
+  100% { transform: translate3d(-12px, 118vh, 0) rotate(360deg); }
+}
+@keyframes season-fly {
+  0% { transform: translate3d(0, 10vh, 0) scale(.9); }
+  25% { transform: translate3d(30px, 35vh, 0) scale(1); }
+  50% { transform: translate3d(-20px, 60vh, 0) scale(.9); }
+  100% { transform: translate3d(10px, 118vh, 0) scale(1); }
+}
+html[data-scrolling] .season-particle, [data-anim-off] .season-particle { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .season-decor { display: none; } }

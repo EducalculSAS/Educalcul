@@ -99,10 +99,11 @@ export async function gradeAnswers({ exercise, pages, answers, inlineText }: Gra
               }).then((r) => r.json()).then((d) => ({ ...d, block_id: block.id })),
             )
           : [
-              fetch(`/api/child/exercises/${exerciseId}/grade`, {
+              // Démonstration publique (page Offres) : correction sans compte, rien n'est enregistré.
+              fetch(exerciseId === "demo" ? "/api/demo/grade" : `/api/child/exercises/${exerciseId}/grade`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ items: toGrade.map(({ block, answer }) => ({ block_id: block.id, answer })) }),
+                body: JSON.stringify({ ...(exerciseId === "demo" ? { kind: "exercise" } : {}), items: toGrade.map(({ block, answer }) => ({ block_id: block.id, answer })) }),
               }).then(async (r) => {
                 const d = await r.json();
                 if (!r.ok) throw new Error(d.error || "Correction indisponible, réessaie.");

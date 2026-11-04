@@ -19,6 +19,7 @@ import ImpersonationBanner from "@/components/ImpersonationBanner";
 import JsonLd from "@/components/JsonLd";
 import ThemeSync from "@/components/ThemeSync";
 import AnimationGovernor from "@/components/AnimationGovernor";
+import SeasonalDecor from "@/components/SeasonalDecor";
 import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
 import "@fontsource/opendyslexic/400.css";
@@ -213,6 +214,7 @@ export default function RootLayout({
             <SessionStillHereModal />
             <ThemeSync />
             <AnimationGovernor />
+            <SeasonalDecor />
         <PasswordRecoveryRedirect />
             <JsxFigureEnhancer />
             <NavProgress />

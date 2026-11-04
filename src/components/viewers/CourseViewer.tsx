@@ -58,7 +58,7 @@ function getCleanSelectionText(range: Range): string {
   return (container.textContent || "").replace(/\s+/g, " ").trim();
 }
 
-interface CourseViewerProps {
+export interface CourseViewerProps {
   course: {
     id?: string | number;
     title: string;
@@ -82,7 +82,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
     [course.content_json]
   );
   const courseId = course.id;
-  const isPreviewCourse = !courseId || courseId === "preview";
+  const isPreviewCourse = !courseId || courseId === "preview" || courseId === "demo";
 
   // Position/progression : plus de repli localStorage — la position exacte
   // vient uniquement du serveur (voir l'effet "Charge la progression
@@ -634,7 +634,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
           </div>
 
           {/* Calia en classe — plan Family (verrouillee/upsell sinon, voir CaliaSceneDemo) */}
-          <CaliaSceneDemo
+          {courseId !== "demo" && (<CaliaSceneDemo
             contentRef={contentRef}
             courseContext={caliaCourseContext}
             onAdvanceLesson={advanceLessonForCalia}
@@ -648,7 +648,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                 k -= count;
               }
             }}
-          />
+          />)}
 
           {/* Cercle progression SVG */}
           <div className="flex-shrink-0">

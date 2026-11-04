@@ -48,7 +48,7 @@ export default function ExerciseResultScreen(props: ExerciseResultScreenProps) {
             <div className="flex-grow">
               <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
                 <Trophy className="w-6 h-6 text-[var(--greek-gold)]" />
-                {manual ? "Merci !" : "Félicitations !"}
+                {manual ? "Merci !" : passed ? "Félicitations !" : "Exercice terminé"}
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {manual
@@ -117,9 +117,22 @@ export default function ExerciseResultScreen(props: ExerciseResultScreenProps) {
                 {onRestart && !isPreview && restartBlocked && (
                   <p className="text-xs text-gray-500 text-center">Tu as utilisé tous tes essais pour cet exercice.</p>
                 )}
-                <GlassButton href={exercise.course_id ? `/child/exercises?course=${exercise.course_id}` : "/child/exercises"} variant="outline" fullWidth className="font-bold text-base">
-                  Retour aux exercices
-                </GlassButton>
+                {exercise.id === "demo" ? (
+                  <>
+                    {onRestart && (
+                      <GlassButton onClick={onRestart} variant="outline" fullWidth className="font-bold text-base">
+                        <RotateCcw className="w-4 h-4" /> Recommencer
+                      </GlassButton>
+                    )}
+                    <GlassButton href="/auth/inscription" variant="navy" fullWidth className="font-bold text-base">
+                      Essayer gratuitement
+                    </GlassButton>
+                  </>
+                ) : (
+                  <GlassButton href={exercise.course_id ? `/child/exercises?course=${exercise.course_id}` : "/child/exercises"} variant="outline" fullWidth className="font-bold text-base">
+                    Retour aux exercices
+                  </GlassButton>
+                )}
               </div>
             </div>
           </div>

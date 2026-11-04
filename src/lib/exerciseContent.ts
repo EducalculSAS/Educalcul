@@ -57,7 +57,9 @@ function seededShuffle<T>(arr: T[], seed: string): T[] {
 // mélangée côté serveur (matchingOptions / shuffledItems) sans jamais exposer
 // la correspondance/l'ordre correct.
 export function stripBlockAnswers(block: Block) {
-  const { correctAnswer, blanks, ...stripped } = block;
+  // L'explication contient souvent la réponse : elle ne part pas non plus vers l'élève avant correction (le lecteur
+  // d'exercices ne l'affiche pas ; seule la correction serveur s'en sert).
+  const { correctAnswer, blanks, explanation, ...stripped } = block;
   // Un point par élément pour les associations / catégories / trous : le client ne voit jamais les réponses, mais il
   // doit connaître le bon total de points.
   const rest = itemTotal(block) > 1 ? { ...stripped, points: blockMaxPoints(block) } : stripped;

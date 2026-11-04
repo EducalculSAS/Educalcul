@@ -3890,6 +3890,7 @@ export type Database = {
           status: string
           subscription_expires_at: string | null
           subscription_plan_id: number | null
+          season_preference: string | null
           theme_preference: string | null
           two_factor_enabled: boolean
           two_factor_locked_by_parent: boolean
@@ -3951,6 +3952,7 @@ export type Database = {
           status?: string
           subscription_expires_at?: string | null
           subscription_plan_id?: number | null
+          season_preference?: string | null
           theme_preference?: string | null
           two_factor_enabled?: boolean
           two_factor_locked_by_parent?: boolean
@@ -4012,6 +4014,7 @@ export type Database = {
           status?: string
           subscription_expires_at?: string | null
           subscription_plan_id?: number | null
+          season_preference?: string | null
           theme_preference?: string | null
           two_factor_enabled?: boolean
           two_factor_locked_by_parent?: boolean

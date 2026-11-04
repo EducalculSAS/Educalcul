@@ -3,8 +3,8 @@ import { supabase } from "@/lib/supabaseClient";
 import type { RevealInfo } from "@/components/viewers/ExerciseViewer";
 import type { AnswerMap } from "@/types/answers";
 
-/** Aperçu admin ou relecture : rien n'est enregistré ni chargé pour ces exercices. */
-export const isVirtualExercise = (id?: string | null) => !id || id === "preview" || id === "review";
+/** Aperçu admin, relecture ou démonstration publique : rien n'est enregistré ni chargé pour ces exercices. */
+export const isVirtualExercise = (id?: string | null) => !id || id === "preview" || id === "review" || id === "demo";
 
 interface ProgressState {
   answers: AnswerMap;

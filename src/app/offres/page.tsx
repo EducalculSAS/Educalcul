@@ -12,6 +12,10 @@ import {
 import Image from "next/image";
 import FadeInSection from "@/components/home/FadeInSection";
 import CaliaChatDemo from "@/components/offres/CaliaChatDemo";
+import OffresDemo from "@/components/offres/OffresDemo";
+import { DEMO_COURSE, DEMO_EXERCISE, DEMO_QUIZ } from "@/lib/demoContent";
+import { stripAnswers as stripExerciseAnswers } from "@/lib/exerciseContent";
+import { stripAnswers as stripQuizAnswers } from "@/lib/quizContent";
 import GlassButton from "@/components/ui/GlassButton";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import { fetchReviewsForHomepage } from "@/lib/manualReviews";
@@ -202,6 +206,33 @@ export default async function Offres() {
                 ))}
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* ── ESSAYER SANS COMPTE : un vrai cours, un vrai exercice, un vrai quiz ── */}
+        <section id="essayer" className="py-24" style={{ background: "var(--greek-cream)" }}>
+          <div className="container mx-auto px-6 max-w-5xl">
+            <FadeInSection>
+              <div className="text-center mb-10">
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--greek-gold)" }}>
+                  Essayez sans compte
+                </span>
+                <h2
+                  className="font-[family-name:var(--font-display)] font-bold leading-tight mt-3 mb-4"
+                  style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", color: "var(--greek-blue)" }}
+                >
+                  Un cours, un exercice, un quiz : <span style={{ color: "var(--greek-gold)" }}>comme dans l&apos;espace élève.</span>
+                </h2>
+                <p className="text-sm leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--text-muted)" }}>
+                  Exemple sur les fractions (6e). Les réponses sont corrigées pour de vrai ; rien n&apos;est enregistré.
+                </p>
+              </div>
+              <OffresDemo
+                course={DEMO_COURSE}
+                exercise={stripExerciseAnswers(DEMO_EXERCISE)}
+                quiz={stripQuizAnswers(DEMO_QUIZ)}
+              />
+            </FadeInSection>
           </div>
         </section>
 

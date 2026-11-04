@@ -96,12 +96,16 @@ export default function GlassSegmentedControl({
     setActiveId(valueRef.current);
   }, [rectOf]);
 
+  // Pendant le recentrage automatique, la piste glisse sous un curseur immobile : ce survol-là n'est pas un aperçu.
+  const autoScrollUntilRef = useRef(0);
+
   // Amène l'option choisie au centre de la piste (sans faire défiler la page).
   const revealValue = useCallback((smooth: boolean) => {
     const c = containerRef.current;
     const btn = btnRefs.current[valueRef.current];
     if (!c || !btn || c.scrollWidth <= c.clientWidth) return;
     const target = btn.offsetLeft - (c.clientWidth - btn.offsetWidth) / 2;
+    autoScrollUntilRef.current = performance.now() + (smooth ? 700 : 100);
     c.scrollTo({ left: Math.max(0, target), behavior: smooth ? "smooth" : "auto" });
   }, []);
 
@@ -134,7 +138,7 @@ export default function GlassSegmentedControl({
   }, [options.length, settleToValue, revealValue]);
 
   const handleOptionEnter = (id: string) => (e: React.PointerEvent) => {
-    if (e.pointerType !== "mouse" || draggingRef.current) return;
+    if (e.pointerType !== "mouse" || draggingRef.current || performance.now() < autoScrollUntilRef.current) return;
     const target = rectOf(id);
     if (!target) return;
     setTransition(PREVIEW_TRANSITION);

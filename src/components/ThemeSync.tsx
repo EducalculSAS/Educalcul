@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { applyTheme, isTheme, readStoredTheme, syncThemeToPath } from "@/lib/theme";
+import { applySeason, isSeasonPreference, readStoredSeason } from "@/lib/season";
 
 /**
  * Aligne le thème du navigateur sur la préférence du compte à la connexion
@@ -27,6 +28,12 @@ export default function ThemeSync() {
           if (me.theme_preference !== readStoredTheme()) applyTheme(me.theme_preference);
         } else if (readStoredTheme() === "dark") {
           void fetch("/api/user/profile", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ theme_preference: "dark" }) });
+        }
+        // Thème de saison : celui du compte l'emporte ; sinon le choix fait sur ce navigateur devient celui du compte.
+        if (isSeasonPreference(me?.season_preference)) {
+          if (me.season_preference !== readStoredSeason()) applySeason(me.season_preference);
+        } else if (readStoredSeason() !== "auto") {
+          void fetch("/api/user/profile", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ season_preference: readStoredSeason() }) });
         }
       } catch { /* hors ligne : on garde le thème local */ }
     };
