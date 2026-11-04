@@ -5,7 +5,7 @@
  * Deux façons de l'obtenir, pas plus :
  *  - MISSION : on l'accomplit une fois, il est à vous pour toujours (enregistré dans user_cosmetics) ;
  *  - ABONNEMENT : la formule du parent le donne tant qu'elle est active (jamais enregistré : il disparaît avec elle).
- * Un élément peut avoir les deux. Seule exception : le contour « Égide », réservé aux administrateurs et équipé d'office
+ * Un élément peut avoir les deux. Seule exception : le contour et le titre « Égide », réservés aux administrateurs et équipés d'office
  * (ils ne choisissent pas d'autre contour) ; personne d'autre ne le voit ni ne peut l'obtenir.
  *
  * Ce fichier ne dépend de rien (ni base, ni serveur) : il sert aussi bien au serveur qu'à l'affichage.
@@ -59,11 +59,15 @@ export interface ColorDef {
   /** Classe CSS du nom affiché (globals.css). */
   cls: string;
   subscription: boolean;
+  /** Réservé aux administrateurs, équipé d'office (jamais choisi, jamais montré aux élèves ni aux parents). */
+  adminOnly?: boolean;
 }
 
 export const NO_BORDER = "none";
 /** Contour des administrateurs : posé d'office (trigger en base + remise en règle), aucun autre ne leur est permis. */
 export const ADMIN_BORDER = "admin";
+/** Titre (couleur de nom) des administrateurs : posé d'office comme le contour « Égide ». */
+export const ADMIN_COLOR = "admin";
 export const DEFAULT_COLOR = "default";
 
 export const BORDERS: BorderDef[] = [
@@ -104,6 +108,7 @@ export const COLORS: ColorDef[] = [
   { key: "pro", label: "Ailes d'or", cls: "name-pro-animated", subscription: true },
   { key: "flame", label: "Brasier", cls: "name-flame", subscription: true },
   { key: "elite", label: "Astral", cls: "name-elite", subscription: true },
+  { key: ADMIN_COLOR, label: "Égide", cls: "name-admin-animated", subscription: false, adminOnly: true },
 ];
 
 const req = (stat: MissionStat, min: number): Requirement => ({ stat, min });

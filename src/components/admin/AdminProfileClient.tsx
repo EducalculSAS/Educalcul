@@ -14,6 +14,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { errMessage } from "@/lib/safeError";
 import { getNameColor } from "@/lib/badgeStyles";
+import { ADMIN_COLOR } from "@/lib/cosmetics/catalog";
 
 const ADMIN_AVATAR = "/logo.png";
 
@@ -218,7 +219,7 @@ export default function AdminProfileClient({ initialFormData }: {
               </div>
 
               <h4
-                className={`text-2xl mb-4 transition-all duration-300 font-bold ${getNameColor(formData.name_color).cls}`}
+                className={`text-2xl mb-4 transition-all duration-300 font-bold ${getNameColor(ADMIN_COLOR).cls}`}
               >
                 {formData.child_username || "Pseudo admin"}
               </h4>

@@ -5,6 +5,7 @@ import type { Row } from "@/types/db";
 import type { LucideIcon } from "lucide-react";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getNameColor } from "@/lib/badgeStyles";
+import { ADMIN_COLOR } from "@/lib/cosmetics/catalog";
 import Navbar from "@/components/Navbar";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ProfileHeaderActions from "@/components/profile/ProfileHeaderActions";
@@ -61,7 +62,7 @@ export default async function PublicProfilePage({
   const allBadges = (earnedBadgeRows || []).map((e) => relationOne(profileBadgeSchema, e.badge)).filter((b): b is NonNullable<typeof b> => !!b);
   const stats = { exos: exos ?? 0, quiz: quiz ?? 0, cours: cours ?? 0 };
 
-  const nameColor = getNameColor(user.name_color || "default");
+  const nameColor = getNameColor(user.role === "admin" ? ADMIN_COLOR : user.name_color || "default");
   const displayName = user.child_username || `${user.first_name || ""} ${user.last_name || ""}`.trim();
 
   return (

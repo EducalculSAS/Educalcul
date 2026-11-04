@@ -97,12 +97,13 @@ describe("quand l'abonnement s'arrête", () => {
 });
 
 describe("contour des administrateurs", () => {
-  it("règle pure : un administrateur n'a qu'un contour, « Égide » ; les autres ne l'ont jamais", () => {
+  it("règle pure : un administrateur n'a qu'un contour et un titre, « Égide » ; les autres ne les ont jamais", () => {
     const admin = resolveUnlocked({ missionIds: ["bronze"], planFeatures: { cosmetic_borders: ["premium"] }, isAdmin: true });
     expect([...admin.borders]).toEqual(["admin"]);
-    expect(admin.colors.has("bronze")).toBe(true); // les titres suivent la règle commune
-    const child = resolveUnlocked({ missionIds: ["bronze"], planFeatures: { cosmetic_borders: ["premium", "admin"] } });
+    expect([...admin.colors]).toEqual(["admin"]);
+    const child = resolveUnlocked({ missionIds: ["bronze"], planFeatures: { cosmetic_borders: ["premium", "admin"], cosmetic_colors: ["admin"] } });
     expect(child.borders.has("admin")).toBe(false);
+    expect(child.colors.has("admin")).toBe(false);
   });
 
   it("un administrateur qui porte un autre contour est remis sur « Égide »", async () => {
@@ -113,12 +114,20 @@ describe("contour des administrateurs", () => {
     expect(user(9).equipped_border).toBe("admin");
   });
 
-  it("un administrateur sans contour reçoit « Égide »", async () => {
+  it("un administrateur sans contour ni titre reçoit « Égide » pour les deux", async () => {
     user(9).equipped_border = "none";
     user(9).name_color = "default";
     const { reconcileCosmeticsForUser } = await import("@/lib/cosmeticEntitlements");
     await reconcileCosmeticsForUser(user(9) as never);
     expect(user(9).equipped_border).toBe("admin");
+    expect(user(9).name_color).toBe("admin");
+  });
+
+  it("un enfant qui porterait le titre « Égide » le perd", async () => {
+    user(2).name_color = "admin";
+    const { reconcileCosmeticsForUser } = await import("@/lib/cosmeticEntitlements");
+    await reconcileCosmeticsForUser(user(2) as never);
+    expect(user(2).name_color).toBe("default");
   });
 
   it("un enfant qui porterait « Égide » le perd", async () => {
@@ -128,10 +137,11 @@ describe("contour des administrateurs", () => {
     expect(user(2).equipped_border).toBe("none");
   });
 
-  it("le titre « admin » n'existe plus : retiré", async () => {
+  it("un administrateur qui porterait un autre titre est remis sur « Égide »", async () => {
+    user(9).name_color = "bronze";
     const { reconcileCosmeticsForUser } = await import("@/lib/cosmeticEntitlements");
-    expect((await reconcileCosmeticsForUser(user(9) as never)).color).toBe("admin");
-    expect(user(9).name_color).toBe("default");
+    expect((await reconcileCosmeticsForUser(user(9) as never)).color).toBe("bronze");
+    expect(user(9).name_color).toBe("admin");
     expect(user(9).equipped_border).toBe("admin");
   });
 

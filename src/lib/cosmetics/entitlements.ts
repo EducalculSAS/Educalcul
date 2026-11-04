@@ -1,4 +1,4 @@
-import { ADMIN_BORDER, BORDERS, COLORS, DEFAULT_COLOR, NO_BORDER, grantsOfMissions } from "@/lib/cosmetics/catalog";
+import { ADMIN_BORDER, ADMIN_COLOR, BORDERS, COLORS, DEFAULT_COLOR, NO_BORDER, grantsOfMissions } from "@/lib/cosmetics/catalog";
 
 export interface Unlocked {
   borders: Set<string>;
@@ -32,13 +32,13 @@ export function resolveUnlocked(input: {
   missionIds: Iterable<string>;
   planFeatures?: { cosmetic_borders?: unknown; cosmetic_colors?: unknown } | null;
   planId?: string | number | null;
-  /** Administrateur : un seul contour possible, « Égide » (les couleurs de nom suivent la règle commune). */
+  /** Administrateur : un seul contour et un seul titre possibles, « Égide ». */
   isAdmin?: boolean;
 }): Unlocked {
   const fromMissions = grantsOfMissions(input.missionIds);
   const fromPlan = planGrants(input.planFeatures ?? null, input.planId ?? null);
   return {
     borders: input.isAdmin ? new Set([ADMIN_BORDER]) : new Set([NO_BORDER, ...fromMissions.borders, ...fromPlan.borders]),
-    colors: new Set([DEFAULT_COLOR, ...fromMissions.colors, ...fromPlan.colors]),
+    colors: input.isAdmin ? new Set([ADMIN_COLOR]) : new Set([DEFAULT_COLOR, ...fromMissions.colors, ...fromPlan.colors]),
   };
 }

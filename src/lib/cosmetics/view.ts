@@ -74,7 +74,7 @@ export function buildCards(input: CardInput): { borders: CosmeticCard[]; colors:
     const set = kind === "border" ? input.unlocked.borders : input.unlocked.colors;
     const unlocked = set.has(key);
     const viaMission = missions.some((m) => m.earned);
-    const unlockedVia = !unlocked ? null : BORDERS.find((b) => b.key === key && b.adminOnly && kind === "border") ? "admin" : base ? "base" : viaMission ? "mission" : "subscription";
+    const unlockedVia = !unlocked ? null : (kind === "border" ? BORDERS : COLORS).find((d) => d.key === key && d.adminOnly) ? "admin" : base ? "base" : viaMission ? "mission" : "subscription";
     const plans = (kind === "border" ? input.plansByKey?.borders?.[key] : input.plansByKey?.colors?.[key]) ?? [];
     return {
       kind, key, label, unlocked, unlockedVia,
@@ -84,7 +84,7 @@ export function buildCards(input: CardInput): { borders: CosmeticCard[]; colors:
   };
   return {
     borders: BORDERS.filter((b) => (input.isAdmin ? b.adminOnly : !b.adminOnly)).map((b) => make("border", b.key, b.label, b.subscription, b.key === "none")),
-    colors: COLORS.map((c) => make("color", c.key, c.label, c.subscription, c.key === "default")),
+    colors: COLORS.filter((c) => (input.isAdmin ? c.adminOnly : !c.adminOnly)).map((c) => make("color", c.key, c.label, c.subscription, c.key === "default")),
   };
 }
 

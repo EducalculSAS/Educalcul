@@ -2,7 +2,7 @@ import "server-only";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getLiveSubscription } from "@/lib/subscriptionLive";
 import { resolveUnlocked, type Unlocked } from "@/lib/cosmetics/entitlements";
-import { ADMIN_BORDER, DEFAULT_COLOR, NO_BORDER, normalizeBorder, normalizeColor } from "@/lib/cosmetics/catalog";
+import { ADMIN_BORDER, ADMIN_COLOR, DEFAULT_COLOR, NO_BORDER, normalizeBorder, normalizeColor } from "@/lib/cosmetics/catalog";
 
 /**
  * Contours d'avatar et couleurs de nom : à quoi un compte a droit AUJOURD'HUI.
@@ -53,9 +53,9 @@ export async function reconcileCosmeticsForUser(
   const updates: Record<string, string> = {};
   const removed: { border?: string; color?: string } = {};
   // Une clé inconnue du catalogue (ancien contour « admin », clé retirée) ne peut jamais être portée.
-  // Un administrateur porte toujours « Égide » ; quiconque d'autre ne peut pas le porter (pas dans ses droits).
+  // Un administrateur porte toujours le contour et le titre « Égide » ; quiconque d'autre ne peut pas les porter.
   if (normalizeBorder(border) !== border || !unlocked.borders.has(border)) { updates.equipped_border = isAdmin ? ADMIN_BORDER : NO_BORDER; removed.border = border; }
-  if (normalizeColor(color) !== color || !unlocked.colors.has(color)) { updates.name_color = DEFAULT_COLOR; removed.color = color; }
+  if (normalizeColor(color) !== color || !unlocked.colors.has(color)) { updates.name_color = isAdmin ? ADMIN_COLOR : DEFAULT_COLOR; removed.color = color; }
   if (Object.keys(updates).length > 0) await supabaseAdmin.from("users").update(updates).eq("id", user.id);
   return removed;
 }

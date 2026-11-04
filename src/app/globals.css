@@ -3186,7 +3186,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-pro-animated,
     .name-flame,
     .name-elite,
-    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-blue-animated) {
+    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-admin-animated, .name-blue-animated) {
   display: inline-block;
   position: relative;
   font-family: var(--font-display), "Cinzel", serif; /* même police que les titres du site */
@@ -3210,7 +3210,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-pro-animated,
     .name-flame,
     .name-elite,
-    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia)::before, :is(.name-bronze-animated,
+    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-admin-animated)::before, :is(.name-bronze-animated,
     .name-silver-animated,
     .name-gold-animated,
     .name-diamond-animated,
@@ -3219,7 +3219,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-pro-animated,
     .name-flame,
     .name-elite,
-    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia)::after {
+    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-admin-animated)::after {
   content: ""; position: absolute; top: 50%; width: 1.05em; height: 1.05em; margin-top: -0.55em;
   background-repeat: no-repeat; background-size: contain; background-position: center; -webkit-text-fill-color: initial;
   animation: nf-orn 2.4s ease-in-out infinite alternate;
@@ -3233,7 +3233,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-pro-animated,
     .name-flame,
     .name-elite,
-    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia)::before { left: -1.2em; }
+    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-admin-animated)::before { left: -1.2em; }
 :is(.name-bronze-animated,
     .name-silver-animated,
     .name-gold-animated,
@@ -3243,7 +3243,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-pro-animated,
     .name-flame,
     .name-elite,
-    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia)::after { right: -1.2em; animation-delay: -1.2s; }
+    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-admin-animated)::after { right: -1.2em; animation-delay: -1.2s; }
 :is(.name-bronze-animated,
     .name-silver-animated,
     .name-gold-animated,
@@ -3253,7 +3253,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-pro-animated,
     .name-flame,
     .name-elite,
-    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia) { margin-inline: 1.25em; }
+    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-admin-animated) { margin-inline: 1.25em; }
 @keyframes nf-orn { from { transform: scale(0.88) rotate(-5deg); } to { transform: scale(1.1) rotate(5deg); } }
 .name-blue-animated { --t: #cfe6ff; --m: #4a9bff; --b: #1d5fcc; --o: #0b2f6b; --g: #4a9bff55; }
 .name-bronze-animated { --t: #ffd9ae; --m: #e08a3c; --b: #9a4d12; --o: #4a2007; --g: #c8782c88; }
@@ -3277,6 +3277,9 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
 .name-flame::before, .name-flame::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1 C14 8 21 11 21 17 C21 21 17 23.5 12 23.5 C7 23.5 3 21 3 17 C3 13 7 11 8 6 C9.5 8 10.5 8 11 6 C11.5 4 11 3 12 1Z' fill='%23ff7a1a' stroke='%237a1800' stroke-width='1.5' stroke-linejoin='round'/%3E%3Cpath d='M12 10 C14 14 17 15 17 18.5 C17 21 14.8 22.5 12 22.5 C9.2 22.5 7 21 7 18.5 C7 15.5 10 14 10.5 12 C11 13 11.5 13 12 10Z' fill='%23ffd23f'/%3E%3Cpath d='M12 16 C13.5 18 14.5 18.5 14.5 20.2 C14.5 21.5 13.4 22.3 12 22.3 C10.6 22.3 9.5 21.5 9.5 20.2 C9.5 18.5 11 18 12 16Z' fill='%23fffbe0'/%3E%3C/svg%3E"); }
 .name-elite { --t: #ead2ff; --m: #a566ff; --b: #5f27c9; --o: #2d0f66; --g: #8a4bf0aa; }
 .name-elite::before, .name-elite::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1 L14.4 9.6 L23 12 L14.4 14.4 L12 23 L9.6 14.4 L1 12 L9.6 9.6Z' fill='%23ffe9a8' stroke='%238a5a00' stroke-width='1.3' stroke-linejoin='round'/%3E%3C/svg%3E"); }
+/* Égide : le nom des administrateurs (turquoise, écus de chaque côté) */
+.name-admin-animated { --t: #d2fff8; --m: #3fd9c8; --b: #13897f; --o: #05403b; --g: #2cc4b499; }
+.name-admin-animated::before, .name-admin-animated::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1 L21 8 L17 22 H7 L3 8Z' fill='%233fd9c8' stroke='%2305403b' stroke-width='1.6' stroke-linejoin='round'/%3E%3Cpath d='M12 1 L9 9 L12 22 L15 9Z M3 8 H21' fill='none' stroke='%23d2fff8' stroke-width='1' stroke-opacity='.9'/%3E%3C/svg%3E"); }
 .name-aurore { --t: #d6fff0; --m: #3ee6b0; --b: #0f9f78; --o: #04473a; --g: #2fe0b0aa; }
 .name-aurore::before, .name-aurore::after { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1 L14.4 9.6 L23 12 L14.4 14.4 L12 23 L9.6 14.4 L1 12 L9.6 9.6Z' fill='%23d3fff0' stroke='%230b5e4a' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E"); }
 .name-sylve { --t: #d9f7e0; --m: #3fbf6a; --b: #1b7a3e; --o: #0a2e18; --g: #2fa564aa; }
@@ -3299,7 +3302,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-pro-animated,
     .name-flame,
     .name-elite,
-    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-blue-animated), :is(.name-bronze-animated,
+    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-admin-animated, .name-blue-animated), :is(.name-bronze-animated,
     .name-silver-animated,
     .name-gold-animated,
     .name-diamond-animated,
@@ -3308,7 +3311,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-pro-animated,
     .name-flame,
     .name-elite,
-    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia)::before, :is(.name-bronze-animated,
+    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-admin-animated)::before, :is(.name-bronze-animated,
     .name-silver-animated,
     .name-gold-animated,
     .name-diamond-animated,
@@ -3317,7 +3320,7 @@ html[data-theme="dark"] :is(input, textarea, select).bg-white:not([type="checkbo
     .name-pro-animated,
     .name-flame,
     .name-elite,
-    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia)::after { animation: none; }
+    .name-aurore, .name-sylve, .name-foudre, .name-rubis, .name-onyx, .name-camelia, .name-admin-animated)::after { animation: none; }
 }
 
 /* ── Case à cocher « verre liquide » (composant GlassCheckbox) ──

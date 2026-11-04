@@ -30,14 +30,17 @@ describe("catalogue des contours et couleurs", () => {
     }
   });
 
-  it("« Égide » : seul contour réservé aux administrateurs, jamais donné par une mission ni une formule ; aucun titre réservé", () => {
+  it("« Égide » : seul contour et seul titre réservés aux administrateurs, jamais donnés par une mission ni une formule", () => {
     const admin = BORDERS.filter((b) => b.adminOnly);
     expect(admin.map((b) => b.key)).toEqual(["admin"]);
     expect(admin[0].subscription).toBe(false);
     expect(MISSIONS.some((m) => m.grants.border === "admin")).toBe(false);
-    expect(COLORS.map((c) => c.key)).not.toContain("admin");
+    const adminColors = COLORS.filter((c) => c.adminOnly);
+    expect(adminColors.map((c) => c.key)).toEqual(["admin"]);
+    expect(adminColors[0].subscription).toBe(false);
+    expect(MISSIONS.some((m) => m.grants.color === "admin")).toBe(false);
     expect(normalizeBorder("border-admin")).toBe("admin");
-    expect(normalizeColor("admin")).toBe(DEFAULT_COLOR);
+    expect(normalizeColor("admin")).toBe("admin");
   });
 
   it("chaque mission donne quelque chose de connu, avec des conditions valides", () => {
@@ -55,7 +58,7 @@ describe("catalogue des contours et couleurs", () => {
 
   it("tout ce qui n'est pas offert par un abonnement s'obtient par mission", () => {
     for (const b of BORDERS) if (b.key !== NO_BORDER && !b.subscription && !b.adminOnly) expect(MISSIONS.some((m) => m.grants.border === b.key), `contour ${b.key}`).toBe(true);
-    for (const c of COLORS) if (c.key !== DEFAULT_COLOR && !c.subscription) expect(MISSIONS.some((m) => m.grants.color === c.key), `couleur ${c.key}`).toBe(true);
+    for (const c of COLORS) if (c.key !== DEFAULT_COLOR && !c.subscription && !c.adminOnly) expect(MISSIONS.some((m) => m.grants.color === c.key), `couleur ${c.key}`).toBe(true);
   });
 
   it("les clés enregistrées avant la refonte donnent toujours la même chose", () => {

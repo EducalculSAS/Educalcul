@@ -123,7 +123,7 @@ export default function CosmeticsShowcase({
   const shown = useMemo(() => sortCards(filterCards(cards, filter), sort), [cards, filter, sort]);
   const equippedKey = kind === "border" ? equippedBorder : equippedColor;
   const equippedLabel = (list: CosmeticCard[], key: string) => list.find((c) => c.key === key)?.label ?? "Classique";
-  const locked = isAdmin && kind === "border";
+  const locked = isAdmin;
 
   const pick = (card: CosmeticCard) => {
     if (!card.unlocked) return setDetails(card);
@@ -185,7 +185,7 @@ export default function CosmeticsShowcase({
               />
             </>
           )}
-          {locked && <p className="text-sm text-gray-500">Le contour « Égide » est porté d&apos;office par les administrateurs.</p>}
+          {locked && <p className="text-sm text-gray-500">Le contour et le titre « Égide » sont portés d&apos;office par les administrateurs.</p>}
         </div>
       </div>
 
