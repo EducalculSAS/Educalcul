@@ -172,7 +172,7 @@ export default function ChildControls({ childId, childName, initialPrefs, summar
           </div>
           <div className="flex gap-2">
             <GlassButton size="sm" variant="navy" onClick={() => share("create")}><Link2 className="w-4 h-4" /> Créer un lien</GlassButton>
-            <GlassButton size="sm" variant="outline" rounded="xl" onClick={() => share("revoke")}><Unlink className="w-4 h-4" /> Révoquer</GlassButton>
+            <GlassButton size="sm" variant="outline" onClick={() => share("revoke")}><Unlink className="w-4 h-4" /> Révoquer</GlassButton>
           </div>
         </div>
         {shareUrl && (

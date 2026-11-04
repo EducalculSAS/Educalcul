@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import GlassButton from "@/components/ui/GlassButton";
+import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { supabase } from "@/lib/supabaseClient";
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
@@ -33,6 +34,9 @@ export default function ParentShell({
   // gratuite, partout contrôlés côté serveur). Avant, chaque page renvoyait vers l'abonnement au bout d'une seconde,
   // y compris en impersonation : un parent ne pouvait plus voir ni ses enfants ni son profil.
   const showRenewBanner = !subscriptionOk && pathname !== "/parent/subscription";
+  // Masqué pour la session une fois fermé (rappel discret, pas un mur).
+  const [renewDismissed, setRenewDismissed] = useState(false);
+  useEffect(() => { try { if (sessionStorage.getItem("renew-banner-dismissed")) setRenewDismissed(true); } catch {} }, []);
 
   // Présence + géolocalisation : track-login à l'arrivée, au retour sur l'onglet (throttle 25 s) et en filet toutes
   // les 2 min — la position suit même sans recharger l'app.
@@ -70,14 +74,16 @@ export default function ParentShell({
     <div className="min-h-screen bg-[var(--greek-cream)]">
       <Navbar />
       <AdminMessages />
-      <main className="pt-[64px]">
-        {showRenewBanner && (
-          <div role="status" className="mx-auto max-w-6xl px-4 pt-4">
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-[rgba(197,161,72,0.35)] bg-white/90 px-4 py-3 shadow-sm">
-              <p className="text-sm text-[var(--greek-blue)] flex-1">
-                <strong>Votre abonnement n&apos;est plus actif.</strong> Vos enfants ont accès à la formule Découverte en attendant.
+      <main className="pt-[64px] relative">
+        {/* Posé SUR le haut de la page (sous la barre de navigation) : il ne décale rien et défile avec la page. */}
+        {showRenewBanner && !renewDismissed && (
+          <div role="status" className="absolute inset-x-0 top-[calc(var(--nav-h)+10px)] z-30 px-4 pointer-events-none">
+            <div className="pointer-events-auto mx-auto max-w-3xl flex items-center gap-3 renew-banner rounded-2xl sm:rounded-full border border-[rgba(197,161,72,0.35)] bg-white/95 pl-4 pr-1.5 py-1.5 shadow-md">
+              <p className="text-xs sm:text-sm text-[var(--greek-blue)] flex-1 min-w-0">
+                <strong>Abonnement terminé.</strong> <span className="hidden sm:inline">Vos enfants ont accès à la formule Découverte en attendant.</span><span className="sm:hidden">Formule Découverte en attendant.</span>
               </p>
-              <GlassButton href="/parent/subscription" variant="navy" size="sm">Renouveler</GlassButton>
+              <GlassButton href="/parent/subscription" variant="navy" size="sm" className="whitespace-nowrap">Renouveler</GlassButton>
+              <GlassCloseButton onClick={() => { setRenewDismissed(true); try { sessionStorage.setItem("renew-banner-dismissed", "1"); } catch {} }} aria-label="Masquer" size="sm" />
             </div>
           </div>
         )}

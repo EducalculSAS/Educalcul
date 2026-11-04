@@ -10,7 +10,13 @@ export interface ReferralCodeWithUses extends Row<"referral_codes"> {
   uses?: (Row<"referral_uses"> & { users?: { first_name: string | null; last_name: string | null; email: string } | null })[];
 }
 /** Abonnement du parent, ou un abonnement vide « gratuit » quand il n'en a pas. */
-export type CurrentSubscription = Partial<Row<"subscriptions">> & { plan_id: Row<"subscriptions">["plan_id"] | null; status: string };
+export type CurrentSubscription = Partial<Row<"subscriptions">> & {
+  plan_id: Row<"subscriptions">["plan_id"] | null;
+  status: string;
+  /** Abonnement payant terminé : date de fin et formule d'avant (le compte est alors sur la formule gratuite). */
+  ended_at?: string | null;
+  ended_plan_id?: string | null;
+};
 import PageHero from "@/components/PageHero";
 import { formatDateFr } from "@/lib/formatDate";
 import PageLoader from "@/components/PageLoader";
@@ -463,6 +469,12 @@ function SubscriptionPageContent({
                       Se termine le : {new Date(currentPlan.current_period_end).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}
                     </p>
                   )}
+                  {currentPlan?.ended_at && (
+                    <p className="text-sm text-gray-500 mt-1">
+                      Votre formule {plans.find((p) => String(p.id) === String(currentPlan.ended_plan_id))?.name ?? "payante"} a pris fin le{" "}
+                      {new Date(currentPlan.ended_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}.
+                    </p>
+                  )}
                   {currentPlan?.status === "past_due" && (
                     <p className="text-sm text-red-500 flex items-center mt-1 font-semibold">
                       <AlertTriangle className="w-4 h-4 mr-1" />
@@ -473,7 +485,7 @@ function SubscriptionPageContent({
                 {currentPlan?.stripe_customer_id && (
                   <GlassButton onClick={handleManagePayment} variant="navy" size="sm" className="whitespace-nowrap">
                     <CreditCard className="w-4 h-4" />
-                    {currentPlan?.status === "past_due" ? "Mettre à jour mon paiement" : "Gérer votre abonnement"}
+                    {currentPlan?.status === "past_due" ? "Mettre à jour mon paiement" : currentPlan?.ended_at ? "Mes factures" : "Gérer votre abonnement"}
                   </GlassButton>
                 )}
               </div>

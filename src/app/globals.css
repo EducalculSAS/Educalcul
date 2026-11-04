@@ -3401,3 +3401,7 @@ html[data-season="halloween"][data-theme="dark"] { --greek-gold: #ff9a4a; }
 }
 html[data-scrolling] .season-particle, [data-anim-off] .season-particle { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .season-decor { display: none; } }
+
+/* Bandeau « abonnement terminé » de l'espace parent, en mode sombre. */
+html[data-theme="dark"] .renew-banner { background: rgba(26, 34, 51, 0.96); border-color: rgba(197, 161, 72, 0.3); }
+html[data-theme="dark"] .renew-banner p { color: #e8edf5; }

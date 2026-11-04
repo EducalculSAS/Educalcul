@@ -5,6 +5,8 @@ import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { normalizePricingConfig, DEFAULT_PRICING_CONFIG } from "@/lib/pricingConfig";
 import { fetchParentSubscriptionDetails } from "@/lib/parentSubscriptionDetails";
+import { isSubscriptionLive } from "@/lib/subscriptionLive";
+import type { CurrentSubscription } from "@/components/parent/SubscriptionClient";
 import SubscriptionClient from "@/components/parent/SubscriptionClient";
 
 function generateReferralCode(length = 8) {
@@ -103,6 +105,21 @@ export default async function SubscriptionPage({
     }
   }
 
+  // Abonnement échu (période terminée, résilié chez Stripe) : le compte est sur la formule gratuite,
+  // la page doit le montrer comme tel (même règle que l'accès réel, voir isSubscriptionLive).
+  const sub = subDetails.subscription;
+  const live = !!sub && (sub.status === "past_due" || isSubscriptionLive(sub));
+  const freePlan = plans.find((p) => Number(p.price) === 0);
+  const currentPlan: CurrentSubscription = live && sub
+    ? sub
+    : {
+        plan_id: freePlan ? String(freePlan.id) : null,
+        status: "active",
+        stripe_customer_id: sub?.stripe_customer_id ?? null,
+        ended_at: sub?.plan_id ? (sub.current_period_end ?? null) : null,
+        ended_plan_id: sub?.plan_id ?? null,
+      };
+
   return (
     <SubscriptionClient
       authId={authUser.authId}
@@ -111,7 +128,7 @@ export default async function SubscriptionPage({
       initialPricingConfig={pricingConfig}
       initialReferralCode={referralCode}
       initialPendingDiscount={userRow?.pending_discount_percent || 0}
-      initialCurrentPlan={subDetails.subscription ?? { plan_id: null, status: "active" }}
+      initialCurrentPlan={currentPlan}
       initialBillingHistory={subDetails.invoices || []}
     />
   );

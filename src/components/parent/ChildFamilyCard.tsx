@@ -67,18 +67,25 @@ export default function ChildFamilyCard({ entry, variant }: { entry: FamilyEntry
             </div>
           </div>
         ) : undefined,
-        footer: (
-          <div className="flex items-center gap-2">
-            <div className="flex-1 min-w-0"><ChildReportLink childId={id} /></div>
-            <GlassButton href={`/parent/child/${id}/bulletin`} variant="outline" size="sm" rounded="xl">
-              <FileText className="w-4 h-4" /> Bulletin
-            </GlassButton>
-            {manage && (
+        footer: manage ? (
+          <div className="space-y-2">
+            <ChildReportLink childId={id} />
+            <div className="flex items-center gap-2">
+              <GlassButton href={`/parent/child/${id}/bulletin`} variant="outline" size="sm" fullWidth>
+                <FileText className="w-4 h-4" /> Bulletin
+              </GlassButton>
               <div className="flex gap-1.5 shrink-0">
                 <EditChildButton childId={id} />
                 <DeleteChildButton childId={id} />
               </div>
-            )}
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center gap-2">
+            <div className="flex-1 min-w-0"><ChildReportLink childId={id} /></div>
+            <GlassButton href={`/parent/child/${id}/bulletin`} variant="outline" size="sm">
+              <FileText className="w-4 h-4" /> Bulletin
+            </GlassButton>
           </div>
         ),
       }}

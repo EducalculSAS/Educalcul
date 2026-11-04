@@ -116,6 +116,13 @@ export async function fetchParentSubscriptionDetails(userId: string) {
     }
   }
 
+  // Abonnement terminé chez Stripe (résilié, impayé, expiré) alors que la base le croit actif : la base suit Stripe.
+  const ENDED = ["canceled", "incomplete_expired", "unpaid"];
+  if (stripeSubscription && ENDED.includes(stripeSubscription.status) && subscription.status !== stripeSubscription.status) {
+    await supabaseAdmin.from("subscriptions").update({ status: stripeSubscription.status }).eq("id", subscription.id);
+    subscription = { ...subscription, status: stripeSubscription.status };
+  }
+
   const stripeCancelAtPeriodEnd = stripeSubscription?.cancel_at_period_end ?? false;
   const stripePeriodEnd = subscriptionPeriodEnd(stripeSubscription) ?? subscription.current_period_end;
 
