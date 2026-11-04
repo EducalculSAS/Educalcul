@@ -51,7 +51,6 @@ export default async function AProposPage() {
       <main className="flex flex-col flex-1">
         <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "À propos", href: "/a-propos" }]} />
         <PublicHero
-          back={{ href: "/", label: "Retour à l'accueil" }}
           eyebrow="À propos"
           title="Deux étudiants passionnés de maths"
           intro="Educalcul est né d'une conviction simple : chaque élève peut réussir en mathématiques s'il a la bonne méthode et quelqu'un pour le guider au bon moment."

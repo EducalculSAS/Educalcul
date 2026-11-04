@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { applyTheme, isTheme, readStoredTheme, syncThemeToPath } from "@/lib/theme";
-import { applySeason, isSeasonPreference, readStoredSeason } from "@/lib/season";
+import { applySeason, isSeasonPreference, readStoredSeason, syncSeasonToPath } from "@/lib/season";
 
 /**
  * Aligne le thème du navigateur sur la préférence du compte à la connexion
@@ -15,7 +15,7 @@ import { applySeason, isSeasonPreference, readStoredSeason } from "@/lib/season"
 export default function ThemeSync() {
   const pathname = usePathname();
   // Navigation sans rechargement : le thème suit la page (sombre seulement en espace connecté).
-  useEffect(() => { syncThemeToPath(pathname); }, [pathname]);
+  useEffect(() => { syncThemeToPath(pathname); syncSeasonToPath(pathname); }, [pathname]);
 
   useEffect(() => {
     let alive = true;

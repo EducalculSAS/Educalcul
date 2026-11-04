@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { headers, cookies } from "next/headers";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
@@ -8,6 +9,13 @@ import { hashTwoFactorValue } from "@/lib/twoFactor";
 import { getTwoFactorCookie } from "@/lib/twoFactorCookie";
 import { IMPERSONATION_COOKIE_NAME } from "@/lib/impersonationCookie";
 import AdminShell from "@/components/admin/AdminShell";
+
+// Espace connecté : un titre d'onglet à son nom, et jamais indexé (le contenu est privé).
+export const metadata: Metadata = {
+  title: { default: "Espace administrateur | Educalcul", template: "%s | Admin Educalcul" },
+  robots: { index: false, follow: false },
+};
+
 
 /** Vérifie identité + rôle admin + statut banni côté serveur, avant même que
  * la première page admin ne s'exécute — remplace l'ancien check client (dans

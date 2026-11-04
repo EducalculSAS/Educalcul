@@ -1,9 +1,17 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { hasActiveSubscription } from "@/lib/subscriptionGate";
 import ParentShell from "@/components/parent/ParentShell";
 import ParentGuest from "@/components/parent/ParentGuest";
+
+// Espace connecté : un titre d'onglet à son nom, et jamais indexé (le contenu est privé).
+export const metadata: Metadata = {
+  title: { default: "Espace parent | Educalcul", template: "%s | Espace parent" },
+  robots: { index: false, follow: false },
+};
+
 
 /**
  * Espace parent : identité, rôle, statut banni et abonnement sont vérifiés ICI, côté serveur, avant le premier octet

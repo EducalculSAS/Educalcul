@@ -26,6 +26,15 @@ export const SEASON_HINT: Record<SeasonPreference, string> = {
   halloween: "Chauves-souris, orange citrouille et violet nuit.",
 };
 
+/**
+ * Le thème de saison ne concerne que les espaces connectés (parent, élève, admin), comme le mode sombre : les pages
+ * publiques (accueil, offres, tarifs, programmes, Calia, À propos…) gardent toujours les couleurs habituelles
+ * d'Educalcul, sans animation, quel que soit le choix de la personne.
+ */
+const SEASON_PREFIXES = ["/parent", "/child", "/admin", "/dashboard"] as const;
+export const isSeasonPath = (pathname: string | null | undefined) =>
+  !!pathname && SEASON_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/"));
+
 export const isSeasonPreference = (v: unknown): v is SeasonPreference => v === "auto" || (SEASONS as readonly string[]).includes(v as string);
 
 /**
@@ -67,14 +76,19 @@ export function readStoredSeason(): SeasonPreference {
   }
 }
 
-/** Applique le thème à la page (attribut html[data-season]) et prévient le décor animé. */
-export function applySeason(pref: SeasonPreference) {
-  try { localStorage.setItem(SEASON_KEY, pref); } catch { /* navigation privée */ }
-  const s = resolveSeason(pref);
+/** Thème réellement affiché sur cette page : la préférence, mais seulement dans les espaces connectés. */
+export function syncSeasonToPath(pathname: string = window.location.pathname) {
+  const s = isSeasonPath(pathname) ? resolveSeason(readStoredSeason()) : "classique";
   if (s === "classique") document.documentElement.removeAttribute("data-season");
   else document.documentElement.setAttribute("data-season", s);
   window.dispatchEvent(new CustomEvent("educalcul:season", { detail: s }));
 }
 
+/** Mémorise le choix dans ce navigateur puis l'applique à la page courante. */
+export function applySeason(pref: SeasonPreference) {
+  try { localStorage.setItem(SEASON_KEY, pref); } catch { /* navigation privée */ }
+  syncSeasonToPath();
+}
+
 /** Script d'initialisation (boot-script) : applique le thème mémorisé avant le premier affichage. */
-export const SEASON_INIT_SCRIPT = `try{var sp=localStorage.getItem("${SEASON_KEY}")||"auto";var sf=${seasonForDate.toString()};var ss=sp==="auto"?sf(new Date()):sp;if(ss&&ss!=="classique"&&/^(noel|paques|foot|halloween)$/.test(ss))document.documentElement.setAttribute("data-season",ss)}catch(e){}`;
+export const SEASON_INIT_SCRIPT = `try{if(/^\\/(parent|child|admin|dashboard)(\\/|$)/.test(location.pathname)){var sp=localStorage.getItem("${SEASON_KEY}")||"auto";var sf=${seasonForDate.toString()};var ss=sp==="auto"?sf(new Date()):sp;if(ss&&ss!=="classique"&&/^(noel|paques|foot|halloween)$/.test(ss))document.documentElement.setAttribute("data-season",ss)}}catch(e){}`;

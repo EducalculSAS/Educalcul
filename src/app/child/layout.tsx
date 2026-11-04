@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import { ReactNode } from "react";
 import { Moon } from "lucide-react";
@@ -11,6 +12,13 @@ import QuietGuard from "@/components/child/QuietGuard";
 import { isFeatureEnabled } from "@/lib/featureFlags";
 import { getServerUser } from "@/lib/supabase/server";
 import { getChildPrefs, isQuietNow } from "@/lib/studentStats";
+
+// Espace connecté : un titre d'onglet à son nom, et jamais indexé (le contenu est privé).
+export const metadata: Metadata = {
+  title: { default: "Espace élève | Educalcul", template: "%s | Espace élève" },
+  robots: { index: false, follow: false },
+};
+
 
 export default async function ChildLayout({ children }: { children: ReactNode }) {
   // Bulle Calia masquée si l'admin a coupé l'assistante (cache de 10 s).

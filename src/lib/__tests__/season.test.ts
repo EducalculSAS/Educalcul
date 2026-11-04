@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { SEASON_INIT_SCRIPT, isSeasonPreference, resolveSeason, seasonForDate } from "@/lib/season";
+import { SEASON_INIT_SCRIPT, isSeasonPath, isSeasonPreference, resolveSeason, seasonForDate } from "@/lib/season";
 
 const d = (s: string) => { const [y, m, dd] = s.split("-").map(Number); return new Date(y, m - 1, dd); };
 
@@ -34,11 +34,22 @@ describe("thème automatique selon le calendrier", () => {
     expect(isSeasonPreference("noel")).toBe(true);
     expect(isSeasonPreference("admin")).toBe(false);
   });
-  it("le script d'initialisation est du JavaScript valide et applique le thème", () => {
+  const runInit = (pathname: string) => {
     const attrs: Record<string, string> = {};
     const fakeDoc = { documentElement: { setAttribute: (k: string, v: string) => { attrs[k] = v; } } };
     const store = { getItem: () => "halloween" };
-    new Function("localStorage", "document", SEASON_INIT_SCRIPT)(store, fakeDoc);
-    expect(attrs["data-season"]).toBe("halloween");
+    new Function("localStorage", "document", "location", SEASON_INIT_SCRIPT)(store, fakeDoc, { pathname });
+    return attrs;
+  };
+  it("le script d'initialisation est du JavaScript valide et applique le thème dans les espaces connectés", () => {
+    expect(runInit("/child/dashboard")["data-season"]).toBe("halloween");
+    expect(runInit("/parent/profile")["data-season"]).toBe("halloween");
+    expect(runInit("/admin/profile")["data-season"]).toBe("halloween");
+  });
+  it("les pages publiques ne reçoivent jamais le thème de saison", () => {
+    for (const p of ["/", "/offres", "/tarifs", "/programmes/6eme", "/calia-tuteur-ia-maths", "/a-propos", "/auth/connexion"]) expect(runInit(p)["data-season"], p).toBeUndefined();
+    expect(isSeasonPath("/child")).toBe(true);
+    expect(isSeasonPath("/childish")).toBe(false);
+    expect(isSeasonPath("/")).toBe(false);
   });
 });
