@@ -3356,3 +3356,16 @@ html[data-theme="dark"] .glass-check-input:checked + .glass-check-box { backgrou
   .glass-check-box { background: #fff; }
   html[data-theme="dark"] .glass-check-box { background: #1e293b; }
 }
+
+/* ── Gouverneur d'animations (voir src/components/AnimationGovernor.tsx) ──────────────────────────────────────────
+   Animations décoratives en pause hors écran et pendant un défilement : rien ne bouge qu'on ne voit pas, et le flou
+   « verre » n'est pas recalculé à chaque image pendant qu'on fait défiler. Dans la vitrine des trophées, seule la carte
+   survolée (ou équipée) s'anime. */
+[data-anim-off], [data-anim-off] *, [data-anim-off]::before, [data-anim-off]::after,
+html[data-scrolling] :is(.animate-float-symbol, .ring-fx, .text-gradient-gold, .text-gradient-gold-dark, .family-card),
+html[data-scrolling] :is(.ring-fx) *,
+.cosmetic-card:not(:hover):not(:focus-visible):not([aria-pressed="true"]) :is(.ring-fx, .ring-fx *, [class*="name-"]),
+.cosmetic-card:not(:hover):not(:focus-visible):not([aria-pressed="true"]) [class*="name-"]::before,
+.cosmetic-card:not(:hover):not(:focus-visible):not([aria-pressed="true"]) [class*="name-"]::after {
+  animation-play-state: paused !important;
+}

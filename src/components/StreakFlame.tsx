@@ -45,11 +45,13 @@ interface Props {
   size?: number;
   className?: string;
   style?: React.CSSProperties;
+  /** false : flamme dessinée mais immobile (listes, emblèmes). */
+  animate?: boolean;
 }
 
-export default function StreakFlame({ lit = true, count, size, className = "", style }: Props) {
+export default function StreakFlame({ lit = true, count, size, className = "", style, animate = true }: Props) {
   const reduced = useSafeReducedMotion();
-  const animated = lit && !reduced;
+  const animated = lit && animate && !reduced;
   const uid = useId().replace(/:/g, "");
   const hasSizeClass = /(^|\s)(w|h|size)-/.test(className);
   const box: React.CSSProperties = size ? { width: size, height: size } : hasSizeClass ? {} : { width: 24, height: 24 };

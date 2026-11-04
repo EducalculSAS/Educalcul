@@ -77,12 +77,12 @@ function Card({ card, kind, equipped, busy, avatar, firstName, onPick }: {
       disabled={busy}
       aria-label={`${card.unlocked ? "Équiper" : "Comment obtenir"} : ${card.label}`}
       aria-pressed={equipped}
-      className={`relative h-full w-full flex flex-col items-center justify-between gap-2 rounded-2xl border-2 px-3 py-4 text-center transition-[border-color,box-shadow,transform] duration-200 cursor-pointer hover:-translate-y-0.5 motion-reduce:hover:translate-y-0
+      className={`cosmetic-card relative h-full w-full flex flex-col items-center justify-between gap-2 rounded-2xl border-2 px-3 py-4 text-center transition-[border-color,box-shadow,transform] duration-200 cursor-pointer hover:-translate-y-0.5 motion-reduce:hover:translate-y-0
         ${equipped ? "border-[var(--greek-blue)] bg-blue-50/70 shadow-sm" : "border-[rgba(197,161,72,0.25)] bg-white hover:border-[var(--greek-gold)] hover:shadow-sm"}`}
     >
       <span className={`flex items-center justify-center h-[92px] ${card.unlocked ? "" : "opacity-55"}`}>
         {kind === "border" ? (
-          <AvatarWithBorder avatar={avatar} equippedBorder={card.key} name={firstName || "?"} size="lg" />
+          <AvatarWithBorder avatar={avatar} equippedBorder={card.key} name={firstName || "?"} size="lg" still={!equipped} />
         ) : (
           <span className={`text-lg font-bold ${getNameColor(card.key).cls}`}>{firstName || "Nom"}</span>
         )}

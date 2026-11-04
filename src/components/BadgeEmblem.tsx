@@ -100,7 +100,7 @@ export default function BadgeEmblem({ badge, size = 72, locked = false }: { badg
       </svg>
       <span className="absolute inset-0 flex items-center justify-center" style={{ paddingBottom: size * (shape === ROUND ? 0.12 : 0.08) }}>
         {flame ? (
-          <StreakFlame lit={!locked} size={Math.round(size * 0.46)} />
+          <StreakFlame lit={!locked} animate={false} size={Math.round(size * 0.46)} />
         ) : (
           <Glyph strokeWidth={2.4} style={{ width: size * 0.38, height: size * 0.38, color: "#fff", filter: `drop-shadow(0 1px 0 ${metal.dark}) drop-shadow(0 0 2px ${metal.dark})` }} />
         )}

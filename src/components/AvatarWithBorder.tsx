@@ -44,14 +44,16 @@ interface Props {
   className?: string;
   /** Lisible par les lecteurs d'écran ; vide si le nom est déjà écrit à côté. */
   label?: string;
+  /** Liste de nombreux avatars (vitrine) : pas de feu animé en canvas, le cadre « flamme » dessiné suffit. */
+  still?: boolean;
 }
 
 export default function AvatarWithBorder({
-  avatar, equippedBorder, name, size = "sm", online = false, className = "", label,
+  avatar, equippedBorder, name, size = "sm", online = false, className = "", label, still = false,
 }: Props) {
   const av = SIZE[size];
   const key = normalizeBorderKey(equippedBorder);
-  const bigFlame = key === "flamme" && (size === "lg" || size === "xl" || size === "2xl");
+  const bigFlame = !still && key === "flamme" && (size === "lg" || size === "xl" || size === "2xl");
   const rw = key === "none" ? 1.5 : bigFlame ? Math.max(2, FRAME_W[size] * 0.3) : FRAME_W[size];
   const url = avatarUrl(avatar);
   const isLogo = url === ADMIN_AVATAR;
