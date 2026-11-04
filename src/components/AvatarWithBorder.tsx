@@ -1,3 +1,4 @@
+import { normalizeBorder } from "@/lib/cosmetics/catalog";
 import AvatarRingDecor from "@/components/AvatarRingDecor";
 import FlameFire from "@/components/FlameFire";
 import { avatarUrl, ADMIN_AVATAR } from "@/lib/avatarUrl";
@@ -9,7 +10,7 @@ import { avatarUrl, ADMIN_AVATAR } from "@/lib/avatarUrl";
  *
  * - Forme : carré aux coins très arrondis (celle de la fiche utilisateur
  *   admin), fond navy léger, initiales en navy quand il n'y a pas d'avatar.
- * - Contour : TOUJOURS présent. Le contour équipé (badge, abonnement, admin)
+ * - Contour : TOUJOURS présent. Le contour équipé (mission ou abonnement)
  *   s'affiche animé ; sans contour équipé, un fin trait doré.
  * - Image : vignette WebP de l'avatar préréglé (~4 Ko), jamais le portrait
  *   d'origine (~850 Ko).
@@ -23,13 +24,9 @@ const SIZE: Record<AvatarSize, number> = { xs: 28, sm: 36, md: 44, lg: 64, xl: 8
 
 /** Épaisseur du cadre (px) selon la taille : les niveaux sont de vrais cadres épais en relief ; « aucun » reste un simple trait fin. */
 const FRAME_W: Record<AvatarSize, number> = { xs: 3, sm: 4.5, md: 5.5, lg: 7.5, xl: 10, "2xl": 12 };
-const KEYS = new Set(["none", "bronze", "silver", "gold", "diamond", "premium", "famille", "flamme", "pro", "elite", "mathador", "admin"]);
 
-/** "border-admin" (ancien format du profil admin) → "admin". */
-function normalizeBorderKey(key: string | null | undefined): string {
-  const k = (key || "none").replace(/^border-/, "");
-  return KEYS.has(k) ? k : "none";
-}
+/** Clé de contour valide du catalogue ; l'ancien contour « admin » (supprimé) et toute clé inconnue deviennent « aucun ». */
+const normalizeBorderKey = normalizeBorder;
 
 function initialsOf(name: string): string {
   const parts = (name || "").trim().split(/\s+/).filter(Boolean);

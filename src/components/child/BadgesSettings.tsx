@@ -5,7 +5,10 @@ import { useState, useEffect, type ComponentType, type CSSProperties } from "rea
 import { supabase } from "@/lib/supabaseClient";
 import { Trophy, Lock, CheckCircle, Star, Zap, BookOpen, Crown, Target, Brain, Sparkles, Pencil, Map, Loader2 } from "lucide-react";
 import StreakFlame from "@/components/StreakFlame";
-import { BORDER_STYLES, NAME_COLORS, getNameColor } from "@/lib/badgeStyles";
+import { getNameColor } from "@/lib/badgeStyles";
+import CosmeticsShowcase from "@/components/child/CosmeticsShowcase";
+import { normalizeBorder, normalizeColor } from "@/lib/cosmetics/catalog";
+import type { CosmeticCard } from "@/lib/cosmetics/view";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -26,13 +29,13 @@ interface UserInfo {
  * isolées en client island. Les données initiales (badges, obtenus,
  * déblocages) arrivent déjà chargées du serveur. */
 export default function BadgesSettings({
-  user: initialUser, badges, earnedIds, unlockedBorders, unlockedColors,
+  user: initialUser, badges, earnedIds, borders, colors,
 }: {
   user: UserInfo;
   badges: BadgeRow[];
   earnedIds: number[];
-  unlockedBorders: string[];
-  unlockedColors: string[];
+  borders: CosmeticCard[];
+  colors: CosmeticCard[];
 }) {
   const [user, setUser] = useState(initialUser);
   const [equipping, setEquipping] = useState(false);
@@ -95,24 +98,6 @@ export default function BadgesSettings({
   const earned = badges.filter((b) => earnedSet.has(b.id));
   const nameColor = getNameColor(user.name_color || "default");
 
-  const COSMETIC_MAP: Record<string, { label: string; color: string; required: string[] }> = {
-    bronze: { label: "Bronze", color: "#cd7f32", required: ["Travailleur", "Lecteur", "Combattant"] },
-    silver: { label: "Argent", color: "#b0b8c8", required: ["Acharné", "Studieux", "Champion"] },
-    gold: { label: "Or", color: "#ffd700", required: ["Guerrier", "Érudit", "Légende des Quiz"] },
-    diamond: { label: "Diamant", color: "#22d3ee", required: ["Expert", "Sage", "Intransigeant"] },
-    flamme: { label: "Flamme", color: "#f97316", required: ["Assidu", "Inébranlable"] },
-    elite: { label: "Elite", color: "#f43f5e", required: ["Dieu des Maths", "Omniscient", "Divin"] },
-  };
-  const badgeToCosmetic: Record<string, { label: string; color: string; done: number; total: number; unlocked: boolean }> = {};
-  const earnedNames = new Set(earned.map((b) => b.name));
-  for (const [, def] of Object.entries(COSMETIC_MAP)) {
-    const done = def.required.filter((n) => earnedNames.has(n)).length;
-    const unlocked = done === def.required.length;
-    for (const name of def.required) {
-      badgeToCosmetic[name] = { label: def.label, color: def.color, done, total: def.required.length, unlocked };
-    }
-  }
-
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
       {/* Hero */}
@@ -132,63 +117,16 @@ export default function BadgesSettings({
       />
 
       <div className="max-w-6xl mx-auto px-4 space-y-8">
-        {/* Personnalisation */}
-        <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
-          <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] text-lg mb-5 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-[var(--greek-gold)]" />
-            Personnalisation
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div>
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Contour d&apos;avatar</p>
-              <div className="flex flex-wrap gap-3">
-                {Object.entries(BORDER_STYLES).map(([key, val]) => {
-                  const unlocked = unlockedBorders.includes(key);
-                  const active = user.equipped_border === key || (!user.equipped_border && key === "none");
-                  return (
-                    <button key={key} onClick={() => unlocked && equip(key)} disabled={!unlocked || equipping}
-                      className={`relative flex flex-col items-center gap-1 pt-2 pb-2 px-2 rounded-2xl transition-all cursor-pointer min-w-[80px]
-                        ${active ? "bg-blue-50 ring-2 ring-[var(--greek-blue)]" : unlocked ? "hover:bg-gray-50" : ""}`}
-                    >
-                      <AvatarWithBorder avatar={user.avatar} equippedBorder={key} name={user.first_name || "?"} size="md" />
-                      <span className={`text-[11px] font-semibold mt-1 ${unlocked ? "text-gray-700" : "text-gray-400"}`}>{val.label}</span>
-                      {!unlocked && (
-                        <div className="absolute top-1 right-1 bg-gray-700/80 rounded-full p-0.5">
-                          <Lock className="w-2.5 h-2.5 text-white" />
-                        </div>
-                      )}
-                      {active && <CheckCircle className="absolute top-1 right-1 w-4 h-4 text-[var(--greek-blue)]" />}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-            <div>
-              <p className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">Couleur du nom</p>
-              <div className="flex flex-wrap gap-3">
-                {Object.entries(NAME_COLORS).map(([key, val]) => {
-                  const unlocked = unlockedColors.includes(key);
-                  const active = user.name_color === key || (!user.name_color && key === "default");
-                  return (
-                    <button key={key} onClick={() => unlocked && equip(undefined, key)} disabled={!unlocked || equipping}
-                      className={`relative flex flex-col items-center gap-1.5 p-3 rounded-xl border-2 transition-all cursor-pointer
-                        ${active ? "border-[var(--greek-blue)] bg-blue-50" : unlocked ? "border-[rgba(197,161,72,0.25)] hover:border-[var(--greek-gold)]" : "border-[rgba(197,161,72,0.25)] bg-gray-50"}`}
-                    >
-                      <span className={`text-sm font-bold px-2 ${val.cls}`}>{user.first_name || "Nom"}</span>
-                      <span className={`text-xs font-semibold ${unlocked ? "text-gray-600" : "text-gray-400"}`}>{val.label}</span>
-                      {!unlocked && (
-                        <div className="absolute top-1 right-1 bg-gray-800/70 rounded-full p-0.5">
-                          <Lock className="w-2.5 h-2.5 text-white" />
-                        </div>
-                      )}
-                      {active && <CheckCircle className="absolute top-1 right-1 w-4 h-4 text-[var(--greek-blue)]" />}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-        </div>
+        <CosmeticsShowcase
+          borders={borders}
+          colors={colors}
+          avatar={user.avatar}
+          firstName={user.first_name || "?"}
+          equippedBorder={normalizeBorder(user.equipped_border)}
+          equippedColor={normalizeColor(user.name_color)}
+          busy={equipping}
+          onEquip={equip}
+        />
 
         {/* Badges mis en avant */}
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
@@ -238,7 +176,6 @@ export default function BadgesSettings({
             {badges.map((badge) => {
               const isEarned = earnedSet.has(badge.id);
               const Icon = ICON_MAP[badge.icon] || Star;
-              const cosm = badgeToCosmetic[badge.name];
               return (
                 <div key={badge.id}
                   onClick={() => isEarned && toggleFeatured(badge.id)}
@@ -253,14 +190,6 @@ export default function BadgesSettings({
                     <span className="text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full">Obtenu</span>
                   ) : (
                     <span className="text-xs bg-gray-100 text-gray-500 font-semibold px-2 py-0.5 rounded-full flex items-center gap-1"><Lock className="w-2.5 h-2.5" /> Verrouillé</span>
-                  )}
-                  {cosm && !isEarned && !cosm.unlocked && (
-                    <div className="flex items-center gap-1.5 mt-2 w-full">
-                      <div className="flex-1 bg-gray-100 rounded-full h-1.5">
-                        <div className="h-1.5 rounded-full" style={{ width: `${(cosm.done / cosm.total) * 100}%`, backgroundColor: cosm.color }} />
-                      </div>
-                      <span className="text-[10px] font-bold shrink-0" style={{ color: cosm.color }}>{cosm.done}/{cosm.total} {cosm.label}</span>
-                    </div>
                   )}
                 </div>
               );

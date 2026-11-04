@@ -1,11 +1,49 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { FakeDb } from "@/test/fakeDb";
+import { planGrants, resolveUnlocked } from "@/lib/cosmetics/entitlements";
 
 const db = new FakeDb();
 vi.mock("server-only", () => ({}));
 vi.mock("@/lib/supabaseClient", () => ({ supabaseAdmin: { from: (t: string) => db.from(t), rpc: () => db.rpc() } }));
 
 const user = (id: number) => db.rows("users").find((u) => u.id === id)!;
+const FUTURE = () => new Date(Date.now() + 864e5).toISOString();
+
+describe("règle de droits (fonction pure)", () => {
+  it("toujours : aucun contour et couleur par défaut", () => {
+    const u = resolveUnlocked({ missionIds: [] });
+    expect([...u.borders]).toEqual(["none"]);
+    expect([...u.colors]).toEqual(["default"]);
+  });
+
+  it("missions + formule s'additionnent ; seule la formule disparaît avec l'abonnement", () => {
+    const features = { cosmetic_borders: ["flamme", "premium"], cosmetic_colors: ["flame", "premium"] };
+    const avec = resolveUnlocked({ missionIds: ["bronze"], planFeatures: features });
+    expect([...avec.borders].sort()).toEqual(["bronze", "flamme", "none", "premium"]);
+    const sans = resolveUnlocked({ missionIds: ["bronze"], planFeatures: null });
+    expect([...sans.borders].sort()).toEqual(["bronze", "none"]);
+    expect([...sans.colors].sort()).toEqual(["bronze", "default"]);
+  });
+
+  it("une formule ne peut donner que ce que le catalogue autorise (jamais « admin », jamais une mission)", () => {
+    const g = planGrants({ cosmetic_borders: ["admin", "foudre", "premium", 12], cosmetic_colors: ["admin", "rubis", "premium"] }, 1);
+    expect(g).toEqual({ borders: ["premium"], colors: ["premium"] });
+  });
+
+  it("repli historique par numéro de formule quand les caractéristiques ne listent rien", () => {
+    expect(planGrants({}, 3).borders).toEqual(["famille", "flamme"]);
+    expect(planGrants(null, 999)).toEqual({ borders: [], colors: [] });
+  });
+
+  it("Brasier : donné par une mission (à vie) ET par l'abonnement (tant qu'il dure)", () => {
+    const planOnly = resolveUnlocked({ missionIds: [], planFeatures: { cosmetic_borders: ["flamme"], cosmetic_colors: ["flame"] } });
+    expect(planOnly.borders.has("flamme")).toBe(true);
+    const missionOnly = resolveUnlocked({ missionIds: ["flamme"] });
+    expect(missionOnly.borders.has("flamme")).toBe(true);
+    expect(missionOnly.colors.has("flame")).toBe(true);
+    expect(resolveUnlocked({ missionIds: [] }).borders.has("flamme")).toBe(false);
+  });
+});
 
 beforeEach(() => {
   db.tables = {};
@@ -14,13 +52,13 @@ beforeEach(() => {
     { id: 1, auth_id: "p-1", role: "parent", parent_id: null, equipped_border: "flamme", name_color: "flame" },
     { id: 2, auth_id: "c-2", role: "child", parent_id: 1, equipped_border: "premium", name_color: "premium" },
     { id: 3, auth_id: "c-3", role: "child", parent_id: 1, equipped_border: "flamme", name_color: "default" },
-    { id: 9, auth_id: "a-9", role: "admin", parent_id: null, equipped_border: "elite", name_color: "elite" },
+    { id: 9, auth_id: "a-9", role: "admin", parent_id: null, equipped_border: "admin", name_color: "admin" },
   );
 });
 
-describe("contours et couleurs de nom quand l'abonnement s'arrête", () => {
+describe("quand l'abonnement s'arrête", () => {
   it("abonnement actif : rien n'est retiré (parent et enfants)", async () => {
-    db.rows("subscriptions").push({ id: 1, user_id: "p-1", plan_id: 3, status: "active", current_period_end: new Date(Date.now() + 864e5).toISOString() });
+    db.rows("subscriptions").push({ id: 1, user_id: "p-1", plan_id: 3, status: "active", current_period_end: FUTURE() });
     const { reconcileCosmeticsForFamily } = await import("@/lib/cosmeticEntitlements");
     expect(await reconcileCosmeticsForFamily("p-1")).toBe(0);
     expect(user(1).equipped_border).toBe("flamme");
@@ -37,7 +75,7 @@ describe("contours et couleurs de nom quand l'abonnement s'arrête", () => {
     }
   });
 
-  it("un cosmétique gagné (hors abonnement) reste porté", async () => {
+  it("une mission accomplie reste portée (le Brasier gagné à la série ne part pas)", async () => {
     db.rows("subscriptions").push({ id: 1, user_id: "p-1", plan_id: 3, status: "cancelled" });
     db.rows("user_cosmetics").push({ user_id: 3, cosmetic_key: "flamme" });
     const { reconcileCosmeticsForFamily } = await import("@/lib/cosmeticEntitlements");
@@ -56,14 +94,36 @@ describe("contours et couleurs de nom quand l'abonnement s'arrête", () => {
     expect(user(2).equipped_border).toBe("premium");
     expect(user(2).name_color).toBe("premium");
   });
+});
 
-  it("un administrateur n'est jamais touché", async () => {
+describe("aucun privilège d'administrateur", () => {
+  it("un administrateur qui porte l'ancien contour « Égide » / titre « admin » les perd", async () => {
     const { reconcileCosmeticsForUser } = await import("@/lib/cosmeticEntitlements");
-    expect(await reconcileCosmeticsForUser(user(9) as never)).toEqual({});
-    expect(user(9).equipped_border).toBe("elite");
+    expect(await reconcileCosmeticsForUser(user(9) as never)).toEqual({ border: "admin", color: "admin" });
+    expect(user(9).equipped_border).toBe("none");
+    expect(user(9).name_color).toBe("default");
   });
 
-  it("l'abonnement qui prend fin via le webhook Stripe retire aussi les cosmétiques", async () => {
+  it("un administrateur n'a que ce que ses missions et son abonnement lui donnent", async () => {
+    db.rows("users").find((u) => u.id === 9)!.equipped_border = "rubis";
+    db.rows("users").find((u) => u.id === 9)!.name_color = "elite";
+    db.rows("user_cosmetics").push({ user_id: 9, cosmetic_key: "rubis" });
+    const { reconcileCosmeticsForUser } = await import("@/lib/cosmeticEntitlements");
+    expect(await reconcileCosmeticsForUser(user(9) as never)).toEqual({ color: "elite" });
+    expect(user(9).equipped_border).toBe("rubis");
+  });
+
+  it("une clé inconnue du catalogue ne peut jamais être portée, même avec un abonnement", async () => {
+    db.rows("subscriptions").push({ id: 1, user_id: "p-1", plan_id: 3, status: "active", current_period_end: FUTURE() });
+    user(1).equipped_border = "inconnu";
+    const { reconcileCosmeticsForUser } = await import("@/lib/cosmeticEntitlements");
+    expect((await reconcileCosmeticsForUser(user(1) as never)).border).toBe("inconnu");
+    expect(user(1).equipped_border).toBe("none");
+  });
+});
+
+describe("l'abonnement qui prend fin par Stripe", () => {
+  it("le webhook retire aussi les cosmétiques", async () => {
     process.env.STRIPE_SECRET_KEY = "sk_test_dummy";
     process.env.STRIPE_WEBHOOK_SECRET = "whsec_test_secret";
     vi.doMock("@/lib/mailer", () => ({ sendEmail: async () => ({ success: true }) }));

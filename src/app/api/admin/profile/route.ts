@@ -22,8 +22,6 @@ export async function PUT(request: Request) {
       email,
       avatar,
       child_username,
-      name_animation,
-      avatar_border,
     } = body;
 
     // ✓ SECURITY: Validate auth_id
@@ -48,25 +46,6 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: "Invalid username" }, { status: 400 });
     }
 
-    // Map CSS class names → badge system keys
-    const rawBorderKey = avatar_border ? avatar_border.replace(/^border-/, "") : "admin";
-    const borderKey = (!rawBorderKey || rawBorderKey === "none") ? "admin" : rawBorderKey;
-    const nameColorMap: Record<string, string> = {
-      "text-admin":           "admin",
-      "name-elite":           "elite",
-      "name-flame":           "flame",
-      "name-pro-animated":    "pro",
-      "name-purple-animated": "premium",
-      "name-teal-animated":   "famille",
-      "name-diamond-animated":"diamond",
-      "name-gold-animated":   "gold",
-      "name-silver-animated": "silver",
-      "name-bronze-animated": "bronze",
-      "text-basic":           "default",
-    };
-    const rawColorKey = nameColorMap[name_animation] ?? "admin";
-    const nameColorKey = (!rawColorKey || rawColorKey === "default") ? "admin" : rawColorKey;
-
     // Update public.users
     const { error: updateError } = await supabaseAdmin
       .from("users")
@@ -76,10 +55,6 @@ export async function PUT(request: Request) {
         email: email || undefined,
         child_username: child_username || undefined,
         avatar: sanitizeAvatar(avatar) || undefined,
-        name_animation: name_animation || undefined,
-        avatar_border: avatar_border || undefined,
-        equipped_border: borderKey,
-        name_color: nameColorKey,
         updated_at: new Date().toISOString(),
       })
       .eq("auth_id", auth_id);

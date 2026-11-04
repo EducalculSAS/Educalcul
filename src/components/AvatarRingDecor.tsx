@@ -19,8 +19,16 @@ const PAL: Record<string, Pal> = {
   pro: { dark: "#8a5a00", mid: "#f5b81c", light: "#fff2a8" },
   elite: { dark: "#3a1a78", mid: "#8a4bf0", light: "#dcbcff" },
   mathador: { dark: "#12408f", mid: "#3a8cf0", light: "#c4e2ff" },
-  admin: { dark: "#0b5e57", mid: "#2cc4b4", light: "#c4f7f0" },
+  aurore: { dark: "#0b5e4a", mid: "#2fe0b0", light: "#d3fff0" },
+  sylve: { dark: "#0d3d24", mid: "#2fa564", light: "#b9f0cf" },
+  foudre: { dark: "#241a7a", mid: "#6a5cff", light: "#d9d4ff" },
+  rubis: { dark: "#6e0a1c", mid: "#e0314f", light: "#ffc2cd" },
+  onyx: { dark: "#08080e", mid: "#3b3b55", light: "#c9c9ee" },
+  camelia: { dark: "#8a1f52", mid: "#f06aa6", light: "#ffd3e6" },
 };
+
+/** Contours dessinés ici (le test du catalogue vérifie que chaque contour a sa palette). */
+export const RING_KEYS = Object.keys(PAL);
 
 /** Étincelle à 4 branches qui scintille. */
 function Spark({ x, y, r = 1, d = 0, fill = "#fff" }: { x: number; y: number; r?: number; d?: number; fill?: string }) {
@@ -69,6 +77,7 @@ function Crown({ x, y, s, jewels }: { x: number; y: number; s: number; jewels: [
 const DEFS: ReactNode = (
   <defs>
     <linearGradient id="rg-dg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#e0fbff" /><stop offset=".5" stopColor="#3bb8f0" /><stop offset="1" stopColor="#0b5f8a" /></linearGradient>
+    <linearGradient id="rg-rb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#ffd0d8" /><stop offset=".5" stopColor="#e0314f" /><stop offset="1" stopColor="#6e0a1c" /></linearGradient>
     <linearGradient id="rg-gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#fff3a3" /><stop offset=".5" stopColor="#f5c518" /><stop offset="1" stopColor="#a16207" /></linearGradient>
   </defs>
 );
@@ -190,20 +199,73 @@ export default function AvatarRingDecor({ ringKey, w, r, compact = false }: { ri
           </>
         );
         break;
-      case "admin":
+      case "aurore":
         front = (
           <>
-            <g transform="translate(50 98) scale(1.25)">
-              <g className="rf-pulse">
-                <path d="M0 -10 L11 -7 V2 C11 8 5.5 12 0 15 C-5.5 12 -11 8 -11 2 V-7Z" fill={p.mid} stroke={p.dark} strokeWidth="1.5" strokeLinejoin="round" />
-                <path d="M0 -6 L7 -4 V2 C7 5 4 8 0 10 C-4 8 -7 5 -7 2 V-4Z" fill={p.light} fillOpacity=".75" />
-                <path d="M-3 0 L-0.5 2.8 L3.6 -2" fill="none" stroke={p.dark} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-              </g>
-            </g>
-            <g transform="translate(92 8) scale(.7)"><path d="M-8 -6 H8 L13 0 L0 14 L-13 0Z" fill="url(#rg-dg)" stroke="#0b5f8a" strokeWidth="1.6" strokeLinejoin="round" /></g>
+            {Array.from({ length: 10 }, (_, i) => pointAt((i + 0.5) / 10, 0.5, rOut)).map((q, i) => (
+              <Spark key={i} x={q.x + q.nx * 1.5} y={q.y + q.ny * 1.5} r={i % 3 === 0 ? 1.2 : 0.8} d={i * 0.28} fill={i % 2 ? "#d3fff0" : "#9af5d6"} />
+            ))}
+            <Star5 x={50} y={2} s={1.1} p={p} />
           </>
         );
         break;
+      case "sylve":
+        behind = (
+          <>
+            {Array.from({ length: 30 }, (_, i) => pointAt((i + 0.5) / 30, 1.5, rOut)).map((q, i) => (
+              <ellipse key={i} rx="2.8" ry="5.4" transform={`translate(${(q.x + q.nx * 1.8).toFixed(1)} ${(q.y + q.ny * 1.8).toFixed(1)}) rotate(${q.ang + (i % 2 ? 38 : -38)})`} fill={i % 3 === 0 ? "#6fdc9a" : "#2fa564"} stroke="#0d3d24" strokeWidth=".7" />
+            ))}
+          </>
+        );
+        front = (<><circle cx="90" cy="9" r="3" fill="#ff7a9a" stroke="#8a1f3c" strokeWidth=".8" /><circle cx="9" cy="90" r="2.4" fill="#ffd45e" stroke="#8a5a00" strokeWidth=".8" /></>);
+        break;
+      case "foudre": {
+        const bolt = "M0 -11 L-6 1 L-1 1 L-3 11 L6 -2 L1 -2 L3 -11Z";
+        front = (
+          <>
+            {([[8, 8, 1.1], [92, 8, 0.9], [8, 92, 0.9], [92, 92, 1.1]] as const).map(([x, y, sc], i) => (
+              <g key={i} transform={`translate(${x} ${y}) scale(${sc})`}><path className="rf-twinkle" style={{ animationDelay: `${-i * 0.45}s` }} d={bolt} fill="#fff27a" stroke="#241a7a" strokeWidth="1.2" strokeLinejoin="round" /></g>
+            ))}
+            <Spark x={50} y={1} r={1} d={0.2} fill="#d9d4ff" />
+          </>
+        );
+        break;
+      }
+      case "rubis":
+        front = (
+          <>
+            <g transform="translate(50 -1)">
+              <g className="rf-gem">
+                <path d="M-12 -8 H12 L18 -1 L0 18 L-18 -1 Z" fill="url(#rg-rb)" stroke="#6e0a1c" strokeWidth="1.6" strokeLinejoin="round" />
+                <path d="M-18 -1 H18 M-12 -8 L-7 -1 L0 18 M12 -8 L7 -1 L0 18" fill="none" stroke="#fff" strokeOpacity=".85" strokeWidth="1" strokeLinejoin="round" />
+              </g>
+            </g>
+            <Spark x={95} y={15} r={0.9} d={0.4} fill="#ffc2cd" /><Spark x={5} y={82} r={0.8} d={1} fill="#ffc2cd" />
+          </>
+        );
+        break;
+      case "onyx":
+        front = (
+          <>
+            {([[5, 5], [95, 5], [5, 95], [95, 95]] as const).map(([x, y], i) => (
+              <g key={i} transform={`translate(${x} ${y}) rotate(45)`}><rect className="rf-pulse" style={{ animationDelay: `${-i * 0.5}s` }} x="-4.2" y="-4.2" width="8.4" height="8.4" rx="1.2" fill={p.mid} stroke={p.light} strokeWidth="1.1" /></g>
+            ))}
+            <Spark x={50} y={1} r={1.1} d={0.3} fill="#c9c9ee" />
+          </>
+        );
+        break;
+      case "camelia": {
+        const flower = (x: number, y: number, sc: number, d: number) => (
+          <g key={`${x}-${y}`} transform={`translate(${x} ${y}) scale(${sc})`}>
+            <g className="rf-beat" style={{ animationDelay: `${-d}s` }}>
+              {[0, 72, 144, 216, 288].map((a) => <ellipse key={a} cx="0" cy="-5.2" rx="3.6" ry="5.2" transform={`rotate(${a})`} fill="#ff9cc6" stroke="#8a1f52" strokeWidth=".8" />)}
+              <circle r="2.6" fill="#ffe27a" stroke="#8a5a00" strokeWidth=".8" />
+            </g>
+          </g>
+        );
+        front = (<>{flower(90, 9, 1.35, 0)}{flower(9, 90, 1.1, 0.6)}{flower(90, 92, 0.8, 1.1)}</>);
+        break;
+      }
     }
   }
   return (

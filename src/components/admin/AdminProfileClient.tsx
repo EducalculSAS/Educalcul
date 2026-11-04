@@ -12,6 +12,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { errMessage } from "@/lib/safeError";
+import { getNameColor } from "@/lib/badgeStyles";
 
 const ADMIN_AVATAR = "/logo.png";
 
@@ -24,8 +25,8 @@ export default function AdminProfileClient({ initialFormData }: {
     child_username: string;
     email: string;
     avatar: string;
-    name_animation: string;
-    avatar_border: string;
+    equipped_border: string;
+    name_color: string;
   };
 }) {
   const [saving, setSaving] = useState(false);
@@ -38,7 +39,7 @@ export default function AdminProfileClient({ initialFormData }: {
   const refetchProfile = async () => {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
-    const data = await getMyProfile<{ first_name?: string; last_name?: string; child_username?: string; email?: string; name_animation?: string; avatar_border?: string }>();
+    const data = await getMyProfile<{ first_name?: string; last_name?: string; child_username?: string; email?: string; equipped_border?: string; name_color?: string }>();
     if (data) {
       setFormData((prev) => ({
         ...prev,
@@ -46,8 +47,8 @@ export default function AdminProfileClient({ initialFormData }: {
         last_name: data.last_name || "",
         child_username: data.child_username || "",
         email: data.email || session.user.email || "",
-        name_animation: data.name_animation || "text-admin",
-        avatar_border: data.avatar_border || "border-admin",
+        equipped_border: data.equipped_border || "none",
+        name_color: data.name_color || "default",
       }));
     }
   };
@@ -68,7 +69,10 @@ export default function AdminProfileClient({ initialFormData }: {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           auth_id: session.user.id,
-          ...formData,
+          first_name: formData.first_name,
+          last_name: formData.last_name,
+          child_username: formData.child_username,
+          email: formData.email,
         }),
       });
 
@@ -92,42 +96,6 @@ export default function AdminProfileClient({ initialFormData }: {
 
   return (
     <div className="space-y-6">
-      <style jsx global>{`
-        /* === BORDER PREVIEW CLASSES (applied directly in admin profile) === */
-        @keyframes adm-glow {
-          0%,100% { box-shadow: 0 0 10px #ff6b6b88, 0 0 20px #4ecdc488; }
-          50%      { box-shadow: 0 0 20px #ffd70099, 0 0 30px #8b5cf688; }
-        }
-        @keyframes adm-hue { 0%{filter:hue-rotate(0deg)} 100%{filter:hue-rotate(360deg)} }
-        @keyframes adm-crown { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
-        @keyframes adm-pulse-gold     { 0%,100%{box-shadow:0 0 20px #ffd70099} 50%{box-shadow:0 0 30px #ffd700cc} }
-        @keyframes adm-pulse-diamond  { 0%,100%{filter:hue-rotate(0deg)} 50%{filter:hue-rotate(180deg)} }
-        @keyframes adm-pulse-elite    { 0%{box-shadow:0 0 12px #7c3aed88,0 0 22px #4c1d9555} 50%{box-shadow:0 0 20px #0d9488aa,0 0 35px #e0e7ff44} 100%{box-shadow:0 0 12px #7c3aed88,0 0 22px #4c1d9555} }
-        @keyframes adm-pulse-flame    { 0%,100%{box-shadow:0 0 10px #f9731666} 50%{box-shadow:0 0 20px #ef4444aa} }
-        @keyframes adm-pulse-premium  { 0%,100%{box-shadow:0 0 10px #a855f777} 50%{box-shadow:0 0 20px #d946efaa} }
-
-        .border-bronze  { border:4px solid #cd7f32; box-shadow:0 0 12px rgba(205,127,50,.5); }
-        .border-silver  { border:5px solid #c0c0c0; box-shadow:0 0 15px rgba(192,192,192,.6); }
-        .border-gold    { border:6px solid #ffd700; box-shadow:0 0 20px rgba(255,215,0,.7); animation:adm-pulse-gold 2.5s ease-in-out infinite; }
-        .border-diamond { border:6px solid transparent; background:linear-gradient(45deg,#b9f2ff,#66d9ef,#a8e6cf,#dcedc1) border-box; box-shadow:0 0 25px #b9f2ff88; animation:adm-pulse-diamond 2s ease-in-out infinite; }
-        .border-premium { border:5px solid #a855f7; box-shadow:0 0 18px rgba(168,85,247,.6); animation:adm-pulse-premium 2s ease-in-out infinite; }
-        .border-famille { border:5px solid #14b8a6; box-shadow:0 0 18px rgba(20,184,166,.6); }
-        .border-flamme  { border:5px solid #f97316; box-shadow:0 0 18px rgba(249,115,22,.7); animation:adm-pulse-flame 1s ease-in-out infinite; }
-        .border-pro     { border:6px solid #f59e0b; box-shadow:0 0 20px rgba(245,158,11,.7); animation:adm-pulse-gold 2s ease-in-out infinite; }
-        .border-elite   { border:6px solid #7c3aed; box-shadow:0 0 18px rgba(124,58,237,.6),0 0 30px rgba(13,148,136,.3); animation:adm-pulse-elite 3s ease-in-out infinite; }
-        .border-admin {
-          position:relative;
-          border:8px solid transparent;
-          background:linear-gradient(45deg,#ff6b6b,#ffd700,#4ecdc4,#8b5cf6,#ff6b6b) border-box, linear-gradient(white,white) padding-box;
-          box-shadow:0 0 20px #ff6b6b77;
-          animation:adm-glow 2s ease-in-out infinite, adm-hue 6s linear infinite;
-        }
-        .border-admin::after {
-          content:none;
-        }
-
-        .text-basic { color:#333 !important; }
-      `}</style>
 
       <div className="mb-8">
         <AdminPageHeader
@@ -204,115 +172,11 @@ export default function AdminProfileClient({ initialFormData }: {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Style du Texte
-                    </label>
-                    <div className="relative">
-                      <select
-                        value={formData.name_animation}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            name_animation: e.target.value,
-                          })
-                        }
-                        className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
-                      >
-                        <option value="none">Classique</option>
-                        <optgroup label="Admin exclusif">
-                          <option value="text-admin">Égide</option>
-                        </optgroup>
-                        <optgroup label="Abonnements">
-                          <option value="name-elite">Astral</option>
-                          <option value="name-flame">Brasier</option>
-                          <option value="name-pro-animated">Ailes d&apos;or</option>
-                          <option value="name-purple-animated">Royal</option>
-                          <option value="name-teal-animated">Jardin</option>
-                        </optgroup>
-                        <optgroup label="Badges">
-                          <option value="name-diamond-animated">Cristal</option>
-                          <option value="name-gold-animated">Lauriers</option>
-                          <option value="name-silver-animated">Acier</option>
-                          <option value="name-bronze-animated">Forge</option>
-                        </optgroup>
-                        <optgroup label="Autre">
-                          <option value="text-basic">Texte simple</option>
-                        </optgroup>
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 12 12"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M2.5 4.5L6 8L9.5 4.5"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">
-                      Contour de l&apos;Avatar
-                    </label>
-                    <div className="relative">
-                      <select
-                        value={formData.avatar_border}
-                        onChange={(e) =>
-                          setFormData({
-                            ...formData,
-                            avatar_border: e.target.value,
-                          })
-                        }
-                        className="w-full px-4 py-3 border border-[rgba(197,161,72,0.25)] rounded-xl focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-transparent outline-none transition-all appearance-none bg-white"
-                      >
-                        <option value="none">Classique</option>
-                        <optgroup label="Admin exclusif">
-                          <option value="border-admin">Égide</option>
-                        </optgroup>
-                        <optgroup label="Abonnements">
-                          <option value="border-elite">Astral</option>
-                          <option value="border-flamme">Brasier</option>
-                          <option value="border-pro">Ailes d&apos;or</option>
-                          <option value="border-premium">Royal</option>
-                          <option value="border-famille">Jardin</option>
-                        </optgroup>
-                        <optgroup label="Badges">
-                          <option value="border-diamond">Cristal</option>
-                          <option value="border-gold">Lauriers</option>
-                          <option value="border-silver">Acier</option>
-                          <option value="border-bronze">Forge</option>
-                        </optgroup>
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 12 12"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M2.5 4.5L6 8L9.5 4.5"
-                            stroke="currentColor"
-                            strokeWidth="1.5"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <p className="text-sm text-gray-500 mb-6">
+                  Les contours et les titres s&apos;obtiennent comme pour tout le monde (missions ou abonnement) et se choisissent dans{" "}
+                  <a href="/child/badges" className="font-semibold text-[var(--greek-blue)] underline">Mes trophées</a>.
+                  Il n&apos;existe aucun contour ni titre réservé aux administrateurs.
+                </p>
 
                 <GlassButton
                   size="sm"
@@ -351,14 +215,14 @@ export default function AdminProfileClient({ initialFormData }: {
               <div className="flex justify-center mb-8 relative">
                 <AvatarWithBorder
                   avatar={ADMIN_AVATAR}
-                  equippedBorder={formData.avatar_border}
+                  equippedBorder={formData.equipped_border}
                   name={formData.child_username || "Admin"}
                   size="2xl"
                 />
               </div>
 
               <h4
-                className={`text-2xl mb-4 transition-all duration-300 font-bold ${formData.name_animation === "text-admin" ? "name-admin-animated" : formData.name_animation}`}
+                className={`text-2xl mb-4 transition-all duration-300 font-bold ${getNameColor(formData.name_color).cls}`}
               >
                 {formData.child_username || "Pseudo admin"}
               </h4>

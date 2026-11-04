@@ -1,5 +1,6 @@
 "use client";
 
+import { COLOR_BY_KEY } from "@/lib/cosmetics/catalog";
 import { useEffect, useState } from "react";
 import { Trophy, Clock } from "lucide-react";
 import PageLoader from "@/components/PageLoader";
@@ -27,18 +28,6 @@ function formatDuration(seconds: number | null) {
   return m > 0 ? `${m}m ${s}s` : `${s}s`;
 }
 
-const NAME_COLOR_CLS: Record<string, string> = {
-  bronze: "name-bronze-animated",
-  silver: "name-silver-animated",
-  gold: "name-gold-animated",
-  diamond: "name-diamond-animated",
-  premium: "name-purple-animated",
-  famille: "name-teal-animated",
-  pro: "name-pro-animated",
-  flame: "name-flame",
-  elite: "name-elite",
-  admin: "name-admin-animated",
-};
 
 export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador" | MinigameType }) {
   const [period, setPeriod] = useState<"week" | "all">("week");
@@ -89,7 +78,7 @@ export default function MinigamesLeaderboard({ gameType }: { gameType: "mathador
             >
               <span className="w-6 text-center font-bold text-[var(--greek-blue)]">{e.rank}</span>
               <AvatarWithBorder avatar={e.avatar} equippedBorder={e.equippedBorder} name={e.firstName} size="sm" />
-              <span className={`flex-1 font-medium ${e.nameColor ? NAME_COLOR_CLS[e.nameColor] || "" : ""}`} style={{ color: !e.nameColor || !NAME_COLOR_CLS[e.nameColor] ? "var(--greek-blue)" : undefined }}>
+              <span className={`flex-1 font-medium ${e.nameColor && e.nameColor !== "default" ? COLOR_BY_KEY[e.nameColor]?.cls || "" : ""}`} style={{ color: !e.nameColor || e.nameColor === "default" || !COLOR_BY_KEY[e.nameColor] ? "var(--greek-blue)" : undefined }}>
                 {e.firstName}{e.isMe ? " (toi)" : ""}
               </span>
               {formatDuration(e.bestDurationSeconds) && (

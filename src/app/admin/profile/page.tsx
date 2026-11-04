@@ -23,8 +23,8 @@ export default async function AdminProfilePage() {
         child_username: data?.child_username || "",
         email: data?.email || user?.email || "",
         avatar: ADMIN_AVATAR,
-        name_animation: data?.name_animation || "text-admin",
-        avatar_border: data?.avatar_border || "border-admin",
+        equipped_border: data?.equipped_border || "none",
+        name_color: data?.name_color || "default",
       }}
     />
   );

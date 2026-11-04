@@ -1,165 +1,12 @@
 import { NextResponse } from "next/server";
-import { selectAllPages } from "@/lib/selectAllPages";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnAuthId } from "@/lib/apiAuth";
 import { notify } from "@/lib/notify";
+import { loadActivityCounts, toMissionStats } from "@/lib/cosmetics/stats";
+import { evaluateAllMissions, missionsToAward } from "@/lib/cosmetics/missions";
 
-// ── Tier thresholds per category ────────────────────────────────────────────
-// Returns the tier level (0 = nothing, 1 = first badge, 2 = second, etc.)
-function exerciseTier(n: number) {
-  if (n >= 2500) return 7;
-  if (n >= 1000) return 6;
-  if (n >= 500)  return 5;
-  if (n >= 200)  return 4;
-  if (n >= 75)   return 3;
-  if (n >= 25)   return 2;
-  if (n >= 1)    return 1;
-  return 0;
-}
-function courseTier(n: number) {
-  if (n >= 200) return 6;
-  if (n >= 100) return 5;
-  if (n >= 40)  return 4;
-  if (n >= 15)  return 3;
-  if (n >= 5)   return 2;
-  if (n >= 1)   return 1;
-  return 0;
-}
-function quizTier(n: number) {
-  if (n >= 150) return 4;
-  if (n >= 50)  return 3;
-  if (n >= 15)  return 2;
-  if (n >= 1)   return 1;
-  return 0;
-}
-function quizPerfectTier(n: number) {
-  if (n >= 40) return 4;
-  if (n >= 15) return 3;
-  if (n >= 5)  return 2;
-  if (n >= 1)  return 1;
-  return 0;
-}
-// Somme cumulée des scores Mathador (max 13 pts/partie, coup mathador compris).
-function mathadorTier(n: number) {
-  if (n >= 1000) return 4;
-  if (n >= 400)  return 3;
-  if (n >= 150)  return 2;
-  if (n >= 50)   return 1;
-  return 0;
-}
-function loginStreakTier(n: number) {
-  if (n >= 365) return 5;
-  if (n >= 90)  return 4;
-  if (n >= 30)  return 3;
-  if (n >= 7)   return 2;
-  if (n >= 1)   return 1;
-  return 0;
-}
-function loginCountTier(n: number) {
-  if (n >= 365) return 5;
-  if (n >= 100) return 4;
-  if (n >= 30)  return 3;
-  if (n >= 7)   return 2;
-  if (n >= 1)   return 1;
-  return 0;
-}
-
-// ── Cross-category cosmetic requirements ─────────────────────────────────────
-// Each cosmetic needs minimum tiers across categories
-// progress = { exercises, courses, quiz } — each contributes 1/3
-const COSMETIC_REQUIREMENTS: Record<string, {
-  label: string;
-  checks: (tiers: Record<string, number>) => { met: string[]; needed: string[] };
-}> = {
-  bronze: {
-    label: "Bronze",
-    checks: (t) => {
-      const parts = [
-        { name: "Exercices (palier 2)",  ok: t.exo >= 2 },
-        { name: "Cours (palier 2)",       ok: t.cours >= 2 },
-        { name: "Quiz (palier 2)",        ok: t.quiz >= 2 },
-      ];
-      return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
-    },
-  },
-  silver: {
-    label: "Argent",
-    checks: (t) => {
-      const parts = [
-        { name: "Exercices (palier 3)",  ok: t.exo >= 3 },
-        { name: "Cours (palier 3)",       ok: t.cours >= 3 },
-        { name: "Quiz (palier 3)",        ok: t.quiz >= 3 },
-      ];
-      return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
-    },
-  },
-  gold: {
-    label: "Or",
-    checks: (t) => {
-      const parts = [
-        { name: "Exercices (palier 4)",  ok: t.exo >= 4 },
-        { name: "Cours (palier 4)",       ok: t.cours >= 4 },
-        { name: "Quiz (palier 4)",        ok: t.quiz >= 4 },
-      ];
-      return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
-    },
-  },
-  diamond: {
-    label: "Diamant",
-    checks: (t) => {
-      const parts = [
-        { name: "Exercices (palier 5)",      ok: t.exo >= 5 },
-        { name: "Cours (palier 5)",           ok: t.cours >= 5 },
-        { name: "Quiz parfaits (palier 2)",   ok: t.quizPerfect >= 2 },
-      ];
-      return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
-    },
-  },
-  flamme: {
-    label: "Flamme",
-    checks: (t) => {
-      const parts = [
-        { name: "Streak (palier 3 - 30j)", ok: t.loginStreak >= 3 },
-        { name: "Connexions (palier 3)",    ok: t.loginCount >= 3 },
-      ];
-      return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
-    },
-  },
-  elite_text: {
-    label: "Couleur Elite",
-    checks: (t) => {
-      const parts = [
-        { name: "Exercices (palier 6 - 1000)", ok: t.exo >= 6 },
-        { name: "Cours (palier 5 - 100)",       ok: t.cours >= 5 },
-        { name: "Quiz parfaits (palier 3 - 15)",ok: t.quizPerfect >= 3 },
-        { name: "Connexions (palier 4 - 100)",  ok: t.loginCount >= 4 },
-      ];
-      return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
-    },
-  },
-  elite: {
-    label: "Contour Elite",
-    checks: (t) => {
-      const parts = [
-        { name: "Exercices (palier 7 - 2500)",  ok: t.exo >= 7 },
-        { name: "Cours (palier 6 - 200)",        ok: t.cours >= 6 },
-        { name: "Quiz parfaits (palier 4 - 40)", ok: t.quizPerfect >= 4 },
-        { name: "Streak (palier 5 - 365j)",      ok: t.loginStreak >= 5 },
-        { name: "Connexions (palier 5 - 365)",   ok: t.loginCount >= 5 },
-      ];
-      return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
-    },
-  },
-  mathador: {
-    label: "Contour Mathador",
-    checks: (t) => {
-      const parts = [{ name: "Points Mathador cumulés (palier 2 - 150)", ok: t.mathador >= 2 }];
-      return { met: parts.filter(p => p.ok).map(p => p.name), needed: parts.filter(p => !p.ok).map(p => p.name) };
-    },
-  },
-};
-
+/** Attribue les badges et les missions (contours / couleurs de nom) que l'élève vient d'accomplir. Appelée à chaque visite de « Mes trophées ». */
 export async function POST(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
@@ -175,90 +22,51 @@ export async function POST(req: Request) {
     if (!user) return NextResponse.json({ error: "User not found" }, { status: 404 });
     const userId = user.id;
 
-    // ── Individual badge checking ───────────────────────────────────────────
-    // All of these queries only depend on userId, which is already known —
-    // run them together instead of fetching badges/user_badges first.
-    const [
-      { data: allBadges }, { data: earned },
-      { count: exoCount }, { count: correctCount }, { count: quizCount },
-      { count: courseCount }, { data: quizScores }, { data: mathadorScores },
-    ] = await Promise.all([
+    // ── Badges ──────────────────────────────────────────────────────────────
+    const [{ data: allBadges }, { data: earned }, counts] = await Promise.all([
       supabaseAdmin.from("badges").select("id, requirement_type, requirement_value, name, description").eq("is_active", true),
       supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", userId),
-      // Count exercises that are passed (or completed if no threshold was set, i.e. passed IS NULL)
-      supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).or("passed.eq.true,passed.is.null"),
-      supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).eq("is_correct", true),
-      // Count quizzes that are passed (or completed if no threshold was set)
-      supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", userId).or("passed.eq.true,passed.is.null"),
-      supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", userId),
-      selectAllPages<{ score: number; total_questions: number }>((from, to) =>
-        supabaseAdmin.from("user_quiz_attempts").select("score, total_questions").eq("user_id", userId).order("id").range(from, to),
-      ).then((data) => ({ data })),
-      selectAllPages<{ score: number | null }>((from, to) =>
-        supabaseAdmin.from("minigame_sessions").select("score").eq("user_id", userId).eq("game_type", "mathador").eq("status", "completed").order("id").range(from, to),
-      ).then((data) => ({ data })),
+      loadActivityCounts(userId),
     ]);
-    const earnedIds = new Set((earned || []).map(e => e.badge_id));
+    const earnedIds = new Set((earned || []).map((e) => e.badge_id));
 
-    const perfectQuizzes = (quizScores || []).filter(q => q.total_questions > 0 && q.score === q.total_questions).length;
-    const mathadorPoints = (mathadorScores || []).reduce((sum, s) => sum + (s.score || 0), 0);
-
-    const stats: Record<string, number> = {
-      exercise_count: exoCount ?? 0,
-      exercise_correct: correctCount ?? 0,
-      quiz_count: quizCount ?? 0,
-      quiz_perfect: perfectQuizzes,
-      course_count: courseCount ?? 0,
+    const badgeStats: Record<string, number> = {
+      exercise_count: counts.exoCount,
+      exercise_correct: counts.correctCount,
+      quiz_count: counts.quizCount,
+      quiz_perfect: counts.perfectQuizzes,
+      course_count: counts.courseCount,
       login_streak: user.login_streak ?? 0,
       login_count: user.login_count ?? 0,
     };
 
-    // Award individual badges
-    const toAward = (allBadges || []).filter(b => !earnedIds.has(b.id) && (stats[b.requirement_type] ?? 0) >= b.requirement_value);
+    const toAward = (allBadges || []).filter((b) => !earnedIds.has(b.id) && (badgeStats[b.requirement_type] ?? 0) >= b.requirement_value);
     if (toAward.length > 0) {
-      await supabaseAdmin.from("user_badges").insert(toAward.map(b => ({ user_id: userId, badge_id: b.id })));
+      await supabaseAdmin.from("user_badges").insert(toAward.map((b) => ({ user_id: userId, badge_id: b.id })));
       for (const b of toAward) {
         await notify({ userId: authId, type: "badge", title: `Nouveau badge : ${b.name}`, body: b.description || undefined, link: "/child/badges" });
       }
     }
 
-    // ── Cross-category cosmetics check ─────────────────────────────────────
-    const tiers = {
-      exo: exerciseTier(exoCount ?? 0),
-      cours: courseTier(courseCount ?? 0),
-      quiz: quizTier(quizCount ?? 0),
-      quizPerfect: quizPerfectTier(perfectQuizzes),
-      loginStreak: loginStreakTier(user.login_streak ?? 0),
-      loginCount: loginCountTier(user.login_count ?? 0),
-      mathador: mathadorTier(mathadorPoints),
-    };
-
+    // ── Missions : contours et couleurs gagnés pour toujours ────────────────
+    const missionStats = toMissionStats(counts, user, earnedIds.size + toAward.length);
     const { data: ownedCosmetics } = await supabaseAdmin.from("user_cosmetics").select("cosmetic_key").eq("user_id", userId);
-    const ownedKeys = new Set((ownedCosmetics || []).map(c => c.cosmetic_key));
-
-    const newCosmetics: string[] = [];
-    const cosmeticProgress: Record<string, unknown> = {};
-
-    for (const [key, def] of Object.entries(COSMETIC_REQUIREMENTS)) {
-      const { met, needed } = def.checks(tiers);
-      const total = met.length + needed.length;
-      cosmeticProgress[key] = {
-        label: def.label,
-        met: met.length,
-        total,
-        parts: { met, needed },
-        unlocked: needed.length === 0,
-      };
-      if (needed.length === 0 && !ownedKeys.has(key)) {
-        newCosmetics.push(key);
+    const ownedIds = new Set((ownedCosmetics || []).map((c) => c.cosmetic_key));
+    const newMissions = missionsToAward(missionStats, ownedIds);
+    if (newMissions.length > 0) {
+      await supabaseAdmin.from("user_cosmetics").insert(newMissions.map((m) => ({ user_id: userId, cosmetic_key: m.id })));
+      for (const m of newMissions) {
+        await notify({ userId: authId, type: "badge", title: `Mission accomplie : ${m.title}`, body: "Un nouveau contour est disponible dans Mes trophées.", link: "/child/badges" });
       }
     }
+    const progress = Object.fromEntries(
+      evaluateAllMissions(missionStats).map((p) => [
+        p.mission.id,
+        { label: p.mission.title, met: p.requirements.filter((r) => r.done).length, total: p.requirements.length, unlocked: p.completed || ownedIds.has(p.mission.id) },
+      ]),
+    );
 
-    if (newCosmetics.length > 0) {
-      await supabaseAdmin.from("user_cosmetics").insert(newCosmetics.map(k => ({ user_id: userId, cosmetic_key: k })));
-    }
-
-    return NextResponse.json({ awarded: toAward.length, newCosmetics, progress: cosmeticProgress, tiers });
+    return NextResponse.json({ awarded: toAward.length, newCosmetics: newMissions.map((m) => m.id), progress });
   } catch (err: unknown) {
     return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }
