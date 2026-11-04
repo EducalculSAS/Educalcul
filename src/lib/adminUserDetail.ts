@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
+import { one } from "@/lib/relations";
 import type { Row } from "@/types/db";
 
 type Named<T> = T | null;
@@ -72,13 +73,15 @@ export async function fetchAdminUserDetail(id: string): Promise<AdminUserDetail 
     user,
     stats: { exercise_attempts: ea ?? 0, quiz_attempts: qa ?? 0, course_progress: cp ?? 0, minigame_sessions: mg ?? 0 },
     subscription: sub ?? null, children: children ?? [],
-    notifications: notifs ?? [], badges: bdg ?? [],
-    forum_posts: posts ?? [], forum_comments: comments ?? [], reports: reports ?? [],
+    notifications: notifs ?? [], badges: (bdg ?? []).map((b) => ({ ...b, badge: one(b.badge) ?? null })),
+    forum_posts: (posts ?? []).map((p) => ({ ...p, category: one(p.category) ?? null })),
+    forum_comments: (comments ?? []).map((c) => ({ ...c, post: one(c.post) ?? null })),
+    reports: (reports ?? []).map((r) => ({ ...r, reporter: one(r.reporter) ?? null, post: one(r.post) ?? null, comment: one(r.comment) ?? null })),
     login_history: loginHistory ?? [],
-    exercise_attempts: exerciseAttempts ?? [],
-    quiz_attempts: quizAttempts ?? [],
-    course_progress: courseProgress ?? [],
+    exercise_attempts: (exerciseAttempts ?? []).map((a) => ({ ...a, exercises: one(a.exercises) ?? null })),
+    quiz_attempts: (quizAttempts ?? []).map((a) => ({ ...a, quizzes: one(a.quizzes) ?? null })),
+    course_progress: (courseProgress ?? []).map((c) => ({ ...c, courses: one(c.courses) ?? null })),
     support_tickets: tickets ?? [],
     minigame_sessions: minigameSessions ?? [],
-  } as unknown as AdminUserDetail;
+  };
 }

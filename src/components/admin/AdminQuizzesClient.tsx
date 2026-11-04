@@ -67,16 +67,7 @@ export interface Course {
   level?: string | null;
 }
 
-export interface QuizFolder {
-  id: number;
-  name: string;
-  color: string;
-  parent_id: number | null;
-  status: "published" | "draft" | "archived";
-  grade_level: string | null;
-  icon?: string | null;
-  is_system?: boolean;
-}
+export type QuizFolder = ContentFolder;
 
 /** Bibliothèque de quiz admin : le dossier racine + tous les quiz (filtres
  * par défaut) arrivent déjà chargés du serveur ; naviguer dans les dossiers,
@@ -116,12 +107,12 @@ export default function AdminQuizzesClient({
       allFolders.filter(
         (f) => (currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId)
           && (statusFilter === "all" || f.status === statusFilter),
-      ).sort(compareFolderOrder) as unknown as QuizFolder[],
+      ).sort(compareFolderOrder),
     [allFolders, currentFolderId, statusFilter],
   );
   const breadcrumbs = useMemo(
     () =>
-      (currentFolderId === null ? [] : buildBreadcrumbs(allFolders, currentFolderId)) as unknown as QuizFolder[],
+      (currentFolderId === null ? [] : buildBreadcrumbs(allFolders, currentFolderId)),
     [allFolders, currentFolderId],
   );
   const subfolderCounts = useMemo(() => {

@@ -81,10 +81,10 @@ export async function GET(req: Request) {
     query = query.order("id", { ascending: false });
 
     // Un de plus que la page pour savoir s'il en reste.
-    const { data, error } = await query.range(offset, offset + PAGE_SIZE);
+    const { data, error } = await query.range(offset, offset + PAGE_SIZE).returns<ForumPostRow[]>();
     if (error) throw error;
 
-    const rows = (data ?? []) as unknown as ForumPostRow[];
+    const rows = data ?? [];
     const items: ForumPostSummary[] = rows.slice(0, PAGE_SIZE).map((p) => ({
       id: p.id,
       title: p.title,

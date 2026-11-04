@@ -8,7 +8,8 @@ import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 /** Identifiants de question uniques dans TOUT l'exercice (pages comprises). La correction retrouve chaque question par
  * son identifiant : deux questions au même identifiant (cas d'une page régénérée par l'IA, qui réutilise « block-1 »,
  * « block-2 »…) et la seconde écrasait la première, donc la correction se faisait sur l'ancienne question. */
-export function dedupeBlockIds<T>(pages: T): T {
+export function dedupeBlockIds<T>(pages: T): T;
+export function dedupeBlockIds(pages: unknown): unknown {
   if (!Array.isArray(pages)) return pages;
   const seen = new Set<string>();
   return (pages as unknown[]).map((rawPage) => {
@@ -24,7 +25,7 @@ export function dedupeBlockIds<T>(pages: T): T {
         return id === b.id ? b : { ...b, id };
       }),
     };
-  }) as unknown as T;
+  });
 }
 
 // Extrait de src/app/api/admin/exercises/route.ts pour être réutilisé tel

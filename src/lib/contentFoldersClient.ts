@@ -1,3 +1,5 @@
+import { z } from "zod";
+import { parseList } from "@/lib/validate";
 /**
  * Client des dossiers de contenu admin (cours / exercices / quiz) via
  * `/api/admin/content-folders/[type]`. Remplace les `supabase.from("*_folders")`
@@ -8,7 +10,7 @@ export interface ContentFolder {
   id: number;
   name: string;
   parent_id: number | null;
-  status: string;
+  status: "published" | "draft" | "archived";
   color: string | null;
   icon: string | null;
   grade_level: string | null;
@@ -19,6 +21,20 @@ export interface ContentFolder {
   item_count?: number;
 }
 
+/** Dossier tel que renvoyé par la route de liste. Le statut inconnu devient « draft » (jamais montré aux élèves) ; couleur, icône et niveau peuvent être vides. */
+const folderSchema = z.looseObject({
+  id: z.number(),
+  name: z.string(),
+  parent_id: z.number().nullable().default(null),
+  status: z.enum(["published", "draft", "archived"]).catch("draft"),
+  color: z.string().nullable().default(null),
+  icon: z.string().nullable().default(null),
+  grade_level: z.string().nullable().default(null),
+  display_order: z.number().nullable().default(null),
+  is_system: z.boolean().nullable().default(null),
+  item_count: z.number().optional(),
+});
+
 export type ContentFolderType = "course" | "exercise" | "quiz";
 
 const base = (type: ContentFolderType) => `/api/admin/content-folders/${type}`;
@@ -28,8 +44,7 @@ const base = (type: ContentFolderType) => `/api/admin/content-folders/${type}`;
 export async function listFolders(type: ContentFolderType): Promise<ContentFolder[]> {
   const res = await fetch(base(type));
   if (!res.ok) return [];
-  const data = await res.json();
-  return Array.isArray(data) ? data : [];
+  return parseList(folderSchema, await res.json(), "dossiers");
 }
 
 export async function createFolder(

@@ -6,7 +6,7 @@ import { getClientIp as getClientIpOrNull } from "@/lib/ipGeo";
 
 /** IP publique de l'appelant, telle que vue par Vercel (en-tête posé par la
  * plateforme, pas falsifiable depuis le client malgré le nom "forwarded"). */
-export function getClientIp(req: Request): string {
+export function getClientIp(req: Pick<Request, "headers">): string {
   return getClientIpOrNull(req) ?? "unknown";
 }
 

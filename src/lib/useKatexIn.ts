@@ -7,6 +7,13 @@ const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayout
 
 type AutoRender = (el: HTMLElement, opts: Record<string, unknown>) => void;
 
+declare global {
+  interface Window {
+    /** Posée par le script KaTeX « auto-render » une fois chargé. */
+    renderMathInElement?: AutoRender;
+  }
+}
+
 const OPTIONS = {
   delimiters: [
     { left: "$$", right: "$$", display: true },
@@ -29,7 +36,7 @@ export function useKatexIn(ref: RefObject<HTMLElement | null>, deps: DependencyL
   useIsoLayoutEffect(() => {
     const render = () => {
       const el = ref.current;
-      const fn = (window as unknown as { renderMathInElement?: AutoRender }).renderMathInElement;
+      const fn = window.renderMathInElement;
       if (el && fn) {
         try {
           fn(el, OPTIONS);
@@ -38,7 +45,7 @@ export function useKatexIn(ref: RefObject<HTMLElement | null>, deps: DependencyL
         }
       }
     };
-    if ((window as unknown as { renderMathInElement?: AutoRender }).renderMathInElement) render();
+    if (window.renderMathInElement) render();
     else ensureKatexAutoRenderLoaded().then(render).catch(() => {});
   }, deps);
 }

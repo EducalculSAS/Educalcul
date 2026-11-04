@@ -1,6 +1,9 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { resolveLevelScope, type CatalogFolder } from "@/lib/childCatalog";
 import { loadPublishedFolders } from "@/lib/childCatalogLoaders";
+import { rowGuard } from "@/lib/validate";
+
+const isCatalogFolder = rowGuard<CatalogFolder>({ id: "number", name: "string" });
 import { visibleLevels } from "@/lib/specialties";
 
 type FolderTable = "course_folders" | "exercise_folders" | "quiz_folders";
@@ -33,7 +36,7 @@ export async function childMayOpen(
   let decidable = !!item.level;
   if (item.folder_id != null) {
     try {
-      const folders = await loadPublishedFolders<CatalogFolder>(folderTable, "id, parent_id, name, grade_level");
+      const folders = await loadPublishedFolders(folderTable, "id, parent_id, name, grade_level", isCatalogFolder);
       const scope = resolveLevelScope(folders, levels);
       if (!scope.folderIds) return true; // pas de dossier de niveau connu : rien à comparer
       if (scope.folderIds.includes(item.folder_id)) return true;

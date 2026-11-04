@@ -92,9 +92,9 @@ export async function loadVisiblePost(me: AuthenticatedUser, postId: number): Pr
     .from("forum_posts")
     .select("id, author_id, category_id, is_locked, solved_comment_id, category:forum_categories!category_id(id, audience, admin_only)")
     .eq("id", postId)
-    .maybeSingle();
+    .maybeSingle<LoadedPost>();
   if (!data) return null;
-  const post = data as unknown as LoadedPost;
+  const post = data;
   if (!canSeeAudience(me.role, post.category?.audience)) return null;
   return post;
 }

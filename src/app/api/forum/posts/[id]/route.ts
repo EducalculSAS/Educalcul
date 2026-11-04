@@ -56,19 +56,20 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
                  category:forum_categories!category_id(id, name, color),
                  author:user_public_profiles!author_id(${AUTHOR_COLUMNS})`)
         .eq("id", id)
-        .single(),
+        .single<ForumPostRow>(),
       supabaseAdmin
         .from("forum_comments")
         .select(`id, content, author_id, created_at, updated_at, like_count, quoted_comment_id,
                  author:user_public_profiles!author_id(${AUTHOR_COLUMNS})`)
         .eq("post_id", id)
         .order("created_at", { ascending: true })
-        .limit(MAX_COMMENTS),
+        .limit(MAX_COMMENTS)
+        .returns<ForumCommentRow[]>(),
       supabaseAdmin.from("forum_follows").select("post_id").eq("user_id", me.id).eq("post_id", id).maybeSingle(),
     ]);
     if (error || !post) throw error ?? new Error("Sujet introuvable");
 
-    const commentRows = (comments ?? []) as unknown as ForumCommentRow[];
+    const commentRows = comments ?? [];
     const commentIds = commentRows.map((c) => c.id);
     const likeFilter = commentIds.length
       ? `post_id.eq.${id},comment_id.in.(${commentIds.join(",")})`
@@ -83,7 +84,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
     const byId = new Map(commentRows.map((c) => [c.id, c]));
     const isAdmin = me.role === "admin";
-    const p = post as unknown as ForumPostRow;
+    const p = post;
 
     const thread: ForumThread = {
       id: p.id,

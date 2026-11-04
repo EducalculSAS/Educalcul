@@ -6,8 +6,13 @@ import { Trophy } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import QuizCatalog from "@/components/child/QuizCatalog";
-import { resolveLevelScope, type CatalogFolder } from "@/lib/childCatalog";
+import { resolveLevelScope } from "@/lib/childCatalog";
 import { loadPublishedCatalog, loadPublishedFolders } from "@/lib/childCatalogLoaders";
+import { rowGuard } from "@/lib/validate";
+
+type Props = ComponentProps<typeof QuizCatalog>;
+const isFolder = rowGuard<Props["allFolders"][number]>({ id: "number", name: "string" });
+const isQuiz = rowGuard<Props["allQuizzes"][number]>({ id: "id", title: "string" });
 import { visibleLevels } from "@/lib/specialties";
 
 export default async function ChildQuizPage({
@@ -24,7 +29,7 @@ export default async function ChildQuizPage({
   // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
   const [{ data: userData }, allFolders, attempts] = await Promise.all([
     supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", authUser.id).maybeSingle(),
-    loadPublishedFolders<CatalogFolder & Record<string, unknown>>("quiz_folders", "*", { byDisplayOrder: true }),
+    loadPublishedFolders("quiz_folders", "*", isFolder, { byDisplayOrder: true }),
     selectAllPages<{ quiz_id: string; attempts_history: unknown[] | null }>((from, to) =>
       supabaseAdmin
         .from("user_quiz_attempts")
@@ -50,6 +55,7 @@ export default async function ChildQuizPage({
       courseId: filterCourseId ?? null,
       folderIds: scope.folderIds,
     },
+    isQuiz,
   );
 
   const initialProgress: Record<string, { status: string; score: number; attempts: number }> = {};
@@ -67,8 +73,8 @@ export default async function ChildQuizPage({
       <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={Trophy} title="Quiz & défis" badge="Défi" subtitle="Teste tes connaissances et gagne des trophées !" />
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <QuizCatalog
-          allFolders={allFolders as unknown as ComponentProps<typeof QuizCatalog>["allFolders"]}
-          allQuizzes={allQuizzes as unknown as ComponentProps<typeof QuizCatalog>["allQuizzes"]}
+          allFolders={allFolders}
+          allQuizzes={allQuizzes}
           levelFolderId={scope.levelFolderId}
           rootFolderIds={scope.rootFolderIds}
           initialProgress={initialProgress}

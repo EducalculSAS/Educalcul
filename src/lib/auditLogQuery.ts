@@ -7,6 +7,9 @@ const EXPORT_BATCH = 1000;
 /** Auteur ou cible d'une entrée du journal d'audit. */
 export interface AuditUser { id: number; first_name?: string | null; last_name?: string | null; email?: string | null }
 /** Entrée du journal d'audit avec son auteur et sa cible résolus. */
+/** Ligne de la table audit_logs, sans les comptes joints. */
+type AuditRow = Omit<AuditLogEntry, "admin" | "target">;
+
 export interface AuditLogEntry {
   id: number;
   action: string;
@@ -45,7 +48,7 @@ export async function fetchAuditLogPage(page: number, action?: string | null) {
     ...d,
     admin: (d.admin_id != null && usersById[d.admin_id]) || null,
     target: d.target_user_id ? usersById[d.target_user_id] || null : null,
-  })) as unknown as AuditLogEntry[];
+  }));
 
   return { entries, page, pageSize: PAGE_SIZE, total: count || 0 };
 }
@@ -54,7 +57,7 @@ export async function fetchAuditLogPage(page: number, action?: string | null) {
  * (plafonné à EXPORT_MAX) par lots de EXPORT_BATCH pour rester sous la limite
  * de lignes d'une requête Supabase. */
 export async function fetchAllAuditLogEntries(action?: string | null) {
-  const rows: { admin_id: number | null; target_user_id: number | null; [key: string]: unknown }[] = [];
+  const rows: AuditRow[] = [];
   for (let offset = 0; offset < EXPORT_MAX; offset += EXPORT_BATCH) {
     let query = supabaseAdmin
       .from("audit_logs")
@@ -66,7 +69,7 @@ export async function fetchAllAuditLogEntries(action?: string | null) {
 
     const { data, error } = await query;
     if (error) throw error;
-    rows.push(...((data || []) as typeof rows));
+    rows.push(...(data || []));
     if (!data || data.length < EXPORT_BATCH) break;
   }
 
@@ -86,5 +89,5 @@ export async function fetchAllAuditLogEntries(action?: string | null) {
     ...d,
     admin: (d.admin_id != null && usersById[d.admin_id]) || null,
     target: d.target_user_id ? usersById[d.target_user_id] || null : null,
-  })) as unknown as AuditLogEntry[];
+  }));
 }

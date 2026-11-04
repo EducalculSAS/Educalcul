@@ -194,7 +194,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-gray-800 truncate">{p.title}</p>
                   <p className="text-xs text-gray-400">
-                    {(p.author as unknown as { first_name?: string; last_name?: string } | null)?.first_name ?? "?"} {(p.author as unknown as { last_name?: string } | null)?.last_name ?? ""} ·{" "}
+                    {p.author?.first_name ?? "?"} {p.author?.last_name ?? ""} ·{" "}
                     {new Date(p.created_at).toLocaleDateString("fr-FR", { day: "2-digit", month: "short" })}
                   </p>
                 </div>

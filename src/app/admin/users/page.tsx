@@ -1,5 +1,4 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
-import type { ComponentProps } from "react";
 import AdminUsersClient from "@/components/admin/AdminUsersClient";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { ADMIN_USER_LIST_COLUMNS } from "@/lib/adminUserColumns";
@@ -23,5 +22,5 @@ export default async function AdminUsersPage() {
       .order("id"),
   ]);
 
-  return <AdminUsersClient initialUsers={users as unknown as ComponentProps<typeof AdminUsersClient>["initialUsers"]} plans={plans || []} />;
+  return <AdminUsersClient initialUsers={users} plans={plans || []} />;
 }

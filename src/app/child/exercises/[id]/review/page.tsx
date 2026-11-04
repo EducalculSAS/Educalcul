@@ -1,5 +1,5 @@
+import { one } from "@/lib/relations";
 import { redirect } from "next/navigation";
-import type { ComponentProps } from "react";
 import { AlertCircle, ArrowLeft } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -38,7 +38,9 @@ export default async function ExerciseReviewPage({
       .maybeSingle(),
   ]);
 
-  const exercise = error || !exerciseData ? null : stripAnswers(fillEmptyContentJson(exerciseData));
+  const prepared = error || !exerciseData ? null : stripAnswers(fillEmptyContentJson(exerciseData));
+  // Relations « vers un » : objet à l'exécution, annoncées en tableau par le typage de la requête.
+  const exercise = prepared && { ...prepared, courses: one(prepared.courses), exercise_folders: one(prepared.exercise_folders) };
   const progress = attemptRow?.progress_json || null;
 
   if (!exercise || !progress) {
@@ -55,5 +57,5 @@ export default async function ExerciseReviewPage({
     );
   }
 
-  return <ExerciseReviewClient exercise={exercise as unknown as ComponentProps<typeof ExerciseReviewClient>["exercise"]} progress={progress as unknown as ComponentProps<typeof ExerciseReviewClient>["progress"]} />;
+  return <ExerciseReviewClient exercise={exercise} progress={progress} />;
 }

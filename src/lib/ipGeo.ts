@@ -33,7 +33,7 @@ function isPrivateIp(ip: string): boolean {
   return /^(10\.|172\.(1[6-9]|2[0-9]|3[01])\.|192\.168\.|127\.|::1)/.test(ip);
 }
 
-export function getClientIp(request: Request): string | null {
+export function getClientIp(request: Pick<Request, "headers">): string | null {
   // Posé par Vercel lui-même : le navigateur ne peut pas le falsifier.
   const vercelIp = request.headers.get("x-vercel-forwarded-for");
   if (vercelIp) return vercelIp.split(",")[0].trim();

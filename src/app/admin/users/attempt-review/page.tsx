@@ -1,3 +1,5 @@
+import { parseOrNull } from "@/lib/validate";
+import { exerciseItemSchema, quizItemSchema } from "@/lib/schemas";
 import { AlertCircle } from "lucide-react";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { fillEmptyContentJson } from "@/lib/exerciseContent";
@@ -62,16 +64,17 @@ export default async function AttemptReviewPage({
     );
   }
 
-  const content = kind === "exercise" ? fillEmptyContentJson(item) : item;
-
+  const shared = {
+    userId: String(userId),
+    childName: child ? `${child.first_name} ${child.last_name}` : "Élève",
+    itemId: String(itemId),
+    attempt,
+  };
+  const exerciseItem = kind === "exercise" ? parseOrNull(exerciseItemSchema, fillEmptyContentJson(item), "exercice (revue)") : null;
+  const quizItem = kind === "quiz" ? parseOrNull(quizItemSchema, item, "quiz (revue)") : null;
+  if (exerciseItem) return <AdminAttemptReviewClient {...shared} kind="exercise" item={exerciseItem} />;
+  if (quizItem) return <AdminAttemptReviewClient {...shared} kind="quiz" item={quizItem} />;
   return (
-    <AdminAttemptReviewClient
-      userId={String(userId)}
-      childName={child ? `${child.first_name} ${child.last_name}` : "Élève"}
-      kind={kind}
-      itemId={String(itemId)}
-      item={content}
-      attempt={attempt}
-    />
+    <div className="p-6 text-center text-gray-600">Contenu illisible : impossible d&apos;afficher cette copie.</div>
   );
 }

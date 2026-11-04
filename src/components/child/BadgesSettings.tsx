@@ -1,16 +1,16 @@
 "use client";
 
 import PageHero from "@/components/PageHero";
-import { useState, useEffect } from "react";
+import { useState, useEffect, type ComponentType, type CSSProperties } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { Trophy, Lock, CheckCircle, Star, Zap, BookOpen, Crown, Target, Brain, Sparkles, Pencil, Map, Loader2, type LucideIcon } from "lucide-react";
+import { Trophy, Lock, CheckCircle, Star, Zap, BookOpen, Crown, Target, Brain, Sparkles, Pencil, Map, Loader2 } from "lucide-react";
 import StreakFlame from "@/components/StreakFlame";
 import { BORDER_STYLES, NAME_COLORS, getNameColor } from "@/lib/badgeStyles";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import GlassButton from "@/components/ui/GlassButton";
 
-const ICON_MAP: Record<string, LucideIcon> = {
-  pencil: Pencil, zap: Zap, flame: StreakFlame as unknown as LucideIcon, star: Star, crown: Crown,
+const ICON_MAP: Record<string, ComponentType<{ className?: string; style?: CSSProperties }>> = {
+  pencil: Pencil, zap: Zap, flame: StreakFlame, star: Star, crown: Crown,
   check: CheckCircle, target: Target, brain: Brain, trophy: Trophy,
   sparkles: Sparkles, graduation: Star, book: BookOpen, map: Map, library: BookOpen,
 };

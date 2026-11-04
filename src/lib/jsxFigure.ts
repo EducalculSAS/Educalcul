@@ -1,4 +1,4 @@
-import type { JxgBoard, JxgElement, JxgModule } from "@/lib/jsxgraphTypes";
+import { isJxgModule, type JxgBoard, type JxgElement, type JxgModule } from "@/lib/jsxgraphTypes";
 import { expandMacros } from "@/lib/jsxMacros";
 
 /**
@@ -142,7 +142,10 @@ export async function buildJsxBoard(
   spec: JsxFigureSpec,
   options: { editable?: boolean } = {},
 ): Promise<JsxBoardHandle> {
-  const [{ default: JXG }, math] = await Promise.all([import("jsxgraph") as unknown as Promise<{ default: JxgModule }>, import("mathjs")]);
+  const [jsxgraph, math] = await Promise.all([import("jsxgraph"), import("mathjs")]);
+  const loaded: unknown = jsxgraph.default;
+  if (!isJxgModule(loaded)) throw new Error("Module JSXGraph illisible");
+  const JXG: JxgModule = loaded;
   let boundingBox: [number, number, number, number] = [...spec.boundingBox];
   const [xmin, ymax, xmax, ymin] = boundingBox;
 

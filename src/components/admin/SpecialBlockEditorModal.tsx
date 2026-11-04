@@ -25,7 +25,7 @@ const TEMPLATES: Record<string, { label: string; group: string; data: Record<str
   pie_chart: { label: "Camembert", group: "Données", data: { caption: "Répartition", slices: [{ label: "A", value: 4, tone: "blue" }, { label: "B", value: 6, tone: "red" }] } },
   box_plot: { label: "Boîte à moustaches", group: "Données", data: { caption: "Boîte", min: 2, q1: 5, median: 7, q3: 9, max: 12 } },
   number_line: { label: "Droite graduée", group: "Géométrie/Nombres", data: { caption: "Droite", min: -5, max: 5, points: [{ value: 2, label: "A" }], intervals: [] } },
-  jsx_figure: { label: "Figure libre (toute figure de maths)", group: "Figure libre", data: { ...JSX_PRESETS[0].spec } as unknown as Record<string, unknown> },
+  jsx_figure: { label: "Figure libre (toute figure de maths)", group: "Figure libre", data: { ...JSX_PRESETS[0].spec } },
   shape: { label: "Formes libres (quadrillage)", group: "Géométrie/Nombres", data: { caption: "Un carré et un cercle", width: 14, height: 8, preset: "none", a: 3, b: 4, parts: [
     { kind: "square", text: "", x: 1, y: 1, w: 5, h: 5, r: 3, start_angle: 0, end_angle: 90, points: [], tone: "blue", filled: true, dashed: false, arrow: "none", vertex_labels: ["A", "B", "C", "D"], side_labels: [], right_angle_at: null, show_dimensions: true },
     { kind: "circle", text: "", x: 10, y: 4, w: 6, h: 4, r: 3, start_angle: 0, end_angle: 90, points: [], tone: "red", filled: false, dashed: false, arrow: "none", vertex_labels: ["O"], side_labels: [], right_angle_at: null, show_dimensions: true },

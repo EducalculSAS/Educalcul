@@ -267,13 +267,15 @@ const MACROS: Record<string, (e: JsxElement) => El[]> = {
   },
 };
 
+const isJsxElement = (v: unknown): v is JsxElement => typeof v === "object" && v !== null && "kind" in v && typeof v.kind === "string";
+
 /** Remplace chaque macro par ses éléments de base ; les autres éléments passent tels quels. */
 export function expandMacros(elements: JsxElement[]): JsxElement[] {
   const out: JsxElement[] = [];
   for (const e of elements) {
     const make = MACROS[e.kind as string];
     if (!make) out.push(e);
-    else for (const child of make(e)) out.push(child as unknown as JsxElement);
+    else for (const child of make(e)) if (isJsxElement(child)) out.push(child);
     if (out.length > 1500) break;
   }
   return out;

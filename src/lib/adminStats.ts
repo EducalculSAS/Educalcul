@@ -1,3 +1,4 @@
+import { one } from "@/lib/relations";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export async function fetchAdminStats() {
@@ -49,7 +50,7 @@ export async function fetchAdminStats() {
     recent: {
       users: recentUsers ?? [],
       courses: recentCourses ?? [],
-      forum_posts: recentPosts ?? [],
+      forum_posts: (recentPosts ?? []).map((p) => ({ ...p, author: one(p.author) ?? null })),
     },
   };
 }

@@ -364,7 +364,7 @@ export function compileHandAuthoredExercise(raw: RawFile): CompileResult<Page[]>
   }));
 
   // Le format produit est celui lu par les éditeurs et les lecteurs ; ses types littéraux (`type`) sont élargis en string ci-dessus.
-  return { content: content as unknown as Page[], warnings };
+  return { content: keepReadable(pageSchema, content, "page", warnings), warnings };
 }
 
 /* ------------------------------------------------------------------ */
@@ -440,5 +440,5 @@ export function compileHandAuthoredQuiz(raw: RawFile): CompileResult<Question[]>
   });
 
   // Le format produit est celui lu par les éditeurs et les lecteurs ; ses types littéraux (`type`) sont élargis en string ci-dessus.
-  return { content: content as unknown as Question[], warnings };
+  return { content: keepReadable(questionSchema, content, "question", warnings), warnings };
 }

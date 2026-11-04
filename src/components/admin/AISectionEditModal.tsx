@@ -40,7 +40,7 @@ export default function AISectionEditModal<T extends AiSection>({
   onClose: () => void;
 }) {
   // La forme dépend du type de section (chapitre, leçon, page, bloc, question) : on la lit comme un objet libre, le type T n'est restitué qu'à la sortie.
-  const section = typedSection as unknown as Record<string, unknown> & { id: string };
+  const section: Record<string, unknown> & AiSection = { ...typedSection };
   const [instruction, setInstruction] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");

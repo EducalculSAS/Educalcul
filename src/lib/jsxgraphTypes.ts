@@ -47,3 +47,10 @@ export interface MathJs {
   compile(expression: string): { evaluate(scope?: Record<string, unknown>): unknown };
   [key: string]: unknown;
 }
+
+/** Le module JSXGraph importé dynamiquement expose bien `JSXGraph.initBoard` / `freeBoard` ; sinon on le sait tout de suite. */
+export function isJxgModule(v: unknown): v is JxgModule {
+  if (typeof v !== "object" || v === null || !("JSXGraph" in v)) return false;
+  const g = v.JSXGraph;
+  return typeof g === "object" && g !== null && "initBoard" in g && typeof g.initBoard === "function" && "freeBoard" in g && typeof g.freeBoard === "function";
+}

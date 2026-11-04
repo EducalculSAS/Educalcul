@@ -1,10 +1,11 @@
 import katex from "katex";
+import type { BlockType, FigureSpec } from "@/components/admin/ExerciseBuilder";
 import { evaluateExpression, formatFrac, fracEquals, parseNumericAnswer, type Frac } from "@/lib/exprEval";
 import { arithmeticExplanation, arithmeticResult, arithmeticStatement, makeArithmeticVariants, parseArithmeticItem } from "@/lib/primaryExercises";
 
 export interface AuthoringBlock {
   id: string;
-  type: string;
+  type: BlockType;
   title: string;
   content?: string;
   points?: number;
@@ -16,15 +17,13 @@ export interface AuthoringBlock {
   items?: string[];
   categories?: string[];
   categoryItems?: { text: string; category: string }[];
-  figureSpec?: unknown;
-  [key: string]: unknown;
+  figureSpec?: FigureSpec;
 }
 
 export interface AuthoringPage {
   id: string;
   title: string;
   blocks: AuthoringBlock[];
-  [key: string]: unknown;
 }
 
 type Rng = () => number;
@@ -326,12 +325,12 @@ export function parseQuickEntry(text: string, options: { startIndex?: number; ta
 
 const randInt = (rng: Rng, min: number, max: number) => min + Math.floor(rng() * (max - min + 1));
 
-function cloneBlock(block: AuthoringBlock): AuthoringBlock {
+function cloneBlock<B extends AuthoringBlock>(block: B): B {
   return { ...JSON.parse(JSON.stringify(block)), id: newId() };
 }
 
 /** Duplique un bloc (nouvel identifiant). */
-export function duplicateBlock(block: AuthoringBlock): AuthoringBlock {
+export function duplicateBlock<B extends AuthoringBlock>(block: B): B {
   return cloneBlock(block);
 }
 
@@ -340,8 +339,8 @@ export function duplicatePage<P extends AuthoringPage>(page: P): P {
   return { ...JSON.parse(JSON.stringify(page)), id: newId(), title: `${page.title} (copie)`, blocks: page.blocks.map(cloneBlock) };
 }
 
-export interface VariantResult {
-  blocks: AuthoringBlock[];
+export interface VariantResult<B extends AuthoringBlock = AuthoringBlock> {
+  blocks: B[];
   reason?: string;
 }
 
@@ -351,8 +350,8 @@ const NUMBER_TOKEN = /\d+(?:\{,\}\d+|\.\d+)?/g;
  * Nouveaux calculs de même forme, avec d'autres nombres, réponse recalculée exactement. Uniquement pour une
  * réponse libre dont l'énoncé est UN calcul (entiers, décimaux, relatifs, fractions, parenthèses, + − × ÷).
  */
-export function makeVariants(block: AuthoringBlock, count: number, rng: Rng = Math.random): VariantResult {
-  const none = (reason: string): VariantResult => ({ blocks: [], reason });
+export function makeVariants<B extends AuthoringBlock>(block: B, count: number, rng: Rng = Math.random): VariantResult<B> {
+  const none = (reason: string): VariantResult<B> => ({ blocks: [], reason });
   if (block.type !== "text_input") return none("Les variantes automatiques existent pour les calculs en « Réponse libre ».");
   const plain = htmlToPlain(block.content);
 
@@ -384,7 +383,7 @@ export function makeVariants(block: AuthoringBlock, count: number, rng: Rng = Ma
   const originalExact = formatFrac(evaluateExpression(right));
   const wantFraction = originalExact.includes("/");
   const seen = new Set([right.replace(/\s+/g, "")]);
-  const blocks: AuthoringBlock[] = [];
+  const blocks: B[] = [];
 
   for (let k = 0; k < count; k++) {
     for (let attempt = 0; attempt < 60; attempt++) {
@@ -571,7 +570,6 @@ export interface AuthoringQuestion {
   options?: string[];
   correctAnswer?: string | string[];
   explanation?: string;
-  [key: string]: unknown;
 }
 
 /** Bloc de saisie rapide → question de quiz (un trou de texte à trous devient « … » et la réponse la liste des trous). */

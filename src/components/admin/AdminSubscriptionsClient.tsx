@@ -17,7 +17,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
-import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
+import PlanChooser, { toChooserPlans } from "@/components/PlanChooser";
 import { type PricingConfig } from "@/lib/pricingConfig";
 import { ONE_TIME, defaultPeriodLabel, isValidPeriodId, monthsOfPeriod, periodIdForMonths, periodSuffix, MAX_PERIOD_MONTHS, type BillingPeriod } from "@/lib/billingPeriods";
 
@@ -670,7 +670,7 @@ export default function AdminSubscriptionsClient({
             </div>
             <div className="bg-[var(--greek-cream)] rounded-2xl border border-[rgba(197,161,72,0.25)] p-6">
               <PlanChooser
-                plans={sortPlans(plans) as unknown as ChooserPlan[]}
+                plans={toChooserPlans(sortPlans(plans))}
                 onChoosePlan={() => {}}
                 onChooseCustom={() => {}}
                 planCta={() => "Choisir"}

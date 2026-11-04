@@ -6,8 +6,13 @@ import { BookOpen } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import CoursesCatalog from "@/components/child/CoursesCatalog";
-import { resolveLevelScope, type CatalogFolder } from "@/lib/childCatalog";
+import { resolveLevelScope } from "@/lib/childCatalog";
 import { loadPublishedCatalog, loadPublishedFolders } from "@/lib/childCatalogLoaders";
+import { rowGuard } from "@/lib/validate";
+
+type Props = ComponentProps<typeof CoursesCatalog>;
+const isFolder = rowGuard<Props["allFolders"][number]>({ id: "number", name: "string" });
+const isCourse = rowGuard<Props["allCourses"][number]>({ id: "id", title: "string" });
 import { visibleLevels } from "@/lib/specialties";
 
 export default async function ChildCoursesPage() {
@@ -18,9 +23,10 @@ export default async function ChildCoursesPage() {
   // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
   const [{ data: userData }, allFolders, progressRows] = await Promise.all([
     supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", authUser.id).maybeSingle(),
-    loadPublishedFolders<CatalogFolder & Record<string, unknown>>(
+    loadPublishedFolders(
       "course_folders",
       "id, parent_id, name, color, icon, grade_level, display_order",
+      isFolder,
       { byDisplayOrder: true },
     ),
     selectAllPages<{ course_id: string; status: string | null; progress_json: { lessonsCompleted?: string[] } | null }>((from, to) =>
@@ -39,10 +45,11 @@ export default async function ChildCoursesPage() {
   // content_json COMPLET de chaque cours publié (~23 Mo pour 756 cours)
   // transitait à chaque visite uniquement pour compter les leçons. Et seul le
   // sous-arbre du niveau de l'élève est chargé, paginé (voir childCatalog.ts).
-  const allCourses = await loadPublishedCatalog<Record<string, unknown> & { id: string; lesson_count?: number | null }>(
+  const allCourses = await loadPublishedCatalog(
     "courses",
     "id, folder_id, title, description, thumbnail_url, subject, chapter_order, is_theme_summary, lesson_count",
     { folderIds: scope.folderIds },
+    isCourse,
   );
 
   // Progression indexée une fois (Map) au lieu d'un .find() par cours.
@@ -64,8 +71,8 @@ export default async function ChildCoursesPage() {
       <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={BookOpen} title="Mes cours" badge="Leçons" subtitle="Explore et deviens expert en mathématiques !" />
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <CoursesCatalog
-          allFolders={allFolders as unknown as ComponentProps<typeof CoursesCatalog>["allFolders"]}
-          allCourses={coursesForClient as unknown as ComponentProps<typeof CoursesCatalog>["allCourses"]}
+          allFolders={allFolders}
+          allCourses={coursesForClient}
           levelFolderId={scope.levelFolderId}
           rootFolderIds={scope.rootFolderIds}
           courseProgress={courseProgress}

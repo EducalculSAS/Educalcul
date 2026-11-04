@@ -45,9 +45,10 @@ export async function loadFoldersWithCounts(type: FolderType) {
         .select(FOLDER_LIST_COLUMNS)
         .order("display_order", { ascending: true })
         .order("name", { ascending: true })
-        .range(from, from + pageSize - 1);
+        .range(from, from + pageSize - 1)
+        .returns<Omit<ContentFolder, "item_count">[]>();
       if (error) throw error;
-      rows.push(...((data ?? []) as unknown as Omit<ContentFolder, "item_count">[]));
+      rows.push(...(data ?? []));
       if (!data || data.length < pageSize) break;
     }
     return rows;

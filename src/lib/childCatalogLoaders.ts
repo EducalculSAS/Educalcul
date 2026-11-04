@@ -3,6 +3,7 @@ import { unstable_cache } from "next/cache";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { selectAllPages } from "@/lib/selectAllPages";
 import { CATALOG_TAG } from "@/lib/catalogCache";
+import { keepRows } from "@/lib/validate";
 
 // Chargement (et cache serveur partagé) des catalogues élèves. Séparé de childCatalog.ts, dont les fonctions pures sont
 // aussi utilisées par des composants client.
@@ -27,7 +28,7 @@ async function readCatalog<T>(
     let q = supabaseAdmin.from(table).select(columns).eq("status", "published").order("id").range(from, to);
     if (courseId) q = q.eq("course_id", courseId);
     else if (folderIds) q = q.in("folder_id", folderIds);
-    return q as unknown as PromiseLike<{ data: T[] | null; error: unknown }>;
+    return q.returns<T[]>();
   });
 }
 
@@ -45,12 +46,14 @@ const cachedCatalogReaders = {
   quizzes: unstable_cache((c: string, cid: string | null, f: number[] | null) => readCatalog<unknown>("quizzes", c, cid, f), ["catalog-quizzes"], { revalidate: 60, tags: [CATALOG_TAG] }),
 };
 
+/** `isRow` contrôle chaque ligne lue (forme minimale exigée par l'affichage) ; une ligne illisible est écartée et journalisée. */
 export async function loadPublishedCatalog<T>(
   table: CatalogTable,
   columns: string,
   scope: { courseId?: string | null; folderIds?: number[] | null },
+  isRow: (row: unknown) => row is T,
 ): Promise<T[]> {
-  return (await cachedCatalogReaders[table](columns, scope.courseId ?? null, scope.folderIds ?? null)) as T[];
+  return keepRows(await cachedCatalogReaders[table](columns, scope.courseId ?? null, scope.folderIds ?? null), isRow, `catalogue ${table}`);
 }
 
 /** Tous les dossiers publiés d'un type, paginés. */
@@ -62,7 +65,7 @@ async function readFolders<F>(
   return selectAllPages<F>((from, to) => {
     let q = supabaseAdmin.from(table).select(columns).eq("status", "published");
     if (byDisplayOrder) q = q.order("display_order");
-    return q.order("name").range(from, to) as unknown as PromiseLike<{ data: F[] | null; error: unknown }>;
+    return q.order("name").range(from, to).returns<F[]>();
   });
 }
 
@@ -76,7 +79,8 @@ const cachedFolderReaders = {
 export async function loadPublishedFolders<F>(
   table: "course_folders" | "exercise_folders" | "quiz_folders",
   columns: string,
+  isRow: (row: unknown) => row is F,
   opts: { byDisplayOrder?: boolean } = {},
 ): Promise<F[]> {
-  return (await cachedFolderReaders[table](columns, !!opts.byDisplayOrder)) as F[];
+  return keepRows(await cachedFolderReaders[table](columns, !!opts.byDisplayOrder), isRow, `dossiers ${table}`);
 }

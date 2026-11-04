@@ -34,7 +34,7 @@ export async function getLiveSubscription<T extends Record<string, unknown> = { 
     .select(`${cols}, status, current_period_end, stripe_subscription_id`)
     .eq("user_id", authId)
     .eq("status", "active")
-    .maybeSingle();
-  const row = data as unknown as (T & LiveSubFields) | null;
+    .maybeSingle<T & LiveSubFields>();
+  const row = data;
   return isSubscriptionLive(row) ? row : null;
 }

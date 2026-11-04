@@ -1,3 +1,4 @@
+import { one } from "@/lib/relations";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import type { ComponentProps } from "react";
 import AdminExercisesClient from "@/components/admin/AdminExercisesClient";
@@ -34,7 +35,7 @@ export default async function AdminExercisesPage() {
   return (
     <AdminExercisesClient
       initialFolderId={folderId}
-      initialItems={items.map((e) => ({ ...e, content_json: null })) as unknown as ComponentProps<typeof AdminExercisesClient>["initialItems"]}
+      initialItems={items.map((e) => ({ ...e, content_json: null, courses: one(e.courses), exercise_folders: one(e.exercise_folders) }))}
       initialAllFolders={allFolders}
       initialCourses={courses as ComponentProps<typeof AdminExercisesClient>["initialCourses"]}
     />

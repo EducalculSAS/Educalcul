@@ -53,7 +53,7 @@ export interface Exercise {
   level: string | null;
   grading_type: "auto" | "ai" | "manual" | null;
   status: "published" | "draft" | "archived";
-  thumbnail_url: string | null;
+  thumbnail_url?: string | null;
   time_limit: number | null;
   time_limit_minutes: number | null;
   estimated_time: number | null;
@@ -72,16 +72,7 @@ export interface Course {
   level?: string | null;
 }
 
-export interface ExerciseFolder {
-  id: number;
-  name: string;
-  color: string;
-  parent_id: number | null;
-  status: "published" | "draft" | "archived";
-  grade_level: string | null;
-  icon?: string | null;
-  is_system?: boolean;
-}
+export type ExerciseFolder = ContentFolder;
 
 export interface ExerciseFormData {
   title: string;
@@ -158,12 +149,12 @@ export default function AdminExercisesClient({
     () =>
       allFolders.filter(
         (f) => (currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId),
-      ).sort(compareFolderOrder) as unknown as ExerciseFolder[],
+      ).sort(compareFolderOrder),
     [allFolders, currentFolderId],
   );
   const breadcrumbs = useMemo(
     () =>
-      (currentFolderId === null ? [] : buildBreadcrumbs(allFolders, currentFolderId)) as unknown as ExerciseFolder[],
+      (currentFolderId === null ? [] : buildBreadcrumbs(allFolders, currentFolderId)),
     [allFolders, currentFolderId],
   );
   const subfolderCounts = useMemo(() => {

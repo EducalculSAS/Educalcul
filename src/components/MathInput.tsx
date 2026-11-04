@@ -488,7 +488,7 @@ const MathInput = forwardRef<MathInputHandle, MathInputProps>(function MathInput
       return;
     }
     if (key.cmd) {
-      mf.executeCommand(key.cmd as unknown as MathCommand);
+      mf.executeCommand([key.cmd] as MathCommand);
       mf.focus();
     }
   };

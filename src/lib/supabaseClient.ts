@@ -6,13 +6,17 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 // La clé de service (SUPABASE_SERVICE_ROLE, jamais NEXT_PUBLIC_) n'est lue que côté serveur, dans getSupabaseAdmin() plus bas.
 
 /** Registre global (survit au rechargement à chaud) : un seul client par contexte JS. */
-const globalStore = globalThis as unknown as Record<string, SupabaseClient | boolean | undefined>;
+declare global {
+  var __sb_public__: SupabaseClient | undefined;
+  var __sb_admin__: SupabaseClient | undefined;
+  var __api_fetch_patched__: boolean | undefined;
+}
+const globalStore = globalThis;
 
 // ─── Public client (anon key) — browser + server ──────────────────────────
 // One instance per JS context via globalThis to survive HMR re-evaluation.
-const PUBLIC_KEY = "__sb_public__";
 function getPublicClient(): SupabaseClient {
-  if (!globalStore[PUBLIC_KEY]) {
+  if (!globalStore.__sb_public__) {
     // createBrowserClient (session en cookies, lisible par le serveur via
     // createSupabaseServerClient) UNIQUEMENT dans le navigateur : ce module
     // est importé par les ~100 routes /api/* pour supabaseAdmin, et son
@@ -21,12 +25,12 @@ function getPublicClient(): SupabaseClient {
     // l'appeler côté serveur casserait toutes ces routes. Ce client "public"
     // n'est de toute façon jamais réellement utilisé côté serveur (seul
     // supabaseAdmin l'est) : createClient() y sert juste à ne rien casser.
-    globalStore[PUBLIC_KEY] =
+    globalStore.__sb_public__ =
       typeof window === "undefined"
         ? createClient(supabaseUrl, supabaseAnonKey)
         : createBrowserClient(supabaseUrl, supabaseAnonKey);
   }
-  return globalStore[PUBLIC_KEY] as SupabaseClient;
+  return globalStore.__sb_public__ as SupabaseClient;
 }
 
 export const supabase: SupabaseClient = getPublicClient();
@@ -34,9 +38,8 @@ export const supabase: SupabaseClient = getPublicClient();
 // ─── Attach the Supabase JWT to same-origin /api/ calls (browser only) ─────
 // Server routes and the middleware authenticate requests via this header, so
 // every page gets auth transparently without touching individual fetch calls.
-const FETCH_PATCH_KEY = "__api_fetch_patched__";
-if (typeof window !== "undefined" && !globalStore[FETCH_PATCH_KEY]) {
-  globalStore[FETCH_PATCH_KEY] = true;
+if (typeof window !== "undefined" && !globalStore.__api_fetch_patched__) {
+  globalStore.__api_fetch_patched__ = true;
   const originalFetch = window.fetch.bind(window);
 
   const targetUrl = (input: RequestInfo | URL): string => {
@@ -185,13 +188,12 @@ if (typeof window !== "undefined" && !globalStore[FETCH_PATCH_KEY]) {
 
 // ─── Admin client (service role) — SERVER ONLY ────────────────────────────
 // Never instantiate in browser: would create a second GoTrueClient.
-const ADMIN_KEY = "__sb_admin__";
 function getAdminClient(): SupabaseClient {
   // Guard: in browser, return the public client to avoid duplicate GoTrueClient.
   // API routes / server components never have `window`.
   if (typeof window !== "undefined") return supabase;
 
-  if (!globalStore[ADMIN_KEY]) {
+  if (!globalStore.__sb_admin__) {
     const serviceKey = process.env.SUPABASE_SERVICE_ROLE;
     if (!serviceKey) {
       console.error(
@@ -201,11 +203,11 @@ function getAdminClient(): SupabaseClient {
         "[Supabase] FATAL: Cannot initialize admin client without SUPABASE_SERVICE_ROLE",
       );
     }
-    globalStore[ADMIN_KEY] = createClient(supabaseUrl, serviceKey, {
+    globalStore.__sb_admin__ = createClient(supabaseUrl, serviceKey, {
       auth: { autoRefreshToken: false, persistSession: false },
     });
   }
-  return globalStore[ADMIN_KEY] as SupabaseClient;
+  return globalStore.__sb_admin__ as SupabaseClient;
 }
 
 // Lazy proxy: the admin client is only created on first real use, so a missing

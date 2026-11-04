@@ -50,3 +50,22 @@ export function relationOne<S extends z.ZodType>(schema: S, raw: unknown): z.out
 
 /** Schéma dont on ne contrôle que la forme minimale (objet portant ces clés) : le reste du contenu est libre. */
 export const isRecord = (v: unknown): v is Record<string, unknown> => typeof v === "object" && v !== null && !Array.isArray(v);
+
+/** Garde de ligne : un objet dont les champs listés ont le bon type (`string`, `number`, `string|number`, `object`). Le reste est libre. */
+type FieldKind = "string" | "number" | "id" | "object";
+export function rowGuard<T>(fields: Record<string, FieldKind>): (row: unknown) => row is T {
+  return (row): row is T => {
+    if (!isRecord(row)) return false;
+    return Object.entries(fields).every(([key, kind]) => {
+      const v = row[key];
+      return kind === "id" ? typeof v === "string" || typeof v === "number" : kind === "object" ? isRecord(v) : typeof v === kind;
+    });
+  };
+}
+
+/** Garde les lignes qui passent le contrôle, journalise le nombre d'écartées. */
+export function keepRows<T>(rows: unknown[], isRow: (row: unknown) => row is T, label: string): T[] {
+  const kept = rows.filter(isRow);
+  if (kept.length !== rows.length) report(label, undefined, ` (${rows.length - kept.length} ligne(s) sur ${rows.length})`);
+  return kept;
+}

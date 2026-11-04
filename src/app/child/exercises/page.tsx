@@ -6,8 +6,13 @@ import { Brain } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ExercisesCatalog from "@/components/child/ExercisesCatalog";
-import { resolveLevelScope, type CatalogFolder } from "@/lib/childCatalog";
+import { resolveLevelScope } from "@/lib/childCatalog";
 import { loadPublishedCatalog, loadPublishedFolders } from "@/lib/childCatalogLoaders";
+import { rowGuard } from "@/lib/validate";
+
+type Props = ComponentProps<typeof ExercisesCatalog>;
+const isFolder = rowGuard<Props["allFolders"][number]>({ id: "number", name: "string" });
+const isExercise = rowGuard<Props["allExercises"][number]>({ id: "id", title: "string" });
 import { visibleLevels } from "@/lib/specialties";
 
 export default async function ChildExercisesPage({
@@ -24,9 +29,10 @@ export default async function ChildExercisesPage({
   // Niveau, dossiers et progression sont indépendants : ils partent ensemble.
   const [{ data: userData }, allFolders, attempts] = await Promise.all([
     supabaseAdmin.from("users").select("grade_level, extra_levels").eq("id", authUser.id).maybeSingle(),
-    loadPublishedFolders<CatalogFolder & { grade_level?: string; color?: string; icon?: string }>(
+    loadPublishedFolders(
       "exercise_folders",
       "id, parent_id, name, color, icon, grade_level, display_order",
+      isFolder,
       { byDisplayOrder: true },
     ),
     // Paginé : une ligne par exercice tenté, un élève assidu dépasse les 1000.
@@ -51,6 +57,7 @@ export default async function ChildExercisesPage({
       courseId: filterCourseId ?? null,
       folderIds: scope.folderIds,
     },
+    isExercise,
   );
 
   const initialProgress: Record<string, { status: string; score: number; attempts: number }> = {};
@@ -69,7 +76,7 @@ export default async function ChildExercisesPage({
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         <ExercisesCatalog
           allFolders={allFolders || []}
-          allExercises={(allExercises || []) as unknown as ComponentProps<typeof ExercisesCatalog>["allExercises"]}
+          allExercises={(allExercises || [])}
           levelFolderId={scope.levelFolderId}
           rootFolderIds={scope.rootFolderIds}
           initialProgress={initialProgress}

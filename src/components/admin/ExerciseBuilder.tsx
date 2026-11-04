@@ -11,7 +11,7 @@ import AIAddExerciseModal from "./AIAddExerciseModal";
 import GlassButton from "@/components/ui/GlassButton";
 import { useKatexIn } from "@/lib/useKatexIn";
 import { QuickEntryModal, CheckPanel } from "./ExerciseAuthoringTools";
-import { duplicateBlock, duplicatePage, makeVariants, newId, type AuthoringBlock, type AuthoringPage } from "@/lib/contentAuthoring";
+import { duplicateBlock, duplicatePage, makeVariants, newId, type AuthoringBlock } from "@/lib/contentAuthoring";
 
 import BuilderPageList from "@/components/admin/builder/BuilderPageList";
 const BLOCK_CLIPBOARD_KEY = "educalcul:block-clipboard";
@@ -226,7 +226,7 @@ export default function ExerciseBuilder({
     const added: Page[] = [];
     let next = pages;
     groups.forEach((group, i) => {
-      const blocks = group.blocks as unknown as Block[];
+      const blocks = group.blocks;
       if (targetPageId && i === 0 && !group.title) {
         next = next.map((p) => (p.id === targetPageId ? { ...p, blocks: renumberDefaultTitles([...p.blocks, ...blocks]) } : p));
       } else {
@@ -248,7 +248,7 @@ export default function ExerciseBuilder({
       if (p.id !== pageId) return p;
       const at = p.blocks.findIndex((b) => b.id === blockId);
       if (at < 0) return p;
-      const copy = duplicateBlock(p.blocks[at] as unknown as AuthoringBlock) as unknown as Block;
+      const copy = duplicateBlock(p.blocks[at]);
       return { ...p, blocks: renumberDefaultTitles([...p.blocks.slice(0, at + 1), copy, ...p.blocks.slice(at + 1)]) };
     }));
   };
@@ -256,7 +256,7 @@ export default function ExerciseBuilder({
   const duplicatePageAt = (pageId: string) => {
     const at = pages.findIndex((p) => p.id === pageId);
     if (at < 0) return;
-    const copy = duplicatePage(pages[at] as unknown as AuthoringPage) as unknown as Page;
+    const copy = duplicatePage(pages[at]);
     setPages([...pages.slice(0, at + 1), copy, ...pages.slice(at + 1)]);
     setExpandedPages((prev) => new Set(prev).add(copy.id));
   };
@@ -272,7 +272,7 @@ export default function ExerciseBuilder({
 
   const pasteBlock = (pageId: string) => {
     if (!clipboardBlock) return;
-    const copy = duplicateBlock(clipboardBlock as unknown as AuthoringBlock) as unknown as Block;
+    const copy = duplicateBlock(clipboardBlock);
     setPages(pages.map((p) => (p.id === pageId ? { ...p, blocks: renumberDefaultTitles([...p.blocks, copy]) } : p)));
     setExpandedPages((prev) => new Set(prev).add(pageId));
   };
@@ -281,13 +281,13 @@ export default function ExerciseBuilder({
     const page = pages.find((p) => p.id === pageId);
     const block = page?.blocks.find((b) => b.id === blockId);
     if (!page || !block) return;
-    const result = makeVariants(block as unknown as AuthoringBlock, 5);
+    const result = makeVariants(block, 5);
     if (result.blocks.length === 0) {
       alert(result.reason || "Aucune variante possible pour ce bloc.");
       return;
     }
     const at = page.blocks.findIndex((b) => b.id === blockId);
-    setPages(pages.map((p) => (p.id === pageId ? { ...p, blocks: renumberDefaultTitles([...p.blocks.slice(0, at + 1), ...(result.blocks as unknown as Block[]), ...p.blocks.slice(at + 1)]) } : p)));
+    setPages(pages.map((p) => (p.id === pageId ? { ...p, blocks: renumberDefaultTitles([...p.blocks.slice(0, at + 1), ...(result.blocks), ...p.blocks.slice(at + 1)]) } : p)));
   };
 
   const jumpToBlock = (pageId: string, blockId: string) => {
@@ -547,14 +547,14 @@ export default function ExerciseBuilder({
 
       {isQuickEntryOpen && (
         <QuickEntryModal
-          pages={pages as unknown as AuthoringPage[]}
+          pages={pages}
           defaultPageId={quickEntryPageId}
           onApply={applyQuickEntry}
           onClose={() => setIsQuickEntryOpen(false)}
         />
       )}
 
-      {isCheckOpen && <CheckPanel pages={pages as unknown as AuthoringPage[]} onJump={jumpToBlock} onClose={() => setIsCheckOpen(false)} />}
+      {isCheckOpen && <CheckPanel pages={pages} onJump={jumpToBlock} onClose={() => setIsCheckOpen(false)} />}
 
       {isAiAddModalOpen && (
         <AIAddExerciseModal

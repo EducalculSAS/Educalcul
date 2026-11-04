@@ -109,7 +109,7 @@ export default async function AdminLayout({
   // les PAGES admin refusent aussi de s'afficher (sinon elles se chargeraient
   // sans données, tous leurs appels /api/admin/* étant rejetés en silence).
   const reqHeaders = await headers();
-  const ip = getClientIp({ headers: reqHeaders } as unknown as Request);
+  const ip = getClientIp({ headers: reqHeaders });
   if (!(await isAdminIpAllowed(ip))) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[var(--greek-cream)] px-4">

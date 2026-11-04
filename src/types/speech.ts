@@ -18,9 +18,16 @@ export interface SpeechRecognitionLike {
 }
 type SpeechRecognitionCtor = new () => SpeechRecognitionLike;
 
+declare global {
+  interface Window {
+    SpeechRecognition?: SpeechRecognitionCtor;
+    /** Préfixe WebKit (Chrome, Safari) : seul disponible sur la plupart des navigateurs. */
+    webkitSpeechRecognition?: SpeechRecognitionCtor;
+  }
+}
+
 /** Constructeur de reconnaissance vocale du navigateur, ou null s'il n'existe pas. */
 export function getSpeechRecognitionCtor(): SpeechRecognitionCtor | null {
   if (typeof window === "undefined") return null;
-  const w = window as unknown as { SpeechRecognition?: SpeechRecognitionCtor; webkitSpeechRecognition?: SpeechRecognitionCtor };
-  return w.SpeechRecognition || w.webkitSpeechRecognition || null;
+  return window.SpeechRecognition || window.webkitSpeechRecognition || null;
 }

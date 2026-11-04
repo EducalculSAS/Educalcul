@@ -61,16 +61,7 @@ export interface Course {
   created_at: string;
 }
 
-export interface Folder {
-  id: number;
-  name: string;
-  parent_id: number | null;
-  status: "published" | "draft" | "archived";
-  color: string;
-  grade_level: string | null;
-  icon?: string | null;
-  is_system?: boolean;
-}
+export type Folder = ContentFolder;
 
 
 
@@ -107,12 +98,12 @@ export default function AdminCoursesClient({
       allFolders.filter(
         (f) => (currentFolderId === null ? f.parent_id === null : f.parent_id === currentFolderId)
           && (statusFilter === "all" || f.status === statusFilter),
-      ).sort(compareFolderOrder) as unknown as Folder[],
+      ).sort(compareFolderOrder),
     [allFolders, currentFolderId, statusFilter],
   );
   const breadcrumbs = useMemo(
     () =>
-      (currentFolderId === null ? [] : buildBreadcrumbs(allFolders, currentFolderId)) as unknown as Folder[],
+      (currentFolderId === null ? [] : buildBreadcrumbs(allFolders, currentFolderId)),
     [allFolders, currentFolderId],
   );
   const subfolderCounts = useMemo(() => {
@@ -150,9 +141,7 @@ export default function AdminCoursesClient({
   const [uploading, setUploading] = useState(false);
   const [showImportModal, setShowImportModal] = useState(false);
 
-  const handleImportCourse = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  const importCourseFile = async (file: File) => {
     try {
       const data = await importFromJSONFile(file);
       if (data._type && data._type !== "course") {
@@ -195,7 +184,6 @@ export default function AdminCoursesClient({
     } catch (err: unknown) {
       alert(errMessage(err));
     }
-    e.target.value = "";
   };
 
   // Folder Creation State
@@ -897,10 +885,7 @@ export default function AdminCoursesClient({
         <ImportJsonModal
           onClose={() => setShowImportModal(false)}
           onFileLoaded={(file) => {
-            const fakeEvent = {
-              target: { files: [file] },
-            } as unknown as React.ChangeEvent<HTMLInputElement>;
-            handleImportCourse(fakeEvent);
+            void importCourseFile(file);
             setShowImportModal(false);
           }}
           label="cours"

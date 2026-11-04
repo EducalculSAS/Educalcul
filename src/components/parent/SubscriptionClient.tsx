@@ -34,7 +34,7 @@ import GlassDialog from "@/components/ui/GlassDialog";
 import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/components/Toast";
 import { useRouter, useSearchParams } from "next/navigation";
-import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
+import PlanChooser, { toChooserPlans } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
 import { type PricingConfig } from "@/lib/pricingConfig";
 import GlassButton from "@/components/ui/GlassButton";
@@ -577,7 +577,7 @@ function SubscriptionPageContent({
         ) : (
           <div className="mb-16">
             <PlanChooser
-              plans={plans as unknown as ChooserPlan[]}
+              plans={toChooserPlans(plans)}
               onChoosePlan={(plan) => handleSubscribe(Number(plan.id))}
               onChooseCustom={handleSubscribeCustom}
               planCta={(plan) => Number(plan.price) === 0 ? "Choisir" : plan.trial_days > 0 ? "Essai gratuit" : "S'abonner"}

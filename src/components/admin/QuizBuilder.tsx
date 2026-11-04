@@ -13,7 +13,7 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import ContentInsertToolbar from "./ContentInsertToolbar";
 import { useKatexIn } from "@/lib/useKatexIn";
 import { QuickEntryModal, CheckPanel } from "./ExerciseAuthoringTools";
-import { blockToQuestion, duplicateQuestion, questionToBlock, type AuthoringBlock, type AuthoringQuestion } from "@/lib/contentAuthoring";
+import { blockToQuestion, duplicateQuestion, questionToBlock, type AuthoringBlock } from "@/lib/contentAuthoring";
 
 export interface Question {
   id: string;
@@ -67,7 +67,7 @@ export default function QuizBuilder({
   const [isCheckOpen, setIsCheckOpen] = useState(false);
 
   const applyQuickEntry = (groups: { title: string | null; blocks: AuthoringBlock[] }[]) => {
-    const added = groups.flatMap((g) => g.blocks).map((b) => blockToQuestion(b) as unknown as Question);
+    const added = groups.flatMap((g) => g.blocks).map((b) => blockToQuestion(b));
     setQuestions((prev) => [...prev, ...added]);
   };
 
@@ -75,7 +75,7 @@ export default function QuizBuilder({
     setQuestions((prev) => {
       const at = prev.findIndex((q) => q.id === id);
       if (at < 0) return prev;
-      return [...prev.slice(0, at + 1), duplicateQuestion(prev[at] as unknown as AuthoringQuestion) as unknown as Question, ...prev.slice(at + 1)];
+      return [...prev.slice(0, at + 1), duplicateQuestion(prev[at]), ...prev.slice(at + 1)];
     });
   };
 
@@ -252,7 +252,7 @@ export default function QuizBuilder({
 
       {isCheckOpen && (
         <CheckPanel
-          pages={[{ id: "quiz", title: "Quiz", blocks: questions.map((q, i) => questionToBlock(q as unknown as AuthoringQuestion, i)) }]}
+          pages={[{ id: "quiz", title: "Quiz", blocks: questions.map((q, i) => questionToBlock(q, i)) }]}
           onJump={jumpToQuestion}
           onClose={() => setIsCheckOpen(false)}
         />

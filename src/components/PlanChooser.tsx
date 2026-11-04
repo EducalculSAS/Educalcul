@@ -33,6 +33,38 @@ export interface ChooserPlan {
   is_active?: boolean;
 }
 
+/** Plan tel que lu en base : durée d'essai et fonctionnalités peuvent être vides. */
+export interface ChooserPlanInput {
+  id: number | string;
+  name: string;
+  description?: string | null;
+  price: number;
+  billing_interval: string;
+  trial_days?: number | null;
+  promo_description?: string | null;
+  /** Objet, ou texte JSON (anciens enregistrements). */
+  features?: Record<string, unknown> | string | null;
+  is_active?: boolean;
+}
+
+function readFeatures(f: ChooserPlanInput["features"]): Record<string, unknown> {
+  if (typeof f !== "string") return f ?? {};
+  try {
+    const parsed: unknown = JSON.parse(f);
+    return typeof parsed === "object" && parsed !== null && !Array.isArray(parsed) ? Object.fromEntries(Object.entries(parsed)) : {};
+  } catch {
+    return {};
+  }
+}
+
+/** Plans de la base → plans affichables (valeurs vides remplacées par des valeurs sûres). */
+export function toChooserPlans(plans: ChooserPlanInput[]): ChooserPlan[] {
+  return plans.map((p) => ({
+    id: p.id, name: p.name, description: p.description ?? null, price: p.price, billing_interval: p.billing_interval,
+    trial_days: p.trial_days ?? 0, promo_description: p.promo_description ?? null, features: readFeatures(p.features), is_active: p.is_active,
+  }));
+}
+
 /** Mode admin optionnel : glisser les fiches (réordonner / changer de période)
  * + éditer le forfait sur-mesure inline + bouton Sauvegarder. */
 export interface PlanChooserAdmin {

@@ -6,6 +6,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
+import { parseOrNull } from "@/lib/validate";
+import { exerciseProgressSchema, quizProgressSchema } from "@/lib/schemas";
 import ExerciseViewer, { type ExerciseViewerProps } from "@/components/viewers/ExerciseViewer";
 import QuizViewer, { type QuizViewerProps } from "@/components/viewers/QuizViewer";
 
@@ -26,16 +28,13 @@ interface AttemptRow {
  * l'élève (ExerciseViewer/QuizViewer en reviewMode), avec un sélecteur de
  * tentative au-dessus et adminMode branché pour laisser un commentaire /
  * corriger une réponse par question (voir /api/admin/attempts). */
-export default function AdminAttemptReviewClient({
-  userId, childName, kind, itemId, item, attempt,
-}: {
-  userId: string;
-  childName: string;
-  kind: "exercise" | "quiz";
-  itemId: string;
-  item: { title: string };
-  attempt: AttemptRow;
-}) {
+type ReviewProps = { userId: string; childName: string; itemId: string; attempt: AttemptRow } & (
+  | { kind: "exercise"; item: ExerciseViewerProps["exercise"] }
+  | { kind: "quiz"; item: QuizViewerProps["quiz"] }
+);
+
+export default function AdminAttemptReviewClient(props: ReviewProps) {
+  const { userId, childName, kind, itemId, item, attempt } = props;
   const router = useRouter();
   const [attemptData, setAttemptData] = useState(attempt);
   const [selected, setSelected] = useState<"latest" | number>("latest");
@@ -49,9 +48,12 @@ export default function AdminAttemptReviewClient({
 
   const history = attemptData.attempts_history || [];
   const rawProgress = selected === "latest" ? attemptData.progress_json : history[selected]?.detail;
-  const progress = rawProgress
-    ? { ...rawProgress, score: selected === "latest" ? attemptData.score : history[selected]?.score }
+  const progressInput = rawProgress
+    ? { ...rawProgress, score: (selected === "latest" ? attemptData.score : history[selected]?.score) ?? undefined }
     : null;
+  const exerciseProgress = props.kind === "exercise" && progressInput ? parseOrNull(exerciseProgressSchema, progressInput, "progress_json (exercice)") : null;
+  const quizProgress = props.kind === "quiz" && progressInput ? parseOrNull(quizProgressSchema, progressInput, "progress_json (quiz)") : null;
+  const progress = exerciseProgress ?? quizProgress;
 
   const refresh = async () => {
     const headers = await authHeaders();
@@ -139,10 +141,10 @@ export default function AdminAttemptReviewClient({
       <div className="flex-1 overflow-hidden">
         {!progress ? (
           <div className="p-8 text-center text-gray-400">Détail non disponible pour cette tentative.</div>
-        ) : kind === "exercise" ? (
-          <ExerciseViewer key={`${selected}-${version}`} exercise={item as unknown as ExerciseViewerProps["exercise"]} reviewMode initialProgress={progress as unknown as ExerciseViewerProps["initialProgress"]} adminMode={adminMode as unknown as ExerciseViewerProps["adminMode"]} />
+        ) : props.kind === "exercise" ? (
+          <ExerciseViewer key={`${selected}-${version}`} exercise={props.item} reviewMode initialProgress={exerciseProgress} adminMode={adminMode} />
         ) : (
-          <QuizViewer key={`${selected}-${version}`} quiz={item as unknown as QuizViewerProps["quiz"]} reviewMode initialProgress={progress as unknown as QuizViewerProps["initialProgress"]} adminMode={adminMode as unknown as QuizViewerProps["adminMode"]} />
+          <QuizViewer key={`${selected}-${version}`} quiz={props.item} reviewMode initialProgress={quizProgress} adminMode={adminMode} />
         )}
       </div>
     </div>
