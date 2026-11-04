@@ -18,7 +18,7 @@ export default async function ChildBadgesPage() {
   if (!userData) redirect("/dashboard");
 
   const [{ data: allBadges }, { data: ub }, { data: missions }, { data: plans }, counts, unlocked] = await Promise.all([
-    supabaseAdmin.from("badges").select("id, name, icon, color, description, display_order").eq("is_active", true).order("display_order"),
+    supabaseAdmin.from("badges").select("id, name, icon, color, description, display_order, requirement_type, requirement_value").eq("is_active", true).order("display_order"),
     supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", userData.id),
     supabaseAdmin.from("user_cosmetics").select("cosmetic_key").eq("user_id", userData.id),
     supabaseAdmin.from("subscription_plans").select("name, features").eq("is_active", true),

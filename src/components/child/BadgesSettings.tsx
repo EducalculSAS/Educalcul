@@ -1,26 +1,18 @@
 "use client";
 
 import PageHero from "@/components/PageHero";
-import { useState, useEffect, type ComponentType, type CSSProperties } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { Trophy, Lock, CheckCircle, Star, Zap, BookOpen, Crown, Target, Brain, Sparkles, Pencil, Map, Loader2 } from "lucide-react";
-import StreakFlame from "@/components/StreakFlame";
-import { getNameColor } from "@/lib/badgeStyles";
+import { Trophy, Lock, CheckCircle, Star, Loader2 } from "lucide-react";
+import BadgeEmblem, { badgeTiers } from "@/components/BadgeEmblem";
 import CosmeticsShowcase from "@/components/child/CosmeticsShowcase";
 import { normalizeBorder, normalizeColor } from "@/lib/cosmetics/catalog";
 import type { CosmeticCard } from "@/lib/cosmetics/view";
-import AvatarWithBorder from "@/components/AvatarWithBorder";
 import GlassButton from "@/components/ui/GlassButton";
 
-const ICON_MAP: Record<string, ComponentType<{ className?: string; style?: CSSProperties }>> = {
-  pencil: Pencil, zap: Zap, flame: StreakFlame, star: Star, crown: Crown,
-  check: CheckCircle, target: Target, brain: Brain, trophy: Trophy,
-  sparkles: Sparkles, graduation: Star, book: BookOpen, map: Map, library: BookOpen,
-};
-
-interface BadgeRow { id: number; name: string; icon: string; color: string; description: string }
+interface BadgeRow { id: number; name: string; icon: string; color: string; description: string; requirement_type?: string | null; requirement_value?: number | null }
 interface UserInfo {
-  id: number; first_name: string; avatar?: string; equipped_border?: string; name_color?: string;
+  id: number; first_name: string; avatar?: string; equipped_border?: string; name_color?: string; role?: string;
   featured_badges?: number[] | null;
 }
 
@@ -96,7 +88,7 @@ export default function BadgesSettings({
   };
 
   const earned = badges.filter((b) => earnedSet.has(b.id));
-  const nameColor = getNameColor(user.name_color || "default");
+  const tiers = useMemo(() => badgeTiers(badges), [badges]);
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
@@ -106,14 +98,7 @@ export default function BadgesSettings({
         icon={Trophy}
         title="Mes trophées"
         badge={`${earned.length} / ${badges.length} débloqués`}
-        subtitle="Débloque des badges pour personnaliser ton profil."
-        actions={
-          <div className="hidden md:flex flex-col items-center gap-2">
-            <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" />
-            <span className={`text-sm font-bold ${nameColor.cls}`}>{user.first_name}</span>
-            <span className="text-white/50 text-xs">Aperçu dans le forum</span>
-          </div>
-        }
+        subtitle="Tes badges, tes contours et tes titres : débloque-les en progressant."
       />
 
       <div className="max-w-6xl mx-auto px-4 space-y-8">
@@ -126,76 +111,76 @@ export default function BadgesSettings({
           equippedColor={normalizeColor(user.name_color)}
           busy={equipping}
           onEquip={equip}
+          isAdmin={user.role === "admin"}
         />
 
         {/* Badges mis en avant */}
-        <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] text-lg flex items-center gap-2">
+        <section className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
+          <div className="flex flex-wrap items-center justify-between gap-3 mb-1">
+            <div className="flex items-center gap-3">
               <Star className="w-5 h-5 text-[var(--greek-gold)]" />
-              Badges affichés sur mon profil
-            </h2>
+              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Badges affichés sur mon profil</h2>
+            </div>
             <GlassButton onClick={saveFeatured} variant="navy" size="sm" disabled={savingFeatured}>
               {savingFeatured ? <Loader2 className="w-3 h-3 animate-spin" /> : <CheckCircle className="w-3 h-3" />}
               Sauvegarder
             </GlassButton>
           </div>
-          <p className="text-xs text-gray-500 mb-4">Sélectionne jusqu&apos;à 3 badges à afficher sur ton profil dans le forum.</p>
-          <div className="flex gap-4 mb-4">
+          <p className="text-sm text-gray-500 mb-5">Choisis jusqu&apos;à 3 badges obtenus (clique dessus plus bas) : ils s&apos;affichent à côté de ton nom dans le forum.</p>
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
             {[0, 1, 2].map((slot) => {
               const bid = featuredBadges[slot];
               const badge = badges.find((b) => b.id === bid);
-              const Icon = bid && badge ? (ICON_MAP[badge.icon] || Star) : null;
               return (
-                <div key={slot} className={`flex-1 h-20 rounded-2xl border-2 border-dashed flex items-center justify-center transition-all
-                  ${bid ? "border-[var(--greek-blue)] bg-blue-50" : "border-[rgba(197,161,72,0.25)] bg-gray-50"}`}>
-                  {badge && Icon ? (
-                    <div className="flex flex-col items-center gap-1">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{ backgroundColor: badge.color + "20" }}>
-                        <Icon className="w-5 h-5" style={{ color: badge.color }} />
-                      </div>
-                      <span className="text-[10px] font-bold text-gray-600 truncate max-w-[70px]">{badge.name}</span>
+                <div key={slot} className={`h-28 rounded-2xl border-2 border-dashed flex items-center justify-center transition-colors
+                  ${badge ? "border-[var(--greek-blue)] bg-blue-50/60" : "border-[rgba(197,161,72,0.3)] bg-[var(--greek-cream)]/40"}`}>
+                  {badge ? (
+                    <div className="flex flex-col items-center gap-1.5">
+                      <BadgeEmblem badge={{ icon: badge.icon, requirement_type: badge.requirement_type, tier: tiers[badge.id] ?? 0 }} size={56} />
+                      <span className="text-xs font-bold text-gray-700 truncate max-w-[90px]">{badge.name}</span>
                     </div>
                   ) : (
-                    <span className="text-xs text-gray-300 font-semibold">Slot {slot + 1}</span>
+                    <span className="text-sm text-gray-400 font-semibold">Emplacement {slot + 1}</span>
                   )}
                 </div>
               );
             })}
           </div>
-          <p className="text-xs text-gray-400">Clique sur un badge obtenu ci-dessous pour l&apos;ajouter/retirer.</p>
-        </div>
+        </section>
 
-        {/* Badges grid */}
-        <div>
-          <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] text-lg mb-4 flex items-center gap-2">
+        {/* Tous les badges */}
+        <section className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
+          <div className="flex items-center gap-3 mb-1">
             <Trophy className="w-5 h-5 text-[var(--greek-gold)]" />
-            Tous les badges
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            <h2 className="text-xl font-bold text-[var(--greek-blue)]">Tous les badges</h2>
+          </div>
+          <p className="text-sm text-gray-500 mb-5">{earned.length} obtenu{earned.length > 1 ? "s" : ""} sur {badges.length}. Chaque catégorie a sa forme, chaque palier son métal.</p>
+          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
             {badges.map((badge) => {
               const isEarned = earnedSet.has(badge.id);
-              const Icon = ICON_MAP[badge.icon] || Star;
+              const featured = featuredBadges.includes(badge.id);
               return (
-                <div key={badge.id}
-                  onClick={() => isEarned && toggleFeatured(badge.id)}
-                  className={`bg-white rounded-2xl border p-4 flex flex-col items-center text-center transition-all ${isEarned ? "border-[rgba(197,161,72,0.25)] shadow-sm hover:shadow-md cursor-pointer" : "border-[rgba(197,161,72,0.25)] opacity-60"} ${featuredBadges.includes(badge.id) ? "ring-2 ring-[var(--greek-blue)] bg-blue-50" : ""}`}>
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-3 ${isEarned ? "" : "grayscale"}`}
-                    style={{ backgroundColor: isEarned ? badge.color + "20" : "#f3f4f6" }}>
-                    <Icon className="w-7 h-7" style={{ color: isEarned ? badge.color : "#9ca3af" }} />
-                  </div>
-                  <p className="font-bold text-sm text-[var(--greek-blue)] mb-0.5">{badge.name}</p>
-                  <p className="text-xs text-gray-400 mb-2 line-clamp-2">{badge.description}</p>
-                  {isEarned ? (
-                    <span className="text-xs bg-green-100 text-green-700 font-bold px-2 py-0.5 rounded-full">Obtenu</span>
-                  ) : (
-                    <span className="text-xs bg-gray-100 text-gray-500 font-semibold px-2 py-0.5 rounded-full flex items-center gap-1"><Lock className="w-2.5 h-2.5" /> Verrouillé</span>
-                  )}
-                </div>
+                <li key={badge.id}>
+                  <button
+                    type="button"
+                    onClick={() => isEarned && toggleFeatured(badge.id)}
+                    disabled={!isEarned}
+                    aria-pressed={featured}
+                    className={`relative h-full w-full flex flex-col items-center gap-2 rounded-2xl border-2 px-3 py-4 text-center transition-[border-color,box-shadow] duration-200
+                      ${featured ? "border-[var(--greek-blue)] bg-blue-50/70" : "border-[rgba(197,161,72,0.25)] bg-white"} ${isEarned ? "cursor-pointer hover:border-[var(--greek-gold)] hover:shadow-sm" : "cursor-default"}`}
+                  >
+                    <BadgeEmblem badge={{ icon: badge.icon, requirement_type: badge.requirement_type, tier: tiers[badge.id] ?? 0 }} size={72} locked={!isEarned} />
+                    <span className="text-sm font-bold text-gray-800">{badge.name}</span>
+                    <span className="text-xs text-gray-500 line-clamp-2">{badge.description}</span>
+                    <span className={`text-xs font-semibold ${isEarned ? "text-green-700" : "text-gray-400"}`}>{isEarned ? (featured ? "Affiché sur mon profil" : "Obtenu") : "À débloquer"}</span>
+                    {!isEarned && <Lock className="absolute top-2 right-2 w-4 h-4 text-gray-400" />}
+                    {featured && <CheckCircle className="absolute top-2 right-2 w-5 h-5 text-[var(--greek-blue)]" />}
+                  </button>
+                </li>
               );
             })}
-          </div>
-        </div>
+          </ul>
+        </section>
       </div>
     </div>
   );

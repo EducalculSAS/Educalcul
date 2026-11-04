@@ -159,7 +159,11 @@ export default function FlameFire({ total, inset, avatar, radius }: Props) {
 
     // Image fixe pour « réduire les animations » : on fait tourner la simulation un instant puis on s'arrête
     if (reduce) { for (let k = 0; k < 6; k++) { emit(); time += 0.1; draw(0.1, time); } }
-    else start();
+    else {
+      // Une première image tout de suite : un avatar hors écran au chargement n'apparaît jamais vide (sans cadre).
+      draw(0.016, time);
+      start();
+    }
 
     const io = new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (visible) start(); else if (raf) { cancelAnimationFrame(raf); raf = 0; } });
     io.observe(canvas);
