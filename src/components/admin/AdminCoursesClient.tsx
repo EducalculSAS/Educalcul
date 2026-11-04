@@ -458,8 +458,8 @@ export default function AdminCoursesClient({
     setIsModalOpen(true);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
 
     const norm = formData.title.trim().toLowerCase();
     const folderConflict = folders.some(

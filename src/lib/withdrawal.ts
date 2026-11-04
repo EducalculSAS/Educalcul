@@ -1,6 +1,7 @@
 import "server-only";
 import type Stripe from "stripe";
 import { stripe } from "@/lib/stripe";
+import { legacyPeriodField } from "@/lib/stripePeriod";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import { withdrawalConfirmedEmail } from "@/lib/emailTemplates";
@@ -45,8 +46,8 @@ async function loadContract(authId: string) {
 /** Paiements encaissés depuis la souscription, et la part remboursable au prorata. */
 async function refundPlan(sub: Stripe.Subscription, startMs: number) {
   const item = sub.items?.data?.[0] as (Stripe.SubscriptionItem & { current_period_start?: number; current_period_end?: number }) | undefined;
-  const periodStart = ((sub as unknown as { current_period_start?: number }).current_period_start ?? item?.current_period_start ?? 0) * 1000;
-  const periodEnd = ((sub as unknown as { current_period_end?: number }).current_period_end ?? item?.current_period_end ?? 0) * 1000;
+  const periodStart = (legacyPeriodField(sub, "current_period_start") ?? item?.current_period_start ?? 0) * 1000;
+  const periodEnd = (legacyPeriodField(sub, "current_period_end") ?? item?.current_period_end ?? 0) * 1000;
   const unused = periodEnd > periodStart ? Math.min(1, Math.max(0, (periodEnd - Date.now()) / (periodEnd - periodStart))) : 0;
 
   const customer = typeof sub.customer === "string" ? sub.customer : sub.customer.id;

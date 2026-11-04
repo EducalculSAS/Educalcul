@@ -1,3 +1,5 @@
+import { parseList } from "@/lib/validate";
+import { attemptSummarySchema } from "@/lib/schemas";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -83,7 +85,7 @@ export default async function QuizDetailPage({
       .eq("user_id", authUser.id)
       .eq("quiz_id", quizId)
       .maybeSingle();
-    attemptsHistory = (attemptRow?.attempts_history as unknown as AttemptSummary[] | null) || [];
+    attemptsHistory = parseList(attemptSummarySchema, attemptRow?.attempts_history, "attempts_history");
     alreadyCompleted = attemptRow?.status === "completed";
   }
 

@@ -20,8 +20,8 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     setStatus("loading");
     try {
       if (!formData.name || !formData.email || !formData.subjectType || !formData.message)

@@ -1,3 +1,5 @@
+import { z } from "zod";
+import { isRecord, parseList } from "@/lib/validate";
 import "server-only";
 import type { Block, Page } from "@/components/admin/ExerciseBuilder";
 import type { Question } from "@/components/admin/QuizBuilder";
@@ -16,6 +18,10 @@ import { deleteSrsItems, dueItems, getSrs, srsKey, type SrsItem, type SrsKind } 
 /** Lignes lues (les colonnes demandées sont fixes ; le contenu JSON est typé comme dans les éditeurs). */
 interface ExerciseRow { id: number | string; title: string; level: string | null; difficulty_level: string | null; course_id: string | number | null; content_json: Page[] | null; grading_type: string | null }
 interface QuizRow { id: number | string; title: string; level: string | null; difficulty_level: string | null; course_id: string | number | null; content_json: Question[] | null }
+
+/** Ligne exercice/quiz : identifiant et titre exigés, `content_json` doit être une liste ou vide (colonne JSON libre). */
+const isContentRow = (v: unknown): boolean =>
+  isRecord(v) && (typeof v.id === "number" || typeof v.id === "string") && typeof v.title === "string" && (v.content_json == null || Array.isArray(v.content_json));
 
 interface Source {
   kind: SrsKind;
@@ -54,8 +60,8 @@ export async function loadSources(keys: { kind: SrsKind; ref: string; block: str
     exerciseIds.length ? supabaseAdmin.from("exercises").select("id, title, level, difficulty_level, course_id, content_json, grading_type").in("id", exerciseIds) : Promise.resolve({ data: [] as ExerciseRow[] }),
     quizIds.length ? supabaseAdmin.from("quizzes").select("id, title, level, difficulty_level, course_id, content_json").in("id", quizIds) : Promise.resolve({ data: [] as QuizRow[] }),
   ]);
-  const exById = new Map(((exercises.data ?? []) as unknown as ExerciseRow[]).map((e) => [String(e.id), e]));
-  const qzById = new Map(((quizzes.data ?? []) as unknown as QuizRow[]).map((q) => [String(q.id), q]));
+  const exById = new Map(parseList(z.custom<ExerciseRow>(isContentRow), exercises.data, "review exercises").map((e) => [String(e.id), e]));
+  const qzById = new Map(parseList(z.custom<QuizRow>(isContentRow), quizzes.data, "review quizzes").map((q) => [String(q.id), q]));
 
   for (const k of keys) {
     if (k.kind === "exercise") {

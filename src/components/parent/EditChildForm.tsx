@@ -79,8 +79,8 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
   const [expertes, setExpertes] = useState(initial.gradeLevel === EXPERTES_LEVEL || initial.extraLevels.includes(EXPERTES_LEVEL));
   const trackOptions = isTerminale(initial.gradeLevel) ? TERMINALE_TRACKS : PREMIERE_TRACKS;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     setSaving(true);
     setError(null);
     setSuccess(null);
@@ -256,8 +256,8 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
     }
   };
 
-  const confirmTwoFAToggle = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const confirmTwoFAToggle = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     setTogglingTwoFA(true);
     setTwoFAError(null);
     try {
@@ -441,7 +441,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                   <div className="flex items-center gap-2">
                     <div className="flex-1">
                       <GlassButton
-                        onClick={() => confirmTwoFAToggle({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                        onClick={() => confirmTwoFAToggle()}
                         variant="navy"
                         fullWidth
                         disabled={togglingTwoFA || twoFACode.length !== 6}

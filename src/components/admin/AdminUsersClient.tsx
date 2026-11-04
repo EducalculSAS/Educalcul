@@ -466,8 +466,8 @@ export default function AdminUsersClient({
   const onlineCount = users.filter(u => isOnline(u) && u.auth_id !== currentAuthId).length;
 
   // ── Handlers ──────────────────────────────────────────────────────────────
-  const handleFormSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleFormSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     setSubmitting(true);
     try {
       const body: Record<string, unknown> = { userId: currentAuthId, firstName: form.firstName, lastName: form.lastName, email: form.email, role: form.role, status: form.status, gradeLevel: form.gradeLevel, password: form.password };
@@ -818,7 +818,7 @@ export default function AdminUsersClient({
                   size="sm"
                   variant="navy"
                   disabled={submitting}
-                  onClick={() => handleFormSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                  onClick={() => handleFormSubmit()}
                 >
                   {submitting && <Loader2 className="w-4 h-4 animate-spin" />}Créer
                 </GlassButton>

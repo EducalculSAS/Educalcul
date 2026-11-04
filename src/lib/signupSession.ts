@@ -5,6 +5,8 @@
 
 import type { ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
+import { z } from "zod";
+import { isRecord } from "@/lib/validate";
 
 /** Saisies du parent (ou du compte Google) pendant l'inscription. */
 export interface SignupData {
@@ -35,11 +37,24 @@ export interface SignupSession {
   data?: SignupData | null;
   selectedPlan?: SelectedPlan | null;
 }
+const str = z.string().nullish().catch(undefined);
+/** Forme minimale attendue de la réponse du serveur ; une valeur de mauvais type est ignorée plutôt que propagée. */
+const signupSessionSchema = z.looseObject({
+  mode: str, pendingRole: str, authIntent: str, pendingAuthId: str,
+  data: z.custom<SignupData>(isRecord).nullish().catch(undefined),
+  selectedPlan: z.custom<SelectedPlan>((v) => isRecord(v) && (v.custom === true ? isRecord(v.config) : typeof v.name === "string" && (typeof v.id === "number" || typeof v.id === "string") && typeof v.price === "number")).nullish().catch(undefined),
+});
+
+function readSession(raw: unknown): SignupSession {
+  const r = signupSessionSchema.safeParse(raw);
+  return r.success ? r.data : {};
+}
+
 export async function getSignupSession(): Promise<SignupSession> {
   try {
     const res = await fetch("/api/auth/signup-session");
     if (!res.ok) return {};
-    return await res.json();
+    return readSession(await res.json());
   } catch {
     return {};
   }
@@ -53,7 +68,7 @@ export async function patchSignupSession(patch: Partial<SignupSession>): Promise
       body: JSON.stringify(patch),
     });
     if (!res.ok) return {};
-    return await res.json();
+    return readSession(await res.json());
   } catch {
     return {};
   }

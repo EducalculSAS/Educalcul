@@ -1,5 +1,7 @@
 "use client";
 
+import { parseOrNull } from "@/lib/validate";
+import { subscriptionPlanSchema } from "@/lib/schemas";
 import type { Row } from "@/types/db";
 import type { BillingInvoice } from "@/lib/parentSubscriptionDetails";
 
@@ -136,11 +138,12 @@ function SubscriptionPageContent({
       (async () => {
         try {
           const s = await getSignupSession();
-          if (!s.selectedPlan || !s.data) {
+          const plan = s.selectedPlan && !s.selectedPlan.custom ? parseOrNull(subscriptionPlanSchema, s.selectedPlan, "signup.selectedPlan") : null;
+          if (!plan || !s.data) {
             router.push("/auth/inscription");
             return;
           }
-          setSelectedPlan(s.selectedPlan as unknown as SubscriptionPlan);
+          setSelectedPlan(plan);
           setSignupData(s.data);
           setLoading(false);
         } catch (error) {

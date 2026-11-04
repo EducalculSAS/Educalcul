@@ -1,3 +1,5 @@
+import { z } from "zod";
+import { relationOne } from "@/lib/validate";
 import "server-only";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { learningPath } from "@/lib/learningPath";
@@ -74,9 +76,9 @@ export async function buildExamPlan(child: { id: number; gradeLevel: string | nu
   const exercises = ((exercisesRes.data ?? []) as { id: string; title: string; category: string | null; difficulty_level: string | null }[]);
   const rank = (e: { category: string | null; difficulty_level: string | null }) => (e.category === "examen" ? 0 : ["difficile", "hard", "avance"].includes(String(e.difficulty_level)) ? 1 : 2);
   const exercisePicks: Pick[] = [...exercises].sort((a, b) => rank(a) - rank(b)).map((e) => ({ id: e.id, title: e.title }));
-  const done = ((doneRes.data ?? []) as unknown as { course_id: string | number; courses: { title: string } | { title: string }[] | null }[]).map((d) => ({
+  const done = (doneRes.data ?? []).map((d) => ({
     id: d.course_id,
-    title: Array.isArray(d.courses) ? d.courses[0]?.title : d.courses?.title,
+    title: relationOne(z.object({ title: z.string() }), d.courses)?.title,
   })).filter((d): d is Pick => !!d.title);
 
   const weak = path.filter((s) => !/prochain chapitre|bien démarrer/i.test(s.reason));

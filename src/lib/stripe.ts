@@ -3,6 +3,8 @@
 // le bundle du navigateur.
 import "server-only";
 import Stripe from 'stripe';
+import { legacyPeriodField } from "@/lib/stripePeriod";
+export { legacyPeriodField };
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2025-02-24.acacia' as Stripe.StripeConfig["apiVersion"],
@@ -17,7 +19,7 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
  */
 export function subscriptionPeriodEnd(sub: Stripe.Subscription | null | undefined): string | null {
   if (!sub) return null;
-  const raw = (sub as unknown as { current_period_end?: number }).current_period_end ?? sub.items?.data?.[0]?.current_period_end;
+  const raw = legacyPeriodField(sub, "current_period_end") ?? sub.items?.data?.[0]?.current_period_end;
   return typeof raw === "number" && Number.isFinite(raw) ? new Date(raw * 1000).toISOString() : null;
 }
 

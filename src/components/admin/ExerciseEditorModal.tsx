@@ -22,7 +22,7 @@ const EXERCISE_TYPES = [
 type ExerciseEditorModalProps = {
   editingExercise: Exercise | null;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  handleSubmit: (e: React.FormEvent) => Promise<void>;
+  handleSubmit: (e?: React.FormEvent) => Promise<void>;
   formData: ExerciseFormData;
   setFormData: React.Dispatch<React.SetStateAction<ExerciseFormData>>;
   courses: Course[];
@@ -283,7 +283,7 @@ export default function ExerciseEditorModal(props: ExerciseEditorModalProps) {
             size="sm"
             variant="navy"
             disabled={isSubmitting}
-            onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+            onClick={() => handleSubmit()}
           >
             {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
             {editingExercise ? "Mettre à jour" : "Créer l'exercice"}

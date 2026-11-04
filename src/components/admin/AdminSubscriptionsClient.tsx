@@ -175,8 +175,8 @@ export default function AdminSubscriptionsClient({
     setShowPlanModal(true);
   };
 
-  const savePlan = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const savePlan = async (e?: React.FormEvent) => {
+    e?.preventDefault();
 
     // Période : une durée libre devient une période proposée aux clients (enregistrée avec la config tarifaire).
     let billingInterval: string = planForm.billing_interval;
@@ -1011,7 +1011,7 @@ export default function AdminSubscriptionsClient({
 
               <div className="flex justify-end gap-3 pt-2">
                 <GlassButton size="sm" variant="ghost" onClick={() => setShowPlanModal(false)}>Annuler</GlassButton>
-                <GlassButton size="sm" variant="navy" onClick={() => savePlan({ preventDefault: () => {} } as unknown as React.FormEvent)}>
+                <GlassButton size="sm" variant="navy" onClick={() => savePlan()}>
                   {editingPlan ? "Mettre à jour" : "Créer le plan"}
                 </GlassButton>
               </div>

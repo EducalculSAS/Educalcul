@@ -16,7 +16,7 @@ import { type Question } from "@/components/admin/QuizBuilder";
 type QuizEditorModalProps = {
   editingQuiz: Quiz | null;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  handleSubmit: (e: React.FormEvent) => Promise<void>;
+  handleSubmit: (e?: React.FormEvent) => Promise<void>;
   formData: { title: string; description: string; course_id: string; folder_id: string | number; time_limit_minutes: number; min_score_percent: number; difficulty_level: string; type: string; level: string; grading_type: string; max_attempts: number; status: string; thumbnail_filename: string; content_json: Question[]; };
   setFormData: React.Dispatch<React.SetStateAction<{ title: string; description: string; course_id: string; folder_id: string | number; time_limit_minutes: number; min_score_percent: number; difficulty_level: string; type: string; level: string; grading_type: string; max_attempts: number; status: string; thumbnail_filename: string; content_json: Question[]; }>>;
   courses: Course[];
@@ -301,7 +301,7 @@ export default function QuizEditorModal(props: QuizEditorModalProps) {
             size="sm"
             variant="navy"
             disabled={isSubmitting}
-            onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+            onClick={() => handleSubmit()}
           >
             {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
             {editingQuiz ? "Mettre à jour" : "Créer le quiz"}

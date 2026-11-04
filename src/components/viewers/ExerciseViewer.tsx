@@ -1,6 +1,9 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import { isVirtualExercise, useExerciseProgress } from "@/components/viewers/useExerciseProgress";
+import { useInlineTextVerify } from "@/components/viewers/useInlineTextVerify";
+import { useExerciseLayout } from "@/components/viewers/useExerciseLayout";
 import { answerList, type AnswerMap, type AnswerValue } from "@/types/answers";
 import { extractExerciseContent } from "@/lib/exerciseContextText";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
@@ -22,7 +25,6 @@ import { blockMaxPoints, itemTotal } from "@/lib/exerciseScoring";
 import { fetchMiniComment } from "@/lib/miniComment";
 import ReadAloudButton from "@/components/ReadAloudButton";
 import { AdminAttemptControls } from "@/components/viewers/blocks/AdminAttemptControls";
-import type { InlineTextState } from "@/components/viewers/blocks/inlineText";
 import { OrderingDragList, MatchingDragList, CategorizeDragList, NumberLinePoint } from "@/components/viewers/ExerciseDragLists";
 
 import AdminReviewPanel from "@/components/viewers/blocks/AdminReviewPanel";
@@ -33,28 +35,6 @@ import TextInputAnswer from "@/components/viewers/blocks/TextInputAnswer";
 import ExerciseResultScreen from "@/components/viewers/blocks/ExerciseResultScreen";
 export { AdminAttemptControls };
 /** Aperçu admin ou séance « à revoir » : rien n'est enregistré comme tentative de cet exercice. */
-const isVirtualExercise = (id?: string | null) => !id || id === "preview" || id === "review";
-
-// Mélange déterministe (seedé par une chaîne) pour que l'ordre affiché aux
-// élèves (association / mise en ordre) reste stable entre deux rendus tant
-// que l'exercice n'a pas changé, sans avoir à le persister séparément.
-function seededShuffle<T>(arr: T[], seed: string): T[] {
-  let h = 0;
-  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
-  const rand = () => {
-    h = (h * 1664525 + 1013904223) >>> 0;
-    return h / 4294967296;
-  };
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-}
-
-
-
 
 /** Ce que le serveur dévoile d'un bloc une fois la réponse soumise (bonne réponse, trous, paires, ordre, catégories). */
 /** Correction d'un bloc renvoyée par /api/child/exercises/[id]/grade (ou par la route d'aperçu admin). */
@@ -152,80 +132,7 @@ export default function ExerciseViewer({
   );
   const { pageContext, setPageContext } = useAITutor();
 
-  // Une page = une question : le contenu est authored/généré avec plusieurs
-  // blocs-question regroupés dans une seule Page (voir compiler.ts), donc on
-  // aplatit tous les blocs et on les redécoupe côté client en un écran par
-  // question, avec la consigne (blocs "text"/"image" en tête) sur son propre
-  // écran — sur deux si elle est longue. Purement présentationnel : la
-  // correction (validateAllAnswers) continue d'itérer `pages`/blocs bruts.
-  const screens = useMemo(() => {
-    // Un écran par PAGE authorée, pas par bloc : une page à un seul bloc est
-    // une question indépendante (un écran) ; une page à plusieurs blocs est
-    // un groupe de "questions liées" sur le même thème, affichées ENSEMBLE
-    // sur le même écran (voir contexte du plan — l'ancien comportement
-    // aplatissait tous les blocs de toutes les pages et en refaisait un écran
-    // par bloc, ce qui séparait les questions liées une par une malgré leur
-    // regroupement en base).
-    return pages.filter((p) => p.blocks.length > 0).map((p) => ({ blocks: p.blocks, layout: p.layout, sequential: p.sequential === true }));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exercise.id]);
-
-  // Affichage mélangé (stable) des blocs "association" (choix de droite) et
-  // "mise en ordre" (éléments à réordonner), calculé une fois par exercice.
-  // Les valeurs déjà mélangées (matchingOptions/shuffledItems) viennent de
-  // l'API quand la réponse correcte a été retirée (élève, avant soumission).
-  // pairs/items complets ne sont présents qu'en contexte admin (builder/aperçu).
-  const shuffledRightOptions = useMemo(() => {
-    const map: Record<string, string[]> = {};
-    pages.forEach((p) =>
-      p.blocks.forEach((b) => {
-        if (b.type === "matching") {
-          if (b.pairs && b.pairs.every((pr) => pr.right !== undefined)) {
-            map[b.id] = seededShuffle(b.pairs.map((pr) => pr.right), b.id);
-          } else if (b.matchingOptions) {
-            map[b.id] = b.matchingOptions;
-          }
-        }
-      })
-    );
-    return map;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exercise.id]);
-
-  const shuffledOrderingItems = useMemo(() => {
-    const map: Record<string, string[]> = {};
-    pages.forEach((p) =>
-      p.blocks.forEach((b) => {
-        if (b.type === "ordering") {
-          if (b.items) {
-            map[b.id] = seededShuffle(b.items, b.id);
-          } else if (b.shuffledItems) {
-            map[b.id] = b.shuffledItems;
-          }
-        }
-      })
-    );
-    return map;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exercise.id]);
-
-  const shuffledCategorizeItems = useMemo(() => {
-    const map: Record<string, { originalIndex: number; text: string }[]> = {};
-    pages.forEach((p) =>
-      p.blocks.forEach((b) => {
-        if (b.type === "categorize" && b.categoryItems) {
-          const indices = b.categoryItems.map((_, i) => i);
-          const shuffledIndices = seededShuffle(indices, b.id);
-          map[b.id] = shuffledIndices.map((originalIndex) => ({
-            originalIndex,
-            text: b.categoryItems![originalIndex].text,
-          }));
-        }
-      })
-    );
-    return map;
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exercise.id]);
+  const { screens, shuffledRightOptions, shuffledOrderingItems, shuffledCategorizeItems } = useExerciseLayout(pages, exercise.id);
 
   // Position/réponses/score : plus de repli localStorage — tout vient du
   // serveur (effet "Charge la progression..." plus bas), avec un bref flash
@@ -251,96 +158,7 @@ export default function ExerciseViewer({
   const [gradingError, setGradingError] = useState<string | null>(null);
 
 
-  // Correction immédiate des blocs "text_input" (même style que les
-  // mini-exercices de cours) : vérifier tout de suite, réessayer, et
-  // proposer la réponse après 2 échecs plutôt que de laisser retenter à
-  // l'infini. Une fois résolu (correct ou révélé), la validation finale de
-  // la page réutilise ce verdict au lieu de rappeler l'IA.
-  const [inlineText, setInlineText] = useState<Record<string, InlineTextState>>({});
-
-  const verifyTextBlock = async (block: Block) => {
-    const studentAnswer = answers[block.id];
-    if (!studentAnswer) return;
-    const current = inlineText[block.id];
-    const attemptsSoFar = current?.attempts || 0;
-    setInlineText((prev) => ({ ...prev, [block.id]: { attempts: attemptsSoFar, status: "grading" } }));
-    try {
-      const exerciseId = exercise.id || "preview";
-      const res = await fetch(`/api/child/exercises/${exerciseId}/grade`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          block_id: block.id,
-          block,
-          grading_type: exercise.grading_type,
-          answer: studentAnswer,
-          question: block.content,
-          correctAnswer: block.correctAnswer,
-          explanation: block.explanation,
-          level: exercise.level || "6eme",
-          points: block.points,
-        }),
-      });
-      const data = await res.json();
-      if (data.unavailable) {
-        setInlineText((prev) => ({
-          ...prev,
-          [block.id]: { attempts: attemptsSoFar, status: "unavailable", feedback: data.feedback },
-        }));
-        return;
-      }
-      if (data.is_correct) {
-        setInlineText((prev) => ({
-          ...prev,
-          [block.id]: {
-            attempts: attemptsSoFar + 1,
-            status: "correct",
-            feedback: data.feedback,
-            resolvedScore: data.score,
-            resolvedCorrect: true,
-          },
-        }));
-      } else {
-        const attempts = attemptsSoFar + 1;
-        if (attempts >= 2) {
-          // 2 échecs d'affilée : on propose directement la réponse plutôt
-          // que de laisser l'élève retenter indéfiniment. La bonne réponse
-          // vient de data.reveal (le client n'a jamais correctAnswer avant
-          // d'avoir soumis — voir le commentaire dans la route de grading).
-          setInlineText((prev) => ({
-            ...prev,
-            [block.id]: {
-              attempts,
-              status: "revealed",
-              feedback: data.feedback,
-              resolvedScore: 0,
-              resolvedCorrect: false,
-              revealedAnswer:
-                typeof data.reveal?.correctAnswer === "string" ? data.reveal.correctAnswer : undefined,
-            },
-          }));
-        } else {
-          setInlineText((prev) => ({
-            ...prev,
-            [block.id]: { attempts, status: "wrong", feedback: data.feedback },
-          }));
-        }
-        // Verdict et réponse de base déjà affichés : le mini commentaire de l'IA arrive juste après, quand il y en a un.
-        void fetchMiniComment(data.comment_token).then((comment) => {
-          if (!comment) return;
-          setInlineText((prev) => {
-            const cur = prev[block.id];
-            return cur && cur.attempts === attempts && (cur.status === "wrong" || cur.status === "revealed") ? { ...prev, [block.id]: { ...cur, feedback: comment } } : prev;
-          });
-        });
-      }
-    } catch {
-      setInlineText((prev) => ({
-        ...prev,
-        [block.id]: { attempts: attemptsSoFar, status: "unavailable", feedback: "Correction indisponible, réessaie." },
-      }));
-    }
-  };
+  const { inlineText, verifyTextBlock } = useInlineTextVerify(exercise, answers);
   const [blockModes, setBlockModes] = useState<Record<string, "text" | "draw">>(() => (reviewMode ? initialProgress?.blockModes : undefined) || {});
 
   // Nouvelle tentative : rien à effacer localement (plus de localStorage) —
@@ -360,142 +178,14 @@ export default function ExerciseViewer({
   }, []);
   const [adminComments] = useState<Record<string, string>>(() => initialProgress?.adminComments || {});
   const [adminEditedAnswers] = useState<AnswerMap>(() => initialProgress?.adminEditedAnswers || {});
-  // Rempli par l'effet de chargement serveur ci-dessous.
-  const accumulatedSecondsRef = useRef(0);
-
-  // Charge la progression depuis la base de données (survit à une déconnexion / changement d'appareil)
-  const userIdRef = useRef<string | null>(null);
-  const progressLoadedFromDbRef = useRef(false);
-  useEffect(() => {
-    if (reviewMode) return;
-    if (isVirtualExercise(exercise.id)) return;
-    if (forceNewAttempt) {
-      // Nouvelle tentative : on ne restaure pas l'état d'une session précédente
-      progressLoadedFromDbRef.current = true;
-      return;
-    }
-    (async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session?.user) return;
-      userIdRef.current = session.user.id;
-
-      try {
-        const res = await fetch(`/api/child/exercises/${exercise.id}/progress?userId=${session.user.id}`);
-        const data = await res.json();
-        const p = data?.progress;
-        if (p) {
-          setAnswers(p.answers || {});
-          setSubmittedBlocks(new Set(p.submittedBlocks || []));
-          setResults(p.results || {});
-          setAiFeedback(p.aiFeedback || {});
-          setRevealed(p.revealed || {});
-          setScore(p.score || 0);
-          setExerciseCompleted(p.exerciseCompleted || data?.status === "completed" || false);
-          setBlockModes(p.blockModes || {});
-          accumulatedSecondsRef.current = p.timeSpent || 0;
-          if (typeof p.currentPageIndex === "number") {
-            setCurrentScreenIndex(Math.min(p.currentPageIndex, Math.max(0, screens.length - 1)));
-          }
-          if (openCorrection) {
-            setExerciseCompleted(false);
-            setShowReview(true);
-            setCurrentScreenIndex(0);
-          }
-        } else if (data?.status === "completed") {
-          // Le statut "completed" a été enregistré (via /api/child/activities) mais le
-          // progress_json détaillé n'a jamais été persisté (ex: navigation rapide après
-          // la fin de l'exercice). On marque quand même l'exercice comme terminé.
-          setExerciseCompleted(true);
-        }
-      } catch (e) {
-        console.error("Failed to load exercise progress from DB:", e);
-      } finally {
-        progressLoadedFromDbRef.current = true;
-      }
-    })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [exercise.id]);
-
-  // Sauvegarde la progression en base de données (debounced) — seule
-  // persistance désormais (plus d'écriture localStorage en parallèle).
-  const saveProgressTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  useEffect(() => {
-    if (reviewMode) return;
-    if (isVirtualExercise(exercise.id)) return;
-    if (!progressLoadedFromDbRef.current) return; // évite d'écraser avant le chargement initial
-    if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
-
-    const doSave = async () => {
-      const userId = userIdRef.current;
-      if (!userId) return;
-      try {
-        await fetch(`/api/child/exercises/${exercise.id}/progress`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            userId,
-            progress: {
-              answers,
-              submittedBlocks: Array.from(submittedBlocks),
-              results,
-              aiFeedback,
-              revealed,
-              score,
-              exerciseCompleted,
-              blockModes,
-              currentPageIndex: currentScreenIndex,
-              timeSpent: accumulatedSecondsRef.current,
-            },
-          }),
-        });
-      } catch (e) {
-        console.error("Failed to save exercise progress to DB:", e);
-      }
-    };
-
-    // Sauvegarde immédiate (non debounced) quand l'exercice vient d'être terminé,
-    // pour ne pas perdre l'état "terminé" si l'utilisateur quitte la page tout de suite.
-    if (exerciseCompleted) {
-      doSave();
-      return;
-    }
-
-    saveProgressTimeoutRef.current = setTimeout(doSave, 1000);
-    return () => {
-      if (saveProgressTimeoutRef.current) clearTimeout(saveProgressTimeoutRef.current);
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
-  }, [answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, currentScreenIndex, exercise.id]);
+  const { saveTimeSpent, timeTotal } = useExerciseProgress({
+    exerciseId: exercise.id, reviewMode, forceNewAttempt, openCorrection, screenCount: screens.length,
+    state: { answers, submittedBlocks, results, aiFeedback, revealed, score, exerciseCompleted, blockModes, currentScreenIndex },
+    restore: { setAnswers, setSubmittedBlocks, setResults, setAiFeedback, setRevealed, setScore, setExerciseCompleted, setBlockModes, setCurrentScreenIndex, setShowReview },
+  });
 
   const currentScreen = screens[currentScreenIndex];
   const mainScrollRef = useRef<HTMLDivElement>(null);
-
-  // Session timer — accumulé en base via progress_json.timeSpent (voir plus
-  // haut), plus de localStorage.
-  const sessionStartRef = useRef<number>(0); // posé au montage (voir l'effet plus bas)
-  const getAccumulatedSeconds = () => {
-    if (isVirtualExercise(exercise.id)) return 0;
-    return accumulatedSecondsRef.current;
-  };
-  const saveTimeSpent = () => {
-    if (isVirtualExercise(exercise.id)) return;
-    const elapsed = Math.round((Date.now() - sessionStartRef.current) / 1000);
-    const total = getAccumulatedSeconds() + elapsed;
-    accumulatedSecondsRef.current = total;
-    sessionStartRef.current = Date.now();
-    return total;
-  };
-  useEffect(() => {
-    sessionStartRef.current = Date.now();
-    return () => { saveTimeSpent(); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps -- dépendances volontairement limitées : l'effet ne doit se relancer que sur son déclencheur
-  }, []);
-  // Durée affichée sur l'écran de fin : figée au moment où l'exercice se termine (l'affichage ne lit pas de ref).
-  const [timeTotal, setTimeTotal] = useState(0);
-  useEffect(() => {
-    if (exerciseCompleted) setTimeTotal(getAccumulatedSeconds());
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- seule la fin de l'exercice déclenche la mesure
-  }, [exerciseCompleted]);
 
   // Initialize AI Tutor context when viewer mounts
   useEffect(() => {

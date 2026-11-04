@@ -688,8 +688,8 @@ export default function AdminExercisesClient({
     });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
 
     const normTitle = formData.title.trim().toLowerCase();
     const folderConflict = folders.some((f) => f.name.trim().toLowerCase() === normTitle);

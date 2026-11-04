@@ -57,8 +57,8 @@ export default function CompleteGoogleProfile() {
     init();
   }, [router]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     setError(null);
 
     if (!firstName.trim() || !lastName.trim()) {

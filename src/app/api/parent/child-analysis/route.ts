@@ -1,3 +1,5 @@
+import { relationOne } from "@/lib/validate";
+import { courseRefSchema } from "@/lib/schemas";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -102,13 +104,9 @@ export async function GET(req: Request) {
       date: new Date(q.completed_at).toLocaleDateString("fr-FR"),
     })) || [];
 
-    type CourseRef = { title?: string; subject?: string };
     const courseSummary = courseProgress?.slice(0, 8).map((c) => {
-      const courses = c.courses as unknown as CourseRef | CourseRef[] | null;
-      return {
-        cours: Array.isArray(courses) ? courses[0]?.title : courses?.title || "?",
-        matiere: Array.isArray(courses) ? courses[0]?.subject : courses?.subject || "?",
-      };
+      const course = relationOne(courseRefSchema, c.courses);
+      return { cours: course?.title || "?", matiere: course?.subject || "?" };
     }) || [];
 
     const prompt = `Tu es un assistant pédagogique expert. Voici les données de progression de ${child?.first_name || "l'enfant"} (${child?.grade_level || "niveau non défini"}).

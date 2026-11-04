@@ -1,3 +1,4 @@
+import { getAudioContextCtor } from "@/lib/audioContext";
 // Effets sonores generes a la volee (oscillateurs Web Audio) — pas de fichier
 // audio a heberger/licencier, pas de nouvelle dependance npm.
 
@@ -9,7 +10,7 @@ interface Tone {
 
 function playTones(tones: Tone[]) {
   try {
-    const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
+    const AudioCtx = getAudioContextCtor();
     if (!AudioCtx) return;
     const ctx = new AudioCtx();
     tones.forEach(({ freq, start, duration }) => {

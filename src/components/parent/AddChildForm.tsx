@@ -28,8 +28,8 @@ export default function AddChildForm() {
     password: "", passwordConfirm: "", gradeLevel: "cp", avatar: "avatar1.png",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     setLoading(true);
     setError(null);
     setSuccess(null);

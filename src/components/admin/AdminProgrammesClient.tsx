@@ -44,8 +44,8 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
     setPdfs(json.data || []);
   };
 
-  const handleUpload = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleUpload = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     if (!file) { showNotification("error", "Sélectionne un fichier PDF."); return; }
     setUploading(true);
     try {
@@ -179,7 +179,7 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
             <GlassButton
               variant="navy"
               disabled={uploading || !file}
-              onClick={() => handleUpload({ preventDefault: () => {} } as unknown as React.FormEvent)}
+              onClick={() => handleUpload()}
             >
               {uploading ? <Loader2 size={16} className="animate-spin" /> : <Upload size={16} />}
               {uploading ? "Upload en cours..." : "Enregistrer"}

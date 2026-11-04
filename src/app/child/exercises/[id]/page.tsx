@@ -1,3 +1,5 @@
+import { parseList } from "@/lib/validate";
+import { attemptSummarySchema } from "@/lib/schemas";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -95,7 +97,7 @@ export default async function ExerciseDetailPage({
   let attemptsHistory: AttemptSummary[] = [];
   let alreadyCompleted = false;
   if (exercise) {
-    attemptsHistory = (attemptRow?.attempts_history as unknown as AttemptSummary[] | null) || [];
+    attemptsHistory = parseList(attemptSummarySchema, attemptRow?.attempts_history, "attempts_history");
     alreadyCompleted = attemptRow?.status === "completed";
   }
 

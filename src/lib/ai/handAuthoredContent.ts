@@ -27,6 +27,9 @@
 import type { Chapter } from "@/components/admin/CourseBuilder";
 import type { Page } from "@/components/admin/ExerciseBuilder";
 import type { Question } from "@/components/admin/QuizBuilder";
+import { z } from "zod";
+import { isRecord, parseList } from "@/lib/validate";
+import { questionSchema } from "@/lib/schemas";
 import {
   normalizeCourseBlock,
   normalizeStructuredRichText,
@@ -140,6 +143,17 @@ function isRichTextEmpty(value: unknown): boolean {
   return normalizeStructuredRichText(value).parts.length === 0;
 }
 
+/* Un fichier déjà compilé (export ré-importé) n'est pas retraduit, mais sa forme est contrôlée : un élément illisible est écarté
+ * AVEC un avertissement affiché à l'import, jamais en silence. */
+const chapterSchema = z.custom<Chapter>((v) => isRecord(v) && Array.isArray(v.lessons), "chapitre sans leçons");
+const pageSchema = z.custom<Page>((v) => isRecord(v) && Array.isArray(v.blocks), "page sans blocs");
+
+function keepReadable<T>(schema: z.ZodType<T>, items: unknown[], what: string, warnings: string[]): T[] {
+  const kept = parseList(schema, items, `import ${what}`);
+  if (kept.length !== items.length) warnings.push(`${items.length - kept.length} ${what}(s) illisible(s) ignoré(s) (forme inattendue).`);
+  return kept;
+}
+
 /* ------------------------------------------------------------------ */
 /*  Cours                                                              */
 /* ------------------------------------------------------------------ */
@@ -147,7 +161,7 @@ function isRichTextEmpty(value: unknown): boolean {
 export function compileHandAuthoredCourse(raw: RawFile): CompileResult<Chapter[]> {
   const chapters: RawChapter[] = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
-  if (!isSourceFormat(raw)) return { content: chapters as unknown as Chapter[], warnings }; // déjà compilé (export ré-importé) : inchangé
+  if (!isSourceFormat(raw)) return { content: keepReadable(chapterSchema, chapters, "chapitre", warnings), warnings }; // déjà compilé (export ré-importé) : inchangé
 
   const content = chapters.map((chapter, chapterIndex) => {
     const chapterLabel = `Chapitre ${chapterIndex + 1} (« ${chapter?.title || "?"} »)`;
@@ -238,7 +252,7 @@ const EXERCISE_BLOCK_TYPES = new Set([
 export function compileHandAuthoredExercise(raw: RawFile): CompileResult<Page[]> {
   const pages: RawPage[] = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
-  if (!isSourceFormat(raw)) return { content: pages as unknown as Page[], warnings };
+  if (!isSourceFormat(raw)) return { content: keepReadable(pageSchema, pages, "page", warnings), warnings };
 
   const content = pages.map((page) => ({
     id: String(page?.id || "page-1"),
@@ -362,7 +376,7 @@ const QUIZ_QUESTION_TYPES = new Set(["single_choice", "multiple_choice", "true_f
 export function compileHandAuthoredQuiz(raw: RawFile): CompileResult<Question[]> {
   const questions: RawQuestion[] = Array.isArray(raw?.content_json) ? raw.content_json : [];
   const warnings: string[] = [];
-  if (!isSourceFormat(raw)) return { content: questions as unknown as Question[], warnings };
+  if (!isSourceFormat(raw)) return { content: keepReadable(questionSchema, questions, "question", warnings), warnings };
 
   const content = questions.map((q, index) => {
     const where = `Question ${index + 1}`;

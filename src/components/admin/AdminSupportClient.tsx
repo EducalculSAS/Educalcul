@@ -156,8 +156,8 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
     }
   };
 
-  const handleReply = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleReply = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     if (!selectedTicket || !replyMessage.trim()) return;
 
     setReplyLoading(true);
@@ -514,7 +514,7 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                         size="sm"
                         variant="navy"
                         disabled={replyLoading || !replyMessage.trim()}
-                        onClick={() => handleReply({ preventDefault: () => {} } as unknown as React.FormEvent)}
+                        onClick={() => handleReply()}
                       >
                         {replyLoading ? (
                           <LoaderDots />

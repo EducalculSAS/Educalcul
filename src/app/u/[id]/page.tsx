@@ -1,3 +1,5 @@
+import { relationOne } from "@/lib/validate";
+import { profileBadgeSchema } from "@/lib/schemas";
 import { Star, Trophy, BookOpen, CheckCircle, Zap } from "lucide-react";
 import type { Row } from "@/types/db";
 import type { LucideIcon } from "lucide-react";
@@ -56,7 +58,7 @@ export default async function PublicProfilePage({
   ]);
 
   const badges = featuredBadges || [];
-  const allBadges = ((earnedBadgeRows || []) as unknown as { badge: { id: number; name: string; icon: string; color: string; category?: string | null } | null }[]).map((e) => e.badge).filter((b): b is NonNullable<typeof b> => !!b);
+  const allBadges = (earnedBadgeRows || []).map((e) => relationOne(profileBadgeSchema, e.badge)).filter((b): b is NonNullable<typeof b> => !!b);
   const stats = { exos: exos ?? 0, quiz: quiz ?? 0, cours: cours ?? 0 };
 
   const nameColor = getNameColor(user.name_color || "default");

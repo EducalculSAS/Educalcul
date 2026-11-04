@@ -37,8 +37,8 @@ export default function UpdatePassword() {
     };
   }, [router]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
 
     if (password !== confirmPassword) {
       setStatus("error");

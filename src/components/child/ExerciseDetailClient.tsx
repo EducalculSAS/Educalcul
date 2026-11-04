@@ -1,5 +1,7 @@
 "use client";
 
+import { isRecord, parseList } from "@/lib/validate";
+import { hintSchema } from "@/lib/schemas";
 import type { AttemptSummary } from "@/types/attempts";
 import { extractExerciseContent } from "@/lib/exerciseContextText";
 import { useKatexIn } from "@/lib/useKatexIn";
@@ -71,9 +73,9 @@ export default function ExerciseDetailClient({
     if (!questionText && (exercise.question || exercise.description)) {
       questionText = (exercise.question || exercise.description || "").slice(0, 1000);
     }
-    const hints = ((exercise.content_json as unknown as { hints?: (string | { text?: string; hint?: string })[] } | null)?.hints || [])
-      .map((h: string | { text?: string; hint?: string }) => (typeof h === "string" ? h : h.text || h.hint || ""))
-      .filter((h: string) => h.length > 0)
+    const hints = parseList(hintSchema, isRecord(exercise.content_json) ? exercise.content_json.hints : [], "exercise.hints")
+      .map((h) => (typeof h === "string" ? h : h.text || h.hint || ""))
+      .filter((h) => h.length > 0)
       .slice(0, 3);
 
     setPageContext({

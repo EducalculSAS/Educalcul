@@ -1,3 +1,5 @@
+import { relationOne } from "@/lib/validate";
+import { profileBadgeSchema } from "@/lib/schemas";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -25,7 +27,6 @@ const ICON_MAP: Record<string, LucideIcon> = {
   scroll: BookOpen, owl: Star, universe: Star,
 };
 
-interface Badge { id: number; name: string; icon: string; color: string }
 
 // Purement un affichage de données propres à l'élève connecté (cours/exercices
 // suivants, badges, stats) : aucune interactivité au-delà de la navigation
@@ -102,9 +103,9 @@ export default async function ChildDashboard() {
   const examDays = prefs.examDate ? daysBetween(parisDay(), prefs.examDate) : null;
   const showExam = exam.key !== "generic" || (examDays !== null && examDays >= 0);
 
-  const earnedBadges = ((ubadges || []) as unknown as { badge: Badge | null }[])
-    .map((ub) => ub.badge)
-    .filter((b): b is Badge => Boolean(b));
+  const earnedBadges = (ubadges || [])
+    .map((ub) => relationOne(profileBadgeSchema, ub.badge))
+    .filter((b): b is NonNullable<typeof b> => b !== null);
   const stats = { badges: earnedBadges.length, exercises: exoCount ?? 0 };
 
   return (

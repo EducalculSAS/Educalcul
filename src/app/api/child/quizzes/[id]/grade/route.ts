@@ -1,3 +1,5 @@
+import { parseList } from "@/lib/validate";
+import { questionSchema } from "@/lib/schemas";
 import { NextResponse } from "next/server";
 import type { Question } from "@/components/admin/QuizBuilder";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
@@ -51,7 +53,7 @@ export async function POST(
       if (me.role !== "admin" && quiz.status !== "published") {
         return NextResponse.json({ error: "Quiz not found" }, { status: 404 });
       }
-      const questions: Question[] = Array.isArray(quiz.content_json) ? (quiz.content_json as unknown as Question[]) : [];
+      const questions: Question[] = parseList(questionSchema, quiz.content_json, "quizzes.content_json");
       targetQuestion = questions.find((q) => q.id === question_id) || null;
       if (!targetQuestion) {
         return NextResponse.json({ error: "Question not found" }, { status: 404 });

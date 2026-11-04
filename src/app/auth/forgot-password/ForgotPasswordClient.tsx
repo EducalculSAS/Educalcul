@@ -11,8 +11,8 @@ export default function ForgotPassword() {
   >("idle");
   const [message, setMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault();
     setStatus("loading");
     setMessage("");
 

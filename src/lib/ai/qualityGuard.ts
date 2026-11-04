@@ -139,12 +139,12 @@ function collectRichTextReferences(root: unknown): RichTextReference[] {
     const record = asRecord(value);
     if (!record) return;
 
-    if (Array.isArray(record.parts)) {
+    if (isRichText(record)) {
       const id = `field-${counter++}`;
       references.push({
         id,
         path,
-        get: () => record as unknown as StructuredRichText,
+        get: () => record,
         set: (next) => {
           record.parts = next.parts;
         },
@@ -597,6 +597,18 @@ Retourne verdict=reject seulement si ce petit lot ne peut pas être réparé par
   return { value, patches };
 }
 
+/** Contrôles à l'exécution des enregistrements produits par l'IA : ils sont lus ici avant toute vérification plus fine. */
+function isLearningResource(v: unknown): v is StructuredLearningResource {
+  return typeof v === "object" && v !== null && "type" in v && typeof v.type === "string" && (v.type !== "figure" || ("caption" in v && typeof v.caption === "string"));
+}
+function isStepsBlock(v: unknown): v is Extract<StructuredCourseBlock, { type: "steps" }> {
+  return typeof v === "object" && v !== null && "type" in v && v.type === "steps" && "steps" in v && Array.isArray(v.steps)
+    && v.steps.every((step: unknown) => typeof step === "object" && step !== null && "blocks" in step && Array.isArray(step.blocks));
+}
+function isRichText(v: unknown): v is StructuredRichText {
+  return typeof v === "object" && v !== null && "parts" in v && Array.isArray(v.parts);
+}
+
 function isCurveFigure(resource: StructuredLearningResource): boolean {
   if (resource.type !== "figure") return false;
   return /\b(courbe|graphe|graphique de fonction|tangente|asymptote|parabole|sinuso[iï]de|fonction exponentielle|fonction logarithme|convexit[eé].*courbe)\b/i.test(
@@ -605,11 +617,11 @@ function isCurveFigure(resource: StructuredLearningResource): boolean {
 }
 
 function sanitizeResources(
-  resources: StructuredLearningResource[],
-): { resources: StructuredLearningResource[]; removed: number } {
+  resources: unknown[],
+): { resources: unknown[]; removed: number } {
   let removed = 0;
   const filtered = resources.filter((resource) => {
-    if (!isCurveFigure(resource)) return true;
+    if (!isLearningResource(resource) || !isCurveFigure(resource)) return true;
     removed += 1;
     return false;
   });
@@ -686,17 +698,14 @@ export function sanitizeStructuredResources<T>(
         const entry = node[index];
         const record = asRecord(entry);
         if (record?.type === "figure") {
-          const resource = record as unknown as StructuredLearningResource;
-          if (isCurveFigure(resource)) {
+          if (isLearningResource(record) && isCurveFigure(record)) {
             node.splice(index, 1);
             removedCurveFigures += 1;
             continue;
           }
         }
-        if (record?.type === "steps") {
-          node[index] = normalizeStepsBlock(
-            record as unknown as Extract<StructuredCourseBlock, { type: "steps" }>,
-          );
+        if (isStepsBlock(record)) {
+          node[index] = normalizeStepsBlock(record);
         }
         if (record) repairCaption(record);
         visit(node[index]);
@@ -707,9 +716,7 @@ export function sanitizeStructuredResources<T>(
     if (!record) return;
     repairCaption(record);
     if (Array.isArray(record.resources)) {
-      const result = sanitizeResources(
-        record.resources as unknown as StructuredLearningResource[],
-      );
+      const result = sanitizeResources(record.resources);
       record.resources = result.resources;
       removedCurveFigures += result.removed;
     }

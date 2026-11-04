@@ -1,3 +1,5 @@
+import { z } from "zod";
+import { historyEntrySchema } from "@/lib/schemas";
 import type { Block, Page } from "@/components/admin/ExerciseBuilder";
 import type { Question } from "@/components/admin/QuizBuilder";
 import { NextResponse } from "next/server";
@@ -118,16 +120,8 @@ interface AttemptDetail {
   questionResults?: Record<number, boolean>;
   [key: string]: unknown;
 }
-/** Entrée de `attempts_history` : le résumé de la tentative et, si conservé, son détail. */
-interface HistoryEntry {
-  detail?: AttemptDetail;
-  score?: number;
-  total_points?: number;
-  score_percent?: number;
-  passed?: boolean;
-  pending?: boolean;
-  [key: string]: unknown;
-}
+/** Entrée de `attempts_history` : le résumé de la tentative et, si conservé, son détail (schéma dans `lib/schemas.ts`). */
+type HistoryEntry = z.infer<typeof historyEntrySchema>;
 
 export async function GET(req: Request) {
   try {
@@ -197,7 +191,14 @@ export async function PATCH(req: Request) {
     if (!item) return NextResponse.json({ error: "Contenu introuvable" }, { status: 404 });
 
     const isLatest = attemptRef === "latest";
-    const history: HistoryEntry[] = Array.isArray(attempt.attempts_history) ? [...(attempt.attempts_history as unknown as HistoryEntry[])] : [];
+    // L'historique est réécrit en entier plus bas : une entrée illisible ne doit jamais être écartée en silence (perte de données),
+    // on refuse plutôt l'opération.
+    const parsedHistory = z.array(historyEntrySchema).safeParse(attempt.attempts_history ?? []);
+    if (!parsedHistory.success) {
+      console.error("[admin/attempts] attempts_history illisible", attempt.id, parsedHistory.error.issues[0]);
+      return NextResponse.json({ error: "Historique de tentatives illisible : modification refusée." }, { status: 422 });
+    }
+    const history: HistoryEntry[] = [...parsedHistory.data];
     let target: AttemptDetail | HistoryEntry;
     if (isLatest) {
       target = { ...((attempt.progress_json as AttemptDetail | null) || {}) };

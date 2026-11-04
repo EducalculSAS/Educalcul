@@ -11,7 +11,7 @@ import GlassButton from "@/components/ui/GlassButton";
 type CourseEditorModalProps = {
   modalMode: 'create' | 'edit';
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  handleSubmit: (e: React.FormEvent) => Promise<void>;
+  handleSubmit: (e?: React.FormEvent) => Promise<void>;
   formData: { title: string; description: string; subject: string; level: string; status: string; thumbnail_url: string; folder_id: number | null; content_json: Chapter[]; };
   setFormData: React.Dispatch<React.SetStateAction<{ title: string; description: string; subject: string; level: string; status: string; thumbnail_url: string; folder_id: number | null; content_json: Chapter[]; }>>;
   setIsAreasEditorOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -258,7 +258,7 @@ export default function CourseEditorModal(props: CourseEditorModalProps) {
             size="sm"
             variant="navy"
             disabled={isSubmitting}
-            onClick={() => handleSubmit({ preventDefault: () => {} } as unknown as React.FormEvent)}
+            onClick={() => handleSubmit()}
           >
             {isSubmitting && (
               <Loader2 className="animate-spin" size={16} />
