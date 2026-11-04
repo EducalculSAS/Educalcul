@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { UserCog } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -20,7 +20,6 @@ interface ImpersonationState {
  * d'impersonation (et le refresh_token d'origine) vit côté serveur, référencé
  * par un cookie httpOnly : rien en sessionStorage. */
 export default function ImpersonationBanner() {
-  const router = useRouter();
   const pathname = usePathname();
   const { error: toastError } = useToast();
   const [state, setState] = useState<ImpersonationState | null>(null);
@@ -66,6 +65,7 @@ export default function ImpersonationBanner() {
         // rapporté. On reste sur place et on prévient plutôt que de
         // continuer dans un état cassé.
         toastError(data?.error || "Impossible de revenir à ta session admin, réessaie.");
+        setEnding(false);
         return;
       }
       const { error: setSessionError } = await supabase.auth.setSession({
@@ -74,11 +74,14 @@ export default function ImpersonationBanner() {
       });
       if (setSessionError) {
         toastError("Impossible de restaurer ta session admin, réessaie ou reconnecte-toi.");
+        setEnding(false);
         return;
       }
-      router.push(data.returnTo || state.returnTo || "/admin/users");
-      router.refresh();
-    } finally {
+      // Chargement complet de la page admin : une seule navigation (avant : router.push PUIS router.refresh, soit deux
+      // rendus serveur dont un de la page du parent avec la session admin, d'où l'attente).
+      window.location.replace(data.returnTo || state.returnTo || "/admin/users");
+    } catch {
+      toastError("Impossible de revenir à ta session admin, réessaie.");
       setEnding(false);
     }
   };

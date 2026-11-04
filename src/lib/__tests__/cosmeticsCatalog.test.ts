@@ -30,12 +30,13 @@ describe("catalogue des contours et couleurs", () => {
     }
   });
 
-  it("aucun contour ni titre réservé aux administrateurs", () => {
-    expect(BORDERS.map((b) => b.key)).not.toContain("admin");
+  it("« Égide » : seul contour réservé aux administrateurs, jamais donné par une mission ni une formule ; aucun titre réservé", () => {
+    const admin = BORDERS.filter((b) => b.adminOnly);
+    expect(admin.map((b) => b.key)).toEqual(["admin"]);
+    expect(admin[0].subscription).toBe(false);
+    expect(MISSIONS.some((m) => m.grants.border === "admin")).toBe(false);
     expect(COLORS.map((c) => c.key)).not.toContain("admin");
-    expect(css).not.toMatch(/name-admin/);
-    expect(normalizeBorder("admin")).toBe(NO_BORDER);
-    expect(normalizeBorder("border-admin")).toBe(NO_BORDER);
+    expect(normalizeBorder("border-admin")).toBe("admin");
     expect(normalizeColor("admin")).toBe(DEFAULT_COLOR);
   });
 
@@ -53,7 +54,7 @@ describe("catalogue des contours et couleurs", () => {
   });
 
   it("tout ce qui n'est pas offert par un abonnement s'obtient par mission", () => {
-    for (const b of BORDERS) if (b.key !== NO_BORDER && !b.subscription) expect(MISSIONS.some((m) => m.grants.border === b.key), `contour ${b.key}`).toBe(true);
+    for (const b of BORDERS) if (b.key !== NO_BORDER && !b.subscription && !b.adminOnly) expect(MISSIONS.some((m) => m.grants.border === b.key), `contour ${b.key}`).toBe(true);
     for (const c of COLORS) if (c.key !== DEFAULT_COLOR && !c.subscription) expect(MISSIONS.some((m) => m.grants.color === c.key), `couleur ${c.key}`).toBe(true);
   });
 

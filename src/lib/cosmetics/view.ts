@@ -10,7 +10,7 @@ export interface CosmeticCard {
   /** Équipable maintenant. */
   unlocked: boolean;
   /** Par quoi il est débloqué en ce moment (null = verrouillé). */
-  unlockedVia: "mission" | "subscription" | "base" | null;
+  unlockedVia: "mission" | "subscription" | "base" | "admin" | null;
   /** Une mission le donne. */
   byMission: boolean;
   /** Une formule d'abonnement peut le donner. */
@@ -35,6 +35,8 @@ export interface CardInput {
   unlocked: Unlocked;
   /** clé → noms de formules qui la donnent (voir shortPlanName). */
   plansByKey?: { borders?: Record<string, string[]>; colors?: Record<string, string[]> };
+  /** Administrateur : seul « Égide » est montré (imposé) ; pour tout autre compte, « Égide » n'apparaît jamais. */
+  isAdmin?: boolean;
 }
 
 /** « Solo - 1 an » → « Solo ». */
@@ -72,7 +74,7 @@ export function buildCards(input: CardInput): { borders: CosmeticCard[]; colors:
     const set = kind === "border" ? input.unlocked.borders : input.unlocked.colors;
     const unlocked = set.has(key);
     const viaMission = missions.some((m) => m.earned);
-    const unlockedVia = !unlocked ? null : base ? "base" : viaMission ? "mission" : "subscription";
+    const unlockedVia = !unlocked ? null : BORDERS.find((b) => b.key === key && b.adminOnly && kind === "border") ? "admin" : base ? "base" : viaMission ? "mission" : "subscription";
     const plans = (kind === "border" ? input.plansByKey?.borders?.[key] : input.plansByKey?.colors?.[key]) ?? [];
     return {
       kind, key, label, unlocked, unlockedVia,
@@ -81,7 +83,7 @@ export function buildCards(input: CardInput): { borders: CosmeticCard[]; colors:
     };
   };
   return {
-    borders: BORDERS.map((b) => make("border", b.key, b.label, b.subscription, b.key === "none")),
+    borders: BORDERS.filter((b) => (input.isAdmin ? b.adminOnly : !b.adminOnly)).map((b) => make("border", b.key, b.label, b.subscription, b.key === "none")),
     colors: COLORS.map((c) => make("color", c.key, c.label, c.subscription, c.key === "default")),
   };
 }

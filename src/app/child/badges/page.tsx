@@ -33,6 +33,7 @@ export default async function ChildBadgesPage() {
     ownedMissionIds: (missions || []).map((m) => m.cosmetic_key),
     unlocked,
     plansByKey: plansGranting(plans || []),
+    isAdmin: userData.role === "admin",
   });
 
   return <BadgesSettings user={userData} badges={allBadges || []} earnedIds={earnedIds} borders={borders} colors={colors} />;

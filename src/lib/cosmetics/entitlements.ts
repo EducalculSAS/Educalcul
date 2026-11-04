@@ -1,4 +1,4 @@
-import { BORDERS, COLORS, DEFAULT_COLOR, NO_BORDER, grantsOfMissions } from "@/lib/cosmetics/catalog";
+import { ADMIN_BORDER, BORDERS, COLORS, DEFAULT_COLOR, NO_BORDER, grantsOfMissions } from "@/lib/cosmetics/catalog";
 
 export interface Unlocked {
   borders: Set<string>;
@@ -26,17 +26,19 @@ export function planGrants(planFeatures: { cosmetic_borders?: unknown; cosmetic_
 
 /**
  * LA règle de droits, en une fonction pure : missions accomplies (pour toujours) + formule active (tant qu'elle dure).
- * Rien d'autre : ni rôle, ni statut.
+ * Seule exception de rôle : un administrateur porte d'office le contour « Égide » et aucun autre.
  */
 export function resolveUnlocked(input: {
   missionIds: Iterable<string>;
   planFeatures?: { cosmetic_borders?: unknown; cosmetic_colors?: unknown } | null;
   planId?: string | number | null;
+  /** Administrateur : un seul contour possible, « Égide » (les couleurs de nom suivent la règle commune). */
+  isAdmin?: boolean;
 }): Unlocked {
   const fromMissions = grantsOfMissions(input.missionIds);
   const fromPlan = planGrants(input.planFeatures ?? null, input.planId ?? null);
   return {
-    borders: new Set([NO_BORDER, ...fromMissions.borders, ...fromPlan.borders]),
+    borders: input.isAdmin ? new Set([ADMIN_BORDER]) : new Set([NO_BORDER, ...fromMissions.borders, ...fromPlan.borders]),
     colors: new Set([DEFAULT_COLOR, ...fromMissions.colors, ...fromPlan.colors]),
   };
 }

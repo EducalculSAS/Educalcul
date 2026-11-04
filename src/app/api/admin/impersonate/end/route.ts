@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { after } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { auditLog, AuditAction } from "@/lib/auditLog";
@@ -26,8 +27,9 @@ export async function POST(req: Request) {
     store.delete(IMPERSONATION_COOKIE_NAME);
     if (!row) return Response.json({ error: "Session d'impersonation introuvable" }, { status: 404 });
 
-    await supabaseAdmin.from("impersonation_sessions").delete().eq("id", id);
-
+    // Suppression de la ligne et échange du jeton en PARALLÈLE (avant : l'un après l'autre, puis l'audit, avant de
+    // répondre) : la sortie d'impersonation attend un seul aller-retour réseau au lieu de quatre.
+    const deleted = supabaseAdmin.from("impersonation_sessions").delete().eq("id", id).then(() => undefined, () => undefined);
     // NE JAMAIS passer par supabaseAdmin.auth.* ici : ce client est un
     // singleton partagé par tout le processus serveur, et refreshSession()
     // y installe la session de l'utilisateur — l'en-tête Authorization du
@@ -47,12 +49,13 @@ export async function POST(req: Request) {
         body: JSON.stringify({ refresh_token: row.origin_refresh_token }),
       },
     );
-    const refreshedSession = await tokenRes.json().catch(() => null);
+    const [refreshedSession] = await Promise.all([tokenRes.json().catch(() => null), deleted]);
     if (!tokenRes.ok || !refreshedSession?.access_token || !refreshedSession?.refresh_token) {
       return Response.json({ error: "Impossible de restaurer la session admin" }, { status: 500 });
     }
 
-    await auditLog(
+    // Le journal d'audit s'écrit après l'envoi de la réponse (after) : il ne retarde plus le retour à la session admin.
+    after(() => auditLog(
       {
         action: AuditAction.IMPERSONATION_ENDED,
         adminId: row.admin_id,
@@ -62,7 +65,7 @@ export async function POST(req: Request) {
         details: { targetName: row.target_name },
       },
       req,
-    );
+    ));
 
     return Response.json({
       access_token: refreshedSession.access_token,

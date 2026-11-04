@@ -19,6 +19,7 @@ const PAL: Record<string, Pal> = {
   pro: { dark: "#8a5a00", mid: "#f5b81c", light: "#fff2a8" },
   elite: { dark: "#3a1a78", mid: "#8a4bf0", light: "#dcbcff" },
   mathador: { dark: "#12408f", mid: "#3a8cf0", light: "#c4e2ff" },
+  admin: { dark: "#0b5e57", mid: "#2cc4b4", light: "#c4f7f0" },
   aurore: { dark: "#0b5e4a", mid: "#2fe0b0", light: "#d3fff0" },
   sylve: { dark: "#0d3d24", mid: "#2fa564", light: "#b9f0cf" },
   foudre: { dark: "#241a7a", mid: "#6a5cff", light: "#d9d4ff" },
@@ -196,6 +197,20 @@ export default function AvatarRingDecor({ ringKey, w, r, compact = false }: { ri
             {Array.from({ length: 8 }, (_, i) => pointAt((i + 0.5) / 8, 0.5, rOut)).map((q, i) => (
               <Star5 key={i} x={q.x + q.nx * 1} y={q.y + q.ny * 1} s={i % 2 ? 0.7 : 1} p={{ dark: "#12408f", mid: "#cfe8ff", light: "#fff" }} d={i * 0.25} />
             ))}
+          </>
+        );
+        break;
+      case "admin":
+        front = (
+          <>
+            <g transform="translate(50 98) scale(1.25)">
+              <g className="rf-pulse">
+                <path d="M0 -10 L11 -7 V2 C11 8 5.5 12 0 15 C-5.5 12 -11 8 -11 2 V-7Z" fill={p.mid} stroke={p.dark} strokeWidth="1.5" strokeLinejoin="round" />
+                <path d="M0 -6 L7 -4 V2 C7 5 4 8 0 10 C-4 8 -7 5 -7 2 V-4Z" fill={p.light} fillOpacity=".75" />
+                <path d="M-3 0 L-0.5 2.8 L3.6 -2" fill="none" stroke={p.dark} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+              </g>
+            </g>
+            <g transform="translate(92 8) scale(.7)"><path d="M-8 -6 H8 L13 0 L0 14 L-13 0Z" fill="url(#rg-dg)" stroke="#0b5f8a" strokeWidth="1.6" strokeLinejoin="round" /></g>
           </>
         );
         break;

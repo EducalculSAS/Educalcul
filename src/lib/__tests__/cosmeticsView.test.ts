@@ -59,6 +59,19 @@ describe("cartes de la vitrine", () => {
   });
 });
 
+describe("contour des administrateurs dans la vitrine", () => {
+  it("un élève ou un parent ne voit jamais « Égide »", () => {
+    expect(make().borders.map((c) => c.key)).not.toContain("admin");
+  });
+  it("un administrateur ne voit que « Égide », imposé", () => {
+    const unlocked = resolveUnlocked({ missionIds: [], isAdmin: true });
+    const { borders, colors } = buildCards({ stats: zero, ownedMissionIds: [], unlocked, isAdmin: true });
+    expect(borders.map((c) => c.key)).toEqual(["admin"]);
+    expect(borders[0]).toMatchObject({ unlocked: true, unlockedVia: "admin" });
+    expect(colors.length).toBeGreaterThan(1);
+  });
+});
+
 describe("filtres et tri", () => {
   const cards = make({ owned: ["rubis", "bronze"], stats: { cours: 15 }, withPlan: true }).borders;
 

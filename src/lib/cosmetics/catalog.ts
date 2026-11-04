@@ -5,7 +5,8 @@
  * Deux façons de l'obtenir, pas plus :
  *  - MISSION : on l'accomplit une fois, il est à vous pour toujours (enregistré dans user_cosmetics) ;
  *  - ABONNEMENT : la formule du parent le donne tant qu'elle est active (jamais enregistré : il disparaît avec elle).
- * Un élément peut avoir les deux ; il n'existe AUCUN élément réservé aux administrateurs.
+ * Un élément peut avoir les deux. Seule exception : le contour « Égide », réservé aux administrateurs et équipé d'office
+ * (ils ne choisissent pas d'autre contour) ; personne d'autre ne le voit ni ne peut l'obtenir.
  *
  * Ce fichier ne dépend de rien (ni base, ni serveur) : il sert aussi bien au serveur qu'à l'affichage.
  */
@@ -48,6 +49,8 @@ export interface BorderDef {
   preview: string;
   /** Une formule d'abonnement peut le donner. */
   subscription: boolean;
+  /** Réservé aux administrateurs, équipé d'office (jamais choisi, jamais montré aux élèves ni aux parents). */
+  adminOnly?: boolean;
 }
 
 export interface ColorDef {
@@ -59,6 +62,8 @@ export interface ColorDef {
 }
 
 export const NO_BORDER = "none";
+/** Contour des administrateurs : posé d'office (trigger en base + remise en règle), aucun autre ne leur est permis. */
+export const ADMIN_BORDER = "admin";
 export const DEFAULT_COLOR = "default";
 
 export const BORDERS: BorderDef[] = [
@@ -79,6 +84,7 @@ export const BORDERS: BorderDef[] = [
   { key: "flamme", label: "Brasier", preview: "border-orange-500", subscription: true },
   { key: "pro", label: "Ailes d'or", preview: "border-yellow-500", subscription: true },
   { key: "elite", label: "Astral", preview: "border-pink-500", subscription: true },
+  { key: ADMIN_BORDER, label: "Égide", preview: "border-teal-500", subscription: false, adminOnly: true },
 ];
 
 export const COLORS: ColorDef[] = [

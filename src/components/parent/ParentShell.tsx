@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import GlassButton from "@/components/ui/GlassButton";
 import { supabase } from "@/lib/supabaseClient";
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
@@ -10,7 +11,7 @@ import ParentOnboarding from "@/components/onboarding/ParentOnboarding";
 /**
  * Coquille de l'espace parent. L'identité, le rôle et l'abonnement sont déjà vérifiés par le layout serveur
  * (src/app/parent/layout.tsx) : la page s'affiche directement. Reste ici ce qui n'a de sens que dans le navigateur :
- * la présence en ligne, la présentation de première connexion et le renvoi vers l'abonnement d'un compte en défaut.
+ * la présence en ligne, la présentation de première connexion et le bandeau de renouvellement d'un compte dont l'abonnement est terminé.
  */
 export default function ParentShell({
   children,
@@ -25,14 +26,13 @@ export default function ParentShell({
   showOnboarding: boolean;
   subscriptionOk: boolean;
 }) {
-  const router = useRouter();
   const pathname = usePathname();
   const [showOnboarding, setShowOnboarding] = useState(showOnboardingInitial);
 
-  // Compte dont l'abonnement n'est plus actif : seule la page d'abonnement lui reste ouverte.
-  useEffect(() => {
-    if (!subscriptionOk && pathname !== "/parent/subscription") router.replace("/parent/subscription");
-  }, [subscriptionOk, pathname, router]);
+  // Abonnement terminé ou échu : l'espace parent reste ouvert (le compte repasse simplement aux droits de la formule
+  // gratuite, partout contrôlés côté serveur). Avant, chaque page renvoyait vers l'abonnement au bout d'une seconde,
+  // y compris en impersonation : un parent ne pouvait plus voir ni ses enfants ni son profil.
+  const showRenewBanner = !subscriptionOk && pathname !== "/parent/subscription";
 
   // Présence + géolocalisation : track-login à l'arrivée, au retour sur l'onglet (throttle 25 s) et en filet toutes
   // les 2 min — la position suit même sans recharger l'app.
@@ -70,7 +70,19 @@ export default function ParentShell({
     <div className="min-h-screen bg-[var(--greek-cream)]">
       <Navbar />
       <AdminMessages />
-      <main className="pt-[64px]">{children}</main>
+      <main className="pt-[64px]">
+        {showRenewBanner && (
+          <div role="status" className="mx-auto max-w-6xl px-4 pt-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl border border-[rgba(197,161,72,0.35)] bg-white/90 px-4 py-3 shadow-sm">
+              <p className="text-sm text-[var(--greek-blue)] flex-1">
+                <strong>Votre abonnement n&apos;est plus actif.</strong> Vos enfants ont accès à la formule Découverte en attendant.
+              </p>
+              <GlassButton href="/parent/subscription" variant="navy" size="sm">Renouveler</GlassButton>
+            </div>
+          </div>
+        )}
+        {children}
+      </main>
       {showOnboarding && <ParentOnboarding firstName={firstName} authId={authId} onComplete={() => setShowOnboarding(false)} />}
     </div>
   );

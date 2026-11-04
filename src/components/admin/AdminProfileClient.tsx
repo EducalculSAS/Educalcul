@@ -4,7 +4,7 @@ import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
-import { User, Save, Eye, Crown, Shield, X } from "lucide-react";
+import { User, Save, Eye, Crown, X } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import AdminTotpCard from "@/components/admin/AdminTotpCard";
 import WebAuthnCard from "@/components/WebAuthnCard";
@@ -172,12 +172,6 @@ export default function AdminProfileClient({ initialFormData }: {
                   </div>
                 </div>
 
-                <p className="text-sm text-gray-500 mb-6">
-                  Les contours et les titres s&apos;obtiennent comme pour tout le monde (missions ou abonnement) et se choisissent dans{" "}
-                  <a href="/child/badges" className="font-semibold text-[var(--greek-blue)] underline">Mes trophées</a>.
-                  Il n&apos;existe aucun contour ni titre réservé aux administrateurs.
-                </p>
-
                 <GlassButton
                   size="sm"
                   variant="navy"
@@ -227,12 +221,6 @@ export default function AdminProfileClient({ initialFormData }: {
                 {formData.child_username || "Pseudo admin"}
               </h4>
 
-              <div className="inline-flex items-center gap-2 px-4 py-2 border-2 border-[var(--greek-gold)] rounded-lg bg-[var(--greek-cream)] shadow-sm">
-                <Shield className="text-[var(--greek-blue)] w-5 h-5" />
-                <span className="font-serif font-bold text-[var(--greek-bronze)] text-sm">
-                  Administrateur
-                </span>
-              </div>
             </div>
           </div>
         </div>

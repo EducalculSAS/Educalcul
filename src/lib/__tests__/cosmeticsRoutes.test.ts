@@ -38,7 +38,7 @@ describe("POST /api/child/equip", () => {
     expect(db.rows("users")[1].equipped_border).toBe("none");
   });
 
-  it("refuse l'ancien contour « admin » et le titre « admin », même à un administrateur", async () => {
+  it("un élève ne peut pas porter « Égide », ni le titre « admin »", async () => {
     expect((await equip({ equipped_border: "admin" })).status).toBe(403);
     expect((await equip({ name_color: "admin" })).status).toBe(403);
   });
