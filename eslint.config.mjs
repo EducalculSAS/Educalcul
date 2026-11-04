@@ -24,8 +24,15 @@ const eslintConfig = defineConfig([
       "eqeqeq": ["error", "always", { null: "ignore" }],
       "no-debugger": "error",
       "no-var": "error",
+      // `useReducedMotion` donne une valeur différente sur le serveur et dans le navigateur : erreur d'hydratation React #418
+      // chez tout visiteur qui réduit les animations. On passe par le hook qui attend le montage.
+      "no-restricted-imports": ["error", { paths: [
+        { name: "framer-motion", importNames: ["useReducedMotion"], message: "Utiliser useSafeReducedMotion (src/lib/useSafeReducedMotion.ts) : useReducedMotion casse l'hydratation." },
+        { name: "motion/react", importNames: ["useReducedMotion"], message: "Utiliser useSafeReducedMotion (src/lib/useSafeReducedMotion.ts) : useReducedMotion casse l'hydratation." },
+      ] }],
     },
   },
+  { files: ["src/lib/useSafeReducedMotion.ts"], rules: { "no-restricted-imports": "off" } },
   // Les scripts en ligne de commande (import, sauvegarde, remplissage) affichent leur progression : console.log y est normal.
   { files: ["scripts/**"], rules: { "no-console": "off" } },
   // Override default ignores of eslint-config-next.

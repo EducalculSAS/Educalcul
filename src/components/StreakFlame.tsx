@@ -1,7 +1,8 @@
 "use client";
 
 import { useId } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useSafeReducedMotion } from "@/lib/useSafeReducedMotion";
 
 /**
  * Flamme de série animée, dans l'esprit de celle de Duolingo : vectorielle (net à toutes les tailles, pas de GIF),
@@ -47,7 +48,7 @@ interface Props {
 }
 
 export default function StreakFlame({ lit = true, count, size, className = "", style }: Props) {
-  const reduced = useReducedMotion();
+  const reduced = useSafeReducedMotion();
   const animated = lit && !reduced;
   const uid = useId().replace(/:/g, "");
   const hasSizeClass = /(^|\s)(w|h|size)-/.test(className);
