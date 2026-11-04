@@ -48,6 +48,16 @@ const nextConfig: NextConfig = {
     ],
   },
   
+  // Anciennes adresses ou adresses devinées par les moteurs : une seule URL par page (le référencement s'additionne).
+  async redirects() {
+    return [
+      { source: "/methodologie", destination: "/methode-pedagogique", permanent: true },
+      { source: "/apprendre-les-maths", destination: "/programmes", permanent: true },
+      { source: "/about", destination: "/a-propos", permanent: true },
+      { source: "/calia", destination: "/calia-tuteur-ia-maths", permanent: true },
+    ];
+  },
+
   // ✓ SECURITY: Apply security headers and CORS
   async headers() {
     return [

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getLiveSubscription } from "@/lib/subscriptionLive";
 import PageHero from "@/components/PageHero";
@@ -7,6 +8,8 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import ParentProfileSettings from "@/components/parent/ParentProfileSettings";
 import ParentAlertSettings from "@/components/parent/ParentAlertSettings";
 import { getAlertPrefs } from "@/lib/studentStore";
+
+export const metadata: Metadata = { title: "Mon profil" };
 
 export default async function ParentProfilePage() {
   const authUser = await getServerUser();

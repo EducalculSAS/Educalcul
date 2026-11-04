@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import AdminProfileClient from "@/components/admin/AdminProfileClient";
+
+export const metadata: Metadata = { title: "Mon profil" };
 
 const ADMIN_AVATAR = "/logo.png";
 

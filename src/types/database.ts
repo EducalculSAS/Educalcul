@@ -2775,6 +2775,27 @@ export type Database = {
           },
         ]
       }
+      traffic_visits: {
+        Row: {
+          day: string
+          path: string
+          source: string
+          visits: number
+        }
+        Insert: {
+          day: string
+          path: string
+          source: string
+          visits?: number
+        }
+        Update: {
+          day?: string
+          path?: string
+          source?: string
+          visits?: number
+        }
+        Relationships: []
+      }
       stripe_processed_events: {
         Row: {
           event_id: string
@@ -4230,6 +4251,10 @@ export type Database = {
       }
     }
     Functions: {
+      bump_traffic_visit: {
+        Args: { p_source: string; p_path: string }
+        Returns: undefined
+      }
       admin_force_delete_auth_user: {
         Args: { target_auth_id: string }
         Returns: undefined

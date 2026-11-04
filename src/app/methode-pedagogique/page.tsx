@@ -6,6 +6,9 @@ import Footer from "@/components/Footer";
 import GlassButton from "@/components/ui/GlassButton";
 import PublicHero from "@/components/seo/PublicHero";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import QuickFacts from "@/components/seo/QuickFacts";
+import JsonLd from "@/components/JsonLd";
+import { ORG_ID, SEO_UPDATED } from "@/lib/seo/site";
 
 const BASE = "https://educalcul.com";
 const TITLE = "Méthode pédagogique Educalcul : comprendre plutôt que recopier";
@@ -34,11 +37,26 @@ const PRINCIPLES = [
   { title: "La motivation compte", text: "Badges, contours, titres et mini-jeux : la progression se voit et se fête, sans détourner des maths." },
 ];
 
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: TITLE,
+  description: DESCRIPTION,
+  url: `${BASE}/methode-pedagogique`,
+  mainEntityOfPage: `${BASE}/methode-pedagogique`,
+  inLanguage: "fr-FR",
+  datePublished: "2026-11-04",
+  dateModified: SEO_UPDATED,
+  author: { "@id": ORG_ID },
+  publisher: { "@id": ORG_ID },
+};
+
 export default function MethodePage() {
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
       <Navbar />
       <main className="flex flex-col flex-1">
+        <JsonLd data={articleSchema} />
         <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "Méthode pédagogique", href: "/methode-pedagogique" }]} />
         <PublicHero
           back={{ href: "/", label: "Retour à l'accueil" }}
@@ -48,6 +66,15 @@ export default function MethodePage() {
         />
 
         <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
+          <QuickFacts
+            facts={[
+              { label: "L'idée", value: "Un élève progresse quand il trouve lui-même, avec la bonne aide au bon moment." },
+              { label: "Le parcours", value: "Comprendre (cours courts), s'entraîner (exercices corrigés), retenir (quiz et révisions), se situer (objectifs et checklist)." },
+              { label: "Le rôle de l'IA", value: "Calia pose des questions et donne des indices adaptés à l'erreur ; elle ne donne pas la réponse et ne fait pas le devoir à la place de l'élève." },
+              { label: "Les programmes", value: "Chaque contenu est rattaché à un niveau et à une notion des programmes de l'Éducation nationale." },
+              { label: "Le suivi", value: "Les parents voient l'activité, les scores et les notions à retravailler." },
+            ]}
+          />
           <section className={CARD}>
             <div className="flex items-center gap-3 mb-1">
               <Brain className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />

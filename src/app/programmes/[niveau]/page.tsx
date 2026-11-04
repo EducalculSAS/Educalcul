@@ -11,6 +11,8 @@ import SeoFaq from "@/components/seo/SeoFaq";
 import MiniExercise from "@/components/seo/MiniExercise";
 import JsonLd from "@/components/JsonLd";
 import HowWeHelp from "@/components/seo/HowWeHelp";
+import QuickFacts from "@/components/seo/QuickFacts";
+import { ORG_ID, SEO_UPDATED } from "@/lib/seo/site";
 import { LEVEL_BY_SLUG, LEVEL_PAGES, CYCLE_LABEL, chapterCount, neighbours } from "@/lib/seo/levels";
 import { PDF_LINKS } from "@/lib/programmePdfLinks";
 
@@ -64,11 +66,26 @@ export default async function LevelProgrammePage({ params }: { params: Promise<{
     isPartOf: { "@type": "WebSite", name: "Educalcul", url: BASE },
     about: { "@type": "Thing", name: `Mathématiques ${level.name}` },
     educationalLevel: level.name,
+    dateModified: SEO_UPDATED,
+  };
+  // Cours (schema.org/Course) : décrit ce qui est visible sur la page, sans prix ni avis inventés.
+  const courseSchema = {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    name: `Mathématiques en ${level.name}`,
+    description: level.description,
+    url,
+    inLanguage: "fr-FR",
+    educationalLevel: level.name,
+    about: level.domains.map((d) => d.name),
+    teaches: level.skills,
+    provider: { "@id": ORG_ID },
   };
 
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
       <JsonLd data={pageSchema} />
+      <JsonLd data={courseSchema} />
       <Navbar />
       <main className="flex flex-col flex-1">
         {/* En-tête */}
@@ -88,6 +105,16 @@ export default async function LevelProgrammePage({ params }: { params: Promise<{
         </PublicHero>
 
         <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
+          <QuickFacts
+            title={`Maths en ${level.short} en bref`}
+            facts={[
+              { label: "Niveau", value: `${level.name} (${CYCLE_LABEL[level.cycle].toLowerCase()}, ${level.cycleLabel.toLowerCase()})` },
+              { label: "Au programme", value: `${chapterCount(level)} notions en ${level.domains.length} domaines : ${level.domains.map((d) => d.name.toLowerCase()).join(", ")}.` },
+              { label: "Texte de référence", value: "Programme de l'Éducation nationale publié sur Éduscol." },
+              { label: "Sur Educalcul", value: "Des cours, des exercices corrigés, des quiz et Calia, le tuteur IA qui guide sans donner la réponse." },
+              { label: "Essai", value: "7 jours gratuits, sans carte bancaire et sans engagement." },
+            ]}
+          />
           {/* Programme */}
           <section className={CARD} aria-labelledby="au-programme">
             <SectionTitle icon={GraduationCap}><span id="au-programme">Au programme de maths en {level.name}</span></SectionTitle>

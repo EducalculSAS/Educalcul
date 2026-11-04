@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { LEVEL_PAGES, LEVEL_PAGES_UPDATED } from "@/lib/seo/levels";
+import { SEO_UPDATED } from "@/lib/seo/site";
 
 const BASE = "https://educalcul.com";
 
@@ -12,9 +13,9 @@ const PAGES: { path: string; updated?: string; changeFrequency: "weekly" | "mont
   { path: "/offres", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.9 },
   { path: "/tarifs", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.9 },
   { path: "/programmes", updated: LEVEL_PAGES_UPDATED, changeFrequency: "monthly", priority: 0.9 },
-  { path: "/calia-tuteur-ia-maths", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.8 },
-  { path: "/methode-pedagogique", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.7 },
-  { path: "/a-propos", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/calia-tuteur-ia-maths", updated: SEO_UPDATED, changeFrequency: "monthly", priority: 0.8 },
+  { path: "/methode-pedagogique", updated: SEO_UPDATED, changeFrequency: "monthly", priority: 0.7 },
+  { path: "/a-propos", updated: SEO_UPDATED, changeFrequency: "monthly", priority: 0.6 },
   { path: "/auth/inscription", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.8 },
   { path: "/faq", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", updated: "2026-11-04", changeFrequency: "yearly", priority: 0.5 },

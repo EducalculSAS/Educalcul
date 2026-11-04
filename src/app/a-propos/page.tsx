@@ -5,6 +5,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlassButton from "@/components/ui/GlassButton";
 import PublicHero from "@/components/seo/PublicHero";
+import QuickFacts from "@/components/seo/QuickFacts";
+import JsonLd from "@/components/JsonLd";
+import { CONTACT_EMAIL, FOUNDERS, ORG_ID, SEO_UPDATED, SITE_URL } from "@/lib/seo/site";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import FadeInSection from "@/components/home/FadeInSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -43,12 +46,33 @@ const TEAM = [
   },
 ];
 
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: TITLE,
+  description: DESCRIPTION,
+  url: `${BASE}/a-propos`,
+  inLanguage: "fr-FR",
+  dateModified: SEO_UPDATED,
+  about: { "@id": ORG_ID },
+  mainEntity: {
+    "@type": "Organization",
+    "@id": ORG_ID,
+    name: "Educalcul",
+    url: SITE_URL,
+    email: CONTACT_EMAIL,
+    description: "Plateforme française d'apprentissage des mathématiques du CP à la Terminale : cours, exercices corrigés, quiz, tuteur IA Calia et suivi pour les parents.",
+    founder: FOUNDERS.map((f) => ({ "@type": "Person", name: f.name, jobTitle: f.jobTitle })),
+  },
+};
+
 export default async function AProposPage() {
   const [reviews, ratingOverride] = await Promise.all([fetchReviewsForHomepage(), fetchReviewRatingOverride()]);
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
       <Navbar />
       <main className="flex flex-col flex-1">
+        <JsonLd data={aboutSchema} />
         <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "À propos", href: "/a-propos" }]} />
         <PublicHero
           eyebrow="À propos"
@@ -57,6 +81,18 @@ export default async function AProposPage() {
         />
 
         <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
+          <QuickFacts
+            title="Educalcul en bref"
+            facts={[
+              { label: "Qu'est-ce qu'Educalcul ?", value: "Une plateforme française pour apprendre, comprendre, s'entraîner et progresser en mathématiques, du CP à la Terminale." },
+              { label: "Pour qui ?", value: "Les élèves du primaire, du collège et du lycée, et leurs parents, qui suivent la progression depuis un espace dédié." },
+              { label: "Ce qu'on y trouve", value: "Des cours, des exercices corrigés, des quiz, Calia (un tuteur IA qui guide sans donner la réponse) et un suivi pour les parents." },
+              { label: "Programmes", value: "Ceux de l'Éducation nationale, niveau par niveau." },
+              { label: "Fondateurs", value: FOUNDERS.map((f) => f.name).join(" et ") },
+              { label: "Essai", value: "7 jours gratuits, sans carte bancaire et sans engagement." },
+              { label: "Contact", value: <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-[var(--greek-gold-text)] hover:underline">{CONTACT_EMAIL}</a> },
+            ]}
+          />
           <section className={CARD}>
             <div className="flex items-center gap-3 mb-1">
               <Heart className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />

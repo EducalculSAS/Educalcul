@@ -1,0 +1,15 @@
+/** Faits d'identité d'Educalcul, repris par les données structurées, la page À propos et llms.txt : une seule source. */
+export const SITE_URL = "https://educalcul.com";
+export const ORG_ID = `${SITE_URL}/#organization`;
+export const CONTACT_EMAIL = "contact@educalcul.com";
+
+export const FOUNDERS = [
+  { name: "Ruben Combe-Tamain", jobTitle: "Co-fondateur, conception et développement de la plateforme" },
+  { name: "Alexandre Tamain-Glose", jobTitle: "Co-fondateur, contenus et pédagogie" },
+] as const;
+
+/** Date de la dernière vraie mise à jour des pages de contenu publiques (à changer quand on les modifie). */
+export const SEO_UPDATED = "2026-11-04";
+
+export const formatFrDate = (iso: string) =>
+  new Date(`${iso}T12:00:00Z`).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric", timeZone: "Europe/Paris" });

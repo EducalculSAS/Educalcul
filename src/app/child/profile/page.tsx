@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import PageHero from "@/components/PageHero";
 import { User } from "lucide-react";
@@ -5,6 +6,8 @@ import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import ChildProfileSettings from "@/components/child/ChildProfileSettings";
+
+export const metadata: Metadata = { title: "Mon profil" };
 
 export default async function ChildProfilePage() {
   const authUser = await getServerUser();

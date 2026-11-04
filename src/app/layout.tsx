@@ -19,6 +19,8 @@ import ImpersonationBanner from "@/components/ImpersonationBanner";
 import JsonLd from "@/components/JsonLd";
 import ThemeSync from "@/components/ThemeSync";
 import AnimationGovernor from "@/components/AnimationGovernor";
+import VisitBeacon from "@/components/VisitBeacon";
+import { CONTACT_EMAIL, FOUNDERS, ORG_ID } from "@/lib/seo/site";
 import SeasonalDecor from "@/components/SeasonalDecor";
 import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
@@ -31,7 +33,11 @@ const BASE = "https://educalcul.com";
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": ORG_ID,
   name: "Educalcul",
+  founder: FOUNDERS.map((f) => ({ "@type": "Person", name: f.name, jobTitle: f.jobTitle, url: `${BASE}/a-propos` })),
+  email: CONTACT_EMAIL,
+  slogan: "Les mathématiques à portée de main, du CP à la Terminale",
   alternateName: "EC",
   url: BASE,
   logo: {
@@ -62,12 +68,14 @@ const websiteSchema = {
   name: "Educalcul",
   url: BASE,
   inLanguage: "fr-FR",
-  publisher: { "@type": "Organization", name: "Educalcul", url: BASE },
+  publisher: { "@id": ORG_ID },
 };
 
 const educationalOrgSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
+  "@id": `${BASE}/#educational-organization`,
+  parentOrganization: { "@id": ORG_ID },
   name: "Educalcul",
   url: BASE,
   description: "Plateforme SaaS d'apprentissage des mathématiques du CP à la Terminale, avec IA pédagogique et suivi parental.",
@@ -197,6 +205,7 @@ export default function RootLayout({
             <SessionStillHereModal />
             <ThemeSync />
             <AnimationGovernor />
+            <VisitBeacon />
             <SeasonalDecor />
         <PasswordRecoveryRedirect />
             <JsxFigureEnhancer />

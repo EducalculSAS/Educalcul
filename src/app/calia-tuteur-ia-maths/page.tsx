@@ -8,6 +8,7 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import PublicHero from "@/components/seo/PublicHero";
 import SeoFaq from "@/components/seo/SeoFaq";
 import CaliaChatDemo from "@/components/offres/CaliaChatDemo";
+import QuickFacts from "@/components/seo/QuickFacts";
 
 const BASE = "https://educalcul.com";
 const TITLE = "Calia : tuteur IA pour apprendre les mathématiques";
@@ -68,6 +69,16 @@ export default function CaliaPage() {
         </PublicHero>
 
         <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
+          <QuickFacts
+            title="Calia en bref"
+            facts={[
+              { label: "Qu'est-ce que Calia ?", value: "Le tuteur IA d'Educalcul pour les mathématiques, du CP à la Terminale." },
+              { label: "Comment aide-t-elle ?", value: "Par la méthode socratique : elle pose des questions et donne des indices pour que l'élève trouve la solution lui-même." },
+              { label: "Que fait-elle ?", value: "Aide pendant les cours et exercices, séance vocale en mode classe, aide aux devoirs à partir d'une photo, et analyse de progression pour les parents." },
+              { label: "Que ne fait-elle pas ?", value: "Donner directement la réponse d'un exercice ou faire un devoir à la place de l'élève." },
+              { label: "Tarif", value: "Les fonctions disponibles dépendent de la formule (voir la page Tarifs). 7 jours d'essai gratuits, sans carte bancaire." },
+            ]}
+          />
           <section className={CARD}>
             <div className="flex items-center gap-3 mb-1">
               <Sparkles className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
