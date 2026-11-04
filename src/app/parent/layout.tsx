@@ -6,9 +6,8 @@ import { hasActiveSubscription } from "@/lib/subscriptionGate";
 import ParentShell from "@/components/parent/ParentShell";
 import ParentGuest from "@/components/parent/ParentGuest";
 
-// Espace connecté : un titre d'onglet à son nom, et jamais indexé (le contenu est privé).
+// Espace connecté : jamais indexé (le contenu est privé).
 export const metadata: Metadata = {
-  title: { default: "Espace parent | Educalcul", template: "%s | Espace parent" },
   robots: { index: false, follow: false },
 };
 

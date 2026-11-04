@@ -10,9 +10,8 @@ import { getTwoFactorCookie } from "@/lib/twoFactorCookie";
 import { IMPERSONATION_COOKIE_NAME } from "@/lib/impersonationCookie";
 import AdminShell from "@/components/admin/AdminShell";
 
-// Espace connecté : un titre d'onglet à son nom, et jamais indexé (le contenu est privé).
+// Espace connecté : jamais indexé (le contenu est privé).
 export const metadata: Metadata = {
-  title: { default: "Espace administrateur | Educalcul", template: "%s | Admin Educalcul" },
   robots: { index: false, follow: false },
 };
 
