@@ -14,7 +14,6 @@ export class FakeDb {
   rows(table: string): Row[] { return (this.tables[table] ??= []); }
 
   from(table: string) {
-    const db = this;
     let op: "select" | "insert" | "update" | "upsert" | "delete" = "select";
     let payload: Row | Row[] | null = null;
     const filters: ((r: Row) => boolean)[] = [];
@@ -23,18 +22,18 @@ export class FakeDb {
     let limitN: number | null = null;
 
     const run = (): Result => {
-      const all = db.rows(table);
+      const all = this.rows(table);
       const matches = () => all.filter((r) => filters.every((f) => f(r)));
       if (op === "insert" || op === "upsert") {
         const items = Array.isArray(payload) ? payload : [payload as Row];
         const out: Row[] = [];
         for (const item of items) {
-          const col = db.unique[table];
+          const col = this.unique[table];
           if (col && all.some((r) => r[col] === item[col])) {
             if (op === "upsert") { Object.assign(all.find((r) => r[col] === item[col])!, item); continue; }
             return { data: null, error: { code: "23505", message: "duplicate key value violates unique constraint" } };
           }
-          const row = { id: db.nextId++, ...item };
+          const row = { id: this.nextId++, ...item };
           all.push(row); out.push(row);
         }
         return { data: wantSingle ? out[0] ?? null : returning ? out : null, error: null };
@@ -44,7 +43,7 @@ export class FakeDb {
         return { data: returning ? hit : null, error: null };
       }
       if (op === "delete") {
-        const hit = matches(); db.tables[table] = all.filter((r) => !hit.includes(r));
+        const hit = matches(); this.tables[table] = all.filter((r) => !hit.includes(r));
         return { data: returning ? hit : null, error: null };
       }
       let res = matches(); if (limitN !== null) res = res.slice(0, limitN);
