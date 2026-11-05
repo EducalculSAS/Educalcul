@@ -189,7 +189,7 @@ export default async function Home() {
           {/* Rangée A — Cours */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <Reveal y={36} scale={0.96}>
-              <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
+              <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold-text)" }}>
                 1 · Cours & Exercices
               </div>
               <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
@@ -236,7 +236,7 @@ export default async function Home() {
               </div>
             </Reveal>
             <Reveal y={36} scale={0.95} className="order-1 md:order-2">
-              <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
+              <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold-text)" }}>
                 2 · IA Pédagogique
               </div>
               <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
@@ -256,7 +256,7 @@ export default async function Home() {
           {/* Rangée C — Suivi Parents */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
             <Reveal y={36} scale={0.96}>
-              <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold)" }}>
+              <div className="text-xs font-bold uppercase tracking-widest mb-3 flex items-center gap-2" style={{ color: "var(--greek-gold-text)" }}>
                 3 · Suivi Parents
               </div>
               <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
@@ -280,7 +280,7 @@ export default async function Home() {
         <section className="pt-28 pb-16 px-6" style={{ background: "var(--greek-cream)" }}>
           <div className="max-w-5xl mx-auto">
             <Reveal className="text-center mb-14" y={20}>
-              <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold)" }}>Tarifs</p>
+              <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold-text)" }}>Tarifs</p>
               <h2 className="font-[family-name:var(--font-display)] font-bold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", letterSpacing: "-0.01em" }}>
                 Une formule pour chaque famille
               </h2>
@@ -315,7 +315,7 @@ export default async function Home() {
       <section className="pt-24 pb-36 px-6" style={{ background: "var(--greek-cream)" }}>
         <div className="max-w-3xl mx-auto">
           <Reveal className="text-center mb-10" y={20}>
-            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold)" }}>Questions fréquentes</p>
+            <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold-text)" }}>Questions fréquentes</p>
             <h2 className="font-[family-name:var(--font-display)] font-bold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", letterSpacing: "-0.01em" }}>
               Encore quelques doutes ?
             </h2>

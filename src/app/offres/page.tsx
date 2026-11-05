@@ -206,14 +206,14 @@ export default function Offres() {
           <div className="container mx-auto px-6 max-w-5xl">
             <FadeInSection>
               <div className="text-center mb-10">
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--greek-gold)" }}>
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--greek-gold-text)" }}>
                   Essayez sans compte
                 </span>
                 <h2
                   className="font-[family-name:var(--font-display)] font-bold leading-tight mt-3 mb-4"
                   style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", color: "var(--greek-blue)" }}
                 >
-                  Un cours, un exercice, un quiz : <span style={{ color: "var(--greek-gold)" }}>comme dans l&apos;espace élève.</span>
+                  Un cours, un exercice, un quiz : <span style={{ color: "var(--greek-gold-text)" }}>comme dans l&apos;espace élève.</span>
                 </h2>
                 <p className="text-sm leading-relaxed max-w-2xl mx-auto" style={{ color: "var(--text-muted)" }}>
                   Deux cours (fractions en 6e, Pythagore en 4e), un exercice à réponses écrites commentées et un quiz. Rien n&apos;est enregistré.
@@ -236,13 +236,13 @@ export default function Offres() {
             <FadeInSection className="text-center max-w-2xl mx-auto">
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Image src="/logoAI.png" alt="Calia" width={40} height={40} className="w-10 h-10 object-contain" />
-                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--greek-gold)" }}>
+                <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--greek-gold-text)" }}>
                   La feature qui change tout
                 </span>
               </div>
               <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-5" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", color: "var(--greek-blue)" }}>
                 Calia enseigne, <br />
-                <span style={{ color: "var(--greek-gold)" }}>elle ne donne pas les réponses.</span>
+                <span style={{ color: "var(--greek-gold-text)" }}>elle ne donne pas les réponses.</span>
               </h2>
               <p className="text-base leading-relaxed mb-4" style={{ color: "var(--text-muted)" }}>
                 Calia est le tuteur IA d&apos;Educalcul. Elle suit la méthode socratique : plutôt que de corriger à la place de
@@ -329,7 +329,7 @@ export default function Offres() {
                     </h3>
                     <p
                       className="text-xs font-semibold mb-4"
-                      style={{ color: "var(--greek-gold)" }}
+                      style={{ color: "var(--greek-gold-text)" }}
                     >
                       {p.subtitle}
                     </p>

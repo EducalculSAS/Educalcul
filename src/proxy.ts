@@ -319,7 +319,7 @@ export async function proxy(req: NextRequest) {
       csp = strictCsp(makeNonce());
       req.headers.set("content-security-policy", csp);
     } else {
-      csp = standardCsp();
+      csp = standardCsp(pathname);
     }
   }
   const response = await handle(req);

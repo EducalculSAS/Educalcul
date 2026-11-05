@@ -16,6 +16,7 @@ const LEVEL_GROUPS = [
   {
     label: "Primaire",
     color: "#22c55e",
+    text: "#15803d",
     bg: "rgba(34,197,94,0.08)",
     border: "rgba(34,197,94,0.2)",
     levels: ["cp", "ce1", "ce2", "cm1", "cm2"],
@@ -23,6 +24,7 @@ const LEVEL_GROUPS = [
   {
     label: "Collège",
     color: "#60a5fa",
+    text: "#1d4ed8",
     bg: "rgba(96,165,250,0.08)",
     border: "rgba(96,165,250,0.2)",
     levels: ["6eme", "5eme", "4eme", "3eme"],
@@ -44,6 +46,7 @@ const LEVEL_GROUPS = [
   {
     label: "Lycée : Terminale",
     color: "#f472b6",
+    text: "#be185d",
     bg: "rgba(244,114,182,0.08)",
     border: "rgba(244,114,182,0.2)",
     levels: ["terminale-generale", "terminale-generale-maths", "terminale-generale-expertes", "terminale-generale-complementaires"],
@@ -203,7 +206,7 @@ export default function LevelGroupsList({ dbPdfs }: { dbPdfs: Record<string, DbP
                 >
                   <div className="h-px flex-1" style={{ background: "var(--greek-border)" }} />
                   <span className="px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest"
-                    style={{ background: group.bg, color: group.color, border: `1px solid ${group.border}` }}>
+                    style={{ background: group.bg, color: ("text" in group ? group.text : "var(--greek-gold-text)"), border: `1px solid ${group.border}` }}>
                     {group.label}
                   </span>
                   <div className="h-px flex-1" style={{ background: "var(--greek-border)" }} />

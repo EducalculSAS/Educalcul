@@ -240,7 +240,7 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, t
         <div className="px-7 pt-8 pb-5 text-center border-b border-[var(--greek-border)]">
           {/* Avec un essai gratuit, seul le badge vert « X jours d'essai gratuit » s'affiche : la mention dorée disait la même chose. */}
           {plan.promo_description && !(plan.trial_days > 0) && (
-            <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold)] mb-3">
+            <div className="inline-flex items-center gap-1 text-xs font-bold text-[var(--greek-gold-text)] mb-3">
               <Sparkles className="w-3 h-3" />{plan.promo_description}
             </div>
           )}
@@ -275,7 +275,7 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, t
                     <Check className="w-3 h-3 text-[var(--greek-gold)]" />
                   </div>
                   <span className="text-sm text-[var(--text-dark)] flex-1">{row.label}</span>
-                  {label !== "Inclus" && <span className="text-xs font-semibold text-[var(--greek-gold)]">{label}</span>}
+                  {label !== "Inclus" && <span className="text-xs font-semibold text-[var(--greek-gold-text)]">{label}</span>}
                 </li>
               );
             })}

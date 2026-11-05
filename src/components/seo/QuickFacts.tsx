@@ -16,7 +16,7 @@ export default function QuickFacts({ title = "En bref", facts, updated = SEO_UPD
           </div>
         ))}
       </dl>
-      <p className="text-xs text-gray-400 mt-4">Mis à jour le <time dateTime={updated}>{formatFrDate(updated)}</time>.</p>
+      <p className="text-xs text-gray-500 mt-4">Mis à jour le <time dateTime={updated}>{formatFrDate(updated)}</time>.</p>
     </section>
   );
 }

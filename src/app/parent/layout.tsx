@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { cookies, headers } from "next/headers";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { hasActiveSubscription } from "@/lib/subscriptionGate";
@@ -21,7 +22,14 @@ export default async function ParentLayout({ children }: { children: React.React
   const user = await getServerUser();
   // Pas de compte connecté (ou compte banni/inactif, que getServerUser écarte) : ParentGuest laisse passer le tunnel
   // d'inscription (/parent/subscription?new=true) et renvoie les autres vers la connexion.
-  if (!user) return <ParentGuest>{children}</ParentGuest>;
+  if (!user) {
+    // Visiteur sans aucune session (aucun cookie de connexion) : redirection directe vers la connexion, sans servir une
+    // page vide. Avec une session mais sans compte exploitable (banni, inactif), ParentGuest choisit l'écran adapté.
+    const hasSessionCookie = (await cookies()).getAll().some((c) => c.name.startsWith("sb-"));
+    const pathname = (await headers()).get("x-pathname") || "";
+    if (!hasSessionCookie && pathname !== "/parent/subscription") redirect("/auth/connexion");
+    return <ParentGuest>{children}</ParentGuest>;
+  }
   if (user.role !== "parent") redirect("/dashboard");
 
   const [{ data: profile }, subscriptionOk] = await Promise.all([

@@ -287,14 +287,14 @@ export default function CaliaChatDemo() {
             className="calia-glass-light backdrop-blur-[32px] backdrop-saturate-[1.4] px-5 py-3 rounded-2xl text-sm text-center"
             style={{ color: "var(--text-muted)" }}
           >
-            <span style={{ color: "var(--greek-gold)", fontWeight: 600 }}>
+            <span style={{ color: "var(--greek-gold-text)", fontWeight: 600 }}>
               Calia
             </span>{" "}
             est prête à vous aider.
             <br />
             <span
               className="text-xs"
-              style={{ color: "var(--text-muted)", opacity: 0.7 }}
+              style={{ color: "var(--text-muted)" }}
             >
               Posez une vraie question de maths
             </span>
@@ -321,7 +321,7 @@ export default function CaliaChatDemo() {
           </GlassButton>
           <p
             className="text-xs"
-            style={{ color: "var(--text-muted)", opacity: 0.6 }}
+            style={{ color: "var(--text-muted)" }}
           >
             Cliquez pour ouvrir le chat
           </p>

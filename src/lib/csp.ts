@@ -9,7 +9,9 @@
  * - STANDARD (vitrine, pages de connexion, 404) : ces pages sont pré-rendues (○) : leur HTML est identique pour tous, il ne peut donc pas
  *   porter de nonce ; `'unsafe-inline'` y reste nécessaire pour les scripts de Next. Elles n'affichent aucun contenu saisi par un utilisateur.
  *
- * `'unsafe-eval'` reste autorisé dans les deux cas : jsxgraph (figures de géométrie) et mathjs construisent des fonctions à l'exécution.
+ * `'unsafe-eval'` : jsxgraph (figures de géométrie) et mathjs construisent des fonctions à l'exécution, donc il reste autorisé là où
+ * ces bibliothèques tournent (espaces connectés, démo de la page Offres). Il est RETIRÉ des pages publiques qui n'en ont pas besoin
+ * (accueil, tarifs, programmes, Calia, À propos, pages légales…) : une faille d'injection y serait moins exploitable.
  *
  * ⚠ Si une page de la liste STRICTE devient pré-rendue (○), elle cessera de fonctionner : `npm run check:csp-routes` (lancé par le CI
  * après le build) le détecte.
@@ -47,9 +49,19 @@ export function strictCsp(nonce: string): string {
   return [`script-src 'self' 'nonce-${nonce}' 'unsafe-eval' ${SCRIPT_HOSTS}`, ...common()].join("; ");
 }
 
+/** Pages publiques SANS figure ni calcul à l'exécution : pas d'`unsafe-eval`. /offres (démo des lecteurs) n'en fait pas partie. */
+const NO_EVAL_EXACT = new Set(["/", "/tarifs", "/faq", "/contact", "/a-propos", "/methode-pedagogique", "/programmes", "/calia-tuteur-ia-maths", "/mentions-legales", "/politique-confidentialite", "/cgu", "/cgv"]);
+// Les pages /auth/* gardent unsafe-eval : le navigateur y a signalé un usage d'eval (bibliothèque de connexion), mesuré par test.
+const NO_EVAL_PREFIXES = ["/programmes/"] as const;
+
+export function allowsEval(pathname: string): boolean {
+  return !(NO_EVAL_EXACT.has(pathname) || NO_EVAL_PREFIXES.some((p) => pathname.startsWith(p)));
+}
+
 /** CSP des pages pré-rendues (HTML partagé, pas de nonce possible). */
-export function standardCsp(): string {
-  return [`script-src 'self' 'unsafe-inline' 'unsafe-eval' ${SCRIPT_HOSTS}`, ...common()].join("; ");
+export function standardCsp(pathname = ""): string {
+  const evalPart = allowsEval(pathname) ? " 'unsafe-eval'" : "";
+  return [`script-src 'self' 'unsafe-inline'${evalPart} ${SCRIPT_HOSTS}`, ...common()].join("; ");
 }
 
 /** Nonce aléatoire (128 bits) en base64, compatible runtime Edge. */

@@ -413,7 +413,7 @@ function PlanCard({
                     {row.label}
                   </span>
                   {label !== "Inclus" && (
-                    <span className="text-xs font-semibold text-[var(--greek-gold)]">
+                    <span className="text-xs font-semibold text-[var(--greek-gold-text)]">
                       {label}
                     </span>
                   )}
@@ -1019,6 +1019,8 @@ export default function TarifsInteractive({
 
           {activeTab === "familles" && (
             <>
+              {/* Niveau de titre manquant entre le titre de la page (h1) et les formules (h3) : repère pour les lecteurs d'écran. */}
+              <h2 className="sr-only">Nos formules</h2>
               <PlansGrid
                 plans={initialPlans}
                 periods={periods}

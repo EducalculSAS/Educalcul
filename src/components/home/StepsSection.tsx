@@ -36,7 +36,7 @@ export default function StepsSection() {
           className="mb-14"
           style={{ opacity: triggered ? 1 : 0, transform: triggered ? "translateY(0)" : "translateY(20px)", transition: "opacity 0.5s ease, transform 0.5s ease" }}
         >
-          <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--greek-gold)" }}>Comment ça marche</p>
+          <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--greek-gold-text)" }}>Comment ça marche</p>
           <h2 className="font-[family-name:var(--font-display)] font-bold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}>
             Simple à démarrer.
           </h2>
@@ -71,7 +71,7 @@ export default function StepsSection() {
                 style={{
                   background: "var(--greek-cream)",
                   border: "2px solid var(--greek-border)",
-                  color: "var(--greek-gold)",
+                  color: "var(--greek-gold-text)",
                   transition: "background 250ms ease, border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease",
                   cursor: "default",
                 }}
@@ -125,7 +125,7 @@ export default function StepsSection() {
             >
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 font-[family-name:var(--font-display)] font-bold text-sm relative z-10"
-                style={{ background: "var(--greek-cream)", color: "var(--greek-gold)", border: "2px solid var(--greek-border)", minWidth: 40 }}
+                style={{ background: "var(--greek-cream)", color: "var(--greek-gold-text)", border: "2px solid var(--greek-border)", minWidth: 40 }}
               >
                 {s.num}
               </div>

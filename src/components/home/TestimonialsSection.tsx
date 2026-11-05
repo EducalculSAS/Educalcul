@@ -9,6 +9,10 @@ const TP_GREY = "#dcdce6";
  * propre couleur ET son propre libellé — jamais juste "Excellent" partout,
  * sinon un 3,7 (palier "Très bien") s'affiche comme un 4,8 (palier
  * "Excellent"), ce qui ne correspond plus à la vraie fiche Trustpilot. */
+/** Couleur de TEXTE lisible sur fond blanc pour une couleur d'étoile Trustpilot (le jaune d'origine y est illisible). */
+const TEXT_ON_WHITE: Record<string, string> = { "#ffce00": "#8a6500", "#ff8622": "#b45309", "#73cf11": "#3f7a00", "#ff3722": "#c2260f" };
+const textOn = (c: string) => TEXT_ON_WHITE[c] ?? c;
+
 function ratingColor(rating: number): string {
   if (rating >= 4.5) return "#00b67a"; // Excellent
   if (rating >= 4.0) return "#73cf11"; // Très bien
@@ -121,7 +125,7 @@ export default function TestimonialsSection({
             <>
               <TpStars rating={avgRating} size={36} />
               <p className="text-sm font-bold" style={{ color: "#191919" }}>
-                Note : <span style={{ color: badgeColor }}>{avgRating}</span>
+                Note : <span style={{ color: textOn(badgeColor) }}>{avgRating}</span>
                 <span className="font-normal text-gray-400"> / 5 · {displayCount} avis</span>
               </p>
             </>
@@ -171,7 +175,7 @@ export default function TestimonialsSection({
                 </div>
                 <div className="min-w-0">
                   <p className="text-xs font-bold truncate" style={{ color: "#191919" }}>{r.name}</p>
-                  <p className="text-[10px]" style={{ color: "#999" }}>{r.total_reviews} avis</p>
+                  <p className="text-[10px]" style={{ color: "#6b6b6b" }}>{r.total_reviews} avis</p>
                 </div>
                 {r.is_verified && (
                   <span className="ml-auto text-[10px] font-semibold flex-shrink-0" style={{ color: TP_GREEN }}><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Vérifié</span>
