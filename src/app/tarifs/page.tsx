@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
-import { offersSchema, pricingDescription } from "@/lib/seo/pricing";
+import { formatEuros, offersSchema, priceTable, pricingDescription } from "@/lib/seo/pricing";
 import { socialMeta } from "@/lib/seo/meta";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -102,6 +102,45 @@ export default async function Tarifs() {
 
         {/* TABS + CONTENT + COMPARATEUR (client island) */}
         <TarifsInteractive initialPlans={plans} periods={cfg.periods} customPricing={cfg.custom} tabLabels={cfg.tabs} visibility={cfg.visibility} layout={cfg.layout} popularAuto={cfg.popularAuto} />
+
+        {/* TOUS LES TARIFS : texte simple (HTML initial), pour que chaque prix soit lisible sans cliquer sur une période */}
+        {(() => {
+          const table = priceTable(plans, cfg.periods);
+          if (table.rows.length === 0) return null;
+          return (
+            <section aria-labelledby="tous-les-tarifs" className="pb-14 px-6 bg-[var(--greek-cream)]">
+              <div className="max-w-3xl mx-auto bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
+                <h2 id="tous-les-tarifs" className="text-xl font-bold text-[var(--greek-blue)]">Tous les tarifs en un coup d&apos;œil</h2>
+                <p className="text-sm text-gray-500 mt-1 mb-4">Prix en euros par période de facturation (TVA non applicable), sans engagement. 7 jours d&apos;essai gratuits, sans carte bancaire.</p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-xs sm:text-sm text-left">
+                    <caption className="sr-only">Prix des formules Solo et Family selon la période de facturation</caption>
+                    <thead>
+                      <tr className="border-b border-[rgba(197,161,72,0.25)] text-[var(--greek-blue)]">
+                        <th scope="col" className="py-2 pr-3 sm:pr-4 font-bold">Formule</th>
+                        {table.columns.map((c) => <th key={c.id} scope="col" className="py-2 pr-3 sm:pr-4 font-bold whitespace-nowrap">{c.label}</th>)}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {table.free && (
+                        <tr className="border-b border-gray-100">
+                          <th scope="row" className="py-2.5 pr-3 sm:pr-4 font-bold text-[var(--greek-blue)]">{table.free.name}<span className="block text-xs font-normal text-gray-500">{table.free.maxChildren === 1 ? "1 enfant" : ""}</span></th>
+                          <td colSpan={table.columns.length} className="py-2.5 pr-3 sm:pr-4 text-gray-600">Gratuit</td>
+                        </tr>
+                      )}
+                      {table.rows.map((r) => (
+                        <tr key={r.name} className="border-b border-gray-100 last:border-0">
+                          <th scope="row" className="py-2.5 pr-3 sm:pr-4 font-bold text-[var(--greek-blue)]">{r.name}<span className="block text-xs font-normal text-gray-500">{r.maxChildren === 1 ? "1 enfant" : r.maxChildren ? `jusqu'à ${r.maxChildren} enfants` : ""}</span></th>
+                          {table.columns.map((c) => <td key={c.id} className="py-2.5 pr-3 sm:pr-4 text-gray-800 font-semibold whitespace-nowrap">{r.prices[c.id] != null ? `${formatEuros(r.prices[c.id])} €` : "—"}</td>)}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+          );
+        })()}
 
         {/* GARANTIE */}
         {cfg.visibility.guarantee && (

@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import type { Plan } from "@/lib/plans";
-import { offersSchema, planFamily, pricingDescription } from "@/lib/seo/pricing";
+import { offersSchema, planFamily, priceTable, pricingDescription } from "@/lib/seo/pricing";
 import { FOUNDERS, LEGAL_NAME, LEGAL_STATUS } from "@/lib/seo/site";
 
 const plan = (id: number, name: string, price: number, billing_interval: string): Plan =>
@@ -30,6 +30,22 @@ describe("prix publiés pour les moteurs de recherche", () => {
   it("aucun prix n'est écrit en dur dans les pages (ils avaient fini par différer des vraies formules)", () => {
     const walk = (dir: string): string[] => readdirSync(dir).flatMap((f) => { const p = join(dir, f); return statSync(p).isDirectory() ? (f === "__tests__" ? [] : walk(p)) : /\.(ts|tsx)$/.test(f) ? [p] : []; });
     for (const file of walk(join(process.cwd(), "src"))) expect(readFileSync(file, "utf8"), file).not.toMatch(/\b(9[.,]99|16[.,]99)\b/);
+  });
+});
+
+describe("tableau des prix lisible dans le HTML", () => {
+  const periods = [{ id: "month", label: "Mensuel" }, { id: "quarter", label: "Trimestriel" }, { id: "semester", label: "Semestriel" }, { id: "year", label: "Annuel" }];
+  const withKids = (p: Plan, n: number): Plan => ({ ...p, features: { max_children: n } });
+  const T = priceTable([withKids(PLANS[0], 1), ...PLANS.slice(1, 4).map((p) => withKids(p, 1)), withKids(PLANS[3], 5), withKids(PLANS[4], 5)], periods);
+  it("une ligne par formule payante, une colonne par période réellement vendue", () => {
+    expect(T.columns.map((c) => c.id)).toEqual(["month", "quarter", "year"]); // pas de colonne « semestriel » : aucune formule semestrielle
+    expect(T.rows.map((r) => r.name)).toEqual(["Solo", "Family"]);
+    expect(T.rows[0].prices).toEqual({ month: 10, quarter: 25 });
+    expect(T.rows[1].prices).toEqual({ month: 15, year: 119 });
+    expect(T.free).toEqual({ name: "Découverte", maxChildren: 1 });
+  });
+  it("sans formule payante : aucun tableau", () => {
+    expect(priceTable([PLANS[0]], periods).rows).toEqual([]);
   });
 });
 

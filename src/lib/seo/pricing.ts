@@ -55,3 +55,31 @@ export function pricingDescription(plans: Plan[]): string {
   const parts = [free ? `${planFamily(free.name)} (gratuite)` : null, ...[...monthly].map(([name, price]) => `${name} dès ${euros(price)} €/mois`)].filter(Boolean);
   return `Formules Educalcul : ${parts.join(", ")}. ${tail}`;
 }
+
+export interface PriceTable {
+  /** Périodes présentes (dans l'ordre demandé), avec leur libellé. */
+  columns: { id: string; label: string }[];
+  rows: { name: string; maxChildren: number | null; prices: Record<string, number> }[];
+  /** Formule gratuite, si elle existe. */
+  free: { name: string; maxChildren: number | null } | null;
+}
+
+const maxChildrenOf = (p: Plan): number | null => (typeof p.features?.max_children === "number" ? (p.features.max_children as number) : null);
+
+/** Tous les prix en un tableau (formule × période), lu dans les formules actives : le texte de la page ne montre plus un seul tarif. */
+export function priceTable(plans: Plan[], periods: { id: string; label: string }[]): PriceTable {
+  const paid = plans.filter((p) => Number(p.price) > 0);
+  const present = new Set(paid.map((p) => p.billing_interval));
+  const columns = periods.filter((c) => present.has(c.id));
+  const byFamily = new Map<string, PriceTable["rows"][number]>();
+  for (const p of paid) {
+    const fam = planFamily(p.name);
+    const row = byFamily.get(fam) ?? { name: fam, maxChildren: maxChildrenOf(p), prices: {} };
+    row.prices[p.billing_interval] = Number(p.price);
+    byFamily.set(fam, row);
+  }
+  const free = plans.find((p) => Number(p.price) === 0);
+  return { columns, rows: [...byFamily.values()], free: free ? { name: planFamily(free.name), maxChildren: maxChildrenOf(free) } : null };
+}
+
+export const formatEuros = euros;
