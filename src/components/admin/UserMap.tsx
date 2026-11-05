@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Map as MapLibreMap, Marker as MapLibreMarker, setWorkerUrl } from "maplibre-gl";
 import { MapPin, Mail, Clock, MapPinOff } from "lucide-react";
+import { formatParisDayMonth } from "@/lib/parisDate";
 import "maplibre-gl/dist/maplibre-gl.css";
 
 interface UserMarker {
@@ -94,7 +95,7 @@ function MarkerBody({ user }: { user: UserMarker }) {
         {user.lastActive && (
           <div className="flex items-center gap-1.5 text-gray-400">
             <Clock size={10} />
-            {new Date(user.lastActive).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
+            {formatParisDayMonth(user.lastActive, { time: true })}
           </div>
         )}
         <div className="mt-1.5 pt-1.5 border-t border-gray-100 flex items-center justify-between">

@@ -7,6 +7,7 @@ import { Send, ChevronDown, ChevronUp, Mail, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { formatParisDayMonth } from "@/lib/parisDate";
 
 interface Reply {
   id: number;
@@ -207,7 +208,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
                                 {ticket.message.replace("[Message de l'équipe Educalcul]\n\n", "")}
                               </p>
                               <p className={`text-xs mt-1.5 ${fromTeam ? "text-gray-400" : "text-white/50 text-right"}`}>
-                                {new Date(ticket.created_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
+                                {formatParisDayMonth(ticket.created_at, { time: true, pad: false })}
                               </p>
                             </div>
                           </div>
@@ -220,7 +221,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
                             {reply.is_admin && <p className="text-xs font-semibold text-[var(--greek-gold)] mb-1">{reply.author_name || "Equipe Educalcul"}</p>}
                             <p className={`text-sm leading-relaxed whitespace-pre-wrap ${reply.is_admin ? "text-gray-700" : "text-white"}`}>{reply.reply_message}</p>
                             <p className={`text-xs mt-1.5 ${reply.is_admin ? "text-gray-400" : "text-white/50 text-right"}`}>
-                              {new Date(reply.replied_at).toLocaleString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}
+                              {formatParisDayMonth(reply.replied_at, { time: true, pad: false })}
                             </p>
                           </div>
                         </div>

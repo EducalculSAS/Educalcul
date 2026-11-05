@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
+import { formatParisDayMonth } from "@/lib/parisDate";
 
 const ROLE_LABEL: Record<string, string> = { parent: "Parent", child: "Élève", admin: "Admin" };
 const ROLE_COLOR: Record<string, string> = {
@@ -128,7 +129,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
                     {u.first_name} {u.last_name}
                   </p>
                   <p className="text-xs text-gray-400">
-                    {new Date(u.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
+                    {formatParisDayMonth(u.created_at, { time: true })}
                   </p>
                 </div>
                 <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${ROLE_COLOR[u.role] ?? "bg-gray-100 text-gray-600"}`}>
@@ -195,7 +196,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
                   <p className="text-sm font-semibold text-gray-800 truncate">{p.title}</p>
                   <p className="text-xs text-gray-400">
                     {p.author?.first_name ?? "?"} {p.author?.last_name ?? ""} ·{" "}
-                    {new Date(p.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "2-digit", month: "short" })}
+                    {formatParisDayMonth(p.created_at)}
                   </p>
                 </div>
               </div>

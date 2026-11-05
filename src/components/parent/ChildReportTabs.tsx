@@ -4,6 +4,7 @@ import { useState, type ReactNode } from "react";
 import { Award, BookOpen, TrendingUp, Activity, Brain, Sparkles, RotateCcw, Star, Lock, CalendarClock, Gamepad2 } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
+import { formatParisDayMonth } from "@/lib/parisDate";
 
 interface ActivityItem {
   id: string;
@@ -15,7 +16,7 @@ interface ActivityItem {
 }
 
 const formatDate = (d: string) =>
-  new Date(d).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+  formatParisDayMonth(d, { time: true, pad: false });
 
 function parseBold(text: string): ReactNode {
   const parts = text.split(/\*\*(.*?)\*\*/g);
@@ -112,7 +113,7 @@ export default function ChildReportTabs({
   };
 
   const formattedGeneratedAt = generatedAt
-    ? new Date(generatedAt).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })
+    ? formatParisDayMonth(generatedAt, { time: true, pad: false })
     : null;
 
   return (
