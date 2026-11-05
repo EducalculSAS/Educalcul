@@ -1,5 +1,5 @@
 import { LEVEL_PAGES } from "@/lib/seo/levels";
-import { CONTACT_EMAIL, FOUNDERS, SEO_UPDATED, SITE_URL } from "@/lib/seo/site";
+import { CONTACT_EMAIL, FOUNDERS, LEGAL_NAME, LEGAL_STATUS, SEO_UPDATED, SITE_URL } from "@/lib/seo/site";
 
 /**
  * Présentation d'Educalcul en texte brut pour les assistants IA (convention llms.txt). Aucune garantie d'être cité :
@@ -36,7 +36,7 @@ export function GET() {
     `- [Politique de confidentialité](${SITE_URL}/politique-confidentialite)`,
     `- [CGU](${SITE_URL}/cgu) et [CGV](${SITE_URL}/cgv)`,
     "",
-    "Educalcul est édité par Ruben Combe (entreprise individuelle, France).",
+    `Educalcul est édité par ${LEGAL_NAME}, ${LEGAL_STATUS}.`,
     "",
     "## Programme de maths par niveau",
     "",

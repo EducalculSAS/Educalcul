@@ -39,7 +39,7 @@ const TEAM = [
     text: "Ruben a conçu et développé Educalcul : le site, l'espace élève, l'espace parent et Calia. Il veut un outil aussi agréable qu'efficace, qui donne envie de revenir faire des maths.",
   },
   {
-    name: "Alexandre Tamain-Glose",
+    name: "Alexandre Tamain-Gloz",
     role: "Co-fondateur · contenus et pédagogie",
     school: "Étudiant en école de commerce",
     icon: BookOpen,

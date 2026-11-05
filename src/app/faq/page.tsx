@@ -101,10 +101,10 @@ export default function FAQ() {
               </div>
               <div className="flex-1 text-center sm:text-left">
                 <p className="text-sm font-bold" style={{ color: "var(--greek-blue)" }}>
-                  100% aligné sur le programme officiel
+                  Aligné sur le programme officiel
                 </p>
                 <p className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
-                  Du CP à la Terminale, toutes filières
+                  Du CP à la Terminale, voie générale
                 </p>
               </div>
               <GlassButton href="/programmes" variant="navy" size="sm" className="flex-shrink-0">

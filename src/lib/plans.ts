@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 
 export interface Plan {
@@ -16,7 +17,7 @@ export interface Plan {
  * et la page /tarifs (rendu serveur) : évite le round-trip + le skeleton de
  * chargement pour la ressource la plus consultée avant un achat.
  */
-export async function fetchActivePlans(): Promise<Plan[]> {
+export const fetchActivePlans = cache(async (): Promise<Plan[]> => {
   const { data, error } = await supabaseAdmin
     .from("subscription_plans")
     .select("id, name, description, price, billing_interval, trial_days, promo_description, features")
@@ -25,4 +26,4 @@ export async function fetchActivePlans(): Promise<Plan[]> {
     .order("id");
   if (error || !data) return [];
   return data as Plan[];
-}
+});

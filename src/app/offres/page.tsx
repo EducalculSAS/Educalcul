@@ -37,7 +37,7 @@ const PILLARS = [
   {
     icon: BookOpen,
     title: "Apprendre",
-    subtitle: "Du CP à la Terminale, toutes filières",
+    subtitle: "Du CP à la Terminale, voie générale",
     items: [
       "Cours structurés par chapitre, alignés sur le programme EN",
       "Exercices progressifs avec corrections détaillées",

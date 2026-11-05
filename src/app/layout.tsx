@@ -20,7 +20,7 @@ import JsonLd from "@/components/JsonLd";
 import ThemeSync from "@/components/ThemeSync";
 import AnimationGovernor from "@/components/AnimationGovernor";
 import VisitBeacon from "@/components/VisitBeacon";
-import { CONTACT_EMAIL, FOUNDERS, ORG_ID, ORG_REF } from "@/lib/seo/site";
+import { CONTACT_EMAIL, FOUNDERS, LEGAL_NAME, ORG_ID, ORG_REF, SIREN } from "@/lib/seo/site";
 import SeasonalDecor from "@/components/SeasonalDecor";
 import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
@@ -35,6 +35,8 @@ const organizationSchema = {
   "@type": "Organization",
   "@id": ORG_ID,
   name: "Educalcul",
+  legalName: LEGAL_NAME,
+  identifier: { "@type": "PropertyValue", propertyID: "SIREN", value: SIREN },
   founder: FOUNDERS.map((f) => ({ "@type": "Person", name: f.name, jobTitle: f.jobTitle, url: `${BASE}/a-propos` })),
   email: CONTACT_EMAIL,
   slogan: "Les mathématiques à portée de main, du CP à la Terminale",
@@ -79,19 +81,6 @@ const educationalOrgSchema = {
   name: "Educalcul",
   url: BASE,
   description: "Plateforme SaaS d'apprentissage des mathématiques du CP à la Terminale, avec IA pédagogique et suivi parental.",
-  educationalCredentialAwarded: "Maîtrise des mathématiques du CP à la Terminale",
-  // Prix/noms alignés sur la table `subscription_plans` (plans mensuels actifs) —
-  // à resynchroniser manuellement si les tarifs changent, voir aussi
-  // src/app/tarifs/layout.tsx (offersSchema) qui doit rester identique.
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Plans Educalcul",
-    itemListElement: [
-      { "@type": "Offer", name: "Plan Gratuit", price: "0", priceCurrency: "EUR" },
-      { "@type": "Offer", name: "Plan Solo", price: "9.99", priceCurrency: "EUR", billingDuration: "P1M" },
-      { "@type": "Offer", name: "Plan Family", price: "16.99", priceCurrency: "EUR", billingDuration: "P1M" },
-    ],
-  },
 };
 
 export const viewport: Viewport = {

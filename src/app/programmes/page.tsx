@@ -83,10 +83,10 @@ export default async function ProgrammesPage() {
             </div>
             <div className="max-w-xl">
               <p className="font-bold text-base leading-relaxed" style={{ fontFamily: "var(--font-display)", color: "var(--greek-blue)" }}>
-                Programmes 100 % conformes aux référentiels officiels
+                Les programmes officiels comme référence
               </p>
               <p className="text-sm mt-1.5 leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                Tous les contenus d&apos;Educalcul sont élaborés en stricte conformité avec les programmes publiés par le Ministère de l&apos;Éducation Nationale et référencés sur Éduscol.
+                Les contenus d&apos;Educalcul sont élaborés à partir des programmes publiés par le Ministère de l&apos;Éducation Nationale et référencés sur Éduscol.
               </p>
             </div>
           </FadeInSection>

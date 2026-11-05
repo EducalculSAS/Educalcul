@@ -1,3 +1,7 @@
+import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { offersSchema, pricingDescription } from "@/lib/seo/pricing";
+import { socialMeta } from "@/lib/seo/meta";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Check, ArrowRight } from "lucide-react";
@@ -12,6 +16,12 @@ import { normalizePricingConfig } from "@/lib/pricingConfig";
 // Page publique quasi-statique (plans édités en admin) : ISR au lieu d'un
 // aller-retour Supabase à chaque visite.
 export const revalidate = 300;
+
+// Description et prix publiés pour les moteurs : lus dans les formules actives (jamais écrits à la main).
+export async function generateMetadata(): Promise<Metadata> {
+  const description = pricingDescription(await fetchActivePlans());
+  return { description, ...socialMeta({ title: "Tarifs Educalcul : Essai gratuit 7 jours", description, path: "/tarifs" }) };
+}
 
 const SYM = [
   { s: "∑", x: 6, y: 10, z: 96, d: 0, t: 7.2 },
@@ -45,6 +55,7 @@ export default async function Tarifs() {
 
   return (
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-blue)" }}>
+      <JsonLd data={offersSchema(plans)} />
       <Navbar />
       <main className="flex-grow pt-[64px]">
         {/* HERO — split, panneau droite garanties */}

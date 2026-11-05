@@ -57,7 +57,7 @@ const SYM = [
 const MINI_FAQ = [
   { q: "Combien coûte l'essai ?", a: "Rien. 7 jours d'accès complet, aucune carte bancaire requise pour commencer." },
   { q: "Puis-je résilier à tout moment ?", a: "Oui, sans engagement ni justification, directement depuis l'espace parent." },
-  { q: "Le contenu suit-il le programme officiel ?", a: "Intégralement : chaque cours et exercice est aligné sur les programmes de l'Éducation Nationale, du CP à la Terminale." },
+  { q: "Le contenu suit-il le programme officiel ?", a: "Oui : chaque cours et exercice est rattaché à un niveau et à une notion des programmes de l'Éducation nationale, du CP à la Terminale (voie générale)." },
 ];
 
 export default async function Home() {
@@ -152,7 +152,7 @@ export default async function Home() {
             <Sparkles className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> IA pédagogique 24h/24
           </div>
           <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>
-            <ShieldCheck className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> 100% programme officiel
+            <ShieldCheck className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> Programme officiel
           </div>
           <div className="w-px h-5 hidden sm:block" style={{ background: "var(--greek-border)" }} />
           <div className="flex items-center gap-3">
