@@ -4,7 +4,7 @@ import { createLlmStartGate, DEFAULT_LLM_MIN_START_INTERVAL_MS } from "@/lib/ai/
 import { listGameTypes } from "@/lib/minigames/gameTypes";
 import { generateAndUpsertDailySheet } from "@/lib/minigames/runDailySheetGeneration";
 
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 const DAYS_AHEAD = 5; // aujourd'hui + 4 jours d'avance
 const ARCHIVE_AFTER_DAYS = 3;

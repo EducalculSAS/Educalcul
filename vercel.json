@@ -10,41 +10,17 @@
       "maxDuration": 300
     },
     "src/app/api/cron/**": {
-      "maxDuration": 800
+      "maxDuration": 300
     }
   },
   "crons": [
     {
-      "path": "/api/cron/grade-promotion",
-      "schedule": "0 3 * * *"
-    },
-    {
-      "path": "/api/cron/minigames-daily",
-      "schedule": "0 4 * * *"
-    },
-    {
-      "path": "/api/cron/course-queue-advance",
-      "schedule": "*/5 * * * *"
-    },
-    {
-      "path": "/api/cron/catalogue-advance",
-      "schedule": "*/5 * * * *"
-    },
-    {
-      "path": "/api/cron/catalogue-plan-advance",
-      "schedule": "*/5 * * * *"
-    },
-    {
-      "path": "/api/cron/scheduled-emails",
+      "path": "/api/cron/daily-morning",
       "schedule": "0 7 * * *"
     },
     {
-      "path": "/api/cron/family-alerts",
+      "path": "/api/cron/daily-evening",
       "schedule": "0 17 * * *"
-    },
-    {
-      "path": "/api/cron/data-retention",
-      "schedule": "30 2 * * *"
     }
   ]
 }

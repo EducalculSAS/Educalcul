@@ -2,7 +2,7 @@ import { after, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { runCourseGeneration, type CourseGenerationParams } from "@/lib/courseGeneration";
 
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 // Déclenché manuellement (pas par Vercel Cron) pour la génération en masse
 // du catalogue de cours — même garde CRON_SECRET que les routes cron, pour

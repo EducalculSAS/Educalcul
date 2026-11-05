@@ -6,7 +6,7 @@ import { requireRole } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { runQuizGeneration, type QuizGenerationParams } from "@/lib/quizGeneration";
 
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 export async function POST(request: Request) {
   const admin = await requireRole(request, ["admin"]);

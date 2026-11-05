@@ -13,7 +13,7 @@ import { sanitizeStructuredResources } from "@/lib/ai/qualityGuard";
 import { compileStructuredCourseChapter } from "@/lib/ai/compiler";
 import { searchCommonsImage } from "@/lib/ai/commonsImages";
 
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 // Import du catalogue éditorial complet (catalogue_educalcul_2026_2027.txt,
 // 902 micro-cours) : même principe de chaîne auto-entretenue que

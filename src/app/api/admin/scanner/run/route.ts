@@ -10,7 +10,7 @@ import { runScan } from "@/lib/scanner/runScan";
 // Plafond de sécurité — le vrai travail tourne via after() après la réponse
 // HTTP, ce plafond couvre la fenêtre où Vercel maintient la fonction active
 // (même patron que /api/admin/ai/course).
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 /**
  * Démarre un scan IA en ARRIÈRE-PLAN : crée immédiatement une ligne

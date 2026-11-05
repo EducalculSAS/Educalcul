@@ -2,7 +2,7 @@ import { after, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { runCourseGeneration, type CourseGenerationParams } from "@/lib/courseGeneration";
 
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 // Chaîne auto-entretenue de génération du catalogue de cours : chaque appel
 // traite UN élément de course_generation_queue, puis, une fois terminé (dans

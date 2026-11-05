@@ -6,7 +6,7 @@ import { requireRole } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { runExerciseGeneration, type ExerciseGenerationParams } from "@/lib/exerciseGeneration";
 
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 /**
  * Démarre une génération d'exercice en ARRIÈRE-PLAN (même architecture que

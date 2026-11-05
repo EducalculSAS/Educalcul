@@ -12,7 +12,7 @@ import { runCourseGeneration, type CourseGenerationParams } from "@/lib/courseGe
 // fenêtre pendant laquelle Vercel maintient encore la fonction active pour
 // le travail en arrière-plan. Relevé à 800s (nécessite Fluid Compute sur
 // Pro/Enterprise ; sinon Vercel plafonne silencieusement à sa propre limite).
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 /**
  * Démarre une génération de cours en ARRIÈRE-PLAN : crée immédiatement une

@@ -3,7 +3,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createLlmStartGate } from "@/lib/ai/runtime";
 import type { JsonSchemaContract } from "@/lib/ai/schemas";
 
-export const maxDuration = 800;
+export const maxDuration = 300;
 
 // Étape de planification par chapitre : au lieu d'une micro-leçon par entrée
 // du catalogue (trop court / trop répétitif — retour utilisateur direct après
