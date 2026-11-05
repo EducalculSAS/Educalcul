@@ -9,6 +9,7 @@ import PublicHero from "@/components/seo/PublicHero";
 import SeoFaq from "@/components/seo/SeoFaq";
 import CaliaChatDemo from "@/components/offres/CaliaChatDemo";
 import QuickFacts from "@/components/seo/QuickFacts";
+import { socialMeta } from "@/lib/seo/meta";
 
 const BASE = "https://educalcul.com";
 const TITLE = "Calia : tuteur IA pour apprendre les mathématiques";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: `${BASE}/calia-tuteur-ia-maths` },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: `${BASE}/calia-tuteur-ia-maths` },
+  ...socialMeta({ title: TITLE, description: DESCRIPTION, path: "/calia-tuteur-ia-maths" }),
 };
 
 const CARD = "bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]";

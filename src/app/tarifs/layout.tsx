@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import JsonLd from "@/components/JsonLd";
+import { socialMeta } from "@/lib/seo/meta";
 
 const BASE = "https://educalcul.com";
 
@@ -29,7 +30,7 @@ export const metadata: Metadata = {
   description: "Formules Educalcul : Gratuit, Solo (9,99€/mois) et Family (16,99€/mois). Essai 7 jours sans engagement, sans carte bancaire. Accès complet CP à Terminale avec les formules Solo et Family.",
   keywords: ["tarif cours maths", "abonnement mathématiques enfant", "prix plateforme maths", "essai gratuit maths", "soutien scolaire prix"],
   alternates: { canonical: `${BASE}/tarifs` },
-  openGraph: { title: "Tarifs Educalcul : Essai gratuit 7 jours", description: "Comparez nos formules et commencez gratuitement. Aucune carte bancaire requise.", url: `${BASE}/tarifs` },
+  ...socialMeta({ title: "Tarifs Educalcul : Essai gratuit 7 jours", description: "Comparez nos formules et commencez gratuitement. Aucune carte bancaire requise.", path: "/tarifs" }),
 };
 
 export default function TarifsLayout({ children }: { children: React.ReactNode }) {

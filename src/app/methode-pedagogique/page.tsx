@@ -8,7 +8,8 @@ import PublicHero from "@/components/seo/PublicHero";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import QuickFacts from "@/components/seo/QuickFacts";
 import JsonLd from "@/components/JsonLd";
-import { ORG_ID, SEO_UPDATED } from "@/lib/seo/site";
+import { ORG_REF, SEO_UPDATED } from "@/lib/seo/site";
+import { socialMeta } from "@/lib/seo/meta";
 
 const BASE = "https://educalcul.com";
 const TITLE = "Méthode pédagogique Educalcul : comprendre plutôt que recopier";
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
   alternates: { canonical: `${BASE}/methode-pedagogique` },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: `${BASE}/methode-pedagogique` },
+  ...socialMeta({ title: TITLE, description: DESCRIPTION, path: "/methode-pedagogique" }),
 };
 
 const CARD = "bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]";
@@ -47,8 +48,8 @@ const articleSchema = {
   inLanguage: "fr-FR",
   datePublished: "2026-11-04",
   dateModified: SEO_UPDATED,
-  author: { "@id": ORG_ID },
-  publisher: { "@id": ORG_ID },
+  author: ORG_REF,
+  publisher: ORG_REF,
 };
 
 export default function MethodePage() {

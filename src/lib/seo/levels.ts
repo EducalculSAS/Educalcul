@@ -45,7 +45,7 @@ export const CYCLE_LABEL: Record<Cycle, string> = { primaire: "Primaire", colleg
 export const LEVEL_PAGES: LevelPage[] = [
   {
     slug: "cp", appLevel: "cp", short: "CP", name: "CP", cycle: "primaire", cycleLabel: "Cycle 2",
-    title: "Programme de maths CP : nombres, calcul et exercices | Educalcul",
+    title: "Programme de maths CP : nombres et calcul | Educalcul",
     description: "Le programme de mathématiques du CP expliqué aux parents : nombres jusqu'à 100, addition, soustraction, problèmes, mesures et géométrie. Exercices et aide de Calia.",
     h1: "Programme de maths en CP",
     intro: "Le CP pose les fondations : comprendre ce qu'est un nombre, compter, calculer mentalement et résoudre ses premiers problèmes. Tout se construit avec du concret (objets, monnaie, longueurs) avant de passer à l'écrit.",
@@ -65,7 +65,7 @@ export const LEVEL_PAGES: LevelPage[] = [
   },
   {
     slug: "ce1", appLevel: "ce1", short: "CE1", name: "CE1", cycle: "primaire", cycleLabel: "Cycle 2",
-    title: "Programme de maths CE1 : nombres jusqu'à 1 000 et calcul | Educalcul",
+    title: "Programme de maths CE1 : nombres à 1 000 | Educalcul",
     description: "Programme de maths du CE1 : nombres jusqu'à 1 000, addition et soustraction posées, tables de multiplication, mesures et géométrie. Exercices corrigés et tuteur IA.",
     h1: "Programme de maths en CE1",
     intro: "En CE1, l'élève passe aux nombres jusqu'à 1 000, pose ses premières opérations et découvre la multiplication. La résolution de problèmes reste au cœur de l'année.",
@@ -85,7 +85,7 @@ export const LEVEL_PAGES: LevelPage[] = [
   },
   {
     slug: "ce2", appLevel: "ce2", short: "CE2", name: "CE2", cycle: "primaire", cycleLabel: "Cycle 2",
-    title: "Programme de maths CE2 : multiplication, fractions et mesures | Educalcul",
+    title: "Programme de maths CE2 : multiplication | Educalcul",
     description: "Programme de maths du CE2 : nombres jusqu'à 10 000, multiplication posée, division, premières fractions, mesures et géométrie. Exercices corrigés et tuteur IA.",
     h1: "Programme de maths en CE2",
     intro: "Le CE2 clôt le cycle 2 : les tables de multiplication doivent être connues, la multiplication se pose, la division apparaît et l'élève découvre les premières fractions.",
@@ -105,7 +105,7 @@ export const LEVEL_PAGES: LevelPage[] = [
   },
   {
     slug: "cm1", appLevel: "cm1", short: "CM1", name: "CM1", cycle: "primaire", cycleLabel: "Cycle 3",
-    title: "Programme de maths CM1 : fractions, décimaux et géométrie | Educalcul",
+    title: "Programme de maths CM1 : fractions, décimaux | Educalcul",
     description: "Programme de maths du CM1 : grands nombres, fractions, nombres décimaux, multiplication et division posées, aires et géométrie. Exercices corrigés et tuteur IA.",
     h1: "Programme de maths en CM1",
     intro: "Le CM1 ouvre le cycle 3 : fractions et nombres décimaux deviennent centraux, la division se pose et la géométrie gagne en précision avec l'équerre et le compas.",
@@ -125,7 +125,7 @@ export const LEVEL_PAGES: LevelPage[] = [
   },
   {
     slug: "cm2", appLevel: "cm2", short: "CM2", name: "CM2", cycle: "primaire", cycleLabel: "Cycle 3",
-    title: "Programme de maths CM2 : fractions, décimaux, proportionnalité | Educalcul",
+    title: "Programme de maths CM2 : proportionnalité | Educalcul",
     description: "Programme de maths du CM2 pour préparer la 6e : fractions, nombres décimaux, proportionnalité, pourcentages, aires, volumes et géométrie. Exercices corrigés et tuteur IA.",
     h1: "Programme de maths en CM2",
     intro: "Dernière année de primaire, le CM2 consolide fractions et décimaux, installe la proportionnalité et prépare l'entrée au collège. C'est l'année où l'on vérifie que les bases sont solides.",
@@ -166,7 +166,7 @@ export const LEVEL_PAGES: LevelPage[] = [
   },
   {
     slug: "5eme", appLevel: "5eme", short: "5e", name: "5e", cycle: "college", cycleLabel: "Cycle 4",
-    title: "Programme de maths 5e : nombres relatifs, fractions, géométrie | Educalcul",
+    title: "Programme de maths 5e : nombres relatifs | Educalcul",
     description: "Programme de maths de 5e : nombres relatifs, fractions, calcul littéral, proportionnalité, triangles, parallélogrammes et statistiques. Exercices corrigés et tuteur IA.",
     h1: "Programme de maths en 5e",
     intro: "La 5e ouvre le cycle 4 : les nombres relatifs font leur entrée, les lettres apparaissent dans le calcul et la géométrie s'appuie sur des propriétés à démontrer.",
@@ -187,7 +187,7 @@ export const LEVEL_PAGES: LevelPage[] = [
   },
   {
     slug: "4eme", appLevel: "4eme", short: "4e", name: "4e", cycle: "college", cycleLabel: "Cycle 4",
-    title: "Programme de maths 4e : Pythagore, puissances, équations | Educalcul",
+    title: "Programme de maths 4e : Pythagore, équations | Educalcul",
     description: "Programme de maths de 4e : théorème de Pythagore, puissances, calcul littéral, équations, proportionnalité et statistiques. Exercices corrigés et tuteur IA.",
     h1: "Programme de maths en 4e",
     intro: "En 4e, le calcul littéral se développe (développer, factoriser, résoudre une équation) et l'élève découvre le théorème de Pythagore, l'un des grands classiques du collège.",
@@ -229,7 +229,7 @@ export const LEVEL_PAGES: LevelPage[] = [
   },
   {
     slug: "seconde", appLevel: "2nde", short: "2nde", name: "Seconde", cycle: "lycee", cycleLabel: "Seconde générale et technologique",
-    title: "Programme de maths de Seconde : fonctions, vecteurs | Educalcul",
+    title: "Programme de maths de Seconde : fonctions | Educalcul",
     description: "Programme de maths de Seconde générale et technologique : nombres et calculs, fonctions, vecteurs, géométrie repérée, statistiques, probabilités et algorithmique.",
     h1: "Programme de maths en Seconde",
     intro: "La Seconde fait le lien entre le collège et la spécialité maths. L'élève consolide le calcul, approfondit les fonctions, découvre les vecteurs et pratique l'algorithmique en Python.",
@@ -251,7 +251,7 @@ export const LEVEL_PAGES: LevelPage[] = [
   },
   {
     slug: "premiere-specialite-maths", appLevel: "1ere-generale-maths", short: "1re spé", name: "Première spécialité maths", cycle: "lycee", cycleLabel: "Voie générale",
-    title: "Programme de maths 1re spécialité : dérivation, suites | Educalcul",
+    title: "Programme de maths 1re spé : dérivation, suites | Educalcul",
     description: "Programme de la spécialité mathématiques en Première : second degré, suites, dérivation, exponentielle, trigonométrie, produit scalaire et probabilités conditionnelles.",
     h1: "Programme de spécialité maths en Première",
     intro: "La spécialité maths de Première introduit les grands outils de l'analyse : suites, dérivation et fonction exponentielle, avec le second degré, le produit scalaire et les probabilités conditionnelles.",
@@ -272,7 +272,7 @@ export const LEVEL_PAGES: LevelPage[] = [
   },
   {
     slug: "terminale-specialite-maths", appLevel: "terminale-generale-maths", short: "Tle spé", name: "Terminale spécialité maths", cycle: "lycee", cycleLabel: "Voie générale",
-    title: "Programme de maths Terminale spécialité et révisions du bac | Educalcul",
+    title: "Programme de maths Tle spé et révisions du bac | Educalcul",
     description: "Programme de la spécialité maths en Terminale : limites, continuité, logarithme, intégrales, suites, géométrie dans l'espace, probabilités et loi binomiale.",
     h1: "Programme de spécialité maths en Terminale",
     intro: "En Terminale, la spécialité maths approfondit l'analyse (limites, continuité, logarithme, intégration), étudie la géométrie dans l'espace et les lois de probabilité, en vue de l'épreuve du baccalauréat.",

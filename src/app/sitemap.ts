@@ -19,7 +19,6 @@ const PAGES: { path: string; updated?: string; changeFrequency: "weekly" | "mont
   { path: "/auth/inscription", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.8 },
   { path: "/faq", updated: "2026-11-04", changeFrequency: "monthly", priority: 0.7 },
   { path: "/contact", updated: "2026-11-04", changeFrequency: "yearly", priority: 0.5 },
-  { path: "/auth/connexion", updated: "2026-11-02", changeFrequency: "yearly", priority: 0.3 },
   { path: "/mentions-legales", changeFrequency: "yearly", priority: 0.2 },
   { path: "/politique-confidentialite", changeFrequency: "yearly", priority: 0.2 },
   { path: "/cgu", changeFrequency: "yearly", priority: 0.2 },

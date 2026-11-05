@@ -13,7 +13,7 @@ describe("pages publiques par niveau", () => {
 
   it("ont des titres et descriptions de longueur raisonnable, tous différents", () => {
     for (const l of LEVEL_PAGES) {
-      expect(l.title.length, l.title).toBeLessThanOrEqual(75);
+      expect(l.title.length, l.title).toBeLessThanOrEqual(62); // Google tronque au-delà d'environ 60 caractères
       expect(l.description.length, l.slug).toBeGreaterThan(80);
       expect(l.description.length, l.slug).toBeLessThanOrEqual(200);
     }
@@ -42,6 +42,8 @@ describe("pages publiques par niveau", () => {
     expect(new Set(urls).size).toBe(urls.length);
     for (const l of LEVEL_PAGES) expect(urls).toContain(`https://educalcul.com/programmes/${l.slug}`);
     expect(urls).toContain("https://educalcul.com/calia-tuteur-ia-maths");
+    // le sitemap ne liste que des pages indexables : la page de connexion est en noindex
+    expect(urls.some((u) => u.includes("/auth/connexion"))).toBe(false);
     for (const e of entries) if (e.lastModified) expect(new Date(e.lastModified).getTime()).toBeLessThanOrEqual(Date.now());
   });
 });

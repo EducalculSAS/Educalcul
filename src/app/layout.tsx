@@ -20,7 +20,7 @@ import JsonLd from "@/components/JsonLd";
 import ThemeSync from "@/components/ThemeSync";
 import AnimationGovernor from "@/components/AnimationGovernor";
 import VisitBeacon from "@/components/VisitBeacon";
-import { CONTACT_EMAIL, FOUNDERS, ORG_ID } from "@/lib/seo/site";
+import { CONTACT_EMAIL, FOUNDERS, ORG_ID, ORG_REF } from "@/lib/seo/site";
 import SeasonalDecor from "@/components/SeasonalDecor";
 import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
@@ -68,14 +68,14 @@ const websiteSchema = {
   name: "Educalcul",
   url: BASE,
   inLanguage: "fr-FR",
-  publisher: { "@id": ORG_ID },
+  publisher: ORG_REF,
 };
 
 const educationalOrgSchema = {
   "@context": "https://schema.org",
   "@type": "EducationalOrganization",
   "@id": `${BASE}/#educational-organization`,
-  parentOrganization: { "@id": ORG_ID },
+  parentOrganization: ORG_REF,
   name: "Educalcul",
   url: BASE,
   description: "Plateforme SaaS d'apprentissage des mathématiques du CP à la Terminale, avec IA pédagogique et suivi parental.",

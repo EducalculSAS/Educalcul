@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -6,6 +7,7 @@ import FadeInSection from "@/components/home/FadeInSection";
 import LevelPicker from "@/components/programmes/LevelPicker";
 import LevelGroupsList from "@/components/programmes/LevelGroupsList";
 import { fetchProgrammePdfs } from "@/lib/programmePdfs";
+import { LEVEL_PAGES } from "@/lib/seo/levels";
 import GlassButton from "@/components/ui/GlassButton";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import SeoFaq from "@/components/seo/SeoFaq";
@@ -40,6 +42,14 @@ export default async function ProgrammesPage() {
     <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
       <Navbar />
       <main className="flex flex-col flex-1">
+      {/* Accès direct à chaque niveau, présent dans le HTML même quand les cartes ci-dessous sont repliées (lecteurs d'écran, moteurs de recherche). */}
+      <nav aria-label="Programme de maths par niveau" className="sr-only">
+        <ul>
+          {LEVEL_PAGES.map((l) => (
+            <li key={l.slug}><Link href={`/programmes/${l.slug}`}>Programme de maths en {l.name}</Link></li>
+          ))}
+        </ul>
+      </nav>
 
       {/* Hero — avec barre de progression niveaux */}
       <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white pt-[calc(var(--nav-h)+4rem)] pb-20 text-center">

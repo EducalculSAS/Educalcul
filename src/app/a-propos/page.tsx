@@ -7,12 +7,13 @@ import GlassButton from "@/components/ui/GlassButton";
 import PublicHero from "@/components/seo/PublicHero";
 import QuickFacts from "@/components/seo/QuickFacts";
 import JsonLd from "@/components/JsonLd";
-import { CONTACT_EMAIL, FOUNDERS, ORG_ID, SEO_UPDATED, SITE_URL } from "@/lib/seo/site";
+import { CONTACT_EMAIL, FOUNDERS, ORG_ID, ORG_REF, SEO_UPDATED, SITE_URL } from "@/lib/seo/site";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import FadeInSection from "@/components/home/FadeInSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import { fetchReviewsForHomepage } from "@/lib/manualReviews";
 import { fetchReviewRatingOverride } from "@/lib/reviewRatingOverride";
+import { socialMeta } from "@/lib/seo/meta";
 
 const BASE = "https://educalcul.com";
 const TITLE = "À propos d'Educalcul : qui sommes-nous ?";
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   title: { absolute: `${TITLE} | Educalcul` },
   description: DESCRIPTION,
   alternates: { canonical: `${BASE}/a-propos` },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: `${BASE}/a-propos` },
+  ...socialMeta({ title: TITLE, description: DESCRIPTION, path: "/a-propos" }),
 };
 
 const CARD = "bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]";
@@ -54,7 +55,7 @@ const aboutSchema = {
   url: `${BASE}/a-propos`,
   inLanguage: "fr-FR",
   dateModified: SEO_UPDATED,
-  about: { "@id": ORG_ID },
+  about: ORG_REF,
   mainEntity: {
     "@type": "Organization",
     "@id": ORG_ID,

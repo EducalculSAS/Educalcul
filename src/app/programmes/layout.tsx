@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { socialMeta } from "@/lib/seo/meta";
 
 const BASE = "https://educalcul.com";
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   description: "Le programme de mathématiques de chaque niveau, du CP à la Terminale : notions au programme, compétences, exercice d'essai et accompagnement Educalcul. Textes officiels Éduscol.",
   keywords: ["programme maths CP", "programme maths 6e", "programme maths 3e", "programme maths seconde", "programme maths terminale", "programme officiel mathématiques"],
   alternates: { canonical: `${BASE}/programmes` },
-  openGraph: { title: "Programmes de maths du CP à la Terminale | Educalcul", description: "Le programme de maths de chaque niveau, expliqué simplement, avec un exercice à essayer.", url: `${BASE}/programmes` },
+  ...socialMeta({ title: "Programmes de maths du CP à la Terminale | Educalcul", description: "Le programme de maths de chaque niveau, expliqué simplement, avec un exercice à essayer.", path: "/programmes" }),
 };
 
 export default function ProgrammesLayout({ children }: { children: React.ReactNode }) {

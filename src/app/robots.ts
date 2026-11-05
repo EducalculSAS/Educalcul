@@ -22,6 +22,5 @@ export default function robots(): MetadataRoute.Robots {
       { userAgent: TRAINING_BOTS, allow: "/", disallow: PRIVATE },
     ],
     sitemap: "https://educalcul.com/sitemap.xml",
-    host: "https://educalcul.com",
   };
 }

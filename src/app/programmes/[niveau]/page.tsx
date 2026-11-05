@@ -12,9 +12,10 @@ import MiniExercise from "@/components/seo/MiniExercise";
 import JsonLd from "@/components/JsonLd";
 import HowWeHelp from "@/components/seo/HowWeHelp";
 import QuickFacts from "@/components/seo/QuickFacts";
-import { ORG_ID, SEO_UPDATED } from "@/lib/seo/site";
+import { ORG_REF, SEO_UPDATED } from "@/lib/seo/site";
 import { LEVEL_BY_SLUG, LEVEL_PAGES, CYCLE_LABEL, chapterCount, neighbours } from "@/lib/seo/levels";
 import { PDF_LINKS } from "@/lib/programmePdfLinks";
+import { socialMeta } from "@/lib/seo/meta";
 
 const BASE = "https://educalcul.com";
 
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ niveau: s
     title: { absolute: level.title },
     description: level.description,
     alternates: { canonical: url },
-    openGraph: { title: level.title, description: level.description, url, type: "article" },
+    ...socialMeta({ title: level.title, description: level.description, path: `/programmes/${level.slug}`, type: "article" }),
   };
 }
 
@@ -79,7 +80,7 @@ export default async function LevelProgrammePage({ params }: { params: Promise<{
     educationalLevel: level.name,
     about: level.domains.map((d) => d.name),
     teaches: level.skills,
-    provider: { "@id": ORG_ID },
+    provider: ORG_REF,
   };
 
   return (

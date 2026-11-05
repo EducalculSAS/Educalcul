@@ -1,6 +1,9 @@
 /** Faits d'identité d'Educalcul, repris par les données structurées, la page À propos et llms.txt : une seule source. */
 export const SITE_URL = "https://educalcul.com";
 export const ORG_ID = `${SITE_URL}/#organization`;
+/** Organisation complète, à placer telle quelle dans les données structurées qui la citent (fournisseur d'un cours, auteur d'un article…). */
+export const ORG_REF = { "@type": "Organization", "@id": ORG_ID, name: "Educalcul", url: SITE_URL } as const;
+
 export const CONTACT_EMAIL = "contact@educalcul.com";
 
 export const FOUNDERS = [
