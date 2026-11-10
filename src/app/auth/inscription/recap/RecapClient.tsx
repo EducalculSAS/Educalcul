@@ -295,7 +295,7 @@ export default function RecapClient() {
             </div>
           </div>
           {referralStatus === "valid" && (
-            <p className="text-xs text-green-600 font-medium mt-2"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Code valide, remise appliquée lors du paiement</p>
+            <p className="text-xs text-green-600 font-medium mt-2"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Code valide : son avantage s&apos;applique au paiement (une semaine gratuite en plus pour un code de parrainage)</p>
           )}
           {referralStatus === "invalid" && (
             <p className="text-xs text-red-500 mt-2">Code invalide ou expiré</p>

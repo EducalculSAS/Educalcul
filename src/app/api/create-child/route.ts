@@ -26,6 +26,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Un abonnement actif est requis pour ajouter un enfant." }, { status: 403 });
     }
 
+    // Adresse e-mail du parent pas encore confirmée : pas de profil enfant.
+    if (requester.role === "parent") {
+      const { data: me } = await supabaseAdmin.from("users").select("email_verified_at").eq("id", requester.id).maybeSingle();
+      if (!me?.email_verified_at) {
+        return NextResponse.json({ error: "Confirmez d'abord votre adresse e-mail (lien reçu par e-mail)." }, { status: 403 });
+      }
+    }
+
     // Nombre d'enfants inclus dans la formule (les admins ne sont pas concernés).
     if (requester.role === "parent") {
       const limit = await getChildLimit(requester);

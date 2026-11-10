@@ -283,7 +283,7 @@ export default function Inscription() {
             {!referralValidating && referralStatus === "invalid" && <AlertCircle className="w-4 h-4 text-red-400" />}
           </span>
         </div>
-        {referralStatus === "valid"   && <p className="text-xs text-green-600 font-medium mt-1"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Code valide, remise appliquée</p>}
+        {referralStatus === "valid"   && <p className="text-xs text-green-600 font-medium mt-1"><Check className="w-3.5 h-3.5 inline -mt-0.5" aria-hidden="true" /> Code valide : une semaine gratuite en plus de l&apos;essai</p>}
         {referralStatus === "invalid" && <p className="text-xs text-red-400 mt-1">Code invalide ou expiré</p>}
       </div>
 

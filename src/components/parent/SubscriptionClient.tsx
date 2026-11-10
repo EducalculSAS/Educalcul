@@ -73,6 +73,7 @@ function SubscriptionPageContent({
   initialPricingConfig,
   initialReferralCode,
   initialPendingDiscount,
+  initialReferralFreeDays,
   initialCurrentPlan,
   initialBillingHistory,
 }: {
@@ -82,6 +83,8 @@ function SubscriptionPageContent({
   initialPricingConfig: PricingConfig;
   initialReferralCode: ReferralCodeWithUses | null;
   initialPendingDiscount: number;
+  /** Jours gratuits gagnés comme parrain, en attente d'un abonnement (voir src/lib/referral.ts). */
+  initialReferralFreeDays?: number;
   initialCurrentPlan: CurrentSubscription | null;
   initialBillingHistory: BillingInvoice[];
 }) {
@@ -102,6 +105,7 @@ function SubscriptionPageContent({
   const myReferralCode = initialReferralCode;
   const [copied, setCopied] = useState(false);
   const [pendingDiscount] = useState(initialPendingDiscount);
+  const referralFreeDays = initialReferralFreeDays ?? 0;
   const [selectedPlan, setSelectedPlan] = useState<SubscriptionPlan | null>(null);
   const [signupData, setSignupData] = useState<SignupData | null>(null);
   const [customProcessing, setCustomProcessing] = useState(false);
@@ -215,7 +219,7 @@ function SubscriptionPageContent({
               if (isSameSignup) {
                 router.replace("/parent/dashboard");
               } else {
-                toastSuccess("Compte créé ! Connectez-vous avec le mot de passe choisi à l'inscription.");
+                toastSuccess("Compte créé ! Confirmez votre adresse avec le lien reçu par e-mail, puis connectez-vous.");
                 router.replace("/auth/connexion");
               }
             } else {
@@ -260,7 +264,7 @@ function SubscriptionPageContent({
           const { data: { user: currentUser } } = await supabase.auth.getUser();
           cleanup();
           if (!currentUser) {
-            toastSuccess("Paiement confirmé ! Connectez-vous avec le mot de passe choisi à l'inscription.");
+            toastSuccess("Paiement confirmé ! Confirmez votre adresse avec le lien reçu par e-mail, puis connectez-vous.");
             router.replace("/auth/connexion");
             return;
           }
@@ -536,6 +540,16 @@ function SubscriptionPageContent({
         )}
 
         {/* Parrainage reward banner (only for normal flow) */}
+        {!isNewSignup && referralFreeDays > 0 && (
+          <div className="mb-6 bg-green-50 border border-green-200 rounded-2xl px-6 py-4 flex items-center gap-3">
+            <Gift className="w-6 h-6 text-green-600 flex-shrink-0" />
+            <div>
+              <p className="font-bold text-green-800">Parrainage : {referralFreeDays} jours offerts</p>
+              <p className="text-sm text-green-700">Ils s&apos;ajouteront à l&apos;essai de votre prochain abonnement.</p>
+            </div>
+          </div>
+        )}
+
         {!isNewSignup && pendingDiscount > 0 && (
           <div className="mb-6 bg-green-50 border border-green-200 rounded-2xl px-6 py-4 flex items-center gap-3">
             <Gift className="w-6 h-6 text-green-600 flex-shrink-0" />
@@ -663,7 +677,7 @@ function SubscriptionPageContent({
                 <Gift className="w-5 h-5 text-[var(--greek-gold)]" />
                 Mon code de parrainage
               </h2>
-              <p className="text-sm text-gray-500 mb-4">Partagez ce code, vos filleuls ont {myReferralCode?.discount_value ?? 10}% de réduction, et vous gagnez 10% sur votre prochain renouvellement.</p>
+              <p className="text-sm text-gray-500 mb-4">Partagez ce code : votre filleul a une semaine gratuite en plus de son essai, et vous gagnez une semaine gratuite dès son premier paiement.</p>
               {myReferralCode ? (
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 bg-[var(--greek-cream)] rounded-xl px-3 py-3 sm:px-4 sm:py-4 border border-[rgba(197,161,72,0.25)]">
@@ -681,7 +695,7 @@ function SubscriptionPageContent({
                       <span className="font-bold text-gray-800">{myReferralCode.current_uses ?? 0}</span> filleul{(myReferralCode.current_uses ?? 0) !== 1 ? "s" : ""}
                     </span>
                     <span className="bg-green-50 text-green-700 text-xs font-bold px-2.5 py-1 rounded-full border border-green-200 whitespace-nowrap">
-                      {myReferralCode.discount_value}% offerts à chaque filleul
+                      1 semaine offerte à chaque filleul
                     </span>
                   </div>
                 </div>
@@ -740,6 +754,7 @@ export default function SubscriptionClient(props: {
   initialPricingConfig: PricingConfig;
   initialReferralCode: ReferralCodeWithUses | null;
   initialPendingDiscount: number;
+  initialReferralFreeDays?: number;
   initialCurrentPlan: CurrentSubscription | null;
   initialBillingHistory: BillingInvoice[];
 }) {

@@ -58,7 +58,7 @@ export default async function SubscriptionPage({
       .maybeSingle(),
     supabaseAdmin
       .from("users")
-      .select("id, first_name, last_name, pending_discount_percent")
+      .select("id, first_name, last_name, pending_discount_percent, referral_free_days")
       .eq("id", authUser.id)
       .maybeSingle(),
     fetchParentSubscriptionDetails(authUser.authId).catch((err) => {
@@ -128,6 +128,7 @@ export default async function SubscriptionPage({
       initialPricingConfig={pricingConfig}
       initialReferralCode={referralCode}
       initialPendingDiscount={userRow?.pending_discount_percent || 0}
+      initialReferralFreeDays={userRow?.referral_free_days || 0}
       initialCurrentPlan={currentPlan}
       initialBillingHistory={subDetails.invoices || []}
     />

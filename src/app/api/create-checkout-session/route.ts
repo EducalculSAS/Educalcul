@@ -16,6 +16,7 @@ import { validateEmail, validateName } from '@/lib/validation';
 import { rateLimitWithBackoff, RATE_LIMITS } from '@/lib/rateLimitAdvanced';
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { computeWaitlistFreeTrialDays } from '@/lib/waitlistReferralCredit';
+import { REFERRAL_BONUS_DAYS } from '@/lib/referral';
 
 // Crée (ou réutilise) le compte Supabase Auth d'un nouvel inscrit, AVANT tout
 // paiement — mais aucune ligne public.users n'est créée ici : c'est le webhook
@@ -263,7 +264,7 @@ export async function POST(req: Request) {
       !isNewSignup && userId
         ? supabaseAdmin
             .from('users')
-            .select('pending_discount_percent, id, first_name, last_name')
+            .select('pending_discount_percent, referral_free_days, id, first_name, last_name')
             .eq('auth_id', userId)
             .maybeSingle()
         : Promise.resolve({ data: null }),
@@ -276,10 +277,21 @@ export async function POST(req: Request) {
       && !(rc.valid_until && new Date(rc.valid_until) < new Date())
       && !(rc.max_uses !== null && rc.current_uses >= rc.max_uses)
       && !(rc.owner_user_id && userRow?.id && rc.owner_user_id === userRow.id);
-    if (!referralOk) referralCode = '';
-    if (referralOk && rc) {
+    // Un compte qui a déjà profité d'un code de parrainage n'en profite pas une seconde fois.
+    let alreadyReferred = false;
+    if (referralOk && rc?.owner_user_id && userRow?.id) {
+      const { data: used } = await supabaseAdmin.from('referral_uses').select('id').eq('used_by_user_id', userRow.id).limit(1).maybeSingle();
+      alreadyReferred = !!used;
+    }
+    if (!referralOk || alreadyReferred) referralCode = '';
+    // Code d'un parent (parrainage) : une semaine gratuite en plus de l'essai (voir referral.ts).
+    // Code promotionnel sans propriétaire (admin) : sa remise en pourcentage.
+    const referralBonusDays = referralCode && rc?.owner_user_id ? REFERRAL_BONUS_DAYS : 0;
+    if (referralCode && rc && !rc.owner_user_id) {
       discountPercent = Math.max(discountPercent, Number(rc.discount_value) || 0);
     }
+    // Semaines gagnées comme parrain sans abonnement en cours : ajoutées à l'essai, consommées par le webhook.
+    const referralCreditDays = Math.max(0, Math.min(365, Number(userRow?.referral_free_days) || 0));
 
     if (userRow?.pending_discount_percent > 0) {
       discountPercent = Math.max(discountPercent, userRow?.pending_discount_percent || 0);
@@ -350,6 +362,7 @@ export async function POST(req: Request) {
         isNewSignup: isNewSignup ? 'true' : 'false',
         // Remise de parrain en attente utilisée : elle n'est consommée qu'une fois le paiement confirmé (webhook).
         pendingDiscountUsed: usesPendingDiscount ? 'true' : 'false',
+        referralCreditDays: String(referralCreditDays),
       },
     };
 
@@ -360,7 +373,7 @@ export async function POST(req: Request) {
     // partir de faits déjà durables (waitlist_signups, subscriptions), donc
     // rien à persister ni à "consommer" comme pending_discount_percent.
     const waitlistBonusDays = userId ? await computeWaitlistFreeTrialDays(userId) : 0;
-    const trialDays = (plan.trial_days || 0) + waitlistBonusDays;
+    const trialDays = (plan.trial_days || 0) + waitlistBonusDays + referralBonusDays + referralCreditDays;
     // Métadonnées sur l'abonnement Stripe lui-même (compte et formule) : lisibles
     // dans le tableau de bord Stripe et présentes sur tous ses événements.
     sessionData.subscription_data = {

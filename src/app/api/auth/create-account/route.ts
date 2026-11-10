@@ -5,8 +5,7 @@ import { randomBytes } from "crypto";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { validateEmail, validateName } from "@/lib/validation";
-import { sendEmail } from "@/lib/mailer";
-import { welcomeEmail } from "@/lib/emailTemplates";
+import { isProviderVerified, startEmailVerification } from "@/lib/emailVerification";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 
@@ -169,33 +168,18 @@ export async function POST(req: NextRequest) {
 
     // Email de bienvenue : uniquement à la création réelle du compte, pas à
     // chaque appel de cette route (voir isNewAccount ci-dessus).
+    // Vérification de l'adresse (voir emailVerification.ts) : un compte Google est vérifié d'office, sinon l'e-mail
+    // de bienvenue contient le lien de confirmation, et l'espace parent reste fermé tant qu'il n'a pas été cliqué.
+    let requireEmailConfirm = false;
     if (isNewAccount && email && email.includes("@")) {
-      // Générer un lien de confirmation
-      let confirmUrl = "https://educalcul.com/parent/dashboard";
-      try {
-        const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
-          type: "magiclink",
-          email: email,
-          options: { redirectTo: "https://educalcul.com/auth/callback" },
-        });
-        if (linkData?.properties?.action_link) {
-          confirmUrl = linkData.properties.action_link;
-        }
-      } catch (e) {
-        console.warn("Could not generate magic link");
-      }
-
-      const tmpl = welcomeEmail(validatedFirstName, confirmUrl, false);
+      requireEmailConfirm = !(await isProviderVerified(authUserId));
       runAfterResponse(
-        sendEmail({
-          toEmail: email,
-          toName: `${validatedFirstName} ${validatedLastName || ""}`.trim(),
-          ...tmpl,
-        }).catch(console.error),
+        startEmailVerification({ authId: authUserId, email, firstName: validatedFirstName, paid: false })
+          .catch((e) => console.error("[create-account] vérification d'e-mail :", e)),
       );
     }
 
-    return NextResponse.json({ success: true, userId: authUserId, requireEmailConfirm: true });
+    return NextResponse.json({ success: true, userId: authUserId, requireEmailConfirm });
   } catch (error: unknown) {
     console.error("Account creation error:", error);
     return NextResponse.json(

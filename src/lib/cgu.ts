@@ -11,7 +11,7 @@ export const CGU_SECTIONS = [
   },
   {
     title: "3. Abonnements et paiement",
-    content: `L'offre Découverte est gratuite et limitée. Les offres Premium, Famille et Annuel Pro sont payantes, renouvelées automatiquement via Stripe. Vous pouvez annuler à tout moment depuis votre espace abonnement. Aucun remboursement n'est accordé pour la période en cours. Les codes parrainage offrent des réductions et sont soumis aux conditions affichées.`,
+    content: `L'offre Découverte est gratuite et limitée. Les offres Premium, Famille et Annuel Pro sont payantes, renouvelées automatiquement via Stripe. Vous pouvez annuler à tout moment depuis votre espace abonnement. Aucun remboursement n'est accordé pour la période en cours. Les codes parrainage offrent un avantage (semaine gratuite ou réduction) soumis aux conditions affichées.`,
   },
   {
     title: "4. Intelligence artificielle",

@@ -62,13 +62,8 @@ export async function POST(req: Request) {
       .update({ current_uses: refCode.current_uses + 1 })
       .eq("id", refCode.id);
 
-    // Reward the referrer: +10% on next subscription
-    if (refCode.owner_user_id) {
-      await supabaseAdmin
-        .from("users")
-        .update({ pending_discount_percent: 10 })
-        .eq("id", refCode.owner_user_id);
-    }
+    // Pas de récompense ici : le parrain reçoit sa semaine gratuite au premier VRAI paiement de son filleul
+    // (webhook Stripe, voir referral.ts). Avant, il gagnait une remise dès l'inscription, même sans paiement.
 
     return NextResponse.json({ success: true });
   } catch (err: unknown) {

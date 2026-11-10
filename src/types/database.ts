@@ -3903,6 +3903,10 @@ export type Database = {
           onboarding_completed: boolean | null
           onboarding_quiz_score: number | null
           tour_completed: boolean
+          email_verified_at: string | null
+          referral_free_days: number
+          email_verify_token_hash: string | null
+          email_verify_expires_at: string | null
           parent_id: number | null
           password_hash: string | null
           pending_discount_percent: number
@@ -3966,6 +3970,10 @@ export type Database = {
           onboarding_completed?: boolean | null
           onboarding_quiz_score?: number | null
           tour_completed?: boolean
+          email_verified_at?: string | null
+          referral_free_days?: number
+          email_verify_token_hash?: string | null
+          email_verify_expires_at?: string | null
           parent_id?: number | null
           password_hash?: string | null
           pending_discount_percent?: number
@@ -4029,6 +4037,10 @@ export type Database = {
           onboarding_completed?: boolean | null
           onboarding_quiz_score?: number | null
           tour_completed?: boolean
+          email_verified_at?: string | null
+          referral_free_days?: number
+          email_verify_token_hash?: string | null
+          email_verify_expires_at?: string | null
           parent_id?: number | null
           password_hash?: string | null
           pending_discount_percent?: number

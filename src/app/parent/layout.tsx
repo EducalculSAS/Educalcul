@@ -6,6 +6,8 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { hasActiveSubscription } from "@/lib/subscriptionGate";
 import ParentShell from "@/components/parent/ParentShell";
 import ParentGuest from "@/components/parent/ParentGuest";
+import Navbar from "@/components/Navbar";
+import VerifyEmailGate from "@/components/parent/VerifyEmailGate";
 
 // Espace connecté : jamais indexé (le contenu est privé).
 export const metadata: Metadata = {
@@ -33,11 +35,21 @@ export default async function ParentLayout({ children }: { children: React.React
   if (user.role !== "parent") redirect("/dashboard");
 
   const [{ data: profile }, subscriptionOk] = await Promise.all([
-    supabaseAdmin.from("users").select("first_name, onboarding_completed, tour_completed").eq("id", user.id).maybeSingle(),
+    supabaseAdmin.from("users").select("first_name, email, onboarding_completed, tour_completed, email_verified_at").eq("id", user.id).maybeSingle(),
     // Un compte peut exister sans être passé par Stripe (liste d'attente) ; seul un compte « jamais abonné » (plan
     // gratuit) ou à l'abonnement actif passe, comme dans /api/user/subscription-status.
     hasActiveSubscription(user.authId),
   ]);
+
+  // Adresse e-mail pas encore confirmée : l'espace parent reste fermé (voir src/lib/emailVerification.ts).
+  if (profile && !profile.email_verified_at) {
+    return (
+      <div className="min-h-screen bg-[var(--greek-cream)]">
+        <Navbar />
+        <main className="pt-[64px]"><VerifyEmailGate email={profile.email || ""} /></main>
+      </div>
+    );
+  }
 
   return (
     <ParentShell

@@ -5,9 +5,11 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sendEmail } from "@/lib/mailer";
 import {
   cancellationRevokedEmail, cancellationScheduledEmail, paymentFailedEmail, paymentSucceededEmail,
-  subscriptionEndedEmail, trialEndingEmail, trialStartedEmail, welcomeEmail,
+  subscriptionEndedEmail, trialEndingEmail, trialStartedEmail,
 } from "@/lib/emailTemplates";
 import { notify } from "@/lib/notify";
+import { startEmailVerification } from "@/lib/emailVerification";
+import { grantReferrerFreeWeek } from "@/lib/referral";
 import Stripe from "stripe";
 
 /** Champs lus selon la version de l'API Stripe : `current_period_end` (ancienne, sur l'abonnement) ou sur ses lignes (récente) ; `subscription` de la facture (ancienne) ou `parent.subscription_details` (récente). */
@@ -130,18 +132,9 @@ export async function POST(req: Request) {
               // Ne pas break ici : on tente quand même d'enregistrer l'abonnement plus
               // bas si jamais le profil existe déjà (contrainte unique déjà passée).
             } else if (profileEmail) {
-              try {
-                const { data: linkData } = await supabaseAdmin.auth.admin.generateLink({
-                  type: "magiclink",
-                  email: profileEmail,
-                  options: { redirectTo: "https://educalcul.com/auth/callback" },
-                });
-                const confirmUrl = linkData?.properties?.action_link || "https://educalcul.com/parent/dashboard";
-                const tmpl = welcomeEmail(meta.first_name || "", confirmUrl);
-                await sendEmail({ toEmail: profileEmail, toName: `${meta.first_name || ""} ${meta.last_name || ""}`.trim(), ...tmpl }).catch(console.error);
-              } catch (e) {
-                console.warn("[webhook] Could not send welcome email:", e);
-              }
+              // E-mail de bienvenue avec le lien de vérification de l'adresse (vérifié d'office pour un compte Google).
+              await startEmailVerification({ authId: userId, email: profileEmail, firstName: meta.first_name || "", paid: true })
+                .catch((e) => console.warn("[webhook] vérification d'e-mail non lancée :", e));
             }
           }
         }
@@ -206,6 +199,12 @@ export async function POST(req: Request) {
         if (session.metadata?.pendingDiscountUsed === "true") {
           await supabaseAdmin.from("users").update({ pending_discount_percent: 0 }).eq("auth_id", userId);
         }
+        // Semaines gagnées comme parrain, ajoutées à l'essai de cet abonnement : consommées maintenant.
+        const creditUsed = Number(session.metadata?.referralCreditDays) || 0;
+        if (creditUsed > 0) {
+          const { data: me } = await supabaseAdmin.from("users").select("id, referral_free_days").eq("auth_id", userId).maybeSingle();
+          if (me) await supabaseAdmin.from("users").update({ referral_free_days: Math.max(0, (Number(me.referral_free_days) || 0) - creditUsed) }).eq("id", me.id);
+        }
 
         const referralCode = session.metadata?.referralCode;
         if (referralCode) {
@@ -213,7 +212,11 @@ export async function POST(req: Request) {
             supabaseAdmin.from("referral_codes").select("id, current_uses").eq("code", referralCode).single(),
             supabaseAdmin.from("users").select("id").eq("auth_id", userId).maybeSingle(),
           ]);
-          if (rc && userRow) {
+          // Une seule utilisation par compte (le code a pu être enregistré avant, à l'inscription Google).
+          const { data: knownUse } = userRow
+            ? await supabaseAdmin.from("referral_uses").select("id").eq("used_by_user_id", userRow.id).limit(1).maybeSingle()
+            : { data: null };
+          if (rc && userRow && !knownUse) {
             await supabaseAdmin.from("referral_uses").insert({ referral_code_id: rc.id, used_by_user_id: userRow.id });
             await supabaseAdmin.from("referral_codes").update({ current_uses: rc.current_uses + 1 }).eq("id", rc.id);
           }
@@ -354,6 +357,7 @@ export async function POST(req: Request) {
                   .select("id, referral_code_id")
                   .eq("used_by_user_id", userProfile.id)
                   .eq("confirmed_paid", false)
+                  .limit(1)
                   .maybeSingle();
 
                 if (pendingUse) {
@@ -362,9 +366,8 @@ export async function POST(req: Request) {
                     .select("owner_user_id")
                     .eq("id", pendingUse.referral_code_id)
                     .maybeSingle();
-                  if (rc?.owner_user_id) {
-                    await supabaseAdmin.from("users").update({ pending_discount_percent: 10 }).eq("id", rc.owner_user_id);
-                  }
+                  // Premier vrai paiement du filleul : une semaine gratuite pour le parrain (voir referral.ts).
+                  if (rc?.owner_user_id) await grantReferrerFreeWeek(rc.owner_user_id);
                   await supabaseAdmin.from("referral_uses").update({ confirmed_paid: true, subscription_id: subRow.id }).eq("id", pendingUse.id);
                 }
               }

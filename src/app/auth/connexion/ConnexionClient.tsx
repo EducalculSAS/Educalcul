@@ -44,6 +44,11 @@ export default function ConnexionClient() {
     const e = searchParams.get("error");
     if (e === "no_account") return "Aucun compte trouvé avec ce compte Google. Veuillez vous inscrire d'abord.";
     if (e === "oauth") return searchParams.get("message") || "Erreur de connexion Google. Réessayez ou créez un compte.";
+    // Retour du lien de vérification d'adresse (/api/auth/verify-email).
+    const v = searchParams.get("email");
+    if (v === "lien-expire") return "Ce lien de confirmation a expiré. Connectez-vous : vous pourrez en recevoir un nouveau.";
+    if (v === "lien-invalide") return "Ce lien de confirmation n'est plus valable (déjà utilisé ?). Connectez-vous pour continuer.";
+    if (v === "trop-de-tentatives") return "Trop de tentatives. Réessayez dans une heure.";
     return null;
   });
   const [loading, setLoading] = useState(false);

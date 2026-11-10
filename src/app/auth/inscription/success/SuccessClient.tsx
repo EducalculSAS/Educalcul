@@ -181,7 +181,7 @@ function SuccessContent() {
             Paiement confirmé !
           </h2>
           <p className="text-gray-600 mb-2">
-            Votre compte est prêt. Connectez-vous avec :
+            Votre compte est prêt. Confirmez d&apos;abord votre adresse avec le lien reçu par e-mail, puis connectez-vous avec :
           </p>
           <p className="font-bold text-[var(--greek-blue)] mb-6 break-all">{userEmail}</p>
           <p className="text-gray-500 text-sm leading-relaxed mb-6">

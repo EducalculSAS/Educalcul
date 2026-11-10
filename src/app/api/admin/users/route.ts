@@ -242,6 +242,8 @@ export async function POST(request: Request) {
         grade_level: gradeLevel,
         child_age: childAge ? String(childAge) : null,
         child_username: validatedUsername,
+        // Compte créé par un admin : adresse considérée comme vérifiée.
+        email_verified_at: new Date().toISOString(),
       });
 
       if (insertError) {
