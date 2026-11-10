@@ -1,4 +1,5 @@
 import { BookOpen, ListChecks, PenLine, Sparkles, Users } from "lucide-react";
+import { FeatureCard } from "@/components/public/PublicPage";
 
 const HOW = [
   { icon: BookOpen, title: "Des cours clairs", text: "Chaque notion est expliquée simplement, avec des exemples et des points d'attention." },
@@ -11,14 +12,10 @@ const HOW = [
 /** Les cinq piliers d'Educalcul, en cartes (pages publiques). */
 export default function HowWeHelp() {
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
-      {HOW.map((h) => (
-        <li key={h.title} className="rounded-2xl border border-[rgba(197,161,72,0.25)] bg-white p-4">
-          <h.icon className="w-5 h-5 text-[var(--greek-gold)] mb-2" aria-hidden="true" />
-          <h3 className="font-bold text-sm text-[var(--greek-blue)] mb-1">{h.title}</h3>
-          <p className="text-xs text-gray-600 leading-relaxed">{h.text}</p>
-        </li>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {HOW.map((h, i) => (
+        <FeatureCard key={h.title} icon={<h.icon className="w-6 h-6" />} title={h.title} delayMs={i * 80}>{h.text}</FeatureCard>
       ))}
-    </ul>
+    </div>
   );
 }

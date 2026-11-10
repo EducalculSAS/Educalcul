@@ -2,13 +2,13 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { BookOpen, GraduationCap } from "lucide-react";
+import { HeroRows, PublicCta, PublicHero, PublicPage } from "@/components/public/PublicPage";
 import FadeInSection from "@/components/home/FadeInSection";
 import LevelPicker from "@/components/programmes/LevelPicker";
 import LevelGroupsList from "@/components/programmes/LevelGroupsList";
 import { fetchProgrammePdfs } from "@/lib/programmePdfs";
 import { LEVEL_PAGES } from "@/lib/seo/levels";
-import GlassButton from "@/components/ui/GlassButton";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import SeoFaq from "@/components/seo/SeoFaq";
 
@@ -24,24 +24,14 @@ const HUB_FAQ = [
 // aller-retour Supabase à chaque visite.
 export const revalidate = 300;
 
-const SYM = [
-  { s: "∑", x: 6, y: 10, z: 96, d: 0, t: 7.2 },
-  { s: "π", x: 87, y: 7, z: 72, d: 1.3, t: 8.5 },
-  { s: "√", x: 12, y: 62, z: 58, d: 0.6, t: 9.1 },
-  { s: "∫", x: 91, y: 48, z: 104, d: 2.1, t: 7.4 },
-  { s: "Δ", x: 43, y: 14, z: 50, d: 0.9, t: 10.2 },
-  { s: "∞", x: 65, y: 70, z: 66, d: 1.8, t: 8.0 },
-  { s: "α", x: 2, y: 40, z: 44, d: 2.7, t: 9.3 },
-  { s: "×", x: 76, y: 26, z: 54, d: 0.4, t: 7.8 },
-];
 
 export default async function ProgrammesPage() {
   const dbPdfs = await fetchProgrammePdfs();
 
   return (
-    <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
+    <PublicPage>
       <Navbar />
-      <main className="flex flex-col flex-1">
+      <main className="flex-grow pt-[64px]">
       {/* Accès direct à chaque niveau, présent dans le HTML même quand les cartes ci-dessous sont repliées (lecteurs d'écran, moteurs de recherche). */}
       <nav aria-label="Programme de maths par niveau" className="sr-only">
         <ul>
@@ -51,28 +41,25 @@ export default async function ProgrammesPage() {
         </ul>
       </nav>
 
-      {/* Hero — avec barre de progression niveaux */}
-      <section className="relative overflow-hidden bg-[var(--greek-blue)] text-white pt-[calc(var(--nav-h)+4rem)] pb-20 text-center">
-        {SYM.map((cfg, i) => (
-          <span key={i} className="absolute font-bold animate-float-symbol select-none pointer-events-none"
-            style={{ left: `${cfg.x}%`, top: `${cfg.y}%`, fontSize: `${cfg.z}px`, fontFamily: "Georgia,serif", color: "var(--greek-gold)", opacity: 0.1, animationDuration: `${cfg.t}s`, animationDelay: `${cfg.d}s` }}
-          >{cfg.s}</span>
-        ))}
-        <div className="relative container mx-auto px-6 max-w-3xl">
-          <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "Programmes", href: "/programmes" }]} />
-          <h1 className="font-[family-name:var(--font-display)] text-3xl md:text-5xl font-bold mb-4">
-            Programmes de mathématiques du CP à la Terminale
-          </h1>
-          <p className="text-white/55 text-lg max-w-xl mx-auto leading-relaxed mb-10">
-            Pour chaque niveau : les notions au programme, les compétences travaillées et un exercice à essayer, d&apos;après les textes de l&apos;Éducation nationale.
-          </p>
-
-          <LevelPicker />
-        </div>
-      </section>
+      <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "Programmes", href: "/programmes" }]} />
+      <PublicHero
+        eyebrow="Programmes officiels"
+        title="Les maths"
+        highlight="du CP à la Terminale"
+        intro="Pour chaque niveau : les notions au programme, les compétences travaillées et un exercice à essayer, d'après les textes de l'Éducation nationale."
+        actions={<LevelPicker align="start" />}
+        aside={
+          <HeroRows rows={[
+            { icon: <GraduationCap className="w-4 h-4" />, text: <><strong className="font-semibold text-white/85">Primaire</strong> · CP, CE1, CE2, CM1, CM2</> },
+            { icon: <GraduationCap className="w-4 h-4" />, text: <><strong className="font-semibold text-white/85">Collège</strong> · 6e, 5e, 4e, 3e</> },
+            { icon: <GraduationCap className="w-4 h-4" />, text: <><strong className="font-semibold text-white/85">Lycée</strong> · Seconde, Première, Terminale</> },
+            { icon: <BookOpen className="w-4 h-4" />, text: "D'après les programmes publiés sur Éduscol" },
+          ]} />
+        }
+      />
 
       {/* Contenu programmes */}
-      <section className="py-16 px-6">
+      <section className="py-16 px-6" style={{ background: "var(--greek-cream)" }}>
         <div className="max-w-3xl mx-auto space-y-12">
           {/* Logos officiels + texte */}
           <FadeInSection translateY={24} durationMs={600} className="flex flex-col items-center text-center gap-5">
@@ -100,24 +87,11 @@ export default async function ProgrammesPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-16 px-6" style={{ background: "var(--greek-blue)" }}>
-        <div className="max-w-xl mx-auto text-center">
-          <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl mb-4 text-white">
-            Prêt à commencer ?
-          </h2>
-          <p className="text-sm mb-8 text-white/55">
-            Inscrivez-vous en 2 minutes et accédez à tous les contenus alignés sur ces programmes.
-          </p>
-          <GlassButton href="/auth/inscription" variant="gold">
-            Commencer gratuitement <ArrowRight size={16} />
-          </GlassButton>
-        </div>
-      </section>
+      <PublicCta text="Inscrivez-vous en 2 minutes et accédez à tous les contenus alignés sur ces programmes." secondary={{ href: "/tarifs", label: "Comparer les formules" }} />
 
       </main>
 
       <Footer />
-    </div>
+    </PublicPage>
   );
 }

@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Camera, GraduationCap, HelpCircle, MessageCircle, ShieldCheck, Sparkles, Users, XCircle, CheckCircle } from "lucide-react";
+import { ArrowRight, Camera, CheckCircle, GraduationCap, MessageCircle, ShieldCheck, Users, XCircle } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlassButton from "@/components/ui/GlassButton";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
-import PublicHero from "@/components/seo/PublicHero";
 import SeoFaq from "@/components/seo/SeoFaq";
 import CaliaChatDemo from "@/components/offres/CaliaChatDemo";
 import QuickFacts from "@/components/seo/QuickFacts";
+import FadeInSection from "@/components/home/FadeInSection";
+import { FeatureCard, HeroRows, PUBLIC_CARD, PublicCta, PublicHero, PublicPage, PublicSection } from "@/components/public/PublicPage";
 import { socialMeta } from "@/lib/seo/meta";
 
 const BASE = "https://educalcul.com";
@@ -22,13 +24,11 @@ export const metadata: Metadata = {
   ...socialMeta({ title: TITLE, description: DESCRIPTION, path: "/calia-tuteur-ia-maths" }),
 };
 
-const CARD = "bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]";
-
 const FEATURES = [
-  { icon: MessageCircle, title: "Une aide pendant les cours et exercices", text: "Une bulle d'aide reste à portée de main : l'élève explique où il bloque, Calia l'aide à avancer." },
-  { icon: GraduationCap, title: "Le mode classe", text: "Une séance vocale avec un tableau : Calia explique, l'élève répond et peut dessiner sa démarche, puis reçoit un résumé." },
-  { icon: Camera, title: "L'aide aux devoirs par photo", text: "L'élève photographie son exercice ; Calia le lit et l'aide à le résoudre lui-même, étape par étape." },
-  { icon: Users, title: "Un bilan pour les parents", text: "Le parent peut obtenir une analyse de la progression de son enfant depuis son espace." },
+  { icon: MessageCircle, title: "Pendant les exercices", subtitle: "Une bulle d'aide toujours là", text: "L'élève explique où il bloque, Calia l'aide à avancer, sans faire à sa place." },
+  { icon: GraduationCap, title: "Le mode classe", subtitle: "Une séance vocale au tableau", text: "Calia explique, l'élève répond et peut dessiner sa démarche, puis reçoit un résumé." },
+  { icon: Camera, title: "Les devoirs par photo", subtitle: "Son propre exercice", text: "L'élève photographie son exercice ; Calia le lit et l'aide à le résoudre lui-même, étape par étape." },
+  { icon: Users, title: "Pour les parents", subtitle: "Un bilan de progression", text: "Le parent peut obtenir une analyse de la progression de son enfant depuis son espace." },
 ];
 
 const DOES = [
@@ -53,23 +53,34 @@ const FAQ = [
 
 export default function CaliaPage() {
   return (
-    <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
+    <PublicPage>
       <Navbar />
-      <main className="flex flex-col flex-1">
+      <main className="flex-grow pt-[64px]">
         <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "Calia", href: "/calia-tuteur-ia-maths" }]} />
         <PublicHero
-          back={{ href: "/", label: "Retour à l'accueil" }}
           eyebrow="Tuteur IA de mathématiques"
-          title="Calia, le tuteur IA qui fait réfléchir en maths"
-          intro={<>Calia accompagne l&apos;élève du CP à la Terminale. Plutôt que de donner la réponse, elle pose les bonnes questions pour qu&apos;il comprenne et sache refaire seul.</>}
-        >
-          <GlassButton href="/auth/inscription" variant="gold" className="font-bold">
-            Essayer gratuitement 7 jours <ArrowRight className="w-4 h-4" />
-          </GlassButton>
-          <GlassButton href="#essayer-calia" variant="light" className="font-semibold">Parler à Calia</GlassButton>
-        </PublicHero>
+          title="Calia"
+          intro="Calia accompagne l'élève du CP à la Terminale. Plutôt que de donner la réponse, elle pose les bonnes questions pour qu'il comprenne et sache refaire seul."
+          actions={
+            <>
+              <GlassButton href="/auth/inscription" variant="gold" className="font-[family-name:var(--font-display)] font-bold text-sm">
+                <span className="inline-flex items-center gap-2">Essayer gratuitement <ArrowRight className="w-4 h-4" /></span>
+              </GlassButton>
+              <GlassButton href="#essayer-calia" variant="light" className="font-[family-name:var(--font-display)] font-semibold text-sm">Parler à Calia</GlassButton>
+            </>
+          }
+          aside={
+            <HeroRows rows={[
+              { icon: <Image src="/logoAI.png" alt="" width={16} height={16} className="w-4 h-4 object-contain" />, text: "Méthode socratique : des questions, pas des réponses" },
+              { icon: <MessageCircle className="w-4 h-4" />, text: "Aide pendant les cours et les exercices" },
+              { icon: <GraduationCap className="w-4 h-4" />, text: "Mode classe vocal, au tableau" },
+              { icon: <Camera className="w-4 h-4" />, text: "Aide aux devoirs à partir d'une photo" },
+              { icon: <Users className="w-4 h-4" />, text: "Bilan de progression pour les parents" },
+            ]} />
+          }
+        />
 
-        <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
+        <PublicSection tight>
           <QuickFacts
             title="Calia en bref"
             facts={[
@@ -80,77 +91,53 @@ export default function CaliaPage() {
               { label: "Tarif", value: "Les fonctions disponibles dépendent de la formule (voir la page Tarifs). 7 jours d'essai gratuits, sans carte bancaire." },
             ]}
           />
-          <section className={CARD}>
-            <div className="flex items-center gap-3 mb-1">
-              <Sparkles className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Ce que Calia fait pour l&apos;élève</h2>
-            </div>
-            <p className="text-sm text-gray-500 mb-6">Quatre façons d&apos;être aidé, toujours avec la même règle : comprendre plutôt que recopier.</p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {FEATURES.map((f) => (
-                <li key={f.title} className="rounded-2xl border border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]/40 p-5">
-                  <f.icon className="w-5 h-5 text-[var(--greek-gold)] mb-2" aria-hidden="true" />
-                  <h3 className="font-bold text-[var(--greek-blue)] mb-1">{f.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{f.text}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
+        </PublicSection>
 
-          <section className={CARD}>
-            <div className="flex items-center gap-3 mb-1">
-              <ShieldCheck className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Une méthode socratique</h2>
-            </div>
-            <p className="text-sm text-gray-500 mb-6">Calia guide le raisonnement ; c&apos;est l&apos;élève qui trouve.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h3 className="font-bold text-green-800 mb-3">Calia…</h3>
-                <ul className="space-y-2">
-                  {DOES.map((d) => <li key={d} className="flex items-start gap-2 text-sm text-gray-700"><CheckCircle className="w-4 h-4 mt-0.5 shrink-0 text-green-700" aria-hidden="true" />{d}</li>)}
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-bold text-red-800 mb-3">Calia ne va pas…</h3>
-                <ul className="space-y-2">
-                  {DOES_NOT.map((d) => <li key={d} className="flex items-start gap-2 text-sm text-gray-700"><XCircle className="w-4 h-4 mt-0.5 shrink-0 text-red-600" aria-hidden="true" />{d}</li>)}
-                </ul>
-              </div>
-            </div>
-          </section>
-
-          <section id="essayer-calia" className={`${CARD} scroll-mt-24 text-center`}>
-            <div className="flex items-center justify-center gap-3 mb-1">
-              <MessageCircle className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Essayer Calia sans compte</h2>
-            </div>
-            <p className="text-sm text-gray-500 mb-6">Pose une question de maths : Calia te répond comme dans l&apos;espace élève (nombre de messages limité).</p>
-            <div className="flex justify-center">
-              <CaliaChatDemo />
-            </div>
-          </section>
-
-          <section className={CARD}>
-            <div className="flex items-center gap-3 mb-1">
-              <HelpCircle className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Questions fréquentes sur Calia</h2>
-            </div>
-            <p className="text-sm text-gray-500 mb-5">
-              Voir aussi <Link href="/programmes" className="font-semibold text-[var(--greek-gold-text)] hover:underline">les programmes par niveau</Link> et <Link href="/tarifs" className="font-semibold text-[var(--greek-gold-text)] hover:underline">les tarifs</Link>.
-            </p>
-            <SeoFaq items={FAQ} />
-          </section>
-        </div>
-
-        <section className="py-16 px-6" style={{ background: "var(--greek-blue)" }}>
-          <div className="max-w-xl mx-auto text-center">
-            <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl mb-4 text-white">Apprendre les maths avec Calia</h2>
-            <p className="text-sm mb-8 text-white/60">7 jours gratuits, sans carte bancaire et sans engagement.</p>
-            <GlassButton href="/auth/inscription" variant="gold">Créer un compte <ArrowRight size={16} /></GlassButton>
+        <PublicSection eyebrow="Ce que fait Calia" title="Quatre façons d'être aidé," highlight="une seule règle." intro="Comprendre plutôt que recopier : c'est l'élève qui trouve, Calia l'y amène.">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {FEATURES.map((f, i) => (
+              <FeatureCard key={f.title} icon={<f.icon className="w-6 h-6" />} title={f.title} subtitle={f.subtitle} delayMs={i * 80}>{f.text}</FeatureCard>
+            ))}
           </div>
-        </section>
+        </PublicSection>
+
+        <PublicSection eyebrow="Méthode socratique" title="Calia guide," highlight="l'élève trouve.">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <FadeInSection className={PUBLIC_CARD}>
+              <h3 className="font-[family-name:var(--font-display)] font-bold text-xl mb-4 flex items-center gap-2" style={{ color: "var(--greek-blue)" }}>
+                <ShieldCheck className="w-5 h-5 text-green-700" aria-hidden="true" /> Calia…
+              </h3>
+              <ul className="space-y-2.5">
+                {DOES.map((d) => <li key={d} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--text-muted)" }}><CheckCircle className="w-4 h-4 mt-0.5 shrink-0 text-green-700" aria-hidden="true" />{d}</li>)}
+              </ul>
+            </FadeInSection>
+            <FadeInSection delayMs={100} className={PUBLIC_CARD}>
+              <h3 className="font-[family-name:var(--font-display)] font-bold text-xl mb-4 flex items-center gap-2" style={{ color: "var(--greek-blue)" }}>
+                <XCircle className="w-5 h-5 text-red-600" aria-hidden="true" /> Calia ne va pas…
+              </h3>
+              <ul className="space-y-2.5">
+                {DOES_NOT.map((d) => <li key={d} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--text-muted)" }}><XCircle className="w-4 h-4 mt-0.5 shrink-0 text-red-600" aria-hidden="true" />{d}</li>)}
+              </ul>
+            </FadeInSection>
+          </div>
+        </PublicSection>
+
+        <PublicSection id="essayer-calia" eyebrow="Essayez sans compte" title="Pose une question" highlight="à Calia." intro="Elle te répond comme dans l'espace élève (nombre de messages limité).">
+          <div className="flex justify-center"><CaliaChatDemo /></div>
+        </PublicSection>
+
+        <PublicSection eyebrow="Questions fréquentes" title="Tout savoir sur Calia">
+          <div className="max-w-3xl mx-auto">
+            <SeoFaq items={FAQ} />
+            <p className="text-sm text-center mt-6" style={{ color: "var(--text-muted)" }}>
+              Voir aussi <Link href="/programmes" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>les programmes par niveau</Link> et <Link href="/tarifs" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>les tarifs</Link>.
+            </p>
+          </div>
+        </PublicSection>
+
+        <PublicCta title="Apprendre les maths avec Calia" secondary={{ href: "/tarifs", label: "Comparer les formules" }} />
       </main>
       <Footer />
-    </div>
+    </PublicPage>
   );
 }

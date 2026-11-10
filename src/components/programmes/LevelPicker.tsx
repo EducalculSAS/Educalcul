@@ -19,7 +19,7 @@ function announceLevel(level: string) {
 
 /** Sélecteur "Mon niveau" du hero. Isolé en client island : le reste du hero
  * (titre, description, décor) reste rendu côté serveur. */
-export default function LevelPicker() {
+export default function LevelPicker({ align = "center" }: { align?: "center" | "start" }) {
   const [myLevel, setMyLevel] = useState("");
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function LevelPicker() {
   };
 
   return (
-    <div className="flex items-center justify-center gap-3 mb-10 flex-wrap">
+    <div className={`flex items-center gap-3 flex-wrap ${align === "center" ? "justify-center mb-10" : "justify-start"}`}>
       <label htmlFor="my-level" className="flex items-center gap-2 text-sm font-semibold text-white/70 font-[family-name:var(--font-display)]">
         <GraduationCap size={18} style={{ color: "var(--greek-gold)" }} />
         Mon niveau

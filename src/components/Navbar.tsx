@@ -15,6 +15,25 @@ import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { Menu, X, LogOut } from "lucide-react";
 
+/** Menu public, par groupes, dans l'ordre d'une visite. Le pied de page suit le même ordre (Footer.tsx). */
+const PUBLIC_MENU: { title: string; links: { href: string; label: string }[] }[] = [
+  { title: "Découvrir", links: [
+    { href: "/", label: "Accueil" },
+    { href: "/offres", label: "Offres" },
+    { href: "/calia-tuteur-ia-maths", label: "Calia" },
+    { href: "/programmes", label: "Programmes" },
+    { href: "/tarifs", label: "Tarifs" },
+  ] },
+  { title: "Educalcul", links: [
+    { href: "/methode-pedagogique", label: "Méthode pédagogique" },
+    { href: "/a-propos", label: "À propos" },
+  ] },
+  { title: "Aide", links: [
+    { href: "/faq", label: "FAQ" },
+    { href: "/contact", label: "Contact" },
+  ] },
+];
+
 // Pages "app" où on affiche le menu connecté
 const APP_PREFIXES = ["/parent", "/child", "/admin", "/dashboard"];
 
@@ -212,16 +231,18 @@ export default function Navbar() {
         >
           {/* Navigation Links — toujours visibles sur pages publiques */}
           {(!user || !isAppPage) && (
-            <div className="flex flex-col p-4 gap-2">
-              <DropdownLink href="/" onClick={() => setIsOpen(false)}>Accueil</DropdownLink>
-              <DropdownLink href="/offres" onClick={() => setIsOpen(false)}>Offres</DropdownLink>
-              <DropdownLink href="/calia-tuteur-ia-maths" onClick={() => setIsOpen(false)}>Calia, le tuteur IA</DropdownLink>
-              <DropdownLink href="/programmes" onClick={() => setIsOpen(false)}>Programmes</DropdownLink>
-              <DropdownLink href="/methode-pedagogique" onClick={() => setIsOpen(false)}>Méthode pédagogique</DropdownLink>
-              <DropdownLink href="/tarifs" onClick={() => setIsOpen(false)}>Tarifs</DropdownLink>
-              <DropdownLink href="/a-propos" onClick={() => setIsOpen(false)}>À propos</DropdownLink>
-              <DropdownLink href="/faq" onClick={() => setIsOpen(false)}>FAQ</DropdownLink>
-              <DropdownLink href="/contact" onClick={() => setIsOpen(false)}>Contact</DropdownLink>
+            // Menu public rangé dans l'ordre d'une visite : découvrir le produit, puis qui nous sommes, puis l'aide.
+            <div className="flex flex-col p-4 gap-4">
+              {PUBLIC_MENU.map((group) => (
+                <div key={group.title} className="flex flex-col gap-2">
+                  <p className="px-1 text-[10px] font-bold uppercase tracking-[0.18em] text-center font-[family-name:var(--font-display)]" style={{ color: "rgba(197,161,72,0.8)" }}>
+                    {group.title}
+                  </p>
+                  {group.links.map((l) => (
+                    <DropdownLink key={l.href} href={l.href} onClick={() => setIsOpen(false)}>{l.label}</DropdownLink>
+                  ))}
+                </div>
+              ))}
             </div>
           )}
 

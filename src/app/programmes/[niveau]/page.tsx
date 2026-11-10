@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, BookOpen, Brain, CheckCircle, ExternalLink, GraduationCap, HelpCircle, PenLine, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, Brain, Check, ExternalLink, GraduationCap, PenLine } from "lucide-react";
+import FadeInSection from "@/components/home/FadeInSection";
+import { HeroRows, PUBLIC_CARD, PublicCta, PublicHero, PublicPage, PublicSection } from "@/components/public/PublicPage";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlassButton from "@/components/ui/GlassButton";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
-import PublicHero from "@/components/seo/PublicHero";
 import SeoFaq from "@/components/seo/SeoFaq";
 import MiniExercise from "@/components/seo/MiniExercise";
 import JsonLd from "@/components/JsonLd";
@@ -37,18 +38,6 @@ export async function generateMetadata({ params }: { params: Promise<{ niveau: s
     ...socialMeta({ title: level.title, description: level.description, path: `/programmes/${level.slug}`, type: "article" }),
   };
 }
-
-const CARD = "bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]";
-
-function SectionTitle({ icon: Icon, children }: { icon: typeof BookOpen; children: React.ReactNode }) {
-  return (
-    <div className="flex items-center gap-3 mb-1">
-      <Icon className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-      <h2 className="text-xl font-bold text-[var(--greek-blue)]">{children}</h2>
-    </div>
-  );
-}
-
 
 export default async function LevelProgrammePage({ params }: { params: Promise<{ niveau: string }> }) {
   const { niveau } = await params;
@@ -84,28 +73,35 @@ export default async function LevelProgrammePage({ params }: { params: Promise<{
   };
 
   return (
-    <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
+    <PublicPage>
       <JsonLd data={pageSchema} />
       <JsonLd data={courseSchema} />
       <Navbar />
-      <main className="flex flex-col flex-1">
-        {/* En-tête */}
+      <main className="flex-grow pt-[64px]">
         <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "Programmes", href: "/programmes" }, { name: level.name, href: `/programmes/${level.slug}` }]} />
         <PublicHero
-          back={{ href: "/programmes", label: "Tous les programmes" }}
           eyebrow={<>{CYCLE_LABEL[level.cycle]} · {level.cycleLabel}</>}
           title={level.h1}
           intro={level.intro}
-        >
-          <GlassButton href="/auth/inscription" variant="gold" className="font-bold">
-            Essayer gratuitement 7 jours <ArrowRight className="w-4 h-4" />
-          </GlassButton>
-          <GlassButton href="#exercice" variant="light" className="font-semibold">
-            Faire un exercice de {level.short}
-          </GlassButton>
-        </PublicHero>
+          actions={
+            <>
+              <GlassButton href="/auth/inscription" variant="gold" className="font-[family-name:var(--font-display)] font-bold text-sm">
+                <span className="inline-flex items-center gap-2">Essayer gratuitement <ArrowRight className="w-4 h-4" /></span>
+              </GlassButton>
+              <GlassButton href="#exercice" variant="light" className="font-[family-name:var(--font-display)] font-semibold text-sm">
+                Faire un exercice de {level.short}
+              </GlassButton>
+            </>
+          }
+          aside={
+            <HeroRows rows={level.domains.map((d) => ({
+              icon: <GraduationCap className="w-4 h-4" />,
+              text: <><strong className="font-semibold text-white/85">{d.name}</strong> · {d.chapters.length} notion{d.chapters.length > 1 ? "s" : ""}</>,
+            }))} />
+          }
+        />
 
-        <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
+        <PublicSection tight>
           <QuickFacts
             title={`Maths en ${level.short} en bref`}
             facts={[
@@ -116,110 +112,106 @@ export default async function LevelProgrammePage({ params }: { params: Promise<{
               { label: "Essai", value: "7 jours gratuits, sans carte bancaire et sans engagement." },
             ]}
           />
-          {/* Programme */}
-          <section className={CARD} aria-labelledby="au-programme">
-            <SectionTitle icon={GraduationCap}><span id="au-programme">Au programme de maths en {level.name}</span></SectionTitle>
-            <p className="text-sm text-gray-500 mb-6">{chapterCount(level)} notions réparties en {level.domains.length} domaines, d&apos;après le programme officiel de l&apos;Éducation nationale.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {level.domains.map((d) => (
-                <div key={d.name} className="rounded-2xl border border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]/40 p-5">
-                  <h3 className="font-bold text-[var(--greek-blue)] mb-3">{d.name}</h3>
-                  <ul className="space-y-2">
-                    {d.chapters.map((c) => (
-                      <li key={c} className="flex items-start gap-2 text-sm text-gray-700">
-                        <CheckCircle className="w-4 h-4 mt-0.5 shrink-0 text-[var(--greek-gold)]" aria-hidden="true" />
-                        {c}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-            {pdfs.length > 0 && (
-              <p className="text-sm text-gray-500 mt-5">
-                Texte officiel :{" "}
-                {pdfs.map((p, i) => (
-                  <span key={p.url}>
-                    {i > 0 && " · "}
-                    <a href={p.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-[var(--greek-gold-text)] hover:underline inline-flex items-center gap-1">
-                      {p.label} (Éduscol) <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
-                    </a>
-                  </span>
-                ))}
-              </p>
-            )}
-          </section>
+        </PublicSection>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Compétences */}
-            <section className={CARD}>
-              <SectionTitle icon={Brain}>Compétences travaillées</SectionTitle>
-              <p className="text-sm text-gray-500 mb-5">Ce que l&apos;élève de {level.short} apprend à faire.</p>
-              <ul className="space-y-3">
-                {level.skills.map((s) => (
-                  <li key={s} className="flex items-start gap-3 text-sm text-gray-700">
-                    <span className="mt-1.5 w-2 h-2 rounded-full bg-[var(--greek-gold)] shrink-0" aria-hidden="true" />
-                    {s}
+        <PublicSection
+          id="au-programme"
+          eyebrow="Au programme"
+          title={`Les maths en ${level.name}`}
+          intro={`${chapterCount(level)} notions réparties en ${level.domains.length} domaines, d'après le programme officiel de l'Éducation nationale.`}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {level.domains.map((d, i) => (
+              <FadeInSection key={d.name} delayMs={i * 80} className={PUBLIC_CARD}>
+                <h3 className="font-[family-name:var(--font-display)] font-bold text-xl mb-4" style={{ color: "var(--greek-blue)" }}>{d.name}</h3>
+                <ul className="flex flex-col gap-2.5">
+                  {d.chapters.map((c) => (
+                    <li key={c} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--text-muted)" }}>
+                      <span className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(197,161,72,0.1)" }}>
+                        <Check className="w-2.5 h-2.5" style={{ color: "var(--greek-gold)" }} />
+                      </span>
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </FadeInSection>
+            ))}
+          </div>
+          {pdfs.length > 0 && (
+            <p className="text-sm text-center mt-8" style={{ color: "var(--text-muted)" }}>
+              Texte officiel :{" "}
+              {pdfs.map((p, i) => (
+                <span key={p.url}>
+                  {i > 0 && " · "}
+                  <a href={p.url} target="_blank" rel="noopener noreferrer" className="font-semibold hover:underline inline-flex items-center gap-1" style={{ color: "var(--greek-gold-text)" }}>
+                    {p.label} (Éduscol) <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                  </a>
+                </span>
+              ))}
+            </p>
+          )}
+        </PublicSection>
+
+        <PublicSection eyebrow="S'entraîner" title={`Ce que l'élève de ${level.short} apprend à faire`}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <FadeInSection className={PUBLIC_CARD}>
+              <h3 className="font-[family-name:var(--font-display)] font-bold text-xl mb-4 flex items-center gap-2" style={{ color: "var(--greek-blue)" }}>
+                <Brain className="w-5 h-5" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> Compétences travaillées
+              </h3>
+              <ul className="flex flex-col gap-2.5">
+                {level.skills.map((sk) => (
+                  <li key={sk} className="flex items-start gap-2.5 text-sm" style={{ color: "var(--text-muted)" }}>
+                    <span className="mt-1.5 w-2 h-2 rounded-full shrink-0" style={{ background: "var(--greek-gold)" }} aria-hidden="true" />
+                    {sk}
                   </li>
                 ))}
               </ul>
-            </section>
-
-            {/* Mini-exercice */}
-            <section id="exercice" className={`${CARD} scroll-mt-24`}>
-              <SectionTitle icon={PenLine}>Un exercice de {level.short} à essayer</SectionTitle>
-              <p className="text-sm text-gray-500 mb-5">Sans compte : choisis ta réponse, la correction s&apos;affiche tout de suite.</p>
+            </FadeInSection>
+            <FadeInSection delayMs={100} className={`${PUBLIC_CARD} scroll-mt-24`}>
+              <div id="exercice" className="scroll-mt-24" />
+              <h3 className="font-[family-name:var(--font-display)] font-bold text-xl mb-1 flex items-center gap-2" style={{ color: "var(--greek-blue)" }}>
+                <PenLine className="w-5 h-5" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> Un exercice de {level.short} à essayer
+              </h3>
+              <p className="text-sm mb-5" style={{ color: "var(--text-muted)" }}>Sans compte : choisis ta réponse, la correction s&apos;affiche tout de suite.</p>
               <MiniExercise exercise={level.exercise} />
-            </section>
+            </FadeInSection>
           </div>
+        </PublicSection>
 
-          {/* Accompagnement */}
-          <section className={CARD}>
-            <SectionTitle icon={Sparkles}>Comment Educalcul accompagne l&apos;élève de {level.short}</SectionTitle>
-            <p className="text-sm text-gray-500 mb-6">Une même méthode du CP à la Terminale, adaptée au niveau de chaque élève.</p>
-            <HowWeHelp />
-            <p className="text-sm text-gray-600 mt-5">
-              Voir <Link href="/offres#essayer" className="font-semibold text-[var(--greek-gold-text)] hover:underline">un exemple de cours, d&apos;exercice et de quiz</Link>,
-              {" "}découvrir <Link href="/calia-tuteur-ia-maths" className="font-semibold text-[var(--greek-gold-text)] hover:underline">Calia, le tuteur IA</Link>
-              {" "}ou comparer <Link href="/tarifs" className="font-semibold text-[var(--greek-gold-text)] hover:underline">les tarifs</Link>.
-            </p>
-          </section>
+        <PublicSection eyebrow="Avec Educalcul" title={`Comment nous accompagnons l'élève de ${level.short}`} intro="Une même méthode du CP à la Terminale, adaptée au niveau de chaque élève.">
+          <HowWeHelp />
+          <p className="text-sm text-center mt-8" style={{ color: "var(--text-muted)" }}>
+            Voir <Link href="/offres#essayer" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>un exemple de cours, d&apos;exercice et de quiz</Link>,
+            {" "}découvrir <Link href="/calia-tuteur-ia-maths" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>Calia</Link>
+            {" "}ou comparer <Link href="/tarifs" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>les tarifs</Link>.
+          </p>
+        </PublicSection>
 
-          {/* FAQ */}
-          <section className={CARD}>
-            <SectionTitle icon={HelpCircle}>Questions fréquentes sur les maths en {level.short}</SectionTitle>
-            <p className="text-sm text-gray-500 mb-5">D&apos;autres réponses dans la <Link href="/faq" className="font-semibold text-[var(--greek-gold-text)] hover:underline">FAQ complète</Link>.</p>
+        <PublicSection eyebrow="Questions fréquentes" title={`Les maths en ${level.short}`}>
+          <div className="max-w-3xl mx-auto">
             <SeoFaq items={level.faq} />
-          </section>
-
-          {/* Niveaux voisins */}
-          <nav aria-label="Autres niveaux" className="flex flex-col sm:flex-row gap-3 justify-between">
+            <p className="text-sm text-center mt-6" style={{ color: "var(--text-muted)" }}>
+              D&apos;autres réponses dans la <Link href="/faq" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>FAQ complète</Link>.
+            </p>
+          </div>
+          {/* Niveaux voisins (pas de retour vers une page principale). */}
+          <nav aria-label="Niveaux voisins" className="flex flex-col sm:flex-row gap-3 justify-between max-w-3xl mx-auto mt-12">
             {prev ? (
               <GlassButton href={`/programmes/${prev.slug}`} variant="outline">
                 <ArrowLeft className="w-4 h-4" /> Programme de {prev.short}
               </GlassButton>
             ) : <span />}
-            <GlassButton href="/programmes" variant="outline">Tous les niveaux</GlassButton>
             {next ? (
               <GlassButton href={`/programmes/${next.slug}`} variant="outline">
                 Programme de {next.short} <ArrowRight className="w-4 h-4" />
               </GlassButton>
             ) : <span />}
           </nav>
-        </div>
+        </PublicSection>
 
-        {/* Appel à l'action */}
-        <section className="py-16 px-6" style={{ background: "var(--greek-blue)" }}>
-          <div className="max-w-xl mx-auto text-center">
-            <h2 className="font-[family-name:var(--font-display)] font-bold text-2xl mb-4 text-white">Travailler le programme de {level.short} avec Educalcul</h2>
-            <p className="text-sm mb-8 text-white/60">7 jours gratuits, sans carte bancaire et sans engagement.</p>
-            <GlassButton href="/auth/inscription" variant="gold">
-              Créer un compte <ArrowRight size={16} />
-            </GlassButton>
-          </div>
-        </section>
+        <PublicCta title={`Travailler le programme de ${level.short}`} secondary={{ href: "/tarifs", label: "Comparer les formules" }} />
       </main>
       <Footer />
-    </div>
+    </PublicPage>
   );
 }

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Brain, Compass, MessageCircle, Repeat, Sparkles, Target, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Compass, Repeat, Target, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlassButton from "@/components/ui/GlassButton";
-import PublicHero from "@/components/seo/PublicHero";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import QuickFacts from "@/components/seo/QuickFacts";
 import JsonLd from "@/components/JsonLd";
+import FadeInSection from "@/components/home/FadeInSection";
+import { FeatureCard, HeroRows, PUBLIC_CARD, PublicCta, PublicHero, PublicPage, PublicSection } from "@/components/public/PublicPage";
 import { ORG_REF, SEO_UPDATED } from "@/lib/seo/site";
 import { socialMeta } from "@/lib/seo/meta";
 
@@ -22,13 +23,11 @@ export const metadata: Metadata = {
   ...socialMeta({ title: TITLE, description: DESCRIPTION, path: "/methode-pedagogique" }),
 };
 
-const CARD = "bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]";
-
 const STEPS = [
-  { icon: BookOpen, title: "1. Comprendre", text: "Un cours court et clair par notion : une définition, des exemples, les pièges à éviter. Pas de pavé à lire, l'essentiel." },
-  { icon: Target, title: "2. S'entraîner", text: "Des exercices du plus simple au plus exigeant. Chaque réponse est corrigée tout de suite, avec l'explication de l'erreur." },
-  { icon: Repeat, title: "3. Retenir", text: "Des quiz courts et des révisions : une notion ratée revient plus tard, jusqu'à ce qu'elle soit acquise." },
-  { icon: Compass, title: "4. Se situer", text: "Une checklist « je sais faire » à la fin des cours, des objectifs du jour et une progression visible." },
+  { icon: BookOpen, title: "Comprendre", subtitle: "Étape 1", text: "Un cours court et clair par notion : une définition, des exemples, les pièges à éviter. Pas de pavé à lire, l'essentiel." },
+  { icon: Target, title: "S'entraîner", subtitle: "Étape 2", text: "Des exercices du plus simple au plus exigeant. Chaque réponse est corrigée tout de suite, avec l'explication de l'erreur." },
+  { icon: Repeat, title: "Retenir", subtitle: "Étape 3", text: "Des quiz courts et des révisions : une notion ratée revient plus tard, jusqu'à ce qu'elle soit acquise." },
+  { icon: Compass, title: "Se situer", subtitle: "Étape 4", text: "Une checklist « je sais faire » à la fin des cours, des objectifs du jour et une progression visible." },
 ];
 
 const PRINCIPLES = [
@@ -54,19 +53,28 @@ const articleSchema = {
 
 export default function MethodePage() {
   return (
-    <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
+    <PublicPage>
       <Navbar />
-      <main className="flex flex-col flex-1">
+      <main className="flex-grow pt-[64px]">
         <JsonLd data={articleSchema} />
         <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "Méthode pédagogique", href: "/methode-pedagogique" }]} />
         <PublicHero
-          back={{ href: "/", label: "Retour à l'accueil" }}
           eyebrow="Méthode pédagogique"
-          title="Comprendre plutôt que recopier"
-          intro="Notre méthode tient en une idée : un élève progresse quand il trouve lui-même, avec la bonne aide au bon moment. Tout Educalcul est construit autour de ça."
+          title="Comprendre"
+          highlight="plutôt que recopier"
+          intro="Un élève progresse quand il trouve lui-même, avec la bonne aide au bon moment. Tout Educalcul est construit autour de cette idée."
+          actions={
+            <>
+              <GlassButton href="/auth/inscription" variant="gold" className="font-[family-name:var(--font-display)] font-bold text-sm">
+                <span className="inline-flex items-center gap-2">Commencer gratuitement <ArrowRight className="w-4 h-4" /></span>
+              </GlassButton>
+              <GlassButton href="/programmes" variant="light" className="font-[family-name:var(--font-display)] font-semibold text-sm">Voir les programmes</GlassButton>
+            </>
+          }
+          aside={<HeroRows rows={STEPS.map((s, i) => ({ icon: <s.icon className="w-4 h-4" />, text: <><strong className="font-semibold text-white/85">{i + 1}. {s.title}</strong> · {s.text.split(".")[0]}</> }))} />}
         />
 
-        <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
+        <PublicSection tight>
           <QuickFacts
             facts={[
               { label: "L'idée", value: "Un élève progresse quand il trouve lui-même, avec la bonne aide au bon moment." },
@@ -76,79 +84,61 @@ export default function MethodePage() {
               { label: "Le suivi", value: "Les parents voient l'activité, les scores et les notions à retravailler." },
             ]}
           />
-          <section className={CARD}>
-            <div className="flex items-center gap-3 mb-1">
-              <Brain className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Un parcours en quatre temps</h2>
-            </div>
-            <p className="text-sm text-gray-500 mb-6">Pour chaque notion, du CP à la Terminale.</p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {STEPS.map((s) => (
-                <li key={s.title} className="rounded-2xl border border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]/40 p-5">
-                  <s.icon className="w-5 h-5 text-[var(--greek-gold)] mb-2" aria-hidden="true" />
-                  <h3 className="font-bold text-[var(--greek-blue)] mb-1">{s.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{s.text}</p>
-                </li>
-              ))}
-            </ul>
-          </section>
+        </PublicSection>
 
-          <section className={CARD}>
-            <div className="flex items-center gap-3 mb-1">
-              <Sparkles className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">L&apos;IA, au service de la méthode</h2>
-            </div>
-            <div className="text-sm text-gray-600 leading-relaxed space-y-3 mt-4">
-              <p>
-                L&apos;intelligence artificielle change la façon d&apos;apprendre : c&apos;est une nouvelle ère, et nous avons choisi de l&apos;utiliser
-                pour ce qu&apos;elle fait de mieux, être disponible et patiente, à tout moment, pour chaque élève.
-              </p>
-              <p>
-                Mais une IA qui donne les réponses n&apos;apprend rien à personne. Calia, notre tuteur IA, suit la méthode socratique :
-                elle pose la question qui débloque, propose un indice adapté à l&apos;erreur, réexplique autrement si besoin, et laisse
-                l&apos;élève trouver. Elle ne fait jamais un devoir à sa place.
-              </p>
-              <p>
-                <Link href="/calia-tuteur-ia-maths" className="font-semibold text-[var(--greek-gold-text)] hover:underline inline-flex items-center gap-1">
-                  Tout savoir sur Calia <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </p>
-            </div>
-          </section>
-
-          <section className={CARD}>
-            <div className="flex items-center gap-3 mb-1">
-              <MessageCircle className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Nos principes</h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
-              {PRINCIPLES.map((p) => (
-                <div key={p.title} className="rounded-2xl border border-[rgba(197,161,72,0.25)] p-5">
-                  <h3 className="font-bold text-[var(--greek-blue)] mb-1">{p.title}</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">{p.text}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className={CARD}>
-            <div className="flex items-center gap-3 mb-1">
-              <Users className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Les parents, partenaires de la méthode</h2>
-            </div>
-            <p className="text-sm text-gray-600 leading-relaxed mt-4">
-              Le parent voit l&apos;activité, les scores et les notions à retravailler, règle des objectifs et des heures de repos,
-              et peut imprimer un bulletin. Il sait où en est son enfant sans avoir à refaire le cours.
-            </p>
-          </section>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <GlassButton href="/programmes" variant="outline">Voir les programmes</GlassButton>
-            <GlassButton href="/auth/inscription" variant="navy">Essayer gratuitement 7 jours <ArrowRight className="w-4 h-4" /></GlassButton>
+        <PublicSection eyebrow="Le parcours" title="Quatre temps" highlight="pour chaque notion." intro="Du CP à la Terminale, la même méthode, adaptée au niveau de chaque élève.">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {STEPS.map((s, i) => (
+              <FeatureCard key={s.title} icon={<s.icon className="w-6 h-6" />} title={s.title} subtitle={s.subtitle} delayMs={i * 80}>{s.text}</FeatureCard>
+            ))}
           </div>
-        </div>
+        </PublicSection>
+
+        <PublicSection eyebrow="L'IA au service de la méthode" title="Une aide disponible," highlight="jamais une réponse toute faite.">
+          <FadeInSection className="max-w-2xl mx-auto text-center space-y-4 text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <p>
+              L&apos;intelligence artificielle change la façon d&apos;apprendre : nous l&apos;utilisons pour ce qu&apos;elle fait de mieux,
+              être disponible et patiente, à tout moment, pour chaque élève.
+            </p>
+            <p>
+              Mais une IA qui donne les réponses n&apos;apprend rien à personne. Calia, notre tuteur IA, suit la méthode socratique :
+              elle pose la question qui débloque, propose un indice adapté à l&apos;erreur, réexplique autrement si besoin, et laisse
+              l&apos;élève trouver. Elle ne fait jamais un devoir à sa place.
+            </p>
+            <div className="flex justify-center pt-4">
+              <GlassButton href="/calia-tuteur-ia-maths" variant="navy">Découvrir Calia <ArrowRight className="w-4 h-4" /></GlassButton>
+            </div>
+          </FadeInSection>
+        </PublicSection>
+
+        <PublicSection eyebrow="Nos principes" title="Ce qui guide" highlight="chaque contenu.">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {PRINCIPLES.map((p, i) => (
+              <FadeInSection key={p.title} delayMs={i * 80} className={PUBLIC_CARD}>
+                <h3 className="font-[family-name:var(--font-display)] font-bold text-lg mb-2" style={{ color: "var(--greek-blue)" }}>{p.title}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>{p.text}</p>
+              </FadeInSection>
+            ))}
+          </div>
+
+          {/* Les parents : même bandeau que « Plusieurs enfants, un seul abonnement » sur Offres. */}
+          <FadeInSection className="mt-6 flex flex-col sm:flex-row items-center gap-5 p-6 rounded-2xl" style={{ background: "var(--greek-blue)", border: "1px solid rgba(197,161,72,0.12)" }}>
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(197,161,72,0.12)", border: "1px solid rgba(197,161,72,0.2)" }}>
+              <Users className="w-6 h-6" style={{ color: "var(--greek-gold)" }} />
+            </div>
+            <div className="flex-1 text-center sm:text-left">
+              <p className="font-[family-name:var(--font-display)] font-bold text-white text-sm">Les parents, partenaires de la méthode</p>
+              <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.6)" }}>
+                Le parent voit l&apos;activité, les scores et les notions à retravailler, règle des objectifs et des heures de repos, et
+                peut imprimer un bulletin, sans avoir à refaire le cours. <Link href="/tarifs" className="font-semibold hover:underline" style={{ color: "var(--greek-gold)" }}>Voir les formules</Link>
+              </p>
+            </div>
+          </FadeInSection>
+        </PublicSection>
+
+        <PublicCta secondary={{ href: "/programmes", label: "Voir les programmes" }} />
       </main>
       <Footer />
-    </div>
+    </PublicPage>
   );
 }

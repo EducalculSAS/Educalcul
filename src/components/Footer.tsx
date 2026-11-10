@@ -17,13 +17,12 @@ const NAV_COLS = [
   {
     title: "Explorer",
     links: [
-      { label: "Nos Offres", href: "/offres" },
-      { label: "Tarifs", href: "/tarifs" },
+      { label: "Offres", href: "/offres" },
+      { label: "Calia", href: "/calia-tuteur-ia-maths" },
       { label: "Programmes", href: "/programmes" },
-      { label: "Calia, tuteur IA", href: "/calia-tuteur-ia-maths" },
+      { label: "Tarifs", href: "/tarifs" },
       { label: "Méthode pédagogique", href: "/methode-pedagogique" },
       { label: "À propos", href: "/a-propos" },
-      { label: "FAQ", href: "/faq" },
     ],
   },
   {
@@ -36,6 +35,7 @@ const NAV_COLS = [
   {
     title: "Aide",
     links: [
+      { label: "FAQ", href: "/faq" },
       { label: "Contact", href: "/contact" },
       { label: "Mentions légales", href: "/mentions-legales" },
       { label: "Confidentialité", href: "/politique-confidentialite" },

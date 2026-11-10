@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Code2, Heart, Star } from "lucide-react";
+import { ArrowRight, BookOpen, Code2, GraduationCap, Mail, Sparkles, Users } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlassButton from "@/components/ui/GlassButton";
-import PublicHero from "@/components/seo/PublicHero";
+import { FeatureCard, HeroRows, PublicCta, PublicHero, PublicPage, PublicSection } from "@/components/public/PublicPage";
 import QuickFacts from "@/components/seo/QuickFacts";
 import JsonLd from "@/components/JsonLd";
 import { CONTACT_EMAIL, FOUNDERS, ORG_ID, ORG_REF, SEO_UPDATED, SITE_URL } from "@/lib/seo/site";
@@ -27,8 +27,6 @@ export const metadata: Metadata = {
   alternates: { canonical: `${BASE}/a-propos` },
   ...socialMeta({ title: TITLE, description: DESCRIPTION, path: "/a-propos" }),
 };
-
-const CARD = "bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]";
 
 const TEAM = [
   {
@@ -70,18 +68,35 @@ const aboutSchema = {
 export default async function AProposPage() {
   const [reviews, ratingOverride] = await Promise.all([fetchReviewsForHomepage(), fetchReviewRatingOverride()]);
   return (
-    <div className="flex flex-col min-h-screen" style={{ background: "var(--greek-cream)" }}>
+    <PublicPage>
       <Navbar />
-      <main className="flex flex-col flex-1">
+      <main className="flex-grow pt-[64px]">
         <JsonLd data={aboutSchema} />
         <Breadcrumbs hidden items={[{ name: "Accueil", href: "/" }, { name: "À propos", href: "/a-propos" }]} />
         <PublicHero
           eyebrow="À propos"
-          title="Deux étudiants passionnés de maths"
+          title="Deux étudiants"
+          highlight="passionnés de maths"
           intro="Educalcul est né d'une conviction simple : chaque élève peut réussir en mathématiques s'il a la bonne méthode et quelqu'un pour le guider au bon moment."
+          actions={
+            <>
+              <GlassButton href="/auth/inscription" variant="gold" className="font-[family-name:var(--font-display)] font-bold text-sm">
+                <span className="inline-flex items-center gap-2">Commencer gratuitement <ArrowRight className="w-4 h-4" /></span>
+              </GlassButton>
+              <GlassButton href="/methode-pedagogique" variant="light" className="font-[family-name:var(--font-display)] font-semibold text-sm">Notre méthode</GlassButton>
+            </>
+          }
+          aside={
+            <HeroRows rows={[
+              { icon: <Users className="w-4 h-4" />, text: `Fondé par ${FOUNDERS.map((f) => f.name).join(" et ")}` },
+              { icon: <GraduationCap className="w-4 h-4" />, text: "Du CP à la Terminale, d'après les programmes officiels" },
+              { icon: <Sparkles className="w-4 h-4" />, text: "Calia, un tuteur IA qui guide sans donner la réponse" },
+              { icon: <Mail className="w-4 h-4" />, text: CONTACT_EMAIL },
+            ]} />
+          }
         />
 
-        <div className="max-w-5xl w-full mx-auto px-4 sm:px-6 py-12 space-y-8">
+        <PublicSection tight>
           <QuickFacts
             title="Educalcul en bref"
             facts={[
@@ -94,63 +109,42 @@ export default async function AProposPage() {
               { label: "Contact", value: <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-[var(--greek-gold-text)] hover:underline">{CONTACT_EMAIL}</a> },
             ]}
           />
-          <section className={CARD}>
-            <div className="flex items-center gap-3 mb-1">
-              <Heart className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Notre histoire</h2>
-            </div>
-            <div className="text-sm text-gray-600 leading-relaxed space-y-3 mt-4">
-              <p>
-                Nous sommes deux étudiants, passionnés de mathématiques depuis toujours. Nous avons vu autour de nous des élèves
-                bloqués non pas par manque de capacités, mais faute d&apos;explications adaptées ou d&apos;aide au moment où ils en avaient besoin.
-              </p>
-              <p>
-                Nous avons donc créé Educalcul : des cours clairs, des exercices corrigés, des quiz, un suivi pour les parents, et Calia,
-                un tuteur IA qui guide l&apos;élève sans lui donner la réponse. Le tout du CP à la Terminale, en suivant les programmes officiels.
-              </p>
-              <p>
-                Educalcul est un projet jeune, que nous construisons avec les retours des familles qui l&apos;utilisent.
-                Une idée, une remarque ? <Link href="/contact" className="font-semibold text-[var(--greek-gold-text)] hover:underline">Écrivez-nous</Link>.
-              </p>
-            </div>
-          </section>
+        </PublicSection>
 
-          <section aria-label="L'équipe" className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {TEAM.map((m) => (
-              <div key={m.name} className={CARD}>
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="w-11 h-11 rounded-2xl flex items-center justify-center bg-[var(--greek-blue)]">
-                    <m.icon className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-                  </span>
-                  <div>
-                    <h2 className="text-lg font-bold text-[var(--greek-blue)]">{m.name}</h2>
-                    <p className="text-xs font-semibold text-[var(--greek-gold-text)]">{m.school}</p>
-                  </div>
-                </div>
-                <p className="text-sm font-semibold text-gray-700 mb-2">{m.role}</p>
-                <p className="text-sm text-gray-600 leading-relaxed">{m.text}</p>
-              </div>
+        <PublicSection eyebrow="Notre histoire" title="Des explications adaptées," highlight="au bon moment.">
+          <FadeInSection className="max-w-2xl mx-auto text-center space-y-4 text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
+            <p>
+              Nous sommes deux étudiants, passionnés de mathématiques depuis toujours. Nous avons vu autour de nous des élèves
+              bloqués non pas par manque de capacités, mais faute d&apos;explications adaptées ou d&apos;aide au moment où ils en avaient besoin.
+            </p>
+            <p>
+              Nous avons donc créé Educalcul : des cours clairs, des exercices corrigés, des quiz, un suivi pour les parents, et Calia,
+              un tuteur IA qui guide l&apos;élève sans lui donner la réponse. Le tout du CP à la Terminale, en suivant les programmes officiels.
+            </p>
+            <p>
+              Educalcul est un projet jeune, que nous construisons avec les retours des familles qui l&apos;utilisent.
+              Une idée, une remarque ? <Link href="/contact" className="font-semibold hover:underline" style={{ color: "var(--greek-gold-text)" }}>Écrivez-nous</Link>.
+            </p>
+          </FadeInSection>
+        </PublicSection>
+
+        <PublicSection eyebrow="L'équipe" title="Qui sommes-nous ?">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {TEAM.map((m, i) => (
+              <FeatureCard key={m.name} icon={<m.icon className="w-6 h-6" />} title={m.name} subtitle={`${m.role} · ${m.school}`} delayMs={i * 100}>{m.text}</FeatureCard>
             ))}
-          </section>
-
-          <section className={CARD}>
-            <div className="flex items-center gap-3 mb-1">
-              <Star className="w-5 h-5 text-[var(--greek-gold)]" aria-hidden="true" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Ils nous font confiance</h2>
-            </div>
-            <p className="text-sm text-gray-500 mb-6">Ce que les familles disent d&apos;Educalcul.</p>
-            <FadeInSection>
-              <TestimonialsSection reviews={reviews} ratingOverride={ratingOverride} />
-            </FadeInSection>
-          </section>
-
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <GlassButton href="/methode-pedagogique" variant="outline">Notre méthode pédagogique</GlassButton>
-            <GlassButton href="/auth/inscription" variant="navy">Essayer gratuitement 7 jours <ArrowRight className="w-4 h-4" /></GlassButton>
           </div>
-        </div>
+        </PublicSection>
+
+        <PublicSection eyebrow="Avis" title="Ils nous font confiance" intro="Ce que les familles disent d'Educalcul.">
+          <FadeInSection>
+            <TestimonialsSection reviews={reviews} ratingOverride={ratingOverride} />
+          </FadeInSection>
+        </PublicSection>
+
+        <PublicCta secondary={{ href: "/offres", label: "Découvrir nos offres" }} />
       </main>
       <Footer />
-    </div>
+    </PublicPage>
   );
 }
