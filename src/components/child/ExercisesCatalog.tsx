@@ -1,11 +1,10 @@
 "use client";
 
 import { compareDisplayOrder } from "@/lib/contentOrder";
+import Emblem3D from "@/components/Emblem3D";
 import { useState, useEffect } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
-import {
-  Calculator, Play, ArrowLeft, Lock, CheckCircle, XCircle,
-} from "lucide-react";
+import { Play, ArrowLeft, Lock, CheckCircle, XCircle } from "lucide-react";
 import Image from "next/image";
 import { useSubscription } from "@/lib/useSubscription";
 import { getFolderIcon } from "@/lib/folderIcons";
@@ -179,7 +178,7 @@ export default function ExercisesCatalog({
 
         {courseExercises.length === 0 ? (
           <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
-            <Calculator className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
+            <div className="mb-4"><Emblem3D kind="calculator" size={88} /></div>
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Pas encore d&apos;exercices</h3>
             <p className="text-gray-500">Ce cours n&apos;a pas encore d&apos;exercices associés.</p>
           </div>
@@ -228,7 +227,7 @@ export default function ExercisesCatalog({
 
       {currentFolders.length === 0 && currentExercises.length === 0 ? (
         <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
-          <Calculator className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
+          <div className="mb-4"><Emblem3D kind="calculator" size={88} /></div>
           <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Dossier vide</h3>
           <p className="text-gray-500">Il n&apos;y a pas d&apos;exercices ici pour le moment.</p>
         </div>

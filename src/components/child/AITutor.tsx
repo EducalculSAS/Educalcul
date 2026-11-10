@@ -450,6 +450,7 @@ export default function AITutor() {
       {/* Le déplacement / grossissement va sur ce <span>, le verre (flou) sur le bouton : Safari coupe le flou d'un élément dont le
           transform change. Sur téléphone la bulle est plus petite et plus haute, pour ne pas couvrir « Suivant » / « Valider » (barres du bas). */}
       <span
+        data-tour="calia"
         className={`fixed bottom-[112px] md:bottom-[88px] right-4 z-50 transition-all duration-300 group
           ${open ? "scale-90" : "hover:scale-110 hover:-translate-y-1"}
           ${!isSupportMode && !hasOpened && !sub.loading && sub.features.ai_access !== "none" ? "animate-bounce-slow" : ""}

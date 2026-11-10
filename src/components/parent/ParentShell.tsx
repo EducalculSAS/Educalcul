@@ -8,6 +8,7 @@ import { supabase } from "@/lib/supabaseClient";
 import Navbar from "@/components/Navbar";
 import AdminMessages from "@/components/AdminMessages";
 import ParentOnboarding from "@/components/onboarding/ParentOnboarding";
+import GuidedTour from "@/components/tour/GuidedTour";
 
 /**
  * Coquille de l'espace parent. L'identité, le rôle et l'abonnement sont déjà vérifiés par le layout serveur
@@ -19,12 +20,15 @@ export default function ParentShell({
   authId,
   firstName,
   showOnboarding: showOnboardingInitial,
+  showTour,
   subscriptionOk,
 }: {
   children: React.ReactNode;
   authId: string;
   firstName: string;
   showOnboarding: boolean;
+  /** Tutoriel guidé pas encore fait : il démarre une fois les conditions d'utilisation acceptées. */
+  showTour: boolean;
   subscriptionOk: boolean;
 }) {
   const pathname = usePathname();
@@ -90,6 +94,7 @@ export default function ParentShell({
         {children}
       </main>
       {showOnboarding && <ParentOnboarding firstName={firstName} authId={authId} onComplete={() => setShowOnboarding(false)} />}
+      {!showOnboarding && showTour && <GuidedTour role="parent" />}
     </div>
   );
 }

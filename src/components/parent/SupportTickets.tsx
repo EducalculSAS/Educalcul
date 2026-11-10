@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Emblem3D from "@/components/Emblem3D";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
-import { Send, ChevronDown, ChevronUp, Mail, Plus } from "lucide-react";
+import { Send, ChevronDown, ChevronUp, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -167,7 +168,7 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
 
       {tickets.length === 0 ? (
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-12 text-center shadow-sm">
-          <Mail className="w-12 h-12 text-gray-300 mx-auto mb-4" aria-hidden="true" />
+          <div className="mb-4"><Emblem3D kind="mail" size={88} /></div>
           <p className="text-gray-400 font-medium">Aucun message pour le moment</p>
           <p className="text-gray-300 text-sm mt-1">L&apos;équipe Educalcul vous contactera ici si besoin</p>
         </div>

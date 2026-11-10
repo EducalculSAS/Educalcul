@@ -441,7 +441,7 @@ function SubscriptionPageContent({
       <div className="container mx-auto px-4 pb-12 max-w-6xl">
         {/* Current Subscription Status (only for normal flow) */}
         {!isNewSignup && (
-          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6 mb-8">
+          <div data-tour="subscription" className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6 mb-8">
             <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
               <CreditCard className="w-5 h-5 text-[var(--greek-gold)]" />
               Mon abonnement

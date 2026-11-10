@@ -2,7 +2,8 @@ import { sanitizeAvatar } from "@/lib/avatarUrl";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
-import { isValidEmail } from "@/lib/validation";
+import { isValidEmail, validateUsername } from "@/lib/validation";
+import { isInternalEmail } from "@/lib/childEmail";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { applySpecialtyChoice } from "@/lib/specialties";
 
@@ -27,19 +28,27 @@ export async function PATCH(req: Request) {
     }
 
     const patch: Record<string, unknown> = {};
-    for (const k of ["first_name", "last_name", "child_username"] as const) {
+    for (const k of ["first_name", "last_name"] as const) {
       if (typeof body[k] === "string") patch[k] = body[k].trim();
+    }
+    // Le pseudo sert à se connecter : jamais vide, mêmes règles qu'à la création.
+    if (typeof body.child_username === "string") {
+      const username = validateUsername(body.child_username.trim(), 30);
+      if (!username) return NextResponse.json({ error: "Pseudo invalide : au moins 3 caractères (lettres, chiffres, tiret, underscore)." }, { status: 400 });
+      patch.child_username = username;
     }
     if (body.avatar !== undefined) {
       const avatar = sanitizeAvatar(body.avatar);
       if (avatar === null) return NextResponse.json({ error: "Avatar invalide" }, { status: 400 });
       patch.avatar = avatar;
     }
+    // E-mail facultatif : une chaîne vide retire l'adresse de l'enfant.
     if (typeof body.email === "string") {
-      if (!isValidEmail(body.email.trim())) {
+      const email = body.email.trim();
+      if (email && (!isValidEmail(email) || isInternalEmail(email))) {
         return NextResponse.json({ error: "Adresse email invalide" }, { status: 400 });
       }
-      patch.email = body.email.trim();
+      patch.email = email || null;
     }
     // Voie en maths au lycée (Première / Terminale, option maths expertes) :
     // mêmes règles que le choix fait par l'élève (voir specialties.ts).

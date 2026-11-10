@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { realEmail } from "@/lib/childEmail";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthIdentityOnly } from "@/lib/apiAuth";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
@@ -20,7 +21,7 @@ export async function POST(req: Request) {
 
     const { data: user } = await supabaseAdmin
       .from("users")
-      .select("id, role, first_name, email, status, ban_reason")
+      .select("id, role, first_name, email, parent_id, status, ban_reason")
       .eq("auth_id", identity.authId)
       .maybeSingle();
     if (!user) return NextResponse.json({ error: "Compte introuvable" }, { status: 404 });
@@ -61,8 +62,14 @@ export async function POST(req: Request) {
     });
     if (insertError) return NextResponse.json({ error: sanitizeErrorMessage(insertError.message) }, { status: 500 });
 
-    const toEmail = user.email || identity.email;
-    if (toEmail) {
+    // Un enfant sans e-mail : le code part à l'adresse de son parent.
+    let toEmail = realEmail(user.email) || realEmail(identity.email);
+    if (!toEmail && user.role === "child" && user.parent_id) {
+      const { data: parent } = await supabaseAdmin.from("users").select("email").eq("id", user.parent_id).maybeSingle();
+      toEmail = realEmail(parent?.email);
+    }
+    if (!toEmail) return NextResponse.json({ error: "Aucune adresse e-mail pour recevoir le code." }, { status: 400 });
+    {
       const tmpl = twoFactorCodeEmail(user.first_name || "là", code);
       const result = await sendEmail({ toEmail, toName: user.first_name || "Utilisateur", ...tmpl });
       if (!result.success) {

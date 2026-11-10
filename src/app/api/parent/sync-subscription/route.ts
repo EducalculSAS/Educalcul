@@ -2,7 +2,7 @@ import { reconcileCosmeticsForFamily } from "@/lib/cosmeticEntitlements";
 import type Stripe from "stripe";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
-import { stripe, subscriptionPeriodEnd } from "@/lib/stripe";
+import { stripe, subscriptionIsEntitled, subscriptionPeriodEnd, legacyPeriodField } from "@/lib/stripe";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
 
@@ -31,7 +31,9 @@ export async function GET(req: Request) {
       throw err;
     }
 
-    const newStatus = stripeSub.status === "active" ? "active"
+    // Un essai gratuit en cours donne accès comme un abonnement payé : partout dans l'app, seul le statut « active »
+    // est reconnu. Écrire « trialing » ici coupait l'accès d'un parent en période d'essai.
+    const newStatus = subscriptionIsEntitled(stripeSub) ? "active"
       : stripeSub.status === "canceled" ? "cancelled"
       : stripeSub.status;
 
@@ -67,33 +69,35 @@ export async function POST(req: Request) {
       expand: ["subscription"],
     });
 
-    if (session.payment_status !== "paid" && session.status !== "complete") {
+    if (session.status !== "complete") {
       return NextResponse.json({ error: "Session not paid" }, { status: 400 });
     }
 
     const planId = session.metadata?.planId;
     if (!planId) return NextResponse.json({ error: "No planId in metadata" }, { status: 400 });
 
-    // ✓ SECURITY : sans ce contrôle, un session_id Stripe payé par un AUTRE
-    // utilisateur (visible dans l'URL de retour ?session_id=..., donc
-    // potentiellement dans l'historique navigateur / un outil d'analytics)
-    // pouvait être rejoué ici par n'importe quel compte authentifié pour
-    // s'attribuer le même plan payant sans payer.
-    if (session.metadata?.userId && session.metadata.userId !== authId) {
+    // La session de paiement doit être celle de CE compte (identifiant posé côté serveur à sa création).
+    if (session.metadata?.userId !== authId) {
       return NextResponse.json({ error: "Session non autorisée" }, { status: 403 });
     }
 
-    const sub = session.subscription as Stripe.Subscription & { current_period_start: number };
+    // On écrit l'état RÉEL de l'abonnement Stripe, et seulement s'il donne accès. Avant, rappeler cette route avec
+    // l'identifiant d'un ancien paiement remettait l'abonnement « actif » même après une résiliation.
+    const sub = session.subscription && typeof session.subscription === "object" ? (session.subscription as Stripe.Subscription) : null;
+    if (!sub || !subscriptionIsEntitled(sub)) {
+      return NextResponse.json({ success: true, plan_id: planId, unchanged: true });
+    }
+    const startRaw = legacyPeriodField(sub, "current_period_start") ?? sub.items?.data?.[0]?.current_period_start;
 
     await supabaseAdmin.from("subscriptions").upsert({
       user_id: authId,
       plan_id: planId,
       status: "active",
       stripe_customer_id: session.customer as string,
-      stripe_subscription_id: sub?.id ?? null,
-      current_period_start: sub ? new Date(sub.current_period_start * 1000).toISOString() : new Date().toISOString(),
+      stripe_subscription_id: sub.id,
+      current_period_start: typeof startRaw === "number" ? new Date(startRaw * 1000).toISOString() : new Date().toISOString(),
       current_period_end: subscriptionPeriodEnd(sub),
-      cancel_at_period_end: sub?.cancel_at_period_end ?? false,
+      cancel_at_period_end: sub.cancel_at_period_end ?? false,
       updated_at: new Date().toISOString(),
     }, { onConflict: "user_id" });
 

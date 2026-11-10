@@ -56,7 +56,7 @@ export async function POST(req: Request) {
     const config = RATE_LIMITS["webauthn:register"];
     const rl = await rateLimitWithBackoff(`webauthn:register:${parent.id}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
-      return NextResponse.json({ error: "Trop de demandes, réessaie dans quelques minutes." }, { status: 429 });
+      return NextResponse.json({ error: "Trop de demandes, réessayez dans quelques minutes." }, { status: 429 });
     }
 
     const body = await req.json();

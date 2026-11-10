@@ -28,7 +28,7 @@ export async function DELETE(req: Request) {
     const config = RATE_LIMITS["child-account:mutate"];
     const rl = await rateLimitWithBackoff(`delete-child:${me.id}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
-      return NextResponse.json({ error: "Trop de tentatives, réessaie dans quelques minutes." }, { status: 429 });
+      return NextResponse.json({ error: "Trop de tentatives, réessayez dans quelques minutes." }, { status: 429 });
     }
 
     // Le demandeur doit être le parent de cet enfant (ou admin).

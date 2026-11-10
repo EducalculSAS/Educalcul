@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Emblem3D from "@/components/Emblem3D";
 import PageHero from "@/components/PageHero";
 import { redirect } from "next/navigation";
 import { PlusCircle, Users } from "lucide-react";
@@ -36,13 +37,11 @@ export default async function ManageChildrenPage() {
           )
         }
       />
-      <div className="container mx-auto px-4 pb-12 max-w-6xl">
+      <div className="container mx-auto px-4 pb-12 max-w-6xl" data-tour="children-list">
         {children.length === 0 ? (
           <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-12 text-center max-w-2xl mx-auto">
             <div className="flex justify-center mb-6">
-              <div className="p-4 bg-[var(--greek-cream)] rounded-full">
-                <Users className="w-16 h-16 text-[var(--greek-blue)]" />
-              </div>
+              <Emblem3D kind="family" size={104} />
             </div>
             <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)]">
               Aucun enfant ajouté

@@ -22,16 +22,10 @@ export async function POST(req: Request) {
 
     // Auto-Healing for Portal: If no sub in DB, check Stripe by email
     if (dbError || !subscription || !subscription.stripe_customer_id) {
-       const { data: userData } = await supabaseAdmin.auth.admin.getUserById(userId);
-       if (userData?.user?.email) {
-          const customers = await stripe.customers.list({
-            email: userData.user.email,
-            limit: 1,
-          });
-          if (customers.data.length > 0) {
-            subscription = { stripe_customer_id: customers.data[0].id };
-          }
-       }
+       // Le client Stripe du compte est retrouvé par l'identifiant du compte (métadonnée `user_id` posée à sa
+       // création), jamais par l'e-mail : deux clients Stripe peuvent porter la même adresse.
+       const found = await stripe.customers.search({ query: `metadata['user_id']:'${userId}'`, limit: 1 });
+       if (found.data[0]) subscription = { stripe_customer_id: found.data[0].id };
     }
 
     if (!subscription || !subscription.stripe_customer_id) {

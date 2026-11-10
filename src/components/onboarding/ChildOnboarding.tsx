@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { updateMyProfile } from "@/lib/updateMyProfile";
-import { BookOpen, Brain, Trophy, Calculator, ChevronRight, ChevronLeft, MessageSquare } from "lucide-react";
+import { Brain, ChevronRight } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
 interface Props {
@@ -12,44 +12,6 @@ interface Props {
   gradeLevel: string;
   onComplete: () => void;
 }
-
-const TOUR_STEPS = [
-  {
-    icon: <BookOpen className="w-14 h-14 text-blue-600" />,
-    title: "Mes Cours",
-    desc: "Des cours de maths adaptés à ton niveau, avec des formules et des exemples. Lis-les à ton rythme !",
-    color: "from-blue-50 to-indigo-50",
-    tip: "Tu peux surligner du texte et demander à Calia de t'expliquer !",
-  },
-  {
-    icon: <Calculator className="w-14 h-14 text-orange-500" />,
-    title: "Exercices",
-    desc: "Pratique avec des exercices corrigés par une IA qui t'explique tes erreurs. Chaque bonne réponse = des XP !",
-    color: "from-orange-50 to-amber-50",
-    tip: "Certains exercices sont débloqués avec l'abonnement de tes parents.",
-  },
-  {
-    icon: <Brain className="w-14 h-14 text-purple-600" />,
-    title: "Quiz",
-    desc: "Teste tes connaissances avec des quiz. Tu peux voir ta correction détaillée après chaque quiz.",
-    color: "from-purple-50 to-pink-50",
-    tip: "Lis bien l'explication après chaque question pour progresser !",
-  },
-  {
-    icon: <Trophy className="w-14 h-14 text-yellow-500" />,
-    title: "Trophées & Badges",
-    desc: "Gagne des badges en progressant, débloque des contours et couleurs pour ton profil !",
-    color: "from-yellow-50 to-orange-50",
-    tip: "Plus tu fais d'exercices, plus tu débloques de badges exclusifs.",
-  },
-  {
-    icon: <MessageSquare className="w-14 h-14 text-teal-600" />,
-    title: "Assistant Calia & Forum",
-    desc: "Calia t'aide quand tu bloques. Le forum te permet d'échanger avec d'autres élèves.",
-    color: "from-green-50 to-teal-50",
-    tip: "Calia ne donne jamais la réponse directement, elle te guide !",
-  },
-];
 
 interface PlacementQuestion { id: number; question: string; options: string[] }
 
@@ -60,8 +22,7 @@ const SCORE_MESSAGES = [
 ];
 
 export default function ChildOnboarding({ firstName, gradeLevel, onComplete }: Props) {
-  const [step, setStep] = useState<"welcome" | "tour" | "quiz" | "result">("welcome");
-  const [tourIndex, setTourIndex] = useState(0);
+  const [step, setStep] = useState<"welcome" | "quiz" | "result">("welcome");
   const [questions, setQuestions] = useState<PlacementQuestion[]>([]);
   const [questionsLoaded, setQuestionsLoaded] = useState(false);
   const [answers, setAnswers] = useState<{ id: number; answerIndex: number }[]>([]);
@@ -118,9 +79,8 @@ export default function ChildOnboarding({ firstName, gradeLevel, onComplete }: P
     onComplete();
   };
 
-  const progress = step === "welcome" ? 5 : step === "tour"
-    ? 5 + ((tourIndex + 1) / TOUR_STEPS.length) * 50
-    : step === "quiz" ? 55 + ((quizIndex + 1) / questions.length) * 35
+  const progress = step === "welcome" ? 8
+    : step === "quiz" ? 15 + ((quizIndex + 1) / Math.max(1, questions.length)) * 75
     : 100;
 
   return (
@@ -141,58 +101,15 @@ export default function ChildOnboarding({ firstName, gradeLevel, onComplete }: P
                 Salut {firstName} !
               </h2>
               <p className="text-gray-600 leading-relaxed">
-                Bienvenue sur <strong>Educalcul</strong> ! Je suis <strong>Calia</strong>, ton assistante. Je vais te faire une petite visite de la plateforme en moins de 2 minutes.
+                Bienvenue sur <strong>Educalcul</strong> ! Je suis <strong>Calia</strong>, ton assistante. On commence par un mini-test pour connaître ton niveau, puis je te fais visiter le site.
               </p>
             </div>
             <div className="bg-blue-50 rounded-2xl p-4 text-sm text-[var(--greek-blue)] font-medium max-w-xs">
               Des cours, des exercices, des quiz et des badges t&apos;attendent !
             </div>
-            <GlassButton onClick={() => setStep("tour")} variant="navy">
+            <GlassButton onClick={startQuizOrSkip} variant="navy" disabled={!questionsLoaded}>
               C&apos;est parti ! <ChevronRight className="w-5 h-5" />
             </GlassButton>
-          </div>
-        )}
-
-        {/* ── TOUR ── */}
-        {step === "tour" && (
-          <div className="flex flex-col h-full">
-            <div className={`flex-1 bg-gradient-to-br ${TOUR_STEPS[tourIndex].color} flex flex-col items-center justify-center px-8 py-8 text-center gap-5 transition-all duration-300`}>
-              <div>{TOUR_STEPS[tourIndex].icon}</div>
-              <div>
-                <p className="text-xs font-bold text-[var(--greek-gold)] uppercase tracking-widest mb-2">
-                  {tourIndex + 1} / {TOUR_STEPS.length}
-                </p>
-                <h3 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-2">
-                  {TOUR_STEPS[tourIndex].title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed max-w-sm mx-auto">
-                  {TOUR_STEPS[tourIndex].desc}
-                </p>
-              </div>
-              <div className="bg-white/80 rounded-xl px-4 py-3 max-w-xs text-sm text-gray-600 font-medium shadow-sm">
-                {TOUR_STEPS[tourIndex].tip}
-              </div>
-            </div>
-
-            <div className="px-8 py-4 border-t border-gray-100 flex items-center justify-between">
-              <GlassButton onClick={() => tourIndex === 0 ? setStep("welcome") : setTourIndex(i => i - 1)} variant="ghost" size="sm">
-                <ChevronLeft className="w-4 h-4" /> Retour
-              </GlassButton>
-              <div className="flex gap-1.5">
-                {TOUR_STEPS.map((_, i) => (
-                  <div key={i} className={`h-1.5 rounded-full transition-all ${i === tourIndex ? "bg-[var(--greek-gold)] w-5" : "bg-gray-200 w-1.5"}`} />
-                ))}
-              </div>
-              {tourIndex < TOUR_STEPS.length - 1 ? (
-                <GlassButton onClick={() => setTourIndex(i => i + 1)} variant="navy" size="sm">
-                  Suivant <ChevronRight className="w-4 h-4" />
-                </GlassButton>
-              ) : (
-                <GlassButton onClick={startQuizOrSkip} variant="navy" size="sm" disabled={!questionsLoaded}>
-                  Mini-test ! <ChevronRight className="w-4 h-4" />
-                </GlassButton>
-              )}
-            </div>
           </div>
         )}
 
@@ -216,7 +133,7 @@ export default function ChildOnboarding({ firstName, gradeLevel, onComplete }: P
               </p>
               <div className="grid grid-cols-2 gap-3">
                 {questions[quizIndex]?.options.map((opt, i) => (
-                  <GlassButton key={i} onClick={() => handleAnswer(i)} disabled={submitting} variant="outline" rounded="xl" fullWidth>
+                  <GlassButton key={i} onClick={() => handleAnswer(i)} disabled={submitting} variant="outline" fullWidth>
                     {opt}
                   </GlassButton>
                 ))}
@@ -247,15 +164,15 @@ export default function ChildOnboarding({ firstName, gradeLevel, onComplete }: P
               </h3>
             )}
             <div className="bg-[var(--greek-cream)] border border-[rgba(197,161,72,0.25)] rounded-2xl p-4 max-w-xs text-sm text-gray-700">
-              <p className="font-bold text-[var(--greek-blue)] mb-1">Pour commencer</p>
-              <p>Va dans <strong>Mes Cours</strong> et commence par la première leçon de ton niveau !</p>
+              <p className="font-bold text-[var(--greek-blue)] mb-1">Et maintenant</p>
+              <p>Je te fais visiter le site : suis les zones éclairées.</p>
             </div>
             <GlassButton
               onClick={handleComplete}
               variant="gold"
               disabled={saving}
             >
-              {saving ? "Sauvegarde..." : "C'est parti !"}
+              {saving ? "Un instant…" : "Visiter le site"}
             </GlassButton>
           </div>
         )}

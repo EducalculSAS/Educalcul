@@ -182,12 +182,15 @@ export default function Navbar() {
         {/* Cloche + burger */}
         <div className="flex items-center gap-2">
           {user && firstName && isAppPage && <NotificationBell />}
-          <GlassIconButton
-            icon={isOpen ? X : Menu}
-            color="white"
-            aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-            onClick={() => setIsOpen(!isOpen)}
-          />
+          {/* data-tour : cible du tutoriel guidé (« ouvrez le menu »). */}
+          <span data-tour="nav-menu" className="inline-flex rounded-full">
+            <GlassIconButton
+              icon={isOpen ? X : Menu}
+              color="white"
+              aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+              onClick={() => setIsOpen(!isOpen)}
+            />
+          </span>
         </div>
 
         {/* Dropdown Menu */}

@@ -69,7 +69,7 @@ export default async function ChildCoursesPage() {
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
       <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={BookOpen} title="Mes cours" badge="Leçons" subtitle="Explore et deviens expert en mathématiques !" />
-      <div className="container mx-auto px-4 pb-12 max-w-6xl">
+      <div className="container mx-auto px-4 pb-12 max-w-6xl" data-tour="catalog">
         <CoursesCatalog
           allFolders={allFolders}
           allCourses={coursesForClient}

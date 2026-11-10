@@ -55,10 +55,9 @@ export default async function ParentProfilePage() {
         initialGoogleLinked={googleLinked}
         initialHasActiveSubscription={hasActiveSubscription}
         initialChildrenCount={childrenCount ?? 0}
-      />
-      <div className="container mx-auto max-w-4xl px-4 pb-12 -mt-4">
+      >
         <ParentAlertSettings initial={alertPrefs} />
-      </div>
+      </ParentProfileSettings>
     </div>
   );
 }

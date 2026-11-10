@@ -479,7 +479,7 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
             />
           ))}
           {edit && (
-            <GlassButton onClick={addOption} variant="outline" rounded="xl" fullWidth>
+            <GlassButton onClick={addOption} variant="outline" fullWidth>
               <Plus className="w-4 h-4" /> Ajouter une option
             </GlassButton>
           )}

@@ -137,7 +137,7 @@ export default function ParentDashboardPreview() {
     footer: (
       <div className="flex items-center gap-2">
         <p className="flex-1 min-w-0 text-xs text-gray-500">Exemple fictif : le vôtre se met à jour en direct.</p>
-        <GlassButton variant="outline" size="sm" rounded="xl" disabled>
+        <GlassButton variant="outline" size="sm" disabled>
           <FileText className="w-4 h-4" /> Bulletin
         </GlassButton>
       </div>

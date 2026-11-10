@@ -3,7 +3,8 @@ import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
-import { validatePassword, isValidEmail } from "@/lib/validation";
+import { validatePassword, isValidEmail, validateUsername } from "@/lib/validation";
+import { internalChildEmail, isInternalEmail } from "@/lib/childEmail";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { hasActiveSubscription } from "@/lib/subscriptionGate";
@@ -34,7 +35,7 @@ export async function POST(request: Request) {
     const config = RATE_LIMITS["child-account:mutate"];
     const rl = await rateLimitWithBackoff(`create-child:${requester.id}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
-      return NextResponse.json({ error: "Trop de tentatives, réessaie dans quelques minutes." }, { status: 429 });
+      return NextResponse.json({ error: "Trop de tentatives, réessayez dans quelques minutes." }, { status: 429 });
     }
 
     const body = await request.json();
@@ -46,10 +47,14 @@ export async function POST(request: Request) {
     const gradeLevel = typeof body.gradeLevel === "string" ? body.gradeLevel : "";
     const avatar = sanitizeAvatar(body.avatar) || "avatar1.png";
 
-    if (!email || !password || !firstName) {
-      return NextResponse.json({ error: "Prénom, email et mot de passe sont requis." }, { status: 400 });
+    // Le pseudo sert à se connecter : il est obligatoire. L'e-mail de l'enfant, lui, est facultatif.
+    if (!password || !firstName) {
+      return NextResponse.json({ error: "Prénom et mot de passe sont requis." }, { status: 400 });
     }
-    if (!isValidEmail(email)) {
+    if (!username || !validateUsername(username, 30)) {
+      return NextResponse.json({ error: "Choisissez un pseudo d'au moins 3 caractères (lettres, chiffres, tiret, underscore)." }, { status: 400 });
+    }
+    if (email && (!isValidEmail(email) || isInternalEmail(email))) {
       return NextResponse.json({ error: "Adresse email invalide" }, { status: 400 });
     }
     const pwError = validatePassword(password);
@@ -72,8 +77,9 @@ export async function POST(request: Request) {
     }
 
     // 1. Compte Supabase Auth — role toujours forcé à "child".
+    // Sans e-mail réel, le compte Auth porte une adresse technique dérivée du pseudo (voir childEmail.ts).
     const { data: created, error: authError } = await supabaseAdmin.auth.admin.createUser({
-      email,
+      email: email || internalChildEmail(username),
       password,
       email_confirm: true,
       user_metadata: { role: "child", first_name: firstName, last_name: lastName },
@@ -90,7 +96,7 @@ export async function POST(request: Request) {
       parent_id: requester.id,
       first_name: firstName,
       last_name: lastName,
-      email,
+      email: email || null,
       child_username: username,
       grade_level: gradeLevel,
       avatar,

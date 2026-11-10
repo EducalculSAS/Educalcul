@@ -2,7 +2,7 @@
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import ThemeToggle from "@/components/ThemeToggle";
-import SeasonSettings from "@/components/SeasonSettings";
+import ReplayTourCard from "@/components/tour/ReplayTourCard";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
@@ -42,6 +42,7 @@ export default function ParentProfileSettings({
   initialGoogleLinked,
   initialHasActiveSubscription,
   initialChildrenCount,
+  children,
 }: {
   initialFormData: { firstName: string; lastName: string; email: string; phone: string; avatar: string };
   equippedBorder?: string | null;
@@ -49,6 +50,8 @@ export default function ParentProfileSettings({
   initialGoogleLinked: boolean;
   initialHasActiveSubscription: boolean;
   initialChildrenCount: number;
+  /** Cartes ajoutées par la page (alertes sur les enfants), placées avant la zone de danger, qui reste en dernier. */
+  children?: React.ReactNode;
 }) {
   const router = useRouter();
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -290,7 +293,7 @@ export default function ParentProfileSettings({
 
   return (
     <>
-      <div className="container mx-auto px-4 pb-12 max-w-4xl">
+      <div className="container mx-auto px-4 pb-12 max-w-4xl" data-tour="profile">
         {message && (
           <div
             className={`mb-8 p-4 rounded-xl shadow-sm flex items-center ${message.type === "success"
@@ -546,7 +549,7 @@ export default function ParentProfileSettings({
 
           <ThemeToggle />
 
-          <SeasonSettings />
+          <ReplayTourCard role="parent" />
 
           <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
             <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
@@ -612,7 +615,7 @@ export default function ParentProfileSettings({
               Mes données
             </h2>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-sm text-gray-600">Reçois par email un lien pour télécharger une copie de tes données et de celles de tes enfants (format JSON, lien valable 24h).</p>
+              <p className="text-sm text-gray-600">Recevez par email un lien pour télécharger une copie de vos données et de celles de vos enfants (format JSON, lien valable 24h).</p>
               <GlassButton
                 onClick={async () => {
                   setExportingData(true);
@@ -638,6 +641,8 @@ export default function ParentProfileSettings({
               </GlassButton>
             </div>
           </div>
+
+          {children && <div className="md:col-span-2">{children}</div>}
 
           <div className="bg-red-50 rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2 mt-4">
             <h2 className="text-xl font-bold text-red-700 mb-4 flex items-center">

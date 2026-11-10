@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     const config = RATE_LIMITS["data-export:request"];
     const rl = await rateLimitWithBackoff(`data-export:${me.id}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
-      return NextResponse.json({ error: "Trop de demandes, réessaie dans quelques minutes." }, { status: 429 });
+      return NextResponse.json({ error: "Trop de demandes, réessayez dans quelques minutes." }, { status: 429 });
     }
 
     const token = randomUUID();
@@ -43,7 +43,7 @@ export async function POST(req: Request) {
     const tmpl = dataExportRequestEmail(user.first_name || "là", downloadUrl);
     const result = await sendEmail({ toEmail: user.email, toName: user.first_name || "Utilisateur", ...tmpl });
     if (!result.success) {
-      return NextResponse.json({ error: "Impossible d'envoyer l'email. Réessaie dans quelques instants." }, { status: 500 });
+      return NextResponse.json({ error: "Impossible d'envoyer l'email. Réessayez dans quelques instants." }, { status: 500 });
     }
 
     return NextResponse.json({ success: true });

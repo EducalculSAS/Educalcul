@@ -14,7 +14,7 @@ export async function POST(req: Request) {
     const cfg = RATE_LIMITS["auth:resolve-username"];
     const rl = await rateLimitWithBackoff(`referral:validate:${ip}`, cfg.maxAttempts, cfg.windowMs);
     if (!rl.allowed) {
-      return NextResponse.json({ valid: false, error: "Trop de tentatives, réessaie dans quelques instants." });
+      return NextResponse.json({ valid: false, error: "Trop de tentatives, réessayez dans quelques instants." });
     }
 
     const { code } = await req.json();

@@ -2,6 +2,7 @@
 // un composant client, la COMPILATION échoue au lieu d'exposer la clé dans
 // le bundle du navigateur.
 import "server-only";
+import { isInternalEmail } from "@/lib/childEmail";
 import nodemailer, { type Transporter } from "nodemailer";
 import { errMessage } from "@/lib/safeError";
 
@@ -47,6 +48,8 @@ function getTransporter(): Transporter | null {
 }
 
 export async function sendEmail({ toEmail, toName, subject, textPart, htmlPart, fromEmail, fromName }: SendEmailParams) {
+  // Adresse technique d'un enfant sans e-mail : il n'y a personne au bout, on n'envoie rien.
+  if (isInternalEmail(toEmail)) return { success: false, error: "Ce compte n'a pas d'adresse e-mail" };
   const smtp = getTransporter();
   if (!smtp) {
     console.warn("Gmail credentials missing. Email not sent.");

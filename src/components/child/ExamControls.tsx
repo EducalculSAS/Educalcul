@@ -50,7 +50,7 @@ export default function ExamControls({ examDate, suggestedDate, suggestedLabel, 
         <label className="text-sm font-medium text-gray-700" htmlFor="exam-date">Date de l&apos;examen</label>
         <input id="exam-date" type="date" value={date} onChange={(e) => saveDate(e.target.value)} className="rounded-lg border border-[rgba(197,161,72,0.3)] bg-white px-3 py-1.5 text-sm" />
         {suggestedDate && date !== suggestedDate && (
-          <GlassButton size="sm" variant="outline" rounded="xl" onClick={() => saveDate(suggestedDate)}>
+          <GlassButton size="sm" variant="outline" onClick={() => saveDate(suggestedDate)}>
             {suggestedLabel}
           </GlassButton>
         )}

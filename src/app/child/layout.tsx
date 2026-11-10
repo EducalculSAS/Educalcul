@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Emblem3D from "@/components/Emblem3D";
 import Navbar from "@/components/Navbar";
 import { ReactNode } from "react";
-import { Moon } from "lucide-react";
+
 import { AITutorProvider } from "@/contexts/AITutorContext";
 import AITutor from "@/components/child/AITutor";
 import PresenceTracker from "@/components/child/PresenceTracker";
@@ -34,7 +35,7 @@ export default async function ChildLayout({ children }: { children: ReactNode })
       {quiet && prefs ? (
         <main className="pt-[64px] min-h-screen bg-[var(--greek-blue)] text-white flex items-center justify-center px-6">
           <div className="max-w-md text-center py-24">
-            <Moon className="w-16 h-16 mx-auto mb-6 text-[var(--greek-gold)]" />
+            <div className="mb-6"><Emblem3D kind="moon" size={112} /></div>
             <h1 className="text-3xl font-[family-name:var(--font-display)] font-bold mb-3">C&apos;est l&apos;heure de te reposer</h1>
             <p className="opacity-90 mb-2">
               Educalcul est fermé de {prefs.quiet.start} à {prefs.quiet.end}, comme tes parents l&apos;ont prévu.

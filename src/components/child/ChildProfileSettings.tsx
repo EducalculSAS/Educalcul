@@ -2,7 +2,7 @@
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import ThemeToggle from "@/components/ThemeToggle";
-import SeasonSettings from "@/components/SeasonSettings";
+import ReplayTourCard from "@/components/tour/ReplayTourCard";
 import { AccessibilityCard } from "@/components/AccessibilityPanel";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useRef, useState } from "react";
@@ -211,7 +211,7 @@ export default function ChildProfileSettings({
               <label className="block text-xs font-bold mb-1" style={{ color: "var(--greek-blue)" }}>Email</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "var(--text-muted)" }} />
-                <input type="email" value={user.email || ""} disabled
+                <input type="text" value={user.email || "Aucun (connexion avec le pseudo)"} disabled
                   className="w-full pl-9 pr-3 py-2.5 rounded-xl text-sm outline-none opacity-70 cursor-not-allowed"
                   style={{ background: "var(--greek-cream)", border: "1.5px solid rgba(197,161,72,0.25)" }} />
               </div>
@@ -279,7 +279,7 @@ export default function ChildProfileSettings({
 
         <ThemeToggle />
 
-        <SeasonSettings />
+          <ReplayTourCard role="child" />
         <AccessibilityCard />
 
         {/* ── Voix de Calia en classe ── */}

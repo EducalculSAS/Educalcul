@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { realEmail } from "@/lib/childEmail";
 import PageHero from "@/components/PageHero";
 import { User } from "lucide-react";
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
@@ -26,7 +27,8 @@ export default async function ChildProfilePage() {
   if (!userData) {
     return <div className="min-h-screen flex items-center justify-center"><p>Profil introuvable</p></div>;
   }
-  if (!userData.email && au?.email) userData.email = au.email;
+  // Un enfant sans e-mail a une adresse technique côté Auth : elle ne s'affiche jamais.
+  if (!userData.email && realEmail(au?.email)) userData.email = realEmail(au?.email);
 
   const [{ count: coursesCount }, { count: exercisesCount }, { count: badgesCount }, { count: minigamesCount }] = await Promise.all([
     supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", authUser.id),
@@ -40,7 +42,7 @@ export default async function ChildProfilePage() {
       {/* Hero */}
       <PageHero icon={User} title="Mon profil" badge="Compte" subtitle="Gère tes informations et suis ta progression." width="4xl" />
 
-      <div className="container mx-auto px-4 pb-16 max-w-5xl">
+      <div className="container mx-auto px-4 pb-16 max-w-5xl" data-tour="profile">
         <ChildProfileSettings
           user={userData}
           googleLinked={googleLinked}

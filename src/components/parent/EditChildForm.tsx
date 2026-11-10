@@ -12,7 +12,8 @@ import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
 import { getLevelLabel } from "@/lib/constants";
 import { EXPERTES_LEVEL, PREMIERE_TRACKS, TERMINALE_TRACKS, hasSpecialtyChoice, isTerminale } from "@/lib/specialties";
-import { isValidEmail } from "@/lib/validation";
+import { isValidEmail, validatePassword } from "@/lib/validation";
+import PasswordStrength from "@/components/PasswordStrength";
 import GlassButton from "@/components/ui/GlassButton";
 import LevelRequestCard from "@/components/parent/LevelRequestCard";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -85,10 +86,19 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
     setError(null);
     setSuccess(null);
 
-    if (!isValidEmail(formData.email)) {
+    const email = formData.email.trim();
+    if (email && !isValidEmail(email)) {
       setError("Adresse email invalide.");
       setSaving(false);
       return;
+    }
+    if (formData.password) {
+      const pwError = validatePassword(formData.password);
+      if (pwError) {
+        setError(pwError);
+        setSaving(false);
+        return;
+      }
     }
 
     try {
@@ -99,8 +109,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
           childId,
           first_name: formData.firstName,
           last_name: formData.lastName,
-          email: formData.email,
-          child_username: formData.username,
+          email,
           avatar: formData.avatar,
           ...(lycee ? { specialties: { track, expertes: track === "terminale-generale-maths" && expertes } } : {}),
         }),
@@ -110,7 +119,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
         throw new Error(d.error || "Modification impossible");
       }
 
-      const emailChanged = formData.email !== initial.email;
+      const emailChanged = email !== initial.email;
       if ((formData.password && formData.password.length > 0) || emailChanged) {
         const { data: { user } } = await supabase.auth.getUser();
 
@@ -120,7 +129,8 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
           body: JSON.stringify({
             childId,
             password: formData.password || undefined,
-            newEmail: emailChanged ? formData.email : undefined,
+            newEmail: emailChanged && email ? email : undefined,
+            removeEmail: emailChanged && !email,
             parentAuthId: user?.id,
           }),
         });
@@ -338,13 +348,13 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email de l&apos;enfant</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Email de l&apos;enfant <span className="font-normal text-gray-500">(facultatif)</span></label>
               <input
-                type="email" required value={formData.email}
+                type="email" value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               />
-              <p className="text-xs text-gray-500 mt-1">Utilisé pour la connexion et pour recevoir les notifications de l&apos;enfant.</p>
+              <p className="text-xs text-gray-500 mt-1">Sans e-mail, l&apos;enfant se connecte avec son pseudo. Avec un e-mail, il peut aussi se connecter avec.</p>
             </div>
 
             <div>
@@ -364,6 +374,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                 aria-label="Nouveau mot de passe (laisser vide pour conserver l'actuel)"
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]"
               />
+              <PasswordStrength password={formData.password} />
               <p className="text-xs text-gray-500 mt-1">
                 Remplissez ce champ pour définir ou modifier le mot de passe de l&apos;enfant. Cela créera automatiquement l&apos;accès si ce n&apos;est pas déjà fait.
               </p>
@@ -415,7 +426,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                     <p className="text-sm font-medium text-gray-700">Authentification à deux facteurs</p>
                     <p className="text-xs text-gray-500 mt-0.5">
                       {twoFAEnabled
-                        ? "Activée et imposée par toi, un code par email est requis à chaque connexion, et l'enfant ne peut pas la désactiver lui-même."
+                        ? "Activée et imposée par vous : un code par email est requis à chaque connexion, et l'enfant ne peut pas la désactiver lui-même."
                         : "Désactivée, l'enfant peut choisir de l'activer lui-même depuis son propre profil."}
                     </p>
                   </div>
@@ -424,7 +435,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
               ) : (
                 <div className="space-y-3">
                   <p className="text-sm text-gray-600">
-                    Un code à 6 chiffres a été envoyé à ton adresse email (parent). Entre-le pour {twoFAEnabled ? "désactiver" : "activer"} la 2FA de {formData.firstName}.
+                    Un code à 6 chiffres a été envoyé à votre adresse email (parent). Saisissez-le pour {twoFAEnabled ? "désactiver" : "activer"} la 2FA de {formData.firstName}.
                   </p>
                   {twoFAError && (
                     <div className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium bg-red-50 text-red-700">

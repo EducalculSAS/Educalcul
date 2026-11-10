@@ -220,7 +220,7 @@ export default function CompleteGoogleProfile() {
           </div>
 
           <div className="mt-2">
-            <GlassButton type="submit" disabled={saving} variant="navy" rounded="xl" fullWidth>
+            <GlassButton type="submit" disabled={saving} variant="navy" fullWidth>
               {saving
                 ? <><Loader2 className="w-4 h-4 animate-spin" /> Chargement…</>
                 : <><CheckCircle className="w-4 h-4" /> Choisir un abonnement</>

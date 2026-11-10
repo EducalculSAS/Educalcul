@@ -2,6 +2,7 @@ import { getClientIp } from "@/lib/apiAuth";
 import type Stripe from "stripe";
 import type { Row } from "@/types/db";
 import { NextResponse } from 'next/server';
+import { createClient } from '@supabase/supabase-js';
 import { getVatTaxRateId } from "@/lib/stripeVat";
 import { ensurePlanPrice, ensureProduct, recurringFor } from "@/lib/stripeCatalog";
 import { getOrCreateStripeCustomer } from "@/lib/stripeCustomer";
@@ -75,8 +76,18 @@ async function createOrResumePendingSignup(params: {
     return { error: 'Cet email est déjà utilisé. Connectez-vous ou utilisez un autre email.' };
   }
 
+  // SÉCURITÉ : on ne remplace JAMAIS le mot de passe d'un compte existant sur simple présentation de son e-mail.
+  // Avant, n'importe qui pouvait relancer une inscription avec l'e-mail d'une personne dont le compte attendait son
+  // paiement (ou créé via Google) et lui imposer un mot de passe de son choix : une fois le compte payé par sa vraie
+  // propriétaire, il pouvait s'y connecter. La reprise n'est acceptée que si le mot de passe saisi est déjà le sien.
+  const anon = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
+  const { data: signIn, error: signInError } = await anon.auth.signInWithPassword({ email, password });
+  if (signInError || signIn.user?.id !== existingAuthUser.id) {
+    return { error: 'Une inscription est déjà en cours avec cet e-mail. Reprenez-la avec le même mot de passe, ou utilisez « Mot de passe oublié » sur la page de connexion.' };
+  }
   const { error: updateError } = await supabaseAdmin.auth.admin.updateUserById(existingAuthUser.id, {
-    password,
     user_metadata: { first_name: firstName, last_name: lastName, role: 'parent' },
   });
   if (updateError) return { error: sanitizeErrorMessage(updateError.message) };
@@ -104,6 +115,9 @@ export async function POST(req: Request) {
       const me = await getAuthenticatedUser(req);
       if (!me) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
       userId = me.authId;
+      // L'e-mail du client Stripe est celui du compte, jamais une valeur envoyée par le navigateur.
+      const { data: account } = await supabaseAdmin.auth.admin.getUserById(me.authId);
+      if (account?.user?.email) email = account.user.email;
     } else {
       // Déjà authentifié (ex: inscription via Google, compte Auth déjà créé
       // par l'OAuth callback, mais sans profil public.users tant que non payé).
@@ -241,7 +255,7 @@ export async function POST(req: Request) {
       referralCode
         ? supabaseAdmin
             .from('referral_codes')
-            .select('discount_type, discount_value')
+            .select('discount_type, discount_value, valid_until, max_uses, current_uses, owner_user_id')
             .eq('code', referralCode.trim().toUpperCase())
             .eq('is_active', true)
             .maybeSingle()
@@ -255,13 +269,27 @@ export async function POST(req: Request) {
         : Promise.resolve({ data: null }),
     ]);
 
-    if (rc && rc.discount_type === 'percent') {
-      discountPercent = Math.max(discountPercent, rc.discount_value);
+    // Mêmes règles que la vérification affichée à l'écran (/api/parent/validate-referral) : avant, un code expiré ou
+    // épuisé donnait quand même la remise en appelant cette route directement, et on pouvait utiliser son propre code.
+    const referralOk = !!rc
+      && rc.discount_type === 'percent'
+      && !(rc.valid_until && new Date(rc.valid_until) < new Date())
+      && !(rc.max_uses !== null && rc.current_uses >= rc.max_uses)
+      && !(rc.owner_user_id && userRow?.id && rc.owner_user_id === userRow.id);
+    if (!referralOk) referralCode = '';
+    if (referralOk && rc) {
+      discountPercent = Math.max(discountPercent, Number(rc.discount_value) || 0);
     }
 
     if (userRow?.pending_discount_percent > 0) {
       discountPercent = Math.max(discountPercent, userRow?.pending_discount_percent || 0);
     }
+
+    // Une remise reste une remise : jamais d'abonnement gratuit ou à prix négatif par ce biais.
+    discountPercent = Math.min(90, Math.max(0, discountPercent));
+    // La remise en attente n'est « utilisée » que si c'est elle qui fixe le prix (pas un code plus avantageux).
+    const pendingPercent = Math.min(90, Number(userRow?.pending_discount_percent) || 0);
+    const usesPendingDiscount = pendingPercent > 0 && pendingPercent >= discountPercent;
 
     const priceInCents = Math.round(plan.price * 100);
     const discountedPrice = discountPercent > 0
@@ -317,7 +345,12 @@ export async function POST(req: Request) {
       // plus de client anonyme en double à chaque paiement (voir stripeCustomer.ts).
       customer: stripeCustomerId,
       client_reference_id: userId || undefined,
-      metadata: { userId: userId || '', planId: planId.toString(), referralCode: referralCode || '', isNewSignup: isNewSignup ? 'true' : 'false' },
+      metadata: {
+        userId: userId || '', planId: planId.toString(), referralCode: (referralCode || '').trim().toUpperCase(),
+        isNewSignup: isNewSignup ? 'true' : 'false',
+        // Remise de parrain en attente utilisée : elle n'est consommée qu'une fois le paiement confirmé (webhook).
+        pendingDiscountUsed: usesPendingDiscount ? 'true' : 'false',
+      },
     };
 
     // Semaines gratuites gagnées pendant la phase liste d'attente (paliers de
@@ -345,38 +378,9 @@ export async function POST(req: Request) {
     };
     const session = await stripe.checkout.sessions.create(sessionData);
 
-    // Record referral code usage and reward referrer
-    if (referralCode) {
-      const { data: rc } = await supabaseAdmin
-        .from('referral_codes')
-        .select('id, current_uses, owner_user_id')
-        .eq('code', referralCode.trim().toUpperCase())
-        .maybeSingle();
-      if (rc && userRow?.id) {
-        await supabaseAdmin.from('referral_uses').insert({
-          referral_code_id: rc.id,
-          used_by_user_id: userRow.id,
-        });
-        await supabaseAdmin
-          .from('referral_codes')
-          .update({ current_uses: rc.current_uses + 1 })
-          .eq('id', rc.id);
-        if (rc.owner_user_id) {
-          await supabaseAdmin
-            .from('users')
-            .update({ pending_discount_percent: 10 })
-            .eq('id', rc.owner_user_id);
-        }
-      }
-    }
-
-    // Clear pending discount after use
-    if (userRow?.id && userRow.pending_discount_percent > 0) {
-      await supabaseAdmin
-        .from('users')
-        .update({ pending_discount_percent: 0 })
-        .eq('id', userRow.id);
-    }
+    // Rien n'est enregistré ici pour le parrainage ni pour la remise en attente : la page de paiement peut être
+    // abandonnée. Avant, le parrain était récompensé et la remise du client effacée dès l'ouverture de la page Stripe,
+    // sans aucun paiement. Tout se fait maintenant dans le webhook, une fois le paiement confirmé.
 
     // authId renvoyé pour les nouveaux inscrits : c'est l'identifiant fiable
     // à utiliser pour vérifier la création du compte après paiement — l'email

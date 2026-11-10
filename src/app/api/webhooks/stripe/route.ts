@@ -202,6 +202,11 @@ export async function POST(req: Request) {
         // simple debut d'essai (0€ preleve). La recompense (10% pour le
         // parrain) n'est appliquee qu'au premier VRAI paiement du filleul,
         // voir invoice.payment_succeeded plus bas (confirmed_paid).
+        // Remise de parrain utilisée pour ce paiement : consommée maintenant que la commande est confirmée.
+        if (session.metadata?.pendingDiscountUsed === "true") {
+          await supabaseAdmin.from("users").update({ pending_discount_percent: 0 }).eq("auth_id", userId);
+        }
+
         const referralCode = session.metadata?.referralCode;
         if (referralCode) {
           const [{ data: rc }, { data: userRow }] = await Promise.all([

@@ -25,5 +25,5 @@ export async function getChildLimit(parent: { id: number; authId: string }): Pro
 }
 
 export function childLimitMessage(l: ChildLimit): string {
-  return `Ta formule inclut ${l.max} enfant${l.max > 1 ? "s" : ""} et tu en as déjà ${l.count}. Passe à une formule supérieure pour en ajouter.`;
+  return `Votre formule inclut ${l.max} enfant${l.max > 1 ? "s" : ""} et vous en avez déjà ${l.count}. Passez à une formule supérieure pour en ajouter.`;
 }

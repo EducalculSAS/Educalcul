@@ -1,9 +1,10 @@
 "use client";
 
 import { useKatexIn } from "@/lib/useKatexIn";
+import Emblem3D from "@/components/Emblem3D";
 import { useState, useEffect, useRef } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
-import { BookOpen, Play, CheckCircle, ArrowLeft, Lock } from "lucide-react";
+import { Play, CheckCircle, ArrowLeft, Lock } from "lucide-react";
 import Image from "next/image";
 import { getFolderIcon } from "@/lib/folderIcons";
 import GlassButton from "@/components/ui/GlassButton";
@@ -124,7 +125,7 @@ export default function CoursesCatalog({
 
       {currentFolders.length === 0 && currentCourses.length === 0 ? (
         <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
-          <BookOpen className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
+          <div className="mb-4"><Emblem3D kind="book" size={88} /></div>
           <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Dossier vide</h3>
           <p className="text-gray-500">Reviens plus tard pour découvrir de nouveaux contenus !</p>
         </div>

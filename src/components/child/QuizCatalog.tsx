@@ -1,9 +1,10 @@
 "use client";
 
 import { compareDisplayOrder } from "@/lib/contentOrder";
+import Emblem3D from "@/components/Emblem3D";
 import { useState, useEffect } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
-import { Trophy, Play, CheckCircle, XCircle, ArrowLeft, Lock } from "lucide-react";
+import { Play, CheckCircle, XCircle, ArrowLeft, Lock } from "lucide-react";
 import Image from "next/image";
 import { getFolderIcon } from "@/lib/folderIcons";
 import { useSubscription } from "@/lib/useSubscription";
@@ -173,7 +174,7 @@ export default function QuizCatalog({
 
         {courseQuizzes.length === 0 ? (
           <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
-            <Trophy className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
+            <div className="mb-4"><Emblem3D kind="trophy" size={88} /></div>
             <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Pas encore de quiz</h3>
             <p className="text-gray-500">Ce cours n&apos;a pas encore de quiz associé.</p>
           </div>
@@ -222,7 +223,7 @@ export default function QuizCatalog({
 
       {currentFolders.length === 0 && currentQuizzes.length === 0 ? (
         <div className="text-center py-20 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">
-          <Trophy className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
+          <div className="mb-4"><Emblem3D kind="trophy" size={88} /></div>
           <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Dossier vide</h3>
           <p className="text-gray-500">Reviens plus tard pour de nouveaux défis !</p>
         </div>

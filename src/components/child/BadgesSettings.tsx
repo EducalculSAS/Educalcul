@@ -101,7 +101,7 @@ export default function BadgesSettings({
         subtitle="Tes badges, tes contours et tes titres : débloque-les en progressant."
       />
 
-      <div className="max-w-6xl mx-auto px-4 space-y-8">
+      <div className="max-w-6xl mx-auto px-4 space-y-8" data-tour="badges">
         <CosmeticsShowcase
           borders={borders}
           colors={colors}

@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     const rl = await rateLimitWithBackoff(`ai:parent-support:${me.authId}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
       return NextResponse.json(
-        { message: null, blocked: true, reason: "Trop de messages, réessaie dans quelques minutes." },
+        { message: null, blocked: true, reason: "Trop de messages, réessayez dans quelques minutes." },
         { status: 429 }
       );
     }

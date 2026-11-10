@@ -29,8 +29,11 @@ export default function ThemeSync() {
         } else if (readStoredTheme() === "dark") {
           void fetch("/api/user/profile", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ theme_preference: "dark" }) });
         }
-        // Thème de saison : celui du compte l'emporte ; sinon le choix fait sur ce navigateur devient celui du compte.
-        if (isSeasonPreference(me?.season_preference)) {
+        // Thème de saison : seul un admin le choisit. Les autres comptes suivent le calendrier (« auto »), même
+        // s'ils avaient enregistré un choix quand le réglage leur était proposé.
+        if (me?.role !== "admin") {
+          if (readStoredSeason() !== "auto") applySeason("auto");
+        } else if (isSeasonPreference(me?.season_preference)) {
           if (me.season_preference !== readStoredSeason()) applySeason(me.season_preference);
         } else if (readStoredSeason() !== "auto") {
           void fetch("/api/user/profile", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ season_preference: readStoredSeason() }) });

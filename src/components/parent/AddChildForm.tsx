@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 import { validatePassword, isValidEmail } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
+import PasswordStrength from "@/components/PasswordStrength";
 import { errMessage } from "@/lib/safeError";
 
 const SPECIALTY_LEVELS = new Set([
@@ -34,8 +35,14 @@ export default function AddChildForm() {
     setError(null);
     setSuccess(null);
 
-    if (!isValidEmail(formData.email)) {
+    const email = formData.email.trim();
+    if (email && !isValidEmail(email)) {
       setError("Adresse email invalide.");
+      setLoading(false);
+      return;
+    }
+    if (formData.username.trim().length < 3) {
+      setError("Le pseudo doit contenir au moins 3 caractères.");
       setLoading(false);
       return;
     }
@@ -61,11 +68,11 @@ export default function AddChildForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          email: formData.email,
+          email: email || null,
           password: formData.password,
           firstName: formData.firstName,
           lastName: formData.lastName,
-          username: formData.username || null,
+          username: formData.username.trim(),
           gradeLevel: formData.gradeLevel,
           avatar: formData.avatar,
         }),
@@ -113,7 +120,7 @@ export default function AddChildForm() {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6" data-tour="add-child-form">
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Prénom</label>
@@ -128,29 +135,30 @@ export default function AddChildForm() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Email de l&apos;enfant</label>
-              <input type="email" required value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              <label className="block text-sm font-medium text-gray-700 mb-1">Pseudo de l&apos;enfant</label>
+              <input type="text" required minLength={3} maxLength={30} pattern="[a-zA-Z0-9_\-]+" title="Lettres, chiffres, tiret et underscore uniquement" autoComplete="off" value={formData.username}
+                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]" />
-              <p className="text-xs text-gray-500 mt-1">Utilisé pour la connexion et pour recevoir les notifications de l&apos;enfant.</p>
+              <p className="text-xs text-gray-500 mt-1">C&apos;est avec ce pseudo et son mot de passe que l&apos;enfant se connecte.</p>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Nom d&apos;utilisateur (Pseudo), optionnel</label>
-              <input type="text" pattern="[a-zA-Z0-9_]+" title="Lettres, chiffres et underscores uniquement" value={formData.username}
-                onChange={(e) => setFormData({ ...formData, username: e.target.value })}
+              <label className="block text-sm font-medium text-gray-700 mb-1">Email de l&apos;enfant <span className="font-normal text-gray-500">(facultatif)</span></label>
+              <input type="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]" />
-              <p className="text-xs text-gray-500 mt-1">Permet aussi de se connecter avec ce pseudo en plus de l&apos;email.</p>
+              <p className="text-xs text-gray-500 mt-1">Vous pouvez le laisser vide. S&apos;il est renseigné, l&apos;enfant peut aussi se connecter avec.</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Mot de passe</label>
-                <input type="password" required minLength={6} value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                <input type="password" required minLength={10} autoComplete="new-password" value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                   className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]" />
+                <PasswordStrength password={formData.password} />
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Confirmer</label>
-                <input type="password" required minLength={6} value={formData.passwordConfirm} onChange={(e) => setFormData({ ...formData, passwordConfirm: e.target.value })}
+                <input type="password" required minLength={10} autoComplete="new-password" value={formData.passwordConfirm} onChange={(e) => setFormData({ ...formData, passwordConfirm: e.target.value })}
                   className="w-full px-4 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg focus:ring-2 focus:ring-[var(--greek-blue)] focus:border-[var(--greek-blue)]" />
               </div>
             </div>

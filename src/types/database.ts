@@ -3902,6 +3902,7 @@ export type Database = {
           notif_weekly_reports: boolean | null
           onboarding_completed: boolean | null
           onboarding_quiz_score: number | null
+          tour_completed: boolean
           parent_id: number | null
           password_hash: string | null
           pending_discount_percent: number
@@ -3964,6 +3965,7 @@ export type Database = {
           notif_weekly_reports?: boolean | null
           onboarding_completed?: boolean | null
           onboarding_quiz_score?: number | null
+          tour_completed?: boolean
           parent_id?: number | null
           password_hash?: string | null
           pending_discount_percent?: number
@@ -4026,6 +4028,7 @@ export type Database = {
           notif_weekly_reports?: boolean | null
           onboarding_completed?: boolean | null
           onboarding_quiz_score?: number | null
+          tour_completed?: boolean
           parent_id?: number | null
           password_hash?: string | null
           pending_discount_percent?: number

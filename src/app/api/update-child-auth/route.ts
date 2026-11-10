@@ -2,7 +2,8 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
-import { isValidEmail } from "@/lib/validation";
+import { isValidEmail, validatePassword } from "@/lib/validation";
+import { internalChildEmail, isInternalEmail } from "@/lib/childEmail";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(request: Request) {
@@ -16,26 +17,34 @@ export async function POST(request: Request) {
     const config = RATE_LIMITS["child-account:mutate"];
     const rl = await rateLimitWithBackoff(`update-child-auth:${requester.id}`, config.maxAttempts, config.windowMs);
     if (!rl.allowed) {
-      return NextResponse.json({ error: "Trop de tentatives, réessaie dans quelques minutes." }, { status: 429 });
+      return NextResponse.json({ error: "Trop de tentatives, réessayez dans quelques minutes." }, { status: 429 });
     }
 
     const body = await request.json();
-    const { childId, password, newEmail } = body;
+    const { childId, password } = body;
+    // removeEmail : le parent retire l'adresse de l'enfant, le compte repasse sur son adresse technique (pseudo).
+    const removeEmail = body.removeEmail === true;
+    let newEmail: string | undefined = typeof body.newEmail === "string" && body.newEmail.trim() ? body.newEmail.trim() : undefined;
 
-    if (!childId || (!password && !newEmail)) {
+    if (!childId || (!password && !newEmail && !removeEmail)) {
       return NextResponse.json(
         { error: "Missing required fields" },
         { status: 400 }
       );
     }
-    if (newEmail && !isValidEmail(newEmail)) {
+    if (newEmail && (!isValidEmail(newEmail) || isInternalEmail(newEmail))) {
       return NextResponse.json({ error: "Adresse email invalide" }, { status: 400 });
+    }
+    // Mêmes règles de mot de passe qu'à la création du profil.
+    if (password) {
+      const pwError = typeof password === "string" ? validatePassword(password) : "Mot de passe invalide";
+      if (pwError) return NextResponse.json({ error: pwError }, { status: 400 });
     }
 
     // 1. Verify the requester owns the child (admins may manage any child)
     let childQuery = supabaseAdmin
       .from("users")
-      .select("id, auth_id, first_name, last_name, email, parent_id, role")
+      .select("id, auth_id, first_name, last_name, email, child_username, parent_id, role")
       .eq("id", childId)
       .eq("role", "child");
     if (requester.role !== "admin") {
@@ -48,6 +57,11 @@ export async function POST(request: Request) {
         { error: "Child not found or unauthorized" },
         { status: 404 }
       );
+    }
+
+    if (removeEmail && !newEmail) {
+      if (!childUser.child_username) return NextResponse.json({ error: "Un pseudo est nécessaire pour retirer l'e-mail." }, { status: 400 });
+      newEmail = internalChildEmail(childUser.child_username);
     }
 
     // 2. Check if Auth User exists
@@ -81,7 +95,7 @@ export async function POST(request: Request) {
     if (!authUserId && password) {
       // Create new auth user
       action = "created";
-      const email = newEmail || childUser.email;
+      const email = newEmail || childUser.email || (childUser.child_username ? internalChildEmail(childUser.child_username) : "");
       if (!email || !isValidEmail(email)) {
         return NextResponse.json({ error: "Email de l'enfant manquant ou invalide" }, { status: 400 });
       }

@@ -71,7 +71,7 @@ export default async function ChildQuizPage({
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
       <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={Trophy} title="Quiz & défis" badge="Défi" subtitle="Teste tes connaissances et gagne des trophées !" />
-      <div className="container mx-auto px-4 pb-12 max-w-6xl">
+      <div className="container mx-auto px-4 pb-12 max-w-6xl" data-tour="catalog">
         <QuizCatalog
           allFolders={allFolders}
           allQuizzes={allQuizzes}

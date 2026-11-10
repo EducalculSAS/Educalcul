@@ -45,7 +45,7 @@ export default function GoalCard({ today, dailyGoal, streak, last7, weekTotal, w
   };
 
   return (
-    <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] mb-8">
+    <div data-tour="goals" className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] mb-8">
       <div className="grid md:grid-cols-[auto_1fr_auto] gap-6 items-center">
         <div className="flex items-center gap-5">
           <div className="relative w-[84px] h-[84px] shrink-0">

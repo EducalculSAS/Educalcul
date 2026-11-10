@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Emblem3D from "@/components/Emblem3D";
 import { redirect } from "next/navigation";
 import {
   Users,
@@ -145,7 +146,7 @@ export default async function ParentDashboard() {
 
         {children.length === 0 ? (
           <div className="bg-white rounded-[20px] p-10 shadow-sm border border-[rgba(197,161,72,0.25)] text-center">
-            <Users className="w-16 h-16 text-[var(--greek-blue)] opacity-20 mx-auto mb-4" />
+            <div className="mb-4"><Emblem3D kind="family" size={88} /></div>
             <p className="text-xl text-[var(--greek-blue)] font-bold font-[family-name:var(--font-display)] mb-2">Aucun enfant ajouté</p>
             <p className="text-gray-500 mb-6">Ajoutez votre premier enfant pour commencer le suivi.</p>
             <GlassButton href="/parent/add-child" variant="navy">

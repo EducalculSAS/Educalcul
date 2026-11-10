@@ -231,7 +231,6 @@ function CaliaChat({
             href="/auth/inscription"
             variant="gold"
             size="sm"
-            rounded="xl"
             className="font-[family-name:var(--font-display)] text-xs font-bold"
           >
             <span className="inline-flex items-center gap-1.5">

@@ -17,6 +17,7 @@ const DECOR_SELECTOR = [
   ".text-gradient-gold",
   ".text-gradient-gold-dark",
   ".family-card",
+  ".emblem3d",
   ...COLORS.filter((c) => c.cls.startsWith("name-")).map((c) => `.${c.cls}`),
 ].join(",");
 
