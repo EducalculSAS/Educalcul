@@ -84,7 +84,5 @@ alter table only public.user_quiz_attempts add constraint user_quiz_attempts_use
 alter table only public.user_sessions add constraint user_sessions_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 alter table only public.users add constraint users_auth_id_fkey FOREIGN KEY (auth_id) REFERENCES auth.users(id);
 alter table only public.users add constraint users_parent_id_fkey FOREIGN KEY (parent_id) REFERENCES users(id);
-alter table only public.waitlist_signups add constraint waitlist_signups_auth_id_fkey FOREIGN KEY (auth_id) REFERENCES auth.users(id) ON DELETE CASCADE;
-alter table only public.waitlist_signups add constraint waitlist_signups_referred_by_fkey FOREIGN KEY (referred_by) REFERENCES waitlist_signups(referral_code) ON DELETE SET NULL;
 alter table only public.webauthn_challenges add constraint webauthn_challenges_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;
 alter table only public.webauthn_credentials add constraint webauthn_credentials_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE;

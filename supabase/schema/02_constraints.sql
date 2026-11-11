@@ -131,11 +131,6 @@ alter table only public.users add constraint users_calia_voice_check CHECK (((ca
 alter table only public.users add constraint users_role_check CHECK ((role = ANY (ARRAY['admin'::text, 'parent'::text, 'child'::text])));
 alter table only public.users add constraint users_status_check CHECK ((status = ANY (ARRAY['pending_verification'::text, 'active'::text, 'inactive'::text, 'banned'::text])));
 alter table only public.users add constraint users_theme_preference_check CHECK ((theme_preference = ANY (ARRAY['light'::text, 'dark'::text])));
-alter table only public.waitlist add constraint waitlist_pkey PRIMARY KEY (id);
-alter table only public.waitlist_signups add constraint waitlist_signups_pkey PRIMARY KEY (id);
-alter table only public.waitlist_signups add constraint waitlist_signups_auth_id_key UNIQUE (auth_id);
-alter table only public.waitlist_signups add constraint waitlist_signups_email_key UNIQUE (email);
-alter table only public.waitlist_signups add constraint waitlist_signups_referral_code_key UNIQUE (referral_code);
 alter table only public.webauthn_challenges add constraint webauthn_challenges_pkey PRIMARY KEY (user_id, type);
 alter table only public.webauthn_challenges add constraint webauthn_challenges_type_check CHECK ((type = ANY (ARRAY['registration'::text, 'authentication'::text])));
 alter table only public.webauthn_credentials add constraint webauthn_credentials_pkey PRIMARY KEY (id);

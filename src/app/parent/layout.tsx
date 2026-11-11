@@ -36,7 +36,7 @@ export default async function ParentLayout({ children }: { children: React.React
 
   const [{ data: profile }, subscriptionOk] = await Promise.all([
     supabaseAdmin.from("users").select("first_name, email, onboarding_completed, tour_completed, email_verified_at").eq("id", user.id).maybeSingle(),
-    // Un compte peut exister sans être passé par Stripe (liste d'attente) ; seul un compte « jamais abonné » (plan
+    // Un compte peut exister sans être passé par Stripe (formule gratuite) ; seul un compte « jamais abonné » (plan
     // gratuit) ou à l'abonnement actif passe, comme dans /api/user/subscription-status.
     hasActiveSubscription(user.authId),
   ]);

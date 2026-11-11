@@ -946,22 +946,6 @@ create table if not exists public.users (
   inactivity_warned_at timestamp with time zone,
   theme_preference text
 );
-create table if not exists public.waitlist (
-  id bigint generated always as identity not null,
-  email text not null,
-  created_at timestamp with time zone default now()
-);
-create table if not exists public.waitlist_signups (
-  id bigint generated always as identity not null,
-  auth_id uuid not null,
-  email text not null,
-  display_name text,
-  referral_code text not null,
-  referred_by text,
-  referral_count integer default 0 not null,
-  created_at timestamp with time zone default now() not null,
-  signup_ip text
-);
 create table if not exists public.webauthn_challenges (
   user_id bigint not null,
   type text not null,

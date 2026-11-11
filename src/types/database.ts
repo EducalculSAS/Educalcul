@@ -4074,68 +4074,6 @@ export type Database = {
           },
         ]
       }
-      waitlist: {
-        Row: {
-          created_at: string | null
-          email: string
-          id: number
-        }
-        Insert: {
-          created_at?: string | null
-          email: string
-          id?: never
-        }
-        Update: {
-          created_at?: string | null
-          email?: string
-          id?: never
-        }
-        Relationships: []
-      }
-      waitlist_signups: {
-        Row: {
-          auth_id: string
-          created_at: string
-          display_name: string | null
-          email: string
-          id: number
-          referral_code: string
-          referral_count: number
-          referred_by: string | null
-          signup_ip: string | null
-        }
-        Insert: {
-          auth_id: string
-          created_at?: string
-          display_name?: string | null
-          email: string
-          id?: never
-          referral_code: string
-          referral_count?: number
-          referred_by?: string | null
-          signup_ip?: string | null
-        }
-        Update: {
-          auth_id?: string
-          created_at?: string
-          display_name?: string | null
-          email?: string
-          id?: never
-          referral_code?: string
-          referral_count?: number
-          referred_by?: string | null
-          signup_ip?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "waitlist_signups_referred_by_fkey"
-            columns: ["referred_by"]
-            isOneToOne: false
-            referencedRelation: "waitlist_signups"
-            referencedColumns: ["referral_code"]
-          },
-        ]
-      }
       webauthn_challenges: {
         Row: {
           challenge: string
@@ -4320,7 +4258,6 @@ export type Database = {
       forum_increment_view: { Args: { p_post_id: number }; Returns: undefined }
       get_my_parent_id: { Args: never; Returns: number }
       get_my_user_id: { Args: never; Returns: number }
-      increment_referral_count: { Args: { p_code: string }; Returns: undefined }
       list_auth_sessions: {
         Args: { p_auth_id: string }
         Returns: {

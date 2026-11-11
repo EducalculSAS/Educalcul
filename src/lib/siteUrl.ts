@@ -1,11 +1,10 @@
 /**
  * URL de base du site.
  *
- * Contexte (bug corrigé le 2026-09-21) : `NEXT_PUBLIC_SITE_URL` pointe sur
- * `educalcul.com`, qui sert aujourd'hui le projet Vercel "liste d'attente" —
- * pas l'application. Les URLs de retour Stripe construites avec cette valeur
- * renvoyaient donc les clients qui venaient de payer sur un 404 Vercel. Et
- * sans variable d'environnement du tout, le repli serveur était
+ * Contexte (bug corrigé le 2026-09-21) : `NEXT_PUBLIC_SITE_URL` a pointé sur un
+ * domaine qui ne servait pas l'application : les URLs de retour Stripe
+ * construites avec cette valeur renvoyaient les clients qui venaient de payer
+ * sur un 404. Et sans variable d'environnement du tout, le repli serveur était
  * `localhost:3000`, tout aussi inutilisable en production.
  *
  * `getRequestSiteUrl()` résout les deux cas : on renvoie l'utilisateur sur le

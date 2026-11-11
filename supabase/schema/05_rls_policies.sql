@@ -75,8 +75,6 @@ alter table public.user_notifications enable row level security;
 alter table public.user_quiz_attempts enable row level security;
 alter table public.user_sessions enable row level security;
 alter table public.users enable row level security;
-alter table public.waitlist enable row level security;
-alter table public.waitlist_signups enable row level security;
 alter table public.webauthn_challenges enable row level security;
 alter table public.webauthn_credentials enable row level security;
 

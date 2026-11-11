@@ -493,17 +493,6 @@ BEGIN
 END;
 $function$;
 
-CREATE OR REPLACE FUNCTION public.increment_referral_count(p_code text)
- RETURNS void
- LANGUAGE sql
- SECURITY DEFINER
- SET search_path TO 'public'
-AS $function$
-  update public.waitlist_signups
-  set referral_count = referral_count + 1
-  where referral_code = p_code;
-$function$;
-
 CREATE OR REPLACE FUNCTION public.inherit_folder_style_from_parent()
  RETURNS trigger
  LANGUAGE plpgsql

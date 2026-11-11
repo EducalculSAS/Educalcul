@@ -114,6 +114,4 @@ create unique index if not exists idx_users_child_username ON public.users USING
 create index if not exists idx_users_location ON public.users USING btree (last_login_country, last_login_city);
 create index if not exists idx_users_parent_id ON public.users USING btree (parent_id);
 create unique index if not exists users_email_unique_idx ON public.users USING btree (email);
-create index if not exists waitlist_signups_referral_count_idx ON public.waitlist_signups USING btree (referral_count DESC);
-create index if not exists waitlist_signups_referred_by_idx ON public.waitlist_signups USING btree (referred_by);
 create index if not exists webauthn_credentials_user_id_idx ON public.webauthn_credentials USING btree (user_id);

@@ -16,7 +16,6 @@ import { getRequestSiteUrl } from '@/lib/siteUrl';
 import { validateEmail, validateName } from '@/lib/validation';
 import { rateLimitWithBackoff, RATE_LIMITS } from '@/lib/rateLimitAdvanced';
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
-import { computeWaitlistFreeTrialDays } from '@/lib/waitlistReferralCredit';
 import { REFERRAL_BONUS_DAYS } from '@/lib/referral';
 
 // Crée (ou réutilise) le compte Supabase Auth d'un nouvel inscrit, AVANT tout
@@ -368,14 +367,7 @@ export async function POST(req: Request) {
       },
     };
 
-    // Semaines gratuites gagnées pendant la phase liste d'attente (paliers de
-    // parrainage confirmés + bonus premiers arrivés) — converties en jours
-    // d'essai Stripe, cumulées avec l'essai propre au plan. Ne s'applique
-    // qu'aux comptes issus de la waitlist (0 sinon) ; calculé à la volée à
-    // partir de faits déjà durables (waitlist_signups, subscriptions), donc
-    // rien à persister ni à "consommer" comme pending_discount_percent.
-    const waitlistBonusDays = userId ? await computeWaitlistFreeTrialDays(userId) : 0;
-    const trialDays = (plan.trial_days || 0) + waitlistBonusDays + referralBonusDays + referralCreditDays;
+    const trialDays = (plan.trial_days || 0) + referralBonusDays + referralCreditDays;
     // Métadonnées sur l'abonnement Stripe lui-même (compte et formule) : lisibles
     // dans le tableau de bord Stripe et présentes sur tous ses événements.
     sessionData.subscription_data = {
