@@ -98,7 +98,7 @@ export default function TextInputAnswer(props: TextInputAnswerProps) {
                     ? "border-red-500 bg-red-50"
                     : "border-gray-300 focus-within:border-[var(--greek-blue)]"
                 }`}
-                placeholder="Tapez votre réponse"
+                placeholder="Écris ta réponse"
                 ariaLabel={block.title || "Réponse mathématique"}
                 level={exercise.level}
               />

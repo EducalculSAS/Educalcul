@@ -1,10 +1,11 @@
+import Emblem3D from "@/components/Emblem3D";
 import Link from "@/components/AppLink";
 import { redirect } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getServerUser } from "@/lib/supabase/server";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { getCatalogLevelLabel } from "@/lib/constants";
-import { BookOpen, PenTool, ArrowRight, Play, Star, Compass, GraduationCap } from "lucide-react";
+import { ArrowRight, Play } from "lucide-react";
 import DashboardTile from "@/components/DashboardTile";
 import DashboardTrophies from "@/components/child/DashboardTrophies";
 import { badgeTiers } from "@/lib/badgeTiers";
@@ -167,7 +168,7 @@ export default async function ChildDashboard() {
           <Link href="/child/examens" className="group block mb-8">
             <div className="bg-[var(--greek-blue)] text-white rounded-[20px] p-5 shadow-sm flex items-center justify-between gap-4 hover:shadow-xl transition-all">
               <div className="flex items-center gap-4 min-w-0">
-                <GraduationCap className="w-9 h-9 text-[var(--greek-gold)] shrink-0" />
+                <span className="shrink-0"><Emblem3D kind="cap" size={48} float={false} onDark /></span>
                 <div className="min-w-0">
                   <p className="font-bold text-lg leading-tight">{exam.label}</p>
                   <p className="text-sm opacity-80">{examDays !== null && examDays >= 0 ? `J-${examDays} · ton parcours semaine par semaine` : "Choisis la date et prépare-toi semaine par semaine"}</p>
@@ -182,7 +183,7 @@ export default async function ChildDashboard() {
         {path.length > 0 && (
           <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] mb-8">
             <div className="flex items-center gap-3 mb-1">
-              <Compass className="w-5 h-5 text-[var(--greek-gold)]" />
+              <Emblem3D kind="compass" size={28} float={false} />
               <h2 className="text-xl font-bold text-[var(--greek-blue)]">Ton parcours</h2>
             </div>
             <p className="text-sm text-gray-500 mb-4">Choisi pour toi d&apos;après ton test de départ, tes erreurs et le programme.</p>
@@ -206,7 +207,7 @@ export default async function ChildDashboard() {
         {/* À faire ensuite — données réelles */}
         <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] mb-8">
           <div className="flex items-center gap-3 mb-5">
-            <Star className="w-5 h-5 text-[var(--greek-gold)] fill-current" />
+            <Emblem3D kind="star" size={28} float={false} />
             <h2 className="text-xl font-bold text-[var(--greek-blue)]">À faire ensuite</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-4">
@@ -214,9 +215,7 @@ export default async function ChildDashboard() {
             {nextCourse ? (
               <div className="bg-blue-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[var(--greek-blue)] rounded-xl flex items-center justify-center text-white shrink-0">
-                    <BookOpen className="w-6 h-6" />
-                  </div>
+                  <span className="shrink-0"><Emblem3D kind="book" size={52} float={false} /></span>
                   <div>
                     <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-0.5">Cours</p>
                     <h4 className="font-bold text-gray-800 text-sm line-clamp-1">{nextCourse.title}</h4>
@@ -229,7 +228,7 @@ export default async function ChildDashboard() {
               </div>
             ) : (
               <div className="bg-gray-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center gap-3 text-gray-400">
-                <BookOpen className="w-6 h-6" />
+                <span className="grayscale opacity-70"><Emblem3D kind="book" size={40} float={false} /></span>
                 <span className="text-sm">Aucun cours disponible pour ton niveau.</span>
               </div>
             )}
@@ -238,9 +237,7 @@ export default async function ChildDashboard() {
             {nextExercise ? (
               <div className="bg-orange-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center justify-between gap-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-[var(--greek-bronze)] rounded-xl flex items-center justify-center text-white shrink-0">
-                    <PenTool className="w-6 h-6" />
-                  </div>
+                  <span className="shrink-0"><Emblem3D kind="pencil" size={52} float={false} /></span>
                   <div>
                     <p className="text-xs text-gray-500 font-semibold uppercase tracking-wide mb-0.5">Exercice</p>
                     <h4 className="font-bold text-gray-800 text-sm line-clamp-1">{nextExercise.title}</h4>
@@ -252,8 +249,8 @@ export default async function ChildDashboard() {
                 </GlassButton>
               </div>
             ) : (
-              <div className="bg-gray-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center gap-3 text-gray-400">
-                <PenTool className="w-6 h-6" />
+              <div className="bg-gray-50 rounded-2xl p-5 border border-[rgba(197,161,72,0.25)] flex items-center gap-3 text-gray-500">
+                <Emblem3D kind="trophy" size={40} float={false} />
                 <span className="text-sm">Tous les exercices ont été faits !</span>
               </div>
             )}

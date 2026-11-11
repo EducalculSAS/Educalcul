@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import ThemeToggle from "@/components/ThemeToggle";
 import ReplayTourCard from "@/components/tour/ReplayTourCard";
@@ -7,11 +8,7 @@ import { AccessibilityCard } from "@/components/AccessibilityPanel";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useRef, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import {
-  User, Trophy, Shield, School, BookOpen, Mail,
-  CheckCircle, AlertCircle, Trash2,
-  Camera, Bell, Brain, Gamepad2, Volume2,
-} from "lucide-react";
+import { Trophy, Shield, School, BookOpen, Mail, CheckCircle, AlertCircle, Trash2, Camera, Brain, Gamepad2 } from "lucide-react";
 import { getNameColor } from "@/lib/badgeStyles";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -194,7 +191,7 @@ export default function ChildProfileSettings({
         {/* ── Infos personnelles ── */}
         <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
           <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-            <User className="w-5 h-5 text-[var(--greek-gold)]" />
+            <Emblem3D kind="profile" size={28} float={false} />
             Informations personnelles
           </h2>
           <div className="grid sm:grid-cols-2 gap-4">
@@ -223,7 +220,7 @@ export default function ChildProfileSettings({
           {/* ── Comptes liés ── */}
           <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
             <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-              <Mail className="w-5 h-5 text-[var(--greek-gold)]" />
+              <Emblem3D kind="mail" size={28} float={false} />
               Comptes liés
             </h2>
             <div className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.2)" }}>
@@ -250,7 +247,7 @@ export default function ChildProfileSettings({
           {/* ── Notifications ── */}
           <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
             <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-              <Bell className="w-5 h-5 text-[var(--greek-gold)]" />
+              <Emblem3D kind="bell" size={28} float={false} />
               Notifications
             </h2>
             <div className="space-y-4">
@@ -285,7 +282,7 @@ export default function ChildProfileSettings({
         {/* ── Voix de Calia en classe ── */}
         <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
           <h2 className="text-lg font-bold mb-2 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-            <Volume2 className="w-5 h-5 text-[var(--greek-gold)]" />
+            <Emblem3D kind="speaker" size={28} float={false} />
             Voix de Calia en classe
           </h2>
           <p className="text-xs mb-4" style={{ color: "var(--text-muted)" }}>

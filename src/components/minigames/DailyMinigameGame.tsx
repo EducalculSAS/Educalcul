@@ -1,241 +1,206 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { Calculator, PuzzleIcon, TrendingUp, Languages, type LucideIcon } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowRight, SkipForward } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
-import AppLoader from "@/components/AppLoader";
 import { useToast } from "@/components/Toast";
 import { renderLatexInHTML } from "@/lib/katexLoader";
-import MinigamesLeaderboard from "@/components/minigames/MinigamesLeaderboard";
-import MinigameBackButton from "@/components/minigames/MinigameBackButton";
+import { GAME_BY_KEY, scoreLabel, shareText } from "@/lib/minigames/catalog";
+import type { CorrectionLine } from "@/lib/minigames/correction";
 import type { MinigameType, AnswerType } from "@/lib/minigames/gameTypes";
+import { CorrectionList, GAME_CARD, GameFrame, GameIntro, GameResult, ProgressDots, TimerPill, useElapsed } from "@/components/minigames/GameShell";
 
-interface Question {
-  index: number;
-  prompt: string;
-}
-
+interface Question { index: number; prompt: string }
 type Answer = { index: number; value: number | string };
-type GameState = "loading" | "playing" | "finished" | "error";
+export interface DailyOutcome { score: number; maxScore: number; durationSeconds: number | null; correction: CorrectionLine[] }
 
-// Identité visuelle par jeu (icône + accent) — mêmes couleurs que les cartes
-// du catalogue (/child/minigames) pour que le jeu reste reconnaissable une
-// fois lancé, même si la mécanique (question/input) est partagée.
-const GAME_VISUALS: Record<MinigameType, { icon: LucideIcon; badgeClass: string; accent: string }> = {
-  calcul_mental: { icon: Calculator, badgeClass: "bg-yellow-100 text-[var(--greek-gold)]", accent: "var(--greek-gold)" },
-  enigmes: { icon: PuzzleIcon, badgeClass: "bg-purple-100 text-purple-600", accent: "#9333ea" },
-  suites: { icon: TrendingUp, badgeClass: "bg-teal-100 text-teal-600", accent: "#0d9488" },
-  langues: { icon: Languages, badgeClass: "bg-rose-100 text-rose-600", accent: "#e11d48" },
-};
-
-// Les routes API suivent la convention d'URL à tirets du reste du site
-// (ex. /child/minigames/calcul-mental), alors que `game_type` (la valeur en
-// base, utilisée partout ailleurs dans le code) garde l'underscore
-// ("calcul_mental") — seule la route calcul-mental a un tiret, les 3 autres
-// jeux sont des mots simples et ne changent pas.
+// Les routes API suivent la convention d'URL à tirets du reste du site (ex. /child/minigames/calcul-mental), alors que
+// `game_type` (la valeur en base) garde l'underscore ("calcul_mental").
 function apiSlug(gameType: MinigameType): string {
   return gameType.replace(/_/g, "-");
 }
 
-/** Composant générique pour tous les mini-jeux "à paliers" (calcul mental,
- * énigmes, suites, langues) — même mécanique (une question à la fois,
- * sans chrono), seule la saisie change (numérique ou texte) selon
- * `answerType` renvoyé par la route de démarrage. */
-export default function DailyMinigameGame({ gameType }: { gameType: MinigameType }) {
-  const { error: toastError, success: toastSuccess } = useToast();
-  const [state, setState] = useState<GameState>("loading");
+/**
+ * Jeux « à fiche du jour » (calcul mental, énigmes, suites, langues) : même déroulé, seule la saisie change
+ * (nombre ou texte). La partie ne démarre qu'au clic sur « Commencer » : ouvrir la page ne consomme rien.
+ * Si la fiche du jour est déjà faite, la page s'ouvre directement sur le résultat et sa correction.
+ */
+export default function DailyMinigameGame({ gameType, day, initialStreak, initialResult }: {
+  gameType: MinigameType;
+  /** Jour de la fiche (AAAA-MM-JJ). */
+  day: string;
+  initialStreak: number;
+  initialResult: DailyOutcome | null;
+}) {
+  const game = GAME_BY_KEY[gameType];
+  const { error: toastError } = useToast();
+  const [phase, setPhase] = useState<"intro" | "playing" | "finished">(initialResult ? "finished" : "intro");
+  const [starting, setStarting] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [startError, setStartError] = useState<string | null>(null);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
   const [answerType, setAnswerType] = useState<AnswerType>("number");
+  const [fullSheet, setFullSheet] = useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [, setAnswers] = useState<Answer[]>([]);
   const [inputValue, setInputValue] = useState("");
-  const [result, setResult] = useState<{ score: number; maxScore: number } | null>(null);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
-  const startedAt = useRef<number>(0);
+  const [inputError, setInputError] = useState<string | null>(null);
+  const [result, setResult] = useState<DailyOutcome | null>(initialResult);
+  // La série inclut déjà aujourd'hui quand la fiche était faite à l'arrivée ; sinon elle gagne un jour à la fin.
+  const [streak, setStreak] = useState(initialStreak);
+  const [startedAt, setStartedAt] = useState(0);
   const answersRef = useRef<Answer[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const elapsed = useElapsed(startedAt, phase === "playing");
 
   const startGame = async () => {
-    setState("loading");
-    setResult(null);
-    setAnswers([]);
-    answersRef.current = [];
-    setCurrentIndex(0);
-    setInputValue("");
+    setStarting(true);
+    setStartError(null);
     try {
       const res = await fetch(`/api/child/minigames/${apiSlug(gameType)}/start`, { method: "POST" });
       const data = await res.json();
-      if (!res.ok) {
-        setErrorMsg(data.error || "Impossible de démarrer la partie.");
-        setState("error");
-        return;
-      }
+      if (!res.ok) { setStartError(data.error || "Impossible de démarrer la partie."); return; }
+      answersRef.current = [];
       setSessionId(data.sessionId);
       setQuestions(data.questions);
       setAnswerType(data.answerType || "number");
-      startedAt.current = Date.now();
-      setState("playing");
+      setFullSheet(data.isPremium !== false);
+      setCurrentIndex(0);
+      setInputValue("");
+      setStartedAt(Date.now());
+      setPhase("playing");
     } catch {
-      setErrorMsg("Erreur réseau.");
-      setState("error");
+      setStartError("Connexion interrompue. Vérifie ta connexion puis réessaie.");
+    } finally {
+      setStarting(false);
     }
   };
 
-  // startGame() n'est pas idempotent (chaque appel decompte une partie sur
-  // le quota quotidien cote serveur) — sans ce garde, le double montage de
-  // React StrictMode en dev declenche deux POST /start pour une seule partie
-  // reellement jouee, epuisant le quota deux fois plus vite.
-  const startedForRef = useRef<MinigameType | null>(null);
-  useEffect(() => {
-    if (startedForRef.current === gameType) return;
-    startedForRef.current = gameType;
-    startGame();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameType]);
-
   const finishGame = async (finalAnswers: Answer[]) => {
     if (!sessionId) return;
-    const durationSeconds = Math.round((Date.now() - startedAt.current) / 1000);
+    setSubmitting(true);
     try {
       const res = await fetch(`/api/child/minigames/${apiSlug(gameType)}/${sessionId}/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ answers: finalAnswers, durationSeconds }),
+        body: JSON.stringify({ answers: finalAnswers, durationSeconds: Math.round((Date.now() - startedAt) / 1000) }),
       });
       const data = await res.json();
-      if (!res.ok) {
-        toastError(data.error || "Impossible d'enregistrer la partie.");
-        return;
-      }
-      setResult({ score: data.score, maxScore: data.maxScore });
-      setState("finished");
-      if (data.score > 0) toastSuccess(`${data.score}/${data.maxScore} bonnes réponses !`);
+      if (!res.ok) { toastError(data.error || "Impossible d'enregistrer la partie."); return; }
+      setResult({ score: data.score, maxScore: data.maxScore, durationSeconds: data.durationSeconds ?? null, correction: data.correction || [] });
+      setStreak((s) => s + 1);
+      setSessionId(null); // partie close : le retour n'a plus rien à annuler
+      setPhase("finished");
     } catch {
-      toastError("Erreur réseau.");
+      toastError("Connexion interrompue : ta partie n'est pas enregistrée. Réessaie.");
+    } finally {
+      setSubmitting(false);
     }
   };
 
   const goToNext = (value: number | string | null) => {
     const next = value === null ? answersRef.current : [...answersRef.current, { index: currentIndex, value }];
     answersRef.current = next;
-    setAnswers(next);
     setInputValue("");
+    setInputError(null);
     if (currentIndex + 1 >= questions.length) {
       finishGame(next);
     } else {
       setCurrentIndex((i) => i + 1);
+      inputRef.current?.focus();
     }
   };
 
-  const handleSubmitAnswer = () => {
-    if (inputValue.trim() === "") {
-      toastError(answerType === "number" ? "Entre un nombre." : "Entre une réponse.");
-      return;
-    }
+  const validate = () => {
+    const raw = inputValue.trim();
+    if (raw === "") { setInputError(answerType === "number" ? "Écris un nombre, ou passe la question." : "Écris une réponse, ou passe la question."); return; }
     if (answerType === "number") {
-      const value = Number(inputValue);
-      if (!Number.isFinite(value)) {
-        toastError("Entre un nombre.");
-        return;
-      }
+      const value = Number(raw.replace(",", "."));
+      if (!Number.isFinite(value)) { setInputError("Ce n'est pas un nombre."); return; }
       goToNext(value);
     } else {
-      goToNext(inputValue);
+      goToNext(raw);
     }
   };
 
-  if (state === "loading") {
+  if (phase === "finished" && result) {
+    const perfect = result.score === result.maxScore && result.maxScore > 0;
     return (
-      <>
-        <MinigameBackButton sessionId={sessionId} />
-        <AppLoader />
-      </>
+      <GameFrame game={game} sessionId={null}>
+        <GameResult
+          game={game}
+          tone={result.score > 0 ? "win" : "neutral"}
+          title={perfect ? "Sans faute !" : result.score > 0 ? "Fiche terminée" : "Fiche terminée, on retente demain"}
+          subtitle={perfect ? "Toutes les réponses sont justes." : "Regarde la correction juste en dessous."}
+          score={scoreLabel(game, result.score, result.maxScore)}
+          durationSeconds={result.durationSeconds}
+          streak={streak}
+          share={shareText(game, { date: day, score: result.score, max: result.maxScore, marks: result.correction.map((l) => l.correct), durationSeconds: result.durationSeconds, streak })}
+        >
+          <CorrectionList lines={result.correction} />
+        </GameResult>
+      </GameFrame>
     );
   }
 
-  if (state === "error") {
-    const alreadyPlayedToday = errorMsg?.includes("déjà fait ce mini-jeu aujourd'hui");
+  if (phase === "intro") {
     return (
-      <>
-        <MinigameBackButton sessionId={sessionId} />
-        <div className="max-w-md mx-auto text-center py-20 px-4">
-          <p className="text-[var(--text-muted)] mb-4">{errorMsg}</p>
-          {!alreadyPlayedToday && (
-            <GlassButton onClick={startGame} variant="navy">Réessayer</GlassButton>
-          )}
-          {alreadyPlayedToday && (
-            <div className="mt-8 text-left">
-              <MinigamesLeaderboard gameType={gameType} />
-            </div>
-          )}
-        </div>
-      </>
-    );
-  }
-
-  const { icon: GameIcon, badgeClass, accent } = GAME_VISUALS[gameType];
-
-  if (state === "finished" && result) {
-    return (
-      <>
-        <MinigameBackButton sessionId={sessionId} />
-        <div className="max-w-md mx-auto text-center py-16 px-4">
-          <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4 ${badgeClass}`}>
-            <GameIcon className="w-7 h-7" />
-          </div>
-          <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--greek-blue)] mb-3">
-            Partie terminée !
-          </h1>
-          <p className="text-lg mb-6">
-            Score :{" "}
-            <span className="font-bold" style={{ color: "var(--greek-gold)" }}>
-              {result.score} / {result.maxScore}
-            </span>
-          </p>
-          <p className="text-sm text-[var(--text-muted)] mb-8">À demain pour une nouvelle fiche !</p>
-          <div className="text-left">
-            <MinigamesLeaderboard gameType={gameType} />
-          </div>
-        </div>
-      </>
+      <GameFrame game={game} sessionId={null}>
+        <GameIntro
+          game={game}
+          streak={streak}
+          facts={["Une fiche par jour", "Jusqu'à 5 questions", "Sans limite de temps"]}
+          onStart={startGame}
+          starting={starting}
+          error={startError}
+        />
+      </GameFrame>
     );
   }
 
   const question = questions[currentIndex];
+  const last = currentIndex + 1 >= questions.length;
 
   return (
-    <>
-      <MinigameBackButton sessionId={sessionId} />
-      <div className="max-w-md mx-auto py-16 px-4 text-center">
-        <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-5 ${badgeClass}`}>
-          <GameIcon className="w-6 h-6" />
-        </div>
-
-        <div className="mb-6 text-sm text-[var(--text-muted)]">
-          <span>Question {currentIndex + 1} / {questions.length}</span>
-        </div>
+    <GameFrame game={game} sessionId={sessionId} right={<TimerPill seconds={elapsed} />}>
+      <div className={GAME_CARD}>
+        <ProgressDots total={questions.length} current={currentIndex} />
+        <p className="text-center text-xs font-semibold uppercase tracking-widest text-gray-500 mt-4">Question {currentIndex + 1} sur {questions.length}</p>
 
         <div
-          className="font-[family-name:var(--font-display)] text-xl font-bold text-[var(--greek-blue)] mb-8"
+          className="font-[family-name:var(--font-display)] text-xl md:text-2xl font-bold text-[var(--greek-blue)] text-center my-8 [overflow-wrap:anywhere]"
           dangerouslySetInnerHTML={{ __html: renderLatexInHTML(question?.prompt || "") }}
         />
 
-        <input
-          type={answerType === "number" ? "number" : "text"}
-          inputMode={answerType === "number" ? "decimal" : "text"}
-          autoFocus
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && handleSubmitAnswer()}
-          className="w-full text-center text-2xl font-bold py-3 px-4 rounded-xl border-2 mb-6 outline-none"
-          style={{ borderColor: accent, color: "var(--greek-blue)" }}
-          placeholder="?"
-        />
-
-        <GlassButton onClick={handleSubmitAnswer} variant="gold" fullWidth>
-          Valider
-        </GlassButton>
+        <form onSubmit={(e) => { e.preventDefault(); if (!submitting) validate(); }} className="max-w-sm mx-auto">
+          <label htmlFor="minigame-answer" className="sr-only">Ta réponse</label>
+          <input
+            id="minigame-answer"
+            ref={inputRef}
+            type="text"
+            inputMode={answerType === "number" ? "decimal" : "text"}
+            autoComplete="off"
+            autoFocus
+            value={inputValue}
+            onChange={(e) => { setInputValue(e.target.value); setInputError(null); }}
+            aria-invalid={!!inputError}
+            className={`w-full text-center text-2xl font-bold py-3 px-4 rounded-2xl border-2 bg-[var(--greek-cream)]/40 text-[var(--greek-blue)] outline-none transition-colors focus:border-[var(--greek-blue)] ${inputError ? "border-red-400" : "border-[rgba(197,161,72,0.5)]"}`}
+            placeholder="Ta réponse"
+          />
+          <p className="h-5 mt-1 text-center text-xs text-red-600" role="alert">{inputError}</p>
+          <div className="flex items-center justify-between gap-3 mt-3">
+            <GlassButton type="button" onClick={() => goToNext(null)} variant="ghost" size="sm" disabled={submitting}>
+              <SkipForward className="w-4 h-4" /> Passer
+            </GlassButton>
+            <GlassButton type="submit" variant="navy" disabled={submitting}>
+              {submitting ? "Correction…" : last ? "Terminer" : "Valider"} <ArrowRight className="w-4 h-4" />
+            </GlassButton>
+          </div>
+        </form>
       </div>
-    </>
+      {!fullSheet && (
+        <p className="mt-4 text-center text-xs text-gray-500">Ta formule donne accès au début de la fiche. La fiche complète fait partie des formules Solo et Family.</p>
+      )}
+    </GameFrame>
   );
 }

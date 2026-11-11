@@ -1,3 +1,4 @@
+import StateScreen from "@/components/StateScreen";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -19,11 +20,9 @@ export default async function EditChildPage({ params }: { params: Promise<{ id: 
 
   if (!childData) {
     return (
-      <div className="container mx-auto px-4 py-8 max-w-4xl pt-20">
-        <div className="bg-red-50 text-red-600 p-4 rounded-lg flex items-center border border-red-200">
-          Enfant introuvable ou non autorisé.
-        </div>
-      </div>
+      <StateScreen emblem="family" title="Enfant introuvable" actions={[{ label: "Mes enfants", href: "/parent/children" }]}>
+        Ce compte n&apos;existe pas ou n&apos;est pas rattaché au vôtre.
+      </StateScreen>
     );
   }
 

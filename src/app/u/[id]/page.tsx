@@ -1,11 +1,13 @@
+import Emblem3D from "@/components/Emblem3D";
 import { publicAuthor } from "@/lib/forum";
-import { Trophy } from "lucide-react";
+
 import BadgeEmblem from "@/components/BadgeEmblem";
 import { badgeTiers } from "@/lib/badgeTiers";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getNameColor } from "@/lib/badgeStyles";
 import { ADMIN_COLOR } from "@/lib/cosmetics/catalog";
 import Navbar from "@/components/Navbar";
+import StateScreen from "@/components/StateScreen";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ProfileHeaderActions from "@/components/profile/ProfileHeaderActions";
 import { redirect } from "next/navigation";
@@ -25,7 +27,14 @@ export default async function PublicProfilePage({
   // qui se suivent) avec prénom, nom, niveau et avatar.
   if (!viewer) redirect("/auth/connexion");
   if (!/^\d{1,12}$/.test(id)) {
-    return <div className="p-8 text-center text-gray-500">Profil introuvable.</div>;
+    return (
+      <div className="min-h-screen bg-[var(--greek-cream)]">
+        <Navbar />
+        <StateScreen title="Profil introuvable" actions={[{ label: "Retour au tableau de bord", href: "/dashboard" }]}>
+          Ce profil n&apos;existe pas ou n&apos;est plus visible.
+        </StateScreen>
+      </div>
+    );
   }
 
   const { data: user } = await supabaseAdmin
@@ -35,7 +44,14 @@ export default async function PublicProfilePage({
     .maybeSingle();
 
   if (!user) {
-    return <div className="p-8 text-center text-gray-500">Profil introuvable.</div>;
+    return (
+      <div className="min-h-screen bg-[var(--greek-cream)]">
+        <Navbar />
+        <StateScreen title="Profil introuvable" actions={[{ label: "Retour au tableau de bord", href: "/dashboard" }]}>
+          Ce profil n&apos;existe pas ou n&apos;est plus visible.
+        </StateScreen>
+      </div>
+    );
   }
 
   const [{ data: badgeRows }, { data: earnedRows }, { count: exos }, { count: quiz }, { count: cours }] = await Promise.all([
@@ -108,7 +124,7 @@ export default async function PublicProfilePage({
         {allBadges.length > 0 && (
           <section className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
             <div className="flex items-center gap-3 mb-5">
-              <Trophy className="w-5 h-5 text-[var(--greek-gold)]" />
+              <Emblem3D kind="trophy" size={28} float={false} />
               <h2 className="text-xl font-bold text-[var(--greek-blue)]">Badges obtenus ({allBadges.length})</h2>
             </div>
             <ul className="grid grid-cols-3 sm:grid-cols-4 gap-3">

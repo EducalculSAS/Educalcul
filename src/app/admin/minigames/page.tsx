@@ -1,10 +1,14 @@
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import AdminMinigamesClient from "@/components/admin/AdminMinigamesClient";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
+import { loadAdminMinigamesToday } from "@/lib/minigames/adminStats";
 
 export default async function AdminMinigamesPage() {
-  // Agrégat sur TOUTES les parties (avant : les 1000 dernières seulement).
-  const { data } = await supabaseAdmin.rpc("admin_minigame_stats");
+  const [{ data }, today] = await Promise.all([
+    // Agrégat sur TOUTES les parties (avant : les 1000 dernières seulement).
+    supabaseAdmin.rpc("admin_minigame_stats"),
+    loadAdminMinigamesToday(),
+  ]);
   const statsByType = (data ?? {}) as Record<string, { plays: number; completed: number; totalScore: number }>;
 
   return (
@@ -12,9 +16,9 @@ export default async function AdminMinigamesPage() {
       <AdminPageHeader
         iconName="gamepad-2"
         title="Mini-jeux"
-        subtitle="Mathador et calcul mental, le calcul mental se génère automatiquement chaque nuit, par palier."
+        subtitle="Fréquentation du jour, fiches générées chaque nuit par palier, et parties jouées par les élèves."
       />
-      <AdminMinigamesClient stats={statsByType} />
+      <AdminMinigamesClient stats={statsByType} today={today} />
     </div>
   );
 }

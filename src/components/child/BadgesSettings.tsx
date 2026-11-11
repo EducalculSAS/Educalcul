@@ -1,10 +1,11 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import PageHero from "@/components/PageHero";
 import LoaderDots from "@/components/LoaderDots";
 import { useMemo, useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { Trophy, Lock, CheckCircle, Star } from "lucide-react";
+import { Lock, CheckCircle } from "lucide-react";
 import BadgeEmblem, { badgeTiers } from "@/components/BadgeEmblem";
 import CosmeticsShowcase from "@/components/child/CosmeticsShowcase";
 import { normalizeBorder, normalizeColor } from "@/lib/cosmetics/catalog";
@@ -119,7 +120,7 @@ export default function BadgesSettings({
         <section className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
           <div className="flex flex-wrap items-center justify-between gap-3 mb-1">
             <div className="flex items-center gap-3">
-              <Star className="w-5 h-5 text-[var(--greek-gold)]" />
+              <Emblem3D kind="star" size={28} float={false} />
               <h2 className="text-xl font-bold text-[var(--greek-blue)]">Badges affichés sur mon profil</h2>
             </div>
             <GlassButton onClick={saveFeatured} variant="navy" size="sm" disabled={savingFeatured}>
@@ -152,7 +153,7 @@ export default function BadgesSettings({
         {/* Tous les badges */}
         <section className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
           <div className="flex items-center gap-3 mb-1">
-            <Trophy className="w-5 h-5 text-[var(--greek-gold)]" />
+            <Emblem3D kind="trophy" size={28} float={false} />
             <h2 className="text-xl font-bold text-[var(--greek-blue)]">Tous les badges</h2>
           </div>
           <p className="text-sm text-gray-500 mb-5">{earned.length} obtenu{earned.length > 1 ? "s" : ""} sur {badges.length}. Chaque catégorie a sa forme, chaque palier son métal.</p>

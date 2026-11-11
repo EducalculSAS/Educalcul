@@ -1,14 +1,15 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import Emblem3D from "@/components/Emblem3D";
+import StateScreen from "@/components/StateScreen";
 import type { Chapter } from "@/components/admin/CourseBuilder";
 import Image from "next/image";
 import { useKatexIn } from "@/lib/useKatexIn";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useState, useEffect, useRef } from "react";
-import { ArrowLeft, Play, Clock, BookOpen, AlertCircle, CheckCircle } from "lucide-react";
+import { ArrowLeft, Play, Clock, BookOpen, CheckCircle } from "lucide-react";
 import AppLoader from "@/components/AppLoader";
-import Link from "@/components/AppLink";
 import { useRouter } from "next/navigation";
 import CourseViewer from "@/components/viewers/CourseViewer";
 import { useAITutor } from "@/contexts/AITutorContext";
@@ -101,13 +102,9 @@ export default function CourseDetailClient({
 
   if (!course) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
-        <AlertCircle className="w-16 h-16 text-red-500 mb-4" />
-        <h1 className="text-2xl font-bold text-[var(--greek-blue)] mb-2">Cours introuvable</h1>
-        <Link href="/child/cours" className="text-[var(--greek-gold)] hover:underline">
-          Retour aux cours
-        </Link>
-      </div>
+      <StateScreen emblem="book" title="Cours introuvable" actions={[{ label: "Retour aux cours", href: "/child/cours" }]}>
+        Ce cours n&apos;existe pas ou n&apos;est plus disponible.
+      </StateScreen>
     );
   }
 
@@ -189,7 +186,7 @@ export default function CourseDetailClient({
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-grow">
               <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-                <BookOpen className="w-6 h-6 text-[var(--greek-gold)]" aria-hidden="true" />
+                <Emblem3D kind="book" size={32} float={false} />
                 À propos de ce cours
               </h2>
               <div className="prose max-w-none text-gray-600 leading-relaxed">

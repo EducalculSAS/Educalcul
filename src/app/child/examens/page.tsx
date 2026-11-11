@@ -1,6 +1,7 @@
+import Emblem3D from "@/components/Emblem3D";
 import Link from "@/components/AppLink";
 import { redirect } from "next/navigation";
-import { BookOpen, CalendarDays, GraduationCap, Moon, PenTool, Repeat } from "lucide-react";
+import { BookOpen, CalendarDays, Moon, PenTool, Repeat } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getChildPrefs, parisDay } from "@/lib/studentStats";
@@ -43,7 +44,7 @@ export default async function ExamensPage() {
         <div className="container mx-auto max-w-4xl relative z-10 flex flex-wrap items-center justify-between gap-6">
           <div>
             <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-display)] font-bold mb-2 flex items-center gap-3">
-              <GraduationCap className="w-8 h-8 text-[var(--greek-gold)]" /> {info.label}
+              <Emblem3D kind="cap" size={44} float={false} onDark /> {info.label}
             </h1>
             <p className="opacity-90 max-w-xl">Un parcours en 4 semaines construit avec ton programme, tes erreurs et des sujets d&apos;entraînement.</p>
           </div>

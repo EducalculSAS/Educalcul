@@ -9,7 +9,7 @@ export default function ForumText({ text, className = "" }: { text: string; clas
   const html = useMemo(() => renderUserText(text), [text]);
   return (
     <div
-      className={`whitespace-pre-wrap break-words leading-relaxed text-[15px] text-gray-700 ${className}`}
+      className={`whitespace-pre-wrap [overflow-wrap:anywhere] leading-relaxed text-[15px] text-gray-700 ${className}`}
       dangerouslySetInnerHTML={{ __html: html }}
     />
   );

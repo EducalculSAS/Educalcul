@@ -751,10 +751,10 @@ export default function CaliaSceneDemo({
 
   if (!caliaClasseAllowed) {
     return (
-      <a
-        href="/parent/subscription"
-        title="Calia en classe, l'IA qui enseigne à l'oral, réservée au plan Family"
-        aria-label="Calia en classe verrouillée, passer au plan Family"
+      <span
+        role="img"
+        title="Calia en classe (l'IA qui enseigne à l'oral) fait partie de la formule Family. Demande à tes parents !"
+        aria-label="Calia en classe n'est pas disponible sur ton compte"
         className="liquid-glass-btn calia-glass calia-glass-ring backdrop-blur-[32px] backdrop-saturate-[1.4] relative w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0"
         style={{ opacity: 0.7 }}
       >
@@ -764,7 +764,7 @@ export default function CaliaSceneDemo({
         >
           <Lock className="w-2.5 h-2.5" style={{ color: "var(--greek-blue)" }} />
         </span>
-      </a>
+      </span>
     );
   }
 

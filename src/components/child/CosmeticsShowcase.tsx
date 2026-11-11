@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useMemo, useState } from "react";
 import { CheckCircle, Crown, Flag, Lock, Sparkles } from "lucide-react";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -135,7 +136,7 @@ export default function CosmeticsShowcase({
   return (
     <section className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
       <div className="flex items-center gap-3 mb-1">
-        <Sparkles className="w-5 h-5 text-[var(--greek-gold)]" />
+        <Emblem3D kind="star" size={28} float={false} />
         <h2 className="text-xl font-bold text-[var(--greek-blue)]">Contours et titres</h2>
       </div>
       <p className="text-sm text-gray-500 mb-6">

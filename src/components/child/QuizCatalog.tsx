@@ -143,10 +143,10 @@ export default function QuizCatalog({
           </p>
           <div className="mt-auto">
             {isLocked ? (
-              <GlassButton href="/parent/subscription" variant="ghost" fullWidth size="sm">
-                <Lock className="w-4 h-4" />
-                Débloquer : Plan supérieur
-              </GlassButton>
+              <p className="flex items-center justify-center gap-2 rounded-full border border-[rgba(197,161,72,0.25)] bg-[var(--greek-cream)]/60 px-4 py-2 text-xs font-semibold text-gray-500 text-center">
+                <Lock className="w-4 h-4 shrink-0" />
+                Dans une autre formule. Demande à tes parents !
+              </p>
             ) : (
               <GlassButton
                 href={`/child/quiz/${quiz.id}`}

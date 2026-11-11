@@ -1,5 +1,7 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
+import StateScreen from "@/components/StateScreen";
 import type { AttemptSummary } from "@/types/attempts";
 import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef } from "react";
@@ -8,7 +10,6 @@ import {
   Play,
   Clock,
   Trophy,
-  AlertCircle,
   CheckCircle,
   BookOpen,
   Eye,
@@ -16,7 +17,6 @@ import {
 import QuizViewer, { type QuizViewerProps } from "@/components/viewers/QuizViewer";
 import AppLoader from "@/components/AppLoader";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
-import Link from "@/components/AppLink";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
@@ -80,13 +80,9 @@ export default function QuizDetailClient({
 
   if (!quiz) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
-        <AlertCircle className="w-16 h-16 text-red-500 mb-4" />
-        <h1 className="text-2xl font-bold text-[var(--greek-blue)] mb-2">Quiz introuvable</h1>
-        <Link href="/child/quiz" className="text-[var(--greek-gold)] hover:underline">
-          Retour aux quiz
-        </Link>
-      </div>
+      <StateScreen emblem="quiz" title="Quiz introuvable" actions={[{ label: "Retour aux quiz", href: "/child/quiz" }]}>
+        Ce quiz n&apos;existe pas ou n&apos;est plus disponible.
+      </StateScreen>
     );
   }
 
@@ -172,7 +168,7 @@ export default function QuizDetailClient({
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-grow">
               <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-                <Trophy className="w-6 h-6 text-[var(--greek-gold)]" />
+                <Emblem3D kind="quiz" size={32} float={false} />
                 Défie tes connaissances
               </h2>
               <div className="prose max-w-none text-gray-600 leading-relaxed mb-6">

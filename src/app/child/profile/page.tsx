@@ -1,3 +1,4 @@
+import StateScreen from "@/components/StateScreen";
 import { redirect } from "next/navigation";
 import { realEmail } from "@/lib/childEmail";
 import PageHero from "@/components/PageHero";
@@ -25,7 +26,11 @@ export default async function ChildProfilePage() {
     .eq("id", authUser.id)
     .maybeSingle();
   if (!userData) {
-    return <div className="min-h-screen flex items-center justify-center"><p>Profil introuvable</p></div>;
+    return (
+      <StateScreen emblem="profile" title="Profil introuvable" actions={[{ label: "Retour au tableau de bord", href: "/child/dashboard" }]}>
+        Nous n&apos;avons pas retrouvé ton profil. Reconnecte-toi, ou demande à ton parent de vérifier ton compte.
+      </StateScreen>
+    );
   }
   // Un enfant sans e-mail a une adresse technique côté Auth : elle ne s'affiche jamais.
   if (!userData.email && realEmail(au?.email)) userData.email = realEmail(au?.email);

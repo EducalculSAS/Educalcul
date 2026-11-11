@@ -9,7 +9,9 @@ import { useId } from "react";
  */
 export type EmblemKind =
   | "trophy" | "book" | "calculator" | "family" | "mail" | "compass" | "moon"
-  | "pencil" | "quiz" | "gamepad" | "chat" | "crown" | "profile" | "calendar";
+  | "pencil" | "quiz" | "gamepad" | "chat" | "crown" | "profile" | "calendar"
+  | "target" | "puzzle" | "stairs" | "globe" | "blocks" | "star" | "flag"
+  | "gift" | "clock" | "bell" | "speaker" | "cap";
 
 interface Props {
   kind: EmblemKind;
@@ -310,6 +312,165 @@ export default function Emblem3D({ kind, size = 96, className = "", float = true
                   ? <g key={`${r}-${c}`}><rect x={x - 1} y={y - 0.2} width="11.5" height="9.6" rx="3" fill={g("goldDark")} /><rect x={x - 1} y={y - 1.6} width="11.5" height="9.6" rx="3" fill={g("gold")} /></g>
                   : <rect key={`${r}-${c}`} x={x} y={y} width="9.5" height="7" rx="2.2" fill="#d9c797" />;
               }))}
+            </>
+          )}
+
+          {kind === "target" && (
+            <>
+              <circle cx="45" cy="54" r="34" fill="#c9b27c" />
+              <circle cx="45" cy="50" r="34" fill={g("cream")} />
+              <circle cx="45" cy="50" r="26" fill={g("ballNavy")} />
+              <circle cx="45" cy="50" r="17.5" fill={g("cream")} />
+              <circle cx="45" cy="50" r="9" fill={g("ball")} />
+              <path d="M21 34 C26 25 34 20 44 19" fill="none" stroke="#fff" strokeOpacity="0.55" strokeWidth="2.6" strokeLinecap="round" />
+              {/* fléchette plantée au centre */}
+              <path d="M47 48 L80 15" stroke="#0f1e3a" strokeWidth="4" strokeLinecap="round" />
+              <path d="M47 48 L80 15" stroke="#7d95c9" strokeWidth="1.4" strokeLinecap="round" opacity="0.7" />
+              <path d="M73 12 L84 8 L88 12 L84 23 L77 19 Z" fill={g("gold")} stroke="#a8842c" strokeWidth="0.8" strokeLinejoin="round" />
+            </>
+          )}
+
+          {kind === "puzzle" && (
+            <>
+              <path d="M18 34 H36 C33.5 27 36 18 45 18 C54 18 56.5 27 54 34 H70 V50 C77 47.5 86 50 86 59 C86 68 77 70.5 70 68 V82 H18 Z" fill={g("goldDark")} transform="translate(0 4)" />
+              <path d="M18 34 H36 C33.5 27 36 18 45 18 C54 18 56.5 27 54 34 H70 V50 C77 47.5 86 50 86 59 C86 68 77 70.5 70 68 V82 H18 Z" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" strokeLinejoin="round" />
+              <path d="M24 40 H44" stroke="#fff" strokeOpacity="0.6" strokeWidth="3" strokeLinecap="round" />
+              <path d="M39.5 25 C40.5 22.5 42.5 21.5 45 21.5" fill="none" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.4" strokeLinecap="round" />
+              {/* point d'interrogation gravé */}
+              <path d="M36 54 C36 48.5 39.5 46 44 46 C48.5 46 52 48.5 52 53 C52 58 44 58.5 44 64.5" fill="none" stroke={g("navy")} strokeWidth="5" strokeLinecap="round" />
+              <circle cx="44" cy="73" r="3.2" fill={g("ballNavy")} />
+            </>
+          )}
+
+          {kind === "stairs" && (
+            <>
+              {[[12, 62, "cream"], [31, 49, "cream"], [50, 35, "gold"], [69, 19, "gold"]].map(([x, y, fill]) => (
+                <g key={x as number}>
+                  <rect x={(x as number) + 3} y={(y as number) + 3} width="15" height={81 - (y as number)} rx="4" fill={fill === "gold" ? g("goldDark") : "#c9b27c"} />
+                  <rect x={x as number} y={y as number} width="15" height={81 - (y as number)} rx="4" fill={g(fill as string)} />
+                  <rect x={(x as number) + 2.5} y={(y as number) + 3} width="3" height={Math.max(6, 70 - (y as number))} rx="1.5" fill="#fff" opacity="0.5" />
+                </g>
+              ))}
+              {/* la suite qui monte */}
+              <path d="M19.5 50 L38.5 37 L57.5 23 L74 11" fill="none" stroke={g("navy")} strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+              {[[19.5, 50], [38.5, 37], [57.5, 23]].map(([cx, cy]) => <circle key={cx} cx={cx} cy={cy} r="4.4" fill={g("ballNavy")} stroke="#f8e3a0" strokeWidth="1" />)}
+              <path d="M66 9 L78 8 L76 20 Z" fill="#2a3f6b" stroke="#2a3f6b" strokeWidth="2" strokeLinejoin="round" />
+            </>
+          )}
+
+          {kind === "globe" && (
+            <>
+              <circle cx="42" cy="56" r="30" fill={g("navyDark")} />
+              <circle cx="42" cy="52" r="30" fill={g("ballNavy")} />
+              <g fill="none" stroke="#f8e3a0" strokeWidth="1.8" opacity="0.75">
+                <ellipse cx="42" cy="52" rx="12.5" ry="30" /><path d="M12 52 H72" /><path d="M17 37 C30 42 54 42 67 37" /><path d="M17 67 C30 62 54 62 67 67" />
+              </g>
+              <path d="M21 38 C25 30 32 25 41 24" fill="none" stroke="#fff" strokeOpacity="0.5" strokeWidth="2.8" strokeLinecap="round" />
+              {/* bulle de langue */}
+              <path d="M56 9 H82 C86 9 89 12 89 16 V30 C89 34 86 37 82 37 H70 L61 45 V37 H56 C52 37 49 34 49 30 V16 C49 12 52 9 56 9 Z" fill="#c9b27c" transform="translate(0 3)" />
+              <path d="M56 9 H82 C86 9 89 12 89 16 V30 C89 34 86 37 82 37 H70 L61 45 V37 H56 C52 37 49 34 49 30 V16 C49 12 52 9 56 9 Z" fill={g("cream")} />
+              <path d="M59 30 L64.5 16 L70 30 M61 25.5 H68" fill="none" stroke="#2a3f6b" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M75 19 H82 M75 25 H80" stroke={g("gold")} strokeWidth="3" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "blocks" && (
+            <>
+              {/* trois blocs de code emboîtés */}
+              <rect x="12" y="19" width="58" height="18" rx="5" fill={g("goldDark")} /><rect x="12" y="15" width="58" height="18" rx="5" fill={g("gold")} />
+              <path d="M18 21 H44" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.6" strokeLinecap="round" /><circle cx="60" cy="24" r="3.4" fill={g("ballNavy")} />
+              <rect x="26" y="43" width="58" height="18" rx="5" fill={g("navyDark")} /><rect x="26" y="39" width="58" height="18" rx="5" fill={g("navy")} stroke="#dcb650" strokeOpacity="0.5" strokeWidth="1" />
+              <path d="M33 48 H56" stroke="#f8e3a0" strokeWidth="2.8" strokeLinecap="round" /><path d="M62 48 H74" stroke="#7d95c9" strokeWidth="2.8" strokeLinecap="round" />
+              <rect x="12" y="67" width="46" height="18" rx="5" fill="#c9b27c" /><rect x="12" y="63" width="46" height="18" rx="5" fill={g("cream")} />
+              <path d="M19 72 H38" stroke="#b9a36c" strokeWidth="2.8" strokeLinecap="round" /><circle cx="48" cy="72" r="3.4" fill={g("ball")} />
+              <path d="M16 33 V63" stroke="#c9b27c" strokeWidth="5" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "star" && (
+            <>
+              <path d="M48 10 L59 34 L85 37 L66 55 L71 81 L48 68 L25 81 L30 55 L11 37 L37 34 Z" fill={g("goldDark")} transform="translate(0 4)" strokeLinejoin="round" stroke="#7c5f1a" strokeWidth="3" />
+              <path d="M48 10 L59 34 L85 37 L66 55 L71 81 L48 68 L25 81 L30 55 L11 37 L37 34 Z" fill={g("gold")} strokeLinejoin="round" stroke="#dcb650" strokeWidth="3" />
+              <path d="M48 10 L48 68 L25 81 L30 55 L11 37 L37 34 Z" fill="#fff" opacity="0.22" />
+              <path d="M40 31 L45.5 19" stroke="#fff" strokeOpacity="0.7" strokeWidth="3" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "flag" && (
+            <>
+              <rect x="22" y="12" width="6" height="72" rx="3" fill={g("navyDark")} />
+              <rect x="20" y="10" width="6" height="72" rx="3" fill={g("navy")} />
+              <path d="M26 16 C40 9 52 25 78 15 V49 C52 59 40 43 26 50 Z" fill={g("goldDark")} transform="translate(0 3.5)" />
+              <path d="M26 16 C40 9 52 25 78 15 V49 C52 59 40 43 26 50 Z" fill={g("gold")} />
+              <path d="M31 20 C40 16 47 22 56 23.5" fill="none" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.8" strokeLinecap="round" />
+              <circle cx="23" cy="10" r="5" fill={g("ball")} />
+              <rect x="12" y="80" width="22" height="6" rx="3" fill={g("navy")} />
+            </>
+          )}
+
+          {kind === "gift" && (
+            <>
+              <rect x="18" y="44" width="60" height="40" rx="6" fill={g("goldDark")} />
+              <rect x="18" y="40" width="60" height="40" rx="6" fill={g("gold")} />
+              <rect x="13" y="32" width="70" height="15" rx="5" fill={g("goldDark")} />
+              <rect x="13" y="28" width="70" height="15" rx="5" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" />
+              <path d="M19 33 H38" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.6" strokeLinecap="round" />
+              {/* ruban */}
+              <rect x="42.5" y="28" width="11" height="52" fill={g("navy")} />
+              <path d="M48 28 C40 12 22 12 26 22 C28 28 40 28 48 28 Z" fill={g("navy")} stroke="#7d95c9" strokeWidth="1" />
+              <path d="M48 28 C56 12 74 12 70 22 C68 28 56 28 48 28 Z" fill={g("navy")} stroke="#7d95c9" strokeWidth="1" />
+              <circle cx="48" cy="27" r="4.5" fill={g("ballNavy")} />
+            </>
+          )}
+
+          {kind === "clock" && (
+            <>
+              <circle cx="48" cy="50" r="34" fill={g("goldDark")} />
+              <circle cx="48" cy="46" r="34" fill={g("gold")} />
+              <circle cx="48" cy="46" r="26.5" fill="#c9b27c" />
+              <circle cx="48" cy="46" r="25" fill={g("cream")} />
+              <g stroke="#b9a36c" strokeWidth="2.2" strokeLinecap="round">
+                <path d="M48 24.5 V28.5" /><path d="M48 63.5 V67.5" /><path d="M26.5 46 H30.5" /><path d="M65.5 46 H69.5" />
+              </g>
+              <path d="M48 46 V31" stroke="#0f1e3a" strokeWidth="4" strokeLinecap="round" />
+              <path d="M48 46 L59 52.5" stroke="#2a3f6b" strokeWidth="4" strokeLinecap="round" />
+              <circle cx="48" cy="46" r="3.6" fill={g("ball")} stroke="#0f1e3a" strokeWidth="1" />
+              <path d="M22 30 C28 20 38 14.5 48 14" fill="none" stroke="#fff" strokeOpacity="0.5" strokeWidth="2.6" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "bell" && (
+            <>
+              <circle cx="48" cy="77" r="7" fill={g("ballNavy")} />
+              <path d="M48 15 C33 15 27 27 27 41 V55 L18 68 H78 L69 55 V41 C69 27 63 15 48 15 Z" fill={g("goldDark")} transform="translate(0 4)" />
+              <path d="M48 15 C33 15 27 27 27 41 V55 L18 68 H78 L69 55 V41 C69 27 63 15 48 15 Z" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" strokeLinejoin="round" />
+              <circle cx="48" cy="13" r="5" fill={g("ball")} />
+              <path d="M35 28 C33 33 32.5 38 32.5 44 V52" fill="none" stroke="#fff" strokeOpacity="0.6" strokeWidth="3.2" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "speaker" && (
+            <>
+              <path d="M14 38 H29 L49 22 V74 L29 58 H14 Z" fill={g("navyDark")} transform="translate(0 4)" strokeLinejoin="round" stroke="#060d1c" strokeWidth="3" />
+              <path d="M14 38 H29 L49 22 V74 L29 58 H14 Z" fill={g("navy")} strokeLinejoin="round" stroke="#3a5288" strokeWidth="3" />
+              <path d="M20 43 H27" stroke="#fff" strokeOpacity="0.35" strokeWidth="2.6" strokeLinecap="round" />
+              <path d="M59 37 C65 43 65 53 59 59" fill="none" stroke={g("goldDark")} strokeWidth="6" strokeLinecap="round" transform="translate(0 2)" />
+              <path d="M59 37 C65 43 65 53 59 59" fill="none" stroke={g("gold")} strokeWidth="6" strokeLinecap="round" />
+              <path d="M69 27 C81 39 81 57 69 69" fill="none" stroke={g("goldDark")} strokeWidth="6" strokeLinecap="round" transform="translate(0 2)" />
+              <path d="M69 27 C81 39 81 57 69 69" fill="none" stroke={g("gold")} strokeWidth="6" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "cap" && (
+            <>
+              <path d="M26 46 V63 C26 73 70 73 70 63 V46 Z" fill={g("navyDark")} />
+              <path d="M48 20 L90 38 L48 56 L6 38 Z" fill={g("navyDark")} transform="translate(0 4)" />
+              <path d="M48 20 L90 38 L48 56 L6 38 Z" fill={g("navy")} stroke="#dcb650" strokeOpacity="0.55" strokeWidth="1.2" strokeLinejoin="round" />
+              <path d="M24 35 L46 25.5" stroke="#fff" strokeOpacity="0.3" strokeWidth="2.6" strokeLinecap="round" />
+              {/* pompon */}
+              <path d="M48 38 L78 43 V60" fill="none" stroke={g("gold")} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              <circle cx="48" cy="38" r="4" fill={g("ball")} />
+              <path d="M74 58 H82 L84 74 H72 Z" fill={g("gold")} />
             </>
           )}
         </g>

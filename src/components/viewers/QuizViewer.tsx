@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect, useRef } from "react";
@@ -567,7 +568,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                 {/* Left */}
                 <div className="flex-grow">
                   <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-                    <Trophy className="w-6 h-6 text-[var(--greek-gold)]" />
+                    <Emblem3D kind="trophy" size={32} float={false} />
                     Félicitations !
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-6">

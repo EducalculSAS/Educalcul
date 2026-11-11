@@ -143,7 +143,7 @@ export default function ForumApp({ role }: { role: ForumRole }) {
     <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[260px_minmax(0,1fr)] gap-6 items-start">
       {/* ── Catégories ── */}
       <aside className="min-w-0 lg:sticky lg:top-[calc(var(--nav-h)+1rem)]">
-        <div className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] shadow-sm p-3">
+        <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-3">
           <div className="flex items-center justify-between px-2 pt-1 pb-2">
             <p className="text-xs font-bold uppercase tracking-widest text-[var(--greek-bronze)]">Catégories</p>
             {role === "admin" && (
@@ -172,7 +172,7 @@ export default function ForumApp({ role }: { role: ForumRole }) {
 
       {/* ── Sujets ── */}
       <section className="min-w-0 space-y-4">
-        <div className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] shadow-sm p-4 space-y-3">
+        <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-4 space-y-3">
           <div className="flex flex-col sm:flex-row gap-3 sm:items-center">
             <label className="relative flex-1">
               <span className="sr-only">Rechercher dans le forum</span>
@@ -227,7 +227,7 @@ export default function ForumApp({ role }: { role: ForumRole }) {
         {loading ? (
           <div className="space-y-3" aria-busy="true" aria-label="Chargement des sujets">
             {Array.from({ length: 5 }).map((_, i) => (
-              <div key={i} className="bg-white rounded-3xl border border-[rgba(197,161,72,0.2)] p-5 animate-pulse">
+              <div key={i} className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] p-5 animate-pulse">
                 <div className="h-4 w-2/3 bg-gray-100 rounded mb-3" />
                 <div className="h-3 w-full bg-gray-100 rounded mb-2" />
                 <div className="h-3 w-1/2 bg-gray-100 rounded" />
@@ -309,13 +309,13 @@ function TopicCard({
 }) {
   return (
     <article
-      className={`group bg-white rounded-3xl border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all p-5 cursor-pointer ${
-        post.is_pinned ? "border-[var(--greek-gold)]/60" : "border-[rgba(197,161,72,0.22)]"
+      className={`group bg-white rounded-[20px] border shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all p-5 cursor-pointer ${
+        post.is_pinned ? "border-[var(--greek-gold)]/60" : "border-[rgba(197,161,72,0.25)]"
       }`}
       onClick={onOpen}
     >
       <div className="flex items-start justify-between gap-3 mb-2">
-        <div className="flex items-center gap-1.5 flex-wrap">
+        <div className="flex items-center gap-1.5 flex-wrap min-w-0">
           {post.is_pinned && <StatusTag icon={Pin} label="Épinglé" tone="gold" />}
           {post.solved && <StatusTag icon={CheckCircle2} label="Résolu" tone="green" />}
           {post.is_locked && <StatusTag icon={Lock} label="Verrouillé" tone="gray" />}
@@ -323,14 +323,14 @@ function TopicCard({
         </div>
         <span className="text-xs text-[var(--text-muted)] shrink-0" title="Dernière activité">{relativeTime(post.last_activity_at)}</span>
       </div>
-      <h3 className="font-bold text-[var(--greek-blue)] text-lg leading-snug mb-1 group-hover:underline decoration-[var(--greek-gold)] underline-offset-4">
+      <h3 className="font-bold text-[var(--greek-blue)] text-lg leading-snug mb-1 line-clamp-2 [overflow-wrap:anywhere] group-hover:underline decoration-[var(--greek-gold)] underline-offset-4">
         <button type="button" onClick={(e) => { e.stopPropagation(); onOpen(); }} className="text-left">
           {post.title}
         </button>
       </h3>
-      {post.excerpt && <p className="text-sm text-[var(--text-muted)] line-clamp-2 mb-4">{post.excerpt}</p>}
+      {post.excerpt && <p className="text-sm text-[var(--text-muted)] line-clamp-2 mb-4 [overflow-wrap:anywhere]">{post.excerpt}</p>}
       <div className="flex items-center justify-between gap-3 flex-wrap" onClick={(e) => e.stopPropagation()}>
-        <AuthorLine author={post.author} date={post.created_at} viewerRole={role} returnTo={returnTo} size="xs" />
+        <AuthorLine author={post.author} date={post.created_at} viewerRole={role} returnTo={returnTo} size="sm" />
         <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
           <Stat icon={MessageCircle} value={post.comment_count} label="réponses" highlight={post.comment_count === 0 ? "Sans réponse" : undefined} />
           <Stat icon={Heart} value={post.like_count} label="j'aime" />
@@ -378,7 +378,7 @@ function EmptyState({ filter, q, onCreate }: { filter: ForumFilter; q: string; o
             ? "Aucun sujet résolu pour l'instant."
             : "Aucun sujet ici pour l'instant. Lance la discussion !";
   return (
-    <div className="bg-white rounded-3xl border border-dashed border-[rgba(197,161,72,0.4)] p-10 text-center">
+    <div className="bg-white rounded-[20px] border border-dashed border-[rgba(197,161,72,0.4)] p-10 text-center">
       <MessagesSquare className="w-10 h-10 mx-auto mb-3 text-[var(--greek-gold)]" aria-hidden="true" />
       <p className="text-[var(--text-muted)] mb-5 max-w-md mx-auto">{text}</p>
       <GlassButton variant="navy" size="sm" onClick={onCreate}>

@@ -1,4 +1,4 @@
-import { Trophy, Target } from "lucide-react";
+import { Target } from "lucide-react";
 import Link from "@/components/AppLink";
 import GlassButton from "@/components/ui/GlassButton";
 import BadgeEmblem from "@/components/BadgeEmblem";
@@ -24,7 +24,7 @@ export default function DashboardTrophies({ latest, earnedCount, totalCount, goa
     <section className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
       <div className="flex items-center justify-between gap-3 mb-1">
         <div className="flex items-center gap-3 min-w-0">
-          <Trophy className="w-5 h-5 text-[var(--greek-gold)] shrink-0" />
+          <Emblem3D kind="trophy" size={28} float={false} />
           <h2 className="text-xl font-bold text-[var(--greek-blue)]">Mes trophées</h2>
         </div>
         <GlassButton href="/child/badges" variant="outline" size="sm" className="whitespace-nowrap">Voir tout</GlassButton>

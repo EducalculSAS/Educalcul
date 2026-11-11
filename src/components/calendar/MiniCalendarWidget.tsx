@@ -1,7 +1,8 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ArrowRight, CalendarDays, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useToast } from "@/components/Toast";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -111,7 +112,7 @@ export default function MiniCalendarWidget({
   return (
     <div className="bg-white rounded-[20px] p-5 shadow-sm border border-[rgba(197,161,72,0.25)]">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="font-bold text-[var(--greek-blue)] flex items-center gap-2"><CalendarDays className="w-5 h-5 text-[var(--greek-gold)]" /> {title}</h3>
+        <h3 className="font-bold text-[var(--greek-blue)] flex items-center gap-2"><Emblem3D kind="calendar" size={28} float={false} /> {title}</h3>
         <GlassButton href={fullCalendarHref} variant="outline" size="sm">
           Ouvrir <ArrowRight className="w-3.5 h-3.5" />
         </GlassButton>

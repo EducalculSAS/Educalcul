@@ -1,5 +1,7 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
+import StateScreen from "@/components/StateScreen";
 import { isRecord, parseList } from "@/lib/validate";
 import { hintSchema } from "@/lib/schemas";
 import type { AttemptSummary } from "@/types/attempts";
@@ -13,14 +15,12 @@ import {
   Brain,
   CheckCircle,
   HelpCircle,
-  AlertCircle,
   Eye,
 } from "lucide-react";
 import ExerciseViewer, { type ExerciseViewerProps } from "@/components/viewers/ExerciseViewer";
 import AppLoader from "@/components/AppLoader";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import { passThreshold } from "@/lib/scorePercent";
-import Link from "@/components/AppLink";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
@@ -108,13 +108,9 @@ export default function ExerciseDetailClient({
 
   if (!exercise) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
-        <AlertCircle className="w-16 h-16 text-red-500 mb-4" />
-        <h1 className="text-2xl font-bold text-[var(--greek-blue)] mb-2">Exercice introuvable</h1>
-        <Link href="/child/exercises" className="text-[var(--greek-gold)] hover:underline">
-          Retour aux exercices
-        </Link>
-      </div>
+      <StateScreen emblem="pencil" title="Exercice introuvable" actions={[{ label: "Retour aux exercices", href: "/child/exercises" }]}>
+        Cet exercice n&apos;existe pas ou n&apos;est plus disponible.
+      </StateScreen>
     );
   }
 
@@ -209,7 +205,7 @@ export default function ExerciseDetailClient({
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-grow">
               <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-                <Brain className="w-6 h-6 text-[var(--greek-gold)]" />
+                <Emblem3D kind="pencil" size={32} float={false} />
                 Objectifs de l&apos;exercice
               </h2>
               <div className="prose max-w-none text-gray-600 leading-relaxed mb-6">

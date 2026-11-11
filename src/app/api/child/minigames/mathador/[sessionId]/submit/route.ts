@@ -43,7 +43,7 @@ export async function POST(
       return NextResponse.json({ error: "Cette partie est déjà terminée." }, { status: 400 });
     }
 
-    const { numbers, target } = session.content_json as { numbers: number[]; target: number };
+    const { numbers, target, maxScore } = session.content_json as { numbers: number[]; target: number; maxScore?: number };
     const abandoned = steps.length === 0;
     const result = abandoned
       ? { valid: false, score: 0, reason: "Partie abandonnée." }
@@ -54,13 +54,15 @@ export async function POST(
       .update({
         answer_json: { steps, valid: result.valid, reason: result.reason },
         score: result.score,
+        max_score: maxScore ?? null,
         duration_seconds: durationSeconds,
         status: abandoned ? "abandoned" : "completed",
         completed_at: new Date().toISOString(),
       })
       .eq("id", sessionId);
 
-    return NextResponse.json({ valid: result.valid, score: result.score, reason: result.reason });
+    // Le meilleur score possible du tirage n'est dévoilé qu'une fois la partie close.
+    return NextResponse.json({ valid: result.valid, score: result.score, reason: result.reason, maxScore: maxScore ?? null, durationSeconds, abandoned });
   } catch (err: unknown) {
     return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }

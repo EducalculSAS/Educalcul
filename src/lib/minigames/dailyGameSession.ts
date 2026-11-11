@@ -6,15 +6,10 @@ import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 import { checkMinigamesAccess, getUserFeatures } from "@/lib/checkSubscription";
 import { gradeLevelToPalier } from "@/lib/minigames/levels";
 import { getGameTypeConfig, type MinigameType } from "@/lib/minigames/gameTypes";
+import { correctSheet, type SheetQuestion } from "@/lib/minigames/correction";
 
 function todayStr(): string {
   return new Date().toISOString().slice(0, 10);
-}
-
-/** Normalise pour une comparaison texte tolérante : espaces, casse, accents. */
-const COMBINING_DIACRITICS = new RegExp("[\\u0300-\\u036f]", "g");
-function normalizeText(s: string): string {
-  return s.trim().toLowerCase().normalize("NFD").replace(COMBINING_DIACRITICS, "");
 }
 
 /** Démarre la partie du jour pour un jeu "à paliers" donné : le contenu est
@@ -174,20 +169,10 @@ export async function submitDailyGameSession(gameType: MinigameType, sessionId: 
     const allQuestions = (sheetRows?.[0]?.questions || []) as { prompt: string; answer: number | string }[];
     const questions = allQuestions.slice(0, questionCount);
 
-    let correct = 0;
-    // Une seule réponse par question : sans ça, renvoyer plusieurs fois la même question comptait plusieurs points.
-    const seen = new Set<number>();
-    const detail = answers.filter((a) => Number.isInteger(a?.index) && a.index >= 0 && a.index < questions.length && !seen.has(a.index) && seen.add(a.index)).map((a) => {
-      const expected = questions[a.index]?.answer;
-      let isCorrect = false;
-      if (gameConfig.answerType === "number") {
-        isCorrect = typeof expected === "number" && Number.isFinite(Number(a.value)) && Math.abs(expected - Number(a.value)) < 1e-9;
-      } else {
-        isCorrect = typeof expected === "string" && typeof a.value === "string" && normalizeText(expected) === normalizeText(a.value);
-      }
-      if (isCorrect) correct++;
-      return { index: a.index, correct: isCorrect };
-    });
+    // Correction complète (une ligne par question) : renvoyée maintenant que la partie est close et ne peut plus être rejouée.
+    const correction = correctSheet(questions as SheetQuestion[], answers, gameConfig.answerType);
+    const correct = correction.filter((l) => l.correct).length;
+    const detail = correction.filter((l) => l.given !== null).map((l) => ({ index: l.index, correct: l.correct }));
 
     const maxScore = questions.length;
 
@@ -203,7 +188,7 @@ export async function submitDailyGameSession(gameType: MinigameType, sessionId: 
       })
       .eq("id", sessionId);
 
-    return NextResponse.json({ score: correct, maxScore, detail });
+    return NextResponse.json({ score: correct, maxScore, detail, correction, durationSeconds });
   } catch (err: unknown) {
     return NextResponse.json({ error: sanitizeErrorMessage(errMessage(err)) }, { status: 500 });
   }

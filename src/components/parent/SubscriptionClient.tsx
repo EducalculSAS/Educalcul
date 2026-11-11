@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { parseOrNull } from "@/lib/validate";
 import LoaderDots from "@/components/LoaderDots";
 import { subscriptionPlanSchema } from "@/lib/schemas";
@@ -435,7 +436,7 @@ function SubscriptionPageContent({
         {!isNewSignup && (
           <div data-tour="subscription" className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6 mb-8">
             <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
-              <CreditCard className="w-5 h-5 text-[var(--greek-gold)]" />
+              <Emblem3D kind="crown" size={28} float={false} />
               Mon abonnement
             </h2>
             {subLoading ? (
@@ -608,7 +609,7 @@ function SubscriptionPageContent({
         {!isNewSignup && (
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
             <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
-              <Clock className="w-5 h-5 text-[var(--greek-gold)]" />
+              <Emblem3D kind="clock" size={28} float={false} />
               Historique de facturation
             </h2>
             {subLoading ? (
@@ -662,7 +663,7 @@ function SubscriptionPageContent({
             {/* Mon code */}
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
               <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
-                <Gift className="w-5 h-5 text-[var(--greek-gold)]" />
+                <Emblem3D kind="gift" size={28} float={false} />
                 Mon code de parrainage
               </h2>
               <p className="text-sm text-gray-500 mb-4">Partagez ce code : votre filleul a une semaine gratuite en plus de son essai, et vous gagnez une semaine gratuite dès son premier paiement.</p>
@@ -695,7 +696,7 @@ function SubscriptionPageContent({
             {/* Filleuls */}
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
               <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
-                <Users className="w-5 h-5 text-[var(--greek-gold)]" />
+                <Emblem3D kind="family" size={28} float={false} />
                 Mes filleuls
               </h2>
               <p className="text-sm text-gray-500 mb-4">Personnes qui ont utilisé votre code.</p>

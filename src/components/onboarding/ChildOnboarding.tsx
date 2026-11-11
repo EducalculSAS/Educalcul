@@ -1,9 +1,10 @@
 ﻿"use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { updateMyProfile } from "@/lib/updateMyProfile";
-import { Brain, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
 interface Props {
@@ -118,7 +119,7 @@ export default function ChildOnboarding({ firstName, gradeLevel, onComplete }: P
           <div className="flex flex-col h-full">
             <div className="px-8 pt-8 pb-4">
               <div className="flex items-center gap-2 mb-1">
-                <Brain className="w-5 h-5 text-[var(--greek-gold)]" />
+                <Emblem3D kind="quiz" size={28} float={false} />
                 <h3 className="font-bold text-[var(--greek-blue)]">Mini-test de niveau</h3>
                 <span className="ml-auto text-sm text-gray-400">{quizIndex + 1}/{questions.length}</span>
               </div>

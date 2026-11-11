@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import LoaderDots from "@/components/LoaderDots";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -9,7 +10,7 @@ import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import { User, Lock, Mail, Save, AlertCircle, CheckCircle, Trash2, Camera, Bell, Phone, Download } from "lucide-react";
+import { Lock, Mail, Save, AlertCircle, CheckCircle, Trash2, Camera, Bell, Phone, Download } from "lucide-react";
 import { validatePassword } from "@/lib/validation";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
@@ -301,7 +302,7 @@ export default function ParentProfileSettings({
         <div className="grid md:grid-cols-2 gap-8">
           <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[rgba(197,161,72,0.25)] p-8">
             <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-6 pb-4 border-b border-[rgba(197,161,72,0.25)] flex items-center font-[family-name:var(--font-display)]">
-              <User className="w-6 h-6 mr-3 text-[var(--greek-gold)]" />
+              <span className="mr-3 inline-flex"><Emblem3D kind="profile" size={32} float={false} /></span>
               Informations Personnelles
             </h2>
 

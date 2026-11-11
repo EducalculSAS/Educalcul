@@ -130,7 +130,7 @@ export async function checkAIAccess(authId: string): Promise<{ allowed: boolean;
   const remaining = Math.max(0, limit - used);
 
   if (used >= limit) {
-    return { allowed: false, reason: `Limite quotidienne atteinte (${limit} messages/jour). Revenez demain ou passez à Annuel Pro.`, remaining: 0 };
+    return { allowed: false, reason: `Tu as utilisé tes ${limit} messages d'aujourd'hui. Calia revient demain !`, remaining: 0 };
   }
 
   return { allowed: true, remaining };
@@ -166,7 +166,7 @@ export async function checkMinigamesAccess(authId: string): Promise<{ allowed: b
   const remaining = Math.max(0, limit - used);
 
   if (used >= limit) {
-    return { allowed: false, reason: `Limite quotidienne atteinte (${limit} parties/jour). Revenez demain ou passez à un plan supérieur.`, remaining: 0 };
+    return { allowed: false, reason: `Tu as joué tes ${limit} parties d'aujourd'hui. Reviens demain pour de nouvelles fiches !`, remaining: 0 };
   }
 
   return { allowed: true, remaining };

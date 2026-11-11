@@ -1,5 +1,6 @@
 "use client";
  
+import Emblem3D from "@/components/Emblem3D";
 import { Brain, CheckCircle, Trophy, XCircle, RotateCcw } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { type Page } from "@/components/admin/ExerciseBuilder";
@@ -47,7 +48,7 @@ export default function ExerciseResultScreen(props: ExerciseResultScreenProps) {
             {/* Left */}
             <div className="flex-grow">
               <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-                <Trophy className="w-6 h-6 text-[var(--greek-gold)]" />
+                <Emblem3D kind="trophy" size={32} float={false} />
                 {manual ? "Merci !" : passed ? "Félicitations !" : "Exercice terminé"}
               </h2>
               <p className="text-gray-600 leading-relaxed mb-6">

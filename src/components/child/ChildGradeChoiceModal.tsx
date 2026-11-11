@@ -1,8 +1,9 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useEffect, useState } from "react";
 import LoaderDots from "@/components/LoaderDots";
-import { AlertCircle, CheckCircle2, Circle, GraduationCap } from "lucide-react";
+import { AlertCircle, CheckCircle2, Circle } from "lucide-react";
 import { getMyProfile } from "@/lib/updateMyProfile";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSwitch from "@/components/ui/GlassSwitch";
@@ -70,7 +71,7 @@ export default function ChildGradeChoiceModal() {
       <div role="dialog" aria-modal="true" aria-labelledby="grade-choice-title" className="dialog-enter w-full sm:max-w-lg rounded-t-3xl sm:rounded-3xl bg-white/95 backdrop-blur-[24px] shadow-2xl border border-[rgba(197,161,72,0.3)] p-6 sm:p-8">
         <div className="flex items-center gap-3 mb-2">
           <span className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 bg-[rgba(197,161,72,0.14)]">
-            <GraduationCap className="w-5 h-5 text-[var(--greek-gold)]" />
+            <Emblem3D kind="cap" size={28} float={false} />
           </span>
           <h2 id="grade-choice-title" className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">{title}</h2>
         </div>

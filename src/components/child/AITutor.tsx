@@ -3,7 +3,7 @@
 import { getSpeechRecognitionCtor, type SpeechRecognitionLike } from "@/types/speech";
 import React, { useState, useRef, useEffect, useCallback } from "react";
 import { useAITutor } from "@/contexts/AITutorContext";
-import { Send, X, Minus, RotateCcw, Lock, ArrowRight, Mic, MicOff, Camera, Loader2 } from "lucide-react";
+import { Send, X, Minus, RotateCcw, Lock, Mic, MicOff, Camera, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useSubscription, aiRemaining } from "@/lib/useSubscription";
 import { renderLatexInHTML, renderUserText } from "@/lib/katexLoader";
@@ -611,11 +611,8 @@ export default function AITutor() {
                 <div className="px-3 pb-3 pt-2 shrink-0" style={{ borderTop: "1px solid rgba(197,161,72,0.15)" }}>
                   <div className="rounded-2xl p-4 text-center" style={{ background: "rgba(197,161,72,0.07)", border: "1px solid rgba(197,161,72,0.2)" }}>
                     <Lock className="w-5 h-5 mx-auto mb-2" style={{ color: "var(--greek-gold)" }} />
-                    <p className="text-sm font-bold mb-1" style={{ color: "rgba(240,237,232,0.9)" }}>Plan requis</p>
-                    <p className="text-xs mb-3" style={{ color: "rgba(255,255,255,0.55)" }}>L&apos;IA est disponible à partir du plan Premium.</p>
-                    <GlassButton href="/parent/subscription" variant="gold" size="sm">
-                      Voir les abonnements <ArrowRight className="w-3 h-3" />
-                    </GlassButton>
+                    <p className="text-sm font-bold mb-1" style={{ color: "rgba(240,237,232,0.9)" }}>Calia n&apos;est pas disponible sur ton compte</p>
+                    <p className="text-xs" style={{ color: "rgba(255,255,255,0.55)" }}>Elle fait partie d&apos;une autre formule. Parles-en à tes parents : ce sont eux qui peuvent l&apos;activer.</p>
                   </div>
                 </div>
               ) : (

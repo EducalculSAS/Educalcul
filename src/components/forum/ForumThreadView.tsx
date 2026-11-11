@@ -1,8 +1,9 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useCallback, useEffect, useRef, useState } from "react";
 import LoaderDots from "@/components/LoaderDots";
-import { ArrowLeft, Bell, BellOff, CheckCircle2, Flag, Heart, Link2, Lock, LockOpen, MessageCircle, Pencil, Pin, PinOff, Quote, Reply, Send, Trash2, Eye } from "lucide-react";
+import { ArrowLeft, Bell, BellOff, CheckCircle2, Flag, Heart, Link2, Lock, LockOpen, Pencil, Pin, PinOff, Quote, Reply, Send, Trash2, Eye } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useToast } from "@/components/Toast";
@@ -164,7 +165,7 @@ export default function ForumThreadView({
 
   if (error) {
     return (
-      <div className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] p-10 text-center">
+      <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] p-10 text-center">
         <p className="text-[var(--text-muted)] mb-5">{error}</p>
         <GlassButton variant="outline" size="sm" onClick={onBack}><ArrowLeft className="w-4 h-4" /> Retour au forum</GlassButton>
       </div>
@@ -175,7 +176,7 @@ export default function ForumThreadView({
     return (
       <div className="space-y-4 animate-pulse" aria-busy="true" aria-label="Chargement du sujet">
         <div className="h-9 w-32 bg-white rounded-full" />
-        <div className="bg-white rounded-3xl p-6 space-y-3">
+        <div className="bg-white rounded-[20px] p-6 space-y-3">
           <div className="h-6 w-2/3 bg-gray-100 rounded" />
           <div className="h-3 w-full bg-gray-100 rounded" />
           <div className="h-3 w-5/6 bg-gray-100 rounded" />
@@ -205,7 +206,7 @@ export default function ForumThreadView({
       </div>
 
       {/* ── Sujet ── */}
-      <article className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6 md:p-8">
+      <article className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-6 md:p-8">
         <div className="flex items-center gap-1.5 flex-wrap mb-3">
           {thread.category && <CategoryPill name={thread.category.name} color={thread.category.color} />}
           {thread.is_pinned && <Tag icon={Pin} label="Épinglé" cls="bg-[rgba(197,161,72,0.15)] text-[var(--greek-bronze)]" />}
@@ -224,7 +225,7 @@ export default function ForumThreadView({
           />
         ) : (
           <>
-            <h1 className="font-[family-name:var(--font-display)] font-bold text-2xl md:text-3xl text-[var(--greek-blue)] leading-tight mb-5 break-words">
+            <h1 className="font-[family-name:var(--font-display)] font-bold text-2xl md:text-3xl text-[var(--greek-blue)] leading-tight mb-5 [overflow-wrap:anywhere]">
               {thread.title}
             </h1>
             <AuthorLine author={thread.author} date={thread.created_at} edited={!!thread.updated_at} viewerRole={role} returnTo={returnTo} size="md" />
@@ -259,11 +260,11 @@ export default function ForumThreadView({
 
       {/* ── Meilleure réponse, remontée en tête ── */}
       {solution && (
-        <div className="rounded-3xl border-2 border-emerald-300 bg-emerald-50/60 p-5">
+        <div className="rounded-[20px] border-2 border-emerald-300 bg-emerald-50/60 p-5">
           <p className="text-xs font-bold uppercase tracking-widest text-emerald-700 flex items-center gap-1.5 mb-3">
             <CheckCircle2 className="w-4 h-4" /> Meilleure réponse
           </p>
-          <AuthorLine author={solution.author} date={solution.created_at} viewerRole={role} returnTo={returnTo} size="xs" />
+          <AuthorLine author={solution.author} date={solution.created_at} viewerRole={role} returnTo={returnTo} size="sm" />
           <ForumText text={solution.content} className="mt-3" />
           <div className="mt-3">
             <GlassButton href={`#reponse-${solution.id}`} variant="outline" size="sm">Voir dans la discussion</GlassButton>
@@ -274,7 +275,7 @@ export default function ForumThreadView({
       {/* ── Réponses ── */}
       <section aria-label="Réponses">
         <h2 className="flex items-center gap-2 font-bold text-[var(--greek-blue)] mb-3 px-1">
-          <MessageCircle className="w-5 h-5 text-[var(--greek-gold)]" />
+          <Emblem3D kind="chat" size={28} float={false} />
           {thread.comments.length === 0 ? "Aucune réponse pour l'instant" : `${thread.comments.length} réponse${thread.comments.length > 1 ? "s" : ""}`}
         </h2>
         <ol className="space-y-3">
@@ -301,7 +302,7 @@ export default function ForumThreadView({
       </section>
 
       {/* ── Répondre ── */}
-      <div ref={composerRef} className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
+      <div ref={composerRef} className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
         {thread.is_locked && !thread.canModerate ? (
           <p className="text-sm text-[var(--text-muted)] flex items-center gap-2">
             <Lock className="w-4 h-4" /> Ce sujet est verrouillé : on ne peut plus y répondre.
@@ -388,7 +389,7 @@ function CommentCard({
   };
 
   return (
-    <div className={`bg-white rounded-3xl border shadow-sm p-5 ${isSolution ? "border-emerald-300 ring-1 ring-emerald-200" : "border-[rgba(197,161,72,0.22)]"}`}>
+    <div className={`bg-white rounded-[20px] border shadow-sm p-5 ${isSolution ? "border-emerald-300 ring-1 ring-emerald-200" : "border-[rgba(197,161,72,0.25)]"}`}>
       <div className="flex items-start justify-between gap-3">
         <AuthorLine
           author={comment.author}

@@ -55,11 +55,11 @@ export function AuthorLine({
     <div className="flex items-center gap-3 min-w-0">
       {href ? <Link href={href} className="shrink-0 hover:opacity-85 transition-opacity" aria-label={`Profil de ${name}`}>{avatar}</Link> : avatar}
       <div className="min-w-0">
-        <div className="flex items-center gap-1.5 flex-wrap">
+        <div className="flex items-center gap-x-1.5 gap-y-0.5 flex-wrap min-w-0">
           {href ? (
-            <Link href={href} className={`font-semibold text-sm no-underline hover:underline truncate ${nameCls}`}>{name}</Link>
+            <Link href={href} className={`font-semibold text-sm no-underline hover:underline truncate max-w-full ${nameCls}`}>{name}</Link>
           ) : (
-            <span className="font-semibold text-sm text-gray-500">{name}</span>
+            <span className="font-semibold text-sm text-gray-500 truncate max-w-full">{name}</span>
           )}
           <RoleBadge role={author?.role} />
           {!!author?.featuredBadges?.length && <BadgeMinis badgeIds={author.featuredBadges} />}
@@ -77,15 +77,15 @@ export function AuthorLine({
 export function CategoryPill({ name, color }: { name: string; color: string | null }) {
   return (
     <span
-      className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border"
+      className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border max-w-full"
       style={{
         color: color || "var(--greek-bronze)",
         borderColor: `${color || "#c5a148"}40`,
         background: `${color || "#c5a148"}12`,
       }}
     >
-      <span className="w-1.5 h-1.5 rounded-full" style={{ background: color || "var(--greek-gold)" }} />
-      {name}
+      <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ background: color || "var(--greek-gold)" }} />
+      <span className="truncate">{name}</span>
     </span>
   );
 }

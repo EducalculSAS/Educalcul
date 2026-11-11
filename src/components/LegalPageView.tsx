@@ -1,5 +1,6 @@
 "use client";
 
+import StateScreen from "@/components/StateScreen";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import type { LegalPageData, LegalSection } from "@/components/LegalPageRenderer";
@@ -189,7 +190,7 @@ export default function LegalPageView({ data }: { data: LegalPageData | null }) 
                 <Section key={section.id} section={section} />
               ))
             ) : (
-              <div className="text-center py-20 text-[var(--text-muted)]">Page introuvable.</div>
+              <StateScreen fill="block" title="Page introuvable" actions={[{ label: "Retour à l'accueil", href: "/" }]}>Ce document n&apos;est pas disponible pour le moment.</StateScreen>
             )}
           </div>
         </section>

@@ -1,7 +1,7 @@
 import Emblem3D from "@/components/Emblem3D";
 import DashboardTile from "@/components/DashboardTile";
 import { redirect } from "next/navigation";
-import { Plus, BarChart2 } from "lucide-react";
+import { Plus } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 import ChildFamilyCard from "@/components/parent/ChildFamilyCard";
 import { getServerUser } from "@/lib/supabase/server";
@@ -73,7 +73,7 @@ export default async function ParentDashboard() {
         {/* Section enfants */}
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-3">
-            <BarChart2 className="w-6 h-6 text-[var(--greek-gold)]" />
+            <Emblem3D kind="stairs" size={32} float={false} />
             Suivi de mes enfants
           </h2>
           <GlassButton href="/parent/add-child" variant="navy" size="sm">

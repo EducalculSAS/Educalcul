@@ -1,5 +1,6 @@
+import Emblem3D from "@/components/Emblem3D";
 import { redirect } from "next/navigation";
-import { BookOpen, BrainCircuit, CheckCircle2, Repeat, RotateCcw } from "lucide-react";
+import { BookOpen, BrainCircuit, CheckCircle2, Repeat } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { dueItems, getSrs, SRS_INTERVALS, srsKey } from "@/lib/srs";
 import { loadSources } from "@/lib/reviewSession";
@@ -75,7 +76,7 @@ export default async function RevisionsPage() {
 
         <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
           <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
-            <RotateCcw className="w-5 h-5 text-[var(--greek-gold)]" /> Mon cahier d&apos;erreurs
+            <Emblem3D kind="pencil" size={28} float={false} /> Mon cahier d&apos;erreurs
           </h2>
           {rows.length === 0 ? (
             <div className="text-center py-10 text-gray-400">
