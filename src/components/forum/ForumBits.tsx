@@ -57,7 +57,7 @@ export function AuthorLine({
       <div className="min-w-0">
         <div className="flex items-center gap-x-1.5 gap-y-0.5 flex-wrap min-w-0">
           {href ? (
-            <Link href={href} className={`font-semibold text-sm no-underline hover:underline truncate max-w-full ${nameCls}`}>{name}</Link>
+            <Link href={href} className={`font-semibold text-sm no-underline hover:underline whitespace-nowrap ${nameCls}`}>{name}</Link>
           ) : (
             <span className="font-semibold text-sm text-gray-500 truncate max-w-full">{name}</span>
           )}

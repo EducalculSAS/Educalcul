@@ -7,6 +7,7 @@ import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getNameColor } from "@/lib/badgeStyles";
 import { ADMIN_COLOR } from "@/lib/cosmetics/catalog";
 import Navbar from "@/components/Navbar";
+import { getCatalogLevelLabel } from "@/lib/constants";
 import StateScreen from "@/components/StateScreen";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ProfileHeaderActions from "@/components/profile/ProfileHeaderActions";
@@ -84,13 +85,13 @@ export default async function PublicProfilePage({
           <ProfileHeaderActions userId={user.id} userRole={user.role} returnTo={returnTo ? safeRedirectPath(returnTo, "") || null : null} />
           <div className="flex items-center gap-4">
             <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={displayName} size="xl" />
-            <div className="mt-1">
+            <div className="mt-1 min-w-0">
               <h1 className={`text-3xl font-bold font-[family-name:var(--font-display)] ${nameColor.cls}`}>{displayName}</h1>
               <div className="flex items-center gap-2 mt-2 flex-wrap">
                 <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${user.role === "admin" ? "bg-red-500 text-white" : user.role === "parent" ? "bg-blue-400 text-white" : "bg-green-400 text-white"}`}>
                   {user.role === "admin" ? "Admin" : user.role === "parent" ? "Parent" : "Élève"}
                 </span>
-                {user.grade_level && <span className="text-white/70 text-sm">{user.grade_level}</span>}
+                {user.grade_level && <span className="text-white/70 text-sm">{getCatalogLevelLabel(user.grade_level)}</span>}
               </div>
               {badges.length > 0 && (
                 <div className="flex flex-wrap gap-2 mt-3">

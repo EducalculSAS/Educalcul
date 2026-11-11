@@ -51,7 +51,7 @@ export default function MinigamesLeaderboard({ gameType, selectable = false }: {
   }, [game, period]);
 
   return (
-    <section className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
+    <section className="min-w-0 bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
       <div className="flex items-center gap-3 mb-1">
         <Emblem3D kind="trophy" size={28} float={false} />
         <h2 className="text-xl font-bold text-[var(--greek-blue)]">Classement</h2>
@@ -92,8 +92,10 @@ export default function MinigamesLeaderboard({ gameType, selectable = false }: {
                   {e.rank}
                 </span>
                 <AvatarWithBorder avatar={e.avatar} equippedBorder={e.equippedBorder} name={e.firstName} size="sm" label="" />
-                <span className={`flex-1 min-w-0 truncate font-semibold text-sm ${color || "text-[var(--greek-blue)]"}`}>
-                  {e.firstName}{e.isMe ? " (toi)" : ""}
+                {/* Pas de troncature sur le nom lui-même : elle rognerait les ornements des noms animés (flammes, étoiles). */}
+                <span className="flex-1 min-w-0 flex items-center gap-1.5 flex-wrap">
+                  <span className={`font-semibold text-sm whitespace-nowrap ${color || "text-[var(--greek-blue)]"}`}>{e.firstName}</span>
+                  {e.isMe && <span className="text-xs font-semibold text-gray-500">(toi)</span>}
                 </span>
                 {time && (
                   <span className="hidden sm:flex items-center gap-1 text-xs text-gray-500 shrink-0" title="Meilleur temps">

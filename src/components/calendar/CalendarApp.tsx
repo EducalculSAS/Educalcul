@@ -259,14 +259,14 @@ export default function CalendarApp({
     <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_300px] gap-6 items-start">
       <section className="min-w-0 space-y-4">
         {/* Barre d'outils */}
-        <div className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] shadow-sm p-4 space-y-3">
+        <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-4 space-y-3">
           <div className="flex flex-wrap items-center justify-between gap-3">
             {view === "list" ? (
               <h2 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)]">Les 3 prochains mois</h2>
             ) : (
-              <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center gap-2 max-w-full">
                 <GlassIconButton icon={ChevronLeft} color="gray" size="sm" onClick={() => move(-1)} aria-label="Période précédente" />
-                <h2 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] min-w-[11rem] text-center  first-letter:uppercase">{periodLabel}</h2>
+                <h2 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] min-w-[8.5rem] sm:min-w-[11rem] text-center first-letter:uppercase">{periodLabel}</h2>
                 <GlassIconButton icon={ChevronRight} color="gray" size="sm" onClick={() => move(1)} aria-label="Période suivante" />
                 <GlassButton variant="ghost" size="sm" onClick={() => setCursor(today)}>Aujourd&apos;hui</GlassButton>
               </div>
@@ -351,7 +351,7 @@ export default function CalendarApp({
           </div>
         )}
 
-        <div className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
+        <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
           <p className="text-xs font-bold uppercase tracking-widest text-[var(--greek-bronze)] mb-3">Cette semaine</p>
           {week.total === 0 ? (
             <p className="text-sm text-[var(--text-muted)]">Aucune révision ni devoir prévu.</p>
@@ -368,7 +368,7 @@ export default function CalendarApp({
           )}
         </div>
 
-        <div className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
+        <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
           <p className="text-xs font-bold uppercase tracking-widest text-[var(--greek-bronze)] mb-3">Les 15 prochains jours</p>
           {upcoming.length === 0 ? (
             <p className="text-sm text-[var(--text-muted)]">Rien de prévu.</p>
@@ -394,7 +394,7 @@ export default function CalendarApp({
           )}
         </div>
 
-        <div className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5 space-y-3">
+        <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-5 space-y-3">
           {isParent && ownerId !== FAMILY && (
             <label className="flex items-center justify-between gap-3 text-sm text-[var(--greek-blue)]">
               Zone de vacances
@@ -469,7 +469,7 @@ function MonthGrid({
   const d = fromIso(cursor);
   const cells = monthCells(d.getFullYear(), d.getMonth());
   return (
-    <div className="bg-white rounded-3xl border border-[rgba(197,161,72,0.25)] shadow-sm p-3 md:p-4">
+    <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-3 md:p-4">
       <div className="grid grid-cols-7 mb-1">
         {DAYS_SHORT.map((n) => <div key={n} className="text-center text-[11px] font-bold uppercase tracking-wide text-[var(--greek-bronze)] py-1.5">{n}</div>)}
       </div>
@@ -569,7 +569,7 @@ function ListView({ byDay, from, onOpenDay }: { byDay: Map<string, CalendarEvent
   const days = [...rows.keys()].sort();
   if (days.length === 0) {
     return (
-      <div className="bg-white rounded-3xl border border-dashed border-[rgba(197,161,72,0.4)] p-10 text-center">
+      <div className="bg-white rounded-[20px] border border-dashed border-[rgba(197,161,72,0.4)] p-10 text-center">
         <CalendarDays className="w-10 h-10 mx-auto mb-3 text-[var(--greek-gold)]" />
         <p className="text-[var(--text-muted)]">Rien de prévu dans les trois prochains mois.</p>
       </div>
@@ -578,7 +578,7 @@ function ListView({ byDay, from, onOpenDay }: { byDay: Map<string, CalendarEvent
   return (
     <div className="space-y-3">
       {days.map((iso) => (
-        <button key={iso} type="button" onClick={() => onOpenDay(iso)} className="w-full text-left bg-white rounded-3xl border border-[rgba(197,161,72,0.22)] shadow-sm p-4 flex gap-4 hover:shadow-md transition-shadow">
+        <button key={iso} type="button" onClick={() => onOpenDay(iso)} className="w-full text-left bg-white rounded-[20px] border border-[rgba(197,161,72,0.22)] shadow-sm p-4 flex gap-4 hover:shadow-md transition-shadow">
           <div className="w-14 shrink-0 text-center">
             <p className="text-[11px] font-bold uppercase text-[var(--greek-bronze)]">{MONTHS_SHORT[fromIso(iso).getMonth()]}</p>
             <p className="text-2xl font-bold text-[var(--greek-blue)] leading-none">{fromIso(iso).getDate()}</p>

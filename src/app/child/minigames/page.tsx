@@ -138,7 +138,7 @@ export default async function MinigamesPage() {
           </li>
         </ul>
 
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_340px] gap-8 items-start">
+        <div className="grid grid-cols-[minmax(0,1fr)] lg:grid-cols-[minmax(0,1fr)_340px] gap-8 items-start">
           <MinigamesLeaderboard gameType="mathador" selectable />
 
           <section className={CARD}>
