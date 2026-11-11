@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { X, AlertTriangle, Info, MessageCircle, Ban } from "lucide-react";
 import GlassIconButton from "@/components/ui/GlassIconButton";
+import { getBootstrap } from "@/lib/bootstrap";
 
 interface Notif {
   id: number;
@@ -32,8 +33,8 @@ export default function AdminMessages() {
   useEffect(() => {
     (async () => {
       try {
-        const res = await fetch("/api/admin/notifications");
-        if (res.ok) setNotifs(await res.json());
+        const boot = await getBootstrap();
+        if (Array.isArray(boot?.adminMessages)) setNotifs(boot.adminMessages as Notif[]);
       } catch (e) {
         console.error("Failed to load admin notifications:", e);
       }

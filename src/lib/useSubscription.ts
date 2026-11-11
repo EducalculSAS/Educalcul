@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { getBootstrap } from "@/lib/bootstrap";
 import { DifficultyLevel } from "@/lib/difficultyLevels";
 
 interface PlanFeatures {
@@ -67,9 +68,10 @@ const SUB_TTL_MS = 5_000;
 let sharedSub: { at: number; promise: Promise<unknown | null> } | null = null;
 function fetchSubscription(force: boolean): Promise<unknown | null> {
   if (force || !sharedSub || Date.now() - sharedSub.at > SUB_TTL_MS) {
-    const promise = fetch("/api/user/subscription-status")
-      .then((res) => (res.ok ? res.json() : null))
-      .catch(() => null);
+    // Première lecture : celle, groupée, de l'ouverture de la page. Un rafraîchissement forcé interroge la route de l'abonnement.
+    const promise = force
+      ? fetch("/api/user/subscription-status").then((res) => (res.ok ? res.json() : null)).catch(() => null)
+      : getBootstrap().then((b) => b?.subscription ?? null);
     sharedSub = { at: Date.now(), promise };
   }
   return sharedSub.promise;

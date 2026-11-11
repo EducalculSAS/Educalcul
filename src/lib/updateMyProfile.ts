@@ -1,3 +1,4 @@
+import { getBootstrap, invalidateBootstrap } from "@/lib/bootstrap";
 /**
  * Met à jour un ou plusieurs champs du profil de l'utilisateur connecté via
  * `/api/user/profile` (allowlist stricte côté serveur). Remplace les anciens
@@ -14,9 +15,8 @@ let profileCache: { at: number; promise: Promise<unknown> } | null = null;
 
 export async function getMyProfile<T = Record<string, unknown>>(): Promise<T | null> {
   if (!profileCache || Date.now() - profileCache.at > PROFILE_TTL_MS) {
-    const promise = fetch("/api/user/profile")
-      .then((res) => (res.ok ? res.json() : null))
-      .catch(() => null);
+    // Lecture groupée (profil + abonnement + notifications en un appel, partagé avec les autres composants).
+    const promise = getBootstrap().then((b) => b?.profile ?? null);
     profileCache = { at: Date.now(), promise };
     // Un échec ne doit pas rester en cache.
     promise.then((v) => { if (v === null) profileCache = null; });
@@ -34,6 +34,7 @@ export async function updateMyProfile(
       body: JSON.stringify(patch),
     });
     profileCache = null; // la prochaine lecture repart du serveur
+    invalidateBootstrap();
     if (!res.ok) {
       const data = await res.json().catch(() => ({}));
       return { ok: false, error: data.error || "Échec de la mise à jour" };

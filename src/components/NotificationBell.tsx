@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Bell, Check, MessageSquare, Trophy, CreditCard, Info } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
+import { getBootstrap } from "@/lib/bootstrap";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -53,7 +54,14 @@ export default function NotificationBell() {
 
   const unread = notifications.filter(n => !n.is_read).length;
 
+  const firstLoad = useRef(true);
   const fetchNotifications = async () => {
+    // À l'ouverture de la page, les notifications viennent de la lecture groupée ; ensuite, sondage habituel.
+    if (firstLoad.current) {
+      firstLoad.current = false;
+      const boot = await getBootstrap();
+      if (Array.isArray(boot?.notifications)) { setNotifications(boot.notifications as typeof notifications); return; }
+    }
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
     setLoading(true);
