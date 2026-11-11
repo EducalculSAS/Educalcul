@@ -118,7 +118,7 @@ export function PublicSection({ id, eyebrow, title, highlight, intro, children, 
 }
 
 /** Bandeau final bleu nuit (identique à celui d'Offres). */
-export function PublicCta({ title = "Prêt à commencer ?", text = "7 jours d'essai gratuit, sans engagement, sans carte bancaire.", secondary }: {
+export function PublicCta({ title = "Prêt à commencer ?", text = "7 jours d'essai gratuit, sans engagement, résiliable à tout moment.", secondary }: {
   title?: ReactNode;
   text?: ReactNode;
   secondary?: { href: string; label: string };

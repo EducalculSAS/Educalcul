@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const STEPS = [
-  { num: "01", title: "Créez votre espace", desc: "Créez un compte Educalcul en 2 minutes chrono." },
-  { num: "02", title: "Choisissez votre plan", desc: "Bénéficiez de 7 jours d’essai offerts. Accès immédiat à tous les contenus." },
-  { num: "03", title: "Votre enfant apprend", desc: "Cours structurés, exercices adaptés et quiz pour vérifier les connaissances." },
-  { num: "04", title: "Suivez ses progrès", desc: "Tableau de bord détaillé pour mesurer sa progression" },
+  { num: "01", title: "Créez votre espace", desc: "Le parent crée son compte, puis le profil de chaque enfant." },
+  { num: "02", title: "Choisissez votre plan", desc: "7 jours d’essai gratuit sur Solo ou Family, ou la formule Découverte, gratuite." },
+  { num: "03", title: "Votre enfant apprend", desc: "Un cours, des exercices corrigés, puis un quiz pour vérifier que la notion est acquise." },
+  { num: "04", title: "Suivez ses progrès", desc: "Activité, scores et notions à retravailler, depuis votre espace parent." },
 ];
 
 export default function StepsSection() {
@@ -38,7 +38,7 @@ export default function StepsSection() {
         >
           <p className="text-xs font-semibold tracking-widest uppercase mb-3" style={{ color: "var(--greek-gold-text)" }}>Comment ça marche</p>
           <h2 className="font-[family-name:var(--font-display)] font-bold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.8rem, 3vw, 2.6rem)" }}>
-            Simple à démarrer.
+            Quatre étapes pour commencer.
           </h2>
         </div>
 

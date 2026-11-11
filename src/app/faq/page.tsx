@@ -120,7 +120,7 @@ export default function FAQ() {
               style={{ background: "var(--greek-blue)" }}
             >
               <h3 className="font-[family-name:var(--font-display)] font-bold text-xl mb-3">Vous n&apos;avez pas trouvé votre réponse ?</h3>
-              <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.55)" }}>Notre équipe répond généralement en moins de 24h.</p>
+              <p className="text-sm mb-6" style={{ color: "rgba(255,255,255,0.55)" }}>Écrivez-nous : nous lisons chaque message et y répondons nous-mêmes.</p>
               <GlassButton href="/contact" variant="gold">
                 Nous contacter <ArrowRight className="w-4 h-4" />
               </GlassButton>

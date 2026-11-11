@@ -42,7 +42,7 @@ export function offersSchema(plans: Plan[]) {
 
 /** Description de la page : le prix mensuel le plus bas de chaque formule payante, ou un texte neutre si les formules sont indisponibles. */
 export function pricingDescription(plans: Plan[]): string {
-  const tail = "7 jours d'essai sans engagement, sans carte bancaire.";
+  const tail = "7 jours d'essai gratuit, sans engagement.";
   const free = plans.find((p) => Number(p.price) === 0);
   const monthly = new Map<string, number>();
   for (const p of plans) {

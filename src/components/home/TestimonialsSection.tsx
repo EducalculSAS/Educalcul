@@ -5,60 +5,49 @@ import type { ReviewRatingOverride } from "@/lib/reviewRatingOverride";
 const TP_GREEN = "#00b67a";
 const TP_GREY = "#dcdce6";
 
-/** Échelle officielle Trustpilot (TrustScore) : 5 paliers, chacun avec sa
- * propre couleur ET son propre libellé — jamais juste "Excellent" partout,
- * sinon un 3,7 (palier "Très bien") s'affiche comme un 4,8 (palier
- * "Excellent"), ce qui ne correspond plus à la vraie fiche Trustpilot. */
-/** Couleur de TEXTE lisible sur fond blanc pour une couleur d'étoile Trustpilot (le jaune d'origine y est illisible). */
-const TEXT_ON_WHITE: Record<string, string> = { "#ffce00": "#8a6500", "#ff8622": "#b45309", "#73cf11": "#3f7a00", "#ff3722": "#c2260f" };
-const textOn = (c: string) => TEXT_ON_WHITE[c] ?? c;
+const STAR_PATH = "M20 6l3.708 11.41H35.41l-9.527 6.924 3.708 11.41L20 28.82l-9.59 6.924 3.708-11.41L4.59 17.41H16.29L20 6z";
+const fr = (n: number) => n.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
-function ratingColor(rating: number): string {
-  if (rating >= 4.5) return "#00b67a"; // Excellent
-  if (rating >= 4.0) return "#73cf11"; // Très bien
-  if (rating >= 3.0) return "#ffce00"; // Moyen — ex: 3,7 (vérifié sur la vraie fiche Trustpilot)
-  if (rating >= 2.0) return "#ff8622"; // Médiocre
-  return "#ff3722"; // Mauvais
-}
-
-function ratingLabel(rating: number): string {
-  if (rating >= 4.5) return "Excellent";
-  if (rating >= 4.0) return "Très bien";
-  if (rating >= 3.0) return "Moyen";
-  if (rating >= 2.0) return "Médiocre";
-  return "Mauvais";
-}
-
-function TpStar({ filled, color, size = 28 }: { filled: boolean; color: string; size?: number }) {
+/** Tuile d'étoile Trustpilot : carré vert, étoile blanche. `fill` de 0 à 1 : une demi-étoile est verte à gauche, grise à droite. */
+function TpStar({ fill, size = 28, id }: { fill: number; size?: number; id: string }) {
+  const pct = Math.max(0, Math.min(1, fill)) * 100;
   return (
-    <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
-      <rect width="40" height="40" rx="2" fill={filled ? color : TP_GREY} />
-      <path
-        d="M20 6l3.708 11.41H35.41l-9.527 6.924 3.708 11.41L20 28.82l-9.59 6.924 3.708-11.41L4.59 17.41H16.29L20 6z"
-        fill="#fff"
-      />
+    <svg width={size} height={size} viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      {pct > 0 && pct < 100 && (
+        <defs>
+          <linearGradient id={id} x1="0" x2="1" y1="0" y2="0">
+            <stop offset={`${pct}%`} stopColor={TP_GREEN} />
+            <stop offset={`${pct}%`} stopColor={TP_GREY} />
+          </linearGradient>
+        </defs>
+      )}
+      <rect width="40" height="40" fill={pct >= 100 ? TP_GREEN : pct <= 0 ? TP_GREY : `url(#${id})`} />
+      <path d={STAR_PATH} fill="#fff" />
     </svg>
   );
 }
 
+/** Logo Trustpilot : l'étoile verte à facette sombre, suivie du nom. */
 function TrustpilotLogo({ size = 22 }: { size?: number }) {
   return (
     <span className="inline-flex items-center gap-1.5">
-      <svg width={size} height={size} viewBox="0 0 40 40" fill="none">
-        <rect width="40" height="40" rx="2" fill={TP_GREEN} />
-        <path d="M20 6l3.708 11.41H35.41l-9.527 6.924 3.708 11.41L20 28.82l-9.59 6.924 3.708-11.41L4.59 17.41H16.29L20 6z" fill="#fff" />
+      <svg width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 .6l2.72 8.37h8.8l-7.12 5.17 2.72 8.37L12 17.34l-7.12 5.17 2.72-8.37L.48 8.97h8.8z" fill={TP_GREEN} />
+        <path d="M17.02 16.03l-.62-1.89L12 17.34z" fill="#005128" />
       </svg>
-      <span style={{ fontFamily: "sans-serif", fontWeight: 700, fontSize: size * 0.9, color: "#191919", letterSpacing: "-0.02em" }}>Trustpilot</span>
+      <span style={{ fontFamily: "Helvetica, Arial, sans-serif", fontWeight: 700, fontSize: size * 0.9, color: "#191919", letterSpacing: "-0.02em" }}>Trustpilot</span>
     </span>
   );
 }
 
+/** Cinq tuiles vertes, remplies à la demi-étoile près comme sur la fiche Trustpilot (3,7 → trois étoiles et demie). */
 function TpStars({ rating, size = 28 }: { rating: number; size?: number }) {
-  const color = ratingColor(rating);
+  const shown = Math.round(rating * 2) / 2;
+  const uid = `tp${String(rating).replace(/\D/g, "")}s${size}`;
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-[3px]" role="img" aria-label={`${fr(rating)} sur 5`}>
       {Array.from({ length: 5 }).map((_, i) => (
-        <TpStar key={i} filled={i < Math.round(rating)} color={color} size={size} />
+        <TpStar key={i} fill={shown - i} size={size} id={`${uid}-${i}`} />
       ))}
     </div>
   );
@@ -84,10 +73,8 @@ export default function TestimonialsSection({
   const useOverride = ratingOverride?.enabled;
   const avgRating = useOverride ? ratingOverride!.rating : computedRating;
   const displayCount = useOverride ? ratingOverride!.count : reviews.length;
-  const badgeColor = avgRating ? ratingColor(avgRating) : TP_GREEN;
 
   if (compact) {
-    const label = ratingLabel(avgRating ?? 5);
     return (
       // Le survol (transform) et le flou (backdrop-blur) doivent rester sur
       // deux éléments distincts : les combiner sur le même casse le rendu du
@@ -102,12 +89,16 @@ export default function TestimonialsSection({
           className="inline-flex flex-wrap items-center justify-center gap-4 px-9 py-6 rounded-3xl backdrop-blur-[24px] backdrop-saturate-[1.4]"
           style={{ background: "rgba(255,255,255,0.85)", border: "1px solid rgba(197,161,72,0.22)", boxShadow: "0 4px 24px rgba(15,30,58,0.06)" }}
         >
-          <span className="text-lg font-bold" style={{ color: "#191919" }}>{label}</span>
-          <TpStars rating={avgRating ?? 5} size={30} />
-          {avgRating !== null && (
-            <span className="text-base" style={{ color: "#666" }}>{displayCount.toLocaleString("fr-FR")} avis sur</span>
-          )}
           <TrustpilotLogo size={26} />
+          <TpStars rating={avgRating ?? 0} size={30} />
+          {avgRating !== null ? (
+            <span className="text-base" style={{ color: "#191919" }}>
+              <strong style={{ color: "#007a52" }}>{fr(avgRating)} sur 5</strong>
+              <span style={{ color: "#555" }}> · {displayCount.toLocaleString("fr-FR")} avis</span>
+            </span>
+          ) : (
+            <span className="text-base" style={{ color: "#555" }}>Donnez votre avis</span>
+          )}
         </span>
       </a>
     );
@@ -125,8 +116,8 @@ export default function TestimonialsSection({
             <>
               <TpStars rating={avgRating} size={36} />
               <p className="text-sm font-bold" style={{ color: "#191919" }}>
-                Note : <span style={{ color: textOn(badgeColor) }}>{avgRating}</span>
-                <span className="font-normal text-gray-400"> / 5 · {displayCount} avis</span>
+                <span style={{ color: "#007a52" }}>{fr(avgRating)} sur 5</span>
+                <span className="font-normal" style={{ color: "#555" }}> · {displayCount} avis</span>
               </p>
             </>
           ) : (
@@ -169,7 +160,7 @@ export default function TestimonialsSection({
               <div className="flex items-center gap-2 pt-2 border-t border-gray-100">
                 <div
                   className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
-                  style={{ background: ratingColor(r.rating) }}
+                  style={{ background: TP_GREEN }}
                 >
                   {r.name[0].toUpperCase()}
                 </div>

@@ -107,7 +107,7 @@ function formatVal(key: string, val: unknown): { label: string; included: boolea
   if (key === "ai_daily_limit") return { label: Number(val) === -1 ? "Illimité" : `${val} / jour`, included: true };
   if (key === "ai_access") {
     if (val === "unlimited") return { label: "Illimité", included: true };
-    if (val === "limited") return { label: "Limité", included: true };
+    if (val === "limited") return { label: "Incluse", included: true };
     return { label: "", included: false };
   }
   if (key === "access_level_exercises") {
@@ -538,9 +538,11 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
 }
 
 /* ─── Fiche d'une formule avec le choix de la durée dedans (« 1 mois · 3 mois · 1 an ») ─── */
-function PlanGroupCard({ group, autoPopular, cta, onChoose, processingKey, currentPlanId, tools }: {
+function PlanGroupCard({ group, autoPopular, allowPopular = true, cta, onChoose, processingKey, currentPlanId, tools }: {
   group: PlanGroup<ChooserPlan>;
   autoPopular: boolean;
+  /** Une seule formule porte le badge « Populaire » (en édition admin, toutes les mises en avant restent visibles). */
+  allowPopular?: boolean;
   cta: (p: ChooserPlan) => string;
   onChoose: (p: ChooserPlan) => void;
   processingKey: string | number | null;
@@ -560,7 +562,7 @@ function PlanGroupCard({ group, autoPopular, cta, onChoose, processingKey, curre
     <PlanCard
       plan={plan}
       displayName={group.name}
-      popular={paid && (featuresOf(plan).popular === true || autoPopular)}
+      popular={paid && ((allowPopular && featuresOf(plan).popular === true) || autoPopular)}
       cta={cta(plan)}
       onChoose={() => onChoose(plan)}
       processing={processingKey === plan.id}
@@ -870,6 +872,7 @@ export default function PlanChooser({
                     key={g.key}
                     group={g}
                     autoPopular={popularAuto && !anyGroupFlagged && paidGroups.length > 1 && idx === 1 && Number(g.plans[0].price) > 0}
+                    allowPopular={!!admin || g.key === [...paidGroups].reverse().find((x) => x.plans.some((p) => featuresOf(p).popular === true))?.key}
                     cta={planCta}
                     onChoose={onChoosePlan}
                     processingKey={processingKey}

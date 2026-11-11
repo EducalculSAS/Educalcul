@@ -1,4 +1,5 @@
 import { sanitizeAvatar } from "@/lib/avatarUrl";
+import { isPasswordPwned, PWNED_MESSAGE } from "@/lib/pwnedPassword";
 import { NextResponse } from "next/server";
 import { sanitizeErrorMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -67,6 +68,7 @@ export async function POST(request: Request) {
     }
     const pwError = validatePassword(password);
     if (pwError) return NextResponse.json({ error: pwError }, { status: 400 });
+    if (await isPasswordPwned(password)) return NextResponse.json({ error: PWNED_MESSAGE }, { status: 400 });
     if (!GRADE_LEVELS.has(gradeLevel)) {
       return NextResponse.json({ error: "Niveau scolaire invalide" }, { status: 400 });
     }

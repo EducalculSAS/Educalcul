@@ -109,7 +109,7 @@ export default async function LevelProgrammePage({ params }: { params: Promise<{
               { label: "Au programme", value: `${chapterCount(level)} notions en ${level.domains.length} domaines : ${level.domains.map((d) => d.name.toLowerCase()).join(", ")}.` },
               { label: "Texte de référence", value: "Programme de l'Éducation nationale publié sur Éduscol." },
               { label: "Sur Educalcul", value: "Des cours, des exercices corrigés, des quiz et Calia, le tuteur IA qui guide sans donner la réponse." },
-              { label: "Essai", value: "7 jours gratuits, sans carte bancaire et sans engagement." },
+              { label: "Essai", value: "7 jours gratuits, sans engagement." },
             ]}
           />
         </PublicSection>

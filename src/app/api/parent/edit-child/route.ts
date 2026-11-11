@@ -1,4 +1,5 @@
 import { sanitizeAvatar } from "@/lib/avatarUrl";
+import { unverifiedParentResponse } from "@/lib/emailVerification";
 import { NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, canActOnInternalId } from "@/lib/apiAuth";
@@ -14,6 +15,8 @@ export async function PATCH(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    const unverified = await unverifiedParentResponse(me);
+    if (unverified) return unverified;
     if (me.role !== "parent" && me.role !== "admin") {
       return NextResponse.json({ error: "Interdit" }, { status: 403 });
     }

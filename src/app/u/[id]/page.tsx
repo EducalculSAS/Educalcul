@@ -1,4 +1,5 @@
 import { relationOne } from "@/lib/validate";
+import { publicAuthor } from "@/lib/forum";
 import { profileBadgeSchema } from "@/lib/schemas";
 import { Star, Trophy, BookOpen, CheckCircle, Zap } from "lucide-react";
 import type { Row } from "@/types/db";
@@ -63,7 +64,8 @@ export default async function PublicProfilePage({
   const stats = { exos: exos ?? 0, quiz: quiz ?? 0, cours: cours ?? 0 };
 
   const nameColor = getNameColor(user.role === "admin" ? ADMIN_COLOR : user.name_color || "default");
-  const displayName = user.child_username || `${user.first_name || ""} ${user.last_name || ""}`.trim();
+  // Même règle que sur le forum : jamais de nom de famille en entier (pseudo ou prénom pour un élève, prénom + initiale pour un adulte).
+  const displayName = publicAuthor(user)?.displayName || "Profil";
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">

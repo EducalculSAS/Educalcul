@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { unverifiedParentResponse } from "@/lib/emailVerification";
 import { canActOnInternalId, getAuthenticatedUser } from "@/lib/apiAuth";
 import { createShareToken, revokeShareTokens } from "@/lib/shareToken";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -10,6 +11,8 @@ export async function POST(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    const unverified = await unverifiedParentResponse(me);
+    if (unverified) return unverified;
     if (me.role !== "parent") return NextResponse.json({ error: "Réservé aux parents." }, { status: 403 });
     const body = await req.json().catch(() => ({}));
     const childId = Number(body.childId);

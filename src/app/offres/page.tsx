@@ -42,16 +42,16 @@ const PILLARS = [
       "Cours structurés par chapitre, alignés sur le programme EN",
       "Exercices progressifs avec corrections détaillées",
       "Quiz pour valider chaque notion avant de passer à la suite",
-      "Contenu mis à jour chaque année",
+      "Une checklist « je sais faire » à la fin des cours",
     ],
   },
   {
     icon: Trophy,
     title: "Progresser",
-    subtitle: "Motivation durable, résultats mesurés",
+    subtitle: "Une progression qui se voit",
     items: [
       "Badges et niveaux pour rester motivé",
-      "Tableau de bord parent en temps réel",
+      "Tableau de bord parent, enfant par enfant",
       "Rapport hebdomadaire par email",
       "Alertes sur les chapitres à retravailler",
     ],
@@ -59,7 +59,7 @@ const PILLARS = [
   {
     icon: ShieldCheck,
     title: "En confiance",
-    subtitle: "Sécurisé, sans pub, sans distraction",
+    subtitle: "Sans publicité, données protégées",
     items: [
       "Aucune publicité",
       "Conforme RGPD, données protégées",
@@ -166,7 +166,7 @@ export default function Offres() {
                   },
                   {
                     icon: <BarChart3 className="w-4 h-4" />,
-                    text: "Suivi parental en temps réel",
+                    text: "Suivi pour les parents",
                   },
                   {
                     icon: <Users className="w-4 h-4" />,
@@ -174,7 +174,7 @@ export default function Offres() {
                   },
                   {
                     icon: <ShieldCheck className="w-4 h-4" />,
-                    text: "Sans pub · RGPD · 100% sécurisé",
+                    text: "Sans publicité · conforme RGPD",
                   },
                 ].map((row, i) => (
                   <div
@@ -237,7 +237,7 @@ export default function Offres() {
               <div className="flex items-center justify-center gap-3 mb-6">
                 <Image src="/logoAI.png" alt="Calia" width={40} height={40} className="w-10 h-10 object-contain" />
                 <span className="text-xs font-bold uppercase tracking-widest" style={{ color: "var(--greek-gold-text)" }}>
-                  La feature qui change tout
+                  Le tuteur IA
                 </span>
               </div>
               <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-5" style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.6rem)", color: "var(--greek-blue)" }}>
@@ -250,8 +250,7 @@ export default function Offres() {
                 ancre vraiment la compréhension.
               </p>
               <p className="text-base leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                Elle s&apos;adapte au niveau de chaque élève, du CP à la Terminale, et reste disponible le soir comme le week-end,
-                quand personne d&apos;autre ne l&apos;est.
+                Elle tient compte du niveau de l&apos;élève, du CP à la Terminale, et reste disponible le soir comme le week-end.
               </p>
             </FadeInSection>
 
@@ -291,8 +290,7 @@ export default function Offres() {
                 className="text-sm max-w-lg mx-auto"
                 style={{ color: "rgba(15,30,58,0.68)" }}
               >
-                Chaque fonctionnalité est pensée pour un objectif précis :
-                apprendre mieux, progresser durablement, en toute confiance.
+                Ce que l&apos;élève et ses parents trouvent dans Educalcul.
               </p>
             </div>
 
@@ -412,7 +410,7 @@ export default function Offres() {
             {/* Garanties */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {[
-                { icon: ShieldCheck, text: "Essai 7 jours, sans carte bancaire" },
+                { icon: ShieldCheck, text: "7 jours d'essai gratuit" },
                 { icon: Check, text: "Sans engagement, résiliable à tout moment" },
                 { icon: BookOpen, text: "Contenu aligné sur le programme officiel" },
               ].map((g, i) => (
@@ -452,8 +450,7 @@ export default function Offres() {
               className="text-sm mb-8"
               style={{ color: "rgba(255,255,255,0.55)" }}
             >
-              7 jours d&apos;essai gratuit, sans engagement, sans carte
-              bancaire.
+              7 jours d&apos;essai gratuit, sans engagement, résiliable à tout moment.
             </p>
             <div className="flex gap-4 justify-center flex-wrap">
               <GlassButton

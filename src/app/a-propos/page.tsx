@@ -105,7 +105,7 @@ export default async function AProposPage() {
               { label: "Ce qu'on y trouve", value: "Des cours, des exercices corrigés, des quiz, Calia (un tuteur IA qui guide sans donner la réponse) et un suivi pour les parents." },
               { label: "Programmes", value: "Ceux de l'Éducation nationale, niveau par niveau." },
               { label: "Fondateurs", value: FOUNDERS.map((f) => f.name).join(" et ") },
-              { label: "Essai", value: "7 jours gratuits, sans carte bancaire et sans engagement." },
+              { label: "Essai", value: "7 jours gratuits, sans engagement." },
               { label: "Contact", value: <a href={`mailto:${CONTACT_EMAIL}`} className="font-semibold text-[var(--greek-gold-text)] hover:underline">{CONTACT_EMAIL}</a> },
             ]}
           />

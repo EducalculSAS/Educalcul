@@ -182,9 +182,11 @@ function PlanModal({ plan, onClose }: { plan: Plan; onClose: () => void }) {
 }
 
 /* ─── Fiche d'une formule avec le choix de la durée dedans (présentation « par formule ») ─── */
-function PlanGroupCard({ group, autoPopular, hideCompare, cardsVisible, onOpen, comparePlanIds, onToggleCompare }: {
+function PlanGroupCard({ group, autoPopular, allowPopular, hideCompare, cardsVisible, onOpen, comparePlanIds, onToggleCompare }: {
   group: PlanGroup<Plan>;
   autoPopular: boolean;
+  /** Une seule formule porte le badge « Populaire » : sinon il ne distingue plus rien. */
+  allowPopular: boolean;
   hideCompare: boolean;
   cardsVisible: boolean;
   onOpen: (p: Plan) => void;
@@ -198,7 +200,7 @@ function PlanGroupCard({ group, autoPopular, hideCompare, cardsVisible, onOpen, 
     <PlanCard
       plan={plan}
       displayName={group.name}
-      popular={Number(plan.price) > 0 && (plan.features?.popular === true || autoPopular)}
+      popular={Number(plan.price) > 0 && ((allowPopular && plan.features?.popular === true) || autoPopular)}
       hideChildren={false}
       cardsVisible={cardsVisible}
       onOpen={() => onOpen(plan)}
@@ -245,6 +247,8 @@ export function PlansGrid({
     const paidGroups = groupedAll.filter((g) => Number(g.plans[0].price) > 0);
     const groups = [...paidGroups, ...groupedAll.filter((g) => Number(g.plans[0].price) === 0)];
     const anyGroupFlagged = paidGroups.some((g) => g.plans.some((p) => p.features?.popular === true));
+    // Plusieurs formules mises en avant : seule la dernière (la plus complète) garde le badge.
+    const badgeKey = [...paidGroups].reverse().find((g) => g.plans.some((p) => p.features?.popular === true))?.key;
     if (groups.length === 0) return <p className="text-center text-[var(--text-muted)] py-20">Aucun plan disponible pour le moment.</p>;
     return (
       <div className={`grid grid-cols-1 gap-8 ${groups.length === 2 ? "md:grid-cols-2 max-w-3xl mx-auto" : groups.length === 1 ? "max-w-md mx-auto" : "md:grid-cols-3"}`}>
@@ -253,6 +257,7 @@ export function PlansGrid({
             key={g.key}
             group={g}
             autoPopular={popularAuto && !anyGroupFlagged && paidGroups.length > 1 && idx === 1 && Number(g.plans[0].price) > 0}
+            allowPopular={g.key === badgeKey}
             hideCompare={hideCompare}
             cardsVisible={cardsVisible}
             onOpen={onOpen}

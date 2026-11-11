@@ -11,7 +11,7 @@ const PLANS = [plan(4, "Découverte", 0, "month"), plan(9, "Solo - 1 mois", 10, 
 
 describe("prix publiés pour les moteurs de recherche", () => {
   it("la description de /tarifs vient des formules réelles", () => {
-    expect(pricingDescription(PLANS)).toBe("Formules Educalcul : Découverte (gratuite), Solo dès 10 €/mois, Family dès 15 €/mois. 7 jours d'essai sans engagement, sans carte bancaire.");
+    expect(pricingDescription(PLANS)).toBe("Formules Educalcul : Découverte (gratuite), Solo dès 10 €/mois, Family dès 15 €/mois. 7 jours d'essai gratuit, sans engagement.");
     expect(pricingDescription([plan(1, "Solo - 1 mois", 9.9, "month")])).toContain("Solo dès 9,9 €/mois");
   });
   it("sans formules (base indisponible) : un texte neutre, jamais un prix inventé", () => {

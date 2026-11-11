@@ -1,9 +1,9 @@
-export const CGU_VERSION = "2.0 : Mai 2026";
+export const CGU_VERSION = "Résumé des conditions : novembre 2026";
 
 export const CGU_SECTIONS = [
   {
     title: "1. Présentation du service",
-    content: `Educalcul est une plateforme éducative française dédiée à l'apprentissage des mathématiques pour les élèves de CP à Terminale. Le service comprend : des cours interactifs avec formules LaTeX, des exercices corrigés par intelligence artificielle, des quiz, un forum d'entraide, un assistant IA (Calia), un système de badges et de progression, ainsi qu'un espace parent pour suivre les enfants.`,
+    content: `Educalcul est une plateforme éducative française dédiée à l'apprentissage des mathématiques pour les élèves de CP à Terminale. Le service comprend : des cours, des exercices corrigés, des quiz, un forum d'entraide, un tuteur IA (Calia), un système de badges et de progression, ainsi qu'un espace parent pour suivre les enfants.`,
   },
   {
     title: "2. Comptes et responsabilités",
@@ -11,7 +11,7 @@ export const CGU_SECTIONS = [
   },
   {
     title: "3. Abonnements et paiement",
-    content: `L'offre Découverte est gratuite et limitée. Les offres Premium, Famille et Annuel Pro sont payantes, renouvelées automatiquement via Stripe. Vous pouvez annuler à tout moment depuis votre espace abonnement. Aucun remboursement n'est accordé pour la période en cours. Les codes parrainage offrent un avantage (semaine gratuite ou réduction) soumis aux conditions affichées.`,
+    content: `La formule Découverte est gratuite et limitée. Les formules Solo et Family sont payantes : après l'essai gratuit, elles se renouvellent automatiquement à la fréquence choisie, le paiement étant géré par Stripe. Vous pouvez résilier à tout moment depuis l'espace Abonnement ; l'accès reste ouvert jusqu'à la fin de la période payée. Vous disposez d'un droit de rétractation de 14 jours, avec remboursement au prorata de la période non utilisée (voir les Conditions générales de vente). Un code de parrainage offre une semaine gratuite, aux conditions affichées.`,
   },
   {
     title: "4. Intelligence artificielle",
@@ -27,6 +27,6 @@ export const CGU_SECTIONS = [
   },
   {
     title: "7. Modifications",
-    content: `Educalcul se réserve le droit de modifier ces conditions. Toute modification majeure sera notifiée par email et nécessitera une nouvelle acceptation lors de la prochaine connexion.`,
+    content: `Educalcul se réserve le droit de modifier ces conditions. Toute modification majeure sera notifiée par email et nécessitera une nouvelle acceptation lors de la prochaine connexion. Ce texte est un résumé : les Conditions générales d'utilisation et de vente complètes, qui seules font foi, sont consultables sur educalcul.com/cgu et educalcul.com/cgv.`,
   },
 ];

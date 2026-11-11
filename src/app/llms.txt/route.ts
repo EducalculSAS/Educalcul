@@ -16,7 +16,7 @@ export function GET() {
     `- Site : ${SITE_URL}`,
     `- Fondateurs : ${FOUNDERS.map((f) => `${f.name} (${f.jobTitle.toLowerCase()})`).join(" ; ")}`,
     `- Contact : ${CONTACT_EMAIL}`,
-    "- Essai : 7 jours gratuits, sans carte bancaire et sans engagement",
+    "- Essai : 7 jours gratuits, sans engagement",
     `- Mis à jour : ${SEO_UPDATED}`,
     "",
     "## Pages principales",

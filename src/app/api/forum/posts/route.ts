@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { unverifiedParentResponse } from "@/lib/emailVerification";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -110,6 +111,8 @@ export async function POST(req: Request) {
   try {
     const me = await getAuthenticatedUser(req);
     if (!me) return NextResponse.json({ error: "Non autorisé" }, { status: 401 });
+    const unverified = await unverifiedParentResponse(me);
+    if (unverified) return unverified;
 
     const config = RATE_LIMITS["forum:post"];
     const rl = await rateLimitWithBackoff(`forum:post:${me.authId}`, config.maxAttempts, config.windowMs);

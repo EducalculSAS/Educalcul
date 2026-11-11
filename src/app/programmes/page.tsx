@@ -17,7 +17,7 @@ const HUB_FAQ = [
   { q: "Les contenus d'Educalcul suivent-ils les programmes officiels ?", a: "Oui, chaque contenu est rattaché à un niveau et à une notion des programmes de l'Éducation nationale publiés sur Éduscol." },
   { q: "Comment choisir le bon niveau ?", a: "La classe de l'enfant (et son option au lycée : spécialité, maths expertes ou complémentaires) est choisie à la création de son compte ; il voit ensuite les contenus de son niveau." },
   { q: "Peut-on revoir les notions d'une année précédente ?", a: "Oui, les pages de chaque niveau restent consultables et Calia peut réexpliquer une notion ancienne qui bloque." },
-  { q: "Combien coûte Educalcul ?", a: "Les formules sont détaillées sur la page Tarifs. L'essai est gratuit pendant 7 jours, sans carte bancaire et sans engagement." },
+  { q: "Combien coûte Educalcul ?", a: "Les formules sont détaillées sur la page Tarifs. L'essai est gratuit pendant 7 jours, sans engagement." },
 ];
 
 // Page publique quasi-statique (PDFs édités en admin) : ISR au lieu d'un

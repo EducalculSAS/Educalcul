@@ -39,7 +39,7 @@ export default function CaliaHover() {
             className="absolute -left-[6px] top-1/2 -translate-y-1/2 w-3 h-3 rotate-45"
             style={{ background: "rgba(30,49,96,0.85)", borderLeft: "1px solid rgba(255,255,255,0.2)", borderBottom: "1px solid rgba(255,255,255,0.2)" }}
           />
-          <span style={{ color: "var(--greek-gold)", fontWeight: 600 }}>Votre enfant</span> est entre de bonnes mains.
+          <span style={{ color: "var(--greek-gold)", fontWeight: 600 }}>Calia</span> pose la question qui débloque.
         </div>
       </div>
     </div>

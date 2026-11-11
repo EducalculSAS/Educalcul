@@ -20,7 +20,13 @@ const SUBJECTS = [
 
 export async function POST(req: Request) {
   try {
-    const { name, email, subject, message } = await req.json();
+    const { name, email, subject, message, website, elapsedMs } = await req.json();
+
+    // Anti-robot : champ invisible rempli, ou formulaire envoyé en moins de deux secondes. On répond « envoyé » sans
+    // rien envoyer, pour ne pas renseigner le robot.
+    if ((typeof website === "string" && website.trim() !== "") || (typeof elapsedMs === "number" && elapsedMs < 2000)) {
+      return NextResponse.json({ success: true });
+    }
 
     // ✓ HIGH PRIORITY FIX: Validate all inputs with length limits
     const validatedName = validateName(name);

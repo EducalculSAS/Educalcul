@@ -100,7 +100,7 @@ export const LEVEL_PAGES: LevelPage[] = [
     faq: [
       { q: "Que faut-il maîtriser avant d'entrer au CM1 ?", a: "Les tables de multiplication, l'addition, la soustraction et la multiplication posées, le sens de la division et la lecture de fractions simples." },
       { q: "Educalcul propose-t-il des révisions ?", a: "Oui, des quiz courts permettent de revoir les notions, et le parent voit les points à retravailler." },
-      { q: "Peut-on essayer avant de s'abonner ?", a: "Oui, l'essai est gratuit pendant 7 jours, sans carte bancaire." },
+      { q: "Peut-on essayer avant de s'abonner ?", a: "Oui, l'essai est gratuit pendant 7 jours, sans engagement." },
     ],
   },
   {
@@ -140,7 +140,7 @@ export const LEVEL_PAGES: LevelPage[] = [
     faq: [
       { q: "Comment bien préparer l'entrée en 6e ?", a: "En consolidant les fractions, les nombres décimaux, les quatre opérations et la proportionnalité. Ce sont les notions sur lesquelles le programme de 6e s'appuie dès la rentrée." },
       { q: "Calia fait-elle les exercices à la place de l'élève ?", a: "Non. Calia pose des questions et donne des indices pour que l'élève trouve lui-même ; elle ne donne pas la réponse." },
-      { q: "Combien coûte Educalcul ?", a: "Les formules sont détaillées sur la page Tarifs, avec un essai gratuit de 7 jours sans carte bancaire." },
+      { q: "Combien coûte Educalcul ?", a: "Les formules sont détaillées sur la page Tarifs, avec un essai gratuit de 7 jours." },
     ],
   },
   {
@@ -161,7 +161,7 @@ export const LEVEL_PAGES: LevelPage[] = [
     faq: [
       { q: "Qu'est-ce qui change en maths entre le CM2 et la 6e ?", a: "Les notions sont proches (même cycle 3), mais on attend plus de rigueur : vocabulaire précis, justification des réponses et calculs posés proprement." },
       { q: "Educalcul aide-t-il à faire les devoirs de 6e ?", a: "Calia aide à comprendre une notion ou une méthode en guidant l'élève par questions, sans faire le devoir à sa place." },
-      { q: "Peut-on essayer gratuitement ?", a: "Oui, 7 jours d'essai gratuit, sans carte bancaire et sans engagement." },
+      { q: "Peut-on essayer gratuitement ?", a: "Oui, 7 jours d'essai gratuit, sans engagement." },
     ],
   },
   {
@@ -246,7 +246,7 @@ export const LEVEL_PAGES: LevelPage[] = [
     faq: [
       { q: "La Seconde est-elle importante pour choisir la spécialité maths ?", a: "Oui. Les notions de Seconde (calcul, fonctions, vecteurs) sont la base de la spécialité maths de Première." },
       { q: "Calia peut-elle aider en Python ?", a: "Oui, Calia peut expliquer pas à pas ce que fait un petit programme, comme pour toute autre notion du programme." },
-      { q: "Peut-on essayer sans engagement ?", a: "Oui, l'essai gratuit dure 7 jours, sans carte bancaire." },
+      { q: "Peut-on essayer sans engagement ?", a: "Oui, l'essai gratuit dure 7 jours et se résilie à tout moment." },
     ],
   },
   {

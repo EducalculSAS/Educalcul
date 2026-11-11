@@ -41,7 +41,7 @@ const SYM = [
 const MINI_FAQ = [
   { q: "Puis-je changer de plan à tout moment ?", a: "Oui, vous pouvez passer à un plan supérieur ou inférieur à n'importe quel moment depuis votre espace parent. Le changement est effectif immédiatement et le montant est ajusté au prorata." },
   { q: "Y a-t-il un engagement de durée ?", a: "Non. Les abonnements sont sans engagement. Vous pouvez annuler à tout moment depuis votre compte, sans frais ni justification." },
-  { q: "La période d'essai est-elle vraiment gratuite ?", a: "Oui, aucune carte bancaire n'est requise pour commencer. L'essai gratuit vous donne accès à toutes les fonctionnalités du plan choisi sans limitation." },
+  { q: "La période d'essai est-elle vraiment gratuite ?", a: "Oui. Pendant 7 jours vous avez accès à toute la formule choisie et rien n'est prélevé. Le moyen de paiement est enregistré à l'inscription ; si vous résiliez avant la fin de l'essai, vous ne payez rien." },
   { q: "Que se passe-t-il si je dépasse le nombre d'enfants autorisé ?", a: "Vous serez invité à passer à un plan supérieur. Aucun enfant ne perd l'accès brutalement, vous avez un délai pour régulariser votre abonnement." },
 ];
 
@@ -87,7 +87,7 @@ export default async function Tarifs() {
                   <p className="text-xs mt-2" style={{ color: "rgba(255,255,255,0.55)" }}>Accès immédiat à toutes les fonctionnalités : 7 jours sans frais</p>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
-                  {["Sans engagement", "Sans carte bancaire", "Annulable à tout moment", "Accès immédiat"].map((item, i) => (
+                  {["Sans engagement", "7 jours d'essai gratuit", "Annulable à tout moment", "Accès immédiat"].map((item, i) => (
                     <div key={i} className="flex items-center gap-2 px-4 py-3 rounded-xl"
                       style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
                       <Check className="w-3.5 h-3.5 flex-shrink-0" style={{ color: "var(--greek-gold)" }} />
@@ -111,7 +111,7 @@ export default async function Tarifs() {
             <section aria-labelledby="tous-les-tarifs" className="pb-14 px-6 bg-[var(--greek-cream)]">
               <div className="max-w-3xl mx-auto bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
                 <h2 id="tous-les-tarifs" className="text-xl font-bold text-[var(--greek-blue)]">Tous les tarifs en un coup d&apos;œil</h2>
-                <p className="text-sm text-gray-500 mt-1 mb-4">Prix en euros par période de facturation (TVA non applicable), sans engagement. 7 jours d&apos;essai gratuits, sans carte bancaire.</p>
+                <p className="text-sm text-gray-500 mt-1 mb-4">Prix en euros par période de facturation (TVA non applicable), sans engagement. 7 jours d&apos;essai gratuits.</p>
                 <div className="overflow-x-auto">
                   <table className="w-full text-xs sm:text-sm text-left">
                     <caption className="sr-only">Prix des formules Solo et Family selon la période de facturation</caption>
@@ -151,7 +151,7 @@ export default async function Tarifs() {
                 Sans engagement · Annulable à tout moment
               </h2>
               <p className="text-[var(--text-muted)] text-sm leading-relaxed">
-                Paiement sécurisé par Stripe. Aucun frais caché. Remboursement garanti dans les 7 jours si insatisfait.
+                Paiement sécurisé par Stripe, sans frais caché. Vous disposez de 14 jours pour vous rétracter, avec remboursement au prorata de la période non utilisée (voir les CGV).
               </p>
             </FadeInSection>
           </div>

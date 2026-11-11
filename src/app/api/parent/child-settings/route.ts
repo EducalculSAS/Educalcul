@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { unverifiedParentResponse } from "@/lib/emailVerification";
 import { canActOnInternalId, getAuthenticatedUser } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { parisDay, studentSummary } from "@/lib/studentStats";
@@ -11,6 +12,8 @@ const TIME = /^([01]\d|2[0-3]):[0-5]\d$/;
 async function authorize(req: Request, childId: number) {
   const me = await getAuthenticatedUser(req);
   if (!me) return { error: NextResponse.json({ error: "Unauthorized" }, { status: 401 }) };
+  const unverified = await unverifiedParentResponse(me);
+  if (unverified) return { error: unverified };
   if (me.role !== "parent" && me.role !== "admin") return { error: NextResponse.json({ error: "Réservé aux parents." }, { status: 403 }) };
   if (!(await canActOnInternalId(me, childId))) return { error: NextResponse.json({ error: "Forbidden" }, { status: 403 }) };
   const { data: child } = await supabaseAdmin.from("users").select("id, role").eq("id", childId).maybeSingle();

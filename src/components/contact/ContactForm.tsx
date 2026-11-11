@@ -1,7 +1,7 @@
 "use client";
 
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SUBJECTS } from "@/lib/contactSubjects";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -20,6 +20,11 @@ export default function ContactForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Anti-robot discret : un champ invisible que seul un robot remplit, et le temps passé sur le formulaire.
+  const [trap, setTrap] = useState("");
+  const openedAt = useRef(0);
+  useEffect(() => { openedAt.current = Date.now(); }, []);
+
   const handleSubmit = async (e?: React.FormEvent) => {
     e?.preventDefault();
     setStatus("loading");
@@ -30,7 +35,7 @@ export default function ContactForm() {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: formData.name, email: formData.email, subject, message: formData.message }),
+        body: JSON.stringify({ name: formData.name, email: formData.email, subject, message: formData.message, website: trap, elapsedMs: Date.now() - openedAt.current }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Erreur lors de l'envoi.");
@@ -57,6 +62,9 @@ export default function ContactForm() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-5">
+          <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+            <label>Site web<input type="text" name="website" tabIndex={-1} autoComplete="off" value={trap} onChange={(e) => setTrap(e.target.value)} /></label>
+          </div>
           {status === "error" && (
             <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
               <AlertCircle className="w-4 h-4 flex-shrink-0" /> {errorMessage}

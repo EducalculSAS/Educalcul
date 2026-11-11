@@ -2,16 +2,7 @@
 
 import Image from "next/image";
 import { Mail } from "lucide-react";
-import { Facebook, Twitter, Instagram, Youtube } from "@/components/ui/BrandIcons";
-import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassButton from "@/components/ui/GlassButton";
-
-const SOCIALS = [
-  { icon: Facebook, label: "Facebook" },
-  { icon: Twitter, label: "Twitter" },
-  { icon: Instagram, label: "Instagram" },
-  { icon: Youtube, label: "YouTube" },
-];
 
 const NAV_COLS = [
   {
@@ -58,20 +49,15 @@ export default function Footer() {
             <Image src="/logo.png" alt="Educalcul" width={84} height={48} className="h-12 w-auto object-contain mb-5" />
             <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(255,255,255,0.55)" }}>
               Plateforme d&apos;apprentissage des mathématiques, du CP à la Terminale.
-              IA pédagogique, progression gamifiée, suivi parents.
+              Cours, exercices corrigés, tuteur IA et suivi pour les parents.
             </p>
             <a href="mailto:contact@educalcul.com"
-              className="flex items-center gap-2 text-sm mb-5 transition-colors hover:text-white"
+              className="flex items-center gap-2 text-sm transition-colors hover:text-white"
               style={{ color: "rgba(255,255,255,0.55)" }}
             >
               <Mail className="w-4 h-4 shrink-0" />
               contact@educalcul.com
             </a>
-            <div className="flex gap-3">
-              {SOCIALS.map((s) => (
-                <GlassIconButton key={s.label} icon={s.icon} href="#" color="white" aria-label={s.label} />
-              ))}
-            </div>
           </div>
 
           {/* Nav cols */}

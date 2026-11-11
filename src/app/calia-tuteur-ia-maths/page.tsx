@@ -88,7 +88,7 @@ export default function CaliaPage() {
               { label: "Comment aide-t-elle ?", value: "Par la méthode socratique : elle pose des questions et donne des indices pour que l'élève trouve la solution lui-même." },
               { label: "Que fait-elle ?", value: "Aide pendant les cours et exercices, séance vocale en mode classe, aide aux devoirs à partir d'une photo, et analyse de progression pour les parents." },
               { label: "Que ne fait-elle pas ?", value: "Donner directement la réponse d'un exercice ou faire un devoir à la place de l'élève." },
-              { label: "Tarif", value: "Les fonctions disponibles dépendent de la formule (voir la page Tarifs). 7 jours d'essai gratuits, sans carte bancaire." },
+              { label: "Tarif", value: "Les fonctions disponibles dépendent de la formule (voir la page Tarifs). 7 jours d'essai gratuits, sans engagement." },
             ]}
           />
         </PublicSection>

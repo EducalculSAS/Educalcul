@@ -55,7 +55,7 @@ const SYM = [
 ];
 
 const MINI_FAQ = [
-  { q: "Combien coûte l'essai ?", a: "Rien. 7 jours d'accès complet, aucune carte bancaire requise pour commencer." },
+  { q: "Combien coûte l'essai ?", a: "Rien pendant 7 jours : l'accès est complet et aucun prélèvement n'a lieu si vous résiliez avant la fin de l'essai. La formule Découverte, elle, reste gratuite." },
   { q: "Puis-je résilier à tout moment ?", a: "Oui, sans engagement ni justification, directement depuis l'espace parent." },
   { q: "Le contenu suit-il le programme officiel ?", a: "Oui : chaque cours et exercice est rattaché à un niveau et à une notion des programmes de l'Éducation nationale, du CP à la Terminale (voie générale)." },
 ];
@@ -116,13 +116,12 @@ export default async function Home() {
             style={{ color: "#f0ede8", fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
           >
             Les maths du CP à la Terminale,<br />
-            <span className="text-gradient-gold">enfin à portée de main</span>
+            <span className="text-gradient-gold">comprises pas à pas</span>
           </h1>
 
           <p className="text-base leading-relaxed mb-12 max-w-lg hero-rise hero-rise-3" style={{ color: "rgba(240,237,232,0.55)" }}>
-            Une IA socratique qui guide sans donner la réponse, un programme complet du CP à la Terminale,
-            et un suivi parental limpide.<br />
-            Educalcul accompagne toute la famille, pas seulement l&apos;élève.
+            Des cours courts, des exercices corrigés et Calia, un tuteur IA qui guide l&apos;élève sans lui donner la réponse.
+            Les parents suivent la progression de chaque enfant.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 hero-rise hero-rise-4">
@@ -149,7 +148,7 @@ export default async function Home() {
             <GraduationCap className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> Du CP à la Terminale
           </div>
           <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>
-            <Sparkles className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> IA pédagogique 24h/24
+            <Sparkles className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> Tuteur IA qui guide sans répondre
           </div>
           <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--greek-blue)" }}>
             <ShieldCheck className="w-4 h-4" style={{ color: "var(--greek-gold)" }} /> Programme officiel
@@ -171,12 +170,12 @@ export default async function Home() {
             className="font-[family-name:var(--font-display)] font-bold leading-[1.15]"
             style={{ fontSize: "clamp(2rem, 4.2vw, 3.4rem)" }}
           >
-            <span style={{ color: "var(--greek-blue)" }}>Votre enfant ne manque pas de capacités.</span>
+            <span style={{ color: "var(--greek-blue)" }}>Comprendre, s&apos;entraîner,</span>
             <br />
-            <span className="text-gradient-gold-dark">Il manque d&apos;une bonne méthode.</span>
+            <span className="text-gradient-gold-dark">savoir où l&apos;on en est.</span>
           </blockquote>
           <p className="mt-8 text-base leading-relaxed max-w-xl mx-auto" style={{ color: "var(--text-muted)" }}>
-            Educalcul est construit sur un principe simple : chaque élève peut réussir en mathématiques si on lui donne les bons outils.
+            Educalcul tient en trois choses : un cours clair par notion, des exercices corrigés tout de suite, et un suivi que les parents peuvent lire.
           </p>
         </Reveal>
       </section>
@@ -193,7 +192,7 @@ export default async function Home() {
                 1 · Cours & Exercices
               </div>
               <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
-                Tout le programme,<br />aucune lacune oubliée
+                Le programme officiel,<br />chapitre par chapitre
               </h2>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
                 Cours structurés, exercices progressifs, corrections détaillées, construits chapitre par chapitre sur le programme officiel, du CP à la Terminale.
@@ -231,7 +230,7 @@ export default async function Home() {
 
                 <div className="mt-2 inline-flex items-center gap-1.5 text-xs font-bold w-fit" style={{ color: "var(--greek-gold)" }}>
                   <span className="w-1.5 h-1.5 rounded-full inline-block" style={{ background: "var(--greek-gold)" }} />
-                  Disponible 24h/24
+                  Disponible le soir et le week-end
                 </div>
               </div>
             </Reveal>
@@ -243,7 +242,7 @@ export default async function Home() {
                 Un tuteur IA qui pose<br />les bonnes questions
               </h2>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
-                Jamais la réponse tout de suite : Calia repère où ça bloque et guide l&apos;élève jusqu&apos;au déclic, avec la méthode socratique. Disponible 24h/24.
+                Jamais la réponse tout de suite : Calia repère où ça bloque et guide l&apos;élève jusqu&apos;au déclic, avec la méthode socratique.
               </p>
               <div className="mt-6">
                 <GlassButton href="/calia-tuteur-ia-maths" variant="outline" size="sm">
@@ -260,10 +259,10 @@ export default async function Home() {
                 3 · Suivi Parents
               </div>
               <h2 className="font-[family-name:var(--font-display)] font-bold leading-tight mb-4" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)", letterSpacing: "-0.01em" }}>
-                Vous savez enfin<br />où il en est vraiment
+                Vous voyez<br />où en est votre enfant
               </h2>
               <p className="text-base leading-relaxed max-w-md" style={{ color: "var(--text-muted)" }}>
-                Progression par chapitre, objectifs et séries, alerte quand il décroche : un tableau de bord clair pour chaque enfant, pas un bulletin de plus à décoder.
+                Progression par chapitre, objectifs et séries, alerte quand il décroche : un tableau de bord par enfant, et un bulletin à imprimer.
               </p>
             </Reveal>
             <Reveal y={36} scale={0.95} delay={0.1}>
@@ -317,7 +316,7 @@ export default async function Home() {
           <Reveal className="text-center mb-10" y={20}>
             <p className="text-xs font-bold tracking-widest uppercase mb-2" style={{ color: "var(--greek-gold-text)" }}>Questions fréquentes</p>
             <h2 className="font-[family-name:var(--font-display)] font-bold" style={{ color: "var(--greek-blue)", fontSize: "clamp(1.6rem, 2.8vw, 2.4rem)", letterSpacing: "-0.01em" }}>
-              Encore quelques doutes ?
+              Questions fréquentes
             </h2>
           </Reveal>
           <RevealGroup className="flex flex-col gap-3" stagger={0.08}>
@@ -344,12 +343,12 @@ export default async function Home() {
             className="font-[family-name:var(--font-display)] font-bold leading-[1.1] mb-6"
             style={{ color: "#f0ede8", fontSize: "clamp(2.1rem, 4.2vw, 3.2rem)" }}
           >
-            Votre enfant mérite<br />
-            <span className="text-gradient-gold">le meilleur.</span>
+            Essayez Educalcul<br />
+            <span className="text-gradient-gold">avec votre enfant.</span>
           </h2>
           <div className="flex flex-wrap justify-center gap-4 mb-10 text-sm" style={{ color: "rgba(240,237,232,0.42)" }}>
-            <span className="flex items-center gap-1.5"><Check className="w-4 h-4" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> Méthodologie adaptée</span>
-            <span className="flex items-center gap-1.5"><Check className="w-4 h-4" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> 7 jours offerts</span>
+            <span className="flex items-center gap-1.5"><Check className="w-4 h-4" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> 7 jours d&apos;essai gratuit</span>
+            <span className="flex items-center gap-1.5"><Check className="w-4 h-4" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> Sans engagement</span>
             <span className="flex items-center gap-1.5"><Check className="w-4 h-4" style={{ color: "var(--greek-gold)" }} aria-hidden="true" /> Annulable à tout moment</span>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

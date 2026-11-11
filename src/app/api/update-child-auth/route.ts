@@ -1,4 +1,6 @@
 ﻿import { NextResponse } from "next/server";
+import { unverifiedParentResponse } from "@/lib/emailVerification";
+import { isPasswordPwned, PWNED_MESSAGE } from "@/lib/pwnedPassword";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { requireRole } from "@/lib/apiAuth";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
@@ -13,6 +15,8 @@ export async function POST(request: Request) {
     if (!requester) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    const unverified = await unverifiedParentResponse(requester);
+    if (unverified) return unverified;
 
     const config = RATE_LIMITS["child-account:mutate"];
     const rl = await rateLimitWithBackoff(`update-child-auth:${requester.id}`, config.maxAttempts, config.windowMs);
@@ -39,6 +43,7 @@ export async function POST(request: Request) {
     if (password) {
       const pwError = typeof password === "string" ? validatePassword(password) : "Mot de passe invalide";
       if (pwError) return NextResponse.json({ error: pwError }, { status: 400 });
+      if (await isPasswordPwned(password)) return NextResponse.json({ error: PWNED_MESSAGE }, { status: 400 });
     }
 
     // 1. Verify the requester owns the child (admins may manage any child)

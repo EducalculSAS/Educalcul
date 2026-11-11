@@ -58,3 +58,14 @@ export async function startEmailVerification(opts: { authId: string; email: stri
   }
   if (opts.email) await sendVerificationEmail({ userId: row.id, email: opts.email, firstName: opts.firstName, paid: opts.paid });
 }
+
+/**
+ * Garde des routes d'action d'un parent : tant que l'adresse n'est pas confirmée, on répond 403. L'écran de l'espace
+ * parent est déjà fermé (layout) ; ceci couvre un appel direct à l'API. Renvoie null quand tout va bien.
+ */
+export async function unverifiedParentResponse(me: { id: number; role: string }): Promise<Response | null> {
+  if (me.role !== "parent") return null;
+  const { data } = await supabaseAdmin.from("users").select("email_verified_at").eq("id", me.id).maybeSingle();
+  if (data?.email_verified_at) return null;
+  return Response.json({ error: "Confirmez d'abord votre adresse e-mail (lien reçu par e-mail)." }, { status: 403 });
+}

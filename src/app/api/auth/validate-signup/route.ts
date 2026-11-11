@@ -1,24 +1,25 @@
 import { getClientIp } from "@/lib/apiAuth";
 import { NextResponse } from "next/server";
+import { isPasswordPwned, PWNED_MESSAGE } from "@/lib/pwnedPassword";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { validateEmail, isValidRole } from "@/lib/validation";
 import { rateLimitWithBackoff, RATE_LIMITS } from "@/lib/rateLimitAdvanced";
 
 export async function POST(req: Request) {
   try {
-    const { email, role } = await req.json();
+    const { email, role, password } = await req.json();
 
     // ✓ VALIDATION: Validate email and role format
     if (!email || !role) {
-      return NextResponse.json({ valid: false, error: "Missing fields" });
+      return NextResponse.json({ valid: false, error: "Champs manquants." });
     }
 
     if (!validateEmail(email)) {
-      return NextResponse.json({ valid: false, error: "Invalid email format" });
+      return NextResponse.json({ valid: false, error: "Adresse e-mail invalide." });
     }
 
     if (!isValidRole(role)) {
-      return NextResponse.json({ valid: false, error: "Invalid role" });
+      return NextResponse.json({ valid: false, error: "Type de compte invalide." });
     }
 
     // ✓ HIGH PRIORITY FIX: Add rate limiting
@@ -28,7 +29,7 @@ export async function POST(req: Request) {
     if (!rl.allowed) {
       return NextResponse.json({
         valid: false,
-        error: "Too many validation attempts. Please try again later.",
+        error: "Trop de tentatives. Réessayez dans quelques minutes.",
       });
     }
 
@@ -43,8 +44,13 @@ export async function POST(req: Request) {
     if (existing) {
       return NextResponse.json({
         valid: false,
-        error: "This email is already in use. Please log in or use a different email.",
+        error: "Cette adresse e-mail est déjà utilisée. Connectez-vous ou utilisez-en une autre.",
       });
+    }
+
+    // Mot de passe paru dans une fuite de données : refusé dès le formulaire (le mot de passe n'est ni gardé ni journalisé).
+    if (typeof password === "string" && password && (await isPasswordPwned(password))) {
+      return NextResponse.json({ valid: false, error: PWNED_MESSAGE });
     }
 
     return NextResponse.json({ valid: true });

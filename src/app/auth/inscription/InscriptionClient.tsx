@@ -183,7 +183,7 @@ export default function Inscription() {
     setError(null);
     setLoading(true);
     try {
-      const checkRes  = await fetch("/api/auth/validate-signup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email.trim(), role: ROLE }) });
+      const checkRes  = await fetch("/api/auth/validate-signup", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email: email.trim(), role: ROLE, password }) });
       const checkData = await checkRes.json();
       if (!checkData.valid) { setError(checkData.error || "Email déjà utilisé."); setLoading(false); return; }
 

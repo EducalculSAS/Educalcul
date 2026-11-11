@@ -22,8 +22,8 @@ const SYM = [
 
 const INFO_ITEMS = [
   { icon: Mail, title: "Email", desc: "contact@educalcul.com" },
-  { icon: Clock, title: "Réponse sous 24h", desc: "En semaine, jours ouvrés" },
-  { icon: MessageSquare, title: "Support en français", desc: "Une équipe dédiée, basée en France" },
+  { icon: Clock, title: "Réponse par e-mail", desc: "En général sous deux jours ouvrés" },
+  { icon: MessageSquare, title: "En français", desc: "Les fondateurs vous répondent eux-mêmes" },
   { icon: ShieldCheck, title: "RGPD & confidentialité", desc: "Vos données ne sont jamais partagées" },
 ];
 
@@ -48,7 +48,7 @@ export default function Contact() {
                   Contactez-nous
                 </h1>
                 <p className="text-white/55 text-lg leading-relaxed">
-                  Une équipe française à votre écoute, pour chaque question, grande ou petite.
+                  Une question, un problème, une idée ? Les fondateurs lisent chaque message.
                 </p>
               </div>
               <div className="hidden md:flex flex-col gap-3">

@@ -8,7 +8,7 @@ export default function InscriptionInfo() {
   return (
     <section className="w-full max-w-md bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] text-sm text-gray-600 space-y-5">
       <div>
-        <h2 className="text-base font-bold text-[var(--greek-blue)] mb-2">7 jours gratuits, sans carte bancaire</h2>
+        <h2 className="text-base font-bold text-[var(--greek-blue)] mb-2">7 jours gratuits, sans engagement</h2>
         <p>
           Le compte est créé par un parent, qui ajoute ensuite son ou ses enfants. L&apos;essai dure 7 jours, sans engagement :
           à la fin, vous choisissez une formule ou vous arrêtez simplement.

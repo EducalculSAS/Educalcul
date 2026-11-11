@@ -1,4 +1,5 @@
 import { getClientIp } from "@/lib/apiAuth";
+import { isPasswordPwned, PWNED_MESSAGE } from "@/lib/pwnedPassword";
 import type Stripe from "stripe";
 import type { Row } from "@/types/db";
 import { NextResponse } from 'next/server';
@@ -228,6 +229,7 @@ export async function POST(req: Request) {
       if (!validatedFirstName || !password || !validateEmail(email)) {
         return NextResponse.json({ error: 'Missing or invalid signup fields' }, { status: 400 });
       }
+      if (await isPasswordPwned(password)) return NextResponse.json({ error: PWNED_MESSAGE }, { status: 400 });
 
       const ip = getClientIp(req);
       const rlConfig = RATE_LIMITS['auth:signup'];

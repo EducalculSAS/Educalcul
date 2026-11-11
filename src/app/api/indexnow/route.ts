@@ -1,26 +1,16 @@
 import { readJsonBody } from "@/lib/apiJson";
 import { NextRequest, NextResponse } from "next/server";
+import { LEVEL_PAGES } from "@/lib/seo/levels";
 
 const BASE = "https://educalcul.com";
 const INDEXNOW_KEY = "57b16f79fd93430f85bf765bae399dd6";
 
-// All public URLs to notify
+// Toutes les pages publiques à signaler : les mêmes que le sitemap (pages de niveau lues dans LEVEL_PAGES, jamais une
+// liste recopiée à la main, qui finissait par pointer vers des adresses disparues).
 const ALL_URLS = [
   BASE,
-  `${BASE}/offres`,
-  `${BASE}/tarifs`,
-  `${BASE}/programmes`,
-  `${BASE}/faq`,
-  `${BASE}/contact`,
-  `${BASE}/auth/inscription`,
-  // Programme level pages
-  ...["cp","ce1","ce2","cm1","cm2",
-      "6eme","5eme","4eme","3eme",
-      "2nde",
-      "1ere-generale","1ere-generale-maths",
-      "terminale-generale","terminale-generale-maths","terminale-generale-expertes",
-      "terminale-generale-complementaires",
-  ].map(l => `${BASE}/programmes/${l}`),
+  ...["/offres", "/tarifs", "/programmes", "/calia-tuteur-ia-maths", "/methode-pedagogique", "/a-propos", "/faq", "/contact", "/auth/inscription"].map((p) => `${BASE}${p}`),
+  ...LEVEL_PAGES.map((l) => `${BASE}/programmes/${l.slug}`),
 ];
 
 // Engines supporting IndexNow

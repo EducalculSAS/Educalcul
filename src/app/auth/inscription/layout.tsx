@@ -5,9 +5,9 @@ const BASE = "https://educalcul.com";
 
 export const metadata: Metadata = {
   title: "Inscription : Essai gratuit 7 jours",
-  description: "Créez votre compte Educalcul gratuitement et démarrez l'essai de 7 jours, sans carte bancaire requise.",
+  description: "Créez votre compte Educalcul gratuitement et démarrez l'essai gratuit de 7 jours, sans engagement.",
   alternates: { canonical: `${BASE}/auth/inscription` },
-  ...socialMeta({ title: "Inscription Educalcul : Essai gratuit 7 jours", description: "Créez votre compte et démarrez gratuitement, sans carte bancaire.", path: "/auth/inscription" }),
+  ...socialMeta({ title: "Inscription Educalcul : Essai gratuit 7 jours", description: "Créez votre compte et démarrez gratuitement, sans engagement.", path: "/auth/inscription" }),
 };
 
 export default function InscriptionLayout({ children }: { children: React.ReactNode }) {
