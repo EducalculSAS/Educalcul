@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { forumTextIssue, FORUM_FILTER_MESSAGE } from "@/lib/forumFilter";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser, type AuthenticatedUser } from "@/lib/apiAuth";
@@ -30,6 +31,8 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
 
     const content = cleanText((await req.json().catch(() => ({}))).content, COMMENT_MAX);
     if (content.length < 1) return NextResponse.json({ error: "Réponse vide." }, { status: 400 });
+    const issue = forumTextIssue(content);
+    if (issue) return NextResponse.json({ error: FORUM_FILTER_MESSAGE[issue], code: "filtre" }, { status: 422 });
 
     const { error } = await supabaseAdmin
       .from("forum_comments")

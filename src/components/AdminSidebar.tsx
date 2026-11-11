@@ -86,7 +86,6 @@ export default function AdminSidebar({ adminLevel = "super" }: { adminLevel?: st
     { name: "Programmes", href: "/admin/programmes", icon: GraduationCap },
     { name: "Calendrier", href: "/admin/calendar", icon: Calendar },
     { name: "Avis clients", href: "/admin/reviews", icon: Star },
-    { name: "Liste d'attente", href: "/admin/landing", icon: Trophy },
     { name: "Journal d'audit", href: "/admin/audit-log", icon: History },
     { name: "Erreurs", href: "/admin/erreurs", icon: Bug },
     { name: "Scanner IA", href: "/admin/scanner", icon: ScanSearch },

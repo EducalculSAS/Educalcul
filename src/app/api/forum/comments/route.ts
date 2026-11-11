@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { forumTextIssue, FORUM_FILTER_MESSAGE } from "@/lib/forumFilter";
 import { unverifiedParentResponse } from "@/lib/emailVerification";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -35,6 +36,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Ce sujet est verrouillé." }, { status: 403 });
     }
     if (content.length < 1) return NextResponse.json({ error: "Écris ta réponse." }, { status: 400 });
+    // Filtre avant publication (coordonnées, insultes) : l'équipe n'y est pas soumise.
+    const issue = me.role === "admin" ? null : forumTextIssue(content);
+    if (issue) return NextResponse.json({ error: FORUM_FILTER_MESSAGE[issue], code: "filtre" }, { status: 422 });
 
     // Une citation ne peut viser qu'une réponse du même sujet.
     let quoted_comment_id: number | null = null;

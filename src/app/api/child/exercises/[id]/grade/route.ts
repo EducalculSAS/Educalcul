@@ -1,4 +1,5 @@
 import type { Block } from "@/components/admin/ExerciseBuilder";
+import { mayOpenCourse } from "@/lib/freeAccess";
 import { NextResponse, after } from "next/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -121,7 +122,7 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     } else {
       const { data: exercise, error } = await supabaseAdmin
         .from("exercises")
-        .select("id, level, difficulty_level, grading_type, points_reward, content_json, status")
+        .select("id, level, difficulty_level, grading_type, points_reward, content_json, status, course_id")
         .eq("id", id)
         .maybeSingle();
       if (error || !exercise) return NextResponse.json({ error: "Exercise not found" }, { status: 404 });
@@ -129,6 +130,10 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 
       const { allowed } = await checkDifficultyAccess(me.authId, exercise.difficulty_level);
       if (!allowed) return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
+      // Formule gratuite : pas de correction (donc pas de solution) pour un exercice d'un cours verrouillé.
+      if (exercise.course_id && !(await mayOpenCourse({ ...me, parentId: me.parent_id }, exercise.course_id))) {
+        return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
+      }
 
       // Niveau de la base, jamais du client : il ne doit pas pouvoir influencer le verdict.
       level = exercise.level || level;

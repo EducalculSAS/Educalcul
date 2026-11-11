@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { mayOpenCourse } from "@/lib/freeAccess";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { childMayOpen } from "@/lib/levelAccess";
@@ -47,6 +48,8 @@ export default async function CourseDetailPage({
   if (courseData && authUser.role !== "admin" && courseData.status !== "published") redirect("/child/cours");
   // Un élève n'ouvre par adresse directe que le contenu de ses niveaux (comme le catalogue).
   if (courseData && !(await childMayOpen(authUser, { kind: "course", id: courseId, level: courseData.level, folder_id: courseData.folder_id }, "course_folders"))) redirect("/child/cours");
+  // Formule gratuite : seul le premier chapitre s'ouvre. Le contenu d'un cours verrouillé n'est jamais envoyé.
+  if (courseData && !(await mayOpenCourse(authUser, courseId))) redirect("/child/cours?verrou=1");
   const course = error || !courseData ? null : courseData;
 
   return <CourseDetailClient courseId={courseId} initialCourse={course as CourseDetail | null} />;

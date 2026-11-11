@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { freeCourseIds } from "@/lib/freeAccess";
 import type { ComponentProps } from "react";
 import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
@@ -44,7 +45,8 @@ export default async function ChildQuizPage({
 
   // Seul le sous-arbre du niveau de l'élève, paginé (voir childCatalog.ts).
   // Pas de content_json : il n'est chargé qu'à l'ouverture d'un quiz.
-  const allQuizzes = await loadPublishedCatalog(
+  const openCourseIds = await freeCourseIds(authUser);
+  const allQuizzesRaw = await loadPublishedCatalog(
     "quizzes",
     `id, title, description, course_id, folder_id,
       time_limit_minutes, min_score_percent, status, type,
@@ -57,6 +59,8 @@ export default async function ChildQuizPage({
     },
     isQuiz,
   );
+  // Formule gratuite : les quiz des cours verrouillés ne sont pas listés.
+  const allQuizzes = openCourseIds ? allQuizzesRaw.filter((q) => !q.course_id || openCourseIds.has(String(q.course_id))) : allQuizzesRaw;
 
   const initialProgress: Record<string, { status: string; score: number; attempts: number }> = {};
   for (const a of attempts || []) {

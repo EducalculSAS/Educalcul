@@ -1,4 +1,5 @@
 import { parseList } from "@/lib/validate";
+import { mayOpenCourse } from "@/lib/freeAccess";
 import { attemptSummarySchema } from "@/lib/schemas";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
@@ -71,6 +72,8 @@ export default async function QuizDetailPage({
   if (quiz && authUser.role !== "admin" && quiz.status !== "published") redirect("/child/quiz");
   // Un élève n'ouvre par adresse directe que le contenu de ses niveaux (comme le catalogue).
   if (quiz && !(await childMayOpen(authUser, { kind: "quiz", id: quizId, level: quiz.level, folder_id: quiz.folder_id }, "quiz_folders"))) redirect("/child/quiz");
+  // Formule gratuite : un quiz rattaché à un cours verrouillé l'est aussi.
+  if (quiz?.course_id && !(await mayOpenCourse(authUser, quiz.course_id))) redirect("/child/quiz");
   if (quiz) {
     const { allowed } = await checkDifficultyAccess(authUser.authId, quiz.difficulty_level);
     if (!allowed) redirect("/child/quiz");

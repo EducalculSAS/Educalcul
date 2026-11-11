@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { freeCourseIds } from "@/lib/freeAccess";
 import type { ComponentProps } from "react";
 import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
@@ -50,7 +51,8 @@ export default async function ChildExercisesPage({
 
   // Seul le sous-arbre du niveau de l'élève, paginé (voir childCatalog.ts).
   // Pas de content_json : il n'est chargé qu'à l'ouverture d'un exercice.
-  const allExercises = await loadPublishedCatalog(
+  const openCourseIds = await freeCourseIds(authUser);
+  const allExercisesRaw = await loadPublishedCatalog(
     "exercises",
     `id, title, description, question, difficulty_level, thumbnail_url, folder_id, course_id, display_order, courses (title)`,
     {
@@ -59,6 +61,8 @@ export default async function ChildExercisesPage({
     },
     isExercise,
   );
+  // Formule gratuite : les exercices des cours verrouillés ne sont pas listés.
+  const allExercises = openCourseIds ? allExercisesRaw.filter((e) => !e.course_id || openCourseIds.has(String(e.course_id))) : allExercisesRaw;
 
   const initialProgress: Record<string, { status: string; score: number; attempts: number }> = {};
   for (const a of attempts || []) {

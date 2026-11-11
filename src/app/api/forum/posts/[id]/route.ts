@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { forumTextIssue, FORUM_FILTER_MESSAGE } from "@/lib/forumFilter";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getAuthenticatedUser } from "@/lib/apiAuth";
@@ -182,6 +183,10 @@ export async function PATCH(req: Request, { params }: { params: Promise<{ id: st
       const content = cleanText(body.content, CONTENT_MAX);
       if (content.length < 2) return NextResponse.json({ error: "Message vide." }, { status: 400 });
       updates.content = content;
+    }
+    if (me.role !== "admin") {
+      const issue = forumTextIssue(`${updates.title ?? ""}\n${updates.content ?? ""}`);
+      if (issue) return NextResponse.json({ error: FORUM_FILTER_MESSAGE[issue], code: "filtre" }, { status: 422 });
     }
     if (updates.title !== undefined || updates.content !== undefined) updates.updated_at = new Date().toISOString();
 

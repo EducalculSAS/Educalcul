@@ -1,4 +1,5 @@
 import { parseList } from "@/lib/validate";
+import { mayOpenCourse } from "@/lib/freeAccess";
 import { attemptSummarySchema } from "@/lib/schemas";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
@@ -89,6 +90,8 @@ export default async function ExerciseDetailPage({
   if (exercise && authUser.role !== "admin" && exercise.status !== "published") redirect("/child/exercises");
   // Un élève n'ouvre par adresse directe que le contenu de ses niveaux (comme le catalogue).
   if (exercise && !(await childMayOpen(authUser, { kind: "exercise", id: exerciseId, level: exercise.level, folder_id: exercise.folder_id }, "exercise_folders"))) redirect("/child/exercises");
+  // Formule gratuite : un exercice rattaché à un cours verrouillé l'est aussi.
+  if (exercise?.course_id && !(await mayOpenCourse(authUser, exercise.course_id))) redirect("/child/exercises");
   if (exercise) {
     const { allowed } = await checkDifficultyAccess(authUser.authId, exercise.difficulty_level);
     if (!allowed) redirect("/child/exercises");

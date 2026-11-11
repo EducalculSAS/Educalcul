@@ -8,7 +8,7 @@ import { useState, useCallback } from "react";
 import {
   Users, CreditCard, BookOpen, Calculator, Brain,
   MessageSquare, TicketCheck, AlertTriangle, TrendingUp,
-  UserPlus, BarChart2, Shield, Gift, RefreshCw,
+  UserPlus, BarChart2, Shield, RefreshCw,
   ChevronRight, Clock, Keyboard, Gamepad2, Mail, Scale,
   GraduationCap, Calendar, Star, History, ScanSearch,
   ShieldCheck, Flag, User,
@@ -227,7 +227,6 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
               { href: "/admin/programmes",    icon: <GraduationCap size={15} />, label: "Programmes"     },
               { href: "/admin/calendar",      icon: <Calendar size={15} />,      label: "Calendrier"     },
               { href: "/admin/reviews",       icon: <Star size={15} />,          label: "Avis clients"   },
-              { href: "/admin/landing",       icon: <Gift size={15} />,          label: "Liste d'attente"},
               { href: "/admin/audit-log",     icon: <History size={15} />,       label: "Journal d'audit"},
               { href: "/admin/scanner",       icon: <ScanSearch size={15} />,    label: "Scanner IA"     },
               { href: "/admin/security",      icon: <ShieldCheck size={15} />,   label: "Sécurité"       },

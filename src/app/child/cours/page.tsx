@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { freeCourseIds } from "@/lib/freeAccess";
 import type { ComponentProps } from "react";
 import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
@@ -52,6 +53,10 @@ export default async function ChildCoursesPage() {
     isCourse,
   );
 
+  // Formule gratuite : les cours hors du premier chapitre sont listés, mais marqués verrouillés (leur page refuse de s'ouvrir).
+  const openIds = await freeCourseIds(authUser);
+  const lockedCourseIds = openIds ? allCourses.filter((c) => !openIds.has(String(c.id))).map((c) => String(c.id)) : [];
+
   // Progression indexée une fois (Map) au lieu d'un .find() par cours.
   const progressByCourse = new Map((progressRows || []).map((p) => [p.course_id, p]));
   const courseProgress: Record<string, { status: string; pct: number }> = {};
@@ -76,6 +81,7 @@ export default async function ChildCoursesPage() {
           levelFolderId={scope.levelFolderId}
           rootFolderIds={scope.rootFolderIds}
           courseProgress={courseProgress}
+          planLockedIds={lockedCourseIds}
         />
       </div>
     </div>

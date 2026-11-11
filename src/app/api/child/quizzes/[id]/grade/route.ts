@@ -1,4 +1,5 @@
 import { parseList } from "@/lib/validate";
+import { mayOpenCourse } from "@/lib/freeAccess";
 import { questionSchema } from "@/lib/schemas";
 import { NextResponse } from "next/server";
 import type { Question } from "@/components/admin/QuizBuilder";
@@ -44,7 +45,7 @@ export async function POST(
     } else {
       const { data: quiz, error: qzError } = await supabaseAdmin
         .from("quizzes")
-        .select("content_json, level, difficulty_level, status")
+        .select("content_json, level, difficulty_level, status, course_id")
         .eq("id", id)
         .single();
       if (qzError || !quiz) {
@@ -66,6 +67,10 @@ export async function POST(
       // appelable indépendamment de la page.
       const { allowed } = await checkDifficultyAccess(me.authId, quiz.difficulty_level);
       if (!allowed) {
+        return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
+      }
+      // Formule gratuite : pas de correction pour un quiz d'un cours verrouillé.
+      if (quiz.course_id && !(await mayOpenCourse({ ...me, parentId: me.parent_id }, quiz.course_id))) {
         return NextResponse.json({ error: "Ce contenu est réservé aux plans payants." }, { status: 403 });
       }
     }

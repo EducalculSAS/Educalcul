@@ -26,8 +26,10 @@ type CourseProgress = Record<string, { status: string; pct: number }>;
  * (sessionStorage) et le rendu KaTeX des titres/descriptions (chargé depuis
  * un CDN au montage, comme avant). */
 export default function CoursesCatalog({
-  allFolders, allCourses, levelFolderId, rootFolderIds, courseProgress,
+  allFolders, allCourses, levelFolderId, rootFolderIds, courseProgress, planLockedIds = [],
 }: {
+  /** Cours fermés par la formule gratuite (seul le premier chapitre est ouvert). Le serveur refuse aussi de les ouvrir. */
+  planLockedIds?: string[];
   allFolders: FolderRow[];
   allCourses: CourseRow[];
   levelFolderId: number | null;
@@ -37,6 +39,7 @@ export default function CoursesCatalog({
 }) {
   const gridRef = useRef<HTMLDivElement>(null);
   const [currentFolderId, setCurrentFolderId] = useSessionFolderId("child_cours_folder");
+  const planLocked_ = new Set(planLockedIds);
   const [breadcrumbs, setBreadcrumbs] = useState<{ id: number; name: string }[]>([]);
   const [selectedRootId, setSelectedRootId] = useState<number | null>(rootFolderIds?.[0] ?? null);
   const activeRootId = rootFolderIds?.includes(selectedRootId ?? -1) ? selectedRootId : rootFolderIds?.[0] ?? null;
@@ -175,7 +178,8 @@ export default function CoursesCatalog({
             const previousCourse = index > 0 ? currentCourses[index - 1] : null;
             const previousProg = previousCourse ? courseProgress[previousCourse.id] : null;
             const previousCompleted = previousProg?.status === "completed" || (previousProg?.pct ?? 0) >= 100;
-            const isLocked = index > 0 && !previousCompleted;
+            const planLocked = planLocked_.has(String(course.id));
+            const isLocked = planLocked || (index > 0 && !previousCompleted);
 
             return (
               <div
@@ -209,7 +213,7 @@ export default function CoursesCatalog({
                 <div className="p-6 flex flex-col flex-grow">
                   <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">{course.title}</h3>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
-                    {isLocked ? "Termine le cours précédent pour débloquer celui-ci." : (course.description || "Découvre ce chapitre passionnant !")}
+                    {planLocked ? "Ce chapitre fait partie des formules Solo et Family. Demande à tes parents !" : isLocked ? "Termine le cours précédent pour débloquer celui-ci." : (course.description || "Découvre ce chapitre passionnant !")}
                   </p>
 
                   {isInProgress && (
@@ -233,7 +237,7 @@ export default function CoursesCatalog({
                       {isLocked ? (
                         <>
                           <Lock className="w-4 h-4" />
-                          Verrouillé
+                          {planLocked ? "Formule Solo ou Family" : "Verrouillé"}
                         </>
                       ) : (
                         <>

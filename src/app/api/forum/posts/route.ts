@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { forumTextIssue, FORUM_FILTER_MESSAGE } from "@/lib/forumFilter";
 import { unverifiedParentResponse } from "@/lib/emailVerification";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -130,6 +131,9 @@ export async function POST(req: Request) {
     }
     if (content.length < 2) return NextResponse.json({ error: "Écris ton message." }, { status: 400 });
     if (!categoryId) return NextResponse.json({ error: "Choisis une catégorie." }, { status: 400 });
+    // Filtre avant publication (coordonnées, insultes) : l'équipe n'y est pas soumise.
+    const issue = me.role === "admin" ? null : forumTextIssue(`${title}\n${content}`);
+    if (issue) return NextResponse.json({ error: FORUM_FILTER_MESSAGE[issue], code: "filtre" }, { status: 422 });
 
     // La catégorie doit être visible par l'auteur, et ouverte à la
     // publication (les Annonces sont réservées à l'équipe).
