@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, Send } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
+import { Send } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { useToast } from "@/components/Toast";
 import type { ForumCategory, ForumRole } from "@/lib/forumTypes";
@@ -56,7 +57,7 @@ export default function NewTopicDialog({
         <>
           <GlassButton variant="ghost" size="sm" onClick={onClose}>Annuler</GlassButton>
           <GlassButton variant="navy" size="sm" onClick={submit} disabled={!canSubmit}>
-            {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />} Publier
+            {saving ? <LoaderDots /> : <Send className="w-4 h-4" />} Publier
           </GlassButton>
         </>
       }

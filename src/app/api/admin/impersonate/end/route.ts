@@ -3,7 +3,7 @@ import { after } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { auditLog, AuditAction } from "@/lib/auditLog";
-import { IMPERSONATION_COOKIE_NAME } from "@/lib/impersonationCookie";
+import { IMPERSONATION_COOKIE_NAME, IMPERSONATION_MARKER } from "@/lib/impersonationCookie";
 
 /** Termine l'impersonation : le cookie httpOnly `edu_impersonation` (posé au
  * démarrage, voir /api/admin/impersonate) fait office d'autorisation — la
@@ -25,6 +25,7 @@ export async function POST(req: Request) {
       .maybeSingle();
 
     store.delete(IMPERSONATION_COOKIE_NAME);
+    store.delete(IMPERSONATION_MARKER);
     if (!row) return Response.json({ error: "Session d'impersonation introuvable" }, { status: 404 });
 
     // Suppression de la ligne et échange du jeton en PARALLÈLE (avant : l'un après l'autre, puis l'audit, avant de

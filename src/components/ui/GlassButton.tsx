@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import { clampGlassTranslate, isRectOffscreen, glassButtonRegistry } from "@/lib/liquidGlassBounds";
 import { splitPositionClasses } from "@/lib/splitPositionClasses";
@@ -337,6 +337,8 @@ export default function GlassButton({
           ref={elRef as React.Ref<HTMLAnchorElement>}
           href={href}
           onClick={onClick}
+          // Page complète préchargée au survol / au toucher : elle s'ouvre directement au clic (voir AppLink).
+          intent={!external && href.startsWith("/")}
           {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
           className={combinedClassName}
           style={combinedStyle}

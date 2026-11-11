@@ -1,6 +1,7 @@
 "use client";
 
 import GlassCheckbox from "@/components/ui/GlassCheckbox";
+import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect } from "react";
 import PasswordStrength from "@/components/PasswordStrength";
 import { useRouter } from "next/navigation";
@@ -9,7 +10,7 @@ import { getSiteUrl } from "@/lib/siteUrl";
 import { setPendingSignupPassword } from "@/lib/pendingSignupPassword";
 import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
 import { validatePassword, isValidEmail } from "@/lib/validation";
-import { Mail, Lock, User, AlertCircle, CheckCircle, Gift, Loader2, ArrowRight, ArrowLeft, Eye, EyeOff, Check } from "lucide-react";
+import { Mail, Lock, User, AlertCircle, CheckCircle, Gift, ArrowRight, ArrowLeft, Eye, EyeOff, Check } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { errMessage } from "@/lib/safeError";
 
@@ -278,7 +279,7 @@ export default function Inscription() {
             placeholder="EX: ABCD1234"
           />
           <span className="absolute right-3 top-1/2 -translate-y-1/2">
-            {referralValidating && <Loader2 className="w-4 h-4 animate-spin" style={{ color: "var(--text-muted)" }} />}
+            {referralValidating && <LoaderDots />}
             {!referralValidating && referralStatus === "valid"   && <CheckCircle className="w-4 h-4 text-green-500" />}
             {!referralValidating && referralStatus === "invalid" && <AlertCircle className="w-4 h-4 text-red-400" />}
           </span>
@@ -402,7 +403,7 @@ export default function Inscription() {
               size="sm"
               disabled={loading || !cguAccepted}
             >
-              {loading ? <><Loader2 className="w-4 h-4 animate-spin" /> Vérification…</> : <>Continuer vers les plans <ArrowRight className="w-4 h-4" /></>}
+              {loading ? <><LoaderDots /> Vérification…</> : <>Continuer vers les plans <ArrowRight className="w-4 h-4" /></>}
             </GlassButton>
           )}
         </div>

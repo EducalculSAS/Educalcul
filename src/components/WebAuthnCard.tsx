@@ -1,10 +1,11 @@
 "use client";
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
+import LoaderDots from "@/components/LoaderDots";
 import { useEffect, useState } from "react";
 import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
-import { Fingerprint, Trash2, Loader2, CheckCircle } from "lucide-react";
+import { Fingerprint, Trash2, CheckCircle } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { errMessage } from "@/lib/safeError";
@@ -155,7 +156,7 @@ export default function WebAuthnCard() {
           {enabled ? "Activée" : "Désactivée"}
         </span>
         <span className="flex items-center gap-2">
-          {registering && <Loader2 className="w-4 h-4 animate-spin text-[var(--greek-blue)]" />}
+          {registering && <LoaderDots />}
           <GlassSwitch checked={enabled} disabled={!supported || registering} onChange={(next) => toggle(next)} label="Clé d'accès" />
         </span>
       </div>

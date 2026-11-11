@@ -1,8 +1,9 @@
 "use client";
 
 import AvatarPicker from "@/components/AvatarPicker";
+import LoaderDots from "@/components/LoaderDots";
 import { useState } from "react";
-import { UserPlus, Save, Loader2, AlertCircle, CheckCircle, GraduationCap } from "lucide-react";
+import { UserPlus, Save, AlertCircle, CheckCircle, GraduationCap } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 import { validatePassword, isValidEmail } from "@/lib/validation";
@@ -195,7 +196,7 @@ export default function AddChildForm() {
               disabled={loading}
               className="!py-4"
             >
-              {loading ? <Loader2 className="w-6 h-6 animate-spin" /> : <Save className="w-6 h-6" />}
+              {loading ? <LoaderDots size="md" /> : <Save className="w-6 h-6" />}
               <span className="text-lg">Enregistrer l&apos;enfant</span>
             </GlassButton>
           </form>

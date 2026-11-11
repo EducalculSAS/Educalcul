@@ -1,10 +1,11 @@
 "use client";
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
+import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
-import { ShieldCheck, Loader2, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
+import { ShieldCheck, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
 import TwoFactorSessions from "@/components/TwoFactorSessions";
 import GlassButton from "@/components/ui/GlassButton";
 import { errMessage } from "@/lib/safeError";
@@ -172,7 +173,7 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
               fullWidth
               disabled={verifying || code.length !== 6}
             >
-              {verifying ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer"}
+              {verifying ? <LoaderDots /> : "Confirmer"}
             </GlassButton>
             <GlassButton
               onClick={cancelFlow}

@@ -1,6 +1,7 @@
 "use client";
 
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
 import { useEffect, useRef, useState } from "react";
 import { SUBJECTS } from "@/lib/contactSubjects";
 import GlassButton from "@/components/ui/GlassButton";
@@ -112,7 +113,7 @@ export default function ContactForm() {
             disabled={status === "loading"}
           >
             {status === "loading" ? (
-              <><div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> Envoi en cours...</>
+              <><LoaderDots /> Envoi en cours...</>
             ) : (
               <><Send className="w-4 h-4" /> Envoyer le message</>
             )}

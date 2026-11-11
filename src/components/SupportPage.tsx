@@ -1,6 +1,7 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
 import PageHero from "@/components/PageHero";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
@@ -188,7 +189,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
         <div>
           <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-4">Mes tickets ({tickets.length})</h2>
           {loading ? (
-            <div className="text-center py-12 text-gray-400">Chargement...</div>
+            <div className="flex justify-center py-12 text-[var(--greek-blue)]"><LoaderDots size="md" /></div>
           ) : tickets.length === 0 ? (
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-10 text-center text-gray-400">
               <MessageCircle className="w-10 h-10 mx-auto mb-2 opacity-20" />

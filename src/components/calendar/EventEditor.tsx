@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Clock, Loader2, Repeat } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
+import { Clock, Repeat } from "lucide-react";
 import GlassDialog from "@/components/ui/GlassDialog";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSwitch from "@/components/ui/GlassSwitch";
@@ -80,7 +81,7 @@ export default function EventEditor({
         <>
           <GlassButton variant="ghost" size="sm" onClick={onClose}>Annuler</GlassButton>
           <GlassButton variant="navy" size="sm" onClick={save} disabled={!canSave}>
-            {saving && <Loader2 className="w-4 h-4 animate-spin" />} {event ? "Enregistrer" : repeat > 1 ? `Ajouter ${repeat} événements` : "Ajouter"}
+            {saving && <LoaderDots />} {event ? "Enregistrer" : repeat > 1 ? `Ajouter ${repeat} événements` : "Ajouter"}
           </GlassButton>
         </>
       }

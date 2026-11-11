@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AlertCircle, CheckCircle2, Circle, GraduationCap, Loader2 } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
+import { AlertCircle, CheckCircle2, Circle, GraduationCap } from "lucide-react";
 import { getMyProfile } from "@/lib/updateMyProfile";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSwitch from "@/components/ui/GlassSwitch";
@@ -120,7 +121,7 @@ export default function ChildGradeChoiceModal() {
         <p className="text-xs text-[var(--text-muted)] mt-4">Ensuite, seul un parent ou l&apos;équipe Educalcul pourra modifier ce choix.</p>
         <div className="mt-5 flex justify-end">
           <GlassButton variant="navy" onClick={submit} disabled={!track || submitting}>
-            {submitting && <Loader2 className="w-4 h-4 animate-spin" />} Valider mon choix
+            {submitting && <LoaderDots />} Valider mon choix
           </GlassButton>
         </div>
       </div>

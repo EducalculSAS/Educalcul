@@ -1,6 +1,7 @@
 "use client";
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
+import LoaderDots from "@/components/LoaderDots";
 import ThemeToggle from "@/components/ThemeToggle";
 import ReplayTourCard from "@/components/tour/ReplayTourCard";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -8,20 +9,7 @@ import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import {
-  User,
-  Lock,
-  Mail,
-  Save,
-  AlertCircle,
-  CheckCircle,
-  Loader2,
-  Trash2,
-  Camera,
-  Bell,
-  Phone,
-  Download,
-} from "lucide-react";
+import { User, Lock, Mail, Save, AlertCircle, CheckCircle, Trash2, Camera, Bell, Phone, Download } from "lucide-react";
 import { validatePassword } from "@/lib/validation";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
@@ -422,7 +410,7 @@ export default function ParentProfileSettings({
                   disabled={saving}
                 >
                   {saving ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <LoaderDots />
                   ) : (
                     <Save className="w-4 h-4" />
                   )}
@@ -500,7 +488,7 @@ export default function ParentProfileSettings({
                   disabled={saving}
                 >
                   {saving ? (
-                    <Loader2 className="w-5 h-5 animate-spin" />
+                    <LoaderDots />
                   ) : (
                     <Lock className="w-5 h-5" />
                   )}
@@ -743,7 +731,7 @@ export default function ParentProfileSettings({
                       size="sm"
                       disabled={saving}
                     >
-                      {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Trash2 className="w-4 h-4" />}
+                      {saving ? <LoaderDots /> : <Trash2 className="w-4 h-4" />}
                       Supprimer définitivement
                     </GlassButton>
                   )}

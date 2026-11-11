@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
-import { Loader2, type LucideIcon } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
+import Link from "@/components/AppLink";
+import { type LucideIcon } from "lucide-react";
 import { clampGlassTranslate, isRectOffscreen, glassButtonRegistry } from "@/lib/liquidGlassBounds";
 import { splitPositionClasses } from "@/lib/splitPositionClasses";
 
@@ -244,7 +245,7 @@ export default function GlassIconButton({
           title={ariaLabel}
           className={combinedClassName}
         >
-          {loading ? <Loader2 className={`${iconSize} animate-spin`} /> : <Icon className={iconSize} strokeWidth={2.25} />}
+          {loading ? <LoaderDots /> : <Icon className={iconSize} strokeWidth={2.25} />}
         </Link>
       ) : (
         <button
@@ -257,7 +258,7 @@ export default function GlassIconButton({
           title={ariaLabel}
           className={combinedClassName}
         >
-          {loading ? <Loader2 className={`${iconSize} animate-spin`} /> : <Icon className={iconSize} strokeWidth={2.25} />}
+          {loading ? <LoaderDots /> : <Icon className={iconSize} strokeWidth={2.25} />}
         </button>
       )}
     </span>

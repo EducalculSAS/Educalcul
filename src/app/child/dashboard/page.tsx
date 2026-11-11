@@ -1,6 +1,6 @@
 import { relationOne } from "@/lib/validate";
 import { profileBadgeSchema } from "@/lib/schemas";
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import { redirect } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getServerUser } from "@/lib/supabase/server";

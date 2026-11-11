@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import Emblem3D from "@/components/Emblem3D";
 import { redirect } from "next/navigation";
 import {

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { UserCheck } from "lucide-react";
-import { supabase } from "@/lib/supabaseClient";
+import { loadSupabase } from "@/lib/supabaseLazy";
 import { trackLogout } from "@/lib/trackLogout";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -29,7 +29,7 @@ export default function SessionStillHereModal() {
   const doLogout = useCallback(async () => {
     try {
       await trackLogout();
-      await supabase.auth.signOut();
+      await (await loadSupabase()).auth.signOut();
     } catch {
       /* on redirige quoi qu'il arrive */
     }

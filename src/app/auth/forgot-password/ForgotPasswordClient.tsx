@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import LoaderDots from "@/components/LoaderDots";
 import { Mail, ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
@@ -103,7 +104,7 @@ export default function ForgotPassword() {
               >
                 {status === "loading" ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <LoaderDots />
                     Envoi en cours...
                   </>
                 ) : (

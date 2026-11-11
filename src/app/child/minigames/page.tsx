@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import PageHero from "@/components/PageHero";
 import { redirect } from "next/navigation";
 import StreakFlame from "@/components/StreakFlame";

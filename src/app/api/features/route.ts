@@ -8,6 +8,6 @@ export async function GET() {
   const disabled = await getDisabledFeatures();
   return NextResponse.json(
     { disabled: [...disabled.keys()] },
-    { headers: { "Cache-Control": "public, max-age=10, s-maxage=10" } },
+    { headers: { "Cache-Control": "public, max-age=10, s-maxage=10, stale-while-revalidate=60" } },
   );
 }

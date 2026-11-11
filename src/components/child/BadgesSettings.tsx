@@ -1,9 +1,10 @@
 "use client";
 
 import PageHero from "@/components/PageHero";
+import LoaderDots from "@/components/LoaderDots";
 import { useMemo, useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { Trophy, Lock, CheckCircle, Star, Loader2 } from "lucide-react";
+import { Trophy, Lock, CheckCircle, Star } from "lucide-react";
 import BadgeEmblem, { badgeTiers } from "@/components/BadgeEmblem";
 import CosmeticsShowcase from "@/components/child/CosmeticsShowcase";
 import { normalizeBorder, normalizeColor } from "@/lib/cosmetics/catalog";
@@ -122,7 +123,7 @@ export default function BadgesSettings({
               <h2 className="text-xl font-bold text-[var(--greek-blue)]">Badges affichés sur mon profil</h2>
             </div>
             <GlassButton onClick={saveFeatured} variant="navy" size="sm" disabled={savingFeatured}>
-              {savingFeatured ? <Loader2 className="w-3 h-3 animate-spin" /> : <CheckCircle className="w-3 h-3" />}
+              {savingFeatured ? <LoaderDots /> : <CheckCircle className="w-3 h-3" />}
               Sauvegarder
             </GlassButton>
           </div>

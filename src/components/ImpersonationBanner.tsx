@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+import { loadSupabase } from "@/lib/supabaseLazy";
+import { IMPERSONATION_MARKER } from "@/lib/impersonationCookie";
 import { UserCog } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { useToast } from "@/components/Toast";
@@ -30,6 +31,9 @@ export default function ImpersonationBanner() {
   // une impersonation terminée côté serveur mais dont l'état client était
   // resté figé sur l'ancienne réponse "active").
   useEffect(() => {
+    // Sans le témoin posé au démarrage d'une impersonation, personne n'est « connecté en tant que » : on n'interroge
+    // pas le serveur (avant : un appel à chaque page, pour tous les visiteurs).
+    if (!document.cookie.split("; ").some((c) => c.startsWith(`${IMPERSONATION_MARKER}=`))) { setState(null); return; }
     fetch("/api/admin/impersonate/status")
       .then((r) => (r.ok ? r.json() : null))
       .then((d) => {
@@ -68,7 +72,7 @@ export default function ImpersonationBanner() {
         setEnding(false);
         return;
       }
-      const { error: setSessionError } = await supabase.auth.setSession({
+      const { error: setSessionError } = await (await loadSupabase()).auth.setSession({
         access_token: data.access_token,
         refresh_token: data.refresh_token,
       });

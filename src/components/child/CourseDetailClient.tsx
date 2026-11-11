@@ -8,7 +8,7 @@ import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useState, useEffect, useRef } from "react";
 import { ArrowLeft, Play, Clock, BookOpen, AlertCircle, CheckCircle } from "lucide-react";
 import AppLoader from "@/components/AppLoader";
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import { useRouter } from "next/navigation";
 import CourseViewer from "@/components/viewers/CourseViewer";
 import { useAITutor } from "@/contexts/AITutorContext";

@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useState, Suspense } from "react";
+import LoaderDots from "@/components/LoaderDots";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { getSignupSession, clearSignupSession } from "@/lib/signupSession";
-import { CheckCircle, Loader2, AlertCircle, Mail } from "lucide-react";
+import { CheckCircle, AlertCircle, Mail } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { errMessage } from "@/lib/safeError";
 
@@ -236,7 +237,7 @@ function SuccessContent() {
           Paiement réussi !
         </h2>
         <div className="flex items-center justify-center gap-2 text-gray-500 text-sm mt-4">
-          <Loader2 className="w-4 h-4 animate-spin" />
+          <LoaderDots />
           {message}
         </div>
       </div>
@@ -248,7 +249,7 @@ export default function SuccessPage() {
   return (
     <Suspense fallback={
       <div className="w-full max-w-md flex justify-center py-20">
-        <Loader2 className="w-8 h-8 animate-spin text-[var(--greek-blue)]" />
+        <LoaderDots size="md" />
       </div>
     }>
       <SuccessContent />

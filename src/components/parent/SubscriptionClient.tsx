@@ -1,6 +1,7 @@
 "use client";
 
 import { parseOrNull } from "@/lib/validate";
+import LoaderDots from "@/components/LoaderDots";
 import { subscriptionPlanSchema } from "@/lib/schemas";
 import type { Row } from "@/types/db";
 import type { BillingInvoice } from "@/lib/parentSubscriptionDetails";
@@ -22,20 +23,7 @@ import { formatDateFr } from "@/lib/formatDate";
 import PageLoader from "@/components/PageLoader";
 import AppLoader from "@/components/AppLoader";
 import { useState, useEffect, Suspense } from "react";
-import {
-  Crown,
-  Check,
-  CreditCard,
-  Clock,
-  AlertTriangle,
-  Download,
-  Loader2,
-  Gift,
-  Copy,
-  CheckCheck,
-  Users,
-  Undo2,
-} from "lucide-react";
+import { Crown, Check, CreditCard, Clock, AlertTriangle, Download, Gift, Copy, CheckCheck, Users, Undo2 } from "lucide-react";
 import GlassDialog from "@/components/ui/GlassDialog";
 import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/components/Toast";
@@ -451,7 +439,7 @@ function SubscriptionPageContent({
               Mon abonnement
             </h2>
             {subLoading ? (
-              <div className="flex justify-center py-4"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
+              <div className="flex justify-center py-4"><LoaderDots /></div>
             ) : (
               <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                 <div>
@@ -517,7 +505,7 @@ function SubscriptionPageContent({
               <>
                 <GlassButton onClick={() => setWithdrawOpen(false)} variant="ghost" size="sm" disabled={withdrawing}>Annuler</GlassButton>
                 <GlassButton onClick={confirmWithdrawal} variant="danger" size="sm" disabled={withdrawing}>
-                  {withdrawing ? <Loader2 className="w-4 h-4 animate-spin" /> : <Undo2 className="w-4 h-4" />}
+                  {withdrawing ? <LoaderDots /> : <Undo2 className="w-4 h-4" />}
                   Confirmer la rétractation
                 </GlassButton>
               </>
@@ -624,7 +612,7 @@ function SubscriptionPageContent({
               Historique de facturation
             </h2>
             {subLoading ? (
-              <div className="flex justify-center py-4"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
+              <div className="flex justify-center py-4"><LoaderDots /></div>
             ) : billingHistory.length > 0 ? (
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -700,7 +688,7 @@ function SubscriptionPageContent({
                   </div>
                 </div>
               ) : (
-                <div className="flex justify-center py-6"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
+                <div className="flex justify-center py-6"><LoaderDots /></div>
               )}
             </div>
 
@@ -712,7 +700,7 @@ function SubscriptionPageContent({
               </h2>
               <p className="text-sm text-gray-500 mb-4">Personnes qui ont utilisé votre code.</p>
               {!myReferralCode ? (
-                <div className="flex justify-center py-6"><Loader2 className="w-5 h-5 animate-spin text-gray-400" /></div>
+                <div className="flex justify-center py-6"><LoaderDots /></div>
               ) : (myReferralCode.uses?.length ?? 0) === 0 ? (
                 <div className="text-center py-8 text-gray-400">
                   <Users className="w-10 h-10 mx-auto mb-2 opacity-20" />

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { one } from "@/lib/relations";
 import { ArrowLeft, CheckCircle, XCircle, Clock, Eye, Brain } from "lucide-react";
 import PageHero from "@/components/PageHero";
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import GlassButton from "@/components/ui/GlassButton";

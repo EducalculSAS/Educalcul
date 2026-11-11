@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, type DragEvent, type ReactNode } from "react";
-import { Check, Star, Sparkles, ArrowRight, Loader2, GripVertical, Save, Plus, Trash2, AlertTriangle, ChevronLeft, ChevronRight, Eye, EyeOff } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
+import { Check, Star, Sparkles, ArrowRight, GripVertical, Save, Plus, Trash2, AlertTriangle, ChevronLeft, ChevronRight, Eye, EyeOff } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import { DEFAULT_PERIODS, MAX_PERIOD_MONTHS, defaultPeriodLabel, isValidPeriodId, monthsOfPeriod, periodIdForMonths, periodSuffix, type BillingPeriod } from "@/lib/billingPeriods";
 import {
@@ -288,7 +289,7 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, t
             disabled={processing || isCurrent}
           >
             {processing ? (
-              <><Loader2 className="inline-block w-4 h-4 animate-spin align-[-0.15em] mr-1.5" />Chargement...</>
+              <><LoaderDots />Chargement...</>
             ) : isCurrent ? (
               <>Formule actuelle <Check className="inline-block w-4 h-4 align-[-0.15em]" aria-hidden="true" /></>
             ) : (
@@ -525,7 +526,7 @@ function Configurator({ onChoose, processing, ctaLabel, pricing, edit }: {
               disabled={processing}
             >
               {processing ? (
-                <><Loader2 className="inline-block w-4 h-4 animate-spin align-[-0.15em] mr-1.5" />Chargement...</>
+                <><LoaderDots />Chargement...</>
               ) : (
                 <>{ctaLabel} <ArrowRight className="inline-block w-4 h-4 align-[-0.15em]" /></>
               )}
@@ -964,7 +965,7 @@ export default function PlanChooser({
               size="sm"
               disabled={admin.saving}
             >
-              {admin.saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
+              {admin.saving ? <LoaderDots /> : <Save className="w-4 h-4" />}
               Sauvegarder
             </GlassButton>
           </div>

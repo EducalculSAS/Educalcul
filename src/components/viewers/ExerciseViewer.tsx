@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
 import { isVirtualExercise, useExerciseProgress } from "@/components/viewers/useExerciseProgress";
+import LoaderDots from "@/components/LoaderDots";
 import { useInlineTextVerify } from "@/components/viewers/useInlineTextVerify";
 import { gradeAnswers } from "@/components/viewers/gradeAnswers";
 import { useExerciseLayout } from "@/components/viewers/useExerciseLayout";
@@ -825,7 +826,7 @@ export default function ExerciseViewer({
         >
           {isValidating ? (
             <>
-              <Loader2 className="w-4 h-4 animate-spin" /> Validation...
+              <LoaderDots /> Validation...
             </>
           ) : showReview ? (
             currentScreenIndex < screens.length - 1 ? (

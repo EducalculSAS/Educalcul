@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import LoaderDots from "@/components/LoaderDots";
 import { useRouter } from "next/navigation";
 import { getPendingSignupPassword } from "@/lib/pendingSignupPassword";
 import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
-import { Loader2, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import PlanChooser, { type ChooserPlan } from "@/components/PlanChooser";
 import type { CustomPlanConfig } from "@/lib/customPlanPricing";
 import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
@@ -80,7 +81,7 @@ export default function SelectPlan() {
   if (loading) {
     return (
       <div className="w-full max-w-6xl mx-auto px-4 py-20 text-center">
-        <Loader2 className="w-8 h-8 animate-spin mx-auto text-[var(--greek-blue)]" />
+        <LoaderDots size="md" />
         <p className="text-gray-500 mt-4">Chargement des plans...</p>
       </div>
     );

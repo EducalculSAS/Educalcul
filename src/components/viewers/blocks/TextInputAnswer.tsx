@@ -1,9 +1,10 @@
 "use client";
  
 import { answerText, type AnswerMap, type AnswerValue } from "@/types/answers";
+import LoaderDots from "@/components/LoaderDots";
 import type { InlineTextState } from "@/components/viewers/blocks/inlineText";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
-import { Keyboard, Pencil, Sparkles, Loader2 } from "lucide-react";
+import { Keyboard, Pencil, Sparkles } from "lucide-react";
 import DrawingCanvas from "@/components/DrawingCanvas";
 import MathInput, { type MathInputHandle } from "@/components/MathInput";
 import GlassButton from "@/components/ui/GlassButton";
@@ -128,7 +129,7 @@ export default function TextInputAnswer(props: TextInputAnswerProps) {
           >
             {inline?.status === "grading" ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin" />
+                <LoaderDots />
                 <span>Correction...</span>
               </>
             ) : (

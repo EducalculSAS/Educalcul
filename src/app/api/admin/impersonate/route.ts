@@ -4,7 +4,7 @@ import { supabaseAdmin } from "@/lib/supabaseClient";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { sanitizeErrorMessage, errMessage } from "@/lib/safeError";
 import { auditLog, AuditAction } from "@/lib/auditLog";
-import { IMPERSONATION_COOKIE_NAME, IMPERSONATION_MAX_AGE } from "@/lib/impersonationCookie";
+import { IMPERSONATION_COOKIE_NAME, IMPERSONATION_MARKER, IMPERSONATION_MAX_AGE } from "@/lib/impersonationCookie";
 
 /** Génère un lien de connexion à usage unique pour se connecter en tant
  * qu'un parent/enfant, sans jamais voir ni manipuler son mot de passe.
@@ -77,6 +77,7 @@ export async function POST(req: Request) {
       path: "/",
       maxAge: IMPERSONATION_MAX_AGE,
     });
+    store.set(IMPERSONATION_MARKER, "1", { httpOnly: false, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: IMPERSONATION_MAX_AGE });
 
     await auditLog(
       { action: AuditAction.IMPERSONATION_STARTED, adminId: admin.id, targetUserId: target.id, targetType: "user", targetId: String(target.id), details: { targetName, targetRole: target.role } },

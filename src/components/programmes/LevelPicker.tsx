@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { GraduationCap } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
-import { supabase } from "@/lib/supabaseClient";
+import { loadSupabase, mayHaveSession } from "@/lib/supabaseLazy";
 import { getMyProfile } from "@/lib/updateMyProfile";
 import { getClientCookie, setClientCookie } from "@/lib/clientCookie";
 
@@ -31,7 +31,8 @@ export default function LevelPicker({ align = "center" }: { align?: "center" | "
         return;
       }
       try {
-        const { data: { session } } = await supabase.auth.getSession();
+        if (!mayHaveSession()) return; // visiteur : pas de niveau à retrouver
+        const { data: { session } } = await (await loadSupabase()).auth.getSession();
         if (session?.user) {
           const userData = await getMyProfile<{ grade_level?: string }>();
           if (userData?.grade_level) {

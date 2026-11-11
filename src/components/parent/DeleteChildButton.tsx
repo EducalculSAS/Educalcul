@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import LoaderDots from "@/components/LoaderDots";
 import { useRouter } from "next/navigation";
 import { Trash2 } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
@@ -46,7 +47,7 @@ export default function DeleteChildButton({ childId }: { childId: string }) {
   if (deleting) {
     return (
       <div className="w-9 h-9 flex items-center justify-center">
-        <div className="w-4 h-4 animate-spin rounded-full border-2 border-[var(--greek-blue)] border-t-transparent" />
+        <LoaderDots />
       </div>
     );
   }

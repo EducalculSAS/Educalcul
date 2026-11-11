@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { GraduationCap, Loader2, Send } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
+import { GraduationCap, Send } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { SCHOOL_LEVELS, getLevelLabel } from "@/lib/constants";
 import { getMyProfile } from "@/lib/updateMyProfile";
@@ -88,7 +89,7 @@ export default function LevelRequestCard({
           {error && <p className="text-sm text-red-700">{error}</p>}
           <div className="flex justify-end">
             <GlassButton size="sm" variant="navy" onClick={send} disabled={sending || !level}>
-              {sending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />} Envoyer la demande
+              {sending ? <LoaderDots /> : <Send className="w-4 h-4" />} Envoyer la demande
             </GlassButton>
           </div>
         </>

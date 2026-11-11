@@ -16,7 +16,7 @@ import {
 import QuizViewer, { type QuizViewerProps } from "@/components/viewers/QuizViewer";
 import AppLoader from "@/components/AppLoader";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import { useRouter } from "next/navigation";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";

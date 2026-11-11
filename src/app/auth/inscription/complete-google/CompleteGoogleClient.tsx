@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import LoaderDots from "@/components/LoaderDots";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
-import { User, Mail, Lock, AlertCircle, Loader2, CheckCircle } from "lucide-react";
+import { User, Mail, Lock, AlertCircle, CheckCircle } from "lucide-react";
 import PasswordStrength from "@/components/PasswordStrength";
 import { validatePassword } from "@/lib/validation";
 import { getSignupSession, patchSignupSession } from "@/lib/signupSession";
@@ -122,7 +123,7 @@ export default function CompleteGoogleProfile() {
 
   if (loading) return (
     <div className="flex justify-center py-12">
-      <Loader2 className="w-8 h-8 animate-spin" style={{ color: "var(--greek-blue)" }} />
+      <LoaderDots size="md" />
     </div>
   );
 
@@ -222,7 +223,7 @@ export default function CompleteGoogleProfile() {
           <div className="mt-2">
             <GlassButton type="submit" disabled={saving} variant="navy" fullWidth>
               {saving
-                ? <><Loader2 className="w-4 h-4 animate-spin" /> Chargement…</>
+                ? <><LoaderDots /> Chargement…</>
                 : <><CheckCircle className="w-4 h-4" /> Choisir un abonnement</>
               }
             </GlassButton>

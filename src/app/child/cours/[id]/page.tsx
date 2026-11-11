@@ -46,10 +46,16 @@ export default async function CourseDetailPage({
 
   // Un brouillon n'existe pas pour un élève : le catalogue ne le montre pas, et l'adresse directe non plus.
   if (courseData && authUser.role !== "admin" && courseData.status !== "published") redirect("/child/cours");
-  // Un élève n'ouvre par adresse directe que le contenu de ses niveaux (comme le catalogue).
-  if (courseData && !(await childMayOpen(authUser, { kind: "course", id: courseId, level: courseData.level, folder_id: courseData.folder_id }, "course_folders"))) redirect("/child/cours");
-  // Formule gratuite : seul le premier chapitre s'ouvre. Le contenu d'un cours verrouillé n'est jamais envoyé.
-  if (courseData && !(await mayOpenCourse(authUser, courseId))) redirect("/child/cours?verrou=1");
+  // Deux contrôles indépendants, lancés ensemble : le niveau de l'élève (comme le catalogue) et la formule gratuite
+  // (seul le premier chapitre s'ouvre ; le contenu d'un cours verrouillé n'est jamais envoyé).
+  if (courseData) {
+    const [levelOk, planOk] = await Promise.all([
+      childMayOpen(authUser, { kind: "course", id: courseId, level: courseData.level, folder_id: courseData.folder_id }, "course_folders"),
+      mayOpenCourse(authUser, courseId),
+    ]);
+    if (!levelOk) redirect("/child/cours");
+    if (!planOk) redirect("/child/cours?verrou=1");
+  }
   const course = error || !courseData ? null : courseData;
 
   return <CourseDetailClient courseId={courseId} initialCourse={course as CourseDetail | null} />;

@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import LoaderDots from "@/components/LoaderDots";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { getPendingSignupPassword, clearPendingSignupPassword } from "@/lib/pendingSignupPassword";
 import { getSignupSession, patchSignupSession, type SignupData, type SelectedPlan } from "@/lib/signupSession";
-import { AlertCircle, Loader2, Gift, CheckCircle, Pencil, User, Mail, ArrowLeft, Check } from "lucide-react";
+import { AlertCircle, Gift, CheckCircle, Pencil, User, Mail, ArrowLeft, Check } from "lucide-react";
 import { computeCustomPlan, DEFAULT_CUSTOM_PRICING } from "@/lib/customPlanPricing";
 import { DEFAULT_PRICING_CONFIG, type PricingConfig } from "@/lib/pricingConfig";
 import GlassButton from "@/components/ui/GlassButton";
@@ -186,7 +187,7 @@ export default function RecapClient() {
   if (loading) {
     return (
       <div className="w-full max-w-2xl mx-auto px-4 py-20 text-center">
-        <Loader2 className="w-8 h-8 animate-spin mx-auto text-[var(--greek-blue)]" />
+        <LoaderDots size="md" />
       </div>
     );
   }
@@ -289,7 +290,7 @@ export default function RecapClient() {
               placeholder="EX: ABCD1234"
             />
             <div className="absolute inset-y-0 right-3 flex items-center pointer-events-none">
-              {referralValidating && <Loader2 className="w-4 h-4 animate-spin text-gray-400" />}
+              {referralValidating && <LoaderDots />}
               {!referralValidating && referralStatus === "valid" && <CheckCircle className="w-4 h-4 text-green-500" />}
               {!referralValidating && referralStatus === "invalid" && <AlertCircle className="w-4 h-4 text-red-500" />}
             </div>
@@ -304,7 +305,7 @@ export default function RecapClient() {
 
         <GlassButton onClick={confirmAndPay} variant="navy" fullWidth disabled={processing} className="text-lg">
           {processing
-            ? <><Loader2 className="w-5 h-5 animate-spin" /> Traitement…</>
+            ? <><LoaderDots /> Traitement…</>
             : (!selectedPlan.custom && selectedPlan.price === 0) || custom?.price === 0
             ? "Confirmer et créer mon compte"
             : "Confirmer et payer"}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useVisiblePolling } from "@/lib/useVisiblePolling";
+import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { Bell, Check, MessageSquare, Trophy, CreditCard, Info } from "lucide-react";
@@ -144,7 +145,7 @@ export default function NotificationBell() {
           {/* Liste */}
           <div className="max-h-80 overflow-y-auto divide-y divide-gray-50">
             {loading && notifications.length === 0 ? (
-              <div className="py-8 text-center text-sm text-gray-400">Chargement...</div>
+              <div className="flex justify-center py-8 text-[var(--greek-blue)]"><LoaderDots size="md" /></div>
             ) : notifications.length === 0 ? (
               <div className="py-8 text-center">
                 <Bell className="w-8 h-8 text-gray-200 mx-auto mb-2" />

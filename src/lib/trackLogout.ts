@@ -1,7 +1,9 @@
-import { supabase } from "@/lib/supabaseClient";
+import { loadSupabase, mayHaveSession } from "@/lib/supabaseLazy";
 
 export async function trackLogout() {
   try {
+    if (!mayHaveSession()) return;
+    const supabase = await loadSupabase();
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
     await fetch("/api/user/track-logout", {

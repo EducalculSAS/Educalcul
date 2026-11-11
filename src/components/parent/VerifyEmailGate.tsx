@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, RefreshCw } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
+import { Mail } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import Emblem3D from "@/components/Emblem3D";
 import { supabase } from "@/lib/supabaseClient";
@@ -41,7 +42,7 @@ export default function VerifyEmailGate({ email }: { email: string }) {
         {state === "error" && message && <p role="alert" className="mt-4 text-sm font-semibold text-red-600">{message}</p>}
         <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
           <GlassButton onClick={resend} variant="navy" disabled={state === "sending" || state === "sent"}>
-            {state === "sending" ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Mail className="w-4 h-4" />}
+            {state === "sending" ? <LoaderDots /> : <Mail className="w-4 h-4" />}
             Renvoyer le lien
           </GlassButton>
           <GlassButton onClick={logout} variant="ghost">Changer de compte</GlassButton>

@@ -1,12 +1,10 @@
 "use client";
 
 import GlassSwitch from "@/components/ui/GlassSwitch";
+import LoaderDots from "@/components/LoaderDots";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState, useEffect } from "react";
-import {
-  ArrowLeft, UserCog, Save, Loader2, AlertCircle, CheckCircle, RotateCcw,
-  Fingerprint, Trash2,
-} from "lucide-react";
+import { ArrowLeft, UserCog, Save, AlertCircle, CheckCircle, RotateCcw, Fingerprint, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
@@ -457,7 +455,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                         fullWidth
                         disabled={togglingTwoFA || twoFACode.length !== 6}
                       >
-                        {togglingTwoFA ? <Loader2 className="w-4 h-4 animate-spin" /> : "Confirmer"}
+                        {togglingTwoFA ? <LoaderDots /> : "Confirmer"}
                       </GlassButton>
                     </div>
                     <GlassButton onClick={cancelTwoFAFlow} disabled={togglingTwoFA} variant="ghost" size="sm">
@@ -513,7 +511,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                 )}
 
                 <GlassButton onClick={enableWebauthn} disabled={!webauthnSupported || webauthnRegistering} variant="outline" size="sm">
-                  {webauthnRegistering ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : `+ Ajouter ${webauthnCreds.length > 0 ? "un autre appareil" : "une clé d'accès"}`}
+                  {webauthnRegistering ? <LoaderDots /> : `+ Ajouter ${webauthnCreds.length > 0 ? "un autre appareil" : "une clé d'accès"}`}
                 </GlassButton>
               </div>
             )}
@@ -524,7 +522,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
                 variant="navy"
                 disabled={saving}
               >
-                {saving ? (<><Loader2 className="w-5 h-5 animate-spin" />Enregistrement...</>) : (<><Save className="w-5 h-5" />Enregistrer les modifications</>)}
+                {saving ? (<><LoaderDots />Enregistrement...</>) : (<><Save className="w-5 h-5" />Enregistrer les modifications</>)}
               </GlassButton>
             </div>
           </form>

@@ -1,10 +1,11 @@
 "use client";
 import GlassCheckbox from "@/components/ui/GlassCheckbox";
+import LoaderDots from "@/components/LoaderDots";
 import { Exercise } from "@/components/admin/CourseBuilder";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
 import { useState, useEffect, useRef } from "react";
-import { PencilLine, Lightbulb, Keyboard, Pencil, Loader2 } from "lucide-react";
+import { PencilLine, Lightbulb, Keyboard, Pencil } from "lucide-react";
 import { fetchMiniComment } from "@/lib/miniComment";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -402,7 +403,7 @@ export function InlineMiniExercises({ lessonId, exercises, level, compact, title
                   >
                     {isGrading ? (
                       <>
-                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <LoaderDots />
                         <span>Correction...</span>
                       </>
                     ) : (

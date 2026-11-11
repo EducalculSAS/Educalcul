@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { BookOpen, CalendarCheck, CheckSquare, Loader2, Sparkles, Square, Target, TrendingUp } from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
+import { BookOpen, CalendarCheck, CheckSquare, Sparkles, Square, Target, TrendingUp } from "lucide-react";
 import GlassDialog from "@/components/ui/GlassDialog";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -94,7 +95,7 @@ export default function AiPlanDialog({
           <>
             <GlassButton variant="ghost" size="sm" onClick={() => setPlan(null)}>Refaire un plan</GlassButton>
             <GlassButton variant="navy" size="sm" onClick={accept} disabled={saving || selected.size === 0}>
-              {saving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CalendarCheck className="w-4 h-4" />}
+              {saving ? <LoaderDots /> : <CalendarCheck className="w-4 h-4" />}
               Ajouter {selected.size} séance{selected.size > 1 ? "s" : ""} au calendrier
             </GlassButton>
           </>
@@ -128,7 +129,7 @@ export default function AiPlanDialog({
           {error && <p className="text-sm text-red-700 bg-red-50 border border-red-200 rounded-xl px-3 py-2">{error}</p>}
           <div className="flex justify-end">
             <GlassButton variant="navy" size="sm" onClick={generate} disabled={loading}>
-              {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
+              {loading ? <LoaderDots /> : <Sparkles className="w-4 h-4" />}
               {loading ? "Analyse en cours…" : "Construire le plan"}
             </GlassButton>
           </div>

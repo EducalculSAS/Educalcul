@@ -1,16 +1,16 @@
 ﻿"use client";
 
 import { useFeatures } from "@/lib/useFeatures";
-import Link from "next/link";
+import Link from "@/components/AppLink";
 import Image from "next/image";
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import { usePathname } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+import { loadSupabase, useSupabaseWhenSession } from "@/lib/supabaseLazy";
 import { getMyProfile } from "@/lib/updateMyProfile";
 import { trackLogout } from "@/lib/trackLogout";
 import { getDashboardPath } from "@/lib/authRedirect";
 import type { User as SupabaseUser } from "@supabase/supabase-js";
-import NotificationBell from "@/components/NotificationBell";
+import dynamic from "next/dynamic";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { Menu, X, LogOut } from "lucide-react";
@@ -33,6 +33,9 @@ const PUBLIC_MENU: { title: string; links: { href: string; label: string }[] }[]
     { href: "/contact", label: "Contact" },
   ] },
 ];
+
+// La cloche n'existe que pour un compte connecté : chargée à part, jamais pour un visiteur.
+const NotificationBell = dynamic(() => import("@/components/NotificationBell"), { ssr: false });
 
 // Pages "app" où on affiche le menu connecté
 const APP_PREFIXES = ["/parent", "/child", "/admin", "/dashboard"];
@@ -87,12 +90,16 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [isOpen]);
 
+  const supabase = useSupabaseWhenSession();
   useEffect(() => {
     const fetchUserData = async () => {
       const userData = await getMyProfile<{ role?: string; first_name?: string }>();
       setUserRole(userData?.role || null);
       setFirstName(userData?.first_name || null);
     };
+
+    // Visiteur sans session : menu public, sans charger le client de connexion.
+    if (!supabase) return;
 
     // Vérification initiale : getUser() authentifie l'identité auprès de Supabase Auth.
     supabase.auth.getUser().then(({ data: { user: authUser } }) => {
@@ -131,12 +138,12 @@ export default function Navbar() {
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [supabase]);
 
   const handleSignOut = async () => {
     try {
       await trackLogout();
-      await supabase.auth.signOut();
+      await (await loadSupabase()).auth.signOut();
     } catch (e) {
       console.error(e);
     }

@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
+import { useSupabaseWhenSession } from "@/lib/supabaseLazy";
+import { getMyProfile } from "@/lib/updateMyProfile";
 import { applyTheme, isTheme, readStoredTheme, syncThemeToPath } from "@/lib/theme";
 import { applySeason, isSeasonPreference, readStoredSeason, syncSeasonToPath } from "@/lib/season";
 
@@ -17,13 +18,15 @@ export default function ThemeSync() {
   // Navigation sans rechargement : le thème suit la page (sombre seulement en espace connecté).
   useEffect(() => { syncThemeToPath(pathname); syncSeasonToPath(pathname); }, [pathname]);
 
+  const supabase = useSupabaseWhenSession();
   useEffect(() => {
+    if (!supabase) return; // visiteur sans session : rien à synchroniser
     let alive = true;
     const sync = async () => {
       try {
-        const res = await fetch("/api/user/profile");
-        if (!res.ok || !alive) return;
-        const me = await res.json();
+        // Lecture partagée avec la barre de navigation (une seule requête pour le profil).
+        const me = await getMyProfile<{ role?: string; theme_preference?: string; season_preference?: string }>();
+        if (!me || !alive) return;
         if (isTheme(me?.theme_preference)) {
           if (me.theme_preference !== readStoredTheme()) applyTheme(me.theme_preference);
         } else if (readStoredTheme() === "dark") {
@@ -43,6 +46,6 @@ export default function ThemeSync() {
     supabase.auth.getSession().then(({ data }) => { if (data.session) void sync(); });
     const { data: sub } = supabase.auth.onAuthStateChange((event) => { if (event === "SIGNED_IN") void sync(); });
     return () => { alive = false; sub.subscription.unsubscribe(); };
-  }, []);
+  }, [supabase]);
   return null;
 }

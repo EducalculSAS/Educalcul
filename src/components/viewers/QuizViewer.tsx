@@ -1,6 +1,7 @@
 ﻿"use client";
 
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
+import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect, useRef } from "react";
 import { CheckCircle, XCircle, ArrowRight, ArrowLeft, Trophy, Loader2, Type, HelpCircle, Clock, AlertTriangle } from "lucide-react";
 import { Question } from "@/components/admin/QuizBuilder";
@@ -806,7 +807,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                             >
                               {inline?.status === "grading" ? (
                                 <>
-                                  <Loader2 className="w-4 h-4 animate-spin" />
+                                  <LoaderDots />
                                   <span>Correction...</span>
                                 </>
                               ) : (
@@ -998,7 +999,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
             >
               {isValidating ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin" /> Validation...
+                  <LoaderDots /> Validation...
                 </>
               ) : showReview ? (
                 currentQuestionIndex < questions.length - 1 ? (

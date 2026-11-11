@@ -1,10 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import {
-  ArrowLeft, Bell, BellOff, CheckCircle2, Flag, Heart, Link2, Loader2, Lock, LockOpen, MessageCircle,
-  Pencil, Pin, PinOff, Quote, Reply, Send, Trash2, Eye,
-} from "lucide-react";
+import LoaderDots from "@/components/LoaderDots";
+import { ArrowLeft, Bell, BellOff, CheckCircle2, Flag, Heart, Link2, Lock, LockOpen, MessageCircle, Pencil, Pin, PinOff, Quote, Reply, Send, Trash2, Eye } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useToast } from "@/components/Toast";
@@ -323,7 +321,7 @@ export default function ForumThreadView({
             <Composer label="Ta réponse" value={reply} onChange={setReply} max={COMMENT_MAX} placeholder="Aide, explique, pose une question…" minRows={4} />
             <div className="flex justify-end">
               <GlassButton variant="navy" size="sm" onClick={sendReply} disabled={!reply.trim() || sending}>
-                {sending ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />} Publier la réponse
+                {sending ? <LoaderDots /> : <Send className="w-4 h-4" />} Publier la réponse
               </GlassButton>
             </div>
           </div>

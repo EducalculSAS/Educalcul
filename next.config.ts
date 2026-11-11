@@ -26,6 +26,14 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   devIndicators: false,
+  experimental: {
+    // Les pages des espaces connectés sont calculées à la demande : sans préchargement, un clic attendait le serveur
+    // avant d'afficher quoi que ce soit. Ici, dès que le pointeur survole un lien (ou que le doigt le touche), la page
+    // complète est préchargée : au clic, elle s'ouvre directement. Voir `unstable_dynamicOnHover` sur les liens.
+    dynamicOnHover: true,
+    // Une page préchargée reste utilisable 30 s (le minimum) : au-delà, elle est redemandée, pour ne pas montrer de données périmées.
+    staleTimes: { dynamic: 0, static: 30 },
+  },
   turbopack: {
     root: process.cwd(),
   },

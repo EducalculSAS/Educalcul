@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import LoaderDots from "@/components/LoaderDots";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { Lock, CheckCircle, AlertCircle } from "lucide-react";
@@ -168,7 +169,7 @@ export default function UpdatePassword() {
               >
                 {status === "loading" ? (
                   <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    <LoaderDots />
                     Mise à jour...
                   </>
                 ) : (

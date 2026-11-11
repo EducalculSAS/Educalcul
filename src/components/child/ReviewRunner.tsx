@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import LoaderDots from "@/components/LoaderDots";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Loader2, Play } from "lucide-react";
+import { ArrowLeft, Play } from "lucide-react";
 import ExerciseViewer from "@/components/viewers/ExerciseViewer";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
@@ -55,7 +56,7 @@ export default function ReviewRunner({ dueCount }: { dueCount: number }) {
   return (
     <>
       <GlassButton onClick={start} variant="navy" disabled={loading || dueCount === 0}>
-        {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Play className="w-4 h-4 fill-current" />}
+        {loading ? <LoaderDots /> : <Play className="w-4 h-4 fill-current" />}
         {dueCount === 0 ? "Rien à revoir aujourd'hui" : `Lancer la révision (${Math.min(dueCount, 8)} question${Math.min(dueCount, 8) > 1 ? "s" : ""})`}
       </GlassButton>
       {error && <p className="text-sm text-[var(--greek-bronze)] mt-2">{error}</p>}
