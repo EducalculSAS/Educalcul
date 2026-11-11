@@ -2,7 +2,7 @@ import Link from "@/components/AppLink";
 import Emblem3D from "@/components/Emblem3D";
 import PageHero from "@/components/PageHero";
 import { redirect } from "next/navigation";
-import { PlusCircle, Users } from "lucide-react";
+import { PlusCircle } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import ChildFamilyCard from "@/components/parent/ChildFamilyCard";
 import { loadFamily } from "@/lib/familyOverview";
@@ -20,7 +20,7 @@ export default async function ManageChildrenPage() {
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
       <PageHero
-        icon={Users}
+        emblem="family"
         title="Mes enfants"
         badge="Gestion"
         subtitle="Gérez les profils et les accès de vos enfants."

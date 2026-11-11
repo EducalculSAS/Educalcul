@@ -1,21 +1,10 @@
 "use client";
 
-import type { ComponentType } from "react";
 import { useEffect, useState } from "react";
-import { Star, Zap, Trophy, BookOpen, CheckCircle, Crown } from "lucide-react";
-import StreakFlame from "@/components/StreakFlame";
-
-const ICON_MAP: Record<string, ComponentType<{ className?: string; style?: React.CSSProperties; "aria-hidden"?: boolean | "true" | "false" }>> = {
-  pencil: Star, zap: Zap, flame: StreakFlame, star: Star, crown: Crown,
-  check: CheckCircle, trophy: Trophy, brain: Star, sparkles: Star,
-  graduation: Star, book: BookOpen, map: Star, library: BookOpen,
-  sword: Star, swords: Star, medal: Trophy, gem: Star, crystal: Star,
-  divine: Crown, shield: CheckCircle, bullseye: Star, bookmark: BookOpen,
-  scroll: BookOpen, owl: Star, universe: Crown,
-};
+import BadgeEmblem from "@/components/BadgeEmblem";
 
 /** Badge renvoyé par /api/badges. */
-interface MiniBadge { id: number; name: string; icon: string; color?: string }
+interface MiniBadge { id: number; name: string; icon: string; requirement_type?: string | null; tier?: number }
 const badgeCache: Record<number, MiniBadge> = {};
 
 export default function BadgeMinis({ badgeIds }: { badgeIds: number[] }) {
@@ -43,17 +32,12 @@ export default function BadgeMinis({ badgeIds }: { badgeIds: number[] }) {
 
   return (
     <div className="flex items-center gap-1 mt-0.5">
-      {badges.map(b => {
-        const Icon = ICON_MAP[b.icon] || Star;
-        return (
-          <div key={b.id} title={b.name}
-            className="w-4 h-4 rounded flex items-center justify-center"
-            style={{ backgroundColor: b.color + "25" }}>
-            <Icon className="w-2.5 h-2.5" aria-hidden="true" style={{ color: b.color }} />
-            <span className="sr-only">{b.name}</span>
-          </div>
-        );
-      })}
+      {badges.map(b => (
+        <span key={b.id} title={b.name} className="inline-flex">
+          <BadgeEmblem badge={{ icon: b.icon, requirement_type: b.requirement_type, tier: b.tier ?? 0 }} size={20} />
+          <span className="sr-only">{b.name}</span>
+        </span>
+      ))}
     </div>
   );
 }

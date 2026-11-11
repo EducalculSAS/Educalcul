@@ -9,6 +9,7 @@ import { supabase } from "@/lib/supabaseClient";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
 import GlassButton from "@/components/ui/GlassButton";
+import { useCaliaFloor } from "@/lib/caliaFloor";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { AdminAttemptControls } from "@/components/viewers/ExerciseViewer";
 import { passThreshold } from "@/lib/scorePercent";
@@ -69,6 +70,8 @@ export interface QuizViewerProps {
 }
 
 export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, forceNewAttempt, bestScorePercent, openCorrection, initialProgress, adminMode }: QuizViewerProps) {
+  // Calia se pose au-dessus de la barre « Précédent / Suivant » au lieu de la recouvrir.
+  const caliaFloorRef = useCaliaFloor();
   const questions = quiz.content_json || [];
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<Record<number, QuizAnswer>>(
@@ -959,7 +962,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
           )}
 
           {/* Actions */}
-          <div className="flex justify-between pt-4 border-t border-gray-100 pr-14 md:pr-0">
+          <div ref={caliaFloorRef} className="flex justify-between pt-4 border-t border-gray-100">
             <GlassButton
               onClick={handlePrevQuestion}
               disabled={currentQuestionIndex === 0 || !showReview}

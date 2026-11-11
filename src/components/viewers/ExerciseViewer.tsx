@@ -20,6 +20,7 @@ import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders, enhanceMathGraphs } from "@/lib/mathGraph";
 import { MathInputHandle, subscribeMathKeyboardVisibility } from "@/components/MathInput";
 import GlassButton from "@/components/ui/GlassButton";
+import { useCaliaFloor } from "@/lib/caliaFloor";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import "katex/dist/katex.min.css";
 import { passThreshold } from "@/lib/scorePercent";
@@ -112,6 +113,8 @@ export default function ExerciseViewer({
   initialProgress,
   adminMode,
 }: ExerciseViewerProps) {
+  // Calia se pose au-dessus de la barre « Précédent / Suivant » au lieu de la recouvrir.
+  const caliaFloorRef = useCaliaFloor();
   // Un point par élément pour les associations / catégories / trous (voir lib/exerciseScoring).
   const pages = useMemo(
     () =>
@@ -776,7 +779,7 @@ export default function ExerciseViewer({
       )}
 
       {/* Footer Navigation */}
-      <div className="bg-[var(--greek-cream)] border-t border-[var(--greek-gold)] p-4 flex justify-between shrink-0">
+      <div ref={caliaFloorRef} className="bg-[var(--greek-cream)] border-t border-[var(--greek-gold)] p-4 flex justify-between shrink-0">
         <GlassButton
           onClick={handlePrevPage}
           disabled={currentScreenIndex === 0}

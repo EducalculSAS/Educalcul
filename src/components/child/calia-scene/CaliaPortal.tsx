@@ -71,7 +71,7 @@ export default function CaliaPortal(props: CaliaPortalProps) {
           (bas-droite), masqué pendant cette session (AITutorContext). */}
       <div
         ref={clusterRef}
-        className="fixed bottom-[112px] md:bottom-[88px] right-4 z-[70] flex flex-col items-end gap-3 max-w-[calc(100vw-2rem)]"
+        className="calia-dock fixed right-4 z-[70] flex flex-col items-end gap-3 max-w-[calc(100vw-2rem)]"
         style={{ transform: `translate(${clusterOffset.x}px, ${clusterOffset.y}px)`, transition: "transform 0.9s cubic-bezier(0.34, 1.3, 0.64, 1)" }}
       >
         {(sayText || error) && (

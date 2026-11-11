@@ -2,7 +2,7 @@ import Link from "@/components/AppLink";
 import PageHero from "@/components/PageHero";
 import { redirect } from "next/navigation";
 import StreakFlame from "@/components/StreakFlame";
-import { Sigma, Calculator, PuzzleIcon, TrendingUp, Languages, Code2, ArrowRight, Lock, Gamepad2 } from "lucide-react";
+import { Sigma, Calculator, PuzzleIcon, TrendingUp, Languages, Code2, ArrowRight, Lock } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { getStreaksForGames } from "@/lib/minigames/streaks";
 
@@ -25,7 +25,7 @@ export default async function MinigamesPage() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
-      <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={Gamepad2} title="Mini-jeux" badge="Joue" subtitle="Grimpe au classement et débloque des récompenses !" />
+      <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} emblem="gamepad" title="Mini-jeux" badge="Joue" subtitle="Grimpe au classement et débloque des récompenses !" />
       <div className="container mx-auto max-w-6xl px-4 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {GAMES.map(({ gameType, href, icon: Icon, label, desc, color, available }) => {

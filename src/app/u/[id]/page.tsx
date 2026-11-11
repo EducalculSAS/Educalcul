@@ -1,9 +1,7 @@
-import { relationOne } from "@/lib/validate";
 import { publicAuthor } from "@/lib/forum";
-import { profileBadgeSchema } from "@/lib/schemas";
-import { Star, Trophy, BookOpen, CheckCircle, Zap } from "lucide-react";
-import type { Row } from "@/types/db";
-import type { LucideIcon } from "lucide-react";
+import { Trophy } from "lucide-react";
+import BadgeEmblem from "@/components/BadgeEmblem";
+import { badgeTiers } from "@/lib/badgeTiers";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getNameColor } from "@/lib/badgeStyles";
 import { ADMIN_COLOR } from "@/lib/cosmetics/catalog";
@@ -13,15 +11,6 @@ import ProfileHeaderActions from "@/components/profile/ProfileHeaderActions";
 import { redirect } from "next/navigation";
 import { getServerUser } from "@/lib/supabase/server";
 import { safeRedirectPath } from "@/lib/safeRedirect";
-
-const ICON_MAP: Record<string, LucideIcon> = {
-  pencil: Star, zap: Zap, flame: Star, star: Star, crown: Star,
-  check: CheckCircle, trophy: Trophy, brain: Star, sparkles: Star,
-  graduation: Star, book: BookOpen, map: Star, library: BookOpen,
-  sword: Star, swords: Star, medal: Trophy, gem: Star, crystal: Star,
-  divine: Star, shield: CheckCircle, bullseye: Star, bookmark: BookOpen,
-  scroll: BookOpen, owl: Star, universe: Star,
-};
 
 export default async function PublicProfilePage({
   params, searchParams,
@@ -49,18 +38,21 @@ export default async function PublicProfilePage({
     return <div className="p-8 text-center text-gray-500">Profil introuvable.</div>;
   }
 
-  const [{ data: featuredBadges }, { data: earnedBadgeRows }, { count: exos }, { count: quiz }, { count: cours }] = await Promise.all([
-    user.featured_badges?.length
-      ? supabaseAdmin.from("badges").select("*").in("id", user.featured_badges.filter(Boolean))
-      : Promise.resolve({ data: [] as Row<"badges">[] }),
-    supabaseAdmin.from("user_badges").select("badge:badges(id, name, icon, color, category)").eq("user_id", user.id),
+  const [{ data: badgeRows }, { data: earnedRows }, { count: exos }, { count: quiz }, { count: cours }] = await Promise.all([
+    supabaseAdmin.from("badges").select("id, name, icon, requirement_type, requirement_value").eq("is_active", true).order("display_order"),
+    supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", user.id),
     supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", user.id),
     supabaseAdmin.from("user_quiz_attempts").select("*", { count: "exact", head: true }).eq("user_id", user.id),
     supabaseAdmin.from("user_course_progress").select("*", { count: "exact", head: true }).eq("user_id", user.id),
   ]);
 
-  const badges = featuredBadges || [];
-  const allBadges = (earnedBadgeRows || []).map((e) => relationOne(profileBadgeSchema, e.badge)).filter((b): b is NonNullable<typeof b> => !!b);
+  // Mêmes emblèmes que la page « Mes trophées » : la forme vient de la catégorie, le métal du rang dans la catégorie.
+  const catalog = badgeRows || [];
+  const tiers = badgeTiers(catalog);
+  const earned = new Set((earnedRows || []).map((e) => e.badge_id));
+  const allBadges = catalog.filter((b) => earned.has(b.id));
+  const featured = new Set((user.featured_badges || []).filter(Boolean));
+  const badges = allBadges.filter((b) => featured.has(b.id));
   const stats = { exos: exos ?? 0, quiz: quiz ?? 0, cours: cours ?? 0 };
 
   const nameColor = getNameColor(user.role === "admin" ? ADMIN_COLOR : user.name_color || "default");
@@ -85,16 +77,13 @@ export default async function PublicProfilePage({
                 {user.grade_level && <span className="text-white/70 text-sm">{user.grade_level}</span>}
               </div>
               {badges.length > 0 && (
-                <div className="flex gap-2 mt-3">
-                  {badges.map((b) => {
-                    const Icon = ICON_MAP[b.icon] || Star;
-                    return (
-                      <div key={b.id} title={b.name} className="flex items-center gap-1 bg-white/10 backdrop-blur-sm px-2 py-1 rounded-lg border border-white/20">
-                        <Icon className="w-3.5 h-3.5" style={{ color: b.color }} />
-                        <span className="text-xs font-bold text-white/90">{b.name}</span>
-                      </div>
-                    );
-                  })}
+                <div className="flex flex-wrap gap-2 mt-3">
+                  {badges.map((b) => (
+                    <div key={b.id} className="flex items-center gap-1.5 bg-white/10 pl-1 pr-2.5 py-1 rounded-full border border-white/20">
+                      <BadgeEmblem badge={{ icon: b.icon, requirement_type: b.requirement_type, tier: tiers[b.id] ?? 0 }} size={26} />
+                      <span className="text-xs font-bold text-white/90">{b.name}</span>
+                    </div>
+                  ))}
                 </div>
               )}
             </div>
@@ -109,7 +98,7 @@ export default async function PublicProfilePage({
             { label: "Quiz", value: stats.quiz, color: "text-purple-600", bg: "bg-purple-50" },
             { label: "Cours", value: stats.cours, color: "text-blue-600", bg: "bg-blue-50" },
           ].map((s) => (
-            <div key={s.label} className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-4 text-center">
+            <div key={s.label} className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-4 text-center">
               <p className={`text-2xl font-bold ${s.color}`}>{s.value}</p>
               <p className="text-xs text-gray-400 font-semibold uppercase tracking-wide mt-0.5">{s.label}</p>
             </div>
@@ -117,24 +106,20 @@ export default async function PublicProfilePage({
         </div>
 
         {allBadges.length > 0 && (
-          <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
-            <h2 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-4 flex items-center gap-2">
-              <Trophy className="w-4 h-4 text-[var(--greek-gold)]" />
-              Badges obtenus ({allBadges.length})
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {allBadges.map((b) => {
-                const Icon = ICON_MAP[b.icon] || Star;
-                return (
-                  <div key={b.id} title={b.name} className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl border text-xs font-semibold"
-                    style={{ backgroundColor: b.color + "15", borderColor: b.color + "40", color: b.color }}>
-                    <Icon className="w-3 h-3" />
-                    {b.name}
-                  </div>
-                );
-              })}
+          <section className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
+            <div className="flex items-center gap-3 mb-5">
+              <Trophy className="w-5 h-5 text-[var(--greek-gold)]" />
+              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Badges obtenus ({allBadges.length})</h2>
             </div>
-          </div>
+            <ul className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+              {allBadges.map((b) => (
+                <li key={b.id} className="flex flex-col items-center gap-2 text-center">
+                  <BadgeEmblem badge={{ icon: b.icon, requirement_type: b.requirement_type, tier: tiers[b.id] ?? 0 }} size={56} />
+                  <span className="text-xs font-bold text-gray-800 line-clamp-2">{b.name}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
         )}
       </div>
     </div>

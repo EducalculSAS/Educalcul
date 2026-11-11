@@ -3,7 +3,7 @@ import { freeCourseIds } from "@/lib/freeAccess";
 import type { ComponentProps } from "react";
 import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
-import { BookOpen } from "lucide-react";
+
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import CoursesCatalog from "@/components/child/CoursesCatalog";
@@ -73,7 +73,7 @@ export default async function ChildCoursesPage() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
-      <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={BookOpen} title="Mes cours" badge="Leçons" subtitle="Explore et deviens expert en mathématiques !" />
+      <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} emblem="book" title="Mes cours" badge="Leçons" subtitle="Explore et deviens expert en mathématiques !" />
       <div className="container mx-auto px-4 pb-12 max-w-6xl" data-tour="catalog">
         <CoursesCatalog
           allFolders={allFolders}

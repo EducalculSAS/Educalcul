@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { realEmail } from "@/lib/childEmail";
 import PageHero from "@/components/PageHero";
-import { User } from "lucide-react";
+
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
@@ -40,7 +40,7 @@ export default async function ChildProfilePage() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero */}
-      <PageHero icon={User} title="Mon profil" badge="Compte" subtitle="Gère tes informations et suis ta progression." width="4xl" />
+      <PageHero emblem="profile" title="Mon profil" badge="Compte" subtitle="Gère tes informations et suis ta progression." width="4xl" />
 
       <div className="container mx-auto px-4 pb-16 max-w-5xl" data-tour="profile">
         <ChildProfileSettings

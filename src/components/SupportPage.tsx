@@ -133,7 +133,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
 
       {/* Hero */}
       <PageHero
-        icon={MessageCircle}
+        emblem="mail"
         title="Support"
         badge="Aide"
         subtitle={role === "child" ? "Écris à l'équipe, on te répond rapidement." : "Contactez notre équipe, nous vous répondons rapidement."}

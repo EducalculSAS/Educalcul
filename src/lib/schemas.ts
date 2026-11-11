@@ -60,10 +60,6 @@ export const subscriptionPlanSchema = z.object({
 });
 
 /** Badge d'un élève (relation `badge:badges(...)`). */
-export const profileBadgeSchema = z.looseObject({
-  id: z.number(), name: z.string(), icon: z.string(), color: z.string(), category: z.string().nullish(),
-});
-
 /* ---- Revue d'une copie (admin) : contenu et progression lus en base, jamais fiables à l'avance ---- */
 
 const hasTitleAndContentList = (v: unknown) => isRecord(v) && typeof v.title === "string" && (v.content_json == null || Array.isArray(v.content_json));

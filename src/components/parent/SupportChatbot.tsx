@@ -7,6 +7,7 @@ import { Send, RotateCcw, X } from "lucide-react";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassButton from "@/components/ui/GlassButton";
+import { useCaliaKeyboardInset } from "@/lib/caliaFloor";
 
 interface BotMsg { from: "bot" | "user"; text: string }
 
@@ -16,6 +17,7 @@ const BOT_WELCOME: BotMsg = { from: "bot", text: "Bonjour ! Je suis **Calia**, v
  * aux données de la page. */
 export default function SupportChatbot() {
   const [open, setOpen] = useState(false);
+  useCaliaKeyboardInset(open);
   const [messages, setMessages] = useState<BotMsg[]>([BOT_WELCOME]);
   const [input, setInput] = useState("");
   const [sending, setSending] = useState(false);
@@ -55,7 +57,7 @@ export default function SupportChatbot() {
   return (
     <>
       {/* Zoom sur l'enveloppe, verre (flou) sur le bouton : Safari coupe le flou d'un élément dont le transform change. */}
-      <span className="fixed bottom-6 right-4 md:right-6 z-50 transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+      <span className={`calia-dock fixed right-4 z-50 transition-all duration-300 hover:scale-110 hover:-translate-y-1 ${open ? "max-md:hidden" : ""}`}>
         <button onClick={() => setOpen((v) => !v)} aria-label="Ouvrir Calia"
           className="liquid-glass-btn calia-glass calia-glass-ring backdrop-blur-[32px] backdrop-saturate-[1.4] w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center">
           {open ? <X className="w-6 h-6" style={{ color: "rgba(240,237,232,0.85)" }} /> : (
@@ -65,8 +67,7 @@ export default function SupportChatbot() {
       </span>
 
       {open && (
-        <div className="calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4] fixed bottom-24 right-4 md:right-6 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-sm rounded-3xl flex flex-col overflow-hidden"
-          style={{ height: "min(440px, calc(100dvh - 8rem))" }}>
+        <div className="calia-sheet calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4] fixed right-4 z-50 w-[calc(100vw-2rem)] md:w-[350px] rounded-3xl flex flex-col overflow-hidden animate-chat-open">
           <div className="flex items-center gap-3 px-4 py-3.5 shrink-0" style={{ borderBottom: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.06)" }}>
             <Image src="/logoAI.png" alt="Calia" width={28} height={28} className="object-contain flex-shrink-0" />
             <div className="flex-1 min-w-0">
@@ -94,7 +95,7 @@ export default function SupportChatbot() {
                 <Image src="/logoAI.png" alt="" width={20} height={20} className="object-contain flex-shrink-0" />
                 <div className="calia-glass-soft px-3.5 py-2.5 rounded-2xl">
                   <span className="flex gap-1 items-center h-3.5">
-                    {[0, 1, 2].map((j) => <span key={j} className="w-1.5 h-1.5 rounded-full animate-bounce" style={{ background: "rgba(197,161,72,0.7)", animationDelay: `${j * 150}ms` }} />)}
+                    {[0, 1, 2].map((j) => <span key={j} className="w-1.5 h-1.5 rounded-full animate-typing-dot" style={{ background: "rgba(197,161,72,0.7)", animationDelay: `${j * 150}ms` }} />)}
                   </span>
                 </div>
               </div>

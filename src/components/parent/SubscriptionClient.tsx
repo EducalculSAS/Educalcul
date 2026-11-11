@@ -23,7 +23,7 @@ import { formatDateFr } from "@/lib/formatDate";
 import PageLoader from "@/components/PageLoader";
 import AppLoader from "@/components/AppLoader";
 import { useState, useEffect, Suspense } from "react";
-import { Crown, Check, CreditCard, Clock, AlertTriangle, Download, Gift, Copy, CheckCheck, Users, Undo2 } from "lucide-react";
+import { Check, CreditCard, Clock, AlertTriangle, Download, Gift, Copy, CheckCheck, Users, Undo2 } from "lucide-react";
 import GlassDialog from "@/components/ui/GlassDialog";
 import { supabase } from "@/lib/supabaseClient";
 import { useToast } from "@/components/Toast";
@@ -424,7 +424,7 @@ function SubscriptionPageContent({
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
       <PageHero
-        icon={Crown}
+        emblem="crown"
         title={isNewSignup ? "Choisir un plan" : "Mon abonnement"}
         badge="Formule"
         subtitle={isNewSignup ? "Finalisez votre inscription en choisissant un plan." : "Gérez votre formule et accédez à vos factures."}

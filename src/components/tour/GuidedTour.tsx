@@ -271,7 +271,8 @@ export default function GuidedTour({ role, onDone }: { role: TourRole; onDone?: 
         </div>
       )}
 
-      {/* Seule sortie possible avant la fin. */}
+      {/* Seule sortie possible avant la fin. Calia (même coin) remonte d'un cran pour ne pas se retrouver dessous. */}
+      <CaliaLift />
       <div className="fixed z-[9993] bottom-4 right-4">
         <GlassButton onClick={finish} variant="navy" size="sm" className="!text-xs">
           {tu ? "Quitter le tuto" : "Quitter le tutoriel"}
@@ -279,4 +280,13 @@ export default function GuidedTour({ role, onDone }: { role: TourRole; onDone?: 
       </div>
     </div>
   );
+}
+
+function CaliaLift() {
+  useEffect(() => {
+    const root = document.documentElement;
+    root.style.setProperty("--calia-lift", "48px");
+    return () => { root.style.removeProperty("--calia-lift"); };
+  }, []);
+  return null;
 }

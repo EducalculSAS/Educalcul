@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { ArrowLeft, type LucideIcon } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import Emblem3D, { type EmblemKind } from "@/components/Emblem3D";
 
 /**
  * En-tête bleu nuit des pages élève et parent — une seule définition (il en
@@ -9,6 +10,7 @@ import GlassButton from "@/components/ui/GlassButton";
  */
 export default function PageHero({
   icon: Icon,
+  emblem,
   title,
   badge,
   subtitle,
@@ -18,6 +20,8 @@ export default function PageHero({
   width = "6xl",
 }: {
   icon?: LucideIcon;
+  /** Emblème en relief de la rubrique (le même que sur sa tuile du tableau de bord) ; remplace `icon`. */
+  emblem?: EmblemKind;
   title: ReactNode;
   /** Pastille dorée au-dessus du titre (« Élèves », « Entraînement »…). */
   badge?: string;
@@ -52,7 +56,9 @@ export default function PageHero({
               </span>
             )}
             <h1 className="text-4xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-3 flex items-center gap-4">
-              {Icon && <Icon className="w-10 h-10 md:w-12 md:h-12 text-[var(--greek-gold)] shrink-0" aria-hidden="true" />}
+              {emblem
+                ? <Emblem3D kind={emblem} size={60} float={false} onDark className="shrink-0" />
+                : Icon && <Icon className="w-10 h-10 md:w-12 md:h-12 text-[var(--greek-gold)] shrink-0" aria-hidden="true" />}
               {title}
             </h1>
             {subtitle && <p className="text-lg opacity-85 max-w-2xl">{subtitle}</p>}

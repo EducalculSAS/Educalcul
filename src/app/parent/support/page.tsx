@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import PageHero from "@/components/PageHero";
-import { MessageSquare } from "lucide-react";
+
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import SupportTickets from "@/components/parent/SupportTickets";
@@ -20,7 +20,7 @@ export default async function ParentSupportPage() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       <PageHero
-        icon={MessageSquare}
+        emblem="mail"
         title="Support"
         badge="Mes messages"
         subtitle="Vos échanges avec l'équipe Educalcul."

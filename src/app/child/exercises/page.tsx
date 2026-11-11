@@ -3,7 +3,7 @@ import { freeCourseIds } from "@/lib/freeAccess";
 import type { ComponentProps } from "react";
 import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
-import { Brain } from "lucide-react";
+
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ExercisesCatalog from "@/components/child/ExercisesCatalog";
@@ -76,7 +76,7 @@ export default async function ChildExercisesPage({
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
-      <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={Brain} title="Exercices" badge="Entraînement" subtitle="Pratique et améliore tes compétences !" />
+      <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} emblem="pencil" title="Exercices" badge="Entraînement" subtitle="Pratique et améliore tes compétences !" />
       <div className="container mx-auto px-4 pb-12 max-w-6xl" data-tour="catalog">
         <ExercisesCatalog
           allFolders={allFolders || []}

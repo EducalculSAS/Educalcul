@@ -12,6 +12,7 @@ import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { subscribeMathKeyboardVisibility } from "@/lib/mathKeyboardVisibility";
 import { playListeningCue } from "@/lib/audioCues";
+import { useCaliaKeyboardInset } from "@/lib/caliaFloor";
 
 interface Message {
   role: "user" | "assistant";
@@ -63,6 +64,7 @@ export default function AITutor() {
   const WELCOME = isSupportMode ? WELCOME_SUPPORT : WELCOME_DEFAULT;
 
   const [open, setOpen] = useState(false);
+  useCaliaKeyboardInset(open);
   const [minimized, setMinimized] = useState(false);
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
@@ -448,11 +450,12 @@ export default function AITutor() {
     <>
       {/* ── Floating button ── */}
       {/* Le déplacement / grossissement va sur ce <span>, le verre (flou) sur le bouton : Safari coupe le flou d'un élément dont le
-          transform change. Sur téléphone la bulle est plus petite et plus haute, pour ne pas couvrir « Suivant » / « Valider » (barres du bas). */}
+          transform change. La bulle se pose d'elle-même au-dessus d'une barre « Suivant » / « Valider » (classe calia-dock) ; sur
+          téléphone elle s'efface quand la discussion est ouverte : le panneau prend sa place et se ferme par sa croix. */}
       <span
         data-tour="calia"
-        className={`fixed bottom-[112px] md:bottom-[88px] right-4 z-50 transition-all duration-300 group
-          ${open ? "scale-90" : "hover:scale-110 hover:-translate-y-1"}
+        className={`calia-dock fixed right-4 z-50 transition-all duration-300 group
+          ${open ? "scale-90 max-md:hidden" : "hover:scale-110 hover:-translate-y-1"}
           ${!isSupportMode && !hasOpened && !sub.loading && sub.features.ai_access !== "none" ? "animate-bounce-slow" : ""}
           ${mathKeyboardOpen ? "opacity-0 scale-75 pointer-events-none" : ""}
         `}
@@ -490,10 +493,9 @@ export default function AITutor() {
       {open && !mathKeyboardOpen && (
         <div
           ref={chatPanelRef}
-          className={`calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4] fixed bottom-[176px] md:bottom-[164px] right-4 z-50 w-[calc(100vw-2rem)] md:w-[350px] max-w-[calc(100vw-1.5rem)]
-            rounded-3xl flex flex-col overflow-hidden transition-[height] duration-300 animate-chat-open
-            ${minimized ? "h-[60px]" : "h-[min(500px,calc(100dvh-196px))] md:h-[min(500px,calc(100dvh-184px))]"}
-          `}
+          data-minimized={minimized}
+          className="calia-sheet calia-glass backdrop-blur-[32px] backdrop-saturate-[1.4] fixed right-4 z-50 w-[calc(100vw-2rem)] md:w-[350px]
+            rounded-3xl flex flex-col overflow-hidden transition-[height] duration-300 animate-chat-open"
         >
           {/* ── Header ── */}
           <div className="flex items-center gap-3 px-4 py-3 shrink-0" style={{ borderBottom: "1px solid rgba(255,255,255,0.12)", background: "rgba(255,255,255,0.06)" }}>

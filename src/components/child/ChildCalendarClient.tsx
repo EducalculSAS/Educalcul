@@ -1,6 +1,6 @@
 "use client";
 
-import { Calendar } from "lucide-react";
+
 import PageHero from "@/components/PageHero";
 import CalendarApp from "@/components/calendar/CalendarApp";
 import type { CalendarEventItem } from "@/components/calendar/calendarUtils";
@@ -18,7 +18,7 @@ export default function ChildCalendarClient({
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-16">
       <PageHero
-        icon={Calendar}
+        emblem="calendar"
         title="Mon calendrier"
         badge="Élève"
         subtitle="Tes contrôles, devoirs, révisions et vacances. Clique sur un jour pour voir ce qui est prévu."

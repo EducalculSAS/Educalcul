@@ -1,15 +1,15 @@
-import { relationOne } from "@/lib/validate";
-import { profileBadgeSchema } from "@/lib/schemas";
 import Link from "@/components/AppLink";
 import { redirect } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getServerUser } from "@/lib/supabase/server";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { getCatalogLevelLabel } from "@/lib/constants";
-import {
-  BookOpen, BrainCircuit, PenTool, Trophy, ArrowRight,
-  Play, MessageSquare, Star, Compass, GraduationCap, CheckCircle, Zap, Gamepad2, type LucideIcon,
-} from "lucide-react";
+import { BookOpen, PenTool, ArrowRight, Play, Star, Compass, GraduationCap } from "lucide-react";
+import DashboardTile from "@/components/DashboardTile";
+import DashboardTrophies from "@/components/child/DashboardTrophies";
+import { badgeTiers } from "@/lib/badgeTiers";
+import { nextBadgeGoals } from "@/lib/badgeGoals";
+import { loadActivityCounts } from "@/lib/cosmetics/stats";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 import GlassButton from "@/components/ui/GlassButton";
 import GoalCard from "@/components/child/GoalCard";
@@ -17,16 +17,6 @@ import { daysBetween, getChildPrefs, parisDay, studentSummary } from "@/lib/stud
 import { examInfo } from "@/lib/examPlan";
 import { dueItems, getSrs } from "@/lib/srs";
 import { learningPath } from "@/lib/learningPath";
-
-const ICON_MAP: Record<string, LucideIcon> = {
-  pencil: PenTool, zap: Zap, flame: Star, star: Star, crown: Trophy,
-  check: CheckCircle, trophy: Trophy, brain: BrainCircuit, sparkles: Star,
-  graduation: Star, book: BookOpen, map: Star, library: BookOpen,
-  sword: Star, swords: Star, medal: Trophy, gem: Star, crystal: Star,
-  divine: Star, shield: CheckCircle, bullseye: Star, bookmark: BookOpen,
-  scroll: BookOpen, owl: Star, universe: Star,
-};
-
 
 // Purement un affichage de données propres à l'élève connecté (cours/exercices
 // suivants, badges, stats) : aucune interactivité au-delà de la navigation
@@ -54,7 +44,7 @@ export default async function ChildDashboard() {
   // LECTURE, et des exercices du niveau de l'élève (avant : n'importe quel
   // niveau). La progression n'est ensuite lue QUE pour ces candidats — avant,
   // toute la progression de l'élève était téléchargée (plafonnée à 1000 lignes).
-  const [{ data: courses }, { data: exercises }, { data: ubadges }, { count: exoCount }] = await Promise.all([
+  const [{ data: courses }, { data: exercises }, { data: allBadges }, { data: ubadges }, { count: exoCount }, counts] = await Promise.all([
     supabaseAdmin
       .from("courses")
       .select("id, title, subject, level")
@@ -70,8 +60,10 @@ export default async function ChildDashboard() {
       .eq("level", level)
       .order("id")
       .limit(10),
-    supabaseAdmin.from("user_badges").select("badge:badges(id, name, icon, color)").eq("user_id", userData.id).order("earned_at", { ascending: false }).limit(4),
+    supabaseAdmin.from("badges").select("id, name, icon, description, requirement_type, requirement_value").eq("is_active", true).order("display_order"),
+    supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", userData.id).order("earned_at", { ascending: false }),
     supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userData.id),
+    loadActivityCounts(userData.id),
   ]);
 
   const courseIds = (courses || []).map((c) => c.id);
@@ -103,10 +95,22 @@ export default async function ChildDashboard() {
   const examDays = prefs.examDate ? daysBetween(parisDay(), prefs.examDate) : null;
   const showExam = exam.key !== "generic" || (examDays !== null && examDays >= 0);
 
-  const earnedBadges = (ubadges || [])
-    .map((ub) => relationOne(profileBadgeSchema, ub.badge))
-    .filter((b): b is NonNullable<typeof b> => b !== null);
-  const stats = { badges: earnedBadges.length, exercises: exoCount ?? 0 };
+  // Trophées : les badges réellement obtenus (du plus récent au plus ancien) et, par catégorie, le prochain à viser
+  // avec l'avancement de l'élève — mêmes compteurs que l'attribution des badges (api/child/check-badges).
+  const badges = allBadges || [];
+  const badgeById = new Map(badges.map((b) => [b.id, b]));
+  const earnedIds = (ubadges || []).map((ub) => ub.badge_id).filter((id) => badgeById.has(id));
+  const latestBadges = earnedIds.slice(0, 4).map((id) => badgeById.get(id)!);
+  const badgeGoals = nextBadgeGoals(badges, earnedIds, {
+    exercise_count: counts.exoCount,
+    exercise_correct: counts.correctCount,
+    quiz_count: counts.quizCount,
+    quiz_perfect: counts.perfectQuizzes,
+    course_count: counts.courseCount,
+    login_streak: userData.login_streak ?? 0,
+    login_count: userData.login_count ?? 0,
+  });
+  const stats = { badges: earnedIds.length, exercises: exoCount ?? 0 };
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
@@ -141,30 +145,12 @@ export default async function ChildDashboard() {
 
       <div className="container mx-auto max-w-6xl px-4">
         {/* Navigation */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          {[
-            { href: "/child/cours", icon: BookOpen, label: "Mes Cours", desc: "Découvre de nouvelles leçons", color: "bg-blue-100 text-[var(--greek-blue)]", action: "Commencer" },
-            { href: "/child/exercises", icon: PenTool, label: "Exercices", desc: "Entraîne-toi et progresse", color: "bg-orange-100 text-[var(--greek-bronze)]", action: "S'entraîner" },
-            { href: "/child/quiz", icon: BrainCircuit, label: "Quiz", desc: "Teste tes connaissances", color: "bg-yellow-100 text-[var(--greek-gold)]", action: "Jouer" },
-            { href: "/child/minigames", icon: Gamepad2, label: "Mini-jeux", desc: "Défie-toi et grimpe au classement", color: "bg-indigo-100 text-indigo-600", action: "Jouer" },
-            { href: "/child/forum", icon: MessageSquare, label: "Forum", desc: "Pose tes questions", color: "bg-blue-100 text-[var(--greek-blue)]", action: "Y aller" },
-          ].map(({ href, icon: Icon, label, desc, color, action }) => (
-            <Link key={href} href={href} className="group">
-              <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
-                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <Icon className="w-24 h-24" />
-                </div>
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 ${color}`}>
-                  <Icon className="w-7 h-7" />
-                </div>
-                <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">{label}</h3>
-                <p className="text-gray-600 mb-4 text-sm">{desc}</p>
-                <div className="flex items-center text-[var(--greek-blue)] font-bold group-hover:gap-2 transition-all text-sm">
-                  {action} <ArrowRight className="w-4 h-4 ml-1" />
-                </div>
-              </div>
-            </Link>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-5 mb-10">
+          <DashboardTile href="/child/cours" emblem="book" label="Mes cours" desc="Découvre de nouvelles leçons" action="Commencer" />
+          <DashboardTile href="/child/exercises" emblem="pencil" label="Exercices" desc="Entraîne-toi et progresse" action="S'entraîner" />
+          <DashboardTile href="/child/quiz" emblem="quiz" label="Quiz" desc="Teste tes connaissances" action="Jouer" />
+          <DashboardTile href="/child/minigames" emblem="gamepad" label="Mini-jeux" desc="Défie-toi et grimpe au classement" action="Jouer" />
+          <DashboardTile href="/child/forum" emblem="chat" label="Forum" desc="Pose tes questions" action="Y aller" />
         </div>
 
         <GoalCard
@@ -279,43 +265,7 @@ export default async function ChildDashboard() {
           <MiniCalendarWidget authId={authUser.authId} ownerId={userData.id} isParent={false} title="Mon Calendrier" fullCalendarHref="/child/calendar" />
         </div>
 
-        {/* Mes Trophées — réels */}
-        <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)]">
-          <div className="flex items-center justify-between mb-5">
-            <div className="flex items-center gap-3">
-              <Trophy className="w-5 h-5 text-[var(--greek-bronze)]" />
-              <h2 className="text-xl font-bold text-[var(--greek-blue)]">Mes Trophées</h2>
-            </div>
-            <GlassButton href="/child/badges" variant="outline" size="sm">
-              Voir tout
-            </GlassButton>
-          </div>
-
-          {earnedBadges.length === 0 ? (
-            <div className="text-center py-8 text-gray-400">
-              <Trophy className="w-10 h-10 mx-auto mb-2 opacity-20" />
-              <p className="text-sm">Complète des exercices pour gagner tes premiers badges !</p>
-              <div className="mt-3">
-                <GlassButton href="/child/badges" variant="outline" size="sm">Voir les objectifs</GlassButton>
-              </div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {earnedBadges.map((b) => {
-                const Icon = ICON_MAP[b.icon] || Star;
-                return (
-                  <div key={b.id} className="rounded-2xl border border-[rgba(197,161,72,0.25)] p-4 flex flex-col items-center text-center shadow-sm"
-                    style={{ backgroundColor: b.color + "10" }}>
-                    <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-2" style={{ backgroundColor: b.color + "20" }}>
-                      <Icon className="w-6 h-6" style={{ color: b.color }} />
-                    </div>
-                    <span className="text-xs font-bold text-gray-700 line-clamp-2">{b.name}</span>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
+        <DashboardTrophies latest={latestBadges} earnedCount={earnedIds.length} totalCount={badges.length} goals={badgeGoals} tiers={badgeTiers(badges)} />
       </div>
     </div>
   );

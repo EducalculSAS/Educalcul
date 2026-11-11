@@ -96,7 +96,7 @@ export default function BadgesSettings({
       {/* Hero */}
       <PageHero
         back={{ href: "/child/dashboard", label: "Tableau de bord" }}
-        icon={Trophy}
+        emblem="trophy"
         title="Mes trophées"
         badge={`${earned.length} / ${badges.length} débloqués`}
         subtitle="Tes badges, tes contours et tes titres : débloque-les en progressant."

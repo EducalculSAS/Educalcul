@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { getLiveSubscription } from "@/lib/subscriptionLive";
 import PageHero from "@/components/PageHero";
-import { User } from "lucide-react";
+
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import ParentProfileSettings from "@/components/parent/ParentProfileSettings";
@@ -37,7 +37,7 @@ export default async function ParentProfilePage() {
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
-      <PageHero icon={User} title="Mon profil" badge="Compte" subtitle="Gérez vos informations personnelles." width="4xl" />
+      <PageHero emblem="profile" title="Mon profil" badge="Compte" subtitle="Gérez vos informations personnelles." width="4xl" />
 
       <ParentProfileSettings
         initialFormData={{

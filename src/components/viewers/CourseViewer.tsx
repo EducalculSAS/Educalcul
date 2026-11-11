@@ -18,6 +18,7 @@ import { enhanceNewPlugins } from "@/lib/newPluginsInteractive";
 import { enhanceAlgoSandboxes } from "@/lib/pyodideInteractive";
 import { subscribeMathKeyboardVisibility } from "@/components/MathInput";
 import GlassButton from "@/components/ui/GlassButton";
+import { useCaliaFloor } from "@/lib/caliaFloor";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import CaliaSceneDemo from "@/components/child/calia-scene/CaliaSceneDemo";
 import ReadAloudButton from "@/components/ReadAloudButton";
@@ -75,6 +76,8 @@ export interface CourseViewerProps {
 }
 
 export default function CourseViewer({ course, onComplete, onChapterComplete, onBack, reviewMode }: CourseViewerProps) {
+  // Calia se pose au-dessus de la barre « Précédent / Suivant » au lieu de la recouvrir.
+  const caliaFloorRef = useCaliaFloor();
   const { setPageContext } = useAITutor();
   
   const chapters = useMemo(
@@ -864,7 +867,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         </div>
 
         {/* Footer Navigation */}
-        <div className="h-20 border-t border-[var(--greek-gold)] bg-[var(--greek-cream)]/95 backdrop-blur-sm flex items-center justify-between px-4 md:px-8 shrink-0 z-10 sticky bottom-0">
+        <div ref={caliaFloorRef} className="h-20 border-t border-[var(--greek-gold)] bg-[var(--greek-cream)]/95 backdrop-blur-sm flex items-center justify-between px-4 md:px-8 shrink-0 z-10 sticky bottom-0">
           <GlassButton
             onClick={handlePrev}
             disabled={currentChapterIndex === 0 && currentLessonIndex === 0}

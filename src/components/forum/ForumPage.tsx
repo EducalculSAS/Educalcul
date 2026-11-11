@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { MessagesSquare } from "lucide-react";
+
 import PageHero from "@/components/PageHero";
 import ForumApp from "./ForumApp";
 
@@ -13,7 +13,7 @@ export default function ForumPage({ role }: { role: "child" | "parent" }) {
   const copy = COPY[role];
   return (
     <div className="w-full min-h-screen bg-[var(--greek-cream)]">
-      <PageHero back={{ href: `/${role}/dashboard`, label: "Tableau de bord" }} icon={MessagesSquare} title="Le forum" badge={copy.badge} subtitle={copy.subtitle} />
+      <PageHero back={{ href: `/${role}/dashboard`, label: "Tableau de bord" }} emblem="chat" title="Le forum" badge={copy.badge} subtitle={copy.subtitle} />
       <div className="px-4 pb-16 max-w-6xl mx-auto">
         <Suspense fallback={null}>
           <ForumApp role={role} />

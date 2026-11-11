@@ -612,6 +612,25 @@ main,
   border: 1px solid rgba(240, 214, 150, 0.55);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 6px 18px rgba(190, 152, 62, 0.28);
 }
+/* Calia flottante : UN seul emplacement pour la bulle et le panneau, côté élève comme côté parent.
+   --calia-floor : hauteur d'une barre d'actions visible en bas de l'écran (voir useCaliaFloor) ;
+   --calia-lift  : place laissée au bouton « Quitter le tutoriel » ; --calia-kb : clavier du téléphone. */
+.calia-dock {
+  bottom: calc(16px + var(--calia-floor, 0px) + var(--calia-lift, 0px) + env(safe-area-inset-bottom, 0px));
+}
+/* Sur téléphone, le panneau prend la place de la bulle (masquée) : il part du bas et s'arrête sous la barre du haut. */
+.calia-sheet {
+  bottom: calc(12px + var(--calia-floor, 0px) + var(--calia-kb, 0px) + env(safe-area-inset-bottom, 0px));
+  height: min(500px, calc(100dvh - var(--calia-floor, 0px) - var(--calia-kb, 0px) - 104px));
+}
+.calia-sheet[data-minimized="true"] { height: 60px; }
+@media (min-width: 768px) {
+  .calia-dock { bottom: calc(24px + var(--calia-floor, 0px) + var(--calia-lift, 0px)); }
+  .calia-sheet {
+    bottom: calc(92px + var(--calia-floor, 0px) + var(--calia-lift, 0px));
+    height: min(500px, calc(100dvh - var(--calia-floor, 0px) - var(--calia-lift, 0px) - 180px));
+  }
+}
 @media (prefers-reduced-transparency: reduce) {
   .calia-glass { background: #0d1829; }
   .calia-glass-board { background: #262c34; }

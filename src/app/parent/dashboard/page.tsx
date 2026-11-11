@@ -1,11 +1,7 @@
-import Link from "@/components/AppLink";
 import Emblem3D from "@/components/Emblem3D";
+import DashboardTile from "@/components/DashboardTile";
 import { redirect } from "next/navigation";
-import {
-  Users,
-  ArrowRight, Plus, MessageSquare, Crown, UserCircle,
-  BarChart2,
-} from "lucide-react";
+import { Plus, BarChart2 } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 import ChildFamilyCard from "@/components/parent/ChildFamilyCard";
 import { getServerUser } from "@/lib/supabase/server";
@@ -67,70 +63,11 @@ export default async function ParentDashboard() {
 
       <div className="container mx-auto max-w-6xl px-4">
         {/* Navigation rapide — même style que child */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-          <Link href="/parent/children" className="group">
-            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Users className="w-24 h-24 text-[var(--greek-blue)]" />
-              </div>
-              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
-                <Users className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Mes Enfants</h3>
-              <p className="text-gray-600 mb-4 text-sm">Gérez les comptes et suivez la progression.</p>
-              <div className="flex items-center text-[var(--greek-blue)] font-bold group-hover:gap-2 transition-all">
-                Gérer <ArrowRight className="w-5 h-5 ml-1" />
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/parent/forum" className="group">
-            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                <MessageSquare className="w-24 h-24 text-[var(--greek-bronze)]" />
-              </div>
-              <div className="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center mb-4 text-[var(--greek-bronze)] group-hover:scale-110 transition-transform duration-300">
-                <MessageSquare className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Le Forum</h3>
-              <p className="text-gray-600 mb-4 text-sm">Échangez avec d&apos;autres parents et l&apos;équipe.</p>
-              <div className="flex items-center text-[var(--greek-bronze)] font-bold group-hover:gap-2 transition-all">
-                Participer <ArrowRight className="w-5 h-5 ml-1" />
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/parent/subscription" className="group">
-            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Crown className="w-24 h-24 text-[var(--greek-gold)]" />
-              </div>
-              <div className="w-14 h-14 bg-yellow-100 rounded-2xl flex items-center justify-center mb-4 text-[var(--greek-gold)] group-hover:scale-110 transition-transform duration-300">
-                <Crown className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Abonnement</h3>
-              <p className="text-gray-600 mb-4 text-sm">Gérez votre formule et votre parrainage.</p>
-              <div className="flex items-center text-[var(--greek-gold)] font-bold group-hover:gap-2 transition-all">
-                Voir <ArrowRight className="w-5 h-5 ml-1" />
-              </div>
-            </div>
-          </Link>
-
-          <Link href="/parent/profile" className="group">
-            <div className="bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full relative overflow-hidden">
-              <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                <UserCircle className="w-24 h-24 text-[var(--greek-blue)]" />
-              </div>
-              <div className="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-4 text-[var(--greek-blue)] group-hover:scale-110 transition-transform duration-300">
-                <UserCircle className="w-7 h-7" />
-              </div>
-              <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2">Mon Profil</h3>
-              <p className="text-gray-600 mb-4 text-sm">Modifiez vos informations et votre photo.</p>
-              <div className="flex items-center text-[var(--greek-blue)] font-bold group-hover:gap-2 transition-all">
-                Modifier <ArrowRight className="w-5 h-5 ml-1" />
-              </div>
-            </div>
-          </Link>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 mb-10">
+          <DashboardTile href="/parent/children" emblem="family" label="Mes enfants" desc="Gérez les comptes et suivez la progression." action="Gérer" />
+          <DashboardTile href="/parent/forum" emblem="chat" label="Le forum" desc="Échangez avec d'autres parents et l'équipe." action="Participer" />
+          <DashboardTile href="/parent/subscription" emblem="crown" label="Abonnement" desc="Gérez votre formule et votre parrainage." action="Voir" />
+          <DashboardTile href="/parent/profile" emblem="profile" label="Mon profil" desc="Modifiez vos informations et votre photo." action="Modifier" />
         </div>
 
         {/* Section enfants */}

@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { ArrowLeft, CheckCircle, XCircle, Clock, Eye, Trophy } from "lucide-react";
+import { ArrowLeft, CheckCircle, XCircle, Clock, Eye } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Link from "@/components/AppLink";
 import { getServerUser } from "@/lib/supabase/server";
@@ -21,7 +21,7 @@ export default async function QuizHistoryPage() {
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-16">
       <PageHero
-        icon={Trophy}
+        emblem="quiz"
         title="Mes tentatives"
         badge="Historique"
         subtitle="Tes 200 dernières tentatives, avec leur correction."

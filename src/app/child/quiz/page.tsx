@@ -3,7 +3,7 @@ import { freeCourseIds } from "@/lib/freeAccess";
 import type { ComponentProps } from "react";
 import { selectAllPages } from "@/lib/selectAllPages";
 import PageHero from "@/components/PageHero";
-import { Trophy } from "lucide-react";
+
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import QuizCatalog from "@/components/child/QuizCatalog";
@@ -74,7 +74,7 @@ export default async function ChildQuizPage({
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
       {/* Hero Header */}
-      <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} icon={Trophy} title="Quiz & défis" badge="Défi" subtitle="Teste tes connaissances et gagne des trophées !" />
+      <PageHero back={{ href: "/child/dashboard", label: "Tableau de bord" }} emblem="quiz" title="Quiz & défis" badge="Défi" subtitle="Teste tes connaissances et gagne des trophées !" />
       <div className="container mx-auto px-4 pb-12 max-w-6xl" data-tour="catalog">
         <QuizCatalog
           allFolders={allFolders}
