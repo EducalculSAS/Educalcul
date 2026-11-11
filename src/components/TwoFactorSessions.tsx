@@ -60,7 +60,7 @@ export default function TwoFactorSessions() {
           <div key={s.id} className="flex items-center justify-between px-3 py-2 rounded-lg bg-gray-50 border border-gray-200">
             <span className="flex items-center gap-2 text-sm text-gray-600">
               <Smartphone className="w-4 h-4 shrink-0 text-gray-400" />
-              {summarizeUA(s.user_agent)}, depuis le {new Date(s.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}
+              {summarizeUA(s.user_agent)}{s.created_at && !Number.isNaN(Date.parse(s.created_at)) ? `, depuis le ${new Date(s.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}` : ""}
             </span>
             <GlassIconButton icon={X} color="red" size="sm" onClick={() => revoke(s.id)} disabled={revoking === s.id} loading={revoking === s.id} aria-label="Révoquer cet appareil" />
           </div>

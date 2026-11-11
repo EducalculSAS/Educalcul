@@ -1,7 +1,8 @@
 "use client";
 
+import SectionTitle from "@/components/SectionTitle";
 import { useEffect, useState } from "react";
-import { Type } from "lucide-react";
+
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { DEFAULT_A11Y, readA11y, saveA11y, type A11yPrefs } from "@/lib/a11y";
@@ -52,11 +53,8 @@ function A11yControls() {
 /** Carte pour la page profil. */
 export function AccessibilityCard() {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-      <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
-        <Type className="w-5 h-5 mr-2" />
-        Confort de lecture
-      </h2>
+    <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+      <SectionTitle emblem="book" divider>Confort de lecture</SectionTitle>
       <A11yControls />
     </div>
   );

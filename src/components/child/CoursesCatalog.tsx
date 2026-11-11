@@ -1,12 +1,12 @@
 "use client";
 
+import FolderEmblem from "@/components/child/FolderEmblem";
 import { useKatexIn } from "@/lib/useKatexIn";
 import Emblem3D from "@/components/Emblem3D";
 import { useState, useEffect, useRef } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { Play, CheckCircle, ArrowLeft, Lock } from "lucide-react";
 import Image from "next/image";
-import { getFolderIcon } from "@/lib/folderIcons";
 import GlassButton from "@/components/ui/GlassButton";
 import { compareCourseOrder } from "@/lib/courseOrder";
 import { isFolderInLevelScope } from "@/lib/childCatalog";
@@ -135,7 +135,6 @@ export default function CoursesCatalog({
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentFolders.map((folder, index) => {
-            const FolderCardIcon = getFolderIcon(folder.icon);
             return (
               <div
                 key={folder.id}
@@ -148,15 +147,10 @@ export default function CoursesCatalog({
                     navigateToFolder(folder.id, folder.name);
                   }
                 }}
-                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
+                className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center animate-fade-bounce"
                 style={{ animationDelay: `${Math.min(index, 6) * 30}ms` }}
               >
-                <div
-                  className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
-                  style={{ backgroundColor: `${folder.color || "#3b82f6"}15`, color: folder.color || "#3b82f6" }}
-                >
-                  <FolderCardIcon size={40} fill="currentColor" fillOpacity={0.2} />
-                </div>
+                <FolderEmblem icon={folder.icon} color={folder.color} />
                 <h3 className="font-bold text-[var(--greek-blue)] text-xl w-full px-2">{folder.name}</h3>
                 <FolderLevelBadge gradeLevel={folder.grade_level} color={folder.color} />
               </div>

@@ -1,7 +1,8 @@
 "use client";
 
+import SectionTitle from "@/components/SectionTitle";
 import { useState } from "react";
-import { Palette } from "lucide-react";
+
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { SEASON_HINT, SEASON_LABEL, applySeason, readStoredSeason, resolveSeason, type SeasonPreference } from "@/lib/season";
 
@@ -28,11 +29,8 @@ export default function SeasonSettings() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-      <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
-        <Palette className="w-5 h-5 mr-2" />
-        Thème du site
-      </h2>
+    <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+      <SectionTitle emblem="star" divider>Thème du site</SectionTitle>
       <GlassSegmentedControl value={pref} onChange={change} options={ORDER.map((id) => ({ id, label: SEASON_LABEL[id] }))} />
       <div className="mt-4 flex items-center gap-4">
         <span className="flex shrink-0 overflow-hidden rounded-xl border border-[rgba(197,161,72,0.25)]" aria-hidden="true">

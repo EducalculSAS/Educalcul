@@ -1,11 +1,12 @@
 "use client";
 
+import SectionTitle from "@/components/SectionTitle";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
-import { ShieldCheck, CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
+import { CheckCircle, AlertCircle, RotateCcw } from "lucide-react";
 import TwoFactorSessions from "@/components/TwoFactorSessions";
 import GlassButton from "@/components/ui/GlassButton";
 import { errMessage } from "@/lib/safeError";
@@ -115,11 +116,8 @@ export default function TwoFactorToggle({ mandatory = false }: { mandatory?: boo
   if (loading) return null;
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-      <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
-        <ShieldCheck className="w-5 h-5 mr-2" />
-        Authentification à deux facteurs
-      </h2>
+    <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+      <SectionTitle emblem="shield" divider>Authentification à deux facteurs</SectionTitle>
 
       <p className="text-sm text-gray-600 mb-4">
         {mandatory

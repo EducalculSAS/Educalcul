@@ -1,5 +1,6 @@
 "use client";
 
+import FolderEmblem from "@/components/child/FolderEmblem";
 import { compareDisplayOrder } from "@/lib/contentOrder";
 import Emblem3D from "@/components/Emblem3D";
 import { useState, useEffect } from "react";
@@ -7,7 +8,6 @@ import { useSessionFolderId } from "@/lib/useSessionFolderId";
 import { Play, ArrowLeft, Lock, CheckCircle, XCircle } from "lucide-react";
 import Image from "next/image";
 import { useSubscription } from "@/lib/useSubscription";
-import { getFolderIcon } from "@/lib/folderIcons";
 import { isDifficultyAllowed } from "@/lib/difficultyAccess";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import FolderLevelBadge from "@/components/ui/FolderLevelBadge";
@@ -240,15 +240,10 @@ export default function ExercisesCatalog({
               role="button"
               tabIndex={0}
               onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); navigateToFolder(folder.id, folder.name); } }}
-              className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center aspect-[4/3] animate-fade-bounce"
+              className="group bg-white rounded-[20px] p-6 shadow-sm border border-[rgba(197,161,72,0.25)] transition-all cursor-pointer hover:shadow-xl hover:-translate-y-1 flex flex-col items-center justify-center text-center animate-fade-bounce"
               style={{ animationDelay: `${Math.min(index, 6) * 30}ms` }}
             >
-              <div
-                className="w-20 h-20 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
-                style={{ backgroundColor: `${folder.color || "#3b82f6"}15`, color: folder.color || "#3b82f6" }}
-              >
-                {(() => { const I = getFolderIcon(folder.icon); return <I size={40} fill="currentColor" fillOpacity={0.2} aria-hidden="true" />; })()}
-              </div>
+              <FolderEmblem icon={folder.icon} color={folder.color} />
               <h3 className="font-bold text-[var(--greek-blue)] text-xl w-full px-2">{folder.name}</h3>
               <FolderLevelBadge gradeLevel={folder.grade_level} color={folder.color} />
             </div>

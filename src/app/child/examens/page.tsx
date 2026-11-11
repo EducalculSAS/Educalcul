@@ -1,7 +1,8 @@
+import PageHero from "@/components/PageHero";
 import Emblem3D from "@/components/Emblem3D";
 import Link from "@/components/AppLink";
 import { redirect } from "next/navigation";
-import { BookOpen, CalendarDays, Moon, PenTool, Repeat } from "lucide-react";
+import { BookOpen, Moon, PenTool, Repeat } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getChildPrefs, parisDay } from "@/lib/studentStats";
@@ -39,23 +40,20 @@ export default async function ExamensPage() {
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
-      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-10 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
-        <div className="container mx-auto max-w-4xl relative z-10 flex flex-wrap items-center justify-between gap-6">
-          <div>
-            <h1 className="text-3xl md:text-4xl font-[family-name:var(--font-display)] font-bold mb-2 flex items-center gap-3">
-              <Emblem3D kind="cap" size={44} float={false} onDark /> {info.label}
-            </h1>
-            <p className="opacity-90 max-w-xl">Un parcours en 4 semaines construit avec ton programme, tes erreurs et des sujets d&apos;entraînement.</p>
+      <PageHero
+        back={{ href: "/child/dashboard", label: "Tableau de bord" }}
+        emblem="cap"
+        title={info.label}
+        badge="Préparation"
+        subtitle="Un parcours en 4 semaines construit avec ton programme, tes erreurs et des sujets d'entraînement."
+        width="4xl"
+        actions={plan && !plan.past ? (
+          <div className="bg-white/10 rounded-2xl px-6 py-4 text-center border border-[rgba(197,161,72,0.25)]">
+            <div className="text-4xl font-bold text-[var(--greek-gold)]">J-{plan.daysLeft}</div>
+            <div className="text-xs uppercase tracking-wider opacity-80">{fmt(examDate!)}</div>
           </div>
-          {plan && !plan.past && (
-            <div className="bg-white/10 rounded-2xl px-6 py-4 text-center border border-[rgba(197,161,72,0.25)]">
-              <div className="text-4xl font-bold text-[var(--greek-gold)]">J-{plan.daysLeft}</div>
-              <div className="text-xs uppercase tracking-wider opacity-80">{fmt(examDate!)}</div>
-            </div>
-          )}
-        </div>
-      </div>
+        ) : undefined}
+      />
 
       <div className="container mx-auto max-w-4xl px-4 space-y-6">
         <div className="bg-white rounded-[20px] border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
@@ -65,7 +63,7 @@ export default async function ExamensPage() {
 
         {!plan && (
           <div className="bg-white rounded-[20px] border border-dashed border-[var(--greek-gold)] p-8 text-center text-gray-500">
-            <CalendarDays className="w-10 h-10 mx-auto mb-2 opacity-30" />
+            <div className="mb-2"><Emblem3D kind="calendar" size={72} /></div>
             Choisis la date de l&apos;examen pour voir ton parcours semaine par semaine.
           </div>
         )}

@@ -125,9 +125,11 @@ export default function SupportTickets({ initialTickets }: { initialTickets: Tic
       )}
 
       {!showForm ? (
-        <GlassButton onClick={() => setShowForm(true)} variant="navy" fullWidth>
-          <Plus size={18} aria-hidden="true" /> Nouveau ticket
-        </GlassButton>
+        <div className="flex justify-end">
+          <GlassButton onClick={() => setShowForm(true)} variant="navy">
+            <Plus size={18} aria-hidden="true" /> Écrire à l&apos;équipe
+          </GlassButton>
+        </div>
       ) : (
         <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
           <div className="flex items-center justify-between mb-5">

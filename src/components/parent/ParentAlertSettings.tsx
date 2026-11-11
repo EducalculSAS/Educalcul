@@ -1,7 +1,8 @@
 "use client";
 
+import SectionTitle from "@/components/SectionTitle";
 import { useState } from "react";
-import { BellRing } from "lucide-react";
+
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -43,11 +44,8 @@ export default function ParentAlertSettings({ initial }: { initial: AlertPrefs }
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-      <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
-        <BellRing className="w-5 h-5 mr-2" />
-        Alertes sur vos enfants
-      </h2>
+    <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+      <SectionTitle emblem="bell" divider>Alertes sur vos enfants</SectionTitle>
       <div className="space-y-4">
         {rows.map(({ key, label, desc }) => (
           <div key={key} className="flex items-center justify-between gap-4">

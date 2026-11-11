@@ -7,6 +7,8 @@ import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { getCatalogLevelLabel } from "@/lib/constants";
 import { ArrowRight, Play } from "lucide-react";
 import DashboardTile from "@/components/DashboardTile";
+import DashboardHero from "@/components/DashboardHero";
+import BadgeEmblem from "@/components/BadgeEmblem";
 import DashboardTrophies from "@/components/child/DashboardTrophies";
 import { badgeTiers } from "@/lib/badgeTiers";
 import { nextBadgeGoals } from "@/lib/badgeGoals";
@@ -45,7 +47,7 @@ export default async function ChildDashboard() {
   // LECTURE, et des exercices du niveau de l'élève (avant : n'importe quel
   // niveau). La progression n'est ensuite lue QUE pour ces candidats — avant,
   // toute la progression de l'élève était téléchargée (plafonnée à 1000 lignes).
-  const [{ data: courses }, { data: exercises }, { data: allBadges }, { data: ubadges }, { count: exoCount }, counts] = await Promise.all([
+  const [{ data: courses }, { data: exercises }, { data: allBadges }, { data: ubadges }, counts] = await Promise.all([
     supabaseAdmin
       .from("courses")
       .select("id, title, subject, level")
@@ -63,7 +65,6 @@ export default async function ChildDashboard() {
       .limit(10),
     supabaseAdmin.from("badges").select("id, name, icon, description, requirement_type, requirement_value").eq("is_active", true).order("display_order"),
     supabaseAdmin.from("user_badges").select("badge_id").eq("user_id", userData.id).order("earned_at", { ascending: false }),
-    supabaseAdmin.from("user_exercise_attempts").select("*", { count: "exact", head: true }).eq("user_id", userData.id),
     loadActivityCounts(userData.id),
   ]);
 
@@ -111,38 +112,31 @@ export default async function ChildDashboard() {
     login_streak: userData.login_streak ?? 0,
     login_count: userData.login_count ?? 0,
   });
-  const stats = { badges: earnedIds.length, exercises: exoCount ?? 0 };
+  const tiers = badgeTiers(badges);
+  // Les badges que l'élève a choisi d'afficher à côté de son nom (les mêmes que sur le forum).
+  const featured = ((userData.featured_badges as number[] | null) || []).map((id) => badgeById.get(id)).filter((b): b is NonNullable<typeof b> => !!b && earnedIds.includes(b.id)).slice(0, 3);
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
-      {/* Header */}
-      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h1 className="text-3xl md:text-5xl font-bold mb-2">
-                Bonjour, {userData.first_name} !
-              </h1>
-              <p className="text-xl opacity-90 flex items-center gap-2">
-                <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-3 py-1 rounded-full">{level ? getCatalogLevelLabel(level) : "Niveau"}</span>
-                <span>Prêt à apprendre ?</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-[rgba(197,161,72,0.25)]">
-              <div className="text-center px-4 border-r border-[rgba(197,161,72,0.25)]">
-                <div className="text-2xl font-bold text-[var(--greek-gold)]">{stats.badges}</div>
-                <div className="text-xs uppercase tracking-wider opacity-80">Badges</div>
-              </div>
-              <div className="text-center px-4">
-                <div className="text-2xl font-bold text-[var(--greek-gold)]">{stats.exercises}</div>
-                <div className="text-xs uppercase tracking-wider opacity-80">Exercices</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <DashboardHero
+        name={userData.first_name || userData.child_username || "toi"}
+        avatar={userData.avatar}
+        equippedBorder={userData.equipped_border}
+        nameColor={userData.name_color}
+        pill={level ? getCatalogLevelLabel(level) : "Élève"}
+        tagline={summary.today >= summary.dailyGoal ? "Objectif du jour atteint, bravo !" : summary.streak > 1 ? `${summary.streak} jours de suite : continue sur ta lancée.` : "Prêt à apprendre ?"}
+        profileHref="/child/profile"
+        extra={featured.length > 0 && (
+          <ul className="flex flex-wrap gap-2">
+            {featured.map((b) => (
+              <li key={b.id} className="flex items-center gap-1.5 bg-white/10 pl-1 pr-2.5 py-1 rounded-full border border-white/20">
+                <BadgeEmblem badge={{ icon: b.icon, requirement_type: b.requirement_type, tier: tiers[b.id] ?? 0 }} size={26} />
+                <span className="text-xs font-bold text-white/90">{b.name}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+      />
 
       <div className="container mx-auto max-w-6xl px-4">
         {/* Navigation */}
@@ -262,7 +256,7 @@ export default async function ChildDashboard() {
           <MiniCalendarWidget authId={authUser.authId} ownerId={userData.id} isParent={false} title="Mon Calendrier" fullCalendarHref="/child/calendar" />
         </div>
 
-        <DashboardTrophies latest={latestBadges} earnedCount={earnedIds.length} totalCount={badges.length} goals={badgeGoals} tiers={badgeTiers(badges)} />
+        <DashboardTrophies latest={latestBadges} earnedCount={earnedIds.length} totalCount={badges.length} goals={badgeGoals} tiers={tiers} />
       </div>
     </div>
   );

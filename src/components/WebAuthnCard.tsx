@@ -1,11 +1,12 @@
 "use client";
 
+import SectionTitle from "@/components/SectionTitle";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import LoaderDots from "@/components/LoaderDots";
 import { useEffect, useState } from "react";
 import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
-import { Fingerprint, Trash2, CheckCircle } from "lucide-react";
+import { Trash2, CheckCircle } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { errMessage } from "@/lib/safeError";
@@ -131,11 +132,8 @@ export default function WebAuthnCard() {
   const enabled = credentials.length > 0;
 
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-      <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
-        <Fingerprint className="w-5 h-5 mr-2" />
-        Clé d&apos;accès (empreinte / Face ID)
-      </h2>
+    <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+      <SectionTitle emblem="lock" divider>Clé d&apos;accès (empreinte / Face ID)</SectionTitle>
       <p className="text-sm text-gray-600 mb-4">
         Une fois activée, ton mot de passe ne suffit plus : à chaque connexion, l&apos;empreinte digitale, la
         reconnaissance faciale ou le code de cet appareil sera aussi demandé (avant la double authentification

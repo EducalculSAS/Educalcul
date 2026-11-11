@@ -245,7 +245,8 @@ function PlanCard({ plan, popular, cta, onChoose, processing, isCurrent, drag, t
               <Sparkles className="w-3 h-3" />{plan.promo_description}
             </div>
           )}
-          {plan.trial_days > 0 && (
+          {/* Pas de promesse d'essai sur la formule que le parent a déjà. */}
+          {plan.trial_days > 0 && !isCurrent && (
             <div className="inline-block px-3 py-1 bg-green-50 text-green-700 text-xs font-semibold rounded-full border border-green-200 mb-3">
               {plan.trial_days} jours d&apos;essai gratuit
             </div>

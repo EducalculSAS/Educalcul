@@ -1,6 +1,7 @@
 "use client";
 
 import Emblem3D from "@/components/Emblem3D";
+import SectionTitle from "@/components/SectionTitle";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import ThemeToggle from "@/components/ThemeToggle";
 import ReplayTourCard from "@/components/tour/ReplayTourCard";
@@ -8,7 +9,7 @@ import { AccessibilityCard } from "@/components/AccessibilityPanel";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useRef, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { Trophy, Shield, School, BookOpen, Mail, CheckCircle, AlertCircle, Trash2, Camera, Brain, Gamepad2 } from "lucide-react";
+import { Shield, Mail, CheckCircle, AlertCircle, Trash2, Camera } from "lucide-react";
 import { getNameColor } from "@/lib/badgeStyles";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
@@ -125,7 +126,7 @@ export default function ChildProfileSettings({
       )}
 
       {/* ── Avatar + identité ── */}
-      <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] overflow-hidden mb-6">
+      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden mb-6">
         <div className="h-24 bg-[var(--greek-blue)] relative overflow-hidden">
           <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "repeating-linear-gradient(45deg,rgba(255,255,255,0.05) 0,rgba(255,255,255,0.05) 1px,transparent 0,transparent 50%)", backgroundSize: "12px 12px" }} />
         </div>
@@ -168,32 +169,29 @@ export default function ChildProfileSettings({
         </div>
       </div>
 
-      {/* ── Stats rapides ── */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 mb-6">
-        {[
-          { icon: School, label: "Niveau", value: user.grade_level ? getSimpleLevelLabel(user.grade_level) : "-", color: "#3b82f6" },
-          { icon: Trophy, label: "Trophées", value: `${activityCounts.badges}`, color: "var(--greek-gold)" },
-          { icon: BookOpen, label: "Cours suivis", value: `${activityCounts.courses}`, color: "#a855f7" },
-          { icon: Brain, label: "Exercices", value: `${activityCounts.exercises}`, color: "#10b981" },
-          { icon: Gamepad2, label: "Mini-jeux", value: `${activityCounts.minigames}`, color: "#ec4899" },
-        ].map(({ icon: Icon, label, value, color }, i) => (
-          <div key={i} className="bg-white rounded-2xl p-4 border border-[rgba(197,161,72,0.2)] flex flex-col gap-2">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ background: `${color}15` }}>
-              <Icon className="w-5 h-5" style={{ color }} />
+      {/* ── Où j'en suis ── */}
+      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-6">
+        {([
+          { emblem: "cap", label: "Classe", value: user.grade_level ? getSimpleLevelLabel(user.grade_level) : "-" },
+          { emblem: "trophy", label: activityCounts.badges > 1 ? "Badges" : "Badge", value: `${activityCounts.badges}` },
+          { emblem: "book", label: activityCounts.courses > 1 ? "Cours suivis" : "Cours suivi", value: `${activityCounts.courses}` },
+          { emblem: "pencil", label: activityCounts.exercises > 1 ? "Exercices faits" : "Exercice fait", value: `${activityCounts.exercises}` },
+          { emblem: "gamepad", label: activityCounts.minigames > 1 ? "Parties jouées" : "Partie jouée", value: `${activityCounts.minigames}` },
+        ] as const).map(({ emblem, label, value }) => (
+          <div key={emblem} className="bg-white rounded-[20px] p-4 shadow-sm border border-[rgba(197,161,72,0.25)] flex items-center gap-3 last:col-span-2 sm:last:col-span-1">
+            <Emblem3D kind={emblem} size={40} float={false} />
+            <div className="min-w-0">
+              <p className="text-lg font-bold leading-tight text-[var(--greek-blue)] truncate">{value}</p>
+              <p className="text-xs text-gray-500">{label}</p>
             </div>
-            <p className="text-xl font-bold" style={{ color: "var(--greek-blue)" }}>{value}</p>
-            <p className="text-xs" style={{ color: "var(--text-muted)" }}>{label}</p>
           </div>
         ))}
       </div>
 
       <div className="space-y-6">
         {/* ── Infos personnelles ── */}
-        <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
-          <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-            <Emblem3D kind="profile" size={28} float={false} />
-            Informations personnelles
-          </h2>
+        <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+          <SectionTitle emblem="profile">Informations personnelles</SectionTitle>
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
               <label className="block text-xs font-bold mb-1" style={{ color: "var(--greek-blue)" }}>Pseudo</label>
@@ -218,11 +216,8 @@ export default function ChildProfileSettings({
 
         <div className="grid md:grid-cols-2 gap-6">
           {/* ── Comptes liés ── */}
-          <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
-            <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-              <Emblem3D kind="mail" size={28} float={false} />
-              Comptes liés
-            </h2>
+          <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+            <SectionTitle emblem="mail">Comptes liés</SectionTitle>
             <div className="flex items-center justify-between p-4 rounded-xl" style={{ background: "var(--greek-cream)", border: "1px solid rgba(197,161,72,0.2)" }}>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm"><GoogleIcon /></div>
@@ -245,15 +240,12 @@ export default function ChildProfileSettings({
           </div>
 
           {/* ── Notifications ── */}
-          <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
-            <h2 className="text-lg font-bold mb-5 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-              <Emblem3D kind="bell" size={28} float={false} />
-              Notifications
-            </h2>
+          <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+            <SectionTitle emblem="bell">Notifications</SectionTitle>
             <div className="space-y-4">
               {([
-                { key: "notif_weekly_reports", label: "Rapports de progression", desc: "Recevoir un résumé hebdomadaire" },
-                { key: "notif_offers_news", label: "Offres et nouveautés", desc: "Actualités et promotions Educalcul" },
+                // Pas d'offres commerciales pour un élève : ce réglage n'existe que côté parent.
+                { key: "notif_weekly_reports", label: "Mon résumé de la semaine", desc: "Un récapitulatif de ce que tu as fait, chaque semaine" },
               ] as const).map(({ key, label, desc }) => (
                 <div key={key} className="flex items-center justify-between">
                   <div>
@@ -280,11 +272,8 @@ export default function ChildProfileSettings({
         <AccessibilityCard />
 
         {/* ── Voix de Calia en classe ── */}
-        <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
-          <h2 className="text-lg font-bold mb-2 flex items-center gap-2 font-[family-name:var(--font-display)]" style={{ color: "var(--greek-blue)" }}>
-            <Emblem3D kind="speaker" size={28} float={false} />
-            Voix de Calia en classe
-          </h2>
+        <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+          <SectionTitle emblem="speaker">Voix de Calia en classe</SectionTitle>
           <p className="text-xs mb-4" style={{ color: "var(--text-muted)" }}>
             {CALIA_VOICES.find((v) => v.id === caliaVoice)?.description}, la voix qui te lit le cours quand tu lances Calia.
           </p>
@@ -300,9 +289,7 @@ export default function ChildProfileSettings({
         <WebAuthnCard />
 
         {/* ── Appareils connectés ── */}
-        <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.2)] p-6">
-          <UserSessionsList />
-        </div>
+        <UserSessionsList />
       </div>
 
     </>

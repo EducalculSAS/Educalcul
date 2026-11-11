@@ -85,8 +85,8 @@ export default function FamilyCardShell({ d }: { d: FamilyCardData }) {
             <p className={`text-sm font-bold mb-1.5 ${reached ? "text-green-600" : "text-[var(--greek-blue)]"}`}>{reached ? "Atteint, bravo !" : `Encore ${d.dailyGoal - d.today} activité${d.dailyGoal - d.today > 1 ? "s" : ""}`}</p>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs whitespace-nowrap">
               <StreakFlame lit={d.streak > 0} count={d.streak} size={52} />
-              {d.exerciseCount !== undefined && <span className="flex items-center gap-1 text-gray-600"><CheckCircle className="w-3.5 h-3.5 text-green-500" /> {d.exerciseCount}</span>}
-              {d.successRate !== undefined && <span className="flex items-center gap-1 text-gray-600"><TrendingUp className="w-3.5 h-3.5 text-[var(--greek-gold)]" /> {d.successRate} %</span>}
+              {d.exerciseCount !== undefined && <span className="flex items-center gap-1 text-gray-600"><CheckCircle className="w-3.5 h-3.5 text-green-500" /> {d.exerciseCount} exercice{d.exerciseCount > 1 ? "s" : ""}</span>}
+              {d.successRate !== undefined && <span className="flex items-center gap-1 text-gray-600"><TrendingUp className="w-3.5 h-3.5 text-[var(--greek-gold)]" /> {d.successRate} % de réussite</span>}
             </div>
           </div>
         </div>

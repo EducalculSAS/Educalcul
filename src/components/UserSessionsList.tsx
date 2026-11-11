@@ -1,5 +1,6 @@
 "use client";
 
+import SectionTitle from "@/components/SectionTitle";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { Smartphone, X } from "lucide-react";
@@ -50,14 +51,13 @@ export default function UserSessionsList() {
     }
   };
 
-  if (loading) return null;
+  // Rien à gérer : pas de carte vide « Aucune session active ».
+  if (loading || sessions.length === 0) return null;
 
   return (
-    <div>
-      <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Appareils connectés</p>
-      {sessions.length === 0 ? (
-        <p className="text-sm text-gray-400">Aucune session active.</p>
-      ) : (
+    <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+      <SectionTitle emblem="lock">Appareils connectés</SectionTitle>
+      {(
         <div className="space-y-2">
           {sessions.map((s) => (
             <div key={s.id} className="flex items-center justify-between px-3 py-2 rounded-lg bg-gray-50 border border-gray-200">

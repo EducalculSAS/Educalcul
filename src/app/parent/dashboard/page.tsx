@@ -1,5 +1,6 @@
 import Emblem3D from "@/components/Emblem3D";
 import DashboardTile from "@/components/DashboardTile";
+import DashboardHero from "@/components/DashboardHero";
 import { redirect } from "next/navigation";
 import { Plus } from "lucide-react";
 import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
@@ -21,45 +22,26 @@ export default async function ParentDashboard() {
 
   const { data: userData } = await supabaseAdmin
     .from("users")
-    .select("first_name, role, id")
+    .select("first_name, role, id, avatar, equipped_border, name_color")
     .eq("id", authUser.id)
     .maybeSingle();
   if (!userData) redirect("/dashboard");
 
   const children = await loadFamily(userData.id);
 
-  const totalExercises = children.reduce((a, c) => a + c.stats.exerciseCount, 0);
+  const activeToday = children.filter((c) => c.summary.today > 0).length;
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)] pb-12">
-      {/* Hero Header — même style que child */}
-      <div className="bg-[var(--greek-blue)] text-white pt-24 pb-12 px-4 rounded-b-[40px] shadow-lg mb-8 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-48 h-48 bg-[var(--greek-gold)]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-2xl" />
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h1 className="text-3xl md:text-5xl font-[family-name:var(--font-display)] font-bold mb-2">
-                Bonjour, {userData.first_name || "Parent"} !
-              </h1>
-              <p className="text-xl opacity-90 flex items-center gap-2">
-                <span className="bg-[var(--greek-gold)] text-[var(--greek-blue)] text-sm font-bold px-3 py-1 rounded-full">PARENT</span>
-                <span>Suivez les progrès de vos enfants.</span>
-              </p>
-            </div>
-            <div className="flex items-center gap-4 bg-white/10 p-4 rounded-2xl backdrop-blur-sm border border-[rgba(197,161,72,0.25)]">
-              <div className="text-center px-4 border-r border-[rgba(197,161,72,0.25)]">
-                <div className="text-2xl font-bold text-[var(--greek-gold)]">{children.length}</div>
-                <div className="text-xs uppercase tracking-wider opacity-80">Enfant{children.length !== 1 ? "s" : ""}</div>
-              </div>
-              <div className="text-center px-4">
-                <div className="text-2xl font-bold text-[var(--greek-gold)]">{totalExercises}</div>
-                <div className="text-xs uppercase tracking-wider opacity-80">Exercices</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <DashboardHero
+        name={userData.first_name || "Parent"}
+        avatar={userData.avatar}
+        equippedBorder={userData.equipped_border}
+        nameColor={userData.name_color}
+        pill="Parent"
+        tagline={children.length === 0 ? "Ajoutez votre premier enfant pour commencer." : activeToday > 0 ? `${activeToday} enfant${activeToday > 1 ? "s ont" : " a"} travaillé aujourd'hui.` : "Personne n'a encore travaillé aujourd'hui."}
+        profileHref="/parent/profile"
+      />
 
       <div className="container mx-auto max-w-6xl px-4">
         {/* Navigation rapide — même style que child */}

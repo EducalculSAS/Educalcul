@@ -11,7 +11,8 @@ export type EmblemKind =
   | "trophy" | "book" | "calculator" | "family" | "mail" | "compass" | "moon"
   | "pencil" | "quiz" | "gamepad" | "chat" | "crown" | "profile" | "calendar"
   | "target" | "puzzle" | "stairs" | "globe" | "blocks" | "star" | "flag"
-  | "gift" | "clock" | "bell" | "speaker" | "cap";
+  | "gift" | "clock" | "bell" | "speaker" | "cap"
+  | "lock" | "shield" | "folder";
 
 interface Props {
   kind: EmblemKind;
@@ -471,6 +472,41 @@ export default function Emblem3D({ kind, size = 96, className = "", float = true
               <path d="M48 38 L78 43 V60" fill="none" stroke={g("gold")} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               <circle cx="48" cy="38" r="4" fill={g("ball")} />
               <path d="M74 58 H82 L84 74 H72 Z" fill={g("gold")} />
+            </>
+          )}
+
+          {kind === "lock" && (
+            <>
+              <path d="M30 44 V32 C30 20 38 13 48 13 C58 13 66 20 66 32 V44" fill="none" stroke={g("navyDark")} strokeWidth="9" strokeLinecap="round" transform="translate(0 3)" />
+              <path d="M30 44 V32 C30 20 38 13 48 13 C58 13 66 20 66 32 V44" fill="none" stroke={g("navy")} strokeWidth="9" strokeLinecap="round" />
+              <path d="M27.5 33 C27.5 22 34 17 41 15.5" fill="none" stroke="#7d95c9" strokeOpacity="0.7" strokeWidth="2" strokeLinecap="round" />
+              <rect x="18" y="44" width="60" height="42" rx="9" fill={g("goldDark")} />
+              <rect x="18" y="40" width="60" height="42" rx="9" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" />
+              <path d="M25 47 H52" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.8" strokeLinecap="round" />
+              <circle cx="48" cy="57" r="6" fill={g("ballNavy")} />
+              <path d="M48 60 V70" stroke="#0f1e3a" strokeWidth="5" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "shield" && (
+            <>
+              <path d="M48 10 L80 21 V46 C80 66 66 79 48 87 C30 79 16 66 16 46 V21 Z" fill={g("goldDark")} transform="translate(0 4)" />
+              <path d="M48 10 L80 21 V46 C80 66 66 79 48 87 C30 79 16 66 16 46 V21 Z" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" strokeLinejoin="round" />
+              <path d="M48 19 L71 27 V46 C71 61 61 71 48 77.5 C35 71 25 61 25 46 V27 Z" fill={g("ballNavy")} />
+              <path d="M36 47 L45 56 L61 38" fill="none" stroke="#f8e3a0" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M22 26 L44 18" stroke="#fff" strokeOpacity="0.55" strokeWidth="2.6" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "folder" && (
+            <>
+              <path d="M10 30 C10 25 13 22 18 22 H36 L44 30 H78 C83 30 86 33 86 38 V74 C86 79 83 82 78 82 H18 C13 82 10 79 10 74 Z" fill={g("navyDark")} />
+              <path d="M10 26 C10 21 13 18 18 18 H36 L44 26 H78 C83 26 86 29 86 34 V70 C86 75 83 78 78 78 H18 C13 78 10 75 10 70 Z" fill={g("navy")} />
+              <rect x="18" y="24" width="60" height="30" rx="4" fill={g("cream")} />
+              <path d="M24 31 H58 M24 38 H50" stroke="#b9a36c" strokeWidth="2.4" strokeLinecap="round" />
+              <path d="M10 42 C10 38 13 36 17 36 H79 C83 36 86 38 86 42 V72 C86 77 83 80 78 80 H18 C13 80 10 77 10 72 Z" fill={g("goldDark")} transform="translate(0 2)" />
+              <path d="M10 42 C10 38 13 36 17 36 H79 C83 36 86 38 86 42 V70 C86 75 83 78 78 78 H18 C13 78 10 75 10 70 Z" fill={g("gold")} />
+              <path d="M17 43 H50" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.8" strokeLinecap="round" />
             </>
           )}
         </g>

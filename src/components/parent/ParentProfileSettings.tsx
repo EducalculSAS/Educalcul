@@ -1,6 +1,6 @@
 "use client";
 
-import Emblem3D from "@/components/Emblem3D";
+import SectionTitle from "@/components/SectionTitle";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import LoaderDots from "@/components/LoaderDots";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -10,7 +10,7 @@ import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import { Lock, Mail, Save, AlertCircle, CheckCircle, Trash2, Camera, Bell, Phone, Download } from "lucide-react";
+import { Lock, Mail, Save, AlertCircle, CheckCircle, Trash2, Camera, Phone } from "lucide-react";
 import { validatePassword } from "@/lib/validation";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
@@ -300,11 +300,8 @@ export default function ParentProfileSettings({
         )}
 
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-[rgba(197,161,72,0.25)] p-8">
-            <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-6 pb-4 border-b border-[rgba(197,161,72,0.25)] flex items-center font-[family-name:var(--font-display)]">
-              <span className="mr-3 inline-flex"><Emblem3D kind="profile" size={32} float={false} /></span>
-              Informations Personnelles
-            </h2>
+          <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+            <SectionTitle emblem="profile" divider>Informations personnelles</SectionTitle>
 
             <form onSubmit={handleProfileUpdate} className="space-y-4">
               <div className="flex flex-col items-center mb-6">
@@ -421,11 +418,8 @@ export default function ParentProfileSettings({
             </form>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-            <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
-              <Lock className="w-5 h-5 mr-2" />
-              Sécurité
-            </h2>
+          <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+            <SectionTitle emblem="lock" divider>Sécurité</SectionTitle>
 
             <form onSubmit={handlePasswordUpdate} className="space-y-4">
               <div>
@@ -503,15 +497,10 @@ export default function ParentProfileSettings({
 
           <WebAuthnCard />
 
-          <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-            <UserSessionsList />
-          </div>
+          <UserSessionsList />
 
-          <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
-            <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
-              <Bell className="w-5 h-5 mr-2" />
-              Notifications
-            </h2>
+          <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
+            <SectionTitle emblem="bell" divider>Notifications</SectionTitle>
 
             <div className="space-y-4">
               {([
@@ -540,11 +529,8 @@ export default function ParentProfileSettings({
 
           <ReplayTourCard role="parent" />
 
-          <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
-            <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-6 pb-2 border-b border-[rgba(197,161,72,0.25)] flex items-center">
-              <Mail className="w-5 h-5 mr-2" />
-              Comptes liés
-            </h2>
+          <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
+            <SectionTitle emblem="mail" divider>Comptes liés</SectionTitle>
 
             <div className="flex items-center justify-between p-4 border border-[rgba(197,161,72,0.25)] rounded-lg bg-gray-50">
               <div className="flex items-center">
@@ -598,11 +584,8 @@ export default function ParentProfileSettings({
               )}
             </div>
           </div>
-          <div className="bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
-            <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center">
-              <Download className="w-5 h-5 mr-2" />
-              Mes données
-            </h2>
+          <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2">
+            <SectionTitle emblem="folder">Mes données</SectionTitle>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">
               <p className="text-sm text-gray-600">Recevez par email un lien pour télécharger une copie de vos données et de celles de vos enfants (format JSON, lien valable 24h).</p>
               <GlassButton
@@ -633,7 +616,7 @@ export default function ParentProfileSettings({
 
           {children && <div className="md:col-span-2">{children}</div>}
 
-          <div className="bg-red-50 rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2 mt-4">
+          <div className="bg-red-50 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2 mt-4">
             <h2 className="text-xl font-bold text-red-700 mb-4 flex items-center">
               <AlertCircle className="w-5 h-5 mr-2" />
               Zone de danger

@@ -59,7 +59,7 @@ export default function ChildFamilyCard({ entry, variant }: { entry: FamilyEntry
               <li className="flex items-center gap-2"><Target className="w-4 h-4 text-[var(--greek-gold)] shrink-0" /> {prefs.dailyGoal} activité{prefs.dailyGoal > 1 ? "s" : ""} par jour{prefs.weeklyTarget ? `, ${prefs.weeklyTarget} par semaine` : ""}</li>
               <li className="flex items-center gap-2"><Moon className="w-4 h-4 text-[var(--greek-gold)] shrink-0" /> {prefs.quiet.enabled ? `Repos de ${prefs.quiet.start} à ${prefs.quiet.end}` : "Pas d'heures de repos"}</li>
               <li className="flex items-center gap-2"><GraduationCap className="w-4 h-4 text-[var(--greek-gold)] shrink-0" /> {prefs.examDate ? `Examen le ${fmtDay(prefs.examDate)}` : "Pas d'examen prévu"}</li>
-              <li className="flex items-center gap-2"><CalendarClock className="w-4 h-4 text-[var(--greek-gold)] shrink-0" /> {child.last_active_at ? `Vu ${relativeTime(child.last_active_at)}` : "Jamais connecté"}</li>
+              <li className="flex items-center gap-2"><CalendarClock className="w-4 h-4 text-[var(--greek-gold)] shrink-0" /> {child.last_active_at ? `Vu ${relativeTime(child.last_active_at)}` : summary.today > 0 ? "Actif aujourd'hui" : "Pas encore connecté"}</li>
               <li className="flex items-center gap-2"><TrendingUp className="w-4 h-4 text-[var(--greek-gold)] shrink-0" /> {stats.quizCount} quiz terminé{stats.quizCount > 1 ? "s" : ""}</li>
             </ul>
             <div className="mt-3">

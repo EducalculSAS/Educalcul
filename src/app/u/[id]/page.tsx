@@ -84,7 +84,7 @@ export default async function PublicProfilePage({
         <div className="container mx-auto max-w-2xl relative z-10">
           <ProfileHeaderActions userId={user.id} userRole={user.role} returnTo={returnTo ? safeRedirectPath(returnTo, "") || null : null} />
           <div className="flex items-center gap-4">
-            <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={displayName} size="xl" />
+            <AvatarWithBorder avatar={user.avatar} equippedBorder={user.equipped_border} name={displayName} size="xl" onDark />
             <div className="mt-1 min-w-0">
               <h1 className={`text-3xl font-bold font-[family-name:var(--font-display)] ${nameColor.cls}`}>{displayName}</h1>
               <div className="flex items-center gap-2 mt-2 flex-wrap">

@@ -46,10 +46,12 @@ interface Props {
   label?: string;
   /** Liste de nombreux avatars (vitrine) : pas de feu animé en canvas, le cadre « flamme » dessiné suffit. */
   still?: boolean;
+  /** Posé sur un fond bleu nuit : fond clair opaque, pour que les initiales (ou un avatar détouré) restent lisibles. */
+  onDark?: boolean;
 }
 
 export default function AvatarWithBorder({
-  avatar, equippedBorder, name, size = "sm", online = false, className = "", label, still = false,
+  avatar, equippedBorder, name, size = "sm", online = false, className = "", label, still = false, onDark = false,
 }: Props) {
   const av = SIZE[size];
   const key = normalizeBorderKey(equippedBorder);
@@ -76,7 +78,7 @@ export default function AvatarWithBorder({
         style={{
           inset: rw + gap,
           borderRadius: radius,
-          background: isLogo ? "#fff" : "rgba(15,30,58,0.08)",
+          background: isLogo ? "#fff" : onDark ? "#f4efe3" : "rgba(15,30,58,0.08)",
           color: "var(--greek-blue)",
           fontSize: Math.round(av * 0.36),
         }}

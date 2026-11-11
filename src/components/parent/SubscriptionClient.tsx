@@ -1,6 +1,6 @@
 "use client";
 
-import Emblem3D from "@/components/Emblem3D";
+import SectionTitle from "@/components/SectionTitle";
 import { parseOrNull } from "@/lib/validate";
 import LoaderDots from "@/components/LoaderDots";
 import { subscriptionPlanSchema } from "@/lib/schemas";
@@ -435,10 +435,7 @@ function SubscriptionPageContent({
         {/* Current Subscription Status (only for normal flow) */}
         {!isNewSignup && (
           <div data-tour="subscription" className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6 mb-8">
-            <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
-              <Emblem3D kind="crown" size={28} float={false} />
-              Mon abonnement
-            </h2>
+            <SectionTitle emblem="crown">Mon abonnement</SectionTitle>
             {subLoading ? (
               <div className="flex justify-center py-4"><LoaderDots /></div>
             ) : (
@@ -608,10 +605,7 @@ function SubscriptionPageContent({
         {/* Billing History (only for normal flow) */}
         {!isNewSignup && (
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
-            <h2 className="text-xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2 font-[family-name:var(--font-display)]">
-              <Emblem3D kind="clock" size={28} float={false} />
-              Historique de facturation
-            </h2>
+            <SectionTitle emblem="clock">Historique de facturation</SectionTitle>
             {subLoading ? (
               <div className="flex justify-center py-4"><LoaderDots /></div>
             ) : billingHistory.length > 0 ? (
@@ -662,10 +656,7 @@ function SubscriptionPageContent({
           <div className="grid md:grid-cols-2 gap-6 mt-8">
             {/* Mon code */}
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
-              <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
-                <Emblem3D kind="gift" size={28} float={false} />
-                Mon code de parrainage
-              </h2>
+              <SectionTitle emblem="gift">Mon code de parrainage</SectionTitle>
               <p className="text-sm text-gray-500 mb-4">Partagez ce code : votre filleul a une semaine gratuite en plus de son essai, et vous gagnez une semaine gratuite dès son premier paiement.</p>
               {myReferralCode ? (
                 <div className="space-y-4">
@@ -695,10 +686,7 @@ function SubscriptionPageContent({
 
             {/* Filleuls */}
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-6">
-              <h2 className="text-lg font-bold text-[var(--greek-blue)] mb-1 flex items-center gap-2">
-                <Emblem3D kind="family" size={28} float={false} />
-                Mes filleuls
-              </h2>
+              <SectionTitle emblem="family">Mes filleuls</SectionTitle>
               <p className="text-sm text-gray-500 mb-4">Personnes qui ont utilisé votre code.</p>
               {!myReferralCode ? (
                 <div className="flex justify-center py-6"><LoaderDots /></div>
