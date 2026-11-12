@@ -1042,14 +1042,8 @@ export default function AdminExercisesClient({
       {/* Modal AI Generator */}
       {isBatchOpen && (
         <ExerciseBatchModal
-          onClose={() => setIsBatchOpen(false)}
-          generationsRef={generationsRef}
+          onClose={() => { setIsBatchOpen(false); invalidateAdminCache("exercises:"); fetchContents(true); }}
           defaultLevel={currentFolderLevel || "3eme"}
-          startOne={async (params) => {
-            const id = await startGeneration("exercise", params);
-            minimize();
-            return id;
-          }}
         />
       )}
       {isAiModalOpen && (

@@ -160,7 +160,9 @@ export type GenerationKind = "course" | "exercise" | "quiz" | "minigame";
  * terminal. Un "cancel_requested" mort devient "cancelled" (l'utilisateur
  * avait déjà demandé l'arrêt) ; un "pending"/"running" mort devient "error"
  * (le travail ne s'est jamais terminé). */
-const STALE_GENERATION_MS = 3 * 60 * 1000;
+// Au-delà de la durée maximale d'une fonction (300 s), la génération est forcément morte. En dessous, une génération
+// longue mais vivante (plusieurs parties rédigées en parallèle sans mise à jour) serait marquée en erreur à tort.
+const STALE_GENERATION_MS = 6 * 60 * 1000;
 
 export async function reconcileStaleGenerations(
   table: GenerationsTable,

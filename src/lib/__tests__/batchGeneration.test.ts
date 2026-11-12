@@ -41,3 +41,13 @@ describe("vérification des figures d'un exercice généré", () => {
     expect(checkExerciseFigures(content)).toEqual([]);
   });
 });
+
+import { normFolderName } from "@/lib/folderNames";
+describe("dossiers des lots", () => {
+  it("rapproche les noms de dossiers de cours et d'exercices", () => {
+    expect(normFolderName("Nombres & calculs")).toBe(normFolderName("Nombres et calculs"));
+    expect(normFolderName("Organisation & gestion de données & fonctions")).toBe(normFolderName("Organisation, gestion de données et fonctions"));
+    expect(normFolderName("Espace & géométrie")).toBe(normFolderName("Espace et géométrie"));
+    expect(normFolderName("Repérage")).not.toBe(normFolderName("Probabilités"));
+  });
+});

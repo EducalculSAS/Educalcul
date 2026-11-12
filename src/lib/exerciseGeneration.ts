@@ -51,6 +51,14 @@ export type ExerciseGenerationParams = {
   sourceFigures?: unknown[];
 };
 
+/** Exigences de qualité communes aux exercices liés à un cours (génération unitaire et par lots). */
+const COURSE_QUALITY_RULES = `EXIGENCES DE QUALITÉ (prioritaires) :
+• Niveau : celui du cours et de ses exercices, jamais en dessous. Pas de question triviale d'un niveau inférieur (ex. en 3ème : « quel est le signe de 3/−5 ? » est interdit).
+• Chaque question a UNE réponse précise et vérifiable : pas d'ensemble infini, pas de « réponds par une phrase » vague. Si plusieurs réponses sont possibles, demande-les toutes dans un format imposé.
+• Titre précis et unique qui dit ce que l'élève va faire (jamais le simple nom du chapitre).
+• Explications rigoureuses : chaque affirmation est mathématiquement vraie (attention aux inégalités entre nombres négatifs, aux arrondis, aux unités). Refais le calcul avant d'écrire la réponse.
+• Pas de répétition : l'énoncé ne recopie pas deux fois les mêmes données.`;
+
 function clampCount(value: unknown, fallback: number, min: number, max: number): number {
   const parsed = Number(value);
   return Number.isFinite(parsed)
@@ -317,7 +325,7 @@ export async function runExerciseGeneration(
         .eq("id", linkedCourseId)
         .single();
       if (course) {
-        courseContext = `\nL'exercice est lié au cours ci-dessous. Reste strictement dans ses notions et ses méthodes, au niveau de ses exercices, sans recopier son texte. Quand une question porte sur une figure (géométrie, repère, statistiques, probabilités), fournis-la au format edufig, conforme aux données de l'énoncé.\n${buildCourseLevelContext(String(course.title || ""), course.content_json)}\n`;
+        courseContext = `\nL'exercice est lié au cours ci-dessous. Reste strictement dans ses notions et ses méthodes, au niveau de ses exercices, sans recopier son texte. Quand une question porte sur une figure (géométrie, repère, statistiques, probabilités), fournis-la au format edufig, conforme aux données de l'énoncé.\n${COURSE_QUALITY_RULES}\n${buildCourseLevelContext(String(course.title || ""), course.content_json)}\n`;
       }
     }
 
