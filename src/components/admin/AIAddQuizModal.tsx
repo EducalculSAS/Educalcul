@@ -1,7 +1,8 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useState, useEffect, useRef } from "react";
-import { Sparkles, X, Plus } from "lucide-react";
+import { X, Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import PageLoader from "@/components/PageLoader";
 import { useSmoothPercent } from "./useSmoothPercent";
@@ -95,7 +96,7 @@ export default function AIAddQuizModal({
       <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden flex flex-col">
         <div className="bg-gradient-to-r from-[var(--greek-blue)] to-blue-600 p-4 flex justify-between items-center text-white">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-300" />
+            <Emblem3D kind="sparkles" size={30} float={false} onDark />
             <h3 className="font-bold text-lg">Ajouter une question avec l&apos;IA</h3>
           </div>
           <button onClick={handleClose} aria-label="Fermer la modale" className="group text-white/80 hover:text-white transition-colors">

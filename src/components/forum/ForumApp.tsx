@@ -1,10 +1,9 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import {
-  CheckCircle2, Eye, Heart, Lock, Megaphone, MessageCircle, MessagesSquare, Pin, Plus, Search, Settings2, Sparkles, X,
-} from "lucide-react";
+import { CheckCircle2, Eye, Heart, Lock, Megaphone, MessageCircle, Pin, Plus, Search, Settings2, Sparkles, X } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { relativeTime } from "@/lib/relativeTime";
@@ -379,7 +378,7 @@ function EmptyState({ filter, q, onCreate }: { filter: ForumFilter; q: string; o
             : "Aucun sujet ici pour l'instant. Lance la discussion !";
   return (
     <div className="bg-white rounded-[20px] border border-dashed border-[rgba(197,161,72,0.4)] p-10 text-center">
-      <MessagesSquare className="w-10 h-10 mx-auto mb-3 text-[var(--greek-gold)]" aria-hidden="true" />
+      <Emblem3D kind="chat" size={72} className="mx-auto mb-3" />
       <p className="text-[var(--text-muted)] mb-5 max-w-md mx-auto">{text}</p>
       <GlassButton variant="navy" size="sm" onClick={onCreate}>
         <Plus className="w-4 h-4" /> Créer un sujet

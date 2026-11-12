@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- extrait d'un composant qui affiche des images à adresse libre */
-import { GraduationCap, XCircle, ImageIcon, Loader2 } from "lucide-react";
+import Emblem3D from "@/components/Emblem3D";
+import { XCircle, ImageIcon, Loader2 } from "lucide-react";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import CourseSelect from "@/components/admin/CourseSelect";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -41,7 +42,7 @@ export default function ExerciseEditorModal(props: ExerciseEditorModalProps) {
       {/* Header */}
       <div className="flex justify-between items-center px-8 py-5 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex-shrink-0">
         <div className="flex items-center gap-3">
-          <GraduationCap size={24} className="text-[var(--greek-gold)]" />
+          <Emblem3D kind="pencil" size={32} float={false} onDark />
           <h2 className="text-xl font-bold font-[family-name:var(--font-display)]">
             {editingExercise ? "Modifier l'exercice" : "Nouvel exercice"}
           </h2>

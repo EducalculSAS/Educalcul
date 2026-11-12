@@ -1,7 +1,8 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useState, useEffect, useRef } from "react";
-import { Sparkles, Plus } from "lucide-react";
+import { Plus } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import PageLoader from "@/components/PageLoader";
@@ -117,7 +118,7 @@ export default function AIAddExerciseModal({
       <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden flex flex-col">
         <div className="bg-gradient-to-r from-[var(--greek-blue)] to-blue-600 p-4 flex justify-between items-center text-white">
           <div className="flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-amber-300" />
+            <Emblem3D kind="sparkles" size={30} float={false} onDark />
             <h3 className="font-bold text-lg">Ajouter du contenu avec l&apos;IA</h3>
           </div>
           <GlassCloseButton onClick={handleClose} variant="dark" />

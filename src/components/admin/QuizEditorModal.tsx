@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- extrait d'un composant qui affiche des images à adresse libre */
-import { BrainCircuit, XCircle, ImageIcon, Eye, Loader2 } from "lucide-react";
+import Emblem3D from "@/components/Emblem3D";
+import { XCircle, ImageIcon, Eye, Loader2 } from "lucide-react";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import CourseSelect from "@/components/admin/CourseSelect";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -38,7 +39,7 @@ export default function QuizEditorModal(props: QuizEditorModalProps) {
       {/* Header */}
       <div className="px-8 py-5 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
         <div className="flex items-center gap-3">
-          <BrainCircuit size={22} className="text-[var(--greek-gold)]" />
+          <Emblem3D kind="quiz" size={32} float={false} onDark />
           <h2 className="text-lg font-bold font-[family-name:var(--font-display)]">
             {editingQuiz ? "Modifier le quiz" : "Nouveau quiz"}
           </h2>

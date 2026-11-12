@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- extrait d'un composant qui affiche des images à adresse libre */
-import { BookOpen, XCircle, Image as ImageIcon, Loader2 } from "lucide-react";
+import Emblem3D from "@/components/Emblem3D";
+import { XCircle, Image as ImageIcon, Loader2 } from "lucide-react";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
 import { getLevelLabel, SCHOOL_LEVELS } from "@/lib/constants";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -32,7 +33,7 @@ export default function CourseEditorModal(props: CourseEditorModalProps) {
       {/* Header */}
       <div className="px-4 sm:px-8 py-4 sm:py-5 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)] to-blue-800 text-white flex justify-between items-center flex-shrink-0">
         <div className="flex items-center gap-3">
-          <BookOpen size={22} className="text-[var(--greek-gold)]" />
+          <Emblem3D kind="book" size={32} float={false} onDark />
           <h3 className="text-lg font-bold font-[family-name:var(--font-display)]">
             {modalMode === "create"
               ? "Ajouter un cours"

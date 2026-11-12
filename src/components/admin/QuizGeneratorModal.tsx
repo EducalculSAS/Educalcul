@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useEffect, useState } from "react";
 import { Sparkles, Link as LinkIcon, BrainCircuit, Check } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
@@ -113,7 +114,7 @@ export default function QuizGeneratorModal({
             <div className="p-12 flex flex-col items-center justify-center min-h-[400px] bg-gray-50">
               <div className="relative mb-6">
                 <div className="absolute inset-0 bg-[var(--greek-blue)] opacity-20 blur-xl rounded-full animate-pulse" />
-                <BrainCircuit size={64} className="text-[var(--greek-blue)] relative z-10 animate-bounce" />
+                <Emblem3D kind="sparkles" size={96} className="relative z-10" />
               </div>
               <h4 className="text-xl font-bold text-gray-800 mb-2 font-[family-name:var(--font-display)]">
                 Création en cours...

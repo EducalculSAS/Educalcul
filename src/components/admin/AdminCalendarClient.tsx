@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useMemo, useState } from "react";
 import {
   AlertTriangle, Calendar, CheckSquare, Copy, Download, Landmark, Loader2, Pencil, Plus, Search, Square, Trash2,
@@ -214,7 +215,7 @@ export default function AdminCalendarClient({ initialEvents }: { authId?: string
           }} />
         ) : visibleGroups.length === 0 ? (
           <div className="bg-white rounded-[20px] border border-dashed border-[rgba(197,161,72,0.4)] p-10 text-center">
-            <Calendar className="w-10 h-10 mx-auto mb-3 text-[var(--greek-gold)]" />
+            <Emblem3D kind="calendar" size={72} className="mx-auto mb-3" />
             <p className="text-[var(--text-muted)]">Aucune période pour {year}{zoneFilter !== "toutes" ? ` en ${getZoneLabel(zoneFilter)}` : ""}.</p>
           </div>
         ) : (

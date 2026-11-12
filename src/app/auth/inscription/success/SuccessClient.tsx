@@ -1,11 +1,12 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useEffect, useState, Suspense } from "react";
 import LoaderDots from "@/components/LoaderDots";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
 import { getSignupSession, clearSignupSession } from "@/lib/signupSession";
-import { CheckCircle, AlertCircle, Mail } from "lucide-react";
+
 import GlassButton from "@/components/ui/GlassButton";
 import { errMessage } from "@/lib/safeError";
 
@@ -142,7 +143,7 @@ function SuccessContent() {
     return (
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow border border-red-100 p-8 text-center">
-          <AlertCircle className="w-12 h-12 text-red-500 mx-auto mb-4" />
+          <Emblem3D kind="alert" size={80} className="mx-auto mb-4" />
           <h2 className="text-xl font-bold text-gray-800 mb-2">Une erreur est survenue</h2>
           <p className="text-gray-500 text-sm mb-6">{errorMsg}</p>
           <GlassButton onClick={() => router.push("/auth/inscription")} variant="navy" size="sm">
@@ -157,7 +158,7 @@ function SuccessContent() {
     return (
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow border border-[rgba(197,161,72,0.25)] p-8 text-center">
-          <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
+          <Emblem3D kind="check" size={80} className="mx-auto mb-4" />
           <h2 className="text-xl font-bold text-gray-800 mb-2">Paiement bien reçu</h2>
           <p className="text-gray-500 text-sm mb-6">
             La finalisation de votre compte prend un peu plus de temps que prévu. Vous allez recevoir un email de confirmation
@@ -175,9 +176,7 @@ function SuccessContent() {
     return (
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow border border-[rgba(197,161,72,0.25)] p-10 text-center">
-          <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
-            <CheckCircle className="w-9 h-9 text-green-500" />
-          </div>
+          <Emblem3D kind="check" size={80} className="mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-3">
             Paiement confirmé !
           </h2>
@@ -200,9 +199,7 @@ function SuccessContent() {
     return (
       <div className="w-full max-w-md">
         <div className="bg-white rounded-2xl shadow border border-[rgba(197,161,72,0.25)] p-10 text-center">
-          <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-5">
-            <Mail className="w-9 h-9 text-[var(--greek-blue)]" />
-          </div>
+          <Emblem3D kind="mail" size={80} className="mx-auto mb-4" />
           <h2 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-3">
             Vérifiez votre email
           </h2>
@@ -230,9 +227,7 @@ function SuccessContent() {
   return (
     <div className="w-full max-w-md">
       <div className="bg-white rounded-2xl shadow border border-[rgba(197,161,72,0.25)] p-10 text-center">
-        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-5">
-          <CheckCircle className="w-9 h-9 text-green-500" />
-        </div>
+        <Emblem3D kind="check" size={80} className="mx-auto mb-4" />
         <h2 className="text-2xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] mb-2">
           Paiement réussi !
         </h2>

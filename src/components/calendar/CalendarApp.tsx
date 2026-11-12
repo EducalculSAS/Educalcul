@@ -1,10 +1,9 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import type { Proposal } from "@/components/calendar/AiPlanDialog";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import {
-  AlarmClock, CalendarDays, CalendarPlus, CheckCircle2, ChevronLeft, ChevronRight, Download, Eye, EyeOff, Sparkles,
-} from "lucide-react";
+import { AlarmClock, CalendarPlus, CheckCircle2, ChevronLeft, ChevronRight, Download, Eye, EyeOff, Sparkles } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -570,7 +569,7 @@ function ListView({ byDay, from, onOpenDay }: { byDay: Map<string, CalendarEvent
   if (days.length === 0) {
     return (
       <div className="bg-white rounded-[20px] border border-dashed border-[rgba(197,161,72,0.4)] p-10 text-center">
-        <CalendarDays className="w-10 h-10 mx-auto mb-3 text-[var(--greek-gold)]" />
+        <Emblem3D kind="calendar" size={72} className="mx-auto mb-3" />
         <p className="text-[var(--text-muted)]">Rien de prévu dans les trois prochains mois.</p>
       </div>
     );

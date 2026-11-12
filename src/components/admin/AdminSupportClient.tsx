@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect, useRef } from "react";
 import PageLoader from "@/components/PageLoader";
@@ -559,7 +560,7 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
                       colSpan={5}
                       className="px-6 py-12 text-center text-gray-500"
                     >
-                      <Inbox size={48} className="mx-auto mb-3 text-gray-300" />
+                      <Emblem3D kind="inbox" size={72} className="mx-auto mb-3" />
                       Aucun ticket {viewMode === "active"
                         ? "actif"
                         : "archivé"}{" "}

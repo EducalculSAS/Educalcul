@@ -1,10 +1,11 @@
 ﻿"use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import Image from "next/image";
 import { useState } from "react";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import { CGU_SECTIONS, CGU_VERSION } from "@/lib/cgu";
-import { CheckCircle, Sparkles, Shield } from "lucide-react";
+import { CheckCircle, Sparkles } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
 interface Props {
@@ -45,7 +46,7 @@ export default function ParentOnboarding({ firstName, onComplete }: Props) {
           <div className="flex flex-col flex-1 min-h-0">
             <div className="px-8 pt-8 pb-4 border-b border-gray-100">
               <div className="flex items-center gap-3 mb-1">
-                <Shield className="w-6 h-6 text-[var(--greek-blue)]" />
+                <Emblem3D kind="shield" size={36} float={false} />
                 <h2 className="text-xl font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)]">
                   Conditions d&apos;utilisation
                 </h2>

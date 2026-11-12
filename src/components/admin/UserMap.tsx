@@ -1,9 +1,10 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { Map as MapLibreMap, Marker as MapLibreMarker, setWorkerUrl } from "maplibre-gl";
-import { MapPin, Mail, Clock, MapPinOff } from "lucide-react";
+import { MapPin, Mail, Clock } from "lucide-react";
 import { formatParisDayMonth } from "@/lib/parisDate";
 import "maplibre-gl/dist/maplibre-gl.css";
 
@@ -179,7 +180,7 @@ export default function UserMap({ users }: { users: UserMarker[] }) {
         id="user-map-container"
         className="h-full w-full rounded-[20px] overflow-hidden border border-[rgba(197,161,72,0.25)] shadow-sm relative flex flex-col items-center justify-center gap-2 bg-gray-50 text-gray-400"
       >
-        <MapPinOff size={32} />
+        <Emblem3D kind="map" size={64} />
         <p className="text-sm font-medium">Carte indisponible</p>
         <p className="text-xs">{users.length} position{users.length !== 1 ? "s" : ""} non affichée{users.length !== 1 ? "s" : ""}</p>
       </div>

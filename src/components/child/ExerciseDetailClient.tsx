@@ -8,15 +8,7 @@ import type { AttemptSummary } from "@/types/attempts";
 import { extractExerciseContent } from "@/lib/exerciseContextText";
 import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef } from "react";
-import {
-  ArrowLeft,
-  Play,
-  Clock,
-  Brain,
-  CheckCircle,
-  HelpCircle,
-  Eye,
-} from "lucide-react";
+import { ArrowLeft, Play, Clock, CheckCircle, HelpCircle, Eye } from "lucide-react";
 import ExerciseViewer, { type ExerciseViewerProps } from "@/components/viewers/ExerciseViewer";
 import AppLoader from "@/components/AppLoader";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
@@ -188,7 +180,7 @@ export default function ExerciseDetailClient({
       >
         <div className="relative h-64 md:h-80 bg-[var(--greek-cream)] relative overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 opacity-20 pattern-grid-lg"></div>
-          <Brain className="w-24 h-24 text-[var(--greek-blue)] opacity-90 drop-shadow-lg" />
+          <Emblem3D kind="pencil" size={120} className="-translate-y-8 md:-translate-y-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
             <div className="p-8 text-white w-full">
               <div className="inline-block px-3 py-1 bg-[var(--greek-gold)] text-[var(--greek-blue)] text-xs font-bold rounded-full mb-3 shadow-md">

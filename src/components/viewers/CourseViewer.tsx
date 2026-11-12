@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import Emblem3D from "@/components/Emblem3D";
 import Image from "next/image";
 import { plural } from "@/lib/plural";
 import { useState, useEffect, useRef, useMemo } from "react";
@@ -467,7 +468,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
   if (!chapters.length) {
     return (
       <div className="flex flex-col items-center justify-center h-64 text-gray-500 bg-white rounded-xl shadow-sm border border-[rgba(197,161,72,0.25)] p-8">
-        <FileText className="w-12 h-12 mb-4 text-[var(--greek-gold)]/50" />
+        <Emblem3D kind="book" size={80} className="mb-4" />
         <p className="text-[var(--greek-blue)]">Ce cours ne contient aucun contenu pour le moment.</p>
       </div>
     );
@@ -717,7 +718,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                        ) : (
                          <div className="w-full h-full flex items-center justify-center text-white">
                            <div className="text-center">
-                             <Video className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                             <Emblem3D kind="video" size={80} onDark className="mx-auto mb-4" />
                              <p>Vidéo non disponible ou lien invalide</p>
                              <a href={currentLesson.content} target="_blank" rel="noopener noreferrer" className="text-[var(--greek-blue)] hover:underline mt-2 block text-sm">
                                 Ouvrir le lien original
@@ -733,7 +734,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                        ) : (
                          <div className="w-full h-full flex items-center justify-center text-white">
                            <div className="text-center">
-                             <Video className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                             <Emblem3D kind="video" size={80} onDark className="mx-auto mb-4" />
                              <p>Vidéo non disponible</p>
                            </div>
                          </div>
@@ -746,7 +747,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                        </div>
                      ) : (
                        <div className="text-center text-gray-400 py-12">
-                         <FileText className="w-16 h-16 mx-auto mb-4 opacity-50" />
+                         <Emblem3D kind="book" size={80} className="mx-auto mb-4" />
                          <p>Document PDF non disponible</p>
                        </div>
                      )

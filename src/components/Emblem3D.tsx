@@ -12,7 +12,8 @@ export type EmblemKind =
   | "pencil" | "quiz" | "gamepad" | "chat" | "crown" | "profile" | "calendar"
   | "target" | "puzzle" | "stairs" | "globe" | "blocks" | "star" | "flag"
   | "gift" | "clock" | "bell" | "speaker" | "cap"
-  | "lock" | "shield" | "folder";
+  | "lock" | "shield" | "folder"
+  | "check" | "alert" | "bulb" | "video" | "card" | "tag" | "inbox" | "sparkles" | "map" | "key";
 
 interface Props {
   kind: EmblemKind;
@@ -507,6 +508,120 @@ export default function Emblem3D({ kind, size = 96, className = "", float = true
               <path d="M10 42 C10 38 13 36 17 36 H79 C83 36 86 38 86 42 V72 C86 77 83 80 78 80 H18 C13 80 10 77 10 72 Z" fill={g("goldDark")} transform="translate(0 2)" />
               <path d="M10 42 C10 38 13 36 17 36 H79 C83 36 86 38 86 42 V70 C86 75 83 78 78 78 H18 C13 78 10 75 10 70 Z" fill={g("gold")} />
               <path d="M17 43 H50" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.8" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "check" && (
+            <>
+              <circle cx="48" cy="50" r="35" fill={g("goldDark")} />
+              <circle cx="48" cy="46" r="35" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" />
+              <circle cx="48" cy="46" r="26" fill={g("ballNavy")} />
+              <path d="M35 47 L45 57 L62 37" fill="none" stroke="#0b1730" strokeOpacity="0.5" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" transform="translate(0 2)" />
+              <path d="M35 47 L45 57 L62 37" fill="none" stroke="#f8e3a0" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M22 34 C26 24 34 17 44 15" fill="none" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.6" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "alert" && (
+            <>
+              <path d="M48 14 C51 14 53 15.5 54.6 18.3 L83 69 C86 74.5 82.6 81 76.4 81 H19.6 C13.4 81 10 74.5 13 69 L41.4 18.3 C43 15.5 45 14 48 14 Z" fill={g("goldDark")} transform="translate(0 4)" />
+              <path d="M48 14 C51 14 53 15.5 54.6 18.3 L83 69 C86 74.5 82.6 81 76.4 81 H19.6 C13.4 81 10 74.5 13 69 L41.4 18.3 C43 15.5 45 14 48 14 Z" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" strokeLinejoin="round" />
+              <path d="M48 34 V54" stroke="#16264a" strokeWidth="8" strokeLinecap="round" />
+              <circle cx="48" cy="67" r="5" fill={g("ballNavy")} />
+              <path d="M22 66 L41 31" stroke="#fff" strokeOpacity="0.55" strokeWidth="2.6" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "bulb" && (
+            <>
+              <rect x="36" y="64" width="24" height="18" rx="4" fill={g("navyDark")} />
+              <rect x="36" y="62" width="24" height="17" rx="4" fill={g("navy")} />
+              <path d="M37 68 H59 M37 73 H59" stroke="#7d95c9" strokeOpacity="0.7" strokeWidth="2" />
+              <path d="M48 10 C64 10 74 22 74 36 C74 46 68 52 63 57 C60 60 59 62 59 64 H37 C37 62 36 60 33 57 C28 52 22 46 22 36 C22 22 32 10 48 10 Z" fill={g("goldDark")} transform="translate(0 3)" />
+              <path d="M48 10 C64 10 74 22 74 36 C74 46 68 52 63 57 C60 60 59 62 59 64 H37 C37 62 36 60 33 57 C28 52 22 46 22 36 C22 22 32 10 48 10 Z" fill={g("ball")} stroke="#f8e3a0" strokeWidth="1" />
+              <path d="M41 60 V46 L48 40 L55 46 V60" fill="none" stroke="#8a6a1e" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M31 30 C33 22 39 17 46 16" fill="none" stroke="#fff" strokeOpacity="0.75" strokeWidth="3" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "video" && (
+            <>
+              <rect x="10" y="22" width="76" height="54" rx="10" fill={g("navyDark")} transform="translate(0 4)" />
+              <rect x="10" y="22" width="76" height="54" rx="10" fill={g("navy")} />
+              <rect x="17" y="29" width="62" height="40" rx="6" fill={g("cream")} />
+              <circle cx="48" cy="49" r="13" fill={g("goldDark")} transform="translate(0 2)" />
+              <circle cx="48" cy="49" r="13" fill={g("gold")} />
+              <path d="M44 42.5 L55 49 L44 55.5 Z" fill="#0f1e3a" />
+              <path d="M21 34 H46" stroke="#fff" strokeOpacity="0.8" strokeWidth="2.6" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "card" && (
+            <>
+              <rect x="10" y="24" width="76" height="50" rx="9" fill={g("navyDark")} transform="translate(0 4)" />
+              <rect x="10" y="24" width="76" height="50" rx="9" fill={g("navy")} />
+              <rect x="10" y="33" width="76" height="9" fill="#060d1c" fillOpacity="0.75" />
+              <rect x="19" y="49" width="15" height="11" rx="2.5" fill={g("gold")} stroke="#f8e3a0" strokeWidth="0.8" />
+              <path d="M26.5 49 V60 M19 54.5 H34" stroke="#a8842c" strokeWidth="1" />
+              <path d="M42 63 H54 M58 63 H70" stroke="#dcb650" strokeWidth="3" strokeLinecap="round" />
+              <path d="M17 29 H44" stroke="#7d95c9" strokeOpacity="0.8" strokeWidth="2.2" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "tag" && (
+            <>
+              <path d="M50 12 H78 C81 12 84 15 84 18 V46 C84 48 83 50 81.5 51.5 L49 84 C46.5 86.5 42.5 86.5 40 84 L12 56 C9.5 53.5 9.5 49.5 12 47 L44.5 14.5 C46 13 48 12 50 12 Z" fill={g("goldDark")} transform="translate(0 4)" />
+              <path d="M50 12 H78 C81 12 84 15 84 18 V46 C84 48 83 50 81.5 51.5 L49 84 C46.5 86.5 42.5 86.5 40 84 L12 56 C9.5 53.5 9.5 49.5 12 47 L44.5 14.5 C46 13 48 12 50 12 Z" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" strokeLinejoin="round" />
+              <circle cx="70" cy="26" r="6.5" fill={g("navyDark")} />
+              <circle cx="70" cy="26" r="3.5" fill="#f8e3a0" />
+              <path d="M34 50 L48 64 M41 43 L55 57" stroke={g("navy")} strokeWidth="4" strokeLinecap="round" />
+              <path d="M18 49 L45 21" stroke="#fff" strokeOpacity="0.55" strokeWidth="2.6" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "inbox" && (
+            <>
+              <rect x="27" y="14" width="42" height="44" rx="4" fill={g("cream")} stroke="#d8c08a" strokeWidth="1" transform="rotate(-6 48 36)" />
+              <path d="M33 25 H60 M33 32 H55 M33 39 H58" stroke="#b9a36c" strokeWidth="2.4" strokeLinecap="round" transform="rotate(-6 48 36)" />
+              <path d="M12 52 L22 38 H74 L84 52 V74 C84 79 81 82 76 82 H20 C15 82 12 79 12 74 Z" fill={g("navyDark")} transform="translate(0 3)" />
+              <path d="M12 52 L22 38 H74 L84 52 V74 C84 79 81 82 76 82 H20 C15 82 12 79 12 74 Z" fill={g("navy")} />
+              <path d="M12 52 H34 C34 58 40 62 48 62 C56 62 62 58 62 52 H84 V74 C84 79 81 82 76 82 H20 C15 82 12 79 12 74 Z" fill={g("gold")} />
+              <path d="M18 58 H30" stroke="#fff" strokeOpacity="0.6" strokeWidth="2.6" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "sparkles" && (
+            <>
+              <path d="M44 14 C46 34 50 38 70 42 C50 46 46 50 44 70 C42 50 38 46 18 42 C38 38 42 34 44 14 Z" fill={g("goldDark")} transform="translate(0 4)" />
+              <path d="M44 14 C46 34 50 38 70 42 C50 46 46 50 44 70 C42 50 38 46 18 42 C38 38 42 34 44 14 Z" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" strokeLinejoin="round" />
+              <path d="M73 52 C74 61 76 63 84 64 C76 65 74 67 73 76 C72 67 70 65 62 64 C70 63 72 61 73 52 Z" fill={g("ballNavy")} />
+              <path d="M72 10 C72.6 16 74 17.4 80 18 C74 18.6 72.6 20 72 26 C71.4 20 70 18.6 64 18 C70 17.4 71.4 16 72 10 Z" fill={g("gold")} />
+              <path d="M41 25 C42 33 40 37 34 40" fill="none" stroke="#fff" strokeOpacity="0.7" strokeWidth="2.4" strokeLinecap="round" />
+            </>
+          )}
+
+          {kind === "map" && (
+            <>
+              <path d="M10 28 L34 20 L62 28 L86 20 V72 L62 80 L34 72 L10 80 Z" fill={g("goldDark")} transform="translate(0 4)" />
+              <path d="M10 28 L34 20 V72 L10 80 Z" fill={g("cream")} />
+              <path d="M34 20 L62 28 V80 L34 72 Z" fill="#e2cf9f" />
+              <path d="M62 28 L86 20 V72 L62 80 Z" fill={g("cream")} />
+              <path d="M16 62 C26 54 34 60 42 52 C50 44 58 50 66 42 C72 36 78 40 82 34" fill="none" stroke="#b9a36c" strokeWidth="2" strokeDasharray="4 3" strokeLinecap="round" />
+              <path d="M58 14 C66 14 71 20 71 27 C71 36 58 48 58 48 C58 48 45 36 45 27 C45 20 50 14 58 14 Z" fill={g("navyDark")} transform="translate(0 3)" />
+              <path d="M58 14 C66 14 71 20 71 27 C71 36 58 48 58 48 C58 48 45 36 45 27 C45 20 50 14 58 14 Z" fill={g("navy")} />
+              <circle cx="58" cy="27" r="5.5" fill={g("gold")} />
+            </>
+          )}
+
+          {kind === "key" && (
+            <>
+              <path d="M44 50 L80 50 V58 H72 V66 H64 V58 H44 Z" fill={g("goldDark")} transform="translate(0 4)" />
+              <path d="M44 48 L80 48 V56 H72 V64 H64 V56 H44 Z" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" strokeLinejoin="round" />
+              <circle cx="32" cy="52" r="20" fill={g("goldDark")} transform="translate(0 4)" />
+              <circle cx="32" cy="52" r="20" fill={g("gold")} stroke="#f8e3a0" strokeWidth="1" />
+              <circle cx="30" cy="52" r="8" fill={g("navyDark")} />
+              <path d="M18 44 C21 38 26 35 32 34" fill="none" stroke="#fff" strokeOpacity="0.7" strokeWidth="2.6" strokeLinecap="round" />
+              <path d="M50 51 H76" stroke="#fff" strokeOpacity="0.55" strokeWidth="2" strokeLinecap="round" />
             </>
           )}
         </g>

@@ -1,9 +1,10 @@
 ﻿'use client';
 
+import Emblem3D from "@/components/Emblem3D";
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import { useRouter } from 'next/navigation';
-import { AlertTriangle, Clock, FileText, LogIn } from 'lucide-react';
+import { Clock, FileText, LogIn } from 'lucide-react';
 import AppLoader from '@/components/AppLoader';
 import GlassButton from '@/components/ui/GlassButton';
 
@@ -62,7 +63,7 @@ export default function BannedPage() {
     return (
       <div className="min-h-screen flex items-center justify-center p-4" style={{ background: "var(--greek-cream)" }}>
         <div className="max-w-md text-center">
-          <AlertTriangle className="w-16 h-16 mx-auto mb-4" style={{ color: "var(--greek-bronze)" }} />
+          <Emblem3D kind="alert" size={88} className="mx-auto mb-4" />
           <h1 className="text-2xl font-bold mb-2" style={{ color: "var(--greek-blue)" }}>Erreur</h1>
           <p style={{ color: "var(--text-muted)" }}>{error}</p>
         </div>
@@ -99,7 +100,7 @@ export default function BannedPage() {
           <div className="bg-gradient-to-r from-red-600 to-orange-600 px-8 py-12 text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
             <div className="relative z-10">
-              <AlertTriangle className="w-16 h-16 mb-4" />
+              <Emblem3D kind="alert" size={80} onDark float={false} className="mb-4" />
               <h1 className="text-4xl font-bold font-[family-name:var(--font-display)] mb-2">
                 Compte suspendu
               </h1>

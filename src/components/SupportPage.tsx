@@ -1,12 +1,13 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import type { LucideIcon } from "lucide-react";
 import LoaderDots from "@/components/LoaderDots";
 import PageHero from "@/components/PageHero";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { getMyProfile } from "@/lib/updateMyProfile";
-import { MessageCircle, Plus, CheckCircle, Clock, AlertCircle, Send, ChevronDown, ChevronUp } from "lucide-react";
+import { Plus, CheckCircle, Clock, AlertCircle, Send, ChevronDown, ChevronUp } from "lucide-react";
 import { useAITutor } from "@/contexts/AITutorContext";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -192,7 +193,7 @@ export default function SupportPage({ role }: { role: "child" | "parent" }) {
             <div className="flex justify-center py-12 text-[var(--greek-blue)]"><LoaderDots size="md" /></div>
           ) : tickets.length === 0 ? (
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] p-10 text-center text-gray-400">
-              <MessageCircle className="w-10 h-10 mx-auto mb-2 opacity-20" />
+              <Emblem3D kind="chat" size={72} className="mx-auto mb-3" />
               <p>Aucun ticket pour le moment.</p>
             </div>
           ) : (

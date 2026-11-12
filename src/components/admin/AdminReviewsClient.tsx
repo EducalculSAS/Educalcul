@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useState, useCallback } from "react";
 import { Star, Plus, Trash2, Edit, GripVertical, Check } from "lucide-react";
@@ -208,7 +209,7 @@ export default function AdminReviewsClient({
       <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden">
         {reviews.length === 0 ? (
           <div className="text-center py-12 text-gray-400">
-            <Star className="w-10 h-10 mx-auto mb-2 opacity-20" aria-hidden="true" />
+            <Emblem3D kind="star" size={72} className="mx-auto mb-3" />
             <p className="text-sm">Aucun avis pour le moment.</p>
           </div>
         ) : (

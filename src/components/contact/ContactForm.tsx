@@ -1,6 +1,7 @@
 "use client";
 
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import Emblem3D from "@/components/Emblem3D";
+import { Send, AlertCircle } from "lucide-react";
 import LoaderDots from "@/components/LoaderDots";
 import { useEffect, useRef, useState } from "react";
 import { SUBJECTS } from "@/lib/contactSubjects";
@@ -52,9 +53,7 @@ export default function ContactForm() {
     <div className="bg-white rounded-2xl p-8 shadow-sm" style={{ border: "1px solid #e5e7eb" }}>
       {status === "success" ? (
         <div className="text-center py-12">
-          <div className="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="w-8 h-8 text-green-500" />
-          </div>
+          <Emblem3D kind="check" size={80} className="mx-auto mb-4" />
           <h3 className="font-[family-name:var(--font-display)] font-bold text-xl text-[var(--greek-blue)] mb-2">Message envoyé</h3>
           <p className="text-[var(--text-muted)] text-sm">Nous vous répondrons dans les plus brefs délais.</p>
           <div className="mt-6">

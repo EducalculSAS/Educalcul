@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import SectionTitle from "@/components/SectionTitle";
 import { parseOrNull } from "@/lib/validate";
 import LoaderDots from "@/components/LoaderDots";
@@ -692,7 +693,7 @@ function SubscriptionPageContent({
                 <div className="flex justify-center py-6"><LoaderDots /></div>
               ) : (myReferralCode.uses?.length ?? 0) === 0 ? (
                 <div className="text-center py-8 text-gray-400">
-                  <Users className="w-10 h-10 mx-auto mb-2 opacity-20" />
+                  <Emblem3D kind="family" size={72} className="mx-auto mb-3" />
                   <p className="text-sm">Personne n&apos;a encore utilisé votre code.</p>
                 </div>
               ) : (

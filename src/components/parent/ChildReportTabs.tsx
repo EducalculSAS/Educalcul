@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useState, type ReactNode } from "react";
 import { Award, BookOpen, TrendingUp, Activity, Brain, Sparkles, RotateCcw, Star, Lock, CalendarClock, Gamepad2 } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
@@ -221,9 +222,7 @@ export default function ChildReportTabs({
         <>
           {!hasSub ? (
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-10 text-center max-w-lg mx-auto">
-              <div className="w-16 h-16 rounded-2xl bg-[var(--greek-gold)]/10 flex items-center justify-center mx-auto mb-4">
-                <Lock className="w-7 h-7 text-[var(--greek-gold)]" />
-              </div>
+              <Emblem3D kind="lock" size={80} className="mx-auto mb-4" />
               <h3 className="font-bold text-[var(--greek-blue)] text-lg font-[family-name:var(--font-display)] mb-2">
                 Fonctionnalité Premium
               </h3>
@@ -275,7 +274,7 @@ export default function ChildReportTabs({
                     <div className="leading-relaxed">{renderAnalysis(analysis)}</div>
                   ) : (
                     <div className="text-center py-12">
-                      <Brain className="w-12 h-12 text-gray-200 mx-auto mb-3" />
+                      <Emblem3D kind="bulb" size={80} className="mx-auto mb-3" />
                       <p className="text-gray-500 text-sm mb-4">Lancez l&apos;analyse pour obtenir des conseils personnalisés.</p>
                       <GlassButton onClick={() => loadAnalysis()} variant="navy" size="sm" className="mx-auto">
                         <Sparkles className="w-4 h-4" /> Analyser maintenant

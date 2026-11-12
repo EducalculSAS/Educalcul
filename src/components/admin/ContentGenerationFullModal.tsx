@@ -1,6 +1,7 @@
 "use client";
 
-import { BrainCircuit, Minus, Sparkles, X, Check } from "lucide-react";
+import Emblem3D from "@/components/Emblem3D";
+import { Minus, Sparkles, X, Check } from "lucide-react";
 import { useContentGenerations, type ContentKind } from "@/contexts/ContentGenerationsContext";
 import { useSmoothPercentByKey } from "./useSmoothPercent";
 import GlassButton from "@/components/ui/GlassButton";
@@ -103,7 +104,7 @@ export default function ContentGenerationFullModal() {
             <>
               <div className="relative mb-6">
                 <div className="absolute inset-0 bg-[var(--greek-blue)] opacity-20 blur-xl rounded-full animate-pulse" />
-                <BrainCircuit size={64} className="text-[var(--greek-blue)] relative z-10 animate-bounce" />
+                <Emblem3D kind="sparkles" size={96} className="relative z-10" />
               </div>
               <h4 className="text-xl font-bold text-gray-800 mb-2 font-[family-name:var(--font-display)]">
                 {generation.status === "cancel_requested" ? "Annulation en cours..." : "Création en cours..."}

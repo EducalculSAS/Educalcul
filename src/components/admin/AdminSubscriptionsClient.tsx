@@ -1,16 +1,13 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { type PlanFeatureValues } from "@/types/plans";
 import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import { useState, useRef } from "react";
 import { BORDER_STYLES, NAME_COLORS } from "@/lib/badgeStyles";
 import { normalizeDifficulty } from "@/lib/difficultyLevels";
-import {
-  CreditCard, Plus, Edit, Trash2, CheckCircle, AlertTriangle,
-  Clock, X, Power, Users, Tag, Gift,
-  TrendingUp, Copy, Check, GripVertical,
-} from "lucide-react";
+import { CreditCard, Plus, Edit, Trash2, CheckCircle, AlertTriangle, Clock, X, Power, Users, Tag, TrendingUp, Copy, Check, GripVertical } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
@@ -501,7 +498,7 @@ export default function AdminSubscriptionsClient({
         <>
           {plans.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
-              <CreditCard size={48} className="mx-auto mb-3 opacity-30" />
+              <Emblem3D kind="card" size={72} className="mx-auto mb-3" />
               <p className="font-medium">Aucun plan créé</p>
             </div>
           ) : (
@@ -703,7 +700,7 @@ export default function AdminSubscriptionsClient({
         <>
           {promoCodes.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
-              <Tag size={48} className="mx-auto mb-3 opacity-30" />
+              <Emblem3D kind="tag" size={72} className="mx-auto mb-3" />
               <p className="font-medium">Aucun code promo</p>
             </div>
           ) : (
@@ -779,7 +776,7 @@ export default function AdminSubscriptionsClient({
         <>
           {parainageCodes.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
-              <Gift size={48} className="mx-auto mb-3 opacity-30" />
+              <Emblem3D kind="gift" size={72} className="mx-auto mb-3" />
               <p className="font-medium">Aucun utilisateur n&apos;a encore de code de parrainage</p>
               <p className="text-sm mt-1">Les codes sont générés automatiquement à la première visite de la page abonnement</p>
             </div>

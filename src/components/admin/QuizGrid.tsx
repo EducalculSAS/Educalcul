@@ -1,9 +1,10 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- extrait d'un composant qui affiche des images à adresse libre */
+import Emblem3D from "@/components/Emblem3D";
 import PageLoader from "@/components/PageLoader";
 import { getFolderIcon, FOLDER_COLORS } from "@/components/admin/folderStyle";
 import GlassIconButton from "@/components/ui/GlassIconButton";
-import { ArrowLeft, ArrowRight, Edit, Trash2, FileText, ArrowUp, ArrowDown, BookOpen, Clock, Eye, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Edit, Trash2, ArrowUp, ArrowDown, BookOpen, Clock, Eye, Download } from "lucide-react";
 import { formatDateFr } from "@/lib/formatDate";
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
 import { exportAsJSON } from "@/lib/jsonIO";
@@ -199,7 +200,7 @@ export default function QuizGrid(props: QuizGridProps) {
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-300">
-                  <FileText size={48} />
+                  <Emblem3D kind="quiz" size={64} float={false} />
                 </div>
               )}
               <div className="absolute top-2 right-2">

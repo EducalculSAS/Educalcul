@@ -1,5 +1,6 @@
+import Emblem3D from "@/components/Emblem3D";
 import { redirect } from "next/navigation";
-import { AlertCircle, ArrowLeft } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { getServerUser } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { stripAnswers } from "@/lib/quizContent";
@@ -35,7 +36,7 @@ export default async function QuizReviewPage({
   if (!quiz || !progress) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-center p-4">
-        <AlertCircle className="w-16 h-16 text-red-500 mb-4" />
+        <Emblem3D kind="alert" size={88} className="mb-4" />
         <h1 className="text-2xl font-bold text-[var(--greek-blue)] mb-2">
           Aucune correction disponible
         </h1>

@@ -4,7 +4,7 @@ import Emblem3D from "@/components/Emblem3D";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect, useRef } from "react";
-import { CheckCircle, XCircle, ArrowRight, ArrowLeft, Trophy, Loader2, Type, HelpCircle, Clock, AlertTriangle } from "lucide-react";
+import { CheckCircle, XCircle, ArrowRight, ArrowLeft, Loader2, Type, HelpCircle, Clock, AlertTriangle } from "lucide-react";
 import { Question } from "@/components/admin/QuizBuilder";
 import { supabase } from "@/lib/supabaseClient";
 import { renderLatexInHTML } from "@/lib/katexLoader";
@@ -533,7 +533,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
   if (!questions.length) {
     return (
       <div className="flex flex-col items-center justify-center h-full text-gray-500 bg-white border border-[var(--greek-gold)] p-8">
-        <HelpCircle className="w-12 h-12 mb-4 text-[var(--greek-gold)]" />
+        <Emblem3D kind="quiz" size={80} className="mb-4" />
         <p>Ce quiz ne contient aucune question pour le moment.</p>
       </div>
     );
@@ -552,7 +552,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
           <div className="bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden">
             {/* Thumbnail header */}
             <div className={`relative h-64 md:h-80 overflow-hidden flex items-center justify-center ${passed ? "bg-[var(--greek-blue)]" : "bg-red-800"}`}>
-              <Trophy className="w-24 h-24 text-[var(--greek-gold)] opacity-20" />
+              <Emblem3D kind="trophy" size={120} onDark className="-translate-y-8 md:-translate-y-10" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
                 <div className="p-5 md:p-8 text-white w-full">
                   <div className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold rounded-full mb-3 shadow-md ${passed ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]" : "bg-red-500 text-white"}`}>

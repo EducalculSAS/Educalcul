@@ -1,7 +1,8 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- extrait d'un composant qui affiche des images à adresse libre */
+import Emblem3D from "@/components/Emblem3D";
 import PageLoader from "@/components/PageLoader";
-import { Folder as FolderIcon, ArrowLeft, ArrowRight, Edit, Trash2, ArrowUp, ArrowDown, Eye, Download } from "lucide-react";
+import { ArrowLeft, ArrowRight, Edit, Trash2, ArrowUp, ArrowDown, Eye, Download } from "lucide-react";
 import { getFolderIcon, COURSE_FOLDER_COLORS as FOLDER_COLORS } from "@/components/admin/folderStyle";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { formatDateFr } from "@/lib/formatDate";
@@ -64,7 +65,7 @@ export default function CourseGrid(props: CourseGridProps) {
       filteredCourses.length === 0 && (
         <div className="col-span-full py-12 text-center text-gray-500 bg-white rounded-xl border border-[rgba(197,161,72,0.25)] border-dashed">
           <div className="flex flex-col items-center justify-center">
-            <FolderIcon size={48} className="text-gray-200 mb-2" />
+            <Emblem3D kind="folder" size={72} className="mb-3" />
             <p>Ce dossier est vide</p>
             <button
               onClick={() => setIsFolderModalOpen(true)}

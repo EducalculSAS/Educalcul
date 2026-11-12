@@ -1,7 +1,7 @@
 "use client";
  
 import Emblem3D from "@/components/Emblem3D";
-import { Brain, CheckCircle, Trophy, XCircle, RotateCcw } from "lucide-react";
+import { CheckCircle, Trophy, XCircle, RotateCcw } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { type Page } from "@/components/admin/ExerciseBuilder";
 
@@ -32,7 +32,7 @@ export default function ExerciseResultScreen(props: ExerciseResultScreenProps) {
       <div className="bg-white rounded-[20px] shadow-lg border-2 border-[rgba(197,161,72,0.25)] overflow-hidden">
         {/* Thumbnail header */}
         <div className={`relative h-64 md:h-80 overflow-hidden flex items-center justify-center ${passed ? "bg-[var(--greek-cream)]" : "bg-red-50"}`}>
-          <Brain className="w-24 h-24 text-[var(--greek-blue)] opacity-20" />
+          <Emblem3D kind="pencil" size={120} className="-translate-y-8 md:-translate-y-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
             <div className="p-5 md:p-8 text-white w-full">
               <div className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold rounded-full mb-3 shadow-md ${passed ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]" : "bg-red-500 text-white"}`}>

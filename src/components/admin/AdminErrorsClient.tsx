@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useCallback, useEffect, useState } from "react";
 import { Bug, CheckCircle2, ChevronDown, Globe, Loader2, RotateCcw, Server } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
@@ -82,7 +83,7 @@ export default function AdminErrorsClient() {
         <div className="flex justify-center py-12"><Loader2 className="w-6 h-6 animate-spin text-[var(--greek-blue)]" /></div>
       ) : rows.length === 0 ? (
         <div className="bg-white rounded-[20px] border border-dashed border-[rgba(197,161,72,0.4)] p-10 text-center">
-          <CheckCircle2 className="w-10 h-10 mx-auto mb-3 text-emerald-500" />
+          <Emblem3D kind="check" size={72} className="mx-auto mb-3" />
           <p className="text-[var(--text-muted)]">{tab === "open" ? "Aucune erreur à traiter." : "Aucune erreur résolue."}</p>
         </div>
       ) : (

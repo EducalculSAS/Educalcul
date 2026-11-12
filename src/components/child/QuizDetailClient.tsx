@@ -151,7 +151,7 @@ export default function QuizDetailClient({
       >
         <div className="relative h-64 md:h-80 bg-[var(--greek-blue)] relative overflow-hidden flex items-center justify-center">
           <div className="absolute inset-0 opacity-10 pattern-grid-lg"></div>
-          <Trophy className="w-24 h-24 text-[var(--greek-gold)] drop-shadow-lg" aria-hidden="true" />
+          <Emblem3D kind="quiz" size={120} onDark className="-translate-y-8 md:-translate-y-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end">
             <div className="p-8 text-white w-full">
               <div className="inline-block px-3 py-1 bg-[var(--greek-gold)] text-[var(--greek-blue)] text-xs font-bold rounded-full mb-3 shadow-md">

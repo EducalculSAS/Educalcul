@@ -1,9 +1,10 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import AvatarPicker from "@/components/AvatarPicker";
 import LoaderDots from "@/components/LoaderDots";
 import { useState } from "react";
-import { UserPlus, Save, AlertCircle, CheckCircle, GraduationCap } from "lucide-react";
+import { Save, AlertCircle, CheckCircle, GraduationCap } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { SCHOOL_LEVELS, SCHOOL_LEVEL_GROUPS } from "@/lib/constants";
 import { validatePassword, isValidEmail } from "@/lib/validation";
@@ -100,7 +101,7 @@ export default function AddChildForm() {
     <div className="container mx-auto px-4 py-8 max-w-4xl pt-20">
       <div className="text-center mb-10">
         <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm">
-          <UserPlus className="inline-block w-10 h-10 mr-3 mb-1 text-[var(--greek-gold)]" />
+          <Emblem3D kind="family" size={52} float={false} className="mr-3 -mt-2" />
           Ajouter un Enfant
         </h1>
         <p className="text-gray-600 text-lg">Créez un profil pour suivre sa progression</p>

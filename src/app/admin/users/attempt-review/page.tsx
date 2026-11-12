@@ -1,6 +1,7 @@
+import Emblem3D from "@/components/Emblem3D";
 import { parseOrNull } from "@/lib/validate";
 import { exerciseItemSchema, quizItemSchema } from "@/lib/schemas";
-import { AlertCircle } from "lucide-react";
+
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { fillEmptyContentJson } from "@/lib/exerciseContent";
 import AdminAttemptReviewClient from "@/components/admin/AdminAttemptReviewClient";
@@ -37,7 +38,7 @@ export default async function AttemptReviewPage({
   if (!userId || !kind || !itemId) {
     return (
       <div className="p-6 flex flex-col items-center text-center gap-4">
-        <AlertCircle className="w-10 h-10 text-red-500" />
+        <Emblem3D kind="alert" size={64} />
         <p className="text-gray-600">Paramètres manquants.</p>
       </div>
     );
@@ -57,7 +58,7 @@ export default async function AttemptReviewPage({
   if (itemError || !item || !attempt) {
     return (
       <div className="p-6 flex flex-col items-center text-center gap-4">
-        <AlertCircle className="w-10 h-10 text-red-500" />
+        <Emblem3D kind="alert" size={64} />
         <p className="text-gray-600">Aucune tentative trouvée pour cet élève sur ce contenu.</p>
         <GlassButton href={`/admin/users/detail?id=${userId}`} variant="ghost" size="sm">Retour à la fiche</GlassButton>
       </div>

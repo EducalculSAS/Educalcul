@@ -1,10 +1,11 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import LoaderDots from "@/components/LoaderDots";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState, useEffect } from "react";
-import { ArrowLeft, UserCog, Save, AlertCircle, CheckCircle, RotateCcw, Fingerprint, Trash2 } from "lucide-react";
+import { ArrowLeft, Save, AlertCircle, CheckCircle, RotateCcw, Fingerprint, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { startRegistration } from "@simplewebauthn/browser";
 import { supabase } from "@/lib/supabaseClient";
@@ -304,7 +305,7 @@ export default function EditChildForm({ initial }: { initial: InitialChild }) {
       </div>
       <div className="text-center mb-10">
         <h1 className="text-4xl font-bold text-[var(--greek-blue)] mb-3 font-[family-name:var(--font-display)] drop-shadow-sm">
-          <UserCog className="inline-block w-10 h-10 mr-3 mb-1 text-[var(--greek-gold)]" />
+          <Emblem3D kind="profile" size={52} float={false} className="mr-3 -mt-2" />
           Modifier le Profil
         </h1>
         <p className="text-gray-600 text-lg">Mettez à jour les informations de {formData.firstName}</p>

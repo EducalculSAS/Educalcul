@@ -1,8 +1,9 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { UserCheck } from "lucide-react";
+
 import { loadSupabase } from "@/lib/supabaseLazy";
 import { trackLogout } from "@/lib/trackLogout";
 import GlassButton from "@/components/ui/GlassButton";
@@ -72,9 +73,7 @@ export default function SessionStillHereModal() {
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[2000] p-4 modal-overlay">
       <div className="glass-panel rounded-3xl w-full max-w-sm overflow-hidden backdrop-blur-[32px] backdrop-saturate-[1.4]">
         <div className="p-6 flex flex-col items-center text-center gap-3">
-          <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center">
-            <UserCheck className="w-6 h-6 text-[var(--greek-blue)]" />
-          </div>
+          <Emblem3D kind="clock" size={64} />
           <h2 className="text-lg font-semibold text-slate-800">Toujours là ?</h2>
           <p className="text-sm text-slate-600">
             Tu seras déconnecté dans <span className="font-bold text-[var(--greek-blue)]">{secondsLeft}s</span> par

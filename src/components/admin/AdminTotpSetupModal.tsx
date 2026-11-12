@@ -1,11 +1,12 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import Emblem3D from "@/components/Emblem3D";
 import GlassCheckbox from "@/components/ui/GlassCheckbox";
 import { useState, useEffect } from "react";
 import QRCode from "qrcode";
 import { supabase } from "@/lib/supabaseClient";
-import { ShieldCheck, Loader2, AlertCircle, Copy, Check, KeyRound } from "lucide-react";
+import { Loader2, AlertCircle, Copy, Check } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { errMessage } from "@/lib/safeError";
@@ -105,9 +106,7 @@ export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () =>
       <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" style={{ background: "rgba(15,30,58,0.55)" }}>
         <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-8 border border-[rgba(197,161,72,0.25)]">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(197,161,72,0.12)" }}>
-              <KeyRound className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />
-            </div>
+            <Emblem3D kind="key" size={40} float={false} className="shrink-0" />
             <h2 className="text-xl font-bold text-[var(--greek-blue)]">Codes de secours</h2>
           </div>
           <p className="text-sm text-gray-600 mb-4">
@@ -138,9 +137,7 @@ export default function AdminTotpSetupModal({ onComplete }: { onComplete?: () =>
     <div className="fixed inset-0 z-[200] flex items-center justify-center p-4" style={{ background: "rgba(15,30,58,0.55)" }}>
       <div className="w-full max-w-md rounded-2xl bg-white shadow-2xl p-8 border border-[rgba(197,161,72,0.25)]">
         <div className="flex items-center gap-3 mb-2">
-          <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(197,161,72,0.12)" }}>
-            <ShieldCheck className="w-5 h-5" style={{ color: "var(--greek-gold)" }} />
-          </div>
+          <Emblem3D kind="shield" size={40} float={false} className="shrink-0" />
           <h2 className="text-xl font-bold text-[var(--greek-blue)]">Configure la 2FA</h2>
         </div>
         <p className="text-sm text-gray-600 mb-5">

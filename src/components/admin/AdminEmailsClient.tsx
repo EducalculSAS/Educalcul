@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useState } from "react";
 import {
   Mail, Plus, Edit2, Trash2, Eye, Send, Loader2,
@@ -451,7 +452,7 @@ export default function AdminEmailsClient({
             <div className="p-6 space-y-4">
               {sendResult ? (
                 <div className="text-center py-4">
-                  <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-3" />
+                  <Emblem3D kind="check" size={72} className="mx-auto mb-3" />
                   <p className="font-bold text-gray-800 text-lg">{sendResult.sent} email{sendResult.sent > 1 ? "s" : ""} envoyé{sendResult.sent > 1 ? "s" : ""}</p>
                   {sendResult.failed > 0 && <p className="text-sm text-red-500">{sendResult.failed} échec{sendResult.failed > 1 ? "s" : ""}</p>}
                   <p className="text-sm text-gray-400">{sendResult.total} destinataire{sendResult.total > 1 ? "s" : ""} au total</p>
