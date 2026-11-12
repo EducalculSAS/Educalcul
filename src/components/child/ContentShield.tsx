@@ -9,9 +9,9 @@ import { getMyProfile } from "@/lib/updateMyProfile";
  *
  * Ce qui est réellement empêché : copier, couper, glisser le texte ou les images, ouvrir le menu contextuel, imprimer
  * ou enregistrer la page, et coller une réponse toute faite dans un champ d'exercice ou de quiz.
- * Ce qui est seulement découragé : la capture d'écran. Aucun site web ne peut l'interdire (ni la photo prise avec un
- * téléphone), ni savoir qu'elle a lieu. On la rend traçable : un filigrane au nom de l'élève couvre la page, trop pâle
- * pour être vu à la lecture, mais présent dans toute capture (il ressort dès qu'on pousse le contraste de l'image).
+ * Ce qui n'est pas empêché : la capture d'écran. Un site web ne peut ni l'interdire ni savoir qu'elle a lieu (encore
+ * moins la photo prise avec un autre téléphone) ; le filigrane au nom de l'élève, qui ne pouvait donc pas apparaître
+ * « seulement dans la capture », a été retiré plutôt que de rester visible à la lecture.
  *
  * La sélection du texte reste possible dans les cours : elle sert à demander une explication à Calia.
  * Monté dans le layout élève ; inactif hors des pages de contenu et pour un admin qui prévisualise.
@@ -28,13 +28,13 @@ export default function ContentShield() {
   const answers = ANSWER_PATH.test(pathname);
   const [who, setWho] = useState<string | null>(null);
 
-  // Qui regarde : seul un élève est concerné ; son pseudo sert au filigrane.
+  // Qui regarde : seul un élève est concerné (pas un admin qui prévisualise).
   useEffect(() => {
     if (!active || who !== null) return;
     let alive = true;
-    void getMyProfile<{ role?: string; child_username?: string | null; first_name?: string | null; id?: number }>().then((p) => {
+    void getMyProfile<{ role?: string }>().then((p) => {
       if (!alive) return;
-      setWho(p?.role === "child" ? `${p.child_username || p.first_name || "élève"} · n° ${p.id ?? ""}` : "");
+      setWho(p?.role === "child" ? "élève" : "");
     });
     return () => { alive = false; };
   }, [active, who]);
@@ -78,13 +78,6 @@ export default function ContentShield() {
     };
   }, [on, answers]);
 
-  if (!on) return null;
-  return (
-    <>
-      {/* Filigrane : le nom de l'élève, répété en diagonale, presque invisible à la lecture mais présent sur toute capture. */}
-      <div aria-hidden="true" className="content-watermark" style={{ ["--wm" as string]: `"${who!.replace(/["\\]/g, "")}"` }}>
-        {Array.from({ length: 48 }).map((_, i) => <span key={i} />)}
-      </div>
-    </>
-  );
+  // Rien à afficher : la protection passe uniquement par les écouteurs ci-dessus.
+  return null;
 }
