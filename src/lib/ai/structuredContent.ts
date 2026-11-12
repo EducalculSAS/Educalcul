@@ -1,4 +1,5 @@
 
+import { normalizeEduFig } from "@/lib/figures/normalize";
 import { stringValue, asRecord } from "./structuredMath";
 import { mathToReadableText, sanitizeStructuredText } from "./structuredMath";
 import { finiteNumber, clamp } from "./structuredFigures";
@@ -15,7 +16,7 @@ export * from "./structuredMath";
 
 export type StructuredLearningResource = Extract<
   StructuredCourseBlock,
-  { type: "table" | "sign_table" | "variation_table" | "graph" | "figure" }
+  { type: "table" | "sign_table" | "variation_table" | "graph" | "figure" | "edufig" }
 >;
 
 export type StructuredCourseExercise = {
@@ -295,6 +296,11 @@ export function normalizeCourseBlock(value: unknown, depth = 0): StructuredCours
     }
   }
   void type;
+  // Figure au format EduFig : {"type":"edufig","fig":{…}} ou la description à plat {"type":"edufig","kind":"geometry",…}.
+  if (type === "edufig") {
+    const { fig } = normalizeEduFig(raw.fig_json ?? raw.fig ?? { ...raw, type: undefined });
+    return fig ? { type: "edufig", fig } : null;
+  }
   const normalizer = COURSE_BLOCK_NORMALIZERS[type];
   if (normalizer) return normalizer(raw, { type, depth, normalize: normalizeCourseBlock });
   
@@ -382,7 +388,7 @@ function normalizeLearningResources(value: unknown): StructuredLearningResource[
   return value
     .map((entry) => normalizeCourseBlock(entry, 0))
     .filter((entry): entry is StructuredLearningResource =>
-      entry !== null && ["table", "sign_table", "variation_table", "graph", "figure"].includes(entry.type),
+      entry !== null && ["table", "sign_table", "variation_table", "graph", "figure", "edufig"].includes(entry.type),
     )
     .slice(0, 2);
 }

@@ -3465,3 +3465,44 @@ html[data-shield] main :is(input, textarea, [contenteditable="true"]) { -webkit-
   html[data-shield] body > * { display: none !important; }
   html[data-shield] body::before { content: "Les contenus Educalcul ne s'impriment pas. Retrouve-les dans ton espace élève."; display: block; padding: 40px; font: 16px sans-serif; color: #000; }
 }
+
+/* ═══ EduFig : les figures du site (src/lib/figures). Une carte blanche bordée d'or, comme les sections ; toutes les
+   couleurs passent par des variables, redéfinies en mode sombre. Pas de flou d'arrière-plan (plusieurs figures par page). */
+.edu-fig {
+  --ef-ink: #0f1e3a; --ef-accent: #b8902f; --ef-blue: #2563eb; --ef-green: #15803d; --ef-red: #dc2626; --ef-gray: #94a3b8;
+  --ef-paper: #ffffff; --ef-grid: #e8ebf1; --ef-halo: #ffffff;
+  counter-increment: educalcul-figure;
+  margin: 1.5rem auto; max-width: 30rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+}
+.edu-fig[data-size="s"] { max-width: 21rem; }
+.edu-fig[data-size="l"] { max-width: 40rem; }
+.edu-fig > svg {
+  display: block; width: 100%; height: auto; overflow: hidden;
+  border-radius: 20px; border: 1px solid rgba(197, 161, 72, 0.25);
+  box-shadow: 0 1px 2px rgba(15, 30, 58, 0.06), 0 6px 18px rgba(15, 30, 58, 0.06);
+  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  user-select: none; -webkit-user-select: none; touch-action: manipulation;
+}
+.edu-fig figcaption { text-align: center; font-size: 0.875rem; color: #6b7280; max-width: 100%; }
+.edu-fig figcaption::before { content: "Figure " counter(educalcul-figure) " · "; font-weight: 600; color: var(--greek-blue); }
+.edu-fig .ef-paper { fill: var(--ef-paper); }
+.edu-fig .ef-grid { stroke: var(--ef-grid); }
+.edu-fig .ef-halo { paint-order: stroke; stroke: var(--ef-halo); stroke-width: 3.5px; stroke-linejoin: round; }
+.edu-fig .ef-s-ink { stroke: var(--ef-ink); } .edu-fig .ef-f-ink { fill: var(--ef-ink); } .edu-fig .ef-t-ink { fill: var(--ef-ink); }
+.edu-fig .ef-s-accent { stroke: var(--ef-accent); } .edu-fig .ef-f-accent { fill: var(--ef-accent); } .edu-fig .ef-t-accent { fill: var(--ef-accent); }
+.edu-fig .ef-s-blue { stroke: var(--ef-blue); } .edu-fig .ef-f-blue { fill: var(--ef-blue); } .edu-fig .ef-t-blue { fill: var(--ef-blue); }
+.edu-fig .ef-s-green { stroke: var(--ef-green); } .edu-fig .ef-f-green { fill: var(--ef-green); } .edu-fig .ef-t-green { fill: var(--ef-green); }
+.edu-fig .ef-s-red { stroke: var(--ef-red); } .edu-fig .ef-f-red { fill: var(--ef-red); } .edu-fig .ef-t-red { fill: var(--ef-red); }
+.edu-fig .ef-s-gray { stroke: var(--ef-gray); } .edu-fig .ef-f-gray { fill: var(--ef-gray); } .edu-fig .ef-t-gray { fill: #64748b; }
+.edu-fig .ef-text.ef-halo { stroke: var(--ef-halo); }
+.edu-fig .ef-drag { cursor: grab; }
+.edu-fig .ef-drag:active { cursor: grabbing; }
+.edu-fig[data-interactive] > svg { touch-action: none; }
+html[data-theme="dark"] .edu-fig {
+  --ef-ink: #e6ecf7; --ef-accent: #e2c46e; --ef-blue: #7aa7ff; --ef-green: #5fd38a; --ef-red: #ff8a8a; --ef-gray: #8a97ad;
+  --ef-paper: #111c31; --ef-grid: #1f2c45; --ef-halo: #111c31;
+}
+html[data-theme="dark"] .edu-fig > svg { border-color: rgba(226, 196, 110, 0.25); box-shadow: none; }
+html[data-theme="dark"] .edu-fig .ef-t-gray { fill: #a3aec2; }
+html[data-theme="dark"] .edu-fig figcaption { color: #a3aec2; }
+html[data-theme="dark"] .edu-fig figcaption::before { color: #e6ecf7; }

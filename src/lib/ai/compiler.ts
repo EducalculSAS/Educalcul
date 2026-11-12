@@ -1,3 +1,5 @@
+import { eduFigHtml } from "@/lib/figures/render";
+import { legacyToEduFig } from "@/lib/figures/legacy";
 import { isStructuredLatexValid, normalizeStructuredLatex, sanitizeStructuredText, structuredRichTextToPlainText, type StructuredCourseBlock, type StructuredCourseChapter, type StructuredExerciseDraft, type StructuredQuizDraft, type StructuredRichText, type StructuredLearningResource } from "@/lib/ai/structuredContent";
 
 import { escapeHtml, figText, figOpen, FIGURE_PALETTE, FIG_STROKE, SHAPE_FILL_OPACITY, renderShape, renderLineChart, renderScatterPlot, renderFlowchart, renderSolid, renderLabeledPolygon, renderProbabilityTree, renderVennDiagram } from "./compilerSvg";
@@ -135,6 +137,10 @@ export function compileCourseBlock(
   exerciseIds: string[],
   usedExerciseIndexes: Set<number>,
 ): string {
+  // Figures : le moteur EduFig (src/lib/figures) pour le nouveau format comme pour les anciens blocs qu'il sait traduire.
+  if (block.type === "edufig") return eduFigHtml(block.fig);
+  const legacyFig = legacyToEduFig(block);
+  if (legacyFig) return eduFigHtml(legacyFig);
   switch (block.type) {
     case "heading": {
       const level = block.level === 4 ? 4 : 3;

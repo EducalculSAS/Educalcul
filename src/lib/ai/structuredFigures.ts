@@ -1,3 +1,4 @@
+import type { EduFig } from "@/lib/figures/types";
 import { sanitizeStructuredText, asRecord, stringValue, normalizeStructuredLatex } from "./structuredMath";
 
 /**
@@ -228,6 +229,7 @@ export type StructuredVennSet = {
 
 
 export type StructuredCourseBlock =
+  | { type: "edufig"; fig: EduFig }
   | {
       type: "heading";
       level: 3 | 4;

@@ -1,3 +1,4 @@
+import { EDUFIG_PROMPT_GUIDE } from "@/lib/figures/promptGuide";
 import { getProgrammePromptBlock } from "@/lib/programmes-nationaux";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { auditLog, AuditAction } from "@/lib/auditLog";
@@ -142,7 +143,8 @@ RÈGLES :
 • Le champ text contient uniquement le tronc commun de la question. Il ne contient JAMAIS les quatre propositions, aucune lettre A/B/C/D et aucune copie des options.
 • Chaque élément de options contient uniquement le texte de la proposition, sans préfixe A., B., C., D., 1., 2., etc.
 • Chaque question a exactement 4 options, une seule réponse correcte et correct_option_index est un entier 0, 1, 2 ou 3.
-• Chaque question contient resources, tableau de 0 ou 1 ressource structurée parmi table, sign_table, variation_table, graph ou figure.
+• Chaque question contient resources, tableau de 0 ou 1 ressource structurée parmi table, sign_table, variation_table, graph ou edufig (figure).
+${EDUFIG_PROMPT_GUIDE}
 • Les quiz peuvent demander de lire une courbe, un tableau, un camembert, un diagramme ou un schéma. Toute courbe mathématique utilise exclusivement graph/mathGraph ; figure/SVG est réservé aux schémas et diagrammes, jamais aux courbes.
 • Toute écriture mathématique dans text, options et explanation doit être un objet math dans RICH_TEXT. Interdiction d'écrire exp(x), y' = y, N(t), ln(2)/lambda ou une égalité mathématique en texte brut.
 • Les symboles, variables, nombres dans une formule, dérivées, limites, fractions, intervalles et équations sont toujours placés dans un part {"type":"math","latex":"..."}.

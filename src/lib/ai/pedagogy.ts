@@ -103,6 +103,8 @@ function blockWordCount(block: StructuredCourseBlock): number {
         block.points.reduce((sum, item) => sum + richTextWordCount(item), 0) +
         block.values.reduce((sum, item) => sum + richTextWordCount(item), 0)
       );
+    case "edufig":
+      return (block.fig.caption ?? "").split(/\s+/).filter(Boolean).length;
     case "graph":
     case "figure":
     case "shape":
@@ -205,6 +207,7 @@ function isVisualBlock(block: StructuredCourseBlock): boolean {
     block.type === "ruler_measurer" ||
     block.type === "tape_diagram" ||
     block.type === "brick_pyramid" ||
+    block.type === "edufig" ||
     block.type === "solid" ||
     block.type === "labeled_polygon" ||
     block.type === "labeled_circle" ||

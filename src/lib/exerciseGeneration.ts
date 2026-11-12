@@ -1,3 +1,4 @@
+import { EDUFIG_PROMPT_GUIDE } from "@/lib/figures/promptGuide";
 import { getProgrammePromptBlock } from "@/lib/programmes-nationaux";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { auditLog, AuditAction } from "@/lib/auditLog";
@@ -226,7 +227,8 @@ RÈGLES :
     ? "Pour un texte à trous, content contient seulement le texte à compléter avec les jetons {{1}}, {{2}}, {{3}} ; prompt contient la consigne courte."
     : 'Pour un exercice simple, content vaut exactement {"parts":[]} : toutes les données utiles sont dans prompt, sans réponse.' 
   : "Pour un exercice contextuel, content contient uniquement les données ou le support commun nécessaires à la question, jamais la réponse ni la correction."}
-• Chaque question contient resources, tableau de 0 à 2 ressources structurées. Utilise uniquement table, sign_table, variation_table, graph ou figure.
+• Chaque question contient resources, tableau de 0 à 2 ressources structurées. Utilise uniquement table, sign_table, variation_table, graph ou edufig (figure). L'ancien type "figure" est réservé aux cas qu'edufig ne couvre pas.
+${EDUFIG_PROMPT_GUIDE}
 • Utilise une ressource seulement lorsqu'elle sert réellement la question : lecture de courbe, tableau à interpréter, schéma, diagramme ou données.
 • Une courbe mathématique utilise exclusivement graph/mathGraph. Une figure SVG sert uniquement aux schémas, camemberts, diagrammes, aires, fractions, frises ou processus ; jamais à tracer une courbe.
 • Les ressources sont autorisées dans tous les types d'exercices.

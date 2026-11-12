@@ -15,6 +15,7 @@ import {
   Upload,
   XCircle,
   Sparkles,
+  Shapes,
 } from "lucide-react";
 import { renderLatexInHTML } from "@/lib/katexLoader";
 import { renderMathGraphPlaceholders } from "@/lib/mathGraph";
@@ -23,6 +24,7 @@ import type { Lesson } from "./CourseBuilder";
 import TableEditorModal from "./TableEditorModal";
 import GraphEditorModal from "./GraphEditorModal";
 import SpecialBlockEditorModal from "./SpecialBlockEditorModal";
+import EduFigEditor from "./EduFigEditor";
 import { useDragAutoScroll } from "@/lib/useDragAutoScroll";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -34,6 +36,7 @@ const BLOCK_LABELS: Record<LessonBlock["type"], string> = {
   image: "Image",
   exercise: "Mini-exercice",
   special: "Bloc spécial",
+  figure: "Figure",
 };
 
 const BLOCK_ICONS: Record<LessonBlock["type"], LucideIcon> = {
@@ -43,6 +46,7 @@ const BLOCK_ICONS: Record<LessonBlock["type"], LucideIcon> = {
   image: ImageIcon,
   exercise: PencilLine,
   special: Sparkles,
+  figure: Shapes,
 };
 
 export default function LessonContentEditor({
@@ -60,6 +64,7 @@ export default function LessonContentEditor({
   const [tableModalFor, setTableModalFor] = useState<string | null>(null);
   const [graphModalFor, setGraphModalFor] = useState<string | null>(null);
   const [specialModalFor, setSpecialModalFor] = useState<string | null>(null);
+  const [figureModalFor, setFigureModalFor] = useState<string | null>(null);
   useDragAutoScroll(draggedBlock !== null);
 
   // Lazily migrate legacy content/image_url/exercises into blocks on first render
@@ -103,6 +108,10 @@ export default function LessonContentEditor({
     }
     if (type === "special") {
       setSpecialModalFor("__new__");
+      return;
+    }
+    if (type === "figure") {
+      setFigureModalFor("__new__");
       return;
     }
     const newBlock: LessonBlock = { id: crypto.randomUUID(), type };
@@ -251,6 +260,15 @@ export default function LessonContentEditor({
               </div>
             )}
 
+            {block.type === "figure" && (
+              <div className="space-y-2">
+                <div className="rounded-lg p-3 bg-gray-50 border border-[rgba(197,161,72,0.15)]" dangerouslySetInnerHTML={{ __html: block.content || "" }} />
+                <GlassButton size="sm" variant="ghost" onClick={() => setFigureModalFor(block.id)}>
+                  Modifier la figure
+                </GlassButton>
+              </div>
+            )}
+
             {block.type === "special" && (
               <div className="space-y-2">
                 <div
@@ -316,6 +334,9 @@ export default function LessonContentEditor({
         <GlassButton size="sm" variant="outline" onClick={() => addBlock("exercise")}>
           <Plus size={14} /> Mini-exercice
         </GlassButton>
+        <GlassButton size="sm" variant="navy" onClick={() => addBlock("figure")}>
+          <Plus size={14} /> Figure
+        </GlassButton>
         <GlassButton size="sm" variant="outline" onClick={() => addBlock("special")}>
           <Plus size={14} /> Bloc spécial
         </GlassButton>
@@ -345,6 +366,18 @@ export default function LessonContentEditor({
             } else {
               updateBlock(graphModalFor, { content: html });
             }
+          }}
+        />
+      )}
+
+      {figureModalFor !== null && (
+        <EduFigEditor
+          initial={figureModalFor !== "__new__" ? blocks.find((b) => b.id === figureModalFor)?.fig : undefined}
+          statement={blocks.filter((b) => b.type === "text").map((b) => b.content || "").join(" ")}
+          onClose={() => setFigureModalFor(null)}
+          onInsert={(html, fig) => {
+            if (figureModalFor === "__new__") setBlocks([...blocks, { id: crypto.randomUUID(), type: "figure", content: html, fig }]);
+            else updateBlock(figureModalFor, { content: html, fig });
           }}
         />
       )}

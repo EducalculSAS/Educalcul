@@ -6,6 +6,8 @@ import TableEditorModal from "./TableEditorModal";
 import GraphEditorModal from "./GraphEditorModal";
 import SpecialBlockEditorModal from "./SpecialBlockEditorModal";
 import { decodeJsxSpec } from "@/lib/jsxFigure";
+import EduFigEditor from "./EduFigEditor";
+import { findEduFigs } from "@/lib/figures/render";
 
 const FIGURE_RE = /<figure class="course-figure course-figure-jsx">[\s\S]*?<\/figure>/g;
 
@@ -39,7 +41,10 @@ export default function ContentInsertToolbar({
   const [showGraph, setShowGraph] = useState(false);
   const [showFigure, setShowFigure] = useState(false);
   const [editing, setEditing] = useState<number | null>(null);
+  const [showEduFig, setShowEduFig] = useState(false);
+  const [editingEdu, setEditingEdu] = useState<number | null>(null);
   const figures = useMemo(() => (content ? findFigures(content) : []), [content]);
+  const eduFigs = useMemo(() => (content ? findEduFigs(content) : []), [content]);
   const editedFigure = editing !== null ? figures[editing] : undefined;
 
   return (
@@ -61,11 +66,19 @@ export default function ContentInsertToolbar({
         </button>
         <button
           type="button"
-          onClick={() => setShowFigure(true)}
-          className="px-2 py-1 text-xs rounded-lg border border-[rgba(197,161,72,0.3)] text-gray-600 hover:bg-amber-50 flex items-center gap-1 font-medium"
+          onClick={() => setShowEduFig(true)}
+          className="px-2 py-1 text-xs rounded-lg border border-[var(--greek-blue)] bg-[var(--greek-blue)] text-white hover:opacity-90 flex items-center gap-1 font-semibold"
         >
           <Shapes size={12} /> Figure
         </button>
+        {eduFigs.map((f, index) => (
+          <span key={`edu-${index}`} className="inline-flex items-center gap-1 pl-2 pr-1 py-0.5 text-[11px] rounded-lg bg-blue-50 border border-blue-200 text-gray-600">
+            Figure {index + 1}{f.fig.caption ? ` : ${f.fig.caption.slice(0, 24)}` : ""}
+            <button type="button" aria-label="Modifier la figure" className="p-0.5 hover:text-blue-600" onClick={() => setEditingEdu(index)}><Pencil size={11} /></button>
+            <button type="button" aria-label="Retirer la figure" className="p-0.5 hover:text-red-600" onClick={() => content && onReplace?.(content.replace(f.html, ""))}><X size={11} /></button>
+          </span>
+        ))}
+
         {figures.map((figure, index) => (
           <span key={index} className="inline-flex items-center gap-1 pl-2 pr-1 py-0.5 text-[11px] rounded-lg bg-amber-50 border border-[rgba(197,161,72,0.3)] text-gray-600">
             Figure {index + 1}{figure.caption ? ` : ${figure.caption.slice(0, 24)}` : ""}
@@ -99,6 +112,15 @@ export default function ContentInsertToolbar({
           onlyFigure
           onClose={() => setShowFigure(false)}
           onInsert={(html) => onInsert(html)}
+        />
+      )}
+      {showEduFig && <EduFigEditor statement={content} onClose={() => setShowEduFig(false)} onInsert={(html) => onInsert(html)} />}
+      {editingEdu !== null && eduFigs[editingEdu] && (
+        <EduFigEditor
+          initial={eduFigs[editingEdu].fig}
+          statement={content}
+          onClose={() => setEditingEdu(null)}
+          onInsert={(html) => content && onReplace?.(content.replace(eduFigs[editingEdu].html, html))}
         />
       )}
       {editedFigure && (

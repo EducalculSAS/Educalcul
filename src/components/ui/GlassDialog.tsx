@@ -16,7 +16,8 @@ export default function GlassDialog({
   onClose: () => void;
   children: ReactNode;
   footer?: ReactNode;
-  wide?: boolean;
+  /** true : large ; "xl" : très large (éditeurs avec aperçu). */
+  wide?: boolean | "xl";
 }) {
   const titleId = useId();
   useEffect(() => {
@@ -39,7 +40,7 @@ export default function GlassDialog({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={`dialog-enter w-full ${wide ? "sm:max-w-2xl" : "sm:max-w-lg"} max-h-[92dvh] flex flex-col glass-panel rounded-t-3xl sm:rounded-3xl backdrop-blur-[32px] backdrop-saturate-[1.4]`}
+        className={`dialog-enter w-full ${wide === "xl" ? "sm:max-w-5xl" : wide ? "sm:max-w-2xl" : "sm:max-w-lg"} max-h-[92dvh] flex flex-col glass-panel rounded-t-3xl sm:rounded-3xl backdrop-blur-[32px] backdrop-saturate-[1.4]`}
       >
         <div className="flex items-center justify-between gap-4 px-6 pt-5 pb-3">
           <h2 id={titleId} className="font-[family-name:var(--font-display)] font-bold text-lg text-[var(--greek-blue)]">{title}</h2>

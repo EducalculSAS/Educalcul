@@ -568,6 +568,8 @@ function blockPlainText(block: StructuredCourseBlock): string {
         ...block.points.map(structuredRichTextToPlainText),
         ...block.values.map(structuredRichTextToPlainText),
       ].join(" ");
+    case "edufig":
+      return block.fig.caption ?? "";
     case "graph":
     case "figure":
     case "shape":

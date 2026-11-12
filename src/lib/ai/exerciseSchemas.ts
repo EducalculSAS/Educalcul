@@ -1,4 +1,4 @@
-import { noExtra, JsonSchema, richText, tableBlock, signTableBlock, variationTableBlock, graphBlock, figureBlock, optionalRichText } from "./blockSchemas";
+import { noExtra, JsonSchema, richText, tableBlock, signTableBlock, variationTableBlock, graphBlock, figureBlock, edufigBlock, optionalRichText } from "./blockSchemas";
 export type JsonSchemaContract = {
   name: string;
   description: string;
@@ -7,7 +7,7 @@ export type JsonSchemaContract = {
 
 
 export const learningResourceBlock: JsonSchema = {
-  oneOf: [tableBlock, signTableBlock, variationTableBlock, graphBlock, figureBlock],
+  oneOf: [tableBlock, signTableBlock, variationTableBlock, graphBlock, edufigBlock, figureBlock],
 };
 
 

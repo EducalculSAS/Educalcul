@@ -24,6 +24,7 @@ import { CONTACT_EMAIL, FOUNDERS, LEGAL_NAME, ORG_ID, ORG_REF, SIREN } from "@/l
 import SeasonalDecor from "@/components/SeasonalDecor";
 import PasswordRecoveryRedirect from "@/components/PasswordRecoveryRedirect";
 import JsxFigureEnhancer from "@/components/JsxFigureEnhancer";
+import EduFigEnhancer from "@/components/figures/EduFigEnhancer";
 import "@fontsource/opendyslexic/400.css";
 import "@fontsource/opendyslexic/700.css";
 import NavProgress from "@/components/NavProgress";
@@ -198,6 +199,7 @@ export default function RootLayout({
             <SeasonalDecor />
         <PasswordRecoveryRedirect />
             <JsxFigureEnhancer />
+            <EduFigEnhancer />
             <NavProgress />
           </ConfirmProvider>
         </ToastProvider>

@@ -499,6 +499,17 @@ export const figureArc: JsonSchema = {
 };
 
 
+/** Figure EduFig (src/lib/figures) : la description JSON est passée en chaîne, le moteur la valide et la dessine. */
+export const edufigBlock: JsonSchema = {
+  type: "object",
+  properties: {
+    type: { type: "string", enum: ["edufig"] },
+    fig_json: { type: "string", minLength: 10, maxLength: 6000 },
+  },
+  required: ["type", "fig_json"],
+  ...noExtra,
+};
+
 export const figureBlock: JsonSchema = {
   type: "object",
   properties: {
