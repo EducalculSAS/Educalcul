@@ -3463,7 +3463,7 @@ html[data-shield] main :is(input, textarea, [contenteditable="true"]) { -webkit-
 .content-watermark {
   position: fixed; inset: 0; z-index: 40; pointer-events: none; overflow: hidden;
   display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 120px; align-items: center; justify-items: center;
-  transform: rotate(-18deg) scale(1.35); opacity: 0.055;
+  transform: rotate(-18deg) scale(1.35); opacity: 0.016; /* invisible à la lecture ; ressort d'une capture dès qu'on pousse le contraste */
 }
 .content-watermark > span::before { content: var(--wm); font-size: 13px; font-weight: 700; white-space: nowrap; color: var(--greek-blue); }
 html[data-theme="dark"] .content-watermark > span::before { color: #fff; }

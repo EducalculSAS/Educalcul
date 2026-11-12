@@ -10,10 +10,13 @@ function flatten(text: string): string {
   return text
     .normalize("NFD").replace(/\p{Diacritic}/gu, "")
     .toLowerCase()
-    .replace(/[0@]/g, (c) => (c === "0" ? "o" : "a"))
-    .replace(/[1!|]/g, "i").replace(/3/g, "e").replace(/\$/g, "s")
-    .replace(/(.)\1{2,}/g, "$1"); // « abrutiiii » → « abruti »
+    .replace(/[0@4]/g, (c) => (c === "0" ? "o" : "a"))
+    .replace(/[1|]/g, "i").replace(/(?<=[a-z])!(?=[a-z])/g, "i") // un « ! » en fin de phrase reste de la ponctuation
+    .replace(/3/g, "e").replace(/[$5]/g, "s").replace(/7/g, "t");
 }
+
+/** Lettres répétées ramenées à une seule (« nigggggaa » → « niga », « connnard » → « conard ») : sert à comparer mot à mot. */
+const squeeze = (s: string) => s.replace(/(.)\1+/g, "$1");
 
 const INSULTS = [
   "connard", "connasse", "conard", "conasse", "con", "conne", "salope", "salaud", "pute", "putain", "encule", "enculer",
@@ -21,8 +24,28 @@ const INSULTS = [
   "cretine", "idiot", "idiote", "imbecile", "tocard", "bouffon", "bouffonne", "pd", "pede", "tapette", "gouine",
   "negre", "bougnoule", "youpin", "sale arabe", "sale noir", "sale juif", "sale blanc", "grosse vache", "gros porc",
   "suicide toi", "va mourir", "creve", "bite", "couille", "chatte", "cul", "sexe", "porno", "nude", "nudes",
+  "nigga", "niga", "nigger", "negro", "negresse", "bamboula", "bicot", "chinetoque", "raton", "feuj", "youtre",
+  "tarlouze", "tafiole", "pedale", "travelo", "trisomique", "mongol", "mongolien", "attarde", "handicape de merde",
+  "pouffiasse", "petasse", "grognasse", "trainee", "catin", "fils de pute", "nique ta mere", "ta mere la pute", "va te faire foutre",
+  "branleur", "branleuse", "trou du cul", "trouduc", "couillon", "chier", "chiant", "bordel", "zob", "teub", "queue", "sucer", "suce",
+  "fuck", "fucking", "shit", "bitch", "asshole", "dick", "pussy", "whore", "slut", "cunt", "faggot", "kys",
 ];
-const INSULT_RE = new RegExp(`(^|[^a-z])(${INSULTS.map((w) => w.replace(/ /g, "\\s+")).join("|")})s?($|[^a-z])`);
+/** Lettres isolées séparées pour passer le filtre (« c.o.n.n.a.r.d », « s a l o p e ») : on les recolle. */
+const unspace = (s: string) => s.replace(/(?<![a-z])(?:[a-z][\s._*\-]+){2,}[a-z](?![a-z])/g, (m) => m.replace(/[\s._*\-]+/g, ""));
+const pattern = (words: string[]) => new RegExp(`(^|[^a-z])(${words.map((w) => w.replace(/ /g, "\\s+")).join("|")})s?($|[^a-z])`);
+const INSULT_RE = pattern(INSULTS);
+/** Les mêmes mots, lettres doublées retirées : comparés au texte lui aussi « resserré ». */
+// « niger » (forme resserrée de l'insulte) est aussi un pays : il est traité à part, avec ses lettres étirées.
+const INSULT_SQUEEZED_RE = pattern([...new Set(INSULTS.map(squeeze))].filter((w) => w !== "niger"));
+const STRETCHED_RE = /(^|[^a-z])n+i+g{2,}(a+|e+r+)s?($|[^a-z])/;
+
+/** Un mot interdit s'y trouve-t-il, écrit normalement, avec des lettres étirées ou des séparateurs entre les lettres ? */
+function hasInsult(flat: string): boolean {
+  const found = (t: string) => INSULT_RE.test(t) || STRETCHED_RE.test(t) || INSULT_SQUEEZED_RE.test(squeeze(t));
+  if (found(flat)) return true;
+  const glued = unspace(flat);
+  return glued !== flat && found(glued);
+}
 
 const EMAIL_RE = /[a-z0-9._%+-]+\s*(@|\(at\)|\[at\]|\barobase\b)\s*[a-z0-9.-]+\s*(\.|\bpoint\b)\s*[a-z]{2,}/i;
 const URL_RE = /(https?:\/\/|www\.)\S+|\b[a-z0-9-]{2,}\.(com|fr|net|org|io|gg|me|tv|app|xyz|be|ch|co)\b/i;
@@ -39,7 +62,7 @@ export function forumTextIssue(text: string): ForumFilterIssue | null {
   if (!text) return null;
   const flat = flatten(text);
   if (EMAIL_RE.test(text) || URL_RE.test(text) || PHONE_RE.test(text) || SOCIAL_RE.test(flat) || HANDLE_RE.test(text) || MEETUP_RE.test(flat)) return "contact";
-  if (INSULT_RE.test(flat)) return "insulte";
+  if (hasInsult(flat)) return "insulte";
   return null;
 }
 

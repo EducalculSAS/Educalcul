@@ -1,5 +1,6 @@
 "use client";
 
+import DashboardHero from "@/components/DashboardHero";
 import Emblem3D from "@/components/Emblem3D";
 import SectionTitle from "@/components/SectionTitle";
 import GlassSwitch from "@/components/ui/GlassSwitch";
@@ -9,10 +10,8 @@ import { AccessibilityCard } from "@/components/AccessibilityPanel";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useRef, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
-import { Shield, Mail, CheckCircle, AlertCircle, Trash2, Camera } from "lucide-react";
-import { getNameColor } from "@/lib/badgeStyles";
+import { Shield, Mail, CheckCircle, AlertCircle, Trash2 } from "lucide-react";
 import { updateMyProfile } from "@/lib/updateMyProfile";
-import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { getSimpleLevelLabel } from "@/lib/constants";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
@@ -117,41 +116,18 @@ export default function ChildProfileSettings({
 
   return (
     <>
-      {message && (
-        <div className={`p-4 rounded-xl flex items-center gap-3 text-sm font-medium mb-6 ${message.type === "success" ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
-          {message.type === "success" ? <CheckCircle className="w-5 h-5 shrink-0" /> : <AlertCircle className="w-5 h-5 shrink-0" />}
-          {message.text}
-          <button className="ml-auto font-bold text-lg leading-none" onClick={() => setMessage(null)} aria-label="Fermer le message">×</button>
-        </div>
-      )}
-
-      {/* ── Avatar + identité ── */}
-      <div className="bg-white rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] overflow-hidden mb-6">
-        <div className="h-24 bg-[var(--greek-blue)] relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "repeating-linear-gradient(45deg,rgba(255,255,255,0.05) 0,rgba(255,255,255,0.05) 1px,transparent 0,transparent 50%)", backgroundSize: "12px 12px" }} />
-        </div>
-        <div className="relative -mt-12 flex flex-col items-center gap-3 px-6 pb-6 text-center">
-          <div className="relative">
-            <AvatarWithBorder avatar={avatar} equippedBorder={user.equipped_border} name={user.first_name || "?"} size="xl" />
-            <button
-              type="button"
-              onClick={() => setAvatarPickerOpen(v => !v)}
-              className="absolute bottom-1 right-1 w-8 h-8 rounded-full flex items-center justify-center cursor-pointer shadow-lg transition-transform hover:scale-110"
-              style={{ background: "var(--greek-blue)" }}
-              aria-label="Choisir un avatar"
-            >
-              <Camera className="w-4 h-4 text-white" />
-            </button>
-          </div>
-          <div>
-            <h2 className={`text-2xl font-bold ${getNameColor(user.name_color || "default").cls}`}>{user.first_name} {user.last_name}</h2>
-            <p className="text-sm font-bold flex items-center justify-center gap-1.5" style={{ color: "var(--greek-gold)" }}>
-              <Shield className="w-4 h-4" />{user.child_username}
-            </p>
-          </div>
-
-          {avatarPickerOpen && (
-            <div className="mt-2 w-full max-w-sm">
+      <DashboardHero
+        greeting="Mon profil"
+        name={user.first_name || user.child_username || "Élève"}
+        avatar={avatar}
+        equippedBorder={user.equipped_border}
+        nameColor={user.name_color}
+        pill={user.grade_level ? getSimpleLevelLabel(user.grade_level) : "Élève"}
+        tagline={user.child_username ? `@${user.child_username}` : "Gère tes informations et tes réglages."}
+        onEditAvatar={() => setAvatarPickerOpen((v) => !v)}
+        below={avatarPickerOpen && (
+          <div className="bg-white rounded-[20px] p-5 max-w-md text-[var(--greek-blue)]">
+            <p className="text-sm font-bold mb-3">Choisis ta photo de profil</p>
               <AvatarPicker
                 value={avatar}
                 columns={4}
@@ -164,10 +140,17 @@ export default function ChildProfileSettings({
                   setMessage(r.ok ? { type: "success", text: "Avatar mis à jour." } : { type: "error", text: r.error || "Échec." });
                 }}
               />
-            </div>
-          )}
+          </div>
+        )}
+      />
+      <div className="container mx-auto px-4 pb-16 max-w-5xl" data-tour="profile">
+      {message && (
+        <div className={`p-4 rounded-xl flex items-center gap-3 text-sm font-medium mb-6 ${message.type === "success" ? "bg-green-50 text-green-700 border border-green-200" : "bg-red-50 text-red-700 border border-red-200"}`}>
+          {message.type === "success" ? <CheckCircle className="w-5 h-5 shrink-0" /> : <AlertCircle className="w-5 h-5 shrink-0" />}
+          {message.text}
+          <button className="ml-auto font-bold text-lg leading-none" onClick={() => setMessage(null)} aria-label="Fermer le message">×</button>
         </div>
-      </div>
+      )}
 
       {/* ── Où j'en suis ── */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-6">
@@ -292,6 +275,7 @@ export default function ChildProfileSettings({
         <UserSessionsList />
       </div>
 
+      </div>
     </>
   );
 }

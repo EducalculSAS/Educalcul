@@ -1,16 +1,16 @@
 "use client";
 
+import DashboardHero from "@/components/DashboardHero";
 import SectionTitle from "@/components/SectionTitle";
 import GlassSwitch from "@/components/ui/GlassSwitch";
 import LoaderDots from "@/components/LoaderDots";
 import ThemeToggle from "@/components/ThemeToggle";
 import ReplayTourCard from "@/components/tour/ReplayTourCard";
-import AvatarWithBorder from "@/components/AvatarWithBorder";
 import AvatarPicker from "@/components/AvatarPicker";
 import { useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { useRouter } from "next/navigation";
-import { Lock, Mail, Save, AlertCircle, CheckCircle, Trash2, Camera, Phone } from "lucide-react";
+import { Lock, Mail, Save, AlertCircle, CheckCircle, Trash2, Phone } from "lucide-react";
 import { validatePassword } from "@/lib/validation";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import TwoFactorToggle from "@/components/TwoFactorToggle";
@@ -282,6 +282,21 @@ export default function ParentProfileSettings({
 
   return (
     <>
+      <DashboardHero
+        greeting="Mon profil"
+        name={formData.firstName || "Parent"}
+        avatar={formData.avatar}
+        equippedBorder={equippedBorder}
+        pill="Parent"
+        tagline="Vos informations, votre sécurité et vos alertes."
+        onEditAvatar={() => setAvatarPickerOpen((v) => !v)}
+        below={avatarPickerOpen && (
+          <div className="bg-white rounded-[20px] p-5 max-w-md text-[var(--greek-blue)]">
+            <p className="text-sm font-bold mb-3">Choisissez votre photo de profil</p>
+            <AvatarPicker value={formData.avatar} onChange={handleAvatarChange} disabled={saving} columns={4} />
+          </div>
+        )}
+      />
       <div className="container mx-auto px-4 pb-12 max-w-4xl" data-tour="profile">
         {message && (
           <div
@@ -304,32 +319,6 @@ export default function ParentProfileSettings({
             <SectionTitle emblem="profile" divider>Informations personnelles</SectionTitle>
 
             <form onSubmit={handleProfileUpdate} className="space-y-4">
-              <div className="flex flex-col items-center mb-6">
-                <div className="relative mb-3">
-                  <AvatarWithBorder
-                    avatar={formData.avatar}
-                    equippedBorder={equippedBorder}
-                    name={`${formData.firstName} ${formData.lastName}`}
-                    size="xl"
-                  />
-                  <span className="absolute -bottom-1 -right-1">
-                    <GlassIconButton
-                      icon={Camera}
-                      color="navy"
-                      onClick={() => setAvatarPickerOpen((v) => !v)}
-                      aria-label="Choisir un avatar"
-                    />
-                  </span>
-                </div>
-                {avatarPickerOpen ? (
-                  <div className="w-full mt-2">
-                    <AvatarPicker value={formData.avatar} onChange={handleAvatarChange} disabled={saving} columns={4} />
-                  </div>
-                ) : (
-                  <p className="text-sm text-gray-500">Touchez l&apos;icône pour choisir un avatar</p>
-                )}
-              </div>
-
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">

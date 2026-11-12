@@ -1,11 +1,10 @@
 import Emblem3D from "@/components/Emblem3D";
-import Link from "@/components/AppLink";
 import { redirect } from "next/navigation";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { getServerUser } from "@/lib/supabase/server";
 import { USER_SELECT_COLUMNS } from "@/lib/userColumns";
 import { getCatalogLevelLabel } from "@/lib/constants";
-import { ArrowRight, Play } from "lucide-react";
+import { Play } from "lucide-react";
 import DashboardTile from "@/components/DashboardTile";
 import DashboardHero from "@/components/DashboardHero";
 import BadgeEmblem from "@/components/BadgeEmblem";
@@ -17,7 +16,6 @@ import MiniCalendarWidget from "@/components/calendar/MiniCalendarWidget";
 import GlassButton from "@/components/ui/GlassButton";
 import GoalCard from "@/components/child/GoalCard";
 import { daysBetween, getChildPrefs, parisDay, studentSummary } from "@/lib/studentStats";
-import { examInfo } from "@/lib/examPlan";
 import { dueItems, getSrs } from "@/lib/srs";
 import { learningPath } from "@/lib/learningPath";
 
@@ -93,9 +91,7 @@ export default async function ChildDashboard() {
   ]);
   const dueReviews = dueItems(srsState, 1000).length;
   const prefs = await getChildPrefs(userData.id);
-  const exam = examInfo(userData.grade_level);
   const examDays = prefs.examDate ? daysBetween(parisDay(), prefs.examDate) : null;
-  const showExam = exam.key !== "generic" || (examDays !== null && examDays >= 0);
 
   // Trophées : les badges réellement obtenus (du plus récent au plus ancien) et, par catégorie, le prochain à viser
   // avec l'avancement de l'élève — mêmes compteurs que l'attribution des badges (api/child/check-badges).
@@ -140,12 +136,15 @@ export default async function ChildDashboard() {
 
       <div className="container mx-auto max-w-6xl px-4">
         {/* Navigation */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-5 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5 mb-10">
           <DashboardTile href="/child/cours" emblem="book" label="Mes cours" desc="Découvre de nouvelles leçons" action="Commencer" />
           <DashboardTile href="/child/exercises" emblem="pencil" label="Exercices" desc="Entraîne-toi et progresse" action="S'entraîner" />
           <DashboardTile href="/child/quiz" emblem="quiz" label="Quiz" desc="Teste tes connaissances" action="Jouer" />
           <DashboardTile href="/child/minigames" emblem="gamepad" label="Mini-jeux" desc="Défie-toi et grimpe au classement" action="Jouer" />
+          <DashboardTile href="/child/revisions" emblem="clock" label="À revoir" desc={dueReviews > 0 ? `${dueReviews} question${dueReviews > 1 ? "s" : ""} à revoir aujourd'hui` : "Retravaille tes erreurs au bon moment"} action="Réviser" />
+          <DashboardTile href="/child/examens" emblem="cap" label="Examens" desc={examDays !== null && examDays >= 0 ? `J-${examDays} : ton parcours de révision` : "Prépare un contrôle ou un examen"} action="Préparer" />
           <DashboardTile href="/child/forum" emblem="chat" label="Forum" desc="Pose tes questions" action="Y aller" />
+          <DashboardTile href="/child/badges" emblem="trophy" label="Trophées" desc="Badges, contours et titres" action="Voir" />
         </div>
 
         <GoalCard
@@ -157,21 +156,6 @@ export default async function ChildDashboard() {
           weeklyTarget={summary.weeklyTarget}
           dueReviews={dueReviews}
         />
-
-        {showExam && (
-          <Link href="/child/examens" className="group block mb-8">
-            <div className="bg-[var(--greek-blue)] text-white rounded-[20px] p-5 shadow-sm flex items-center justify-between gap-4 hover:shadow-xl transition-all">
-              <div className="flex items-center gap-4 min-w-0">
-                <span className="shrink-0"><Emblem3D kind="cap" size={48} float={false} onDark /></span>
-                <div className="min-w-0">
-                  <p className="font-bold text-lg leading-tight">{exam.label}</p>
-                  <p className="text-sm opacity-80">{examDays !== null && examDays >= 0 ? `J-${examDays} · ton parcours semaine par semaine` : "Choisis la date et prépare-toi semaine par semaine"}</p>
-                </div>
-              </div>
-              <ArrowRight className="w-5 h-5 shrink-0 group-hover:translate-x-1 transition-transform" />
-            </div>
-          </Link>
-        )}
 
         {/* Parcours recommandé */}
         {path.length > 0 && (

@@ -52,7 +52,7 @@ export default function LevelPicker({ align = "center" }: { align?: "center" | "
   };
 
   return (
-    <div className={`flex items-center gap-3 flex-wrap ${align === "center" ? "justify-center mb-10" : "justify-start"}`}>
+    <div className={`flex items-center gap-3 flex-wrap max-w-full min-w-0 ${align === "center" ? "justify-center mb-10" : "justify-start"}`}>
       <label htmlFor="my-level" className="flex items-center gap-2 text-sm font-semibold text-white/70 font-[family-name:var(--font-display)]">
         <GraduationCap size={18} style={{ color: "var(--greek-gold)" }} />
         Mon niveau
@@ -61,7 +61,7 @@ export default function LevelPicker({ align = "center" }: { align?: "center" | "
         id="my-level"
         value={myLevel}
         onChange={(e) => goToLevel(e.target.value)}
-        className="px-4 py-2 rounded-xl text-sm font-bold bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[var(--greek-gold)]/50"
+        className="min-w-0 max-w-full px-4 py-2 rounded-xl text-sm font-bold bg-white/10 border border-white/20 text-white focus:outline-none focus:ring-2 focus:ring-[var(--greek-gold)]/50"
         style={{ colorScheme: "dark" }}
       >
         <option value="" disabled>Choisir mon niveau...</option>

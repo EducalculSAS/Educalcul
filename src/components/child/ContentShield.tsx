@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { EyeOff } from "lucide-react";
 import { getMyProfile } from "@/lib/updateMyProfile";
 
 /**
@@ -11,8 +10,8 @@ import { getMyProfile } from "@/lib/updateMyProfile";
  * Ce qui est réellement empêché : copier, couper, glisser le texte ou les images, ouvrir le menu contextuel, imprimer
  * ou enregistrer la page, et coller une réponse toute faite dans un champ d'exercice ou de quiz.
  * Ce qui est seulement découragé : la capture d'écran. Aucun site web ne peut l'interdire (ni la photo prise avec un
- * téléphone). On la rend moins utile et traçable : le contenu est masqué dès que la fenêtre perd le focus ou que la
- * touche « Impr. écran » est pressée, et un filigrane discret au nom de l'élève couvre la page.
+ * téléphone), ni savoir qu'elle a lieu. On la rend traçable : un filigrane au nom de l'élève couvre la page, trop pâle
+ * pour être vu à la lecture, mais présent dans toute capture (il ressort dès qu'on pousse le contraste de l'image).
  *
  * La sélection du texte reste possible dans les cours : elle sert à demander une explication à Calia.
  * Monté dans le layout élève ; inactif hors des pages de contenu et pour un admin qui prévisualise.
@@ -28,7 +27,6 @@ export default function ContentShield() {
   const active = CONTENT_PATH.test(pathname);
   const answers = ANSWER_PATH.test(pathname);
   const [who, setWho] = useState<string | null>(null);
-  const [hidden, setHidden] = useState(false);
 
   // Qui regarde : seul un élève est concerné ; son pseudo sert au filigrane.
   useEffect(() => {
@@ -58,19 +56,7 @@ export default function ContentShield() {
     const onKey = (e: KeyboardEvent) => {
       const k = e.key.toLowerCase();
       if ((e.ctrlKey || e.metaKey) && (k === "p" || k === "s" || (k === "c" && !isField(e.target)))) e.preventDefault();
-      if (e.key === "PrintScreen") {
-        setHidden(true);
-        // Le presse-papiers est écrasé quand le navigateur le permet (la capture y est souvent déposée).
-        void navigator.clipboard?.writeText("").catch(() => undefined);
-        setTimeout(() => setHidden(false), 1500);
-      }
     };
-    // Fenêtre quittée (outil de capture, autre onglet, autre application) : contenu masqué jusqu'au retour.
-    // Un clic dans une vidéo intégrée fait aussi « perdre le focus » : on ne masque pas dans ce cas.
-    const onBlur = () => { setTimeout(() => { if (document.activeElement?.tagName !== "IFRAME") setHidden(true); }, 0); };
-    const onFocus = () => setHidden(false);
-    const onVisibility = () => setHidden(document.visibilityState !== "visible");
-
     document.addEventListener("copy", onCopy, true);
     document.addEventListener("cut", onCopy, true);
     document.addEventListener("paste", onPaste, true);
@@ -79,12 +65,8 @@ export default function ContentShield() {
     document.addEventListener("contextmenu", onContext, true);
     document.addEventListener("keydown", onKey, true);
     document.addEventListener("keyup", onKey, true);
-    document.addEventListener("visibilitychange", onVisibility);
-    window.addEventListener("blur", onBlur);
-    window.addEventListener("focus", onFocus);
     return () => {
       root.removeAttribute("data-shield");
-      setHidden(false);
       document.removeEventListener("copy", onCopy, true);
       document.removeEventListener("cut", onCopy, true);
       document.removeEventListener("paste", onPaste, true);
@@ -93,9 +75,6 @@ export default function ContentShield() {
       document.removeEventListener("contextmenu", onContext, true);
       document.removeEventListener("keydown", onKey, true);
       document.removeEventListener("keyup", onKey, true);
-      document.removeEventListener("visibilitychange", onVisibility);
-      window.removeEventListener("blur", onBlur);
-      window.removeEventListener("focus", onFocus);
     };
   }, [on, answers]);
 
@@ -106,13 +85,6 @@ export default function ContentShield() {
       <div aria-hidden="true" className="content-watermark" style={{ ["--wm" as string]: `"${who!.replace(/["\\]/g, "")}"` }}>
         {Array.from({ length: 48 }).map((_, i) => <span key={i} />)}
       </div>
-      {hidden && (
-        <div role="status" className="content-veil">
-          <EyeOff className="w-8 h-8 text-[var(--greek-gold)]" aria-hidden="true" />
-          <p className="font-bold text-white">Contenu masqué</p>
-          <p className="text-sm text-white/70">Reviens sur la page pour continuer.</p>
-        </div>
-      )}
     </>
   );
 }

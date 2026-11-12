@@ -24,3 +24,22 @@ describe("filtre du forum", () => {
     }
   });
 });
+
+describe("forumTextIssue : contournements", () => {
+  it.each(["nigggggggggggaa", "niggaaaa", "N1GGA", "connnnard", "saloooope", "c o n n a r d", "s.a.l.o.p.e", "fils   de pute", "p u t e", "FUUUUCK", "b1tch"])("refuse « %s »", (t) => {
+    expect(forumTextIssue(`tu es ${t} !`)).toBe("insulte");
+  });
+
+  it.each([
+    "Je n'ai pas compris la question 3 de l'exercice.",
+    "Il faut additionner les fractions, puis simplifier.",
+    "Le Niger est un pays d'Afrique ?",
+    "La courbe passe par le point A, c'est une droite.",
+    "On calcule 2 + 2 = 4 et on a fini.",
+    "Quelle est la suite de 1, 2, 4, 8 ?",
+    "Mon professeur a dit que c'était un théorème important, attention.",
+    "Je suis en retard sur mes devoirs.",
+  ])("laisse passer « %s »", (t) => {
+    expect(forumTextIssue(t)).toBeNull();
+  });
+});

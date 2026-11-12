@@ -1,6 +1,5 @@
 import { redirect } from "next/navigation";
 import { getLiveSubscription } from "@/lib/subscriptionLive";
-import PageHero from "@/components/PageHero";
 
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -37,8 +36,6 @@ export default async function ParentProfilePage() {
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
-      <PageHero emblem="profile" title="Mon profil" badge="Compte" subtitle="Gérez vos informations personnelles." width="4xl" />
-
       <ParentProfileSettings
         initialFormData={{
           firstName: profile.first_name || "",

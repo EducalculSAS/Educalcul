@@ -336,6 +336,12 @@ export default function Navbar() {
                         Quiz
                       </DropdownLink>
                     )}
+                    <DropdownLink href="/child/revisions" onClick={() => setIsOpen(false)}>
+                      À revoir
+                    </DropdownLink>
+                    <DropdownLink href="/child/examens" onClick={() => setIsOpen(false)}>
+                      Examens
+                    </DropdownLink>
                     {features.isOn("minigames") && (
                       <DropdownLink href="/child/minigames" onClick={() => setIsOpen(false)}>
                         Mini-jeux

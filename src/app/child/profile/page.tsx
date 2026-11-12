@@ -1,7 +1,6 @@
 import StateScreen from "@/components/StateScreen";
 import { redirect } from "next/navigation";
 import { realEmail } from "@/lib/childEmail";
-import PageHero from "@/components/PageHero";
 
 import { getServerUser, createSupabaseServerClient } from "@/lib/supabase/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
@@ -44,16 +43,11 @@ export default async function ChildProfilePage() {
 
   return (
     <div className="min-h-screen bg-[var(--greek-cream)]">
-      {/* Hero */}
-      <PageHero emblem="profile" title="Mon profil" badge="Compte" subtitle="Gère tes informations et suis ta progression." width="4xl" />
-
-      <div className="container mx-auto px-4 pb-16 max-w-5xl" data-tour="profile">
-        <ChildProfileSettings
+      <ChildProfileSettings
           user={userData}
           googleLinked={googleLinked}
           activityCounts={{ courses: coursesCount ?? 0, exercises: exercisesCount ?? 0, badges: badgesCount ?? 0, minigames: minigamesCount ?? 0 }}
         />
-      </div>
     </div>
   );
 }

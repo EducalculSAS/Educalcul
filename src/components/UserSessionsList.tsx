@@ -36,16 +36,22 @@ export default function UserSessionsList() {
 
   useEffect(() => { load(); }, []);
 
-  const revoke = async (id: string) => {
-    setRevoking(id);
+  // Un même appareil peut avoir laissé plusieurs lignes (navigation privée, cookies effacés, application installée) :
+  // on n'en montre qu'une, la plus récente, et la retirer retire toutes ses lignes.
+  const groups = new Map<string, Session[]>();
+  for (const s of sessions) {
+    const key = `${s.label || ""}|${s.user_agent || ""}`;
+    groups.set(key, [...(groups.get(key) || []), s]);
+  }
+  const devices = [...groups.values()].map((list) => ({ ...list[0], is_current: list.some((x) => x.is_current), ids: list.map((x) => x.id) }));
+
+  const revoke = async (ids: string[]) => {
+    setRevoking(ids[0]);
     try {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session) return;
-      const res = await fetch(`/api/user/sessions/${id}`, {
-        method: "DELETE",
-        headers: { Authorization: `Bearer ${session.access_token}` },
-      });
-      if (res.ok) setSessions((s) => s.filter((x) => x.id !== id));
+      const done = await Promise.all(ids.map((id) => fetch(`/api/user/sessions/${id}`, { method: "DELETE", headers: { Authorization: `Bearer ${session.access_token}` } }).then((r) => (r.ok ? id : null)).catch(() => null)));
+      setSessions((s) => s.filter((x) => !done.includes(x.id)));
     } finally {
       setRevoking(null);
     }
@@ -59,7 +65,7 @@ export default function UserSessionsList() {
       <SectionTitle emblem="lock">Appareils connectés</SectionTitle>
       {(
         <div className="space-y-2">
-          {sessions.map((s) => (
+          {devices.map((s) => (
             <div key={s.id} className="flex items-center justify-between px-3 py-2 rounded-lg bg-gray-50 border border-gray-200">
               <span className="flex items-center gap-2 text-sm text-gray-600">
                 <Smartphone className="w-4 h-4 shrink-0 text-gray-400" />
@@ -70,7 +76,7 @@ export default function UserSessionsList() {
                 </span>
               </span>
               {!s.is_current && (
-                <GlassIconButton icon={X} color="red" size="sm" onClick={() => revoke(s.id)} disabled={revoking === s.id} loading={revoking === s.id} aria-label="Déconnecter cet appareil" />
+                <GlassIconButton icon={X} color="red" size="sm" onClick={() => revoke(s.ids)} disabled={revoking === s.id} loading={revoking === s.id} aria-label="Déconnecter cet appareil" />
               )}
             </div>
           ))}

@@ -40,11 +40,19 @@ export default function TwoFactorSessions() {
 
   useEffect(() => { load(); }, []);
 
-  const revoke = async (id: number) => {
-    setRevoking(id);
+  // Une ligne par type d'appareil : chaque connexion validée en ajoutait une, d'où cinq fois « iPhone / iPad ».
+  const groups = new Map<string, Session[]>();
+  for (const s of sessions) groups.set(summarizeUA(s.user_agent), [...(groups.get(summarizeUA(s.user_agent)) || []), s]);
+  const devices = [...groups.values()].map((list) => {
+    const latest = [...list].sort((a, b) => (b.created_at || "").localeCompare(a.created_at || ""))[0];
+    return { ...latest, ids: list.map((x) => x.id) };
+  });
+
+  const revoke = async (ids: number[]) => {
+    setRevoking(ids[0]);
     try {
-      const res = await fetch(`/api/auth/2fa/sessions?id=${id}`, { method: "DELETE" });
-      if (res.ok) setSessions(s => s.filter(x => x.id !== id));
+      const done = await Promise.all(ids.map((id) => fetch(`/api/auth/2fa/sessions?id=${id}`, { method: "DELETE" }).then((r) => (r.ok ? id : null)).catch(() => null)));
+      setSessions((s) => s.filter((x) => !done.includes(x.id)));
     } finally {
       setRevoking(null);
     }
@@ -56,13 +64,13 @@ export default function TwoFactorSessions() {
     <div className="mt-4 pt-4 border-t border-[rgba(197,161,72,0.15)]">
       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Appareils de confiance</p>
       <div className="space-y-2">
-        {sessions.map(s => (
+        {devices.map(s => (
           <div key={s.id} className="flex items-center justify-between px-3 py-2 rounded-lg bg-gray-50 border border-gray-200">
             <span className="flex items-center gap-2 text-sm text-gray-600">
               <Smartphone className="w-4 h-4 shrink-0 text-gray-400" />
               {summarizeUA(s.user_agent)}{s.created_at && !Number.isNaN(Date.parse(s.created_at)) ? `, depuis le ${new Date(s.created_at).toLocaleDateString("fr-FR", { timeZone: "Europe/Paris" })}` : ""}
             </span>
-            <GlassIconButton icon={X} color="red" size="sm" onClick={() => revoke(s.id)} disabled={revoking === s.id} loading={revoking === s.id} aria-label="Révoquer cet appareil" />
+            <GlassIconButton icon={X} color="red" size="sm" onClick={() => revoke(s.ids)} disabled={revoking === s.id} loading={revoking === s.id} aria-label="Révoquer cet appareil" />
           </div>
         ))}
       </div>
