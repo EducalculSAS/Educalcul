@@ -72,7 +72,7 @@ const norm = (s: string | null | undefined) => (s ?? "").normalize("NFD").replac
 const readStored = () => { try { return localStorage.getItem(STORAGE_KEY); } catch { return null; } };
 const store = (v: string | null) => { try { if (v) localStorage.setItem(STORAGE_KEY, v); else localStorage.removeItem(STORAGE_KEY); } catch { /* stockage indisponible */ } };
 
-export default function ExerciseBatchModal({ onClose, defaultLevel = "3eme" }: { onClose: () => void; defaultLevel?: string }) {
+export default function ExerciseBatchModal({ onClose, defaultLevel = "3eme", initialBatchId }: { onClose: () => void; defaultLevel?: string; initialBatchId?: string }) {
   const [level, setLevel] = useState(defaultLevel);
   const [courses, setCourses] = useState<CourseRow[]>([]);
   const [selected, setSelected] = useState<Set<number>>(new Set());
@@ -85,11 +85,13 @@ export default function ExerciseBatchModal({ onClose, defaultLevel = "3eme" }: {
   const pollRef = useRef<number | null>(null);
 
   useEffect(() => {
-    setBatchId(readStored());
+    if (initialBatchId) store(initialBatchId);
+    setBatchId(initialBatchId ?? readStored());
     fetch("/api/admin/courses?status=all")
       .then((r) => r.json())
       .then((c) => setCourses(Array.isArray(c) ? c : []))
       .catch(() => setError("Impossible de charger les cours."));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const levelCourses = useMemo(
@@ -270,7 +272,7 @@ export default function ExerciseBatchModal({ onClose, defaultLevel = "3eme" }: {
                   <span className="text-sm font-semibold text-[var(--greek-blue)] truncate">{j.courseTitle}</span>
                   <span className="text-xs text-gray-500 shrink-0">· {j.styleLabel}</span>
                   <span className="ml-auto text-xs text-gray-500 truncate max-w-[45%]">
-                    {j.status === "error" ? j.error : j.status === "queued" ? "En file d'attente" : j.status === "cancelled" ? "Annulé" : j.status === "done" ? "Créé en brouillon" : j.message}
+                    {j.status === "error" ? j.error : j.status === "queued" ? (j.message || "En file d'attente") : j.status === "cancelled" ? "Annulé" : j.status === "done" ? "Créé en brouillon" : j.message}
                   </span>
                 </div>
                 {j.warnings?.length ? (

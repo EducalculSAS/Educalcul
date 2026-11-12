@@ -58,7 +58,32 @@ export async function POST(request: Request) {
 export async function GET(request: Request) {
   const admin = await requireRole(request, ["admin"]);
   if (!admin) return Response.json({ error: "Unauthorized" }, { status: 401 });
-  const batch = new URL(request.url).searchParams.get("batch");
+  const url = new URL(request.url);
+  // Résumé du lot le plus récent (pastille de l'admin) : un seul appel léger, sans le détail des exercices.
+  if (url.searchParams.get("summary")) {
+    const since = new Date(Date.now() - 24 * 3600_000).toISOString();
+    const { data: recent } = await supabaseAdmin
+      .from("content_generations")
+      .select("status, updated_at, params->>batchId")
+      .eq("kind", "exercise")
+      .eq("admin_id", admin.id)
+      .not("params->>batchId", "is", null)
+      .gt("updated_at", since)
+      .limit(2000);
+    const byBatch = new Map<string, { total: number; done: number; errors: number; active: number; last: string }>();
+    for (const r of (recent ?? []) as { status: string; updated_at: string; batchId: string }[]) {
+      const b = byBatch.get(r.batchId) ?? { total: 0, done: 0, errors: 0, active: 0, last: "" };
+      b.total += 1;
+      if (r.status === "done") b.done += 1;
+      else if (r.status === "error") b.errors += 1;
+      else if (["queued", "pending", "running"].includes(r.status)) b.active += 1;
+      if (r.updated_at > b.last) b.last = r.updated_at;
+      byBatch.set(r.batchId, b);
+    }
+    const latest = [...byBatch.entries()].sort((x, y) => (x[1].last < y[1].last ? 1 : -1))[0];
+    return Response.json(latest ? { batchId: latest[0], ...latest[1] } : null);
+  }
+  const batch = url.searchParams.get("batch");
   if (!batch) return Response.json({ error: "batch requis" }, { status: 400 });
   const { data, error } = await supabaseAdmin
     .from("content_generations")

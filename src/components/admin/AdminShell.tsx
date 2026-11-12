@@ -7,6 +7,7 @@ import AdminTotpSetupModal from "@/components/admin/AdminTotpSetupModal";
 import PresenceTracker from "@/components/child/PresenceTracker";
 import { ContentGenerationsProvider } from "@/contexts/ContentGenerationsContext";
 import ContentGenerationsWidget from "@/components/admin/ContentGenerationsWidget";
+import ExerciseBatchWidget from "@/components/admin/ExerciseBatchWidget";
 
 /** Coquille des pages admin. Identité, rôle, statut banni, session 2FA et état du TOTP sont vérifiés côté serveur
  * (src/app/admin/layout.tsx, et le proxy à chaque requête) : la coquille s'affiche donc directement, sans écran de
@@ -55,7 +56,11 @@ export default function AdminShell({
         <div className="flex-1 lg:ml-64 pt-14 lg:pt-6 px-4 md:px-6 lg:px-8 pb-8 transition-all duration-300 min-w-0 overflow-x-hidden">
           {children}
         </div>
-        <ContentGenerationsWidget />
+        {/* Pastilles en haut à droite : générations unitaires, et un lot d'exercices en une seule pastille. */}
+        <div className="fixed top-4 right-4 z-[1400] flex items-start gap-2">
+          <ExerciseBatchWidget />
+          <ContentGenerationsWidget />
+        </div>
       </div>
     </ContentGenerationsProvider>
   );

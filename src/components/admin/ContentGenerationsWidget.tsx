@@ -94,7 +94,7 @@ function GenerationRow({
 }
 
 /**
- * Pastille persistante en haut à droite, visible sur tout l'admin : liste
+ * Pastille persistante en haut à droite (conteneur dans AdminShell), visible sur tout l'admin : liste
  * les générations (cours, exercices, quiz) en cours ou tout juste finies,
  * même après un rechargement de page, puisque le travail tourne côté
  * serveur. Cliquer sur une ligne rouvre sa modale complète.
@@ -112,7 +112,7 @@ export default function ContentGenerationsWidget() {
 
   return (
     <>
-      <div className="fixed top-4 right-4 z-[1400]">
+      <div>
         <div className="relative">
           <GlassButton variant="outline" size="sm" onClick={() => setOpen((o) => !o)}>
             {active.length > 0 ? (

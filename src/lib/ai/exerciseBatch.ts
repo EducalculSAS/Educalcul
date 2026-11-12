@@ -11,9 +11,11 @@ import { normFolderName as norm } from "@/lib/folderNames";
  */
 
 export const MAX_BATCH_ATTEMPTS = 2;
+/** Nouveaux essais d'un exercice en échec, placés en fin de file. */
+export const MAX_RETRIES = 2;
 const STALE_MINUTES = 6;
 
-export type BatchParams = ExerciseGenerationParams & { batchId: string; courseTitle?: string; styleLabel?: string; attempts?: number; concurrency?: number };
+export type BatchParams = ExerciseGenerationParams & { batchId: string; courseTitle?: string; styleLabel?: string; attempts?: number; concurrency?: number; retries?: number; lastError?: string | null };
 
 interface FolderRow { id: number; name: string; parent_id: number | null; grade_level: string | null }
 
@@ -60,13 +62,18 @@ async function recoverStale() {
   for (const row of data ?? []) {
     const params = row.params as BatchParams;
     const attempts = (params.attempts ?? 0) + 1;
+    const retries = (params.retries ?? 0) + 1;
+    const now = new Date().toISOString();
+    // Interrompue deux fois au même endroit : on la remet en fin de file (nouvel essai), sinon on la reprend tout de suite.
+    const update =
+      attempts < MAX_BATCH_ATTEMPTS
+        ? { status: "queued", params: { ...params, attempts }, updated_at: now }
+        : retries <= MAX_RETRIES
+          ? { status: "queued", created_at: now, updated_at: now, params: { ...params, attempts: 0, retries, lastError: "Génération interrompue (délai maximal du serveur)." } }
+          : { status: "error", error: "Génération interrompue à chaque essai (délai maximal du serveur).", updated_at: now };
     await supabaseAdmin
       .from("content_generations")
-      .update(
-        attempts >= MAX_BATCH_ATTEMPTS
-          ? { status: "error", error: "Génération interrompue deux fois (délai maximal du serveur).", updated_at: new Date().toISOString() }
-          : { status: "queued", params: { ...params, attempts }, updated_at: new Date().toISOString() },
-      )
+      .update(update)
       .eq("id", row.id);
   }
 }
@@ -102,15 +109,27 @@ export async function processNextQueuedExercise(): Promise<boolean> {
   if (!item) return false;
   await runExerciseGeneration(item.id, item.params, item.admin_id);
 
-  // Les formats interactifs (association, mise en ordre, texte à trous) échouent parfois : l'exercice repart une fois
-  // en QCM plutôt que d'être perdu.
-  const { data: after } = await supabaseAdmin.from("content_generations").select("status, error").eq("id", item.id).maybeSingle();
-  const blockType = item.params.blockType ?? "standard";
-  if (after?.status === "error" && /aucune question/.test(after.error ?? "") && !["standard", "qcm"].includes(blockType)) {
-    await supabaseAdmin
-      .from("content_generations")
-      .update({ status: "queued", error: null, params: { ...item.params, blockType: "qcm" }, updated_at: new Date().toISOString() })
-      .eq("id", item.id);
+  // Échec : l'exercice repart EN FIN DE FILE (created_at remis à maintenant), au plus MAX_RETRIES fois, avec un format
+  // de plus en plus sûr (formats interactifs → QCM, puis réponse rédigée). Il n'est abandonné qu'après le dernier essai.
+  const { data: outcome } = await supabaseAdmin.from("content_generations").select("status, error").eq("id", item.id).maybeSingle();
+  if (outcome?.status === "error") {
+    const retries = (item.params.retries ?? 0) + 1;
+    if (retries <= MAX_RETRIES) {
+      const blockType = item.params.blockType ?? "standard";
+      const saferType = retries >= 2 || blockType === "qcm" || blockType === "standard" ? "standard" : "qcm";
+      const now = new Date().toISOString();
+      await supabaseAdmin
+        .from("content_generations")
+        .update({
+          status: "queued",
+          error: null,
+          created_at: now,
+          updated_at: now,
+          params: { ...item.params, retries, attempts: 0, blockType: saferType, lastError: outcome.error },
+          progress: { step: "outline", current: 0, total: 1, message: `Nouvel essai ${retries}/${MAX_RETRIES} en fin de file` },
+        })
+        .eq("id", item.id);
+    }
   }
   return true;
 }
@@ -134,6 +153,8 @@ export async function processForAWhile(budgetMs = 90_000): Promise<boolean> {
  * ~60 s puis s'arrête : l'horloge pg_cron (chaque minute) prend le relais. Renvoie le nombre de boucles lancées.
  */
 export async function pumpQueue(): Promise<number> {
+  // Générations tuées en route (délai maximal) : remises en file avant de compter le travail restant.
+  await recoverStale();
   const freshCutoff = new Date(Date.now() - 6 * 60_000).toISOString();
   const [{ data: oldest }, { count: running }] = await Promise.all([
     supabaseAdmin
