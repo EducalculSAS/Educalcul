@@ -17,6 +17,7 @@ import {
 import { compareFolderOrder } from "@/lib/contentOrder";
 import { DIFFICULTY_LABELS, normalizeDifficulty } from "@/lib/difficultyLevels";
 import ExerciseGeneratorModal, { ExerciseGenParams } from "@/components/admin/ExerciseGeneratorModal";
+import ExerciseBatchModal from "@/components/admin/ExerciseBatchModal";
 import ExerciseFromPhotoModal, { ExerciseFromPhotoParams } from "@/components/admin/ExerciseFromPhotoModal";
 import { useContentGenerations } from "@/contexts/ContentGenerationsContext";
 import { Page } from "@/components/admin/ExerciseBuilder";
@@ -26,7 +27,7 @@ import AdminBreadcrumbs from "@/components/admin/AdminBreadcrumbs";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { getAdminCache, setAdminCache, invalidateAdminCache } from "@/lib/adminCache";
-import { Plus, Search, X, FolderPlus, XCircle, GraduationCap, Sparkles, Camera, Upload } from "lucide-react";
+import { Plus, Search, X, FolderPlus, XCircle, GraduationCap, Sparkles, Camera, Upload, Layers } from "lucide-react";
 import ImportJsonModal from "@/components/admin/ImportJsonModal";
 import { SCHOOL_CYCLES, getLevelCycle, getEffectiveFolderLevel } from "@/lib/constants";
 import { importFromJSONFile } from "@/lib/jsonIO";
@@ -234,6 +235,7 @@ export default function AdminExercisesClient({
   // AI Generation state
   const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [isPhotoModalOpen, setIsPhotoModalOpen] = useState(false);
+  const [isBatchOpen, setIsBatchOpen] = useState(false);
   const [aiError, setAiError] = useState<string | null>(null);
   const { startGeneration, onContentCreated, generations, minimize } = useContentGenerations();
   const generationsRef = useRef(generations);
@@ -941,6 +943,10 @@ export default function AdminExercisesClient({
               <Sparkles size={18} />
               Générer avec IA
             </GlassButton>
+            <GlassButton size="sm" variant="navy" onClick={() => setIsBatchOpen(true)}>
+              <Layers size={18} />
+              Générer par lots
+            </GlassButton>
             <GlassButton size="sm" variant="navy" onClick={() => setIsPhotoModalOpen(true)}>
               <Camera size={18} />
               Depuis une photo
@@ -1034,6 +1040,18 @@ export default function AdminExercisesClient({
       )}
 
       {/* Modal AI Generator */}
+      {isBatchOpen && (
+        <ExerciseBatchModal
+          onClose={() => setIsBatchOpen(false)}
+          generationsRef={generationsRef}
+          defaultLevel={currentFolderLevel || "3eme"}
+          startOne={async (params) => {
+            const id = await startGeneration("exercise", params);
+            minimize();
+            return id;
+          }}
+        />
+      )}
       {isAiModalOpen && (
         <ExerciseGeneratorModal
           onGenerate={handleAiGenerate}

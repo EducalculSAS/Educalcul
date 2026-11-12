@@ -27,6 +27,8 @@ import {
 } from "@/lib/ai/pedagogy";
 import { runStructuredQualityGuard } from "@/lib/ai/qualityGuard";
 import { runPhotoExerciseGeneration } from "@/lib/exerciseFromPhoto";
+import { buildCourseLevelContext } from "@/lib/ai/courseContext";
+import { checkExerciseFigures } from "@/lib/figures/checkContent";
 
 const BATCH_SIZE = 2;
 
@@ -315,7 +317,7 @@ export async function runExerciseGeneration(
         .eq("id", linkedCourseId)
         .single();
       if (course) {
-        courseContext = `\nL'exercice est lié au cours « ${course.title} ». Extrait interne à utiliser comme contexte, sans recopier son HTML :\n${JSON.stringify(course.content_json || "").slice(0, 2500)}\n`;
+        courseContext = `\nL'exercice est lié au cours ci-dessous. Reste strictement dans ses notions et ses méthodes, au niveau de ses exercices, sans recopier son texte. Quand une question porte sur une figure (géométrie, repère, statistiques, probabilités), fournis-la au format edufig, conforme aux données de l'énoncé.\n${buildCourseLevelContext(String(course.title || ""), course.content_json)}\n`;
       }
     }
 
@@ -494,7 +496,12 @@ ${courseContext}`;
       exerciseType,
     });
 
+    // Chaque figure est confrontée à son énoncé (longueurs, angle droit, parallèles…) : un écart est signalé dans le
+    // suivi de la génération pour que l'admin corrige la figure avant publication.
+    const figureWarnings = checkExerciseFigures(compiled.contentJson);
+
     await tracker.updateProgress({
+      ...(figureWarnings.length ? { warnings: figureWarnings } : {}),
       step: "final-check",
       current: batches.length + 1,
       total: batches.length + 1,

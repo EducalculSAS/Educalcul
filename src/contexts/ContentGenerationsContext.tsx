@@ -17,13 +17,15 @@ type GenerationChapterPreview = {
   lessons: unknown[];
 };
 
-type GenerationProgress = {
+export type GenerationProgress = {
   step: "outline" | "chapter" | "final-check";
   current: number;
   total: number;
   message: string;
   chapterTitles?: string[];
   chapters?: Record<number, GenerationChapterPreview>;
+  /** Figures qui ne correspondent pas à leur énoncé (à corriger avant publication). */
+  warnings?: string[];
 };
 
 export type ContentGeneration = {
