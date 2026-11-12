@@ -579,9 +579,11 @@ ${JSON.stringify({ formulas: issues.map(({ id, latex, error }) => ({ id, latex, 
   for (const reference of references) {
     const issue = remainingById.get(reference.id);
     if (!issue) continue;
+    // Jamais de texte d'erreur montré à l'élève : à défaut de lecture propre, la formule brute débarrassée des commandes.
     const readable =
       sanitizeStructuredText(mathToReadableText(issue.latex)) ||
-      "Formule mathématique non disponible";
+      sanitizeStructuredText(issue.latex.replace(/\\[a-zA-Z]+/g, " ").replace(/[{}]/g, "").replace(/\s+/g, " ").trim()) ||
+      "…";
     reference.fallback(readable);
     fallbackCount += 1;
   }

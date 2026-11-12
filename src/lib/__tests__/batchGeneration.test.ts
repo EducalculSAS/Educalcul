@@ -51,3 +51,22 @@ describe("dossiers des lots", () => {
     expect(normFolderName("Repérage")).not.toBe(normFolderName("Probabilités"));
   });
 });
+
+import { answerShownInStatement, stripStatementLeaks } from "@/lib/ai/statementLeaks";
+describe("énoncés sans démarche ni réponse", () => {
+  it("retire les paragraphes de démarche", () => {
+    const r = stripStatementLeaks("<p>Vérification du calcul : 80 + 180 − 50 = 210 €</p><p>Combien paie la classe ?</p>");
+    expect(r.html).toBe("<p>Combien paie la classe ?</p>");
+    expect(r.removed.length).toBe(1);
+    expect(stripStatementLeaks("On calcule 120/500.\nQuelle est la fréquence ?").html).toBe("Quelle est la fréquence ?");
+  });
+  it("garde un énoncé normal", () => {
+    const html = "<p>Un rectangle a un périmètre de 34 cm. Calcule sa largeur.</p>";
+    expect(stripStatementLeaks(html).html).toBe(html);
+  });
+  it("repère une réponse écrite dans l'énoncé", () => {
+    expect(answerShownInStatement("<p>Fréquence = 120/500 = 0,24.</p><p>Quelle est la fréquence ?</p>", "0,24")).toBe(true);
+    expect(answerShownInStatement("<p>Le mur fait 4 m. Calcule la hauteur.</p>", "4,8")).toBe(false);
+    expect(answerShownInStatement("<p>Calcule 2 + 2.</p>", "Oui")).toBe(false);
+  });
+});

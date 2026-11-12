@@ -29,6 +29,7 @@ import { runStructuredQualityGuard } from "@/lib/ai/qualityGuard";
 import { runPhotoExerciseGeneration } from "@/lib/exerciseFromPhoto";
 import { buildCourseLevelContext } from "@/lib/ai/courseContext";
 import { checkExerciseFigures } from "@/lib/figures/checkContent";
+import { answerShownInStatement, stripStatementLeaks } from "@/lib/ai/statementLeaks";
 
 const BATCH_SIZE = 2;
 
@@ -232,6 +233,7 @@ Structure JSON exacte :
 RÈGLES :
 • questions contient exactement ${options.count} question(s), distinctes et progressives.
 • prompt contient uniquement l'énoncé ou la consigne à afficher à l'élève. N'y écris jamais la réponse, la correction, un résultat déjà calculé ni une phrase d'explication.
+• ÉNONCÉ PROPRE (prompt, content et introduction) : uniquement les données de la situation et la consigne. JAMAIS de calcul effectué, de vérification, de démarche, de résultat intermédiaire ni de réponse. Interdits dans l'énoncé : « Vérification : … », « On cherche… », « On calcule… », « … = 210 € », « la probabilité est bien … ». Toute démarche va dans explanation.
 • ${options.exerciseType === "simple"
   ? options.blockType === "fill_in_the_blank"
     ? "Pour un texte à trous, content contient seulement le texte à compléter avec les jetons {{1}}, {{2}}, {{3}} ; prompt contient la consigne courte."
@@ -525,6 +527,23 @@ ${courseContext}`;
     // Chaque figure est confrontée à son énoncé (longueurs, angle droit, parallèles…) : un écart est signalé dans le
     // suivi de la génération pour que l'admin corrige la figure avant publication.
     const figureWarnings = checkExerciseFigures(compiled.contentJson);
+
+    // Énoncés propres : aucune démarche ni réponse dans l'énoncé (elles vont dans la correction).
+    let questionNo = 0;
+    for (const page of (Array.isArray(compiled.contentJson) ? compiled.contentJson : []) as { blocks?: Record<string, unknown>[] }[]) {
+      for (const block of page.blocks ?? []) {
+        if (typeof block.content !== "string") continue;
+        if (block.type !== "text") questionNo += 1;
+        const { html, removed } = stripStatementLeaks(block.content);
+        if (removed.length) {
+          block.content = html;
+          figureWarnings.push(`Question ${questionNo || 1} : démarche retirée de l'énoncé (« ${removed[0]}… »).`);
+        }
+        if (block.type !== "text" && answerShownInStatement(html, block.correctAnswer)) {
+          figureWarnings.push(`Question ${questionNo} : la réponse attendue apparaît dans l'énoncé.`);
+        }
+      }
+    }
 
     await tracker.updateProgress({
       ...(figureWarnings.length ? { warnings: figureWarnings } : {}),

@@ -357,6 +357,63 @@ export const PROGRAMMES_NATIONAUX: ProgrammeEntry[] = [
 ];
 
 const STRICT_PROGRAMME_GUARDRAILS: Record<string, string[]> = {
+  cp: [
+    "Nombres entiers jusqu'à 100 seulement : pas de nombres plus grands, pas de nombres décimaux, pas de fractions chiffrées, pas de nombres négatifs.",
+    "Calculs : additions et soustractions (calcul mental ou en ligne). Pas de multiplication posée, pas de division, pas de technique opératoire en colonnes au-delà de l'addition.",
+  ],
+  ce1: [
+    "Nombres entiers jusqu'à 1 000. Pas de nombres décimaux, pas de nombres négatifs ; fractions seulement simples (moitié, tiers, quart) et sans calcul.",
+    "Multiplication : sens et tables simples ; pas de multiplication posée à deux chiffres au multiplicateur, pas de division posée.",
+  ],
+  ce2: [
+    "Nombres entiers jusqu'à 10 000. Pas de nombres décimaux en calcul, pas de nombres négatifs ; fractions simples sans opérations entre fractions.",
+    "Pas de division posée à deux chiffres au diviseur, pas de calcul littéral, pas de proportionnalité formalisée.",
+  ],
+  cm1: [
+    "Pas de nombres négatifs, pas de calcul littéral ni d'équations, pas de puissances, pas de racines carrées.",
+    "Décimaux jusqu'aux centièmes ; pas de division d'un nombre par un décimal ; pas de pourcentages hors cas très simples.",
+  ],
+  cm2: [
+    "Pas de nombres négatifs, pas de calcul littéral ni d'équations, pas de puissances, pas de racines carrées, pas de théorèmes de géométrie (Pythagore, Thalès).",
+    "Division d'un décimal par un entier au plus ; pourcentages simples seulement (50 %, 25 %, 10 %).",
+  ],
+  "6eme": [
+    "Pas de calculs avec des nombres relatifs (repérage seulement), pas de calcul littéral avec résolution d'équations, pas de puissances, pas de racines carrées.",
+    "Pas de théorème de Pythagore, de Thalès ni de trigonométrie ; pas de probabilités chiffrées ; pas de fonctions.",
+  ],
+  "5eme": [
+    "Nombres relatifs : addition et soustraction seulement (pas de multiplication ni de division de relatifs).",
+    "Pas de résolution d'équations, pas de puissances, pas de racines carrées, pas de théorème de Pythagore, pas de fonctions, pas de trigonométrie.",
+  ],
+  "4eme": [
+    "Pas de trigonométrie (cosinus, sinus, tangente), pas de fonctions affines ou linéaires notées f(x), pas d'identités remarquables, pas de réciproque de Thalès.",
+    "Probabilités : une seule épreuve, pas d'arbres pondérés à deux épreuves, pas de probabilités conditionnelles.",
+  ],
+  "3eme": [
+    "Pas de probabilités conditionnelles (P_A(B), « sachant que », arbres pondérés conditionnels) : c'est du programme de Première.",
+    "Pas de fonctions exponentielles (2^x, e^x), de fonction carré ou inverse étudiée, de dérivées, de second degré (discriminant), de vecteurs en coordonnées ni de systèmes d'équations.",
+    "Racines carrées : calcul et usage avec Pythagore, pas de simplification algébrique de radicaux ; trigonométrie seulement dans le triangle rectangle (pas de cercle trigonométrique ni de radians).",
+  ],
+  "2nde": [
+    "Pas de dérivation, pas de fonction exponentielle ni logarithme, pas de suites numériques formalisées, pas de limites.",
+    "Pas de probabilités conditionnelles formalisées, pas de produit scalaire, pas de nombres complexes.",
+  ],
+  "1ere-generale": [
+    "Rester sur les thèmes listés ci-dessus : pas de notions de la spécialité mathématiques (dérivation formelle, produit scalaire, suites formalisées, exponentielle) si elles n'y figurent pas.",
+  ],
+  "terminale-generale-maths": [
+    "Pas de nombres complexes, d'arithmétique (divisibilité, PGCD, congruences) ni de matrices : ce sont des notions de l'option maths expertes.",
+    "Pas d'équations différentielles d'ordre 2, de séries, de développements limités ni d'intégrales généralisées.",
+  ],
+  "terminale-generale-expertes": [
+    "Pas de séries entières, d'algèbre linéaire abstraite (espaces vectoriels quelconques), de topologie ni de théorie des groupes au-delà du programme.",
+  ],
+  "terminale-generale-complementaires": [
+    "Pas de nombres complexes, d'arithmétique ni de matrices ; rester sur les thèmes listés ci-dessus, sans formalisme de la spécialité.",
+  ],
+  "terminale-generale": [
+    "Rester sur les thèmes listés ci-dessus : aucune notion de la spécialité mathématiques qui n'y figure pas.",
+  ],
   "1ere-generale-maths": [
     "Pour la fonction exponentielle, rester sur exp(x), ses propriétés algébriques, son signe, ses variations, sa courbe, la dérivée de t ↦ e^{at}, les suites géométriques et les modélisations simples.",
     "L'existence et l'unicité de la fonction exponentielle sont admises. Une démonstration peut apparaître seulement comme approfondissement clairement identifié et avec des outils du niveau.",
