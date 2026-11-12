@@ -506,7 +506,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                 {/* Left: description + stats */}
                 <div className="flex-grow">
                   <h2 className="text-2xl font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-                    <CheckCircle className="w-6 h-6 text-[var(--greek-gold)]" />
+                    <Emblem3D kind="trophy" size={36} float={false} />
                     Félicitations !
                   </h2>
                   <p className="text-gray-600 leading-relaxed mb-6">

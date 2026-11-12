@@ -1,9 +1,10 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- extrait d'un composant qui affiche des images à adresse libre */
+import FolderEmblem from "@/components/child/FolderEmblem";
 import Emblem3D from "@/components/Emblem3D";
 import PageLoader from "@/components/PageLoader";
 import { ArrowLeft, ArrowRight, Edit, Trash2, ArrowUp, ArrowDown, Eye, Download } from "lucide-react";
-import { getFolderIcon, COURSE_FOLDER_COLORS as FOLDER_COLORS } from "@/components/admin/folderStyle";
+import { COURSE_FOLDER_COLORS as FOLDER_COLORS } from "@/components/admin/folderStyle";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { formatDateFr } from "@/lib/formatDate";
 import { openPreviewLoadingWindow } from "@/lib/openPreviewWindow";
@@ -79,7 +80,6 @@ export default function CourseGrid(props: CourseGridProps) {
   
     {/* Folders List — déjà connus, affichés même pendant le chargement */}
     {filteredFolders.map((folder) => {
-        const FolderCardIcon = getFolderIcon(folder.icon);
         return (
           <div
             key={`folder-${folder.id}`}
@@ -151,19 +151,7 @@ export default function CourseGrid(props: CourseGridProps) {
               )}
             </div>
   
-            <div
-              className="w-16 h-16 rounded-2xl flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
-              style={{
-                backgroundColor: `${folder.color || "#3b82f6"}15`,
-                color: folder.color || "#3b82f6",
-              }}
-            >
-              <FolderCardIcon
-                size={32}
-                fill="currentColor"
-                fillOpacity={0.2}
-              />
-            </div>
+            <FolderEmblem icon={folder.icon} color={folder.color} size={56} />
             <h3 className="font-bold text-gray-800 text-lg mb-1 truncate w-full px-2">
               {folder.name}
             </h3>

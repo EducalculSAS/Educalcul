@@ -1,6 +1,7 @@
 "use client";
  
 
+import Emblem3D from "@/components/Emblem3D";
 import { useKatexIn } from "@/lib/useKatexIn";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useSessionFolderId } from "@/lib/useSessionFolderId";
@@ -15,7 +16,7 @@ import {
   type ContentFolder,
 } from "@/lib/contentFoldersClient";
 import { compareFolderOrder } from "@/lib/contentOrder";
-import { BookOpen, Search, Plus, Sparkles, FolderPlus, Upload, CheckCircle, AlertTriangle } from "lucide-react";
+import { BookOpen, Search, Plus, Sparkles, FolderPlus, Upload } from "lucide-react";
 import { importFromJSONFile } from "@/lib/jsonIO";
 import { COURSE_JSON_TEMPLATE } from "@/lib/jsonTemplates";
 import { compileHandAuthoredCourse } from "@/lib/ai/handAuthoredContent";
@@ -928,8 +929,6 @@ function NotificationModal({
   onClose,
 }: NotificationModalProps) {
   const isSuccess = variant === "success";
-  const Icon = isSuccess ? CheckCircle : AlertTriangle;
-  const accent = isSuccess ? "#10b981" : "#ef4444";
   const ctaLabel = isSuccess ? "Fermer" : "Réessayer";
 
   return (
@@ -939,12 +938,7 @@ function NotificationModal({
           <GlassCloseButton onClick={onClose} />
         </div>
         <div className="px-8 pt-8 pb-4 flex flex-col items-center text-center">
-          <div
-            className="w-16 h-16 rounded-full flex items-center justify-center mb-4"
-            style={{ background: `${accent}15` }}
-          >
-            <Icon size={36} style={{ color: accent }} strokeWidth={2.25} />
-          </div>
+          <Emblem3D kind={isSuccess ? "check" : "alert"} size={80} className="mb-4" />
           <h3
             className="text-2xl font-bold mb-2 font-[family-name:var(--font-display)]"
             style={{ color: "var(--greek-blue)" }}

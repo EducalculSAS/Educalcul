@@ -2,7 +2,7 @@
 
 import Emblem3D from "@/components/Emblem3D";
 import { useEffect, useState } from "react";
-import { Sparkles, Link as LinkIcon, BrainCircuit, Check } from "lucide-react";
+import { Sparkles, Link as LinkIcon, Check } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { useSmoothPercent } from "./useSmoothPercent";
 import type { AIGenerateProgress } from "./ExerciseGeneratorModal";
@@ -94,9 +94,7 @@ export default function QuizGeneratorModal({
         <div className="px-8 py-6 bg-gradient-to-r from-[var(--greek-blue)] to-blue-900 text-white flex justify-between items-center flex-shrink-0 relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 pattern-grid-lg pointer-events-none" />
           <div className="flex items-center gap-3 relative z-10">
-            <div className="w-12 h-12 rounded-2xl bg-[var(--greek-gold)]/20 border border-[var(--greek-gold)]/40 flex items-center justify-center">
-              <BrainCircuit className="text-[var(--greek-gold)]" size={22} />
-            </div>
+            <Emblem3D kind="sparkles" size={48} float={false} onDark />
             <div>
               <h2 className="text-xl font-bold font-[family-name:var(--font-display)]">
                 Générer un quiz avec l&apos;IA

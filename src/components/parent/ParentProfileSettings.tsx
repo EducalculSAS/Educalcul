@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import DashboardHero from "@/components/DashboardHero";
 import SectionTitle from "@/components/SectionTitle";
 import GlassSwitch from "@/components/ui/GlassSwitch";
@@ -607,7 +608,7 @@ export default function ParentProfileSettings({
 
           <div className="bg-red-50 rounded-[20px] shadow-sm border border-[rgba(197,161,72,0.25)] p-6 md:col-span-2 mt-4">
             <h2 className="text-xl font-bold text-red-700 mb-4 flex items-center">
-              <AlertCircle className="w-5 h-5 mr-2" />
+              <Emblem3D kind="alert" size={28} float={false} className="mr-2" />
               Zone de danger
             </h2>
             <div className="flex flex-col md:flex-row items-center justify-between gap-4">

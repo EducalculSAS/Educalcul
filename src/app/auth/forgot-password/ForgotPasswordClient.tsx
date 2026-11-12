@@ -1,8 +1,9 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useState } from "react";
 import LoaderDots from "@/components/LoaderDots";
-import { Mail, ArrowLeft, CheckCircle, AlertCircle } from "lucide-react";
+import { Mail, ArrowLeft, AlertCircle } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 
 export default function ForgotPassword() {
@@ -55,9 +56,7 @@ export default function ForgotPassword() {
 
           {status === "success" ? (
             <div className="text-center animate-fade-bounce">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(197,161,72,0.15)" }}>
-                <CheckCircle className="w-8 h-8" style={{ color: "var(--greek-gold)" }} />
-              </div>
+              <Emblem3D kind="mail" size={80} className="mx-auto mb-4" />
               <p className="text-gray-800 mb-6">{message}</p>
               <GlassButton href="/auth/connexion" variant="gold" fullWidth>
                 Retour à la connexion

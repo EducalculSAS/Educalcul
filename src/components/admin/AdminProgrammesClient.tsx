@@ -1,7 +1,8 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useState, useRef } from "react";
-import { Upload, Trash2, FileText, CheckCircle, AlertTriangle, Loader2, BookOpen, X, GraduationCap, Download, Pencil, Save } from "lucide-react";
+import { Upload, Trash2, FileText, CheckCircle, AlertTriangle, Loader2, X, GraduationCap, Download, Pencil, Save } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import { useConfirm } from "@/components/ConfirmDialog";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
@@ -237,9 +238,7 @@ export default function AdminProgrammesClient({ initialPdfs }: { initialPdfs: Pr
                 ) : (
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(197,161,72,0.1)" }}>
-                        <BookOpen size={18} style={{ color: "var(--greek-gold)" }} />
-                      </div>
+                      <Emblem3D kind="book" size={40} float={false} className="flex-shrink-0" />
                       <div className="min-w-0">
                         <p className="font-bold text-sm text-[var(--greek-blue)] truncate">{pdf.level_label || pdf.level}</p>
                         <p className="text-xs text-[var(--text-muted)] truncate">{pdf.file_name}</p>

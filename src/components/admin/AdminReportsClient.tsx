@@ -1,5 +1,6 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import type { fetchAdminReports } from "@/lib/adminReports";
 
 type AdminReportsData = Awaited<ReturnType<typeof fetchAdminReports>>;
@@ -120,7 +121,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Admin
       {/* ── Performance & Trafic ─────────────────────────────────────────── */}
       <div className="bg-white rounded-2xl shadow-sm border border-[rgba(197,161,72,0.25)] p-6">
         <h3 className="text-base font-bold text-[var(--greek-blue)] mb-5 flex items-center gap-2">
-          <Wifi size={18} className="text-[var(--greek-gold)]" />
+          <Emblem3D kind="globe" size={28} float={false} />
           Performance &amp; Trafic du site
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
@@ -233,7 +234,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Admin
         {/* Bar chart — inscriptions par semaine */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-[rgba(197,161,72,0.25)]">
           <h3 className="text-base font-bold text-[var(--greek-blue)] mb-6 flex items-center gap-2">
-            <TrendingUp size={18} className="text-[var(--greek-gold)]" />
+            <Emblem3D kind="target" size={28} float={false} />
             Inscriptions : 8 dernières semaines
           </h3>
           <div className="flex items-end gap-2 h-48">
@@ -263,7 +264,7 @@ export default function AdminReportsClient({ initialData }: { initialData: Admin
         {/* Recent activity */}
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-[rgba(197,161,72,0.25)]">
           <h3 className="text-base font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-            <Activity size={18} className="text-[var(--greek-gold)]" />
+            <Emblem3D kind="stairs" size={28} float={false} />
             Activité récente
           </h3>
           <div className="space-y-3">

@@ -3,7 +3,7 @@
 import Emblem3D from "@/components/Emblem3D";
 import { useCallback, useEffect, useRef, useState } from "react";
 import LoaderDots from "@/components/LoaderDots";
-import { ArrowLeft, Bell, BellOff, CheckCircle2, Flag, Heart, Link2, Lock, LockOpen, Pencil, Pin, PinOff, Quote, Reply, Send, Trash2, Eye } from "lucide-react";
+import { ArrowLeft, Bell, BellOff, CheckCircle2, Flag, Heart, Link2, Lock, LockOpen, Pencil, Pin, PinOff, Quote, Send, Trash2, Eye } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { useToast } from "@/components/Toast";
@@ -309,7 +309,7 @@ export default function ForumThreadView({
           </p>
         ) : (
           <div className="space-y-3">
-            <h2 className="font-bold text-[var(--greek-blue)] flex items-center gap-2"><Reply className="w-4 h-4 text-[var(--greek-gold)]" /> Ta réponse</h2>
+            <h2 className="font-bold text-[var(--greek-blue)] flex items-center gap-2"><Emblem3D kind="chat" size={28} float={false} /> Ta réponse</h2>
             {quote && (
               <div className="flex items-start justify-between gap-3 rounded-2xl bg-[var(--greek-cream)] border-l-4 border-[var(--greek-gold)] px-4 py-2">
                 <p className="text-xs text-[var(--text-muted)] line-clamp-2">

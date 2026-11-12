@@ -1,10 +1,11 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useState, useEffect } from "react";
 import LoaderDots from "@/components/LoaderDots";
 import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { Lock, CheckCircle, AlertCircle } from "lucide-react";
+import { Lock, AlertCircle } from "lucide-react";
 import { validatePassword } from "@/lib/validation";
 import GlassButton from "@/components/ui/GlassButton";
 import { errMessage } from "@/lib/safeError";
@@ -94,9 +95,7 @@ export default function UpdatePassword() {
 
           {status === "success" ? (
             <div className="text-center animate-fade-bounce">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(197,161,72,0.15)" }}>
-                <CheckCircle className="w-8 h-8" style={{ color: "var(--greek-gold)" }} />
-              </div>
+              <Emblem3D kind="check" size={80} className="mx-auto mb-4" />
               <p className="text-gray-800 mb-6">{message}</p>
               <p className="text-sm text-gray-500">
                 Redirection vers l&apos;accueil...

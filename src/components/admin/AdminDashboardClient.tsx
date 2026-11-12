@@ -1,18 +1,12 @@
 "use client";
 
+import Emblem3D, { type EmblemKind } from "@/components/Emblem3D";
 import type { fetchAdminStats } from "@/lib/adminStats";
 
 type AdminStatsData = Awaited<ReturnType<typeof fetchAdminStats>>;
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useCallback } from "react";
-import {
-  Users, CreditCard, BookOpen, Calculator, Brain,
-  MessageSquare, TicketCheck, AlertTriangle, TrendingUp,
-  UserPlus, BarChart2, Shield, RefreshCw,
-  ChevronRight, Clock, Keyboard, Gamepad2, Mail, Scale,
-  GraduationCap, Calendar, Star, History, ScanSearch,
-  ShieldCheck, Flag, User,
-} from "lucide-react";
+import { Users, CreditCard, BookOpen, Calculator, Brain, MessageSquare, TicketCheck, BarChart2, Shield, RefreshCw, ChevronRight, Clock, Keyboard, Gamepad2, Mail, Scale, GraduationCap, Calendar, Star, History, ScanSearch, ShieldCheck, Flag, User } from "lucide-react";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
 import GlassButton from "@/components/ui/GlassButton";
 import { formatParisDayMonth } from "@/lib/parisDate";
@@ -91,16 +85,16 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
 
       {/* Stats grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard title="Utilisateurs" value={counts.users} sub={`+${counts.new_users_week} cette semaine`} icon={<Users size={20} />} color="bg-blue-50 text-blue-600" href="/admin/users" />
-        <StatCard title="Abonnements actifs" value={counts.active_subscriptions} icon={<CreditCard size={20} />} color="bg-green-50 text-green-600" href="/admin/subscriptions" />
-        <StatCard title="Cours" value={counts.published_courses} icon={<BookOpen size={20} />} color="bg-orange-50 text-orange-600" href="/admin/courses" />
-        <StatCard title="Exercices" value={counts.exercises} icon={<Calculator size={20} />} color="bg-purple-50 text-purple-600" href="/admin/exercises" />
+        <StatCard title="Utilisateurs" value={counts.users} sub={`+${counts.new_users_week} cette semaine`} icon="family" href="/admin/users" />
+        <StatCard title="Abonnements actifs" value={counts.active_subscriptions} icon="card" href="/admin/subscriptions" />
+        <StatCard title="Cours" value={counts.published_courses} icon="book" href="/admin/courses" />
+        <StatCard title="Exercices" value={counts.exercises} icon="calculator" href="/admin/exercises" />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard title="Quiz" value={counts.quizzes} icon={<Brain size={20} />} color="bg-pink-50 text-pink-600" href="/admin/quizzes" />
-        <StatCard title="Tickets ouverts" value={counts.open_tickets} icon={<TicketCheck size={20} />} color="bg-amber-50 text-amber-600" href="/admin/support" alert={counts.open_tickets > 0} />
-        <StatCard title="Signalements" value={counts.pending_reports} icon={<AlertTriangle size={20} />} color="bg-red-50 text-red-600" href="/admin/forum" alert={counts.pending_reports > 0} />
-        <StatCard title="Rapports" value="→" icon={<BarChart2 size={20} />} color="bg-teal-50 text-teal-600" href="/admin/reports" />
+        <StatCard title="Quiz" value={counts.quizzes} icon="quiz" href="/admin/quizzes" />
+        <StatCard title="Tickets ouverts" value={counts.open_tickets} icon="inbox" href="/admin/support" alert={counts.open_tickets > 0} />
+        <StatCard title="Signalements" value={counts.pending_reports} icon="alert" href="/admin/forum" alert={counts.pending_reports > 0} />
+        <StatCard title="Rapports" value="→" icon="target" href="/admin/reports" />
       </div>
 
       {/* Recent data */}
@@ -110,7 +104,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
         <div className="bg-white rounded-[20px] shadow-sm border border-gray-100 overflow-hidden">
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
             <h2 className="font-bold text-[var(--greek-blue)] flex items-center gap-2">
-              <UserPlus size={17} className="text-[var(--greek-gold)]" />
+              <Emblem3D kind="family" size={28} float={false} />
               Derniers inscrits
             </h2>
             <GlassButton href="/admin/users" variant="outline" size="sm">
@@ -144,7 +138,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
         <div className="bg-white rounded-[20px] shadow-sm border border-gray-100 overflow-hidden">
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
             <h2 className="font-bold text-[var(--greek-blue)] flex items-center gap-2">
-              <BookOpen size={17} className="text-[var(--greek-gold)]" />
+              <Emblem3D kind="book" size={28} float={false} />
               Cours récents
             </h2>
             <GlassButton href="/admin/courses" variant="outline" size="sm">
@@ -157,9 +151,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
             )}
             {recent.courses.map((c) => (
               <div key={c.id} className="flex items-center gap-3 px-6 py-3 hover:bg-gray-50 transition-colors">
-                <div className="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center shrink-0">
-                  <BookOpen size={14} className="text-orange-600" />
-                </div>
+                <Emblem3D kind="book" size={34} float={false} className="shrink-0" />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-gray-800 truncate">{c.title}</p>
                   <p className="text-xs text-gray-400">{c.subject} · {c.level}</p>
@@ -176,7 +168,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
         <div className="bg-white rounded-[20px] shadow-sm border border-gray-100 overflow-hidden">
           <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
             <h2 className="font-bold text-[var(--greek-blue)] flex items-center gap-2">
-              <MessageSquare size={17} className="text-[var(--greek-gold)]" />
+              <Emblem3D kind="chat" size={28} float={false} />
               Forum, posts récents
             </h2>
             <GlassButton href="/admin/forum" variant="outline" size="sm">
@@ -189,9 +181,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
             )}
             {recent.forum_posts.map((p) => (
               <div key={p.id} className="flex items-center gap-3 px-6 py-3 hover:bg-gray-50 transition-colors">
-                <div className="w-8 h-8 rounded-lg bg-purple-100 flex items-center justify-center shrink-0">
-                  <MessageSquare size={14} className="text-purple-600" />
-                </div>
+                <Emblem3D kind="chat" size={34} float={false} className="shrink-0" />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-gray-800 truncate">{p.title}</p>
                   <p className="text-xs text-gray-400">
@@ -207,7 +197,7 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
         {/* Quick links */}
         <div className="bg-white rounded-[20px] shadow-sm border border-gray-100 p-6">
           <h2 className="font-bold text-[var(--greek-blue)] mb-4 flex items-center gap-2">
-            <TrendingUp size={17} className="text-[var(--greek-gold)]" />
+            <Emblem3D kind="compass" size={28} float={false} />
             Accès rapide
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
@@ -245,9 +235,9 @@ export default function AdminDashboardClient({ initialData }: { initialData: Adm
   );
 }
 
-function StatCard({ title, value, sub, icon, color, href, alert }: {
+function StatCard({ title, value, sub, icon, href, alert }: {
   title: string; value: number | string; sub?: string;
-  icon: React.ReactNode; color: string; href: string; alert?: boolean;
+  icon: EmblemKind; href: string; alert?: boolean;
 }) {
   return (
     <GlassButton
@@ -258,7 +248,7 @@ function StatCard({ title, value, sub, icon, color, href, alert }: {
       style={{ display: "flex", flexDirection: "column", alignItems: "flex-start", padding: "20px", gap: 0 }}
     >
       <div className="flex items-center justify-between w-full mb-3">
-        <div className={`p-2 rounded-xl ${color}`}>{icon}</div>
+        <Emblem3D kind={icon} size={40} float={false} />
         <span className="text-2xl font-bold text-[var(--greek-blue)]">{value}</span>
       </div>
       <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">{title}</p>

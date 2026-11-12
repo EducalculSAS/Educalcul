@@ -1,18 +1,13 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import type { AdminUserDetail } from "@/lib/adminUserDetail";
 import type { Row } from "@/types/db";
 import AvatarWithBorder from "@/components/AvatarWithBorder";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import {
-  ArrowLeft, Shield, Baby, Ban, MessageCircle, KeyRound, Trash2,
-  CheckCircle, AlertTriangle, Send, X, Loader2, Edit, Bell,
-  CreditCard, User as UserIcon, Trophy, MessageSquare,
-  Flag, ChevronDown, ChevronUp, Save, Eye, EyeOff, ShieldCheck, UserCog,
-  Gamepad2,
-} from "lucide-react";
+import { ArrowLeft, Shield, Baby, Ban, MessageCircle, KeyRound, Trash2, CheckCircle, AlertTriangle, Send, X, Loader2, Edit, CreditCard, User as UserIcon, Trophy, ChevronDown, ChevronUp, Save, Eye, EyeOff, ShieldCheck, UserCog, Gamepad2 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { SCHOOL_LEVELS, getLevelLabel } from "@/lib/constants";
 import { validatePassword } from "@/lib/validation";
@@ -585,7 +580,7 @@ export default function AdminUserDetailClient({
 
           {badges.length > 0 && (
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
-              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2"><Trophy className="w-4 h-4" />Badges</h2>
+              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-2"><Emblem3D kind="trophy" size={28} float={false} />Badges</h2>
               <div className="flex flex-wrap gap-2">
                 {badges.map((b, i) => <span key={i} className="px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full border border-amber-200">{b.badge?.name}</span>)}
               </div>
@@ -749,7 +744,7 @@ export default function AdminUserDetailClient({
           {/* Tickets support */}
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <button onClick={() => setShowTickets(!showTickets)} className="w-full flex items-center justify-between">
-              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2"><MessageCircle className="w-4 h-4" />Tickets support ({support_tickets.length})</h2>
+              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2"><Emblem3D kind="chat" size={28} float={false} />Tickets support ({support_tickets.length})</h2>
               {showTickets ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
             </button>
             {showTickets && (
@@ -771,7 +766,7 @@ export default function AdminUserDetailClient({
 
           {/* Messages admin (notifications) */}
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
-            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2"><Bell className="w-4 h-4" />Messages & actions admin</h2>
+            <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2"><Emblem3D kind="bell" size={28} float={false} />Messages & actions admin</h2>
             {notifications.length > 0 ? (
               <div className="space-y-2">
                 {notifications.map((n) => (
@@ -790,7 +785,7 @@ export default function AdminUserDetailClient({
           {/* Forum posts */}
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <button onClick={() => setShowPosts(!showPosts)} className="w-full flex items-center justify-between">
-              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2"><MessageSquare className="w-4 h-4" />Sujets forum ({forum_posts.length})</h2>
+              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2"><Emblem3D kind="chat" size={28} float={false} />Sujets forum ({forum_posts.length})</h2>
               {showPosts ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
             </button>
             {showPosts && (
@@ -819,7 +814,7 @@ export default function AdminUserDetailClient({
           {/* Forum comments → "Messages" */}
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <button onClick={() => setShowComments(!showComments)} className="w-full flex items-center justify-between">
-              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2"><MessageCircle className="w-4 h-4" />Messages forum ({forum_comments.length})</h2>
+              <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider flex items-center gap-2"><Emblem3D kind="chat" size={28} float={false} />Messages forum ({forum_comments.length})</h2>
               {showComments ? <ChevronUp size={16} className="text-gray-400" /> : <ChevronDown size={16} className="text-gray-400" />}
             </button>
             {showComments && (
@@ -848,7 +843,7 @@ export default function AdminUserDetailClient({
           {/* Signalements */}
           <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
             <h2 className="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2">
-              <Flag className="w-4 h-4 text-red-400" />
+              <Emblem3D kind="flag" size={28} float={false} />
               Signalements reçus ({reports.filter((r) => r.status === "pending").length} en attente)
             </h2>
             {reports.length > 0 ? (

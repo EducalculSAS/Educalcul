@@ -5,21 +5,7 @@ import LoaderDots from "@/components/LoaderDots";
 import { useState, useEffect, useRef } from "react";
 import PageLoader from "@/components/PageLoader";
 import AdminPageHeader from "@/components/admin/AdminPageHeader";
-import {
-  Inbox,
-  Archive,
-  CheckCircle,
-  Clock,
-  MessageSquare,
-  AlertCircle,
-  Trash2,
-  RefreshCcw,
-  ArrowLeft,
-  Send,
-  User,
-  Tag,
-  Mail,
-} from "lucide-react";
+import { Inbox, Archive, CheckCircle, Clock, AlertCircle, Trash2, RefreshCcw, ArrowLeft, Send, User, Tag, Mail } from "lucide-react";
 import { useConfirm } from "@/components/ConfirmDialog";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
@@ -454,7 +440,7 @@ export default function AdminSupportClient({ initialTickets }: { initialTickets:
               {/* Replies */}
               <div className="space-y-6">
                 <h3 className="text-lg font-semibold text-[var(--greek-blue)] flex items-center gap-2">
-                  <MessageSquare size={18} />
+                  <Emblem3D kind="chat" size={28} float={false} />
                   Historique de la conversation
                 </h3>
 

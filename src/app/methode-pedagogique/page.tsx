@@ -1,6 +1,7 @@
+import Emblem3D from "@/components/Emblem3D";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Compass, Repeat, Target, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Compass, Repeat, Target } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import GlassButton from "@/components/ui/GlassButton";
@@ -123,9 +124,7 @@ export default function MethodePage() {
 
           {/* Les parents : même bandeau que « Plusieurs enfants, un seul abonnement » sur Offres. */}
           <FadeInSection className="mt-6 flex flex-col sm:flex-row items-center gap-5 p-6 rounded-2xl" style={{ background: "var(--greek-blue)", border: "1px solid rgba(197,161,72,0.12)" }}>
-            <div className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style={{ background: "rgba(197,161,72,0.12)", border: "1px solid rgba(197,161,72,0.2)" }}>
-              <Users className="w-6 h-6" style={{ color: "var(--greek-gold)" }} />
-            </div>
+            <Emblem3D kind="family" size={56} float={false} onDark className="flex-shrink-0" />
             <div className="flex-1 text-center sm:text-left">
               <p className="font-[family-name:var(--font-display)] font-bold text-white text-sm">Les parents, partenaires de la méthode</p>
               <p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.6)" }}>

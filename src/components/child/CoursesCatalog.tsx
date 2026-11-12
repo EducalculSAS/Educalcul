@@ -197,9 +197,7 @@ export default function CoursesCatalog({
                   )}
                   {isLocked && (
                     <div className="absolute inset-0 bg-[var(--greek-blue)]/50 flex items-center justify-center">
-                      <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center">
-                        <Lock className="w-6 h-6 text-[var(--greek-blue)]" />
-                      </div>
+                      <Emblem3D kind="lock" size={64} float={false} onDark />
                     </div>
                   )}
                 </div>

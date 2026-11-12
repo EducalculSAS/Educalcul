@@ -1,9 +1,10 @@
 "use client";
 
+import Emblem3D from "@/components/Emblem3D";
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
-import { ShieldCheck, AlertCircle, RotateCcw } from "lucide-react";
+import { AlertCircle, RotateCcw } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import { safeRedirectPath } from "@/lib/safeRedirect";
 import { errMessage } from "@/lib/safeError";
@@ -127,9 +128,7 @@ function TwoFactorVerifyContent() {
   return (
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
-        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(197,161,72,0.12)" }}>
-          <ShieldCheck className="w-7 h-7" style={{ color: "var(--greek-gold)" }} />
-        </div>
+        <Emblem3D kind="shield" size={72} className="mx-auto mb-4" />
         <h1 className="font-bold mb-2" style={{ fontFamily: "var(--font-display)", fontSize: "2rem", color: "var(--greek-blue)" }}>
           Vérification en deux étapes
         </h1>

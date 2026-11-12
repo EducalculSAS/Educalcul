@@ -2,7 +2,7 @@
 
 import Emblem3D from "@/components/Emblem3D";
 import { useState, type ReactNode } from "react";
-import { Award, BookOpen, TrendingUp, Activity, Brain, Sparkles, RotateCcw, Star, Lock, CalendarClock, Gamepad2 } from "lucide-react";
+import { Award, BookOpen, Activity, Sparkles, RotateCcw, Lock, CalendarClock, Gamepad2 } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassSegmentedControl from "@/components/ui/GlassSegmentedControl";
 import { formatParisDayMonth } from "@/lib/parisDate";
@@ -180,7 +180,7 @@ export default function ChildReportTabs({
           <div className="space-y-5">
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h3 className="font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)] flex items-center gap-2">
-                <TrendingUp className="w-4 h-4 text-[var(--greek-gold)]" />
+                <Emblem3D kind="target" size={28} float={false} />
                 Réussite par matière
               </h3>
               {subjectStats.length === 0 ? (
@@ -204,7 +204,7 @@ export default function ChildReportTabs({
 
             <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
               <h3 className="font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)] flex items-center gap-2">
-                <Activity className="w-4 h-4 text-[var(--greek-gold)]" />
+                <Emblem3D kind="stairs" size={28} float={false} />
                 Résumé
               </h3>
               <div className="space-y-3 text-sm">
@@ -239,7 +239,7 @@ export default function ChildReportTabs({
               <div className="lg:col-span-2 bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm overflow-hidden">
                 <div className="px-6 py-4 border-b border-[rgba(197,161,72,0.25)] bg-gradient-to-r from-[var(--greek-blue)]/5 to-transparent flex items-center justify-between">
                   <h3 className="font-bold text-[var(--greek-blue)] font-[family-name:var(--font-display)] flex items-center gap-2">
-                    <Brain className="w-5 h-5 text-[var(--greek-gold)]" />
+                    <Emblem3D kind="sparkles" size={28} float={false} />
                     Analyse IA : {childFirstName}
                   </h3>
                   <div className="flex items-center gap-3">
@@ -264,9 +264,7 @@ export default function ChildReportTabs({
                 <div className="p-6">
                   {analysisLoading ? (
                     <div className="flex flex-col items-center justify-center py-16 gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-[var(--greek-gold)] flex items-center justify-center animate-pulse">
-                        <Star className="w-6 h-6 text-[var(--greek-blue)] fill-current" />
-                      </div>
+                      <Emblem3D kind="sparkles" size={64} />
                       <p className="text-gray-500 text-sm">Calia analyse les données de {childFirstName}…</p>
                       <p className="text-gray-300 text-xs">Cela peut prendre quelques secondes</p>
                     </div>
@@ -288,7 +286,7 @@ export default function ChildReportTabs({
                 {analysisStats && (
                   <div className="bg-white rounded-2xl border border-[rgba(197,161,72,0.25)] shadow-sm p-5">
                     <h3 className="font-bold text-[var(--greek-blue)] mb-4 font-[family-name:var(--font-display)] text-sm flex items-center gap-2">
-                      <Activity className="w-4 h-4 text-[var(--greek-gold)]" />
+                      <Emblem3D kind="stairs" size={28} float={false} />
                       Données analysées
                     </h3>
                     <div className="space-y-2 text-sm">

@@ -1,8 +1,9 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import Emblem3D from "@/components/Emblem3D";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Camera, Sparkles, Loader2, Upload, RefreshCw } from "lucide-react";
+import { Sparkles, Loader2, Upload, RefreshCw } from "lucide-react";
 import { SCHOOL_LEVELS } from "@/lib/constants";
 import GlassButton from "@/components/ui/GlassButton";
 import GlassCloseButton from "@/components/ui/GlassCloseButton";
@@ -287,9 +288,7 @@ export default function ExerciseFromPhotoModal({ onGenerate, onGenerateBatch, on
       <div className="bg-white/90 backdrop-blur-[24px] backdrop-saturate-[1.4] rounded-2xl shadow-2xl w-full max-w-2xl max-h-[92vh] flex flex-col overflow-hidden border border-[rgba(197,161,72,0.25)]">
         <div className="px-8 py-6 bg-gradient-to-r from-[var(--greek-blue)] to-blue-900 text-white flex justify-between items-center flex-shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-[var(--greek-gold)]/20 border border-[var(--greek-gold)]/40 flex items-center justify-center">
-              <Camera className="text-[var(--greek-gold)]" size={22} />
-            </div>
+            <Emblem3D kind="sparkles" size={48} float={false} onDark />
             <div>
               <h2 className="text-xl font-bold font-[family-name:var(--font-display)]">Exercice depuis une photo</h2>
               <p className="text-xs text-white/70 mt-0.5">
