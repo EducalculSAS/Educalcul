@@ -1,5 +1,6 @@
 "use client";
 
+import { renderUserText } from "@/lib/katexLoader";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowRight, Send } from "lucide-react";
@@ -183,7 +184,7 @@ function CaliaChat({
                     : { color: "var(--greek-blue)", borderBottomRightRadius: 4 }
                 }
               >
-                {msg.text}
+                <span dangerouslySetInnerHTML={{ __html: renderUserText(msg.text) }} />
               </div>
             </div>
           ))}

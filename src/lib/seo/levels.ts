@@ -56,7 +56,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Espace et géométrie", chapters: ["Se repérer dans l'espace et sur un quadrillage", "Reconnaître carré, rectangle, triangle et cercle"] },
     ],
     skills: ["Dénombrer une collection en faisant des groupes de 10", "Calculer mentalement des sommes simples", "Choisir l'opération qui répond à un problème", "Utiliser la règle pour tracer et mesurer"],
-    exercise: { question: "Léo a 8 billes. Il en gagne 5. Combien de billes a-t-il maintenant ?", choices: ["12", "13", "3", "85"], answer: "13", explanation: "Il gagne des billes, donc on ajoute : 8 + 5 = 13. Astuce : 8 + 2 = 10, puis 10 + 3 = 13." },
+    exercise: { question: "Léo a $8$ billes. Il en gagne $5$. Combien de billes a-t-il maintenant ?", choices: ["$12$", "$13$", "$3$", "$85$"], answer: "$13$", explanation: "Il gagne des billes, donc on ajoute : $8 + 5 = 13$. Astuce : $8 + 2 = 10$, puis $10 + 3 = 13$." },
     faq: [
       { q: "Que doit savoir faire un enfant en maths à la fin du CP ?", a: "Lire, écrire et comparer les nombres jusqu'à 100, calculer des additions et soustractions simples (mentalement et en ligne), résoudre des petits problèmes et se repérer dans l'espace." },
       { q: "Mon enfant peut-il utiliser Educalcul seul en CP ?", a: "Oui, les consignes sont courtes et l'interface est pensée pour les plus jeunes, mais nous conseillons quelques séances accompagnées au début. Le parent suit ensuite les progrès depuis son espace." },
@@ -76,7 +76,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Espace et géométrie", chapters: ["Angle droit, carré, rectangle", "Symétrie axiale sur quadrillage", "Solides : cube et pavé"] },
     ],
     skills: ["Décomposer un nombre en centaines, dizaines et unités", "Poser une addition avec retenue", "Mémoriser les tables de 2, 3, 4 et 5", "Reproduire une figure sur quadrillage"],
-    exercise: { question: "Combien vaut 4 × 5 ?", choices: ["9", "20", "45", "25"], answer: "20", explanation: "4 × 5, c'est 5 + 5 + 5 + 5 = 20." },
+    exercise: { question: "Combien vaut $4 \\times 5$ ?", choices: ["$9$", "$20$", "$45$", "$25$"], answer: "$20$", explanation: "$4 \\times 5$, c'est $5 + 5 + 5 + 5 = 20$." },
     faq: [
       { q: "Quand apprend-on les tables de multiplication ?", a: "Le sens de la multiplication arrive en CE1 avec les premières tables ; leur mémorisation se poursuit en CE2 et doit être solide avant le CM1." },
       { q: "Les exercices sont-ils corrigés ?", a: "Oui, chaque réponse est corrigée immédiatement, avec une explication. Calia peut aider l'élève à comprendre son erreur sans lui donner la réponse." },
@@ -96,7 +96,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Espace et géométrie", chapters: ["Quadrilatères et triangles", "Cercle : centre et rayon", "Symétrie axiale"] },
     ],
     skills: ["Restituer rapidement les tables", "Poser une multiplication à un chiffre", "Partager équitablement une quantité", "Calculer le périmètre d'un polygone"],
-    exercise: { question: "On partage 24 bonbons entre 4 enfants. Combien chacun en reçoit-il ?", choices: ["6", "8", "20", "28"], answer: "6", explanation: "Partager en 4 parts égales : 24 ÷ 4 = 6, car 4 × 6 = 24." },
+    exercise: { question: "On partage $24$ bonbons entre $4$ enfants. Combien chacun en reçoit-il ?", choices: ["$6$", "$8$", "$20$", "$28$"], answer: "$6$", explanation: "Partager en $4$ parts égales : $24 \\div 4 = 6$, car $4 \\times 6 = 24$." },
     faq: [
       { q: "Que faut-il maîtriser avant d'entrer au CM1 ?", a: "Les tables de multiplication, l'addition, la soustraction et la multiplication posées, le sens de la division et la lecture de fractions simples." },
       { q: "Educalcul propose-t-il des révisions ?", a: "Oui, des quiz courts permettent de revoir les notions, et le parent voit les points à retravailler." },
@@ -116,7 +116,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Espace et géométrie", chapters: ["Droites parallèles et perpendiculaires", "Triangles et quadrilatères particuliers", "Cercle et programmes de construction"] },
     ],
     skills: ["Placer une fraction sur une demi-droite graduée", "Passer d'une fraction décimale à l'écriture à virgule", "Poser une division euclidienne", "Construire une figure avec équerre et compas"],
-    exercise: { question: "Quelle écriture est égale à 7/10 ?", choices: ["7,10", "0,7", "0,07", "70"], answer: "0,7", explanation: "7/10 se lit « sept dixièmes » : le 7 est au rang des dixièmes, donc 0,7." },
+    exercise: { question: "Quelle écriture est égale à $\\dfrac{7}{10}$ ?", choices: ["$7{,}10$", "$0{,}7$", "$0{,}07$", "$70$"], answer: "$0{,}7$", explanation: "$\\dfrac{7}{10}$ se lit « sept dixièmes » : le $7$ est au rang des dixièmes, donc $0{,}7$." },
     faq: [
       { q: "Pourquoi les fractions posent-elles souvent problème ?", a: "Parce qu'une fraction est à la fois un partage et un nombre. Les exercices avec droites graduées et représentations visuelles aident à faire le lien." },
       { q: "Educalcul suit-il le cycle 3 ?", a: "Oui, CM1, CM2 et 6e forment le cycle 3 et les notions s'enchaînent d'une année à l'autre." },
@@ -136,7 +136,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Espace et géométrie", chapters: ["Figures et programmes de construction", "Symétrie axiale", "Solides et patrons"] },
     ],
     skills: ["Comparer et ranger des nombres décimaux", "Reconnaître une situation de proportionnalité", "Calculer l'aire d'une figure simple", "Suivre un programme de construction"],
-    exercise: { question: "3 cahiers coûtent 6 €. Combien coûtent 9 cahiers ?", choices: ["12 €", "15 €", "18 €", "54 €"], answer: "18 €", explanation: "9 cahiers, c'est 3 fois plus que 3 cahiers : 6 € × 3 = 18 €." },
+    exercise: { question: "$3$ cahiers coûtent $6$ €. Combien coûtent $9$ cahiers ?", choices: ["$12$ €", "$15$ €", "$18$ €", "$54$ €"], answer: "$18$ €", explanation: "$9$ cahiers, c'est $3$ fois plus que $3$ cahiers : $6 \\times 3 = 18$ €." },
     faq: [
       { q: "Comment bien préparer l'entrée en 6e ?", a: "En consolidant les fractions, les nombres décimaux, les quatre opérations et la proportionnalité. Ce sont les notions sur lesquelles le programme de 6e s'appuie dès la rentrée." },
       { q: "Calia fait-elle les exercices à la place de l'élève ?", a: "Non. Calia pose des questions et donne des indices pour que l'élève trouve lui-même ; elle ne donne pas la réponse." },
@@ -157,7 +157,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Espace et géométrie", chapters: ["Droites, segments, cercles", "Symétrie axiale", "Triangles et quadrilatères"] },
     ],
     skills: ["Calculer avec des nombres décimaux", "Utiliser une fraction comme quotient", "Résoudre un problème de proportionnalité", "Utiliser le rapporteur et le compas", "Rédiger une réponse en justifiant"],
-    exercise: { question: "Quelle fraction est égale à 3/4 ?", choices: ["6/8", "4/3", "3/8", "7/8"], answer: "6/8", explanation: "On multiplie le numérateur et le dénominateur par 2 : 3/4 = 6/8." },
+    exercise: { question: "Quelle fraction est égale à $\\dfrac{3}{4}$ ?", choices: ["$\\dfrac{6}{8}$", "$\\dfrac{4}{3}$", "$\\dfrac{3}{8}$", "$\\dfrac{7}{8}$"], answer: "$\\dfrac{6}{8}$", explanation: "On multiplie le numérateur et le dénominateur par $2$ : $\\dfrac{3}{4} = \\dfrac{6}{8}$." },
     faq: [
       { q: "Qu'est-ce qui change en maths entre le CM2 et la 6e ?", a: "Les notions sont proches (même cycle 3), mais on attend plus de rigueur : vocabulaire précis, justification des réponses et calculs posés proprement." },
       { q: "Educalcul aide-t-il à faire les devoirs de 6e ?", a: "Calia aide à comprendre une notion ou une méthode en guidant l'élève par questions, sans faire le devoir à sa place." },
@@ -178,7 +178,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Espace et géométrie", chapters: ["Triangles : inégalité triangulaire, somme des angles", "Parallélogrammes", "Symétrie centrale", "Angles et parallélisme"] },
     ],
     skills: ["Additionner et soustraire des relatifs", "Appliquer les priorités opératoires", "Tester une égalité avec une lettre", "Justifier une propriété géométrique"],
-    exercise: { question: "Combien vaut (−7) + 4 ?", choices: ["−11", "−3", "3", "11"], answer: "−3", explanation: "Signes contraires : on fait 7 − 4 = 3 et on garde le signe du nombre le plus éloigné de zéro, ici −7. Résultat : −3." },
+    exercise: { question: "Combien vaut $(-7) + 4$ ?", choices: ["$-11$", "$-3$", "$3$", "$11$"], answer: "$-3$", explanation: "Signes contraires : on fait $7 - 4 = 3$ et on garde le signe du nombre le plus éloigné de zéro, ici $-7$. Résultat : $-3$." },
     faq: [
       { q: "Pourquoi les nombres relatifs sont-ils importants en 5e ?", a: "Ils sont utilisés ensuite partout : équations, fonctions, repérage. Bien les maîtriser en 5e simplifie toute la suite du collège." },
       { q: "Les contenus suivent-ils le programme de 5e ?", a: "Oui, ils sont classés par niveau et par notion du programme officiel." },
@@ -199,7 +199,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Espace et géométrie", chapters: ["Théorème de Pythagore et réciproque", "Cosinus dans le triangle rectangle", "Translations", "Triangles semblables"] },
     ],
     skills: ["Calculer une longueur avec Pythagore", "Résoudre une équation du premier degré", "Calculer avec des puissances", "Développer une expression"],
-    exercise: { question: "Un triangle rectangle a des côtés de l'angle droit de 3 cm et 4 cm. Combien mesure l'hypoténuse ?", choices: ["5 cm", "7 cm", "12 cm", "25 cm"], answer: "5 cm", explanation: "Pythagore : 3² + 4² = 9 + 16 = 25, donc l'hypoténuse mesure √25 = 5 cm." },
+    exercise: { question: "Un triangle rectangle a des côtés de l'angle droit de $3$ cm et $4$ cm. Combien mesure l'hypoténuse ?", choices: ["$5$ cm", "$7$ cm", "$12$ cm", "$25$ cm"], answer: "$5$ cm", explanation: "Pythagore : $3^2 + 4^2 = 9 + 16 = 25$, donc l'hypoténuse mesure $\\sqrt{25} = 5$ cm." },
     faq: [
       { q: "Quand étudie-t-on le théorème de Pythagore ?", a: "En 4e. Il sert ensuite en 3e, au brevet et au lycée." },
       { q: "Calia peut-elle expliquer une équation ?", a: "Oui, Calia guide la résolution étape par étape en posant des questions, sans donner directement la solution." },
@@ -220,7 +220,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Espace et géométrie", chapters: ["Théorème de Thalès et réciproque", "Trigonométrie : cosinus, sinus, tangente", "Homothéties et rotations", "Sphère et sections de solides"] },
     ],
     skills: ["Factoriser une expression", "Lire l'image d'un nombre par une fonction", "Calculer une longueur avec Thalès ou la trigonométrie", "Calculer une probabilité simple", "Rédiger une démonstration courte"],
-    exercise: { question: "Quelle est la solution de l'équation 3x + 5 = 20 ?", choices: ["x = 3", "x = 5", "x = 15", "x = 25/3"], answer: "x = 5", explanation: "On retire 5 : 3x = 15, puis on divise par 3 : x = 5. Vérification : 3 × 5 + 5 = 20." },
+    exercise: { question: "Quelle est la solution de l'équation $3x + 5 = 20$ ?", choices: ["$x = 3$", "$x = 5$", "$x = 15$", "$x = \\dfrac{25}{3}$"], answer: "$x = 5$", explanation: "On retire $5$ : $3x = 15$, puis on divise par $3$ : $x = 5$. Vérification : $3 \\times 5 + 5 = 20$." },
     faq: [
       { q: "Comment réviser le brevet de maths avec Educalcul ?", a: "En travaillant chaque chapitre de 3e avec des exercices corrigés et des quiz, et en demandant de l'aide à Calia sur les méthodes qui bloquent." },
       { q: "Quelles notions tombent souvent au brevet ?", a: "Calcul littéral, fonctions, Thalès, Pythagore, trigonométrie, probabilités et statistiques reviennent très régulièrement." },
@@ -242,7 +242,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Algorithmique et programmation", chapters: ["Variables, boucles et fonctions en Python"] },
     ],
     skills: ["Résoudre une inéquation", "Étudier les variations d'une fonction", "Calculer avec des vecteurs", "Écrire un petit programme Python"],
-    exercise: { question: "Quel est le coefficient directeur de la droite d'équation y = −2x + 3 ?", choices: ["3", "−2", "2", "−3"], answer: "−2", explanation: "Pour y = mx + p, le coefficient directeur est m. Ici m = −2 : la droite descend." },
+    exercise: { question: "Quel est le coefficient directeur de la droite d'équation $y = -2x + 3$ ?", choices: ["$3$", "$-2$", "$2$", "$-3$"], answer: "$-2$", explanation: "Pour $y = mx + p$, le coefficient directeur est $m$. Ici $m = -2$ : la droite descend." },
     faq: [
       { q: "La Seconde est-elle importante pour choisir la spécialité maths ?", a: "Oui. Les notions de Seconde (calcul, fonctions, vecteurs) sont la base de la spécialité maths de Première." },
       { q: "Calia peut-elle aider en Python ?", a: "Oui, Calia peut expliquer pas à pas ce que fait un petit programme, comme pour toute autre notion du programme." },
@@ -263,7 +263,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Probabilités et statistiques", chapters: ["Probabilités conditionnelles et indépendance", "Variables aléatoires réelles"] },
     ],
     skills: ["Étudier le signe d'un trinôme", "Calculer une dérivée et en déduire les variations", "Reconnaître une suite géométrique", "Utiliser un arbre de probabilités"],
-    exercise: { question: "Quelle est la dérivée de f(x) = x² + 3x ?", choices: ["2x + 3", "x + 3", "2x", "x² + 3"], answer: "2x + 3", explanation: "La dérivée de x² est 2x et celle de 3x est 3, donc f'(x) = 2x + 3." },
+    exercise: { question: "Quelle est la dérivée de $f(x) = x^2 + 3x$ ?", choices: ["$2x + 3$", "$x + 3$", "$2x$", "$x^2 + 3$"], answer: "$2x + 3$", explanation: "La dérivée de $x^2$ est $2x$ et celle de $3x$ est $3$, donc $f'(x) = 2x + 3$." },
     faq: [
       { q: "Et sans la spécialité maths ?", a: "La Première générale hors spécialité est un niveau à part entière sur Educalcul : le niveau exact est choisi à la création du compte de l'élève, qui voit ensuite les contenus qui lui correspondent." },
       { q: "La dérivation est-elle expliquée pas à pas ?", a: "Oui, et Calia peut reprendre une méthode avec l'élève en posant des questions adaptées à son erreur." },
@@ -283,7 +283,7 @@ export const LEVEL_PAGES: LevelPage[] = [
       { name: "Probabilités", chapters: ["Loi binomiale", "Sommes de variables aléatoires", "Concentration et loi des grands nombres"] },
     ],
     skills: ["Démontrer par récurrence", "Calculer une limite", "Calculer une intégrale", "Utiliser la loi binomiale", "Étudier une position relative dans l'espace"],
-    exercise: { question: "Combien vaut ln(e³) ?", choices: ["e³", "3", "3e", "1/3"], answer: "3", explanation: "Le logarithme népérien est la fonction réciproque de l'exponentielle : ln(eˣ) = x, donc ln(e³) = 3." },
+    exercise: { question: "Combien vaut $\\ln(\\mathrm{e}^3)$ ?", choices: ["$\\mathrm{e}^3$", "$3$", "$3\\mathrm{e}$", "$\\dfrac{1}{3}$"], answer: "$3$", explanation: "Le logarithme népérien est la fonction réciproque de l'exponentielle : $\\ln(\\mathrm{e}^x) = x$, donc $\\ln(\\mathrm{e}^3) = 3$." },
     faq: [
       { q: "Et les maths expertes ou complémentaires ?", a: "Ce sont des niveaux distincts sur Educalcul : l'option exacte est choisie pour le compte de l'élève, qui voit ensuite les contenus qui lui correspondent." },
       { q: "Comment réviser le bac de maths ?", a: "En reprenant chaque chapitre avec des exercices corrigés et des quiz, et en travaillant les méthodes qui bloquent avec Calia." },

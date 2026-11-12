@@ -20,24 +20,24 @@ interface DemoRule {
 const RULES: Record<string, DemoRule> = {
   "demo-b-1": {
     value: 5 / 12,
-    right: "Exactement : la tablette est partagée en 12 carrés égaux (le dénominateur) et Léa en mange 5 (le numérateur).",
+    right: "Exactement : la tablette est partagée en $12$ carrés égaux (le dénominateur) et Léa en mange $5$ (le numérateur) : $\\dfrac{5}{12}$.",
     wrong: "Pas tout à fait. Demande-toi d'abord : en combien de parts égales la tablette est-elle partagée ? Ce nombre va en bas de la fraction.",
   },
   "demo-b-2": {
     value: 9,
-    right: "Bravo ! Pour passer de 4 à 12, on multiplie par 3 : on fait donc pareil en haut, 3 × 3 = 9.",
-    wrong: "Regarde les dénominateurs : par combien faut-il multiplier 4 pour obtenir 12 ? Fais la même chose avec le numérateur.",
+    right: "Bravo ! Pour passer de $4$ à $12$, on multiplie par $3$ : on fait donc pareil en haut, $3 \\times 3 = 9$.",
+    wrong: "Regarde les dénominateurs : par combien faut-il multiplier $4$ pour obtenir $12$ ? Fais la même chose avec le numérateur.",
   },
   "demo-b-3": {
     value: 3 / 4,
     irreducible: true,
-    right: "Parfait : 6 et 8 sont tous les deux divisibles par 2, et 3/4 ne se simplifie plus.",
+    right: "Parfait : $6$ et $8$ sont tous les deux divisibles par $2$, et $\\dfrac{3}{4}$ ne se simplifie plus.",
     form: "C'est bien la même valeur, mais on peut encore simplifier : cherche un nombre qui divise à la fois le numérateur et le dénominateur.",
-    wrong: "Pas encore. Cherche un nombre qui divise à la fois 6 et 8, puis divise le haut et le bas par ce nombre.",
+    wrong: "Pas encore. Cherche un nombre qui divise à la fois $6$ et $8$, puis divise le haut et le bas par ce nombre.",
   },
   "demo-b-4": {
     value: 3 / 4,
-    right: "Juste ! Avec le même dénominateur, on additionne seulement les numérateurs : 1 + 2 = 3.",
+    right: "Juste ! Avec le même dénominateur, on additionne seulement les numérateurs : $1 + 2 = 3$, donc $\\dfrac{3}{4}$.",
     wrong: "Attention : quand les dénominateurs sont égaux, on ne les additionne pas. Additionne seulement les numérateurs.",
   },
 };

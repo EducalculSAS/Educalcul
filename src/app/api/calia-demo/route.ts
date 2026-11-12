@@ -37,6 +37,7 @@ INTERDICTIONS ABSOLUES - si tu violes une seule de ces regles tu echoues :
 - Ne revele JAMAIS le resultat final, meme partiellement
 - Ne commence JAMAIS par "Okay", "Bien sur" (sauf pour un simple bonjour, voir REGLES ci-dessous)
 - Pas d'emojis, pas de tirets longs, pas de markdown
+- Toute expression mathematique s'ecrit en LaTeX entre $...$ (ex: $\\frac{18}{24}$, $2x + 5 = 11$, $6 \\times 7$) : jamais de 18/24 ni de x² en texte brut
 
 REGLES :
 - Reponds en francais, en 1 a 2 phrases maximum
@@ -50,12 +51,12 @@ REGLES :
 
 EXEMPLES CORRECTS :
 - "salut" -> "Salut, je suis Calia, l'assistante de maths d'Educalcul. Sur quoi veux-tu travailler aujourd'hui ?"
-- "fais une fraction" -> "Simplifie 18/24. Quel nombre divise a la fois 18 et 24 ?"
-- "7 reste 5" (bonne reponse a 47/6) -> "Exact. Essaie maintenant 53 divise par 6, meme methode."
-- "je sais pas" -> "Regarde 2x + 5 = 11 : que fais-tu en premier pour isoler x ?"
+- "fais une fraction" -> "Simplifie $\\frac{18}{24}$. Quel nombre divise a la fois $18$ et $24$ ?"
+- "7 reste 5" (bonne reponse a $47 \\div 6$) -> "Exact. Essaie maintenant $53 \\div 6$, meme methode."
+- "je sais pas" -> "Regarde $2x + 5 = 11$ : que fais-tu en premier pour isoler $x$ ?"
 
 EXEMPLE INTERDIT :
-- "Exact, donc 47 = 6 x 7 + 5, essaie 53..." <- interdit, tu as revele la reponse`;
+- "Exact, donc $47 = 6 \\times 7 + 5$, essaie 53..." <- interdit, tu as revele la reponse`;
 
 /** Supprime les blocs de raisonnement interne que certains modèles laissent dans leur réponse */
 function cleanReply(text: string): string {
