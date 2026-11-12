@@ -12,7 +12,7 @@ import { normFolderName as norm } from "@/lib/folderNames";
 export const MAX_BATCH_ATTEMPTS = 2;
 const STALE_MINUTES = 6;
 
-export type BatchParams = ExerciseGenerationParams & { batchId: string; courseTitle?: string; styleLabel?: string; attempts?: number };
+export type BatchParams = ExerciseGenerationParams & { batchId: string; courseTitle?: string; styleLabel?: string; attempts?: number; concurrency?: number };
 
 interface FolderRow { id: number; name: string; parent_id: number | null; grade_level: string | null }
 
@@ -56,9 +56,11 @@ export async function kickChains(origin: string, count: number) {
   await Promise.all(
     Array.from({ length: count }, (_, i) =>
       new Promise((r) => setTimeout(r, i * 1_500)).then(() =>
-        fetch(url, { method: "POST", headers: { Authorization: `Bearer ${process.env.CRON_SECRET}` } }).catch((err) =>
-          console.error("[exercise-batch] relance impossible:", err),
-        ),
+        fetch(url, { method: "POST", headers: { Authorization: `Bearer ${process.env.CRON_SECRET}` } })
+          .then(async (res) => {
+            if (!res.ok) console.error(`[exercise-batch] relance refusée (${res.status}) :`, (await res.text()).slice(0, 300));
+          })
+          .catch((err) => console.error("[exercise-batch] relance impossible:", err)),
       ),
     ),
   );
@@ -130,4 +132,31 @@ export async function processNextQueuedExercise(): Promise<boolean> {
       .eq("id", item.id);
   }
   return true;
+}
+
+/**
+ * Traite des exercices de la file pendant au plus `budgetMs` (une génération dure 1 à 3 min) : moins de relances
+ * HTTP en chaîne, donc moins de risques qu'une chaîne s'arrête. Renvoie true s'il reste du travail.
+ */
+export async function processForAWhile(budgetMs = 90_000): Promise<boolean> {
+  const startedAt = Date.now();
+  while (Date.now() - startedAt < budgetMs) {
+    const worked = await processNextQueuedExercise();
+    if (!worked) return false;
+  }
+  return true;
+}
+
+/**
+ * Relance depuis le suivi (requête de l'admin, pas d'appel en boucle) : si des exercices attendent et que moins de
+ * `concurrency` sont en cours, on en démarre d'autres. Rend la file autoréparante tant que la fenêtre est ouverte.
+ */
+export async function pumpBatch(batchId: string, concurrency: number): Promise<number> {
+  const freshCutoff = new Date(Date.now() - 6 * 60_000).toISOString();
+  const [{ count: queued }, { count: running }] = await Promise.all([
+    supabaseAdmin.from("content_generations").select("id", { count: "exact", head: true }).eq("status", "queued").eq("params->>batchId", batchId),
+    supabaseAdmin.from("content_generations").select("id", { count: "exact", head: true }).in("status", ["pending", "running"]).not("params->>batchId", "is", null).gt("updated_at", freshCutoff),
+  ]);
+  if (!queued) return 0;
+  return Math.max(0, Math.min(queued, concurrency - (running ?? 0)));
 }

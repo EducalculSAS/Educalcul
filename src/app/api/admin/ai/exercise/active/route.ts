@@ -15,6 +15,9 @@ export async function GET(request: Request) {
     .eq("kind", "exercise")
     .eq("admin_id", admin.id)
     .in("status", ["pending", "running", "cancel_requested", "done", "error", "cancelled"])
+    // Les exercices d'un lot ont leur propre suivi (fenêtre « Génération par lots ») : les afficher aussi dans le
+    // panneau des générations le noyait, et le fermer supprimait leur suivi.
+    .is("params->>batchId", null)
     .order("created_at", { ascending: false })
     .limit(20);
 

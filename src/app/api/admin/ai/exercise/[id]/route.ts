@@ -65,7 +65,9 @@ export async function DELETE(
     .from("content_generations")
     .delete()
     .eq("id", id)
-    .eq("admin_id", admin.id);
+    .eq("admin_id", admin.id)
+    // Le suivi d'un lot n'est jamais effacé depuis le panneau des générations.
+    .is("params->>batchId", null);
 
   if (error) return Response.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
   return Response.json({ success: true });

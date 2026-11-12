@@ -1,5 +1,5 @@
 import { after, NextResponse } from "next/server";
-import { kickChains, processNextQueuedExercise } from "@/lib/ai/exerciseBatch";
+import { kickChains, processForAWhile } from "@/lib/ai/exerciseBatch";
 
 export const maxDuration = 300;
 
@@ -14,14 +14,14 @@ async function handle(req: Request) {
   }
   const origin = new URL(req.url).origin;
   after(async () => {
-    let worked = false;
+    let more = false;
     try {
-      worked = await processNextQueuedExercise();
+      more = await processForAWhile();
     } catch (err) {
       console.error("[exercise-queue-advance] échec:", err);
-      worked = true;
+      more = true;
     } finally {
-      if (worked) await kickChains(origin, 1);
+      if (more) await kickChains(origin, 1);
     }
   });
   return NextResponse.json({ started: true }, { status: 202 });

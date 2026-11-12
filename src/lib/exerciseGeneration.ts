@@ -326,6 +326,18 @@ export async function runExerciseGeneration(
         .single();
       if (course) {
         courseContext = `\nL'exercice est lié au cours ci-dessous. Reste strictement dans ses notions et ses méthodes, au niveau de ses exercices, sans recopier son texte. Quand une question porte sur une figure (géométrie, repère, statistiques, probabilités), fournis-la au format edufig, conforme aux données de l'énoncé.\n${COURSE_QUALITY_RULES}\n${buildCourseLevelContext(String(course.title || ""), course.content_json)}\n`;
+        // Exercices déjà créés pour ce cours (lots en parallèle) : l'IA choisit un autre sujet, un autre contexte et un
+        // autre titre, au lieu de produire trois fois « Repérage dans le plan ».
+        const { data: siblings } = await supabaseAdmin
+          .from("exercises")
+          .select("title")
+          .eq("course_id", linkedCourseId)
+          .order("created_at", { ascending: false })
+          .limit(25);
+        const taken = (siblings ?? []).map((e) => String(e.title || "").trim()).filter(Boolean);
+        if (taken.length) {
+          courseContext += `\nExercices DÉJÀ créés pour ce cours : choisis un autre angle, une autre situation et un titre clairement différent de chacun :\n${taken.map((t) => `- ${t}`).join("\n")}\n`;
+        }
       }
     }
 

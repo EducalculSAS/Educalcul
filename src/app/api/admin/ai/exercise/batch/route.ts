@@ -2,10 +2,10 @@ import { after } from "next/server";
 import { requireRole } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { kickChains, resolveCourseExerciseFolders, type BatchParams } from "@/lib/ai/exerciseBatch";
+import { kickChains, processForAWhile, pumpBatch, resolveCourseExerciseFolders, type BatchParams } from "@/lib/ai/exerciseBatch";
 import type { ExerciseGenerationParams } from "@/lib/exerciseGeneration";
 
-export const maxDuration = 60;
+export const maxDuration = 300;
 
 interface JobInput extends ExerciseGenerationParams { courseTitle?: string; styleLabel?: string }
 
@@ -37,6 +37,7 @@ export async function POST(request: Request) {
       subjectArea: job.subjectArea || "Mathématiques",
       folder_id: folders.get(Number(job.linkedCourseId)) ?? null,
       batchId,
+      concurrency,
       attempts: 0,
     };
     return {
@@ -68,6 +69,20 @@ export async function GET(request: Request) {
     .eq("params->>batchId", batch)
     .order("created_at", { ascending: true });
   if (error) return Response.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
+
+  // File arrêtée (chaînes mortes) : le suivi la relance lui-même, sans attendre un clic.
+  const wanted = Number((data?.[0]?.params as BatchParams | undefined)?.concurrency) || 4;
+  const missing = await pumpBatch(batch, wanted);
+  if (missing > 0) {
+    const origin = new URL(request.url).origin;
+    after(async () => {
+      // Une partie du travail tourne directement ici (aucun appel en chaîne), le reste repart en chaînes.
+      const more = await processForAWhile(60_000).catch(() => true);
+      if (more) await kickChains(origin, 1);
+    });
+    if (missing > 1) after(() => kickChains(new URL(request.url).origin, missing - 1));
+  }
+
   return Response.json(
     (data ?? []).map((r) => {
       const p = r.params as BatchParams;
