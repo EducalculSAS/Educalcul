@@ -1,12 +1,13 @@
+import { after } from "next/server";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { runExerciseGeneration, type ExerciseGenerationParams } from "@/lib/exerciseGeneration";
 import { normFolderName as norm } from "@/lib/folderNames";
 
 /**
  * File serveur de la génération d'exercices par lots. Chaque exercice est une ligne `content_generations` au statut
- * « queued » (params.batchId). Plusieurs chaînes tournent en parallèle : chaque appel de
- * /api/cron/exercise-queue-advance prend UN exercice, le génère, puis se rappelle lui-même pour le suivant, jusqu'à ce
- * que la file soit vide. Tout se passe sur le serveur : fermer l'onglet n'arrête rien.
+ * « queued » (params.batchId). Chaque minute, pg_cron appelle /api/cron/exercise-queue-advance (seulement s'il reste
+ * du travail) qui démarre les générations manquantes en parallèle (`pumpQueue`). Tout se passe sur le serveur : fermer
+ * l'onglet n'arrête rien, et aucune fonction ne s'appelle elle-même.
  */
 
 export const MAX_BATCH_ATTEMPTS = 2;
@@ -44,26 +45,6 @@ export async function resolveCourseExerciseFolders(level: string, courses: { id:
     else out.set(course.id, parent.id);
   }
   return out;
-}
-
-export function queueUrl(origin: string) {
-  return `${process.env.NEXT_PUBLIC_SITE_URL || origin}/api/cron/exercise-queue-advance`;
-}
-
-/** Démarre (ou relance) `count` chaînes de traitement. */
-export async function kickChains(origin: string, count: number) {
-  const url = queueUrl(origin);
-  await Promise.all(
-    Array.from({ length: count }, (_, i) =>
-      new Promise((r) => setTimeout(r, i * 1_500)).then(() =>
-        fetch(url, { method: "POST", headers: { Authorization: `Bearer ${process.env.CRON_SECRET}` } })
-          .then(async (res) => {
-            if (!res.ok) console.error(`[exercise-batch] relance refusée (${res.status}) :`, (await res.text()).slice(0, 300));
-          })
-          .catch((err) => console.error("[exercise-batch] relance impossible:", err)),
-      ),
-    ),
-  );
 }
 
 /** Une génération morte (fonction tuée) est remise en file, ou abandonnée après MAX_BATCH_ATTEMPTS. */
@@ -148,15 +129,41 @@ export async function processForAWhile(budgetMs = 90_000): Promise<boolean> {
 }
 
 /**
- * Relance depuis le suivi (requête de l'admin, pas d'appel en boucle) : si des exercices attendent et que moins de
- * `concurrency` sont en cours, on en démarre d'autres. Rend la file autoréparante tant que la fenêtre est ouverte.
+ * Démarre, dans la fonction en cours (after()), autant de boucles de génération qu'il en manque pour atteindre le
+ * parallélisme demandé par le lot le plus ancien encore en attente. Chaque boucle enchaîne des exercices pendant
+ * ~60 s puis s'arrête : l'horloge pg_cron (chaque minute) prend le relais. Renvoie le nombre de boucles lancées.
  */
-export async function pumpBatch(batchId: string, concurrency: number): Promise<number> {
+export async function pumpQueue(): Promise<number> {
   const freshCutoff = new Date(Date.now() - 6 * 60_000).toISOString();
-  const [{ count: queued }, { count: running }] = await Promise.all([
-    supabaseAdmin.from("content_generations").select("id", { count: "exact", head: true }).eq("status", "queued").eq("params->>batchId", batchId),
-    supabaseAdmin.from("content_generations").select("id", { count: "exact", head: true }).in("status", ["pending", "running"]).not("params->>batchId", "is", null).gt("updated_at", freshCutoff),
+  const [{ data: oldest }, { count: running }] = await Promise.all([
+    supabaseAdmin
+      .from("content_generations")
+      .select("params")
+      .eq("kind", "exercise")
+      .eq("status", "queued")
+      .order("created_at", { ascending: true })
+      .limit(1)
+      .maybeSingle(),
+    supabaseAdmin
+      .from("content_generations")
+      .select("id", { count: "exact", head: true })
+      .eq("kind", "exercise")
+      .in("status", ["pending", "running"])
+      .not("params->>batchId", "is", null)
+      .gt("updated_at", freshCutoff),
   ]);
-  if (!queued) return 0;
-  return Math.max(0, Math.min(queued, concurrency - (running ?? 0)));
+  if (!oldest) return 0;
+  const wanted = Math.min(6, Math.max(1, Number((oldest.params as BatchParams).concurrency) || 4));
+  const missing = Math.max(0, wanted - (running ?? 0));
+  if (missing === 0) return 0;
+  after(async () => {
+    await Promise.all(
+      Array.from({ length: missing }, (_, i) =>
+        new Promise((r) => setTimeout(r, i * 2_000)).then(() =>
+          processForAWhile(60_000).catch((err) => console.error("[exercise-batch] boucle interrompue:", err)),
+        ),
+      ),
+    );
+  });
+  return missing;
 }

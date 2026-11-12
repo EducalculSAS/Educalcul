@@ -1,8 +1,7 @@
-import { after } from "next/server";
 import { requireRole } from "@/lib/apiAuth";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { sanitizeErrorMessage } from "@/lib/safeError";
-import { kickChains, processForAWhile, pumpBatch, resolveCourseExerciseFolders, type BatchParams } from "@/lib/ai/exerciseBatch";
+import { pumpQueue, resolveCourseExerciseFolders, type BatchParams } from "@/lib/ai/exerciseBatch";
 import type { ExerciseGenerationParams } from "@/lib/exerciseGeneration";
 
 export const maxDuration = 300;
@@ -10,8 +9,8 @@ export const maxDuration = 300;
 interface JobInput extends ExerciseGenerationParams { courseTitle?: string; styleLabel?: string }
 
 /**
- * Lance une génération par lots côté serveur : une ligne « queued » par exercice, puis `concurrency` chaînes qui les
- * traitent (/api/cron/exercise-queue-advance). Fermer la page n'arrête pas le lot.
+ * Lance une génération par lots côté serveur : une ligne « queued » par exercice, traitées `concurrency` à la fois
+ * (pumpQueue, puis l'horloge pg_cron chaque minute). Fermer la page n'arrête pas le lot.
  * GET ?batch=<id> : état de chaque exercice. PATCH {batch, action:"resume"|"cancel"}.
  */
 export async function POST(request: Request) {
@@ -51,8 +50,8 @@ export async function POST(request: Request) {
   const { error } = await supabaseAdmin.from("content_generations").insert(rows);
   if (error) return Response.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
 
-  const origin = new URL(request.url).origin;
-  after(() => kickChains(origin, concurrency));
+  // Démarre tout de suite ; l'horloge pg_cron (chaque minute) prend ensuite le relais.
+  await pumpQueue();
   return Response.json({ batchId, count: rows.length }, { status: 202 });
 }
 
@@ -69,19 +68,6 @@ export async function GET(request: Request) {
     .eq("params->>batchId", batch)
     .order("created_at", { ascending: true });
   if (error) return Response.json({ error: sanitizeErrorMessage(error.message) }, { status: 500 });
-
-  // File arrêtée (chaînes mortes) : le suivi la relance lui-même, sans attendre un clic.
-  const wanted = Number((data?.[0]?.params as BatchParams | undefined)?.concurrency) || 4;
-  const missing = await pumpBatch(batch, wanted);
-  if (missing > 0) {
-    const origin = new URL(request.url).origin;
-    after(async () => {
-      // Une partie du travail tourne directement ici (aucun appel en chaîne), le reste repart en chaînes.
-      const more = await processForAWhile(60_000).catch(() => true);
-      if (more) await kickChains(origin, 1);
-    });
-    if (missing > 1) after(() => kickChains(new URL(request.url).origin, missing - 1));
-  }
 
   return Response.json(
     (data ?? []).map((r) => {
@@ -129,7 +115,6 @@ export async function PATCH(request: Request) {
       .eq("status", "error")
       .eq("params->>batchId", batch);
   }
-  const origin = new URL(request.url).origin;
-  after(() => kickChains(origin, Math.min(6, Math.max(1, Number(body.concurrency) || 3))));
+  await pumpQueue();
   return Response.json({ ok: true });
 }

@@ -1,31 +1,29 @@
-import { after, NextResponse } from "next/server";
-import { kickChains, processForAWhile } from "@/lib/ai/exerciseBatch";
+import { NextResponse } from "next/server";
+import { supabaseAdmin } from "@/lib/supabaseClient";
+import { pumpQueue } from "@/lib/ai/exerciseBatch";
 
 export const maxDuration = 300;
 
 /**
- * Une chaîne de la génération par lots : prend UN exercice en file, le génère (dans after(), côté Vercel), puis se
- * rappelle pour le suivant tant qu'il en reste. Voir src/lib/ai/exerciseBatch.ts.
+ * Horloge de la génération par lots. Appelée chaque minute par pg_cron (tâche « exercise-queue-clock », seulement
+ * s'il reste des exercices en attente, jeton du coffre-fort Supabase) ou par l'admin (lancement, relance).
+ * Elle démarre, dans cette même fonction, les générations qui manquent pour atteindre le parallélisme voulu :
+ * aucune fonction ne s'appelle elle-même (les appels en chaîne s'arrêtaient au bout de quelques tours).
  */
+async function authorized(req: Request): Promise<boolean> {
+  if (process.env.CRON_SECRET && req.headers.get("authorization") === `Bearer ${process.env.CRON_SECRET}`) return true;
+  const token = req.headers.get("x-queue-token");
+  if (!token) return false;
+  const { data } = await supabaseAdmin.rpc("check_exercise_queue_token", { p_token: token });
+  return data === true;
+}
+
 async function handle(req: Request) {
-  if (!process.env.CRON_SECRET) return NextResponse.json({ error: "CRON_SECRET not configured" }, { status: 500 });
-  if (req.headers.get("authorization") !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-  const origin = new URL(req.url).origin;
-  after(async () => {
-    let more = false;
-    try {
-      more = await processForAWhile();
-    } catch (err) {
-      console.error("[exercise-queue-advance] échec:", err);
-      more = true;
-    } finally {
-      if (more) await kickChains(origin, 1);
-    }
-  });
-  return NextResponse.json({ started: true }, { status: 202 });
+  if (!(await authorized(req))) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  const started = await pumpQueue();
+  return NextResponse.json({ started }, { status: 202 });
 }
 
 export async function GET(req: Request) { return handle(req); }
 export async function POST(req: Request) { return handle(req); }
+
