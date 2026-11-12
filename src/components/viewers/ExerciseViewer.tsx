@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import MathText from "@/components/MathText";
 import { isVirtualExercise, useExerciseProgress } from "@/components/viewers/useExerciseProgress";
 import LoaderDots from "@/components/LoaderDots";
 import { useInlineTextVerify } from "@/components/viewers/useInlineTextVerify";
@@ -407,7 +408,7 @@ export default function ExerciseViewer({
             <GlassIconButton icon={ArrowLeft} onClick={() => { saveTimeSpent(); onBack(); }} color="navy" size="sm" aria-label="Retour" />
           )}
           <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)]">
-            {exercise.title}
+            <MathText text={exercise.title} />
           </h3>
         </div>
         <div className="text-sm font-medium text-[var(--greek-blue)] bg-[var(--greek-blue)]/10 border border-[var(--greek-gold)] px-3 py-1 rounded-full">

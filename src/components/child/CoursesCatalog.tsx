@@ -1,5 +1,6 @@
 "use client";
 
+import MathText from "@/components/MathText";
 import FolderEmblem from "@/components/child/FolderEmblem";
 import { useKatexIn } from "@/lib/useKatexIn";
 import Emblem3D from "@/components/Emblem3D";
@@ -203,7 +204,7 @@ export default function CoursesCatalog({
                 </div>
 
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">{course.title}</h3>
+                  <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2"><MathText text={course.title} /></h3>
                   <p className="text-gray-600 text-sm mb-4 line-clamp-3 flex-grow">
                     {planLocked ? "Ce chapitre fait partie des formules Solo et Family. Demande à tes parents !" : isLocked ? "Termine le cours précédent pour débloquer celui-ci." : (course.description || "Découvre ce chapitre passionnant !")}
                   </p>

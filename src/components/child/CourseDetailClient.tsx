@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import MathText from "@/components/MathText";
 import Emblem3D from "@/components/Emblem3D";
 import StateScreen from "@/components/StateScreen";
 import type { Chapter } from "@/components/admin/CourseBuilder";
@@ -119,7 +120,7 @@ export default function CourseDetailClient({
             className="flex-shrink-0"
             aria-label="Retour à l'aperçu"
           />
-          <h1 className="text-lg font-bold truncate flex-1">{course.title}</h1>
+          <h1 className="text-lg font-bold truncate flex-1"><MathText text={course.title} /></h1>
           <GlassCloseButton
             variant="dark"
             onClick={() => {
@@ -176,7 +177,7 @@ export default function CourseDetailClient({
                 {course.subject || "Mathématiques"}
               </div>
               <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2 text-shadow-sm">
-                {course.title}
+                <MathText text={course.title} />
               </h1>
             </div>
           </div>
@@ -190,7 +191,7 @@ export default function CourseDetailClient({
                 À propos de ce cours
               </h2>
               <div className="prose max-w-none text-gray-600 leading-relaxed">
-                {course.description || "Aucune description disponible."}
+                <MathText text={course.description || "Aucune description disponible."} />
               </div>
 
               <div className="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-100">

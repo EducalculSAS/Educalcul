@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import MathText from "@/components/MathText";
 import Emblem3D from "@/components/Emblem3D";
 import AnswerFeedback from "@/components/viewers/AnswerFeedback";
 import LoaderDots from "@/components/LoaderDots";
@@ -558,7 +559,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
                   <div className={`inline-flex items-center gap-2 px-3 py-1 text-xs font-bold rounded-full mb-3 shadow-md ${passed ? "bg-[var(--greek-gold)] text-[var(--greek-blue)]" : "bg-red-500 text-white"}`}>
                     {passed ? <><CheckCircle className="w-3.5 h-3.5" /> Quiz réussi !</> : <><XCircle className="w-3.5 h-3.5" /> Score insuffisant</>}
                   </div>
-                  <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2">{quiz.title}</h1>
+                  <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2"><MathText text={quiz.title} /></h1>
                 </div>
               </div>
             </div>
@@ -649,7 +650,7 @@ export default function QuizViewer({ quiz, onComplete, onBack, reviewMode, force
               <GlassIconButton icon={ArrowLeft} onClick={onBack} color="navy" size="sm" aria-label="Retour" />
             )}
             <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] truncate">
-              {quiz.title}
+              <MathText text={quiz.title} />
             </h3>
           </div>
           <div className="flex items-center gap-3 flex-shrink-0">

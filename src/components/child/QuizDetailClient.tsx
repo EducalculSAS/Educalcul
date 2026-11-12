@@ -1,5 +1,6 @@
 "use client";
 
+import MathText from "@/components/MathText";
 import Emblem3D from "@/components/Emblem3D";
 import StateScreen from "@/components/StateScreen";
 import type { AttemptSummary } from "@/types/attempts";
@@ -101,7 +102,7 @@ export default function QuizDetailClient({
             className="flex-shrink-0"
             aria-label="Retour à l'aperçu"
           />
-          <h1 className="text-lg font-bold truncate flex-1">{quiz.title}</h1>
+          <h1 className="text-lg font-bold truncate flex-1"><MathText text={quiz.title} /></h1>
           <GlassCloseButton
             variant="dark"
             onClick={() => {
@@ -158,7 +159,7 @@ export default function QuizDetailClient({
                 {quiz.courses?.title || "Évaluation"}
               </div>
               <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2 text-shadow-sm">
-                {quiz.title}
+                <MathText text={quiz.title} />
               </h1>
             </div>
           </div>
@@ -172,7 +173,7 @@ export default function QuizDetailClient({
                 Défie tes connaissances
               </h2>
               <div className="prose max-w-none text-gray-600 leading-relaxed mb-6">
-                {quiz.description || "Prêt à tester tes connaissances ? Réponds correctement aux questions pour gagner des points !"}
+                <MathText text={quiz.description || "Prêt à tester tes connaissances ? Réponds correctement aux questions pour gagner des points !"} />
               </div>
 
               <div className="mt-8 p-6 bg-[var(--greek-cream)] rounded-xl border border-[rgba(197,161,72,0.25)]">

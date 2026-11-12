@@ -1,5 +1,6 @@
 "use client";
 
+import MathText from "@/components/MathText";
 import GlassIconButton from "@/components/ui/GlassIconButton";
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -20,7 +21,7 @@ export default function ExerciseReviewClient({ exercise, progress }: { exercise:
             aria-label="Retour"
           />
         <h1 className="text-lg font-bold truncate flex-1">
-          Correction : {exercise.title}
+          Correction : <MathText text={exercise.title} />
         </h1>
         <GlassCloseButton
           variant="dark"

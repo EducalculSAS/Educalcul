@@ -1,5 +1,6 @@
 "use client";
 
+import MathText from "@/components/MathText";
 import Emblem3D from "@/components/Emblem3D";
 import StateScreen from "@/components/StateScreen";
 import { isRecord, parseList } from "@/lib/validate";
@@ -117,7 +118,7 @@ export default function ExerciseDetailClient({
             className="flex-shrink-0"
             aria-label="Retour à l'aperçu"
           />
-          <h1 className="text-lg font-bold truncate flex-1">{exercise.title}</h1>
+          <h1 className="text-lg font-bold truncate flex-1"><MathText text={exercise.title} /></h1>
           <GlassCloseButton
             variant="dark"
             onClick={() => {
@@ -187,7 +188,7 @@ export default function ExerciseDetailClient({
                 {exercise.courses?.title || "Mathématiques"}
               </div>
               <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2 text-shadow-sm">
-                {exercise.title}
+                <MathText text={exercise.title} />
               </h1>
             </div>
           </div>
@@ -201,7 +202,7 @@ export default function ExerciseDetailClient({
                 Objectifs de l&apos;exercice
               </h2>
               <div className="prose max-w-none text-gray-600 leading-relaxed mb-6">
-                {exercise.description || "Entraîne-toi sur ce sujet pour maîtriser tes compétences !"}
+                <MathText text={exercise.description || "Entraîne-toi sur ce sujet pour maîtriser tes compétences !"} />
               </div>
 
               <div className="mt-8 p-6 bg-blue-50 rounded-xl border border-blue-100">

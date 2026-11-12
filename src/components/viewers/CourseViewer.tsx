@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-img-element -- images à adresse libre ou data: saisies par l'admin (miniatures, aperçus, énoncés) : next/image ne peut pas les optimiser */
 
+import MathText from "@/components/MathText";
 import Emblem3D from "@/components/Emblem3D";
 import Image from "next/image";
 import { plural } from "@/lib/plural";
@@ -496,7 +497,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-[var(--greek-gold)] text-[var(--greek-blue)] text-xs font-bold rounded-full mb-3 shadow-md">
                     <CheckCircle className="w-3.5 h-3.5" /> Cours terminé !
                   </div>
-                  <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2">{course.title}</h1>
+                  <h1 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-display)] mb-2"><MathText text={course.title} /></h1>
                 </div>
               </div>
             </div>
@@ -566,7 +567,7 @@ export default function CourseViewer({ course, onComplete, onChapterComplete, on
         <div className="p-5 border-b border-[var(--greek-gold)] bg-[var(--greek-cream)] flex justify-between items-center shadow-sm z-10">
           <div className="min-w-0 flex-1 pr-2">
              <h3 className="font-bold font-[family-name:var(--font-display)] text-[var(--greek-blue)] leading-snug line-clamp-2" title={course.title}>
-               {course.title}
+               <MathText text={course.title} />
              </h3>
              <p className="text-xs text-[var(--greek-bronze)] mt-1">
                {plural(totalLessons, "leçon")} • {plural(chapters.length, "chapitre")}

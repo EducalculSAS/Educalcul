@@ -1,5 +1,6 @@
 "use client";
 
+import MathText from "@/components/MathText";
 import FolderEmblem from "@/components/child/FolderEmblem";
 import { compareDisplayOrder } from "@/lib/contentOrder";
 import Emblem3D from "@/components/Emblem3D";
@@ -141,9 +142,9 @@ export default function ExercisesCatalog({
               {exercise.courses?.title || "Mathématiques"}
             </span>
           </div>
-          <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">{exercise.title}</h3>
+          <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2"><MathText text={exercise.title} /></h3>
           <p className="text-gray-600 text-sm mb-6 line-clamp-3 flex-grow">
-            {exercise.description || exercise.question || "Entraîne-toi sur ce sujet !"}
+            <MathText text={exercise.description || exercise.question || "Entraîne-toi sur ce sujet !"} />
           </p>
           <div className="mt-auto">
             {isLocked ? (

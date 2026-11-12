@@ -1,5 +1,6 @@
 "use client";
 
+import MathText from "@/components/MathText";
 import FolderEmblem from "@/components/child/FolderEmblem";
 import { compareDisplayOrder } from "@/lib/contentOrder";
 import Emblem3D from "@/components/Emblem3D";
@@ -137,9 +138,9 @@ export default function QuizCatalog({
               {quiz.courses?.title || "Général"}
             </span>
           </div>
-          <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2">{quiz.title}</h3>
+          <h3 className="text-xl font-bold text-[var(--greek-blue)] mb-2 line-clamp-2"><MathText text={quiz.title} /></h3>
           <p className="text-gray-600 text-sm mb-6 line-clamp-3 flex-grow">
-            {quiz.description || "Relève ce défi pour prouver tes compétences !"}
+            <MathText text={quiz.description || "Relève ce défi pour prouver tes compétences !"} />
           </p>
           <div className="mt-auto">
             {isLocked ? (
