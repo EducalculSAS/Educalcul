@@ -1,5 +1,6 @@
 "use client";
 
+import { renderUserText } from "@/lib/katexLoader";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { ChevronDown, ChevronUp, Brain, Loader2, Plus, Trash2, Save, CheckCircle, AlertCircle } from "lucide-react";
@@ -155,7 +156,12 @@ export default function PlacementQuizPanel() {
                     value={q.question}
                     onChange={(e) => updateLocal(q.id, { question: e.target.value })}
                     className="w-full px-3 py-2 border border-[rgba(197,161,72,0.25)] rounded-lg text-sm font-semibold mb-3"
-                    placeholder="Énoncé de la question"
+                    placeholder="Énoncé de la question (formules entre $…$, ex. $3x + 2 = 11$)"
+                  />
+                  {/* Aperçu tel que l'élève le verra (formules rendues). */}
+                  <p
+                    className="text-sm text-[var(--greek-blue)] bg-[var(--greek-cream)]/60 rounded-lg px-3 py-2 mb-3"
+                    dangerouslySetInnerHTML={{ __html: renderUserText(q.question) + " — " + q.options.map((o) => renderUserText(o)).join(" · ") }}
                   />
                   <div className="grid grid-cols-2 gap-2 mb-3">
                     {q.options.map((opt, i) => (

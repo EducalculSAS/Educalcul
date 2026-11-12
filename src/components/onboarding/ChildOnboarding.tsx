@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { updateMyProfile } from "@/lib/updateMyProfile";
 import { ChevronRight } from "lucide-react";
 import GlassButton from "@/components/ui/GlassButton";
+import { renderUserText } from "@/lib/katexLoader";
 
 interface Props {
   firstName: string;
@@ -129,13 +130,14 @@ export default function ChildOnboarding({ firstName, gradeLevel, onComplete }: P
             </div>
 
             <div className="flex-1 px-8 py-4 flex flex-col gap-4">
-              <p className="text-lg font-bold text-gray-800 text-center py-4">
-                {questions[quizIndex]?.question}
-              </p>
+              <p
+                className="text-lg font-bold text-gray-800 text-center py-4"
+                dangerouslySetInnerHTML={{ __html: renderUserText(questions[quizIndex]?.question ?? "") }}
+              />
               <div className="grid grid-cols-2 gap-3">
                 {questions[quizIndex]?.options.map((opt, i) => (
                   <GlassButton key={i} onClick={() => handleAnswer(i)} disabled={submitting} variant="outline" fullWidth>
-                    {opt}
+                    <span dangerouslySetInnerHTML={{ __html: renderUserText(opt) }} />
                   </GlassButton>
                 ))}
               </div>
