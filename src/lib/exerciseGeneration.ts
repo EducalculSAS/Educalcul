@@ -444,9 +444,11 @@ ${courseContext}`;
         }
         draft = keepCompleteExerciseQuestions(draft, blockType, count);
         if (draft.questions.length === 0) {
-          throw new Error(
-            `La partie ${batchIndex + 1} n'a produit aucune question ${blockType} complète.`,
-          );
+          // Une partie ratée ne fait plus échouer tout l'exercice : on garde les questions valides des autres parties
+          // (au moins deux au total, vérifié plus bas).
+          console.warn(`[exercise-ai] partie ${batchIndex + 1} sans question ${blockType} complète, ignorée`);
+          completed += 1;
+          return { batchIndex, draft };
         }
 
         const guarded = await runStructuredQualityGuard(draft, {
@@ -507,8 +509,12 @@ ${courseContext}`;
       { blockType, exerciseType },
     );
 
-    if (combined.questions.length === 0) {
-      throw new Error("Aucune question valide n'a été générée.");
+    if (combined.questions.length < Math.min(2, totalQuestions)) {
+      throw new Error(
+        combined.questions.length === 0
+          ? `Aucune question ${blockType} complète n'a été générée.`
+          : `Une seule question ${blockType} complète a été générée : exercice trop court.`,
+      );
     }
 
     const compiled = compileStructuredExerciseDraft(combined, {
