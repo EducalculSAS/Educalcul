@@ -328,7 +328,17 @@ export function renderSolid(fig: SolidFig): { svg: string; errors: string[] } {
       out += line(cx, topY, cx, base, "gray", 1.2, true);
     }
     out += line(cx, base, cx + rx, base, "accent", 1.4) + dot(cx, base, "ink", 2.6);
-    if (fig.showDims) { out += text(cx + rx / 2, base - 10, L(r), { size: 12 }); out += text(cx + rx + 8, (base + topY) / 2, L(h), { size: 12, anchor: "start" }); }
+    if (fig.shape === "cone") {
+      // Angle droit entre la hauteur et le rayon : la hauteur est l'axe, pas le bord oblique.
+      const m = 7;
+      out += `<path d="M ${n(cx)} ${n(base - m)} L ${n(cx + m)} ${n(base - m)} L ${n(cx + m)} ${n(base)}" fill="none" ${stroke("ink", 1)}/>`;
+    }
+    if (fig.showDims) {
+      out += text(cx + rx / 2, base + ry + 15, `r = ${L(r)}`, { size: 12 });
+      out += fig.shape === "cone"
+        ? text(cx - 7, (base + topY) / 2 + 4, L(h), { size: 12, anchor: "end" })
+        : text(cx + rx + 8, (base + topY) / 2, L(h), { size: 12, anchor: "start" });
+    }
   } else if (fig.shape === "sphere") {
     const r = d.r ?? 3;
     const s = fit(2 * r, 2 * r), cx = width / 2, cy = height / 2, R = r * s;
