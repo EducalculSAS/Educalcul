@@ -1,4 +1,5 @@
 import type { JsonSchemaContract } from "@/lib/ai/exerciseSchemas";
+import { decodeFigAttr, EDUFIG_RE } from "@/lib/figures/render";
 
 /**
  * Relecture d'un exercice généré, avant enregistrement : un second passage de l'IA refait chaque calcul et rejette
@@ -25,6 +26,17 @@ const plain = (html: unknown) =>
         .replace(/[ \t]+/g, " ")
         .trim();
 
+/** Figures EduFig → leurs données (points, longueurs, valeurs…), pour que la relecture voie ce que voit l'élève. */
+function withFigureData(html: unknown): unknown {
+  if (typeof html !== "string") return html;
+  return html.replace(new RegExp(EDUFIG_RE.source, "g"), (_whole, attr: string) => {
+    const fig = decodeFigAttr(attr);
+    if (!fig) return " [figure] ";
+    const data = JSON.stringify(fig).replace(/[<>]/g, " ");
+    return ` [FIGURE montrée à l'élève : ${data.slice(0, 1_200)}${data.length > 1_200 ? "…" : ""}] `;
+  });
+}
+
 /** « a = b = c » dans une formule de l'énoncé : un calcul mené jusqu'au résultat. */
 export function hasChainedCalculation(html: unknown): boolean {
   const text = plain(html);
@@ -50,20 +62,20 @@ export function collectQuestions(contentJson: unknown): { questions: ReviewQuest
   let n = 0;
   for (const page of (Array.isArray(contentJson) ? contentJson : []) as Page[]) {
     for (const block of page.blocks ?? []) {
-      if (block.type === "text") { const t = plain(block.content); if (t) context.push(t); continue; }
+      if (block.type === "text") { const t = plain(withFigureData(block.content)); if (t) context.push(t); continue; }
       n += 1;
       const answer = Array.isArray(block.correctAnswer) ? block.correctAnswer.join(" ; ") : String(block.correctAnswer ?? "");
       questions.push({
         n,
         type: String(block.type ?? ""),
-        statement: plain(block.content),
+        statement: plain(withFigureData(block.content)),
         ...(Array.isArray(block.options) ? { options: (block.options as unknown[]).map((o) => plain(typeof o === "string" ? o : (o as { text?: unknown })?.text ?? JSON.stringify(o))) } : {}),
         answer: plain(answer),
         explanation: plain(block.explanation).slice(0, 900),
       });
     }
   }
-  return { questions, context: context.join("\n").slice(0, 3_000) };
+  return { questions, context: context.join("\n").slice(0, 4_000) };
 }
 
 /** Retire les questions rejetées (numéros à partir de 1) ; une page vidée de ses questions disparaît. */
@@ -112,6 +124,7 @@ Pour CHAQUE question, refais le calcul toi-même, entièrement, puis donne un ve
 • "incoherent" : énoncé ambigu, données manquantes ou contradictoires, consigne qui ne correspond pas à la question (ex. « code à trois chiffres » pour une réponse à un chiffre), texte cassé ou illisible.
 • "hors_programme" : notion hors du programme du niveau indiqué.
 • "ok" : tout est juste et clair.
+Une mention [FIGURE montrée à l'élève : {…}] donne les données de la figure affichée : elles font partie de l'énoncé (longueurs, points, angles, valeurs d'un graphique ou d'un tableau). Vérifie aussi que la figure est cohérente avec le texte ; sinon verdict "incoherent".
 Sois exigeant mais juste : une écriture équivalente de la bonne réponse (2/4 au lieu de 1/2, 0,5) est "ok".
 Réponds uniquement avec le JSON demandé : {"questions":[{"n":1,"verdict":"ok","raison":"…"}]}.`;
 

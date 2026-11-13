@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { collectQuestions, hasBrokenTable, hasChainedCalculation, parseReview, removeQuestions } from "@/lib/ai/exerciseReview";
 import { configuredProviders, cooldownMs } from "@/lib/llmProviders";
 import { mathToReadableText } from "@/lib/ai/structuredMath";
+import { eduFigHtml } from "@/lib/figures/render";
 
 const exercise = [
   { blocks: [
@@ -30,6 +31,13 @@ describe("relecture des exercices", () => {
     const kept = removeQuestions(exercise, new Set([3])) as { blocks: { type: string }[] }[];
     expect(kept).toHaveLength(1);
     expect(kept[0].blocks).toHaveLength(3);
+  });
+  it("donne au relecteur les données des figures", () => {
+    const fig = eduFigHtml({ v: 1, kind: "graph", x: [-4, 4], curves: [{ expr: "2x + 1", name: "f" }] });
+    const { questions } = collectQuestions([{ blocks: [{ type: "text_input", content: `<p>Lis f(1) sur le graphique.</p>${fig}`, correctAnswer: "3" }] }]);
+    expect(questions[0].statement).toContain("FIGURE montrée à l'élève");
+    expect(questions[0].statement).toContain("2x + 1");
+    expect(questions[0].statement).not.toContain("<svg");
   });
   it("lit les verdicts", () => {
     expect(parseReview({ questions: [{ n: 2, verdict: "fuite", raison: "x" }, { n: 0 }] })).toEqual([{ n: 2, verdict: "fuite", raison: "x" }]);
