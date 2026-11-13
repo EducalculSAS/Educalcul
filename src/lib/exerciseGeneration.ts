@@ -57,6 +57,7 @@ export type ExerciseGenerationParams = {
 
 /** Exigences de qualité communes aux exercices liés à un cours (génération unitaire et par lots). */
 const COURSE_QUALITY_RULES = `EXIGENCES DE QUALITÉ (prioritaires) :
+• Écriture française des nombres : virgule décimale, jamais de point (5,3 ; en LaTeX 5{,}3), espace entre les milliers (12 500).
 • Niveau : celui du cours et de ses exercices, jamais en dessous. Pas de question triviale d'un niveau inférieur (ex. en 3ème : « quel est le signe de 3/−5 ? » est interdit).
 • Chaque question a UNE réponse précise et vérifiable : pas d'ensemble infini, pas de « réponds par une phrase » vague. Si plusieurs réponses sont possibles, demande-les toutes dans un format imposé.
 • Titre précis et unique qui dit ce que l'élève va faire (jamais le simple nom du chapitre).
