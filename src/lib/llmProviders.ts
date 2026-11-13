@@ -57,7 +57,28 @@ export function cooldownMs(status: number, body: string, retryAfter: string | nu
 
 export type RoutedResult = { ok: boolean; text: string; status: number; retryAfter?: string | null; provider?: string };
 
+/** Attente maximale qu'un fournisseur se libère avant de retomber sur Mistral (qualité moindre). */
+const MAX_ROUTE_WAIT_MS = 90_000;
+
 export async function callRoutedProviders(
+  messages: unknown[],
+  opts: { temperature: number; maxTokens?: number; reasoning: boolean; jsonMode: boolean; signal: AbortSignal },
+): Promise<RoutedResult | null> {
+  const startedAt = Date.now();
+  for (;;) {
+    const result = await tryProvidersOnce(messages, opts);
+    if (result) return result;
+    // Tous saturés : on attend le premier qui se libère, si c'est assez proche ; sinon repli Mistral.
+    const ids = configuredProviders().map((p) => p.id);
+    const nextFree = Math.min(...ids.map((id) => blockedUntil.get(id) ?? 0));
+    const wait = nextFree - Date.now();
+    if (!ids.length || wait <= 0 || Date.now() + wait - startedAt > MAX_ROUTE_WAIT_MS) return null;
+    if (opts.signal.aborted) return null;
+    await new Promise((resolve) => setTimeout(resolve, wait + Math.floor(Math.random() * 1_000)));
+  }
+}
+
+async function tryProvidersOnce(
   messages: unknown[],
   opts: { temperature: number; maxTokens?: number; reasoning: boolean; jsonMode: boolean; signal: AbortSignal },
 ): Promise<RoutedResult | null> {
@@ -96,8 +117,8 @@ export async function callRoutedProviders(
       } catch { /* réponse illisible : fournisseur suivant */ }
       continue;
     }
-    // Trop gros pour ce fournisseur (413), quota (429) ou panne (5xx) : fournisseur suivant.
-    if (resp.status === 413) continue;
+    // Trop gros pour le quota par minute (413), quota (429) ou panne (5xx) : fournisseur suivant.
+    if (resp.status === 413) { blockedUntil.set(p.id, Date.now() + 60_000); continue; }
     if (resp.status === 429 || resp.status >= 500) {
       blockedUntil.set(p.id, Date.now() + cooldownMs(resp.status, text, resp.headers.get("retry-after")));
       continue;
