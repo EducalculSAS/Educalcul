@@ -1,5 +1,6 @@
 import { AsyncLocalStorage } from "node:async_hooks";
 import type { JsonSchemaContract } from "@/lib/ai/schemas";
+import { callRoutedProviders, providerRouteActive } from "@/lib/llmProviders";
 
 /**
  * Educalcul — Couche transport IA via l'API Mistral directe (endpoint régional
@@ -220,6 +221,21 @@ export async function callMistralModelOnce(
   }
 
   let resp: Response;
+  // Génération de contenu aiguillée vers les fournisseurs gratuits (gpt-oss-120b) ; Mistral en dernier recours.
+  if (providerRouteActive() && model === MISTRAL_MODEL) {
+    try {
+      const routed = await callRoutedProviders(msgs, { temperature: temp, maxTokens, reasoning, jsonMode: jsonMode || !!jsonSchema, signal: controller.signal });
+      if (routed) {
+        clearTimeout(timeout);
+        if (abortSignal && externalListener) abortSignal.removeEventListener("abort", externalListener);
+        return routed;
+      }
+    } catch (error) {
+      clearTimeout(timeout);
+      if (abortSignal && externalListener) abortSignal.removeEventListener("abort", externalListener);
+      throw error;
+    }
+  }
   try {
     resp = await fetch(MISTRAL_URL, {
       method: "POST",

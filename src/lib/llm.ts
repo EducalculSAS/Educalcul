@@ -3,6 +3,7 @@
 // le bundle du navigateur.
 import "server-only";
 import type { JsonSchemaContract } from "@/lib/ai/schemas";
+import { providerRouteActive } from "./llmProviders";
 import { dispatch, parseJSON, Message, callMistralModel, MISTRAL_MODEL, extractMistralText, MISTRAL_KEY, repairStructuredJSON, MISTRAL_URL, retryDelayMs, MISTRAL_FALLBACK_MODEL } from "./llmCore";
 import { runInteractive } from "./llmCore";
 import { extractJSON } from "./llmVision";
@@ -341,7 +342,8 @@ ${JSON.stringify(contract.schema)}`;
     );
   };
 
-  if (!shouldAttemptJsonSchema(MISTRAL_MODEL)) {
+  // Fournisseurs aiguillés (gpt-oss) : json_object + contrat écrit dans la consigne, comme pour les modèles Labs.
+  if (!shouldAttemptJsonSchema(MISTRAL_MODEL) || providerRouteActive()) {
     return callJsonObjectMode();
   }
 

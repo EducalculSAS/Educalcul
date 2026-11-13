@@ -361,6 +361,8 @@ export function mathToReadableText(value: unknown): string {
   };
 
   source = recurse(source)
+    .replace(/\\begin\{(?:array|tabular)\}\{[^{}]*\}/g, " ")
+    .replace(/\\hline\b/g, " ")
     .replace(/\\begin\{[^{}]+\}|\\end\{[^{}]+\}/g, " ")
     .replace(/\\\\/g, " ; ")
     .replace(/&/g, " ")

@@ -30,6 +30,9 @@ import { runPhotoExerciseGeneration } from "@/lib/exerciseFromPhoto";
 import { buildCourseLevelContext } from "@/lib/ai/courseContext";
 import { checkExerciseFigures } from "@/lib/figures/checkContent";
 import { answerShownInStatement, stripStatementLeaks } from "@/lib/ai/statementLeaks";
+import { REVIEW_SCHEMA, REVIEW_SYSTEM, collectQuestions, hasBrokenTable, hasChainedCalculation, parseReview, removeQuestions, reviewPrompt } from "@/lib/ai/exerciseReview";
+import { hasRoutedProviders, withProviderRoute } from "@/lib/llmProviders";
+import { generateStructuredContentWithSchema } from "@/lib/llm";
 
 const BATCH_SIZE = 2;
 
@@ -258,7 +261,16 @@ ${EDUFIG_PROMPT_GUIDE}
 • Réponds uniquement avec le JSON demandé.`;
 }
 
-export async function runExerciseGeneration(
+/** Génération d'exercice, aiguillée vers les fournisseurs gratuits (gpt-oss-120b) quand leurs clés sont renseignées. */
+export function runExerciseGeneration(
+  generationId: string,
+  params: ExerciseGenerationParams,
+  adminId: number,
+): Promise<void> {
+  return withProviderRoute(() => runExerciseGenerationRouted(generationId, params, adminId));
+}
+
+async function runExerciseGenerationRouted(
   generationId: string,
   params: ExerciseGenerationParams,
   adminId: number,
@@ -545,6 +557,50 @@ ${courseContext}`;
       }
     }
 
+    // Relecture : contrôles sans IA, puis second passage de l'IA qui refait chaque calcul (fournisseurs aiguillés
+    // uniquement : le modèle Mistral actuel ne relit pas assez bien pour trancher). Les questions rejetées sont retirées ;
+    // si plus de la moitié le sont, l'exercice échoue et la file le régénère en fin de lot.
+    const rejected = new Map<number, string>();
+    let reviewNo = 0;
+    for (const page of (Array.isArray(compiled.contentJson) ? compiled.contentJson : []) as { blocks?: Record<string, unknown>[] }[]) {
+      for (const block of page.blocks ?? []) {
+        if (block.type === "text") continue;
+        reviewNo += 1;
+        if (hasChainedCalculation(block.content)) rejected.set(reviewNo, "calcul mené jusqu'au résultat dans l'énoncé");
+        else if (hasBrokenTable(block.content)) rejected.set(reviewNo, "tableau illisible");
+      }
+    }
+    if (hasRoutedProviders()) {
+      await tracker.updateProgress({ step: "final-check", current: batches.length, total: batches.length + 1, message: "Relecture : vérification de chaque calcul..." });
+      const { questions, context } = collectQuestions(compiled.contentJson);
+      try {
+        const raw = await generateStructuredContentWithSchema<unknown>(
+          reviewPrompt({ title: compiled.title || subject, level, context, questions }),
+          REVIEW_SYSTEM,
+          REVIEW_SCHEMA,
+          0.1,
+          4_000,
+          true,
+        );
+        for (const v of parseReview(raw)) {
+          if (v.verdict !== "ok" && v.n <= questions.length && !rejected.has(v.n)) rejected.set(v.n, `${v.verdict.replace(/_/g, " ")} : ${v.raison}`);
+        }
+      } catch (error) {
+        console.warn("[exercise-review] relecture indisponible", error);
+        figureWarnings.push("Relecture automatique indisponible : à vérifier à la main.");
+      }
+    }
+    let contentJson: unknown = compiled.contentJson;
+    if (rejected.size) {
+      const kept = reviewNo - rejected.size;
+      const reasons = [...rejected].map(([n, why]) => `Q${n} ${why}`).join(" ; ");
+      if (kept < Math.min(2, reviewNo) || rejected.size * 2 > reviewNo) {
+        throw new Error(`Relecture : ${rejected.size} question(s) sur ${reviewNo} rejetée(s) (${reasons.slice(0, 400)}).`);
+      }
+      contentJson = removeQuestions(compiled.contentJson, new Set(rejected.keys()));
+      figureWarnings.push(`Relecture : ${rejected.size} question(s) retirée(s) (${reasons.slice(0, 400)}).`);
+    }
+
     await tracker.updateProgress({
       ...(figureWarnings.length ? { warnings: figureWarnings } : {}),
       step: "final-check",
@@ -566,7 +622,7 @@ ${courseContext}`;
         is_published: false,
         folder_id: folder_id || null,
         thumbnail_url: "",
-        content_json: compiled.contentJson,
+        content_json: contentJson,
         time_limit: 20,
         max_attempts: 3,
         estimated_time: 15,
