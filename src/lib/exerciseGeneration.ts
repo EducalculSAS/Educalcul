@@ -1,5 +1,5 @@
 import { EDUFIG_PROMPT_GUIDE } from "@/lib/figures/promptGuide";
-import { getProgrammePromptBlock } from "@/lib/programmes-nationaux";
+import { getProgrammeGuardrails, getProgrammePromptBlock } from "@/lib/programmes-nationaux";
 import { supabaseAdmin } from "@/lib/supabaseClient";
 import { auditLog, AuditAction } from "@/lib/auditLog";
 import {
@@ -575,7 +575,7 @@ ${courseContext}`;
       const { questions, context } = collectQuestions(compiled.contentJson);
       try {
         const raw = await generateStructuredContentWithSchema<unknown>(
-          reviewPrompt({ title: compiled.title || subject, level, context, questions }),
+          reviewPrompt({ title: compiled.title || subject, level, context, questions, outOfProgramme: getProgrammeGuardrails(level) }),
           REVIEW_SYSTEM,
           REVIEW_SCHEMA,
           0.1,

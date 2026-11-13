@@ -115,8 +115,9 @@ Pour CHAQUE question, refais le calcul toi-même, entièrement, puis donne un ve
 Sois exigeant mais juste : une écriture équivalente de la bonne réponse (2/4 au lieu de 1/2, 0,5) est "ok".
 Réponds uniquement avec le JSON demandé : {"questions":[{"n":1,"verdict":"ok","raison":"…"}]}.`;
 
-export function reviewPrompt(input: { title: string; level: string; context: string; questions: ReviewQuestion[] }): string {
-  return `Niveau : ${input.level}
+export function reviewPrompt(input: { title: string; level: string; context: string; questions: ReviewQuestion[]; outOfProgramme?: string[] }): string {
+  const limits = input.outOfProgramme?.length ? `\nHORS PROGRAMME à ce niveau (verdict "hors_programme" si une question en a besoin) :\n${input.outOfProgramme.map((l) => `- ${l}`).join("\n")}\n` : "";
+  return `Niveau : ${input.level}${limits}
 Exercice : ${input.title}
 Texte d'introduction :
 ${input.context || "(aucun)"}

@@ -1,8 +1,8 @@
 import { AsyncLocalStorage } from "node:async_hooks";
 
 /**
- * Aiguillage gratuit pour la génération de contenu : gpt-oss-120b (bon en calcul et en raisonnement) chez plusieurs
- * fournisseurs à offre gratuite, compatibles OpenAI. Quand l'un atteint son quota (429, quota du jour, requête trop
+ * Aiguillage gratuit pour la génération de contenu : gpt-oss-120b (bon en calcul et en raisonnement) chez Cerebras puis
+ * Groq (offres gratuites), compatibles OpenAI. Quand l'un atteint son quota (429, quota du jour, requête trop
  * grosse), on passe au suivant ; quand tous sont indisponibles, l'appelant retombe sur Mistral. Seuls les fournisseurs
  * dont la clé est renseignée (variables d'environnement Vercel) sont utilisés.
  */
@@ -19,7 +19,7 @@ export interface RoutedProvider {
 const CANDIDATES: { id: string; url: string; keyEnv: string; modelEnv: string; model: string; jsonObject: boolean }[] = [
   { id: "cerebras", url: "https://api.cerebras.ai/v1/chat/completions", keyEnv: "CEREBRAS_API_KEY", modelEnv: "CEREBRAS_MODEL", model: "gpt-oss-120b", jsonObject: true },
   { id: "groq", url: "https://api.groq.com/openai/v1/chat/completions", keyEnv: "GROQ_API_KEY", modelEnv: "GROQ_MODEL", model: "openai/gpt-oss-120b", jsonObject: true },
-  { id: "nvidia", url: "https://integrate.api.nvidia.com/v1/chat/completions", keyEnv: "NVIDIA_API_KEY", modelEnv: "NVIDIA_MODEL", model: "openai/gpt-oss-120b", jsonObject: false },
+  // NVIDIA NIM écarté (novembre 2026) : gpt-oss-120b retiré, autres modèles en délai dépassé ou introuvables.
 ];
 
 export function configuredProviders(env: Record<string, string | undefined> = process.env): RoutedProvider[] {

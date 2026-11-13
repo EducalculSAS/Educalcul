@@ -437,6 +437,11 @@ function getProgrammeForLevel(level: string): ProgrammeEntry | undefined {
 /**
  * Génère le bloc textuel d'instructions à insérer dans un prompt IA.
  */
+/** Ce qui est hors programme pour ce niveau (une ligne par interdit), pour la relecture des exercices. */
+export function getProgrammeGuardrails(level: string): string[] {
+  return STRICT_PROGRAMME_GUARDRAILS[level] ?? [];
+}
+
 export function getProgrammePromptBlock(level: string): string {
   const prog = getProgrammeForLevel(level);
   if (!prog) return "";
